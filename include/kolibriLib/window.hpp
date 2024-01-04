@@ -7,9 +7,8 @@
 #include <string>
 #include <vector>
 
-extern "C"{
-	#include <sys/ksys.h>
-}
+
+#include <sys/ksys.h>
 
 #include "base.hpp"
 #include "mouse.hpp"
@@ -29,7 +28,7 @@ namespace KolibriLib
 		// @brief Создать окно
 		void initWindow()
 		{
-			_ksys_set_event_mask(0x05);
+			_ksys_set_event_mask(0x07);
 			_ksys_debug_puts("Window");
 			OS::GetSystemColors();
 			SetWindowColors(OS::sys_color_table);

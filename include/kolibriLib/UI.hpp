@@ -47,25 +47,6 @@ namespace KolibriLib
 
         namespace text
         {
-
-            /// @brief Вывести текст
-            /// @param text текст
-            /// @param coord координаты
-            /// @param color цвет текста
-            inline void DrawText(std::string text, KolibriLib::point coord, ksys_color_t color = window::colors.work_text)
-            {
-                _ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
-            }
-
-            /// @brief Вывести текст
-            /// @param text текст
-            /// @param coord координаты
-            /// @param color цвет текста
-            inline void DrawText(const char *text, KolibriLib::point coord, ksys_color_t color = window::colors.work_text)
-            {
-                _ksys_draw_text(text, coord.x, coord.y, strlen(text), color);
-            }
-
             /// @brief Получить размер текста
             /// @return текущая высота текста
             unsigned int GetTextSize()
@@ -74,7 +55,8 @@ namespace KolibriLib
                 asm_inline(
                     "int $0x40"
                     : "=c"(Size)
-                    : "a"(48), "b"(11));
+                    : "a"(48), "b"(11)
+                );
                 return Size;
             }
 
@@ -83,8 +65,32 @@ namespace KolibriLib
             void SetTextSize(unsigned int newSize)
             {
                 asm_inline(
-                    "int $0x40" ::"a"(48), "b"(12), "c"(newSize));
+                    "int $0x40" ::"a"(48), "b"(12), "c"(newSize)
+                );
             }
+
+
+            /// @brief Вывести текст
+            /// @param text текст
+            /// @param coord координаты
+            /// @param color цвет текста
+            inline void DrawText(std::string text, KolibriLib::point coord, unsigned size = 9, ksys_color_t color = window::colors.work_text)
+            {
+                SetTextSize(size);
+                _ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
+            }
+
+            /// @brief Вывести текст
+            /// @param text текст
+            /// @param coord координаты
+            /// @param color цвет текста
+            inline void DrawText(const char *text, KolibriLib::point coord, unsigned size = 9, ksys_color_t color = window::colors.work_text)
+            {
+                SetTextSize(size);
+                _ksys_draw_text(text, coord.x, coord.y, strlen(text), color);
+            }
+
+            
 
             /* class Text: public UIElement
             {
@@ -159,7 +165,7 @@ namespace KolibriLib
                 return ButtonsIdList[id];
             }
 
-            /// @brief Создать кнопку, автоматически
+            /// @brief Создать кнопку, автоматически присвоить ей id
             /// @param coords координаты
             /// @param size размер
             /// @param color цвет
@@ -258,7 +264,7 @@ namespace KolibriLib
 
             void Button::render()
             {
-                DefineButton(_coord, _size, _BackgroundColor);
+                DefineButton(_coord, _size, _id, _BackgroundColor);
                 unsigned buff = text::GetTextSize();
                 text::SetTextSize(_size.y - 2 * _Margin);
                 text::DrawText(_text, _coord, _TextColor);

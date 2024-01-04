@@ -61,12 +61,19 @@ namespace KolibriLib
         /// @brief Запустить программу
         /// @param AppName путь до программы + имя
         /// @param args аргументы
-        /// @return то что возвращает сама программа
+        /// @return то что возвращает сама программа, -1 если программа не существует
         inline int Exec(std::string AppName, std::string args)
         {
-            char *a = "";
-            strcat(a, args.c_str());
-            return _ksys_exec(AppName.c_str(), a);
+            if(filesystem::Exist(AppName))
+            {
+                char *a = "";
+                strcat(a, args.c_str());
+                return _ksys_exec(AppName.c_str(), a);
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         inline ksys_time_t GetTime()

@@ -3,15 +3,17 @@
 #ifndef __CHILDWINDOW_H__
 #define __CHILDWINDOW_H__
 
-extern "C"{
-    #include <stdio.h>
-    #include <string.h>
-    #include <stdlib.h>
-    #include <sys/ksys.h>
-}
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/ksys.h>
+
 #include <string>
+#include <thread>
 
 #include "base.hpp"
+#include "window.hpp"
 
 namespace KolibriLib
 {
@@ -19,16 +21,50 @@ namespace KolibriLib
     namespace childWindow
     {
 
-        const std::string MessageBoxName("messagebox");
+        void MessageWindow(std::string Message, std::string Title)
+        {
+            window::initWindow();
+
+            window::DrawWindow({100, 100}, {256, 128}, Title);
+            UI::text::DrawText(Message, {window::MARGIN, (128 / 2) - UI::text::GetTextSize()});
+
+
+            while (true)
+            {
+                unsigned Event = OS::WaitEvent(); // Ждём пока не появится какой либо ивент
+                switch (Event)
+                {
+                case KSYS_EVENT_REDRAW:
+                    point mouse = mouse::GetMousePositionInWindow();
+                    window::StartRedraw();
+                    window::DrawWindow(mouse, window::DefaultWindowSize, Title);
+                    UI::text::DrawText(Message, {window::MARGIN, (128 / 2) - UI::text::GetTextSize()});
+                    window::EndRedraw();
+                    break;
+                case KSYS_EVENT_BUTTON:
+                    if (UI::buttons::GetPressedButton() == 1) // Если нажат крестик
+                    {
+                        return;
+                    }
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
 
         /// @brief Создать окно с сообщением
         /// @param Message сообщение
         /// @param Title Заголовок
         void MessageBox(std::string Message, std::string Title)
         {
-            std::string A("/");
-            std::string B(" ");
-            OS::Exec(BinPath + A + MessageBoxName, Title + B + Message);
+            void *th_stack = malloc(1024);
+            if (!th_stack)
+            {
+                _ksys_debug_puts("Memory allocation error for thread!");
+                return;
+            }
+            _ksys_create_thread(MessageWindow, th_stack + 1024);
         }
 
         /// @brief Создать окно с сообщением
@@ -36,18 +72,13 @@ namespace KolibriLib
         /// @param Title Заголовок
         void MessageBox(const char *Message, const char *Title)
         {
-            char *ARGS = "";
-
-            strcat(ARGS, Title);
-            strcat(ARGS, " ");
-            strcat(ARGS, Message);
-
-            char *A = "";
-
-            strcat(A, BinPath.c_str());
-            strcat(A, MessageBoxName.c_str());
-
-            OS::Exec(A, ARGS);
+            void *th_stack = malloc(1024);
+            if (!th_stack)
+            {
+                _ksys_debug_puts("Memory allocation error for thread!");
+                return;
+            }
+            _ksys_create_thread(MessageWindow, th_stack + 1024);
         }
 
         /// @brief окошко с ошибкой

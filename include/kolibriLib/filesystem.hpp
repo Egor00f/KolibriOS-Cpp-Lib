@@ -51,34 +51,34 @@ namespace KolibriLib
         }
 
 
-        /// @brief удалить файл
+        /// @brief удалить файл или папку
         /// @param name полный путь до файла
         /// @return
-        int DeleteFile(const char *name)
+        int Delete(const char *name)
         {
             return _ksys_file_delete(name);
         }
-        /// @brief удалить файл
+        /// @brief удалить файл или папку
         /// @param name имя файла
         /// @param path путь до файла
         /// @return
-        int DeleteFile(const char *name, char *path)
+        int Delete(const char *name, char *path)
         {
             strcat(path, name);
             return _ksys_file_delete(path);
         }
-        /// @brief удалить файл
+        /// @brief удалить файл  или папку
         /// @param name имя файла
         /// @return
-        int DeleteFile(std::string name)
+        int Delete(std::string name)
         {
             return _ksys_file_delete(name.c_str());
         }
-        /// @brief удалить файл
+        /// @brief удалить файл или папку
         /// @param name имя файла
         /// @param path путь до файла
         /// @return
-        int DeleteFile(std::string name, std::string path)
+        int Delete(std::string name, std::string path)
         {
             std::string fullPath = path + name;
             return _ksys_file_delete(fullPath.c_str());
@@ -100,6 +100,28 @@ namespace KolibriLib
         {
             return _ksys_mkdir(path.c_str());
         }
+
+        /// @brief проверяет существует ли файл или папки
+        /// @param путь до файла/папки
+        /// @return true если файл или папка существует, иначе false
+        bool Exist(std::string Path)
+        {
+            ksys_bdfe_t *buff;
+            if(_ksys_file_info(Path.c_str(), buff) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        int Rename(std::string OldName, std::string NewName)
+        {
+            return _ksys_file_rename(OldName.c_str(), NewName.c_str());
+        }
+        
 
     }
 } // namespace KolibriLib

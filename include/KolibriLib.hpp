@@ -10,6 +10,7 @@
 #include <kolibriLib/childWindow.hpp>
 #include <kolibriLib/UI.hpp>
 #include <kolibriLib/graphic.hpp>
+#include <kolibriLib/network.hpp>
 
 
 #endif // __KOLIBRILIB_H__
