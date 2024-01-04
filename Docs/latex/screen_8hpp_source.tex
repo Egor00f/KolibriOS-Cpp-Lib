@@ -1,0 +1,27 @@
+\doxysection{screen.\+hpp}
+\hypertarget{screen_8hpp_source}{}\label{screen_8hpp_source}\index{F:/KolibriOs/Kalc/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/screen.hpp@{F:/KolibriOs/Kalc/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/screen.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ \_\_SCREEN\_H\_\_}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ \_\_SCREEN\_H\_\_}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ <sys/ksys.h>}}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}base.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \mbox{\hyperlink{namespace_kolibri_lib_a91959a5056d26eda0fbc889687f4deb8}{GetScreenSize}}()}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ ksys\_pos\_t\ a\ =\ \_ksys\_screen\_size();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{a.x,\ a.y\};}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_SCREEN\_H\_\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,84 @@
+\doxysection{child\+Window.\+hpp}
+\hypertarget{child_window_8hpp_source}{}\label{child_window_8hpp_source}\index{F:/KolibriOs/Kalc/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/childWindow.hpp@{F:/KolibriOs/Kalc/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/childWindow.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ \_\_CHILDWINDOW\_H\_\_}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ \_\_CHILDWINDOW\_H\_\_}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}base.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}window.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}thread.hpp"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{namespace\ }childWindow}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ MessageWindow(std::string\ Message,\ std::string\ Title)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ae09b66020d07f1a2cac984783efeb9c3}{window::initWindow}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aeefc2cf8ad14e7e94142908d5577828a}{window::DrawWindow}}(\{100,\ 100\},\ \{256,\ 128\},\ Title);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ UI::text::DrawText(Message,\ \{\mbox{\hyperlink{namespace_kolibri_lib_1_1window_a3b448725877181cd55e661295fdbb0a5}{window::MARGIN}},\ (128\ /\ 2)\ -\/\ UI::text::GetTextSize()\});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ Event\ =\ OS::WaitEvent();\ \textcolor{comment}{//\ Ждём\ пока\ не\ появится\ какой\ либо\ ивент}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (Event)}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ KSYS\_EVENT\_REDRAW:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ mouse\ =\ mouse::GetMousePositionInWindow();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a2ff1d7011775557175478f67c69aece4}{window::StartRedraw}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aeefc2cf8ad14e7e94142908d5577828a}{window::DrawWindow}}(mouse,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a57bfcd030f5345910529b170cb768efb}{window::DefaultWindowSize}},\ Title);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UI::text::DrawText(Message,\ \{\mbox{\hyperlink{namespace_kolibri_lib_1_1window_a3b448725877181cd55e661295fdbb0a5}{window::MARGIN}},\ (128\ /\ 2)\ -\/\ UI::text::GetTextSize()\});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a7ecd4a9d0025d6532f7c75a5807932a7}{window::EndRedraw}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ KSYS\_EVENT\_BUTTON:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (UI::buttons::GetPressedButton()\ ==\ 1)\ \textcolor{comment}{//\ Если\ нажат\ крестик}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a438f3dbdbff79347a9ddc41f215deafb}{MessageBox}}(std::string\ Message,\ std::string\ Title)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47}{Thread::CreateThread}}(MessageWindow);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a438f3dbdbff79347a9ddc41f215deafb}{MessageBox}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Message,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Title)}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47}{Thread::CreateThread}}(MessageWindow);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a7e314209db9df29182f6932bd59d1e13}{ErrorWindow}}(std::string\ ErrorMessage)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a438f3dbdbff79347a9ddc41f215deafb}{MessageBox}}(ErrorMessage,\ \textcolor{stringliteral}{"{}Error!"{}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a7e314209db9df29182f6932bd59d1e13}{ErrorWindow}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *ErrorMessage)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a438f3dbdbff79347a9ddc41f215deafb}{MessageBox}}(ErrorMessage,\ \textcolor{stringliteral}{"{}Error!"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_CHILDWINDOW\_H\_\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,93 @@
+\doxysection{window\+Base.\+hpp}
+\hypertarget{window_base_8hpp_source}{}\label{window_base_8hpp_source}\index{F:/KolibriOs/Kalc/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/windowBase.hpp@{F:/KolibriOs/Kalc/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/windowBase.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_WINDOWBASE\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_WINDOWBASE\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <sys/ksys.h>}}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{namespace\ }window}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ ksys\_colors\_table\_t\ colors;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a3b448725877181cd55e661295fdbb0a5}{MARGIN}}\ =\ 0;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a726e32088b42004b68091fec85480d71}{Redraw}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a57bfcd030f5345910529b170cb768efb}{DefaultWindowSize}}\ =\ \{400,\ 400\};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a54efa2e8e2b7e22efefcc2a25436b676}{DefaultWindowCoord}}\ =\ \{100,\ 100\};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a00c4f28ec8de0036df7538a2e11f64fd}{SetWindowColors}}(ksys\_colors\_table\_t\ colorTable)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ colors\ =\ colorTable;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a2ff1d7011775557175478f67c69aece4}{StartRedraw}}()}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_start\_draw();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a726e32088b42004b68091fec85480d71}{Redraw}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a7ecd4a9d0025d6532f7c75a5807932a7}{EndRedraw}}()}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_end\_draw();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a726e32088b42004b68091fec85480d71}{Redraw}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aeefc2cf8ad14e7e94142908d5577828a}{DrawWindow}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ coord\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a54efa2e8e2b7e22efefcc2a25436b676}{DefaultWindowCoord}},\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ size\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a57bfcd030f5345910529b170cb768efb}{DefaultWindowSize}},\ std::string\ title\ =\ \textcolor{stringliteral}{"{}Window"{}},\ \textcolor{keywordtype}{int}\ style\ =\ 0x13,\ ksys\_color\_t\ color\ =\ colors.work\_area,\ \textcolor{keywordtype}{unsigned}\ margin\ =\ 0)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a3b448725877181cd55e661295fdbb0a5}{MARGIN}}\ =\ margin;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ colors.work\_area\ =\ color;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_create\_window(coord.x,\ coord.y,\ size.x,\ size.y,\ title.c\_str(),\ color,\ style);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aeefc2cf8ad14e7e94142908d5577828a}{DrawWindow}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ coord\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a54efa2e8e2b7e22efefcc2a25436b676}{DefaultWindowCoord}},\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ size\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a57bfcd030f5345910529b170cb768efb}{DefaultWindowSize}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *title\ =\ \textcolor{stringliteral}{"{}Window"{}},\ \textcolor{keywordtype}{int}\ style\ =\ 0x13,\ ksys\_color\_t\ color\ =\ colors.work\_area,\ \textcolor{keywordtype}{unsigned}\ margin\ =\ 0)}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a3b448725877181cd55e661295fdbb0a5}{MARGIN}}\ =\ margin;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ colors.work\_area\ =\ color;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_create\_window(coord.x,\ coord.y,\ size.x,\ size.y,\ title,\ color,\ style);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aaae9e27fa496435602339cfba1ee4f96}{ChangeWindow}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ coord,\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ size)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_change\_window(coord.x,\ coord.y,\ size.x,\ size.y);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aae4e922852b5ae516b67ff49eba85b39}{ChangeTilte}}(std::string\ newTitle)}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_set\_window\_title(newTitle.c\_str());}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a0ecafa0748035159bf86016be0bd0111}{GetWindowSize}}()}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ ksys\_thread\_t\ *t;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_thread\_info(t,\ -\/1);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{t-\/>winx\_size,\ t-\/>winy\_size\};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aa952d568261368ee7ca5c6d95728b0e5}{UnfocusWindow}}(\textcolor{keywordtype}{int}\ slot)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_unfocus\_window(slot);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aaa30301e531d5aa8c046c0b14699b07b}{FocusWindow}}(\textcolor{keywordtype}{int}\ slot)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_focus\_window(slot);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ window}}
+\DoxyCodeLine{00118\ \ \ \ \ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_WINDOWBASE\_H\_\_}}
+
+\end{DoxyCode}

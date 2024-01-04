@@ -1,0 +1,63 @@
+\doxysection{Kolibri\+Lib\+::Thread Namespace Reference}
+\hypertarget{namespace_kolibri_lib_1_1_thread}{}\label{namespace_kolibri_lib_1_1_thread}\index{KolibriLib::Thread@{KolibriLib::Thread}}
+
+
+Работа с потоками  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47}{Create\+Thread}} (void \texorpdfstring{$\ast$}{*}Thread\+Entry)
+\begin{DoxyCompactList}\small\item\em Создать поток \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9}{Terminate\+Thread}} (int PID)
+\begin{DoxyCompactList}\small\item\em Завершить процесс/поток \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_thread_ab3fbc71498e0b8f996d6acd6897d06fa}\label{namespace_kolibri_lib_1_1_thread_ab3fbc71498e0b8f996d6acd6897d06fa} 
+const unsigned {\bfseries Thread\+Stack\+Size} = 1024
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Работа с потоками 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47}\label{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47} 
+\index{KolibriLib::Thread@{KolibriLib::Thread}!CreateThread@{CreateThread}}
+\index{CreateThread@{CreateThread}!KolibriLib::Thread@{KolibriLib::Thread}}
+\doxysubsubsection{\texorpdfstring{CreateThread()}{CreateThread()}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+Thread\+::\+Create\+Thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{Thread\+Entry }\end{DoxyParamCaption})}
+
+
+
+Создать поток 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Thread\+Entry} & Имя функции которую нужно запустить в новом потоке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ID потока 
+\end{DoxyReturn}
+\Hypertarget{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9}\label{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9} 
+\index{KolibriLib::Thread@{KolibriLib::Thread}!TerminateThread@{TerminateThread}}
+\index{TerminateThread@{TerminateThread}!KolibriLib::Thread@{KolibriLib::Thread}}
+\doxysubsubsection{\texorpdfstring{TerminateThread()}{TerminateThread()}}
+{\footnotesize\ttfamily bool Kolibri\+Lib\+::\+Thread\+::\+Terminate\+Thread (\begin{DoxyParamCaption}\item[{int}]{PID }\end{DoxyParamCaption})}
+
+
+
+Завершить процесс/поток 
+
+
+\begin{DoxyParams}{Parameters}
+{\em PID} & ID Процесса/потока \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true если успешно, инач false 
+\end{DoxyReturn}
+\hypertarget{namespace_kolibri_lib_1_1_thread_Нельзя}{}\doxyparagraph{\texorpdfstring{завершить поток операционной системы OS/\+IDLE (номер слота 1), можно завершить любой обычный поток/процесс}{завершить поток операционной системы OS/\+IDLE (номер слота 1), можно завершить любой обычный поток/процесс}}\label{namespace_kolibri_lib_1_1_thread_Нельзя}
