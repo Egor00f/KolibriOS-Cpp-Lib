@@ -1,9 +1,7 @@
 #ifndef __UI_HPP__
 #define __UI_HPP__
 
-extern "C"{
 #include <sys/ksys.h>
-}
 
 #include <vector>
 
@@ -139,14 +137,30 @@ namespace KolibriLib
             // Коды кнопок начинаются с этого числа
             const unsigned StartButtonId = 100;
 
+            struct ButtonsIdData
+            {
+                unsigned data;
+                bool use = false;
+            };
+
             // Список idшников кнопок
-            std::vector<unsigned> ButtonsIdList;
+            std::vector<ButtonsIdData> ButtonsIdList;
 
             /// \brief Получить свободный номер id кнопки из списка
+            /// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
             /// \return номер id
             unsigned GetFreeButtonId()
             {
-                ButtonsIdList.push_back(StartButtonId + ButtonsIdList.size());
+                for (unsigned i = 0; i < ButtonsIdList.size(); i++)         // Проходим по всему массиву
+                {                                                           // Если встречается свободный элемент,
+                    if (!ButtonsIdList[i].use)                              // То используем его
+                    {                                                       // Иначе создаём новый и использем тоже новый
+                        ButtonsIdList[i].use = true;
+                        return i;
+                    }
+                }
+                ButtonsIdData a = {StartButtonId + ButtonsIdList.size(), true};
+                ButtonsIdList.push_back(a);
                 return ButtonsIdList.size() - 1; //-1 потому что обращение к элементам массива идёт с 0
             }
 
@@ -154,7 +168,7 @@ namespace KolibriLib
             /// \param id номер id
             void FreeButtonId(unsigned id)
             {
-                ButtonsIdList.erase(ButtonsIdList.begin() + id, ButtonsIdList.begin() + id);
+                ButtonsIdList[id].use = false; // Этот элемент теперь не используется
             }
 
             /// \brief Получить реальный id кнопки
@@ -162,7 +176,7 @@ namespace KolibriLib
             /// \return ButtonsIdList[id].ID
             unsigned GetButtonId(unsigned id)
             {
-                return ButtonsIdList[id];
+                return ButtonsIdList[id].data;
             }
 
             /// \brief Создать кнопку, автоматически присвоить ей id
@@ -202,8 +216,7 @@ namespace KolibriLib
                 return _ksys_get_button();
             }
 
-            /// \brief кнопка
-            /// \class Button
+            /// \brief Класс для работы с кнопками
             class Button : public UIElement
             {
             private:
@@ -256,6 +269,7 @@ namespace KolibriLib
                 this->_BackgroundColor = BackgroundColor;
                 this->_TextColor = TextColor;
                 this->_id = GetButtonId(GetFreeButtonId());
+                render();
             }
 
             Button::~Button()

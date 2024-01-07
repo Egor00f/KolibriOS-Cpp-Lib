@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['button_0',['Button',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html',1,'KolibriLib::UI::buttons::Button'],['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ac45efeec9c13583be2b504fb4b109de4',1,'KolibriLib::UI::buttons::Button::Button()']]]
+  ['2000_20кнопок_0',['функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок',['../_u_i_8hpp.html#Эта',1,'']]]
 ];

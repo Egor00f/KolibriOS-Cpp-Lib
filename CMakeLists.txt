@@ -4,4 +4,4 @@ project(KolibriLib)
 
 include(include.cmake)
 
-add_subdirectory(examples)
+add_subdirectory(src/examples)

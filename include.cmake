@@ -27,4 +27,4 @@ include_directories(${LIBSTDCppV3_INCLUDE}/mingw32)
 include_directories(${LIBSTDCppV3_INCLUDE}/tr1)
 include_directories(${LIBSTDCppV3_INCLUDE}/tr2)
 
-include_directories(include)
+include_directories(src/include)

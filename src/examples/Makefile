@@ -1,5 +1,5 @@
 #NAME
-EXECUTABLE = HelloWorld
+EXECUTABLE = childWindow
 
 
 export $PATH = C:/MinGW/msys/1.0/home/autobuild/tools/win32/bin/
@@ -12,17 +12,17 @@ CXX	= kos32-g++
 LD	= kos32-ld 
 
 #DIRs
-SDK_DIR = ../../../contrib/sdk
+SDK_DIR = F:\KolibriLib\contrib\sdk
 
-INCLUDES = -I $(SDK_DIR)/sources/libstdc++-v3/include -I $(SDK_DIR)/sources/newlib/libc/include -I ../include
+INCLUDES = -I $(SDK_DIR)\sources\newlib\libc\include -I $(SDK_DIR)/sources/libstdc++-v3/include -I ../include
 LIBPATH = -L $(SDK_DIR)/lib -L C:/MinGW/msys/1.0/home/autobuild/tools/win32/mingw32/lib
 
 #Flags
-CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=gnu++17
+CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32
 LDFLAGS = -static -S -Tapp-dynamic.lds --image-base 0 -O2
 
 
-SOURCES = HelloWorld.cpp 
+SOURCES = childWindow.cpp 
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 default: HelloWorld

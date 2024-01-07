@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['messagebox_0',['MessageBox',['../namespace_kolibri_lib_1_1child_window.html#a438f3dbdbff79347a9ddc41f215deafb',1,'KolibriLib::childWindow::MessageBox(std::string Message, std::string Title)'],['../namespace_kolibri_lib_1_1child_window.html#ac891ddb05be3fd7a42d03c66eb6fde36',1,'KolibriLib::childWindow::MessageBox(const char *Message, const char *Title)']]]
+  ['messagebox_0',['MessageBox',['../namespace_kolibri_lib_1_1child_window.html#a0dc3a2d365676465a2a3013337ae65f3',1,'KolibriLib::childWindow']]],
+  ['messagewindow_1',['MessageWindow',['../class_kolibri_lib_1_1child_window_1_1_message_window.html#ab3fb53726394a46759a8bcd161ded3fe',1,'KolibriLib::childWindow::MessageWindow']]]
 ];

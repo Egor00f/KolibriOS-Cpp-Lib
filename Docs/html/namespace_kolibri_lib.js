@@ -1,11 +1,6 @@
 var namespace_kolibri_lib =
 [
-    [ "childWindow", "namespace_kolibri_lib_1_1child_window.html", [
-      [ "ErrorWindow", "namespace_kolibri_lib_1_1child_window.html#a52c82a08b6a5f86563d0be0203c884b7", null ],
-      [ "ErrorWindow", "namespace_kolibri_lib_1_1child_window.html#a7e314209db9df29182f6932bd59d1e13", null ],
-      [ "MessageBox", "namespace_kolibri_lib_1_1child_window.html#ac891ddb05be3fd7a42d03c66eb6fde36", null ],
-      [ "MessageBox", "namespace_kolibri_lib_1_1child_window.html#a438f3dbdbff79347a9ddc41f215deafb", null ]
-    ] ],
+    [ "childWindow", "namespace_kolibri_lib_1_1child_window.html", "namespace_kolibri_lib_1_1child_window" ],
     [ "Thread", "namespace_kolibri_lib_1_1_thread.html", [
       [ "CreateThread", "namespace_kolibri_lib_1_1_thread.html#a3bf33e02f6a5834873d9063aa3961c47", null ],
       [ "TerminateThread", "namespace_kolibri_lib_1_1_thread.html#a6931d058e76a34196fb9f726db9d91f9", null ]

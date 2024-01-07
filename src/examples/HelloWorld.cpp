@@ -29,9 +29,14 @@ int main()
             RenderWindow();
             break;
         case KSYS_EVENT_BUTTON:
-            if(UI::buttons::GetPressedButton() == 1)    //Если нажат крестик
+            switch (KolibriLib::UI::buttons::GetPressedButton())
             {
+            case 1:
                 return 0;
+                break;
+            
+            default:
+                break;
             }
             break;
         default:

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['было_20нарисованно_20в_20окне_0',['всё что было нарисованно в окне',['../namespace_kolibri_lib_1_1window.html#Стирает',1,'']]],
-  ['быть_20вызвана_20функция_20endredraw_1',['после должна быть вызвана функция #EndRedraw()',['../namespace_kolibri_lib_1_1window.html#Обязательно',1,'']]]
+  ['wait_0',['Wait',['../namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6',1,'KolibriLib']]]
 ];

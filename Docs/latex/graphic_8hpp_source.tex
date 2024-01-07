@@ -20,89 +20,90 @@
 \DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Графика}}
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{namespace\ }graphic}
 \DoxyCodeLine{00018\ \ \ \ \ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawPixel(point\ position,\ ksys\_color\_t\ color)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawLine(point\ a,\ point\ b,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
 \DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_pixel(position.x,\ position.y,\ color);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_line(a.x,\ a.y,\ b.x,\ b.y,\ color);}
 \DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircle(point\ coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keywordtype}{unsigned}\ detalization\ =\ 36,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ point\ buff;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ b\ =\ Radius;}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ 0;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ angle\ =\ 1;\ angle\ <=\ detalization\ *\ 10;\ angle\ +=\ 36\ /\ detalization)}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buff\ =\ \{coord.x\ +\ b,\ coord.y\ +\ c\};}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ Radius\ *\ cos(angle);}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ sqrt((Radius*Radius)\ -\/\ (b*b));}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ point\ n\ =\ \{coord.x\ +\ b,\ coord.y\ +\ c\};}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(buff,\ n);}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawRectangleFill(point\ position,\ point\ size,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ position.x\ *=\ AAANUMBER;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ position.y\ *=\ AAANUMBER;}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(13),\ \textcolor{stringliteral}{"{}b"{}}(position.x\ +\ size.x),\ \textcolor{stringliteral}{"{}c"{}}(position.y\ +\ size.y),\ \textcolor{stringliteral}{"{}d"{}}(color));}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircleFill(point\ coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(coord,\ Radius,\ color);}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ b\ =\ Radius\ *\ cos(90+45);}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ sqrt((Radius\ *\ Radius)\ -\/\ (b\ *\ b));}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ point\ n\ =\ \{coord.x\ +\ b,\ coord.y\ +\ c\};}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangleFill(n,\ \{(coord.x\ -\/\ n.x)\ *\ 2,\ c\ *\ 2\},\ color);}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i\ =\ Radius;\ i\ >\ (Radius\ -\/(coord.x\ -\/\ n.x));\ i-\/-\/)\textcolor{comment}{//Дозакрашивание\ пробелов\ между\ квадратом\ и\ границами\ груга}}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(coord,\ i,\ NULL,\ color);}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawPoint(point\ position,\ \textcolor{keywordtype}{unsigned}\ size,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph,\ \textcolor{keywordtype}{bool}\ a\ =\ \textcolor{keyword}{false})}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(size\ <\ 3)}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a)}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(position,\ size,\ color);}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawPixel(point\ position,\ ksys\_color\_t\ color)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_pixel(position.x,\ position.y,\ color);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircle(point\ coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keywordtype}{unsigned}\ detalization\ =\ 36,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ point\ buff;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ b\ =\ Radius;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ angle\ =\ 1;\ angle\ <=\ detalization\ *\ 10;\ angle\ +=\ 36\ /\ detalization)}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buff\ =\ \{coord.x\ +\ b,\ coord.y\ +\ c\};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ Radius\ *\ cos(angle);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ sqrt((Radius*Radius)\ -\/\ (b*b));}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ point\ n\ =\ \{coord.x\ +\ b,\ coord.y\ +\ c\};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(buff,\ n);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawRectangleFill(point\ position,\ point\ size,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ position.x\ *=\ AAANUMBER;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ position.y\ *=\ AAANUMBER;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(13),\ \textcolor{stringliteral}{"{}b"{}}(position.x\ +\ size.x),\ \textcolor{stringliteral}{"{}c"{}}(position.y\ +\ size.y),\ \textcolor{stringliteral}{"{}d"{}}(color));}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircleFill(point\ coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(coord,\ Radius,\ color);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ b\ =\ Radius\ *\ cos(90+45);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ sqrt((Radius\ *\ Radius)\ -\/\ (b\ *\ b));}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ point\ n\ =\ \{coord.x\ +\ b,\ coord.y\ +\ c\};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangleFill(n,\ \{(coord.x\ -\/\ n.x)\ *\ 2,\ c\ *\ 2\},\ color);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i\ =\ Radius;\ i\ >\ (Radius\ -\/(coord.x\ -\/\ n.x));\ i-\/-\/)\textcolor{comment}{//Дозакрашивание\ пробелов\ между\ квадратом\ и\ границами\ груга}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(coord,\ i,\ NULL,\ color);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawPoint(point\ position,\ \textcolor{keywordtype}{unsigned}\ size,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph,\ \textcolor{keywordtype}{bool}\ a\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(size\ <\ 3)}
 \DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircleFill(position,\ size,\ color);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawLine(point\ a,\ point\ b,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_line(a.x,\ a.y,\ b.x,\ b.y,\ color);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a)}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(position,\ size,\ color);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircleFill(position,\ size,\ color);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00105\ }
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawRectangleLines(point\ a,\ point\ b,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ \{b.x,\ a.y\},\ color);}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ \{a.x,\ b.y\},\ color);}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(\{b.x,\ a.y\},\ b,\ color);}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(\{a.x,\ b.y\},\ b,\ color);}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawTriangle(point\ a,\ point\ b,\ point\ c,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ b,\ color);}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ c,\ color);}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(b,\ c,\ color);}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00130\ \ \ \ \ \}}
-\DoxyCodeLine{00131\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawRectangleLines(point\ a,\ point\ b,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ \{b.x,\ a.y\},\ color);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ \{a.x,\ b.y\},\ color);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(\{b.x,\ a.y\},\ b,\ color);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(\{a.x,\ b.y\},\ b,\ color);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawTriangle(point\ a,\ point\ b,\ point\ c,\ ksys\_color\_t\ color\ =\ window::colors.work\_graph)}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ b,\ color);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(a,\ c,\ color);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(b,\ c,\ color);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
 \DoxyCodeLine{00133\ }
-\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_GRAPHIC\_H\_\_}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_GRAPHIC\_H\_\_}}
 
 \end{DoxyCode}

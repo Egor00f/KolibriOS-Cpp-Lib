@@ -16,6 +16,14 @@ namespace KolibriLib
     // Графика
     namespace graphic
     {
+        /// @brief Нарисовать линию
+        /// @param a точка первая
+        /// @param b точка вторая
+        inline void DrawLine(point a, point b, ksys_color_t color = window::colors.work_graph)
+        {
+            _ksys_draw_line(a.x, a.y, b.x, b.y, color);
+        }
+
         /// @brief Закрасить пиксель точку
         /// @param position координаты
         /// @param color Цвет
@@ -95,13 +103,6 @@ namespace KolibriLib
             }
         }
 
-        /// @brief Нарисовать линию
-        /// @param a точка первая
-        /// @param b точка вторая
-        inline void DrawLine(point a, point b, ksys_color_t color = window::colors.work_graph)
-        {
-            _ksys_draw_line(a.x, a.y, b.x, b.y, color);
-        }
 
         /// @brief Нарисовать прямоугольник
         /// @param a Точка в левом верхнем углу

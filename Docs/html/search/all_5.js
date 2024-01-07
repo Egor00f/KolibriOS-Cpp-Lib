@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['focuswindow_0',['FocusWindow',['../namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b',1,'KolibriLib::window']]],
-  ['form_1',['Form',['../class_kolibri_lib_1_1_u_i_1_1_form.html',1,'KolibriLib::UI::Form'],['../class_kolibri_lib_1_1_u_i_1_1_form.html#a995843a91c9a496b8fb899ff24a7b096',1,'KolibriLib::UI::Form::Form()']]]
+  ['endredraw_0',['EndRedraw',['../namespace_kolibri_lib_1_1window.html#Обязательно',1,'после должна быть вызвана функция #EndRedraw()'],['../namespace_kolibri_lib_1_1window.html#a7ecd4a9d0025d6532f7c75a5807932a7',1,'KolibriLib::window::EndRedraw()']]],
+  ['errorwindow_1',['ErrorWindow',['../namespace_kolibri_lib_1_1child_window.html#a7e314209db9df29182f6932bd59d1e13',1,'KolibriLib::childWindow']]]
 ];
