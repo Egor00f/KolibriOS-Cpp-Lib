@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['margin_0',['MARGIN',['../namespace_kolibri_lib_1_1window.html#a3b448725877181cd55e661295fdbb0a5',1,'KolibriLib::window']]],
-  ['messagebox_1',['MessageBox',['../namespace_kolibri_lib_1_1child_window.html#a0dc3a2d365676465a2a3013337ae65f3',1,'KolibriLib::childWindow']]],
-  ['messagewindow_2',['MessageWindow',['../class_kolibri_lib_1_1child_window_1_1_message_window.html',1,'KolibriLib::childWindow::MessageWindow'],['../class_kolibri_lib_1_1child_window_1_1_message_window.html#ab3fb53726394a46759a8bcd161ded3fe',1,'KolibriLib::childWindow::MessageWindow::MessageWindow()']]],
-  ['messagewindowdata_3',['MessageWindowData',['../struct_kolibri_lib_1_1child_window_1_1_message_window_data.html',1,'KolibriLib::childWindow']]]
+  ['idle_20номер_20слота_201_20можно_20завершить_20любой_20обычный_20поток_20процесс_0',['завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс',['../namespace_kolibri_lib_1_1_thread.html#Нельзя',1,'']]],
+  ['init_1',['init',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ae97953c7104c15b1fc8c9d884bcf0013',1,'KolibriLib::UI::buttons::Button::init()'],['../namespace_kolibri_lib.html#a79cea121a31a0a2da904f088c3484802',1,'KolibriLib::init()']]]
 ];

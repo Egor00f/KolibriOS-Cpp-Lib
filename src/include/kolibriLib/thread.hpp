@@ -10,13 +10,12 @@ namespace KolibriLib
     /// \brief Работа с потоками
     namespace Thread
     {
-        const unsigned ThreadStackSize = 1024;
-
 
         /// \brief Создать поток
         /// \param ThreadEntry Имя функции которую нужно запустить в новом потоке
+        /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
-        unsigned CreateThread(void* ThreadEntry)
+        unsigned CreateThread(void *ThreadEntry, unsigned ThreadStackSize = 1024)
         {
             void* th_stack = malloc(ThreadStackSize);
             if (!th_stack) //    Если памяти не было выделенно

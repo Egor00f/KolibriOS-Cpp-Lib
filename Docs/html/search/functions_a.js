@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['setmessage_0',['SetMessage',['../class_kolibri_lib_1_1child_window_1_1_message_window.html#a24de63e04bfc2dfafa7d81c75d86002a',1,'KolibriLib::childWindow::MessageWindow']]],
-  ['settitle_1',['SetTitle',['../class_kolibri_lib_1_1child_window_1_1_message_window.html#a9e665dbe37a364db1b7443d1f843f1ad',1,'KolibriLib::childWindow::MessageWindow']]],
-  ['setwindowcolors_2',['SetWindowColors',['../namespace_kolibri_lib_1_1window.html#a00c4f28ec8de0036df7538a2e11f64fd',1,'KolibriLib::window']]],
-  ['startredraw_3',['StartRedraw',['../namespace_kolibri_lib_1_1window.html#a2ff1d7011775557175478f67c69aece4',1,'KolibriLib::window']]]
+  ['messagebox_0',['MessageBox',['../namespace_kolibri_lib_1_1child_window.html#a57f91ccdf784da9c5c6f3c726bb36cf6',1,'KolibriLib::childWindow']]],
+  ['mkdir_1',['mkdir',['../namespace_kolibri_lib_1_1filesystem.html#ab640c3711637da8dec40346964d78aab',1,'KolibriLib::filesystem::mkdir(const char *path)'],['../namespace_kolibri_lib_1_1filesystem.html#a81a8cb823c8109e0e995948299c93e29',1,'KolibriLib::filesystem::mkdir(std::string path)']]]
 ];

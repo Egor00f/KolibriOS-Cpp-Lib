@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['defaultwindowcoord_0',['DefaultWindowCoord',['../namespace_kolibri_lib_1_1window.html#a54efa2e8e2b7e22efefcc2a25436b676',1,'KolibriLib::window']]],
-  ['defaultwindowsize_1',['DefaultWindowSize',['../namespace_kolibri_lib_1_1window.html#a57bfcd030f5345910529b170cb768efb',1,'KolibriLib::window']]],
-  ['drawwindow_2',['DrawWindow',['../namespace_kolibri_lib_1_1window.html#aeefc2cf8ad14e7e94142908d5577828a',1,'KolibriLib::window::DrawWindow(point coord=DefaultWindowCoord, point size=DefaultWindowSize, std::string title=&quot;Window&quot;, int style=0x13, ksys_color_t color=colors.work_area, unsigned margin=0)'],['../namespace_kolibri_lib_1_1window.html#ae8ad2accfaa72a210906c2d6011974c4',1,'KolibriLib::window::DrawWindow(point coord=DefaultWindowCoord, point size=DefaultWindowSize, const char *title=&quot;Window&quot;, int style=0x13, ksys_color_t color=colors.work_area, unsigned margin=0)']]]
+  ['br_0',['Br',['../namespace_kolibri_lib_1_1filesystem.html#Это',1,'пространство имён этакий аналог стандартной библиотеки &lt;filesystem&gt;  &lt;br&gt;'],['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#Противоположна',1,'функции @link Deactivate, возвращает кнопку в рабочее состояние  &lt;br&gt;']]],
+  ['button_1',['Button',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html',1,'KolibriLib::UI::buttons::Button'],['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a074f193f26c75a7ec4f4fce9f44ec482',1,'KolibriLib::UI::buttons::Button::Button()']]],
+  ['buttonlistelement_2',['ButtonListElement',['../struct_kolibri_lib_1_1window_1_1_button_list_element.html',1,'KolibriLib::window']]],
+  ['buttonsiddata_3',['ButtonsIdData',['../struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data.html',1,'KolibriLib::UI::buttons']]]
 ];

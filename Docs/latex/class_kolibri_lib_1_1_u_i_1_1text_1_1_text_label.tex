@@ -1,0 +1,109 @@
+\doxysection{Kolibri\+Lib\+::UI\+::text\+::Text\+Label Class Reference}
+\hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+
+
+Класс для работы с текстом  
+
+
+
+
+{\ttfamily \#include $<$UI.\+hpp$>$}
+
+Inheritance diagram for Kolibri\+Lib\+::UI\+::text\+::Text\+Label\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af259567bf7649e12f9ea65ab1763145d}{Text\+Label}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} size=\{0, 0\}, std\+::string text="{}Text"{}, unsigned Font\+Size=9, bool Text\+Scale=true, unsigned Margin=0)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ae9169f54c392e254efdbc13dff116bd7}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ae9169f54c392e254efdbc13dff116bd7} 
+void {\bfseries render} ()
+\begin{DoxyCompactList}\small\item\em Отрисовать текст \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af9f70904b54ad7c721ba9d38af327025}{Get\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Получить текст \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a644a0fba249f42db672243948dbd2a7f}{Get\+Font\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Получить Размер шрифта \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} size=\{16, 16\}, unsigned Margin=Default\+Margin)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} {\bfseries \+\_\+coord}
+\begin{DoxyCompactList}\small\item\em Координаты \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} {\bfseries \+\_\+size}
+\begin{DoxyCompactList}\small\item\em Размер \end{DoxyCompactList}\item 
+unsigned {\bfseries \+\_\+\+Margin}
+\begin{DoxyCompactList}\small\item\em Отступы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для работы с текстом 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af259567bf7649e12f9ea65ab1763145d}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af259567bf7649e12f9ea65ab1763145d} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!TextLabel@{TextLabel}}
+\index{TextLabel@{TextLabel}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{TextLabel()}{TextLabel()}}
+{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Text\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}]{coord = {\ttfamily \{0,~0\}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}]{size = {\ttfamily \{0,~0\}},  }\item[{std\+::string}]{text = {\ttfamily "{}Text"{}},  }\item[{unsigned}]{Font\+Size = {\ttfamily 9},  }\item[{bool}]{Text\+Scale = {\ttfamily true},  }\item[{unsigned}]{Margin = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & координата \\
+\hline
+{\em size} & Рамер элемента, игнорируется если Text\+Scale = false \\
+\hline
+{\em text} & Текст текста \\
+\hline
+{\em Font\+Size} & Размер текста \\
+\hline
+{\em Text\+Scale} & Маштабировать текст, чтобы он не выходил за границы элемента \\
+\hline
+{\em Margin} & не нужный параметр, необходим для конструктора класса \doxylink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a644a0fba249f42db672243948dbd2a7f}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a644a0fba249f42db672243948dbd2a7f} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!GetFontSize@{GetFontSize}}
+\index{GetFontSize@{GetFontSize}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{GetFontSize()}{GetFontSize()}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Get\+Font\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить Размер шрифта 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{a2509df230a7a15b4a9fefef25ce64355}{\+\_\+\+Font\+Size}
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af9f70904b54ad7c721ba9d38af327025}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af9f70904b54ad7c721ba9d38af327025} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!GetText@{GetText}}
+\index{GetText@{GetText}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{GetText()}{GetText()}}
+{\footnotesize\ttfamily std\+::string Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Get\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить текст 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{aa6c61260c483592bc679b3292b1cdff3}{\+\_\+text}
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/\+Kolibri\+Os/\+Kalc/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/UI.\+hpp\end{DoxyCompactItemize}

@@ -2,10 +2,9 @@
 #ifndef __SCREEN_H__
 #define __SCREEN_H__
 
-extern "C"
-{
-    #include <sys/ksys.h>
-}
+
+#include <sys/ksys.h>
+
 #include "base.hpp"
 
 namespace KolibriLib

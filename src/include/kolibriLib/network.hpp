@@ -1,17 +1,16 @@
 #ifndef __NETWORK_H__
 #define __NETWORK_H__
 
-extern "C"
-{
-    #include <sys/socket.h>
-}
-
-#include "childWindow.hpp"
-
+/// \brief Основное пространство имён
+/// \author Egor00f
 namespace KolibriLib
 {
+    
+    /// @brief Работа с сетью
     namespace Network
     {
+
+        /// @brief Работа с сетевой картой
         namespace Devices
         {
             /* bool ResetDevice(unsigned short Device)
@@ -28,12 +27,18 @@ namespace KolibriLib
         } // namespace Devices
         
 
+        /// @brief Работа с сокетами
         namespace Socket
         {
-            enum Domain{
+            #include <sys/socket.h>
+
+            /// @brief 
+            enum Domain
+            {
                 IPv4 = 2,
                 IPv6 = 10
             };
+            /// @brief Список типов сокета
             enum SocetTypes
             {
                 Stream = 1,
@@ -41,20 +46,34 @@ namespace KolibriLib
                 RAW = 3
             };
 
+            /// @brief Список протоколов
+            enum Protocols
+            {
+                PROTOCOL_IP = 0,
+                PROTOCOL_CMP = 1,
+                PROTOCOL_TCP = 6,
+                PROTOCOL_UDP = 17,
+                PROTOCOL_RAW = 255
+            };
+
             /// @brief Окрыть сокет
-            /// @param domain тим сети IPv4/IPv6
+            /// @param domain тип сети IPv4/IPv6
             /// @param SocetType 
-            /// @return 
-            int OpenSocket(int domain = IPv4, int SocetType = Stream, int protocol)
+            /// @param protocol Используемый протокол
+            /// @return номер сокета
+            inline int OpenSocket(int domain = IPv4, int SocetType = Stream, int protocol = PROTOCOL_IP)
             {
                 int Socket = socket(domain, SocetType, protocol);
 
-                if(Socket == -1)
-                {
-                    childWindow::ErrorWindow("Can't creat Socket");
-                }
-
                 return Socket;
+            }
+
+            /// @brief Закрыть сокет
+            /// @param Socket номер сокета
+            /// @return статус
+            int CloseSocket(int Socket)
+            {
+                return close(Socket);
             }
         } // namespace Socket
         

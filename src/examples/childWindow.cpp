@@ -2,24 +2,18 @@
 
 using namespace KolibriLib;
 
-void RenderWindow()
-{
-    point mouse = mouse::GetMousePositionInWindow();
-    window::StartRedraw();
-    window::DrawWindow(mouse, window::DefaultWindowSize, "Main window!");
-
-    UI::text::DrawText("This is main window", {200, 200});
-
-    window::EndRedraw();
-}
 
 int main()
 {
 
-    KolibriLib::window::initWindow();
-    RenderWindow();
+    KolibriLib::init();
 
-    KolibriLib::childWindow::MessageWindow("This if child window", "child window");
+    window::Window window("Main Window", window::DefaultWindowSize);
+
+    window.CreateText({64, 64}, {100, 64}, "this is main Window", 24, true);
+
+
+    KolibriLib::childWindow::MessageBox("This is child window", "child window");
 
     while (true)
     {
@@ -28,10 +22,11 @@ int main()
         switch (Event)
         {
         case KSYS_EVENT_REDRAW:
-            RenderWindow();
+            window.Render();
             break;
         case KSYS_EVENT_BUTTON:
-            switch (KolibriLib::UI::buttons::GetPressedButton())
+            unsigned button = KolibriLib::UI::buttons::GetPressedButton();
+            switch (button)
             {
             case 1:
                 return 0;
@@ -40,8 +35,6 @@ int main()
             default:
                 break;
             }
-            break;
-        default:
             break;
         }
     }

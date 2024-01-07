@@ -24,18 +24,22 @@ namespace KolibriLib
         unsigned y;
     };
 
-    ///< Путь по которому сохраняются настройки приложений
+    /// @brief Путь по которому сохраняются настройки приложений
     const std::string ConfigFolder = "/sys/etc";
 
+    
+
+    /// @brief Работа с системой
     namespace OS
     {
 
         /// \brief Таблица стандартных(системных) цветов
         ksys_colors_table_t sys_color_table;
 
-        void GetSystemColors()
+        ksys_colors_table_t GetSystemColors()
         {
             _ksys_get_system_colors(&sys_color_table);
+            return sys_color_table;
         }
 
         /// \brief Ждать ивента
@@ -103,8 +107,13 @@ namespace KolibriLib
     {
         _ksys_delay(time);
     }
-    
-    
+
+    /// @brief инициализация
+    void init()
+    {
+        _ksys_set_event_mask(0x07);
+        OS::GetSystemColors();
+    }
 }
 
 

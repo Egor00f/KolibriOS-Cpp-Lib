@@ -9,6 +9,7 @@ extern "C"
 
 namespace KolibriLib
 {
+    /// @brief Работа с мышью
     namespace mouse
     {
         /// @brief Получить позицияю курсора на экране
@@ -29,11 +30,15 @@ namespace KolibriLib
             return {a.x, a.y};
         }
 
+        /// @brief Проверить какие кнопки мыши нажаты
+        /// @return 
         inline uint32_t GetMouseButtons()
         {
             return _ksys_get_mouse_buttons();
         }
 
+        /// @brief колёсико мыши
+        /// @return 
         inline uint32_t GetMouseWheels()
         {
             return _ksys_get_mouse_wheels();

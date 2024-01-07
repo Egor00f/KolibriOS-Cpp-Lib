@@ -19,7 +19,7 @@ namespace KolibriLib
         /// @brief Нарисовать линию
         /// @param a точка первая
         /// @param b точка вторая
-        inline void DrawLine(point a, point b, ksys_color_t color = window::colors.work_graph)
+        inline void DrawLine(point a, point b, ksys_color_t color = OS::sys_color_table.work_graph)
         {
             _ksys_draw_line(a.x, a.y, b.x, b.y, color);
         }
@@ -37,7 +37,7 @@ namespace KolibriLib
         /// @param Radius радиус окружности
         /// @param detalization Детализация прорисовки окружности
         /// @param color Цвет
-        void DrawCircle(point coord, unsigned Radius, unsigned detalization = 36, ksys_color_t color = window::colors.work_graph)
+        void DrawCircle(point coord, unsigned Radius, unsigned detalization = 36, ksys_color_t color = OS::sys_color_table.work_graph)
         {
             point buff;
             unsigned b = Radius;
@@ -56,7 +56,7 @@ namespace KolibriLib
         /// @param position позиция левого верхнего угла
         /// @param size Размеры
         /// @param color Цвет
-        void DrawRectangleFill(point position, point size, ksys_color_t color = window::colors.work_graph)
+        void DrawRectangleFill(point position, point size, ksys_color_t color = OS::sys_color_table.work_graph)
         {
             position.x *= AAANUMBER;
             position.y *= AAANUMBER;
@@ -69,7 +69,7 @@ namespace KolibriLib
         /// @param coord Координаты центра
         /// @param Radius Радиус круга
         /// @param color Цвет
-        void DrawCircleFill(point coord, unsigned Radius, ksys_color_t color = window::colors.work_graph)
+        void DrawCircleFill(point coord, unsigned Radius, ksys_color_t color = OS::sys_color_table.work_graph)
         {
             DrawCircle(coord, Radius, color);
             unsigned b = Radius * cos(90+45);
@@ -87,7 +87,7 @@ namespace KolibriLib
         /// @param size Радиус точки в рx
         /// @param color Цвет
         /// @param a Закрашенная/Выколотая точка
-        inline void DrawPoint(point position, unsigned size, ksys_color_t color = window::colors.work_graph, bool a = false)
+        void DrawPoint(point position, unsigned size, ksys_color_t color = OS::sys_color_table.work_graph, bool a = false)
         {
             if(size < 3)
             {
@@ -107,7 +107,7 @@ namespace KolibriLib
         /// @brief Нарисовать прямоугольник
         /// @param a Точка в левом верхнем углу
         /// @param b Точка в правом нижнем углу
-        void DrawRectangleLines(point a, point b, ksys_color_t color = window::colors.work_graph)
+        void DrawRectangleLines(point a, point b, ksys_color_t color = OS::sys_color_table.work_graph)
         {
             DrawLine(a, {b.x, a.y}, color);
             DrawLine(a, {a.x, b.y}, color);
@@ -122,7 +122,7 @@ namespace KolibriLib
         /// @param b вторая точка
         /// @param c третья точка
         /// @param color цвет линий
-        inline void DrawTriangle(point a, point b, point c, ksys_color_t color = window::colors.work_graph)
+        inline void DrawTriangle(point a, point b, point c, ksys_color_t color = OS::sys_color_table.work_graph)
         {
             DrawLine(a, b, color);
             DrawLine(a, c, color);

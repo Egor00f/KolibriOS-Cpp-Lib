@@ -1,0 +1,84 @@
+\doxysection{Kolibri\+Lib\+::Network\+::Socket Namespace Reference}
+\hypertarget{namespace_kolibri_lib_1_1_network_1_1_socket}{}\label{namespace_kolibri_lib_1_1_network_1_1_socket}\index{KolibriLib::Network::Socket@{KolibriLib::Network::Socket}}
+
+
+Работа с сокетами  
+
+
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_network_1_1_socket_a8ce01e1c56e116bd8d2c0268a46cccab}\label{namespace_kolibri_lib_1_1_network_1_1_socket_a8ce01e1c56e116bd8d2c0268a46cccab} 
+enum {\bfseries Domain} \{ {\bfseries IPv4} = 2
+, {\bfseries IPv6} = 10
+ \}
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_network_1_1_socket_abf3ecf28ecab8dd413c32b3fc81ab64f}\label{namespace_kolibri_lib_1_1_network_1_1_socket_abf3ecf28ecab8dd413c32b3fc81ab64f} 
+enum \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_abf3ecf28ecab8dd413c32b3fc81ab64f}{Socet\+Types}} \{ {\bfseries Stream} = 1
+, {\bfseries DGram} = 2
+, {\bfseries RAW} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Список типов сокета \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_1_1_network_1_1_socket_af96d1e70f650b4bdaa76cb2a94d499f2}\label{namespace_kolibri_lib_1_1_network_1_1_socket_af96d1e70f650b4bdaa76cb2a94d499f2} 
+enum \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_af96d1e70f650b4bdaa76cb2a94d499f2}{Protocols}} \{ \newline
+{\bfseries PROTOCOL\+\_\+\+IP} = 0
+, {\bfseries PROTOCOL\+\_\+\+CMP} = 1
+, {\bfseries PROTOCOL\+\_\+\+TCP} = 6
+, {\bfseries PROTOCOL\+\_\+\+UDP} = 17
+, \newline
+{\bfseries PROTOCOL\+\_\+\+RAW} = 255
+ \}
+\begin{DoxyCompactList}\small\item\em Список протоколов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_a2d1995ca6e514b9812352336c2364ddb}{Open\+Socket}} (int domain=IPv4, int Socet\+Type=Stream, int protocol=PROTOCOL\+\_\+\+IP)
+\begin{DoxyCompactList}\small\item\em Окрыть сокет \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_a5676fc313815ca4a1bbf7e67373bc99c}{Close\+Socket}} (int Socket)
+\begin{DoxyCompactList}\small\item\em Закрыть сокет \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Работа с сокетами 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_kolibri_lib_1_1_network_1_1_socket_a5676fc313815ca4a1bbf7e67373bc99c}\label{namespace_kolibri_lib_1_1_network_1_1_socket_a5676fc313815ca4a1bbf7e67373bc99c} 
+\index{KolibriLib::Network::Socket@{KolibriLib::Network::Socket}!CloseSocket@{CloseSocket}}
+\index{CloseSocket@{CloseSocket}!KolibriLib::Network::Socket@{KolibriLib::Network::Socket}}
+\doxysubsubsection{\texorpdfstring{CloseSocket()}{CloseSocket()}}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::\+Network\+::\+Socket\+::\+Close\+Socket (\begin{DoxyParamCaption}\item[{int}]{Socket }\end{DoxyParamCaption})}
+
+
+
+Закрыть сокет 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{namespace_kolibri_lib_1_1_network_1_1_socket}{Socket}} & номер сокета \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+статус 
+\end{DoxyReturn}
+\Hypertarget{namespace_kolibri_lib_1_1_network_1_1_socket_a2d1995ca6e514b9812352336c2364ddb}\label{namespace_kolibri_lib_1_1_network_1_1_socket_a2d1995ca6e514b9812352336c2364ddb} 
+\index{KolibriLib::Network::Socket@{KolibriLib::Network::Socket}!OpenSocket@{OpenSocket}}
+\index{OpenSocket@{OpenSocket}!KolibriLib::Network::Socket@{KolibriLib::Network::Socket}}
+\doxysubsubsection{\texorpdfstring{OpenSocket()}{OpenSocket()}}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::\+Network\+::\+Socket\+::\+Open\+Socket (\begin{DoxyParamCaption}\item[{int}]{domain = {\ttfamily IPv4},  }\item[{int}]{Socet\+Type = {\ttfamily Stream},  }\item[{int}]{protocol = {\ttfamily PROTOCOL\+\_\+IP} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Окрыть сокет 
+
+
+\begin{DoxyParams}{Parameters}
+{\em domain} & тип сети IPv4/\+IPv6 \\
+\hline
+{\em Socet\+Type} & \\
+\hline
+{\em protocol} & Используемый протокол \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+номер сокета 
+\end{DoxyReturn}

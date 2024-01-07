@@ -9,8 +9,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+
 namespace KolibriLib
 {
+    /// @brief Работа с файлами
+    /// @paragraph Это пространство имён этакий аналог стандартной библиотеки <filesystem> 
     namespace filesystem
     {
         /// @brief Создать файл

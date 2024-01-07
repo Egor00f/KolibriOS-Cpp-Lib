@@ -8,27 +8,21 @@
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47}{Create\+Thread}} (void \texorpdfstring{$\ast$}{*}Thread\+Entry)
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a362d0bda7425ff79a1a5346d5eacdd7e}{Create\+Thread}} (void \texorpdfstring{$\ast$}{*}Thread\+Entry, unsigned Thread\+Stack\+Size=1024)
 \begin{DoxyCompactList}\small\item\em Создать поток \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9}{Terminate\+Thread}} (int PID)
 \begin{DoxyCompactList}\small\item\em Завершить процесс/поток \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-\Hypertarget{namespace_kolibri_lib_1_1_thread_ab3fbc71498e0b8f996d6acd6897d06fa}\label{namespace_kolibri_lib_1_1_thread_ab3fbc71498e0b8f996d6acd6897d06fa} 
-const unsigned {\bfseries Thread\+Stack\+Size} = 1024
-\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Работа с потоками 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47}\label{namespace_kolibri_lib_1_1_thread_a3bf33e02f6a5834873d9063aa3961c47} 
+\Hypertarget{namespace_kolibri_lib_1_1_thread_a362d0bda7425ff79a1a5346d5eacdd7e}\label{namespace_kolibri_lib_1_1_thread_a362d0bda7425ff79a1a5346d5eacdd7e} 
 \index{KolibriLib::Thread@{KolibriLib::Thread}!CreateThread@{CreateThread}}
 \index{CreateThread@{CreateThread}!KolibriLib::Thread@{KolibriLib::Thread}}
 \doxysubsubsection{\texorpdfstring{CreateThread()}{CreateThread()}}
-{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+Thread\+::\+Create\+Thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{Thread\+Entry }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+Thread\+::\+Create\+Thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{Thread\+Entry,  }\item[{unsigned}]{Thread\+Stack\+Size = {\ttfamily 1024} }\end{DoxyParamCaption})}
 
 
 
@@ -37,6 +31,8 @@ const unsigned {\bfseries Thread\+Stack\+Size} = 1024
 
 \begin{DoxyParams}{Parameters}
 {\em Thread\+Entry} & Имя функции которую нужно запустить в новом потоке \\
+\hline
+{\em Thread\+Stack\+Size} & Размер стека нового потока в байтах \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

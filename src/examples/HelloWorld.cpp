@@ -2,22 +2,13 @@
 
 using namespace KolibriLib;
 
-void RenderWindow()
-{
-    point mouse = mouse::GetMousePositionInWindow();
-    window::StartRedraw();
-    window::DrawWindow(mouse, window::DefaultWindowSize, "Hello World!");
-
-
-    UI::text::DrawText("Hello World!", {200, 200});
-
-    window::EndRedraw();
-}
 
 int main()
 {
-    KolibriLib::window::initWindow();
-    RenderWindow();
+    init();
+    window::Window window("Example Window");
+
+    window.CreateText({64, 64}, {100, 100}, "This is text", 24, true);
 
     while(true)
     {
@@ -26,7 +17,7 @@ int main()
         switch (Event)
         {
         case KSYS_EVENT_REDRAW:
-            RenderWindow();
+            window.Render();
             break;
         case KSYS_EVENT_BUTTON:
             switch (KolibriLib::UI::buttons::GetPressedButton())
