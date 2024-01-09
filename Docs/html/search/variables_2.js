@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['defaultcolortable_0',['DefaultColorTable',['../namespace_kolibri_lib_1_1_color.html#abc7ed68378c7cf0233fcea7429821a9b',1,'KolibriLib::Color']]],
-  ['defaultwindowcoord_1',['DefaultWindowCoord',['../namespace_kolibri_lib_1_1window.html#a54efa2e8e2b7e22efefcc2a25436b676',1,'KolibriLib::window']]],
-  ['defaultwindowsize_2',['DefaultWindowSize',['../namespace_kolibri_lib_1_1window.html#a57bfcd030f5345910529b170cb768efb',1,'KolibriLib::window']]]
+  ['exit_0',['EXIT',['../namespace_kolibri_lib.html#ac5af83599c636badfe90db73a654f5ef',1,'KolibriLib']]],
+  ['exitcode_1',['EXITCODE',['../namespace_kolibri_lib.html#ae00feeea6bd20648e94c82f1289bc68f',1,'KolibriLib']]]
 ];

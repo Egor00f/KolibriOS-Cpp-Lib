@@ -12,29 +12,12 @@ int main()
 
     while(true)
     {
-        unsigned Event = OS::WaitEvent();//Ждём пока не появится какой либо ивент
-
-        switch (Event)
+        window.Handler();
+        if(EXIT)
         {
-        case KSYS_EVENT_REDRAW:
-            window.Render();
-            break;
-        case KSYS_EVENT_BUTTON:
-            switch (KolibriLib::UI::buttons::GetPressedButton())
-            {
-            case 1:
-                return 0;
-                break;
-            
-            default:
-                break;
-            }
-            break;
-        default:
             break;
         }
     }
 
-
-    return 0;
+    return EXITCODE;
 }

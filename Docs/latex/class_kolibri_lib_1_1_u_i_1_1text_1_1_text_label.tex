@@ -2,7 +2,7 @@
 \hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
 
 
-Класс для работы с текстом  
+Текстовая метка  
 
 
 
@@ -18,19 +18,33 @@ Inheritance diagram for Kolibri\+Lib\+::UI\+::text\+::Text\+Label\+:\begin{figur
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af259567bf7649e12f9ea65ab1763145d}{Text\+Label}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} size=\{0, 0\}, std\+::string text="{}Text"{}, unsigned Font\+Size=9, bool Text\+Scale=true, unsigned Margin=0)
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a72ba7130db88f429571179e125290a12}{Text\+Label}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} size=\{0, 0\}, std\+::string text="{}Text"{}, unsigned Font\+Size=9, bool Text\+Scale=true, ksys\+\_\+color\+\_\+t Text\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, unsigned Margin=0)
 \begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ae9169f54c392e254efdbc13dff116bd7}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ae9169f54c392e254efdbc13dff116bd7} 
 void {\bfseries render} ()
-\begin{DoxyCompactList}\small\item\em Отрисовать текст \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Отрисовать текстовую метку \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af9f70904b54ad7c721ba9d38af327025}{Get\+Text}} ()
 \begin{DoxyCompactList}\small\item\em Получить текст \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a644a0fba249f42db672243948dbd2a7f}{Get\+Font\+Size}} ()
-\begin{DoxyCompactList}\small\item\em Получить Размер шрифта \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Получить Размер шрифта \end{DoxyCompactList}\item 
+ksys\+\_\+color\+\_\+t \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a427fcfe198dfa2298cae4ec537ebc143}{Get\+Text\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Получить цвет текста \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ad916d63a47c47ca186b25046c14530ec}{Set\+Text}} (const std\+::string \&New\+Text)
+\begin{DoxyCompactList}\small\item\em Изменить текст \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a1a669c7f23c46f79c5647f4fd08a3b32}{Set\+Font\+Size}} (const unsigned \&New\+Text\+Size)
+\begin{DoxyCompactList}\small\item\em Изменить рамер текста \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a44f66b0b82d42512909cb3a625038569}{Set\+Size}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} \&New\+Size)
+\begin{DoxyCompactList}\small\item\em Изменить размер текстовой метки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_aa4c2082eb956920ca5cf7d9bd431fbd4}{Set\+Coord}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} \&New\+Coords)
+\begin{DoxyCompactList}\small\item\em Изменить координаты текстовой метки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a058a848e9b363d4d1eab6302831a99f7}{Set\+Text\+Color}} (const ksys\+\_\+color\+\_\+t \&New\+Text\+Color)
+\begin{DoxyCompactList}\small\item\em Изменить цвет текста \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a13c115d127bc7f90cb438bbd2b31619d}{Set\+Scale}} (bool scale)
+\begin{DoxyCompactList}\small\item\em Изменить значение переменной \doxylink{}{\+\_\+\+Text\+Scale.}\end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} size=\{16, 16\}, unsigned Margin=Default\+Margin)
+{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} size=\{16, 16\}, unsigned Margin=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_a779f87b2d214a96a03a08650f341ceb1}{Default\+Margin}})
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
@@ -45,14 +59,14 @@ unsigned {\bfseries \+\_\+\+Margin}
 
 
 \doxysubsection{Detailed Description}
-Класс для работы с текстом 
+Текстовая метка 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af259567bf7649e12f9ea65ab1763145d}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af259567bf7649e12f9ea65ab1763145d} 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a72ba7130db88f429571179e125290a12}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a72ba7130db88f429571179e125290a12} 
 \index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!TextLabel@{TextLabel}}
 \index{TextLabel@{TextLabel}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
 \doxysubsubsection{\texorpdfstring{TextLabel()}{TextLabel()}}
-{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Text\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}]{coord = {\ttfamily \{0,~0\}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}]{size = {\ttfamily \{0,~0\}},  }\item[{std\+::string}]{text = {\ttfamily "{}Text"{}},  }\item[{unsigned}]{Font\+Size = {\ttfamily 9},  }\item[{bool}]{Text\+Scale = {\ttfamily true},  }\item[{unsigned}]{Margin = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Text\+Label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}]{coord = {\ttfamily \{0,~0\}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}]{size = {\ttfamily \{0,~0\}},  }\item[{std\+::string}]{text = {\ttfamily "{}Text"{}},  }\item[{unsigned}]{Font\+Size = {\ttfamily 9},  }\item[{bool}]{Text\+Scale = {\ttfamily true},  }\item[{ksys\+\_\+color\+\_\+t}]{Text\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{unsigned}]{Margin = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 
@@ -102,6 +116,109 @@ unsigned {\bfseries \+\_\+\+Margin}
 \begin{DoxyReturn}{Returns}
 \doxylink{aa6c61260c483592bc679b3292b1cdff3}{\+\_\+text}
 \end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a427fcfe198dfa2298cae4ec537ebc143}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a427fcfe198dfa2298cae4ec537ebc143} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!GetTextColor@{GetTextColor}}
+\index{GetTextColor@{GetTextColor}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{GetTextColor()}{GetTextColor()}}
+{\footnotesize\ttfamily ksys\+\_\+color\+\_\+t Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Get\+Text\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить цвет текста 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{a1fe97fffe5c84eb0163291dce1c4e74f}{\+\_\+\+Text\+Color}
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_aa4c2082eb956920ca5cf7d9bd431fbd4}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_aa4c2082eb956920ca5cf7d9bd431fbd4} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!SetCoord@{SetCoord}}
+\index{SetCoord@{SetCoord}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{SetCoord()}{SetCoord()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Set\+Coord (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} \&}]{New\+Coords }\end{DoxyParamCaption})}
+
+
+
+Изменить координаты текстовой метки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Coords} & новые координаты(относительно окна) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a1a669c7f23c46f79c5647f4fd08a3b32}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a1a669c7f23c46f79c5647f4fd08a3b32} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!SetFontSize@{SetFontSize}}
+\index{SetFontSize@{SetFontSize}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{SetFontSize()}{SetFontSize()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Set\+Font\+Size (\begin{DoxyParamCaption}\item[{const unsigned \&}]{New\+Text\+Size }\end{DoxyParamCaption})}
+
+
+
+Изменить рамер текста 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Text\+Size} & Новый размер текста (в px) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a13c115d127bc7f90cb438bbd2b31619d}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a13c115d127bc7f90cb438bbd2b31619d} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!SetScale@{SetScale}}
+\index{SetScale@{SetScale}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{SetScale()}{SetScale()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Set\+Scale (\begin{DoxyParamCaption}\item[{bool}]{scale }\end{DoxyParamCaption})}
+
+
+
+Изменить значение переменной \doxylink{}{\+\_\+\+Text\+Scale.}
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & Новое значение \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a44f66b0b82d42512909cb3a625038569}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a44f66b0b82d42512909cb3a625038569} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!SetSize@{SetSize}}
+\index{SetSize@{SetSize}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{SetSize()}{SetSize()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Set\+Size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} \&}]{New\+Size }\end{DoxyParamCaption})}
+
+
+
+Изменить размер текстовой метки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Size} & Новый рамер текстовой метки \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ad916d63a47c47ca186b25046c14530ec}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ad916d63a47c47ca186b25046c14530ec} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!SetText@{SetText}}
+\index{SetText@{SetText}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{SetText()}{SetText()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Set\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{New\+Text }\end{DoxyParamCaption})}
+
+
+
+Изменить текст 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Text} & Текст \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a058a848e9b363d4d1eab6302831a99f7}\label{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a058a848e9b363d4d1eab6302831a99f7} 
+\index{KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}!SetTextColor@{SetTextColor}}
+\index{SetTextColor@{SetTextColor}!KolibriLib::UI::text::TextLabel@{KolibriLib::UI::text::TextLabel}}
+\doxysubsubsection{\texorpdfstring{SetTextColor()}{SetTextColor()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Text\+Label\+::\+Set\+Text\+Color (\begin{DoxyParamCaption}\item[{const ksys\+\_\+color\+\_\+t \&}]{New\+Text\+Color }\end{DoxyParamCaption})}
+
+
+
+Изменить цвет текста 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Text\+Color} & Новый цвет текста \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -1,15 +1,20 @@
 var annotated_dup =
 [
     [ "KolibriLib", "namespace_kolibri_lib.html", [
-      [ "Settings", "namespace_kolibri_lib_1_1_settings.html", [
-        [ "SettingsParam", "struct_kolibri_lib_1_1_settings_1_1_settings_param.html", null ]
+      [ "graphic", null, [
+        [ "Image", "class_kolibri_lib_1_1graphic_1_1_image.html", "class_kolibri_lib_1_1graphic_1_1_image" ]
       ] ],
-      [ "UI", null, [
+      [ "Network", "namespace_kolibri_lib_1_1_network.html", [
+        [ "Devices", "namespace_kolibri_lib_1_1_network_1_1_devices.html", [
+          [ "NetDevice", "class_kolibri_lib_1_1_network_1_1_devices_1_1_net_device.html", "class_kolibri_lib_1_1_network_1_1_devices_1_1_net_device" ]
+        ] ]
+      ] ],
+      [ "UI", "namespace_kolibri_lib_1_1_u_i.html", [
         [ "buttons", null, [
           [ "Button", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" ],
           [ "ButtonsIdData", "struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data.html", null ]
         ] ],
-        [ "text", null, [
+        [ "text", "namespace_kolibri_lib_1_1_u_i_1_1text.html", [
           [ "TextLabel", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label" ]
         ] ],
         [ "Form", "class_kolibri_lib_1_1_u_i_1_1_form.html", "class_kolibri_lib_1_1_u_i_1_1_form" ],

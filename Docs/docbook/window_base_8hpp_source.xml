@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_window_base_8hpp_source" xml:lang="en-US">
+<title>windowBase.hpp</title>
+<indexterm><primary>F:/KolibriOs/Kalc/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__WINDOWBASE_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__WINDOWBASE_H__</emphasis>
+3 
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+6 
+7 
+8 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+9 {
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Color
+12 &#32;&#32;&#32;&#32;{
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ksys_colors_table_t&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1abc7ed68378c7cf0233fcea7429821a9b">DefaultColorTable</link>&#32;=&#32;{0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0};
+15 
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1ac42a496a840ddf97b90f6b67c62f756a">ComparisonColorsTables</link>(ksys_colors_table_t&#32;a,&#32;ksys_colors_table_t&#32;b)
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(a.frame_area&#32;==&#32;b.frame_area&#32;&amp;&amp;&#32;a.grab_bar&#32;==&#32;b.grab_bar&#32;&amp;&amp;&#32;a.grab_bar_button&#32;==&#32;a.grab_bar_button&#32;&amp;&amp;&#32;a.grab_button_text&#32;==&#32;b.grab_button_text&#32;&amp;&amp;&#32;a.grab_text&#32;==&#32;b.grab_text&#32;&amp;&amp;&#32;a.work_area&#32;==&#32;b.work_area&#32;&amp;&amp;&#32;a.work_button&#32;==&#32;b.work_button)
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+28 &#32;&#32;&#32;&#32;}
+29 
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>window
+32 &#32;&#32;&#32;&#32;{
+33 
+34 
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a57bfcd030f5345910529b170cb768efb">DefaultWindowSize</link>&#32;=&#32;{400,&#32;400};
+37 
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a54efa2e8e2b7e22efefcc2a25436b676">DefaultWindowCoord</link>&#32;=&#32;{100,&#32;100};
+40 
+41 
+42 
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1aa952d568261368ee7ca5c6d95728b0e5">UnfocusWindow</link>(<emphasis role="keywordtype">int</emphasis>&#32;slot)
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_unfocus_window(slot);
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1aaa30301e531d5aa8c046c0b14699b07b">FocusWindow</link>(<emphasis role="keywordtype">int</emphasis>&#32;slot)
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_focus_window(slot);
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+55 
+56 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;window</emphasis>
+57 &#32;&#32;&#32;&#32;
+58 
+59 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+60 
+61 
+62 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__WINDOWBASE_H__</emphasis>
+</programlisting></section>

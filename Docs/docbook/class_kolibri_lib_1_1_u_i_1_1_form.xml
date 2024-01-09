@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1_u_i_1_1_form" xml:lang="en-US">
+<title>KolibriLib::UI::Form Class Reference</title>
+<indexterm><primary>KolibriLib::UI::Form</primary></indexterm>
+<para>
+
+<para>Форма для ввода текста </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;UI.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for KolibriLib::UI::Form:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_kolibri_lib_1_1_u_i_1_1_form.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a19fcee3676d5b486afbe22b947620473">Form</link> (<link linkend="_struct_kolibri_lib_1_1point">point</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> size={32, 16}, std::string BackgroundText=&quot; &quot;, ksys_color_t FormColor=OS::sys_color_table.work_text, ksys_color_t ButtonTextColor=OS::sys_color_table.work_area, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>)</para>
+
+<para>конструктор </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_form_1a53cc56c3043d85ade5dd0b7e0081b3b1"/>void <emphasis role="strong">render</emphasis> ()</para>
+
+<para>Отрисовать форму </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_form_1abc53102114e1df7f0a10460ff94f03e5"/>void <emphasis role="strong">Handler</emphasis> ()</para>
+
+<para>Обработчик </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_form_1a9a356e929e7a7b8ecf1a945f6c04789a"/>bool <emphasis role="strong">ButtonHandler</emphasis> ()</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1ac39c109c78e884a3584d194531f6bfeb">GetInput</link> ()</para>
+
+<para>Получить введённый текст </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">UIElement</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">point</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> size={16, 16}, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>)</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> <emphasis role="strong">_coord</emphasis></para>
+
+<para>Координаты </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> <emphasis role="strong">_size</emphasis></para>
+
+<para>Размер </para>
+</listitem>
+            <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
+
+<para>Отступы </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Форма для ввода текста </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_form_1a19fcee3676d5b486afbe22b947620473"/><section>
+    <title>Form()</title>
+<indexterm><primary>Form</primary><secondary>KolibriLib::UI::Form</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Form</primary><secondary>Form</secondary></indexterm>
+<para><computeroutput>KolibriLib::UI::Form::Form (<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> coord = <computeroutput>{0,&#160;0}</computeroutput>
+, <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> size = <computeroutput>{32,&#160;16}</computeroutput>
+, std::string BackgroundText = <computeroutput>&quot;&#160;&quot;</computeroutput>
+, ksys_color_t FormColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+, ksys_color_t ButtonTextColor = <computeroutput>OS::sys_color_table.work_area</computeroutput>
+, unsigned Margin = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link></computeroutput>
+)</computeroutput></para><para>
+
+<para>конструктор </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>позиция в коне </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>размеры </para>
+</entry>
+                            </row>
+                            <row>
+<entry>BackgroundText</entry><entry>
+<para>фоновый текст(проподает когда вводится текст) </para>
+</entry>
+                            </row>
+                            <row>
+<entry>FormColor</entry><entry>
+<para>цвет рамки формы </para>
+</entry>
+                            </row>
+                            <row>
+<entry>BackgroundTextColor</entry><entry>
+<para>цвет фонового текста </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Margin</entry><entry>
+<para>отступы рамки от текста </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_form_1ac39c109c78e884a3584d194531f6bfeb"/><section>
+    <title>GetInput()</title>
+<indexterm><primary>GetInput</primary><secondary>KolibriLib::UI::Form</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Form</primary><secondary>GetInput</secondary></indexterm>
+<para><computeroutput>std::string KolibriLib::UI::Form::GetInput ( )</computeroutput></para><para>
+
+<para>Получить введённый текст </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><link linkend="_ab3bc0ef47d85243ebc1152520a4b8e95">(текст который ввели в форму) </link></para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+F:/KolibriOs/Kalc/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp</section>
+</section>

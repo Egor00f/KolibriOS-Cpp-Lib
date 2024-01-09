@@ -1,10 +1,8 @@
 #ifndef __MOUSE_H__
 #define __MOUSE_H__
 
-extern "C"
-{
-    #include <sys/ksys.h>
-}
+
+#include <sys/ksys.h>
 #include "base.hpp"
 
 namespace KolibriLib
@@ -43,6 +41,8 @@ namespace KolibriLib
         {
             return _ksys_get_mouse_wheels();
         }
+
+        
 
     }
 }

@@ -1,0 +1,515 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1filesystem" xml:lang="en-US">
+<title>KolibriLib::filesystem Namespace Reference</title>
+<indexterm><primary>KolibriLib::filesystem</primary></indexterm>
+<para>
+
+<para>Работа с файлами </para>
+ 
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link> (const char *name)</para>
+
+<para>Создать файл </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1a672d3806c6831e87a22ff0d719f476ae">CreateFile</link> (const char *name, char *path)</para>
+
+<para>Создать файл </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1ae9a7c9e6b81592891adf6267ef0b7868">CreateFile</link> (const std::string &amp;name)</para>
+
+<para>Создать файл </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1a7e29e8e6cb9ce81d9067a4bae9f9904c">CreateFile</link> (const std::string &amp;name, const std::string &amp;path)</para>
+
+<para>Создать файл </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link> (const char *name)</para>
+
+<para>удалить файл или папку </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1a97b53d10e759c38649e601a12cbc3b04">Delete</link> (const char *name, char *path)</para>
+
+<para>удалить файл или папку </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1adb9790b1b7b32f16601e8c732e10a99d">Delete</link> (const std::string &amp;name)</para>
+
+<para>удалить файл или папку </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1a7dd8b02ea138aae6f14308968614c24c">Delete</link> (const std::string &amp;name, const std::string &amp;path)</para>
+
+<para>удалить файл или папку </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1ab640c3711637da8dec40346964d78aab">mkdir</link> (const char *path)</para>
+
+<para>Создать папку </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1a52b18f223e32c7ab7ba89d92d14cf5b0">mkdir</link> (const std::string &amp;path)</para>
+
+<para>Создать папку </para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1filesystem_1aa44c1720e61ba560292d7c20b2122d77">Exist</link> (const std::string &amp;Path)</para>
+
+<para>проверяет существует ли файл или папки </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1filesystem_1a0ab71bb2f7b4e2669a8e0a2457778b5b">Rename</link> (const std::string &amp;OldName, const std::string &amp;NewName)</para>
+
+<para>Переименовать файл/папку </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Работа с файлами </para>
+<section xml:id="_namespace_kolibri_lib_1_1filesystem_1Это">
+<title><title>пространство имён этакий аналог стандартной библиотеки &lt;filesystem&gt; <?linebreak?></title></title>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a"/><section>
+    <title>CreateFile()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>CreateFile</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>CreateFile</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::CreateFile (const char * name)</computeroutput></para><para>
+
+<para>Создать файл </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>полный путь до файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1a672d3806c6831e87a22ff0d719f476ae"/><section>
+    <title>CreateFile()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>CreateFile</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>CreateFile</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::CreateFile (const char * name, char * path)</computeroutput></para><para>
+
+<para>Создать файл </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>имя файла </para>
+</entry>
+                            </row>
+                            <row>
+<entry>path</entry><entry>
+<para>путь до файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1ae9a7c9e6b81592891adf6267ef0b7868"/><section>
+    <title>CreateFile()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>CreateFile</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>CreateFile</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::CreateFile (const std::string &amp; name)</computeroutput></para><para>
+
+<para>Создать файл </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>имя файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1a7e29e8e6cb9ce81d9067a4bae9f9904c"/><section>
+    <title>CreateFile()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>CreateFile</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>CreateFile</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::CreateFile (const std::string &amp; name, const std::string &amp; path)</computeroutput></para><para>
+
+<para>Создать файл </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>имя файла </para>
+</entry>
+                            </row>
+                            <row>
+<entry>path</entry><entry>
+<para>путь до файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d"/><section>
+    <title>Delete()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>Delete</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>Delete</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::Delete (const char * name)</computeroutput></para><para>
+
+<para>удалить файл или папку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>полный путь до файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1a97b53d10e759c38649e601a12cbc3b04"/><section>
+    <title>Delete()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>Delete</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>Delete</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::Delete (const char * name, char * path)</computeroutput></para><para>
+
+<para>удалить файл или папку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>имя файла </para>
+</entry>
+                            </row>
+                            <row>
+<entry>path</entry><entry>
+<para>путь до файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1adb9790b1b7b32f16601e8c732e10a99d"/><section>
+    <title>Delete()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>Delete</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>Delete</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::Delete (const std::string &amp; name)</computeroutput></para><para>
+
+<para>удалить файл или папку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>имя файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1a7dd8b02ea138aae6f14308968614c24c"/><section>
+    <title>Delete()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>Delete</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>Delete</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::Delete (const std::string &amp; name, const std::string &amp; path)</computeroutput></para><para>
+
+<para>удалить файл или папку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>name</entry><entry>
+<para>имя файла </para>
+</entry>
+                            </row>
+                            <row>
+<entry>path</entry><entry>
+<para>путь до файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1aa44c1720e61ba560292d7c20b2122d77"/><section>
+    <title>Exist()</title>
+<indexterm><primary>Exist</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>Exist</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::filesystem::Exist (const std::string &amp; Path)</computeroutput></para><para>
+
+<para>проверяет существует ли файл или папки </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>путь</entry><entry>
+<para>до файла/папки </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true если файл или папка существует, иначе false </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1ab640c3711637da8dec40346964d78aab"/><section>
+    <title>mkdir()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>mkdir</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>mkdir</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::mkdir (const char * path)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Создать папку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>path</entry><entry>
+<para>путь </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1a52b18f223e32c7ab7ba89d92d14cf5b0"/><section>
+    <title>mkdir()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>mkdir</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>mkdir</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::mkdir (const std::string &amp; path)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Создать папку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>path</entry><entry>
+<para>путь </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1filesystem_1a0ab71bb2f7b4e2669a8e0a2457778b5b"/><section>
+    <title>Rename()</title>
+<indexterm><primary>Rename</primary><secondary>KolibriLib::filesystem</secondary></indexterm>
+<indexterm><primary>KolibriLib::filesystem</primary><secondary>Rename</secondary></indexterm>
+<para><computeroutput>int KolibriLib::filesystem::Rename (const std::string &amp; OldName, const std::string &amp; NewName)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Переименовать файл/папку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>OldName</entry><entry>
+<para>Старое имя файла/папки </para>
+</entry>
+                            </row>
+                            <row>
+<entry>NewName</entry><entry>
+<para>Новое имя файла/папки </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+</section>

@@ -9,9 +9,11 @@
 #include "windowBase.hpp"
 #include "graphic.hpp"
 
+//=============================================================================================================================================================
+
 namespace KolibriLib
 {
-    // Элементы UI
+    /// @brief Класс-шаблон, от которого наследуются все остальные UI элементы
     namespace UI
     {
         /// @brief Отступы поумолчанию
@@ -33,7 +35,7 @@ namespace KolibriLib
             unsigned _Margin;
 
         public:
-            UIElement(KolibriLib::point coord = {0,0}, KolibriLib::point size = {16, 16}, unsigned Margin = DefaultMargin)
+            UIElement(point coord = {0,0}, KolibriLib::point size = {16, 16}, unsigned Margin = DefaultMargin)
             {
                 _coord = coord;
                 _size = size;
@@ -47,11 +49,12 @@ namespace KolibriLib
         /// \param coord
         /// \param size
         /// \param color
-        inline void DrawBar(KolibriLib::point coord, KolibriLib::point size, ksys_color_t color = OS::sys_color_table.work_graph)
+        inline void DrawBar(point coord, KolibriLib::point size, ksys_color_t color = OS::sys_color_table.work_graph)
         {
-            _ksys_draw_bar(coord.x * KolibriLib::AAANUMBER, coord.y * KolibriLib::AAANUMBER, size.x, size.y, color);
+            _ksys_draw_bar(coord.x, coord.y, size.x, size.y, color);
         }
 
+        /// @brief Работа с тектсом
         namespace text
         {
             /// \brief Получить размер текста
@@ -72,7 +75,8 @@ namespace KolibriLib
             void SetTextSize(unsigned int newSize)
             {
                 asm_inline(
-                    "int $0x40" ::"a"(48), "b"(12), "c"(newSize)
+                    "int $0x40"
+                    ::"a"(48), "b"(12), "c"(newSize)
                 );
             }
 
@@ -81,7 +85,7 @@ namespace KolibriLib
             /// \param text текст
             /// \param coord координаты
             /// \param color цвет текста
-            inline void DrawText(std::string text, KolibriLib::point coord, unsigned size = 9, ksys_color_t color = OS::sys_color_table.work_text)
+            inline void DrawText(const std::string& text, const point& coord, const unsigned& size = 9, ksys_color_t color = OS::sys_color_table.work_text)
             {
                 SetTextSize(size);
                 _ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
@@ -91,26 +95,30 @@ namespace KolibriLib
             /// \param text текст
             /// \param coord координаты
             /// \param color цвет текста
-            inline void DrawText(const char *text, KolibriLib::point coord, unsigned size = 9, ksys_color_t color = OS::sys_color_table.work_text)
+            inline void DrawText(const char *text, const point& coord, const unsigned& size = 9, ksys_color_t color = OS::sys_color_table.work_text)
             {
                 SetTextSize(size);
                 _ksys_draw_text(text, coord.x, coord.y, strlen(text), color);
             }
 
-            
+            //=============================================================================================================================================================
 
-            /// @brief Класс для работы с текстом
+            /// @brief Текстовая метка
             class TextLabel: public UIElement
             {
             private:
                 /// @brief Сам текст
                 std::string _text;
 
+                /// @brief Цвет текста
+                ksys_color_t _TextColor;
+
                 /// @brief Размер текста(высота)
                 unsigned _FontSize;
 
                 /// @brief Подстраивать @link _FontSize, чтобы размер текст соответствовал размеру элемента( @link _size)
                 bool _TextScale;
+                
             public:
                 /// @brief Конструктор
                 /// @param coord координата
@@ -119,10 +127,11 @@ namespace KolibriLib
                 /// @param FontSize Размер текста
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin не нужный параметр, необходим для конструктора класса @link UIElement
-                TextLabel(point coord = {0, 0}, point size = {0, 0}, std::string text = "Text", unsigned FontSize = 9, bool TextScale = true, unsigned Margin = 0);
+                TextLabel(point coord = {0, 0}, point size = {0, 0}, std::string text = "Text", unsigned FontSize = 9, bool TextScale = true, ksys_color_t TextColor = OS::sys_color_table.work_text, unsigned Margin = 0);
+
                 ~TextLabel();
 
-                /// @brief Отрисовать текст
+                /// @brief Отрисовать текстовую метку
                 void render();
 
                 /// @brief Получить текст
@@ -132,13 +141,43 @@ namespace KolibriLib
                 /// @brief Получить Размер шрифта
                 /// @return @link _FontSize
                 unsigned GetFontSize();
+
+                /// @brief Получить цвет текста
+                /// @return @link _TextColor
+                ksys_color_t GetTextColor();
+
+                /// @brief Изменить текст
+                /// @param NewText Текст
+                void SetText(const std::string& NewText);
+
+                /// @brief Изменить рамер текста
+                /// @param NewTextSize Новый размер текста (в px)
+                void SetFontSize(const unsigned& NewTextSize);
+
+                /// @brief Изменить размер текстовой метки
+                /// @param NewSize Новый рамер текстовой метки
+                void SetSize(const point& NewSize);
+
+                /// @brief Изменить координаты текстовой метки
+                /// @param NewCoords новые координаты(относительно окна)
+                void SetCoord(const point& NewCoords);
+
+                /// @brief Изменить цвет текста
+                /// @param NewTextColor Новый цвет текста
+                void SetTextColor(const ksys_color_t& NewTextColor);
+
+                /// @brief Изменить значение переменной @link _TextScale
+                /// @param scale Новое значение
+                void SetScale(bool scale);
+
             };
 
-            TextLabel::TextLabel(point coord, point size, std::string text, unsigned FontSize, bool TextScale, unsigned Margin) : UIElement(coord, size, Margin)
+            TextLabel::TextLabel(point coord, point size, std::string text, unsigned FontSize, bool TextScale, ksys_color_t TextColor, unsigned Margin) : UIElement(coord, size, Margin)
             {
                 _text       = text;
                 _FontSize   = FontSize;
                 _TextScale  = TextScale;
+                _TextColor  = TextColor;
             }
             
             TextLabel::~TextLabel()
@@ -148,12 +187,20 @@ namespace KolibriLib
             
             void TextLabel::render()
             {
-                if(_TextScale)
-                {
+                if(_TextScale)                              //Если текст нужно подстраивать размер, то
+                {                                           //Постраиваем
                     _FontSize = _size.x / _text.length();
                 }
                 SetTextSize(_FontSize);
-                DrawText(_text, _coord);
+
+                unsigned a = 0;
+
+                if((_text.length() * _FontSize) > _size.x)              //Центрирование текста
+                {
+                    a = (_size.x / 2) - (_text.length() * _FontSize);
+                }
+
+                DrawText(_text, {_coord.x + a, _coord.y + (_size.y / 2)}, _FontSize, _TextColor);
             }
 
             std::string TextLabel::GetText()
@@ -163,6 +210,40 @@ namespace KolibriLib
             unsigned TextLabel::GetFontSize()
             {
                 return _FontSize;
+            }
+
+            void TextLabel::SetText(const std::string& NewText)
+            {
+                _text = NewText;
+            }
+            void TextLabel::SetFontSize(const unsigned& NewTextSize)
+            {
+                _FontSize = NewTextSize;
+            }
+
+            void TextLabel::SetSize(const point& NewSize)
+            {
+                _size = NewSize;
+            }
+
+            void TextLabel::SetCoord(const point& NewCoords)
+            {
+                _coord = NewCoords;
+            }
+
+            void TextLabel::SetTextColor(const ksys_color_t& NewTextColor)
+            {
+                _TextColor = NewTextColor;
+            }
+
+            void TextLabel::SetScale(bool scale)
+            {
+                _TextScale = scale;
+            }
+
+            ksys_color_t TextLabel::GetTextColor()
+            {
+                return _TextColor;
             }
         }
 
@@ -177,7 +258,6 @@ namespace KolibriLib
             /// @brief Служебная структура, нигде не использется кроме @link ButtonsIdList
             struct ButtonsIdData
             {
-                unsigned data;
                 bool use = false;
             };
 
@@ -199,8 +279,7 @@ namespace KolibriLib
                     }
                 }
                 ButtonsIdData a;
-                a.data  = StartButtonId + ButtonsIdList.size();
-                a.use   = true;
+                a.use = true;
                 ButtonsIdList.push_back(a);
                 return ButtonsIdList.size() - 1; //-1 потому что обращение к элементам массива идёт с 0
             }
@@ -218,7 +297,7 @@ namespace KolibriLib
             /// \return ButtonsIdList[id].ID
             unsigned GetButtonId(unsigned id)
             {
-                return ButtonsIdList[id].data;
+                return StartButtonId + id;
             }
 
             /// \brief Создать кнопку, автоматически присвоить ей id
@@ -226,7 +305,7 @@ namespace KolibriLib
             /// \param size размер
             /// \param color цвет
             /// \return id созданной кнопки
-            inline unsigned autoDefineButton(point coords, point size, ksys_color_t color = OS::sys_color_table.work_button)
+            inline unsigned autoDefineButton(const point& coords, const point& size, ksys_color_t color = OS::sys_color_table.work_button)
             {
                 unsigned id = GetButtonId(GetFreeButtonId()); // Автоматически получаем id для кнопки
                 _ksys_define_button(coords.x, coords.y, size.x, size.y, id, color);
@@ -238,7 +317,7 @@ namespace KolibriLib
             /// \param size размер
             /// \param id idшник кнопки
             /// \param color цвет
-            inline void DefineButton(point coord, point size, unsigned id, ksys_color_t color = OS::sys_color_table.work_button)
+            inline void DefineButton(const point& coord, point& size, const unsigned& id, ksys_color_t color = OS::sys_color_table.work_button)
             {
                 _ksys_define_button(coord.x, coord.y, size.x, size.y, id, color);
             }
@@ -258,22 +337,19 @@ namespace KolibriLib
                 return _ksys_get_button();
             }
 
-            
+            //=============================================================================================================================================================
 
             /// \brief Класс для работы с кнопками
             class Button : public UIElement
             {
             private:
-                /// @brief текст кноки
-                std::string _text;
+                /// @brief Текст на кнопке
+                text::TextLabel _text;
 
-                /// @brief Цвет кноки
-                ksys_color_t _BackgroundColor;
+                /// @brief Цвет кнопки
+                ksys_color_t _ButtonColor;
 
-                /// @brief Цвет текста кнопки
-                ksys_color_t _TextColor;
-
-                /// @brief Номер id кнопки в списке idшников
+                /// @brief Id кнопки
                 unsigned _id;
 
                 /// @brief Состояние кнопки(Нажата/Ненажата)
@@ -282,15 +358,16 @@ namespace KolibriLib
                 /// @brief Активна(работает) ли сейчас кнопка
                 /// @paragraph Занчение необходимо для того чтобы функция render не пыталась создать кнопку, так как в неактивном состоянии #_id освобождается и его может занять другая кнопка
                 bool _active;
+
             public:
                 /// \brief Это конструктор
                 /// \param coord координата
                 /// \param size размер
                 /// \param text текст
                 /// \param Margin отступы текста от границ
-                /// \param BackgroundColor цвет кнопки
+                /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
-                Button(point coord = {0, 0}, point size = {20, 20}, std::string text = "Button", unsigned Margin = DefaultMargin, ksys_color_t BackgroundColor = OS::sys_color_table.work_button, ksys_color_t TextColor = OS::sys_color_table.work_text);
+                Button(point coord = {0, 0}, point size = {20, 20}, std::string text = "Button", unsigned Margin = DefaultMargin, ksys_color_t ButtonColor = OS::sys_color_table.work_button, ksys_color_t TextColor = OS::sys_color_table.work_text);
 
                 /// \brief инициализировать параметры
                 /// \param coord координата
@@ -299,7 +376,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param BackgroundColor цвет кнопки
                 /// \param TextColor цвет текста
-                void init(point coord, point size, std::string text, unsigned Margin = DefaultMargin, ksys_color_t BackgroundColor = OS::sys_color_table.work_button, ksys_color_t TextColor = OS::sys_color_table.work_text);
+                void init(point coord = {0, 0}, point size = {0, 0}, std::string text = "Button", unsigned Margin = DefaultMargin, ksys_color_t ButtonColor = OS::sys_color_table.work_button, ksys_color_t TextColor = OS::sys_color_table.work_text);
 
                 /// \brief Отрисовать кнопку
                 void render();
@@ -329,9 +406,9 @@ namespace KolibriLib
                 ~Button();
             };
 
-            Button::Button(point coord, point size, std::string text, unsigned Margin, ksys_color_t BackgroundColor, ksys_color_t TextColor) : UIElement(coord, size, Margin)
+            Button::Button(point coord, point size, std::string text, unsigned Margin, ksys_color_t ButtonColor, ksys_color_t TextColor) : UIElement(coord, size, Margin)
             {
-                init(coord, size, text, Margin, BackgroundColor, TextColor);
+                init(coord, size, text, Margin, ButtonColor, TextColor);
             }
 
             void Button::Deactivate()
@@ -361,16 +438,15 @@ namespace KolibriLib
             {
                 if(_active)
                 {
-                    DefineButton(_coord, _size, GetButtonId(_id), _BackgroundColor);
+                    DefineButton(_coord, _size, _id, _ButtonColor);
                 }
                 else
                 {
-                    graphic::DrawRectangleLines(_coord, {_coord.x + _size.x, _coord.y + _size.y});
+                    graphic::DrawRectangleLines(_coord, {_coord.x + _size.x, _coord.y + _size.y}, _ButtonColor);
                 }
-                unsigned buff = text::GetTextSize();
-                text::SetTextSize(_size.y - 2 * _Margin);
-                text::DrawText(_text, _coord, _TextColor);
-                text::SetTextSize(buff); // Возвращение размера текста обратно
+
+                _text.render();
+
             }
 
             bool Button::Handler()
@@ -391,31 +467,32 @@ namespace KolibriLib
                 return _status;
             }
 
-            void UI::buttons::Button::init(point coord, point size, std::string text, unsigned Margin, ksys_color_t BackgroundColor, ksys_color_t TextColor)
+            void UI::buttons::Button::init(point coord, point size, std::string text, unsigned Margin, ksys_color_t ButtonColor, ksys_color_t TextColor)
             {
                 _coord = coord;
                 _size = size;
                 _Margin = Margin;
-                _text = text;
-                _BackgroundColor = BackgroundColor;
-                _TextColor = TextColor;
+                _text.SetText(text);
+                _text.SetCoord(coord);
+                _text.SetSize(size);
+                _text.SetTextColor(TextColor);
+                _ButtonColor = ButtonColor;
+
                 if (!_active)                   //Если кнопка была неактивна, то нужно её активировать
                 {
                     Activate();
                 }
                 else
                 {
-                    _id = GetFreeButtonId();
+                    _id = GetButtonId(GetFreeButtonId());
                 }
                 
-                render();
             }
 
             unsigned Button::GetId()
             {
                 return _id;
             }
-
 
         }
 
@@ -425,16 +502,14 @@ namespace KolibriLib
         class Form : public UIElement
         {
         private:
-            std::string _BackgroundText;
+            /// @brief Кнопка 
+            KolibriLib::UI::buttons::Button _butt;
 
             /// @brief Введённый пользователем текст
             std::string _inputText;
 
             /// @brief Цвет рамки формы
             ksys_color_t _FormColor;
-            ksys_color_t _BackgroundTextColor;
-            KolibriLib::UI::buttons::Button _butt;
-            bool _active;
 
         public:
             /// \brief конструктор
@@ -444,45 +519,38 @@ namespace KolibriLib
             /// \param FormColor цвет рамки формы
             /// \param BackgroundTextColor цвет фонового текста
             /// \param Margin отступы рамки от текста
-            Form(point coord = {0,0}, KolibriLib::point size = {32, 16}, std::string BackgroundText = " ", ksys_color_t FormColor = OS::sys_color_table.work_text, ksys_color_t BackgroundTextColor = OS::sys_color_table.work_button_text, unsigned Margin = DefaultMargin);
+            Form(point coord = {0, 0}, KolibriLib::point size = {32, 16}, std::string BackgroundText = " ", ksys_color_t FormColor = OS::sys_color_table.work_text, ksys_color_t ButtonTextColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
 
             /// \brief Отрисовать форму
             void render();
+
             /// \brief Обработчик
             void Handler();
+
+            bool ButtonHandler();
 
             /// \brief Получить введённый текст
             /// \return @link _inputText (текст который ввели в форму)
             std::string GetInput();
+
             ~Form();
         };
 
-        Form::Form(KolibriLib::point coord, KolibriLib::point size, std::string BackgroundText, ksys_color_t FormColor, ksys_color_t BackgroundTextColor, unsigned Margin) : UIElement(coord, size, Margin)
+        Form::Form(KolibriLib::point coord, KolibriLib::point size, std::string BackgroundText, ksys_color_t FormColor, ksys_color_t ButtonTextColor, unsigned Margin) : UIElement(coord, size, Margin)
         {
-            _BackgroundText = BackgroundText;
+
             _FormColor = FormColor;
-            _BackgroundTextColor = BackgroundTextColor;
-            _active = false;
-            _butt.init(coord, size, " ", 0);
-            render();
+            _butt.init(coord, size, BackgroundText, Margin, ButtonTextColor);
         }
 
         Form::~Form()
         {
+            _butt.~Button();
         }
 
         void Form::render()
         {
-
-            KolibriLib::graphic::DrawRectangleLines(_coord, {_coord.x + _size.x, _coord.y + _size.y});
-            text::SetTextSize(_size.y - (2 * _Margin)); // Подгон размера текста под размеры формы
-            if (_inputText == "")
-            {
-                text::DrawText(
-                    _BackgroundText,
-                    (KolibriLib::point){_coord.x + _Margin, (_coord.y + _coord.y) - _Margin},
-                    _BackgroundTextColor);
-            }
+            KolibriLib::graphic::DrawRectangleLines(_coord, {_coord.x + _size.x, _coord.y + _size.y}, _FormColor);
 
             _butt.render();
         }
@@ -494,16 +562,30 @@ namespace KolibriLib
 
         void Form::Handler()
         {
-
-            if (_butt.Handler())
+            char input = CheckKeyboard();
+            if (input > 33 && input != 127) // Если введённый символ не является спецсимволом, и это не Delete
             {
-                _active = true;
+                _inputText.push_back(input);
+            }
+            if (input == 127) // input = Delete
+            {
+                _inputText.erase(_inputText.end() - 1);
+            }
+        }
+        bool Form::ButtonHandler()
+        {
+            if(_butt.Handler())
+            {
+                return true;
             }
             else
             {
-                _active = false;
+                return false;
             }
         }
+        //=============================================================================================================================================================
+
+
     }
 }
 

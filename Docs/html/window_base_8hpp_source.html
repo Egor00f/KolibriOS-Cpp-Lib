@@ -116,7 +116,7 @@ $(function(){initNavTree('window_base_8hpp_source.html',''); initResizable(); })
 <div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_color.html#ac42a496a840ddf97b90f6b67c62f756a">   20</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_color.html#ac42a496a840ddf97b90f6b67c62f756a">ComparisonColorsTables</a>(ksys_colors_table_t a, ksys_colors_table_t b)</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordflow">if</span>(a.frame_area == b.frame_area &amp;&amp; a.grab_bar == b.grab_bar &amp;&amp; a.grab_bar_button == a.grab_bar_button &amp;&amp; a.grab_button_text == b.grab_button_text &amp;&amp; a.grab_text == b.grab_text)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordflow">if</span>(a.frame_area == b.frame_area &amp;&amp; a.grab_bar == b.grab_bar &amp;&amp; a.grab_bar_button == a.grab_bar_button &amp;&amp; a.grab_button_text == b.grab_button_text &amp;&amp; a.grab_text == b.grab_text &amp;&amp; a.work_area == b.work_area &amp;&amp; a.work_button == b.work_button)</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            }</div>
@@ -136,36 +136,34 @@ $(function(){initNavTree('window_base_8hpp_source.html',''); initResizable(); })
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1window.html#aa952d568261368ee7ca5c6d95728b0e5">   47</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1window.html#aa952d568261368ee7ca5c6d95728b0e5">UnfocusWindow</a>(<span class="keywordtype">int</span> slot)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            _ksys_unfocus_window(slot);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1window.html#aa952d568261368ee7ca5c6d95728b0e5">   45</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1window.html#aa952d568261368ee7ca5c6d95728b0e5">UnfocusWindow</a>(<span class="keywordtype">int</span> slot)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            _ksys_unfocus_window(slot);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
 </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b">   53</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b">FocusWindow</a>(<span class="keywordtype">int</span> slot)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            _ksys_focus_window(slot);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b">   51</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b">FocusWindow</a>(<span class="keywordtype">int</span> slot)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            _ksys_focus_window(slot);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        }</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    } <span class="comment">// namespace window</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    } <span class="comment">// namespace window</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace KolibriLib</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>} <span class="comment">// namespace KolibriLib</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif </span><span class="comment">// __WINDOWBASE_H__</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif </span><span class="comment">// __WINDOWBASE_H__</span></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_color_html_abc7ed68378c7cf0233fcea7429821a9b"><div class="ttname"><a href="namespace_kolibri_lib_1_1_color.html#abc7ed68378c7cf0233fcea7429821a9b">KolibriLib::Color::DefaultColorTable</a></div><div class="ttdeci">const ksys_colors_table_t DefaultColorTable</div><div class="ttdoc">Таблица цветов по умолчанию</div><div class="ttdef"><b>Definition</b> windowBase.hpp:14</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_color_html_ac42a496a840ddf97b90f6b67c62f756a"><div class="ttname"><a href="namespace_kolibri_lib_1_1_color.html#ac42a496a840ddf97b90f6b67c62f756a">KolibriLib::Color::ComparisonColorsTables</a></div><div class="ttdeci">bool ComparisonColorsTables(ksys_colors_table_t a, ksys_colors_table_t b)</div><div class="ttdoc">Сравнить две таблица цветов</div><div class="ttdef"><b>Definition</b> windowBase.hpp:20</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1window_html_a54efa2e8e2b7e22efefcc2a25436b676"><div class="ttname"><a href="namespace_kolibri_lib_1_1window.html#a54efa2e8e2b7e22efefcc2a25436b676">KolibriLib::window::DefaultWindowCoord</a></div><div class="ttdeci">const point DefaultWindowCoord</div><div class="ttdoc">Соординаты окна по умолчанию</div><div class="ttdef"><b>Definition</b> windowBase.hpp:39</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1window_html_a57bfcd030f5345910529b170cb768efb"><div class="ttname"><a href="namespace_kolibri_lib_1_1window.html#a57bfcd030f5345910529b170cb768efb">KolibriLib::window::DefaultWindowSize</a></div><div class="ttdeci">const point DefaultWindowSize</div><div class="ttdoc">Размер окна поумолчанию</div><div class="ttdef"><b>Definition</b> windowBase.hpp:36</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1window_html_aa952d568261368ee7ca5c6d95728b0e5"><div class="ttname"><a href="namespace_kolibri_lib_1_1window.html#aa952d568261368ee7ca5c6d95728b0e5">KolibriLib::window::UnfocusWindow</a></div><div class="ttdeci">void UnfocusWindow(int slot)</div><div class="ttdoc">Снять фокус с окна</div><div class="ttdef"><b>Definition</b> windowBase.hpp:47</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1window_html_aaa30301e531d5aa8c046c0b14699b07b"><div class="ttname"><a href="namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b">KolibriLib::window::FocusWindow</a></div><div class="ttdeci">void FocusWindow(int slot)</div><div class="ttdoc">Поставить фокус на окно</div><div class="ttdef"><b>Definition</b> windowBase.hpp:53</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1window_html_aa952d568261368ee7ca5c6d95728b0e5"><div class="ttname"><a href="namespace_kolibri_lib_1_1window.html#aa952d568261368ee7ca5c6d95728b0e5">KolibriLib::window::UnfocusWindow</a></div><div class="ttdeci">void UnfocusWindow(int slot)</div><div class="ttdoc">Снять фокус с окна</div><div class="ttdef"><b>Definition</b> windowBase.hpp:45</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1window_html_aaa30301e531d5aa8c046c0b14699b07b"><div class="ttname"><a href="namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b">KolibriLib::window::FocusWindow</a></div><div class="ttdeci">void FocusWindow(int slot)</div><div class="ttdoc">Поставить фокус на окно</div><div class="ttdef"><b>Definition</b> windowBase.hpp:51</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> base.hpp:17</div></div>
-<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> base.hpp:22</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> base.hpp:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -15,7 +15,8 @@ namespace KolibriLib
         /// \param ThreadEntry Имя функции которую нужно запустить в новом потоке
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
-        unsigned CreateThread(void *ThreadEntry, unsigned ThreadStackSize = 1024)
+        /// @paragraph Сколько нужно выделять памяти для стека потока? Я не знаю
+        unsigned CreateThread(void *ThreadEntry, unsigned ThreadStackSize = 2048)
         {
             void* th_stack = malloc(ThreadStackSize);
             if (!th_stack) //    Если памяти не было выделенно
@@ -34,7 +35,7 @@ namespace KolibriLib
 
         /// @brief Завершить процесс/поток
         /// @param PID ID Процесса/потока
-        /// @return true если успешно, инач false
+        /// @return true если успешно, иначе false
         /// @paragraph Нельзя завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс
         bool TerminateThread(int PID)
         {

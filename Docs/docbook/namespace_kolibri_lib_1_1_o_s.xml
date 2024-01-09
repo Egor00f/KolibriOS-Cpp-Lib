@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_o_s" xml:lang="en-US">
+<title>KolibriLib::OS Namespace Reference</title>
+<indexterm><primary>KolibriLib::OS</primary></indexterm>
+<para>
+
+<para>Работа с системой </para>
+ 
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>ksys_colors_table_t <link linkend="_namespace_kolibri_lib_1_1_o_s_1a290440d19cd1d31121c3dc073bcc88da">GetSystemColors</link> ()</para>
+
+<para>Получить системные цвета </para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_namespace_kolibri_lib_1_1_o_s_1a36e7e8f9582ee5fbe840ef3aea3f29e0">WaitEvent</link> ()</para>
+
+<para>Ждать ивента </para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_namespace_kolibri_lib_1_1_o_s_1ac7a675236b8f0c78e30056cd67c9527d">WaitEvent</link> (uint32_t TimeOut)</para>
+
+<para>Ждать ивента </para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_namespace_kolibri_lib_1_1_o_s_1a2a911b053a2f8359ac4cc39226904fd6">CheckEvent</link> ()</para>
+
+<para>Проверить пришёл ли ли ивент </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1_o_s_1ae46a6edced337a9b167bc5b9014360c8">Exec</link> (std::string AppName, std::string args)</para>
+
+<para>Запустить программу </para>
+</listitem>
+            <listitem><para>ksys_time_t <link linkend="_namespace_kolibri_lib_1_1_o_s_1a1744275834206a63ba18a572f5ddd6bb">GetTime</link> ()</para>
+
+<para>Получить системное время </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a7a87d62172d754e74d0e4bc13af4f78b"/>ksys_colors_table_t <emphasis role="strong">sys_color_table</emphasis></para>
+
+<para>Таблица стандартных(системных) цветов </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Работа с системой </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a2a911b053a2f8359ac4cc39226904fd6"/><section>
+    <title>CheckEvent()</title>
+<indexterm><primary>CheckEvent</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>CheckEvent</secondary></indexterm>
+<para><computeroutput>unsigned int KolibriLib::OS::CheckEvent ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Проверить пришёл ли ли ивент </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Ивен </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ae46a6edced337a9b167bc5b9014360c8"/><section>
+    <title>Exec()</title>
+<indexterm><primary>Exec</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>Exec</secondary></indexterm>
+<para><computeroutput>int KolibriLib::OS::Exec (std::string AppName, std::string args)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Запустить программу </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>AppName</entry><entry>
+<para>путь до программы + имя </para>
+</entry>
+                            </row>
+                            <row>
+<entry>args</entry><entry>
+<para>аргументы </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>то что возвращает сама программа, -1 если исполняемы файл не найден </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a290440d19cd1d31121c3dc073bcc88da"/><section>
+    <title>GetSystemColors()</title>
+<indexterm><primary>GetSystemColors</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>GetSystemColors</secondary></indexterm>
+<para><computeroutput>ksys_colors_table_t KolibriLib::OS::GetSystemColors ( )</computeroutput></para><para>
+
+<para>Получить системные цвета </para>
+</para>
+<section xml:id="_namespace_kolibri_lib_1_1_o_s_1Функция">
+<title><title>изменяет переменную <link linkend="_namespace_kolibri_lib_1_1_o_s_1a7a87d62172d754e74d0e4bc13af4f78b">sys_color_table</link></title></title>
+
+<para><formalpara><title>Returns</title>
+
+<para>Таблица системных цветов </para>
+</formalpara>
+</para>
+</section>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a1744275834206a63ba18a572f5ddd6bb"/><section>
+    <title>GetTime()</title>
+<indexterm><primary>GetTime</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>GetTime</secondary></indexterm>
+<para><computeroutput>ksys_time_t KolibriLib::OS::GetTime ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить системное время </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a36e7e8f9582ee5fbe840ef3aea3f29e0"/><section>
+    <title>WaitEvent()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>WaitEvent</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>WaitEvent</secondary></indexterm>
+<para><computeroutput>unsigned int KolibriLib::OS::WaitEvent ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Ждать ивента </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Ивент </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ac7a675236b8f0c78e30056cd67c9527d"/><section>
+    <title>WaitEvent()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>WaitEvent</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>WaitEvent</secondary></indexterm>
+<para><computeroutput>unsigned int KolibriLib::OS::WaitEvent (uint32_t TimeOut)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Ждать ивента </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Таймаут</entry><entry>
+<para>(в 1/100 секунды) </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Ивент </para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

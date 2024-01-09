@@ -14,45 +14,45 @@
 \DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{namespace\ }Thread}
 \DoxyCodeLine{00012\ \ \ \ \ \{}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a362d0bda7425ff79a1a5346d5eacdd7e}{CreateThread}}(\textcolor{keywordtype}{void}\ *ThreadEntry,\ \textcolor{keywordtype}{unsigned}\ ThreadStackSize\ =\ 1024)}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ th\_stack\ =\ malloc(ThreadStackSize);}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!th\_stack)\ \textcolor{comment}{//\ \ \ \ Если\ памяти\ не\ было\ выделенно}}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Memory\ allocation\ error\ for\ thread!"{}});}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ TID\ =\ \_ksys\_create\_thread(ThreadEntry,\ th\_stack\ +\ ThreadStackSize);}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TID\ ==\ -\/1)\ \textcolor{comment}{//\ \ \ Если\ поток\ небыл\ создан}}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Unable\ to\ create\ a\ new\ thread!"{}});}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TID;}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TID;}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9}{TerminateThread}}(\textcolor{keywordtype}{int}\ PID)}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\textcolor{stringliteral}{"{}=a"{}}(a)}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(18),\ \textcolor{stringliteral}{"{}c"{}}(PID)}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!a)}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00056\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Thread}}
-\DoxyCodeLine{00057\ \ \ \ \ }
-\DoxyCodeLine{00058\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a504b365c1fa5fbca062c0ac38c550bd8}{CreateThread}}(\textcolor{keywordtype}{void}\ *ThreadEntry,\ \textcolor{keywordtype}{unsigned}\ ThreadStackSize\ =\ 2048)}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ th\_stack\ =\ malloc(ThreadStackSize);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!th\_stack)\ \textcolor{comment}{//\ \ \ \ Если\ памяти\ не\ было\ выделенно}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Memory\ allocation\ error\ for\ thread!"{}});}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ TID\ =\ \_ksys\_create\_thread(ThreadEntry,\ th\_stack\ +\ ThreadStackSize);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TID\ ==\ -\/1)\ \textcolor{comment}{//\ \ \ Если\ поток\ небыл\ создан}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Unable\ to\ create\ a\ new\ thread!"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TID;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TID;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9}{TerminateThread}}(\textcolor{keywordtype}{int}\ PID)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\textcolor{stringliteral}{"{}=a"{}}(a)}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(18),\ \textcolor{stringliteral}{"{}c"{}}(PID)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!a)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Thread}}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
 \DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_THREAD\_H\_\_}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_THREAD\_H\_\_}}
 
 \end{DoxyCode}

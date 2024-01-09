@@ -1,5 +1,5 @@
 #NAME
-EXECUTABLE = childWindow
+EXECUTABLE = buttons
 
 
 export $PATH = C:/MinGW/msys/1.0/home/autobuild/tools/win32/bin/
@@ -19,7 +19,7 @@ LIBPATH = -L $(SDK_DIR)/lib -L C:/MinGW/msys/1.0/home/autobuild/tools/win32/ming
 
 #Flags
 CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=gnu++11
-LDFLAGS = -static -S -Tapp-dynamic.lds --image-base 0 -O2
+LDFLAGS = -static -S -Tapp-dynamic.lds --image-base 0 -O3
 
 
 SOURCES = $(EXECUTABLE).cpp 

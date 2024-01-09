@@ -2,7 +2,6 @@
 #define __KOLIBRILIB_H__
 
 
-
 #include <kolibriLib/base.hpp>
 #include <kolibriLib/window.hpp>
 #include <kolibriLib/screen.hpp>
@@ -11,6 +10,6 @@
 #include <kolibriLib/UI.hpp>
 #include <kolibriLib/graphic.hpp>
 #include <kolibriLib/network.hpp>
-#include <kolibriLib/input.hpp>
+#include <kolibriLib/sound.hpp>
 
 #endif // __KOLIBRILIB_H__

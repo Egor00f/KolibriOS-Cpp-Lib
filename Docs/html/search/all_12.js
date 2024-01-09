@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['savesettings_0',['SaveSettings',['../namespace_kolibri_lib_1_1_settings.html#ae5c03677723f30071d716c1f572967c8',1,'KolibriLib::Settings']]],
-  ['settingsparam_1',['SettingsParam',['../struct_kolibri_lib_1_1_settings_1_1_settings_param.html',1,'KolibriLib::Settings']]],
-  ['setwindowcolors_2',['SetWindowColors',['../class_kolibri_lib_1_1window_1_1_window.html#a5d16422e16dccc73c8d0c3be4cab3a71',1,'KolibriLib::window::Window']]],
-  ['socettypes_3',['SocetTypes',['../namespace_kolibri_lib_1_1_network_1_1_socket.html#abf3ecf28ecab8dd413c32b3fc81ab64f',1,'KolibriLib::Network::Socket']]],
-  ['startredraw_4',['StartRedraw',['../class_kolibri_lib_1_1window_1_1_window.html#a5bb8bddc3ee73903c934235d66eb04b6',1,'KolibriLib::window::Window']]],
-  ['sys_5fcolor_5ftable_5',['sys_color_table',['../namespace_kolibri_lib_1_1_o_s.html#a7a87d62172d754e74d0e4bc13af4f78b',1,'KolibriLib::OS']]]
+  ['rename_0',['Rename',['../namespace_kolibri_lib_1_1filesystem.html#a0ab71bb2f7b4e2669a8e0a2457778b5b',1,'KolibriLib::filesystem']]],
+  ['render_1',['render',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#ae9169f54c392e254efdbc13dff116bd7',1,'KolibriLib::UI::text::TextLabel::render()'],['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a88aa9763955c5febf86c5e930968d327',1,'KolibriLib::UI::buttons::Button::render()'],['../class_kolibri_lib_1_1_u_i_1_1_form.html#a53cc56c3043d85ade5dd0b7e0081b3b1',1,'KolibriLib::UI::Form::render()']]],
+  ['render_2',['Render',['../class_kolibri_lib_1_1window_1_1_window.html#ae306d4a030618ce8ca8671269b91c062',1,'KolibriLib::window::Window']]],
+  ['render_20не_20пыталась_20создать_20кнопку_20так_20как_20в_20неактивном_20состоянии_20_5fid_20освобождается_20и_20его_20может_20занять_20другая_20кнопка_3',['необходимо для того чтобы функция render не пыталась создать кнопку, так как в неактивном состоянии #_id освобождается и его может занять другая кнопка',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#Занчение',1,'']]],
+  ['reset_4',['Reset',['../class_kolibri_lib_1_1_network_1_1_devices_1_1_net_device.html#afbede3a62fae6f0b1b99667610c5a26d',1,'KolibriLib::Network::Devices::NetDevice']]],
+  ['resetdevice_5',['ResetDevice',['../namespace_kolibri_lib_1_1_network_1_1_devices.html#a0e8110173f5898f8e33e9b751cf63414',1,'KolibriLib::Network::Devices']]],
+  ['return_20exitcode_6',['main(){/*...*&amp;zwj;/ return EXITCODE; }',['../namespace_kolibri_lib.html#int',1,'']]]
 ];

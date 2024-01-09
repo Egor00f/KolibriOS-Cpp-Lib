@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['settingsparam_0',['SettingsParam',['../struct_kolibri_lib_1_1_settings_1_1_settings_param.html',1,'KolibriLib::Settings']]]
+  ['netdevice_0',['NetDevice',['../class_kolibri_lib_1_1_network_1_1_devices_1_1_net_device.html',1,'KolibriLib::Network::Devices']]]
 ];

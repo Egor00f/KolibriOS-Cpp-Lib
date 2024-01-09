@@ -102,9 +102,9 @@ $(function(){initNavTree('namespace_kolibri_lib_1_1_thread.html',''); initResiza
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a362d0bda7425ff79a1a5346d5eacdd7e" id="r_a362d0bda7425ff79a1a5346d5eacdd7e"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a362d0bda7425ff79a1a5346d5eacdd7e">CreateThread</a> (void *ThreadEntry, unsigned ThreadStackSize=1024)</td></tr>
-<tr class="memdesc:a362d0bda7425ff79a1a5346d5eacdd7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создать поток  <br /></td></tr>
-<tr class="separator:a362d0bda7425ff79a1a5346d5eacdd7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504b365c1fa5fbca062c0ac38c550bd8" id="r_a504b365c1fa5fbca062c0ac38c550bd8"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a504b365c1fa5fbca062c0ac38c550bd8">CreateThread</a> (void *ThreadEntry, unsigned ThreadStackSize=2048)</td></tr>
+<tr class="memdesc:a504b365c1fa5fbca062c0ac38c550bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создать поток  <br /></td></tr>
+<tr class="separator:a504b365c1fa5fbca062c0ac38c550bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6931d058e76a34196fb9f726db9d91f9" id="r_a6931d058e76a34196fb9f726db9d91f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6931d058e76a34196fb9f726db9d91f9">TerminateThread</a> (int PID)</td></tr>
 <tr class="memdesc:a6931d058e76a34196fb9f726db9d91f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Завершить процесс/поток  <br /></td></tr>
 <tr class="separator:a6931d058e76a34196fb9f726db9d91f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,8 +112,8 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Работа с потоками </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a362d0bda7425ff79a1a5346d5eacdd7e" name="a362d0bda7425ff79a1a5346d5eacdd7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a362d0bda7425ff79a1a5346d5eacdd7e">&#9670;&#160;</a></span>CreateThread()</h2>
+<a id="a504b365c1fa5fbca062c0ac38c550bd8" name="a504b365c1fa5fbca062c0ac38c550bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a504b365c1fa5fbca062c0ac38c550bd8">&#9670;&#160;</a></span>CreateThread()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -126,7 +126,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>ThreadStackSize</em><span class="paramdefsep"> = </span><span class="paramdefval">1024</span></span>&#160;)</td>
+          <td class="paramtype">unsigned</td>          <td class="paramname"><span class="paramname"><em>ThreadStackSize</em><span class="paramdefsep"> = </span><span class="paramdefval">2048</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -140,6 +140,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>ID потока </dd></dl>
+<h4><a class="anchor" id="Сколько"></a>
+нужно выделять памяти для стека потока? Я не знаю</h4>
 
 </div>
 </div>
@@ -165,7 +167,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true если успешно, инач false </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true если успешно, иначе false </dd></dl>
 <h4><a class="anchor" id="Нельзя"></a>
 завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс</h4>
 

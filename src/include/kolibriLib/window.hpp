@@ -64,12 +64,19 @@ namespace KolibriLib
 			/// @brief Стиль окна
 			int _style;
 
+			// Я тут теряюсь, использовать std::vector или std::list ?
+
 			/// @brief Список всех кнопок этого окна
 			std::vector<ButtonListElement> _Buttons;
+			
 			/// @brief список всех TextLabel
 			std::vector<TextListElement> _Texts;
 
+			/// @brief Список всех форм
 			std::vector<FormListElement> _Forms;
+			/// @brief Номер активной формы
+			/// @paragraph Активной может быть только одна форма
+			unsigned ActiveForm = 0;
 
 			/// @brief Добавить в список новую кнопку
 			/// @param btn кнопка
@@ -182,13 +189,35 @@ namespace KolibriLib
 			void DeleteText(unsigned id);
 
 			/// @brief Создать форму
+			/// @param coord координат формы
+			/// @param size Рамеры формы
+			/// @return номер в списке @link _Forms
+			unsigned CreateForm(point coord = {0, 0}, point size = {32, 16}, std::string BackgroundText = " ", ksys_color_t FormColor = OS::sys_color_table.work_text, ksys_color_t BackgroundTextColor = OS::sys_color_table.work_button_text);
+
+			/// @brief Создать форму
 			/// @param form форма
 			/// @return номер в списке @link _Forms
 			unsigned CreateForm(UI::Form form);
 
+			/// @brief Получить текст из формы
+			/// @param form номер формы
+			/// @return текст введённый пользователем в эту форму
+			std::string GetTextFromForm(unsigned form);
+
 			/// @brief Удалить форму
 			/// @param id номер формы в списке @link _Forms
 			void DeleteForm(unsigned id);
+
+			/// @brief Обработчик форм
+			void FormHandler();
+
+			/// @brief Обработчик элементов
+			/// @return Ивент окна
+			unsigned Handler();
+
+			/// @brief Получить нажатую кнопку
+			/// @return Номер нажатой кнопки
+			unsigned GetPressedButton();
 		};
 
 		unsigned Window::AddNewButton(UI::buttons::Button btn)
@@ -198,6 +227,7 @@ namespace KolibriLib
 				if(!_Buttons[i].use)
 				{
 					_Buttons[i].btn = btn;
+					_Buttons[i].btn.Activate();
 					_Buttons[i].use = true;
 					return i;
 				}
@@ -226,7 +256,7 @@ namespace KolibriLib
 			_Texts.push_back(a);
 		}
 
-        inline unsigned Window::AddNewForm(UI::Form form)
+        unsigned Window::AddNewForm(UI::Form form)
         {
 			for (unsigned i = 0; i < _Forms.size(); i++)
 			{
@@ -258,7 +288,11 @@ namespace KolibriLib
 				_colors = colors;
 			}
 			_MARGIN = Margin;
+			_Texts.reserve(8 * sizeof(TextListElement));
+			_Buttons.reserve(8 * sizeof(ButtonListElement));
+			_Forms.reserve(8 * sizeof(FormListElement));
 			DrawWindow(DefaultWindowCoord);
+			Render();
 		}
 
 		Window::~Window()
@@ -345,7 +379,7 @@ namespace KolibriLib
             return _size;
         }
 
-        unsigned KolibriLib::window::Window::CreateButton(point coord, point size, std::string Text, unsigned margin, bool UseWindowColors, ksys_color_t color, ksys_color_t TextColor)
+        unsigned Window::CreateButton(point coord, point size, std::string Text, unsigned margin, bool UseWindowColors, ksys_color_t color, ksys_color_t TextColor)
 		{
 			if(UseWindowColors)
 			{
@@ -353,7 +387,9 @@ namespace KolibriLib
 				TextColor	= _colors.work_button_text;
 			}
 			UI::buttons::Button btn(coord, size, Text, margin, color, TextColor);
-			return AddNewButton(btn);
+			unsigned a = AddNewButton(btn);
+			btn.Deactivate();
+			return a;
 		}
 
         unsigned Window::CreateButton(UI::buttons::Button btn)
@@ -361,7 +397,7 @@ namespace KolibriLib
             return AddNewButton(btn);
         }
 
-        void KolibriLib::window::Window::DeleteButton(unsigned id)
+        void Window::DeleteButton(unsigned id)
         {
 			_Buttons[id].btn.Deactivate();
 			_Buttons[id].use = false;
@@ -387,20 +423,89 @@ namespace KolibriLib
         {
 			_Texts[id].use = false;
         }
-		
-        unsigned Window::CreateForm(UI::Form form)
-        {
+
+		unsigned Window::CreateForm (point coord, point size, std::string BackgroundText, ksys_color_t FormColor, ksys_color_t BackgroundTextColor)
+		{
+			UI::Form form (coord, size, BackgroundText, FormColor, BackgroundTextColor, _MARGIN);
+			return AddNewForm (form);
+		}
+
+		unsigned Window::CreateForm (UI::Form form)
+		{
             return AddNewForm(form);
         }
+
+        std::string Window::GetTextFromForm(unsigned form)
+        {
+            return _Forms[form].frm.GetInput();
+        }
+		
         void Window::DeleteForm(unsigned id)
         {
 			_Forms[id].use = false;
         }
-    }
+
+        void Window::FormHandler()
+        {
+			for (unsigned i = 0; i < _Forms.size(); i++)
+			{
+				if (_Forms[i].use) // Если форма используется
+				{
+					if (_Forms[i].frm.ButtonHandler())
+					{
+						ActiveForm = i;
+					}
+				}
+			}
+			_Forms[ActiveForm].frm.Handler();
+		}
+
+        unsigned Window::Handler()
+		{
+			unsigned Event = OS::WaitEvent(); // Ждём пока не появится какой либо ивент
+
+			switch (Event)
+			{
+			case KSYS_EVENT_REDRAW:
+				Render();
+				break;
+			case KSYS_EVENT_BUTTON:
+				for (unsigned i = 0; i < _Buttons.size(); i++)
+				{
+					if (_Buttons[i].use) // Если кнопка используется
+					{
+						_Buttons[i].btn.Handler();
+					}
+				}
+				FormHandler();
+
+
+				
+				unsigned button = KolibriLib::UI::buttons::GetPressedButton();
+				if (button == 1)
+				{
+					EXIT = true;
+					EXITCODE = 0;
+				}
+				
+				break;
+			}
+			return Event;
+		}
+		unsigned Window::GetPressedButton()
+		{
+			for(unsigned i = 0; i < _Buttons.size(); i++)
+			{
+				if(_Buttons[i].btn.GetStatus())
+				{
+					return i;
+				}
+			}
+			return _Buttons.size();
+		}
+	}
 
     //=============================================================================================================================================================
-
-	
 
 }
 

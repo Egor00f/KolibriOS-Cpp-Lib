@@ -37,7 +37,7 @@ namespace KolibriLib
 
             point WindowSize = window.GetSize();
 
-            window.CreateText({window.GetMargin(), WindowSize.y / 2 }, {WindowSize.x, WindowSize.y / 2}, _Message);
+            window.CreateText({0,0}, window.GetSize(), _Message);
 
             while (true)
             {
@@ -63,7 +63,7 @@ namespace KolibriLib
         /// \brief Создать окно с сообщением
         /// \param Message сообщение
         /// \param Title Заголовок
-        void MessageBox(std::string _Message, std::string _Title)
+        void MessageBox(const std::string& _Message, const std::string& _Title)
         {
             while (true)
             {
@@ -75,8 +75,7 @@ namespace KolibriLib
                     Title = _Title;
                     Used = true;
 
-                    
-                    Thread::CreateThread((void(*))RenderMessageWindow, 2048);
+                    Thread::CreateThread((void(*))RenderMessageWindow, 4096);
 
                     Used = false; // Я всё, заКОНЧИЛ. Свободно!
                     return;
@@ -90,7 +89,7 @@ namespace KolibriLib
 
         /// \brief окошко с ошибкой
         /// \param ErrorMessage сообщение об ощибке
-        inline void ErrorWindow(std::string ErrorMessage)
+        inline void ErrorWindow(const std::string& ErrorMessage)
         {
             MessageBox(ErrorMessage, "Error!");
         }

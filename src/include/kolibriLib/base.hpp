@@ -15,7 +15,11 @@
 /// \author Egor00f
 namespace KolibriLib
 {
-    const int AAANUMBER = 65536;
+    /// @brief Сообщение всем функциям что нужно завершать работу
+    bool EXIT = false;
+    /// @brief Код ошибки
+    /// @paragraph int main(){/*...*/ return EXITCODE; }
+    int EXITCODE = 0;
 
     /// \brief Просто точка
     struct point
@@ -23,12 +27,7 @@ namespace KolibriLib
         unsigned x;
         unsigned y;
     };
-
-    /// @brief Путь по которому сохраняются настройки приложений
-    const std::string ConfigFolder = "/sys/etc";
-
-    
-
+  
     /// @brief Работа с системой
     namespace OS
     {
@@ -36,6 +35,9 @@ namespace KolibriLib
         /// \brief Таблица стандартных(системных) цветов
         ksys_colors_table_t sys_color_table;
 
+        /// @brief Получить системные цвета
+        /// @paragraph Функция изменяет переменную @link sys_color_table
+        /// @return Таблица системных цветов
         ksys_colors_table_t GetSystemColors()
         {
             _ksys_get_system_colors(&sys_color_table);
@@ -82,22 +84,13 @@ namespace KolibriLib
             }
         }
 
+        /// @brief Получить системное время
+        /// @return 
         inline ksys_time_t GetTime()
         {
             return _ksys_get_time();
         }
 
-        /* inline char GetKey()
-        {
-            uint32_t val;
-            asm_inline(
-                "int $0x40"
-                : "=a"(val)
-                : "a"(2)
-            );
-
-            return;
-        } */
 
     }
 
@@ -108,11 +101,19 @@ namespace KolibriLib
         _ksys_delay(time);
     }
 
-    /// @brief инициализация
+    /// @brief Инициализация
+    /// @paragraph Просто не заморачиваяся, и вызывай в начале программы
     void init()
     {
         _ksys_set_event_mask(0x07);
         OS::GetSystemColors();
+    }
+
+    /// @brief Проверить какая клавиша клавиатуры нажата
+    /// @return код(char) нажатой клавишы клавиатуры
+    char CheckKeyboard()
+    {
+        return _ksys_get_key().code;
     }
 }
 

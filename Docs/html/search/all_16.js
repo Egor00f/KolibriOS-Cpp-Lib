@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['аналог_20стандартной_20библиотеки_20filesystem_20br_0',['пространство имён этакий аналог стандартной библиотеки &lt;filesystem&gt;  &lt;br&gt;',['../namespace_kolibri_lib_1_1filesystem.html#Это',1,'']]],
-  ['а_20её_20link_20_5fid_20становится_20не_20действительным_1',['Деактивированном состоянии кнопка &quot;Не нажимается&quot;, а её @link _id становится не действительным',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#В',1,'']]]
+  ['wait_0',['Wait',['../namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6',1,'KolibriLib']]],
+  ['waitevent_1',['WaitEvent',['../namespace_kolibri_lib_1_1_o_s.html#a36e7e8f9582ee5fbe840ef3aea3f29e0',1,'KolibriLib::OS::WaitEvent()'],['../namespace_kolibri_lib_1_1_o_s.html#ac7a675236b8f0c78e30056cd67c9527d',1,'KolibriLib::OS::WaitEvent(uint32_t TimeOut)']]],
+  ['window_2',['Window',['../class_kolibri_lib_1_1window_1_1_window.html',1,'KolibriLib::window::Window'],['../class_kolibri_lib_1_1window_1_1_window.html#a0edf9d101192477f6c8b393cd91d782a',1,'KolibriLib::window::Window::Window()']]]
 ];

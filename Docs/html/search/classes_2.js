@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point_0',['point',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib']]]
+  ['image_0',['Image',['../class_kolibri_lib_1_1graphic_1_1_image.html',1,'KolibriLib::graphic']]]
 ];
