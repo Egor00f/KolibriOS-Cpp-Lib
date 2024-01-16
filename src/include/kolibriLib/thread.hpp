@@ -45,15 +45,44 @@ namespace KolibriLib
                 :"=a"(a)
                 :"a"(18), "b"(18), "c"(PID)
             );
-            if(!a)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return !a;
         }
+
+        /*Потом когданибудь это быдет доделанно
+        template <class BuffType>
+        class futex
+        {
+        private:
+            uint32_t _discriptor;
+            BuffType buffer;
+        public:
+            futex();
+            ~futex();
+            BuffType GetBuffer();
+            void SetBuffer(BuffType buff);
+        };
+        
+        futex::futex()
+        {
+            void *a = malloc(4);
+            asm_inline(
+                "int $0x40"
+                :"=a"(_discriptor)
+                :"a"(77), "b"(0)
+            );
+            free(a);
+        }
+        
+        futex::~futex()
+        {
+            int a;
+            asm_inline(
+                "int $0x40"
+                :"=a"(a)
+                :"a"(77), "b"(1)
+            );
+        }*/
+        
     } // namespace Thread
     
 } // namespace KolibriLib

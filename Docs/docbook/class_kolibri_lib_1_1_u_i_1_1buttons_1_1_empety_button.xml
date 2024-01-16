@@ -1,0 +1,316 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button" xml:lang="en-US">
+<title>KolibriLib::UI::buttons::EmpetyButton Class Reference</title>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary></indexterm>
+<para>
+
+<para>Класс для работы с кнопками </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;button.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for KolibriLib::UI::buttons::EmpetyButton:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1ac96194b7086ee6f74f3d4c7d8ae251a9">EmpetyButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;size={20, 20}, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>, ksys_color_t ButtonColor=OS::sys_color_table.work_button)</para>
+
+<para>Это конструктор </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a0c2adb3d65c1e1d33125373204110449">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;size={0, 0}, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>, ksys_color_t ButtonColor=OS::sys_color_table.work_button)</para>
+
+<para>инициализировать параметры </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a520776bf24e1a1a3e29c560080749a03"/>virtual void <emphasis role="strong">render</emphasis> ()</para>
+
+<para>Отрисовать кнопку </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1aa953cf23f7e73fca5c59df550d232171">Handler</link> ()</para>
+
+<para>Обработчик кнопки </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1aa1a92d9238434c515074e002d1fc2f14">GetStatus</link> ()</para>
+
+<para>Получить сосояние кнопки на момент последней обработки </para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a16e62f0ecc7101d9875b8e4ecb65686d">GetId</link> ()</para>
+
+<para>Получить номер кнопки </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a9a67d6564916148ddcfca9cc0eed8bd0">Deactivate</link> ()</para>
+
+<para>Деактивировать кнопку </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a7757ac4b54b524ae60e8d899e93c7c00">Activate</link> ()</para>
+
+<para>Активировать кнопку </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1aca598d85f8310e3ee7d97fa636633cd2"/>void <emphasis role="strong">SetColor</emphasis> (ksys_color_t NewColor)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a866db281349aa56c83f01db341ba1aad"/>void <emphasis role="strong">SetText</emphasis> (std::string NewText)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">UIElement</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; size={16, 16}, ksys_color_t MainColor=OS::sys_color_table.frame_area, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
+
+<para>Проверяет находится ли курсор мыши на этом элементе </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1d941edd25bd9e9f76abefc38b0c85e4">SetSize</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;NewSize)</para>
+
+<para>Изменить размер текстовой метки </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1bd0f7112cbb4bf5e664bf8b96af3864">SetCoord</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;NewCoords)</para>
+
+<para>Изменить координаты текстовой метки </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a5e21e6ff47c0c49bc47571c6f06a2ed0">GetSize</link> ()</para>
+
+<para>Получить размер элемента </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a43e21085173be8fa7783925a8b1d5b22">GetCoord</link> ()</para>
+
+<para>Получить координаты элемента </para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <emphasis role="strong">_coord</emphasis></para>
+
+<para>Координаты </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <emphasis role="strong">_size</emphasis></para>
+
+<para>Размер </para>
+</listitem>
+            <listitem><para>ksys_color_t <emphasis role="strong">_MainColor</emphasis></para>
+</listitem>
+            <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
+
+<para>Отступы </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Класс для работы с кнопками </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1ac96194b7086ee6f74f3d4c7d8ae251a9"/><section>
+    <title>EmpetyButton()</title>
+<indexterm><primary>EmpetyButton</primary><secondary>KolibriLib::UI::buttons::EmpetyButton</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary><secondary>EmpetyButton</secondary></indexterm>
+<para><computeroutput>KolibriLib::UI::buttons::EmpetyButton::EmpetyButton (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp; size = <computeroutput>{20,&#160;20}</computeroutput>
+, unsigned Margin = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link></computeroutput>
+, ksys_color_t ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+)</computeroutput></para><para>
+
+<para>Это конструктор </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>координата </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>размер </para>
+</entry>
+                            </row>
+                            <row>
+<entry>text</entry><entry>
+<para>текст </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Margin</entry><entry>
+<para>отступы текста от границ </para>
+</entry>
+                            </row>
+                            <row>
+<entry>ButtonColor</entry><entry>
+<para>цвет кнопки </para>
+</entry>
+                            </row>
+                            <row>
+<entry>TextColor</entry><entry>
+<para>цвет текста </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a7757ac4b54b524ae60e8d899e93c7c00"/><section>
+    <title>Activate()</title>
+<indexterm><primary>Activate</primary><secondary>KolibriLib::UI::buttons::EmpetyButton</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary><secondary>Activate</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::buttons::EmpetyButton::Activate ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Активировать кнопку </para>
+</para>
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1Противоположна">
+<title><title>функции <link linkend="_">возвращает кнопку в рабочее состояние</link></title></title>
+</section>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a9a67d6564916148ddcfca9cc0eed8bd0"/><section>
+    <title>Deactivate()</title>
+<indexterm><primary>Deactivate</primary><secondary>KolibriLib::UI::buttons::EmpetyButton</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary><secondary>Deactivate</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::buttons::EmpetyButton::Deactivate ( )</computeroutput></para><para>
+
+<para>Деактивировать кнопку </para>
+</para>
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1Эта">
+<title><title>функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок</title></title>
+</section>
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1В">
+<title><title>Деактивированном состоянии кнопка &quot;Не нажимается&quot;, а её <link linkend="_a5daf5210102a55a67743251170dd92c5">становится не действительным</link></title></title>
+</section>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a16e62f0ecc7101d9875b8e4ecb65686d"/><section>
+    <title>GetId()</title>
+<indexterm><primary>GetId</primary><secondary>KolibriLib::UI::buttons::EmpetyButton</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary><secondary>GetId</secondary></indexterm>
+<para><computeroutput>unsigned KolibriLib::UI::buttons::EmpetyButton::GetId ( )</computeroutput></para><para>
+
+<para>Получить номер кнопки </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><link linkend="_a5daf5210102a55a67743251170dd92c5">_id</link></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1aa1a92d9238434c515074e002d1fc2f14"/><section>
+    <title>GetStatus()</title>
+<indexterm><primary>GetStatus</primary><secondary>KolibriLib::UI::buttons::EmpetyButton</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary><secondary>GetStatus</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::UI::buttons::EmpetyButton::GetStatus ( )</computeroutput></para><para>
+
+<para>Получить сосояние кнопки на момент последней обработки </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><link linkend="_a89541aa4250fa7fac1d21f9b9d5bdab4">_status</link></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1aa953cf23f7e73fca5c59df550d232171"/><section>
+    <title>Handler()</title>
+<indexterm><primary>Handler</primary><secondary>KolibriLib::UI::buttons::EmpetyButton</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary><secondary>Handler</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::UI::buttons::EmpetyButton::Handler ( )</computeroutput></para><para>
+
+<para>Обработчик кнопки </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Состояние кнопки(Нажата/Ненажата) </para>
+</formalpara>
+</para>
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1устанавливает">
+<title><title>переменную <link linkend="_a89541aa4250fa7fac1d21f9b9d5bdab4">в true если эта кнопка нажата, иначе false</link></title></title>
+</section>
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1Эту">
+<title><title>функцию нужно вызывать в цикле, чтобы кнопка работала</title></title>
+</section>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a0c2adb3d65c1e1d33125373204110449"/><section>
+    <title>init()</title>
+<indexterm><primary>init</primary><secondary>KolibriLib::UI::buttons::EmpetyButton</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::EmpetyButton</primary><secondary>init</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::buttons::EmpetyButton::init (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp; size = <computeroutput>{0,&#160;0}</computeroutput>
+, unsigned Margin = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link></computeroutput>
+, ksys_color_t ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+)</computeroutput></para><para>
+
+<para>инициализировать параметры </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>координата </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>размер </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Content</entry><entry>
+<para>текст </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Margin</entry><entry>
+<para>отступы текста от границ </para>
+</entry>
+                            </row>
+                            <row>
+<entry>BackgroundColor</entry><entry>
+<para>цвет кнопки </para>
+</entry>
+                            </row>
+                            <row>
+<entry>TextColor</entry><entry>
+<para>цвет текста </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp</section>
+</section>

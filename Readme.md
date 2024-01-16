@@ -6,22 +6,23 @@ KolibriOS C++ Lib
 Как использовать это
 ---
 
-Для использования этой библиотеки необходимо добавить в ваш CMakeLists.txt
+Подключить заголовочный файл:
+```
+#include <KolibriLib.hpp>
+```
+Добавть в ваш Makefile:
+```
+KOLIBRILIB_INCLUDE_PATH = F:/KolibriOs/KolibriOS-Cpp-Lib/src/include
+
+KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH)
+
+INCLUDES += $(KOLIBRILIB_INCLUDE)
 
 ```
-include(PATH_TO_THIS_LIB/include.cmake)
-```
+KOLIBRILIB_INCLUDE_PATH нужно отредактировать
 
-Или если вы используете Makefile достаточно добавить в INCLUDES 
-```
--I /PATH_TO_THIS_LIB/include
-```
+Примеры использования лежат в src/examples/
 
-подробнее в /Docs
 
-Сборка
----
-собрать примеры можно командой:
-```
-cmake .
-```
+
+Описания функций и классов в Docs/html

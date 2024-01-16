@@ -4,6 +4,8 @@ using namespace KolibriLib;
 
 
 
+
+
 int main()
 {
 
@@ -12,6 +14,8 @@ int main()
     window::Window window("Main Window", window::DefaultWindowSize);
 
     unsigned ButtonID = window.CreateButton({64, 64}, {100, 64}, "Button");
+
+    window.Render();
 
     while (true)
     {

@@ -16,6 +16,7 @@
 #include "base.hpp"
 #include "window.hpp"
 #include "thread.hpp"
+#include "image.hpp"
 
 namespace KolibriLib
 {
@@ -26,6 +27,10 @@ namespace KolibriLib
         std::string Message, Title;
         // Я вам запрещаю записывать значения в эту переменную
         bool Used = false;
+        /// @brief Тип
+        short type;
+        /// @brief Картинка, ставится в левой части окна
+        UI::Image::img img;
 
         //Функция потока нового окна
         void RenderMessageWindow(void)
@@ -33,27 +38,42 @@ namespace KolibriLib
             std::string _Message    = Message;
             std::string _Title      = Title;
             
-            window::Window window(_Title, {256,128});
+            const point<unsigned> MinWindowSize   = {256, 128};
+            const point<unsigned> ButtonSize      = {64, 48};
 
-            point WindowSize = window.GetSize();
+            window::Window window(_Title, MinWindowSize);
+
+            {
+                unsigned lenght = _Message.length() * 9;
+
+                if (lenght > MinWindowSize.x)               //Окно растягивается если текст длинный
+                {
+                    window.SetSize({lenght, MinWindowSize.y});
+                }
+            }
+
+            window.Render();
+
+            point<unsigned> WindowSize = window.GetSize();
 
             window.CreateText({0,0}, window.GetSize(), _Message);
+            unsigned button = window.CreateButton({window.GetWindowSize().x - WindowSize.x - ButtonSize.x, ButtonSize.y + WindowSize.y }, ButtonSize, "Ok");
 
             while (true)
             {
-                unsigned Event = OS::WaitEvent(); // Ждём пока не появится какой либо ивент
-                switch (Event)
+                unsigned Event = window.Handler(); // Ждём пока не появится какой либо ивент
+
+                if(Event == KSYS_EVENT_BUTTON)
                 {
-                case KSYS_EVENT_REDRAW:
-                    window.Render();
-                    break;
-                case KSYS_EVENT_BUTTON:
-                    unsigned button = UI::buttons::GetPressedButton();
-                    switch (button)
+                    if(button == window.GetPressedButton())
                     {
-                    case 1:                                 //Если нажата кнопка X(та что закрывает окно)
-                        return;
+                        window.~Window();
                     }
+                }
+
+                if(window._Exit)
+                {
+                    window.~Window();
                 }
             }
         }

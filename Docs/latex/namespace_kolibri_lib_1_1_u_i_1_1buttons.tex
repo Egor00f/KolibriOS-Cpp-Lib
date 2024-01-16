@@ -1,0 +1,169 @@
+\doxysection{Kolibri\+Lib\+::UI\+::buttons Namespace Reference}
+\hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons}{}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons}\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+
+
+Работа с кнопками  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data}{Buttons\+Id\+Data}}
+\begin{DoxyCompactList}\small\item\em Служебная структура, нигде не использется кроме \doxylink{}{Buttons\+Id\+List.}\end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button}{Empety\+Button}}
+\begin{DoxyCompactList}\small\item\em Класс для работы с кнопками \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_image_button}{Image\+Button}}
+\begin{DoxyCompactList}\small\item\em Кнопка с картинкой \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_text_button}{Text\+Button}}
+\begin{DoxyCompactList}\small\item\em кнопка с тектсом \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4b8f662229c09234036627695a5e9f3b}{Get\+Free\+Button\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Получить свободный номер id кнопки из списка \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a50f50638d4faadd115e569d5db1e2d1a}{Free\+Button\+Id}} (unsigned id)
+\begin{DoxyCompactList}\small\item\em Освободить номер кнопки \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4516cf225b950017d2810b76d8adee6b}{Get\+Button\+Id}} (unsigned id)
+\begin{DoxyCompactList}\small\item\em Получить id кнопки \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_ad39d8c0320fca3e4e1fb0b9be30ed5e2}{auto\+Define\+Button}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&coords, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&size, ksys\+\_\+color\+\_\+t color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
+\begin{DoxyCompactList}\small\item\em Создать кнопку, автоматически присвоить ей id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a02cf57c54c4e726be71755718333d94e}{Define\+Button}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&coord, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&size, const unsigned \&id, ksys\+\_\+color\+\_\+t color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
+\begin{DoxyCompactList}\small\item\em Создать кнопку, вручную \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_af05bc94ea0e640d8fe6b668d059a065f}{Delete\+Button}} (unsigned id)
+\begin{DoxyCompactList}\small\item\em Удалить кнопу \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_ac7dae354425dc950caccfa1c283cbdd7}{Get\+Pressed\+Button}} ()
+\begin{DoxyCompactList}\small\item\em проверить какая кнопка нажата \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a18062f35048af8e79db3bd593571982b}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a18062f35048af8e79db3bd593571982b} 
+const unsigned {\bfseries Start\+Button\+Id} = 100
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a9c6e2b744b4a5d9cb966928acf61a824}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a9c6e2b744b4a5d9cb966928acf61a824} 
+std\+::vector$<$ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data}{Buttons\+Id\+Data}} $>$ {\bfseries Buttons\+Id\+List}
+\begin{DoxyCompactList}\small\item\em Список idшников кнопок \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Работа с кнопками 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_ad39d8c0320fca3e4e1fb0b9be30ed5e2}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_ad39d8c0320fca3e4e1fb0b9be30ed5e2} 
+\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!autoDefineButton@{autoDefineButton}}
+\index{autoDefineButton@{autoDefineButton}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+\doxysubsubsection{\texorpdfstring{autoDefineButton()}{autoDefineButton()}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::buttons\+::auto\+Define\+Button (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&}]{coords,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&}]{size,  }\item[{ksys\+\_\+color\+\_\+t}]{color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+button} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Создать кнопку, автоматически присвоить ей id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & координаты \\
+\hline
+{\em size} & размер \\
+\hline
+{\em color} & цвет \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id созданной кнопки 
+\end{DoxyReturn}
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a02cf57c54c4e726be71755718333d94e}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a02cf57c54c4e726be71755718333d94e} 
+\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!DefineButton@{DefineButton}}
+\index{DefineButton@{DefineButton}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+\doxysubsubsection{\texorpdfstring{DefineButton()}{DefineButton()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::buttons\+::\+Define\+Button (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&}]{coord,  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&}]{size,  }\item[{const unsigned \&}]{id,  }\item[{ksys\+\_\+color\+\_\+t}]{color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+button} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Создать кнопку, вручную 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & координаты \\
+\hline
+{\em size} & размер \\
+\hline
+{\em id} & idшник кнопки \\
+\hline
+{\em color} & цвет \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_af05bc94ea0e640d8fe6b668d059a065f}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_af05bc94ea0e640d8fe6b668d059a065f} 
+\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!DeleteButton@{DeleteButton}}
+\index{DeleteButton@{DeleteButton}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+\doxysubsubsection{\texorpdfstring{DeleteButton()}{DeleteButton()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::buttons\+::\+Delete\+Button (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Удалить кнопу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id удаляемой кнопки \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a50f50638d4faadd115e569d5db1e2d1a}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a50f50638d4faadd115e569d5db1e2d1a} 
+\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!FreeButtonId@{FreeButtonId}}
+\index{FreeButtonId@{FreeButtonId}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+\doxysubsubsection{\texorpdfstring{FreeButtonId()}{FreeButtonId()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::buttons\+::\+Free\+Button\+Id (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Освободить номер кнопки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & номер номер кнопки из списка \doxylink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a9c6e2b744b4a5d9cb966928acf61a824}{Buttons\+Id\+List}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4516cf225b950017d2810b76d8adee6b}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4516cf225b950017d2810b76d8adee6b} 
+\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!GetButtonId@{GetButtonId}}
+\index{GetButtonId@{GetButtonId}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+\doxysubsubsection{\texorpdfstring{GetButtonId()}{GetButtonId()}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::buttons\+::\+Get\+Button\+Id (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Получить id кнопки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & номер кнопки \\
+\hline
+\end{DoxyParams}
+\hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_id}{}\doxyparagraph{\texorpdfstring{кнопки выдаваемый системой}{кнопки выдаваемый системой}}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_id}
+\begin{DoxyReturn}{Returns}
+Buttons\+Id\+List\mbox{[}id\mbox{]}.ID 
+\end{DoxyReturn}
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4b8f662229c09234036627695a5e9f3b}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4b8f662229c09234036627695a5e9f3b} 
+\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!GetFreeButtonId@{GetFreeButtonId}}
+\index{GetFreeButtonId@{GetFreeButtonId}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+\doxysubsubsection{\texorpdfstring{GetFreeButtonId()}{GetFreeButtonId()}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::buttons\+::\+Get\+Free\+Button\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить свободный номер id кнопки из списка 
+
+\hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_Эта}{}\doxyparagraph{\texorpdfstring{функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок}{функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок}}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_Эта}
+\begin{DoxyReturn}{Returns}
+номер кнопки из списка \doxylink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a9c6e2b744b4a5d9cb966928acf61a824}{Buttons\+Id\+List}
+\end{DoxyReturn}
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_ac7dae354425dc950caccfa1c283cbdd7}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_ac7dae354425dc950caccfa1c283cbdd7} 
+\index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!GetPressedButton@{GetPressedButton}}
+\index{GetPressedButton@{GetPressedButton}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
+\doxysubsubsection{\texorpdfstring{GetPressedButton()}{GetPressedButton()}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::buttons\+::\+Get\+Pressed\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+проверить какая кнопка нажата 
+
+\begin{DoxyReturn}{Returns}
+id нажатой кнопки 
+\end{DoxyReturn}

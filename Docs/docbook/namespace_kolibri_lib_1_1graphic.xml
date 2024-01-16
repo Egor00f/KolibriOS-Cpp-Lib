@@ -1,0 +1,419 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1graphic" xml:lang="en-US">
+<title>KolibriLib::graphic Namespace Reference</title>
+<indexterm><primary>KolibriLib::graphic</primary></indexterm>
+<para>
+
+<para>различные графические примитивы </para>
+ 
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;class POINTTYPE &gt; </para><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1a23a31e01e7612bf6886b98f8e8c30d6f">DrawLine</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp;a, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp;b, const ksys_color_t color=OS::sys_color_table.work_graph)</para>
+
+<para>Нарисовать линию </para>
+</listitem>
+            <listitem><para>template&lt;class POINTTYPE &gt; </para><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1a6ddac6b3fe6be24d6d108a7f93fba6d2">DrawPixel</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp;position, const ksys_color_t color=OS::sys_color_table.work_text)</para>
+
+<para>Закрасить пиксель точку </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1ae59696836b398e1089d2aa3629ca790a">DrawCircle</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp;coord, const unsigned &amp;Radius, const unsigned &amp;detalization=36, ksys_color_t color=OS::sys_color_table.work_graph)</para>
+
+<para>Нарисовать окружность </para>
+</listitem>
+            <listitem><para>template&lt;class POINTTYPE &gt; </para><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1aedeb7812a2a79f296a525414a3f2b534">DrawRectangleFill</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp;position, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp;size, const ksys_color_t &amp;color=OS::sys_color_table.work_graph)</para>
+
+<para>Нарисовать закрашенный прямоугольник </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1ae53059ea41eaf480e653fd13350946c1">DrawCircleFill</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp;coord, const unsigned &amp;Radius, const unsigned &amp;detalization=36, const ksys_color_t &amp;color=OS::sys_color_table.work_graph)</para>
+
+<para>Нарисовать круг(закрашенный) </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1ad550269c01295888847d9c6b13e0eaec">DrawPoint</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;position, const unsigned &amp;Radius, const ksys_color_t &amp;color=OS::sys_color_table.work_graph, bool fill=false)</para>
+
+<para>Нарисовать точку </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1aa56580a05ba331590daf88717b9d8930">DrawRectangleLines</link> (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; a, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; b, ksys_color_t color=OS::sys_color_table.work_graph)</para>
+
+<para>Нарисовать прямоугольник </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1graphic_1a4a957ca5471c80caeaa5e068314392d5">DrawTriangle</link> (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; a, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; b, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; c, ksys_color_t color=OS::sys_color_table.work_graph)</para>
+
+<para>Нарисовать треугольник </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1graphic_1ace7ea55f9067e2922cba542d0e1cad32"/>void <emphasis role="strong">DrawPoint</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp;position, const unsigned &amp;Radius, const ksys_color_t &amp;color, bool fill)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>различные графические примитивы </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1ae59696836b398e1089d2aa3629ca790a"/><section>
+    <title>DrawCircle()</title>
+<indexterm><primary>DrawCircle</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawCircle</secondary></indexterm>
+<para><computeroutput>void KolibriLib::graphic::DrawCircle (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp; coord, const unsigned &amp; Radius, const unsigned &amp; detalization = <computeroutput>36</computeroutput>
+, ksys_color_t color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+)</computeroutput></para><para>
+
+<para>Нарисовать окружность </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>Координаты центра </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Radius</entry><entry>
+<para>радиус окружности </para>
+</entry>
+                            </row>
+                            <row>
+<entry>detalization</entry><entry>
+<para>Детализация прорисовки окружности, кол-во отрезков состовляющих окружность </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<section xml:id="_namespace_kolibri_lib_1_1graphic_1Круг">
+<title><title>рисуется с помошью линий</title></title>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>color</entry><entry>
+<para>Цвет </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1ae53059ea41eaf480e653fd13350946c1"/><section>
+    <title>DrawCircleFill()</title>
+<indexterm><primary>DrawCircleFill</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawCircleFill</secondary></indexterm>
+<para><computeroutput>void KolibriLib::graphic::DrawCircleFill (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp; coord, const unsigned &amp; Radius, const unsigned &amp; detalization = <computeroutput>36</computeroutput>
+, const ksys_color_t &amp; color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+)</computeroutput></para><para>
+
+<para>Нарисовать круг(закрашенный) </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>Координаты центра </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Radius</entry><entry>
+<para>Радиус круга </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>Цвет </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1a23a31e01e7612bf6886b98f8e8c30d6f"/><section>
+    <title>DrawLine()</title>
+<indexterm><primary>DrawLine</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawLine</secondary></indexterm>
+<computeroutput>template&lt;class POINTTYPE &gt; </computeroutput><para><computeroutput>void KolibriLib::graphic::DrawLine (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp; a, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp; b, const ksys_color_t color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Нарисовать линию </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para>точка первая </para>
+</entry>
+                            </row>
+                            <row>
+<entry>b</entry><entry>
+<para>точка вторая </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1a6ddac6b3fe6be24d6d108a7f93fba6d2"/><section>
+    <title>DrawPixel()</title>
+<indexterm><primary>DrawPixel</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawPixel</secondary></indexterm>
+<computeroutput>template&lt;class POINTTYPE &gt; </computeroutput><para><computeroutput>void KolibriLib::graphic::DrawPixel (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp; position, const ksys_color_t color = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Закрасить пиксель точку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>координаты </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>Цвет </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1ad550269c01295888847d9c6b13e0eaec"/><section>
+    <title>DrawPoint()</title>
+<indexterm><primary>DrawPoint</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawPoint</secondary></indexterm>
+<para><computeroutput>void KolibriLib::graphic::DrawPoint (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp; position, const unsigned &amp; Radius, const ksys_color_t &amp; color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+, bool fill = <computeroutput>false</computeroutput>
+)</computeroutput></para><para>
+
+<para>Нарисовать точку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>Координаты </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>Радиус точки в рx </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>Цвет </para>
+</entry>
+                            </row>
+                            <row>
+<entry>fill</entry><entry>
+<para>Закрашенная/Выколотая точка </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<section xml:id="_namespace_kolibri_lib_1_1_o_s_1Функция">
+<title><title>изменяет переменную <link linkend="_">sys_color_table</link></title></title>
+</section>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1aedeb7812a2a79f296a525414a3f2b534"/><section>
+    <title>DrawRectangleFill()</title>
+<indexterm><primary>DrawRectangleFill</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawRectangleFill</secondary></indexterm>
+<computeroutput>template&lt;class POINTTYPE &gt; </computeroutput><para><computeroutput>void KolibriLib::graphic::DrawRectangleFill (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp; position, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; POINTTYPE &gt; &amp; size, const ksys_color_t &amp; color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+)</computeroutput></para><para>
+
+<para>Нарисовать закрашенный прямоугольник </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>position</entry><entry>
+<para>позиция левого верхнего угла </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>Размеры </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>Цвет </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1aa56580a05ba331590daf88717b9d8930"/><section>
+    <title>DrawRectangleLines()</title>
+<indexterm><primary>DrawRectangleLines</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawRectangleLines</secondary></indexterm>
+<para><computeroutput>void KolibriLib::graphic::DrawRectangleLines (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; a, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; b, ksys_color_t color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+)</computeroutput></para><para>
+
+<para>Нарисовать прямоугольник </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para>Точка в левом верхнем углу </para>
+</entry>
+                            </row>
+                            <row>
+<entry>b</entry><entry>
+<para>Точка в правом нижнем углу </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1graphic_1a4a957ca5471c80caeaa5e068314392d5"/><section>
+    <title>DrawTriangle()</title>
+<indexterm><primary>DrawTriangle</primary><secondary>KolibriLib::graphic</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic</primary><secondary>DrawTriangle</secondary></indexterm>
+<para><computeroutput>void KolibriLib::graphic::DrawTriangle (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; a, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; b, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; c, ksys_color_t color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Нарисовать треугольник </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para>первая точка </para>
+</entry>
+                            </row>
+                            <row>
+<entry>b</entry><entry>
+<para>вторая точка </para>
+</entry>
+                            </row>
+                            <row>
+<entry>c</entry><entry>
+<para>третья точка </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>цвет линий </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+</section>

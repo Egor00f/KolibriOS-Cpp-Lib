@@ -6,7 +6,6 @@
 
 #include <string>
 #include <sys/ksys.h>
-#include <sys/dir.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -48,8 +47,10 @@ namespace KolibriLib
         /// @return
         int CreateFile(const std::string& name, const std::string& path)
         {
-            std::string fullPath = path + name;
-            return _ksys_file_create(fullPath.c_str());
+            char *a;
+            strcat(a, path.c_str());
+            strcat(a, name.c_str());
+            return _ksys_file_create(a);
         }
 
 
@@ -82,8 +83,10 @@ namespace KolibriLib
         /// @return
         int Delete(const std::string& name, const std::string& path)
         {
-            std::string fullPath = path + name;
-            return _ksys_file_delete(fullPath.c_str());
+            char *a;
+            strcat(a, path.c_str());
+            strcat(a, name.c_str());
+            return _ksys_file_delete(a);
         }
 
 
@@ -125,11 +128,6 @@ namespace KolibriLib
         inline int Rename(const std::string& OldName, const std::string& NewName)
         {
             return _ksys_file_rename(OldName.c_str(), NewName.c_str());
-        }
-        
-        namespace Dir
-        {
-
         }
 
     }
