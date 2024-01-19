@@ -4,8 +4,11 @@
 #include <string>
 
 #include "UI.hpp"
+#include "graphic.hpp"
 #include "text.hpp"
 #include "button.hpp"
+#include "input.hpp"
+#include "color.hpp"
 
 namespace KolibriLib
 {
@@ -16,7 +19,7 @@ namespace KolibriLib
         {
         private:
             /// @brief Кнопка
-            KolibriLib::UI::buttons::TextButton _butt;
+            buttons::Button _butt;
 
             /// @brief Введённый пользователем текст
             std::string _inputText;
@@ -29,10 +32,12 @@ namespace KolibriLib
             /// \param FormColor цвет рамки формы
             /// \param BackgroundTextColor цвет фонового текста
             /// \param Margin отступы рамки от текста
-            Form(point<unsigned> coord = {0, 0}, point<unsigned> size = {32, 16}, std::string BackgroundText = " ", ksys_color_t FormColor = OS::sys_color_table.work_text, ksys_color_t ButtonTextColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
+            Form(Coord coord = {0, 0}, Size size = {32, 16}, std::string BackgroundText = " ", Color::Color FormColor = OS::sys_color_table.work_text, Color::Color ButtonTextColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
+
+            void init(Coord coord = {0, 0}, Size size = {32, 16}, std::string BackgroundText = " ", Color::Color FormColor = OS::sys_color_table.work_text, Color::Color ButtonTextColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
 
             /// \brief Отрисовать форму
-            void render();
+            void Render();
 
             /// \brief Обработчик
             void Handler();
@@ -45,25 +50,52 @@ namespace KolibriLib
             /// \return @link _inputText (текст который ввели в форму)
             std::string GetInput();
 
+            /// @brief
+            /// @return
+            std::string GetBackgroundText();
+
+            /// @brief
+            /// @return
+            Color::Color GetBackgroundColor();
+
+
             ~Form();
         };
 
-        Form::Form(point<unsigned> coord, point<unsigned> size, std::string BackgroundText, ksys_color_t FormColor, ksys_color_t ButtonTextColor, unsigned Margin) : UIElement(coord, size, FormColor, Margin)
+        Form::Form(Coord coord, Size size, std::string BackgroundText, Color::Color FormColor, Color::Color ButtonTextColor, unsigned Margin) : UIElement(coord, size, FormColor, Margin)
         {
-            _butt.init(coord, size, Margin, ButtonTextColor); //Инициализация кнопки
-            _butt.SetText(BackgroundText);
+            _butt.init(coord, size, " ", Margin, ButtonTextColor); // Инициализация кнопки
+        }
+
+        void Form::init(Coord coord, Size size, std::string BackgroundText, Color::Color FormColor, Color::Color ButtonTextColor, unsigned Margin)
+        {
+            _coord = coord;
+            _size = size;
+            _MainColor = FormColor;
+            _Margin = Margin;
+            _butt.init(coord, size, "BackgroundText", Margin, ButtonTextColor);
+        }
+
+        std::string Form::GetBackgroundText()
+        {
+            return _butt.GetTextLabel();
+        }
+
+        Color::Color Form::GetBackgroundColor()
+        {
+            return _butt.GetColor();
         }
 
         Form::~Form()
         {
-            _butt.~TextButton();
+            _butt.~Button();
         }
 
-        void Form::render()
+        void Form::Render()
         {
-            KolibriLib::graphic::DrawRectangleLines(_coord, {_coord.x + _size.x, _coord.y + _size.y}, _MainColor);
+            graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
 
-            _butt.render();
+            _butt.Render();
         }
 
         std::string Form::GetInput()
@@ -73,7 +105,7 @@ namespace KolibriLib
 
         void Form::Handler()
         {
-            char input = CheckKeyboard();
+            char input = Input::keyboard::CheckKeyboard();
             if (input > 33 && input != 127) // Если введённый символ не является спецсимволом, и это не Delete
             {
                 _inputText.push_back(input);
@@ -95,7 +127,6 @@ namespace KolibriLib
             }
         }
     } // namespace UI
-    
 } // namespace KolibriLib
 
 

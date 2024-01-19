@@ -6,19 +6,18 @@
 
 #include <string>
 #include <vector>
-#include <map>
+
 
 #include <sys/ksys.h>
 
-#include "os.hpp"
+#include "base.hpp"
 #include "mouse.hpp"
+#include "os.hpp"
 #include "windowBase.hpp"
 #include "button.hpp"
-#include "text.hpp"
-#include "form.hpp"
 #include "image.hpp"
-#include "thread.hpp"
-#include "color.hpp"
+#include "checkbox.hpp"
+#include "form.hpp"
 
 namespace KolibriLib
 { //=============================================================================================================================================================
@@ -28,33 +27,32 @@ namespace KolibriLib
 	/// \brief Работа с окном
 	namespace window
 	{
+		
 
-		enum class ElementType
-		{
-			Button,
-			TextLabel,
-			form,
-			image
-		};
-
-		/// @brief Структура хранящая элемент окна,
 		struct Element
 		{
-			/// @brief Тип используемого типа
-			ElementType type;
+			enum class Type
+			{
+				Button,
+				Image,
+				CheckBox,
+				Form,
+				TextLabel
+			};
+
 			union
 			{
 				UI::buttons::Button btn;
 				UI::text::TextLabel txt;
 				UI::Form frm;
+				UI::CheckBox CheckBox;
 				UI::Images::image img;
 			};
-			/// @brief Используется ли этот эелемент
+
+			Type type;
 			bool use;
 
-			/// @brief Конструктор
-			/// @param t Используемый тип
-			Element(ElementType t)
+			Element(Type t)
 			{
 				type = t;
 				use = false;
@@ -63,42 +61,35 @@ namespace KolibriLib
 			{
 				switch (type)
 				{
-				case ElementType::Button:
+				case Element::Type::Button:
 					btn.~Button();
 					break;
-				case ElementType::TextLabel:
+				case Element::Type::CheckBox:
+					CheckBox.~CheckBox();
+				case Element::Type::TextLabel:
 					txt.~TextLabel();
+				case Element::Type::Form:
+					frm.~Form();
+				case Element::Type::Image:
+					img.~image();
 				default:
 					break;
 				}
 			}
 		};
 
-		
-
 		/// @brief Класс для работы с окном
 		class Window
 		{
 		private:
-
-			// Я тут теряюсь, использовать std::vector или std::list ?
-
-			/// @brief Список всех текстовых кнопок этого окна
-			std::vector<Element> _ElementList;
-			
-
 			/// @brief Заголовок окна
 			std::string _title;
 
-			/// @brief Цвета окна
-			ksys_colors_table_t _colors;
-
 			/// @brief Размеры окна
-			point<unsigned> _size;
+			UI::Size _size;
 
-			/// @brief Номер активной формы
-			/// @paragraph Активной может быть только одна форма
-			unsigned ActiveForm = 0;
+			/// @brief Цвета окна
+			Color::ColorsTable _colors;
 
 			/// @brief отступы от края окна
 			unsigned _MARGIN;
@@ -110,36 +101,33 @@ namespace KolibriLib
 			bool _Redraw = false;
 
 			
+
+			/// @brief Список всех кнопок этого окна
+			std::vector<Element> _Elements;
+
 			/// @brief Добавить в список новую кнопку
 			/// @param btn кнопка
-			/// @return номер в списке @link _ElementList
-			unsigned AddNewButton(const UI::buttons::Button& btn);
+			/// @return номер в списке @link _Buttons
+			unsigned AddNewButton(UI::buttons::Button btn);
 
 			/// @brief Добавить в список новую текствую метку
 			/// @param text текстовая метка
-			/// @return номер в списке @link _ElementList
-			unsigned AddNewTextLabel(const UI::text::TextLabel& text);
+			/// @return номер в списке @link _Texts
+			unsigned AddNewTextLabel(UI::text::TextLabel text);
 
 			/// @brief Добавить форму
 			/// @param form Форма
 			/// @return номер в списке @link _Forms
-			unsigned AddNewForm(const UI::Form& form);
+			unsigned AddNewForm(UI::Form form);
 
-			/// @brief Добавить в список изображение
-			unsigned AddNewImage(const UI::Images::image &img);
-
-			public:
-
-			/// @brief Указатель того что нужно заканчивать выполнение потока этого окна
-			bool _Exit;
-
+		public:
 			/// @brief Конструктор
 			/// @param Title Заголовок окна
 			/// @param size Размер окна
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(std::string Title = "Window", point<unsigned> size = DefaultWindowSize, int style = 0x14, ksys_colors_table_t colors = Color::DefaultColorTable, unsigned Margin = 0);
+			Window(std::string Title = "Window", UI::Size size = DefaultWindowSize, int style = 0x14, ksys_colors_table_t colors = Color::DefaultColorTable, unsigned Margin = 0);
 			~Window();
 
 			/// @brief Отрисовать окно
@@ -151,15 +139,11 @@ namespace KolibriLib
 
 			/// @brief Получить размер окна
 			/// @return @link _size
-			point<unsigned> GetSize();
-
-			/// @brief Изменить рамер окна
-			/// @param size новый размер окна
-			void SetSize(point<unsigned> size);
+			UI::Size GetSize();
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
-			void SetWindowColors(const ksys_colors_table_t& colorTable);
+			void SetWindowColors(ksys_colors_table_t colorTable);
 
 			/// @brief Начать перересовку окна
 			/// @paragraph Стирает всё что было нарисованно в окне
@@ -176,12 +160,12 @@ namespace KolibriLib
 			/// @param title титул(текст в заголовке)
 			/// @param color цвет рабочей области
 			/// @param style стиль
-			void DrawWindow(point<unsigned> coord);
+			void DrawWindow(UI::Coord coord = mouse::GetMousePositionOnSreen());
 
 			/// @brief Изменить окно
 			/// @param coord позиция
 			/// @param size размер
-			void ChangeWindow(point<unsigned> coord, point<unsigned> size);
+			void ChangeWindow(UI::Coord coord, UI::Size size);
 
 			/// @brief Изменить заголовок окна
 			/// @param newTitle новый заголовок
@@ -190,41 +174,25 @@ namespace KolibriLib
 			/// @brief Получить размер окна
 			/// @return point.x - ширина окна,
 			/// @return point.y - высота окна
-			point<unsigned> GetWindowSize();
-
-			/// @brief 
-			/// @return 
-			std::string GetTitle();
-
+			UI::Size GetWindowSize();
 
 			/// @brief Создать кнопку
 			/// @param coord координата кнопки
 			/// @param size размеры кнопки
+			/// @param Text текст кнопки
 			/// @param margin Отступы границ кноки от текста
 			/// @param UseWindowColors Использовать ли цвет окна(да/нет)
 			/// @param color Цвет кнопки
 			/// @param TextColor Цвет текста кнопки
 			/// @return номер кнопки в списке @link _Buttons
-			unsigned CreateButton(point<int> coord = {0, 0}, point<unsigned> size = {16, 16}, std::string Text = "Button", unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, ksys_color_t color = OS::sys_color_table.work_button);
-
-			/// @brief Создать кнопку
-			/// @param coord координата кнопки
-			/// @param size размеры кнопки
-			/// @param margin Отступы границ кноки от текста
-			/// @param UseWindowColors Использовать ли цвет окна(да/нет)
-			/// @param color Цвет кнопки
-			/// @param TextColor Цвет текста кнопки
-			/// @return номер кнопки в списке @link _Buttons
-			unsigned CreateButton(point<int> coord = {0, 0}, point<unsigned> size = {16, 16}, UI::Images::image Image, unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, ksys_color_t color = OS::sys_color_table.work_button);
+			unsigned CreateButton(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string Text = " ", unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, ksys_color_t color = OS::sys_color_table.work_button, ksys_color_t TextColor = OS::sys_color_table.work_button_text);
 
 			/// @brief Создать кнопку
 			/// @param btn кнопка
 			/// @return номер кнопки в списке @link _Buttons
-			unsigned CreateButton(UI::buttons::Button btn);
+			unsigned CreateButton(const UI::buttons::Button& btn);
 
-			/// @brief Удалить кнопку
-			/// @param id номер удаляемой кнопки
-			void DeleteButton(unsigned id);
+			
 
 			/// @brief Создать текст в окне
 			/// @param coord координата текста
@@ -234,156 +202,107 @@ namespace KolibriLib
 			/// @param UseWindowColors Использовать цвета окна(да/нет)
 			/// @param color Цвет текста
 			/// @return Номер текста в списке @link _Texts
-			unsigned CreateText(point<unsigned> coord = {0, 0}, point<unsigned> size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool UseWindowColors = true, ksys_color_t color = OS::sys_color_table.work_text);
+			unsigned CreateText(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool UseWindowColors = true, ksys_color_t color = OS::sys_color_table.work_text);
 
 			/// @brief Создать текст в окне
 			/// @param text текст
 			/// @returnНомер текста в списке @link _Texts
-			unsigned CreateText(const UI::text::TextLabel& text);
+			unsigned CreateText(UI::text::TextLabel text);
 
-			/// @brief Удалить текст
-			/// @param id Номер текста в списке @link _Texts
-			void DeleteText(unsigned id);
-
-			/// @brief Создать форму
-			/// @param coord координат формы
-			/// @param size Рамеры формы
-			/// @return номер в списке @link _Forms
-			unsigned CreateForm(point<unsigned> coord = {0, 0}, point<unsigned> size = {32, 16}, std::string BackgroundText = " ", ksys_color_t FormColor = OS::sys_color_table.work_text, ksys_color_t BackgroundTextColor = OS::sys_color_table.work_button_text);
+			
 
 			/// @brief Создать форму
 			/// @param form форма
 			/// @return номер в списке @link _Forms
-			unsigned CreateForm(const UI::Form& form);
+			unsigned CreateForm(UI::Form form);
 
-			/// @brief Получить текст из формы
-			/// @param form номер формы
-			/// @return текст введённый пользователем в эту форму
-			std::string GetTextFromForm(unsigned form);
+			/// @brief Удалить элемент
+			/// @param id idшник того элемента, которой нужно удалить
+			void DeleteElement(unsigned id);
 
-			/// @brief Удалить форму
-			/// @param id номер формы в списке @link _Forms
-			void DeleteForm(unsigned id);
-
-			/// @brief Обработчик форм
-			void FormHandler();
-
-			/// @brief Обработчик элементов
-			/// @return Ивент окна
-			unsigned Handler();
-
-			/// @brief Получить нажатую кнопку
-			/// @return Номер нажатой кнопки
-			unsigned GetPressedButton();
+			/// @brief Обработчик окна
+			OS::Event Handler();
 		};
 
-		unsigned Window::AddNewButton(const UI::buttons::Button& btn)
+		unsigned Window::AddNewButton(UI::buttons::Button btn)
 		{
-			for (unsigned i = 0; i < _ElementList.size(); i++)
+            for(unsigned i = 0; i < _Elements.size(); i++)
 			{
-				if (!_ElementList[i].use)
+				if (!_Elements[i].use)
 				{
-					_ElementList[i].type = ElementType::Button;
-					if(btn.GetType() == UI::buttons::ContentType::Image)
+					switch (btn.GetType())
 					{
-						_ElementList[i].btn.init(btn.GetCoord(), btn.GetSize(), btn.GetImage());
+					case UI::buttons::ContentType::Image:
+						_Elements[i].btn.init(btn.GetCoord(), btn.GetSize(), btn.GetImage(), btn.GetMargin(), btn.GetColor());
+						break;
+					case UI::buttons::ContentType::Text:
+						_Elements[i].btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel(), btn.GetMargin(), btn.GetColor());
+						break;
+					default:
+						break;
 					}
-					else if (btn.GetType() == UI::buttons::ContentType::Text)
-					{
-						_ElementList[i].btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel());
-					}
-
-					_ElementList[i].btn.Activate();
-					
-					_ElementList[i].use = true;
+					_Elements[i].type = Element::Type::Button;
+					_Elements[i].use = true;
 					return i;
 				}
 			}
-			Element a(ElementType::Button);
-
-			if (btn.GetType() == UI::buttons::ContentType::Image)
+			Element a(Element::Type::Button);
+			switch (btn.GetType())
 			{
-				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetImage());
-			}
-			else if (btn.GetType() == UI::buttons::ContentType::Text)
-			{
-				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel());
+			case UI::buttons::ContentType::Image:
+				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetImage(), btn.GetMargin(), btn.GetColor());
+				break;
+			case UI::buttons::ContentType::Text:
+				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel(), btn.GetMargin(), btn.GetColor());
+			default:
+				break;
 			}
 			a.use = true;
+			_Elements.push_back(a);
+			return _Elements.size();
+		}
 
-			_ElementList.push_back(a);
-			return _ElementList.size() - 1;
-        }
-
-		unsigned Window::AddNewTextLabel(const UI::text::TextLabel& text)
+        unsigned Window::AddNewTextLabel(UI::text::TextLabel text)
         {
-			for (unsigned i = 0; i < _ElementList.size(); i++)
+			for (unsigned i = 0; i < _Elements.size(); i++)
 			{
-				if (!_ElementList[i].use)
+				if (!_Elements[i].use)
 				{
-					_ElementList[i].txt = text;
-					_ElementList[i].type = ElementType::TextLabel;
-					_ElementList[i].use = true;
+					_Elements[i].txt = text;
+					_Elements[i].type = Element::Type::TextLabel;
+					_Elements[i].use = true;
 					return i;
 				}
 			}
-			Element a(ElementType::TextLabel);
-
+			Element a(Element::Type::TextLabel);
 			a.txt = text;
 			a.use = true;
-			_ElementList.push_back(a);
+			_Elements.push_back(a);
 		}
 
-        unsigned Window::AddNewForm(const UI::Form& form)
+        inline unsigned Window::AddNewForm(UI::Form form)
         {
-			for (unsigned i = 0; i < _ElementList.size(); i++)
+			for (unsigned i = 0; i < _Elements.size(); i++)
 			{
-				if (!_ElementList[i].use)
+				if (!_Elements[i].use)
 				{
-					_ElementList[i].type = ElementType::form;
-					_ElementList[i].frm = form;
-					_ElementList[i].use = true;
+					_Elements[i].frm.init(form.GetCoord(), form.GetSize(), NULL, form.GetColor(), form.GetBackgroundColor(), form.GetMargin());
+					_Elements[i].use = true;
 					return i;
 				}
 			}
-			Element a(ElementType::form);
-			a.frm = form;
+			Element a(Element::Type::Form);
+			a.frm.init(form.GetCoord(), form.GetSize(), NULL, form.GetColor(), form.GetBackgroundColor(), form.GetMargin());
 			a.use = true;
-			_ElementList.push_back(a);
-			return _ElementList.size();
+			_Elements.push_back(a);
+			return _Elements.size();
 		}
 
-		unsigned Window::AddNewImage(const UI::Images::image &img)
-		{
-			for (unsigned i = 0; i < _ElementList.size(); i++)
-			{
-				if (!_ElementList[i].use)
-				{
-					_ElementList[i].type = ElementType::image;
-					_ElementList[i].img = img;
-					
-					_ElementList[i].use = true;
-					return i;
-				}
-			}
-			Element a(ElementType::image);
-			a.img = img;
-			a.use = true;
-			_ElementList.push_back(a);
-			return _ElementList.size();
-		}
-
-    	std::string Window::GetTitle()
-        {
-            return _title;
-        }
-
-        Window::Window(std::string Title, point<unsigned> size, int style, ksys_colors_table_t colors, unsigned Margin)
+        Window::Window(std::string Title, UI::Size size, int style, ksys_colors_table_t colors, unsigned Margin)
         {
 			_title = Title;
 			_size = size;
 			_style = style;
-			_MARGIN = Margin;
 			if (Color::ComparisonColorsTables(colors, Color::DefaultColorTable))
 			{
 				_colors = OS::GetSystemColors();
@@ -392,36 +311,35 @@ namespace KolibriLib
 			{
 				_colors = colors;
 			}
-			
-
-			_ElementList.reserve(4 * sizeof(Element));		//Зарезервировано на всякий случай
-
-			{
-				Element a(ElementType::TextLabel);
-				a.use = false;
-				_ElementList.push_back(a);
-			}
-
+			_MARGIN = Margin;
 			DrawWindow(DefaultWindowCoord);
-			_Exit = false;
 		}
 
 		Window::~Window()
 		{
-			for (unsigned i = 0; i < _ElementList.size(); i++)
+			for(unsigned i = 0; i < _Elements.size(); i++)
 			{
-				if (_ElementList[i].use)
+				_Elements[i].use = false;
+				switch (_Elements[i].type)
 				{
-					_ElementList[i].btn.~Button();
-					_ElementList[i].frm.~Form();
-					_ElementList[i].img.~image();
-					_ElementList[i].txt.~TextLabel();
+				case Element::Type::Button:
+					_Elements[i].btn.~Button();
+					break;
+				case Element::Type::CheckBox:
+					_Elements[i].CheckBox.~CheckBox();
+				case Element::Type::TextLabel:
+					_Elements[i].txt.~TextLabel();
+				case Element::Type::Form:
+					_Elements[i].frm.~Form();
+				case Element::Type::Image:
+					_Elements[i].img.~image();
+				default:
+					break;
 				}
 			}
-			
 		}
 
-		void Window::SetWindowColors(const ksys_colors_table_t& colorTable)
+		void Window::SetWindowColors(ksys_colors_table_t colorTable)
 		{
 			_colors = colorTable;
 		}
@@ -441,12 +359,12 @@ namespace KolibriLib
 			}
 		}
 
-		void Window::DrawWindow(point<unsigned> coord)
+		void Window::DrawWindow(UI::Coord coord)
 		{
 			_ksys_create_window(coord.x, coord.y, _size.x, _size.y, _title.c_str(), _colors.work_area, _style);
 		}
 
-		void Window::ChangeWindow(point<unsigned> coord, point<unsigned> size)
+		void Window::ChangeWindow(UI::Coord coord, UI::Size size)
 		{
 			_size = size;
 			_ksys_change_window(coord.x, coord.y, size.x, size.y);
@@ -457,37 +375,36 @@ namespace KolibriLib
 			_ksys_set_window_title(newTitle.c_str());
 		}
 
-		point<unsigned> Window::GetWindowSize()
+		UI::Size Window::GetWindowSize()
 		{
 			return _size;
 		}
 		void Window::Render()
 		{
 			StartRedraw();
-			DrawWindow(mouse::GetMousePositionOnSreen());
+			DrawWindow();
 
-			for (unsigned i = 0; i < _ElementList.size(); i++)
+			for (unsigned i = 0; i < _Elements.size(); i++)
 			{
-				if (_ElementList[i].use)
+				if (_Elements[i].use)
 				{
-					switch (_ElementList[i].type)
+					switch (_Elements[i].type)
 					{
-					case ElementType::Button:
-						_ElementList[i].btn.Render();
+					case Element::Type::Button:
+						_Elements[i].btn.Render();
 						break;
-					case ElementType::TextLabel:
-						_ElementList[i].txt.Render();
+					case Element::Type::TextLabel:
+						_Elements[i].txt.Render();
 						break;
-					case ElementType::form:
-						_ElementList[i].img.Render();
+					case Element::Type::CheckBox:
+						_Elements[i].CheckBox.Render();
 						break;
-					case ElementType::image:
-						_ElementList[i].img.Render();
+					case Element::Type::Image:
+						_Elements[i].img.Render();
 						break;
 					default:
 						break;
 					}
-					
 				}
 			}
 
@@ -499,65 +416,26 @@ namespace KolibriLib
             return _MARGIN;
         }
 
-		point<unsigned> Window::GetSize()
-		{
+        UI::Size Window::GetSize()
+        {
             return _size;
         }
 
-		void Window::SetSize(point<unsigned> size)
-		{
-			_size = size;
-        }
-
-		unsigned Window::CreateButton(point<int> coord, point<unsigned> size, std::string Text, unsigned margin, bool UseWindowColors, ksys_color_t color)
+        unsigned KolibriLib::window::Window::CreateButton(UI::Coord coord, UI::Size size, std::string Text, unsigned margin, bool UseWindowColors, ksys_color_t color, ksys_color_t TextColor)
 		{
 			if(UseWindowColors)
 			{
-				color = _colors.work_button;
+				color		= _colors.work_button;
+				TextColor	= _colors.work_button_text;
 			}
-			UI::buttons::Button btn(coord, size, margin, color);
-			btn.init(coord, size, Text, _MARGIN, color);
-			unsigned a = AddNewButton(btn);
-			btn.Deactivate();
-			return a;
-		}
-		unsigned Window::CreateButton(point<int> coord, point<unsigned> size, unsigned margin, bool UseWindowColors, ksys_color_t color)
-		{
-			if (UseWindowColors)
-			{
-				color = _colors.work_button;
-			}
-			UI::buttons::Button a(coord, size, margin, color);
-			a.init(coord, size, " ", _MARGIN, color);
-			unsigned b = AddNewButton(a);
-			a.Deactivate();
-			return b;
-		}
-		unsigned Window::CreateButton(point<int> coord, point<unsigned> size, UI::Images::image img, unsigned margin, bool UseWindowColors, ksys_color_t color)
-		{
-			if (UseWindowColors)
-			{
-				color = _colors.work_button;
-			}
-			UI::buttons::Button btn(coord, size, margin, color);
-			btn.init(coord, size, img, _MARGIN, color);
-			unsigned a = AddNewButton(btn);
-			btn.Deactivate();
-			return a;
+			;
+			return AddNewButton(UI::buttons::Button(coord, size, margin, color));
 		}
 
-		unsigned Window::CreateButton(UI::buttons::Button btn)
-		{
-            return AddNewButton(btn);
-        }
 
-		void Window::DeleteButton(unsigned id)
+        
+        unsigned Window::CreateText(UI::Coord coord, UI::Size size, std::string text, unsigned FontSize, bool UseWindowColors, ksys_color_t color)
         {
-			_ElementList[id].btn.Deactivate();
-			_ElementList[id].use = false;
-		}
-		unsigned Window::CreateText(point<unsigned> coord, point<unsigned> size, std::string text, unsigned FontSize, bool UseWindowColors, ksys_color_t color)
-		{
             if(UseWindowColors)
 			{
 				color = _colors.work_text;
@@ -568,118 +446,56 @@ namespace KolibriLib
 			return AddNewTextLabel(t);
 			
         }
-        unsigned Window::CreateText (const UI::text::TextLabel& text)
+        unsigned Window::CreateText(UI::text::TextLabel text)
         {
             return AddNewTextLabel(text);
         }
 
-        void Window::DeleteText(unsigned id)
-        {
-			_ElementList[id].use = false;
-		}
-
-		unsigned Window::CreateForm(point<unsigned> coord, point<unsigned> size, std::string BackgroundText, ksys_color_t FormColor, ksys_color_t BackgroundTextColor)
-		{
-			UI::Form form (coord, size, BackgroundText, FormColor, BackgroundTextColor, _MARGIN);
-			return AddNewForm (form);
-		}
-
-		unsigned Window::CreateForm (const UI::Form& form)
-		{
-            return AddNewForm(form);
-        }
-
-        std::string Window::GetTextFromForm(unsigned form)
-        {
-			return _ElementList[form].frm.GetInput();
-		}
+      
 		
-        void Window::DeleteForm(unsigned id)
-        {
-			_ElementList[id].use = false;
-		}
-
-        void Window::FormHandler()
-        {
-			for (unsigned i = 0; i < _ElementList.size(); i++)
-			{
-				if (_ElementList[i].use) // Если форма используется
-				{
-					if (_ElementList[i].type == ElementType::form)
-					{
-						if (_ElementList[i].frm.ButtonHandler())
-						{
-							ActiveForm = i;
-						}
-					}
-				}
-			}
-			_ElementList[ActiveForm].frm.Handler();
-		}
-
-        unsigned Window::Handler()
+        void Window::DeleteElement(unsigned id)
 		{
-			unsigned Event = OS::WaitEvent(); // Ждём пока не появится какой либо ивент, и идём дальше
-
-			switch (Event)
+			_Elements[id].use = false;
+			switch (_Elements[id].type)
 			{
-			case KSYS_EVENT_REDRAW:
+			case Element::Type::Button:
+				_Elements[id].btn.~Button();
+				break;
+			case Element::Type::CheckBox:
+				_Elements[id].CheckBox.~CheckBox();
+			case Element::Type::TextLabel:
+				_Elements[id].txt.~TextLabel();
+			case Element::Type::Form:
+				_Elements[id].frm.~Form();
+			case Element::Type::Image:
+				_Elements[id].img.~image();
+			default:
+				break;
+			}
+		}
+		OS::Event Window::Handler()
+		{
+			OS::Event event = OS::WaitEvent(8);
+
+			switch (event)
+			{
+			case OS::Events::Redraw:
 				Render();
 				break;
-			case KSYS_EVENT_BUTTON:
-				for (unsigned i = 0; i < _ElementList.size(); i++)
+			case OS::Events::Button:
+				if(UI::buttons::GetPressedButton() == 1)
 				{
-					if (_ElementList[i].use) // Если кнопка используется
-					{
-						if (_ElementList[i].type == ElementType::Button)
-							_ElementList[i].btn.Handler();
-					}
+					return OS::Events::Exit;
 				}
-				FormHandler();
-				
-				unsigned button = KolibriLib::UI::buttons::GetPressedButton();
-				if (button == 1)
-				{
-					_Exit = true;
-				}
-				
+			default:
 				break;
 			}
-
-			point<int> mouse = mouse::GetMousePositionInWindow();
-
-			if ((mouse.x < _size.x + 4 || mouse.x > _size.x - 4) && (mouse.y > 0 || mouse.y < _size.y))
-			{
-				mouse::SetCursor(mouse::Cursor.horz);
-			}
-			else if ((mouse.x < 0 + 4 || mouse.x > 0 - 4) && (mouse.y > 0 || mouse.y < _size.y))
-			{
-				mouse::SetCursor(mouse::Cursor.horz);
-			}
-			else
-			{
-				mouse::SetCursor(mouse::Cursor.pointer);
-			}
-
-			return Event;
-		}
-		unsigned Window::GetPressedButton()
-		{
-			for (unsigned i = 0; i < _ElementList.size(); i++)
-			{
-				if(_ElementList[i].use)
-				{
-					if ((_ElementList[i].type == ElementType::Button) && _ElementList[i].btn.GetStatus())
-					{
-						return i;
-					}
-				}
-			}
-			return _ElementList.size();
 		}
 	}
 
     //=============================================================================================================================================================
+
+	
 
 }
 

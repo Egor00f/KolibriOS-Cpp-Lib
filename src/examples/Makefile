@@ -12,7 +12,8 @@ CXX	= kos32-g++
 LD	= kos32-ld 
 
 #DIRs
-SDK_DIR = F:/KolibriOs/contrib/sdk
+CONTRIB_DIR = F:/KolibriOs/contrib
+SDK_DIR = $(CONTRIB_DIR)/sdk
 
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include 
 LIBPATH = -L $(SDK_DIR)/lib -L C:/MinGW/msys/1.0/home/autobuild/tools/win32/mingw32/lib
@@ -29,9 +30,9 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 ####### KolibriLib ######
 
-KOLIBRILIB_INCLUDE_PATH = ../../src/include
+KOLIBRILIB_INCLUDE_PATH = ../include
 
-KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH)
+KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I $(CONTRIB_DIR)/C_Layer/INCLUDE
 
 INCLUDES += $(KOLIBRILIB_INCLUDE)
 

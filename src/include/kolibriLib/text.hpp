@@ -8,7 +8,6 @@
 
 #include "UI.hpp"
 
-
 namespace KolibriLib
 {
     namespace UI
@@ -59,7 +58,7 @@ namespace KolibriLib
             //=============================================================================================================================================================
 
             /// @brief Текстовая метка
-            class TextLabel : public UIElement
+            class TextLabel : public UI::UIElement
             {
             private:
                 /// @brief Сам текст
@@ -67,14 +66,13 @@ namespace KolibriLib
 
                 /// @brief Используемый шрифт
                 std::string FontFamily;
-                
+
                 /// @brief Размер текста(высота)
                 unsigned _FontSize;
 
                 /// @brief Подстраивать @link _FontSize, чтобы размер текст соответствовал размеру элемента( @link _size)
                 bool _TextScale;
 
-                
             public:
                 /// @brief Конструктор
                 /// @param coord координата
@@ -83,7 +81,7 @@ namespace KolibriLib
                 /// @param FontSize Размер текста
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin Отступы от границ
-                TextLabel(point<unsigned> coord = {0, 0}, point<unsigned> size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool TextScale = true, ksys_color_t TextColor = OS::sys_color_table.work_text, unsigned Margin = 0);
+                TextLabel(point<int> coord = {0, 0}, point<unsigned> size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool TextScale = true, ksys_color_t TextColor = OS::sys_color_table.work_text, unsigned Margin = 0);
 
                 ~TextLabel();
 
@@ -119,7 +117,7 @@ namespace KolibriLib
                 void SetScale(bool scale);
             };
 
-            TextLabel::TextLabel(point<unsigned> coord, point<unsigned> size, std::string text, unsigned FontSize, bool TextScale, ksys_color_t TextColor, unsigned Margin) : UIElement(coord, size, TextColor, Margin)
+            TextLabel::TextLabel(point<int> coord, point<unsigned> size, std::string text, unsigned FontSize, bool TextScale, ksys_color_t TextColor, unsigned Margin) : UIElement(coord, size, TextColor, Margin)
             {
                 _text = text;
                 _FontSize = FontSize;
@@ -165,7 +163,6 @@ namespace KolibriLib
             {
                 _FontSize = NewTextSize;
             }
-
 
             void TextLabel::SetTextColor(const ksys_color_t &NewTextColor)
             {

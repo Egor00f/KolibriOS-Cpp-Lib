@@ -3,24 +3,24 @@
 
 
 #include <sys/ksys.h>
-
+#include "UI.hpp"
 
 namespace KolibriLib
 {
-    
 
     /// @brief Работа с окном
     namespace window
     {
-
-
+        
         /// @brief Размер окна поумолчанию
-        const point<unsigned> DefaultWindowSize = {400, 400};
+        const UI::Size DefaultWindowSize = {400, 400};
 
         /// @brief Соординаты окна по умолчанию
-        const point<unsigned> DefaultWindowCoord = {100, 100};
+        const UI::Coord DefaultWindowCoord = {100, 100};
 
 
+
+        
 
         /// @brief Снять фокус с окна
         /// @param slot слот окна

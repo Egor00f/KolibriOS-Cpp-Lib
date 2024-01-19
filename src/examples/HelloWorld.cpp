@@ -8,16 +8,16 @@ int main()
     init();
     window::Window window("Example Window");
 
-    window.CreateText({64, 64}, {100, 100}, "This is text", 24, true);
+    window.CreateText({64, 64}, {100, 100}, "Hello World!", 24, true);
 
     while(true)
     {
-        window.Handler();
-        if(EXIT)
+        OS::Event event = window.Handler();
+        if (event = OS::Events::Exit)
         {
             break;
         }
     }
 
-    return EXITCODE;
+    return 0;
 }

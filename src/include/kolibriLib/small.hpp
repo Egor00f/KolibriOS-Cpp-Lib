@@ -4,7 +4,7 @@
 #ifndef __SMALL_H__
 #define __SMALL_H__
 
-#include <string>
+
 
 namespace KolibriLib
 {
@@ -15,11 +15,13 @@ namespace KolibriLib
     /// @paragraph Эта библиотека считает что EXITCODE = 0 - это завершение работы без ошибки
     int EXITCODE = 0;
 
-    const std::string ConfigurationDir = "/kolibrios/etc/"; 
+    const ::std::string ConfigurationDir = "/kolibrios/etc/";
 
-    const std::string ImgDir = ConfigurationDir + "images/";
+    const ::std::string ImgDir = ConfigurationDir + "images/";
 
-    const std::string CursorsDir = ConfigurationDir + "cursors/";   //Предпологается что в этой папке лежат файлы, они заранее приготовленны
+    const ::std::string DefaultImage = ImgDir + "default.png";
+
+    const ::std::string CursorsDir = ConfigurationDir + "cursors/"; // Предпологается что в этой папке лежат файлы, они заранее приготовленны
 
     template <class T>
     /// @brief Просто точка
@@ -29,6 +31,7 @@ namespace KolibriLib
         T x;
         T y;
     };
+
 } // namespace KolibriLib
 
 

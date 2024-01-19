@@ -6,29 +6,31 @@
 #include <string>
 
 #include "small.hpp"
-#include "UI.hpp"
-#include "text.hpp"
 #include "button.hpp"
+#include "graphic.hpp"
 
 namespace KolibriLib
 {
     namespace UI
     {
         /// @brief Класс для работы с чекбоксами
-        /// @class 
-        /// @paragraph 
+        /// @class
+        /// @paragraph
         class CheckBox : public buttons::Button
         {
         private:
             int _style;
             bool _status;
+
         public:
             /// @brief Стиль Чекбокса
             enum style
             {
                 /// @brief По вид умолчанию, квадрат
                 Default,
+                /// @brief В виде круга
                 Circle,
+                /// @brief Квадрат с со сглаженными углами
                 Smoth,
             };
 
@@ -39,10 +41,9 @@ namespace KolibriLib
 
             /// @brief Обработчик кнопки
             bool Handler();
-
         };
 
-        CheckBox::CheckBox(point<int> coord, point<unsigned> size, int style, ksys_color_t CheckBoxBorderColor, ksys_color_t BackgroundColor, unsigned Margin) : Button(coord, size, Margin)
+        CheckBox::CheckBox(point<int> coord, point<unsigned> size, int style, ksys_color_t CheckBoxBorderColor, ksys_color_t BackgroundColor, unsigned Margin) : Button(coord, size, CheckBoxBorderColor, Margin)
         {
             _style = style;
         }
@@ -60,7 +61,7 @@ namespace KolibriLib
                 switch (_style)
                 {
                 case Default:
-                    graphic::DrawRectangleFill({_coord.x + (int)_Margin, _coord.y + (int)_Margin}, {(int)_size.x - (2 * (int)_Margin), (int)_size.y + (2 * (int)_Margin)}, _MainColor);
+                    graphic::DrawRectangleFill({_coord.x + (int)_Margin, _coord.y + (int)_Margin}, {(unsigned)_size.x - (2 * _Margin), _size.y + (2 * _Margin)}, _MainColor);
                     break;
                 case Circle:
                     graphic::DrawCircle({_coord.x + (int)_Margin, _coord.y + (int)_Margin}, _size.x / 2 - _Margin, 36, _MainColor);
@@ -75,7 +76,7 @@ namespace KolibriLib
 
         bool CheckBox::Handler()
         {
-            if (Button::Handler())  //Если кнопка была нажата
+            if (Button::Handler()) // Если кнопка была нажата
             {
                 _status != _status;
             }

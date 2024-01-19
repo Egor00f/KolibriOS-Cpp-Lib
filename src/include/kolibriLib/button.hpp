@@ -92,8 +92,8 @@ namespace KolibriLib
                 FreeButtonId(id); // Кнопка удалена, теперь этот id не использется
             }
 
-            /// \brief проверить какая кнопка нажата
-            /// \return id нажатой кнопки
+            /// @brief проверить какая кнопка нажата
+            /// @return id нажатой кнопки
             inline unsigned GetPressedButton()
             {
                 return _ksys_get_button();
@@ -106,21 +106,18 @@ namespace KolibriLib
                 Image,
                 Text
             };
-            
+
             /// \brief Класс для работы с кнопками
             class Button : public UIElement
             {
             private:
-                
-                
-                /// @brief Тип данных внутри кнопки
-                ContentType _type;
                 union
                 {
                     Images::image _img;
                     text::TextLabel _text;
                 };
-                
+                /// @brief Тип данных внутри кнопки
+                ContentType _type;
                 /// @brief Id кнопки
                 unsigned _id;
 
@@ -130,6 +127,7 @@ namespace KolibriLib
                 /// @brief Активна(работает) ли сейчас кнопка
                 /// @paragraph Занчение необходимо для того чтобы функция render не пыталась создать кнопку, так как в неактивном состоянии #_id освобождается и его может занять другая кнопка
                 bool _active;
+
             public:
                 /// \brief Это конструктор
                 /// \param coord координата
@@ -138,7 +136,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
-                Button(const point<int> &coord = {0, 0}, const point<unsigned> &size = {20, 20}, unsigned Margin = DefaultMargin, ksys_color_t ButtonColor = OS::sys_color_table.work_button);
+                Button(const Coord &coord = {0, 0}, const Size &size = {20, 20}, unsigned Margin = UI::DefaultMargin, ksys_color_t ButtonColor = OS::sys_color_table.work_button);
 
                 /// \brief инициализировать параметры
                 /// \param coord координата
@@ -147,7 +145,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param BackgroundColor цвет кнопки
                 /// \param TextColor цвет текста
-                void init(const point<int> &coord = {0, 0}, const point<unsigned> &size = {0, 0}, const std::string& text = "button", const unsigned& Margin = DefaultMargin, const ksys_color_t& ButtonColor = OS::sys_color_table.work_button);
+                void init(const point<int> &coord = {0, 0}, const point<unsigned> &size = {0, 0}, const std::string &text = "button", const unsigned &Margin = UI::DefaultMargin, const ksys_color_t &ButtonColor = OS::sys_color_table.work_button);
 
                 /// \brief инициализировать параметры
                 /// \param coord координата
@@ -156,7 +154,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param BackgroundColor цвет кнопки
                 /// \param TextColor цвет текста
-                void init(const point<int> &coord = {0, 0}, const point<unsigned> &size = {0, 0}, const Images::image& image = Images::image(), const unsigned& Margin = DefaultMargin, const ksys_color_t& ButtonColor = OS::sys_color_table.work_button);
+                void init(const point<int> &coord = {0, 0}, const point<unsigned> &size = {0, 0}, const Images::image &image = Images::image(), const unsigned &Margin = DefaultMargin, const ksys_color_t &ButtonColor = OS::sys_color_table.work_button);
 
                 /// \brief Отрисовать кнопку
                 void Render();
@@ -193,7 +191,7 @@ namespace KolibriLib
                 std::string GetTextLabel();
 
                 /// @brief Получить изображение кнопки
-                /// @return 
+                /// @return
                 Images::image GetImage();
 
                 /// @brief Изменить текст кнопки
@@ -203,8 +201,8 @@ namespace KolibriLib
                 /// @brief Декструктор
                 ~Button();
             };
-            
-            Button::Button(const point<int> &coord, const point<unsigned> &size, unsigned Margin, ksys_color_t ButtonColor) : UIElement(coord, size, ButtonColor, Margin)
+
+            Button::Button(const Coord &coord, const Size &size, unsigned Margin, ksys_color_t ButtonColor) : UIElement(coord, size, ButtonColor, Margin)
             {
                 _coord = coord;
                 _size = size;
@@ -237,7 +235,7 @@ namespace KolibriLib
 
             std::string Button::GetTextLabel()
             {
-                if(_type == ContentType::Text)
+                if (_type == ContentType::Text)
                 {
                     return _text.GetText();
                 }
@@ -250,7 +248,7 @@ namespace KolibriLib
 
             void Button::SetText(std::string NewText)
             {
-                if(_type == ContentType::Text)
+                if (_type == ContentType::Text)
                 {
                     return _text.SetText(NewText);
                 }
@@ -279,7 +277,7 @@ namespace KolibriLib
                 return _status;
             }
 
-            void UI::buttons::Button::init(const point<int> &coord, const point<unsigned> &size, const std::string& text, const unsigned& Margin, const ksys_color_t& ButtonColor)
+            void UI::buttons::Button::init(const point<int> &coord, const point<unsigned> &size, const std::string &text, const unsigned &Margin, const ksys_color_t &ButtonColor)
             {
                 _coord = coord;
                 _size = size;
@@ -300,7 +298,7 @@ namespace KolibriLib
                 }
             }
 
-            void UI::buttons::Button::init(const point<int> &coord, const point<unsigned> &size, const Images::image& image, const unsigned& Margin, const ksys_color_t& ButtonColor)
+            void UI::buttons::Button::init(const point<int> &coord, const point<unsigned> &size, const Images::image &image, const unsigned &Margin, const ksys_color_t &ButtonColor)
             {
                 _coord = coord;
                 _size = size;
@@ -337,7 +335,6 @@ namespace KolibriLib
                     default:
                         break;
                     }
-
                 }
             }
 
@@ -346,13 +343,8 @@ namespace KolibriLib
                 return _id;
             }
 
-            
         } // namespace buttons
-
-        
-
     } // namespace UI
-    
     
 } // namespace KolibriLib
 

@@ -37,7 +37,7 @@ namespace KolibriLib
         /// @brief Создать файл
         /// @param name имя файла
         /// @return
-        int CreateFile(const std::string& name)
+        int CreateFile(std::string name)
         {
             return _ksys_file_create(name.c_str());
         }
@@ -45,12 +45,10 @@ namespace KolibriLib
         /// @param name имя файла
         /// @param path путь до файла
         /// @return
-        int CreateFile(const std::string& name, const std::string& path)
+        int CreateFile(std::string name, std::string path)
         {
-            char *a;
-            strcat(a, path.c_str());
-            strcat(a, name.c_str());
-            return _ksys_file_create(a);
+            std::string fullPath = path + name;
+            return _ksys_file_create(fullPath.c_str());
         }
 
 
@@ -73,7 +71,7 @@ namespace KolibriLib
         /// @brief удалить файл  или папку
         /// @param name имя файла
         /// @return
-        int Delete(const std::string& name)
+        int Delete(std::string name)
         {
             return _ksys_file_delete(name.c_str());
         }
@@ -81,12 +79,10 @@ namespace KolibriLib
         /// @param name имя файла
         /// @param path путь до файла
         /// @return
-        int Delete(const std::string& name, const std::string& path)
+        int Delete(std::string name, std::string path)
         {
-            char *a;
-            strcat(a, path.c_str());
-            strcat(a, name.c_str());
-            return _ksys_file_delete(a);
+            std::string fullPath = path + name;
+            return _ksys_file_delete(fullPath.c_str());
         }
 
 
@@ -94,14 +90,14 @@ namespace KolibriLib
         /// @brief Создать папку
         /// @param path путь
         /// @return
-        inline int mkdir(const char *path)
+        int mkdir(const char *path)
         {
             return _ksys_mkdir(path);
         }
         /// @brief Создать папку
         /// @param path путь
         /// @return
-        inline int mkdir(const std::string& path)
+        int mkdir(std::string path)
         {
             return _ksys_mkdir(path.c_str());
         }
@@ -109,7 +105,7 @@ namespace KolibriLib
         /// @brief проверяет существует ли файл или папки
         /// @param путь до файла/папки
         /// @return true если файл или папка существует, иначе false
-        bool Exist(const std::string& Path)
+        bool Exist(std::string Path)
         {
             ksys_bdfe_t *buff;
             if(_ksys_file_info(Path.c_str(), buff) > 0)
@@ -122,13 +118,11 @@ namespace KolibriLib
             }
         }
 
-        /// @brief Переименовать файл/папку
-        /// @param OldName Старое имя файла/папки
-        /// @param NewName Новое имя файла/папки
-        inline int Rename(const std::string& OldName, const std::string& NewName)
+        int Rename(std::string OldName, std::string NewName)
         {
             return _ksys_file_rename(OldName.c_str(), NewName.c_str());
         }
+        
 
     }
 } // namespace KolibriLib

@@ -5,13 +5,13 @@
 
 #include <sys/ksys.h>
 
-#include "small.hpp"
+#include "base.hpp"
 
 namespace KolibriLib
 {
     /// @brief Получить разрешение экрана
     /// @return размер экрана
-    point<unsigned> GetScreenSize()
+    point GetScreenSize()
     {
         ksys_pos_t a = _ksys_screen_size();
         return {a.x, a.y};

@@ -1,14 +1,9 @@
 #ifndef __OS_H__
 #define __OS_H__
 
-#include <string>
-
-#include <sys/ksys.h>
-#include <string.h>
-#include <stdlib.h>
-
 #include "small.hpp"
 #include "filesystem.hpp"
+#include "color.hpp"
 
 namespace KolibriLib
 {
@@ -17,28 +12,50 @@ namespace KolibriLib
     {
 
         /// \brief Таблица стандартных(системных) цветов
-        ksys_colors_table_t sys_color_table;
+        Color::ColorsTable sys_color_table;
 
         /// @brief Получить системные цвета
         /// @paragraph Функция изменяет переменную @link sys_color_table
         /// @return Таблица системных цветов
-        ksys_colors_table_t GetSystemColors();
+        Color::ColorsTable GetSystemColors()
+        {
+            _ksys_get_system_colors(&sys_color_table);
+            return sys_color_table;
+        }
+
+        /// @brief Ивент
+        typedef unsigned int Event;
+
+        enum Events
+        {
+            None    = KSYS_EVENT_NONE,
+            Redraw  = KSYS_EVENT_REDRAW,
+            Button  = KSYS_EVENT_BUTTON,
+            Mouse   = KSYS_EVENT_MOUSE,
+            Key     = KSYS_EVENT_KEY,
+            Desktop = KSYS_EVENT_DESKTOP,
+            Debug   = KSYS_EVENT_DEBUG,
+            Exit    = 200
+        };
 
         /// \brief Ждать ивента
         /// \return Ивент
-        inline unsigned int WaitEvent();
+        inline Event WaitEvent()
+        {
+            return _ksys_wait_event();
+        }
 
         /// \brief Ждать ивента
         /// \param Таймаут (в 1/100 секунды)
         /// \return Ивент
-        inline unsigned int WaitEvent(uint32_t TimeOut)
+        inline Event WaitEvent(uint32_t TimeOut)
         {
             _ksys_wait_event_timeout(TimeOut);
         }
 
         /// \brief Проверить пришёл ли ли ивент
         /// \return Ивен
-        inline unsigned int CheckEvent()
+        inline Event CheckEvent()
         {
             return _ksys_check_event();
         }
@@ -69,6 +86,14 @@ namespace KolibriLib
         }
 
     } // namespace OS
+
+    /// \brief Подождать
+    /// \param time время задержки(в 1/100 секунды)
+    inline void Wait(unsigned int time)
+    {
+        _ksys_delay(time);
+    }
+
 } // namespace KolibriLib
 
 

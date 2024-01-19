@@ -2,15 +2,11 @@
 #define __SOUND_HPP__
 
 
-
-namespace KolibriLib
+namespace Sound
 {
-    namespace Sound
-    {
-        #include <sound.h>
+    #include <sound.h>
 
-        void PlaySound();
-    }
+    void PlaySound();
 }
 
 #endif // __SOUND_HPP__
