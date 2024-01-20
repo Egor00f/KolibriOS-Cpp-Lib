@@ -19,27 +19,21 @@ int main()
 
     while (true)
     {
-        unsigned Event = window.Handler();
+       OS::Event event = window.Handler();
 
-        switch (Event)
+        if(event == OS::Events::Button)        
         {
-        case KSYS_EVENT_BUTTON:
-
-            unsigned a = window.GetPressedButton();
-            
-            if(a == ButtonID)
+            if(ButtonID == window.GetPressedButton())
             {
-                childWindow::MessageBox("You pressed button", "You pressed button");
+                childWindow::MessageBox("You pressed button", "Message");
             }
-            
-            break;
         }
 
-        if(EXIT)
+        if(event == OS::Events::Exit)
         {
             break;
         }
     }
     
-    return EXITCODE;
+    return 0;
 }

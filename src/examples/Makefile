@@ -1,5 +1,5 @@
 #NAME
-EXECUTABLE = HelloWorld
+EXECUTABLE = form
 
 
 export $PATH = C:/MinGW/msys/1.0/home/autobuild/tools/win32/bin/

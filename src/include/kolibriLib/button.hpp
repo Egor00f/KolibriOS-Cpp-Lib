@@ -16,8 +16,10 @@ namespace KolibriLib
         /// @brief Работа с кнопками
         namespace buttons
         {
+            typedef unsigned int ButtonID;
+
             // Коды кнопок начинаются с этого числа
-            const unsigned StartButtonId = 100;
+            const ButtonID StartButtonId = 100;
 
             /// @brief Служебная структура, нигде не использется кроме @link ButtonsIdList
             struct ButtonsIdData
@@ -49,7 +51,7 @@ namespace KolibriLib
 
             /// \brief Освободить номер кнопки
             /// \param id номер номер кнопки из списка @link ButtonsIdList
-            void FreeButtonId(unsigned id)
+            inline void FreeButtonId(unsigned id)
             {
                 ButtonsIdList[id].use = false; // Этот элемент теперь не используется
             }
@@ -58,7 +60,7 @@ namespace KolibriLib
             /// \param id номер кнопки
             /// @paragraph id кнопки выдаваемый системой
             /// \return ButtonsIdList[id].ID
-            unsigned GetButtonId(unsigned id)
+            inline ButtonID GetButtonId(unsigned id)
             {
                 return StartButtonId + id;
             }
@@ -68,7 +70,7 @@ namespace KolibriLib
             /// \param size размер
             /// \param color цвет
             /// \return id созданной кнопки
-            inline unsigned autoDefineButton(const point<unsigned> coords, const point<unsigned> &size, ksys_color_t color = OS::sys_color_table.work_button)
+            inline unsigned autoDefineButton(const point<int> coords, const Size &size, ksys_color_t color = OS::sys_color_table.work_button)
             {
                 unsigned id = GetButtonId(GetFreeButtonId()); // Автоматически получаем id для кнопки
                 _ksys_define_button(coords.x, coords.y, size.x, size.y, id, color);
@@ -80,7 +82,7 @@ namespace KolibriLib
             /// \param size размер
             /// \param id idшник кнопки
             /// \param color цвет
-            inline void DefineButton(const point<int> &coord, const point<unsigned> &size, const unsigned &id, ksys_color_t color = OS::sys_color_table.work_button)
+            inline void DefineButton(const point<int> &coord, const Size &size, const ButtonID &id, ksys_color_t color = OS::sys_color_table.work_button)
             {
                 _ksys_define_button(coord.x, coord.y, size.x, size.y, id, color);
             }
@@ -145,7 +147,7 @@ namespace KolibriLib
 
 
                 /// @brief Id кнопки
-                unsigned _id;
+                ButtonID _id;
 
                 /// @brief Состояние кнопки(Нажата/Ненажата)
                 bool _status;
@@ -197,7 +199,7 @@ namespace KolibriLib
 
                 /// \brief Получить номер кнопки
                 /// \return @link _id
-                unsigned GetId();
+                ButtonID GetId();
 
                 /// @brief Деактивировать кнопку
                 /// @paragraph Эта функция устанавливает переменную @link _active в false
@@ -361,11 +363,10 @@ namespace KolibriLib
                 }
             }
 
-            unsigned Button::GetId()
+            ButtonID Button::GetId()
             {
                 return _id;
             }
-
         } // namespace buttons
     } // namespace UI
     

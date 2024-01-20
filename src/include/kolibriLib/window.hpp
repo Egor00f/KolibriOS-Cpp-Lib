@@ -219,7 +219,14 @@ namespace KolibriLib
 			void DeleteElement(unsigned id);
 
 			/// @brief Обработчик окна
+			/// @return Ивент
 			OS::Event Handler();
+
+			/// @brief Проверить какая нажата
+			UI::buttons::ButtonID GetPressedButton();
+
+			/// @brief Получить текст введённый в форму
+			std::string GetGetFromFrom(unsigned form);
 		};
 
 		unsigned Window::AddNewButton(UI::buttons::Button btn)
@@ -302,7 +309,7 @@ namespace KolibriLib
 			_size = size;
 			_style = style;
 			_MARGIN = Margin;
-			
+
 			if (Color::ComparisonColorsTables(colors, Color::DefaultColorTable))	//Если небыла в аргументах таблица цветов
 			{																		//Используется системная
 				_colors = OS::GetSystemColors();
@@ -514,6 +521,27 @@ namespace KolibriLib
 				break;
 			}
 			return event;
+		}
+
+		UI::buttons::ButtonID Window::GetPressedButton()
+		{
+			for(unsigned i = 0; i < _Elements.size(); i++)
+			{
+				if(_Elements[i].type == Element::Type::Button)
+				{
+					if(_Elements[i].btn.GetStatus())
+					{
+						return _Elements[i].btn.GetId();
+					}
+				}
+			}
+		}
+		std::string Window::GetGetFromFrom(unsigned form)
+		{
+			if(_Elements[form].type == Element::Type::Form)
+			{
+				return _Elements[form].frm.GetInput();
+			}
 		}
 	}
 

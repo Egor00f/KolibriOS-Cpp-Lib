@@ -75,7 +75,7 @@ namespace KolibriLib
             DrawCircle(coord, Radius, color);
 
             unsigned b = Radius * cos(90+45);
-            unsigned c = sqrt((Radius * Radius) - (b * b));
+            unsigned c = Radius * sin(90+45);
             UI::Coord n = {coord.x + (int)b, coord.y + (int)c};
 
             DrawRectangleFill(n, {(unsigned)(coord.x - n.x) * 2, (unsigned)c * 2}, color);

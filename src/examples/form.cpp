@@ -6,28 +6,30 @@ int main()
 {
     window::Window window("Example");
 
-    unsigned form = window.CreateForm({64, 64}, {100, 64}, "text...");
-    unsigned button = window.CreateButton({164, 64}, {64,64}, "E");
+    UI::Form f({64,64},{200, 100}, "text");
+
+    unsigned form = window.CreateForm(f);
+    unsigned button = window.CreateButton({264, 64}, {100, 100}, "E");
 
     while (true)
     {
-        unsigned Event = window.Handler();
+        OS::Event event = window.Handler();
 
-        switch (Event)
+        switch (event)
         {
-        case KSYS_EVENT_BUTTON:
+        case OS::Events::Button:
 
             if(button = window.GetPressedButton())
             {
-                childWindow::MessageBox(window.GetTextFromForm(form), "You inputed in form:");
+                childWindow::MessageBox(window.GetGetFromFrom(form), "You inputed in form:");
             }
 
             break;
         }
-        if(KolibriLib::EXIT)
+        if(event == OS::Events::Exit)
         {
             break;
         }
     }
-    return EXITCODE;
+    return 0;
 }
