@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_keyboard_8hpp_source" xml:lang="en-US">
+<title>keyboard.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/keyboard.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__KEYBOARD_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__KEYBOARD_H__</emphasis>
+3 
+4 
+5 <emphasis role="keyword">namespace&#32;</emphasis>keyboard
+6 {
+9 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;CheckKeyboard()
+10 &#32;&#32;&#32;&#32;{
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_key().code;
+12 &#32;&#32;&#32;&#32;}
+13 
+14 }&#32;<emphasis role="comment">//&#32;namespace&#32;keyboard</emphasis>
+15 
+16 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__KEYBOARD_H__</emphasis>
+</programlisting></section>

@@ -21,20 +21,38 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad3eb95eb4cdfe090634741c20578135f"/><emphasis role="strong">UIElement</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">point</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> size={16, 16}, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>)</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a2711acf46a6b4eac37d584c0255dab5b"/><emphasis role="strong">UIElement</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size={16, 16}, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> MainColor=0, unsigned Margin=DefaultMargin)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab4805c825cf72f31fe4a3a776c409f3d"/><link linkend="_struct_kolibri_lib_1_1point">Size</link> <emphasis role="strong">GetSize</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b"/>void <emphasis role="strong">SetSize</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> NewSize)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab1aa7de81042fd3cdc40e24abf01e854"/>unsigned <emphasis role="strong">GetMargin</emphasis> ()</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1af88ac59a7195dfbe8588a68776cb645d">GetColor</link> ()</para>
+
+<para>Получить осносной цвет элемента </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d"/>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> NewColor)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3"/>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a9d6acdb3e6c0c1576805c578595e3ce9"/><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> ()</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
     <title>Protected Attributes    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3bdd6fd8fde26c997ceb3494e341fbd6"/><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> <emphasis role="strong">_coord</emphasis></para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668"/><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">_coord</emphasis></para>
 
 <para>Координаты </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a846ef24c4054e0adfb2de34f2c35f9a7"/><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link> <emphasis role="strong">_size</emphasis></para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f"/><link linkend="_struct_kolibri_lib_1_1point">Size</link> <emphasis role="strong">_size</emphasis></para>
 
 <para>Размер </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68"/><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
 </listitem>
             <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b"/>unsigned <emphasis role="strong">_Margin</emphasis></para>
 
@@ -51,7 +69,25 @@
 <section xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1Используется">
 <title><title>как шиблон для других классов</title></title>
 </section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1af88ac59a7195dfbe8588a68776cb645d"/><section>
+    <title>GetColor()</title>
+<indexterm><primary>GetColor</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>GetColor</secondary></indexterm>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> KolibriLib::UI::UIElement::GetColor ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить осносной цвет элемента </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Функция возвращает <link linkend="_a6dfc8327d6b3038cae0e85c0efc01b68">_MainColor</link></para>
+</formalpara>
+</para>
+</section>
 <para>
 The documentation for this class was generated from the following file:</para>
-F:/KolibriOs/Kalc/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp</section>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp</section>
 </section>

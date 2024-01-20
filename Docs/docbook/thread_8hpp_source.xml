@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_thread_8hpp_source" xml:lang="en-US">
 <title>thread.hpp</title>
-<indexterm><primary>F:/KolibriOs/Kalc/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__THREAD_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__THREAD_H__</emphasis>
 3 
@@ -14,44 +14,44 @@
 11 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Thread
 12 &#32;&#32;&#32;&#32;{
 13 
-19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1a504b365c1fa5fbca062c0ac38c550bd8">CreateThread</link>(<emphasis role="keywordtype">void</emphasis>&#32;*ThreadEntry,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;ThreadStackSize&#32;=&#32;2048)
-20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;th_stack&#32;=&#32;malloc(ThreadStackSize);
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!th_stack)&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;Если&#32;памяти&#32;не&#32;было&#32;выделенно</emphasis>
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Memory&#32;allocation&#32;error&#32;for&#32;thread!&quot;</emphasis>);
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;TID&#32;=&#32;_ksys_create_thread(ThreadEntry,&#32;th_stack&#32;+&#32;ThreadStackSize);
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(TID&#32;==&#32;-1)&#32;<emphasis role="comment">//&#32;&#32;&#32;Если&#32;поток&#32;небыл&#32;создан</emphasis>
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Unable&#32;to&#32;create&#32;a&#32;new&#32;thread!&quot;</emphasis>);
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;TID;
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;TID;
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-35 
-40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9">TerminateThread</link>(<emphasis role="keywordtype">int</emphasis>&#32;PID)
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;a;
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
-45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(a)
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(PID)
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!a)
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
-53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-57 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;Thread</emphasis>
-58 &#32;&#32;&#32;&#32;
-59 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e">CreateThread</link>(<emphasis role="keywordtype">void</emphasis>&#32;*ThreadEntry,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;ThreadStackSize&#32;=&#32;1024)
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;th_stack&#32;=&#32;malloc(ThreadStackSize);
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!th_stack)&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;Если&#32;памяти&#32;не&#32;было&#32;выделенно</emphasis>
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Memory&#32;allocation&#32;error&#32;for&#32;thread!&quot;</emphasis>);
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;TID&#32;=&#32;_ksys_create_thread(ThreadEntry,&#32;th_stack&#32;+&#32;ThreadStackSize);
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(TID&#32;==&#32;-1)&#32;<emphasis role="comment">//&#32;&#32;&#32;Если&#32;поток&#32;небыл&#32;создан</emphasis>
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Unable&#32;to&#32;create&#32;a&#32;new&#32;thread!&quot;</emphasis>);
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;TID;
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;TID;
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+34 
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9">TerminateThread</link>(<emphasis role="keywordtype">int</emphasis>&#32;PID)
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;a;
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(a)
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(PID)
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!a)
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+56 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;Thread</emphasis>
+57 &#32;&#32;&#32;&#32;
+58 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+59 
 60 
-61 
-62 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__THREAD_H__</emphasis>
+61 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__THREAD_H__</emphasis>
 </programlisting></section>

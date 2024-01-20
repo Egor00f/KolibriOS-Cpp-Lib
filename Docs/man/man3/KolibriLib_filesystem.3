@@ -1,0 +1,246 @@
+.TH "KolibriLib::filesystem" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::filesystem \- Работа с файлами  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBCreateFile\fP (const char *name)"
+.br
+.RI "Создать файл "
+.ti -1c
+.RI "int \fBCreateFile\fP (const char *name, char *path)"
+.br
+.RI "Создать файл "
+.ti -1c
+.RI "int \fBCreateFile\fP (std::string name)"
+.br
+.RI "Создать файл "
+.ti -1c
+.RI "int \fBCreateFile\fP (std::string name, std::string path)"
+.br
+.RI "Создать файл "
+.ti -1c
+.RI "int \fBDelete\fP (const char *name)"
+.br
+.RI "удалить файл или папку "
+.ti -1c
+.RI "int \fBDelete\fP (const char *name, char *path)"
+.br
+.RI "удалить файл или папку "
+.ti -1c
+.RI "int \fBDelete\fP (std::string name)"
+.br
+.RI "удалить файл или папку "
+.ti -1c
+.RI "int \fBDelete\fP (std::string name, std::string path)"
+.br
+.RI "удалить файл или папку "
+.ti -1c
+.RI "int \fBmkdir\fP (const char *path)"
+.br
+.RI "Создать папку "
+.ti -1c
+.RI "int \fBmkdir\fP (std::string path)"
+.br
+.RI "Создать папку "
+.ti -1c
+.RI "bool \fBExist\fP (std::string Path)"
+.br
+.RI "проверяет существует ли файл или папки "
+.ti -1c
+.RI "int \fBRename\fP (std::string OldName, std::string NewName)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Работа с файлами 
+
+
+.SS "просто чекбокс, ему можно задать различные стили"
+
+.SH "Function Documentation"
+.PP 
+.SS "int KolibriLib::filesystem::CreateFile (const char * name)"
+
+.PP
+Создать файл 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP полный путь до файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::CreateFile (const char * name, char * path)"
+
+.PP
+Создать файл 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP имя файла 
+.br
+\fIpath\fP путь до файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::CreateFile (std::string name)"
+
+.PP
+Создать файл 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP имя файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::CreateFile (std::string name, std::string path)"
+
+.PP
+Создать файл 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP имя файла 
+.br
+\fIpath\fP путь до файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::Delete (const char * name)"
+
+.PP
+удалить файл или папку 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP полный путь до файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::Delete (const char * name, char * path)"
+
+.PP
+удалить файл или папку 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP имя файла 
+.br
+\fIpath\fP путь до файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::Delete (std::string name)"
+
+.PP
+удалить файл или папку 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP имя файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::Delete (std::string name, std::string path)"
+
+.PP
+удалить файл или папку 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP имя файла 
+.br
+\fIpath\fP путь до файла 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "bool KolibriLib::filesystem::Exist (std::string Path)"
+
+.PP
+проверяет существует ли файл или папки 
+.PP
+\fBParameters\fP
+.RS 4
+\fIпуть\fP до файла/папки 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true если файл или папка существует, иначе false 
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::mkdir (const char * path)"
+
+.PP
+Создать папку 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP путь 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::mkdir (std::string path)"
+
+.PP
+Создать папку 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP путь 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

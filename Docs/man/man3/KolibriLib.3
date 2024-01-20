@@ -1,0 +1,141 @@
+.TH "KolibriLib" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib \- Основное пространство имён  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBchildWindow\fP"
+.br
+.RI "Дочерние окна "
+.ti -1c
+.RI "namespace \fBColor\fP"
+.br
+.RI "Набор функций для работы с цветом "
+.ti -1c
+.RI "namespace \fBfilesystem\fP"
+.br
+.RI "Работа с файлами "
+.ti -1c
+.RI "namespace \fBmouse\fP"
+.br
+.RI "Работа с мышью "
+.ti -1c
+.RI "namespace \fBNetwork\fP"
+.br
+.RI "Работа с сетью "
+.ti -1c
+.RI "namespace \fBOS\fP"
+.br
+.RI "Работа с системой "
+.ti -1c
+.RI "namespace \fBThread\fP"
+.br
+.RI "Работа с потоками "
+.ti -1c
+.RI "namespace \fBwindow\fP"
+.br
+.RI "Работа с окном "
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBpoint\fP"
+.br
+.RI "Просто точка "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit\fP ()"
+.br
+.RI "инициализация "
+.ti -1c
+.RI "void \fBWait\fP (unsigned int time)"
+.br
+.RI "Подождать "
+.ti -1c
+.RI "\fBpoint\fP< unsigned > \fBGetScreenSize\fP ()"
+.br
+.RI "Получить разрешение экрана "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "bool \fBEXIT\fP = false"
+.br
+.RI "Сообщение всем функциям что нужно завершать работу "
+.ti -1c
+.RI "int \fBEXITCODE\fP = 0"
+.br
+.RI "Код ошибки "
+.ti -1c
+.RI "const ::std::string \fBConfigurationDir\fP = '/kolibrios/etc/'"
+.br
+.ti -1c
+.RI "const ::std::string \fBImgDir\fP = ConfigurationDir + 'images/'"
+.br
+.ti -1c
+.RI "const ::std::string \fBDefaultImage\fP = ImgDir + 'default\&.png'"
+.br
+.ti -1c
+.RI "const ::std::string \fBCursorsDir\fP = ConfigurationDir + 'cursors/'"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Основное пространство имён 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Egor00f 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "\fBpoint\fP< unsigned > KolibriLib::GetScreenSize ()"
+
+.PP
+Получить разрешение экрана 
+.PP
+\fBReturns\fP
+.RS 4
+размер экрана 
+.RE
+.PP
+
+.SS "void KolibriLib::Wait (unsigned int time)\fR [inline]\fP"
+
+.PP
+Подождать 
+.PP
+\fBParameters\fP
+.RS 4
+\fItime\fP время задержки(в 1/100 секунды) 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "int KolibriLib::EXITCODE = 0"
+
+.PP
+Код ошибки 
+.SS "main(){/*\&.\&.\&.*/ return EXITCODE; }"
+.SS "функция может выполнятся очень долго, если вы уже создали довольно много кнопок\&. Это становится действительно важно когда у вас объявленно более 2000 кнопок"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

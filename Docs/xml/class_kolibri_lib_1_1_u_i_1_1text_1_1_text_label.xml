@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label" kind="class" language="C++" prot="public">
+    <compoundname>KolibriLib::UI::text::TextLabel</compoundname>
+    <basecompoundref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" prot="public" virt="non-virtual">KolibriLib::UI::UIElement</basecompoundref>
+    <includes refid="text_8hpp" local="no">text.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1aa6c61260c483592bc679b3292b1cdff3" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KolibriLib::UI::text::TextLabel::_text</definition>
+        <argsstring></argsstring>
+        <name>_text</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::_text</qualifiedname>
+        <briefdescription>
+<para>Сам текст </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="69" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a38cd60bdc6ee65ce9ca2c63fe7a642fc" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KolibriLib::UI::text::TextLabel::FontFamily</definition>
+        <argsstring></argsstring>
+        <name>FontFamily</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::FontFamily</qualifiedname>
+        <briefdescription>
+<para>Используемый шрифт </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="72" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a2509df230a7a15b4a9fefef25ce64355" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::UI::text::TextLabel::_FontSize</definition>
+        <argsstring></argsstring>
+        <name>_FontSize</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::_FontSize</qualifiedname>
+        <briefdescription>
+<para>Размер текста(высота) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="75" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af3e4dd316b274bca4d5bf9573f47aecb" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::text::TextLabel::_TextScale</definition>
+        <argsstring></argsstring>
+        <name>_TextScale</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::_TextScale</qualifiedname>
+        <briefdescription>
+<para>Подстраивать <ref refid="" kindref="compound">чтобы размер текст соответствовал размеру элемента(  _size) </ref></para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="78" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ac7459aff3d22b1dd907bb08da567ab41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::UI::text::TextLabel::TextLabel</definition>
+        <argsstring>(Coord coord={0, 0}, Size size={16, 16}, std::string text=&quot;Text&quot;, unsigned FontSize=9, bool TextScale=true, Color::Color TextColor=OS::sys_color_table.work_text, unsigned Margin=0)</argsstring>
+        <name>TextLabel</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::TextLabel</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref></type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref></type>
+          <declname>size</declname>
+          <defval>{16, 16}</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>text</declname>
+          <defval>&quot;Text&quot;</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>FontSize</declname>
+          <defval>9</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>TextScale</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>TextColor</declname>
+          <defval>OS::sys_color_table.work_text</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>Margin</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Конструктор </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координата </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Рамер элемента, игнорируется если TextScale = false </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Текст текста </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>FontSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Размер текста </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TextScale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Маштабировать текст, чтобы он не выходил за границы элемента </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Отступы от границ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="88" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="125" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a2bb8920457e94e2f9cd4998853cbe564" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::UI::text::TextLabel::~TextLabel</definition>
+        <argsstring>()</argsstring>
+        <name>~TextLabel</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::~TextLabel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="90" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a819cf1e6ccf656418a2d2961e9eb3d33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::text::TextLabel::Render</definition>
+        <argsstring>()</argsstring>
+        <name>Render</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::Render</qualifiedname>
+        <briefdescription>
+<para>Отрисовать текстовую метку </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="93" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="136" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af9f70904b54ad7c721ba9d38af327025" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string KolibriLib::UI::text::TextLabel::GetText</definition>
+        <argsstring>()</argsstring>
+        <name>GetText</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::GetText</qualifiedname>
+        <briefdescription>
+<para>Получить текст </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="_1aa6c61260c483592bc679b3292b1cdff3" kindref="member">_text</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="97" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="154" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a644a0fba249f42db672243948dbd2a7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::UI::text::TextLabel::GetFontSize</definition>
+        <argsstring>()</argsstring>
+        <name>GetFontSize</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::GetFontSize</qualifiedname>
+        <briefdescription>
+<para>Получить Размер шрифта </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="_1a2509df230a7a15b4a9fefef25ce64355" kindref="member">_FontSize</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="101" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a087fed17954bff715aed401d8d69c023" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+        <definition>Color::Color KolibriLib::UI::text::TextLabel::GetTextColor</definition>
+        <argsstring>()</argsstring>
+        <name>GetTextColor</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::GetTextColor</qualifiedname>
+        <briefdescription>
+<para>Получить цвет текста </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="" kindref="compound">_TextColor</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="105" column="30" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ad916d63a47c47ca186b25046c14530ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::text::TextLabel::SetText</definition>
+        <argsstring>(const std::string &amp;NewText)</argsstring>
+        <name>SetText</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::SetText</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>NewText</declname>
+        </param>
+        <briefdescription>
+<para>Изменить текст </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>NewText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Текст </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="109" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="163" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a1a669c7f23c46f79c5647f4fd08a3b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::text::TextLabel::SetFontSize</definition>
+        <argsstring>(const unsigned &amp;NewTextSize)</argsstring>
+        <name>SetFontSize</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::SetFontSize</qualifiedname>
+        <param>
+          <type>const unsigned &amp;</type>
+          <declname>NewTextSize</declname>
+        </param>
+        <briefdescription>
+<para>Изменить рамер текста </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>NewTextSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Новый размер текста (в px) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="113" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="167" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a058a848e9b363d4d1eab6302831a99f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::text::TextLabel::SetTextColor</definition>
+        <argsstring>(const ksys_color_t &amp;NewTextColor)</argsstring>
+        <name>SetTextColor</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::SetTextColor</qualifiedname>
+        <param>
+          <type>const ksys_color_t &amp;</type>
+          <declname>NewTextColor</declname>
+        </param>
+        <briefdescription>
+<para>Изменить цвет текста </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>NewTextColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Новый цвет текста </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="117" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="172" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a13c115d127bc7f90cb438bbd2b31619d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::text::TextLabel::SetScale</definition>
+        <argsstring>(bool scale)</argsstring>
+        <name>SetScale</name>
+        <qualifiedname>KolibriLib::UI::text::TextLabel::SetScale</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Изменить значение переменной <ref refid="" kindref="compound">_TextScale.</ref></para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Новое значение </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="121" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="177" bodyend="180"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Текстовая метка </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+      </node>
+      <node id="1">
+        <label>KolibriLib::UI::text::TextLabel</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_coord</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>KolibriLib::UI::text::TextLabel</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>KolibriLib::point&lt; int &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+      <node id="4">
+        <label>KolibriLib::point&lt; unsigned &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+    </collaborationgraph>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" line="65" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp" bodystart="66" bodyend="123"/>
+    <listofallmembers>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>_coord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a2509df230a7a15b4a9fefef25ce64355" prot="private" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>_FontSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>_MainColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>_Margin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>_size</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1aa6c61260c483592bc679b3292b1cdff3" prot="private" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>_text</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af3e4dd316b274bca4d5bf9573f47aecb" prot="private" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>_TextScale</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a38cd60bdc6ee65ce9ca2c63fe7a642fc" prot="private" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>FontFamily</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1af88ac59a7195dfbe8588a68776cb645d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>GetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a9d6acdb3e6c0c1576805c578595e3ce9" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>GetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a644a0fba249f42db672243948dbd2a7f" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>GetFontSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab1aa7de81042fd3cdc40e24abf01e854" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>GetMargin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab4805c825cf72f31fe4a3a776c409f3d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af9f70904b54ad7c721ba9d38af327025" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>GetText</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a087fed17954bff715aed401d8d69c023" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>GetTextColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a819cf1e6ccf656418a2d2961e9eb3d33" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>Render</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>SetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>SetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a1a669c7f23c46f79c5647f4fd08a3b32" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>SetFontSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a13c115d127bc7f90cb438bbd2b31619d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>SetScale</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>SetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ad916d63a47c47ca186b25046c14530ec" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>SetText</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a058a848e9b363d4d1eab6302831a99f7" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>SetTextColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ac7459aff3d22b1dd907bb08da567ab41" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>TextLabel</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a2711acf46a6b4eac37d584c0255dab5b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>UIElement</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a2bb8920457e94e2f9cd4998853cbe564" prot="public" virt="non-virtual"><scope>KolibriLib::UI::text::TextLabel</scope><name>~TextLabel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

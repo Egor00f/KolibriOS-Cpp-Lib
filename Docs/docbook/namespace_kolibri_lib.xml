@@ -38,10 +38,6 @@
 
 <para>Работа с потоками </para>
 </listitem>
-            <listitem><para>namespace <link linkend="_namespace_kolibri_lib_1_1_u_i">UI</link></para>
-
-<para>Класс-шаблон, от которого наследуются все остальные <link linkend="_namespace_kolibri_lib_1_1_u_i">UI</link> элементы </para>
-</listitem>
             <listitem><para>namespace <link linkend="_namespace_kolibri_lib_1_1window">window</link></para>
 
 <para>Работа с окном </para>
@@ -60,19 +56,15 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6">Wait</link> (unsigned time)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802"/>void <emphasis role="strong">init</emphasis> ()</para>
+
+<para>инициализация </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1a56a5ef2333e7fe22f558aaa6c9276b7c">Wait</link> (unsigned int time)</para>
 
 <para>Подождать </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link> ()</para>
-
-<para>Инициализация </para>
-</listitem>
-            <listitem><para>char <link linkend="_namespace_kolibri_lib_1a574ee69001b9c68edf6ec906dfcecd14">CheckKeyboard</link> ()</para>
-
-<para>Проверить какая клавиша клавиатуры нажата </para>
-</listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link> <link linkend="_namespace_kolibri_lib_1a91959a5056d26eda0fbc889687f4deb8">GetScreenSize</link> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <link linkend="_namespace_kolibri_lib_1a8ef3c016e993ed0a7c2d110d4adae88e">GetScreenSize</link> ()</para>
 
 <para>Получить разрешение экрана </para>
 </listitem>
@@ -89,6 +81,14 @@
 
 <para>Код ошибки </para>
 </listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a801243d32a292f3efe76b200958e4056"/>const ::std::string <emphasis role="strong">ConfigurationDir</emphasis> = &quot;/kolibrios/etc/&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a9fbe3d2f36c49d650f4c1d13d3c80b16"/>const ::std::string <emphasis role="strong">ImgDir</emphasis> = ConfigurationDir + &quot;images/&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ad6c03af439a8e649a784524af06bf036"/>const ::std::string <emphasis role="strong">DefaultImage</emphasis> = ImgDir + &quot;default.png&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a2af82cbcfd2b422395c7a557bc3e4420"/>const ::std::string <emphasis role="strong">CursorsDir</emphasis> = ConfigurationDir + &quot;cursors/&quot;</para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <section>
@@ -104,26 +104,11 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1a574ee69001b9c68edf6ec906dfcecd14"/><section>
-    <title>CheckKeyboard()</title>
-<indexterm><primary>CheckKeyboard</primary><secondary>KolibriLib</secondary></indexterm>
-<indexterm><primary>KolibriLib</primary><secondary>CheckKeyboard</secondary></indexterm>
-<para><computeroutput>char KolibriLib::CheckKeyboard ( )</computeroutput></para><para>
-
-<para>Проверить какая клавиша клавиатуры нажата </para>
-</para>
-
-<para><formalpara><title>Returns</title>
-
-<para>код(char) нажатой клавишы клавиатуры </para>
-</formalpara>
-</para>
-</section>
-<anchor xml:id="_namespace_kolibri_lib_1a91959a5056d26eda0fbc889687f4deb8"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1a8ef3c016e993ed0a7c2d110d4adae88e"/><section>
     <title>GetScreenSize()</title>
 <indexterm><primary>GetScreenSize</primary><secondary>KolibriLib</secondary></indexterm>
 <indexterm><primary>KolibriLib</primary><secondary>GetScreenSize</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">point</link> KolibriLib::GetScreenSize ( )</computeroutput></para><para>
+<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; KolibriLib::GetScreenSize ( )</computeroutput></para><para>
 
 <para>Получить разрешение экрана </para>
 </para>
@@ -134,23 +119,11 @@
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802"/><section>
-    <title>init()</title>
-<indexterm><primary>init</primary><secondary>KolibriLib</secondary></indexterm>
-<indexterm><primary>KolibriLib</primary><secondary>init</secondary></indexterm>
-<para><computeroutput>void KolibriLib::init ( )</computeroutput></para><para>
-
-<para>Инициализация </para>
-</para>
-<section xml:id="_namespace_kolibri_lib_1Просто">
-<title><title>не заморачиваяся, и вызывай в начале программы</title></title>
-</section>
-</section>
-<anchor xml:id="_namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1a56a5ef2333e7fe22f558aaa6c9276b7c"/><section>
     <title>Wait()</title>
 <indexterm><primary>Wait</primary><secondary>KolibriLib</secondary></indexterm>
 <indexterm><primary>KolibriLib</primary><secondary>Wait</secondary></indexterm>
-<para><computeroutput>void KolibriLib::Wait (unsigned time)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void KolibriLib::Wait (unsigned int time)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Подождать </para>
 </para>
@@ -190,6 +163,9 @@ Parameters</title>
 </para>
 <section xml:id="_namespace_kolibri_lib_1int">
 <title><title>main(){/*...*&#8205;/ return EXITCODE; }</title></title>
+</section>
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1Эта">
+<title><title>функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок</title></title>
 </section>
 </section>
 </section>

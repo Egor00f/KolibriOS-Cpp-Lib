@@ -12,6 +12,7 @@ namespace KolibriLib
         /// @brief Цвет
         typedef ksys_color_t Color;
 
+        /// @brief Таблица цветов
         typedef ksys_colors_table_t ColorsTable;
 
         /// @brief Таблица цветов по умолчанию
@@ -32,8 +33,9 @@ namespace KolibriLib
         }
 
         template <class ImageBits>
-        /// @brief Битность цвета. Варианты <ImageBits>:
-        /// @brief uint8_t, для 8bit,
+        /// @brief Битность цвета. 
+        /// @paragraph Варианты <ImageBits>:
+        /// @ uint8_t, для 8bit,
         /// @brief uint16_t для 16,
         /// @brief uint32_t,
         /// @brief uint64_t,

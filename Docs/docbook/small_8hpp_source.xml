@@ -8,27 +8,30 @@
 4 <emphasis role="preprocessor">#ifndef&#32;__SMALL_H__</emphasis>
 5 <emphasis role="preprocessor">#define&#32;__SMALL_H__</emphasis>
 6 
-7 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+7 
 8 
 9 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
 10 {
 12 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1ac5af83599c636badfe90db73a654f5ef">EXIT</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
 16 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1ae00feeea6bd20648e94c82f1289bc68f">EXITCODE</link>&#32;=&#32;0;
 17 
-18 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;ConfigurationDir&#32;=&#32;<emphasis role="stringliteral">&quot;/kolibrios/etc/&quot;</emphasis>;&#32;
+18 &#32;&#32;&#32;&#32;const&#32;::std::string&#32;ConfigurationDir&#32;=&#32;<emphasis role="stringliteral">&quot;/kolibrios/etc/&quot;</emphasis>;
 19 
-20 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;ImgDir&#32;=&#32;ConfigurationDir&#32;+&#32;<emphasis role="stringliteral">&quot;images/&quot;</emphasis>;
+20 &#32;&#32;&#32;&#32;const&#32;::std::string&#32;ImgDir&#32;=&#32;ConfigurationDir&#32;+&#32;<emphasis role="stringliteral">&quot;images/&quot;</emphasis>;
 21 
-22 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;CursorsDir&#32;=&#32;ConfigurationDir&#32;+&#32;<emphasis role="stringliteral">&quot;cursors/&quot;</emphasis>;&#32;&#32;&#32;<emphasis role="comment">//Предпологается&#32;что&#32;в&#32;этой&#32;папке&#32;лежат&#32;файлы,&#32;они&#32;заранее&#32;приготовленны</emphasis>
+22 &#32;&#32;&#32;&#32;const&#32;::std::string&#32;DefaultImage&#32;=&#32;ImgDir&#32;+&#32;<emphasis role="stringliteral">&quot;default.png&quot;</emphasis>;
 23 
-24 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-27 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1point">point</link>
-28 &#32;&#32;&#32;&#32;{
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;x;
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;y;
-31 &#32;&#32;&#32;&#32;};
-32 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-33 
+24 &#32;&#32;&#32;&#32;const&#32;::std::string&#32;CursorsDir&#32;=&#32;ConfigurationDir&#32;+&#32;<emphasis role="stringliteral">&quot;cursors/&quot;</emphasis>;&#32;<emphasis role="comment">//&#32;Предпологается&#32;что&#32;в&#32;этой&#32;папке&#32;лежат&#32;файлы,&#32;они&#32;заранее&#32;приготовленны</emphasis>
+25 
+26 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
+29 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1point">point</link>
+30 &#32;&#32;&#32;&#32;{
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;x;
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;y;
+33 &#32;&#32;&#32;&#32;};
 34 
-35 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__SMALL_H__</emphasis>
+35 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+36 
+37 
+38 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__SMALL_H__</emphasis>
 </programlisting></section>

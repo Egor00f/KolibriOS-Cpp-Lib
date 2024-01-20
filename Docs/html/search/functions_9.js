@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loadimage_0',['LoadImage',['../class_kolibri_lib_1_1graphic_1_1_image.html#a3accf5112178a91c9ce84430a1104540',1,'KolibriLib::graphic::Image']]]
+  ['loadimage_0',['LoadImage',['../class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a9bc3f08669991f8475c50ed1b915f6d1',1,'KolibriLib::UI::Images::image']]]
 ];

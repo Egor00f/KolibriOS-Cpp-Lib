@@ -14,6 +14,7 @@ LD	= kos32-ld
 #DIRs
 CONTRIB_DIR = F:/KolibriOs/contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
+C_LAYER_DIR = $(CONTRIB_DIR)/C_Layer
 
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include 
 LIBPATH = -L $(SDK_DIR)/lib -L C:/MinGW/msys/1.0/home/autobuild/tools/win32/mingw32/lib
@@ -32,7 +33,7 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 KOLIBRILIB_INCLUDE_PATH = ../include
 
-KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I $(CONTRIB_DIR)/C_Layer/INCLUDE
+KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I $(C_LAYER_DIR)/INCLUDE
 
 INCLUDES += $(KOLIBRILIB_INCLUDE)
 
@@ -45,7 +46,7 @@ default: Exapmle
 Exapmle: $(OBJECTS) Makefile
 
 	@echo "linking:" $(OBJECTS)
-	$(LD) $(LDFLAGS) $(LIBPATH) --subsystem console -o $(EXECUTABLE) $(OBJECTS) -lstdc++ -lsupc++ -lgcc -lc.dll
+	$(LD) $(LDFLAGS) $(LIBPATH) --subsystem console -o $(EXECUTABLE) $(OBJECTS) -lstdc++ -lsupc++ $(C_LAYER_DIR)/OBJ/loadlibimg.obj -lgcc -lc.dll 
 	kos32-strip -s $(EXECUTABLE) -o $(EXECUTABLE)
 	kos32-objcopy $(EXECUTABLE) -O binary
 	@rm $(EXECUTABLE).o

@@ -1,0 +1,972 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="class_kolibri_lib_1_1window_1_1_window" kind="class" language="C++" prot="public">
+    <compoundname>KolibriLib::window::Window</compoundname>
+    <includes refid="window_8hpp" local="no">window.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1a929047a2bfe95ff586aca5619c68fab0" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KolibriLib::window::Window::_title</definition>
+        <argsstring></argsstring>
+        <name>_title</name>
+        <qualifiedname>KolibriLib::window::Window::_title</qualifiedname>
+        <briefdescription>
+<para>Заголовок окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="83" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1ab4f87a42bcc641f12ee2c88cb32bdc7c" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+        <definition>UI::Size KolibriLib::window::Window::_size</definition>
+        <argsstring></argsstring>
+        <name>_size</name>
+        <qualifiedname>KolibriLib::window::Window::_size</qualifiedname>
+        <briefdescription>
+<para>Размеры окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="86" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1a3b873319046a547cad26ad4e60e90037" prot="private" static="no" mutable="no">
+        <type><ref refid="namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58" kindref="member">Color::ColorsTable</ref></type>
+        <definition>Color::ColorsTable KolibriLib::window::Window::_colors</definition>
+        <argsstring></argsstring>
+        <name>_colors</name>
+        <qualifiedname>KolibriLib::window::Window::_colors</qualifiedname>
+        <briefdescription>
+<para>Цвета окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="89" column="20" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1acd07e272bc0305c47a75a2b61fa7b870" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::_MARGIN</definition>
+        <argsstring></argsstring>
+        <name>_MARGIN</name>
+        <qualifiedname>KolibriLib::window::Window::_MARGIN</qualifiedname>
+        <briefdescription>
+<para>отступы от края окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="92" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1a577aeb28c88799e93da900ab964fa91f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int KolibriLib::window::Window::_style</definition>
+        <argsstring></argsstring>
+        <name>_style</name>
+        <qualifiedname>KolibriLib::window::Window::_style</qualifiedname>
+        <briefdescription>
+<para>Стиль окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="95" column="5" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1a6d2ee35d5cfa0884c381288c4de5d3c5" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int KolibriLib::window::Window::activeForm</definition>
+        <argsstring></argsstring>
+        <name>activeForm</name>
+        <qualifiedname>KolibriLib::window::Window::activeForm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="97" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1a3e3bdb7a42bbb199299f70c187e904f6" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KolibriLib::window::Window::_Redraw</definition>
+        <argsstring></argsstring>
+        <name>_Redraw</name>
+        <qualifiedname>KolibriLib::window::Window::_Redraw</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Окно перерисовывается сейчас (да/нет) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="100" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1window_1_1_window_1a8cc155b3ddac8fc5c43221268962e6a9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="struct_kolibri_lib_1_1window_1_1_element" kindref="compound">Element</ref> &gt;</type>
+        <definition>std::vector&lt;Element&gt; KolibriLib::window::Window::_Elements</definition>
+        <argsstring></argsstring>
+        <name>_Elements</name>
+        <qualifiedname>KolibriLib::window::Window::_Elements</qualifiedname>
+        <briefdescription>
+<para>Список всех кнопок этого окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="104" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a6af66f5fbbd9c317ef91647106b2496c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::AddNewButton</definition>
+        <argsstring>(UI::buttons::Button btn)</argsstring>
+        <name>AddNewButton</name>
+        <qualifiedname>KolibriLib::window::Window::AddNewButton</qualifiedname>
+        <param>
+          <type><ref refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" kindref="compound">UI::buttons::Button</ref></type>
+          <declname>btn</declname>
+        </param>
+        <briefdescription>
+<para>Добавить в список новую кнопку </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>btn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>кнопка </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>номер в списке <ref refid="" kindref="compound">_Buttons</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="109" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="225" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a6785600c953d4864e94b7ec6708829e4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::AddNewTextLabel</definition>
+        <argsstring>(UI::text::TextLabel text)</argsstring>
+        <name>AddNewTextLabel</name>
+        <qualifiedname>KolibriLib::window::Window::AddNewTextLabel</qualifiedname>
+        <param>
+          <type><ref refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label" kindref="compound">UI::text::TextLabel</ref></type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Добавить в список новую текствую метку </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>текстовая метка </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>номер в списке <ref refid="" kindref="compound">_Texts</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="114" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="263" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a3bab21b3dd337543d9e24220f8ef00e9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::AddNewForm</definition>
+        <argsstring>(UI::Form form)</argsstring>
+        <name>AddNewForm</name>
+        <qualifiedname>KolibriLib::window::Window::AddNewForm</qualifiedname>
+        <param>
+          <type><ref refid="class_kolibri_lib_1_1_u_i_1_1_form" kindref="compound">UI::Form</ref></type>
+          <declname>form</declname>
+        </param>
+        <briefdescription>
+<para>Добавить форму </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>form</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Форма </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>номер в списке <ref refid="" kindref="compound">_Forms</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="119" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="281" bodyend="297"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a652b4e34f5a30b5904327dc19a8f3467" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::window::Window::Window</definition>
+        <argsstring>(std::string Title=&quot;Window&quot;, UI::Size size=DefaultWindowSize, int style=0x14, ksys_colors_table_t colors=Color::DefaultColorTable, unsigned Margin=0)</argsstring>
+        <name>Window</name>
+        <qualifiedname>KolibriLib::window::Window::Window</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Title</declname>
+          <defval>&quot;Window&quot;</defval>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+          <declname>size</declname>
+          <defval><ref refid="namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d" kindref="member">DefaultWindowSize</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>style</declname>
+          <defval>0x14</defval>
+        </param>
+        <param>
+          <type>ksys_colors_table_t</type>
+          <declname>colors</declname>
+          <defval><ref refid="namespace_kolibri_lib_1_1_color_1ab69e803699670dac961e1e916bfde2b3" kindref="member">Color::DefaultColorTable</ref></defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>Margin</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Конструктор </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Заголовок окна </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Размер окна </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>стиль окна </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>colors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет окна </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Отступы </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="128" column="1" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="299" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1ada32f6771efe6e95b4c3ecf87c5ac3c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::window::Window::~Window</definition>
+        <argsstring>()</argsstring>
+        <name>~Window</name>
+        <qualifiedname>KolibriLib::window::Window::~Window</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="129" column="1" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="318" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1ae306d4a030618ce8ca8671269b91c062" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::Render</definition>
+        <argsstring>()</argsstring>
+        <name>Render</name>
+        <qualifiedname>KolibriLib::window::Window::Render</qualifiedname>
+        <briefdescription>
+<para>Отрисовать окно </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="132" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="382" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1adc928b51c1a6c0d8f996269c52dfc060" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::GetMargin</definition>
+        <argsstring>()</argsstring>
+        <name>GetMargin</name>
+        <qualifiedname>KolibriLib::window::Window::GetMargin</qualifiedname>
+        <briefdescription>
+<para>Получить рамер отступов в этом окне </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="_1acd07e272bc0305c47a75a2b61fa7b870" kindref="member">_MARGIN</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="136" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="414" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1adeea96cd50ef28fa2babd0f3241d15ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+        <definition>UI::Size KolibriLib::window::Window::GetSize</definition>
+        <argsstring>()</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>KolibriLib::window::Window::GetSize</qualifiedname>
+        <briefdescription>
+<para>Получить размер окна </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="_1ab4f87a42bcc641f12ee2c88cb32bdc7c" kindref="member">_size</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="140" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="419" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a5d16422e16dccc73c8d0c3be4cab3a71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::SetWindowColors</definition>
+        <argsstring>(ksys_colors_table_t colorTable)</argsstring>
+        <name>SetWindowColors</name>
+        <qualifiedname>KolibriLib::window::Window::SetWindowColors</qualifiedname>
+        <param>
+          <type>ksys_colors_table_t</type>
+          <declname>colorTable</declname>
+        </param>
+        <briefdescription>
+<para>Задать стандартные цвета окна </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>colorTable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>таблица цветов </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="144" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="342" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a5bb8bddc3ee73903c934235d66eb04b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::StartRedraw</definition>
+        <argsstring>()</argsstring>
+        <name>StartRedraw</name>
+        <qualifiedname>KolibriLib::window::Window::StartRedraw</qualifiedname>
+        <briefdescription>
+<para>Начать перересовку окна </para>
+        </briefdescription>
+        <detaileddescription>
+<sect4 id="class_kolibri_lib_1_1window_1_1_window_1Стирает">
+<title>всё что было нарисованно в окне</title></sect4>
+<sect4 id="class_kolibri_lib_1_1window_1_1_window_1Обязательно">
+<title>после должна быть вызвана функция #EndRedraw()</title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="149" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="347" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a15ee74c1a1db831e1b12131bc70fa4cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::EndRedraw</definition>
+        <argsstring>()</argsstring>
+        <name>EndRedraw</name>
+        <qualifiedname>KolibriLib::window::Window::EndRedraw</qualifiedname>
+        <briefdescription>
+<para>Закончить перересовку окна </para>
+        </briefdescription>
+        <detaileddescription>
+<sect4 id="class_kolibri_lib_1_1window_1_1_window_1Обязательно">
+<title>после должна быть вызвана функция #EndRedraw()</title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="153" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="353" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1add7534ebbd153468ea2699461b0017bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::DrawWindow</definition>
+        <argsstring>(UI::Coord coord=mouse::GetMousePositionOnSreen())</argsstring>
+        <name>DrawWindow</name>
+        <qualifiedname>KolibriLib::window::Window::DrawWindow</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>coord</declname>
+          <defval><ref refid="namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9" kindref="member">mouse::GetMousePositionOnSreen</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Отрисовать окно </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>позиция окна </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>размер окна </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>титул(текст в заголовке) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет рабочей области </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>стиль </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="161" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="362" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a6ee3a4aa28979fdd68200a847bf0e5e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::ChangeWindow</definition>
+        <argsstring>(UI::Coord coord, UI::Size size)</argsstring>
+        <name>ChangeWindow</name>
+        <qualifiedname>KolibriLib::window::Window::ChangeWindow</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Изменить окно </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>позиция </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>размер </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="166" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="367" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a91366917bae725f1b5ba99678e22c821" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::ChangeTilte</definition>
+        <argsstring>(std::string newTitle)</argsstring>
+        <name>ChangeTilte</name>
+        <qualifiedname>KolibriLib::window::Window::ChangeTilte</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>newTitle</declname>
+        </param>
+        <briefdescription>
+<para>Изменить заголовок окна </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newTitle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>новый заголовок </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="170" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="373" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a6ea4655761676189ccd9a5b14e5f4c6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+        <definition>UI::Size KolibriLib::window::Window::GetWindowSize</definition>
+        <argsstring>()</argsstring>
+        <name>GetWindowSize</name>
+        <qualifiedname>KolibriLib::window::Window::GetWindowSize</qualifiedname>
+        <briefdescription>
+<para>Получить размер окна </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>point.x - ширина окна, </para>
+</simplesect>
+<simplesect kind="return"><para>point.y - высота окна </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="175" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="378" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1ac45692a8beccd1c452fd9b8f773c41bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::CreateButton</definition>
+        <argsstring>(UI::Coord coord={0, 0}, UI::Size size={16, 16}, std::string Text=&quot; &quot;, unsigned margin=UI::DefaultMargin, bool UseWindowColors=true, Color::Color color=OS::sys_color_table.work_button, Color::Color TextColor=OS::sys_color_table.work_button_text)</argsstring>
+        <name>CreateButton</name>
+        <qualifiedname>KolibriLib::window::Window::CreateButton</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+          <declname>size</declname>
+          <defval>{16, 16}</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>Text</declname>
+          <defval>&quot; &quot;</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>margin</declname>
+          <defval>UI::DefaultMargin</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>UseWindowColors</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_button</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>TextColor</declname>
+          <defval>OS::sys_color_table.work_button_text</defval>
+        </param>
+        <briefdescription>
+<para>Создать кнопку </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координата кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>размеры кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>текст кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Отступы границ кноки от текста </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>UseWindowColors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Использовать ли цвет окна(да/нет) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TextColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет текста кнопки </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>номер кнопки в списке <ref refid="" kindref="compound">_Buttons</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="186" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="424" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a1d366e0480ed7f2a7e46e4963ba703ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::CreateButton</definition>
+        <argsstring>(const UI::buttons::Button &amp;btn)</argsstring>
+        <name>CreateButton</name>
+        <qualifiedname>KolibriLib::window::Window::CreateButton</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" kindref="compound">UI::buttons::Button</ref> &amp;</type>
+          <declname>btn</declname>
+        </param>
+        <briefdescription>
+<para>Создать кнопку </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>btn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>кнопка </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>номер кнопки в списке <ref refid="" kindref="compound">_Buttons</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="191" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1abcac8d861f1a632b41c024ff1278c4a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::CreateText</definition>
+        <argsstring>(UI::Coord coord={0, 0}, UI::Size size={16, 16}, std::string text=&quot;Text&quot;, unsigned FontSize=9, bool UseWindowColors=true, Color::Color color=OS::sys_color_table.work_text)</argsstring>
+        <name>CreateText</name>
+        <qualifiedname>KolibriLib::window::Window::CreateText</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+          <declname>size</declname>
+          <defval>{16, 16}</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>text</declname>
+          <defval>&quot;Text&quot;</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>FontSize</declname>
+          <defval>9</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>UseWindowColors</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_text</defval>
+        </param>
+        <briefdescription>
+<para>Создать текст в окне </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координата текста </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>рамер рамок текста </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Сам текст </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>FontSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Рамер текста </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>UseWindowColors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Использовать цвета окна(да/нет) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет текста </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Номер текста в списке <ref refid="" kindref="compound">_Texts</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="203" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="437" bodyend="447"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a21976b74a9df8bc92b0563e10e0e6a48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::CreateText</definition>
+        <argsstring>(const UI::text::TextLabel &amp;text)</argsstring>
+        <name>CreateText</name>
+        <qualifiedname>KolibriLib::window::Window::CreateText</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label" kindref="compound">UI::text::TextLabel</ref> &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Создать текст в окне </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>текст </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Номер текста в списке <ref refid="" kindref="compound">_Texts</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="208" column="10" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="448" bodyend="451"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1aed07039c255cf62c945d8028619e20f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::Window::CreateForm</definition>
+        <argsstring>(UI::Form form)</argsstring>
+        <name>CreateForm</name>
+        <qualifiedname>KolibriLib::window::Window::CreateForm</qualifiedname>
+        <param>
+          <type><ref refid="class_kolibri_lib_1_1_u_i_1_1_form" kindref="compound">UI::Form</ref></type>
+          <declname>form</declname>
+        </param>
+        <briefdescription>
+<para>Создать форму </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>form</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>форма </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>номер в списке <ref refid="" kindref="compound">_Forms</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="215" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1aa911a708b665af0f2305fb7cd3c274b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::Window::DeleteElement</definition>
+        <argsstring>(unsigned id)</argsstring>
+        <name>DeleteElement</name>
+        <qualifiedname>KolibriLib::window::Window::DeleteElement</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Удалить элемент </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>idшник того элемента, которой нужно удалить </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="219" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="455" bodyend="474"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1window_1_1_window_1a33a17f79c99855fb543cc060b197ce99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34" kindref="member">OS::Event</ref></type>
+        <definition>OS::Event KolibriLib::window::Window::Handler</definition>
+        <argsstring>()</argsstring>
+        <name>Handler</name>
+        <qualifiedname>KolibriLib::window::Window::Handler</qualifiedname>
+        <briefdescription>
+<para>Обработчик окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="222" column="11" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="475" bodyend="517"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Класс для работы с окном </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="79" column="1" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" bodystart="80" bodyend="223"/>
+    <listofallmembers>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a3b873319046a547cad26ad4e60e90037" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>_colors</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a8cc155b3ddac8fc5c43221268962e6a9" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>_Elements</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1acd07e272bc0305c47a75a2b61fa7b870" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>_MARGIN</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a3e3bdb7a42bbb199299f70c187e904f6" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>_Redraw</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1ab4f87a42bcc641f12ee2c88cb32bdc7c" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>_size</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a577aeb28c88799e93da900ab964fa91f" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>_style</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a929047a2bfe95ff586aca5619c68fab0" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>_title</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a6d2ee35d5cfa0884c381288c4de5d3c5" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>activeForm</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a6af66f5fbbd9c317ef91647106b2496c" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>AddNewButton</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a3bab21b3dd337543d9e24220f8ef00e9" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>AddNewForm</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a6785600c953d4864e94b7ec6708829e4" prot="private" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>AddNewTextLabel</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a91366917bae725f1b5ba99678e22c821" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>ChangeTilte</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a6ee3a4aa28979fdd68200a847bf0e5e8" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>ChangeWindow</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1ac45692a8beccd1c452fd9b8f773c41bc" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>CreateButton</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a1d366e0480ed7f2a7e46e4963ba703ff" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>CreateButton</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1aed07039c255cf62c945d8028619e20f4" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>CreateForm</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1abcac8d861f1a632b41c024ff1278c4a4" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>CreateText</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a21976b74a9df8bc92b0563e10e0e6a48" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>CreateText</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1aa911a708b665af0f2305fb7cd3c274b1" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>DeleteElement</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1add7534ebbd153468ea2699461b0017bb" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>DrawWindow</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a15ee74c1a1db831e1b12131bc70fa4cc" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>EndRedraw</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1adc928b51c1a6c0d8f996269c52dfc060" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>GetMargin</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1adeea96cd50ef28fa2babd0f3241d15ba" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a6ea4655761676189ccd9a5b14e5f4c6f" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>GetWindowSize</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a33a17f79c99855fb543cc060b197ce99" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>Handler</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1ae306d4a030618ce8ca8671269b91c062" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>Render</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a5d16422e16dccc73c8d0c3be4cab3a71" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>SetWindowColors</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a5bb8bddc3ee73903c934235d66eb04b6" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>StartRedraw</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1a652b4e34f5a30b5904327dc19a8f3467" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>Window</name></member>
+      <member refid="class_kolibri_lib_1_1window_1_1_window_1ada32f6771efe6e95b4c3ecf87c5ac3c7" prot="public" virt="non-virtual"><scope>KolibriLib::window::Window</scope><name>~Window</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

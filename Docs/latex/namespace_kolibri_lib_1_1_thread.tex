@@ -8,7 +8,7 @@
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a504b365c1fa5fbca062c0ac38c550bd8}{Create\+Thread}} (void \texorpdfstring{$\ast$}{*}Thread\+Entry, unsigned Thread\+Stack\+Size=2048)
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a362d0bda7425ff79a1a5346d5eacdd7e}{Create\+Thread}} (void \texorpdfstring{$\ast$}{*}Thread\+Entry, unsigned Thread\+Stack\+Size=1024)
 \begin{DoxyCompactList}\small\item\em Создать поток \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9}{Terminate\+Thread}} (int PID)
 \begin{DoxyCompactList}\small\item\em Завершить процесс/поток \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -18,11 +18,11 @@ bool \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726
 Работа с потоками 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_1_1_thread_a504b365c1fa5fbca062c0ac38c550bd8}\label{namespace_kolibri_lib_1_1_thread_a504b365c1fa5fbca062c0ac38c550bd8} 
+\Hypertarget{namespace_kolibri_lib_1_1_thread_a362d0bda7425ff79a1a5346d5eacdd7e}\label{namespace_kolibri_lib_1_1_thread_a362d0bda7425ff79a1a5346d5eacdd7e} 
 \index{KolibriLib::Thread@{KolibriLib::Thread}!CreateThread@{CreateThread}}
 \index{CreateThread@{CreateThread}!KolibriLib::Thread@{KolibriLib::Thread}}
 \doxysubsubsection{\texorpdfstring{CreateThread()}{CreateThread()}}
-{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+Thread\+::\+Create\+Thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{Thread\+Entry,  }\item[{unsigned}]{Thread\+Stack\+Size = {\ttfamily 2048} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+Thread\+::\+Create\+Thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{Thread\+Entry,  }\item[{unsigned}]{Thread\+Stack\+Size = {\ttfamily 1024} }\end{DoxyParamCaption})}
 
 
 
@@ -38,7 +38,6 @@ bool \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726
 \begin{DoxyReturn}{Returns}
 ID потока 
 \end{DoxyReturn}
-\hypertarget{namespace_kolibri_lib_1_1_thread_Сколько}{}\doxyparagraph{\texorpdfstring{нужно выделять памяти для стека потока? Я не знаю}{нужно выделять памяти для стека потока? Я не знаю}}\label{namespace_kolibri_lib_1_1_thread_Сколько}
 \Hypertarget{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9}\label{namespace_kolibri_lib_1_1_thread_a6931d058e76a34196fb9f726db9d91f9} 
 \index{KolibriLib::Thread@{KolibriLib::Thread}!TerminateThread@{TerminateThread}}
 \index{TerminateThread@{TerminateThread}!KolibriLib::Thread@{KolibriLib::Thread}}
@@ -55,6 +54,6 @@ ID потока
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true если успешно, иначе false 
+true если успешно, инач false 
 \end{DoxyReturn}
 \hypertarget{namespace_kolibri_lib_1_1_thread_Нельзя}{}\doxyparagraph{\texorpdfstring{завершить поток операционной системы OS/\+IDLE (номер слота 1), можно завершить любой обычный поток/процесс}{завершить поток операционной системы OS/\+IDLE (номер слота 1), можно завершить любой обычный поток/процесс}}\label{namespace_kolibri_lib_1_1_thread_Нельзя}

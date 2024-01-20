@@ -1,4 +1,29 @@
 var searchData=
 [
-  ['handler_0',['Handler',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a018ac30303a5b12365f5251f5771bf6f',1,'KolibriLib::UI::buttons::Button::Handler()'],['../class_kolibri_lib_1_1_u_i_1_1_form.html#abc53102114e1df7f0a10460ff94f03e5',1,'KolibriLib::UI::Form::Handler()'],['../class_kolibri_lib_1_1window_1_1_window.html#af0b96f4902fa2758b18f52318f0b2794',1,'KolibriLib::window::Window::Handler()']]]
+  ['getbackgroundcolor_0',['GetBackgroundColor',['../class_kolibri_lib_1_1_u_i_1_1_form.html#aaa684440ce02c9e66c8650f601fbbe17',1,'KolibriLib::UI::Form']]],
+  ['getbackgroundtext_1',['GetBackgroundText',['../class_kolibri_lib_1_1_u_i_1_1_form.html#aa3fa979b5780b0a50e003b2a0053a232',1,'KolibriLib::UI::Form']]],
+  ['getbuttonid_2',['GetButtonId',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a4516cf225b950017d2810b76d8adee6b',1,'KolibriLib::UI::buttons']]],
+  ['getcolor_3',['GetColor',['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#af88ac59a7195dfbe8588a68776cb645d',1,'KolibriLib::UI::UIElement']]],
+  ['getfontsize_4',['GetFontSize',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a644a0fba249f42db672243948dbd2a7f',1,'KolibriLib::UI::text::TextLabel']]],
+  ['getfreebuttonid_5',['GetFreeButtonId',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a4b8f662229c09234036627695a5e9f3b',1,'KolibriLib::UI::buttons']]],
+  ['getid_6',['GetId',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ad4fb8af1571b871236b79a5a88627713',1,'KolibriLib::UI::buttons::Button']]],
+  ['getimage_7',['GetImage',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a8c7a622b2f454f5dd315ed176e2cc937',1,'KolibriLib::UI::buttons::Button']]],
+  ['getinput_8',['GetInput',['../class_kolibri_lib_1_1_u_i_1_1_form.html#ac39c109c78e884a3584d194531f6bfeb',1,'KolibriLib::UI::Form']]],
+  ['getmargin_9',['GetMargin',['../class_kolibri_lib_1_1window_1_1_window.html#adc928b51c1a6c0d8f996269c52dfc060',1,'KolibriLib::window::Window']]],
+  ['getmousebuttons_10',['GetMouseButtons',['../namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024',1,'KolibriLib::mouse']]],
+  ['getmousepositioninwindow_11',['GetMousePositionInWindow',['../namespace_kolibri_lib_1_1mouse.html#af5c71bb6951c9963f3e8f7366b343ab0',1,'KolibriLib::mouse']]],
+  ['getmousepositiononsreen_12',['GetMousePositionOnSreen',['../namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9',1,'KolibriLib::mouse']]],
+  ['getmousewheels_13',['GetMouseWheels',['../namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0',1,'KolibriLib::mouse']]],
+  ['getpressedbutton_14',['GetPressedButton',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#ac7dae354425dc950caccfa1c283cbdd7',1,'KolibriLib::UI::buttons']]],
+  ['getscreensize_15',['GetScreenSize',['../namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e',1,'KolibriLib']]],
+  ['getsize_16',['GetSize',['../class_kolibri_lib_1_1window_1_1_window.html#adeea96cd50ef28fa2babd0f3241d15ba',1,'KolibriLib::window::Window']]],
+  ['getstatus_17',['GetStatus',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a1558c18770a8747cf4f9fc490519378e',1,'KolibriLib::UI::buttons::Button']]],
+  ['getsystemcolors_18',['GetSystemColors',['../namespace_kolibri_lib_1_1_o_s.html#acd3677ce750619433ac3ed307fd93f06',1,'KolibriLib::OS']]],
+  ['gettext_19',['GetText',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#af9f70904b54ad7c721ba9d38af327025',1,'KolibriLib::UI::text::TextLabel']]],
+  ['gettextcolor_20',['GetTextColor',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a087fed17954bff715aed401d8d69c023',1,'KolibriLib::UI::text::TextLabel']]],
+  ['gettextlabel_21',['GetTextLabel',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#af3dea4b56f7beb783bbe93cc97766faa',1,'KolibriLib::UI::buttons::Button']]],
+  ['gettextsize_22',['GetTextSize',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a88c7481d1f3297280474e2d9b5959c64',1,'KolibriLib::UI::text']]],
+  ['gettime_23',['GetTime',['../namespace_kolibri_lib_1_1_o_s.html#a1744275834206a63ba18a572f5ddd6bb',1,'KolibriLib::OS']]],
+  ['gettype_24',['GetType',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#aebbc5d41b880015778c938db8682f3ea',1,'KolibriLib::UI::buttons::Button']]],
+  ['getwindowsize_25',['GetWindowSize',['../class_kolibri_lib_1_1window_1_1_window.html#a6ea4655761676189ccd9a5b14e5f4c6f',1,'KolibriLib::window::Window']]]
 ];

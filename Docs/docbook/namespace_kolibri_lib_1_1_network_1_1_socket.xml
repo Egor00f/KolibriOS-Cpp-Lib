@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_network_1_1_socket" xml:lang="en-US">
+<title>KolibriLib::Network::Socket Namespace Reference</title>
+<indexterm><primary>KolibriLib::Network::Socket</primary></indexterm>
+<para>
+
+<para>Работа с сокетами </para>
+ 
+</para>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_socket_1a8ce01e1c56e116bd8d2c0268a46cccab"/>enum <emphasis role="strong">Domain</emphasis> { <emphasis role="strong">IPv4</emphasis> = 2
+, <emphasis role="strong">IPv6</emphasis> = 10
+ }</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_socket_1abf3ecf28ecab8dd413c32b3fc81ab64f"/>enum <link linkend="_namespace_kolibri_lib_1_1_network_1_1_socket_1abf3ecf28ecab8dd413c32b3fc81ab64f">SocetTypes</link> { <emphasis role="strong">Stream</emphasis> = 1
+, <emphasis role="strong">DGram</emphasis> = 2
+, <emphasis role="strong">RAW</emphasis> = 3
+ }</para>
+
+<para>Список типов сокета </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_socket_1af96d1e70f650b4bdaa76cb2a94d499f2"/>enum <link linkend="_namespace_kolibri_lib_1_1_network_1_1_socket_1af96d1e70f650b4bdaa76cb2a94d499f2">Protocols</link> { <?linebreak?><emphasis role="strong">PROTOCOL_IP</emphasis> = 0
+, <emphasis role="strong">PROTOCOL_CMP</emphasis> = 1
+, <emphasis role="strong">PROTOCOL_TCP</emphasis> = 6
+, <emphasis role="strong">PROTOCOL_UDP</emphasis> = 17
+, <?linebreak?><emphasis role="strong">PROTOCOL_RAW</emphasis> = 255
+ }</para>
+
+<para>Список протоколов </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1_network_1_1_socket_1a2d1995ca6e514b9812352336c2364ddb">OpenSocket</link> (int domain=IPv4, int SocetType=Stream, int protocol=PROTOCOL_IP)</para>
+
+<para>Окрыть сокет </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1_network_1_1_socket_1a5676fc313815ca4a1bbf7e67373bc99c">CloseSocket</link> (int Socket)</para>
+
+<para>Закрыть сокет </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Работа с сокетами </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_socket_1a5676fc313815ca4a1bbf7e67373bc99c"/><section>
+    <title>CloseSocket()</title>
+<indexterm><primary>CloseSocket</primary><secondary>KolibriLib::Network::Socket</secondary></indexterm>
+<indexterm><primary>KolibriLib::Network::Socket</primary><secondary>CloseSocket</secondary></indexterm>
+<para><computeroutput>int KolibriLib::Network::Socket::CloseSocket (int Socket)</computeroutput></para><para>
+
+<para>Закрыть сокет </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry><link linkend="_namespace_kolibri_lib_1_1_network_1_1_socket">Socket</link></entry><entry>
+<para>номер сокета </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>статус </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_socket_1a2d1995ca6e514b9812352336c2364ddb"/><section>
+    <title>OpenSocket()</title>
+<indexterm><primary>OpenSocket</primary><secondary>KolibriLib::Network::Socket</secondary></indexterm>
+<indexterm><primary>KolibriLib::Network::Socket</primary><secondary>OpenSocket</secondary></indexterm>
+<para><computeroutput>int KolibriLib::Network::Socket::OpenSocket (int domain = <computeroutput>IPv4</computeroutput>
+, int SocetType = <computeroutput>Stream</computeroutput>
+, int protocol = <computeroutput>PROTOCOL_IP</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Окрыть сокет </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>domain</entry><entry>
+<para>тип сети IPv4/IPv6 </para>
+</entry>
+                            </row>
+                            <row>
+<entry>SocetType</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>protocol</entry><entry>
+<para>Используемый протокол </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>номер сокета </para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

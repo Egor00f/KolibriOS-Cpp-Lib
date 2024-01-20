@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['img_0',['img',['../namespace_kolibri_lib_1_1child_window.html#a03d64ce78a93fe8a3c3df6334eae8680',1,'KolibriLib::childWindow']]]
+  ['sys_5fcolor_5ftable_0',['sys_color_table',['../namespace_kolibri_lib_1_1_o_s.html#a8915296792964e4aaeadf4b76f6a109a',1,'KolibriLib::OS']]]
 ];

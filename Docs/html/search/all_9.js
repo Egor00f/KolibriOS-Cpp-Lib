@@ -1,26 +1,7 @@
 var searchData=
 [
-  ['getdevicename_0',['GetDeviceName',['../namespace_kolibri_lib_1_1_network_1_1_devices.html#a1dde4cbd3895fa5faa94895dd5a7144a',1,'KolibriLib::Network::Devices']]],
-  ['getdevicesamount_1',['GetDevicesAmount',['../namespace_kolibri_lib_1_1_network_1_1_devices.html#a6a7cdf18be896eeba97d3c1fc582ddbb',1,'KolibriLib::Network::Devices']]],
-  ['getdevicetype_2',['GetDeviceType',['../namespace_kolibri_lib_1_1_network_1_1_devices.html#ac2863a2964af824678991db92d0bbd81',1,'KolibriLib::Network::Devices']]],
-  ['getfontsize_3',['GetFontSize',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a644a0fba249f42db672243948dbd2a7f',1,'KolibriLib::UI::text::TextLabel']]],
-  ['getid_4',['GetId',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ad4fb8af1571b871236b79a5a88627713',1,'KolibriLib::UI::buttons::Button']]],
-  ['getinput_5',['GetInput',['../class_kolibri_lib_1_1_u_i_1_1_form.html#ac39c109c78e884a3584d194531f6bfeb',1,'KolibriLib::UI::Form']]],
-  ['getmargin_6',['GetMargin',['../class_kolibri_lib_1_1window_1_1_window.html#adc928b51c1a6c0d8f996269c52dfc060',1,'KolibriLib::window::Window']]],
-  ['getmousebuttons_7',['GetMouseButtons',['../namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024',1,'KolibriLib::mouse']]],
-  ['getmousepositioninwindow_8',['GetMousePositionInWindow',['../namespace_kolibri_lib_1_1mouse.html#a2c6bfd648dbc98a2ea6b6bcc752807f0',1,'KolibriLib::mouse']]],
-  ['getmousepositiononsreen_9',['GetMousePositionOnSreen',['../namespace_kolibri_lib_1_1mouse.html#ad71ebd075c9b514bf500ff7920a69c86',1,'KolibriLib::mouse']]],
-  ['getmousewheels_10',['GetMouseWheels',['../namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0',1,'KolibriLib::mouse']]],
-  ['getname_11',['GetName',['../class_kolibri_lib_1_1_network_1_1_devices_1_1_net_device.html#a840c47c8102de15029811e66f08231bf',1,'KolibriLib::Network::Devices::NetDevice']]],
-  ['getpressedbutton_12',['GetPressedButton',['../class_kolibri_lib_1_1window_1_1_window.html#afd4dc643f142f4074f7c1a279e8bd746',1,'KolibriLib::window::Window']]],
-  ['getscreensize_13',['GetScreenSize',['../namespace_kolibri_lib.html#a91959a5056d26eda0fbc889687f4deb8',1,'KolibriLib']]],
-  ['getsize_14',['GetSize',['../class_kolibri_lib_1_1window_1_1_window.html#a91a8dda999ef20f61c3a2098b6265303',1,'KolibriLib::window::Window']]],
-  ['getstatus_15',['GetStatus',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a1558c18770a8747cf4f9fc490519378e',1,'KolibriLib::UI::buttons::Button']]],
-  ['getsystemcolors_16',['GetSystemColors',['../namespace_kolibri_lib_1_1_o_s.html#a290440d19cd1d31121c3dc073bcc88da',1,'KolibriLib::OS']]],
-  ['gettext_17',['GetText',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#af9f70904b54ad7c721ba9d38af327025',1,'KolibriLib::UI::text::TextLabel']]],
-  ['gettextcolor_18',['GetTextColor',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a427fcfe198dfa2298cae4ec537ebc143',1,'KolibriLib::UI::text::TextLabel']]],
-  ['gettextfromform_19',['GetTextFromForm',['../class_kolibri_lib_1_1window_1_1_window.html#a862ff182feb80022c255a44e5977a19e',1,'KolibriLib::window::Window']]],
-  ['gettextsize_20',['GetTextSize',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a88c7481d1f3297280474e2d9b5959c64',1,'KolibriLib::UI::text']]],
-  ['gettime_21',['GetTime',['../namespace_kolibri_lib_1_1_o_s.html#a1744275834206a63ba18a572f5ddd6bb',1,'KolibriLib::OS']]],
-  ['getwindowsize_22',['GetWindowSize',['../class_kolibri_lib_1_1window_1_1_window.html#aeb47c28c0dbe36884da0fcedf3f17e3a',1,'KolibriLib::window::Window']]]
+  ['false_0',['переменную @link _status в true если эта кнопка нажата, иначе false',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#устанавливает',1,'']]],
+  ['focuswindow_1',['FocusWindow',['../namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b',1,'KolibriLib::window']]],
+  ['form_2',['Form',['../class_kolibri_lib_1_1_u_i_1_1_form.html',1,'KolibriLib::UI::Form'],['../class_kolibri_lib_1_1_u_i_1_1_form.html#ae6d99f32e64940a061397f7d37373d74',1,'KolibriLib::UI::Form::Form()']]],
+  ['freebuttonid_3',['FreeButtonId',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a50f50638d4faadd115e569d5db1e2d1a',1,'KolibriLib::UI::buttons']]]
 ];

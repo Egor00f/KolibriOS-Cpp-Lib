@@ -40,14 +40,11 @@ namespace KolibriLib
 				TextLabel
 			};
 
-			union
-			{
-				UI::buttons::Button btn;
-				UI::text::TextLabel txt;
-				UI::Form frm;
-				UI::CheckBox CheckBox;
-				UI::Images::image img;
-			};
+			UI::buttons::Button btn;
+			UI::text::TextLabel txt;
+			UI::Form frm;
+			UI::CheckBox CheckBox;
+			UI::Images::image img;
 
 			Type type;
 			bool use;
@@ -97,10 +94,11 @@ namespace KolibriLib
 			/// @brief Стиль окна
 			int _style;
 
+			unsigned int activeForm;
+
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			bool _Redraw = false;
 
-			
 
 			/// @brief Список всех кнопок этого окна
 			std::vector<Element> _Elements;
@@ -185,7 +183,7 @@ namespace KolibriLib
 			/// @param color Цвет кнопки
 			/// @param TextColor Цвет текста кнопки
 			/// @return номер кнопки в списке @link _Buttons
-			unsigned CreateButton(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string Text = " ", unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, ksys_color_t color = OS::sys_color_table.work_button, ksys_color_t TextColor = OS::sys_color_table.work_button_text);
+			unsigned CreateButton(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string Text = " ", unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, Color::Color color = OS::sys_color_table.work_button, Color::Color TextColor = OS::sys_color_table.work_button_text);
 
 			/// @brief Создать кнопку
 			/// @param btn кнопка
@@ -202,12 +200,12 @@ namespace KolibriLib
 			/// @param UseWindowColors Использовать цвета окна(да/нет)
 			/// @param color Цвет текста
 			/// @return Номер текста в списке @link _Texts
-			unsigned CreateText(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool UseWindowColors = true, ksys_color_t color = OS::sys_color_table.work_text);
+			unsigned CreateText(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool UseWindowColors = true, Color::Color color = OS::sys_color_table.work_text);
 
 			/// @brief Создать текст в окне
 			/// @param text текст
 			/// @returnНомер текста в списке @link _Texts
-			unsigned CreateText(UI::text::TextLabel text);
+			unsigned CreateText(const UI::text::TextLabel& text);
 
 			
 
@@ -232,10 +230,10 @@ namespace KolibriLib
 				{
 					switch (btn.GetType())
 					{
-					case UI::buttons::ContentType::Image:
+					case UI::buttons::Content::Type::Image:
 						_Elements[i].btn.init(btn.GetCoord(), btn.GetSize(), btn.GetImage(), btn.GetMargin(), btn.GetColor());
 						break;
-					case UI::buttons::ContentType::Text:
+					case UI::buttons::Content::Type::Text:
 						_Elements[i].btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel(), btn.GetMargin(), btn.GetColor());
 						break;
 					default:
@@ -249,10 +247,10 @@ namespace KolibriLib
 			Element a(Element::Type::Button);
 			switch (btn.GetType())
 			{
-			case UI::buttons::ContentType::Image:
+			case UI::buttons::Content::Type::Image:
 				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetImage(), btn.GetMargin(), btn.GetColor());
 				break;
-			case UI::buttons::ContentType::Text:
+			case UI::buttons::Content::Type::Text:
 				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel(), btn.GetMargin(), btn.GetColor());
 			default:
 				break;
@@ -280,7 +278,7 @@ namespace KolibriLib
 			_Elements.push_back(a);
 		}
 
-        inline unsigned Window::AddNewForm(UI::Form form)
+        unsigned Window::AddNewForm(UI::Form form)
         {
 			for (unsigned i = 0; i < _Elements.size(); i++)
 			{
@@ -298,21 +296,23 @@ namespace KolibriLib
 			return _Elements.size();
 		}
 
-        Window::Window(std::string Title, UI::Size size, int style, ksys_colors_table_t colors, unsigned Margin)
+        Window::Window(std::string Title, UI::Size size, int style, Color::ColorsTable colors, unsigned Margin)
         {
 			_title = Title;
 			_size = size;
 			_style = style;
-			if (Color::ComparisonColorsTables(colors, Color::DefaultColorTable))
-			{
+			_MARGIN = Margin;
+			
+			if (Color::ComparisonColorsTables(colors, Color::DefaultColorTable))	//Если небыла в аргументах таблица цветов
+			{																		//Используется системная
 				_colors = OS::GetSystemColors();
 			}
 			else
 			{
 				_colors = colors;
 			}
-			_MARGIN = Margin;
-			DrawWindow(DefaultWindowCoord);
+			
+			DrawWindow(DefaultWindowCoord);											//Отрисовать окно
 		}
 
 		Window::~Window()
@@ -421,34 +421,33 @@ namespace KolibriLib
             return _size;
         }
 
-        unsigned KolibriLib::window::Window::CreateButton(UI::Coord coord, UI::Size size, std::string Text, unsigned margin, bool UseWindowColors, ksys_color_t color, ksys_color_t TextColor)
+        unsigned KolibriLib::window::Window::CreateButton(UI::Coord coord, UI::Size size, std::string Text, unsigned margin, bool UseWindowColors, Color::Color color, Color::Color TextColor)
 		{
 			if(UseWindowColors)
 			{
 				color		= _colors.work_button;
 				TextColor	= _colors.work_button_text;
 			}
-			;
-			return AddNewButton(UI::buttons::Button(coord, size, margin, color));
+			UI::buttons::Button b(coord, size, margin, color);
+			return AddNewButton(b);
 		}
 
 
         
-        unsigned Window::CreateText(UI::Coord coord, UI::Size size, std::string text, unsigned FontSize, bool UseWindowColors, ksys_color_t color)
+        unsigned Window::CreateText(UI::Coord coord, UI::Size size, std::string text, unsigned FontSize, bool UseWindowColors, Color::Color color)
         {
             if(UseWindowColors)
 			{
 				color = _colors.work_text;
 			}
 
-			UI::text::TextLabel t(coord, size, text, FontSize);
-
+			UI::text::TextLabel t(coord, size, text, FontSize, true, color, _MARGIN);
 			return AddNewTextLabel(t);
 			
         }
-        unsigned Window::CreateText(UI::text::TextLabel text)
+        unsigned Window::CreateText(const UI::text::TextLabel& text)
         {
-            return AddNewTextLabel(text);
+            return AddNewTextLabel(UI::text::TextLabel(text));
         }
 
       
@@ -475,7 +474,7 @@ namespace KolibriLib
 		}
 		OS::Event Window::Handler()
 		{
-			OS::Event event = OS::WaitEvent(8);
+			OS::Event event = OS::WaitEvent(10);	//ждём ивента 1/10 секунды
 
 			switch (event)
 			{
@@ -487,9 +486,34 @@ namespace KolibriLib
 				{
 					return OS::Events::Exit;
 				}
+
+				for (unsigned i = 0; i < _Elements.size(); i++)
+				{
+					if (_Elements[i].use)
+					{
+						if (_Elements[i].type == Element::Type::Form)
+						{
+							_Elements[i].frm.ButtonHandler();
+						}
+					}
+				}
+				break;
+			case OS::Events::Key:
+				for(unsigned i = 0; i < _Elements.size(); i++)
+				{
+					if(_Elements[i].use)
+					{
+						if(_Elements[i].type == Element::Type::Form)
+						{
+							_Elements[activeForm].frm.Handler();
+						}
+					}
+				}
+				break;
 			default:
 				break;
 			}
+			return event;
 		}
 	}
 

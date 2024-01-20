@@ -6,16 +6,17 @@
 #include <string>
 
 #include "small.hpp"
+#include "UI.hpp"
 #include "button.hpp"
 #include "graphic.hpp"
+#include "color.hpp"
 
 namespace KolibriLib
 {
     namespace UI
     {
         /// @brief Класс для работы с чекбоксами
-        /// @class
-        /// @paragraph
+        /// @paragraph Это просто чекбокс, ему можно задать различные стили
         class CheckBox : public buttons::Button
         {
         private:
@@ -31,10 +32,11 @@ namespace KolibriLib
                 /// @brief В виде круга
                 Circle,
                 /// @brief Квадрат с со сглаженными углами
+                /// @warning Не реализованно (пока что)
                 Smoth,
             };
 
-            CheckBox(point<int> coord = {0, 0}, point<unsigned> size = {32, 16}, int style = 0, ksys_color_t CheckBoxBorderColor = OS::sys_color_table.work_text, ksys_color_t BackgroundColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
+            CheckBox(Coord coord = {0, 0}, Size size = {32, 16}, int style = 0, Color::Color CheckBoxBorderColor = OS::sys_color_table.work_text, Color::Color BackgroundColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
             ~CheckBox();
 
             void Render();
@@ -43,7 +45,7 @@ namespace KolibriLib
             bool Handler();
         };
 
-        CheckBox::CheckBox(point<int> coord, point<unsigned> size, int style, ksys_color_t CheckBoxBorderColor, ksys_color_t BackgroundColor, unsigned Margin) : Button(coord, size, CheckBoxBorderColor, Margin)
+        CheckBox::CheckBox(Coord coord, Size size, int style, Color::Color CheckBoxBorderColor, Color::Color BackgroundColor, unsigned Margin) : Button(coord, size, CheckBoxBorderColor, Margin)
         {
             _style = style;
         }
@@ -54,7 +56,16 @@ namespace KolibriLib
 
         void CheckBox::Render()
         {
-            graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
+            switch (_style)
+            {
+            case Default:
+                graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
+                break;
+            case Circle:
+                graphic::DrawCircle(_coord, _size.x / 2, 36, _MainColor);
+            default:
+                break;
+            }
 
             if (_status)
             {

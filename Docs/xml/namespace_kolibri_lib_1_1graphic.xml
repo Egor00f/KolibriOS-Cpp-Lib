@@ -1,0 +1,475 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespace_kolibri_lib_1_1graphic" kind="namespace" language="C++">
+    <compoundname>KolibriLib::graphic</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="graphic_8hpp_1a777fbdf9ccfc173dedc95c7ee65ebfae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawLine</definition>
+        <argsstring>(UI::Coord a, UI::Coord b, Color::Color color=OS::sys_color_table.work_graph)</argsstring>
+        <name>DrawLine</name>
+        <qualifiedname>KolibriLib::graphic::DrawLine</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_graph</defval>
+        </param>
+        <briefdescription>
+<para>Нарисовать линию </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>точка первая </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>точка вторая </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет линии </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="25" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="graphic_8hpp_1a88434e507791f461a19f3119052c38e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawPixel</definition>
+        <argsstring>(UI::Coord position, Color::Color color)</argsstring>
+        <name>DrawPixel</name>
+        <qualifiedname>KolibriLib::graphic::DrawPixel</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Закрасить пиксель точку </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координаты </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="33" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="graphic_8hpp_1a52f4a99c9e1999f55883d0a6385b4536" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawCircle</definition>
+        <argsstring>(UI::Coord coord, unsigned Radius, unsigned detalization=36, Color::Color color=OS::sys_color_table.work_graph)</argsstring>
+        <name>DrawCircle</name>
+        <qualifiedname>KolibriLib::graphic::DrawCircle</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>Radius</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>detalization</declname>
+          <defval>36</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_graph</defval>
+        </param>
+        <briefdescription>
+<para>Нарисовать окружность </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Координаты центра </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>радиус окружности </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>detalization</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Детализация прорисовки окружности (то на сколько круг круглый) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="43" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="43" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="graphic_8hpp_1a496ee10b600a88273d178bf7a2e5d526" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawRectangleFill</definition>
+        <argsstring>(UI::Coord position, UI::Size size, Color::Color color=OS::sys_color_table.work_graph)</argsstring>
+        <name>DrawRectangleFill</name>
+        <qualifiedname>KolibriLib::graphic::DrawRectangleFill</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_graph</defval>
+        </param>
+        <briefdescription>
+<para>Нарисовать закрашенный прямоугольник </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>позиция левого верхнего угла </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Размеры </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="62" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="graphic_8hpp_1afa0e7399a953243cfe205a0e1a455216" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawCircleFill</definition>
+        <argsstring>(UI::Coord coord, unsigned Radius, unsigned detalization=36, Color::Color color=OS::sys_color_table.work_graph)</argsstring>
+        <name>DrawCircleFill</name>
+        <qualifiedname>KolibriLib::graphic::DrawCircleFill</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>Radius</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>detalization</declname>
+          <defval>36</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_graph</defval>
+        </param>
+        <briefdescription>
+<para>Нарисовать круг(закрашенный) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Координаты центра </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Радиус круга </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>detalization</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Детализация круга(то на сколько круг круглый) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="73" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="73" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="graphic_8hpp_1a827b5959cb6f466605818960b9a50734" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawPoint</definition>
+        <argsstring>(UI::Coord position, unsigned size, Color::Color color=OS::sys_color_table.work_graph, bool a=false)</argsstring>
+        <name>DrawPoint</name>
+        <qualifiedname>KolibriLib::graphic::DrawPoint</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_graph</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>a</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Нарисовать точку </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Координаты </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Радиус точки в рx </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Цвет </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Закрашенная/Выколотая точка </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="94" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="94" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="graphic_8hpp_1a2c0c5e2bdc972b0ee469e078c0a4d56b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawRectangleLines</definition>
+        <argsstring>(UI::Coord a, UI::Coord b, Color::Color color=OS::sys_color_table.work_graph)</argsstring>
+        <name>DrawRectangleLines</name>
+        <qualifiedname>KolibriLib::graphic::DrawRectangleLines</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_graph</defval>
+        </param>
+        <briefdescription>
+<para>Нарисовать прямоугольник </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Точка в левом верхнем углу </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Точка в правом нижнем углу </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="114" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="114" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="graphic_8hpp_1afd173dbaf6b96ea547ad6ff26889cdd2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::graphic::DrawTriangle</definition>
+        <argsstring>(UI::Coord a, UI::Coord b, UI::Coord c, Color::Color color=OS::sys_color_table.work_graph)</argsstring>
+        <name>DrawTriangle</name>
+        <qualifiedname>KolibriLib::graphic::DrawTriangle</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>color</declname>
+          <defval>OS::sys_color_table.work_graph</defval>
+        </param>
+        <briefdescription>
+<para>Нарисовать треугольник </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>первая точка </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>вторая точка </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>третья точка </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет линий </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="129" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" bodystart="129" bodyend="134"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp" line="19" column="5"/>
+  </compounddef>
+</doxygen>

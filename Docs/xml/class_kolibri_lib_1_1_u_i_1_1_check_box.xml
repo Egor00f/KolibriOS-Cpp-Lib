@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="class_kolibri_lib_1_1_u_i_1_1_check_box" kind="class" language="C++" prot="public">
+    <compoundname>KolibriLib::UI::CheckBox</compoundname>
+    <basecompoundref refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" prot="public" virt="non-virtual">KolibriLib::UI::buttons::Button</basecompoundref>
+    <includes refid="checkbox_8hpp" local="no">checkbox.hpp</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778" prot="public" static="no" strong="no">
+        <type></type>
+        <name>style</name>
+        <qualifiedname>KolibriLib::UI::CheckBox::style</qualifiedname>
+        <enumvalue id="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9" prot="public">
+          <name>Default</name>
+          <briefdescription>
+<para>По вид умолчанию, квадрат </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20" prot="public">
+          <name>Circle</name>
+          <briefdescription>
+<para>В виде круга </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3" prot="public">
+          <name>Smoth</name>
+          <briefdescription>
+<para>Квадрат с со сглаженными углами </para>
+          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="warning"><para>Не реализованно (пока что) </para>
+</simplesect>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Стиль Чекбокса </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="28" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="29" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_check_box_1ad01b31a8f375dcfa26d2976d049c6e04" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int KolibriLib::UI::CheckBox::_style</definition>
+        <argsstring></argsstring>
+        <name>_style</name>
+        <qualifiedname>KolibriLib::UI::CheckBox::_style</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="23" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_check_box_1a457187adee8772546f72dc1f16b44e0e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::CheckBox::_status</definition>
+        <argsstring></argsstring>
+        <name>_status</name>
+        <qualifiedname>KolibriLib::UI::CheckBox::_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="24" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_check_box_1abb2e572424f56bcf0a935030d9e17ba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::UI::CheckBox::CheckBox</definition>
+        <argsstring>(Coord coord={0, 0}, Size size={32, 16}, int style=0, Color::Color CheckBoxBorderColor=OS::sys_color_table.work_text, Color::Color BackgroundColor=OS::sys_color_table.work_area, unsigned Margin=DefaultMargin)</argsstring>
+        <name>CheckBox</name>
+        <qualifiedname>KolibriLib::UI::CheckBox::CheckBox</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref></type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref></type>
+          <declname>size</declname>
+          <defval>{32, 16}</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>style</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>CheckBoxBorderColor</declname>
+          <defval>OS::sys_color_table.work_text</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <declname>BackgroundColor</declname>
+          <defval>OS::sys_color_table.work_area</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>Margin</declname>
+          <defval>DefaultMargin</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="39" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_check_box_1ad07c9644ecefdb49bde4245d0861e169" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::UI::CheckBox::~CheckBox</definition>
+        <argsstring>()</argsstring>
+        <name>~CheckBox</name>
+        <qualifiedname>KolibriLib::UI::CheckBox::~CheckBox</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="40" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::CheckBox::Render</definition>
+        <argsstring>()</argsstring>
+        <name>Render</name>
+        <qualifiedname>KolibriLib::UI::CheckBox::Render</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="42" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="57" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::CheckBox::Handler</definition>
+        <argsstring>()</argsstring>
+        <name>Handler</name>
+        <qualifiedname>KolibriLib::UI::CheckBox::Handler</qualifiedname>
+        <briefdescription>
+<para>Обработчик кнопки </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="45" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="88" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Класс для работы с чекбоксами </para>
+    </briefdescription>
+    <detaileddescription>
+<sect4 id="namespace_kolibri_lib_1_1filesystem_1Это">
+<title>просто чекбокс, ему можно задать различные стили</title></sect4>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KolibriLib::UI::CheckBox</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_check_box"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+      </node>
+      <node id="2">
+        <label>KolibriLib::UI::buttons::Button</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>KolibriLib::UI::CheckBox</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_check_box"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_coord</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KolibriLib::UI::buttons::Button</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>KolibriLib::point&lt; int &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+      <node id="5">
+        <label>KolibriLib::point&lt; unsigned &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+    </collaborationgraph>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" line="20" column="9" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp" bodystart="21" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>_coord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>_MainColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>_Margin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>_size</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1a457187adee8772546f72dc1f16b44e0e" prot="private" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>_status</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ad01b31a8f375dcfa26d2976d049c6e04" prot="private" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>_style</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a65b6a0809e8e43892e48065708fa01d1" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Activate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ad65115d769a5f5f80dd08c409d0c8b3e" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Button</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1abb2e572424f56bcf0a935030d9e17ba1" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>CheckBox</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Circle</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0a235265d209cec4e8f735d416d25505" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Deactivate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Default</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1af88ac59a7195dfbe8588a68776cb645d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a9d6acdb3e6c0c1576805c578595e3ce9" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ad4fb8af1571b871236b79a5a88627713" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetId</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8c7a622b2f454f5dd315ed176e2cc937" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetImage</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab1aa7de81042fd3cdc40e24abf01e854" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetMargin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab4805c825cf72f31fe4a3a776c409f3d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a1558c18770a8747cf4f9fc490519378e" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetStatus</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1af3dea4b56f7beb783bbe93cc97766faa" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetTextLabel</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aebbc5d41b880015778c938db8682f3ea" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>GetType</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Handler</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a81904ddeac359eb10d23b8d76818f236" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>init</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a81022d37e8c7979d93f6cf8f14576323" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>init</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Render</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>SetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>SetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>SetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a159f389b9845713368e763ce159c77d7" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>SetText</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>Smoth</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>style</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a2711acf46a6b4eac37d584c0255dab5b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>UIElement</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3dddb0a58edf4d60a2bc539859fea95b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>~Button</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ad07c9644ecefdb49bde4245d0861e169" prot="public" virt="non-virtual"><scope>KolibriLib::UI::CheckBox</scope><name>~CheckBox</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

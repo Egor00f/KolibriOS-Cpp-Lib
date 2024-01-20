@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_color_8hpp_source" xml:lang="en-US">
+<title>color.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__COLOR_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__COLOR_H__</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+7 {
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color</link>
+10 &#32;&#32;&#32;&#32;{
+11 
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;ksys_color_t&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color</link>;
+14 
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;ksys_colors_table_t&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">ColorsTable</link>;
+17 
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">ColorsTable</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1ab69e803699670dac961e1e916bfde2b3">DefaultColorTable</link>&#32;=&#32;{0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0};
+20 
+21 
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1a4364bb782097c2c4fefd89c6557c5904">ComparisonColorsTables</link>(<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">ColorsTable</link>&#32;a,&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">ColorsTable</link>&#32;b)
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(a.frame_area&#32;==&#32;b.frame_area&#32;&amp;&amp;&#32;a.grab_bar&#32;==&#32;b.grab_bar&#32;&amp;&amp;&#32;a.grab_bar_button&#32;==&#32;a.grab_bar_button&#32;&amp;&amp;&#32;a.grab_button_text&#32;==&#32;b.grab_button_text&#32;&amp;&amp;&#32;a.grab_text&#32;==&#32;b.grab_text&#32;&amp;&amp;&#32;a.work_area&#32;==&#32;b.work_area&#32;&amp;&amp;&#32;a.work_button&#32;==&#32;b.work_button)
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+34 
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;ImageBits&gt;
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1_color_1_1_a_r_g_b">ARGB</link>
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImageBits&#32;alpha;
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImageBits&#32;red;
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImageBits&#32;green;
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ImageBits&#32;blue;
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+49 &#32;&#32;&#32;&#32;}
+50 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+51 
+52 
+53 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__COLOR_H__</emphasis>
+</programlisting></section>

@@ -22,8 +22,6 @@ namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s}{OS}}
 \begin{DoxyCompactList}\small\item\em Работа с системой \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread}{Thread}}
 \begin{DoxyCompactList}\small\item\em Работа с потоками \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i}{UI}}
-\begin{DoxyCompactList}\small\item\em Класс-\/шаблон, от которого наследуются все остальные \doxylink{namespace_kolibri_lib_1_1_u_i}{UI} элементы \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1window}{window}}
 \begin{DoxyCompactList}\small\item\em Работа с окном \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Classes}
@@ -34,13 +32,12 @@ struct \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}{Wait}} (unsigned time)
+\Hypertarget{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}\label{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802} 
+void {\bfseries init} ()
+\begin{DoxyCompactList}\small\item\em инициализация \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_kolibri_lib_a56a5ef2333e7fe22f558aaa6c9276b7c}{Wait}} (unsigned int time)
 \begin{DoxyCompactList}\small\item\em Подождать \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}{init}} ()
-\begin{DoxyCompactList}\small\item\em Инициализация \end{DoxyCompactList}\item 
-char \mbox{\hyperlink{namespace_kolibri_lib_a574ee69001b9c68edf6ec906dfcecd14}{Check\+Keyboard}} ()
-\begin{DoxyCompactList}\small\item\em Проверить какая клавиша клавиатуры нажата \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} \mbox{\hyperlink{namespace_kolibri_lib_a91959a5056d26eda0fbc889687f4deb8}{Get\+Screen\+Size}} ()
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \mbox{\hyperlink{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e}{Get\+Screen\+Size}} ()
 \begin{DoxyCompactList}\small\item\em Получить разрешение экрана \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -49,7 +46,19 @@ char \mbox{\hyperlink{namespace_kolibri_lib_a574ee69001b9c68edf6ec906dfcecd14}{C
 bool {\bfseries EXIT} = false
 \begin{DoxyCompactList}\small\item\em Сообщение всем функциям что нужно завершать работу \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_kolibri_lib_ae00feeea6bd20648e94c82f1289bc68f}{EXITCODE}} = 0
-\begin{DoxyCompactList}\small\item\em Код ошибки \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Код ошибки \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_a801243d32a292f3efe76b200958e4056}\label{namespace_kolibri_lib_a801243d32a292f3efe76b200958e4056} 
+const \+::std\+::string {\bfseries Configuration\+Dir} = "{}/kolibrios/etc/"{}
+\item 
+\Hypertarget{namespace_kolibri_lib_a9fbe3d2f36c49d650f4c1d13d3c80b16}\label{namespace_kolibri_lib_a9fbe3d2f36c49d650f4c1d13d3c80b16} 
+const \+::std\+::string {\bfseries Img\+Dir} = Configuration\+Dir + "{}images/"{}
+\item 
+\Hypertarget{namespace_kolibri_lib_ad6c03af439a8e649a784524af06bf036}\label{namespace_kolibri_lib_ad6c03af439a8e649a784524af06bf036} 
+const \+::std\+::string {\bfseries Default\+Image} = Img\+Dir + "{}default.\+png"{}
+\item 
+\Hypertarget{namespace_kolibri_lib_a2af82cbcfd2b422395c7a557bc3e4420}\label{namespace_kolibri_lib_a2af82cbcfd2b422395c7a557bc3e4420} 
+const \+::std\+::string {\bfseries Cursors\+Dir} = Configuration\+Dir + "{}cursors/"{}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -61,24 +70,11 @@ Egor00f
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_a574ee69001b9c68edf6ec906dfcecd14}\label{namespace_kolibri_lib_a574ee69001b9c68edf6ec906dfcecd14} 
-\index{KolibriLib@{KolibriLib}!CheckKeyboard@{CheckKeyboard}}
-\index{CheckKeyboard@{CheckKeyboard}!KolibriLib@{KolibriLib}}
-\doxysubsubsection{\texorpdfstring{CheckKeyboard()}{CheckKeyboard()}}
-{\footnotesize\ttfamily char Kolibri\+Lib\+::\+Check\+Keyboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Проверить какая клавиша клавиатуры нажата 
-
-\begin{DoxyReturn}{Returns}
-код(char) нажатой клавишы клавиатуры 
-\end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_a91959a5056d26eda0fbc889687f4deb8}\label{namespace_kolibri_lib_a91959a5056d26eda0fbc889687f4deb8} 
+\Hypertarget{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e}\label{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e} 
 \index{KolibriLib@{KolibriLib}!GetScreenSize@{GetScreenSize}}
 \index{GetScreenSize@{GetScreenSize}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{GetScreenSize()}{GetScreenSize()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -87,22 +83,11 @@ Egor00f
 \begin{DoxyReturn}{Returns}
 размер экрана 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}\label{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802} 
-\index{KolibriLib@{KolibriLib}!init@{init}}
-\index{init@{init}!KolibriLib@{KolibriLib}}
-\doxysubsubsection{\texorpdfstring{init()}{init()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Инициализация 
-
-\hypertarget{namespace_kolibri_lib_Просто}{}\doxyparagraph{\texorpdfstring{не заморачиваяся, и вызывай в начале программы}{не заморачиваяся, и вызывай в начале программы}}\label{namespace_kolibri_lib_Просто}
-\Hypertarget{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}\label{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6} 
+\Hypertarget{namespace_kolibri_lib_a56a5ef2333e7fe22f558aaa6c9276b7c}\label{namespace_kolibri_lib_a56a5ef2333e7fe22f558aaa6c9276b7c} 
 \index{KolibriLib@{KolibriLib}!Wait@{Wait}}
 \index{Wait@{Wait}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{Wait()}{Wait()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Wait (\begin{DoxyParamCaption}\item[{unsigned}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Wait (\begin{DoxyParamCaption}\item[{unsigned int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -127,3 +112,4 @@ Egor00f
 Код ошибки 
 
 \hypertarget{namespace_kolibri_lib_int}{}\doxyparagraph{\texorpdfstring{main()\{/\texorpdfstring{$\ast$}{*}...\texorpdfstring{$\ast$}{*}/ return EXITCODE; \}}{main()\{/\texorpdfstring{$\ast$}{*}...\texorpdfstring{$\ast$}{*}/ return EXITCODE; \}}}\label{namespace_kolibri_lib_int}
+\hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_Эта}{}\doxyparagraph{\texorpdfstring{функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок}{функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок}}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_Эта}

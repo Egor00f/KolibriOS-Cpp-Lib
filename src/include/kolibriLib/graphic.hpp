@@ -38,7 +38,7 @@ namespace KolibriLib
         /// @brief Нарисовать окружность
         /// @param coord Координаты центра
         /// @param Radius радиус окружности
-        /// @param detalization Детализация прорисовки окружности
+        /// @param detalization Детализация прорисовки окружности (то на сколько круг круглый)
         /// @param color Цвет
         void DrawCircle(UI::Coord coord, unsigned Radius, unsigned detalization = 36, Color::Color color = OS::sys_color_table.work_graph)
         {
@@ -68,20 +68,21 @@ namespace KolibriLib
         /// @brief Нарисовать круг(закрашенный)
         /// @param coord Координаты центра
         /// @param Radius Радиус круга
+        /// @param detalization Детализация круга(то на сколько круг круглый)
         /// @param color Цвет
-        void DrawCircleFill(UI::Coord coord, unsigned Radius, Color::Color color = OS::sys_color_table.work_graph)
+        void DrawCircleFill(UI::Coord coord, unsigned Radius, unsigned detalization = 36, Color::Color color = OS::sys_color_table.work_graph)
         {
             DrawCircle(coord, Radius, color);
 
             unsigned b = Radius * cos(90+45);
             unsigned c = sqrt((Radius * Radius) - (b * b));
-            UI::Coord n = {coord.x + b, coord.y + c};
+            UI::Coord n = {coord.x + (int)b, coord.y + (int)c};
 
             DrawRectangleFill(n, {(unsigned)(coord.x - n.x) * 2, (unsigned)c * 2}, color);
 
             for (unsigned i = Radius; i > (Radius -(coord.x - n.x)); i--)//Дозакрашивание пробелов между квадратом и границами груга
             {
-                DrawCircle(coord, i, NULL, color);
+                DrawCircle(coord, i, detalization, color);
             }
         }
 

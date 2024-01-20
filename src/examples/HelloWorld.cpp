@@ -8,7 +8,7 @@ int main()
     init();
     window::Window window("Example Window");
 
-    window.CreateText({64, 64}, {100, 100}, "Hello World!", 24, true);
+    window.CreateText({0,0}, window.GetWindowSize(), "Hello World!", 24, true);
 
     while(true)
     {

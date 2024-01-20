@@ -1,15 +1,8 @@
 var searchData=
 [
-  ['kolibrilib_0',['KolibriLib',['../namespace_kolibri_lib.html',1,'']]],
-  ['kolibrilib_3a_3achildwindow_1',['childWindow',['../namespace_kolibri_lib_1_1child_window.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3acolor_2',['Color',['../namespace_kolibri_lib_1_1_color.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3afilesystem_3',['filesystem',['../namespace_kolibri_lib_1_1filesystem.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3amouse_4',['mouse',['../namespace_kolibri_lib_1_1mouse.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3anetwork_5',['Network',['../namespace_kolibri_lib_1_1_network.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3anetwork_3a_3adevices_6',['Devices',['../namespace_kolibri_lib_1_1_network_1_1_devices.html',1,'KolibriLib::Network']]],
-  ['kolibrilib_3a_3aos_7',['OS',['../namespace_kolibri_lib_1_1_o_s.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3athread_8',['Thread',['../namespace_kolibri_lib_1_1_thread.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3aui_9',['UI',['../namespace_kolibri_lib_1_1_u_i.html',1,'KolibriLib']]],
-  ['kolibrilib_3a_3aui_3a_3atext_10',['text',['../namespace_kolibri_lib_1_1_u_i_1_1text.html',1,'KolibriLib::UI']]],
-  ['kolibrilib_3a_3awindow_11',['window',['../namespace_kolibri_lib_1_1window.html',1,'KolibriLib']]]
+  ['idle_20номер_20слота_201_20можно_20завершить_20любой_20обычный_20поток_20процесс_0',['завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс',['../namespace_kolibri_lib_1_1_thread.html#Нельзя',1,'']]],
+  ['image_1',['image',['../class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html',1,'KolibriLib::UI::Images::image'],['../class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#aff400addb0990d30e8e3c36fcb015d26',1,'KolibriLib::UI::Images::image::image()']]],
+  ['image_2',['Image',['../struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_content.html#a5e953b53f14e947910cb2c23f1528318abe53a0541a6d36f6ecb879fa2c584b08',1,'KolibriLib::UI::buttons::Content']]],
+  ['imagebits_20_3a_3',['&lt;ImageBits&gt;:',['../struct_kolibri_lib_1_1_color_1_1_a_r_g_b.html#Варианты',1,'']]],
+  ['init_4',['init',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a81904ddeac359eb10d23b8d76818f236',1,'KolibriLib::UI::buttons::Button::init(const Coord &amp;coord={0, 0}, const Size &amp;size={0, 0}, const std::string &amp;text=&quot;button&quot;, const unsigned &amp;Margin=UI::DefaultMargin, const Color::Color &amp;ButtonColor=OS::sys_color_table.work_button)'],['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a81022d37e8c7979d93f6cf8f14576323',1,'KolibriLib::UI::buttons::Button::init(const Coord &amp;coord={0, 0}, const Size &amp;size={0, 0}, const Images::image &amp;image=Images::image(), const unsigned &amp;Margin=DefaultMargin, const Color::Color &amp;ButtonColor=OS::sys_color_table.work_button)'],['../namespace_kolibri_lib.html#a79cea121a31a0a2da904f088c3484802',1,'KolibriLib::init()']]]
 ];

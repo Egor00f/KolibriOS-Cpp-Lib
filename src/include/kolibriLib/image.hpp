@@ -40,7 +40,7 @@ namespace KolibriLib
                 /// @brief Вывести изображение в окно
                 /// @param size Размер выводимого изображения
                 /// @paragraph Можно растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется
-                void Render(point<unsigned> size = {0, 0});
+                void Render(Size size = {0, 0});
             };
 
             image::image(point<int> coord, Size size, std::string Path) : UIElement(coord, size, 0, 0)
@@ -87,7 +87,7 @@ namespace KolibriLib
                 }
             }
 
-            void image::Render(point<unsigned> size)
+            void image::Render(Size size)
             {
                 if (size.x != 0 && size.y != 0)
                 {

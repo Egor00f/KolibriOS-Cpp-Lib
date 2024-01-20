@@ -2,22 +2,32 @@
 \hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box}{}\label{class_kolibri_lib_1_1_u_i_1_1_check_box}\index{KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}}
 
 
+Класс для работы с чекбоксами  
+
+
+
+
 {\ttfamily \#include $<$checkbox.\+hpp$>$}
 
 Inheritance diagram for Kolibri\+Lib\+::UI\+::Check\+Box\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_kolibri_lib_1_1_u_i_1_1_check_box}
+\includegraphics[height=3.000000cm]{class_kolibri_lib_1_1_u_i_1_1_check_box}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778}{style}} \{ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9}{Default}}
+, \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20}{Circle}}
+, \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3}{Smoth}}
+ \}
+\begin{DoxyCompactList}\small\item\em Стиль Чекбокса \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_ab77f5b55752f9a5347ef4728452ef618}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_ab77f5b55752f9a5347ef4728452ef618} 
-{\bfseries Check\+Box} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ size=\{32, 16\}, int style=0, ksys\+\_\+color\+\_\+t Check\+Box\+Border\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, ksys\+\_\+color\+\_\+t Background\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, unsigned Margin=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_a779f87b2d214a96a03a08650f341ceb1}{Default\+Margin}})
-\item 
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_acfb750cae052fc98ee7ff2a052c9a8a9}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_acfb750cae052fc98ee7ff2a052c9a8a9} 
-void {\bfseries Set\+Color} ()
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_abb2e572424f56bcf0a935030d9e17ba1}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_abb2e572424f56bcf0a935030d9e17ba1} 
+{\bfseries Check\+Box} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{32, 16\}, int \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778}{style}}=0, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Check\+Box\+Border\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Background\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, unsigned Margin=Default\+Margin)
 \item 
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_aba21f5e09a9b4908cb82766844dedd40}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_aba21f5e09a9b4908cb82766844dedd40} 
 void {\bfseries Render} ()
@@ -25,36 +35,104 @@ void {\bfseries Render} ()
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_a413255ceee97d1b7d0d4318c06f375d4}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_a413255ceee97d1b7d0d4318c06f375d4} 
 bool {\bfseries Handler} ()
 \begin{DoxyCompactList}\small\item\em Обработчик кнопки \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button}{Kolibri\+Lib\+::\+UI\+::buttons\+::\+Button}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_ad65115d769a5f5f80dd08c409d0c8b3e}{Button}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size=\{20, 20\}, unsigned Margin=UI\+::\+Default\+Margin, ksys\+\_\+color\+\_\+t Button\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
+\begin{DoxyCompactList}\small\item\em Это конструктор \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a81904ddeac359eb10d23b8d76818f236}{init}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size=\{0, 0\}, const std\+::string \&text="{}button"{}, const unsigned \&Margin=UI\+::\+Default\+Margin, const \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \&Button\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
+\begin{DoxyCompactList}\small\item\em инициализировать параметры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a81022d37e8c7979d93f6cf8f14576323}{init}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size=\{0, 0\}, const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image}{Images\+::image}} \&image=\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image}{Images\+::image}}(), const unsigned \&Margin=Default\+Margin, const \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \&Button\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
+\begin{DoxyCompactList}\small\item\em инициализировать параметры \end{DoxyCompactList}\item 
+void {\bfseries Render} ()
+\begin{DoxyCompactList}\small\item\em Отрисовать кнопку \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a018ac30303a5b12365f5251f5771bf6f}{Handler}} ()
+\begin{DoxyCompactList}\small\item\em Обработчик кнопки \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a1558c18770a8747cf4f9fc490519378e}{Get\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Получить сосояние кнопки на момент последней обработки \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_ad4fb8af1571b871236b79a5a88627713}{Get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Получить номер кнопки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a0a235265d209cec4e8f735d416d25505}{Deactivate}} ()
+\begin{DoxyCompactList}\small\item\em Деактивировать кнопку \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a65b6a0809e8e43892e48065708fa01d1}{Activate}} ()
+\begin{DoxyCompactList}\small\item\em Активировать кнопку \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_content_a5e953b53f14e947910cb2c23f1528318}{Content\+::\+Type}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_aebbc5d41b880015778c938db8682f3ea}{Get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает тип данных используемых в кнопке \doxylink{}{\+\_\+type.}\end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_af3dea4b56f7beb783bbe93cc97766faa}{Get\+Text\+Label}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает текст кнопки \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image}{Images\+::image}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a8c7a622b2f454f5dd315ed176e2cc937}{Get\+Image}} ()
+\begin{DoxyCompactList}\small\item\em Получить изображение кнопки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a159f389b9845713368e763ce159c77d7}{Set\+Text}} (std\+::string New\+Text)
+\begin{DoxyCompactList}\small\item\em Изменить текст кнопки \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Button} ()
+\begin{DoxyCompactList}\small\item\em Декструктор \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ size=\{16, 16\}, ksys\+\_\+color\+\_\+t Main\+Color=OS\+::sys\+\_\+color\+\_\+table.\+frame\+\_\+area, unsigned Margin=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_a779f87b2d214a96a03a08650f341ceb1}{Default\+Margin}})
+{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{16, 16\}, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Main\+Color=0, unsigned Margin=Default\+Margin)
 \item 
-bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a56465e500c5b8e95d57c09549da98342}{Hover}} ()
-\begin{DoxyCompactList}\small\item\em Проверяет находится ли курсор мыши на этом элементе \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a1d941edd25bd9e9f76abefc38b0c85e4}{Set\+Size}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&New\+Size)
-\begin{DoxyCompactList}\small\item\em Изменить размер текстовой метки \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a1bd0f7112cbb4bf5e664bf8b96af3864}{Set\+Coord}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&New\+Coords)
-\begin{DoxyCompactList}\small\item\em Изменить координаты текстовой метки \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a5e21e6ff47c0c49bc47571c6f06a2ed0}{Get\+Size}} ()
-\begin{DoxyCompactList}\small\item\em Получить размер элемента \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a43e21085173be8fa7783925a8b1d5b22}{Get\+Coord}} ()
-\begin{DoxyCompactList}\small\item\em Получить координаты элемента \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} {\bfseries Get\+Size} ()
+\item 
+void {\bfseries Set\+Size} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} New\+Size)
+\item 
+unsigned {\bfseries Get\+Margin} ()
+\item 
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_af88ac59a7195dfbe8588a68776cb645d}{Get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Получить осносной цвет элемента \end{DoxyCompactList}\item 
+void {\bfseries Set\+Color} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} New\+Color)
+\item 
+void {\bfseries Set\+Coord} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} New\+Coord)
+\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} {\bfseries Get\+Coord} ()
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ {\bfseries \+\_\+coord}
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} {\bfseries \+\_\+coord}
 \begin{DoxyCompactList}\small\item\em Координаты \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ {\bfseries \+\_\+size}
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} {\bfseries \+\_\+size}
 \begin{DoxyCompactList}\small\item\em Размер \end{DoxyCompactList}\item 
-ksys\+\_\+color\+\_\+t {\bfseries \+\_\+\+Main\+Color}
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} {\bfseries \+\_\+\+Main\+Color}
 \item 
 unsigned {\bfseries \+\_\+\+Margin}
 \begin{DoxyCompactList}\small\item\em Отступы \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Класс для работы с чекбоксами 
+
+\hypertarget{namespace_kolibri_lib_1_1filesystem_Это}{}\doxyparagraph{\texorpdfstring{просто чекбокс, ему можно задать различные стили}{просто чекбокс, ему можно задать различные стили}}\label{namespace_kolibri_lib_1_1filesystem_Это}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778} 
+\index{KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}!style@{style}}
+\index{style@{style}!KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}}
+\doxysubsubsection{\texorpdfstring{style}{style}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778}{Kolibri\+Lib\+::\+UI\+::\+Check\+Box\+::style}}}
+
+
+
+Стиль Чекбокса 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Default@{Default}!KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}}\index{KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}!Default@{Default}}}\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9} 
+Default&По вид умолчанию, квадрат \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Circle@{Circle}!KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}}\index{KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}!Circle@{Circle}}}\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20} 
+Circle&В виде круга \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Smoth@{Smoth}!KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}}\index{KolibriLib::UI::CheckBox@{KolibriLib::UI::CheckBox}!Smoth@{Smoth}}}\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3}\label{class_kolibri_lib_1_1_u_i_1_1_check_box_ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3} 
+Smoth&Квадрат с со сглаженными углами \begin{DoxyWarning}{Warning}
+Не реализованно (пока что) 
+\end{DoxyWarning}
+\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

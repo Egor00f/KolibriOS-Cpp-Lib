@@ -10,7 +10,7 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_thread_1a504b365c1fa5fbca062c0ac38c550bd8">CreateThread</link> (void *ThreadEntry, unsigned ThreadStackSize=2048)</para>
+            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e">CreateThread</link> (void *ThreadEntry, unsigned ThreadStackSize=1024)</para>
 
 <para>Создать поток </para>
 </listitem>
@@ -27,11 +27,11 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a504b365c1fa5fbca062c0ac38c550bd8"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e"/><section>
     <title>CreateThread()</title>
 <indexterm><primary>CreateThread</primary><secondary>KolibriLib::Thread</secondary></indexterm>
 <indexterm><primary>KolibriLib::Thread</primary><secondary>CreateThread</secondary></indexterm>
-<para><computeroutput>unsigned KolibriLib::Thread::CreateThread (void * ThreadEntry, unsigned ThreadStackSize = <computeroutput>2048</computeroutput>
+<para><computeroutput>unsigned KolibriLib::Thread::CreateThread (void * ThreadEntry, unsigned ThreadStackSize = <computeroutput>1024</computeroutput>
 )</computeroutput></para><para>
 
 <para>Создать поток </para>
@@ -67,9 +67,6 @@ Parameters</title>
 <para>ID потока </para>
 </formalpara>
 </para>
-<section xml:id="_namespace_kolibri_lib_1_1_thread_1Сколько">
-<title><title>нужно выделять памяти для стека потока? Я не знаю</title></title>
-</section>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9"/><section>
     <title>TerminateThread()</title>
@@ -102,7 +99,7 @@ Parameters</title>
                 </formalpara>
                 <formalpara><title>Returns</title>
 
-<para>true если успешно, иначе false </para>
+<para>true если успешно, инач false </para>
 </formalpara>
 </para>
 <section xml:id="_namespace_kolibri_lib_1_1_thread_1Нельзя">

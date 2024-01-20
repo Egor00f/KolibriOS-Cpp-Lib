@@ -7,7 +7,7 @@
 
 
 
-{\ttfamily \#include $<$UI.\+hpp$>$}
+{\ttfamily \#include $<$form.\+hpp$>$}
 
 Inheritance diagram for Kolibri\+Lib\+::UI\+::Form\+:\begin{figure}[H]
 \begin{center}
@@ -18,32 +18,54 @@ Inheritance diagram for Kolibri\+Lib\+::UI\+::Form\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a19fcee3676d5b486afbe22b947620473}{Form}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} size=\{32, 16\}, std\+::string Background\+Text="{} "{}, ksys\+\_\+color\+\_\+t Form\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, ksys\+\_\+color\+\_\+t Button\+Text\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, unsigned Margin=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_a779f87b2d214a96a03a08650f341ceb1}{Default\+Margin}})
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_ae6d99f32e64940a061397f7d37373d74}{Form}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{32, 16\}, std\+::string Background\+Text="{} "{}, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Form\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Button\+Text\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, unsigned Margin=Default\+Margin)
 \begin{DoxyCompactList}\small\item\em конструктор \end{DoxyCompactList}\item 
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a53cc56c3043d85ade5dd0b7e0081b3b1}\label{class_kolibri_lib_1_1_u_i_1_1_form_a53cc56c3043d85ade5dd0b7e0081b3b1} 
-void {\bfseries render} ()
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_aac39cd8dc2ff7e2b64a8ce291d3b4d36}\label{class_kolibri_lib_1_1_u_i_1_1_form_aac39cd8dc2ff7e2b64a8ce291d3b4d36} 
+void {\bfseries init} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{32, 16\}, std\+::string Background\+Text="{} "{}, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Form\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Button\+Text\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, unsigned Margin=Default\+Margin)
+\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a76227ffb53bc00f2c82f68921d744591}\label{class_kolibri_lib_1_1_u_i_1_1_form_a76227ffb53bc00f2c82f68921d744591} 
+void {\bfseries Render} ()
 \begin{DoxyCompactList}\small\item\em Отрисовать форму \end{DoxyCompactList}\item 
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_abc53102114e1df7f0a10460ff94f03e5}\label{class_kolibri_lib_1_1_u_i_1_1_form_abc53102114e1df7f0a10460ff94f03e5} 
 void {\bfseries Handler} ()
 \begin{DoxyCompactList}\small\item\em Обработчик \end{DoxyCompactList}\item 
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a9a356e929e7a7b8ecf1a945f6c04789a}\label{class_kolibri_lib_1_1_u_i_1_1_form_a9a356e929e7a7b8ecf1a945f6c04789a} 
-bool {\bfseries Button\+Handler} ()
-\item 
+bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a9a356e929e7a7b8ecf1a945f6c04789a}{Button\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em Обработчик кнопки \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_ac39c109c78e884a3584d194531f6bfeb}{Get\+Input}} ()
-\begin{DoxyCompactList}\small\item\em Получить введённый текст \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Получить введённый текст \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa3fa979b5780b0a50e003b2a0053a232}{Get\+Background\+Text}} ()
+\item 
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aaa684440ce02c9e66c8650f601fbbe17}{Get\+Background\+Color}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} size=\{16, 16\}, unsigned Margin=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_a779f87b2d214a96a03a08650f341ceb1}{Default\+Margin}})
+{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{16, 16\}, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Main\+Color=0, unsigned Margin=Default\+Margin)
+\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} {\bfseries Get\+Size} ()
+\item 
+void {\bfseries Set\+Size} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} New\+Size)
+\item 
+unsigned {\bfseries Get\+Margin} ()
+\item 
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_af88ac59a7195dfbe8588a68776cb645d}{Get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Получить осносной цвет элемента \end{DoxyCompactList}\item 
+void {\bfseries Set\+Color} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} New\+Color)
+\item 
+void {\bfseries Set\+Coord} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} New\+Coord)
+\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} {\bfseries Get\+Coord} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} {\bfseries \+\_\+coord}
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} {\bfseries \+\_\+coord}
 \begin{DoxyCompactList}\small\item\em Координаты \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} {\bfseries \+\_\+size}
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} {\bfseries \+\_\+size}
 \begin{DoxyCompactList}\small\item\em Размер \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} {\bfseries \+\_\+\+Main\+Color}
+\item 
 unsigned {\bfseries \+\_\+\+Margin}
 \begin{DoxyCompactList}\small\item\em Отступы \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -52,11 +74,11 @@ unsigned {\bfseries \+\_\+\+Margin}
 Форма для ввода текста 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a19fcee3676d5b486afbe22b947620473}\label{class_kolibri_lib_1_1_u_i_1_1_form_a19fcee3676d5b486afbe22b947620473} 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_ae6d99f32e64940a061397f7d37373d74}\label{class_kolibri_lib_1_1_u_i_1_1_form_ae6d99f32e64940a061397f7d37373d74} 
 \index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!Form@{Form}}
 \index{Form@{Form}!KolibriLib::UI::Form@{KolibriLib::UI::Form}}
 \doxysubsubsection{\texorpdfstring{Form()}{Form()}}
-{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::\+Form\+::\+Form (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}}}]{coord = {\ttfamily \{0,~0\}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}}}]{size = {\ttfamily \{32,~16\}},  }\item[{std\+::string}]{Background\+Text = {\ttfamily "{}~"{}},  }\item[{ksys\+\_\+color\+\_\+t}]{Form\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{ksys\+\_\+color\+\_\+t}]{Button\+Text\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+area},  }\item[{unsigned}]{Margin = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_a779f87b2d214a96a03a08650f341ceb1}{Default\+Margin}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::\+Form\+::\+Form (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}}]{coord = {\ttfamily \{0,~0\}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}}]{size = {\ttfamily \{32,~16\}},  }\item[{std\+::string}]{Background\+Text = {\ttfamily "{}~"{}},  }\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}}}]{Form\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}}}]{Button\+Text\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+area},  }\item[{unsigned}]{Margin = {\ttfamily DefaultMargin} }\end{DoxyParamCaption})}
 
 
 
@@ -80,6 +102,37 @@ unsigned {\bfseries \+\_\+\+Margin}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a9a356e929e7a7b8ecf1a945f6c04789a}\label{class_kolibri_lib_1_1_u_i_1_1_form_a9a356e929e7a7b8ecf1a945f6c04789a} 
+\index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!ButtonHandler@{ButtonHandler}}
+\index{ButtonHandler@{ButtonHandler}!KolibriLib::UI::Form@{KolibriLib::UI::Form}}
+\doxysubsubsection{\texorpdfstring{ButtonHandler()}{ButtonHandler()}}
+{\footnotesize\ttfamily bool Kolibri\+Lib\+::\+UI\+::\+Form\+::\+Button\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Обработчик кнопки 
+
+\begin{DoxyReturn}{Returns}
+true если на форму нажали, 
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_aaa684440ce02c9e66c8650f601fbbe17}\label{class_kolibri_lib_1_1_u_i_1_1_form_aaa684440ce02c9e66c8650f601fbbe17} 
+\index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!GetBackgroundColor@{GetBackgroundColor}}
+\index{GetBackgroundColor@{GetBackgroundColor}!KolibriLib::UI::Form@{KolibriLib::UI::Form}}
+\doxysubsubsection{\texorpdfstring{GetBackgroundColor()}{GetBackgroundColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Kolibri\+Lib\+::\+UI\+::\+Form\+::\+Get\+Background\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_aa3fa979b5780b0a50e003b2a0053a232}\label{class_kolibri_lib_1_1_u_i_1_1_form_aa3fa979b5780b0a50e003b2a0053a232} 
+\index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!GetBackgroundText@{GetBackgroundText}}
+\index{GetBackgroundText@{GetBackgroundText}!KolibriLib::UI::Form@{KolibriLib::UI::Form}}
+\doxysubsubsection{\texorpdfstring{GetBackgroundText()}{GetBackgroundText()}}
+{\footnotesize\ttfamily std\+::string Kolibri\+Lib\+::\+UI\+::\+Form\+::\+Get\+Background\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_ac39c109c78e884a3584d194531f6bfeb}\label{class_kolibri_lib_1_1_u_i_1_1_form_ac39c109c78e884a3584d194531f6bfeb} 
 \index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!GetInput@{GetInput}}
 \index{GetInput@{GetInput}!KolibriLib::UI::Form@{KolibriLib::UI::Form}}
@@ -97,4 +150,4 @@ unsigned {\bfseries \+\_\+\+Margin}
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-F\+:/\+Kolibri\+Os/\+Kalc/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/UI.\+hpp\end{DoxyCompactItemize}
+F\+:/\+Kolibri\+Os/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/form.\+hpp\end{DoxyCompactItemize}

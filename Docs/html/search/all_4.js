@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['br_0',['Br',['../namespace_kolibri_lib_1_1filesystem.html#Это',1,'пространство имён этакий аналог стандартной библиотеки &lt;filesystem&gt;  &lt;br&gt;'],['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#Противоположна',1,'функции @link Deactivate, возвращает кнопку в рабочее состояние  &lt;br&gt;']]],
-  ['button_1',['Button',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html',1,'KolibriLib::UI::buttons::Button'],['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a7fcff771b84cb9f6977623a1fcd78704',1,'KolibriLib::UI::buttons::Button::Button()']]],
-  ['buttonlistelement_2',['ButtonListElement',['../struct_kolibri_lib_1_1window_1_1_button_list_element.html',1,'KolibriLib::window']]],
-  ['buttonsiddata_3',['ButtonsIdData',['../struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data.html',1,'KolibriLib::UI::buttons']]]
+  ['activate_0',['Activate',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a65b6a0809e8e43892e48065708fa01d1',1,'KolibriLib::UI::buttons::Button']]],
+  ['argb_1',['ARGB',['../struct_kolibri_lib_1_1_color_1_1_a_r_g_b.html',1,'KolibriLib::Color']]],
+  ['autodefinebutton_2',['autoDefineButton',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a05b2b008431fe17ee5cb83f20524da4b',1,'KolibriLib::UI::buttons']]]
 ];

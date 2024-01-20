@@ -1,0 +1,173 @@
+.TH "KolibriLib::UI::buttons" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::UI::buttons \- Работа с кнопками  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBButton\fP"
+.br
+.RI "Класс для работы с кнопками "
+.ti -1c
+.RI "struct \fBButtonsIdData\fP"
+.br
+.RI "Служебная структура, нигде не использется кроме \fBButtonsIdList\&.\fP"
+.ti -1c
+.RI "struct \fBContent\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned \fBGetFreeButtonId\fP ()"
+.br
+.RI "Получить свободный номер id кнопки из списка "
+.ti -1c
+.RI "void \fBFreeButtonId\fP (unsigned id)"
+.br
+.RI "Освободить номер кнопки "
+.ti -1c
+.RI "unsigned \fBGetButtonId\fP (unsigned id)"
+.br
+.RI "Получить id кнопки "
+.ti -1c
+.RI "unsigned \fBautoDefineButton\fP (const \fBpoint\fP< unsigned > coords, const \fBpoint\fP< unsigned > &size, ksys_color_t color=OS::sys_color_table\&.work_button)"
+.br
+.RI "Создать кнопку, автоматически присвоить ей id\&. "
+.ti -1c
+.RI "void \fBDefineButton\fP (const \fBpoint\fP< int > &coord, const \fBpoint\fP< unsigned > &size, const unsigned &id, ksys_color_t color=OS::sys_color_table\&.work_button)"
+.br
+.RI "Создать кнопку, вручную "
+.ti -1c
+.RI "void \fBDeleteButton\fP (unsigned id)"
+.br
+.RI "Удалить кнопу "
+.ti -1c
+.RI "unsigned \fBGetPressedButton\fP ()"
+.br
+.RI "проверить какая кнопка нажата "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const unsigned \fBStartButtonId\fP = 100"
+.br
+.ti -1c
+.RI "std::vector< \fBButtonsIdData\fP > \fBButtonsIdList\fP"
+.br
+.RI "Список idшников кнопок "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Работа с кнопками 
+.SH "Function Documentation"
+.PP 
+.SS "unsigned KolibriLib::UI::buttons::autoDefineButton (const \fBpoint\fP< unsigned > coords, const \fBpoint\fP< unsigned > & size, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+
+.PP
+Создать кнопку, автоматически присвоить ей id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoords\fP координаты 
+.br
+\fIsize\fP размер 
+.br
+\fIcolor\fP цвет 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+id созданной кнопки 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::buttons::DefineButton (const \fBpoint\fP< int > & coord, const \fBpoint\fP< unsigned > & size, const unsigned & id, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+
+.PP
+Создать кнопку, вручную 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoords\fP координаты 
+.br
+\fIsize\fP размер 
+.br
+\fIid\fP idшник кнопки 
+.br
+\fIcolor\fP цвет 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::buttons::DeleteButton (unsigned id)\fR [inline]\fP"
+
+.PP
+Удалить кнопу 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP id удаляемой кнопки 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::buttons::FreeButtonId (unsigned id)"
+
+.PP
+Освободить номер кнопки 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP номер номер кнопки из списка \fBButtonsIdList\fP
+.RE
+.PP
+
+.SS "unsigned KolibriLib::UI::buttons::GetButtonId (unsigned id)"
+
+.PP
+Получить id кнопки 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP номер кнопки 
+.RE
+.PP
+.SS "кнопки выдаваемый системой"
+\fBReturns\fP
+.RS 4
+ButtonsIdList[id]\&.ID 
+.RE
+.PP
+
+.SS "unsigned KolibriLib::UI::buttons::GetFreeButtonId ()"
+
+.PP
+Получить свободный номер id кнопки из списка 
+.SS "функция может выполнятся очень долго, если вы уже создали довольно много кнопок\&. Это становится действительно важно когда у вас объявленно более 2000 кнопок"
+\fBReturns\fP
+.RS 4
+номер кнопки из списка \fBButtonsIdList\fP
+.RE
+.PP
+
+.SS "unsigned KolibriLib::UI::buttons::GetPressedButton ()\fR [inline]\fP"
+
+.PP
+проверить какая кнопка нажата 
+.PP
+\fBReturns\fP
+.RS 4
+id нажатой кнопки 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

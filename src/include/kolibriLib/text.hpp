@@ -7,6 +7,7 @@
 #include <string>
 
 #include "UI.hpp"
+#include "color.hpp"
 
 namespace KolibriLib
 {
@@ -17,7 +18,7 @@ namespace KolibriLib
         {
             /// \brief Получить размер текста
             /// \return текущая высота текста
-            unsigned int GetTextSize()
+            inline unsigned int GetTextSize()
             {
                 unsigned Size;
                 asm_inline(
@@ -29,17 +30,20 @@ namespace KolibriLib
 
             /// \brief Изменить размер текста
             /// \param newSize высота текста в px
-            void SetTextSize(unsigned int newSize)
+            inline void SetTextSize(unsigned int newSize)
             {
                 asm_inline(
-                    "int $0x40" ::"a"(48), "b"(12), "c"(newSize));
+                    "int $0x40"
+                    :
+                    :"a"(48), "b"(12), "c"(newSize)
+                );
             }
 
             /// \brief Вывести текст
             /// \param text текст
             /// \param coord координаты
             /// \param color цвет текста
-            inline void DrawText(const std::string &text, const point<unsigned> &coord, const unsigned &size = 9, ksys_color_t color = OS::sys_color_table.work_text)
+            inline void DrawText(const std::string &text, const Coord &coord, const unsigned &size = 9, Color::Color color = OS::sys_color_table.work_text)
             {
                 SetTextSize(size);
                 _ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
@@ -49,7 +53,7 @@ namespace KolibriLib
             /// \param text текст
             /// \param coord координаты
             /// \param color цвет текста
-            inline void DrawText(const char *text, const point<unsigned> &coord, const unsigned &size = 9, ksys_color_t color = OS::sys_color_table.work_text)
+            inline void DrawText(const char *text, const Coord &coord, const unsigned &size = 9, Color::Color color = OS::sys_color_table.work_text)
             {
                 SetTextSize(size);
                 _ksys_draw_text(text, coord.x, coord.y, strlen(text), color);
@@ -81,7 +85,7 @@ namespace KolibriLib
                 /// @param FontSize Размер текста
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin Отступы от границ
-                TextLabel(point<int> coord = {0, 0}, point<unsigned> size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool TextScale = true, ksys_color_t TextColor = OS::sys_color_table.work_text, unsigned Margin = 0);
+                TextLabel(Coord coord = {0, 0}, Size size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool TextScale = true, Color::Color TextColor = OS::sys_color_table.work_text, unsigned Margin = 0);
 
                 ~TextLabel();
 
@@ -98,7 +102,7 @@ namespace KolibriLib
 
                 /// @brief Получить цвет текста
                 /// @return @link _TextColor
-                ksys_color_t GetTextColor();
+                Color::Color GetTextColor();
 
                 /// @brief Изменить текст
                 /// @param NewText Текст
@@ -115,9 +119,10 @@ namespace KolibriLib
                 /// @brief Изменить значение переменной @link _TextScale
                 /// @param scale Новое значение
                 void SetScale(bool scale);
+
             };
 
-            TextLabel::TextLabel(point<int> coord, point<unsigned> size, std::string text, unsigned FontSize, bool TextScale, ksys_color_t TextColor, unsigned Margin) : UIElement(coord, size, TextColor, Margin)
+            TextLabel::TextLabel(Coord coord, Size size, std::string text, unsigned FontSize, bool TextScale, ksys_color_t TextColor, unsigned Margin) : UIElement(coord, size, TextColor, Margin)
             {
                 _text = text;
                 _FontSize = FontSize;
@@ -143,7 +148,7 @@ namespace KolibriLib
                 }
 
                 SetTextSize(_FontSize);
-                DrawText(_text, {_coord.x + a, _coord.y + (_size.y / 2)}, _FontSize, _MainColor);
+                DrawText(_text, {_coord.x + (int)a, _coord.y + ((int)_size.y / 2)}, _FontSize, _MainColor);
             }
 
             std::string TextLabel::GetText()
@@ -174,7 +179,7 @@ namespace KolibriLib
                 _TextScale = scale;
             }
 
-            ksys_color_t TextLabel::GetTextColor()
+            Color::Color TextLabel::GetTextColor()
             {
                 return _MainColor;
             }

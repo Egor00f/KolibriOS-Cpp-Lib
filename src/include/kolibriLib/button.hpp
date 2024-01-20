@@ -7,6 +7,7 @@
 #include "UI.hpp"
 #include "text.hpp"
 #include "image.hpp"
+#include "color.hpp"
 
 namespace KolibriLib
 {
@@ -101,23 +102,48 @@ namespace KolibriLib
 
             //=============================================================================================================================================================
 
-            enum class ContentType
+            struct Content
             {
-                Image,
-                Text
+                /// @brief Тип данных внутри кнопки
+                enum class Type
+                {
+                    /// @brief Изображение
+                    Image,
+                    /// @brief Текст
+                    Text
+                };
+                Images::image _img;
+                text::TextLabel _text;
+                Type _type;
+
+                Content(Type t = Type::Text)
+                {
+                    _type = t;
+                }
+                ~Content()
+                {
+                    switch (_type)
+                    {
+                    case Type::Text:
+                        _text.~TextLabel();
+                        break;
+                    case Type::Image:
+                        _img.~image();
+                    default:
+                        break;
+                    }
+                }
             };
+
+            
 
             /// \brief Класс для работы с кнопками
             class Button : public UIElement
             {
             private:
-                union
-                {
-                    Images::image _img;
-                    text::TextLabel _text;
-                };
-                /// @brief Тип данных внутри кнопки
-                ContentType _type;
+                Content c;
+
+
                 /// @brief Id кнопки
                 unsigned _id;
 
@@ -145,7 +171,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param BackgroundColor цвет кнопки
                 /// \param TextColor цвет текста
-                void init(const point<int> &coord = {0, 0}, const point<unsigned> &size = {0, 0}, const std::string &text = "button", const unsigned &Margin = UI::DefaultMargin, const ksys_color_t &ButtonColor = OS::sys_color_table.work_button);
+                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::string &text = "button", const unsigned &Margin = UI::DefaultMargin, const Color::Color &ButtonColor = OS::sys_color_table.work_button);
 
                 /// \brief инициализировать параметры
                 /// \param coord координата
@@ -154,9 +180,9 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param BackgroundColor цвет кнопки
                 /// \param TextColor цвет текста
-                void init(const point<int> &coord = {0, 0}, const point<unsigned> &size = {0, 0}, const Images::image &image = Images::image(), const unsigned &Margin = DefaultMargin, const ksys_color_t &ButtonColor = OS::sys_color_table.work_button);
+                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const Images::image &image = Images::image(), const unsigned &Margin = DefaultMargin, const Color::Color &ButtonColor = OS::sys_color_table.work_button);
 
-                /// \brief Отрисовать кнопку
+                /// @brief Отрисовать кнопку
                 void Render();
 
                 /// \brief Обработчик кнопки
@@ -184,7 +210,7 @@ namespace KolibriLib
 
                 /// @brief Возвращает тип данных используемых в кнопке @link _type
                 /// @return Функция возвращает @link ContentType :: <Тип Данных>
-                ContentType GetType();
+                Content::Type GetType();
 
                 /// @brief Возвращает текст кнопки
                 /// @return std::string
@@ -202,11 +228,8 @@ namespace KolibriLib
                 ~Button();
             };
 
-            Button::Button(const Coord &coord, const Size &size, unsigned Margin, ksys_color_t ButtonColor) : UIElement(coord, size, ButtonColor, Margin)
+            Button::Button(const Coord &coord, const Size &size, unsigned Margin, Color::Color ButtonColor) : UIElement(coord, size, ButtonColor, Margin)
             {
-                _coord = coord;
-                _size = size;
-                _Margin = Margin;
                 _id = GetButtonId(GetFreeButtonId());
             }
 
@@ -228,29 +251,29 @@ namespace KolibriLib
                 }
             }
 
-            ContentType Button::GetType()
+            Content::Type Button::GetType()
             {
-                return _type;
+                return c._type;
             }
 
             std::string Button::GetTextLabel()
             {
-                if (_type == ContentType::Text)
+                if (c._type == Content::Type::Text)
                 {
-                    return _text.GetText();
+                    return c._text.GetText();
                 }
             }
 
             Images::image Button::GetImage()
             {
-                return _img;
+                return c._img;
             }
 
             void Button::SetText(std::string NewText)
             {
-                if (_type == ContentType::Text)
+                if (c._type == Content::Type::Text)
                 {
-                    return _text.SetText(NewText);
+                    return c._text.SetText(NewText);
                 }
             }
 
@@ -277,18 +300,18 @@ namespace KolibriLib
                 return _status;
             }
 
-            void UI::buttons::Button::init(const point<int> &coord, const point<unsigned> &size, const std::string &text, const unsigned &Margin, const ksys_color_t &ButtonColor)
+            void UI::buttons::Button::init(const Coord &coord, const Size &size, const std::string &text, const unsigned &Margin, const Color::Color &ButtonColor)
             {
                 _coord = coord;
                 _size = size;
                 _Margin = Margin;
 
-                _text.SetText(text);
-                _type = ContentType::Text;
+                c._text.SetText(text);
+                c._type = Content::Type::Text;
 
-                _text.SetCoord(coord);
-                _text.SetSize(size);
-                _text.SetScale(true);
+                c._text.SetCoord(coord);
+                c._text.SetSize(size);
+                c._text.SetScale(true);
 
                 _MainColor = ButtonColor;
 
@@ -298,17 +321,17 @@ namespace KolibriLib
                 }
             }
 
-            void UI::buttons::Button::init(const point<int> &coord, const point<unsigned> &size, const Images::image &image, const unsigned &Margin, const ksys_color_t &ButtonColor)
+            void UI::buttons::Button::init(const Coord &coord, const Size &size, const Images::image &image, const unsigned &Margin, const Color::Color &ButtonColor)
             {
                 _coord = coord;
                 _size = size;
                 _Margin = Margin;
 
-                _img = image;
-                _type = ContentType::Image;
+                c._img = image;
+                c._type = Content::Type::Image;
 
-                _img.SetCoord(coord);
-                _img.SetSize(size);
+                c._img.SetCoord(coord);
+                c._img.SetSize(size);
 
                 _MainColor = ButtonColor;
 
@@ -324,13 +347,13 @@ namespace KolibriLib
                 {
                     DefineButton(_coord, _size, _id, _MainColor);
 
-                    switch (_type)
+                    switch (c._type)
                     {
-                    case ContentType::Image:
-                        _img.Render();
+                    case Content::Type::Image:
+                        c._img.Render();
                         break;
-                    case ContentType::Text:
-                        _text.Render();
+                    case Content::Type::Text:
+                        c._text.Render();
                         break;
                     default:
                         break;

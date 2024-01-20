@@ -1,0 +1,97 @@
+.TH "KolibriLib::UI::text" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::UI::text \- Работа с тектсом  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBTextLabel\fP"
+.br
+.RI "Текстовая метка "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBGetTextSize\fP ()"
+.br
+.RI "Получить размер текста "
+.ti -1c
+.RI "void \fBSetTextSize\fP (unsigned int newSize)"
+.br
+.RI "Изменить размер текста "
+.ti -1c
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const unsigned &size=9, \fBColor::Color\fP color=OS::sys_color_table\&.work_text)"
+.br
+.RI "Вывести текст "
+.ti -1c
+.RI "void \fBDrawText\fP (const char *text, const \fBCoord\fP &coord, const unsigned &size=9, \fBColor::Color\fP color=OS::sys_color_table\&.work_text)"
+.br
+.RI "Вывести текст "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Работа с тектсом 
+.SH "Function Documentation"
+.PP 
+.SS "void KolibriLib::UI::text::DrawText (const char * text, const \fBCoord\fP & coord, const unsigned & size = \fR9\fP, \fBColor::Color\fP color = \fROS::sys_color_table\&.work_text\fP)\fR [inline]\fP"
+
+.PP
+Вывести текст 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP текст 
+.br
+\fIcoord\fP координаты 
+.br
+\fIcolor\fP цвет текста 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const unsigned & size = \fR9\fP, \fBColor::Color\fP color = \fROS::sys_color_table\&.work_text\fP)\fR [inline]\fP"
+
+.PP
+Вывести текст 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP текст 
+.br
+\fIcoord\fP координаты 
+.br
+\fIcolor\fP цвет текста 
+.RE
+.PP
+
+.SS "unsigned int KolibriLib::UI::text::GetTextSize ()\fR [inline]\fP"
+
+.PP
+Получить размер текста 
+.PP
+\fBReturns\fP
+.RS 4
+текущая высота текста 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::SetTextSize (unsigned int newSize)\fR [inline]\fP"
+
+.PP
+Изменить размер текста 
+.PP
+\fBParameters\fP
+.RS 4
+\fInewSize\fP высота текста в px 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

@@ -11,7 +11,7 @@ namespace KolibriLib
 {
     /// @brief Получить разрешение экрана
     /// @return размер экрана
-    point GetScreenSize()
+    point<unsigned> GetScreenSize()
     {
         ksys_pos_t a = _ksys_screen_size();
         return {a.x, a.y};
