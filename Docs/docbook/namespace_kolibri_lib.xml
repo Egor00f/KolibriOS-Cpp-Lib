@@ -73,21 +73,13 @@
 <simplesect>
     <title>Variables    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ac5af83599c636badfe90db73a654f5ef"/>bool <emphasis role="strong">EXIT</emphasis> = false</para>
-
-<para>Сообщение всем функциям что нужно завершать работу </para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ac3fc0a4a923e29aa814420d285d1fa9c"/>const std::string <emphasis role="strong">ConfigurationDir</emphasis> = &quot;/kolibrios/etc/&quot;</para>
 </listitem>
-            <listitem><para>int <link linkend="_namespace_kolibri_lib_1ae00feeea6bd20648e94c82f1289bc68f">EXITCODE</link> = 0</para>
-
-<para>Код ошибки </para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ae42aab2f9795e3359fb723ff5820250c"/>const std::string <emphasis role="strong">ImgDir</emphasis> = ConfigurationDir + &quot;images/&quot;</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a801243d32a292f3efe76b200958e4056"/>const ::std::string <emphasis role="strong">ConfigurationDir</emphasis> = &quot;/kolibrios/etc/&quot;</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ab1099de2131804416562ef820927ca2b"/>const std::string <emphasis role="strong">DefaultImage</emphasis> = ImgDir + &quot;default.png&quot;</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a9fbe3d2f36c49d650f4c1d13d3c80b16"/>const ::std::string <emphasis role="strong">ImgDir</emphasis> = ConfigurationDir + &quot;images/&quot;</para>
-</listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ad6c03af439a8e649a784524af06bf036"/>const ::std::string <emphasis role="strong">DefaultImage</emphasis> = ImgDir + &quot;default.png&quot;</para>
-</listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a2af82cbcfd2b422395c7a557bc3e4420"/>const ::std::string <emphasis role="strong">CursorsDir</emphasis> = ConfigurationDir + &quot;cursors/&quot;</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1aa47d5ef524ec6197866199e1522047c6"/>const std::string <emphasis role="strong">CursorsDir</emphasis> = ConfigurationDir + &quot;cursors/&quot;</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -149,24 +141,6 @@ Parameters</title>
                     </para>
                 </formalpara>
                 </para>
-</section>
-</section>
-<section>
-<title>Variable Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1ae00feeea6bd20648e94c82f1289bc68f"/><section>
-    <title>EXITCODE</title>
-<indexterm><primary>EXITCODE</primary><secondary>KolibriLib</secondary></indexterm>
-<indexterm><primary>KolibriLib</primary><secondary>EXITCODE</secondary></indexterm>
-<para><computeroutput>int KolibriLib::EXITCODE = 0</computeroutput></para><para>
-
-<para>Код ошибки </para>
-</para>
-<section xml:id="_namespace_kolibri_lib_1int">
-<title><title>main(){/*...*&#8205;/ return EXITCODE; }</title></title>
-</section>
-<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1Эта">
-<title><title>функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок</title></title>
-</section>
 </section>
 </section>
 </section>

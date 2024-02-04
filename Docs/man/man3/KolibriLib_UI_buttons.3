@@ -18,8 +18,12 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .RI "struct \fBButtonsIdData\fP"
 .br
 .RI "Служебная структура, нигде не использется кроме \fBButtonsIdList\&.\fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
 .ti -1c
-.RI "struct \fBContent\fP"
+.RI "typedef unsigned int \fBButtonID\fP"
 .br
 .in -1c
 .SS "Functions"
@@ -34,15 +38,18 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .br
 .RI "Освободить номер кнопки "
 .ti -1c
-.RI "unsigned \fBGetButtonId\fP (unsigned id)"
+.RI "ButtonID \fBGetButtonId\fP (unsigned id)"
 .br
 .RI "Получить id кнопки "
 .ti -1c
-.RI "unsigned \fBautoDefineButton\fP (const \fBpoint\fP< unsigned > coords, const \fBpoint\fP< unsigned > &size, ksys_color_t color=OS::sys_color_table\&.work_button)"
+.RI "void \fBCutList\fP ()"
+.br
+.ti -1c
+.RI "unsigned \fBautoDefineButton\fP (const \fBpoint\fP< int > coords, const \fBSize\fP &size, ksys_color_t color=OS::sys_color_table\&.work_button)"
 .br
 .RI "Создать кнопку, автоматически присвоить ей id\&. "
 .ti -1c
-.RI "void \fBDefineButton\fP (const \fBpoint\fP< int > &coord, const \fBpoint\fP< unsigned > &size, const unsigned &id, ksys_color_t color=OS::sys_color_table\&.work_button)"
+.RI "void \fBDefineButton\fP (const \fBpoint\fP< int > &coord, const \fBSize\fP &size, const ButtonID &id, ksys_color_t color=OS::sys_color_table\&.work_button)"
 .br
 .RI "Создать кнопку, вручную "
 .ti -1c
@@ -58,7 +65,7 @@ KolibriLib::UI::buttons \- Работа с кнопками
 
 .in +1c
 .ti -1c
-.RI "const unsigned \fBStartButtonId\fP = 100"
+.RI "const ButtonID \fBStartButtonId\fP = 100"
 .br
 .ti -1c
 .RI "std::vector< \fBButtonsIdData\fP > \fBButtonsIdList\fP"
@@ -70,7 +77,7 @@ KolibriLib::UI::buttons \- Работа с кнопками
 Работа с кнопками 
 .SH "Function Documentation"
 .PP 
-.SS "unsigned KolibriLib::UI::buttons::autoDefineButton (const \fBpoint\fP< unsigned > coords, const \fBpoint\fP< unsigned > & size, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+.SS "unsigned KolibriLib::UI::buttons::autoDefineButton (const \fBpoint\fP< int > coords, const \fBSize\fP & size, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
 
 .PP
 Создать кнопку, автоматически присвоить ей id\&. 
@@ -90,7 +97,7 @@ id созданной кнопки
 .RE
 .PP
 
-.SS "void KolibriLib::UI::buttons::DefineButton (const \fBpoint\fP< int > & coord, const \fBpoint\fP< unsigned > & size, const unsigned & id, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+.SS "void KolibriLib::UI::buttons::DefineButton (const \fBpoint\fP< int > & coord, const \fBSize\fP & size, const ButtonID & id, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
 
 .PP
 Создать кнопку, вручную 
@@ -118,7 +125,7 @@ id созданной кнопки
 .RE
 .PP
 
-.SS "void KolibriLib::UI::buttons::FreeButtonId (unsigned id)"
+.SS "void KolibriLib::UI::buttons::FreeButtonId (unsigned id)\fR [inline]\fP"
 
 .PP
 Освободить номер кнопки 
@@ -129,7 +136,7 @@ id созданной кнопки
 .RE
 .PP
 
-.SS "unsigned KolibriLib::UI::buttons::GetButtonId (unsigned id)"
+.SS "ButtonID KolibriLib::UI::buttons::GetButtonId (unsigned id)\fR [inline]\fP"
 
 .PP
 Получить id кнопки 

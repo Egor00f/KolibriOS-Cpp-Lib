@@ -12,7 +12,7 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a652b4e34f5a30b5904327dc19a8f3467}{Window}} (std\+::string Title="{}Window"{}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} size=\mbox{\hyperlink{namespace_kolibri_lib_1_1window_a1f1ae2f8103c37a9b5a88cce14f75f9d}{Default\+Window\+Size}}, int style=0x14, ksys\+\_\+colors\+\_\+table\+\_\+t colors=\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_ab69e803699670dac961e1e916bfde2b3}{Color\+::\+Default\+Color\+Table}}, unsigned Margin=0)
+\mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a190c058c9653a937da1db68429aac3ae}{Window}} (std\+::string Title="{}Window"{}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} size=\mbox{\hyperlink{namespace_kolibri_lib_1_1window_a1f1ae2f8103c37a9b5a88cce14f75f9d}{Default\+Window\+Size}}, int style=0x14, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_af33ee97a2e4e960348f4aa78678bdb58}{Color\+::\+Colors\+Table}} colors=\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_ab69e803699670dac961e1e916bfde2b3}{Color\+::\+Default\+Color\+Table}}, unsigned Margin=0)
 \begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
 \Hypertarget{class_kolibri_lib_1_1window_1_1_window_ae306d4a030618ce8ca8671269b91c062}\label{class_kolibri_lib_1_1window_1_1_window_ae306d4a030618ce8ca8671269b91c062} 
 void {\bfseries Render} ()
@@ -21,7 +21,7 @@ unsigned \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_adc928b51c1a6c0
 \begin{DoxyCompactList}\small\item\em Получить рамер отступов в этом окне \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_adeea96cd50ef28fa2babd0f3241d15ba}{Get\+Size}} ()
 \begin{DoxyCompactList}\small\item\em Получить размер окна \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a5d16422e16dccc73c8d0c3be4cab3a71}{Set\+Window\+Colors}} (ksys\+\_\+colors\+\_\+table\+\_\+t color\+Table)
+void \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_ac060c0cfea3d17ab084784a59cdea9e1}{Set\+Window\+Colors}} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_af33ee97a2e4e960348f4aa78678bdb58}{Color\+::\+Colors\+Table}} color\+Table)
 \begin{DoxyCompactList}\small\item\em Задать стандартные цвета окна \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a5bb8bddc3ee73903c934235d66eb04b6}{Start\+Redraw}} ()
 \begin{DoxyCompactList}\small\item\em Начать перересовку окна \end{DoxyCompactList}\item 
@@ -39,28 +39,39 @@ unsigned \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_ac45692a8beccd1
 \begin{DoxyCompactList}\small\item\em Создать кнопку \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a1d366e0480ed7f2a7e46e4963ba703ff}{Create\+Button}} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button}{UI\+::buttons\+::\+Button}} \&btn)
 \begin{DoxyCompactList}\small\item\em Создать кнопку \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button}{UI\+::buttons\+::\+Button}} \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a48c5cc9d4425cc7976549751d2951729}{Get\+Button}} (unsigned id)
+\begin{DoxyCompactList}\small\item\em Получить кнопку \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_abcac8d861f1a632b41c024ff1278c4a4}{Create\+Text}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} size=\{16, 16\}, std\+::string text="{}Text"{}, unsigned Font\+Size=9, bool Use\+Window\+Colors=true, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text)
 \begin{DoxyCompactList}\small\item\em Создать текст в окне \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a21976b74a9df8bc92b0563e10e0e6a48}{Create\+Text}} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{UI\+::text\+::\+Text\+Label}} \&text)
 \begin{DoxyCompactList}\small\item\em Создать текст в окне \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_aa8aadc49fc0714906c2488681bb1f2c0}{Set\+Text\+Label}} (unsigned N, const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{UI\+::text\+::\+Text\+Label}} \&text)
+\begin{DoxyCompactList}\small\item\em Изменить текст \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_aed07039c255cf62c945d8028619e20f4}{Create\+Form}} (\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form}{UI\+::\+Form}} form)
 \begin{DoxyCompactList}\small\item\em Создать форму \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_aa911a708b665af0f2305fb7cd3c274b1}{Delete\+Element}} (unsigned id)
 \begin{DoxyCompactList}\small\item\em Удалить элемент \end{DoxyCompactList}\item 
-\Hypertarget{class_kolibri_lib_1_1window_1_1_window_a33a17f79c99855fb543cc060b197ce99}\label{class_kolibri_lib_1_1window_1_1_window_a33a17f79c99855fb543cc060b197ce99} 
-\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{OS\+::\+Event}} {\bfseries Handler} ()
-\begin{DoxyCompactList}\small\item\em Обработчик окна \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{OS\+::\+Event}} \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_a33a17f79c99855fb543cc060b197ce99}{Handler}} ()
+\begin{DoxyCompactList}\small\item\em Обработчик окна \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_ae3132dabb8fc92444c3fa31cb35c2495}\label{class_kolibri_lib_1_1window_1_1_window_ae3132dabb8fc92444c3fa31cb35c2495} 
+UI\+::buttons\+::\+Button\+ID {\bfseries Get\+Pressed\+Button} ()
+\begin{DoxyCompactList}\small\item\em Проверить какая нажата \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_ac7d3fa62484075777fe171415c2399f5}{Get\+Input\+From\+From}} (unsigned form)
+\begin{DoxyCompactList}\small\item\em Получить текст введённый в форму \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_a154edfb72436bc38525f2a63a7555d3b}\label{class_kolibri_lib_1_1window_1_1_window_a154edfb72436bc38525f2a63a7555d3b} 
+void {\bfseries Handler\+Thread} ()
+\begin{DoxyCompactList}\small\item\em Обработчик окна в отдельном потоке \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Класс для работы с окном 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_kolibri_lib_1_1window_1_1_window_a652b4e34f5a30b5904327dc19a8f3467}\label{class_kolibri_lib_1_1window_1_1_window_a652b4e34f5a30b5904327dc19a8f3467} 
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_a190c058c9653a937da1db68429aac3ae}\label{class_kolibri_lib_1_1window_1_1_window_a190c058c9653a937da1db68429aac3ae} 
 \index{KolibriLib::window::Window@{KolibriLib::window::Window}!Window@{Window}}
 \index{Window@{Window}!KolibriLib::window::Window@{KolibriLib::window::Window}}
 \doxysubsubsection{\texorpdfstring{Window()}{Window()}}
-{\footnotesize\ttfamily Kolibri\+Lib\+::window\+::\+Window\+::\+Window (\begin{DoxyParamCaption}\item[{std\+::string}]{Title = {\ttfamily "{}Window"{}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}}}]{size = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a1f1ae2f8103c37a9b5a88cce14f75f9d}{Default\+Window\+Size}}},  }\item[{int}]{style = {\ttfamily 0x14},  }\item[{ksys\+\_\+colors\+\_\+table\+\_\+t}]{colors = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_ab69e803699670dac961e1e916bfde2b3}{Color\+::\+Default\+Color\+Table}}},  }\item[{unsigned}]{Margin = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Kolibri\+Lib\+::window\+::\+Window\+::\+Window (\begin{DoxyParamCaption}\item[{std\+::string}]{Title = {\ttfamily "{}Window"{}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}}}]{size = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a1f1ae2f8103c37a9b5a88cce14f75f9d}{Default\+Window\+Size}}},  }\item[{int}]{style = {\ttfamily 0x14},  }\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_af33ee97a2e4e960348f4aa78678bdb58}{Color\+::\+Colors\+Table}}}]{colors = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_ab69e803699670dac961e1e916bfde2b3}{Color\+::\+Default\+Color\+Table}}},  }\item[{unsigned}]{Margin = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 
@@ -275,6 +286,42 @@ void \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window_aa911a708b665af0f23
 Закончить перересовку окна 
 
 \hypertarget{class_kolibri_lib_1_1window_1_1_window_Обязательно}{}\doxyparagraph{\texorpdfstring{после должна быть вызвана функция \#\+End\+Redraw()}{после должна быть вызвана функция \#\+End\+Redraw()}}\label{class_kolibri_lib_1_1window_1_1_window_Обязательно}
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_a48c5cc9d4425cc7976549751d2951729}\label{class_kolibri_lib_1_1window_1_1_window_a48c5cc9d4425cc7976549751d2951729} 
+\index{KolibriLib::window::Window@{KolibriLib::window::Window}!GetButton@{GetButton}}
+\index{GetButton@{GetButton}!KolibriLib::window::Window@{KolibriLib::window::Window}}
+\doxysubsubsection{\texorpdfstring{GetButton()}{GetButton()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button}{UI\+::buttons\+::\+Button}} Kolibri\+Lib\+::window\+::\+Window\+::\+Get\+Button (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+
+
+Получить кнопку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Номер кнопки в списке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Кнопка 
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_ac7d3fa62484075777fe171415c2399f5}\label{class_kolibri_lib_1_1window_1_1_window_ac7d3fa62484075777fe171415c2399f5} 
+\index{KolibriLib::window::Window@{KolibriLib::window::Window}!GetInputFromFrom@{GetInputFromFrom}}
+\index{GetInputFromFrom@{GetInputFromFrom}!KolibriLib::window::Window@{KolibriLib::window::Window}}
+\doxysubsubsection{\texorpdfstring{GetInputFromFrom()}{GetInputFromFrom()}}
+{\footnotesize\ttfamily std\+::string Kolibri\+Lib\+::window\+::\+Window\+::\+Get\+Input\+From\+From (\begin{DoxyParamCaption}\item[{unsigned}]{form }\end{DoxyParamCaption})}
+
+
+
+Получить текст введённый в форму 
+
+
+\begin{DoxyParams}{Parameters}
+{\em form} & номер формы в списке \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Функция возвращает текст введённый в формы 
+\end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1window_1_1_window_adc928b51c1a6c0d8f996269c52dfc060}\label{class_kolibri_lib_1_1window_1_1_window_adc928b51c1a6c0d8f996269c52dfc060} 
 \index{KolibriLib::window::Window@{KolibriLib::window::Window}!GetMargin@{GetMargin}}
 \index{GetMargin@{GetMargin}!KolibriLib::window::Window@{KolibriLib::window::Window}}
@@ -316,11 +363,41 @@ point.\+x -\/ ширина окна,
 
 point.\+y -\/ высота окна 
 \end{DoxyReturn}
-\Hypertarget{class_kolibri_lib_1_1window_1_1_window_a5d16422e16dccc73c8d0c3be4cab3a71}\label{class_kolibri_lib_1_1window_1_1_window_a5d16422e16dccc73c8d0c3be4cab3a71} 
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_a33a17f79c99855fb543cc060b197ce99}\label{class_kolibri_lib_1_1window_1_1_window_a33a17f79c99855fb543cc060b197ce99} 
+\index{KolibriLib::window::Window@{KolibriLib::window::Window}!Handler@{Handler}}
+\index{Handler@{Handler}!KolibriLib::window::Window@{KolibriLib::window::Window}}
+\doxysubsubsection{\texorpdfstring{Handler()}{Handler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{OS\+::\+Event}} Kolibri\+Lib\+::window\+::\+Window\+::\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Обработчик окна 
+
+\begin{DoxyReturn}{Returns}
+Ивент 
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_aa8aadc49fc0714906c2488681bb1f2c0}\label{class_kolibri_lib_1_1window_1_1_window_aa8aadc49fc0714906c2488681bb1f2c0} 
+\index{KolibriLib::window::Window@{KolibriLib::window::Window}!SetTextLabel@{SetTextLabel}}
+\index{SetTextLabel@{SetTextLabel}!KolibriLib::window::Window@{KolibriLib::window::Window}}
+\doxysubsubsection{\texorpdfstring{SetTextLabel()}{SetTextLabel()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Window\+::\+Set\+Text\+Label (\begin{DoxyParamCaption}\item[{unsigned}]{N,  }\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{UI\+::text\+::\+Text\+Label}} \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Изменить текст 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N} & Номер элемента в списке \\
+\hline
+{\em text} & Новая текстовая метка \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kolibri_lib_1_1window_1_1_window_ac060c0cfea3d17ab084784a59cdea9e1}\label{class_kolibri_lib_1_1window_1_1_window_ac060c0cfea3d17ab084784a59cdea9e1} 
 \index{KolibriLib::window::Window@{KolibriLib::window::Window}!SetWindowColors@{SetWindowColors}}
 \index{SetWindowColors@{SetWindowColors}!KolibriLib::window::Window@{KolibriLib::window::Window}}
 \doxysubsubsection{\texorpdfstring{SetWindowColors()}{SetWindowColors()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Window\+::\+Set\+Window\+Colors (\begin{DoxyParamCaption}\item[{ksys\+\_\+colors\+\_\+table\+\_\+t}]{color\+Table }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Window\+::\+Set\+Window\+Colors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_af33ee97a2e4e960348f4aa78678bdb58}{Color\+::\+Colors\+Table}}}]{color\+Table }\end{DoxyParamCaption})}
 
 
 

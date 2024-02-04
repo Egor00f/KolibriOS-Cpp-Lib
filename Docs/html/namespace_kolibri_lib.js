@@ -43,7 +43,5 @@ var namespace_kolibri_lib =
     [ "point", "struct_kolibri_lib_1_1point.html", null ],
     [ "GetScreenSize", "namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e", null ],
     [ "init", "namespace_kolibri_lib.html#a79cea121a31a0a2da904f088c3484802", null ],
-    [ "Wait", "namespace_kolibri_lib.html#a56a5ef2333e7fe22f558aaa6c9276b7c", null ],
-    [ "EXIT", "namespace_kolibri_lib.html#ac5af83599c636badfe90db73a654f5ef", null ],
-    [ "EXITCODE", "namespace_kolibri_lib.html#ae00feeea6bd20648e94c82f1289bc68f", null ]
+    [ "Wait", "namespace_kolibri_lib.html#a56a5ef2333e7fe22f558aaa6c9276b7c", null ]
 ];

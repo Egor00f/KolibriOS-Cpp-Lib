@@ -93,6 +93,8 @@
       <node id="11">
         <label>small.hpp</label>
         <link refid="small_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="6">
         <label>math.h</label>
@@ -221,7 +223,7 @@
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DrawCircle(coord,<sp/>Radius,<sp/>color);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>Radius<sp/>*<sp/>cos(90+45);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>sqrt((Radius<sp/>*<sp/>Radius)<sp/>-<sp/>(b<sp/>*<sp/>b));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>Radius<sp/>*<sp/>sin(90+45);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UI::Coord<sp/>n<sp/>=<sp/>{coord.x<sp/>+<sp/>(int)b,<sp/>coord.y<sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)c};</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DrawRectangleFill(n,<sp/>{(unsigned)(coord.x<sp/>-<sp/>n.x)<sp/>*<sp/>2,<sp/>(unsigned)c<sp/>*<sp/>2},<sp/>color);</highlight></codeline>

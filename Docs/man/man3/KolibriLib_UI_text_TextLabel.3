@@ -15,7 +15,7 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBTextLabel\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={16, 16}, std::string text='Text', unsigned FontSize=9, bool TextScale=true, \fBColor::Color\fP TextColor=OS::sys_color_table\&.work_text, unsigned Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='Text', const unsigned &FontSize=9, bool TextScale=true, const \fBColor::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -43,19 +43,18 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .br
 .RI "Изменить рамер текста "
 .ti -1c
-.RI "void \fBSetTextColor\fP (const ksys_color_t &NewTextColor)"
-.br
-.RI "Изменить цвет текста "
-.ti -1c
 .RI "void \fBSetScale\fP (bool scale)"
 .br
 .RI "Изменить значение переменной \fB_TextScale\&.\fP"
+.ti -1c
+.RI "void \fBinit\fP (\fBCoord\fP coord, \fBSize\fP size, std::string text, unsigned FontSize, \fBColor::Color\fP TextColor)"
+.br
 .in -1c
 
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={16, 16}, \fBColor::Color\fP MainColor=0, unsigned Margin=DefaultMargin)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=0, const unsigned &Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "\fBSize\fP \fBGetSize\fP ()"
@@ -78,6 +77,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
 .in -1c
 .SS "Additional Inherited Members"
@@ -106,7 +108,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 Текстовая метка 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::UI::text::TextLabel::TextLabel (\fBCoord\fP coord = \fR{0, 0}\fP, \fBSize\fP size = \fR{16, 16}\fP, std::string text = \fR'Text'\fP, unsigned FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, \fBColor::Color\fP TextColor = \fROS::sys_color_table\&.work_text\fP, unsigned Margin = \fR0\fP)"
+.SS "KolibriLib::UI::text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'Text'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColor::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -192,17 +194,6 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 \fBParameters\fP
 .RS 4
 \fINewText\fP Текст 
-.RE
-.PP
-
-.SS "void KolibriLib::UI::text::TextLabel::SetTextColor (const ksys_color_t & NewTextColor)"
-
-.PP
-Изменить цвет текста 
-.PP
-\fBParameters\fP
-.RS 4
-\fINewTextColor\fP Новый цвет текста 
 .RE
 .PP
 

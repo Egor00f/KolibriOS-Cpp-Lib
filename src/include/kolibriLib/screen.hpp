@@ -1,11 +1,10 @@
-#pragma once
 #ifndef __SCREEN_H__
 #define __SCREEN_H__
 
 
 #include <sys/ksys.h>
 
-#include "base.hpp"
+#include "small.hpp"
 
 namespace KolibriLib
 {
@@ -16,6 +15,8 @@ namespace KolibriLib
         ksys_pos_t a = _ksys_screen_size();
         return {a.x, a.y};
     }
+
+
 }
 
 

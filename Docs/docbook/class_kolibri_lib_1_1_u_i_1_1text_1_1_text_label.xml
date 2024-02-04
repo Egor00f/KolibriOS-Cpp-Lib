@@ -21,7 +21,7 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ac7459aff3d22b1dd907bb08da567ab41">TextLabel</link> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size={16, 16}, std::string text=&quot;Text&quot;, unsigned FontSize=9, bool TextScale=true, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> TextColor=OS::sys_color_table.work_text, unsigned Margin=0)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a311f4392339b30bbd58254a2f17f1d3b">TextLabel</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const std::string &amp;text=&quot;Text&quot;, const unsigned &amp;FontSize=9, bool TextScale=true, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp;TextColor=OS::sys_color_table.work_text, const unsigned &amp;Margin=0)</para>
 
 <para>Конструктор </para>
 </listitem>
@@ -49,18 +49,16 @@
 
 <para>Изменить рамер текста </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a058a848e9b363d4d1eab6302831a99f7">SetTextColor</link> (const ksys_color_t &amp;NewTextColor)</para>
-
-<para>Изменить цвет текста </para>
-</listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a13c115d127bc7f90cb438bbd2b31619d">SetScale</link> (bool scale)</para>
 
 <para>Изменить значение переменной <link linkend="_">_TextScale.</link></para>
 </listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1abcd23695bb85a136e6d8868ac3f2c54b"/>void <emphasis role="strong">init</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size, std::string text, unsigned FontSize, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> TextColor)</para>
+</listitem>
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
-            <listitem><para><emphasis role="strong">UIElement</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size={16, 16}, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> MainColor=0, unsigned Margin=DefaultMargin)</para>
+            <listitem><para><emphasis role="strong">UIElement</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp;MainColor=0, const unsigned &amp;Margin=DefaultMargin)</para>
 </listitem>
             <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <emphasis role="strong">GetSize</emphasis> ()</para>
 </listitem>
@@ -77,6 +75,8 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
             <listitem><para>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
 </listitem>
             <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
 </listitem>
         </itemizedlist>
 <simplesect>
@@ -105,17 +105,17 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ac7459aff3d22b1dd907bb08da567ab41"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a311f4392339b30bbd58254a2f17f1d3b"/><section>
     <title>TextLabel()</title>
 <indexterm><primary>TextLabel</primary><secondary>KolibriLib::UI::text::TextLabel</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text::TextLabel</primary><secondary>TextLabel</secondary></indexterm>
-<para><computeroutput>KolibriLib::UI::text::TextLabel::TextLabel (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord = <computeroutput>{0,&#160;0}</computeroutput>
-, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size = <computeroutput>{16,&#160;16}</computeroutput>
-, std::string text = <computeroutput>&quot;Text&quot;</computeroutput>
-, unsigned FontSize = <computeroutput>9</computeroutput>
+<para><computeroutput>KolibriLib::UI::text::TextLabel::TextLabel (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{16,&#160;16}</computeroutput>
+, const std::string &amp; text = <computeroutput>&quot;Text&quot;</computeroutput>
+, const unsigned &amp; FontSize = <computeroutput>9</computeroutput>
 , bool TextScale = <computeroutput>true</computeroutput>
-, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> TextColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
-, unsigned Margin = <computeroutput>0</computeroutput>
+, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp; TextColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+, const unsigned &amp; Margin = <computeroutput>0</computeroutput>
 )</computeroutput></para><para>
 
 <para>Конструктор </para>
@@ -300,37 +300,6 @@ Parameters</title>
                             <row>
 <entry>NewText</entry><entry>
 <para>Текст </para>
-</entry>
-                            </row>
-                        </tbody>
-                        </tgroup>
-                    </table>
-                    </para>
-                </formalpara>
-                </para>
-</section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a058a848e9b363d4d1eab6302831a99f7"/><section>
-    <title>SetTextColor()</title>
-<indexterm><primary>SetTextColor</primary><secondary>KolibriLib::UI::text::TextLabel</secondary></indexterm>
-<indexterm><primary>KolibriLib::UI::text::TextLabel</primary><secondary>SetTextColor</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::text::TextLabel::SetTextColor (const ksys_color_t &amp; NewTextColor)</computeroutput></para><para>
-
-<para>Изменить цвет текста </para>
-</para>
-
-<para>
-                <formalpara>
-                    <title>
-Parameters</title>
-                    <para>
-                    <table frame="all">
-                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
-                        <colspec colwidth="1*"/>
-                        <colspec colwidth="4*"/>
-                        <tbody>
-                            <row>
-<entry>NewTextColor</entry><entry>
-<para>Новый цвет текста </para>
 </entry>
                             </row>
                         </tbody>

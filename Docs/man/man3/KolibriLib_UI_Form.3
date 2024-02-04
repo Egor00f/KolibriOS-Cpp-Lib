@@ -15,7 +15,7 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBForm\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={32, 16}, std::string BackgroundText=' ', \fBColor::Color\fP FormColor=OS::sys_color_table\&.work_text, \fBColor::Color\fP ButtonTextColor=OS::sys_color_table\&.work_area, unsigned Margin=DefaultMargin)"
+.RI "\fBForm\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const std::string &BackgroundText='Text\&.\&.\&.', const \fBColor::Color\fP &FormColor=OS::sys_color_table\&.work_text, const \fBColor::Color\fP &ButtonTextColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
 .br
 .RI "конструктор "
 .ti -1c
@@ -48,7 +48,7 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={16, 16}, \fBColor::Color\fP MainColor=0, unsigned Margin=DefaultMargin)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=0, const unsigned &Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "\fBSize\fP \fBGetSize\fP ()"
@@ -71,6 +71,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
 .in -1c
 .SS "Additional Inherited Members"
@@ -99,7 +102,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 Форма для ввода текста 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::UI::Form::Form (\fBCoord\fP coord = \fR{0, 0}\fP, \fBSize\fP size = \fR{32, 16}\fP, std::string BackgroundText = \fR' '\fP, \fBColor::Color\fP FormColor = \fROS::sys_color_table\&.work_text\fP, \fBColor::Color\fP ButtonTextColor = \fROS::sys_color_table\&.work_area\fP, unsigned Margin = \fRDefaultMargin\fP)"
+.SS "KolibriLib::UI::Form::Form (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{32, 16}\fP, const std::string & BackgroundText = \fR'Text\&.\&.\&.'\fP, const \fBColor::Color\fP & FormColor = \fROS::sys_color_table\&.work_text\fP, const \fBColor::Color\fP & ButtonTextColor = \fROS::sys_color_table\&.work_area\fP, const unsigned & Margin = \fRDefaultMargin\fP)"
 
 .PP
 конструктор 

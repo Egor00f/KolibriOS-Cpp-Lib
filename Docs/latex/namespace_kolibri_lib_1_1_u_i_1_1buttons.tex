@@ -11,8 +11,12 @@
 class \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button}{Button}}
 \begin{DoxyCompactList}\small\item\em Класс для работы с кнопками \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data}{Buttons\+Id\+Data}}
-\begin{DoxyCompactList}\small\item\em Служебная структура, нигде не использется кроме \doxylink{}{Buttons\+Id\+List.}\end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_content}{Content}}
+\begin{DoxyCompactList}\small\item\em Служебная структура, нигде не использется кроме \doxylink{}{Buttons\+Id\+List.}\end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a5bc139230a84a2c4049ba6677932e35b}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a5bc139230a84a2c4049ba6677932e35b} 
+typedef unsigned int {\bfseries Button\+ID}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -21,11 +25,14 @@ unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4b8f662229c0
 \begin{DoxyCompactList}\small\item\em Получить свободный номер id кнопки из списка \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a50f50638d4faadd115e569d5db1e2d1a}{Free\+Button\+Id}} (unsigned id)
 \begin{DoxyCompactList}\small\item\em Освободить номер кнопки \end{DoxyCompactList}\item 
-unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4516cf225b950017d2810b76d8adee6b}{Get\+Button\+Id}} (unsigned id)
+Button\+ID \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a690d4a119e6374b7cf4bf3b9487fba09}{Get\+Button\+Id}} (unsigned id)
 \begin{DoxyCompactList}\small\item\em Получить id кнопки \end{DoxyCompactList}\item 
-unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a05b2b008431fe17ee5cb83f20524da4b}{auto\+Define\+Button}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ coords, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&size, ksys\+\_\+color\+\_\+t color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a008dcf87d7d649a7fd5c10ee4af7e388}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a008dcf87d7d649a7fd5c10ee4af7e388} 
+void {\bfseries Cut\+List} ()
+\item 
+unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a7ab3e8e8b75c17bc126d3960ff2dfade}{auto\+Define\+Button}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$ coords, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size, ksys\+\_\+color\+\_\+t color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
 \begin{DoxyCompactList}\small\item\em Создать кнопку, автоматически присвоить ей id. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_aaeb2a16d8da60bfa8943def241236da0}{Define\+Button}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$ \&coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&size, const unsigned \&id, ksys\+\_\+color\+\_\+t color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_af135176f2eea7c0b2bcef6ccf328c3d2}{Define\+Button}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$ \&coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size, const Button\+ID \&id, ksys\+\_\+color\+\_\+t color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+button)
 \begin{DoxyCompactList}\small\item\em Создать кнопку, вручную \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_af05bc94ea0e640d8fe6b668d059a065f}{Delete\+Button}} (unsigned id)
 \begin{DoxyCompactList}\small\item\em Удалить кнопу \end{DoxyCompactList}\item 
@@ -34,8 +41,8 @@ unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1buttons_ac7dae354425d
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a18062f35048af8e79db3bd593571982b}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a18062f35048af8e79db3bd593571982b} 
-const unsigned {\bfseries Start\+Button\+Id} = 100
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_af64df30c82ac721e16b143e1f2e97145}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_af64df30c82ac721e16b143e1f2e97145} 
+const Button\+ID {\bfseries Start\+Button\+Id} = 100
 \item 
 \Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a9c6e2b744b4a5d9cb966928acf61a824}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a9c6e2b744b4a5d9cb966928acf61a824} 
 std\+::vector$<$ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data}{Buttons\+Id\+Data}} $>$ {\bfseries Buttons\+Id\+List}
@@ -46,11 +53,11 @@ std\+::vector$<$ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_butt
 Работа с кнопками 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a05b2b008431fe17ee5cb83f20524da4b}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a05b2b008431fe17ee5cb83f20524da4b} 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a7ab3e8e8b75c17bc126d3960ff2dfade}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a7ab3e8e8b75c17bc126d3960ff2dfade} 
 \index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!autoDefineButton@{autoDefineButton}}
 \index{autoDefineButton@{autoDefineButton}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
 \doxysubsubsection{\texorpdfstring{autoDefineButton()}{autoDefineButton()}}
-{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::buttons\+::auto\+Define\+Button (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$}]{coords,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&}]{size,  }\item[{ksys\+\_\+color\+\_\+t}]{color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+button} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::buttons\+::auto\+Define\+Button (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$}]{coords,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&}]{size,  }\item[{ksys\+\_\+color\+\_\+t}]{color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+button} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -68,11 +75,11 @@ std\+::vector$<$ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_butt
 \begin{DoxyReturn}{Returns}
 id созданной кнопки 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_aaeb2a16d8da60bfa8943def241236da0}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_aaeb2a16d8da60bfa8943def241236da0} 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_af135176f2eea7c0b2bcef6ccf328c3d2}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_af135176f2eea7c0b2bcef6ccf328c3d2} 
 \index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!DefineButton@{DefineButton}}
 \index{DefineButton@{DefineButton}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
 \doxysubsubsection{\texorpdfstring{DefineButton()}{DefineButton()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::buttons\+::\+Define\+Button (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$ \&}]{coord,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \&}]{size,  }\item[{const unsigned \&}]{id,  }\item[{ksys\+\_\+color\+\_\+t}]{color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+button} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::buttons\+::\+Define\+Button (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$ \&}]{coord,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&}]{size,  }\item[{const Button\+ID \&}]{id,  }\item[{ksys\+\_\+color\+\_\+t}]{color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+button} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -108,7 +115,7 @@ id созданной кнопки
 \index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!FreeButtonId@{FreeButtonId}}
 \index{FreeButtonId@{FreeButtonId}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
 \doxysubsubsection{\texorpdfstring{FreeButtonId()}{FreeButtonId()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::buttons\+::\+Free\+Button\+Id (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::buttons\+::\+Free\+Button\+Id (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -119,11 +126,11 @@ id созданной кнопки
 {\em id} & номер номер кнопки из списка \doxylink{namespace_kolibri_lib_1_1_u_i_1_1buttons_a9c6e2b744b4a5d9cb966928acf61a824}{Buttons\+Id\+List}\\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4516cf225b950017d2810b76d8adee6b}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a4516cf225b950017d2810b76d8adee6b} 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1buttons_a690d4a119e6374b7cf4bf3b9487fba09}\label{namespace_kolibri_lib_1_1_u_i_1_1buttons_a690d4a119e6374b7cf4bf3b9487fba09} 
 \index{KolibriLib::UI::buttons@{KolibriLib::UI::buttons}!GetButtonId@{GetButtonId}}
 \index{GetButtonId@{GetButtonId}!KolibriLib::UI::buttons@{KolibriLib::UI::buttons}}
 \doxysubsubsection{\texorpdfstring{GetButtonId()}{GetButtonId()}}
-{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::buttons\+::\+Get\+Button\+Id (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Button\+ID Kolibri\+Lib\+::\+UI\+::buttons\+::\+Get\+Button\+Id (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

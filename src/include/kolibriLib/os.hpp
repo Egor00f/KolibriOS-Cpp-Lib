@@ -85,6 +85,8 @@ namespace KolibriLib
             return _ksys_get_time();
         }
 
+        
+
     } // namespace OS
 
     /// \brief Подождать

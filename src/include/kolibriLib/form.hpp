@@ -32,7 +32,7 @@ namespace KolibriLib
             /// \param FormColor цвет рамки формы
             /// \param BackgroundTextColor цвет фонового текста
             /// \param Margin отступы рамки от текста
-            Form(Coord coord = {0, 0}, Size size = {32, 16}, std::string BackgroundText = " ", Color::Color FormColor = OS::sys_color_table.work_text, Color::Color ButtonTextColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
+            Form(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const std::string& BackgroundText = "Text...", const Color::Color& FormColor = OS::sys_color_table.work_text, const Color::Color& ButtonTextColor = OS::sys_color_table.work_area, const unsigned& Margin = DefaultMargin);
 
             void init(Coord coord = {0, 0}, Size size = {32, 16}, std::string BackgroundText = " ", Color::Color FormColor = OS::sys_color_table.work_text, Color::Color ButtonTextColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
 
@@ -62,8 +62,11 @@ namespace KolibriLib
             ~Form();
         };
 
-        Form::Form(Coord coord, Size size, std::string BackgroundText, Color::Color FormColor, Color::Color ButtonTextColor, unsigned Margin) : UIElement(coord, size, FormColor, Margin)
+        Form::Form(const Coord& coord, const Size& size, const std::string& BackgroundText, const Color::Color& FormColor, const Color::Color& ButtonTextColor, const unsigned& Margin) : UIElement(coord, size, FormColor, Margin)
         {
+            #ifdef DEBUG == true
+            _ksys_debug_puts("Form Constructor\n");
+            #endif
             _butt.init(coord, size, " ", Margin, ButtonTextColor); // Инициализация кнопки
         }
 
@@ -88,7 +91,7 @@ namespace KolibriLib
 
         Form::~Form()
         {
-            _butt.~Button();
+            
         }
 
         void Form::Render()
@@ -105,7 +108,7 @@ namespace KolibriLib
 
         void Form::Handler()
         {
-            char input = Input::keyboard::CheckKeyboard();
+            char input = keyboard::CheckKeyboard();
             if (input > 33 && input != 127) // Если введённый символ не является спецсимволом, и это не Delete
             {
                 _inputText.push_back(input);

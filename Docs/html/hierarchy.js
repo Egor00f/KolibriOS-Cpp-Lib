@@ -1,8 +1,7 @@
 var hierarchy =
 [
-    [ "KolibriLib::Color::ARGB< ImageBits >", "struct_kolibri_lib_1_1_color_1_1_a_r_g_b.html", null ],
+    [ "KolibriLib::Color::ARGB_t< ImageBits >", "struct_kolibri_lib_1_1_color_1_1_a_r_g_b__t.html", null ],
     [ "KolibriLib::UI::buttons::ButtonsIdData", "struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data.html", null ],
-    [ "KolibriLib::UI::buttons::Content", "struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_content.html", null ],
     [ "KolibriLib::window::Element", "struct_kolibri_lib_1_1window_1_1_element.html", null ],
     [ "KolibriLib::point< T >", "struct_kolibri_lib_1_1point.html", null ],
     [ "KolibriLib::point< int >", "struct_kolibri_lib_1_1point.html", null ],

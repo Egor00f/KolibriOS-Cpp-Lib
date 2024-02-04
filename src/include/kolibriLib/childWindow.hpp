@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-#include "base.hpp"
+#include "small.hpp"
 #include "UI.hpp"
 #include "window.hpp"
 #include "thread.hpp"

@@ -13,7 +13,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 
 .in +1c
 .ti -1c
-.RI "\fBWindow\fP (std::string Title='Window', \fBUI::Size\fP size=\fBDefaultWindowSize\fP, int style=0x14, ksys_colors_table_t colors=\fBColor::DefaultColorTable\fP, unsigned Margin=0)"
+.RI "\fBWindow\fP (std::string Title='Window', \fBUI::Size\fP size=\fBDefaultWindowSize\fP, int style=0x14, \fBColor::ColorsTable\fP colors=\fBColor::DefaultColorTable\fP, unsigned Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -29,7 +29,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Получить размер окна "
 .ti -1c
-.RI "void \fBSetWindowColors\fP (ksys_colors_table_t colorTable)"
+.RI "void \fBSetWindowColors\fP (\fBColor::ColorsTable\fP colorTable)"
 .br
 .RI "Задать стандартные цвета окна "
 .ti -1c
@@ -65,6 +65,10 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Создать кнопку "
 .ti -1c
+.RI "\fBUI::buttons::Button\fP \fBGetButton\fP (unsigned id)"
+.br
+.RI "Получить кнопку "
+.ti -1c
 .RI "unsigned \fBCreateText\fP (\fBUI::Coord\fP coord={0, 0}, \fBUI::Size\fP size={16, 16}, std::string text='Text', unsigned FontSize=9, bool UseWindowColors=true, \fBColor::Color\fP color=OS::sys_color_table\&.work_text)"
 .br
 .RI "Создать текст в окне "
@@ -72,6 +76,10 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RI "unsigned \fBCreateText\fP (const \fBUI::text::TextLabel\fP &text)"
 .br
 .RI "Создать текст в окне "
+.ti -1c
+.RI "void \fBSetTextLabel\fP (unsigned N, const \fBUI::text::TextLabel\fP &text)"
+.br
+.RI "Изменить текст "
 .ti -1c
 .RI "unsigned \fBCreateForm\fP (\fBUI::Form\fP form)"
 .br
@@ -84,13 +92,25 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RI "\fBOS::Event\fP \fBHandler\fP ()"
 .br
 .RI "Обработчик окна "
+.ti -1c
+.RI "UI::buttons::ButtonID \fBGetPressedButton\fP ()"
+.br
+.RI "Проверить какая нажата "
+.ti -1c
+.RI "std::string \fBGetInputFromFrom\fP (unsigned form)"
+.br
+.RI "Получить текст введённый в форму "
+.ti -1c
+.RI "void \fBHandlerThread\fP ()"
+.br
+.RI "Обработчик окна в отдельном потоке "
 .in -1c
 .SH "Detailed Description"
 .PP 
 Класс для работы с окном 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::window::Window::Window (std::string Title = \fR'Window'\fP, \fBUI::Size\fP size = \fR\fBDefaultWindowSize\fP\fP, int style = \fR0x14\fP, ksys_colors_table_t colors = \fR\fBColor::DefaultColorTable\fP\fP, unsigned Margin = \fR0\fP)"
+.SS "KolibriLib::window::Window::Window (std::string Title = \fR'Window'\fP, \fBUI::Size\fP size = \fR\fBDefaultWindowSize\fP\fP, int style = \fR0x14\fP, \fBColor::ColorsTable\fP colors = \fR\fBColor::DefaultColorTable\fP\fP, unsigned Margin = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -273,6 +293,38 @@ KolibriLib::window::Window \- Класс для работы с окном
 Закончить перересовку окна 
 .SS "после должна быть вызвана функция #EndRedraw()"
 
+.SS "\fBUI::buttons::Button\fP KolibriLib::window::Window::GetButton (unsigned id)"
+
+.PP
+Получить кнопку 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP Номер кнопки в списке 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Кнопка 
+.RE
+.PP
+
+.SS "std::string KolibriLib::window::Window::GetInputFromFrom (unsigned form)"
+
+.PP
+Получить текст введённый в форму 
+.PP
+\fBParameters\fP
+.RS 4
+\fIform\fP номер формы в списке 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает текст введённый в формы 
+.RE
+.PP
+
 .SS "unsigned KolibriLib::window::Window::GetMargin ()"
 
 .PP
@@ -308,7 +360,31 @@ point\&.y - высота окна
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::SetWindowColors (ksys_colors_table_t colorTable)"
+.SS "\fBOS::Event\fP KolibriLib::window::Window::Handler ()"
+
+.PP
+Обработчик окна 
+.PP
+\fBReturns\fP
+.RS 4
+Ивент 
+.RE
+.PP
+
+.SS "void KolibriLib::window::Window::SetTextLabel (unsigned N, const \fBUI::text::TextLabel\fP & text)"
+
+.PP
+Изменить текст 
+.PP
+\fBParameters\fP
+.RS 4
+\fIN\fP Номер элемента в списке 
+.br
+\fItext\fP Новая текстовая метка 
+.RE
+.PP
+
+.SS "void KolibriLib::window::Window::SetWindowColors (\fBColor::ColorsTable\fP colorTable)"
 
 .PP
 Задать стандартные цвета окна 

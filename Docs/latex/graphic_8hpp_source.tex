@@ -58,7 +58,7 @@
 \DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(coord,\ Radius,\ color);}
 \DoxyCodeLine{00076\ }
 \DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ b\ =\ Radius\ *\ cos(90+45);}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ sqrt((Radius\ *\ Radius)\ -\/\ (b\ *\ b));}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ Radius\ *\ sin(90+45);}
 \DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ UI::Coord\ n\ =\ \{coord.x\ +\ (int)b,\ coord.y\ +\ (\textcolor{keywordtype}{int})c\};}
 \DoxyCodeLine{00080\ }
 \DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ DrawRectangleFill(n,\ \{(unsigned)(coord.x\ -\/\ n.x)\ *\ 2,\ (unsigned)c\ *\ 2\},\ color);}

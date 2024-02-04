@@ -27,77 +27,108 @@
 \DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\ *\_img;}
 \DoxyCodeLine{00026\ }
 \DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_aff400addb0990d30e8e3c36fcb015d26}{image}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<int>}}\ coord\ =\ \{0,\ 0\},\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size\ =\ \{100,\ 100\},\ std::string\ Path\ =\ DefaultImage);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a0d105df6ca83247993b394d978aa5af0}{image}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size\ =\ \{100,\ 100\});}
 \DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image}{\string~image}}();}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a9bc3f08669991f8475c50ed1b915f6d1}{LoadImage}}(\textcolor{keyword}{const}\ std::string\ \&Path);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a2a51dfb3886ef39ad0392ced8931438a}{LoadImage}}(\textcolor{keyword}{const}\ std::string\ \&Path\ =\ DefaultImage);}
 \DoxyCodeLine{00039\ }
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a12dc3e1d6e0fa31e558e2cfb7dd86058}{Render}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size\ =\ \{0,\ 0\});}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_aff400addb0990d30e8e3c36fcb015d26}{image::image}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<int>}}\ coord,\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size,\ std::string\ Path)\ :\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}(coord,\ size,\ 0,\ 0)}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a0d105df6ca83247993b394d978aa5af0}{image::image}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size)\ :\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}(coord,\ size)}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a9bc3f08669991f8475c50ed1b915f6d1}{LoadImage}}(Path);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Image:"{}});}
 \DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00050\ }
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ image::\string~image()}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a9bc3f08669991f8475c50ed1b915f6d1}{image::LoadImage}}(\textcolor{keyword}{const}\ std::string\ \&Path)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a2a51dfb3886ef39ad0392ced8931438a}{image::LoadImage}}(\textcolor{keyword}{const}\ std::string\ \&Path)}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int32\_t\ img\_size;}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FILE\ *f\ =\ fopen(Path.c\_str(),\ \textcolor{stringliteral}{"{}rb"{}});}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!f)}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fseek(f,\ 0,\ SEEK\_END))}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ filesize\ =\ ftell(f);}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rewind(f);}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *fdata\ =\ (\textcolor{keywordtype}{char}\ *)malloc(filesize);}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!fdata)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FILE\ *f\ =\ fopen(Path.c\_str(),\ \textcolor{stringliteral}{"{}rb"{}});\ \ \ \ \textcolor{comment}{//Этот\ код\ взят\ из\ примера\ из\ /contrib/C\_Layer/EXAMPLE/img\_example/main.c}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!f)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *a\ =\ \textcolor{stringliteral}{"{}LoadImage:\ Can't\ open\ file:\ "{}};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ Path.c\_str());}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(a);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fseek(f,\ 0,\ SEEK\_END))}
 \DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ img\_size\ =\ (int32\_t)fread(fdata,\ 1,\ filesize,\ f);}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ferror(f))}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *a\ =\ \textcolor{stringliteral}{"{}Can't\ SEEK\_END\ file:\ "{}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ Path.c\_str());}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(a);}
 \DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(f);}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *file\_data\ =\ fdata;}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_img\ =\ img\_decode(file\_data,\ img\_size,\ 0);}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_img-\/>Type\ !=\ IMAGE\_BPP32)}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_img\ =\ img\_convert(\_img,\ NULL,\ IMAGE\_BPP32,\ 0,\ 0);\ \textcolor{comment}{//\ Convert\ image\ to\ format\ BPP32}}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_img)}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a12dc3e1d6e0fa31e558e2cfb7dd86058}{image::Render}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size)}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size.x\ !=\ 0\ \&\&\ size.y\ !=\ 0)}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\ *img\ =\ img\_scale(\_img,\ 0,\ 0,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.y,\ NULL,\ LIBIMG\_SCALE\_STRETCH,\ LIBIMG\_INTER\_BILINEAR,\ size.x,\ size.y);}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ img\_draw(img,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.y,\ size.x,\ size.y,\ 0,\ 0);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ filesize\ =\ ftell(f);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rewind(f);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *fdata\ =\ (\textcolor{keywordtype}{char}\ *)malloc(filesize);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!fdata)}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *a\ =\ \textcolor{stringliteral}{"{}No\ memory\ for\ file\ "{}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ Path.c\_str());}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}malloc\ not\ return\ ptr"{}});}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ img\_size\ =\ (int32\_t)fread(fdata,\ 1,\ filesize,\ f);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ferror(f))}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *a\ =\ \textcolor{stringliteral}{"{}Error\ reading\ file\ "{}};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ Path.c\_str());}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(a);}
 \DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ img\_draw(\_img,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.y,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.y,\ 0,\ 0);}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(f);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ }
 \DoxyCodeLine{00102\ }
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Image}}
-\DoxyCodeLine{00104\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
-\DoxyCodeLine{00105\ \ \ \ \ }
-\DoxyCodeLine{00106\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_img\ =\ img\_decode(\ (\textcolor{keywordtype}{void}\ *)fdata,\ img\_size,\ 0\ );}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(fdata);}
 \DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_IMAGE\_H\_\_}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_img-\/>Type\ !=\ IMAGE\_BPP32)}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_img\ =\ img\_convert(\_img,\ NULL,\ IMAGE\_BPP32,\ 0,\ 0);\ \textcolor{comment}{//\ Convert\ image\ to\ format\ BPP32}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_img)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Convert\ error"{}});}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1image_a12dc3e1d6e0fa31e558e2cfb7dd86058}{image::Render}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size)}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size.x\ !=\ 0\ \&\&\ size.y\ !=\ 0)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\ *img\ =\ img\_scale(\_img,\ 0,\ 0,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.y,\ NULL,\ LIBIMG\_SCALE\_STRETCH,\ LIBIMG\_INTER\_BILINEAR,\ size.x,\ size.y);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ img\_draw(img,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.y,\ size.x,\ size.y,\ 0,\ 0);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ img\_draw(\_img,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.y,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.x,\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.y,\ 0,\ 0);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Image}}
+\DoxyCodeLine{00135\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
+\DoxyCodeLine{00136\ \ \ \ \ }
+\DoxyCodeLine{00137\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_IMAGE\_H\_\_}}
 
 \end{DoxyCode}

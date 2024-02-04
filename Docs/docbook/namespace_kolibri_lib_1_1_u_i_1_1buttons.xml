@@ -18,7 +18,12 @@
 
 <para>Служебная структура, нигде не использется кроме <link linkend="_">ButtonsIdList.</link></para>
 </listitem>
-            <listitem><para>struct <link linkend="_struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_content">Content</link></para>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b"/>typedef unsigned int <emphasis role="strong">ButtonID</emphasis></para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -33,15 +38,17 @@
 
 <para>Освободить номер кнопки </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a4516cf225b950017d2810b76d8adee6b">GetButtonId</link> (unsigned id)</para>
+            <listitem><para>ButtonID <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a690d4a119e6374b7cf4bf3b9487fba09">GetButtonId</link> (unsigned id)</para>
 
 <para>Получить id кнопки </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a05b2b008431fe17ee5cb83f20524da4b">autoDefineButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; coords, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;size, ksys_color_t color=OS::sys_color_table.work_button)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a008dcf87d7d649a7fd5c10ee4af7e388"/>void <emphasis role="strong">CutList</emphasis> ()</para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a7ab3e8e8b75c17bc126d3960ff2dfade">autoDefineButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; coords, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size, ksys_color_t color=OS::sys_color_table.work_button)</para>
 
 <para>Создать кнопку, автоматически присвоить ей id. </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1aaeb2a16d8da60bfa8943def241236da0">DefineButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;size, const unsigned &amp;id, ksys_color_t color=OS::sys_color_table.work_button)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1af135176f2eea7c0b2bcef6ccf328c3d2">DefineButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size, const ButtonID &amp;id, ksys_color_t color=OS::sys_color_table.work_button)</para>
 
 <para>Создать кнопку, вручную </para>
 </listitem>
@@ -58,7 +65,7 @@
 <simplesect>
     <title>Variables    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a18062f35048af8e79db3bd593571982b"/>const unsigned <emphasis role="strong">StartButtonId</emphasis> = 100</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1af64df30c82ac721e16b143e1f2e97145"/>const ButtonID <emphasis role="strong">StartButtonId</emphasis> = 100</para>
 </listitem>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a9c6e2b744b4a5d9cb966928acf61a824"/>std::vector&lt; <link linkend="_struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data">ButtonsIdData</link> &gt; <emphasis role="strong">ButtonsIdList</emphasis></para>
 
@@ -73,11 +80,11 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a05b2b008431fe17ee5cb83f20524da4b"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a7ab3e8e8b75c17bc126d3960ff2dfade"/><section>
     <title>autoDefineButton()</title>
 <indexterm><primary>autoDefineButton</primary><secondary>KolibriLib::UI::buttons</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons</primary><secondary>autoDefineButton</secondary></indexterm>
-<para><computeroutput>unsigned KolibriLib::UI::buttons::autoDefineButton (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; coords, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp; size, ksys_color_t color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+<para><computeroutput>unsigned KolibriLib::UI::buttons::autoDefineButton (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; coords, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size, ksys_color_t color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Создать кнопку, автоматически присвоить ей id. </para>
@@ -119,11 +126,11 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1aaeb2a16d8da60bfa8943def241236da0"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1af135176f2eea7c0b2bcef6ccf328c3d2"/><section>
     <title>DefineButton()</title>
 <indexterm><primary>DefineButton</primary><secondary>KolibriLib::UI::buttons</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons</primary><secondary>DefineButton</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::DefineButton (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp; coord, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp; size, const unsigned &amp; id, ksys_color_t color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+<para><computeroutput>void KolibriLib::UI::buttons::DefineButton (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; &amp; coord, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size, const ButtonID &amp; id, ksys_color_t color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Создать кнопку, вручную </para>
@@ -201,7 +208,7 @@ Parameters</title>
     <title>FreeButtonId()</title>
 <indexterm><primary>FreeButtonId</primary><secondary>KolibriLib::UI::buttons</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons</primary><secondary>FreeButtonId</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::FreeButtonId (unsigned id)</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::UI::buttons::FreeButtonId (unsigned id)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Освободить номер кнопки </para>
 </para>
@@ -228,11 +235,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a4516cf225b950017d2810b76d8adee6b"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a690d4a119e6374b7cf4bf3b9487fba09"/><section>
     <title>GetButtonId()</title>
 <indexterm><primary>GetButtonId</primary><secondary>KolibriLib::UI::buttons</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons</primary><secondary>GetButtonId</secondary></indexterm>
-<para><computeroutput>unsigned KolibriLib::UI::buttons::GetButtonId (unsigned id)</computeroutput></para><para>
+<para><computeroutput>ButtonID KolibriLib::UI::buttons::GetButtonId (unsigned id)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить id кнопки </para>
 </para>

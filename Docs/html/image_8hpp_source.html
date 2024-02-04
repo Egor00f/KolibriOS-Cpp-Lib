@@ -126,19 +126,19 @@ $(function(){initNavTree('image_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                Image *_img;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#aff400addb0990d30e8e3c36fcb015d26">image</a>(<a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;int&gt;</a> coord = {0, 0}, <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Size</a> size = {100, 100}, std::string Path = DefaultImage);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a0d105df6ca83247993b394d978aa5af0">image</a>(<span class="keyword">const</span> <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Coord</a>&amp; coord = {0, 0}, <span class="keyword">const</span> <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Size</a>&amp; size = {100, 100});</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                <a class="code hl_class" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html">~image</a>();</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <span class="keywordtype">void</span> <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a9bc3f08669991f8475c50ed1b915f6d1">LoadImage</a>(<span class="keyword">const</span> std::string &amp;Path);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <span class="keywordtype">void</span> <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a2a51dfb3886ef39ad0392ced8931438a">LoadImage</a>(<span class="keyword">const</span> std::string &amp;Path = DefaultImage);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keywordtype">void</span> <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058">Render</a>(<a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Size</a> size = {0, 0});</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            };</div>
 </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#aff400addb0990d30e8e3c36fcb015d26">   46</a></span>            <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#aff400addb0990d30e8e3c36fcb015d26">image::image</a>(<a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;int&gt;</a> coord, <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Size</a> size, std::string Path) : <a class="code hl_class" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html">UIElement</a>(coord, size, 0, 0)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a0d105df6ca83247993b394d978aa5af0">   46</a></span>            <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a0d105df6ca83247993b394d978aa5af0">image::image</a>(<span class="keyword">const</span> <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Coord</a>&amp; coord, <span class="keyword">const</span> <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Size</a>&amp; size) : <a class="code hl_class" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html">UIElement</a>(coord, size)</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a9bc3f08669991f8475c50ed1b915f6d1">LoadImage</a>(Path);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                _ksys_debug_puts(<span class="stringliteral">&quot;Image:&quot;</span>);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            }</div>
 </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
@@ -147,74 +147,105 @@ $(function(){initNavTree('image_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            }</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a9bc3f08669991f8475c50ed1b915f6d1">   55</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a9bc3f08669991f8475c50ed1b915f6d1">image::LoadImage</a>(<span class="keyword">const</span> std::string &amp;Path)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a2a51dfb3886ef39ad0392ced8931438a">   55</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a2a51dfb3886ef39ad0392ced8931438a">image::LoadImage</a>(<span class="keyword">const</span> std::string &amp;Path)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            {</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                int32_t img_size;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                FILE *f = fopen(Path.c_str(), <span class="stringliteral">&quot;rb&quot;</span>);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="keywordflow">if</span> (!f)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="keywordflow">if</span> (fseek(f, 0, SEEK_END))</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordtype">int</span> filesize = ftell(f);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                rewind(f);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordtype">char</span> *fdata = (<span class="keywordtype">char</span> *)malloc(filesize);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <span class="keywordflow">if</span> (!fdata)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                FILE *f = fopen(Path.c_str(), <span class="stringliteral">&quot;rb&quot;</span>);    <span class="comment">//Этот код взят из примера из /contrib/C_Layer/EXAMPLE/img_example/main.c</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keywordflow">if</span> (!f)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                    <span class="keywordtype">char</span> *a = <span class="stringliteral">&quot;LoadImage: Can&#39;t open file: &quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    strcat(a, Path.c_str());</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    strcat(a, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    _ksys_debug_puts(a);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <span class="keywordflow">if</span> (fseek(f, 0, SEEK_END))</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                img_size = (int32_t)fread(fdata, 1, filesize, f);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <span class="keywordflow">if</span> (ferror(f))</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                    <span class="keywordtype">char</span> *a = <span class="stringliteral">&quot;Can&#39;t SEEK_END file: &quot;</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    strcat(a, Path.c_str());</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    strcat(a, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                    _ksys_debug_puts(a);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                fclose(f);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                <span class="keywordtype">void</span> *file_data = fdata;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                _img = img_decode(file_data, img_size, 0);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">if</span> (_img-&gt;Type != IMAGE_BPP32)</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                    _img = img_convert(_img, NULL, IMAGE_BPP32, 0, 0); <span class="comment">// Convert image to format BPP32</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    <span class="keywordflow">if</span> (!_img)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            }</div>
-</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058">   90</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058">image::Render</a>(<a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Size</a> size)</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                <span class="keywordflow">if</span> (size.x != 0 &amp;&amp; size.y != 0)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                    Image *img = img_scale(_img, 0, 0, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.y, NULL, LIBIMG_SCALE_STRETCH, LIBIMG_INTER_BILINEAR, size.x, size.y);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                    img_draw(img, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.y, size.x, size.y, 0, 0);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                <span class="keywordtype">int</span> filesize = ftell(f);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                rewind(f);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                <span class="keywordtype">char</span> *fdata = (<span class="keywordtype">char</span> *)malloc(filesize);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                <span class="keywordflow">if</span> (!fdata)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                    <span class="keywordtype">char</span> *a = <span class="stringliteral">&quot;No memory for file &quot;</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                    strcat(a, Path.c_str());</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    strcat(a, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    _ksys_debug_puts(<span class="stringliteral">&quot;malloc not return ptr&quot;</span>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                img_size = (int32_t)fread(fdata, 1, filesize, f);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                <span class="keywordflow">if</span> (ferror(f))</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                    <span class="keywordtype">char</span> *a = <span class="stringliteral">&quot;Error reading file &quot;</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                    strcat(a, Path.c_str());</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                    strcat(a, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                    _ksys_debug_puts(a);</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                }</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                    img_draw(_img, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.y, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.y, 0, 0);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                }</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            }</div>
-</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                fclose(f);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        } <span class="comment">// namespace Image</span></div>
-</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    } <span class="comment">// namespace UI</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>} <span class="comment">// namespace KolibriLib</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                _img = img_decode( (<span class="keywordtype">void</span> *)fdata, img_size, 0 );</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                free(fdata);</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">// __IMAGE_H__</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                <span class="keywordflow">if</span> (_img-&gt;Type != IMAGE_BPP32)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                    _img = img_convert(_img, NULL, IMAGE_BPP32, 0, 0); <span class="comment">// Convert image to format BPP32</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                    <span class="keywordflow">if</span> (!_img)</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                    {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                        _ksys_debug_puts(<span class="stringliteral">&quot;Convert error&quot;</span>);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            }</div>
+</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="foldopen" id="foldopen00121" data-start="{" data-end="}">
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058">  121</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058">image::Render</a>(<a class="code hl_class" href="struct_kolibri_lib_1_1point.html">Size</a> size)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                <span class="keywordflow">if</span> (size.x != 0 &amp;&amp; size.y != 0)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                    Image *img = img_scale(_img, 0, 0, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.y, NULL, LIBIMG_SCALE_STRETCH, LIBIMG_INTER_BILINEAR, size.x, size.y);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                    img_draw(img, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.y, size.x, size.y, 0, 0);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                    img_draw(_img, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">_coord</a>.y, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.x, <a class="code hl_variable" href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">_size</a>.y, 0, 0);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                }</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            }</div>
+</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        } <span class="comment">// namespace Image</span></div>
+</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    } <span class="comment">// namespace UI</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>} <span class="comment">// namespace KolibriLib</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="preprocessor">#endif </span><span class="comment">// __IMAGE_H__</span></div>
 <div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1image_html"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html">KolibriLib::UI::Images::image</a></div><div class="ttdoc">Картинка как элемент интерфейса</div><div class="ttdef"><b>Definition</b> image.hpp:23</div></div>
-<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1image_html_a12dc3e1d6e0fa31e558e2cfb7dd86058"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058">KolibriLib::UI::Images::image::Render</a></div><div class="ttdeci">void Render(Size size={0, 0})</div><div class="ttdoc">Вывести изображение в окно</div><div class="ttdef"><b>Definition</b> image.hpp:90</div></div>
-<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1image_html_a9bc3f08669991f8475c50ed1b915f6d1"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a9bc3f08669991f8475c50ed1b915f6d1">KolibriLib::UI::Images::image::LoadImage</a></div><div class="ttdeci">void LoadImage(const std::string &amp;Path)</div><div class="ttdoc">Загрузить изображение</div><div class="ttdef"><b>Definition</b> image.hpp:55</div></div>
-<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1image_html_aff400addb0990d30e8e3c36fcb015d26"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#aff400addb0990d30e8e3c36fcb015d26">KolibriLib::UI::Images::image::image</a></div><div class="ttdeci">image(point&lt; int &gt; coord={0, 0}, Size size={100, 100}, std::string Path=DefaultImage)</div><div class="ttdoc">Конструктор</div><div class="ttdef"><b>Definition</b> image.hpp:46</div></div>
+<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1image_html_a0d105df6ca83247993b394d978aa5af0"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a0d105df6ca83247993b394d978aa5af0">KolibriLib::UI::Images::image::image</a></div><div class="ttdeci">image(const Coord &amp;coord={0, 0}, const Size &amp;size={100, 100})</div><div class="ttdoc">Конструктор</div><div class="ttdef"><b>Definition</b> image.hpp:46</div></div>
+<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1image_html_a12dc3e1d6e0fa31e558e2cfb7dd86058"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058">KolibriLib::UI::Images::image::Render</a></div><div class="ttdeci">void Render(Size size={0, 0})</div><div class="ttdoc">Вывести изображение в окно</div><div class="ttdef"><b>Definition</b> image.hpp:121</div></div>
+<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1image_html_a2a51dfb3886ef39ad0392ced8931438a"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a2a51dfb3886ef39ad0392ced8931438a">KolibriLib::UI::Images::image::LoadImage</a></div><div class="ttdeci">void LoadImage(const std::string &amp;Path=DefaultImage)</div><div class="ttdoc">Загрузить изображение</div><div class="ttdef"><b>Definition</b> image.hpp:55</div></div>
 <div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_u_i_element_html"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html">KolibriLib::UI::UIElement</a></div><div class="ttdoc">Элемент интерфейса</div><div class="ttdef"><b>Definition</b> UI.hpp:29</div></div>
 <div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_u_i_element_html_a4094c4e31f3891565dbbbcc5b8de8e3f"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a4094c4e31f3891565dbbbcc5b8de8e3f">KolibriLib::UI::UIElement::_size</a></div><div class="ttdeci">Size _size</div><div class="ttdoc">Размер</div><div class="ttdef"><b>Definition</b> UI.hpp:36</div></div>
 <div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_u_i_element_html_a6a32e2b61ba20d655583fcfe6da82668"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a6a32e2b61ba20d655583fcfe6da82668">KolibriLib::UI::UIElement::_coord</a></div><div class="ttdeci">Coord _coord</div><div class="ttdoc">Координаты</div><div class="ttdef"><b>Definition</b> UI.hpp:33</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> base.hpp:18</div></div>
-<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> small.hpp:30</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point&lt; int &gt;</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

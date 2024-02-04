@@ -10,14 +10,7 @@ KolibriLib::window::Element
 
 .in +1c
 .ti -1c
-.RI "enum class \fBType\fP { \fBButton\fP, \fBImage\fP, \fBCheckBox\fP, \fBForm\fP, \fBTextLabel\fP }"
-.br
-.in -1c
-.SS "Public Member Functions"
-
-.in +1c
-.ti -1c
-.RI "\fBElement\fP (Type t)"
+.RI "enum \fBType\fP { \fBNone\fP = 0, \fBButton\fP, \fBImage\fP, \fBCheckBox\fP, \fBForm\fP, \fBTextLabel\fP }"
 .br
 .in -1c
 .SS "Public Attributes"
@@ -33,13 +26,16 @@ KolibriLib::window::Element
 .RI "\fBUI::Form\fP \fBfrm\fP"
 .br
 .ti -1c
-.RI "\fBUI::CheckBox\fP \fBCheckBox\fP"
+.RI "\fBUI::CheckBox\fP \fBChckBx\fP"
 .br
 .ti -1c
 .RI "\fBUI::Images::image\fP \fBimg\fP"
 .br
 .ti -1c
-.RI "Type \fBtype\fP"
+.RI "unsigned \fB_type\fP"
+.br
+.ti -1c
+.RI "unsigned \fBDrawPrioritet\fP"
 .br
 .ti -1c
 .RI "bool \fBuse\fP"

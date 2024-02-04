@@ -13,11 +13,18 @@ KolibriLib::UI::buttons::Button \- Класс для работы с кнопк�
 Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .PP
 Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBImage\fP = 0, \fBText\fP }"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, ksys_color_t ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, \fBColor::Color\fP ButtonColor=OS::sys_color_table\&.work_button)"
 .br
 .RI "Это конструктор "
 .ti -1c
@@ -26,6 +33,10 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .RI "инициализировать параметры "
 .ti -1c
 .RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::image\fP &image=\fBImages::image\fP(), const unsigned &Margin=DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.br
+.RI "инициализировать параметры "
+.ti -1c
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, std::string Path=DefaultImage)"
 .br
 .RI "инициализировать параметры "
 .ti -1c
@@ -41,7 +52,7 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .br
 .RI "Получить сосояние кнопки на момент последней обработки "
 .ti -1c
-.RI "unsigned \fBGetId\fP ()"
+.RI "ButtonID \fBGetId\fP ()"
 .br
 .RI "Получить номер кнопки "
 .ti -1c
@@ -53,7 +64,7 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .br
 .RI "Активировать кнопку "
 .ti -1c
-.RI "\fBContent::Type\fP \fBGetType\fP ()"
+.RI "unsigned \fBGetType\fP ()"
 .br
 .RI "Возвращает тип данных используемых в кнопке \fB_type\&.\fP"
 .ti -1c
@@ -72,12 +83,15 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .RI "\fB~Button\fP ()"
 .br
 .RI "Декструктор "
+.ti -1c
+.RI "\fBButton\fP & \fBoperator=\fP (const \fBButton\fP &butt)"
+.br
 .in -1c
 
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={16, 16}, \fBColor::Color\fP MainColor=0, unsigned Margin=DefaultMargin)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=0, const unsigned &Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "\fBSize\fP \fBGetSize\fP ()"
@@ -100,6 +114,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
 .in -1c
 .SS "Additional Inherited Members"
@@ -128,7 +145,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 Класс для работы с кнопками 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::UI::buttons::Button::Button (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{20, 20}\fP, unsigned Margin = \fRUI::DefaultMargin\fP, ksys_color_t ButtonColor = \fROS::sys_color_table\&.work_button\fP)"
+.SS "KolibriLib::UI::buttons::Button::Button (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{20, 20}\fP, unsigned Margin = \fRUI::DefaultMargin\fP, \fBColor::Color\fP ButtonColor = \fROS::sys_color_table\&.work_button\fP)"
 
 .PP
 Это конструктор 
@@ -164,7 +181,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .SS "функция может выполнятся очень долго, если вы уже создали довольно много кнопок\&. Это становится действительно важно когда у вас объявленно более 2000 кнопок"
 .SS "Деактивированном состоянии кнопка 'Не нажимается', а её \fBстановится не действительным\fP"
 
-.SS "unsigned KolibriLib::UI::buttons::Button::GetId ()"
+.SS "ButtonID KolibriLib::UI::buttons::Button::GetId ()"
 
 .PP
 Получить номер кнопки 
@@ -208,7 +225,7 @@ std::string
 .RE
 .PP
 
-.SS "\fBContent::Type\fP KolibriLib::UI::buttons::Button::GetType ()"
+.SS "unsigned KolibriLib::UI::buttons::Button::GetType ()"
 
 .PP
 Возвращает тип данных используемых в кнопке \fB_type\&.\fP
@@ -243,7 +260,7 @@ std::string
 .br
 \fIsize\fP размер 
 .br
-\fI\fBContent\fP\fP текст 
+\fIimage\fP Изображение 
 .br
 \fIMargin\fP отступы текста от границ 
 .br
@@ -264,7 +281,28 @@ std::string
 .br
 \fIsize\fP размер 
 .br
-\fI\fBContent\fP\fP текст 
+\fItext\fP текст 
+.br
+\fIMargin\fP отступы текста от границ 
+.br
+\fIBackgroundColor\fP цвет кнопки 
+.br
+\fITextColor\fP цвет текста 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::buttons::Button::init (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{0, 0}\fP, std::string Path = \fRDefaultImage\fP)"
+
+.PP
+инициализировать параметры 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP координата 
+.br
+\fIsize\fP размер 
+.br
+\fIPath\fP Путь до изображения 
 .br
 \fIMargin\fP отступы текста от границ 
 .br

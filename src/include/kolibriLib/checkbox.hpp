@@ -36,7 +36,7 @@ namespace KolibriLib
                 Smoth,
             };
 
-            CheckBox(Coord coord = {0, 0}, Size size = {32, 16}, int style = 0, Color::Color CheckBoxBorderColor = OS::sys_color_table.work_text, Color::Color BackgroundColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
+            CheckBox(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const int& style = 0, const Color::Color& CheckBoxBorderColor = OS::sys_color_table.work_text, const Color::Color& BackgroundColor = OS::sys_color_table.work_area, const unsigned& Margin = DefaultMargin);
             ~CheckBox();
 
             void Render();
@@ -45,9 +45,13 @@ namespace KolibriLib
             bool Handler();
         };
 
-        CheckBox::CheckBox(Coord coord, Size size, int style, Color::Color CheckBoxBorderColor, Color::Color BackgroundColor, unsigned Margin) : Button(coord, size, CheckBoxBorderColor, Margin)
+        CheckBox::CheckBox(const Coord& coord, const Size& size, const int& style, const Color::Color& CheckBoxBorderColor, const Color::Color& BackgroundColor, const unsigned& Margin) : Button(coord, size, Margin, BackgroundColor)
         {
+            #if DEBUG == true
+            _ksys_debug_puts("CheckBox Constructor\n");
+            #endif
             _style = style;
+            
         }
 
         CheckBox::~CheckBox()
@@ -56,6 +60,7 @@ namespace KolibriLib
 
         void CheckBox::Render()
         {
+            
             switch (_style)
             {
             case Default:

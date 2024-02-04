@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "KolibriLib", "index.html", [
+    [ "Это всратая библиотека\\", "index.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

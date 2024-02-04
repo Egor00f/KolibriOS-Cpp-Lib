@@ -18,7 +18,7 @@ Inheritance diagram for Kolibri\+Lib\+::UI\+::Form\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_ae6d99f32e64940a061397f7d37373d74}{Form}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{32, 16\}, std\+::string Background\+Text="{} "{}, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Form\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Button\+Text\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, unsigned Margin=Default\+Margin)
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a08256f7ba2a90b499f7232b0287585db}{Form}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size=\{32, 16\}, const std\+::string \&Background\+Text="{}Text..."{}, const \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \&Form\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, const \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \&Button\+Text\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, const unsigned \&Margin=Default\+Margin)
 \begin{DoxyCompactList}\small\item\em конструктор \end{DoxyCompactList}\item 
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_aac39cd8dc2ff7e2b64a8ce291d3b4d36}\label{class_kolibri_lib_1_1_u_i_1_1_form_aac39cd8dc2ff7e2b64a8ce291d3b4d36} 
 void {\bfseries init} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{32, 16\}, std\+::string Background\+Text="{} "{}, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Form\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Button\+Text\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area, unsigned Margin=Default\+Margin)
@@ -40,7 +40,7 @@ std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa3fa979b5780b
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} size=\{16, 16\}, \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} Main\+Color=0, unsigned Margin=Default\+Margin)
+{\bfseries UIElement} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size=\{16, 16\}, const \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \&Main\+Color=0, const unsigned \&Margin=Default\+Margin)
 \item 
 \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} {\bfseries Get\+Size} ()
 \item 
@@ -55,6 +55,8 @@ void {\bfseries Set\+Color} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2
 void {\bfseries Set\+Coord} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} New\+Coord)
 \item 
 \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} {\bfseries Get\+Coord} ()
+\item 
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
@@ -74,11 +76,11 @@ unsigned {\bfseries \+\_\+\+Margin}
 Форма для ввода текста 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_ae6d99f32e64940a061397f7d37373d74}\label{class_kolibri_lib_1_1_u_i_1_1_form_ae6d99f32e64940a061397f7d37373d74} 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a08256f7ba2a90b499f7232b0287585db}\label{class_kolibri_lib_1_1_u_i_1_1_form_a08256f7ba2a90b499f7232b0287585db} 
 \index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!Form@{Form}}
 \index{Form@{Form}!KolibriLib::UI::Form@{KolibriLib::UI::Form}}
 \doxysubsubsection{\texorpdfstring{Form()}{Form()}}
-{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::\+Form\+::\+Form (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}}]{coord = {\ttfamily \{0,~0\}},  }\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}}]{size = {\ttfamily \{32,~16\}},  }\item[{std\+::string}]{Background\+Text = {\ttfamily "{}~"{}},  }\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}}}]{Form\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}}}]{Button\+Text\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+area},  }\item[{unsigned}]{Margin = {\ttfamily DefaultMargin} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::\+Form\+::\+Form (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&}]{coord = {\ttfamily \{0,~0\}},  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&}]{size = {\ttfamily \{32,~16\}},  }\item[{const std\+::string \&}]{Background\+Text = {\ttfamily "{}Text..."{}},  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \&}]{Form\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_a2b1ec42c3492a492a59ed69c3f3b8b4a}{Color\+::\+Color}} \&}]{Button\+Text\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+area},  }\item[{const unsigned \&}]{Margin = {\ttfamily DefaultMargin} }\end{DoxyParamCaption})}
 
 
 

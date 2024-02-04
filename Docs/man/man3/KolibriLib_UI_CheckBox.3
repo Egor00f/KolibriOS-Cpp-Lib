@@ -19,11 +19,18 @@ Inherits \fBKolibriLib::UI::buttons::Button\fP\&.
 .br
 .RI "Стиль Чекбокса "
 .in -1c
+
+Public Types inherited from \fBKolibriLib::UI::buttons::Button\fP
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBImage\fP = 0, \fBText\fP }"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBCheckBox\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={32, 16}, int \fBstyle\fP=0, \fBColor::Color\fP CheckBoxBorderColor=OS::sys_color_table\&.work_text, \fBColor::Color\fP BackgroundColor=OS::sys_color_table\&.work_area, unsigned Margin=DefaultMargin)"
+.RI "\fBCheckBox\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const int &\fBstyle\fP=0, const \fBColor::Color\fP &CheckBoxBorderColor=OS::sys_color_table\&.work_text, const \fBColor::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "void \fBRender\fP ()"
@@ -37,7 +44,7 @@ Inherits \fBKolibriLib::UI::buttons::Button\fP\&.
 Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .in +1c
 .ti -1c
-.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, ksys_color_t ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, \fBColor::Color\fP ButtonColor=OS::sys_color_table\&.work_button)"
 .br
 .RI "Это конструктор "
 .ti -1c
@@ -46,6 +53,10 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .RI "инициализировать параметры "
 .ti -1c
 .RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::image\fP &image=\fBImages::image\fP(), const unsigned &Margin=DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.br
+.RI "инициализировать параметры "
+.ti -1c
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, std::string Path=DefaultImage)"
 .br
 .RI "инициализировать параметры "
 .ti -1c
@@ -61,7 +72,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .br
 .RI "Получить сосояние кнопки на момент последней обработки "
 .ti -1c
-.RI "unsigned \fBGetId\fP ()"
+.RI "ButtonID \fBGetId\fP ()"
 .br
 .RI "Получить номер кнопки "
 .ti -1c
@@ -73,7 +84,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .br
 .RI "Активировать кнопку "
 .ti -1c
-.RI "\fBContent::Type\fP \fBGetType\fP ()"
+.RI "unsigned \fBGetType\fP ()"
 .br
 .RI "Возвращает тип данных используемых в кнопке \fB_type\&.\fP"
 .ti -1c
@@ -92,12 +103,15 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .RI "\fB~Button\fP ()"
 .br
 .RI "Декструктор "
+.ti -1c
+.RI "\fBButton\fP & \fBoperator=\fP (const \fBButton\fP &butt)"
+.br
 .in -1c
 
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={16, 16}, \fBColor::Color\fP MainColor=0, unsigned Margin=DefaultMargin)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=0, const unsigned &Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "\fBSize\fP \fBGetSize\fP ()"
@@ -120,6 +134,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
 .in -1c
 .SS "Additional Inherited Members"

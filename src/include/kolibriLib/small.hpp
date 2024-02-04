@@ -4,24 +4,19 @@
 #ifndef __SMALL_H__
 #define __SMALL_H__
 
+#include <string>
 
+#define DEBUG true
 
 namespace KolibriLib
 {
-    /// @brief Сообщение всем функциям что нужно завершать работу
-    bool EXIT = false;
-    /// @brief Код ошибки
-    /// @paragraph int main(){/*...*/ return EXITCODE; }
-    /// @paragraph Эта библиотека считает что EXITCODE = 0 - это завершение работы без ошибки
-    int EXITCODE = 0;
+    const std::string ConfigurationDir = "/kolibrios/etc/";
 
-    const ::std::string ConfigurationDir = "/kolibrios/etc/";
+    const std::string ImgDir = ConfigurationDir + "images/";
 
-    const ::std::string ImgDir = ConfigurationDir + "images/";
+    const std::string DefaultImage = ImgDir + "default.png";
 
-    const ::std::string DefaultImage = ImgDir + "default.png";
-
-    const ::std::string CursorsDir = ConfigurationDir + "cursors/"; // Предпологается что в этой папке лежат файлы, они заранее приготовленны
+    const std::string CursorsDir = ConfigurationDir + "cursors/"; // Предпологается что в этой папке лежат файлы, они заранее приготовленны
 
     template <class T>
     /// @brief Просто точка
@@ -30,6 +25,18 @@ namespace KolibriLib
     {
         T x;
         T y;
+
+
+        point<T>& operator = ( const point<T>& p)
+        {
+            x = p.x;
+            y = p.y;
+            return *this;
+        }
+
+        bool operator == (const point<T> a) const = default;
+        bool operator != (const point<T>& a) const = default;
+        
     };
 
 } // namespace KolibriLib

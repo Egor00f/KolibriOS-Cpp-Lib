@@ -71,24 +71,16 @@ KolibriLib \- Основное пространство имён
 
 .in +1c
 .ti -1c
-.RI "bool \fBEXIT\fP = false"
-.br
-.RI "Сообщение всем функциям что нужно завершать работу "
-.ti -1c
-.RI "int \fBEXITCODE\fP = 0"
-.br
-.RI "Код ошибки "
-.ti -1c
-.RI "const ::std::string \fBConfigurationDir\fP = '/kolibrios/etc/'"
+.RI "const std::string \fBConfigurationDir\fP = '/kolibrios/etc/'"
 .br
 .ti -1c
-.RI "const ::std::string \fBImgDir\fP = ConfigurationDir + 'images/'"
+.RI "const std::string \fBImgDir\fP = ConfigurationDir + 'images/'"
 .br
 .ti -1c
-.RI "const ::std::string \fBDefaultImage\fP = ImgDir + 'default\&.png'"
+.RI "const std::string \fBDefaultImage\fP = ImgDir + 'default\&.png'"
 .br
 .ti -1c
-.RI "const ::std::string \fBCursorsDir\fP = ConfigurationDir + 'cursors/'"
+.RI "const std::string \fBCursorsDir\fP = ConfigurationDir + 'cursors/'"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -126,15 +118,6 @@ Egor00f
 \fItime\fP время задержки(в 1/100 секунды) 
 .RE
 .PP
-
-.SH "Variable Documentation"
-.PP 
-.SS "int KolibriLib::EXITCODE = 0"
-
-.PP
-Код ошибки 
-.SS "main(){/*\&.\&.\&.*/ return EXITCODE; }"
-.SS "функция может выполнятся очень долго, если вы уже создали довольно много кнопок\&. Это становится действительно важно когда у вас объявленно более 2000 кнопок"
 
 .SH "Author"
 .PP 

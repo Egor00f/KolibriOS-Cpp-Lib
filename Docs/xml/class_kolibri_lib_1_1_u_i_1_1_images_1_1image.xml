@@ -17,30 +17,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="25" column="23" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="25" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="25" column="7" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1aff400addb0990d30e8e3c36fcb015d26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a0d105df6ca83247993b394d978aa5af0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>KolibriLib::UI::Images::image::image</definition>
-        <argsstring>(point&lt; int &gt; coord={0, 0}, Size size={100, 100}, std::string Path=DefaultImage)</argsstring>
+        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={100, 100})</argsstring>
         <name>image</name>
         <qualifiedname>KolibriLib::UI::Images::image::image</qualifiedname>
         <param>
-          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">point</ref>&lt; int &gt;</type>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
           <declname>coord</declname>
           <defval>{0, 0}</defval>
         </param>
         <param>
-          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref></type>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref> &amp;</type>
           <declname>size</declname>
           <defval>{100, 100}</defval>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>Path</declname>
-          <defval>DefaultImage</defval>
         </param>
         <briefdescription>
 <para>Конструктор </para>
@@ -51,7 +46,7 @@
 <parametername>coord</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para>
+<para>Координаты </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -59,7 +54,7 @@
 <parametername>size</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para>
+<para>Размер </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -83,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="33" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="46" bodyend="49"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="33" column="1" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1afe381df52601a9aaa1def56c8fdff592" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -97,17 +92,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="34" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="51" bodyend="53"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="34" column="1" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a9bc3f08669991f8475c50ed1b915f6d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a2a51dfb3886ef39ad0392ced8931438a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void KolibriLib::UI::Images::image::LoadImage</definition>
-        <argsstring>(const std::string &amp;Path)</argsstring>
+        <argsstring>(const std::string &amp;Path=DefaultImage)</argsstring>
         <name>LoadImage</name>
         <qualifiedname>KolibriLib::UI::Images::image::LoadImage</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>Path</declname>
+          <defval>DefaultImage</defval>
         </param>
         <briefdescription>
 <para>Загрузить изображение </para>
@@ -126,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="38" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="55" bodyend="88"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="38" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="55" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a12dc3e1d6e0fa31e558e2cfb7dd86058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -158,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="43" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="90" bodyend="101"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="43" column="6" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="121" bodyend="132"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -204,7 +200,7 @@
         <link refid="struct_kolibri_lib_1_1point"/>
       </node>
     </collaborationgraph>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="22" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="23" bodyend="44"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" line="22" column="1" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp" bodystart="23" bodyend="44"/>
     <listofallmembers>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>_coord</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a53a7f11277c52f9a081c1b891659a36b" prot="private" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>_img</name></member>
@@ -215,13 +211,14 @@
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a9d6acdb3e6c0c1576805c578595e3ce9" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>GetCoord</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab1aa7de81042fd3cdc40e24abf01e854" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>GetMargin</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab4805c825cf72f31fe4a3a776c409f3d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>GetSize</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1aff400addb0990d30e8e3c36fcb015d26" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>image</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a9bc3f08669991f8475c50ed1b915f6d1" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>LoadImage</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a0d105df6ca83247993b394d978aa5af0" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>image</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a2a51dfb3886ef39ad0392ced8931438a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>LoadImage</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>operator=</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1a12dc3e1d6e0fa31e558e2cfb7dd86058" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>Render</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>SetColor</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>SetCoord</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>SetSize</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a2711acf46a6b4eac37d584c0255dab5b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>UIElement</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab70b8347e5b0724071edcdf997a9712f" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>UIElement</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image_1afe381df52601a9aaa1def56c8fdff592" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Images::image</scope><name>~image</name></member>
     </listofallmembers>
   </compounddef>

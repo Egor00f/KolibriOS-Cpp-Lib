@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['exit_0',['EXIT',['../namespace_kolibri_lib.html#ac5af83599c636badfe90db73a654f5ef',1,'KolibriLib']]],
-  ['exitcode_1',['EXITCODE',['../namespace_kolibri_lib.html#ae00feeea6bd20648e94c82f1289bc68f',1,'KolibriLib']]]
+  ['sys_5fcolor_5ftable_0',['sys_color_table',['../namespace_kolibri_lib_1_1_o_s.html#a8915296792964e4aaeadf4b76f6a109a',1,'KolibriLib::OS']]]
 ];

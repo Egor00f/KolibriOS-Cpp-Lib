@@ -21,7 +21,7 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1ae6d99f32e64940a061397f7d37373d74">Form</link> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size={32, 16}, std::string BackgroundText=&quot; &quot;, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> FormColor=OS::sys_color_table.work_text, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> ButtonTextColor=OS::sys_color_table.work_area, unsigned Margin=DefaultMargin)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a08256f7ba2a90b499f7232b0287585db">Form</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={32, 16}, const std::string &amp;BackgroundText=&quot;Text...&quot;, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp;FormColor=OS::sys_color_table.work_text, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp;ButtonTextColor=OS::sys_color_table.work_area, const unsigned &amp;Margin=DefaultMargin)</para>
 
 <para>конструктор </para>
 </listitem>
@@ -50,7 +50,7 @@
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
-            <listitem><para><emphasis role="strong">UIElement</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size={16, 16}, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> MainColor=0, unsigned Margin=DefaultMargin)</para>
+            <listitem><para><emphasis role="strong">UIElement</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp;MainColor=0, const unsigned &amp;Margin=DefaultMargin)</para>
 </listitem>
             <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <emphasis role="strong">GetSize</emphasis> ()</para>
 </listitem>
@@ -67,6 +67,8 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
             <listitem><para>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
 </listitem>
             <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
 </listitem>
         </itemizedlist>
 <simplesect>
@@ -95,16 +97,16 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_form_1ae6d99f32e64940a061397f7d37373d74"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_form_1a08256f7ba2a90b499f7232b0287585db"/><section>
     <title>Form()</title>
 <indexterm><primary>Form</primary><secondary>KolibriLib::UI::Form</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::Form</primary><secondary>Form</secondary></indexterm>
-<para><computeroutput>KolibriLib::UI::Form::Form (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord = <computeroutput>{0,&#160;0}</computeroutput>
-, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size = <computeroutput>{32,&#160;16}</computeroutput>
-, std::string BackgroundText = <computeroutput>&quot;&#160;&quot;</computeroutput>
-, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> FormColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
-, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> ButtonTextColor = <computeroutput>OS::sys_color_table.work_area</computeroutput>
-, unsigned Margin = <computeroutput>DefaultMargin</computeroutput>
+<para><computeroutput>KolibriLib::UI::Form::Form (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{32,&#160;16}</computeroutput>
+, const std::string &amp; BackgroundText = <computeroutput>&quot;Text...&quot;</computeroutput>
+, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp; FormColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp; ButtonTextColor = <computeroutput>OS::sys_color_table.work_area</computeroutput>
+, const unsigned &amp; Margin = <computeroutput>DefaultMargin</computeroutput>
 )</computeroutput></para><para>
 
 <para>конструктор </para>

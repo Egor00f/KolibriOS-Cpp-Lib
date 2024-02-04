@@ -2,15 +2,19 @@
 #define __KEYBOARD_H__
 
 
-namespace keyboard
+namespace KolibriLib
 {
-    /// @brief Проверить какая клавиша клавиатуры нажата
-    /// @return код(char) нажатой клавишы клавиатуры
-    char CheckKeyboard()
+    namespace keyboard
     {
-        return _ksys_get_key().code;
-    }
+        /// @brief Проверить какая клавиша клавиатуры нажата
+        /// @return код(char) нажатой клавишы клавиатуры
+        char CheckKeyboard()
+        {
+            return _ksys_get_key().code;
+        }
 
-} // namespace keyboard
+    } // namespace keyboard
+} // namespace KolibriLib
+
 
 #endif // __KEYBOARD_H__
