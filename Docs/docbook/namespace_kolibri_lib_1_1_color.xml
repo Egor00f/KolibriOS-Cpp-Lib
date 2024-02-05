@@ -12,17 +12,17 @@
         <itemizedlist>
             <listitem><para>struct <link linkend="_struct_kolibri_lib_1_1_color_1_1_a_r_g_b__t">ARGB_t</link></para>
 
-<para>Битность цвета. </para>
+<para>Тип данных для работы с argb цветом </para>
+</listitem>
+            <listitem><para>union <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color</link></para>
+
+<para>Цвет </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
     <title>Typedefs    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a"/>typedef ksys_color_t <emphasis role="strong">Color</emphasis></para>
-
-<para>Цвет </para>
-</listitem>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58"/>typedef ksys_colors_table_t <emphasis role="strong">ColorsTable</emphasis></para>
 
 <para>Таблица цветов </para>
@@ -32,6 +32,10 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color</link> <link linkend="_namespace_kolibri_lib_1_1_color_1abd8c321a1e7f48b162303e2ecbc53404">BlendColors</link> (const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color</link> &amp;a, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color</link> &amp;b)</para>
+
+<para>Смешать 2 цвета </para>
+</listitem>
             <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1_color_1a93c82ee2c60d21ab0eeace43acd4e793">ComparisonColorsTables</link> (const <link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">ColorsTable</link> &amp;a, const <link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">ColorsTable</link> &amp;b)</para>
 
 <para>Сравнить две таблица цветов </para>
@@ -54,6 +58,46 @@
 </section>
 <section>
 <title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_color_1abd8c321a1e7f48b162303e2ecbc53404"/><section>
+    <title>BlendColors()</title>
+<indexterm><primary>BlendColors</primary><secondary>KolibriLib::Color</secondary></indexterm>
+<indexterm><primary>KolibriLib::Color</primary><secondary>BlendColors</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color</link> KolibriLib::Color::BlendColors (const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color</link> &amp; a, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color</link> &amp; b)</computeroutput></para><para>
+
+<para>Смешать 2 цвета </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para>первый цвет </para>
+</entry>
+                            </row>
+                            <row>
+<entry>b</entry><entry>
+<para>второй цвет </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Смешение цветов a и b </para>
+</formalpara>
+</para>
+</section>
 <anchor xml:id="_namespace_kolibri_lib_1_1_color_1a93c82ee2c60d21ab0eeace43acd4e793"/><section>
     <title>ComparisonColorsTables()</title>
 <indexterm><primary>ComparisonColorsTables</primary><secondary>KolibriLib::Color</secondary></indexterm>

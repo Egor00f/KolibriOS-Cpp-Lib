@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['terminatethread_0',['TerminateThread',['../namespace_kolibri_lib_1_1_thread.html#a6931d058e76a34196fb9f726db9d91f9',1,'KolibriLib::Thread']]],
-  ['textlabel_1',['TextLabel',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a311f4392339b30bbd58254a2f17f1d3b',1,'KolibriLib::UI::text::TextLabel']]]
+  ['uielement_0',['UIElement',['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a311aecf3edea3bce6cc3c46038d7a1e0',1,'KolibriLib::UI::UIElement']]],
+  ['unfocuswindow_1',['UnfocusWindow',['../namespace_kolibri_lib_1_1window.html#aa952d568261368ee7ca5c6d95728b0e5',1,'KolibriLib::window']]]
 ];

@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['terminatethread_0',['TerminateThread',['../namespace_kolibri_lib_1_1_thread.html#a6931d058e76a34196fb9f726db9d91f9',1,'KolibriLib::Thread']]],
-  ['textlabel_1',['TextLabel',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html',1,'KolibriLib::UI::text::TextLabel'],['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a311f4392339b30bbd58254a2f17f1d3b',1,'KolibriLib::UI::text::TextLabel::TextLabel()']]],
-  ['true_20если_20эта_20кнопка_20нажата_20иначе_20false_2',['переменную @link _status в true если эта кнопка нажата, иначе false',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#устанавливает',1,'']]]
+  ['p_0',['необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point&lt;uint64_t&gt; p;',['../struct_kolibri_lib_1_1point.html#Если',1,'']]],
+  ['path_1',['Path',['../class_kolibri_lib_1_1filesystem_1_1_path.html',1,'KolibriLib::filesystem']]],
+  ['point_2',['point',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib']]],
+  ['point_20uint64_5ft_20p_3',['необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point&lt;uint64_t&gt; p;',['../struct_kolibri_lib_1_1point.html#Если',1,'']]],
+  ['point_3c_20int_20_3e_4',['point&lt; int &gt;',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib']]],
+  ['point_3c_20unsigned_20_3e_5',['point&lt; unsigned &gt;',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib']]],
+  ['ptroutsideapp_6',['ptrOutsideApp',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc',1,'KolibriLib::filesystem']]]
 ];

@@ -5,71 +5,58 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_NETWORK\_H\_\_}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_NETWORK\_H\_\_}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00007\ \{}
-\DoxyCodeLine{00008\ \ \ \ \ }
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{namespace\ }Network}
-\DoxyCodeLine{00011\ \ \ \ \ \{}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Devices}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ bool\ ResetDevice(unsigned\ short\ Device)}}
-\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \{}}
-\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int\ error;}}
-\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ void\ *ptr\ =\ malloc(64);}}
-\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}}
-\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}int\ \$0x40"{}}}
-\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :"{}=a"{}(error)}}
-\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :"{}a"{}(74),\ "{}b"{}((2\ <<\ 16)\ +\ Device),\ "{}c"{}(*ptr)}}
-\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}}
-\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ error;}}
-\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \}\ */}}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Devices}}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Socket}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#include\ <sys/socket.h>}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ Domain}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IPv4\ =\ 2,}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IPv6\ =\ 10}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_abf3ecf28ecab8dd413c32b3fc81ab64f}{SocetTypes}}}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Stream\ =\ 1,}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DGram\ =\ 2,}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RAW\ =\ 3}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_af96d1e70f650b4bdaa76cb2a94d499f2}{Protocols}}}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_IP\ =\ 0,}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_CMP\ =\ 1,}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_TCP\ =\ 6,}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_UDP\ =\ 17,}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_RAW\ =\ 255}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_a2d1995ca6e514b9812352336c2364ddb}{OpenSocket}}(\textcolor{keywordtype}{int}\ domain\ =\ IPv4,\ \textcolor{keywordtype}{int}\ SocetType\ =\ Stream,\ \textcolor{keywordtype}{int}\ protocol\ =\ PROTOCOL\_IP)}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Socket\ =\ socket(domain,\ SocetType,\ protocol);}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Socket;}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_socket_a5676fc313815ca4a1bbf7e67373bc99c}{CloseSocket}}(\textcolor{keywordtype}{int}\ Socket)}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ close(Socket);}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Socket}}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00080\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ network}}
-\DoxyCodeLine{00081\ \ \ \ \ }
-\DoxyCodeLine{00082\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_NETWORK\_H\_\_}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{namespace\ }Network}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Devices}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_network_1_1_devices_ae20dc6861f790847631e9e429c7c34fa}{ResetDevice}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ Device);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Devices}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*///\ @brief\ Работа\ с\ сокетами}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ \ \ \ \ namespace\ Socket}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \#include\ <sys/socket.h>}}
+\DoxyCodeLine{00030\ \textcolor{comment}{}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ enum\ Domain}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IPv4\ =\ 2,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IPv6\ =\ 10}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ enum\ SocetTypes}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Stream\ =\ 1,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DGram\ =\ 2,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RAW\ =\ 3}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ enum\ Protocols}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_IP\ =\ 0,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_CMP\ =\ 1,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_TCP\ =\ 6,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_UDP\ =\ 17,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROTOCOL\_RAW\ =\ 255}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ inline\ int\ OpenSocket(int\ domain\ =\ IPv4,\ int\ SocetType\ =\ Stream,\ int\ protocol\ =\ PROTOCOL\_IP);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ int\ CloseSocket(int\ Socket);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}\ //\ namespace\ Socket*/}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ network}}
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00071\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_NETWORK\_H\_\_}}
 
 \end{DoxyCode}

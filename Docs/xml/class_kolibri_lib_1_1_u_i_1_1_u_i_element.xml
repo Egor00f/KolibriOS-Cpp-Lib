@@ -3,7 +3,8 @@
   <compounddef id="class_kolibri_lib_1_1_u_i_1_1_u_i_element" kind="class" language="C++" prot="public">
     <compoundname>KolibriLib::UI::UIElement</compoundname>
     <derivedcompoundref refid="class_kolibri_lib_1_1_u_i_1_1_form" prot="public" virt="non-virtual">KolibriLib::UI::Form</derivedcompoundref>
-    <derivedcompoundref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image" prot="public" virt="non-virtual">KolibriLib::UI::Images::image</derivedcompoundref>
+    <derivedcompoundref refid="class_kolibri_lib_1_1_u_i_1_1_frame" prot="public" virt="non-virtual">KolibriLib::UI::Frame</derivedcompoundref>
+    <derivedcompoundref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" prot="public" virt="non-virtual">KolibriLib::UI::Images::Image</derivedcompoundref>
     <derivedcompoundref refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" prot="public" virt="non-virtual">KolibriLib::UI::buttons::Button</derivedcompoundref>
     <derivedcompoundref refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label" prot="public" virt="non-virtual">KolibriLib::UI::text::TextLabel</derivedcompoundref>
     <includes refid="_u_i_8hpp" local="no">UI.hpp</includes>
@@ -21,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="33" column="19" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="33" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="35" column="19" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" prot="protected" static="no" mutable="no">
         <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref></type>
@@ -36,10 +37,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="36" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="36" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="38" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68" prot="protected" static="no" mutable="no">
-        <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+        <type><ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref></type>
         <definition>Color::Color KolibriLib::UI::UIElement::_MainColor</definition>
         <argsstring></argsstring>
         <name>_MainColor</name>
@@ -50,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="38" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="38" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="40" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" prot="protected" static="no" mutable="no">
         <type>unsigned</type>
@@ -65,14 +66,44 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="41" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="41" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="43" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::UI::UIElement::_angle</definition>
+        <argsstring></argsstring>
+        <name>_angle</name>
+        <qualifiedname>KolibriLib::UI::UIElement::_angle</qualifiedname>
+        <briefdescription>
+<para>Угол наклона </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="46" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f6b023df1a1a5737819c6c50e72c5c3" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::UIElement::_relative</definition>
+        <argsstring></argsstring>
+        <name>_relative</name>
+        <qualifiedname>KolibriLib::UI::UIElement::_relative</qualifiedname>
+        <briefdescription>
+<para>Оносительн </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="49" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab70b8347e5b0724071edcdf997a9712f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>KolibriLib::UI::UIElement::UIElement</definition>
-        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={16, 16}, const Color::Color &amp;MainColor=0, const unsigned &amp;Margin=DefaultMargin)</argsstring>
+        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={16, 16}, const Color::Color &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</argsstring>
         <name>UIElement</name>
         <qualifiedname>KolibriLib::UI::UIElement::UIElement</qualifiedname>
         <param>
@@ -86,36 +117,88 @@
           <defval>{16, 16}</defval>
         </param>
         <param>
-          <type>const <ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref> &amp;</type>
+          <type>const <ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref> &amp;</type>
           <declname>MainColor</declname>
-          <defval>0</defval>
+          <defval>OS::sys_color_table.work_graph</defval>
         </param>
         <param>
           <type>const unsigned &amp;</type>
           <declname>Margin</declname>
           <defval>DefaultMargin</defval>
         </param>
+        <param>
+          <type>bool</type>
+          <declname>relative</declname>
+          <defval>false</defval>
+        </param>
         <briefdescription>
+<para>конструктор </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>MainColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>relative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="44" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="44" bodyend="51"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="58" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="58" bodyend="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab4805c825cf72f31fe4a3a776c409f3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref></type>
         <definition>Size KolibriLib::UI::UIElement::GetSize</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() const</argsstring>
         <name>GetSize</name>
         <qualifiedname>KolibriLib::UI::UIElement::GetSize</qualifiedname>
         <briefdescription>
+<para>Получить размер элемента </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Функция возвращает <ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref></para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="52" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="52" bodyend="55"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="71" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -133,12 +216,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="57" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="57" bodyend="60"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="76" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="76" bodyend="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab1aa7de81042fd3cdc40e24abf01e854" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
         <definition>unsigned KolibriLib::UI::UIElement::GetMargin</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() const</argsstring>
         <name>GetMargin</name>
         <qualifiedname>KolibriLib::UI::UIElement::GetMargin</qualifiedname>
         <briefdescription>
@@ -147,12 +230,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="62" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="62" bodyend="65"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="81" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="81" bodyend="84"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1af88ac59a7195dfbe8588a68776cb645d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref></type>
         <definition>Color::Color KolibriLib::UI::UIElement::GetColor</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() const</argsstring>
         <name>GetColor</name>
         <qualifiedname>KolibriLib::UI::UIElement::GetColor</qualifiedname>
         <briefdescription>
@@ -165,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="69" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="69" bodyend="72"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="88" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="88" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -174,7 +257,7 @@
         <name>SetColor</name>
         <qualifiedname>KolibriLib::UI::UIElement::SetColor</qualifiedname>
         <param>
-          <type><ref refid="namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a" kindref="member">Color::Color</ref></type>
+          <type><ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref></type>
           <declname>NewColor</declname>
         </param>
         <briefdescription>
@@ -183,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="74" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="74" bodyend="77"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="93" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="93" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -201,12 +284,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="79" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="79" bodyend="82"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="98" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="98" bodyend="101"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a9d6acdb3e6c0c1576805c578595e3ce9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref></type>
         <definition>Coord KolibriLib::UI::UIElement::GetCoord</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() const</argsstring>
         <name>GetCoord</name>
         <qualifiedname>KolibriLib::UI::UIElement::GetCoord</qualifiedname>
         <briefdescription>
@@ -215,7 +298,71 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="83" column="19" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="83" bodyend="86"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="102" column="19" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::UIElement::Rotate</definition>
+        <argsstring>(unsigned NewAngle)</argsstring>
+        <name>Rotate</name>
+        <qualifiedname>KolibriLib::UI::UIElement::Rotate</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>NewAngle</declname>
+        </param>
+        <briefdescription>
+<para>Повернуть элемент </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>NewAngle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Новый угол наклона </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="109" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::UI::UIElement::GetRotate</definition>
+        <argsstring>() const</argsstring>
+        <name>GetRotate</name>
+        <qualifiedname>KolibriLib::UI::UIElement::GetRotate</qualifiedname>
+        <briefdescription>
+<para>Получить угол наклона элемента </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Функция возвращает <ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37" kindref="member">_angle</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="116" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::UIElement::Hover</definition>
+        <argsstring>()</argsstring>
+        <name>Hover</name>
+        <qualifiedname>KolibriLib::UI::UIElement::Hover</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true если курсор мыши находится в этом эелементе, иначе false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="123" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="123" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" kindref="compound">UIElement</ref> &amp;</type>
@@ -233,7 +380,43 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="88" column="23" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="88" bodyend="95"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="133" column="23" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="133" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::UIElement::operator==</definition>
+        <argsstring>(const UIElement &amp;Element) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>KolibriLib::UI::UIElement::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" kindref="compound">UIElement</ref> &amp;</type>
+          <declname>Element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="142" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="142" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::UIElement::operator!=</definition>
+        <argsstring>(const UIElement &amp;Element) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>KolibriLib::UI::UIElement::operator!=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" kindref="compound">UIElement</ref> &amp;</type>
+          <declname>Element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="146" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="146" bodyend="149"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -244,10 +427,10 @@
 <title>как шиблон для других классов</title></sect4>
     </detaileddescription>
     <inheritancegraph>
-      <node id="5">
+      <node id="6">
         <label>KolibriLib::UI::CheckBox</label>
         <link refid="class_kolibri_lib_1_1_u_i_1_1_check_box"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -257,8 +440,14 @@
         </childnode>
       </node>
       <node id="3">
-        <label>KolibriLib::UI::Images::image</label>
-        <link refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1image"/>
+        <label>KolibriLib::UI::Frame</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_frame"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>KolibriLib::UI::Images::Image</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
@@ -266,13 +455,13 @@
         <label>KolibriLib::UI::UIElement</label>
         <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
       </node>
-      <node id="4">
+      <node id="5">
         <label>KolibriLib::UI::buttons::Button</label>
         <link refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>KolibriLib::UI::text::TextLabel</label>
         <link refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label"/>
         <childnode refid="1" relation="public-inheritance">
@@ -280,6 +469,10 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="4">
+        <label>KolibriLib::Color::Color</label>
+        <link refid="union_kolibri_lib_1_1_color_1_1_color"/>
+      </node>
       <node id="1">
         <label>KolibriLib::UI::UIElement</label>
         <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
@@ -288,6 +481,9 @@
         </childnode>
         <childnode refid="3" relation="usage">
           <edgelabel>_size</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_MainColor</edgelabel>
         </childnode>
       </node>
       <node id="2">
@@ -299,21 +495,28 @@
         <link refid="struct_kolibri_lib_1_1point"/>
       </node>
     </collaborationgraph>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="28" column="9" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="29" bodyend="96"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" line="30" column="9" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp" bodystart="31" bodyend="150"/>
     <listofallmembers>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>_angle</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>_coord</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>_MainColor</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>_Margin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f6b023df1a1a5737819c6c50e72c5c3" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>_relative</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>_size</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1af88ac59a7195dfbe8588a68776cb645d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetColor</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a9d6acdb3e6c0c1576805c578595e3ce9" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetCoord</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab1aa7de81042fd3cdc40e24abf01e854" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetMargin</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab4805c825cf72f31fe4a3a776c409f3d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetMargin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetRotate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>Hover</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>operator!=</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>operator=</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>operator==</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>Rotate</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>SetColor</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>SetCoord</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>SetSize</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab70b8347e5b0724071edcdf997a9712f" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>UIElement</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0" prot="public" virt="non-virtual"><scope>KolibriLib::UI::UIElement</scope><name>UIElement</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

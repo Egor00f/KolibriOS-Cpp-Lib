@@ -10,24 +10,26 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .PP
 \fR#include <UI\&.hpp>\fP
 .PP
-Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Images::image\fP, \fBKolibriLib::UI::buttons::Button\fP, and \fBKolibriLib::UI::text::TextLabel\fP\&.
+Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibriLib::UI::Images::Image\fP, \fBKolibriLib::UI::buttons::Button\fP, and \fBKolibriLib::UI::text::TextLabel\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=0, const unsigned &Margin=DefaultMargin)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
+.RI "конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP ()"
+.RI "\fBSize\fP \fBGetSize\fP () const"
 .br
+.RI "Получить размер элемента "
 .ti -1c
 .RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
 .br
 .ti -1c
-.RI "unsigned \fBGetMargin\fP ()"
+.RI "unsigned \fBGetMargin\fP () const"
 .br
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetColor\fP ()"
+.RI "\fBColor::Color\fP \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -37,10 +39,27 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Images::image\fP, \f
 .RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP ()"
+.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.br
+.ti -1c
+.RI "void \fBRotate\fP (unsigned NewAngle)"
+.br
+.RI "Повернуть элемент "
+.ti -1c
+.RI "unsigned \fBGetRotate\fP () const"
+.br
+.RI "Получить угол наклона элемента "
+.ti -1c
+.RI "bool \fBHover\fP ()"
 .br
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBUIElement\fP &Element) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
 .SS "Protected Attributes"
@@ -61,6 +80,14 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Images::image\fP, \f
 .RI "unsigned \fB_Margin\fP"
 .br
 .RI "Отступы "
+.ti -1c
+.RI "unsigned \fB_angle\fP"
+.br
+.RI "Угол наклона "
+.ti -1c
+.RI "bool \fB_relative\fP"
+.br
+.RI "Оносительн "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -69,9 +96,30 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Images::image\fP, \f
 
 .SS "как шиблон для других классов"
 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const \fBColor::Color\fP & MainColor = \fROS::sys_color_table\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)\fR [inline]\fP"
+
+.PP
+конструктор 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP 
+.br
+\fIsize\fP 
+.br
+\fIMainColor\fP 
+.br
+\fIMargin\fP 
+.br
+\fIrelative\fP 
+.RE
+.PP
+
 .SH "Member Function Documentation"
 .PP 
-.SS "\fBColor::Color\fP KolibriLib::UI::UIElement::GetColor ()\fR [inline]\fP"
+.SS "\fBColor::Color\fP KolibriLib::UI::UIElement::GetColor () const\fR [inline]\fP"
 
 .PP
 Получить осносной цвет элемента 
@@ -79,6 +127,48 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Images::image\fP, \f
 \fBReturns\fP
 .RS 4
 Функция возвращает \fB_MainColor\fP
+.RE
+.PP
+
+.SS "unsigned KolibriLib::UI::UIElement::GetRotate () const\fR [inline]\fP"
+
+.PP
+Получить угол наклона элемента 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает \fB_angle\fP
+.RE
+.PP
+
+.SS "\fBSize\fP KolibriLib::UI::UIElement::GetSize () const\fR [inline]\fP"
+
+.PP
+Получить размер элемента 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает \fB_size\fP
+.RE
+.PP
+
+.SS "bool KolibriLib::UI::UIElement::Hover ()\fR [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+true если курсор мыши находится в этом эелементе, иначе false 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::UIElement::Rotate (unsigned NewAngle)\fR [inline]\fP"
+
+.PP
+Повернуть элемент 
+.PP
+\fBParameters\fP
+.RS 4
+\fINewAngle\fP Новый угол наклона 
 .RE
 .PP
 

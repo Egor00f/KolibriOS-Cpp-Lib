@@ -13,15 +13,15 @@ KolibriLib::Color \- Набор функций для работы с цвето
 .ti -1c
 .RI "struct \fBARGB_t\fP"
 .br
-.RI "Битность цвета\&. "
+.RI "Тип данных для работы с argb цветом "
+.ti -1c
+.RI "union \fBColor\fP"
+.br
+.RI "Цвет "
 .in -1c
 .SS "Typedefs"
 
 .in +1c
-.ti -1c
-.RI "typedef ksys_color_t \fBColor\fP"
-.br
-.RI "Цвет "
 .ti -1c
 .RI "typedef ksys_colors_table_t \fBColorsTable\fP"
 .br
@@ -30,6 +30,10 @@ KolibriLib::Color \- Набор функций для работы с цвето
 .SS "Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBColor\fP \fBBlendColors\fP (const \fBColor\fP &a, const \fBColor\fP &b)"
+.br
+.RI "Смешать 2 цвета "
 .ti -1c
 .RI "bool \fBComparisonColorsTables\fP (const \fBColorsTable\fP &a, const \fBColorsTable\fP &b)"
 .br
@@ -48,6 +52,24 @@ KolibriLib::Color \- Набор функций для работы с цвето
 Набор функций для работы с цветом 
 .SH "Function Documentation"
 .PP 
+.SS "\fBColor\fP KolibriLib::Color::BlendColors (const \fBColor\fP & a, const \fBColor\fP & b)"
+
+.PP
+Смешать 2 цвета 
+.PP
+\fBParameters\fP
+.RS 4
+\fIa\fP первый цвет 
+.br
+\fIb\fP второй цвет 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Смешение цветов a и b 
+.RE
+.PP
+
 .SS "bool KolibriLib::Color::ComparisonColorsTables (const \fBColorsTable\fP & a, const \fBColorsTable\fP & b)"
 
 .PP

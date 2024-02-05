@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['p_0',['необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point&lt;uint64_t&gt; p;',['../struct_kolibri_lib_1_1point.html#Если',1,'']]],
-  ['point_1',['point',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib']]],
-  ['point_20uint64_5ft_20p_2',['необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point&lt;uint64_t&gt; p;',['../struct_kolibri_lib_1_1point.html#Если',1,'']]],
-  ['point_3c_20int_20_3e_3',['point&lt; int &gt;',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib']]],
-  ['point_3c_20unsigned_20_3e_4',['point&lt; unsigned &gt;',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib']]],
-  ['protocols_5',['Protocols',['../namespace_kolibri_lib_1_1_network_1_1_socket.html#af96d1e70f650b4bdaa76cb2a94d499f2',1,'KolibriLib::Network::Socket']]]
+  ['makedirectory_0',['MakeDirectory',['../namespace_kolibri_lib_1_1filesystem.html#a4a83550cdda24dc9ae8cdf1d30148c76',1,'KolibriLib::filesystem::MakeDirectory(const char *path)'],['../namespace_kolibri_lib_1_1filesystem.html#acd34191bdf04b15659a1dd13f13b18ad',1,'KolibriLib::filesystem::MakeDirectory(const Path &amp;path)']]],
+  ['messagebox_1',['MessageBox',['../namespace_kolibri_lib_1_1child_window.html#a57f91ccdf784da9c5c6f3c726bb36cf6',1,'KolibriLib::childWindow']]]
 ];

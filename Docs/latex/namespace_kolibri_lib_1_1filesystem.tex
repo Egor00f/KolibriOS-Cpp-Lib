@@ -5,6 +5,30 @@
 Работа с файлами  
 
 
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Errors}} \{ \newline
+\mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611}{Successfully}} = 0
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb}{Not\+Support}} = 2
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad2de3a620f71b1f3dafb9f873be9f2d}{Unklown\+File\+System}} = 3
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caf14d749d936896e45eb47cf6eec70d14}{Not\+Found}} = 5
+, \newline
+\mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774}{End\+Of\+File}} = 6
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc}{ptr\+Outside\+App}} = 7
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cae876827552df8534ce951cdf21c851c0}{Disk\+Is\+Full}} = 8
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3}{FSError}} = 9
+, \newline
+\mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cae88c8afb208f1fe64f9662269c704efd}{Access\+Denied}} = 10
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca416e4e91da3a3d9dc68f1b1a44245244}{Device\+Error}} = 11
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac}{Os\+Havent\+Ram}} = 12
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,26 +36,26 @@ int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acce64e48eb08ac5fb8d3f4
 \begin{DoxyCompactList}\small\item\em Создать файл \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a672d3806c6831e87a22ff0d719f476ae}{Create\+File}} (const char \texorpdfstring{$\ast$}{*}name, char \texorpdfstring{$\ast$}{*}path)
 \begin{DoxyCompactList}\small\item\em Создать файл \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ad7267a1993dd9e716911bfbcad55b86f}{Create\+File}} (std\+::string name)
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72}{Create\+File}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&name)
 \begin{DoxyCompactList}\small\item\em Создать файл \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_abc51b0d280ee7e1195fe99ea1be9c148}{Create\+File}} (std\+::string name, std\+::string path)
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a56604e14c04c07f1cd5d4a8ccba8ab6d}{Create\+File}} (const std\+::string \&name, const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&path)
 \begin{DoxyCompactList}\small\item\em Создать файл \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a09794e6a053e6f649c0e4ae8ff262a9d}{Delete}} (const char \texorpdfstring{$\ast$}{*}name)
 \begin{DoxyCompactList}\small\item\em удалить файл или папку \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a97b53d10e759c38649e601a12cbc3b04}{Delete}} (const char \texorpdfstring{$\ast$}{*}name, char \texorpdfstring{$\ast$}{*}path)
 \begin{DoxyCompactList}\small\item\em удалить файл или папку \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab74ceb9d99605bccb05e0118867a6953}{Delete}} (std\+::string name)
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_af8228f98e29fbb8122c93fdc3022d154}{Delete}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&name)
 \begin{DoxyCompactList}\small\item\em удалить файл или папку \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a38730a0143dd3eba9599ce75dbb2f3b8}{Delete}} (std\+::string name, std\+::string path)
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ada6dc5e7edf18fab6843ecfe4ed43cb3}{Delete}} (const std\+::string \&name, const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&path)
 \begin{DoxyCompactList}\small\item\em удалить файл или папку \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab640c3711637da8dec40346964d78aab}{mkdir}} (const char \texorpdfstring{$\ast$}{*}path)
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a4a83550cdda24dc9ae8cdf1d30148c76}{Make\+Directory}} (const char \texorpdfstring{$\ast$}{*}path)
 \begin{DoxyCompactList}\small\item\em Создать папку \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a81a8cb823c8109e0e995948299c93e29}{mkdir}} (std\+::string path)
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acd34191bdf04b15659a1dd13f13b18ad}{Make\+Directory}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&path)
 \begin{DoxyCompactList}\small\item\em Создать папку \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a3fffd5a8fdf2ab10f448bfbe8b4d881a}{Exist}} (std\+::string Path)
+bool \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}{Exist}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}})
 \begin{DoxyCompactList}\small\item\em проверяет существует ли файл или папки \end{DoxyCompactList}\item 
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_a9d77d0f647589002f93971b377352b4a}\label{namespace_kolibri_lib_1_1filesystem_a9d77d0f647589002f93971b377352b4a} 
-int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_a57a3f302a162ad3a2738ef9e080c193b}\label{namespace_kolibri_lib_1_1filesystem_a57a3f302a162ad3a2738ef9e080c193b} 
+int {\bfseries Rename} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&Old\+Name, const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&New\+Name)
 \end{DoxyCompactItemize}
 
 
@@ -39,6 +63,61 @@ int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
 Работа с файлами 
 
 \hypertarget{namespace_kolibri_lib_1_1filesystem_Это}{}\doxyparagraph{\texorpdfstring{просто чекбокс, ему можно задать различные стили}{просто чекбокс, ему можно задать различные стили}}\label{namespace_kolibri_lib_1_1filesystem_Это}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c} 
+\index{KolibriLib::filesystem@{KolibriLib::filesystem}!Errors@{Errors}}
+\index{Errors@{Errors}!KolibriLib::filesystem@{KolibriLib::filesystem}}
+\doxysubsubsection{\texorpdfstring{Errors}{Errors}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Kolibri\+Lib\+::filesystem\+::\+Errors}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Successfully@{Successfully}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!Successfully@{Successfully}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611} 
+Successfully&успешно \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NotSupport@{NotSupport}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!NotSupport@{NotSupport}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb} 
+Not\+Support&функция не поддерживается для данной файловой системы \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UnklownFileSystem@{UnklownFileSystem}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!UnklownFileSystem@{UnklownFileSystem}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad2de3a620f71b1f3dafb9f873be9f2d}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad2de3a620f71b1f3dafb9f873be9f2d} 
+Unklown\+File\+System&неизвестная файловая система \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NotFound@{NotFound}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!NotFound@{NotFound}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caf14d749d936896e45eb47cf6eec70d14}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caf14d749d936896e45eb47cf6eec70d14} 
+Not\+Found&файл не найден \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EndOfFile@{EndOfFile}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!EndOfFile@{EndOfFile}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774} 
+End\+Of\+File&файл закончился \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ptrOutsideApp@{ptrOutsideApp}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!ptrOutsideApp@{ptrOutsideApp}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc} 
+ptr\+Outside\+App&указатель вне памяти приложения \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DiskIsFull@{DiskIsFull}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!DiskIsFull@{DiskIsFull}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cae876827552df8534ce951cdf21c851c0}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cae876827552df8534ce951cdf21c851c0} 
+Disk\+Is\+Full&диск заполнен \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSError@{FSError}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!FSError@{FSError}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3} 
+FSError&ошибка файловой системы \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AccessDenied@{AccessDenied}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!AccessDenied@{AccessDenied}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cae88c8afb208f1fe64f9662269c704efd}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cae88c8afb208f1fe64f9662269c704efd} 
+Access\+Denied&доступ запрещён \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DeviceError@{DeviceError}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!DeviceError@{DeviceError}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca416e4e91da3a3d9dc68f1b1a44245244}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca416e4e91da3a3d9dc68f1b1a44245244} 
+Device\+Error&ошибка устройства \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OsHaventRam@{OsHaventRam}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!OsHaventRam@{OsHaventRam}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac} 
+Os\+Havent\+Ram&файловой системе недостаточно оперативной памяти \\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
@@ -80,11 +159,11 @@ int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_ad7267a1993dd9e716911bfbcad55b86f}\label{namespace_kolibri_lib_1_1filesystem_ad7267a1993dd9e716911bfbcad55b86f} 
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72}\label{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!CreateFile@{CreateFile}}
 \index{CreateFile@{CreateFile}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{CreateFile()}{CreateFile()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Create\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Create\+File (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{name }\end{DoxyParamCaption})}
 
 
 
@@ -98,11 +177,11 @@ int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_abc51b0d280ee7e1195fe99ea1be9c148}\label{namespace_kolibri_lib_1_1filesystem_abc51b0d280ee7e1195fe99ea1be9c148} 
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_a56604e14c04c07f1cd5d4a8ccba8ab6d}\label{namespace_kolibri_lib_1_1filesystem_a56604e14c04c07f1cd5d4a8ccba8ab6d} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!CreateFile@{CreateFile}}
 \index{CreateFile@{CreateFile}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{CreateFile()}{CreateFile()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Create\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Create\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{path }\end{DoxyParamCaption})}
 
 
 
@@ -156,11 +235,11 @@ int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_ab74ceb9d99605bccb05e0118867a6953}\label{namespace_kolibri_lib_1_1filesystem_ab74ceb9d99605bccb05e0118867a6953} 
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_af8228f98e29fbb8122c93fdc3022d154}\label{namespace_kolibri_lib_1_1filesystem_af8228f98e29fbb8122c93fdc3022d154} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!Delete@{Delete}}
 \index{Delete@{Delete}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Delete (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Delete (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{name }\end{DoxyParamCaption})}
 
 
 
@@ -174,11 +253,11 @@ int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_a38730a0143dd3eba9599ce75dbb2f3b8}\label{namespace_kolibri_lib_1_1filesystem_a38730a0143dd3eba9599ce75dbb2f3b8} 
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_ada6dc5e7edf18fab6843ecfe4ed43cb3}\label{namespace_kolibri_lib_1_1filesystem_ada6dc5e7edf18fab6843ecfe4ed43cb3} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!Delete@{Delete}}
 \index{Delete@{Delete}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Delete (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Delete (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{path }\end{DoxyParamCaption})}
 
 
 
@@ -194,11 +273,11 @@ int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_a3fffd5a8fdf2ab10f448bfbe8b4d881a}\label{namespace_kolibri_lib_1_1filesystem_a3fffd5a8fdf2ab10f448bfbe8b4d881a} 
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}\label{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!Exist@{Exist}}
 \index{Exist@{Exist}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{Exist()}{Exist()}}
-{\footnotesize\ttfamily bool Kolibri\+Lib\+::filesystem\+::\+Exist (\begin{DoxyParamCaption}\item[{std\+::string}]{Path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Kolibri\+Lib\+::filesystem\+::\+Exist (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{Path }\end{DoxyParamCaption})}
 
 
 
@@ -212,11 +291,11 @@ int {\bfseries Rename} (std\+::string Old\+Name, std\+::string New\+Name)
 \begin{DoxyReturn}{Returns}
 true если файл или папка существует, иначе false 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_ab640c3711637da8dec40346964d78aab}\label{namespace_kolibri_lib_1_1filesystem_ab640c3711637da8dec40346964d78aab} 
-\index{KolibriLib::filesystem@{KolibriLib::filesystem}!mkdir@{mkdir}}
-\index{mkdir@{mkdir}!KolibriLib::filesystem@{KolibriLib::filesystem}}
-\doxysubsubsection{\texorpdfstring{mkdir()}{mkdir()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::mkdir (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_a4a83550cdda24dc9ae8cdf1d30148c76}\label{namespace_kolibri_lib_1_1filesystem_a4a83550cdda24dc9ae8cdf1d30148c76} 
+\index{KolibriLib::filesystem@{KolibriLib::filesystem}!MakeDirectory@{MakeDirectory}}
+\index{MakeDirectory@{MakeDirectory}!KolibriLib::filesystem@{KolibriLib::filesystem}}
+\doxysubsubsection{\texorpdfstring{MakeDirectory()}{MakeDirectory()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Make\+Directory (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
 
 
 
@@ -230,11 +309,11 @@ true если файл или папка существует, иначе false
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1filesystem_a81a8cb823c8109e0e995948299c93e29}\label{namespace_kolibri_lib_1_1filesystem_a81a8cb823c8109e0e995948299c93e29} 
-\index{KolibriLib::filesystem@{KolibriLib::filesystem}!mkdir@{mkdir}}
-\index{mkdir@{mkdir}!KolibriLib::filesystem@{KolibriLib::filesystem}}
-\doxysubsubsection{\texorpdfstring{mkdir()}{mkdir()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::mkdir (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+\Hypertarget{namespace_kolibri_lib_1_1filesystem_acd34191bdf04b15659a1dd13f13b18ad}\label{namespace_kolibri_lib_1_1filesystem_acd34191bdf04b15659a1dd13f13b18ad} 
+\index{KolibriLib::filesystem@{KolibriLib::filesystem}!MakeDirectory@{MakeDirectory}}
+\index{MakeDirectory@{MakeDirectory}!KolibriLib::filesystem@{KolibriLib::filesystem}}
+\doxysubsubsection{\texorpdfstring{MakeDirectory()}{MakeDirectory()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Make\+Directory (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{path }\end{DoxyParamCaption})}
 
 
 

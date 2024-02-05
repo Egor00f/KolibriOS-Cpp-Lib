@@ -29,7 +29,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Получить размер окна "
 .ti -1c
-.RI "void \fBSetWindowColors\fP (\fBColor::ColorsTable\fP colorTable)"
+.RI "void \fBSetWindowColors\fP (const \fBColor::ColorsTable\fP &colorTable)"
 .br
 .RI "Задать стандартные цвета окна "
 .ti -1c
@@ -104,6 +104,10 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RI "void \fBHandlerThread\fP ()"
 .br
 .RI "Обработчик окна в отдельном потоке "
+.ti -1c
+.RI "template<class T > unsigned \fBAddElement\fP (const T &element)"
+.br
+.RI "Добавить UI элемент "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -131,6 +135,17 @@ KolibriLib::window::Window \- Класс для работы с окном
 
 .SH "Member Function Documentation"
 .PP 
+.SS "template<class T > unsigned KolibriLib::window::Window::AddElement (const T & element)"
+
+.PP
+Добавить UI элемент 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelement\fP 
+.RE
+.PP
+
 .SS "void KolibriLib::window::Window::ChangeTilte (std::string newTitle)"
 
 .PP
@@ -384,7 +399,7 @@ point\&.y - высота окна
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::SetWindowColors (\fBColor::ColorsTable\fP colorTable)"
+.SS "void KolibriLib::window::Window::SetWindowColors (const \fBColor::ColorsTable\fP & colorTable)"
 
 .PP
 Задать стандартные цвета окна 

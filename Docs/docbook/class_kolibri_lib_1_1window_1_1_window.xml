@@ -29,7 +29,7 @@
 
 <para>Получить размер окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac060c0cfea3d17ab084784a59cdea9e1">SetWindowColors</link> (<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">Color::ColorsTable</link> colorTable)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a7a4ba0e48673a50d70af870dbc46c478">SetWindowColors</link> (const <link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">Color::ColorsTable</link> &amp;colorTable)</para>
 
 <para>Задать стандартные цвета окна </para>
 </listitem>
@@ -57,7 +57,7 @@
 
 <para>Получить размер окна </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac45692a8beccd1c452fd9b8f773c41bc">CreateButton</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size={16, 16}, std::string Text=&quot; &quot;, unsigned margin=UI::DefaultMargin, bool UseWindowColors=true, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> color=OS::sys_color_table.work_button, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> TextColor=OS::sys_color_table.work_button_text)</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac45692a8beccd1c452fd9b8f773c41bc">CreateButton</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size={16, 16}, std::string Text=&quot; &quot;, unsigned margin=UI::DefaultMargin, bool UseWindowColors=true, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> color=OS::sys_color_table.work_button, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> TextColor=OS::sys_color_table.work_button_text)</para>
 
 <para>Создать кнопку </para>
 </listitem>
@@ -69,7 +69,7 @@
 
 <para>Получить кнопку </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1abcac8d861f1a632b41c024ff1278c4a4">CreateText</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size={16, 16}, std::string text=&quot;Text&quot;, unsigned FontSize=9, bool UseWindowColors=true, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> color=OS::sys_color_table.work_text)</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1abcac8d861f1a632b41c024ff1278c4a4">CreateText</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size={16, 16}, std::string text=&quot;Text&quot;, unsigned FontSize=9, bool UseWindowColors=true, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> color=OS::sys_color_table.work_text)</para>
 
 <para>Создать текст в окне </para>
 </listitem>
@@ -104,6 +104,10 @@
             <listitem><para><anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a154edfb72436bc38525f2a63a7555d3b"/>void <emphasis role="strong">HandlerThread</emphasis> ()</para>
 
 <para>Обработчик окна в отдельном потоке </para>
+</listitem>
+            <listitem><para>template&lt;class T &gt; </para><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a4eeb9cdad35ca4955c412448f39f994a">AddElement</link> (const T &amp;element)</para>
+
+<para>Добавить UI элемент </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -173,6 +177,37 @@ Parameters</title>
 </section>
 <section>
 <title>Member Function Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a4eeb9cdad35ca4955c412448f39f994a"/><section>
+    <title>AddElement()</title>
+<indexterm><primary>AddElement</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window::Window</primary><secondary>AddElement</secondary></indexterm>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>unsigned KolibriLib::window::Window::AddElement (const T &amp; element)</computeroutput></para><para>
+
+<para>Добавить UI элемент </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>element</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
 <anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a91366917bae725f1b5ba99678e22c821"/><section>
     <title>ChangeTilte()</title>
 <indexterm><primary>ChangeTilte</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
@@ -284,8 +319,8 @@ Parameters</title>
 , std::string Text = <computeroutput>&quot;&#160;&quot;</computeroutput>
 , unsigned margin = <computeroutput>UI::DefaultMargin</computeroutput>
 , bool UseWindowColors = <computeroutput>true</computeroutput>
-, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
-, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> TextColor = <computeroutput>OS::sys_color_table.work_button_text</computeroutput>
+, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> TextColor = <computeroutput>OS::sys_color_table.work_button_text</computeroutput>
 )</computeroutput></para><para>
 
 <para>Создать кнопку </para>
@@ -426,7 +461,7 @@ Parameters</title>
 , std::string text = <computeroutput>&quot;Text&quot;</computeroutput>
 , unsigned FontSize = <computeroutput>9</computeroutput>
 , bool UseWindowColors = <computeroutput>true</computeroutput>
-, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> color = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> color = <computeroutput>OS::sys_color_table.work_text</computeroutput>
 )</computeroutput></para><para>
 
 <para>Создать текст в окне </para>
@@ -746,11 +781,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ac060c0cfea3d17ab084784a59cdea9e1"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a7a4ba0e48673a50d70af870dbc46c478"/><section>
     <title>SetWindowColors()</title>
 <indexterm><primary>SetWindowColors</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>SetWindowColors</secondary></indexterm>
-<para><computeroutput>void KolibriLib::window::Window::SetWindowColors (<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">Color::ColorsTable</link> colorTable)</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::Window::SetWindowColors (const <link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">Color::ColorsTable</link> &amp; colorTable)</computeroutput></para><para>
 
 <para>Задать стандартные цвета окна </para>
 </para>

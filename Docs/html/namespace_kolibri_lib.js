@@ -5,22 +5,10 @@ var namespace_kolibri_lib =
       [ "MessageBox", "namespace_kolibri_lib_1_1child_window.html#a57f91ccdf784da9c5c6f3c726bb36cf6", null ]
     ] ],
     [ "Color", "namespace_kolibri_lib_1_1_color.html", "namespace_kolibri_lib_1_1_color" ],
-    [ "filesystem", "namespace_kolibri_lib_1_1filesystem.html", [
-      [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#acce64e48eb08ac5fb8d3f4030142aa0a", null ],
-      [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#a672d3806c6831e87a22ff0d719f476ae", null ],
-      [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#ad7267a1993dd9e716911bfbcad55b86f", null ],
-      [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#abc51b0d280ee7e1195fe99ea1be9c148", null ],
-      [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#a09794e6a053e6f649c0e4ae8ff262a9d", null ],
-      [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#a97b53d10e759c38649e601a12cbc3b04", null ],
-      [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#ab74ceb9d99605bccb05e0118867a6953", null ],
-      [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#a38730a0143dd3eba9599ce75dbb2f3b8", null ],
-      [ "Exist", "namespace_kolibri_lib_1_1filesystem.html#a3fffd5a8fdf2ab10f448bfbe8b4d881a", null ],
-      [ "mkdir", "namespace_kolibri_lib_1_1filesystem.html#ab640c3711637da8dec40346964d78aab", null ],
-      [ "mkdir", "namespace_kolibri_lib_1_1filesystem.html#a81a8cb823c8109e0e995948299c93e29", null ]
-    ] ],
+    [ "filesystem", "namespace_kolibri_lib_1_1filesystem.html", "namespace_kolibri_lib_1_1filesystem" ],
     [ "mouse", "namespace_kolibri_lib_1_1mouse.html", [
       [ "GetMouseButtons", "namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024", null ],
-      [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#af5c71bb6951c9963f3e8f7366b343ab0", null ],
+      [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26", null ],
       [ "GetMousePositionOnSreen", "namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9", null ],
       [ "GetMouseWheels", "namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0", null ]
     ] ],

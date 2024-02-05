@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['opensocket_0',['OpenSocket',['../namespace_kolibri_lib_1_1_network_1_1_socket.html#a2d1995ca6e514b9812352336c2364ddb',1,'KolibriLib::Network::Socket']]],
-  ['os_20idle_20номер_20слота_201_20можно_20завершить_20любой_20обычный_20поток_20процесс_1',['завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс',['../namespace_kolibri_lib_1_1_thread.html#Нельзя',1,'']]]
+  ['link_20_5fid_20становится_20не_20действительным_0',['Деактивированном состоянии кнопка &quot;Не нажимается&quot;, а её @link _id становится не действительным',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#В',1,'']]],
+  ['link_20_5fstatus_20в_20true_20если_20эта_20кнопка_20нажата_20иначе_20false_1',['переменную @link _status в true если эта кнопка нажата, иначе false',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#устанавливает',1,'']]],
+  ['link_20deactivate_20возвращает_20кнопку_20в_20рабочее_20состояние_2',['функции @link Deactivate, возвращает кнопку в рабочее состояние',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#Противоположна',1,'']]],
+  ['link_20sys_5fcolor_5ftable_3',['изменяет переменную @link sys_color_table',['../namespace_kolibri_lib_1_1_o_s.html#Функция',1,'']]],
+  ['loadimage_4',['LoadImage',['../class_kolibri_lib_1_1_u_i_1_1_images_1_1_image.html#a5e4287d71c6240729aa1076a3a27e5a5',1,'KolibriLib::UI::Images::Image']]]
 ];

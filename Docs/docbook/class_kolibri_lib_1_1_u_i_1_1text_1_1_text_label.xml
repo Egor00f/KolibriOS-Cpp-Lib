@@ -21,7 +21,7 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a311f4392339b30bbd58254a2f17f1d3b">TextLabel</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const std::string &amp;text=&quot;Text&quot;, const unsigned &amp;FontSize=9, bool TextScale=true, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp;TextColor=OS::sys_color_table.work_text, const unsigned &amp;Margin=0)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a30a47a7aa7f32c3f0722317885737246">TextLabel</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const std::string &amp;text=&quot;TextLabel&quot;, const unsigned &amp;FontSize=9, bool TextScale=true, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;TextColor=OS::sys_color_table.work_text, const unsigned &amp;Margin=0)</para>
 
 <para>Конструктор </para>
 </listitem>
@@ -29,17 +29,13 @@
 
 <para>Отрисовать текстовую метку </para>
 </listitem>
-            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af9f70904b54ad7c721ba9d38af327025">GetText</link> ()</para>
+            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a34289c1cff09d151e697a3d2a91f238e">GetText</link> () const</para>
 
 <para>Получить текст </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a644a0fba249f42db672243948dbd2a7f">GetFontSize</link> ()</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ae8862b7096919a305603ace0b73f040b">GetFontSize</link> () const</para>
 
 <para>Получить Размер шрифта </para>
-</listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a087fed17954bff715aed401d8d69c023">GetTextColor</link> ()</para>
-
-<para>Получить цвет текста </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ad916d63a47c47ca186b25046c14530ec">SetText</link> (const std::string &amp;NewText)</para>
 
@@ -53,30 +49,50 @@
 
 <para>Изменить значение переменной <link linkend="_">_TextScale.</link></para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1abcd23695bb85a136e6d8868ac3f2c54b"/>void <emphasis role="strong">init</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size, std::string text, unsigned FontSize, <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> TextColor)</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a5d0454eed7393d762140994c9fadc2ee"/>void <emphasis role="strong">init</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> coord, <link linkend="_struct_kolibri_lib_1_1point">Size</link> size, std::string text=&quot;TextLabel&quot;, unsigned FontSize=9, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> TextColor=OS::sys_color_table.work_text)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a5bd77e24765b2d0aba522f18304cf743"/><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link> &amp;a)</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
-            <listitem><para><emphasis role="strong">UIElement</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp;MainColor=0, const unsigned &amp;Margin=DefaultMargin)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+
+<para>конструктор </para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <emphasis role="strong">GetSize</emphasis> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847">GetSize</link> () const</para>
+
+<para>Получить размер элемента </para>
 </listitem>
             <listitem><para>void <emphasis role="strong">SetSize</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> NewSize)</para>
 </listitem>
-            <listitem><para>unsigned <emphasis role="strong">GetMargin</emphasis> ()</para>
+            <listitem><para>unsigned <emphasis role="strong">GetMargin</emphasis> () const</para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1af88ac59a7195dfbe8588a68776cb645d">GetColor</link> ()</para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea">GetColor</link> () const</para>
 
 <para>Получить осносной цвет элемента </para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> NewColor)</para>
+            <listitem><para>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> NewColor)</para>
 </listitem>
             <listitem><para>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">Rotate</link> (unsigned NewAngle)</para>
+
+<para>Повернуть элемент </para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c">GetRotate</link> () const</para>
+
+<para>Получить угол наклона элемента </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
 </listitem>
             <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
 </listitem>
         </itemizedlist>
 <simplesect>
@@ -90,11 +106,19 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 
 <para>Размер </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
 </listitem>
             <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
 
 <para>Отступы </para>
+</listitem>
+            <listitem><para>unsigned <emphasis role="strong">_angle</emphasis></para>
+
+<para>Угол наклона </para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">_relative</emphasis></para>
+
+<para>Оносительн </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -102,19 +126,27 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 <title>Detailed Description</title>
 
 <para>Текстовая метка </para>
+
+
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1Простая">
+<title><title>текстовая метка, ничего особенного.</title></title>
+</section>
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1Возможно">
+<title><title>важные сведения: текст всегда отрисовывается в середине <?linebreak?></title></title>
+</section>
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a311f4392339b30bbd58254a2f17f1d3b"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a30a47a7aa7f32c3f0722317885737246"/><section>
     <title>TextLabel()</title>
 <indexterm><primary>TextLabel</primary><secondary>KolibriLib::UI::text::TextLabel</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text::TextLabel</primary><secondary>TextLabel</secondary></indexterm>
 <para><computeroutput>KolibriLib::UI::text::TextLabel::TextLabel (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
 , const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{16,&#160;16}</computeroutput>
-, const std::string &amp; text = <computeroutput>&quot;Text&quot;</computeroutput>
+, const std::string &amp; text = <computeroutput>&quot;TextLabel&quot;</computeroutput>
 , const unsigned &amp; FontSize = <computeroutput>9</computeroutput>
 , bool TextScale = <computeroutput>true</computeroutput>
-, const <link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> &amp; TextColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp; TextColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
 , const unsigned &amp; Margin = <computeroutput>0</computeroutput>
 )</computeroutput></para><para>
 
@@ -171,48 +203,33 @@ Parameters</title>
 </section>
 <section>
 <title>Member Function Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a644a0fba249f42db672243948dbd2a7f"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ae8862b7096919a305603ace0b73f040b"/><section>
     <title>GetFontSize()</title>
 <indexterm><primary>GetFontSize</primary><secondary>KolibriLib::UI::text::TextLabel</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text::TextLabel</primary><secondary>GetFontSize</secondary></indexterm>
-<para><computeroutput>unsigned KolibriLib::UI::text::TextLabel::GetFontSize ( )</computeroutput></para><para>
+<para><computeroutput>unsigned KolibriLib::UI::text::TextLabel::GetFontSize ( ) const</computeroutput></para><para>
 
 <para>Получить Размер шрифта </para>
 </para>
 
 <para><formalpara><title>Returns</title>
 
-<para><link linkend="_a2509df230a7a15b4a9fefef25ce64355">_FontSize</link></para>
+<para>Функция возвращает <link linkend="_a2509df230a7a15b4a9fefef25ce64355">_FontSize</link></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af9f70904b54ad7c721ba9d38af327025"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a34289c1cff09d151e697a3d2a91f238e"/><section>
     <title>GetText()</title>
 <indexterm><primary>GetText</primary><secondary>KolibriLib::UI::text::TextLabel</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text::TextLabel</primary><secondary>GetText</secondary></indexterm>
-<para><computeroutput>std::string KolibriLib::UI::text::TextLabel::GetText ( )</computeroutput></para><para>
+<para><computeroutput>std::string KolibriLib::UI::text::TextLabel::GetText ( ) const</computeroutput></para><para>
 
 <para>Получить текст </para>
 </para>
 
 <para><formalpara><title>Returns</title>
 
-<para><link linkend="_aa6c61260c483592bc679b3292b1cdff3">_text</link></para>
-</formalpara>
-</para>
-</section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a087fed17954bff715aed401d8d69c023"/><section>
-    <title>GetTextColor()</title>
-<indexterm><primary>GetTextColor</primary><secondary>KolibriLib::UI::text::TextLabel</secondary></indexterm>
-<indexterm><primary>KolibriLib::UI::text::TextLabel</primary><secondary>GetTextColor</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_color_1a2b1ec42c3492a492a59ed69c3f3b8b4a">Color::Color</link> KolibriLib::UI::text::TextLabel::GetTextColor ( )</computeroutput></para><para>
-
-<para>Получить цвет текста </para>
-</para>
-
-<para><formalpara><title>Returns</title>
-
-<para><link linkend="_">_TextColor</link></para>
+<para>Функция возвращает <link linkend="_aa6c61260c483592bc679b3292b1cdff3">_text</link></para>
 </formalpara>
 </para>
 </section>

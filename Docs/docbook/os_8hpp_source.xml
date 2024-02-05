@@ -53,7 +53,7 @@
 62 
 67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1ae46a6edced337a9b167bc5b9014360c8">Exec</link>(std::string&#32;AppName,&#32;std::string&#32;args)
 68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_namespace_kolibri_lib_1_1filesystem_1a3fffd5a8fdf2ab10f448bfbe8b4d881a">filesystem::Exist</link>(AppName))&#32;<emphasis role="comment">//&#32;Проверка&#32;на&#32;существование</emphasis>
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_namespace_kolibri_lib_1_1filesystem_1ab13318145c165ffcc743aeb33e62b4dc">filesystem::Exist</link>(AppName))&#32;<emphasis role="comment">//&#32;Проверка&#32;на&#32;существование</emphasis>
 70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
 71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a;
 72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(a,&#32;args.c_str());
@@ -70,15 +70,17 @@
 85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_time();
 86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 87 
-88 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;OS</emphasis>
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
 89 
-92 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a56a5ef2333e7fe22f558aaa6c9276b7c">Wait</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;time)
-93 &#32;&#32;&#32;&#32;{
-94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_delay(time);
-95 &#32;&#32;&#32;&#32;}
-96 
-97 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+90 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;OS</emphasis>
+91 
+94 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a56a5ef2333e7fe22f558aaa6c9276b7c">Wait</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;time)
+95 &#32;&#32;&#32;&#32;{
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_delay(time);
+97 &#32;&#32;&#32;&#32;}
 98 
-99 
-100 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__OS_H__</emphasis>
+99 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+100 
+101 
+102 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__OS_H__</emphasis>
 </programlisting></section>

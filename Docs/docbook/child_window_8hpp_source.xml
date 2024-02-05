@@ -8,50 +8,50 @@
 4 <emphasis role="preprocessor">#define&#32;__CHILDWINDOW_H__</emphasis>
 5 
 6 
-7 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
-8 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
-10 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
-11 
-12 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
-13 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
-14 
-15 <emphasis role="preprocessor">#include&#32;&quot;base.hpp&quot;</emphasis>
-16 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
-17 <emphasis role="preprocessor">#include&#32;&quot;window.hpp&quot;</emphasis>
-18 <emphasis role="preprocessor">#include&#32;&quot;thread.hpp&quot;</emphasis>
-19 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+10 
+11 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+13 
+14 <emphasis role="preprocessor">#include&#32;&quot;small.hpp&quot;</emphasis>
+15 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
+16 <emphasis role="preprocessor">#include&#32;&quot;window.hpp&quot;</emphasis>
+17 <emphasis role="preprocessor">#include&#32;&quot;thread.hpp&quot;</emphasis>
+18 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
+19 
 20 
-21 
-22 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-23 {
-25 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>childWindow
-26 &#32;&#32;&#32;&#32;{
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Я&#32;вам&#32;запрещаю&#32;записывать&#32;значения&#32;в&#32;эту&#32;переменную</emphasis>
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;Message,&#32;Title;
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Я&#32;вам&#32;запрещаю&#32;записывать&#32;значения&#32;в&#32;эту&#32;переменную</emphasis>
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Used&#32;=&#32;<emphasis role="keyword">false</emphasis>;
-31 
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Функция&#32;потока&#32;нового&#32;окна</emphasis>
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;RenderMessageWindow(<emphasis role="keywordtype">void</emphasis>)
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_Message&#32;&#32;&#32;&#32;=&#32;Message;
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_Title&#32;&#32;&#32;&#32;&#32;&#32;=&#32;Title;
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window">window::Window</link>&#32;window(_Title,&#32;{256,128});
-39 
-40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;WindowSize&#32;=&#32;window.GetSize();
-41 
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;message({window.GetMargin(),&#32;WindowSize.y&#32;/&#32;2&#32;},&#32;{WindowSize.x,&#32;WindowSize.y&#32;/&#32;2},&#32;_Message);
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;message.<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a13c115d127bc7f90cb438bbd2b31619d">SetScale</link>(<emphasis role="keyword">true</emphasis>);
-44 
-45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;window.CreateText(message);
-46 
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link>&#32;<emphasis role="keyword">event</emphasis>&#32;=&#32;window.Handler();
-50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(event&#32;=&#32;OS::Events::Exit)
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+21 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+22 {
+24 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>childWindow
+25 &#32;&#32;&#32;&#32;{
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Я&#32;вам&#32;запрещаю&#32;записывать&#32;значения&#32;в&#32;эту&#32;переменную</emphasis>
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;Message,&#32;Title;
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Я&#32;вам&#32;запрещаю&#32;записывать&#32;значения&#32;в&#32;эту&#32;переменную</emphasis>
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Used&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+30 
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Функция&#32;потока&#32;нового&#32;окна</emphasis>
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;RenderMessageWindow(<emphasis role="keywordtype">void</emphasis>)
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_Message&#32;&#32;&#32;&#32;=&#32;Message;
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_Title&#32;&#32;&#32;&#32;&#32;&#32;=&#32;Title;
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window">window::Window</link>&#32;window(_Title,&#32;{256,128});
+38 
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;WindowSize&#32;=&#32;window.GetSize();
+40 
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;message({(int)window.GetMargin(),&#32;WindowSize.y&#32;/&#32;2&#32;},&#32;{WindowSize.x,&#32;WindowSize.y&#32;/&#32;2},&#32;_Message);
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;message.<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a13c115d127bc7f90cb438bbd2b31619d">SetScale</link>(<emphasis role="keyword">true</emphasis>);
+43 
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;window.CreateText(message);
+45 
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link>&#32;<emphasis role="keyword">event</emphasis>&#32;=&#32;window.Handler();
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(event&#32;=&#32;OS::Events::Exit)
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;window.~Window();
 52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
 53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}

@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" xml:lang="en-US">
+<title>KolibriLib::UI::Images::Image Class Reference</title>
+<indexterm><primary>KolibriLib::UI::Images::Image</primary></indexterm>
+<para>
+
+<para>Картинка как элемент интерфейса </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;image.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for KolibriLib::UI::Images::Image:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0a1195770835be1f5513910bf8eb21d7">Image</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={100, 100})</para>
+
+<para>Конструктор </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a5e4287d71c6240729aa1076a3a27e5a5">LoadImage</link> (const std::string &amp;Path=DefaultImage)</para>
+
+<para>Загрузить изображение </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0929780fad7588710f4bb738170e6327">Render</link> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> size={0, 0})</para>
+
+<para>Вывести изображение в окно </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1addb25acc0eacb0fc9fba97652da09366"/><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link> &amp;a)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1aeb681037d2dec389260d1b010c16b154"/>void <emphasis role="strong">init</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={100, 100}, const std::string &amp;Path=DefaultImage)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+
+<para>конструктор </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847">GetSize</link> () const</para>
+
+<para>Получить размер элемента </para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetSize</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> NewSize)</para>
+</listitem>
+            <listitem><para>unsigned <emphasis role="strong">GetMargin</emphasis> () const</para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea">GetColor</link> () const</para>
+
+<para>Получить осносной цвет элемента </para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> NewColor)</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">Rotate</link> (unsigned NewAngle)</para>
+
+<para>Повернуть элемент </para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c">GetRotate</link> () const</para>
+
+<para>Получить угол наклона элемента </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">_coord</emphasis></para>
+
+<para>Координаты </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <emphasis role="strong">_size</emphasis></para>
+
+<para>Размер </para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
+</listitem>
+            <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
+
+<para>Отступы </para>
+</listitem>
+            <listitem><para>unsigned <emphasis role="strong">_angle</emphasis></para>
+
+<para>Угол наклона </para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">_relative</emphasis></para>
+
+<para>Оносительн </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Картинка как элемент интерфейса </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0a1195770835be1f5513910bf8eb21d7"/><section>
+    <title>Image()</title>
+<indexterm><primary>Image</primary><secondary>KolibriLib::UI::Images::Image</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::Image</primary><secondary>Image</secondary></indexterm>
+<para><computeroutput>KolibriLib::UI::Images::Image::Image (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{100,&#160;100}</computeroutput>
+)</computeroutput></para><para>
+
+<para>Конструктор </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>Координаты </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>Размер </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Path</entry><entry>
+<para>Путь до картинки </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Margin</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a5e4287d71c6240729aa1076a3a27e5a5"/><section>
+    <title>LoadImage()</title>
+<indexterm><primary>LoadImage</primary><secondary>KolibriLib::UI::Images::Image</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::Image</primary><secondary>LoadImage</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::Images::Image::LoadImage (const std::string &amp; Path = <computeroutput>DefaultImage</computeroutput>
+)</computeroutput></para><para>
+
+<para>Загрузить изображение </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Path</entry><entry>
+<para>путь до файла </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0929780fad7588710f4bb738170e6327"/><section>
+    <title>Render()</title>
+<indexterm><primary>Render</primary><secondary>KolibriLib::UI::Images::Image</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::Image</primary><secondary>Render</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::Images::Image::Render (<link linkend="_struct_kolibri_lib_1_1point">Size</link> size = <computeroutput>{0,&#160;0}</computeroutput>
+)</computeroutput></para><para>
+
+<para>Вывести изображение в окно </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>size</entry><entry>
+<para>Размер выводимого изображения </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1Можно">
+<title><title>растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется</title></title>
+</section>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp</section>
+</section>

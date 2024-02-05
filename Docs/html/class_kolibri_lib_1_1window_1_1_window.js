@@ -1,6 +1,7 @@
 var class_kolibri_lib_1_1window_1_1_window =
 [
     [ "Window", "class_kolibri_lib_1_1window_1_1_window.html#a190c058c9653a937da1db68429aac3ae", null ],
+    [ "AddElement", "class_kolibri_lib_1_1window_1_1_window.html#a4eeb9cdad35ca4955c412448f39f994a", null ],
     [ "ChangeTilte", "class_kolibri_lib_1_1window_1_1_window.html#a91366917bae725f1b5ba99678e22c821", null ],
     [ "ChangeWindow", "class_kolibri_lib_1_1window_1_1_window.html#a6ee3a4aa28979fdd68200a847bf0e5e8", null ],
     [ "CreateButton", "class_kolibri_lib_1_1window_1_1_window.html#a1d366e0480ed7f2a7e46e4963ba703ff", null ],
@@ -21,6 +22,6 @@ var class_kolibri_lib_1_1window_1_1_window =
     [ "HandlerThread", "class_kolibri_lib_1_1window_1_1_window.html#a154edfb72436bc38525f2a63a7555d3b", null ],
     [ "Render", "class_kolibri_lib_1_1window_1_1_window.html#ae306d4a030618ce8ca8671269b91c062", null ],
     [ "SetTextLabel", "class_kolibri_lib_1_1window_1_1_window.html#aa8aadc49fc0714906c2488681bb1f2c0", null ],
-    [ "SetWindowColors", "class_kolibri_lib_1_1window_1_1_window.html#ac060c0cfea3d17ab084784a59cdea9e1", null ],
+    [ "SetWindowColors", "class_kolibri_lib_1_1window_1_1_window.html#a7a4ba0e48673a50d70af870dbc46c478", null ],
     [ "StartRedraw", "class_kolibri_lib_1_1window_1_1_window.html#a5bb8bddc3ee73903c934235d66eb04b6", null ]
 ];

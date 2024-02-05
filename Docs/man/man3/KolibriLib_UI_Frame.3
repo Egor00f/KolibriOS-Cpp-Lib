@@ -1,0 +1,132 @@
+.TH "KolibriLib::UI::Frame" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::UI::Frame
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKolibriLib::UI::UIElement\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFrame\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBColor::Color\fP &Color=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
+.br
+.ti -1c
+.RI "void \fBRender\fP ()"
+.br
+.RI "Отрисовать фрейм "
+.ti -1c
+.RI "void \fBHandler\fP ()"
+.br
+.ti -1c
+.RI "template<class T > unsigned \fBAddElement\fP (const T &element)"
+.br
+.RI "Добавить элемент во фрейм "
+.in -1c
+
+Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.br
+.RI "конструктор "
+.ti -1c
+.RI "\fBSize\fP \fBGetSize\fP () const"
+.br
+.RI "Получить размер элемента "
+.ti -1c
+.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.br
+.ti -1c
+.RI "unsigned \fBGetMargin\fP () const"
+.br
+.ti -1c
+.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.br
+.RI "Получить осносной цвет элемента "
+.ti -1c
+.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.br
+.ti -1c
+.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.br
+.ti -1c
+.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.br
+.ti -1c
+.RI "void \fBRotate\fP (unsigned NewAngle)"
+.br
+.RI "Повернуть элемент "
+.ti -1c
+.RI "unsigned \fBGetRotate\fP () const"
+.br
+.RI "Получить угол наклона элемента "
+.ti -1c
+.RI "bool \fBHover\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBUIElement\fP &Element) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBCoord\fP \fB_coord\fP"
+.br
+.RI "Координаты "
+.ti -1c
+.RI "\fBSize\fP \fB_size\fP"
+.br
+.RI "Размер "
+.ti -1c
+.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.br
+.ti -1c
+.RI "unsigned \fB_Margin\fP"
+.br
+.RI "Отступы "
+.ti -1c
+.RI "unsigned \fB_angle\fP"
+.br
+.RI "Угол наклона "
+.ti -1c
+.RI "bool \fB_relative\fP"
+.br
+.RI "Оносительн "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T > unsigned KolibriLib::UI::Frame::AddElement (const T & element)"
+
+.PP
+Добавить элемент во фрейм 
+.PP
+\fBParameters\fP
+.RS 4
+\fIelement\fP элемент 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+номер 
+.br
+ 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

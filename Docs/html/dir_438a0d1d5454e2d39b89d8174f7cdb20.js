@@ -1,14 +1,15 @@
 var dir_438a0d1d5454e2d39b89d8174f7cdb20 =
 [
-    [ "base.hpp", "base_8hpp_source.html", null ],
     [ "button.hpp", "button_8hpp_source.html", null ],
     [ "checkbox.hpp", "checkbox_8hpp_source.html", null ],
     [ "childWindow.hpp", "child_window_8hpp_source.html", null ],
     [ "color.hpp", "color_8hpp_source.html", null ],
     [ "filesystem.hpp", "filesystem_8hpp_source.html", null ],
     [ "form.hpp", "form_8hpp_source.html", null ],
+    [ "frame.hpp", "frame_8hpp_source.html", null ],
     [ "graphic.hpp", "graphic_8hpp_source.html", null ],
     [ "image.hpp", "image_8hpp_source.html", null ],
+    [ "init.hpp", "init_8hpp_source.html", null ],
     [ "input.hpp", "input_8hpp_source.html", null ],
     [ "keyboard.hpp", "keyboard_8hpp_source.html", null ],
     [ "mouse.hpp", "mouse_8hpp_source.html", null ],

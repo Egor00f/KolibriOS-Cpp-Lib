@@ -3,7 +3,6 @@
   <compounddef id="namespace_kolibri_lib_1_1_u_i_1_1buttons" kind="namespace" language="C++">
     <compoundname>KolibriLib::UI::buttons</compoundname>
     <innerclass refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" prot="public">KolibriLib::UI::buttons::Button</innerclass>
-    <innerclass refid="struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data" prot="public">KolibriLib::UI::buttons::ButtonsIdData</innerclass>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b" prot="public" static="no">
         <type>unsigned int</type>
@@ -36,9 +35,9 @@
         </inbodydescription>
         <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="22" column="28" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a9c6e2b744b4a5d9cb966928acf61a824" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="struct_kolibri_lib_1_1_u_i_1_1buttons_1_1_buttons_id_data" kindref="compound">ButtonsIdData</ref> &gt;</type>
-        <definition>std::vector&lt;ButtonsIdData&gt; KolibriLib::UI::buttons::ButtonsIdList</definition>
+      <memberdef kind="variable" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1aaaa4c4b6bb4b24c33adfb7e532459565" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; bool &gt;</type>
+        <definition>std::vector&lt;bool&gt; KolibriLib::UI::buttons::ButtonsIdList</definition>
         <argsstring></argsstring>
         <name>ButtonsIdList</name>
         <qualifiedname>KolibriLib::UI::buttons::ButtonsIdList</qualifiedname>
@@ -49,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="31" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="31" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="25" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -64,14 +63,14 @@
         </briefdescription>
         <detaileddescription>
 <sect4 id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1Эта">
-<title>функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок</title><para><simplesect kind="return"><para>номер кнопки из списка <ref refid="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a9c6e2b744b4a5d9cb966928acf61a824" kindref="member">ButtonsIdList</ref></para>
+<title>функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок</title><para><simplesect kind="return"><para>номер кнопки из списка <ref refid="namespace_kolibri_lib_1_1_u_i_1_1buttons_1aaaa4c4b6bb4b24c33adfb7e532459565" kindref="member">ButtonsIdList</ref></para>
 </simplesect>
 </para>
 </sect4>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="36" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="36" bodyend="50"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="30" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="204" bodyend="217" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="30" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a50f50638d4faadd115e569d5db1e2d1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -92,7 +91,7 @@
 <parametername>id</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>номер номер кнопки из списка <ref refid="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a9c6e2b744b4a5d9cb966928acf61a824" kindref="member">ButtonsIdList</ref></para>
+<para>номер номер кнопки из списка <ref refid="namespace_kolibri_lib_1_1_u_i_1_1buttons_1aaaa4c4b6bb4b24c33adfb7e532459565" kindref="member">ButtonsIdList</ref></para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -100,11 +99,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="54" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="54" bodyend="57"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="34" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="219" bodyend="222" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="34" declcolumn="25"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a690d4a119e6374b7cf4bf3b9487fba09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a824ea083df7cafa107b704ec6d5dba18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ButtonID</type>
-        <definition>ButtonID KolibriLib::UI::buttons::GetButtonId</definition>
+        <definition>buttons::ButtonID KolibriLib::UI::buttons::GetButtonId</definition>
         <argsstring>(unsigned id)</argsstring>
         <name>GetButtonId</name>
         <qualifiedname>KolibriLib::UI::buttons::GetButtonId</qualifiedname>
@@ -134,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="63" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="63" bodyend="66"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="40" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="224" bodyend="227" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="40" declcolumn="29"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a008dcf87d7d649a7fd5c10ee4af7e388" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -143,21 +142,22 @@
         <name>CutList</name>
         <qualifiedname>KolibriLib::UI::buttons::CutList</qualifiedname>
         <briefdescription>
+<para>Обрезать список <ref refid="" kindref="compound">ButtonsIdList.</ref></para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="68" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="68" bodyend="83"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="43" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="229" bodyend="244" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="43" declcolumn="18"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1a7ab3e8e8b75c17bc126d3960ff2dfade" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>unsigned</type>
-        <definition>unsigned KolibriLib::UI::buttons::autoDefineButton</definition>
-        <argsstring>(const point&lt; int &gt; coords, const Size &amp;size, ksys_color_t color=OS::sys_color_table.work_button)</argsstring>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1abcdb98505d7692c78a0e843e0ac6311e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ButtonID</type>
+        <definition>buttons::ButtonID KolibriLib::UI::buttons::autoDefineButton</definition>
+        <argsstring>(const Coord &amp;coords, const Size &amp;size, const Color::Color &amp;color=OS::sys_color_table.work_button)</argsstring>
         <name>autoDefineButton</name>
         <qualifiedname>KolibriLib::UI::buttons::autoDefineButton</qualifiedname>
         <param>
-          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">point</ref>&lt; int &gt;</type>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
           <declname>coords</declname>
         </param>
         <param>
@@ -165,7 +165,7 @@
           <declname>size</declname>
         </param>
         <param>
-          <type>ksys_color_t</type>
+          <type>const <ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref> &amp;</type>
           <declname>color</declname>
           <defval>OS::sys_color_table.work_button</defval>
         </param>
@@ -204,16 +204,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="90" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="90" bodyend="95"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="50" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="246" bodyend="251" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="50" declcolumn="29"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1af135176f2eea7c0b2bcef6ccf328c3d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1acd508af8bd6e5bfab751ba14d18dda23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void KolibriLib::UI::buttons::DefineButton</definition>
-        <argsstring>(const point&lt; int &gt; &amp;coord, const Size &amp;size, const ButtonID &amp;id, ksys_color_t color=OS::sys_color_table.work_button)</argsstring>
+        <argsstring>(const Coord &amp;coord, const Size &amp;size, const ButtonID &amp;id, Color::Color color=OS::sys_color_table.work_button)</argsstring>
         <name>DefineButton</name>
         <qualifiedname>KolibriLib::UI::buttons::DefineButton</qualifiedname>
         <param>
-          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">point</ref>&lt; int &gt; &amp;</type>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
           <declname>coord</declname>
         </param>
         <param>
@@ -225,7 +225,7 @@
           <declname>id</declname>
         </param>
         <param>
-          <type>ksys_color_t</type>
+          <type><ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref></type>
           <declname>color</declname>
           <defval>OS::sys_color_table.work_button</defval>
         </param>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="102" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="102" bodyend="105"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="57" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="253" bodyend="256" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="57" declcolumn="25"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1af05bc94ea0e640d8fe6b668d059a065f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -299,11 +299,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="109" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="109" bodyend="113"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="61" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="258" bodyend="262" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="61" declcolumn="25"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1ac7dae354425dc950caccfa1c283cbdd7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>unsigned</type>
-        <definition>unsigned KolibriLib::UI::buttons::GetPressedButton</definition>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1ac52202e7410ddc8c76e118acf1a5ccbd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ButtonID</type>
+        <definition>buttons::ButtonID KolibriLib::UI::buttons::GetPressedButton</definition>
         <argsstring>()</argsstring>
         <name>GetPressedButton</name>
         <qualifiedname>KolibriLib::UI::buttons::GetPressedButton</qualifiedname>
@@ -317,7 +317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="117" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="117" bodyend="120"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="65" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="264" bodyend="267" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" declline="65" declcolumn="29"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

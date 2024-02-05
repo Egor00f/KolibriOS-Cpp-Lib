@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="class_kolibri_lib_1_1_u_i_1_1_frame" kind="class" language="C++" prot="public">
+    <compoundname>KolibriLib::UI::Frame</compoundname>
+    <basecompoundref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" prot="public" virt="non-virtual">KolibriLib::UI::UIElement</basecompoundref>
+    <innerclass refid="struct_kolibri_lib_1_1_u_i_1_1_frame_1_1_element" prot="private">KolibriLib::UI::Frame::Element</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_frame_1a5382a98706da77ed5801b6c9334bcc28" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Element &gt;</type>
+        <definition>std::vector&lt;Element&gt; KolibriLib::UI::Frame::_Elements</definition>
+        <argsstring></argsstring>
+        <name>_Elements</name>
+        <qualifiedname>KolibriLib::UI::Frame::_Elements</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" line="45" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_frame_1a163cc80d7c9f2c440ecb2a228350e2c3" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::Frame::_scroll</definition>
+        <argsstring></argsstring>
+        <name>_scroll</name>
+        <qualifiedname>KolibriLib::UI::Frame::_scroll</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" line="46" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_frame_1a9183d076ae1596d77659ab7df815973c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::UI::Frame::Frame</definition>
+        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={0, 0}, const Color::Color &amp;Color=OS::sys_color_table.work_area, const unsigned &amp;Margin=DefaultMargin)</argsstring>
+        <name>Frame</name>
+        <qualifiedname>KolibriLib::UI::Frame::Frame</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref> &amp;</type>
+          <declname>size</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref> &amp;</type>
+          <declname>Color</declname>
+          <defval>OS::sys_color_table.work_area</defval>
+        </param>
+        <param>
+          <type>const unsigned &amp;</type>
+          <declname>Margin</declname>
+          <defval>DefaultMargin</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" line="48" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" bodystart="62" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_frame_1a9d8f7281a9cbc096a51839b01045a66a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::Frame::Render</definition>
+        <argsstring>()</argsstring>
+        <name>Render</name>
+        <qualifiedname>KolibriLib::UI::Frame::Render</qualifiedname>
+        <briefdescription>
+<para>Отрисовать фрейм </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" line="52" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" bodystart="69" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_frame_1a481031e3270ca4902aa7aecb5d2f9941" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::Frame::Handler</definition>
+        <argsstring>()</argsstring>
+        <name>Handler</name>
+        <qualifiedname>KolibriLib::UI::Frame::Handler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" line="54" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" bodystart="100" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_frame_1a7eb07b89b248d6133c2274b3cfdd86fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::UI::Frame::AddElement</definition>
+        <argsstring>(const T &amp;element)</argsstring>
+        <name>AddElement</name>
+        <qualifiedname>KolibriLib::UI::Frame::AddElement</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+<para>Добавить элемент во фрейм </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>элемент </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>номер <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" line="60" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" bodystart="109" bodyend="154"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KolibriLib::UI::Frame</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_frame"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>KolibriLib::Color::Color</label>
+        <link refid="union_kolibri_lib_1_1_color_1_1_color"/>
+      </node>
+      <node id="1">
+        <label>KolibriLib::UI::Frame</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_frame"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_coord</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_size</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>_MainColor</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>KolibriLib::point&lt; int &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+      <node id="4">
+        <label>KolibriLib::point&lt; unsigned &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+    </collaborationgraph>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" line="21" column="9" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp" bodystart="22" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_angle</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_coord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_frame_1a5382a98706da77ed5801b6c9334bcc28" prot="private" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_Elements</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_MainColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_Margin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f6b023df1a1a5737819c6c50e72c5c3" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_relative</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_frame_1a163cc80d7c9f2c440ecb2a228350e2c3" prot="private" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_scroll</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>_size</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_frame_1a7eb07b89b248d6133c2274b3cfdd86fe" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>AddElement</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_frame_1a9183d076ae1596d77659ab7df815973c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>Frame</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>GetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>GetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>GetMargin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>GetRotate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_frame_1a481031e3270ca4902aa7aecb5d2f9941" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>Handler</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>Hover</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>operator!=</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>operator=</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>operator==</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_frame_1a9d8f7281a9cbc096a51839b01045a66a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>Render</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>Rotate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>SetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>SetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>SetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Frame</scope><name>UIElement</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

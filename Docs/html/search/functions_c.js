@@ -1,4 +1,10 @@
 var searchData=
 [
-  ['render_0',['Render',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a2d359db5c5aaa43f1a28c46d0d00d8a8',1,'KolibriLib::UI::buttons::Button::Render()'],['../class_kolibri_lib_1_1_u_i_1_1_form.html#a76227ffb53bc00f2c82f68921d744591',1,'KolibriLib::UI::Form::Render()'],['../class_kolibri_lib_1_1_u_i_1_1_images_1_1image.html#a12dc3e1d6e0fa31e558e2cfb7dd86058',1,'KolibriLib::UI::Images::image::Render()'],['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a819cf1e6ccf656418a2d2961e9eb3d33',1,'KolibriLib::UI::text::TextLabel::Render()'],['../class_kolibri_lib_1_1window_1_1_window.html#ae306d4a030618ce8ca8671269b91c062',1,'KolibriLib::window::Window::Render()']]]
+  ['setfontsize_0',['SetFontSize',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a1a669c7f23c46f79c5647f4fd08a3b32',1,'KolibriLib::UI::text::TextLabel']]],
+  ['setscale_1',['SetScale',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a13c115d127bc7f90cb438bbd2b31619d',1,'KolibriLib::UI::text::TextLabel']]],
+  ['settext_2',['SetText',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a159f389b9845713368e763ce159c77d7',1,'KolibriLib::UI::buttons::Button::SetText()'],['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#ad916d63a47c47ca186b25046c14530ec',1,'KolibriLib::UI::text::TextLabel::SetText()']]],
+  ['settextlabel_3',['SetTextLabel',['../class_kolibri_lib_1_1window_1_1_window.html#aa8aadc49fc0714906c2488681bb1f2c0',1,'KolibriLib::window::Window']]],
+  ['settextsize_4',['SetTextSize',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a5fd094b88dd3cbeb776db5098c742d75',1,'KolibriLib::UI::text']]],
+  ['setwindowcolors_5',['SetWindowColors',['../class_kolibri_lib_1_1window_1_1_window.html#a7a4ba0e48673a50d70af870dbc46c478',1,'KolibriLib::window::Window']]],
+  ['startredraw_6',['StartRedraw',['../class_kolibri_lib_1_1window_1_1_window.html#a5bb8bddc3ee73903c934235d66eb04b6',1,'KolibriLib::window::Window']]]
 ];

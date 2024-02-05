@@ -14,10 +14,6 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .RI "class \fBButton\fP"
 .br
 .RI "Класс для работы с кнопками "
-.ti -1c
-.RI "struct \fBButtonsIdData\fP"
-.br
-.RI "Служебная структура, нигде не использется кроме \fBButtonsIdList\&.\fP"
 .in -1c
 .SS "Typedefs"
 
@@ -44,12 +40,13 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .ti -1c
 .RI "void \fBCutList\fP ()"
 .br
+.RI "Обрезать список \fBButtonsIdList\&.\fP"
 .ti -1c
-.RI "unsigned \fBautoDefineButton\fP (const \fBpoint\fP< int > coords, const \fBSize\fP &size, ksys_color_t color=OS::sys_color_table\&.work_button)"
+.RI "ButtonID \fBautoDefineButton\fP (const \fBCoord\fP &coords, const \fBSize\fP &size, const \fBColor::Color\fP &color=OS::sys_color_table\&.work_button)"
 .br
 .RI "Создать кнопку, автоматически присвоить ей id\&. "
 .ti -1c
-.RI "void \fBDefineButton\fP (const \fBpoint\fP< int > &coord, const \fBSize\fP &size, const ButtonID &id, ksys_color_t color=OS::sys_color_table\&.work_button)"
+.RI "void \fBDefineButton\fP (const \fBCoord\fP &coord, const \fBSize\fP &size, const ButtonID &id, \fBColor::Color\fP color=OS::sys_color_table\&.work_button)"
 .br
 .RI "Создать кнопку, вручную "
 .ti -1c
@@ -57,7 +54,7 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .br
 .RI "Удалить кнопу "
 .ti -1c
-.RI "unsigned \fBGetPressedButton\fP ()"
+.RI "ButtonID \fBGetPressedButton\fP ()"
 .br
 .RI "проверить какая кнопка нажата "
 .in -1c
@@ -68,7 +65,7 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .RI "const ButtonID \fBStartButtonId\fP = 100"
 .br
 .ti -1c
-.RI "std::vector< \fBButtonsIdData\fP > \fBButtonsIdList\fP"
+.RI "std::vector< bool > \fBButtonsIdList\fP"
 .br
 .RI "Список idшников кнопок "
 .in -1c
@@ -77,7 +74,7 @@ KolibriLib::UI::buttons \- Работа с кнопками
 Работа с кнопками 
 .SH "Function Documentation"
 .PP 
-.SS "unsigned KolibriLib::UI::buttons::autoDefineButton (const \fBpoint\fP< int > coords, const \fBSize\fP & size, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+.SS "buttons::ButtonID KolibriLib::UI::buttons::autoDefineButton (const \fBCoord\fP & coords, const \fBSize\fP & size, const \fBColor::Color\fP & color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
 
 .PP
 Создать кнопку, автоматически присвоить ей id\&. 
@@ -97,7 +94,7 @@ id созданной кнопки
 .RE
 .PP
 
-.SS "void KolibriLib::UI::buttons::DefineButton (const \fBpoint\fP< int > & coord, const \fBSize\fP & size, const ButtonID & id, ksys_color_t color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+.SS "void KolibriLib::UI::buttons::DefineButton (const \fBCoord\fP & coord, const \fBSize\fP & size, const ButtonID & id, \fBColor::Color\fP color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
 
 .PP
 Создать кнопку, вручную 
@@ -136,7 +133,7 @@ id созданной кнопки
 .RE
 .PP
 
-.SS "ButtonID KolibriLib::UI::buttons::GetButtonId (unsigned id)\fR [inline]\fP"
+.SS "buttons::ButtonID KolibriLib::UI::buttons::GetButtonId (unsigned id)\fR [inline]\fP"
 
 .PP
 Получить id кнопки 
@@ -164,7 +161,7 @@ ButtonsIdList[id]\&.ID
 .RE
 .PP
 
-.SS "unsigned KolibriLib::UI::buttons::GetPressedButton ()\fR [inline]\fP"
+.SS "buttons::ButtonID KolibriLib::UI::buttons::GetPressedButton ()\fR [inline]\fP"
 
 .PP
 проверить какая кнопка нажата 

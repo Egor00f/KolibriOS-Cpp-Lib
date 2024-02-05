@@ -32,7 +32,7 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .br
 .RI "инициализировать параметры "
 .ti -1c
-.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::image\fP &image=\fBImages::image\fP(), const unsigned &Margin=DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::Image\fP &image=\fBImages::Image\fP(), const unsigned &Margin=DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
 .br
 .RI "инициализировать параметры "
 .ti -1c
@@ -48,11 +48,11 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .br
 .RI "Обработчик кнопки "
 .ti -1c
-.RI "bool \fBGetStatus\fP ()"
+.RI "bool \fBGetStatus\fP () const"
 .br
 .RI "Получить сосояние кнопки на момент последней обработки "
 .ti -1c
-.RI "ButtonID \fBGetId\fP ()"
+.RI "ButtonID \fBGetId\fP () const"
 .br
 .RI "Получить номер кнопки "
 .ti -1c
@@ -64,15 +64,15 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .br
 .RI "Активировать кнопку "
 .ti -1c
-.RI "unsigned \fBGetType\fP ()"
+.RI "unsigned \fBGetType\fP () const"
 .br
 .RI "Возвращает тип данных используемых в кнопке \fB_type\&.\fP"
 .ti -1c
-.RI "std::string \fBGetTextLabel\fP ()"
+.RI "std::string \fBGetTextLabel\fP () const"
 .br
 .RI "Возвращает текст кнопки "
 .ti -1c
-.RI "\fBImages::image\fP \fBGetImage\fP ()"
+.RI "\fBImages::Image\fP \fBGetImage\fP () const"
 .br
 .RI "Получить изображение кнопки "
 .ti -1c
@@ -84,26 +84,28 @@ Inherited by \fBKolibriLib::UI::CheckBox\fP\&.
 .br
 .RI "Декструктор "
 .ti -1c
-.RI "\fBButton\fP & \fBoperator=\fP (const \fBButton\fP &butt)"
+.RI "\fBButton\fP & \fBoperator=\fP (const \fBButton\fP &element)"
 .br
 .in -1c
 
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=0, const unsigned &Margin=DefaultMargin)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
+.RI "конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP ()"
+.RI "\fBSize\fP \fBGetSize\fP () const"
 .br
+.RI "Получить размер элемента "
 .ti -1c
 .RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
 .br
 .ti -1c
-.RI "unsigned \fBGetMargin\fP ()"
+.RI "unsigned \fBGetMargin\fP () const"
 .br
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetColor\fP ()"
+.RI "\fBColor::Color\fP \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -113,10 +115,27 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP ()"
+.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.br
+.ti -1c
+.RI "void \fBRotate\fP (unsigned NewAngle)"
+.br
+.RI "Повернуть элемент "
+.ti -1c
+.RI "unsigned \fBGetRotate\fP () const"
+.br
+.RI "Получить угол наклона элемента "
+.ti -1c
+.RI "bool \fBHover\fP ()"
 .br
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBUIElement\fP &Element) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
 .SS "Additional Inherited Members"
@@ -139,6 +158,14 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "unsigned \fB_Margin\fP"
 .br
 .RI "Отступы "
+.ti -1c
+.RI "unsigned \fB_angle\fP"
+.br
+.RI "Угол наклона "
+.ti -1c
+.RI "bool \fB_relative\fP"
+.br
+.RI "Оносительн "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -181,7 +208,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .SS "функция может выполнятся очень долго, если вы уже создали довольно много кнопок\&. Это становится действительно важно когда у вас объявленно более 2000 кнопок"
 .SS "Деактивированном состоянии кнопка 'Не нажимается', а её \fBстановится не действительным\fP"
 
-.SS "ButtonID KolibriLib::UI::buttons::Button::GetId ()"
+.SS "buttons::ButtonID KolibriLib::UI::buttons::Button::GetId () const"
 
 .PP
 Получить номер кнопки 
@@ -192,7 +219,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "\fBImages::image\fP KolibriLib::UI::buttons::Button::GetImage ()"
+.SS "\fBImages::Image\fP KolibriLib::UI::buttons::Button::GetImage () const"
 
 .PP
 Получить изображение кнопки 
@@ -203,7 +230,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "bool KolibriLib::UI::buttons::Button::GetStatus ()"
+.SS "bool KolibriLib::UI::buttons::Button::GetStatus () const"
 
 .PP
 Получить сосояние кнопки на момент последней обработки 
@@ -214,7 +241,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "std::string KolibriLib::UI::buttons::Button::GetTextLabel ()"
+.SS "std::string KolibriLib::UI::buttons::Button::GetTextLabel () const"
 
 .PP
 Возвращает текст кнопки 
@@ -225,7 +252,7 @@ std::string
 .RE
 .PP
 
-.SS "unsigned KolibriLib::UI::buttons::Button::GetType ()"
+.SS "unsigned KolibriLib::UI::buttons::Button::GetType () const"
 
 .PP
 Возвращает тип данных используемых в кнопке \fB_type\&.\fP
@@ -249,7 +276,7 @@ std::string
 .SS "переменную \fBв true если эта кнопка нажата, иначе false\fP"
 .SS "функцию нужно вызывать в цикле, чтобы кнопка работала"
 
-.SS "void KolibriLib::UI::buttons::Button::init (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{0, 0}\fP, const \fBImages::image\fP & image = \fR\fBImages::image\fP()\fP, const unsigned & Margin = \fRDefaultMargin\fP, const \fBColor::Color\fP & ButtonColor = \fROS::sys_color_table\&.work_button\fP)"
+.SS "void KolibriLib::UI::buttons::Button::init (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{0, 0}\fP, const \fBImages::Image\fP & image = \fR\fBImages::Image\fP()\fP, const unsigned & Margin = \fRDefaultMargin\fP, const \fBColor::Color\fP & ButtonColor = \fROS::sys_color_table\&.work_button\fP)"
 
 .PP
 инициализировать параметры 
