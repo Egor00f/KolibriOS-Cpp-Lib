@@ -1,8 +1,8 @@
 #ifndef __KOLIBRILIB_H__
 #define __KOLIBRILIB_H__
 
-/// @mainpage Это всратая библиотека\
-если что лицензии нет так что если хочется допилить до давай
+/// @mainpage Это всратая библиотека
+/// @mainpage если что лицензии нет так что если хочется допилить до давай
 
 #include <kolibriLib/init.hpp>
 #include <kolibriLib/window.hpp>

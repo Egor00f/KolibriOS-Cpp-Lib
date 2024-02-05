@@ -27,10 +27,31 @@ namespace KolibriLib
         T y;
 
 
-        point<T>& operator = ( const point<T>& p)
+        point<T>& operator = ( const point<T>& p )
         {
             x = p.x;
             y = p.y;
+            return *this;
+        }
+
+        point<T> &operator + ( const point<T>& p )
+        {
+            x += p.x;
+            y += p.y;
+            return *this;
+        }
+
+        point<T> &operator - ( const T& p )
+        {
+            x -= p;
+            y -= p;
+            return *this;
+        }
+
+        point<T>& operator - ( const point<T>& p )
+        {
+            x -= p.x;
+            y -= p.y;
             return *this;
         }
 

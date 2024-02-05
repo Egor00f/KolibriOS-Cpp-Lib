@@ -30,38 +30,37 @@ namespace KolibriLib
 	{
 		
 
-		struct Element
-		{
-			enum Type
-			{
-				None = 0,
-				Button,
-				Image,
-				CheckBox,
-				Form,
-				TextLabel,
-				Frame
-			};
-
-			
-			UI::buttons::Button btn;
-			UI::text::TextLabel txt;
-			UI::Form frm;
-			UI::CheckBox ChckBx;
-			UI::Images::Image img;
-			UI::Frame frame;
-			
-
-			unsigned _type;
-			unsigned DrawPrioritet;
-			bool use;
-			
-		};
+		
 
 		/// @brief Класс для работы с окном
 		class Window
 		{
 		private:
+			struct Element
+			{
+				enum Type
+				{
+					None = 0,
+					Button,
+					Image,
+					CheckBox,
+					Form,
+					TextLabel,
+					Frame
+				};
+
+				UI::buttons::Button btn;
+				UI::text::TextLabel txt;
+				UI::Form frm;
+				UI::CheckBox ChckBx;
+				UI::Images::Image img;
+				UI::Frame frame;
+
+				unsigned _type;
+				unsigned DrawPrioritet;
+				bool use;
+			};
+
 			/// @brief Заголовок окна
 			std::string _title;
 
