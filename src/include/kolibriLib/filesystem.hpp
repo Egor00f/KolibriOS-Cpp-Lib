@@ -1,4 +1,3 @@
-#pragma once
 #ifndef __FILESYSTEM_H__
 #define __FILESYSTEM_H__
 
@@ -17,6 +16,21 @@ namespace KolibriLib
     /// @paragraph Это пространство имён этакий аналог стандартной библиотеки <filesystem> 
     namespace filesystem
     {
+
+        class Path
+        {
+            public:
+                Path(std::string path);
+
+                const char* GetChars() const;
+
+                std::string GetString() const;
+
+                Path& operator / (const Path& a);
+            private:
+                std::string _string;
+        };
+
         enum Errors
         {
             /// @brief успешно
@@ -57,13 +71,13 @@ namespace KolibriLib
         /// @brief Создать файл
         /// @param name имя файла
         /// @return
-        int CreateFile(const std::string& name);
+        int CreateFile(const Path& name);
 
         /// @brief Создать файл
         /// @param name имя файла
         /// @param path путь до файла
         /// @return
-        int CreateFile(const std::string& name, const std::string& path);
+        int CreateFile(const std::string& name, const Path& path);
 
         /// @brief удалить файл или папку
         /// @param name полный путь до файла
@@ -79,13 +93,13 @@ namespace KolibriLib
         /// @brief удалить файл  или папку
         /// @param name имя файла
         /// @return
-        int Delete(const std::string& name);
+        int Delete(const Path& name);
 
         /// @brief удалить файл или папку
         /// @param name имя файла
         /// @param path путь до файла
         /// @return
-        int Delete(const std::string &name, const std::string& path);
+        int Delete(const std::string &name, const Path& path);
 
         /// @brief Создать папку
         /// @param path путь
@@ -95,16 +109,106 @@ namespace KolibriLib
         /// @brief Создать папку
         /// @param path путь
         /// @return
-        int MakeDirectory(const std::string& path);
+        int MakeDirectory(const Path& path);
 
         /// @brief проверяет существует ли файл или папки
         /// @param путь до файла/папки
         /// @return true если файл или папка существует, иначе false
-        bool Exist(const std::string& Path);
+        bool Exist(const Path& Path);
 
-        int Rename(const std::string& OldName, const std::string& NewName);
-        
+        int Rename(const Path& OldName, const Path& NewName);
 
+        Path::Path(std::string path)
+        {
+            _string = path;
+        }
+
+        const char *Path::GetChars() const
+        {
+            return _string.c_str();
+        }
+
+        std::string Path::GetString() const
+        {
+            return _string;
+        }
+
+        Path &Path::operator/(const Path &a)
+        {
+            _string += a._string;
+
+            return *this;
+        }
+
+        int CreateFile(const char *name)
+        {
+            return _ksys_file_create(name);
+        }
+
+        int CreateFile(const char *name, char *path)
+        {
+            strcat(path, name);
+            int ret = _ksys_file_create(path);
+            return ret;
+        }
+
+        int CreateFile(const Path &name)
+        {
+            return _ksys_file_create(name.GetChars());
+        }
+
+        int CreateFile(const std::string &name, const Path &path)
+        {
+            std::string fullPath = path.GetString() + name;
+            return _ksys_file_create(fullPath.c_str());
+        }
+
+        int Delete(const char *name)
+        {
+            return _ksys_file_delete(name);
+        }
+
+        int Delete(const char *name, char *path)
+        {
+            strcat(path, name);
+            return _ksys_file_delete(path);
+        }
+
+        int Delete(const Path &name)
+        {
+            return _ksys_file_delete(name.GetChars());
+        }
+
+        int Delete(const std::string &name, const Path &path)
+        {
+            std::string fullPath = path.GetString() + name;
+            return _ksys_file_delete(fullPath.c_str());
+        }
+
+        int MakeDirectory(const char *path)
+        {
+            return _ksys_mkdir(path);
+        }
+
+        int MakeDirectory(const Path &path)
+        {
+            return _ksys_mkdir(path.GetChars());
+        }
+
+        bool Exist(const Path &Path)
+        {
+            ksys_bdfe_t *buff;
+            if (_ksys_file_info(Path.GetChars(), buff) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        int Rename(const Path &OldName, const Path &NewName)
+        {
+            return _ksys_file_rename(OldName.GetChars(), NewName.GetChars());
+        }
     }
 } // namespace KolibriLib
 

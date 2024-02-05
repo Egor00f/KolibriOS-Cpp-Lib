@@ -105,16 +105,21 @@ namespace KolibriLib
             }
 
             /// @brief Повернуть элемент
+            /// @param NewAngle Новый угол наклона
             void Rotate(unsigned NewAngle)
             {
                 _angle = NewAngle;
             }
 
+            /// @brief Получить угол наклона элемента
+            /// @return Функция возвращает @link _angle
             unsigned GetRotate() const
             {
                 return _angle;
             }
 
+            /// @brief 
+            /// @return true если курсор мыши находится в этом эелементе, иначе false
             bool Hover()
             {
                 Coord mouse = mouse::GetMousePositionInWindow();
@@ -125,9 +130,23 @@ namespace KolibriLib
                 return false;
             }
 
-            UIElement& operator = (const UIElement& Element) const = default;
-            bool operator == (const UIElement& Element) const = default;
-            bool operator !=(const UIElement &Element) const = default;
+            UIElement& operator = (const UIElement& Element)
+            {
+                _coord      = Element._coord;
+                _size       = Element._size;
+                _MainColor  = Element._MainColor;
+                _Margin     = Element._Margin;
+                _angle      = Element._angle;
+                return *this;
+            }
+            bool operator == (const UIElement& Element) const
+            {
+                return _coord == Element._coord && _size == Element._size && _MainColor == Element._MainColor && _angle == Element._angle;
+            }
+            bool operator != (const UIElement &Element) const
+            {
+                return _coord != Element._coord || _size != Element._size || _MainColor != Element._MainColor || _angle != Element._angle;
+            }
         };
 
         //=============================================================================================================================================================

@@ -5,7 +5,6 @@ using namespace KolibriLib;
 
 int main()
 {
-   
     init();
     
     window::Window window("Example Window");

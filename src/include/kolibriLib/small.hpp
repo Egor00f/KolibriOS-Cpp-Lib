@@ -34,8 +34,14 @@ namespace KolibriLib
             return *this;
         }
 
-        bool operator == (const point<T> a) const = default;
-        bool operator != (const point<T>& a) const = default;
+        bool operator == (const point<T>& a) const
+        {
+            return x == a.x && y == a.y;
+        }
+        bool operator != (const point<T>& a) const
+        {
+            return x != a.x || y != a.y;
+        }
         
     };
 

@@ -27,6 +27,20 @@ namespace KolibriLib
             {
                 val = a;
             }
+
+            Color& operator = (const Color& a)
+            {
+                val = a.val;
+                return *this;
+            }
+            bool operator == (const Color& a) const
+            {
+                return val == a.val;
+            }
+            bool operator != (const Color& a)const
+            {
+                return val != a.val;
+            }
         };
         
         /// @brief Смешать 2 цвета

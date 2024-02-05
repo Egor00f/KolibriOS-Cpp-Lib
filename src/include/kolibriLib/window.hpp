@@ -48,7 +48,7 @@ namespace KolibriLib
 			UI::text::TextLabel txt;
 			UI::Form frm;
 			UI::CheckBox ChckBx;
-			UI::Images::image img;
+			UI::Images::Image img;
 			UI::Frame frame;
 			
 
@@ -223,9 +223,10 @@ namespace KolibriLib
 			/// @brief Обработчик окна в отдельном потоке
 			void HandlerThread();
 
+			template <class T>
 			/// @brief Добавить UI элемент
-			/// @param element 
-			void AddElement(const UI::UIElement& element);
+			/// @param element
+			unsigned AddElement(const T &element);
 		};
 
 		unsigned Window::AddNewButton(UI::buttons::Button btn)
@@ -268,30 +269,40 @@ namespace KolibriLib
 
         unsigned Window::AddNewTextLabel(UI::text::TextLabel text)
         {
+			#if DEBUG == true
 			_ksys_debug_puts("AddNewText:");
+			#endif
+
 			for (unsigned i = 0; i < _Elements.size(); i++)
 			{
+				#if DEBUG == true
 				char *a = "find, try №";
-				char *b = (char*)('0' + (char)i);
+				char *b = (char *)('0' + (char)i);
 				strcat(b, ".\n");
 				strcat(a, b);
 				_ksys_debug_puts(a);
+				#endif
+
 				if (!_Elements[i].use)
 				{
 					_Elements[i].txt = text;
 					_Elements[i]._type = Element::Type::TextLabel;
 					_Elements[i].use = true;
+
+					#if DEBUG == true
 					_ksys_debug_puts("done\n");
+					#endif
+
 					return i;
 				}
 			}
-			_ksys_debug_puts("\n\n==>Element:");
+			
 			Element a;
-			_ksys_debug_puts("\na.use = true");
+			
 			a.use = true;
-			_ksys_debug_puts("\ntxt.init()");
-			a.txt.init(text.GetCoord(), text.GetSize(), text.GetText(), text.GetFontSize(), text.GetColor());
-			_ksys_debug_puts("\n\nDONE!!!\n\n");
+			
+			a.txt = text;
+			
 			_Elements.push_back(a);
 		}
 
@@ -544,9 +555,39 @@ namespace KolibriLib
 			}
 		}
 
-		void Window::AddElement(const UI::UIElement& element)
+		template<class T>
+		unsigned Window::AddElement(const T& element)
 		{
+			/*Element a;
 
+			switch (T)
+			{
+			case UI::text::TextLabel:
+				a.txt = element;
+				a._type = Element::Type::TextLabel;
+				break;
+			case UI::buttons::Button:
+				a.btn = element;
+				a._type = Element::Type::Button;
+				break;
+			case UI::Images::Image:
+				a.img = element;
+				a._type = Element::Type::Image;
+				break;
+			case UI::Form:
+				a.frm = element;
+				a._type = Element::Type::Form;
+				break;
+			case UI::CheckBox:
+				a.ChckBx = element;
+				a._type = Element::Type::CheckBox;
+				break;
+			default:
+				break;
+			}
+
+			_Elements.push_back(a); */
+			return _Elements.size() - 1;
 		}
 	}
 

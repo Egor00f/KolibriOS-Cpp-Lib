@@ -97,16 +97,13 @@ namespace KolibriLib
                 void Render();
 
                 /// @brief Получить текст
-                /// @return @link _text
-                std::string GetText();
+                /// @return Функция возвращает @link _text
+                std::string GetText() const;
 
                 /// @brief Получить Размер шрифта
-                /// @return @link _FontSize
-                unsigned GetFontSize();
+                /// @return Функция возвращает @link _FontSize
+                unsigned GetFontSize() const;
 
-                /// @brief Получить цвет текста
-                /// @return @link _TextColor
-                Color::Color GetTextColor();
 
                 /// @brief Изменить текст
                 /// @param NewText Текст
@@ -121,7 +118,7 @@ namespace KolibriLib
                 /// @param scale Новое значение
                 void SetScale(bool scale);
 
-                void init(Coord coord, Size size, std::string text = "TextLabel", unsigned FontSize = 9, Color::Color TextColor);
+                void init(Coord coord, Size size, std::string text = "TextLabel", unsigned FontSize = 9, Color::Color TextColor = OS::sys_color_table.work_text);
 
                 TextLabel& operator = (const TextLabel& a)
                 {
@@ -170,11 +167,11 @@ namespace KolibriLib
                 DrawText(_text, {_coord.x + (int)a, _coord.y + ((int)_size.y / 2)}, _FontSize, _MainColor);
             }
 
-            std::string TextLabel::GetText()
+            std::string TextLabel::GetText() const
             {
                 return _text;
             }
-            unsigned TextLabel::GetFontSize()
+            unsigned TextLabel::GetFontSize() const
             {
                 return _FontSize;
             }

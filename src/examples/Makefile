@@ -1,10 +1,6 @@
 #NAME
 EXECUTABLE = HelloWorld
 
-
-export $PATH = C:/MinGW/msys/1.0/home/autobuild/tools/win32/bin/
-
-
 AR	= kos32-ar
 AS	= kos32-as
 CC	= kos32-gcc
@@ -30,24 +26,30 @@ SOURCES = $(EXECUTABLE).cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
-#  Copy this ||
-#            ||
-#            \/
+#  Copy this  ||
+#            \||/
+#             \/
 ################# KolibriLib ####################
 
 ############### C Layer ############
-C_LAYER_DIR = $(CONTRIB_DIR)/C_Layer
+#                    
+#       Change it   || 
+#                  \||/
+#                   \/
+C_LAYER_DIR = ../../C_Layer
 C_LAYER_OBJ = $(C_LAYER_DIR)/OBJ/loadlibimg.obj
 ####################################
 
-
+#                            || 
+#                Change it   || 
+#                           \||/
+#                            \/
 KOLIBRILIB_INCLUDE_PATH = ../include
 
 KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I $(C_LAYER_DIR)/INCLUDE
 
 INCLUDES += $(KOLIBRILIB_INCLUDE)
 
-SOURCES += $(KOLIBRILIB_INCLUDE)/kolibriLib/%.cpp
 
 ################################################
 
@@ -64,6 +66,7 @@ Exapmle: $(OBJECTS) Makefile
 	@rm $(EXECUTABLE).o
 
 %.o : %.cpp Makefile $(SOURCES)
+	
 	@echo "compile:" $@
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
 

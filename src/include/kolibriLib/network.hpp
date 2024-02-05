@@ -1,7 +1,6 @@
 #ifndef __NETWORK_H__
 #define __NETWORK_H__
 
-#include <stdio.h>
 #include <stdlib.h>
 
 /// \brief Основное пространство имён
@@ -24,7 +23,7 @@ namespace KolibriLib
         } // namespace Devices
         
 
-        /// @brief Работа с сокетами
+        /*/// @brief Работа с сокетами
         namespace Socket
         {
             #include <sys/socket.h>
@@ -65,7 +64,7 @@ namespace KolibriLib
             /// @return статус
             int CloseSocket(int Socket);
 
-        } // namespace Socket
+        } // namespace Socket*/
         
     } // namespace network
     

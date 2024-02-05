@@ -1,7 +1,6 @@
 #ifndef __THREAD_H__
 #define __THREAD_H__
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <sys/ksys.h>
 

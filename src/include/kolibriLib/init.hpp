@@ -5,11 +5,10 @@
 
 #include <sys/ksys.h>
 
-#include <string.h>
-#include <stdlib.h>
-#include <string>
-
+extern "C"
+{
 #include <kolibri_libimg.h>
+}
 
 #include "filesystem.hpp"
 #include "os.hpp"

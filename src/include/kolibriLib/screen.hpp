@@ -13,7 +13,7 @@ namespace KolibriLib
     point<unsigned> GetScreenSize()
     {
         ksys_pos_t a = _ksys_screen_size();
-        return {a.x, a.y};
+        return (point<unsigned>){a.x, a.y};
     }
 
 

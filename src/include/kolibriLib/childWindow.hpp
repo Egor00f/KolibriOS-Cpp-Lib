@@ -4,7 +4,6 @@
 #define __CHILDWINDOW_H__
 
 
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/ksys.h>
@@ -39,7 +38,7 @@ namespace KolibriLib
 
             UI::Size WindowSize = window.GetSize();
 
-            UI::text::TextLabel message({window.GetMargin(), WindowSize.y / 2 }, {WindowSize.x, WindowSize.y / 2}, _Message);
+            UI::text::TextLabel message({(int)window.GetMargin(), WindowSize.y / 2 }, {WindowSize.x, WindowSize.y / 2}, _Message);
             message.SetScale(true);
 
             window.CreateText(message);
@@ -49,6 +48,7 @@ namespace KolibriLib
                 OS::Event event = window.Handler();
                 if(event = OS::Events::Exit)
                 {
+                    window.~Window();
                     return;
                 }
             }
