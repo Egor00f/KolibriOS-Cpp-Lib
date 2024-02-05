@@ -4,18 +4,19 @@
 #define __CHILDWINDOW_H__
 
 
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/ksys.h>
 
 #include <string>
 #include <vector>
-#include <thread>
 
-#include "base.hpp"
+#include "small.hpp"
+#include "UI.hpp"
 #include "window.hpp"
 #include "thread.hpp"
+#include "os.hpp"
+
 
 namespace KolibriLib
 {
@@ -35,25 +36,20 @@ namespace KolibriLib
             
             window::Window window(_Title, {256,128});
 
-            point WindowSize = window.GetSize();
+            UI::Size WindowSize = window.GetSize();
 
-            window.CreateText({window.GetMargin(), WindowSize.y / 2 }, {WindowSize.x, WindowSize.y / 2}, _Message);
+            UI::text::TextLabel message({(int)window.GetMargin(), WindowSize.y / 2 }, {WindowSize.x, WindowSize.y / 2}, _Message);
+            message.SetScale(true);
+
+            window.CreateText(message);
 
             while (true)
             {
-                unsigned Event = OS::WaitEvent(); // Ждём пока не появится какой либо ивент
-                switch (Event)
+                OS::Event event = window.Handler();
+                if(event = OS::Events::Exit)
                 {
-                case KSYS_EVENT_REDRAW:
-                    window.Render();
-                    break;
-                case KSYS_EVENT_BUTTON:
-                    unsigned button = UI::buttons::GetPressedButton();
-                    switch (button)
-                    {
-                    case 1:                                 //Если нажата кнопка X(та что закрывает окно)
-                        return;
-                    }
+                    window.~Window();
+                    return;
                 }
             }
         }
@@ -76,7 +72,7 @@ namespace KolibriLib
                     Used = true;
 
                     
-                    Thread::CreateThread((void(*))RenderMessageWindow, 2048);
+                    Thread::CreateThread((void(*))RenderMessageWindow, 4096);
 
                     Used = false; // Я всё, заКОНЧИЛ. Свободно!
                     return;

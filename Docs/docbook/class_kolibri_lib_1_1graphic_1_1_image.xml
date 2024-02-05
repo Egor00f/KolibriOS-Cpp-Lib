@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1graphic_1_1_image" xml:lang="en-US">
+<title>KolibriLib::graphic::Image Class Reference</title>
+<indexterm><primary>KolibriLib::graphic::Image</primary></indexterm>
+<para>
+
+<para>Класс для работы с изображениями </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;graphic.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1graphic_1_1_image_1a3b8470726270819e68c1a9552e037671"/><emphasis role="strong">Image</emphasis> (std::string Path)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1graphic_1_1_image_1a3accf5112178a91c9ce84430a1104540">LoadImage</link> (std::string Path)</para>
+
+<para>Загрузить изображение из файла </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1graphic_1_1_image_1a03759f5924e2d96eb955d567ef42feb0">DrawImage</link> (<link linkend="_struct_kolibri_lib_1_1point">point</link> coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">point</link> size={0, 0})</para>
+
+<para>Вывести изображение </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Класс для работы с изображениями </para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1graphic_1_1_image_1a03759f5924e2d96eb955d567ef42feb0"/><section>
+    <title>DrawImage()</title>
+<indexterm><primary>DrawImage</primary><secondary>KolibriLib::graphic::Image</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic::Image</primary><secondary>DrawImage</secondary></indexterm>
+<para><computeroutput>void KolibriLib::graphic::Image::DrawImage (<link linkend="_struct_kolibri_lib_1_1point">point</link> coord = <computeroutput>{0,0}</computeroutput>
+, <link linkend="_struct_kolibri_lib_1_1point">point</link> size = <computeroutput>{0,0}</computeroutput>
+)</computeroutput></para><para>
+
+<para>Вывести изображение </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>координаты </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <warning><title>Warning</title>
+
+<para>Функция пока что очень медленная, может быть когданибудь позже от=птимизирую... </para>
+</warning>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1graphic_1_1_image_1a3accf5112178a91c9ce84430a1104540"/><section>
+    <title>LoadImage()</title>
+<indexterm><primary>LoadImage</primary><secondary>KolibriLib::graphic::Image</secondary></indexterm>
+<indexterm><primary>KolibriLib::graphic::Image</primary><secondary>LoadImage</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::graphic::Image::LoadImage (std::string Path)</computeroutput></para><para>
+
+<para>Загрузить изображение из файла </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Path</entry><entry>
+<para>Путь до файла с изображением </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true если удачно, false если неудачно </para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+F:/KolibriOs/Kalc/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp</section>
+</section>

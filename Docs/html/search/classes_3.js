@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['settingsparam_0',['SettingsParam',['../struct_kolibri_lib_1_1_settings_1_1_settings_param.html',1,'KolibriLib::Settings']]]
+  ['element_0',['Element',['../struct_kolibri_lib_1_1window_1_1_element.html',1,'KolibriLib::window']]]
 ];

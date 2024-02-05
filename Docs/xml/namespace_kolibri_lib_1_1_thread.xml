@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespace_kolibri_lib_1_1_thread" kind="namespace" language="C++">
+    <compoundname>KolibriLib::Thread</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::Thread::CreateThread</definition>
+        <argsstring>(void *ThreadEntry, unsigned ThreadStackSize=1024)</argsstring>
+        <name>CreateThread</name>
+        <qualifiedname>KolibriLib::Thread::CreateThread</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>ThreadEntry</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>ThreadStackSize</declname>
+          <defval>1024</defval>
+        </param>
+        <briefdescription>
+<para>Создать поток </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ThreadEntry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Имя функции которую нужно запустить в новом потоке </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ThreadStackSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Размер стека нового потока в байтах </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ID потока </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="17" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" bodystart="17" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::Thread::TerminateThread</definition>
+        <argsstring>(int PID)</argsstring>
+        <name>TerminateThread</name>
+        <qualifiedname>KolibriLib::Thread::TerminateThread</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>PID</declname>
+        </param>
+        <briefdescription>
+<para>Завершить процесс/поток </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>PID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID Процесса/потока </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true если успешно, инач false </para>
+</simplesect>
+</para>
+<sect4 id="namespace_kolibri_lib_1_1_thread_1Нельзя">
+<title>завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс</title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="38" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" bodystart="38" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Работа с потоками </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="10" column="5"/>
+  </compounddef>
+</doxygen>

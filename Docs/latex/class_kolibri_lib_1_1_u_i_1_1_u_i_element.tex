@@ -12,27 +12,69 @@
 Inheritance diagram for Kolibri\+Lib\+::UI\+::UIElement\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_kolibri_lib_1_1_u_i_1_1_u_i_element}
+\includegraphics[height=1.898305cm]{class_kolibri_lib_1_1_u_i_1_1_u_i_element}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_af0e207208694dc1542689f5d226568dd}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_af0e207208694dc1542689f5d226568dd} 
-{\bfseries UIElement} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} coord=\{0, 0\}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} size=\{16, 16\}, unsigned Margin=Default\+Margin)
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a311aecf3edea3bce6cc3c46038d7a1e0}{UIElement}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size=\{16, 16\}, const \mbox{\hyperlink{union_kolibri_lib_1_1_color_1_1_color}{Color\+::\+Color}} \&Main\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+graph, const unsigned \&Margin=Default\+Margin, bool relative=false)
+\begin{DoxyCompactList}\small\item\em конструктор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab591105fdaaaece609203d9088948847}{Get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Получить размер элемента \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ad299cc03e0b4fb659186d770a63f9a2b}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ad299cc03e0b4fb659186d770a63f9a2b} 
+void {\bfseries Set\+Size} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} New\+Size)
+\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a452197bd6d4f5aebf9c432a9a3a088e2}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a452197bd6d4f5aebf9c432a9a3a088e2} 
+unsigned {\bfseries Get\+Margin} () const
+\item 
+\mbox{\hyperlink{union_kolibri_lib_1_1_color_1_1_color}{Color\+::\+Color}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a79e0daa11205956c3ad4b64424597aea}{Get\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Получить осносной цвет элемента \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6f871026573aee83d1fe859b3320625d}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6f871026573aee83d1fe859b3320625d} 
+void {\bfseries Set\+Color} (\mbox{\hyperlink{union_kolibri_lib_1_1_color_1_1_color}{Color\+::\+Color}} New\+Color)
+\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ae0b96d011b65b628af2dcc0b6dc45fe3}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ae0b96d011b65b628af2dcc0b6dc45fe3} 
+void {\bfseries Set\+Coord} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} New\+Coord)
+\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_adad4d5b75d97484323f46834dbe574c8}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_adad4d5b75d97484323f46834dbe574c8} 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} {\bfseries Get\+Coord} () const
+\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a983464b962931621091affaa11f0472a}{Rotate}} (unsigned New\+Angle)
+\begin{DoxyCompactList}\small\item\em Повернуть элемент \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a91df2001fe6967e760d343e42f5d870c}{Get\+Rotate}} () const
+\begin{DoxyCompactList}\small\item\em Получить угол наклона элемента \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a56465e500c5b8e95d57c09549da98342}{Hover}} ()
+\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a55bc7a13f3d7f444e2004adde9b45700}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a55bc7a13f3d7f444e2004adde9b45700} 
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element)
+\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aadb7dd820e6edfb96007bb83743bee3c}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aadb7dd820e6edfb96007bb83743bee3c} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element) const
+\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a47f5a94da324198946c6567244620f86}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a47f5a94da324198946c6567244620f86} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element) const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3bdd6fd8fde26c997ceb3494e341fbd6}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3bdd6fd8fde26c997ceb3494e341fbd6} 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} {\bfseries \+\_\+coord}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668} 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} {\bfseries \+\_\+coord}
 \begin{DoxyCompactList}\small\item\em Координаты \end{DoxyCompactList}\item 
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a846ef24c4054e0adfb2de34f2c35f9a7}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a846ef24c4054e0adfb2de34f2c35f9a7} 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Kolibri\+Lib\+::point}} {\bfseries \+\_\+size}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f} 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} {\bfseries \+\_\+size}
 \begin{DoxyCompactList}\small\item\em Размер \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6dfc8327d6b3038cae0e85c0efc01b68}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6dfc8327d6b3038cae0e85c0efc01b68} 
+\mbox{\hyperlink{union_kolibri_lib_1_1_color_1_1_color}{Color\+::\+Color}} {\bfseries \+\_\+\+Main\+Color}
+\item 
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a1f504101c3f76fb890f4dc1bf38c637b}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a1f504101c3f76fb890f4dc1bf38c637b} 
 unsigned {\bfseries \+\_\+\+Margin}
-\begin{DoxyCompactList}\small\item\em Отступы \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Отступы \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab5290f9d9259a6402581a74ca3699a37}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab5290f9d9259a6402581a74ca3699a37} 
+unsigned {\bfseries \+\_\+angle}
+\begin{DoxyCompactList}\small\item\em Угол наклона \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6f6b023df1a1a5737819c6c50e72c5c3}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6f6b023df1a1a5737819c6c50e72c5c3} 
+bool {\bfseries \+\_\+relative}
+\begin{DoxyCompactList}\small\item\em Оносительн \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -41,6 +83,98 @@ unsigned {\bfseries \+\_\+\+Margin}
 \hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_Используется}{}\doxyparagraph{\texorpdfstring{как шиблон для других классов}{как шиблон для других классов}}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_Используется}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a311aecf3edea3bce6cc3c46038d7a1e0}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a311aecf3edea3bce6cc3c46038d7a1e0} 
+\index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!UIElement@{UIElement}}
+\index{UIElement@{UIElement}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
+\doxysubsubsection{\texorpdfstring{UIElement()}{UIElement()}}
+{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+UIElement (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&}]{coord = {\ttfamily \{0,~0\}},  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&}]{size = {\ttfamily \{16,~16\}},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_color_1_1_color}{Color\+::\+Color}} \&}]{Main\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+graph},  }\item[{const unsigned \&}]{Margin = {\ttfamily DefaultMargin},  }\item[{bool}]{relative = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & \\
+\hline
+{\em size} & \\
+\hline
+{\em Main\+Color} & \\
+\hline
+{\em Margin} & \\
+\hline
+{\em relative} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a79e0daa11205956c3ad4b64424597aea}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a79e0daa11205956c3ad4b64424597aea} 
+\index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{union_kolibri_lib_1_1_color_1_1_color}{Color\+::\+Color}} Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получить осносной цвет элемента 
+
+\begin{DoxyReturn}{Returns}
+Функция возвращает \doxylink{a6dfc8327d6b3038cae0e85c0efc01b68}{\+\_\+\+Main\+Color}
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a91df2001fe6967e760d343e42f5d870c}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a91df2001fe6967e760d343e42f5d870c} 
+\index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!GetRotate@{GetRotate}}
+\index{GetRotate@{GetRotate}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
+\doxysubsubsection{\texorpdfstring{GetRotate()}{GetRotate()}}
+{\footnotesize\ttfamily unsigned Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Get\+Rotate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получить угол наклона элемента 
+
+\begin{DoxyReturn}{Returns}
+Функция возвращает \doxylink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab5290f9d9259a6402581a74ca3699a37}{\+\_\+angle}
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab591105fdaaaece609203d9088948847}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab591105fdaaaece609203d9088948847} 
+\index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получить размер элемента 
+
+\begin{DoxyReturn}{Returns}
+Функция возвращает \doxylink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\+\_\+size}
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a56465e500c5b8e95d57c09549da98342}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a56465e500c5b8e95d57c09549da98342} 
+\index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!Hover@{Hover}}
+\index{Hover@{Hover}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
+\doxysubsubsection{\texorpdfstring{Hover()}{Hover()}}
+{\footnotesize\ttfamily bool Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Hover (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+true если курсор мыши находится в этом эелементе, иначе false 
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a983464b962931621091affaa11f0472a}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a983464b962931621091affaa11f0472a} 
+\index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Rotate (\begin{DoxyParamCaption}\item[{unsigned}]{New\+Angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Повернуть элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Angle} & Новый угол наклона \\
+\hline
+\end{DoxyParams}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-F\+:/\+Kolibri\+Os/\+Kalc/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/UI.\+hpp\end{DoxyCompactItemize}
+F\+:/\+Kolibri\+Os/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/UI.\+hpp\end{DoxyCompactItemize}

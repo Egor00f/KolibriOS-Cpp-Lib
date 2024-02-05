@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element" xml:lang="en-US">
+<title>KolibriLib::UI::UIElement Class Reference</title>
+<indexterm><primary>KolibriLib::UI::UIElement</primary></indexterm>
+<para>
+
+<para>Элемент интерфейса </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;UI.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for KolibriLib::UI::UIElement:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_kolibri_lib_1_1_u_i_1_1_u_i_element.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+
+<para>конструктор </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847">GetSize</link> () const</para>
+
+<para>Получить размер элемента </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b"/>void <emphasis role="strong">SetSize</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> NewSize)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2"/>unsigned <emphasis role="strong">GetMargin</emphasis> () const</para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea">GetColor</link> () const</para>
+
+<para>Получить осносной цвет элемента </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d"/>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> NewColor)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3"/>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8"/><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> () const</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">Rotate</link> (unsigned NewAngle)</para>
+
+<para>Повернуть элемент </para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c">GetRotate</link> () const</para>
+
+<para>Получить угол наклона элемента </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700"/><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c"/>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86"/>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668"/><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">_coord</emphasis></para>
+
+<para>Координаты </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f"/><link linkend="_struct_kolibri_lib_1_1point">Size</link> <emphasis role="strong">_size</emphasis></para>
+
+<para>Размер </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68"/><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b"/>unsigned <emphasis role="strong">_Margin</emphasis></para>
+
+<para>Отступы </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37"/>unsigned <emphasis role="strong">_angle</emphasis></para>
+
+<para>Угол наклона </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f6b023df1a1a5737819c6c50e72c5c3"/>bool <emphasis role="strong">_relative</emphasis></para>
+
+<para>Оносительн </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Элемент интерфейса </para>
+
+
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1Используется">
+<title><title>как шиблон для других классов</title></title>
+</section>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0"/><section>
+    <title>UIElement()</title>
+<indexterm><primary>UIElement</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>UIElement</secondary></indexterm>
+<para><computeroutput>KolibriLib::UI::UIElement::UIElement (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{16,&#160;16}</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp; MainColor = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+, const unsigned &amp; Margin = <computeroutput>DefaultMargin</computeroutput>
+, bool relative = <computeroutput>false</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>конструктор </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>MainColor</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>Margin</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>relative</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea"/><section>
+    <title>GetColor()</title>
+<indexterm><primary>GetColor</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>GetColor</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> KolibriLib::UI::UIElement::GetColor ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить осносной цвет элемента </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Функция возвращает <link linkend="_a6dfc8327d6b3038cae0e85c0efc01b68">_MainColor</link></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c"/><section>
+    <title>GetRotate()</title>
+<indexterm><primary>GetRotate</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>GetRotate</secondary></indexterm>
+<para><computeroutput>unsigned KolibriLib::UI::UIElement::GetRotate ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить угол наклона элемента </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Функция возвращает <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37">_angle</link></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847"/><section>
+    <title>GetSize()</title>
+<indexterm><primary>GetSize</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>GetSize</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">Size</link> KolibriLib::UI::UIElement::GetSize ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить размер элемента </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Функция возвращает <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342"/><section>
+    <title>Hover()</title>
+<indexterm><primary>Hover</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>Hover</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::UI::UIElement::Hover ( )<computeroutput>[inline]</computeroutput></computeroutput></para>
+<para><formalpara><title>Returns</title>
+
+<para>true если курсор мыши находится в этом эелементе, иначе false </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a"/><section>
+    <title>Rotate()</title>
+<indexterm><primary>Rotate</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>Rotate</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::UIElement::Rotate (unsigned NewAngle)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Повернуть элемент </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>NewAngle</entry><entry>
+<para>Новый угол наклона </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/UI.hpp</section>
+</section>

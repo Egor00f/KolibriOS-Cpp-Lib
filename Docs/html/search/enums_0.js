@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['protocols_0',['Protocols',['../namespace_kolibri_lib_1_1_network_1_1_socket.html#af96d1e70f650b4bdaa76cb2a94d499f2',1,'KolibriLib::Network::Socket']]]
+  ['errors_0',['Errors',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67c',1,'KolibriLib::filesystem']]]
 ];

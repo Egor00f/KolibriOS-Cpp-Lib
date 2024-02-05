@@ -3,6 +3,9 @@ KolibriOS C++ Lib
 
 библиотека для (чуть более) удобной работы с KolibriOS, с похренитетом к оптимизации
 
+Зачем оно надо
+---
+
 Как использовать это
 ---
 
@@ -10,41 +13,23 @@ KolibriOS C++ Lib
 ```
 #include <KolibriLib.hpp>
 ```
-Добавть в ваш Makefile(это есть в src/examples/Makefile):
+Добавть в ваш Makefile:
 ```
-C_LAYER_DIR = $(CONTRIB_DIR)/C_Layer
+C_LAYER_DIR = ../../C_Layer
 C_LAYER_OBJ = $(C_LAYER_DIR)/OBJ/loadlibimg.obj
 
-KOLIBRILIB_INCLUDE_PATH = ../include
+KOLIBRILIB_INCLUDE_PATH = F:/KolibriOs/KolibriOS-Cpp-Lib/src/include
 
-KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I $(C_LAYER_DIR)/INCLUDE
+KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH)
 
 INCLUDES += $(KOLIBRILIB_INCLUDE)
-
-SOURCES += $(KOLIBRILIB_INCLUDE)/kolibriLib/%.cpp
-
 ```
-KOLIBRILIB_INCLUDE_PATH нужно отредактировать
+KOLIBRILIB_INCLUDE_PATH и C_LAYER_DIR нужно отредактировать для вашего проекта
+
+это все можно также найти в src/examples/Makefile
+
+Примеры использования лежат в src/examples/
 
 
 
-cmake не тестировался но
-Для использования этой библиотеки необходимо добавить в ваш CMakeLists.txt
-
-```
-include(PATH_TO_THIS_LIB/include.cmake)
-```
-
-Или если вы используете Makefile достаточно добавить в INCLUDES 
-```
--I /PATH_TO_THIS_LIB/include
-```
-
-подробнее в /Docs
-
-Сборка
----
-собрать примеры можно командой:
-```
-cmake .
-```
+Описания функций и классов в Docs/html

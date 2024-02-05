@@ -1,0 +1,166 @@
+.TH "KolibriLib::UI::Images::Image" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::UI::Images::Image \- Картинка как элемент интерфейса  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <image\&.hpp>\fP
+.PP
+Inherits \fBKolibriLib::UI::UIElement\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBImage\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={100, 100})"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "void \fBLoadImage\fP (const std::string &Path=DefaultImage)"
+.br
+.RI "Загрузить изображение "
+.ti -1c
+.RI "void \fBRender\fP (\fBSize\fP size={0, 0})"
+.br
+.RI "Вывести изображение в окно "
+.ti -1c
+.RI "\fBImage\fP & \fBoperator=\fP (const \fBImage\fP &a)"
+.br
+.ti -1c
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={100, 100}, const std::string &Path=DefaultImage)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.br
+.RI "конструктор "
+.ti -1c
+.RI "\fBSize\fP \fBGetSize\fP () const"
+.br
+.RI "Получить размер элемента "
+.ti -1c
+.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.br
+.ti -1c
+.RI "unsigned \fBGetMargin\fP () const"
+.br
+.ti -1c
+.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.br
+.RI "Получить осносной цвет элемента "
+.ti -1c
+.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.br
+.ti -1c
+.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.br
+.ti -1c
+.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.br
+.ti -1c
+.RI "void \fBRotate\fP (unsigned NewAngle)"
+.br
+.RI "Повернуть элемент "
+.ti -1c
+.RI "unsigned \fBGetRotate\fP () const"
+.br
+.RI "Получить угол наклона элемента "
+.ti -1c
+.RI "bool \fBHover\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBUIElement\fP &Element) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBCoord\fP \fB_coord\fP"
+.br
+.RI "Координаты "
+.ti -1c
+.RI "\fBSize\fP \fB_size\fP"
+.br
+.RI "Размер "
+.ti -1c
+.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.br
+.ti -1c
+.RI "unsigned \fB_Margin\fP"
+.br
+.RI "Отступы "
+.ti -1c
+.RI "unsigned \fB_angle\fP"
+.br
+.RI "Угол наклона "
+.ti -1c
+.RI "bool \fB_relative\fP"
+.br
+.RI "Оносительн "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Картинка как элемент интерфейса 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "KolibriLib::UI::Images::Image::Image (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{100, 100}\fP)"
+
+.PP
+Конструктор 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP Координаты 
+.br
+\fIsize\fP Размер 
+.br
+\fIPath\fP Путь до картинки 
+.br
+\fIMargin\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void KolibriLib::UI::Images::Image::LoadImage (const std::string & Path = \fRDefaultImage\fP)"
+
+.PP
+Загрузить изображение 
+.PP
+\fBParameters\fP
+.RS 4
+\fIPath\fP путь до файла 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::Images::Image::Render (\fBSize\fP size = \fR{0, 0}\fP)"
+
+.PP
+Вывести изображение в окно 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsize\fP Размер выводимого изображения 
+.RE
+.PP
+.SS "растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

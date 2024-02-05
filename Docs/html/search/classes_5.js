@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uielement_0',['UIElement',['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html',1,'KolibriLib::UI']]]
+  ['image_0',['Image',['../class_kolibri_lib_1_1_u_i_1_1_images_1_1_image.html',1,'KolibriLib::UI::Images']]]
 ];

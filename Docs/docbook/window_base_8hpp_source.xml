@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_window_base_8hpp_source" xml:lang="en-US">
+<title>windowBase.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__WINDOWBASE_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__WINDOWBASE_H__</emphasis>
+3 
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
+7 
+8 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+9 {
+10 
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>window
+13 &#32;&#32;&#32;&#32;{
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link>&#32;=&#32;{400,&#32;400};
+17 
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a0b2c16c6f0b120a6ef83b2366006c6a6">DefaultWindowCoord</link>&#32;=&#32;{100,&#32;100};
+20 
+21 
+22 
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+24 
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1aa952d568261368ee7ca5c6d95728b0e5">UnfocusWindow</link>(<emphasis role="keywordtype">int</emphasis>&#32;slot)
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_unfocus_window(slot);
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1aaa30301e531d5aa8c046c0b14699b07b">FocusWindow</link>(<emphasis role="keywordtype">int</emphasis>&#32;slot)
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_focus_window(slot);
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+37 
+38 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;window</emphasis>
+39 &#32;&#32;&#32;&#32;
+40 
+41 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+42 
+43 
+44 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__WINDOWBASE_H__</emphasis>
+</programlisting></section>

@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['idle_20номер_20слота_201_20можно_20завершить_20любой_20обычный_20поток_20процесс_0',['завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс',['../namespace_kolibri_lib_1_1_thread.html#Нельзя',1,'']]],
-  ['init_1',['init',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ae97953c7104c15b1fc8c9d884bcf0013',1,'KolibriLib::UI::buttons::Button::init()'],['../namespace_kolibri_lib.html#a79cea121a31a0a2da904f088c3484802',1,'KolibriLib::init()']]]
+  ['false_0',['переменную @link _status в true если эта кнопка нажата, иначе false',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#устанавливает',1,'']]],
+  ['focuswindow_1',['FocusWindow',['../namespace_kolibri_lib_1_1window.html#aaa30301e531d5aa8c046c0b14699b07b',1,'KolibriLib::window']]],
+  ['form_2',['Form',['../class_kolibri_lib_1_1_u_i_1_1_form.html',1,'KolibriLib::UI::Form'],['../class_kolibri_lib_1_1_u_i_1_1_form.html#a08256f7ba2a90b499f7232b0287585db',1,'KolibriLib::UI::Form::Form()']]],
+  ['frame_3',['Frame',['../class_kolibri_lib_1_1_u_i_1_1_frame.html',1,'KolibriLib::UI']]],
+  ['freebuttonid_4',['FreeButtonId',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a50f50638d4faadd115e569d5db1e2d1a',1,'KolibriLib::UI::buttons']]],
+  ['fserror_5',['FSError',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3',1,'KolibriLib::filesystem']]]
 ];

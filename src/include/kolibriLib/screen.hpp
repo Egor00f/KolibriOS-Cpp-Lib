@@ -1,21 +1,22 @@
-#pragma once
 #ifndef __SCREEN_H__
 #define __SCREEN_H__
 
 
 #include <sys/ksys.h>
 
-#include "base.hpp"
+#include "small.hpp"
 
 namespace KolibriLib
 {
     /// @brief Получить разрешение экрана
     /// @return размер экрана
-    point GetScreenSize()
+    point<unsigned> GetScreenSize()
     {
         ksys_pos_t a = _ksys_screen_size();
-        return {a.x, a.y};
+        return (point<unsigned>){a.x, a.y};
     }
+
+
 }
 
 

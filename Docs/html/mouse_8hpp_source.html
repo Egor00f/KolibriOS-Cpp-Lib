@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>KolibriLib: F:/KolibriOs/Kalc/KolibriOS-Cpp-Lib/src/include/kolibriLib/mouse.hpp Source File</title>
+<title>KolibriLib: F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/mouse.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,61 +102,59 @@ $(function(){initNavTree('mouse_8hpp_source.html',''); initResizable(); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __MOUSE_H__</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __MOUSE_H__</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">    #include &lt;sys/ksys.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>}</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;base.hpp&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_kolibri_lib.html">KolibriLib</a></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html">   13</a></span>    <span class="keyword">namespace </span>mouse</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    {</div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#ad71ebd075c9b514bf500ff7920a69c86">   17</a></span>        <span class="keyword">inline</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#ad71ebd075c9b514bf500ff7920a69c86">GetMousePositionOnSreen</a>()</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            ksys_pos_t a = _ksys_get_mouse_pos(KSYS_MOUSE_SCREEN_POS);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">return</span> {a.x, a.y};</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;sys/ksys.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;small.hpp&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_kolibri_lib.html">KolibriLib</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html">   10</a></span>    <span class="keyword">namespace </span>mouse</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9">   15</a></span>        <span class="keyword">inline</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;int&gt;</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9">GetMousePositionOnSreen</a>()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            ksys_pos_t a = _ksys_get_mouse_pos(KSYS_MOUSE_SCREEN_POS);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordflow">return</span> (<a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">KolibriLib::point&lt;int&gt;</a>){a.x, a.y};</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        }</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#a2c6bfd648dbc98a2ea6b6bcc752807f0">   26</a></span>        <span class="keyword">inline</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a2c6bfd648dbc98a2ea6b6bcc752807f0">GetMousePositionInWindow</a>()</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            ksys_pos_t a = _ksys_get_mouse_pos(KSYS_MOUSE_WINDOW_POS);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keywordflow">return</span> {a.x, a.y};</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26">   24</a></span>        <span class="keyword">inline</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;int&gt;</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</a>()</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            ksys_pos_t a = _ksys_get_mouse_pos(KSYS_MOUSE_WINDOW_POS);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordflow">return</span> (<a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;int&gt;</a>){a.x, a.y};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        }</div>
 </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">   35</a></span>        <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">GetMouseButtons</a>()</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keywordflow">return</span> _ksys_get_mouse_buttons();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">   33</a></span>        <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">GetMouseButtons</a>()</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">return</span> _ksys_get_mouse_buttons();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0">   42</a></span>        <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0">GetMouseWheels</a>()</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">return</span> _ksys_get_mouse_wheels();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0">   40</a></span>        <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0">GetMouseWheels</a>()</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">return</span> _ksys_get_mouse_wheels();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif </span><span class="comment">// __MOUSE_H__</span></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a2c6bfd648dbc98a2ea6b6bcc752807f0"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a2c6bfd648dbc98a2ea6b6bcc752807f0">KolibriLib::mouse::GetMousePositionInWindow</a></div><div class="ttdeci">point GetMousePositionInWindow()</div><div class="ttdoc">Получить позицияю курсора внутри окна</div><div class="ttdef"><b>Definition</b> mouse.hpp:26</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a56edecd4a7aa3f7af9eadf9ea32e93c0"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0">KolibriLib::mouse::GetMouseWheels</a></div><div class="ttdeci">uint32_t GetMouseWheels()</div><div class="ttdoc">колёсико мыши</div><div class="ttdef"><b>Definition</b> mouse.hpp:42</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a7ae50aac73ac33bc25e269c12522a024"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">KolibriLib::mouse::GetMouseButtons</a></div><div class="ttdeci">uint32_t GetMouseButtons()</div><div class="ttdoc">Проверить какие кнопки мыши нажаты</div><div class="ttdef"><b>Definition</b> mouse.hpp:35</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_ad71ebd075c9b514bf500ff7920a69c86"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#ad71ebd075c9b514bf500ff7920a69c86">KolibriLib::mouse::GetMousePositionOnSreen</a></div><div class="ttdeci">point GetMousePositionOnSreen()</div><div class="ttdoc">Получить позицияю курсора на экране</div><div class="ttdef"><b>Definition</b> mouse.hpp:17</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> base.hpp:17</div></div>
-<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> base.hpp:22</div></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace KolibriLib</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif </span><span class="comment">// __MOUSE_H__</span></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a3214167f4881bd080a5f8677f9f748e9"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9">KolibriLib::mouse::GetMousePositionOnSreen</a></div><div class="ttdeci">point&lt; int &gt; GetMousePositionOnSreen()</div><div class="ttdoc">Получить позицияю курсора на экране</div><div class="ttdef"><b>Definition</b> mouse.hpp:15</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a56edecd4a7aa3f7af9eadf9ea32e93c0"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0">KolibriLib::mouse::GetMouseWheels</a></div><div class="ttdeci">uint32_t GetMouseWheels()</div><div class="ttdoc">колёсико мыши</div><div class="ttdef"><b>Definition</b> mouse.hpp:40</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a7ae50aac73ac33bc25e269c12522a024"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">KolibriLib::mouse::GetMouseButtons</a></div><div class="ttdeci">uint32_t GetMouseButtons()</div><div class="ttdoc">Проверить какие кнопки мыши нажаты</div><div class="ttdef"><b>Definition</b> mouse.hpp:33</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_ac2a6b8b5a4e77db980d7dcc2cb79eb26"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26">KolibriLib::mouse::GetMousePositionInWindow</a></div><div class="ttdeci">point&lt; int &gt; GetMousePositionInWindow()</div><div class="ttdoc">Получить позицияю курсора внутри окна</div><div class="ttdef"><b>Definition</b> mouse.hpp:24</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> button.hpp:13</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> small.hpp:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

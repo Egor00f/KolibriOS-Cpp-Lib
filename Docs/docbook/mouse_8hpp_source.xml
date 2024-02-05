@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mouse_8hpp_source" xml:lang="en-US">
+<title>mouse.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/mouse.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__MOUSE_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__MOUSE_H__</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&quot;small.hpp&quot;</emphasis>
+6 
+7 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+8 {
+10 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>mouse
+11 &#32;&#32;&#32;&#32;{
+12 
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">GetMousePositionOnSreen</link>()
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;a&#32;=&#32;_ksys_get_mouse_pos(KSYS_MOUSE_SCREEN_POS);
+18 
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;int&gt;</link>){a.x,&#32;a.y};
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+21 
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</link>()
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;a&#32;=&#32;_ksys_get_mouse_pos(KSYS_MOUSE_WINDOW_POS);
+27 
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>){a.x,&#32;a.y};
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+30 
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;uint32_t&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a7ae50aac73ac33bc25e269c12522a024">GetMouseButtons</link>()
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_mouse_buttons();
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+37 
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;uint32_t&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a56edecd4a7aa3f7af9eadf9ea32e93c0">GetMouseWheels</link>()
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_mouse_wheels();
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+44 
+45 &#32;&#32;&#32;&#32;}
+46 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+47 
+48 
+49 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MOUSE_H__</emphasis>
+</programlisting></section>

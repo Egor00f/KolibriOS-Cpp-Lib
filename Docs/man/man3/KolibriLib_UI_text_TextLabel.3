@@ -1,0 +1,225 @@
+.TH "KolibriLib::UI::text::TextLabel" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::UI::text::TextLabel \- Текстовая метка  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <text\&.hpp>\fP
+.PP
+Inherits \fBKolibriLib::UI::UIElement\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColor::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "void \fBRender\fP ()"
+.br
+.RI "Отрисовать текстовую метку "
+.ti -1c
+.RI "std::string \fBGetText\fP () const"
+.br
+.RI "Получить текст "
+.ti -1c
+.RI "unsigned \fBGetFontSize\fP () const"
+.br
+.RI "Получить Размер шрифта "
+.ti -1c
+.RI "void \fBSetText\fP (const std::string &NewText)"
+.br
+.RI "Изменить текст "
+.ti -1c
+.RI "void \fBSetFontSize\fP (const unsigned &NewTextSize)"
+.br
+.RI "Изменить рамер текста "
+.ti -1c
+.RI "void \fBSetScale\fP (bool scale)"
+.br
+.RI "Изменить значение переменной \fB_TextScale\&.\fP"
+.ti -1c
+.RI "void \fBinit\fP (\fBCoord\fP coord, \fBSize\fP size, std::string text='TextLabel', unsigned FontSize=9, \fBColor::Color\fP TextColor=OS::sys_color_table\&.work_text)"
+.br
+.ti -1c
+.RI "\fBTextLabel\fP & \fBoperator=\fP (const \fBTextLabel\fP &a)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.br
+.RI "конструктор "
+.ti -1c
+.RI "\fBSize\fP \fBGetSize\fP () const"
+.br
+.RI "Получить размер элемента "
+.ti -1c
+.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.br
+.ti -1c
+.RI "unsigned \fBGetMargin\fP () const"
+.br
+.ti -1c
+.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.br
+.RI "Получить осносной цвет элемента "
+.ti -1c
+.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.br
+.ti -1c
+.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.br
+.ti -1c
+.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.br
+.ti -1c
+.RI "void \fBRotate\fP (unsigned NewAngle)"
+.br
+.RI "Повернуть элемент "
+.ti -1c
+.RI "unsigned \fBGetRotate\fP () const"
+.br
+.RI "Получить угол наклона элемента "
+.ti -1c
+.RI "bool \fBHover\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBUIElement\fP &Element) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBCoord\fP \fB_coord\fP"
+.br
+.RI "Координаты "
+.ti -1c
+.RI "\fBSize\fP \fB_size\fP"
+.br
+.RI "Размер "
+.ti -1c
+.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.br
+.ti -1c
+.RI "unsigned \fB_Margin\fP"
+.br
+.RI "Отступы "
+.ti -1c
+.RI "unsigned \fB_angle\fP"
+.br
+.RI "Угол наклона "
+.ti -1c
+.RI "bool \fB_relative\fP"
+.br
+.RI "Оносительн "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Текстовая метка 
+
+
+.SS "текстовая метка, ничего особенного\&."
+.SS "важные сведения: текст всегда отрисовывается в середине 
+.br
+"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "KolibriLib::UI::text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'TextLabel'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColor::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
+
+.PP
+Конструктор 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP координата 
+.br
+\fIsize\fP Рамер элемента, игнорируется если TextScale = false 
+.br
+\fItext\fP Текст текста 
+.br
+\fIFontSize\fP Размер текста 
+.br
+\fITextScale\fP Маштабировать текст, чтобы он не выходил за границы элемента 
+.br
+\fIMargin\fP Отступы от границ 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "unsigned KolibriLib::UI::text::TextLabel::GetFontSize () const"
+
+.PP
+Получить Размер шрифта 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает \fB_FontSize\fP
+.RE
+.PP
+
+.SS "std::string KolibriLib::UI::text::TextLabel::GetText () const"
+
+.PP
+Получить текст 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает \fB_text\fP
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::TextLabel::SetFontSize (const unsigned & NewTextSize)"
+
+.PP
+Изменить рамер текста 
+.PP
+\fBParameters\fP
+.RS 4
+\fINewTextSize\fP Новый размер текста (в px) 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::TextLabel::SetScale (bool scale)"
+
+.PP
+Изменить значение переменной \fB_TextScale\&.\fP
+.PP
+\fBParameters\fP
+.RS 4
+\fIscale\fP Новое значение 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::TextLabel::SetText (const std::string & NewText)"
+
+.PP
+Изменить текст 
+.PP
+\fBParameters\fP
+.RS 4
+\fINewText\fP Текст 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

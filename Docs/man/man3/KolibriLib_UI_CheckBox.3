@@ -1,0 +1,225 @@
+.TH "KolibriLib::UI::CheckBox" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::UI::CheckBox \- Класс для работы с чекбоксами  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <checkbox\&.hpp>\fP
+.PP
+Inherits \fBKolibriLib::UI::buttons::Button\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBstyle\fP { \fBDefault\fP, \fBCircle\fP, \fBSmoth\fP }"
+.br
+.RI "Стиль Чекбокса "
+.in -1c
+
+Public Types inherited from \fBKolibriLib::UI::buttons::Button\fP
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBImage\fP = 0, \fBText\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCheckBox\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const int &\fBstyle\fP=0, const \fBColor::Color\fP &CheckBoxBorderColor=OS::sys_color_table\&.work_text, const \fBColor::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
+.br
+.ti -1c
+.RI "void \fBRender\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHandler\fP ()"
+.br
+.RI "Обработчик кнопки "
+.in -1c
+
+Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
+.in +1c
+.ti -1c
+.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, \fBColor::Color\fP ButtonColor=OS::sys_color_table\&.work_button)"
+.br
+.RI "Это конструктор "
+.ti -1c
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::string &text='button', const unsigned &Margin=UI::DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.br
+.RI "инициализировать параметры "
+.ti -1c
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::Image\fP &image=\fBImages::Image\fP(), const unsigned &Margin=DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.br
+.RI "инициализировать параметры "
+.ti -1c
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, std::string Path=DefaultImage)"
+.br
+.RI "инициализировать параметры "
+.ti -1c
+.RI "void \fBRender\fP ()"
+.br
+.RI "Отрисовать кнопку "
+.ti -1c
+.RI "bool \fBHandler\fP ()"
+.br
+.RI "Обработчик кнопки "
+.ti -1c
+.RI "bool \fBGetStatus\fP () const"
+.br
+.RI "Получить сосояние кнопки на момент последней обработки "
+.ti -1c
+.RI "ButtonID \fBGetId\fP () const"
+.br
+.RI "Получить номер кнопки "
+.ti -1c
+.RI "void \fBDeactivate\fP ()"
+.br
+.RI "Деактивировать кнопку "
+.ti -1c
+.RI "void \fBActivate\fP ()"
+.br
+.RI "Активировать кнопку "
+.ti -1c
+.RI "unsigned \fBGetType\fP () const"
+.br
+.RI "Возвращает тип данных используемых в кнопке \fB_type\&.\fP"
+.ti -1c
+.RI "std::string \fBGetTextLabel\fP () const"
+.br
+.RI "Возвращает текст кнопки "
+.ti -1c
+.RI "\fBImages::Image\fP \fBGetImage\fP () const"
+.br
+.RI "Получить изображение кнопки "
+.ti -1c
+.RI "void \fBSetText\fP (std::string NewText)"
+.br
+.RI "Изменить текст кнопки "
+.ti -1c
+.RI "\fB~Button\fP ()"
+.br
+.RI "Декструктор "
+.ti -1c
+.RI "\fBButton\fP & \fBoperator=\fP (const \fBButton\fP &element)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.br
+.RI "конструктор "
+.ti -1c
+.RI "\fBSize\fP \fBGetSize\fP () const"
+.br
+.RI "Получить размер элемента "
+.ti -1c
+.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.br
+.ti -1c
+.RI "unsigned \fBGetMargin\fP () const"
+.br
+.ti -1c
+.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.br
+.RI "Получить осносной цвет элемента "
+.ti -1c
+.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.br
+.ti -1c
+.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.br
+.ti -1c
+.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.br
+.ti -1c
+.RI "void \fBRotate\fP (unsigned NewAngle)"
+.br
+.RI "Повернуть элемент "
+.ti -1c
+.RI "unsigned \fBGetRotate\fP () const"
+.br
+.RI "Получить угол наклона элемента "
+.ti -1c
+.RI "bool \fBHover\fP ()"
+.br
+.ti -1c
+.RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBUIElement\fP &Element) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+.in +1c
+.ti -1c
+.RI "\fBCoord\fP \fB_coord\fP"
+.br
+.RI "Координаты "
+.ti -1c
+.RI "\fBSize\fP \fB_size\fP"
+.br
+.RI "Размер "
+.ti -1c
+.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.br
+.ti -1c
+.RI "unsigned \fB_Margin\fP"
+.br
+.RI "Отступы "
+.ti -1c
+.RI "unsigned \fB_angle\fP"
+.br
+.RI "Угол наклона "
+.ti -1c
+.RI "bool \fB_relative\fP"
+.br
+.RI "Оносительн "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс для работы с чекбоксами 
+
+
+.SS "просто чекбокс, ему можно задать различные стили"
+
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBKolibriLib::UI::CheckBox::style\fP"
+
+.PP
+Стиль Чекбокса 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDefault \fP\fP
+По вид умолчанию, квадрат 
+.TP
+\fB\fICircle \fP\fP
+В виде круга 
+.TP
+\fB\fISmoth \fP\fP
+Квадрат с со сглаженными углами 
+.PP
+\fBWarning\fP
+.RS 4
+Не реализованно (пока что) 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for KolibriLib from the source code\&.

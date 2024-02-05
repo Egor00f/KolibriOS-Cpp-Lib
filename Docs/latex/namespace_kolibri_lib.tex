@@ -20,8 +20,6 @@ namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_network}{Network}}
 \begin{DoxyCompactList}\small\item\em Работа с сетью \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s}{OS}}
 \begin{DoxyCompactList}\small\item\em Работа с системой \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_settings}{Settings}}
-\begin{DoxyCompactList}\small\item\em Работа с настройками \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread}{Thread}}
 \begin{DoxyCompactList}\small\item\em Работа с потоками \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1window}{window}}
@@ -34,22 +32,28 @@ struct \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}{Wait}} (unsigned time)
-\begin{DoxyCompactList}\small\item\em Подождать \end{DoxyCompactList}\item 
 \Hypertarget{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}\label{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802} 
 void {\bfseries init} ()
 \begin{DoxyCompactList}\small\item\em инициализация \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} \mbox{\hyperlink{namespace_kolibri_lib_a91959a5056d26eda0fbc889687f4deb8}{Get\+Screen\+Size}} ()
+void \mbox{\hyperlink{namespace_kolibri_lib_a56a5ef2333e7fe22f558aaa6c9276b7c}{Wait}} (unsigned int time)
+\begin{DoxyCompactList}\small\item\em Подождать \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \mbox{\hyperlink{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e}{Get\+Screen\+Size}} ()
 \begin{DoxyCompactList}\small\item\em Получить разрешение экрана \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{namespace_kolibri_lib_a02794935449d80c9e9fd8e0f604e586d}\label{namespace_kolibri_lib_a02794935449d80c9e9fd8e0f604e586d} 
-const int {\bfseries AAANUMBER} = 65536
+\Hypertarget{namespace_kolibri_lib_ac3fc0a4a923e29aa814420d285d1fa9c}\label{namespace_kolibri_lib_ac3fc0a4a923e29aa814420d285d1fa9c} 
+const std\+::string {\bfseries Configuration\+Dir} = "{}/kolibrios/etc/"{}
 \item 
-\Hypertarget{namespace_kolibri_lib_af3486907be3afec85e0ca679ed26943b}\label{namespace_kolibri_lib_af3486907be3afec85e0ca679ed26943b} 
-const std\+::string {\bfseries Config\+Folder} = "{}/sys/etc"{}
-\begin{DoxyCompactList}\small\item\em Путь по которому сохраняются настройки приложений \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{namespace_kolibri_lib_ae42aab2f9795e3359fb723ff5820250c}\label{namespace_kolibri_lib_ae42aab2f9795e3359fb723ff5820250c} 
+const std\+::string {\bfseries Img\+Dir} = Configuration\+Dir + "{}images/"{}
+\item 
+\Hypertarget{namespace_kolibri_lib_ab1099de2131804416562ef820927ca2b}\label{namespace_kolibri_lib_ab1099de2131804416562ef820927ca2b} 
+const std\+::string {\bfseries Default\+Image} = Img\+Dir + "{}default.\+png"{}
+\item 
+\Hypertarget{namespace_kolibri_lib_aa47d5ef524ec6197866199e1522047c6}\label{namespace_kolibri_lib_aa47d5ef524ec6197866199e1522047c6} 
+const std\+::string {\bfseries Cursors\+Dir} = Configuration\+Dir + "{}cursors/"{}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -61,11 +65,11 @@ Egor00f
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_a91959a5056d26eda0fbc889687f4deb8}\label{namespace_kolibri_lib_a91959a5056d26eda0fbc889687f4deb8} 
+\Hypertarget{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e}\label{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e} 
 \index{KolibriLib@{KolibriLib}!GetScreenSize@{GetScreenSize}}
 \index{GetScreenSize@{GetScreenSize}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{GetScreenSize()}{GetScreenSize()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -74,11 +78,11 @@ Egor00f
 \begin{DoxyReturn}{Returns}
 размер экрана 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}\label{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6} 
+\Hypertarget{namespace_kolibri_lib_a56a5ef2333e7fe22f558aaa6c9276b7c}\label{namespace_kolibri_lib_a56a5ef2333e7fe22f558aaa6c9276b7c} 
 \index{KolibriLib@{KolibriLib}!Wait@{Wait}}
 \index{Wait@{Wait}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{Wait()}{Wait()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Wait (\begin{DoxyParamCaption}\item[{unsigned}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Wait (\begin{DoxyParamCaption}\item[{unsigned int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_base_8hpp_source" xml:lang="en-US">
+<title>base.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/base.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#ifndef&#32;__BASE_H__</emphasis>
+4 <emphasis role="preprocessor">#define&#32;__BASE_H__</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+11 
+12 <emphasis role="preprocessor">#include&#32;&quot;filesystem.hpp&quot;</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
+14 
+17 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+18 {
+19 
+21 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>()
+22 &#32;&#32;&#32;&#32;{
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_set_event_mask(0x07);
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1acd3677ce750619433ac3ed307fd93f06">OS::GetSystemColors</link>();
+25 
+26 &#32;&#32;&#32;&#32;}
+27 }
+28 
+29 
+30 
+31 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BASE_H__</emphasis>
+</programlisting></section>

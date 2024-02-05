@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_thread" xml:lang="en-US">
+<title>KolibriLib::Thread Namespace Reference</title>
+<indexterm><primary>KolibriLib::Thread</primary></indexterm>
+<para>
+
+<para>Работа с потоками </para>
+ 
+</para>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e">CreateThread</link> (void *ThreadEntry, unsigned ThreadStackSize=1024)</para>
+
+<para>Создать поток </para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9">TerminateThread</link> (int PID)</para>
+
+<para>Завершить процесс/поток </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Работа с потоками </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e"/><section>
+    <title>CreateThread()</title>
+<indexterm><primary>CreateThread</primary><secondary>KolibriLib::Thread</secondary></indexterm>
+<indexterm><primary>KolibriLib::Thread</primary><secondary>CreateThread</secondary></indexterm>
+<para><computeroutput>unsigned KolibriLib::Thread::CreateThread (void * ThreadEntry, unsigned ThreadStackSize = <computeroutput>1024</computeroutput>
+)</computeroutput></para><para>
+
+<para>Создать поток </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ThreadEntry</entry><entry>
+<para>Имя функции которую нужно запустить в новом потоке </para>
+</entry>
+                            </row>
+                            <row>
+<entry>ThreadStackSize</entry><entry>
+<para>Размер стека нового потока в байтах </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>ID потока </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9"/><section>
+    <title>TerminateThread()</title>
+<indexterm><primary>TerminateThread</primary><secondary>KolibriLib::Thread</secondary></indexterm>
+<indexterm><primary>KolibriLib::Thread</primary><secondary>TerminateThread</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::Thread::TerminateThread (int PID)</computeroutput></para><para>
+
+<para>Завершить процесс/поток </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>PID</entry><entry>
+<para>ID Процесса/потока </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true если успешно, инач false </para>
+</formalpara>
+</para>
+<section xml:id="_namespace_kolibri_lib_1_1_thread_1Нельзя">
+<title><title>завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс</title></title>
+</section>
+</section>
+</section>
+</section>

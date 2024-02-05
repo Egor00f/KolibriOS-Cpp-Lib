@@ -1,0 +1,48 @@
+\doxysection{keyboard.\+hpp}
+\hypertarget{keyboard_8hpp_source}{}\label{keyboard_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/keyboard.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/keyboard.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_KEYBOARD\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_KEYBOARD\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{namespace\ }keyboard}
+\DoxyCodeLine{00009\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ CheckKeyboard()}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_key().code;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ ControlKeys}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ LeftShift\ \ \ =\ KSYS\_CONTROL\_LSHIFT,\ \ \textcolor{comment}{//Хоспади\ автор\ ksys.h\ зачем\ такие\ страшные\ и\ длинные\ шифры,\ нипанятна\ же\ ничего}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ RightShift\ \ =\ KSYS\_CONTROL\_RSHIFT,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ LeftCtrl\ \ \ \ =\ KSYS\_CONTROL\_LCTRL,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ RightCtrl\ \ \ =\ KSYS\_CONTROL\_RCTRL,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ LeftAlt\ \ \ \ \ =\ KSYS\_CONTROL\_LALT,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ RightAlt\ \ \ \ =\ KSYS\_CONTROL\_RALT,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ CapsLock\ \ \ \ =\ KSYS\_CONTROL\_CAPS,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ NumLock\ \ \ \ \ =\ KSYS\_CONTROL\_NUM\_LOCK,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ ScrollLock\ \ =\ KSYS\_CONTROL\_SCROLL\_LOCK}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ GetControlKey()}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_control\_key\_state();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ InstallHotKey(uint16\_t\ controlkeys)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\_ksys\_set\_sys\_hotkey(0,\ controlkeys);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ keyboard}}
+\DoxyCodeLine{00046\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_KEYBOARD\_H\_\_}}
+
+\end{DoxyCode}

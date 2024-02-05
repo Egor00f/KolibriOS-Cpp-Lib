@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_image_button" xml:lang="en-US">
+<title>KolibriLib::UI::buttons::ImageButton Class Reference</title>
+<indexterm><primary>KolibriLib::UI::buttons::ImageButton</primary></indexterm>
+<para>
+
+<para>Кнопка с картинкой </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;button.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for KolibriLib::UI::buttons::ImageButton:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_image_button.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_image_button_1a8ff2ba361bdab8aa86905234e2a40478"/><emphasis role="strong">ImageButton</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;size={0, 0}, <link linkend="_class_kolibri_lib_1_1_u_i_1_1_image_1_1img">Image::img</link> Image=ImgDir+&quot;default.raw&quot;, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>, ksys_color_t ButtonColor=OS::sys_color_table.work_button, ksys_color_t TextColor=OS::sys_color_table.work_text)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_image_button_1ad2994a904184d2947c9c140c5577cb95"/>void <emphasis role="strong">Render</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button">KolibriLib::UI::buttons::EmpetyButton</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1ac96194b7086ee6f74f3d4c7d8ae251a9">EmpetyButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;size={20, 20}, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>, ksys_color_t ButtonColor=OS::sys_color_table.work_button)</para>
+
+<para>Это конструктор </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a0c2adb3d65c1e1d33125373204110449">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;size={0, 0}, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>, ksys_color_t ButtonColor=OS::sys_color_table.work_button)</para>
+
+<para>инициализировать параметры </para>
+</listitem>
+            <listitem><para>virtual void <emphasis role="strong">render</emphasis> ()</para>
+
+<para>Отрисовать кнопку </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1aa953cf23f7e73fca5c59df550d232171">Handler</link> ()</para>
+
+<para>Обработчик кнопки </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1aa1a92d9238434c515074e002d1fc2f14">GetStatus</link> ()</para>
+
+<para>Получить сосояние кнопки на момент последней обработки </para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a16e62f0ecc7101d9875b8e4ecb65686d">GetId</link> ()</para>
+
+<para>Получить номер кнопки </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a9a67d6564916148ddcfca9cc0eed8bd0">Deactivate</link> ()</para>
+
+<para>Деактивировать кнопку </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_empety_button_1a7757ac4b54b524ae60e8d899e93c7c00">Activate</link> ()</para>
+
+<para>Активировать кнопку </para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetColor</emphasis> (ksys_color_t NewColor)</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetText</emphasis> (std::string NewText)</para>
+</listitem>
+        </itemizedlist>
+Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">UIElement</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; coord={0, 0}, <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; size={16, 16}, ksys_color_t MainColor=OS::sys_color_table.frame_area, unsigned Margin=<link linkend="_namespace_kolibri_lib_1_1_u_i_1a779f87b2d214a96a03a08650f341ceb1">DefaultMargin</link>)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
+
+<para>Проверяет находится ли курсор мыши на этом элементе </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1d941edd25bd9e9f76abefc38b0c85e4">SetSize</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;NewSize)</para>
+
+<para>Изменить размер текстовой метки </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1bd0f7112cbb4bf5e664bf8b96af3864">SetCoord</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; &amp;NewCoords)</para>
+
+<para>Изменить координаты текстовой метки </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a5e21e6ff47c0c49bc47571c6f06a2ed0">GetSize</link> ()</para>
+
+<para>Получить размер элемента </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a43e21085173be8fa7783925a8b1d5b22">GetCoord</link> ()</para>
+
+<para>Получить координаты элемента </para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <emphasis role="strong">_coord</emphasis></para>
+
+<para>Координаты </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <emphasis role="strong">_size</emphasis></para>
+
+<para>Размер </para>
+</listitem>
+            <listitem><para>ksys_color_t <emphasis role="strong">_MainColor</emphasis></para>
+</listitem>
+            <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
+
+<para>Отступы </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Кнопка с картинкой </para>
+<para>
+The documentation for this class was generated from the following file:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp</section>
+</section>

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_graphic_8hpp_source" xml:lang="en-US">
+<title>graphic.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__GRAPHIC_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__GRAPHIC_H__</emphasis>
+3 
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+8 
+9 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+10 
+11 <emphasis role="preprocessor">#include&#32;&quot;small.hpp&quot;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
+14 
+15 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+16 {
+17 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Графика</emphasis>
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>graphic
+19 &#32;&#32;&#32;&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawLine(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;b,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+26 
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawLine(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;coord,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;lenght,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;angle,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+33 
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawPixel(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;position,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+38 
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawCircle(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;coord,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Radius,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;detalization&#32;=&#32;36,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+46 
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawRectangleFill(UI::Coord&#32;position,&#32;UI::Size&#32;size,&#32;Color::Color&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+52 
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawCircleFill(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;coord,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Radius,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;detalization&#32;=&#32;36,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+59 
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawPoint(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;position,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;size,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;fill&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+66 
+67 
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawRectangleLines(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;a,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;b,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+72 
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawTriangle(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;a,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;b,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&amp;&#32;c,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">OS::sys_color_table</link>.work_graph);
+79 &#32;&#32;&#32;&#32;}
+80 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawLine(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;b,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color)
+81 &#32;&#32;&#32;&#32;{
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_line(coord.x,&#32;coord.y,&#32;b.x,&#32;b.y,&#32;color.val);
+83 &#32;&#32;&#32;&#32;}
+84 
+85 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawLine(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;coord,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;lenght,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;angle,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color)
+86 &#32;&#32;&#32;&#32;{
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_line(coord.x,&#32;coord.y,&#32;coord.x&#32;+&#32;(lenght&#32;*&#32;cos(angle)),&#32;coord.y&#32;+&#32;(lenght&#32;*&#32;sin(angle)),&#32;color.val);
+88 &#32;&#32;&#32;&#32;}
+89 
+90 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawPixel(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;position,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color)
+91 &#32;&#32;&#32;&#32;{
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_pixel(position.x,&#32;position.y,&#32;color.val);
+93 &#32;&#32;&#32;&#32;}
+94 
+95 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawCircle(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;coord,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Radius,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;detalization,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color)
+96 &#32;&#32;&#32;&#32;{
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UI::Coord&#32;buff;
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;b&#32;=&#32;Radius;
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;c&#32;=&#32;0;
+100 
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">unsigned</emphasis>&#32;angle&#32;=&#32;1;&#32;angle&#32;&lt;=&#32;detalization&#32;*&#32;10;&#32;angle&#32;+=&#32;36&#32;/&#32;detalization)
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buff&#32;=&#32;{coord.x&#32;+&#32;(int)b,&#32;coord.y&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)c};
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;b&#32;=&#32;Radius&#32;*&#32;cos(angle);
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c&#32;=&#32;Radius&#32;*&#32;sin(angle);
+106 
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UI::Coord&#32;n&#32;=&#32;{coord.x&#32;+&#32;(int)b,&#32;coord.y&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)c};
+108 
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine(buff,&#32;n);
+110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+111 &#32;&#32;&#32;&#32;}
+112 
+113 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawCircleFill(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;coord,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Radius,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;detalization,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color)
+114 &#32;&#32;&#32;&#32;{
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawCircle(coord,&#32;Radius,&#32;detalization,&#32;color);
+116 
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;b&#32;=&#32;Radius&#32;*&#32;cos(90&#32;+&#32;45);
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;c&#32;=&#32;Radius&#32;*&#32;sin(90&#32;+&#32;45);
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UI::Coord&#32;n&#32;=&#32;{coord.x&#32;+&#32;(int)b,&#32;coord.y&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)c};
+120 
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawRectangleFill(n,&#32;{(unsigned)(coord.x&#32;-&#32;n.x)&#32;*&#32;2,&#32;(unsigned)c&#32;*&#32;2},&#32;color);
+122 
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">unsigned</emphasis>&#32;i&#32;=&#32;Radius;&#32;i&#32;&gt;&#32;(Radius&#32;-&#32;(coord.x&#32;-&#32;n.x));&#32;i--)&#32;<emphasis role="comment">//&#32;Дозакрашивание&#32;пробелов&#32;между&#32;квадратом&#32;и&#32;границами&#32;груга</emphasis>
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawCircle(coord,&#32;i,&#32;detalization,&#32;color);
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+127 &#32;&#32;&#32;&#32;}
+128 
+129 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawRectangleFill(UI::Coord&#32;position,&#32;UI::Size&#32;size,&#32;Color::Color&#32;color)
+130 &#32;&#32;&#32;&#32;{
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;__asm__&#32;__volatile__(
+132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(13),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>((position.x&#32;&lt;&lt;&#32;16)&#32;+&#32;size.x),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>((position.y&#32;&lt;&lt;&#32;16)&#32;+&#32;size.y),&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>(color.val));
+135 &#32;&#32;&#32;&#32;}
+136 
+137 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawPoint(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;position,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;fill)
+138 &#32;&#32;&#32;&#32;{
+139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(size&#32;&lt;&#32;3)
+140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fill&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(fill)
+144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawCircle(position,&#32;size,&#32;color.val);
+146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawCircleFill(position,&#32;size,&#32;color.val);
+150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+151 &#32;&#32;&#32;&#32;}
+152 
+153 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawRectangleLines(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;a,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;b,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color)
+154 &#32;&#32;&#32;&#32;{
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine(a,&#32;{b.x,&#32;a.y},&#32;color);
+156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine(a,&#32;{a.x,&#32;b.y},&#32;color);
+157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine({b.x,&#32;a.y},&#32;b,&#32;color);
+158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine({a.x,&#32;b.y},&#32;b,&#32;color);
+159 &#32;&#32;&#32;&#32;}
+160 
+161 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;graphic::DrawTriangle(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;a,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;b,&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;&amp;c,&#32;<emphasis role="keyword">const</emphasis>&#32;Color::Color&#32;&amp;color)
+162 &#32;&#32;&#32;&#32;{
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine(a,&#32;b,&#32;color);
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine(a,&#32;c,&#32;color);
+165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawLine(b,&#32;c,&#32;color);
+166 &#32;&#32;&#32;&#32;}
+167 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+168 
+169 
+170 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__GRAPHIC_H__</emphasis>
+</programlisting></section>

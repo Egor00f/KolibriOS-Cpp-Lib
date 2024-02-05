@@ -1,0 +1,805 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" kind="class" language="C++" prot="public">
+    <compoundname>KolibriLib::UI::buttons::Button</compoundname>
+    <basecompoundref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" prot="public" virt="non-virtual">KolibriLib::UI::UIElement</basecompoundref>
+    <derivedcompoundref refid="class_kolibri_lib_1_1_u_i_1_1_check_box" prot="public" virt="non-virtual">KolibriLib::UI::CheckBox</derivedcompoundref>
+    <includes refid="button_8hpp" local="no">button.hpp</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Type</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::Type</qualifiedname>
+        <enumvalue id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440ac47151eaf6597d1d6d1b4170989d94e0" prot="public">
+          <name>Image</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440af9f396d28c3b22b4d2bf545cc3483122" prot="public">
+          <name>Text</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="90" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="91" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a886a8b3231619c8c1836d2549b1664db" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Images::Image</ref></type>
+        <definition>Images::Image KolibriLib::UI::buttons::Button::_img</definition>
+        <argsstring></argsstring>
+        <name>_img</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::_img</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="74" column="31" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2bc5be35e8b00ba1e6e642b502d4394a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label" kindref="compound">text::TextLabel</ref></type>
+        <definition>text::TextLabel KolibriLib::UI::buttons::Button::_text</definition>
+        <argsstring></argsstring>
+        <name>_text</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::_text</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="75" column="33" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a59988b09eab8a3acdbe8bd1d93b3d931" prot="private" static="no" mutable="no">
+        <type>ButtonID</type>
+        <definition>ButtonID KolibriLib::UI::buttons::Button::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::_id</qualifiedname>
+        <briefdescription>
+<para>Id кнопки </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="78" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3704b6f65a239dbee0cb0be45159cdbc" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::UI::buttons::Button::_type</definition>
+        <argsstring></argsstring>
+        <name>_type</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="80" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1acb97605ce20e14775fa5cffdbe02ef5f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::buttons::Button::_status</definition>
+        <argsstring></argsstring>
+        <name>_status</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::_status</qualifiedname>
+        <briefdescription>
+<para>Состояние кнопки(Нажата/Ненажата) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="83" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1abbc72fa0ded8e46fb52ea5afa36baa9c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::buttons::Button::_active</definition>
+        <argsstring></argsstring>
+        <name>_active</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::_active</qualifiedname>
+        <briefdescription>
+<para>Активна(работает) ли сейчас кнопка </para>
+        </briefdescription>
+        <detaileddescription>
+<sect4 id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1Занчение">
+<title>необходимо для того чтобы функция render не пыталась создать кнопку, так как в неактивном состоянии #_id освобождается и его может занять другая кнопка</title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="87" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aaa98f04affa5c850dbd5ad3faa3c6aa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::UI::buttons::Button::Button</definition>
+        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={20, 20}, unsigned Margin=UI::DefaultMargin, Color::Color ButtonColor=OS::sys_color_table.work_button)</argsstring>
+        <name>Button</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::Button</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref> &amp;</type>
+          <declname>size</declname>
+          <defval>{20, 20}</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>Margin</declname>
+          <defval>UI::DefaultMargin</defval>
+        </param>
+        <param>
+          <type><ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref></type>
+          <declname>ButtonColor</declname>
+          <defval>OS::sys_color_table.work_button</defval>
+        </param>
+        <briefdescription>
+<para>Это конструктор </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координата </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>размер </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>текст </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>отступы текста от границ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ButtonColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TextColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет текста </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="103" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="269" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a81904ddeac359eb10d23b8d76818f236" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::buttons::Button::init</definition>
+        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={0, 0}, const std::string &amp;text=&quot;button&quot;, const unsigned &amp;Margin=UI::DefaultMargin, const Color::Color &amp;ButtonColor=OS::sys_color_table.work_button)</argsstring>
+        <name>init</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::init</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref> &amp;</type>
+          <declname>size</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+          <defval>&quot;button&quot;</defval>
+        </param>
+        <param>
+          <type>const unsigned &amp;</type>
+          <declname>Margin</declname>
+          <defval>UI::DefaultMargin</defval>
+        </param>
+        <param>
+          <type>const <ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref> &amp;</type>
+          <declname>ButtonColor</declname>
+          <defval>OS::sys_color_table.work_button</defval>
+        </param>
+        <briefdescription>
+<para>инициализировать параметры </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координата </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>размер </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>текст </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>отступы текста от границ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BackgroundColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TextColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет текста </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="112" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="345" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aa93163b009993db9a67df67ad9653bc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::buttons::Button::init</definition>
+        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={0, 0}, const Images::Image &amp;image=Images::Image(), const unsigned &amp;Margin=DefaultMargin, const Color::Color &amp;ButtonColor=OS::sys_color_table.work_button)</argsstring>
+        <name>init</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::init</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref> &amp;</type>
+          <declname>size</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Images::Image</ref> &amp;</type>
+          <declname>image</declname>
+          <defval><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Images::Image</ref>()</defval>
+        </param>
+        <param>
+          <type>const unsigned &amp;</type>
+          <declname>Margin</declname>
+          <defval>DefaultMargin</defval>
+        </param>
+        <param>
+          <type>const <ref refid="union_kolibri_lib_1_1_color_1_1_color" kindref="compound">Color::Color</ref> &amp;</type>
+          <declname>ButtonColor</declname>
+          <defval>OS::sys_color_table.work_button</defval>
+        </param>
+        <briefdescription>
+<para>инициализировать параметры </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координата </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>размер </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Изображение </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>отступы текста от границ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BackgroundColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TextColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет текста </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="121" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="366" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4bcd9cdb3b727f490587f14c15d135f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::buttons::Button::init</definition>
+        <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={0, 0}, std::string Path=DefaultImage)</argsstring>
+        <name>init</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::init</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref> &amp;</type>
+          <declname>coord</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref> &amp;</type>
+          <declname>size</declname>
+          <defval>{0, 0}</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>Path</declname>
+          <defval>DefaultImage</defval>
+        </param>
+        <briefdescription>
+<para>инициализировать параметры </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>координата </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>размер </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Путь до изображения </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Margin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>отступы текста от границ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>BackgroundColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет кнопки </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TextColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>цвет текста </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="130" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="385" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2d359db5c5aaa43f1a28c46d0d00d8a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::buttons::Button::Render</definition>
+        <argsstring>()</argsstring>
+        <name>Render</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::Render</qualifiedname>
+        <briefdescription>
+<para>Отрисовать кнопку </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="133" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="401" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a018ac30303a5b12365f5251f5771bf6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::buttons::Button::Handler</definition>
+        <argsstring>()</argsstring>
+        <name>Handler</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::Handler</qualifiedname>
+        <briefdescription>
+<para>Обработчик кнопки </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Состояние кнопки(Нажата/Ненажата) </para>
+</simplesect>
+</para>
+<sect4 id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1устанавливает">
+<title>переменную <ref refid="_1acb97605ce20e14775fa5cffdbe02ef5f" kindref="member">в true если эта кнопка нажата, иначе false</ref></title></sect4>
+<sect4 id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1Эту">
+<title>функцию нужно вызывать в цикле, чтобы кнопка работала</title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="139" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="327" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3f8517f74b2049f07a9da9a9910e9814" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::UI::buttons::Button::GetStatus</definition>
+        <argsstring>() const</argsstring>
+        <name>GetStatus</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::GetStatus</qualifiedname>
+        <briefdescription>
+<para>Получить сосояние кнопки на момент последней обработки </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="_1acb97605ce20e14775fa5cffdbe02ef5f" kindref="member">_status</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="143" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="340" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a45ea9d51be9d17f6afca47ecfd6bdee6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>ButtonID</type>
+        <definition>buttons::ButtonID KolibriLib::UI::buttons::Button::GetId</definition>
+        <argsstring>() const</argsstring>
+        <name>GetId</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::GetId</qualifiedname>
+        <briefdescription>
+<para>Получить номер кнопки </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="_1a59988b09eab8a3acdbe8bd1d93b3d931" kindref="member">_id</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="147" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="421" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0a235265d209cec4e8f735d416d25505" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::buttons::Button::Deactivate</definition>
+        <argsstring>()</argsstring>
+        <name>Deactivate</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::Deactivate</qualifiedname>
+        <briefdescription>
+<para>Деактивировать кнопку </para>
+        </briefdescription>
+        <detaileddescription>
+<sect4 id="namespace_kolibri_lib_1_1_u_i_1_1buttons_1Эта">
+<title>функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок</title></sect4>
+<sect4 id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1В">
+<title>Деактивированном состоянии кнопка &quot;Не нажимается&quot;, а её <ref refid="_1a59988b09eab8a3acdbe8bd1d93b3d931" kindref="member">становится не действительным</ref></title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="152" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="278" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a65b6a0809e8e43892e48065708fa01d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::buttons::Button::Activate</definition>
+        <argsstring>()</argsstring>
+        <name>Activate</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::Activate</qualifiedname>
+        <briefdescription>
+<para>Активировать кнопку </para>
+        </briefdescription>
+        <detaileddescription>
+<sect4 id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1Противоположна">
+<title>функции <ref refid="" kindref="compound">возвращает кнопку в рабочее состояние</ref></title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="156" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="287" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aee40bbc992414d695c0800f7d903f05e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::UI::buttons::Button::GetType</definition>
+        <argsstring>() const</argsstring>
+        <name>GetType</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::GetType</qualifiedname>
+        <briefdescription>
+<para>Возвращает тип данных используемых в кнопке <ref refid="" kindref="compound">_type.</ref></para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Функция возвращает <ref refid="" kindref="compound">:: </ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="160" column="26" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="296" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4387a38fa0a7b981c3a2cea4730704db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string KolibriLib::UI::buttons::Button::GetTextLabel</definition>
+        <argsstring>() const</argsstring>
+        <name>GetTextLabel</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::GetTextLabel</qualifiedname>
+        <briefdescription>
+<para>Возвращает текст кнопки </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>std::string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="164" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="301" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7d647394cc692e8dba0dd118c6dcdf63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Images::Image</ref></type>
+        <definition>Images::Image KolibriLib::UI::buttons::Button::GetImage</definition>
+        <argsstring>() const</argsstring>
+        <name>GetImage</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::GetImage</qualifiedname>
+        <briefdescription>
+<para>Получить изображение кнопки </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="168" column="31" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="309" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a159f389b9845713368e763ce159c77d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::UI::buttons::Button::SetText</definition>
+        <argsstring>(std::string NewText)</argsstring>
+        <name>SetText</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::SetText</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>NewText</declname>
+        </param>
+        <briefdescription>
+<para>Изменить текст кнопки </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Новый</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>текст кнопки </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="172" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="314" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3dddb0a58edf4d60a2bc539859fea95b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>KolibriLib::UI::buttons::Button::~Button</definition>
+        <argsstring>()</argsstring>
+        <name>~Button</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::~Button</qualifiedname>
+        <briefdescription>
+<para>Декструктор </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="175" column="17" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="322" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1af82a283646f3b2b3be2c60018cf636f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" kindref="compound">Button</ref> &amp;</type>
+        <definition>Button &amp; KolibriLib::UI::buttons::Button::operator=</definition>
+        <argsstring>(const Button &amp;element)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>KolibriLib::UI::buttons::Button::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" kindref="compound">Button</ref> &amp;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="177" column="24" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="177" bodyend="199"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Класс для работы с кнопками </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>KolibriLib::UI::CheckBox</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_check_box"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+      </node>
+      <node id="1">
+        <label>KolibriLib::UI::buttons::Button</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>KolibriLib::Color::Color</label>
+        <link refid="union_kolibri_lib_1_1_color_1_1_color"/>
+      </node>
+      <node id="2">
+        <label>KolibriLib::UI::UIElement</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_coord</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_size</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>_MainColor</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>KolibriLib::UI::buttons::Button</label>
+        <link refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>KolibriLib::point&lt; int &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+      <node id="4">
+        <label>KolibriLib::point&lt; unsigned &gt;</label>
+        <link refid="struct_kolibri_lib_1_1point"/>
+      </node>
+    </collaborationgraph>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" line="71" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp" bodystart="72" bodyend="202"/>
+    <listofallmembers>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1abbc72fa0ded8e46fb52ea5afa36baa9c" prot="private" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_active</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_angle</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_coord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a59988b09eab8a3acdbe8bd1d93b3d931" prot="private" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_id</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a886a8b3231619c8c1836d2549b1664db" prot="private" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_img</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6dfc8327d6b3038cae0e85c0efc01b68" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_MainColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_Margin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f6b023df1a1a5737819c6c50e72c5c3" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_relative</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_size</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1acb97605ce20e14775fa5cffdbe02ef5f" prot="private" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_status</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2bc5be35e8b00ba1e6e642b502d4394a" prot="private" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_text</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3704b6f65a239dbee0cb0be45159cdbc" prot="private" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>_type</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a65b6a0809e8e43892e48065708fa01d1" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Activate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aaa98f04affa5c850dbd5ad3faa3c6aa4" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Button</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0a235265d209cec4e8f735d416d25505" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Deactivate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a45ea9d51be9d17f6afca47ecfd6bdee6" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetId</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7d647394cc692e8dba0dd118c6dcdf63" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetImage</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetMargin</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetRotate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3f8517f74b2049f07a9da9a9910e9814" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetStatus</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4387a38fa0a7b981c3a2cea4730704db" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetTextLabel</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aee40bbc992414d695c0800f7d903f05e" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>GetType</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a018ac30303a5b12365f5251f5771bf6f" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Handler</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Hover</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440ac47151eaf6597d1d6d1b4170989d94e0" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Image</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a81904ddeac359eb10d23b8d76818f236" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>init</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aa93163b009993db9a67df67ad9653bc5" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>init</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4bcd9cdb3b727f490587f14c15d135f4" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>init</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>operator!=</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1af82a283646f3b2b3be2c60018cf636f2" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>operator=</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700" prot="public" virt="non-virtual" ambiguityscope="KolibriLib::UI::UIElement::"><scope>KolibriLib::UI::buttons::Button</scope><name>operator=</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>operator==</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2d359db5c5aaa43f1a28c46d0d00d8a8" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Render</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Rotate</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f871026573aee83d1fe859b3320625d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>SetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ae0b96d011b65b628af2dcc0b6dc45fe3" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>SetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ad299cc03e0b4fb659186d770a63f9a2b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>SetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a159f389b9845713368e763ce159c77d7" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>SetText</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440af9f396d28c3b22b4d2bf545cc3483122" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Text</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>Type</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>UIElement</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3dddb0a58edf4d60a2bc539859fea95b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::buttons::Button</scope><name>~Button</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
