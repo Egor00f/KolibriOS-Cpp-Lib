@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef __WINDOW_H__
 #define __WINDOW_H__
 
@@ -150,7 +148,7 @@ namespace KolibriLib
 
 			/// @brief Изменить заголовок окна
 			/// @param newTitle новый заголовок
-			void ChangeTilte(std::string newTitle);
+			void ChangeTilte(const std::string& newTitle);
 
 			/// @brief Получить размер окна
 			/// @return point.x - ширина окна,
@@ -381,7 +379,7 @@ namespace KolibriLib
 			_ksys_change_window(coord.x, coord.y, size.x, size.y);
 		}
 
-		void Window::ChangeTilte(std::string newTitle)
+		void Window::ChangeTilte(const std::string& newTitle)
 		{
 			_ksys_set_window_title(newTitle.c_str());
 		}
