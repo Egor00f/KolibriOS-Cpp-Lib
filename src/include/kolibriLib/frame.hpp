@@ -59,6 +59,8 @@ namespace KolibriLib
             /// @return номер 
             unsigned AddElement(const T &element);
         };
+
+
         Frame::Frame(const Coord &coord, const Size &size, const Color::Color &Color, const unsigned &Margin) : UIElement(coord, size, Color, Margin)
         {
             #if DEBUG == true
@@ -108,27 +110,27 @@ namespace KolibriLib
     template <class T>
     unsigned UI::Frame::AddElement(const T &element)
     {
-        /* UI::Element a;
+        UI::Element a;
 
-        switch (T)
+        switch (sizeof(T))
         {
-        case text::TextLabel:
+        case sizeof(UI::text::TextLabel):
             a.txt   = element;
             a._type = Element::Type::TextLabel;
             break;
-        case buttons::Button:
+        case sizeof(UI::buttons::Button):
             a.btn   = element;
             a._type = Element::Type::Button;
             break;
-        case Images::Image:
+        case sizeof(UI::Images::Image):
             a.img   = element;
             a._type = Element::Type::Image;
             break;
-        case Form:
+        case sizeof(UI::Form):
             a.frm   = element;
             a._type = Element::Type::Form;
             break;
-        case CheckBox:
+        case sizeof(CheckBox):
             a.ChckBx    = element;
             a._type     = Element::Type::CheckBox;
             break;
@@ -148,7 +150,7 @@ namespace KolibriLib
 
 
         _Elements.push_back(a);
-        */
+        
 
         return _Elements.size() - 1;
     }

@@ -37,7 +37,8 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 #                  \||/
 #                   \/
 C_LAYER_DIR = ../../C_Layer
-C_LAYER_OBJ = $(C_LAYER_DIR)/OBJ/loadlibimg.obj
+C_LAYER_OBJ_DIR = $(C_LAYER_DIR)/OBJ
+C_LAYER_OBJ = $(C_LAYER_OBJ_DIR)/loadlibimg.obj $(C_LAYER_OBJ_DIR)/loadlibini.obj
 ####################################
 
 #                            || 
@@ -60,7 +61,7 @@ default: Exapmle
 Exapmle: $(OBJECTS) Makefile
 
 	@echo "linking:" $(OBJECTS)
-	$(LD) $(LDFLAGS) $(LIBPATH) --subsystem console -o $(EXECUTABLE) $(OBJECTS) $(C_LAYER_OBJ) -lstdc++ -lsupc++  -lgcc -lc.dll 
+	$(LD) $(LDFLAGS) $(LIBPATH) --subsystem console -o $(EXECUTABLE) $(OBJECTS) $(C_LAYER_OBJ) -lstdc++ -lsupc++  -lgcc -lc.dll -lsound
 	kos32-strip -s $(EXECUTABLE) -o $(EXECUTABLE)
 	kos32-objcopy $(EXECUTABLE) -O binary
 	@rm $(EXECUTABLE).o

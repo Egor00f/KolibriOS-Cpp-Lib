@@ -6,9 +6,9 @@ using namespace KolibriLib;
 int main()
 {
     init();
-    
+
     window::Window window("Example Window");
-    
+
     window.CreateText({0,0}, window.GetWindowSize(), "Hello World!");   //Текст на всё окно
 
     while(true)

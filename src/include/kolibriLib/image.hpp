@@ -21,6 +21,9 @@ namespace KolibriLib
 		/// @brief Работа с изображениями
 		namespace Images
 		{
+			/// @brief Скопировать Image_t
+			/// @param img Указатель на копируемую Image_t
+			/// @return Указатель на копию
 			Image_t* Copy(Image_t *img);
 			
 			/// @brief Картинка как элемент интерфейса
@@ -39,44 +42,50 @@ namespace KolibriLib
 
 				/// @brief Загрузить изображение
 				/// @param Path путь до файла
-				void LoadImage(const std::string &Path = DefaultImage);
+				void LoadImage(const filesystem::Path& Path);
 
 				/// @brief Вывести изображение в окно
 				/// @param size Размер выводимого изображения
 				/// @paragraph Можно растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется
 				void Render(Size size = {0, 0});
 
+				
+
+				void init(const Coord &coord = {0, 0}, const Size &size = {100, 100}, const std::string &Path = DefaultImage);
+
+				/// @brief Изменить изображение
+				/// @param img Указатель на струтуру @link Image_t
+				void SetImg(Image_t* img);
+				
 				Image& operator = (const Image& a)
 				{
 					_coord      = a._coord;
                     _size       = a._size;
                     _MainColor  = a._MainColor;
                     _Margin     = a._Margin;
-					
+					SetImg(a._img);
 
 					return *this;
 				}
-
-				void init(const Coord &coord = {0, 0}, const Size &size = {100, 100}, const std::string &Path = DefaultImage);
 			};
 
 			Image_t *Copy(Image_t *img)
 			{
 				Image_t copy;
 
-				copy.Checksum = img->Checksum;
-				copy.Data = img->Data;
-				copy.Delay = img->Delay;
-				copy.Extended = img->Extended;
-				copy.Flags = img->Flags;
-				copy.Height = img->Height;
-				copy.Next = img->Next;
-				copy.Palette = img->Palette;
-				copy.Previous = img->Previous;
-				copy.Type = img->Type;
-				copy.Width = img->Width;
+				copy.Checksum	= img->Checksum;
+				copy.Data		= img->Data;
+				copy.Delay		= img->Delay;
+				copy.Extended	= img->Extended;
+				copy.Flags		= img->Flags;
+				copy.Height		= img->Height;
+				copy.Next		= img->Next;
+				copy.Palette	= img->Palette;
+				copy.Previous	= img->Previous;
+				copy.Type		= img->Type;
+				copy.Width		= img->Width;
 
-				Image_t *a = (Image_t *)malloc(sizeof(Image_t));
+				Image_t *a = img_create(img->Width, img->Height, img->Type);
 
 				*a = copy;
 
@@ -85,9 +94,9 @@ namespace KolibriLib
 
 			Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size)
 			{
-#ifdef DEBUG == true
-				_ksys_debug_puts("Image:");
-#endif
+				#ifdef DEBUG == true
+				_ksys_debug_puts("Image Constructor\n");
+				#endif
 			}
 
 			Image::~Image()
@@ -95,15 +104,15 @@ namespace KolibriLib
 				img_destroy(_img);
 			}
 
-			void Image::LoadImage(const std::string &Path)
+			void Image::LoadImage(const filesystem::Path &Path)
 			{
 				int32_t img_size;
-				FILE *f = fopen(Path.c_str(), "rb"); // Этот код взят из примера из /contrib/C_Layer/EXAMPLE/img_example/main.c
+				FILE *f = fopen(Path.GetChars(), "rb"); // Этот код взят из примера из /contrib/C_Layer/EXAMPLE/img_example/main.c
 
 				if (!f)
 				{
 					char *a = "LoadImage: Can't open file: ";
-					strcat(a, Path.c_str());
+					strcat(a, Path.GetChars());
 					strcat(a, "\n");
 					_ksys_debug_puts(a);
 				}
@@ -111,7 +120,7 @@ namespace KolibriLib
 				if (fseek(f, 0, SEEK_END))
 				{
 					char *a = "Can't SEEK_END file: ";
-					strcat(a, Path.c_str());
+					strcat(a, Path.GetChars());
 					strcat(a, "\n");
 					_ksys_debug_puts(a);
 				}
@@ -123,7 +132,7 @@ namespace KolibriLib
 				if (!fdata)
 				{
 					char *a = "No memory for file ";
-					strcat(a, Path.c_str());
+					strcat(a, Path.GetChars());
 					strcat(a, "\n");
 					_ksys_debug_puts("malloc not return ptr");
 				}
@@ -133,7 +142,7 @@ namespace KolibriLib
 				if (ferror(f))
 				{
 					char *a = "Error reading file ";
-					strcat(a, Path.c_str());
+					strcat(a, Path.GetChars());
 					strcat(a, "\n");
 					_ksys_debug_puts(a);
 				}
@@ -172,6 +181,12 @@ namespace KolibriLib
 				_coord = coord;
 				_size = size;
 				LoadImage(Path);
+			}
+
+			void Image::SetImg(Image_t* img)
+			{
+				img_destroy(_img);
+				_img = Copy(img);
 			}
 		} // namespace Image
 	} // namespace UI

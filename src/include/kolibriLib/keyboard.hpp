@@ -42,6 +42,8 @@ namespace KolibriLib
         {
             return !_ksys_set_sys_hotkey(0, controlkeys);
         }
+
+        bool DeleteHotKey();
     } // namespace keyboard
 } // namespace KolibriLib
 

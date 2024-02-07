@@ -21,7 +21,7 @@ namespace KolibriLib
         {
             public:
                 Path(std::string path);
-
+                Path(char* path);
                 const char* GetChars() const;
 
                 std::string GetString() const;
@@ -59,56 +59,56 @@ namespace KolibriLib
 
         /// @brief Создать файл
         /// @param name полный путь до файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int CreateFile(const char *name);
 
         /// @brief Создать файл
         /// @param name имя файла
         /// @param path путь до файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int CreateFile(const char *name, char *path);
 
         /// @brief Создать файл
         /// @param name имя файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int CreateFile(const Path& name);
 
         /// @brief Создать файл
         /// @param name имя файла
         /// @param path путь до файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int CreateFile(const std::string& name, const Path& path);
 
         /// @brief удалить файл или папку
         /// @param name полный путь до файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int Delete(const char *name);
 
         /// @brief удалить файл или папку
         /// @param name имя файла
         /// @param path путь до файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int Delete(const char *name, char *path);
         
         /// @brief удалить файл  или папку
         /// @param name имя файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int Delete(const Path& name);
 
         /// @brief удалить файл или папку
         /// @param name имя файла
         /// @param path путь до файла
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int Delete(const std::string &name, const Path& path);
 
         /// @brief Создать папку
         /// @param path путь
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int MakeDirectory(const char *path);
 
         /// @brief Создать папку
         /// @param path путь
-        /// @return
+        /// @return Функция возвращает значение из @link Errors
         int MakeDirectory(const Path& path);
 
         /// @brief проверяет существует ли файл или папки
@@ -116,9 +116,18 @@ namespace KolibriLib
         /// @return true если файл или папка существует, иначе false
         bool Exist(const Path& Path);
 
+        /// @brief Переименовать файл
+        /// @param OldName Полное имя файла
+        /// @param NewName Новое полное имя файла
+        /// @return Функция возвращает значение из @link Errors
         int Rename(const Path& OldName, const Path& NewName);
 
         Path::Path(std::string path)
+        {
+            _string = path;
+        }
+
+        Path::Path(char* path)
         {
             _string = path;
         }

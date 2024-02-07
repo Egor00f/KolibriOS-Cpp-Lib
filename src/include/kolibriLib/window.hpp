@@ -228,7 +228,7 @@ namespace KolibriLib
 
 		unsigned Window::AddNewButton(UI::buttons::Button btn)
 		{
-            for(unsigned i = 0; i < _Elements.size(); i++)
+            for(int i = 0; i < _Elements.size(); i++)
 			{
 				if (!_Elements[i].use)
 				{
@@ -238,7 +238,7 @@ namespace KolibriLib
 						_Elements[i].btn = btn;
 						break;
 					case UI::buttons::Button::Type::Text:
-						_Elements[i].btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel(), btn.GetMargin(), btn.GetColor());
+						_Elements[i].btn = btn;
 						break;
 					default:
 						break;
@@ -252,10 +252,10 @@ namespace KolibriLib
 			switch (btn.GetType())
 			{
 			case UI::buttons::Button::Type::Image:
-				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetImage(), btn.GetMargin(), btn.GetColor());
+				a.btn = btn;
 				break;
 			case UI::buttons::Button::Type::Text:
-				a.btn.init(btn.GetCoord(), btn.GetSize(), btn.GetTextLabel(), btn.GetMargin(), btn.GetColor());
+				a.btn = btn;
 			default:
 				break;
 			}
@@ -305,18 +305,18 @@ namespace KolibriLib
 
         unsigned Window::AddNewForm(UI::Form form)
         {
-			for (unsigned i = 0; i < _Elements.size(); i++)
+			for (int i = 0; i < _Elements.size(); i++)
 			{
 				if (!_Elements[i].use)
 				{
-					_Elements[i].frm.init(form.GetCoord(), form.GetSize(), NULL, form.GetColor(), form.GetBackgroundColor(), form.GetMargin());
+					_Elements[i].frm = form;
 					_Elements[i]._type = Element::Type::Form;
 					_Elements[i].use = true;
 					return i;
 				}
 			}
 			Element a;
-			a.frm.init(form.GetCoord(), form.GetSize(), NULL, form.GetColor(), form.GetBackgroundColor(), form.GetMargin());
+			a.frm = form;
 			a.use = true;
 			a._type = Element::Type::Form;
 			_Elements.push_back(a);
@@ -393,7 +393,7 @@ namespace KolibriLib
 			StartRedraw();
 			DrawWindow();
 
-			for (unsigned i = 0; i < _Elements.size(); i++)
+			for (int i = 0; i < _Elements.size(); i++)
 			{
 				if (_Elements[i].use)
 				{
@@ -413,6 +413,9 @@ namespace KolibriLib
 						break;
 					case Element::Type::Form:
 						_Elements[i].frm.Render();
+						break;
+					case Element::Type::Frame:
+						_Elements[i].frame.Render();
 						break;
 					default:
 						_ksys_debug_puts("Error in KolibriLib::window::Window::Render(): unklown type\n");
@@ -488,7 +491,7 @@ namespace KolibriLib
 					return OS::Events::Exit;
 				}
 
-				for (unsigned i = 0; i < _Elements.size(); i++)	//Запуск обработчиков всех используемых элементов
+				for (int i = 0; i < _Elements.size(); i++)	//Запуск обработчиков всех используемых элементов
 				{
 					if (_Elements[i].use)
 					{
@@ -517,7 +520,7 @@ namespace KolibriLib
 
 		UI::buttons::ButtonID Window::GetPressedButton()
 		{
-			for(unsigned i = 0; i < _Elements.size(); i++)
+			for(int i = 0; i < _Elements.size(); i++)
 			{
 				if(_Elements[i]._type == Element::Type::Button)
 				{

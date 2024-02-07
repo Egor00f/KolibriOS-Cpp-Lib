@@ -29,7 +29,7 @@ namespace KolibriLib
         bool Used = false;
 
         //Функция потока нового окна
-        void RenderMessageWindow(void)
+        void RenderMessageWindow()
         {
             std::string _Message    = Message;
             std::string _Title      = Title;
@@ -38,11 +38,20 @@ namespace KolibriLib
 
             UI::Size WindowSize = window.GetSize();
 
-            UI::text::TextLabel message({(int)window.GetMargin(), WindowSize.y / 2 }, {WindowSize.x, WindowSize.y / 2}, _Message);
-            message.SetScale(true);
+            window.CreateText(UI::text::TextLabel({(int)window.GetMargin(), (int)window.GetMargin()}, {WindowSize.x, WindowSize.y / 2}, _Message));
 
-            window.CreateText(message);
+            const unsigned ButtonSize = 40;
 
+            UI::buttons::Button OK({(int)WindowSize.x - (int)window.GetMargin(), WindowSize.y / 2}, {ButtonSize, WindowSize.y / 2}, 0);
+            OK.SetText("Ok");
+
+            unsigned ok = window.CreateButton(OK);
+
+            OK.~Button();
+
+            
+
+            window.Render();
             while (true)
             {
                 OS::Event event = window.Handler();
@@ -71,8 +80,7 @@ namespace KolibriLib
                     Title = _Title;
                     Used = true;
 
-                    
-                    Thread::CreateThread((void(*))RenderMessageWindow, 4096);
+                    Thread::CreateThread((void(*)(void*))RenderMessageWindow, 4096);
 
                     Used = false; // Я всё, заКОНЧИЛ. Свободно!
                     return;

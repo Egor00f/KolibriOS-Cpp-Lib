@@ -169,7 +169,9 @@ namespace KolibriLib
 
                 /// @brief Изменить текст кнопки
                 /// @param Новый текст кнопки
-                void SetText(std::string NewText);
+                void SetText(const std::string& NewText);
+
+                void SetImage(const Images::Image& NewImg);
 
                 /// @brief Декструктор
                 ~Button();
@@ -311,12 +313,16 @@ namespace KolibriLib
             return _img;
         }
 
-        void buttons::Button::SetText(std::string NewText)
+        void buttons::Button::SetText(const std::string& NewText)
         {
-            if (_type == Type::Text)
-            {
-                return _text.SetText(NewText);
-            }
+            _type = Type::Text;
+            _text.SetText(NewText);
+        }
+
+        void buttons::Button::SetImage(const Images::Image& NewImg)
+        {
+            _type = Type::Image;
+            _img = NewImg;
         }
 
         buttons::Button::~Button()

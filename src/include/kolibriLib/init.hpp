@@ -4,10 +4,12 @@
 #define __BASE_H__
 
 #include <sys/ksys.h>
+#include <sound.h>
 
 extern "C"
 {
 #include <kolibri_libimg.h>
+#include <kolibri_libini.h>
 }
 
 #include "filesystem.hpp"
@@ -27,6 +29,19 @@ namespace KolibriLib
             exit(0);
         }
         
+        int version = -1;
+        if(InitSound(&version) == -1)
+        {
+            _ksys_debug_puts("Error loading Infinity, exit\n");
+            exit(0);
+        }
+
+        if(kolibri_libini_init() == -1)
+        {
+            _ksys_debug_puts("Error loading libini.obj, exit\n");
+            exit(0);
+        }
+
         _ksys_set_event_mask(0x07);
         OS::GetSystemColors();
     }

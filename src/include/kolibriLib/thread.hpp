@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <sys/ksys.h>
 
+
 namespace KolibriLib
 {
     /// \brief Работа с потоками
@@ -14,7 +15,7 @@ namespace KolibriLib
         /// \param ThreadEntry Имя функции которую нужно запустить в новом потоке
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
-        unsigned CreateThread(void *ThreadEntry, unsigned ThreadStackSize = 1024)
+        unsigned CreateThread(void(*ThreadEntry)(void*), unsigned ThreadStackSize = 1024)
         {
             void* th_stack = malloc(ThreadStackSize);
             if (!th_stack) //    Если памяти не было выделенно
