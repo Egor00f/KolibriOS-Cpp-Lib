@@ -22,7 +22,8 @@ namespace KolibriLib
             const ButtonID StartButtonId = 100;
 
             /// @brief Список idшников кнопок
-            std::vector<bool> ButtonsIdList;
+            std::vector<bool> ButtonsIdList;    // "Я надею что это был великий сарказм"
+                                                //      
 
             /// \brief Получить свободный номер id кнопки из списка
             /// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
@@ -47,14 +48,14 @@ namespace KolibriLib
             /// \param size размер
             /// \param color цвет
             /// \return id созданной кнопки
-            inline ButtonID autoDefineButton(const Coord& coords, const Size &size, const Color::Color& color = OS::sys_color_table.work_button);
+            inline ButtonID autoDefineButton(const Coord& coords, const Size &size, const Colors::Color& color = OS::sys_color_table.work_button);
 
             /// \brief Создать кнопку, вручную
             /// \param coords координаты
             /// \param size размер
             /// \param id idшник кнопки
             /// \param color цвет
-            inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Color::Color color = OS::sys_color_table.work_button);
+            inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::sys_color_table.work_button);
 
             /// \brief Удалить кнопу
             /// \param id id удаляемой кнопки
@@ -100,7 +101,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
-                Button(const Coord &coord = {0, 0}, const Size &size = {20, 20}, unsigned Margin = UI::DefaultMargin, Color::Color ButtonColor = OS::sys_color_table.work_button);
+                Button(const Coord &coord = {0, 0}, const Size &size = {20, 20}, const unsigned& Margin = UI::DefaultMargin, const Colors::Color& ButtonColor = OS::sys_color_table.work_button);
 
                 /// \brief инициализировать параметры
                 /// \param coord координата
@@ -109,7 +110,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param BackgroundColor цвет кнопки
                 /// \param TextColor цвет текста
-                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::string &text = "button", const unsigned &Margin = UI::DefaultMargin, const Color::Color &ButtonColor = OS::sys_color_table.work_button);
+                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::string &text = "button", const unsigned &Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = OS::sys_color_table.work_button);
 
                 /// \brief инициализировать параметры
                 /// \param coord координата
@@ -118,7 +119,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param BackgroundColor цвет кнопки
                 /// \param TextColor цвет текста
-                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const Images::Image &image = Images::Image(), const unsigned &Margin = DefaultMargin, const Color::Color &ButtonColor = OS::sys_color_table.work_button);
+                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const Images::Image &image = Images::Image(), const unsigned &Margin = DefaultMargin, const Colors::Color &ButtonColor = OS::sys_color_table.work_button);
 
                 /// \brief инициализировать параметры 
                 /// \param coord координата
@@ -201,6 +202,7 @@ namespace KolibriLib
                 
             };
         } // namespace buttons
+<<<<<<< Updated upstream
         unsigned buttons::GetFreeButtonId()
         {
             for (unsigned i = 0; i < ButtonsIdList.size(); i++) // Проходим по всему массиву
@@ -422,6 +424,8 @@ namespace KolibriLib
         {
             return _id;
         }
+=======
+>>>>>>> Stashed changes
     } // namespace UI
     
 } // namespace KolibriLib

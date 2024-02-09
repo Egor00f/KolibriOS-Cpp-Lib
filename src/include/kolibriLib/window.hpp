@@ -69,7 +69,7 @@ namespace KolibriLib
 			UI::Size _size;
 
 			/// @brief Цвета окна
-			Color::ColorsTable _colors;
+			Colors::ColorsTable _colors;
 
 			/// @brief отступы от края окна
 			unsigned _MARGIN;
@@ -109,7 +109,7 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(std::string Title = "Window", UI::Size size = DefaultWindowSize, int style = 0x14, Color::ColorsTable colors = Color::DefaultColorTable, unsigned Margin = 0);
+			Window(std::string Title = "Window", UI::Size size = DefaultWindowSize, int style = 0x14, Colors::ColorsTable colors = Colors::DefaultColorTable, unsigned Margin = 0);
 			~Window();
 
 			/// @brief Отрисовать окно
@@ -125,7 +125,7 @@ namespace KolibriLib
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
-			void SetWindowColors(const Color::ColorsTable& colorTable);
+			void SetWindowColors(const Colors::ColorsTable& colorTable);
 
 			/// @brief Начать перересовку окна
 			/// @paragraph Стирает всё что было нарисованно в окне
@@ -167,7 +167,7 @@ namespace KolibriLib
 			/// @param color Цвет кнопки
 			/// @param TextColor Цвет текста кнопки
 			/// @return номер кнопки в списке @link _Buttons
-			unsigned CreateButton(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string Text = " ", unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, Color::Color color = OS::sys_color_table.work_button, Color::Color TextColor = OS::sys_color_table.work_button_text);
+			unsigned CreateButton(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string Text = " ", unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, Colors::Color color = OS::sys_color_table.work_button, Colors::Color TextColor = OS::sys_color_table.work_button_text);
 
 			/// @brief Создать кнопку
 			/// @param btn кнопка
@@ -187,7 +187,7 @@ namespace KolibriLib
 			/// @param UseWindowColors Использовать цвета окна(да/нет)
 			/// @param color Цвет текста
 			/// @return Номер текста в списке @link _Texts
-			unsigned CreateText(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool UseWindowColors = true, Color::Color color = OS::sys_color_table.work_text);
+			unsigned CreateText(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool UseWindowColors = true, Colors::Color color = OS::sys_color_table.work_text);
 
 			/// @brief Создать текст в окне
 			/// @param text текст
@@ -229,6 +229,7 @@ namespace KolibriLib
 			unsigned AddElement(const T &element);
 		};
 
+<<<<<<< Updated upstream
 		unsigned Window::AddNewButton(UI::buttons::Button btn)
 		{
             for(unsigned i = 0; i < _Elements.size(); i++)
@@ -589,6 +590,9 @@ namespace KolibriLib
 			_Elements.push_back(a); */
 			return _Elements.size() - 1;
 		}
+=======
+		
+>>>>>>> Stashed changes
 	}
 
     //=============================================================================================================================================================

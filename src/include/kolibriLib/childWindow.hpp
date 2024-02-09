@@ -9,7 +9,6 @@
 #include <sys/ksys.h>
 
 #include <string>
-#include <vector>
 
 #include "small.hpp"
 #include "UI.hpp"
@@ -29,6 +28,7 @@ namespace KolibriLib
         bool Used = false;
 
         //Функция потока нового окна
+<<<<<<< Updated upstream
         void RenderMessageWindow(void)
         {
             std::string _Message    = Message;
@@ -53,12 +53,16 @@ namespace KolibriLib
                 }
             }
         }
+=======
+        void RenderMessageWindow(void*);
+>>>>>>> Stashed changes
 
         
 
         /// \brief Создать окно с сообщением
         /// \param Message сообщение
         /// \param Title Заголовок
+<<<<<<< Updated upstream
         void MessageBox(std::string _Message, std::string _Title)
         {
             while (true)
@@ -83,13 +87,13 @@ namespace KolibriLib
                 }
             }
         }
+=======
+        void MessageBox(const std::string& _Message, const std::string& _Title);
+>>>>>>> Stashed changes
 
         /// \brief окошко с ошибкой
         /// \param ErrorMessage сообщение об ощибке
-        inline void ErrorWindow(std::string ErrorMessage)
-        {
-            MessageBox(ErrorMessage, "Error!");
-        }
+        inline void ErrorWindow(const std::string& ErrorMessage);
     }
 }
 

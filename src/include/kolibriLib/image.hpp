@@ -14,6 +14,7 @@ extern "C"
 {
 #include "kolibri_libimg.h"
 }
+
 namespace KolibriLib
 {
 	namespace UI
@@ -35,6 +36,8 @@ namespace KolibriLib
 				/// @param Path Путь до картинки
 				/// @param Margin
 				Image(const Coord& coord = {0, 0}, const Size& size = {100, 100});
+
+				/// @brief Деструктор
 				~Image();
 
 				/// @brief Загрузить изображение
@@ -46,6 +49,7 @@ namespace KolibriLib
 				/// @paragraph Можно растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется
 				void Render(Size size = {0, 0});
 
+<<<<<<< Updated upstream
 				Image& operator = (const Image& a)
 				{
 					_coord      = a._coord;
@@ -173,6 +177,21 @@ namespace KolibriLib
 				_size = size;
 				LoadImage(Path);
 			}
+=======
+				void init(const Coord &coord = {0, 0}, const Size &size = {100, 100}, const std::string &Path = DefaultImage);
+
+				/// @brief Изменить изображение
+				/// @param img Указатель на струтуру @link Image_t
+				void SetImg(Image_t* img);
+				
+				/// @brief 
+				/// @param a 
+				/// @return 
+				Image& operator = (const Image& a);
+			};
+
+			
+>>>>>>> Stashed changes
 		} // namespace Image
 	} // namespace UI
 	

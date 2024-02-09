@@ -17,20 +17,36 @@ namespace KolibriLib
     namespace filesystem
     {
 
+        /// @brief Файловый путь
         class Path
         {
             public:
                 Path(std::string path);
+<<<<<<< Updated upstream
 
+=======
+                Path(char* path);
+                /// @brief Получить char* строку
+                /// @return Функция возвращает конвертированную строку @link _string
+>>>>>>> Stashed changes
                 const char* GetChars() const;
 
+                /// @brief Получить строку
+                /// @return Функция возвращает @link _string
                 std::string GetString() const;
 
                 Path& operator / (const Path& a);
+                Path& operator / (const std::string& a);
+
+                bool operator == (const Path& a) const;
+                bool operator != (const Path &a) const;
+
             private:
                 std::string _string;
         };
 
+
+        /// @brief Список ошибок файловой системы
         enum Errors
         {
             /// @brief успешно
@@ -118,6 +134,7 @@ namespace KolibriLib
 
         int Rename(const Path& OldName, const Path& NewName);
 
+<<<<<<< Updated upstream
         Path::Path(std::string path)
         {
             _string = path;
@@ -209,6 +226,9 @@ namespace KolibriLib
         {
             return _ksys_file_rename(OldName.GetChars(), NewName.GetChars());
         }
+=======
+        
+>>>>>>> Stashed changes
     }
 } // namespace KolibriLib
 

@@ -11,79 +11,57 @@ namespace KolibriLib
     namespace OS
     {
 
-        /// \brief Таблица стандартных(системных) цветов
-        Color::ColorsTable sys_color_table;
+        /// @brief Таблица стандартных(системных) цветов
+        Colors::ColorsTable sys_color_table;
 
         /// @brief Получить системные цвета
         /// @paragraph Функция изменяет переменную @link sys_color_table
         /// @return Таблица системных цветов
-        Color::ColorsTable GetSystemColors()
-        {
-            _ksys_get_system_colors(&sys_color_table);
-            return sys_color_table;
-        }
+        Colors::ColorsTable GetSystemColors();
 
         /// @brief Ивент
         typedef unsigned int Event;
 
         enum Events
         {
+            /// @brief Ивента небыло
             None    = KSYS_EVENT_NONE,
+            /// @brief Перересовка окна
             Redraw  = KSYS_EVENT_REDRAW,
+            /// @brief Нажата кнопка
             Button  = KSYS_EVENT_BUTTON,
+            /// @brief Активность мыши
             Mouse   = KSYS_EVENT_MOUSE,
+            /// @brief Активность со стороны клавиатуры
             Key     = KSYS_EVENT_KEY,
+            /// @brief 
             Desktop = KSYS_EVENT_DESKTOP,
             Debug   = KSYS_EVENT_DEBUG,
-            Exit    = 200
+            Exit
         };
 
         /// \brief Ждать ивента
         /// \return Ивент
-        inline Event WaitEvent()
-        {
-            return _ksys_wait_event();
-        }
+        inline Event WaitEvent();
 
         /// \brief Ждать ивента
         /// \param Таймаут (в 1/100 секунды)
         /// \return Ивент
-        inline Event WaitEvent(uint32_t TimeOut)
-        {
-            _ksys_wait_event_timeout(TimeOut);
-        }
+        inline Event WaitEvent(uint32_t TimeOut);
 
         /// \brief Проверить пришёл ли ли ивент
-        /// \return Ивен
-        inline Event CheckEvent()
-        {
-            return _ksys_check_event();
-        }
+        /// \return Ивент
+        inline Event CheckEvent();
 
         /// \brief Запустить программу
         /// \param AppName путь до программы + имя
         /// \param args аргументы
         /// \return то что возвращает сама программа, -1 если исполняемы файл не найден
-        inline int Exec(std::string AppName, std::string args)
-        {
-            if (filesystem::Exist(AppName)) // Проверка на существование
-            {
-                char *a;
-                strcat(a, args.c_str());
-                return _ksys_exec(AppName.c_str(), a);
-            }
-            else
-            {
-                return -1;
-            }
-        }
+        inline int Exec(const filesystem::Path& AppName, const std::string& args);
 
         /// @brief Получить системное время
         /// @return
-        inline ksys_time_t GetTime()
-        {
-            return _ksys_get_time();
-        }
+        inline ksys_time_t GetTime();
 
         
 
@@ -91,10 +69,7 @@ namespace KolibriLib
 
     /// \brief Подождать
     /// \param time время задержки(в 1/100 секунды)
-    inline void Wait(unsigned int time)
-    {
-        _ksys_delay(time);
-    }
+    inline void Wait(unsigned time);
 
 } // namespace KolibriLib
 

@@ -1,4 +1,5 @@
 #include <KolibriLib.hpp>
+#pragma comment(lib, "libkcpp.a")
 
 using namespace KolibriLib;
 

@@ -12,6 +12,7 @@
 #include "form.hpp"
 #include "image.hpp"
 #include "checkbox.hpp"
+#include "input.hpp"
 
 namespace KolibriLib
 {
@@ -45,12 +46,13 @@ namespace KolibriLib
             std::vector<Element> _Elements;
             bool _scroll;
         public:
-            Frame(const Coord &coord = {0,0}, const Size &size = {0,0}, const Color::Color &Color = OS::sys_color_table.work_area, const unsigned &Margin = DefaultMargin);
+            Frame(const Coord &coord = {0,0}, const Size &size = {0,0}, const Colors::Color &Color = OS::sys_color_table.work_area, const unsigned &Margin = DefaultMargin);
             
 
             /// @brief Отрисовать фрейм
             void Render();
 
+            /// @brief 
             void Handler();
 
             template <class T>
@@ -59,6 +61,7 @@ namespace KolibriLib
             /// @return номер 
             unsigned AddElement(const T &element);
         };
+<<<<<<< Updated upstream
         Frame::Frame(const Coord &coord, const Size &size, const Color::Color &Color, const unsigned &Margin) : UIElement(coord, size, Color, Margin)
         {
             #if DEBUG == true
@@ -152,6 +155,9 @@ namespace KolibriLib
 
         return _Elements.size() - 1;
     }
+=======
+        
+>>>>>>> Stashed changes
     } // namespace UI
 } // namespace KolibriLib
 

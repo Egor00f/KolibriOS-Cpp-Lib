@@ -37,7 +37,7 @@ namespace KolibriLib
             /// @brief Размер
             Size _size;
 
-            Color::Color _MainColor;
+            Colors::Color _MainColor;
 
             /// @brief Отступы
             unsigned _Margin;
@@ -55,98 +55,62 @@ namespace KolibriLib
             /// @param MainColor
             /// @param Margin
             /// @param relative
-            UIElement(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const Color::Color& MainColor = OS::sys_color_table.work_graph, const unsigned& Margin = DefaultMargin, bool relative = false)
-            {
-                #if DEBUG == true
-                _ksys_debug_puts("UIElement:");
-                #endif
-                _coord      = coord;
-                _size       = size;
-                _MainColor  = MainColor;
-                _Margin     = Margin;
-                _relative   = relative;
-            }
+            UIElement(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const Colors::Color& MainColor = OS::sys_color_table.work_graph, const unsigned& Margin = DefaultMargin, bool relative = false);
+            
             /// @brief Получить размер элемента
             /// @return Функция возвращает @link _size
-            Size GetSize() const
-            {
-                return _size;
-            }
+            Size GetSize() const;
 
-            void SetSize(Size NewSize)
-            {
-                _size = NewSize;
-            }
+            /// @brief Изменить размер элемента
+            /// @param NewSize новый размер
+            void SetSize(const Size& NewSize);
 
-            unsigned GetMargin() const
-            {
-                return _Margin;
-            }
+            /// @brief Получить отступы
+            /// @return Функция возвращает @link _Margin
+            unsigned GetMargin() const;
 
             /// @brief Получить осносной цвет элемента
             /// @return Функция возвращает @link _MainColor
-            Color::Color GetColor() const
-            {
-                return _MainColor;
-            }
+            Colors::Color GetColor() const;
 
-            void SetColor(Color::Color NewColor)
-            {
-                _MainColor = NewColor;
-            }
+            /// @brief 
+            /// @param NewColor 
+            void SetColor(const Colors::Color& NewColor);
 
-            void SetCoord(Coord NewCoord) 
-            {
-                _coord = NewCoord;
-            }
-            Coord GetCoord() const
-            {
-                return _coord;
-            }
+            /// @brief 
+            /// @param NewCoord 
+            void SetCoord(const Coord& NewCoord);
+
+            /// @brief Получить координаты элемента
+            /// @return Функция возвращает _coord
+            Coord GetCoord() const;
 
             /// @brief Повернуть элемент
             /// @param NewAngle Новый угол наклона
-            void Rotate(unsigned NewAngle)
-            {
-                _angle = NewAngle;
-            }
+            void Rotate(unsigned NewAngle);
 
             /// @brief Получить угол наклона элемента
             /// @return Функция возвращает @link _angle
-            unsigned GetRotate() const
-            {
-                return _angle;
-            }
+            unsigned GetRotate() const;
+
+            /// @brief Проверить лежит ли курсор мыши над элементом
+            /// @return true если курсор мыши находится в этом эелементе, иначе false
+            bool Hover() const;
 
             /// @brief 
-            /// @return true если курсор мыши находится в этом эелементе, иначе false
-            bool Hover()
-            {
-                Coord mouse = mouse::GetMousePositionInWindow();
-                if(_coord.x < mouse.x && _coord.y < mouse.y && mouse.x < _coord.x + _size.x && mouse.y < _coord.y + _size.y)
-                {
-                    return true;
-                }
-                return false;
-            }
+            /// @param Element 
+            /// @return 
+            UIElement& operator = (const UIElement& Element);
 
-            UIElement& operator = (const UIElement& Element)
-            {
-                _coord      = Element._coord;
-                _size       = Element._size;
-                _MainColor  = Element._MainColor;
-                _Margin     = Element._Margin;
-                _angle      = Element._angle;
-                return *this;
-            }
-            bool operator == (const UIElement& Element) const
-            {
-                return _coord == Element._coord && _size == Element._size && _MainColor == Element._MainColor && _angle == Element._angle;
-            }
-            bool operator != (const UIElement &Element) const
-            {
-                return _coord != Element._coord || _size != Element._size || _MainColor != Element._MainColor || _angle != Element._angle;
-            }
+            /// @brief 
+            /// @param Element 
+            /// @return 
+            bool operator == (const UIElement& Element) const;
+
+            /// @brief 
+            /// @param Element 
+            /// @return 
+            bool operator != (const UIElement &Element) const;
         };
 
         //=============================================================================================================================================================
@@ -155,7 +119,7 @@ namespace KolibriLib
         /// \param coord
         /// \param size
         /// \param color
-        inline void DrawBar(Coord coord, Size size, Color::Color color = OS::sys_color_table.work_graph)
+        inline void DrawBar(const Coord& coord, const Size& size, const Colors::Color& color = OS::sys_color_table.work_graph)
         {
             _ksys_draw_bar(coord.x, coord.y, size.x, size.y, color.val);
         }
