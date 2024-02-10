@@ -9,18 +9,13 @@
 #include "os.hpp"
 #include "color.hpp"
 #include "input.hpp"
+#include "windowBase.hpp"
 
 namespace KolibriLib
 {
     // Элементы UI
     namespace UI
     {
-
-        /// @brief Размер
-        typedef point<unsigned> Size;
-        typedef point<int>  Coord;
-
-        
 
         /// @brief Отступы поумолчанию
         const unsigned DefaultMargin = 4;

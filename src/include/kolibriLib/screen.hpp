@@ -17,6 +17,9 @@ namespace KolibriLib
     /// @param POINT 
     /// @return 
     Thread::Slot ScreenPointAffiliation(point<unsigned> POINT);
+
+    /// @brief Центрировать курсор
+    inline void CenterCursor();
 }
 
 

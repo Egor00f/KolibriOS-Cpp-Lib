@@ -18,3 +18,11 @@ Thread::Slot KolibriLib::ScreenPointAffiliation(point<unsigned> POINT)
     );
     return s;
 }
+
+void KolibriLib::CenterCursor()
+{
+    asm_inline(
+        "int $0x40"
+        ::"a"(18), "b"(15)
+    );
+}

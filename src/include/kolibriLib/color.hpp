@@ -62,19 +62,13 @@ namespace KolibriLib
         /// @return true если таблицы равны, иначе false
         bool ComparisonColorsTables(const ColorsTable& a, const ColorsTable& b);
 
-        template <class ImageBits>
         /// @brief Тип данных для работы с argb цветом
-        /// @paragraph Варианты <ImageBits>:
-        /// @paragraph uint8_t, для 8bit,
-        /// @paragraph uint16_t для 16,
-        /// @paragraph uint32_t,
-        /// @paragraph uint64_t,
         struct ARGB
         {
-            ImageBits alpha;
-            ImageBits red;
-            ImageBits green;
-            ImageBits blue;
+            uint8_t alpha;
+            uint8_t red;
+            uint8_t green;
+            uint8_t blue;
         };
     }
 } // namespace KolibriLib

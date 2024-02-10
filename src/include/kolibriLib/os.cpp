@@ -44,6 +44,57 @@ ksys_time_t KolibriLib::OS::GetTime()
     return _ksys_get_time();
 }
 
+void KolibriLib::OS::SpeakerSwitch()
+{
+    asm_inline(
+        "int $0x40"
+        ::"a"(18), "b"(8), "c"(2)
+    );
+}
+
+unsigned KolibriLib::OS::FreeMem()
+{
+    unsigned a;
+    asm_inline(
+        "int $0x40"
+        : "=a"(a)
+        : "a"(18), "b"(16));
+    return a;
+}
+
+unsigned KolibriLib::OS::AllMem()
+{
+    unsigned a;
+    asm_inline(
+        "int $0x40"
+        :"=a"(a)
+        :"a"(18), "b"(17)
+    );
+    return a;
+}
+
+int KolibriLib::OS::GetLang()
+{
+    int a;
+    asm_inline(
+        "int $0x40"
+        :"=a"(a)
+        :"a"(26), "b"(5)
+    );
+    return a;
+}
+
+bool KolibriLib::OS::SpeakerStatus()
+{
+    bool a;
+    asm_inline(
+        "int $0x40"
+        :"=a"(a)
+        :"a"(18), "b"(8), "c"(1)
+    );
+    return !a;
+}
+
 void KolibriLib::Wait(unsigned time)
 {
     _ksys_delay(time);

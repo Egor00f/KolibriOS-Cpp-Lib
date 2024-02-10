@@ -37,6 +37,8 @@ namespace KolibriLib
         /// @brief Удалить "горячую клавишу"
         /// @return true если успешно, иначе false
         bool DeleteHotKey();
+
+        
     } // namespace keyboard
 } // namespace KolibriLib
 

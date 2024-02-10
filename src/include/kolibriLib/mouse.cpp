@@ -1,6 +1,7 @@
 #include "mouse.hpp"
 
 using namespace KolibriLib;
+using namespace mouse;
 
 point<int> KolibriLib::mouse::GetMousePositionOnSreen()
 {
@@ -24,4 +25,22 @@ uint32_t KolibriLib::mouse::GetMouseButtons()
 uint32_t KolibriLib::mouse::GetMouseWheels()
 {
     return _ksys_get_mouse_wheels();
+}
+
+void KolibriLib::mouse::EmulateMouse(uint8_t m)
+{
+    asm_inline(
+        "int $0x40"
+        ::"a"(18), "b"(19), "c"(5), "d"(m)
+    );
+}
+
+CursorHandle KolibriLib::mouse::SetCursor(CursorHandle handle)
+{
+    return _ksys_set_cursor(handle);
+}
+
+void KolibriLib::mouse::DeleteCursor(CursorHandle handle)
+{
+    _ksys_delete_cursor(handle);
 }

@@ -63,7 +63,28 @@ namespace KolibriLib
         /// @return
         inline ksys_time_t GetTime();
 
-        
+        /// @brief Получить состояние спикера(Вкл/выкл)
+        /// @return true если спикер разрешён, иначе false
+        inline bool SpeakerStatus();
+
+        /// @brief Переключить состояние спикера 
+        inline void SpeakerSwitch();
+
+        /// @brief получить кол-во свободной памяти
+        /// @return размер свободной памяти в килобайтах
+        inline unsigned FreeMem();
+
+        inline unsigned AllMem();
+
+        enum lang
+        {
+            Eng = 0,
+            Fi,
+            Ger,
+            Rus
+        };
+
+        inline int GetLang();
 
     } // namespace OS
 

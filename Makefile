@@ -1,3 +1,5 @@
+#	Makefile
+
 AR	= kos32-ar
 AS	= kos32-as
 CC	= kos32-gcc
@@ -7,7 +9,7 @@ LD	= kos32-ld
 LIB_NAME := libkcpp
 
 #DIRs
-CONTRIB_DIR = F:/KolibriOs/contrib
+CONTRIB_DIR = ../
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
 
@@ -21,41 +23,42 @@ LDFLAGS = -static -S -nostdlib -Tapp-dynamic.lds --image-base 0 -O2 -T $(SDK_DIR
 
 LIB_PATH = src/include/kolibriLib
 
-SOURCES = $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/scree.cpp $(LIB_PATH)/os.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
+SOURCES = $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp \
+$(LIB_PATH)/scree.cpp $(LIB_PATH)/os.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/UI.cpp \
+$(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp \
+$(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp \
+$(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
+
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: setup $(LIB_NAME).a install CLAYER clean EXAMPLES done
+all: $(LIB_NAME).a install CLAYER clean EXAMPLES done
 
-setup:
-	@@Echo off
+	
 
-CLAYER:
-	@echo "+-------------------------------------+"
-	@echo "| make C_Layer:" 
-	$(MAKE) -C C_Layer/ASM
+
 
 $(LIB_NAME).a: $(OBJECTS)
 	$(AR) -rcs $(LIB_NAME).a $(OBJECTS)
 
 %.o : %.cpp $(SOURCES)
-	@echo "+-------------------------------------+"
 	@echo "| compile:" $@
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $<
+	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $<
 
+
+CLAYER:
+	@echo "| make C_Layer:" 
+	$(MAKE) -C C_Layer/ASM
 EXAMPLES:
-	@echo "+-------------------------------------+"
 	@echo "| Make examples"
 	$(MAKE) -C src/examples
 
 install:
-	@echo "+-------------------------------------+"
 	@echo "| installing lib"
 	@mv $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
 
 clean:
-	@echo "+-------------------------------------+"
 	@echo "| clean"
 	@rm $(OBJECTS)
 	

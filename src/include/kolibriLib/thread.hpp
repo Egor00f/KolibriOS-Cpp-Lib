@@ -67,6 +67,11 @@ namespace KolibriLib
         /// @return информация о потоке
         /// @paragraph если слот -1 то возвращается информация о текущем потоке
         ThreadInfo GetThreadInfo(Slot thread);
+
+
+
+
+        
     } // namespace Thread
     
 } // namespace KolibriLib

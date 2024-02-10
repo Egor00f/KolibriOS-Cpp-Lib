@@ -33,7 +33,7 @@ namespace KolibriLib
             _ksys_debug_puts("Erroe loading sound.h, exit");
         }
 
-            _ksys_set_event_mask(0x07);
+        _ksys_set_event_mask(0x07);
         OS::GetSystemColors();
     }
 }

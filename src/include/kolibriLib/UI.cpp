@@ -8,7 +8,7 @@ KolibriLib::UI::UIElement::UIElement(const Coord & coord, const Size & size, con
 #if DEBUG == true
     _ksys_debug_puts("UIElement:");
 #endif
-    _coord = coord;
+    _coord = (Coord){coord.x, coord.y + window::GetSkinHeight()};
     _size = size;
     _MainColor = MainColor;
     _Margin = Margin;
