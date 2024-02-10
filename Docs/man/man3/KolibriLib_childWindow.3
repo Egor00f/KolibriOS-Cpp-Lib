@@ -7,21 +7,6 @@ KolibriLib::childWindow \- Дочерние окна
 .SH SYNOPSIS
 .br
 .PP
-.SS "Functions"
-
-.in +1c
-.ti -1c
-.RI "void \fBRenderMessageWindow\fP (void)"
-.br
-.ti -1c
-.RI "void \fBMessageBox\fP (std::string _Message, std::string _Title)"
-.br
-.RI "Создать окно с сообщением "
-.ti -1c
-.RI "void \fBErrorWindow\fP (std::string ErrorMessage)"
-.br
-.RI "окошко с ошибкой "
-.in -1c
 .SS "Variables"
 
 .in +1c
@@ -34,24 +19,17 @@ KolibriLib::childWindow \- Дочерние окна
 .ti -1c
 .RI "bool \fBUsed\fP = false"
 .br
+.ti -1c
+.RI "<<<<<<< Updated upstream void RenderMessageWindow(void) { std::string _Message=Message;std::string _Title=Title;\fBwindow::Window\fP window(_Title, {256, 128});\fBUI::Size\fP WindowSize=window\&.GetSize();\fBUI::text::TextLabel\fP message({(int) window\&.GetMargin(), WindowSize\&.y/2 }, {WindowSize\&.x, WindowSize\&.y/2}, _Message);message\&.SetScale(true);window\&.CreateText(message);while(true) { \fBOS::Event\fP event=window\&.Handler();if(event=OS::Events::Exit) { window\&.~Window();return;} } }=======void RenderMessageWindow(void *);> > > > > > Stashed changes<<<<<<< Updated upstream void MessageBox(std::string _Message, std::string _Title) { while(true) { if(!Used) { Used=true;Message=_Message;Title=_Title;Used=true;\fBThread::CreateThread\fP((void(*)) RenderMessageWindow, 4096);Used=false;return;} else { \fBWait\fP(1);} } }=======void MessageBox(const std::string &_Message, const std::string &_Title);> > > > > > Stashed changes voi \fBErrorWindow\fP )(const std::string &ErrorMessage)"
+.br
+.RI "Создать окно с сообщением "
 .in -1c
 .SH "Detailed Description"
 .PP 
 Дочерние окна 
-.SH "Function Documentation"
+.SH "Variable Documentation"
 .PP 
-.SS "void KolibriLib::childWindow::ErrorWindow (std::string ErrorMessage)\fR [inline]\fP"
-
-.PP
-окошко с ошибкой 
-.PP
-\fBParameters\fP
-.RS 4
-\fIErrorMessage\fP сообщение об ощибке 
-.RE
-.PP
-
-.SS "void KolibriLib::childWindow::MessageBox (std::string _Message, std::string _Title)"
+.SS "void KolibriLib::childWindow::ErrorWindow (const std::string & ErrorMessage)\fR [inline]\fP"
 
 .PP
 Создать окно с сообщением 
@@ -60,7 +38,14 @@ KolibriLib::childWindow \- Дочерние окна
 .RS 4
 \fIMessage\fP сообщение 
 .br
-\fITitle\fP Заголовок 
+\fITitle\fP Заголовок
+.RE
+.PP
+окошко с ошибкой 
+.PP
+\fBParameters\fP
+.RS 4
+\fIErrorMessage\fP сообщение об ощибке 
 .RE
 .PP
 

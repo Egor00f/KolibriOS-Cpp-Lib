@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wait_0',['Wait',['../namespace_kolibri_lib.html#a56a5ef2333e7fe22f558aaa6c9276b7c',1,'KolibriLib']]],
-  ['waitevent_1',['WaitEvent',['../namespace_kolibri_lib_1_1_o_s.html#a58e553f23fc726c3bf5755546f0d615d',1,'KolibriLib::OS::WaitEvent()'],['../namespace_kolibri_lib_1_1_o_s.html#a3cf4ee4b4401edccd8b6affa95509d90',1,'KolibriLib::OS::WaitEvent(uint32_t TimeOut)']]],
-  ['window_2',['Window',['../class_kolibri_lib_1_1window_1_1_window.html#a190c058c9653a937da1db68429aac3ae',1,'KolibriLib::window::Window']]]
+  ['uielement_0',['UIElement',['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a0e8520d7b6e47e5b307b00449702e737',1,'KolibriLib::UI::UIElement']]],
+  ['unfocus_1',['Unfocus',['../class_kolibri_lib_1_1window_1_1_window.html#ae074267ec49af5a67e268aebd1d3aae6',1,'KolibriLib::window::Window']]],
+  ['unfocuswindow_2',['UnfocusWindow',['../namespace_kolibri_lib_1_1window.html#ac230d3b4ccb7fb8668ce4e2e8cb30c88',1,'KolibriLib::window']]]
 ];

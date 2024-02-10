@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-KolibriLib::filesystem::Path
+KolibriLib::filesystem::Path \- Файловый путь  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <filesystem\&.hpp>\fP
 .SS "Public Member Functions"
 
 .in +1c
@@ -13,15 +16,62 @@ KolibriLib::filesystem::Path
 .RI "\fBPath\fP (std::string path)"
 .br
 .ti -1c
+.RI "\fBPath\fP (char *path)"
+.br
+.ti -1c
 .RI "const char * \fBGetChars\fP () const"
 .br
+.RI "Получить char* строку "
 .ti -1c
 .RI "std::string \fBGetString\fP () const"
 .br
+.RI "Получить строку "
 .ti -1c
 .RI "\fBPath\fP & \fBoperator/\fP (const \fBPath\fP &a)"
 .br
+.ti -1c
+.RI "\fBPath\fP & \fBoperator/\fP (const std::string &a)"
+.br
+.ti -1c
+.RI "\fBPath\fP & \fBoperator=\fP (const \fBPath\fP &a)"
+.br
+.ti -1c
+.RI "\fBPath\fP & \fBoperator=\fP (const std::string &a)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBPath\fP &a) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBPath\fP &a) const"
+.br
 .in -1c
+.SH "Detailed Description"
+.PP 
+Файловый путь 
+.SH "Member Function Documentation"
+.PP 
+.SS "const char * Path::GetChars () const"
+
+.PP
+Получить char* строку 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает конвертированную строку \fB_string\fP
+.RE
+.PP
+
+.SS "std::string KolibriLib::filesystem::Path::GetString () const"
+
+.PP
+Получить строку 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает \fB_string\fP
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

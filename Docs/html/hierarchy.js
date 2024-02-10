@@ -1,12 +1,13 @@
 var hierarchy =
 [
-    [ "KolibriLib::Color::ARGB_t< ImageBits >", "struct_kolibri_lib_1_1_color_1_1_a_r_g_b__t.html", null ],
-    [ "KolibriLib::Color::Color", "union_kolibri_lib_1_1_color_1_1_color.html", null ],
+    [ "KolibriLib::Colors::ARGB< ImageBits >", "struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html", null ],
+    [ "KolibriLib::Colors::Color", "union_kolibri_lib_1_1_colors_1_1_color.html", null ],
     [ "KolibriLib::window::Element", "struct_kolibri_lib_1_1window_1_1_element.html", null ],
     [ "KolibriLib::filesystem::Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", null ],
     [ "KolibriLib::point< T >", "struct_kolibri_lib_1_1point.html", null ],
     [ "KolibriLib::point< int >", "struct_kolibri_lib_1_1point.html", null ],
     [ "KolibriLib::point< unsigned >", "struct_kolibri_lib_1_1point.html", null ],
+    [ "KolibriLib::Thread::ThreadInfo", "union_kolibri_lib_1_1_thread_1_1_thread_info.html", null ],
     [ "KolibriLib::UI::UIElement", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html", [
       [ "KolibriLib::UI::Form", "class_kolibri_lib_1_1_u_i_1_1_form.html", null ],
       [ "KolibriLib::UI::Frame", "class_kolibri_lib_1_1_u_i_1_1_frame.html", null ],

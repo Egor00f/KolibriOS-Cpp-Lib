@@ -130,6 +130,47 @@ buttons::Button::~Button()
     DeleteButton(_id);
 }
 
+buttons::Button &KolibriLib::UI::buttons::Button::operator=(const buttons::Button &element)
+{
+    _coord = element._coord;
+    _size = element._size;
+    _MainColor = element._MainColor;
+    _Margin = element._Margin;
+    _id = element._id;
+    _type = element._type;
+    _active = element._active;
+
+    switch (element._type)
+    {
+    case Type::Text:
+        _text = element._text;
+        break;
+    case Type::Image:
+        _img = element._img;
+        break;
+    default:
+        break;
+    }
+    return *this;
+}
+
+bool KolibriLib::UI::buttons::Button::operator==(const Button &element) const
+{
+    bool r = false;
+    switch (element._type)
+    {
+    case Type::Text:
+        r = _text == element._text;
+        break;
+    case Type::Image:
+        r = _img == element._img;
+        break;
+    default:
+        break;
+    }
+    return r && (_coord == element._coord) && (_size == element._size) && (_angle == element._angle);
+}
+
 bool buttons::Button::Handler()
 {
     _status = (GetPressedButton() == _id);  //Если id нажатой кнопки совпадает к id этой кнопки

@@ -15,10 +15,12 @@ class \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window}{Window}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aa952d568261368ee7ca5c6d95728b0e5}{Unfocus\+Window}} (int slot)
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88}{Unfocus\+Window}} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} slot)
 \begin{DoxyCompactList}\small\item\em Снять фокус с окна \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_aaa30301e531d5aa8c046c0b14699b07b}{Focus\+Window}} (int slot)
-\begin{DoxyCompactList}\small\item\em Поставить фокус на окно \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a8522ac0eb50e9a7b5ce0091e5fc9d257}{Focus\+Window}} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} slot)
+\begin{DoxyCompactList}\small\item\em Поставить фокус на окно \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af86ed52f97ce1b6925d0faabc8a0ebe1}{Get\+Active\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Получить слот активного окна \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,11 +36,11 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 Работа с окном 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_1_1window_aaa30301e531d5aa8c046c0b14699b07b}\label{namespace_kolibri_lib_1_1window_aaa30301e531d5aa8c046c0b14699b07b} 
+\Hypertarget{namespace_kolibri_lib_1_1window_a8522ac0eb50e9a7b5ce0091e5fc9d257}\label{namespace_kolibri_lib_1_1window_a8522ac0eb50e9a7b5ce0091e5fc9d257} 
 \index{KolibriLib::window@{KolibriLib::window}!FocusWindow@{FocusWindow}}
 \index{FocusWindow@{FocusWindow}!KolibriLib::window@{KolibriLib::window}}
 \doxysubsubsection{\texorpdfstring{FocusWindow()}{FocusWindow()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Focus\+Window (\begin{DoxyParamCaption}\item[{int}]{slot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Focus\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}}}]{slot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -49,11 +51,25 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 {\em slot} & слот окна \\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespace_kolibri_lib_1_1window_aa952d568261368ee7ca5c6d95728b0e5}\label{namespace_kolibri_lib_1_1window_aa952d568261368ee7ca5c6d95728b0e5} 
+\Hypertarget{namespace_kolibri_lib_1_1window_af86ed52f97ce1b6925d0faabc8a0ebe1}\label{namespace_kolibri_lib_1_1window_af86ed52f97ce1b6925d0faabc8a0ebe1} 
+\index{KolibriLib::window@{KolibriLib::window}!GetActiveWindow@{GetActiveWindow}}
+\index{GetActiveWindow@{GetActiveWindow}!KolibriLib::window@{KolibriLib::window}}
+\doxysubsubsection{\texorpdfstring{GetActiveWindow()}{GetActiveWindow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} Kolibri\+Lib\+::window\+::\+Get\+Active\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получить слот активного окна 
+
+\begin{DoxyReturn}{Returns}
+~\newline
+ 
+\end{DoxyReturn}
+\Hypertarget{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88}\label{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88} 
 \index{KolibriLib::window@{KolibriLib::window}!UnfocusWindow@{UnfocusWindow}}
 \index{UnfocusWindow@{UnfocusWindow}!KolibriLib::window@{KolibriLib::window}}
 \doxysubsubsection{\texorpdfstring{UnfocusWindow()}{UnfocusWindow()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Unfocus\+Window (\begin{DoxyParamCaption}\item[{int}]{slot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Unfocus\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}}}]{slot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

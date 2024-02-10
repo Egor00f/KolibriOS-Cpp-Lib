@@ -15,11 +15,11 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBForm\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const std::string &BackgroundText='Text\&.\&.\&.', const \fBColor::Color\fP &FormColor=OS::sys_color_table\&.work_text, const \fBColor::Color\fP &ButtonTextColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
+.RI "\fBForm\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const std::string &BackgroundText='Text\&.\&.\&.', const \fBColors::Color\fP &FormColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &ButtonTextColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
 .br
 .RI "конструктор "
 .ti -1c
-.RI "void \fBinit\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={32, 16}, std::string BackgroundText=' ', \fBColor::Color\fP FormColor=OS::sys_color_table\&.work_text, \fBColor::Color\fP ButtonTextColor=OS::sys_color_table\&.work_area, unsigned Margin=DefaultMargin)"
+.RI "void \fBinit\fP (\fBCoord\fP coord={0, 0}, \fBSize\fP size={32, 16}, std::string BackgroundText=' ', \fBColors::Color\fP FormColor=OS::sys_color_table\&.work_text, \fBColors::Color\fP ButtonTextColor=OS::sys_color_table\&.work_area, unsigned Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "void \fBRender\fP ()"
@@ -34,21 +34,29 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .br
 .RI "Обработчик кнопки "
 .ti -1c
-.RI "std::string \fBGetInput\fP ()"
+.RI "std::string \fBGetInput\fP () const"
 .br
 .RI "Получить введённый текст "
 .ti -1c
-.RI "std::string \fBGetBackgroundText\fP ()"
+.RI "std::string \fBGetBackgroundText\fP () const"
 .br
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetBackgroundColor\fP ()"
+.RI "\fBColors::Color\fP \fBGetBackgroundColor\fP () const"
 .br
+.ti -1c
+.RI "void \fBSetBackgroundText\fP (const std::string &NewText)"
+.br
+.RI "Изменить фоновый текст "
+.ti -1c
+.RI "void \fBSetBackgroundColor\fP (const \fBColors::Color\fP &NewColor)"
+.br
+.RI "Изменить цвет фона "
 .in -1c
 
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "конструктор "
 .ti -1c
@@ -56,24 +64,27 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить размер элемента "
 .ti -1c
-.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.RI "void \fBSetSize\fP (const \fBSize\fP &NewSize)"
 .br
+.RI "Изменить размер элемента "
 .ti -1c
 .RI "unsigned \fBGetMargin\fP () const"
 .br
+.RI "Получить отступы "
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.RI "\fBColors::Color\fP \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
-.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
 .ti -1c
-.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP () const"
 .br
+.RI "Получить координаты элемента "
 .ti -1c
 .RI "void \fBRotate\fP (unsigned NewAngle)"
 .br
@@ -83,8 +94,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить угол наклона элемента "
 .ti -1c
-.RI "bool \fBHover\fP ()"
+.RI "bool \fBHover\fP () const"
 .br
+.RI "Проверить лежит ли курсор мыши над элементом "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -109,7 +121,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Размер "
 .ti -1c
-.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.RI "\fBColors::Color\fP \fB_MainColor\fP"
 .br
 .ti -1c
 .RI "unsigned \fB_Margin\fP"
@@ -129,7 +141,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 Форма для ввода текста 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::UI::Form::Form (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{32, 16}\fP, const std::string & BackgroundText = \fR'Text\&.\&.\&.'\fP, const \fBColor::Color\fP & FormColor = \fROS::sys_color_table\&.work_text\fP, const \fBColor::Color\fP & ButtonTextColor = \fROS::sys_color_table\&.work_area\fP, const unsigned & Margin = \fRDefaultMargin\fP)"
+.SS "Form::Form (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{32, 16}\fP, const std::string & BackgroundText = \fR'Text\&.\&.\&.'\fP, const \fBColors::Color\fP & FormColor = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & ButtonTextColor = \fROS::sys_color_table\&.work_area\fP, const unsigned & Margin = \fRDefaultMargin\fP)"
 
 .PP
 конструктор 
@@ -152,7 +164,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 
 .SH "Member Function Documentation"
 .PP 
-.SS "bool KolibriLib::UI::Form::ButtonHandler ()"
+.SS "bool Form::ButtonHandler ()"
 
 .PP
 Обработчик кнопки 
@@ -163,7 +175,7 @@ true если на форму нажали,
 .RE
 .PP
 
-.SS "\fBColor::Color\fP KolibriLib::UI::Form::GetBackgroundColor ()"
+.SS "\fBColors::Color\fP Form::GetBackgroundColor () const"
 
 .PP
 \fBReturns\fP
@@ -172,7 +184,7 @@ true если на форму нажали,
 .RE
 .PP
 
-.SS "std::string KolibriLib::UI::Form::GetBackgroundText ()"
+.SS "std::string Form::GetBackgroundText () const"
 
 .PP
 \fBReturns\fP
@@ -181,7 +193,7 @@ true если на форму нажали,
 .RE
 .PP
 
-.SS "std::string KolibriLib::UI::Form::GetInput ()"
+.SS "std::string Form::GetInput () const"
 
 .PP
 Получить введённый текст 
@@ -189,6 +201,28 @@ true если на форму нажали,
 \fBReturns\fP
 .RS 4
 \fB(текст который ввели в форму) \fP
+.RE
+.PP
+
+.SS "void KolibriLib::UI::Form::SetBackgroundColor (const \fBColors::Color\fP & NewColor)"
+
+.PP
+Изменить цвет фона 
+.PP
+\fBParameters\fP
+.RS 4
+\fINewColor\fP цвет 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::Form::SetBackgroundText (const std::string & NewText)"
+
+.PP
+Изменить фоновый текст 
+.PP
+\fBParameters\fP
+.RS 4
+\fINewText\fP текст 
 .RE
 .PP
 

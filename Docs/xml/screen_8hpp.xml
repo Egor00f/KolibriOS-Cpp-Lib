@@ -4,7 +4,9 @@
     <compoundname>screen.hpp</compoundname>
     <includes local="no">sys/ksys.h</includes>
     <includes refid="small_8hpp" local="yes">small.hpp</includes>
+    <includes refid="thread_8hpp" local="yes">thread.hpp</includes>
     <includedby refid="_kolibri_lib_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/KolibriLib.hpp</includedby>
+    <includedby refid="screen_8cpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/screen.cpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/screen.hpp</label>
@@ -13,12 +15,25 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>small.hpp</label>
         <link refid="small_8hpp_source"/>
         <childnode refid="4" relation="include">
         </childnode>
+      </node>
+      <node id="5">
+        <label>thread.hpp</label>
+        <link refid="thread_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>stdlib.h</label>
       </node>
       <node id="4">
         <label>string</label>
@@ -52,16 +67,13 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/ksys.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;small.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
-<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="13" refid="namespace_kolibri_lib_1a8ef3c016e993ed0a7c2d110d4adae88e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">point&lt;unsigned&gt;</ref><sp/><ref refid="namespace_kolibri_lib_1a8ef3c016e993ed0a7c2d110d4adae88e" kindref="member">GetScreenSize</ref>()</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ksys_pos_t<sp/>a<sp/>=<sp/>_ksys_screen_size();</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="struct_kolibri_lib_1_1point" kindref="compound">point&lt;unsigned&gt;</ref>){a.x,<sp/>a.y};</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;thread.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>point&lt;unsigned&gt;<sp/><ref refid="namespace_kolibri_lib_1a8ef3c016e993ed0a7c2d110d4adae88e" kindref="member">GetScreenSize</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref><sp/><ref refid="namespace_kolibri_lib_1a5e62483a2a86b6d4f196cc92de3b9c55" kindref="member">ScreenPointAffiliation</ref>(point&lt;unsigned&gt;<sp/>POINT);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>

@@ -19,7 +19,11 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "void \fBLoadImage\fP (const std::string &Path=DefaultImage)"
+.RI "\fB~Image\fP ()"
+.br
+.RI "Деструктор "
+.ti -1c
+.RI "void \fBLoadImage\fP (const \fBfilesystem::Path\fP &Path=DefaultImage)"
 .br
 .RI "Загрузить изображение "
 .ti -1c
@@ -30,14 +34,18 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .RI "\fBImage\fP & \fBoperator=\fP (const \fBImage\fP &a)"
 .br
 .ti -1c
-.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={100, 100}, const std::string &Path=DefaultImage)"
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={100, 100}, const \fBfilesystem::Path\fP &Path=DefaultImage)"
 .br
+.ti -1c
+.RI "void \fBSetImg\fP (Image_t *img)"
+.br
+.RI "Изменить изображение "
 .in -1c
 
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "конструктор "
 .ti -1c
@@ -45,24 +53,27 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить размер элемента "
 .ti -1c
-.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.RI "void \fBSetSize\fP (const \fBSize\fP &NewSize)"
 .br
+.RI "Изменить размер элемента "
 .ti -1c
 .RI "unsigned \fBGetMargin\fP () const"
 .br
+.RI "Получить отступы "
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.RI "\fBColors::Color\fP \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
-.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
 .ti -1c
-.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP () const"
 .br
+.RI "Получить координаты элемента "
 .ti -1c
 .RI "void \fBRotate\fP (unsigned NewAngle)"
 .br
@@ -72,8 +83,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить угол наклона элемента "
 .ti -1c
-.RI "bool \fBHover\fP ()"
+.RI "bool \fBHover\fP () const"
 .br
+.RI "Проверить лежит ли курсор мыши над элементом "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -98,7 +110,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Размер "
 .ti -1c
-.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.RI "\fBColors::Color\fP \fB_MainColor\fP"
 .br
 .ti -1c
 .RI "unsigned \fB_Margin\fP"
@@ -118,7 +130,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 Картинка как элемент интерфейса 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::UI::Images::Image::Image (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{100, 100}\fP)"
+.SS "Images::Image::Image (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{100, 100}\fP)"
 
 .PP
 Конструктор 
@@ -137,7 +149,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 
 .SH "Member Function Documentation"
 .PP 
-.SS "void KolibriLib::UI::Images::Image::LoadImage (const std::string & Path = \fRDefaultImage\fP)"
+.SS "void Images::Image::LoadImage (const \fBfilesystem::Path\fP & Path = \fRDefaultImage\fP)"
 
 .PP
 Загрузить изображение 
@@ -148,7 +160,23 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "void KolibriLib::UI::Images::Image::Render (\fBSize\fP size = \fR{0, 0}\fP)"
+.SS "\fBImages::Image\fP & KolibriLib::UI::Images::Image::operator= (const \fBImage\fP & a)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIa\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "void Images::Image::Render (\fBSize\fP size = \fR{0, 0}\fP)"
 
 .PP
 Вывести изображение в окно 
@@ -159,6 +187,17 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 .SS "растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется"
+
+.SS "void Images::Image::SetImg (Image_t * img)"
+
+.PP
+Изменить изображение 
+.PP
+\fBParameters\fP
+.RS 4
+\fIimg\fP Указатель на струтуру \fBImage_t\fP
+.RE
+.PP
 
 
 .SH "Author"

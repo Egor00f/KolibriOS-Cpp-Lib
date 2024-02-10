@@ -21,13 +21,17 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1aa952d568261368ee7ca5c6d95728b0e5">UnfocusWindow</link> (int slot)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88">UnfocusWindow</link> (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> slot)</para>
 
 <para>Снять фокус с окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1aaa30301e531d5aa8c046c0b14699b07b">FocusWindow</link> (int slot)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1a8522ac0eb50e9a7b5ce0091e5fc9d257">FocusWindow</link> (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> slot)</para>
 
 <para>Поставить фокус на окно </para>
+</listitem>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> <link linkend="_namespace_kolibri_lib_1_1window_1af86ed52f97ce1b6925d0faabc8a0ebe1">GetActiveWindow</link> ()</para>
+
+<para>Получить слот активного окна </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -51,11 +55,11 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1window_1aaa30301e531d5aa8c046c0b14699b07b"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1a8522ac0eb50e9a7b5ce0091e5fc9d257"/><section>
     <title>FocusWindow()</title>
 <indexterm><primary>FocusWindow</primary><secondary>KolibriLib::window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window</primary><secondary>FocusWindow</secondary></indexterm>
-<para><computeroutput>void KolibriLib::window::FocusWindow (int slot)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::FocusWindow (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> slot)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Поставить фокус на окно </para>
 </para>
@@ -82,11 +86,26 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1window_1aa952d568261368ee7ca5c6d95728b0e5"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af86ed52f97ce1b6925d0faabc8a0ebe1"/><section>
+    <title>GetActiveWindow()</title>
+<indexterm><primary>GetActiveWindow</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>GetActiveWindow</secondary></indexterm>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> KolibriLib::window::GetActiveWindow ( )</computeroutput></para><para>
+
+<para>Получить слот активного окна </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88"/><section>
     <title>UnfocusWindow()</title>
 <indexterm><primary>UnfocusWindow</primary><secondary>KolibriLib::window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window</primary><secondary>UnfocusWindow</secondary></indexterm>
-<para><computeroutput>void KolibriLib::window::UnfocusWindow (int slot)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::UnfocusWindow (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> slot)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Снять фокус с окна </para>
 </para>

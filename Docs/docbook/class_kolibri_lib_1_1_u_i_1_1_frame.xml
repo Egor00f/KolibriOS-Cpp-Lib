@@ -13,22 +13,22 @@
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a9183d076ae1596d77659ab7df815973c"/><emphasis role="strong">Frame</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;Color=OS::sys_color_table.work_area, const unsigned &amp;Margin=DefaultMargin)</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a98e407245079e89cb99079fd53deb48f"/><emphasis role="strong">Frame</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;Color=OS::sys_color_table.work_area, const unsigned &amp;Margin=DefaultMargin)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a9d8f7281a9cbc096a51839b01045a66a"/>void <emphasis role="strong">Render</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a629b03e9cabc1ca2e66f90d3f87e2bf5"/>void <emphasis role="strong">Render</emphasis> ()</para>
 
 <para>Отрисовать фрейм </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a481031e3270ca4902aa7aecb5d2f9941"/>void <emphasis role="strong">Handler</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a163736fb2f66eddc34c41a7ef68ffba5"/>void <emphasis role="strong">Handler</emphasis> ()</para>
 </listitem>
-            <listitem><para>template&lt;class T &gt; </para><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame_1a7eb07b89b248d6133c2274b3cfdd86fe">AddElement</link> (const T &amp;element)</para>
+            <listitem><para>template&lt;class T &gt; </para><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame_1a12953c4fa0774d043a4ba04658a6b6a0">AddElement</link> (const T &amp;element)</para>
 
 <para>Добавить элемент во фрейм </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
 
 <para>конструктор </para>
 </listitem>
@@ -36,19 +36,25 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
 
 <para>Получить размер элемента </para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetSize</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> NewSize)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3b3eb7370243281576ff27c489db913d">SetSize</link> (const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;NewSize)</para>
+
+<para>Изменить размер элемента </para>
 </listitem>
-            <listitem><para>unsigned <emphasis role="strong">GetMargin</emphasis> () const</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2">GetMargin</link> () const</para>
+
+<para>Получить отступы </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea">GetColor</link> () const</para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adf269accbb7f07330eba3d005061fd1d">GetColor</link> () const</para>
 
 <para>Получить осносной цвет элемента </para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> NewColor)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a969186d6406bb6c11a024e5a91749336">SetColor</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;NewColor)</para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d">SetCoord</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;NewCoord)</para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> () const</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8">GetCoord</link> () const</para>
+
+<para>Получить координаты элемента </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">Rotate</link> (unsigned NewAngle)</para>
 
@@ -58,13 +64,15 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
 
 <para>Получить угол наклона элемента </para>
 </listitem>
-            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1acb1303729c55ba615af2562823dd2c8e">Hover</link> () const</para>
+
+<para>Проверить лежит ли курсор мыши над элементом </para>
 </listitem>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700">operator=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
 </listitem>
-            <listitem><para>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c">operator==</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
 </listitem>
-            <listitem><para>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86">operator!=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
 </listitem>
         </itemizedlist>
 <simplesect>
@@ -78,7 +86,7 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 
 <para>Размер </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
 </listitem>
             <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
 
@@ -96,11 +104,11 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </simplesect>
 <section>
 <title>Member Function Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a7eb07b89b248d6133c2274b3cfdd86fe"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a12953c4fa0774d043a4ba04658a6b6a0"/><section>
     <title>AddElement()</title>
 <indexterm><primary>AddElement</primary><secondary>KolibriLib::UI::Frame</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::Frame</primary><secondary>AddElement</secondary></indexterm>
-<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>unsigned KolibriLib::UI::Frame::AddElement (const T &amp; element)</computeroutput></para><para>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>unsigned UI::Frame::AddElement (const T &amp; element)</computeroutput></para><para>
 
 <para>Добавить элемент во фрейм </para>
 </para>
@@ -132,6 +140,6 @@ Parameters</title>
 </para>
 </section>
 <para>
-The documentation for this class was generated from the following file:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</section>
+The documentation for this class was generated from the following files:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hppF:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.cpp</section>
 </section>

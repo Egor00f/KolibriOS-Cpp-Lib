@@ -21,7 +21,7 @@ LDFLAGS = -static -S -nostdlib -Tapp-dynamic.lds --image-base 0 -O2 -T $(SDK_DIR
 
 LIB_PATH = src/include/kolibriLib
 
-SOURCES = $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/os.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/UI.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
+SOURCES = $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/scree.cpp $(LIB_PATH)/os.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
@@ -32,26 +32,31 @@ setup:
 	@@Echo off
 
 CLAYER:
-	@echo "# make C_Layer:" 
+	@echo "+-------------------------------------+"
+	@echo "| make C_Layer:" 
 	$(MAKE) -C C_Layer/ASM
 
 $(LIB_NAME).a: $(OBJECTS)
 	$(AR) -rcs $(LIB_NAME).a $(OBJECTS)
 
 %.o : %.cpp $(SOURCES)
-	@echo "# compile:" $@
+	@echo "+-------------------------------------+"
+	@echo "| compile:" $@
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $<
 
 EXAMPLES:
-	@echo "# Make examples"
+	@echo "+-------------------------------------+"
+	@echo "| Make examples"
 	$(MAKE) -C src/examples
 
 install:
-	@echo "# installing lib"
+	@echo "+-------------------------------------+"
+	@echo "| installing lib"
 	@mv $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
 
 clean:
-	@echo "# clean"
+	@echo "+-------------------------------------+"
+	@echo "| clean"
 	@rm $(OBJECTS)
 	
 done:

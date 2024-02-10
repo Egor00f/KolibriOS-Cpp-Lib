@@ -15,7 +15,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "конструктор "
 .ti -1c
@@ -23,24 +23,27 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .br
 .RI "Получить размер элемента "
 .ti -1c
-.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.RI "void \fBSetSize\fP (const \fBSize\fP &NewSize)"
 .br
+.RI "Изменить размер элемента "
 .ti -1c
 .RI "unsigned \fBGetMargin\fP () const"
 .br
+.RI "Получить отступы "
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.RI "\fBColors::Color\fP \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
-.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
 .ti -1c
-.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP () const"
 .br
+.RI "Получить координаты элемента "
 .ti -1c
 .RI "void \fBRotate\fP (unsigned NewAngle)"
 .br
@@ -50,8 +53,9 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .br
 .RI "Получить угол наклона элемента "
 .ti -1c
-.RI "bool \fBHover\fP ()"
+.RI "bool \fBHover\fP () const"
 .br
+.RI "Проверить лежит ли курсор мыши над элементом "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -74,7 +78,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .br
 .RI "Размер "
 .ti -1c
-.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.RI "\fBColors::Color\fP \fB_MainColor\fP"
 .br
 .ti -1c
 .RI "unsigned \fB_Margin\fP"
@@ -98,7 +102,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const \fBColor::Color\fP & MainColor = \fROS::sys_color_table\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)\fR [inline]\fP"
+.SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const \fBColors::Color\fP & MainColor = \fROS::sys_color_table\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)"
 
 .PP
 конструктор 
@@ -119,7 +123,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 
 .SH "Member Function Documentation"
 .PP 
-.SS "\fBColor::Color\fP KolibriLib::UI::UIElement::GetColor () const\fR [inline]\fP"
+.SS "\fBColors::Color\fP KolibriLib::UI::UIElement::GetColor () const"
 
 .PP
 Получить осносной цвет элемента 
@@ -130,7 +134,29 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .RE
 .PP
 
-.SS "unsigned KolibriLib::UI::UIElement::GetRotate () const\fR [inline]\fP"
+.SS "\fBCoord\fP KolibriLib::UI::UIElement::GetCoord () const"
+
+.PP
+Получить координаты элемента 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает _coord 
+.RE
+.PP
+
+.SS "unsigned KolibriLib::UI::UIElement::GetMargin () const"
+
+.PP
+Получить отступы 
+.PP
+\fBReturns\fP
+.RS 4
+Функция возвращает \fB_Margin\fP
+.RE
+.PP
+
+.SS "unsigned KolibriLib::UI::UIElement::GetRotate () const"
 
 .PP
 Получить угол наклона элемента 
@@ -141,7 +167,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .RE
 .PP
 
-.SS "\fBSize\fP KolibriLib::UI::UIElement::GetSize () const\fR [inline]\fP"
+.SS "\fBSize\fP KolibriLib::UI::UIElement::GetSize () const"
 
 .PP
 Получить размер элемента 
@@ -152,8 +178,10 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .RE
 .PP
 
-.SS "bool KolibriLib::UI::UIElement::Hover ()\fR [inline]\fP"
+.SS "bool KolibriLib::UI::UIElement::Hover () const"
 
+.PP
+Проверить лежит ли курсор мыши над элементом 
 .PP
 \fBReturns\fP
 .RS 4
@@ -161,7 +189,55 @@ true если курсор мыши находится в этом эелеме�
 .RE
 .PP
 
-.SS "void KolibriLib::UI::UIElement::Rotate (unsigned NewAngle)\fR [inline]\fP"
+.SS "bool KolibriLib::UI::UIElement::operator!= (const \fBUIElement\fP & Element) const"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIElement\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "\fBUIElement\fP & KolibriLib::UI::UIElement::operator= (const \fBUIElement\fP & Element)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIElement\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "bool KolibriLib::UI::UIElement::operator== (const \fBUIElement\fP & Element) const"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIElement\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::UIElement::Rotate (unsigned NewAngle)"
 
 .PP
 Повернуть элемент 
@@ -169,6 +245,39 @@ true если курсор мыши находится в этом эелеме�
 \fBParameters\fP
 .RS 4
 \fINewAngle\fP Новый угол наклона 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::UIElement::SetColor (const \fBColors::Color\fP & NewColor)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fINewColor\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::UIElement::SetCoord (const \fBCoord\fP & NewCoord)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fINewCoord\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::UIElement::SetSize (const \fBSize\fP & NewSize)"
+
+.PP
+Изменить размер элемента 
+.PP
+\fBParameters\fP
+.RS 4
+\fINewSize\fP новый размер 
 .RE
 .PP
 

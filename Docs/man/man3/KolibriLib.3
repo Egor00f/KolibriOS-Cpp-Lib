@@ -15,7 +15,7 @@ KolibriLib \- Основное пространство имён
 .br
 .RI "Дочерние окна "
 .ti -1c
-.RI "namespace \fBColor\fP"
+.RI "namespace \fBColors\fP"
 .br
 .RI "Набор функций для работы с цветом "
 .ti -1c
@@ -59,13 +59,17 @@ KolibriLib \- Основное пространство имён
 .br
 .RI "инициализация "
 .ti -1c
-.RI "void \fBWait\fP (unsigned int time)"
+.RI "void \fBWait\fP (unsigned time)"
 .br
 .RI "Подождать "
 .ti -1c
 .RI "\fBpoint\fP< unsigned > \fBGetScreenSize\fP ()"
 .br
 .RI "Получить разрешение экрана "
+.ti -1c
+.RI "\fBThread::Slot\fP \fBScreenPointAffiliation\fP (\fBpoint\fP< unsigned > POINT)"
+.br
+.RI "Получить принадлежность "
 .in -1c
 .SS "Variables"
 
@@ -108,7 +112,25 @@ Egor00f
 .RE
 .PP
 
-.SS "void KolibriLib::Wait (unsigned int time)\fR [inline]\fP"
+.SS "\fBThread::Slot\fP KolibriLib::ScreenPointAffiliation (\fBpoint\fP< unsigned > POINT)"
+
+.PP
+Получить принадлежность 
+.PP
+\fBParameters\fP
+.RS 4
+\fIPOINT\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::Wait (unsigned time)\fR [inline]\fP"
 
 .PP
 Подождать 

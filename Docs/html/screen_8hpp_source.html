@@ -106,25 +106,21 @@ $(function(){initNavTree('screen_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;sys/ksys.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;small.hpp&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_kolibri_lib.html">KolibriLib</a></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e">   13</a></span>    <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;unsigned&gt;</a> <a class="code hl_function" href="namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e">GetScreenSize</a>()</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        ksys_pos_t a = _ksys_screen_size();</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keywordflow">return</span> (<a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;unsigned&gt;</a>){a.x, a.y};</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    }</div>
-</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;thread.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_kolibri_lib.html">KolibriLib</a></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    point&lt;unsigned&gt; <a class="code hl_function" href="namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e">GetScreenSize</a>();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_typedef" href="namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</a> <a class="code hl_function" href="namespace_kolibri_lib.html#a5e62483a2a86b6d4f196cc92de3b9c55">ScreenPointAffiliation</a>(point&lt;unsigned&gt; POINT);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif </span><span class="comment">// __SCREEN_H__</span></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_ac583b7a88e5bddeab393a41bf9929c51"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51">KolibriLib::Thread::Slot</a></div><div class="ttdeci">int Slot</div><div class="ttdoc">Слот окна</div><div class="ttdef"><b>Definition</b> thread.hpp:13</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> button.hpp:13</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_html_a8ef3c016e993ed0a7c2d110d4adae88e"><div class="ttname"><a href="namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e">KolibriLib::GetScreenSize</a></div><div class="ttdeci">point&lt; unsigned &gt; GetScreenSize()</div><div class="ttdoc">Получить разрешение экрана</div><div class="ttdef"><b>Definition</b> screen.hpp:13</div></div>
-<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> small.hpp:25</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_html_a5e62483a2a86b6d4f196cc92de3b9c55"><div class="ttname"><a href="namespace_kolibri_lib.html#a5e62483a2a86b6d4f196cc92de3b9c55">KolibriLib::ScreenPointAffiliation</a></div><div class="ttdeci">Thread::Slot ScreenPointAffiliation(point&lt; unsigned &gt; POINT)</div><div class="ttdoc">Получить принадлежность</div><div class="ttdef"><b>Definition</b> screen.cpp:11</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_html_a8ef3c016e993ed0a7c2d110d4adae88e"><div class="ttname"><a href="namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e">KolibriLib::GetScreenSize</a></div><div class="ttdeci">point&lt; unsigned &gt; GetScreenSize()</div><div class="ttdoc">Получить разрешение экрана</div><div class="ttdef"><b>Definition</b> screen.cpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

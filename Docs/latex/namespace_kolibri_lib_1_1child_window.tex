@@ -5,16 +5,6 @@
 Дочерние окна  
 
 
-\doxysubsubsection*{Functions}
-\begin{DoxyCompactItemize}
-\item 
-\Hypertarget{namespace_kolibri_lib_1_1child_window_a50453fc7da5c5fee42ec0274beeba299}\label{namespace_kolibri_lib_1_1child_window_a50453fc7da5c5fee42ec0274beeba299} 
-void {\bfseries Render\+Message\+Window} (void)
-\item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a57f91ccdf784da9c5c6f3c726bb36cf6}{Message\+Box}} (std\+::string \+\_\+\+Message, std\+::string \+\_\+\+Title)
-\begin{DoxyCompactList}\small\item\em Создать окно с сообщением \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a7e314209db9df29182f6932bd59d1e13}{Error\+Window}} (std\+::string Error\+Message)
-\begin{DoxyCompactList}\small\item\em окошко с ошибкой \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,33 +16,20 @@ std\+::string {\bfseries Title}
 \item 
 \Hypertarget{namespace_kolibri_lib_1_1child_window_a803990b2e51bbd47782b177b3d639f19}\label{namespace_kolibri_lib_1_1child_window_a803990b2e51bbd47782b177b3d639f19} 
 bool {\bfseries Used} = false
-\end{DoxyCompactItemize}
+\item 
+$<$$<$$<$$<$$<$$<$$<$ Updated upstream void Render\+Message\+Window(void) \{ std\+::string \+\_\+\+Message=Message;std\+::string \+\_\+\+Title=Title;\mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window}{window\+::\+Window}} window(\+\_\+\+Title, \{256, 128\});\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} Window\+Size=window.\+Get\+Size();\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{UI\+::text\+::\+Text\+Label}} message(\{(int) window.\+Get\+Margin(), Window\+Size.\+y/2 \}, \{Window\+Size.\+x, Window\+Size.\+y/2\}, \+\_\+\+Message);message.\+Set\+Scale(true);window.\+Create\+Text(message);while(true) \{ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{OS\+::\+Event}} event=window.\+Handler();if(event=OS\+::\+Events\+::\+Exit) \{ window.\texorpdfstring{$\sim$}{\string~}\+Window();return;\} \} \}=======void Render\+Message\+Window(void \texorpdfstring{$\ast$}{*});$>$ $>$ $>$ $>$ $>$ $>$ Stashed changes$<$$<$$<$$<$$<$$<$$<$ Updated upstream void Message\+Box(std\+::string \+\_\+\+Message, std\+::string \+\_\+\+Title) \{ while(true) \{ if(!Used) \{ Used=true;Message=\+\_\+\+Message;Title=\+\_\+\+Title;Used=true;\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ada14798b8293cbc2d4909e0f7ce4ad00}{Thread\+::\+Create\+Thread}}((void(\texorpdfstring{$\ast$}{*})) Render\+Message\+Window, 4096);Used=false;return;\} else \{ \mbox{\hyperlink{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}{Wait}}(1);\} \} \}=======void Message\+Box(const std\+::string \&\+\_\+\+Message, const std\+::string \&\+\_\+\+Title);$>$ $>$ $>$ $>$ $>$ $>$ Stashed changes voi \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window_a58c5d59004f1f8e7568031db62c05ab9}{Error\+Window}} )(const std\+::string \&Error\+Message)
+\begin{DoxyCompactList}\small\item\em Создать окно с сообщением \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Дочерние окна 
 
-\doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_1_1child_window_a7e314209db9df29182f6932bd59d1e13}\label{namespace_kolibri_lib_1_1child_window_a7e314209db9df29182f6932bd59d1e13} 
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_kolibri_lib_1_1child_window_a58c5d59004f1f8e7568031db62c05ab9}\label{namespace_kolibri_lib_1_1child_window_a58c5d59004f1f8e7568031db62c05ab9} 
 \index{KolibriLib::childWindow@{KolibriLib::childWindow}!ErrorWindow@{ErrorWindow}}
 \index{ErrorWindow@{ErrorWindow}!KolibriLib::childWindow@{KolibriLib::childWindow}}
-\doxysubsubsection{\texorpdfstring{ErrorWindow()}{ErrorWindow()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::child\+Window\+::\+Error\+Window (\begin{DoxyParamCaption}\item[{std\+::string}]{Error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-окошко с ошибкой 
-
-
-\begin{DoxyParams}{Parameters}
-{\em Error\+Message} & сообщение об ощибке \\
-\hline
-\end{DoxyParams}
-\Hypertarget{namespace_kolibri_lib_1_1child_window_a57f91ccdf784da9c5c6f3c726bb36cf6}\label{namespace_kolibri_lib_1_1child_window_a57f91ccdf784da9c5c6f3c726bb36cf6} 
-\index{KolibriLib::childWindow@{KolibriLib::childWindow}!MessageBox@{MessageBox}}
-\index{MessageBox@{MessageBox}!KolibriLib::childWindow@{KolibriLib::childWindow}}
-\doxysubsubsection{\texorpdfstring{MessageBox()}{MessageBox()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::child\+Window\+::\+Message\+Box (\begin{DoxyParamCaption}\item[{std\+::string}]{\+\_\+\+Message,  }\item[{std\+::string}]{\+\_\+\+Title }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{ErrorWindow}{ErrorWindow}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::child\+Window\+::\+Error\+Window (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -62,6 +39,11 @@ bool {\bfseries Used} = false
 \begin{DoxyParams}{Parameters}
 {\em Message} & сообщение \\
 \hline
-{\em Title} & Заголовок \\
+{\em Title} & Заголовок\\
+\hline
+\end{DoxyParams}
+окошко с ошибкой 
+\begin{DoxyParams}{Parameters}
+{\em Error\+Message} & сообщение об ощибке \\
 \hline
 \end{DoxyParams}

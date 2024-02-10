@@ -1,18 +1,23 @@
 var class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button =
 [
-    [ "Button", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#aaa98f04affa5c850dbd5ad3faa3c6aa4", null ],
-    [ "~Button", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a3dddb0a58edf4d60a2bc539859fea95b", null ],
-    [ "Activate", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a65b6a0809e8e43892e48065708fa01d1", null ],
-    [ "Deactivate", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a0a235265d209cec4e8f735d416d25505", null ],
-    [ "GetId", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a45ea9d51be9d17f6afca47ecfd6bdee6", null ],
-    [ "GetImage", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a7d647394cc692e8dba0dd118c6dcdf63", null ],
-    [ "GetStatus", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a3f8517f74b2049f07a9da9a9910e9814", null ],
-    [ "GetTextLabel", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a4387a38fa0a7b981c3a2cea4730704db", null ],
-    [ "GetType", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#aee40bbc992414d695c0800f7d903f05e", null ],
-    [ "Handler", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a018ac30303a5b12365f5251f5771bf6f", null ],
-    [ "init", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#aa93163b009993db9a67df67ad9653bc5", null ],
-    [ "init", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a81904ddeac359eb10d23b8d76818f236", null ],
-    [ "init", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a4bcd9cdb3b727f490587f14c15d135f4", null ],
-    [ "Render", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a2d359db5c5aaa43f1a28c46d0d00d8a8", null ],
-    [ "SetText", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a159f389b9845713368e763ce159c77d7", null ]
+    [ "Type", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a0f3e15d49006599b71c2b5e913397440", [
+      [ "Image", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a0f3e15d49006599b71c2b5e913397440ac47151eaf6597d1d6d1b4170989d94e0", null ],
+      [ "Text", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a0f3e15d49006599b71c2b5e913397440af9f396d28c3b22b4d2bf545cc3483122", null ]
+    ] ],
+    [ "Button", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ac266a63a1727ed838542a876d3344c6a", null ],
+    [ "~Button", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ab57e36f60d8bf268227dbc1114913f6d", null ],
+    [ "Activate", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#aac6f24499abf9a0b978a0c27b2a1e344", null ],
+    [ "Deactivate", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a8727a99e9bd5a13394cec8c0941b9da6", null ],
+    [ "GetId", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a67f9b2ce434a2224a0e35d1284679616", null ],
+    [ "GetImage", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a3a82c9b3e441c0e4b0120e20627ef552", null ],
+    [ "GetStatus", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a6eaba3fc208cd15db6121376871dde57", null ],
+    [ "GetTextLabel", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ac5bb4447a87ab739eae7a4f5c1ed0a3a", null ],
+    [ "GetType", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a8c01f1c3092d101ac3c7f5da551eaa77", null ],
+    [ "Handler", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ac28b523b166e42343f6e7a5a9886ba1b", null ],
+    [ "init", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a80df5512d57d429bd12b4b694544c2c1", null ],
+    [ "init", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a7322f320633dafa6c520a5c64f47b2f9", null ],
+    [ "init", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#aca7e3a8b33fe924eb03340b0461ac5af", null ],
+    [ "Render", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#ae9b96866245ca42f480fa335adc843e6", null ],
+    [ "SetImage", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a2cb83ed4bca6a6bf72dee94fd682737b", null ],
+    [ "SetText", "class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a886d985af13b7e23d7981e18678e6e66", null ]
 ];

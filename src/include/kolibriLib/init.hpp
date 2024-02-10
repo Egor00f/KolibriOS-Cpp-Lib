@@ -9,6 +9,7 @@ extern "C"
 {
 #include <kolibri_libimg.h>
 }
+#include <sound.h>
 
 #include "filesystem.hpp"
 #include "os.hpp"
@@ -26,8 +27,13 @@ namespace KolibriLib
             _ksys_debug_puts("Error loading lib_img.obj, exit\n");
             exit(0);
         }
-        
-        _ksys_set_event_mask(0x07);
+
+        if ( int version = -1; !InitSound(&version))
+        {
+            _ksys_debug_puts("Erroe loading sound.h, exit");
+        }
+
+            _ksys_set_event_mask(0x07);
         OS::GetSystemColors();
     }
 }

@@ -37,6 +37,18 @@ Path &KolibriLib::filesystem::Path::operator/(const std::string &a)
     return *this;
 }
 
+Path &KolibriLib::filesystem::Path::operator=(const Path &a)
+{
+    _string = a._string;
+    return *this;
+}
+
+Path &KolibriLib::filesystem::Path::operator=(const std::string &a)
+{
+    _string = a;
+    return *this;
+}
+
 bool KolibriLib::filesystem::Path::operator==(const Path &a) const
 {
     return _string == a._string;

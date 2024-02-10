@@ -21,81 +21,89 @@
 <simplesect>
     <title>Public Types    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440"/>enum <emphasis role="strong">Type</emphasis> { <emphasis role="strong">Image</emphasis> = 0
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440"/>enum <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440">Type</link> { <emphasis role="strong">Image</emphasis> = 0
 , <emphasis role="strong">Text</emphasis>
  }</para>
+
+<para>Список типов данных которые можно &quot;запихнуть&quot; в кнопку </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aaa98f04affa5c850dbd5ad3faa3c6aa4">Button</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={20, 20}, unsigned Margin=UI::DefaultMargin, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> ButtonColor=OS::sys_color_table.work_button)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac266a63a1727ed838542a876d3344c6a">Button</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={20, 20}, const unsigned &amp;Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
 
 <para>Это конструктор </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a81904ddeac359eb10d23b8d76818f236">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const std::string &amp;text=&quot;button&quot;, const unsigned &amp;Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7322f320633dafa6c520a5c64f47b2f9">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const std::string &amp;text=&quot;button&quot;, const unsigned &amp;Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
 
 <para>инициализировать параметры </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aa93163b009993db9a67df67ad9653bc5">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp;image=<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>(), const unsigned &amp;Margin=DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a80df5512d57d429bd12b4b694544c2c1">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp;image=<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>(), const unsigned &amp;Margin=DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
 
 <para>инициализировать параметры </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4bcd9cdb3b727f490587f14c15d135f4">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, std::string Path=DefaultImage)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aca7e3a8b33fe924eb03340b0461ac5af">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, std::string Path=DefaultImage)</para>
 
 <para>инициализировать параметры </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2d359db5c5aaa43f1a28c46d0d00d8a8"/>void <emphasis role="strong">Render</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ae9b96866245ca42f480fa335adc843e6"/>void <emphasis role="strong">Render</emphasis> ()</para>
 
 <para>Отрисовать кнопку </para>
 </listitem>
-            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a018ac30303a5b12365f5251f5771bf6f">Handler</link> ()</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac28b523b166e42343f6e7a5a9886ba1b">Handler</link> ()</para>
 
 <para>Обработчик кнопки </para>
 </listitem>
-            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3f8517f74b2049f07a9da9a9910e9814">GetStatus</link> () const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a6eaba3fc208cd15db6121376871dde57">GetStatus</link> () const</para>
 
 <para>Получить сосояние кнопки на момент последней обработки </para>
 </listitem>
-            <listitem><para>ButtonID <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a45ea9d51be9d17f6afca47ecfd6bdee6">GetId</link> () const</para>
+            <listitem><para>ButtonID <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a67f9b2ce434a2224a0e35d1284679616">GetId</link> () const</para>
 
 <para>Получить номер кнопки </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0a235265d209cec4e8f735d416d25505">Deactivate</link> ()</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8727a99e9bd5a13394cec8c0941b9da6">Deactivate</link> ()</para>
 
 <para>Деактивировать кнопку </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a65b6a0809e8e43892e48065708fa01d1">Activate</link> ()</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aac6f24499abf9a0b978a0c27b2a1e344">Activate</link> ()</para>
 
 <para>Активировать кнопку </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aee40bbc992414d695c0800f7d903f05e">GetType</link> () const</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8c01f1c3092d101ac3c7f5da551eaa77">GetType</link> () const</para>
 
 <para>Возвращает тип данных используемых в кнопке <link linkend="_">_type.</link></para>
 </listitem>
-            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4387a38fa0a7b981c3a2cea4730704db">GetTextLabel</link> () const</para>
+            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac5bb4447a87ab739eae7a4f5c1ed0a3a">GetTextLabel</link> () const</para>
 
 <para>Возвращает текст кнопки </para>
 </listitem>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7d647394cc692e8dba0dd118c6dcdf63">GetImage</link> () const</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3a82c9b3e441c0e4b0120e20627ef552">GetImage</link> () const</para>
 
 <para>Получить изображение кнопки </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a159f389b9845713368e763ce159c77d7">SetText</link> (std::string NewText)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a886d985af13b7e23d7981e18678e6e66">SetText</link> (const std::string &amp;NewText)</para>
 
 <para>Изменить текст кнопки </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3dddb0a58edf4d60a2bc539859fea95b"/><emphasis role="strong">~Button</emphasis> ()</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2cb83ed4bca6a6bf72dee94fd682737b">SetImage</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp;NewImg)</para>
+
+<para>Изменить изображение в кнопке </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ab57e36f60d8bf268227dbc1114913f6d"/><emphasis role="strong">~Button</emphasis> ()</para>
 
 <para>Декструктор </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1af82a283646f3b2b3be2c60018cf636f2"/><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp;element)</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0848b7d5094a5704f00b54f7debf1722"/><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp;element)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aa1a0a5a2d72b1e94ca76e357a7447374"/>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp;element) const</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
 
 <para>конструктор </para>
 </listitem>
@@ -103,19 +111,25 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
 
 <para>Получить размер элемента </para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetSize</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> NewSize)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3b3eb7370243281576ff27c489db913d">SetSize</link> (const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;NewSize)</para>
+
+<para>Изменить размер элемента </para>
 </listitem>
-            <listitem><para>unsigned <emphasis role="strong">GetMargin</emphasis> () const</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2">GetMargin</link> () const</para>
+
+<para>Получить отступы </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea">GetColor</link> () const</para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adf269accbb7f07330eba3d005061fd1d">GetColor</link> () const</para>
 
 <para>Получить осносной цвет элемента </para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> NewColor)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a969186d6406bb6c11a024e5a91749336">SetColor</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;NewColor)</para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d">SetCoord</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;NewCoord)</para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> () const</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8">GetCoord</link> () const</para>
+
+<para>Получить координаты элемента </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">Rotate</link> (unsigned NewAngle)</para>
 
@@ -125,13 +139,15 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
 
 <para>Получить угол наклона элемента </para>
 </listitem>
-            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1acb1303729c55ba615af2562823dd2c8e">Hover</link> () const</para>
+
+<para>Проверить лежит ли курсор мыши над элементом </para>
 </listitem>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700">operator=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
 </listitem>
-            <listitem><para>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c">operator==</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
 </listitem>
-            <listitem><para>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86">operator!=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
 </listitem>
         </itemizedlist>
 <simplesect>
@@ -145,7 +161,7 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 
 <para>Размер </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
 </listitem>
             <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
 
@@ -168,14 +184,14 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </section>
 <section>
 <title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aaa98f04affa5c850dbd5ad3faa3c6aa4"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac266a63a1727ed838542a876d3344c6a"/><section>
     <title>Button()</title>
 <indexterm><primary>Button</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>Button</secondary></indexterm>
-<para><computeroutput>KolibriLib::UI::buttons::Button::Button (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+<para><computeroutput>buttons::Button::Button (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
 , const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{20,&#160;20}</computeroutput>
-, unsigned Margin = <computeroutput>UI::DefaultMargin</computeroutput>
-, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+, const unsigned &amp; Margin = <computeroutput>UI::DefaultMargin</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
 )</computeroutput></para><para>
 
 <para>Это конструктор </para>
@@ -231,11 +247,11 @@ Parameters</title>
 </section>
 <section>
 <title>Member Function Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a65b6a0809e8e43892e48065708fa01d1"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aac6f24499abf9a0b978a0c27b2a1e344"/><section>
     <title>Activate()</title>
 <indexterm><primary>Activate</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>Activate</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::Button::Activate ( )</computeroutput></para><para>
+<para><computeroutput>void buttons::Button::Activate ( )</computeroutput></para><para>
 
 <para>Активировать кнопку </para>
 </para>
@@ -243,11 +259,11 @@ Parameters</title>
 <title><title>функции <link linkend="_">возвращает кнопку в рабочее состояние</link></title></title>
 </section>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0a235265d209cec4e8f735d416d25505"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8727a99e9bd5a13394cec8c0941b9da6"/><section>
     <title>Deactivate()</title>
 <indexterm><primary>Deactivate</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>Deactivate</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::Button::Deactivate ( )</computeroutput></para><para>
+<para><computeroutput>void buttons::Button::Deactivate ( )</computeroutput></para><para>
 
 <para>Деактивировать кнопку </para>
 </para>
@@ -258,11 +274,11 @@ Parameters</title>
 <title><title>Деактивированном состоянии кнопка &quot;Не нажимается&quot;, а её <link linkend="_a59988b09eab8a3acdbe8bd1d93b3d931">становится не действительным</link></title></title>
 </section>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a45ea9d51be9d17f6afca47ecfd6bdee6"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a67f9b2ce434a2224a0e35d1284679616"/><section>
     <title>GetId()</title>
 <indexterm><primary>GetId</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>GetId</secondary></indexterm>
-<para><computeroutput>buttons::ButtonID KolibriLib::UI::buttons::Button::GetId ( ) const</computeroutput></para><para>
+<para><computeroutput>buttons::ButtonID buttons::Button::GetId ( ) const</computeroutput></para><para>
 
 <para>Получить номер кнопки </para>
 </para>
@@ -273,26 +289,26 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7d647394cc692e8dba0dd118c6dcdf63"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3a82c9b3e441c0e4b0120e20627ef552"/><section>
     <title>GetImage()</title>
 <indexterm><primary>GetImage</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>GetImage</secondary></indexterm>
-<para><computeroutput><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> KolibriLib::UI::buttons::Button::GetImage ( ) const</computeroutput></para><para>
+<para><computeroutput><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> buttons::Button::GetImage ( ) const</computeroutput></para><para>
 
 <para>Получить изображение кнопки </para>
 </para>
 
 <para><formalpara><title>Returns</title>
 
-<para></para>
+<para>Функция возвращает <link linkend="_a886a8b3231619c8c1836d2549b1664db">_img</link></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3f8517f74b2049f07a9da9a9910e9814"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a6eaba3fc208cd15db6121376871dde57"/><section>
     <title>GetStatus()</title>
 <indexterm><primary>GetStatus</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>GetStatus</secondary></indexterm>
-<para><computeroutput>bool KolibriLib::UI::buttons::Button::GetStatus ( ) const</computeroutput></para><para>
+<para><computeroutput>bool buttons::Button::GetStatus ( ) const</computeroutput></para><para>
 
 <para>Получить сосояние кнопки на момент последней обработки </para>
 </para>
@@ -303,26 +319,26 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4387a38fa0a7b981c3a2cea4730704db"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac5bb4447a87ab739eae7a4f5c1ed0a3a"/><section>
     <title>GetTextLabel()</title>
 <indexterm><primary>GetTextLabel</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>GetTextLabel</secondary></indexterm>
-<para><computeroutput>std::string KolibriLib::UI::buttons::Button::GetTextLabel ( ) const</computeroutput></para><para>
+<para><computeroutput>std::string buttons::Button::GetTextLabel ( ) const</computeroutput></para><para>
 
 <para>Возвращает текст кнопки </para>
 </para>
 
 <para><formalpara><title>Returns</title>
 
-<para>std::string </para>
+<para>Функция возвращает <link linkend="_a2bc5be35e8b00ba1e6e642b502d4394a">_text</link></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aee40bbc992414d695c0800f7d903f05e"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8c01f1c3092d101ac3c7f5da551eaa77"/><section>
     <title>GetType()</title>
 <indexterm><primary>GetType</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>GetType</secondary></indexterm>
-<para><computeroutput>unsigned KolibriLib::UI::buttons::Button::GetType ( ) const</computeroutput></para><para>
+<para><computeroutput>unsigned buttons::Button::GetType ( ) const</computeroutput></para><para>
 
 <para>Возвращает тип данных используемых в кнопке <link linkend="_">_type.</link></para>
 </para>
@@ -333,11 +349,11 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a018ac30303a5b12365f5251f5771bf6f"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac28b523b166e42343f6e7a5a9886ba1b"/><section>
     <title>Handler()</title>
 <indexterm><primary>Handler</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>Handler</secondary></indexterm>
-<para><computeroutput>bool KolibriLib::UI::buttons::Button::Handler ( )</computeroutput></para><para>
+<para><computeroutput>bool buttons::Button::Handler ( )</computeroutput></para><para>
 
 <para>Обработчик кнопки </para>
 </para>
@@ -354,15 +370,15 @@ Parameters</title>
 <title><title>функцию нужно вызывать в цикле, чтобы кнопка работала</title></title>
 </section>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aa93163b009993db9a67df67ad9653bc5"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a80df5512d57d429bd12b4b694544c2c1"/><section>
     <title>init()<computeroutput>[1/3]</computeroutput></title>
 <indexterm><primary>init</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>init</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::Button::init (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+<para><computeroutput>void buttons::Button::init (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
 , const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{0,&#160;0}</computeroutput>
 , const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp; image = <computeroutput><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>()</computeroutput>
 , const unsigned &amp; Margin = <computeroutput>DefaultMargin</computeroutput>
-, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp; ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
 )</computeroutput></para><para>
 
 <para>инициализировать параметры </para>
@@ -415,15 +431,15 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a81904ddeac359eb10d23b8d76818f236"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7322f320633dafa6c520a5c64f47b2f9"/><section>
     <title>init()<computeroutput>[2/3]</computeroutput></title>
 <indexterm><primary>init</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>init</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::Button::init (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+<para><computeroutput>void buttons::Button::init (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
 , const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{0,&#160;0}</computeroutput>
 , const std::string &amp; text = <computeroutput>&quot;button&quot;</computeroutput>
 , const unsigned &amp; Margin = <computeroutput>UI::DefaultMargin</computeroutput>
-, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp; ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; ButtonColor = <computeroutput>OS::sys_color_table.work_button</computeroutput>
 )</computeroutput></para><para>
 
 <para>инициализировать параметры </para>
@@ -476,11 +492,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4bcd9cdb3b727f490587f14c15d135f4"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aca7e3a8b33fe924eb03340b0461ac5af"/><section>
     <title>init()<computeroutput>[3/3]</computeroutput></title>
 <indexterm><primary>init</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>init</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::Button::init (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
+<para><computeroutput>void buttons::Button::init (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
 , const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size = <computeroutput>{0,&#160;0}</computeroutput>
 , std::string Path = <computeroutput>DefaultImage</computeroutput>
 )</computeroutput></para><para>
@@ -535,11 +551,42 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a159f389b9845713368e763ce159c77d7"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2cb83ed4bca6a6bf72dee94fd682737b"/><section>
+    <title>SetImage()</title>
+<indexterm><primary>SetImage</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>SetImage</secondary></indexterm>
+<para><computeroutput>void buttons::Button::SetImage (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp; NewImg)</computeroutput></para><para>
+
+<para>Изменить изображение в кнопке </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>NewImg</entry><entry>
+<para>Изображение </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a886d985af13b7e23d7981e18678e6e66"/><section>
     <title>SetText()</title>
 <indexterm><primary>SetText</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>SetText</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::Button::SetText (std::string NewText)</computeroutput></para><para>
+<para><computeroutput>void buttons::Button::SetText (const std::string &amp; NewText)</computeroutput></para><para>
 
 <para>Изменить текст кнопки </para>
 </para>
@@ -567,6 +614,6 @@ Parameters</title>
                 </para>
 </section>
 <para>
-The documentation for this class was generated from the following file:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp</section>
+The documentation for this class was generated from the following files:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hppF:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.cpp</section>
 </section>

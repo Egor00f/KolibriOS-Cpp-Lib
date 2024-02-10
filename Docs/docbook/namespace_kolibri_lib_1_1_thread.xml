@@ -8,15 +8,41 @@
  
 </para>
 <simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>union <link linkend="_union_kolibri_lib_1_1_thread_1_1_thread_info">ThreadInfo</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51"/>typedef int <emphasis role="strong">Slot</emphasis></para>
+
+<para>Слот окна </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a1635692d8eb5eddc602109be07a50a45"/>typedef int <emphasis role="strong">PID</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e">CreateThread</link> (void *ThreadEntry, unsigned ThreadStackSize=1024)</para>
+            <listitem><para>PID <link linkend="_namespace_kolibri_lib_1_1_thread_1ada14798b8293cbc2d4909e0f7ce4ad00">CreateThread</link> (void(*ThreadEntry)(void *), unsigned ThreadStackSize=1024)</para>
 
 <para>Создать поток </para>
 </listitem>
-            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9">TerminateThread</link> (int PID)</para>
+            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1_thread_1a53a7d295e396cff9eaca2ceae95b6b01">TerminateThread</link> (PID pid)</para>
 
 <para>Завершить процесс/поток </para>
+</listitem>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Slot</link> <link linkend="_namespace_kolibri_lib_1_1_thread_1a1dcd40d1d36fdb865364df4668fffafb">GetThreadSlot</link> (PID pid)</para>
+
+<para>Получить слот потока </para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_thread_1_1_thread_info">ThreadInfo</link> <link linkend="_namespace_kolibri_lib_1_1_thread_1a8803383eace2b5fdc0616c20d04a4a89">GetThreadInfo</link> (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Slot</link> thread)</para>
+
+<para>Поличть информацию о потоке </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -27,11 +53,11 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1ada14798b8293cbc2d4909e0f7ce4ad00"/><section>
     <title>CreateThread()</title>
 <indexterm><primary>CreateThread</primary><secondary>KolibriLib::Thread</secondary></indexterm>
 <indexterm><primary>KolibriLib::Thread</primary><secondary>CreateThread</secondary></indexterm>
-<para><computeroutput>unsigned KolibriLib::Thread::CreateThread (void * ThreadEntry, unsigned ThreadStackSize = <computeroutput>1024</computeroutput>
+<para><computeroutput>PID KolibriLib::Thread::CreateThread (void(*)(void *) ThreadEntry, unsigned ThreadStackSize = <computeroutput>1024</computeroutput>
 )</computeroutput></para><para>
 
 <para>Создать поток </para>
@@ -68,11 +94,84 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a8803383eace2b5fdc0616c20d04a4a89"/><section>
+    <title>GetThreadInfo()</title>
+<indexterm><primary>GetThreadInfo</primary><secondary>KolibriLib::Thread</secondary></indexterm>
+<indexterm><primary>KolibriLib::Thread</primary><secondary>GetThreadInfo</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_thread_1_1_thread_info">KolibriLib::Thread::ThreadInfo</link> KolibriLib::Thread::GetThreadInfo (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Slot</link> thread)</computeroutput></para><para>
+
+<para>Поличть информацию о потоке </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>thread</entry><entry>
+<para>слот потока </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>информация о потоке </para>
+</formalpara>
+</para>
+<section xml:id="_namespace_kolibri_lib_1_1_thread_1если">
+<title><title>слот -1 то возвращается информация о текущем потоке</title></title>
+</section>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a1dcd40d1d36fdb865364df4668fffafb"/><section>
+    <title>GetThreadSlot()</title>
+<indexterm><primary>GetThreadSlot</primary><secondary>KolibriLib::Thread</secondary></indexterm>
+<indexterm><primary>KolibriLib::Thread</primary><secondary>GetThreadSlot</secondary></indexterm>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Slot</link> KolibriLib::Thread::GetThreadSlot (PID pid)</computeroutput></para><para>
+
+<para>Получить слот потока </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>pid</entry><entry>
+<para>поток </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Слот потока pid </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_thread_1a53a7d295e396cff9eaca2ceae95b6b01"/><section>
     <title>TerminateThread()</title>
 <indexterm><primary>TerminateThread</primary><secondary>KolibriLib::Thread</secondary></indexterm>
 <indexterm><primary>KolibriLib::Thread</primary><secondary>TerminateThread</secondary></indexterm>
-<para><computeroutput>bool KolibriLib::Thread::TerminateThread (int PID)</computeroutput></para><para>
+<para><computeroutput>bool KolibriLib::Thread::TerminateThread (PID pid)</computeroutput></para><para>
 
 <para>Завершить процесс/поток </para>
 </para>

@@ -226,7 +226,9 @@ unsigned KolibriLib::window::Window::CreateButton(UI::Coord coord, UI::Size size
 
 unsigned Window::CreateText(UI::Coord coord, UI::Size size, std::string text, unsigned FontSize, bool UseWindowColors, Colors::Color color)
 {
+    #if DEBUG == true
     _ksys_debug_puts("CreateText:");
+    #endif
     if (UseWindowColors)
     {
         color = _colors.work_text;
@@ -327,37 +329,59 @@ void Window::HandlerThread()
     }
 }
 
+void KolibriLib::window::Window::Unfocus() const
+{
+    _ksys_unfocus_window(Thread::GetThreadSlot(Thread::GetThreadInfo(-1).pid));
+}
+
+void KolibriLib::window::Window::Focus() const
+{
+    _ksys_focus_window(Thread::GetThreadSlot(Thread::GetThreadInfo(-1).pid));
+}
+
 template <class T>
 unsigned Window::AddElement(const T &element)
 {
-    /*Element a;
+    Element a;
 
-    switch (T)
+    switch (sizeof(T))
     {
-    case UI::text::TextLabel:
+    case sizeof(UI::text::TextLabel):
         a.txt = element;
         a._type = Element::Type::TextLabel;
         break;
-    case UI::buttons::Button:
+    case sizeof(UI::buttons::Button):
         a.btn = element;
         a._type = Element::Type::Button;
         break;
-    case UI::Images::Image:
+    case sizeof(UI::Images::Image):
         a.img = element;
         a._type = Element::Type::Image;
         break;
-    case UI::Form:
+    case sizeof(UI::Form):
         a.frm = element;
         a._type = Element::Type::Form;
         break;
-    case UI::CheckBox:
+    case sizeof(UI::CheckBox):
         a.ChckBx = element;
         a._type = Element::Type::CheckBox;
         break;
+    case sizeof(UI::Frame):
+        a.frmae = element
     default:
+        _ksys_debug_puts("KolibriLib::window::Window::AddElement: unknown type, break\n");
         break;
     }
 
-    _Elements.push_back(a); */
+    for (unsigned i = 0; i < _Elements.size(); i++) // Ищем свободный элемент
+    {
+        if (!_Elements[i].use)
+        {
+            _Elements[i] = a;
+            return i;
+        }
+    }
+    
+    _Elements.push_back(a); 
     return _Elements.size() - 1;
 }

@@ -1,9 +1,13 @@
 #ifndef __WINDOWBASE_H__
 #define __WINDOWBASE_H__
 
+/*
+    Тут тип базовый функционал работы с окном
+*/
 
 #include <sys/ksys.h>
 #include "UI.hpp"
+#include "thread.hpp"
 
 namespace KolibriLib
 {
@@ -24,16 +28,15 @@ namespace KolibriLib
 
         /// @brief Снять фокус с окна
         /// @param slot слот окна
-        inline void UnfocusWindow(int slot)
-        {
-            _ksys_unfocus_window(slot);
-        }
+        inline void UnfocusWindow(Thread::Slot slot);
+
         /// @brief Поставить фокус на окно
         /// @param slot слот окна
-        inline void FocusWindow(int slot)
-        {
-            _ksys_focus_window(slot);
-        }
+        inline void FocusWindow(Thread::Slot slot);
+
+        /// @brief Получить слот активного окна
+        /// @return 
+        Thread::Slot GetActiveWindow();
 
     } // namespace window
     

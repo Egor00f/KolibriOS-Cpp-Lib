@@ -14,74 +14,43 @@
 \DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{namespace\ }OS}
 \DoxyCodeLine{00012\ \ \ \ \ \{}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_af33ee97a2e4e960348f4aa78678bdb58}{Color::ColorsTable}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{sys\_color\_table}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}{Colors::ColorsTable}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{sys\_color\_table}};}
 \DoxyCodeLine{00016\ }
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_color_af33ee97a2e4e960348f4aa78678bdb58}{Color::ColorsTable}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_acd3677ce750619433ac3ed307fd93f06}{GetSystemColors}}()}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_get\_system\_colors(\&\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{sys\_color\_table}});}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{sys\_color\_table}};}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ Events}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ None\ \ \ \ =\ KSYS\_EVENT\_NONE,}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ Redraw\ \ =\ KSYS\_EVENT\_REDRAW,}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ Button\ \ =\ KSYS\_EVENT\_BUTTON,}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ Mouse\ \ \ =\ KSYS\_EVENT\_MOUSE,}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ Key\ \ \ \ \ =\ KSYS\_EVENT\_KEY,}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ Desktop\ =\ KSYS\_EVENT\_DESKTOP,}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ Debug\ \ \ =\ KSYS\_EVENT\_DEBUG,}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ Exit\ \ \ \ =\ 200}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{WaitEvent}}()}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_wait\_event();}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{WaitEvent}}(uint32\_t\ TimeOut)}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_wait\_event\_timeout(TimeOut);}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}{Colors::ColorsTable}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{GetSystemColors}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8c}{Events}}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca660534ed047f5f24e82812b143dd9c61}{None}}\ \ \ \ =\ KSYS\_EVENT\_NONE,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca070cb13d251187bcb81b8c3fe13c8285}{Redraw}}\ \ =\ KSYS\_EVENT\_REDRAW,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8cad8c577b231e2a21dc66bc1aababfc55a}{Button}}\ \ =\ KSYS\_EVENT\_BUTTON,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca3c9ab2f8d47522ef1bb2a176396118bd}{Mouse}}\ \ \ =\ KSYS\_EVENT\_MOUSE,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca7dfe7168df1cbce07260998fe69cc684}{Key}}\ \ \ \ \ =\ KSYS\_EVENT\_KEY,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ Desktop\ =\ KSYS\_EVENT\_DESKTOP,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ Debug\ \ \ =\ KSYS\_EVENT\_DEBUG,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ Exit}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a51432114007d25b88f76501910253064}{WaitEvent}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a51432114007d25b88f76501910253064}{WaitEvent}}(uint32\_t\ TimeOut);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_afc5cf781adb8afcd4bebfb1d081a1a0f}{CheckEvent}}();}
 \DoxyCodeLine{00055\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a15b798e29dc85b78748a71bbf3c0cd2c}{CheckEvent}}()}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_check\_event();}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ae46a6edced337a9b167bc5b9014360c8}{Exec}}(std::string\ AppName,\ std::string\ args)}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}{filesystem::Exist}}(AppName))\ \textcolor{comment}{//\ Проверка\ на\ существование}}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *a;}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ args.c\_str());}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_exec(AppName.c\_str(),\ a);}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ ksys\_time\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a1744275834206a63ba18a572f5ddd6bb}{GetTime}}()}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_time();}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ OS}}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_a56a5ef2333e7fe22f558aaa6c9276b7c}{Wait}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time)}
-\DoxyCodeLine{00095\ \ \ \ \ \{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \_ksys\_delay(time);}
-\DoxyCodeLine{00097\ \ \ \ \ \}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_OS\_H\_\_}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a9d371dfce7a7c6579a93776e25222f13}{Exec}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\&\ AppName,\ \textcolor{keyword}{const}\ std::string\&\ args);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ ksys\_time\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a1744275834206a63ba18a572f5ddd6bb}{GetTime}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ OS}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}{Wait}}(\textcolor{keywordtype}{unsigned}\ time);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_OS\_H\_\_}}
 
 \end{DoxyCode}

@@ -57,7 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_kolibri_lib_8hpp_source.html"
+"_kolibri_lib_8hpp_source.html",
+"pages.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

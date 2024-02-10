@@ -111,7 +111,7 @@ void Images::Image::Render(Size size)
     }
 }
 
-void Images::Image::init(const Coord &coord, const Size &size, const std::string &Path)
+void Images::Image::init(const Coord &coord, const Size &size, const filesystem::Path &Path)
 {
     _coord = coord;
     _size = size;
@@ -121,10 +121,10 @@ void Images::Image::init(const Coord &coord, const Size &size, const std::string
 void Images::Image::SetImg(Image_t *img)
 {
     img_destroy(_img);
-    _img = Copy(img);
+    _img = Images::Copy(img);
 }
 
-Images::Image &KolibriLib::UI::Images::Image::operator=(const Image &a)
+Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image &a)
 {
     _coord = a._coord;
     _size = a._size;

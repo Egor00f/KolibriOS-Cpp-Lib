@@ -19,14 +19,14 @@ KolibriLib::OS \- Работа с системой
 
 .in +1c
 .ti -1c
-.RI "enum \fBEvents\fP { \fBNone\fP = KSYS_EVENT_NONE, \fBRedraw\fP = KSYS_EVENT_REDRAW, \fBButton\fP = KSYS_EVENT_BUTTON, \fBMouse\fP = KSYS_EVENT_MOUSE, \fBKey\fP = KSYS_EVENT_KEY, \fBDesktop\fP = KSYS_EVENT_DESKTOP, \fBDebug\fP = KSYS_EVENT_DEBUG, \fBExit\fP = 200 }"
+.RI "enum \fBEvents\fP { \fBNone\fP = KSYS_EVENT_NONE, \fBRedraw\fP = KSYS_EVENT_REDRAW, \fBButton\fP = KSYS_EVENT_BUTTON, \fBMouse\fP = KSYS_EVENT_MOUSE, \fBKey\fP = KSYS_EVENT_KEY, \fBDesktop\fP = KSYS_EVENT_DESKTOP, \fBDebug\fP = KSYS_EVENT_DEBUG, \fBExit\fP }"
 .br
 .in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBColor::ColorsTable\fP \fBGetSystemColors\fP ()"
+.RI "\fBColors::ColorsTable\fP \fBGetSystemColors\fP ()"
 .br
 .RI "Получить системные цвета "
 .ti -1c
@@ -42,7 +42,7 @@ KolibriLib::OS \- Работа с системой
 .br
 .RI "Проверить пришёл ли ли ивент "
 .ti -1c
-.RI "int \fBExec\fP (std::string AppName, std::string args)"
+.RI "int \fBExec\fP (const \fBfilesystem::Path\fP &AppName, const std::string &args)"
 .br
 .RI "Запустить программу "
 .ti -1c
@@ -54,27 +54,49 @@ KolibriLib::OS \- Работа с системой
 
 .in +1c
 .ti -1c
-.RI "\fBColor::ColorsTable\fP \fBsys_color_table\fP"
+.RI "\fBColors::ColorsTable\fP \fBsys_color_table\fP"
 .br
 .RI "Таблица стандартных(системных) цветов "
 .in -1c
 .SH "Detailed Description"
 .PP 
 Работа с системой 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBKolibriLib::OS::Events\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Ивента небыло 
+.TP
+\fB\fIRedraw \fP\fP
+Перересовка окна 
+.TP
+\fB\fIButton \fP\fP
+Нажата кнопка 
+.TP
+\fB\fIMouse \fP\fP
+Активность мыши 
+.TP
+\fB\fIKey \fP\fP
+Активность со стороны клавиатуры 
 .SH "Function Documentation"
 .PP 
-.SS "\fBEvent\fP KolibriLib::OS::CheckEvent ()\fR [inline]\fP"
+.SS "\fBOS::Event\fP KolibriLib::OS::CheckEvent ()\fR [inline]\fP"
 
 .PP
 Проверить пришёл ли ли ивент 
 .PP
 \fBReturns\fP
 .RS 4
-Ивен 
+Ивент 
 .RE
 .PP
 
-.SS "int KolibriLib::OS::Exec (std::string AppName, std::string args)\fR [inline]\fP"
+.SS "int KolibriLib::OS::Exec (const \fBfilesystem::Path\fP & AppName, const std::string & args)\fR [inline]\fP"
 
 .PP
 Запустить программу 
@@ -92,7 +114,7 @@ KolibriLib::OS \- Работа с системой
 .RE
 .PP
 
-.SS "\fBColor::ColorsTable\fP KolibriLib::OS::GetSystemColors ()"
+.SS "\fBColors::ColorsTable\fP KolibriLib::OS::GetSystemColors ()"
 
 .PP
 Получить системные цвета 
@@ -114,7 +136,7 @@ KolibriLib::OS \- Работа с системой
 .RE
 .PP
 
-.SS "\fBEvent\fP KolibriLib::OS::WaitEvent ()\fR [inline]\fP"
+.SS "\fBOS::Event\fP KolibriLib::OS::WaitEvent ()\fR [inline]\fP"
 
 .PP
 Ждать ивента 
@@ -125,7 +147,7 @@ KolibriLib::OS \- Работа с системой
 .RE
 .PP
 
-.SS "\fBEvent\fP KolibriLib::OS::WaitEvent (uint32_t TimeOut)\fR [inline]\fP"
+.SS "\fBOS::Event\fP KolibriLib::OS::WaitEvent (uint32_t TimeOut)\fR [inline]\fP"
 
 .PP
 Ждать ивента 

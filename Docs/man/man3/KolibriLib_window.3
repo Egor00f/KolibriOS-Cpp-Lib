@@ -22,13 +22,17 @@ KolibriLib::window \- Работа с окном
 
 .in +1c
 .ti -1c
-.RI "void \fBUnfocusWindow\fP (int slot)"
+.RI "void \fBUnfocusWindow\fP (\fBThread::Slot\fP slot)"
 .br
 .RI "Снять фокус с окна "
 .ti -1c
-.RI "void \fBFocusWindow\fP (int slot)"
+.RI "void \fBFocusWindow\fP (\fBThread::Slot\fP slot)"
 .br
 .RI "Поставить фокус на окно "
+.ti -1c
+.RI "\fBThread::Slot\fP \fBGetActiveWindow\fP ()"
+.br
+.RI "Получить слот активного окна "
 .in -1c
 .SS "Variables"
 
@@ -47,7 +51,7 @@ KolibriLib::window \- Работа с окном
 Работа с окном 
 .SH "Function Documentation"
 .PP 
-.SS "void KolibriLib::window::FocusWindow (int slot)\fR [inline]\fP"
+.SS "void KolibriLib::window::FocusWindow (\fBThread::Slot\fP slot)\fR [inline]\fP"
 
 .PP
 Поставить фокус на окно 
@@ -58,7 +62,20 @@ KolibriLib::window \- Работа с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::UnfocusWindow (int slot)\fR [inline]\fP"
+.SS "\fBThread::Slot\fP KolibriLib::window::GetActiveWindow ()"
+
+.PP
+Получить слот активного окна 
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::window::UnfocusWindow (\fBThread::Slot\fP slot)\fR [inline]\fP"
 
 .PP
 Снять фокус с окна 

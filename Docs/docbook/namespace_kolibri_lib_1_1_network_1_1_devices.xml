@@ -10,7 +10,17 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1_network_1_1_devices_1ae20dc6861f790847631e9e429c7c34fa">ResetDevice</link> (unsigned short Device)</para>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1_network_1_1_devices_1ac3b7128e1a5a10d1ed5073a5d5a537ff">GetNumberNetworkDevices</link> ()</para>
+
+<para>Получить кол-во активных сетевых устройств </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_devices_1ab157fb4af8b838d6f40caee888369526"/>unsigned <emphasis role="strong">GetDeviceType</emphasis> (unsigned Device)</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_namespace_kolibri_lib_1_1_network_1_1_devices_1a6aaf6653193a4963dffc290a5f9029b6">GetDeviceName</link> (unsigned Device)</para>
+
+<para>Получить имя сетевого устройства </para>
+</listitem>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1_network_1_1_devices_1a0a4457dcec6975308f225a4b060daef3">ResetDevice</link> (unsigned Device)</para>
 
 <para>Сбросить устройство </para>
 </listitem>
@@ -23,11 +33,61 @@
 </section>
 <section>
 <title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_devices_1ae20dc6861f790847631e9e429c7c34fa"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_devices_1a6aaf6653193a4963dffc290a5f9029b6"/><section>
+    <title>GetDeviceName()</title>
+<indexterm><primary>GetDeviceName</primary><secondary>KolibriLib::Network::Devices</secondary></indexterm>
+<indexterm><primary>KolibriLib::Network::Devices</primary><secondary>GetDeviceName</secondary></indexterm>
+<para><computeroutput>std::string KolibriLib::Network::Devices::GetDeviceName (unsigned Device)</computeroutput></para><para>
+
+<para>Получить имя сетевого устройства </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Device</entry><entry>
+<para>устройство </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Имя устройства </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_devices_1ac3b7128e1a5a10d1ed5073a5d5a537ff"/><section>
+    <title>GetNumberNetworkDevices()</title>
+<indexterm><primary>GetNumberNetworkDevices</primary><secondary>KolibriLib::Network::Devices</secondary></indexterm>
+<indexterm><primary>KolibriLib::Network::Devices</primary><secondary>GetNumberNetworkDevices</secondary></indexterm>
+<para><computeroutput>int KolibriLib::Network::Devices::GetNumberNetworkDevices ( )</computeroutput></para><para>
+
+<para>Получить кол-во активных сетевых устройств </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>кол-во активных сетевых устройств </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_network_1_1_devices_1a0a4457dcec6975308f225a4b060daef3"/><section>
     <title>ResetDevice()</title>
 <indexterm><primary>ResetDevice</primary><secondary>KolibriLib::Network::Devices</secondary></indexterm>
 <indexterm><primary>KolibriLib::Network::Devices</primary><secondary>ResetDevice</secondary></indexterm>
-<para><computeroutput>int KolibriLib::Network::Devices::ResetDevice (unsigned short Device)</computeroutput></para><para>
+<para><computeroutput>int KolibriLib::Network::Devices::ResetDevice (unsigned Device)</computeroutput></para><para>
 
 <para>Сбросить устройство </para>
 </para>

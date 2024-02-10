@@ -1,6 +1,6 @@
 var namespace_kolibri_lib_1_1filesystem =
 [
-    [ "Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", null ],
+    [ "Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", "class_kolibri_lib_1_1filesystem_1_1_path" ],
     [ "Errors", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67c", [
       [ "Successfully", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611", null ],
       [ "NotSupport", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb", null ],

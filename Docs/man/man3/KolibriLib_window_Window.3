@@ -13,7 +13,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 
 .in +1c
 .ti -1c
-.RI "\fBWindow\fP (std::string Title='Window', \fBUI::Size\fP size=\fBDefaultWindowSize\fP, int style=0x14, \fBColor::ColorsTable\fP colors=\fBColor::DefaultColorTable\fP, unsigned Margin=0)"
+.RI "\fBWindow\fP (std::string Title='Window', \fBUI::Size\fP size=\fBDefaultWindowSize\fP, int style=0x14, \fBColors::ColorsTable\fP colors=\fBColors::DefaultColorTable\fP, unsigned Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -29,7 +29,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Получить размер окна "
 .ti -1c
-.RI "void \fBSetWindowColors\fP (const \fBColor::ColorsTable\fP &colorTable)"
+.RI "void \fBSetWindowColors\fP (const \fBColors::ColorsTable\fP &colorTable)"
 .br
 .RI "Задать стандартные цвета окна "
 .ti -1c
@@ -49,7 +49,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Изменить окно "
 .ti -1c
-.RI "void \fBChangeTilte\fP (std::string newTitle)"
+.RI "void \fBChangeTilte\fP (const std::string &newTitle)"
 .br
 .RI "Изменить заголовок окна "
 .ti -1c
@@ -57,7 +57,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Получить размер окна "
 .ti -1c
-.RI "unsigned \fBCreateButton\fP (\fBUI::Coord\fP coord={0, 0}, \fBUI::Size\fP size={16, 16}, std::string Text=' ', unsigned margin=UI::DefaultMargin, bool UseWindowColors=true, \fBColor::Color\fP color=OS::sys_color_table\&.work_button, \fBColor::Color\fP TextColor=OS::sys_color_table\&.work_button_text)"
+.RI "unsigned \fBCreateButton\fP (\fBUI::Coord\fP coord={0, 0}, \fBUI::Size\fP size={16, 16}, std::string Text=' ', unsigned margin=UI::DefaultMargin, bool UseWindowColors=true, \fBColors::Color\fP color=OS::sys_color_table\&.work_button, \fBColors::Color\fP TextColor=OS::sys_color_table\&.work_button_text)"
 .br
 .RI "Создать кнопку "
 .ti -1c
@@ -69,7 +69,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Получить кнопку "
 .ti -1c
-.RI "unsigned \fBCreateText\fP (\fBUI::Coord\fP coord={0, 0}, \fBUI::Size\fP size={16, 16}, std::string text='Text', unsigned FontSize=9, bool UseWindowColors=true, \fBColor::Color\fP color=OS::sys_color_table\&.work_text)"
+.RI "unsigned \fBCreateText\fP (\fBUI::Coord\fP coord={0, 0}, \fBUI::Size\fP size={16, 16}, std::string text='Text', unsigned FontSize=9, bool UseWindowColors=true, \fBColors::Color\fP color=OS::sys_color_table\&.work_text)"
 .br
 .RI "Создать текст в окне "
 .ti -1c
@@ -108,13 +108,21 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RI "template<class T > unsigned \fBAddElement\fP (const T &element)"
 .br
 .RI "Добавить UI элемент "
+.ti -1c
+.RI "void \fBUnfocus\fP () const"
+.br
+.RI "Снять фокус с этого окна "
+.ti -1c
+.RI "void \fBFocus\fP () const"
+.br
+.RI "Поставить фокус на это окно "
 .in -1c
 .SH "Detailed Description"
 .PP 
 Класс для работы с окном 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::window::Window::Window (std::string Title = \fR'Window'\fP, \fBUI::Size\fP size = \fR\fBDefaultWindowSize\fP\fP, int style = \fR0x14\fP, \fBColor::ColorsTable\fP colors = \fR\fBColor::DefaultColorTable\fP\fP, unsigned Margin = \fR0\fP)"
+.SS "Window::Window (std::string Title = \fR'Window'\fP, \fBUI::Size\fP size = \fR\fBDefaultWindowSize\fP\fP, int style = \fR0x14\fP, \fBColors::ColorsTable\fP colors = \fR\fBColors::DefaultColorTable\fP\fP, unsigned Margin = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -135,7 +143,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 
 .SH "Member Function Documentation"
 .PP 
-.SS "template<class T > unsigned KolibriLib::window::Window::AddElement (const T & element)"
+.SS "template<class T > unsigned Window::AddElement (const T & element)"
 
 .PP
 Добавить UI элемент 
@@ -146,7 +154,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::ChangeTilte (std::string newTitle)"
+.SS "void Window::ChangeTilte (const std::string & newTitle)"
 
 .PP
 Изменить заголовок окна 
@@ -157,7 +165,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::ChangeWindow (\fBUI::Coord\fP coord, \fBUI::Size\fP size)"
+.SS "void Window::ChangeWindow (\fBUI::Coord\fP coord, \fBUI::Size\fP size)"
 
 .PP
 Изменить окно 
@@ -186,7 +194,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "unsigned KolibriLib::window::Window::CreateButton (\fBUI::Coord\fP coord = \fR{0, 0}\fP, \fBUI::Size\fP size = \fR{16, 16}\fP, std::string Text = \fR' '\fP, unsigned margin = \fRUI::DefaultMargin\fP, bool UseWindowColors = \fRtrue\fP, \fBColor::Color\fP color = \fROS::sys_color_table\&.work_button\fP, \fBColor::Color\fP TextColor = \fROS::sys_color_table\&.work_button_text\fP)"
+.SS "unsigned KolibriLib::window::Window::CreateButton (\fBUI::Coord\fP coord = \fR{0, 0}\fP, \fBUI::Size\fP size = \fR{16, 16}\fP, std::string Text = \fR' '\fP, unsigned margin = \fRUI::DefaultMargin\fP, bool UseWindowColors = \fRtrue\fP, \fBColors::Color\fP color = \fROS::sys_color_table\&.work_button\fP, \fBColors::Color\fP TextColor = \fROS::sys_color_table\&.work_button_text\fP)"
 
 .PP
 Создать кнопку 
@@ -230,7 +238,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "unsigned KolibriLib::window::Window::CreateText (const \fBUI::text::TextLabel\fP & text)"
+.SS "unsigned Window::CreateText (const \fBUI::text::TextLabel\fP & text)"
 
 .PP
 Создать текст в окне 
@@ -246,7 +254,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "unsigned KolibriLib::window::Window::CreateText (\fBUI::Coord\fP coord = \fR{0, 0}\fP, \fBUI::Size\fP size = \fR{16, 16}\fP, std::string text = \fR'Text'\fP, unsigned FontSize = \fR9\fP, bool UseWindowColors = \fRtrue\fP, \fBColor::Color\fP color = \fROS::sys_color_table\&.work_text\fP)"
+.SS "unsigned Window::CreateText (\fBUI::Coord\fP coord = \fR{0, 0}\fP, \fBUI::Size\fP size = \fR{16, 16}\fP, std::string text = \fR'Text'\fP, unsigned FontSize = \fR9\fP, bool UseWindowColors = \fRtrue\fP, \fBColors::Color\fP color = \fROS::sys_color_table\&.work_text\fP)"
 
 .PP
 Создать текст в окне 
@@ -272,7 +280,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::DeleteElement (unsigned id)"
+.SS "void Window::DeleteElement (unsigned id)"
 
 .PP
 Удалить элемент 
@@ -283,7 +291,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::DrawWindow (\fBUI::Coord\fP coord = \fR\fBmouse::GetMousePositionOnSreen\fP()\fP)"
+.SS "void Window::DrawWindow (\fBUI::Coord\fP coord = \fR\fBmouse::GetMousePositionOnSreen\fP()\fP)"
 
 .PP
 Отрисовать окно 
@@ -302,13 +310,13 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::EndRedraw ()"
+.SS "void Window::EndRedraw ()"
 
 .PP
 Закончить перересовку окна 
 .SS "после должна быть вызвана функция #EndRedraw()"
 
-.SS "\fBUI::buttons::Button\fP KolibriLib::window::Window::GetButton (unsigned id)"
+.SS "\fBUI::buttons::Button\fP Window::GetButton (unsigned id)"
 
 .PP
 Получить кнопку 
@@ -324,7 +332,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "std::string KolibriLib::window::Window::GetInputFromFrom (unsigned form)"
+.SS "std::string Window::GetInputFromFrom (unsigned form)"
 
 .PP
 Получить текст введённый в форму 
@@ -340,7 +348,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "unsigned KolibriLib::window::Window::GetMargin ()"
+.SS "unsigned Window::GetMargin ()"
 
 .PP
 Получить рамер отступов в этом окне 
@@ -351,7 +359,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "\fBUI::Size\fP KolibriLib::window::Window::GetSize ()"
+.SS "\fBUI::Size\fP Window::GetSize ()"
 
 .PP
 Получить размер окна 
@@ -362,7 +370,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "\fBUI::Size\fP KolibriLib::window::Window::GetWindowSize ()"
+.SS "\fBUI::Size\fP Window::GetWindowSize ()"
 
 .PP
 Получить размер окна 
@@ -375,7 +383,7 @@ point\&.y - высота окна
 .RE
 .PP
 
-.SS "\fBOS::Event\fP KolibriLib::window::Window::Handler ()"
+.SS "\fBOS::Event\fP Window::Handler ()"
 
 .PP
 Обработчик окна 
@@ -399,7 +407,7 @@ point\&.y - высота окна
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::SetWindowColors (const \fBColor::ColorsTable\fP & colorTable)"
+.SS "void Window::SetWindowColors (const \fBColors::ColorsTable\fP & colorTable)"
 
 .PP
 Задать стандартные цвета окна 
@@ -410,7 +418,7 @@ point\&.y - высота окна
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::StartRedraw ()"
+.SS "void Window::StartRedraw ()"
 
 .PP
 Начать перересовку окна 

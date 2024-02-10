@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="27" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="27" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="26" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespace_kolibri_lib_1_1child_window_1a2b5cc9e42f8a8200892fc62ade42890c" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="27" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="27" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="26" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespace_kolibri_lib_1_1child_window_1a803990b2e51bbd47782b177b3d639f19" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -44,41 +44,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="29" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="29" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="28" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="28" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="func">
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1child_window_1a50453fc7da5c5fee42ec0274beeba299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void KolibriLib::childWindow::RenderMessageWindow</definition>
-        <argsstring>(void)</argsstring>
-        <name>RenderMessageWindow</name>
-        <qualifiedname>KolibriLib::childWindow::RenderMessageWindow</qualifiedname>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="32" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="32" bodyend="55"/>
-      </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1child_window_1a57f91ccdf784da9c5c6f3c726bb36cf6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void KolibriLib::childWindow::MessageBox</definition>
-        <argsstring>(std::string _Message, std::string _Title)</argsstring>
-        <name>MessageBox</name>
-        <qualifiedname>KolibriLib::childWindow::MessageBox</qualifiedname>
-        <param>
-          <type>std::string</type>
-          <declname>_Message</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>_Title</declname>
-        </param>
+      <memberdef kind="variable" id="namespace_kolibri_lib_1_1child_window_1a58c5d59004f1f8e7568031db62c05ab9" prot="public" static="no" mutable="no">
+        <type>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream void RenderMessageWindow(void) { std::string _Message=Message;std::string _Title=Title;<ref refid="class_kolibri_lib_1_1window_1_1_window" kindref="compound">window::Window</ref> window(_Title, {256, 128});<ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref> WindowSize=window.GetSize();<ref refid="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label" kindref="compound">UI::text::TextLabel</ref> message({(int) window.GetMargin(), WindowSize.y/2 }, {WindowSize.x, WindowSize.y/2}, _Message);message.SetScale(true);window.CreateText(message);while(true) { <ref refid="namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34" kindref="member">OS::Event</ref> event=window.Handler();if(event=OS::Events::Exit) { window.~Window();return;} } }=======void RenderMessageWindow(void *);&gt; &gt; &gt; &gt; &gt; &gt; Stashed changes&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream void MessageBox(std::string _Message, std::string _Title) { while(true) { if(!Used) { Used=true;Message=_Message;Title=_Title;Used=true;<ref refid="namespace_kolibri_lib_1_1_thread_1ada14798b8293cbc2d4909e0f7ce4ad00" kindref="member">Thread::CreateThread</ref>((void(*)) RenderMessageWindow, 4096);Used=false;return;} else { <ref refid="namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6" kindref="member">Wait</ref>(1);} } }=======void MessageBox(const std::string &amp;_Message, const std::string &amp;_Title);&gt; &gt; &gt; &gt; &gt; &gt; Stashed changes voi</type>
+        <definition>void KolibriLib::childWindow::ErrorWindow</definition>
+        <argsstring>)(const std::string &amp;ErrorMessage)</argsstring>
+        <name>ErrorWindow</name>
+        <qualifiedname>KolibriLib::childWindow::ErrorWindow</qualifiedname>
         <briefdescription>
 <para>Создать окно с сообщением </para>
         </briefdescription>
@@ -96,31 +69,11 @@
 <parametername>Title</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Заголовок </para>
+<para>Заголовок</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="62" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="62" bodyend="85"/>
-      </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1child_window_1a7e314209db9df29182f6932bd59d1e13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void KolibriLib::childWindow::ErrorWindow</definition>
-        <argsstring>(std::string ErrorMessage)</argsstring>
-        <name>ErrorWindow</name>
-        <qualifiedname>KolibriLib::childWindow::ErrorWindow</qualifiedname>
-        <param>
-          <type>std::string</type>
-          <declname>ErrorMessage</declname>
-        </param>
-        <briefdescription>
-<para>окошко с ошибкой </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
+окошко с ошибкой <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>ErrorMessage</parametername>
 </parameternamelist>
@@ -133,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="89" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" bodystart="89" bodyend="92"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="96" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.cpp" bodystart="63" bodyend="66"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -141,6 +94,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="24" column="5"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp" line="23" column="5"/>
   </compounddef>
 </doxygen>

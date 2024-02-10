@@ -1,12 +1,15 @@
 var annotated_dup =
 [
     [ "KolibriLib", "namespace_kolibri_lib.html", [
-      [ "Color", "namespace_kolibri_lib_1_1_color.html", [
-        [ "ARGB_t", "struct_kolibri_lib_1_1_color_1_1_a_r_g_b__t.html", null ],
-        [ "Color", "union_kolibri_lib_1_1_color_1_1_color.html", null ]
+      [ "Colors", "namespace_kolibri_lib_1_1_colors.html", [
+        [ "ARGB", "struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html", null ],
+        [ "Color", "union_kolibri_lib_1_1_colors_1_1_color.html", null ]
       ] ],
       [ "filesystem", "namespace_kolibri_lib_1_1filesystem.html", [
-        [ "Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", null ]
+        [ "Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", "class_kolibri_lib_1_1filesystem_1_1_path" ]
+      ] ],
+      [ "Thread", "namespace_kolibri_lib_1_1_thread.html", [
+        [ "ThreadInfo", "union_kolibri_lib_1_1_thread_1_1_thread_info.html", null ]
       ] ],
       [ "UI", null, [
         [ "buttons", "namespace_kolibri_lib_1_1_u_i_1_1buttons.html", [

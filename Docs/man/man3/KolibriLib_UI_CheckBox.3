@@ -25,16 +25,18 @@ Public Types inherited from \fBKolibriLib::UI::buttons::Button\fP
 .ti -1c
 .RI "enum \fBType\fP { \fBImage\fP = 0, \fBText\fP }"
 .br
+.RI "Список типов данных которые можно 'запихнуть' в кнопку "
 .in -1c
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBCheckBox\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const int &\fBstyle\fP=0, const \fBColor::Color\fP &CheckBoxBorderColor=OS::sys_color_table\&.work_text, const \fBColor::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
+.RI "\fBCheckBox\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const int &\fBstyle\fP=0, const \fBColors::Color\fP &CheckBoxBorderColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "void \fBRender\fP ()"
 .br
+.RI "Отрисовать Checkbox\&. "
 .ti -1c
 .RI "bool \fBHandler\fP ()"
 .br
@@ -44,15 +46,15 @@ Public Types inherited from \fBKolibriLib::UI::buttons::Button\fP
 Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .in +1c
 .ti -1c
-.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, \fBColor::Color\fP ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, const unsigned &Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
 .br
 .RI "Это конструктор "
 .ti -1c
-.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::string &text='button', const unsigned &Margin=UI::DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::string &text='button', const unsigned &Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
 .br
 .RI "инициализировать параметры "
 .ti -1c
-.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::Image\fP &image=\fBImages::Image\fP(), const unsigned &Margin=DefaultMargin, const \fBColor::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::Image\fP &image=\fBImages::Image\fP(), const unsigned &Margin=DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
 .br
 .RI "инициализировать параметры "
 .ti -1c
@@ -96,9 +98,13 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .br
 .RI "Получить изображение кнопки "
 .ti -1c
-.RI "void \fBSetText\fP (std::string NewText)"
+.RI "void \fBSetText\fP (const std::string &NewText)"
 .br
 .RI "Изменить текст кнопки "
+.ti -1c
+.RI "void \fBSetImage\fP (const \fBImages::Image\fP &NewImg)"
+.br
+.RI "Изменить изображение в кнопке "
 .ti -1c
 .RI "\fB~Button\fP ()"
 .br
@@ -106,12 +112,15 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .ti -1c
 .RI "\fBButton\fP & \fBoperator=\fP (const \fBButton\fP &element)"
 .br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBButton\fP &element) const"
+.br
 .in -1c
 
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "конструктор "
 .ti -1c
@@ -119,24 +128,27 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить размер элемента "
 .ti -1c
-.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.RI "void \fBSetSize\fP (const \fBSize\fP &NewSize)"
 .br
+.RI "Изменить размер элемента "
 .ti -1c
 .RI "unsigned \fBGetMargin\fP () const"
 .br
+.RI "Получить отступы "
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.RI "\fBColors::Color\fP \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
-.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
 .ti -1c
-.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP () const"
 .br
+.RI "Получить координаты элемента "
 .ti -1c
 .RI "void \fBRotate\fP (unsigned NewAngle)"
 .br
@@ -146,8 +158,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить угол наклона элемента "
 .ti -1c
-.RI "bool \fBHover\fP ()"
+.RI "bool \fBHover\fP () const"
 .br
+.RI "Проверить лежит ли курсор мыши над элементом "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -172,7 +185,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Размер "
 .ti -1c
-.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.RI "\fBColors::Color\fP \fB_MainColor\fP"
 .br
 .ti -1c
 .RI "unsigned \fB_Margin\fP"
