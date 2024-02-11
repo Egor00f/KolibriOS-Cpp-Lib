@@ -32,10 +32,12 @@ namespace KolibriLib
         /// @brief Установить "горячую клавишу"
 		/// @param controlkeys клавиши
 		/// @return true если успешно, иначе false
+        /// @warning not done!
 		bool InstallHotKey(uint16_t controlkeys);
 
         /// @brief Удалить "горячую клавишу"
         /// @return true если успешно, иначе false
+        /// @warning not done!
         bool DeleteHotKey();
 
         

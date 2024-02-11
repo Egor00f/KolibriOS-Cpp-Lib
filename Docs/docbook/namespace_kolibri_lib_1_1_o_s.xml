@@ -29,6 +29,12 @@
 , <emphasis role="strong">Exit</emphasis>
  }</para>
 </listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45"/>enum <emphasis role="strong">lang</emphasis> { <emphasis role="strong">Eng</emphasis> = 0
+, <emphasis role="strong">Fi</emphasis>
+, <emphasis role="strong">Ger</emphasis>
+, <emphasis role="strong">Rus</emphasis>
+ }</para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
@@ -57,6 +63,22 @@
             <listitem><para>ksys_time_t <link linkend="_namespace_kolibri_lib_1_1_o_s_1a1744275834206a63ba18a572f5ddd6bb">GetTime</link> ()</para>
 
 <para>Получить системное время </para>
+</listitem>
+            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad2be50a93561a32225553fcdc1b0607c">SpeakerStatus</link> ()</para>
+
+<para>Получить состояние спикера(Вкл/выкл) </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a19a2cc0aa77148638f95a8c88076d6a3"/>void <emphasis role="strong">SpeakerSwitch</emphasis> ()</para>
+
+<para>Переключить состояние спикера </para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_o_s_1afebe1299f35447d01cfb2ea2f9632e3d">FreeMem</link> ()</para>
+
+<para>получить кол-во свободной памяти </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1affd2489cfc89c9c72d3bca4bc3050145"/>unsigned <emphasis role="strong">AllMem</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1afdb0884f42641be4566af7cae8cb92ce"/>int <emphasis role="strong">GetLang</emphasis> ()</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -168,6 +190,21 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1afebe1299f35447d01cfb2ea2f9632e3d"/><section>
+    <title>FreeMem()</title>
+<indexterm><primary>FreeMem</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>FreeMem</secondary></indexterm>
+<para><computeroutput>unsigned KolibriLib::OS::FreeMem ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>получить кол-во свободной памяти </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>размер свободной памяти в килобайтах </para>
+</formalpara>
+</para>
+</section>
 <anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf"/><section>
     <title>GetSystemColors()</title>
 <indexterm><primary>GetSystemColors</primary><secondary>KolibriLib::OS</secondary></indexterm>
@@ -198,6 +235,21 @@ Parameters</title>
 <para><formalpara><title>Returns</title>
 
 <para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad2be50a93561a32225553fcdc1b0607c"/><section>
+    <title>SpeakerStatus()</title>
+<indexterm><primary>SpeakerStatus</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>SpeakerStatus</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::OS::SpeakerStatus ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить состояние спикера(Вкл/выкл) </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>true если спикер разрешён, иначе false </para>
 </formalpara>
 </para>
 </section>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_types_8hpp_source" xml:lang="en-US">
+<title>types.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/types.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__TYPES_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__TYPES_H__</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1point">point</link>
+12 &#32;&#32;&#32;&#32;{
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;x;
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;y;
+15 
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;operator=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;p)
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;p.x;
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;y&#32;=&#32;p.y;
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+22 
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;a)<emphasis role="keyword">&#32;const</emphasis>
+24 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;x&#32;==&#32;a.x&#32;&amp;&amp;&#32;y&#32;==&#32;a.y;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator!=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;a)<emphasis role="keyword">&#32;const</emphasis>
+28 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;x&#32;!=&#32;a.x&#32;||&#32;y&#32;!=&#32;a.y;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+31 &#32;&#32;&#32;&#32;};
+32 
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
+34 &#32;&#32;&#32;&#32;{
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;unsigned&gt;</link>&#32;Size;
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;Coord;
+38 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+39 
+40 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Colors
+41 &#32;&#32;&#32;&#32;{
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;ksys_colors_table_t&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link>;
+44 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;Colors</emphasis>
+45 &#32;&#32;&#32;&#32;
+46 &#32;&#32;&#32;&#32;
+47 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+48 
+49 
+50 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__TYPES_H__</emphasis>
+</programlisting></section>

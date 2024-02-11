@@ -142,20 +142,37 @@ $(function(){initNavTree('os_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">inline</span> ksys_time_t <a class="code hl_function" href="namespace_kolibri_lib_1_1_o_s.html#a1744275834206a63ba18a572f5ddd6bb">GetTime</a>();</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    } <span class="comment">// namespace OS</span></div>
-</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_o_s.html#ad2be50a93561a32225553fcdc1b0607c">SpeakerStatus</a>();</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6">Wait</a>(<span class="keywordtype">unsigned</span> time);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>} <span class="comment">// namespace KolibriLib</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_o_s.html#a19a2cc0aa77148638f95a8c88076d6a3">SpeakerSwitch</a>();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_o_s.html#afebe1299f35447d01cfb2ea2f9632e3d">FreeMem</a>();</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif </span><span class="comment">// __OS_H__</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> AllMem();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keyword">enum</span> lang</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            Eng = 0,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            Fi,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            Ger,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            Rus</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        };</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">inline</span> <span class="keywordtype">int</span> GetLang();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    } <span class="comment">// namespace OS</span></div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6">Wait</a>(<span class="keywordtype">unsigned</span> time);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>} <span class="comment">// namespace KolibriLib</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#endif </span><span class="comment">// __OS_H__</span></div>
 <div class="ttc" id="aclass_kolibri_lib_1_1filesystem_1_1_path_html"><div class="ttname"><a href="class_kolibri_lib_1_1filesystem_1_1_path.html">KolibriLib::filesystem::Path</a></div><div class="ttdoc">Файловый путь</div><div class="ttdef"><b>Definition</b> filesystem.hpp:20</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1_colors_html_a6550994b56cf65f67c078179c223a748"><div class="ttname"><a href="namespace_kolibri_lib_1_1_colors.html#a6550994b56cf65f67c078179c223a748">KolibriLib::Colors::ColorsTable</a></div><div class="ttdeci">ksys_colors_table_t ColorsTable</div><div class="ttdoc">Таблица цветов</div><div class="ttdef"><b>Definition</b> color.hpp:53</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_colors_html_a6550994b56cf65f67c078179c223a748"><div class="ttname"><a href="namespace_kolibri_lib_1_1_colors.html#a6550994b56cf65f67c078179c223a748">KolibriLib::Colors::ColorsTable</a></div><div class="ttdeci">ksys_colors_table_t ColorsTable</div><div class="ttdoc">Таблица цветов</div><div class="ttdef"><b>Definition</b> types.hpp:43</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a1744275834206a63ba18a572f5ddd6bb"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a1744275834206a63ba18a572f5ddd6bb">KolibriLib::OS::GetTime</a></div><div class="ttdeci">ksys_time_t GetTime()</div><div class="ttdoc">Получить системное время</div><div class="ttdef"><b>Definition</b> os.cpp:42</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a19a2cc0aa77148638f95a8c88076d6a3"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a19a2cc0aa77148638f95a8c88076d6a3">KolibriLib::OS::SpeakerSwitch</a></div><div class="ttdeci">void SpeakerSwitch()</div><div class="ttdoc">Переключить состояние спикера</div><div class="ttdef"><b>Definition</b> os.cpp:47</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</a></div><div class="ttdeci">Colors::ColorsTable GetSystemColors()</div><div class="ttdoc">Получить системные цвета</div><div class="ttdef"><b>Definition</b> os.cpp:6</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a51432114007d25b88f76501910253064"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a51432114007d25b88f76501910253064">KolibriLib::OS::WaitEvent</a></div><div class="ttdeci">Event WaitEvent()</div><div class="ttdoc">Ждать ивента</div><div class="ttdef"><b>Definition</b> os.cpp:12</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a646e1d145346d739ce458767c2152c8c"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8c">KolibriLib::OS::Events</a></div><div class="ttdeci">Events</div><div class="ttdef"><b>Definition</b> os.hpp:26</div></div>
@@ -167,9 +184,11 @@ $(function(){initNavTree('os_8hpp_source.html',''); initResizable(); });
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a8ab28572c3f8b9cc876328be1ed3928a"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a8ab28572c3f8b9cc876328be1ed3928a">KolibriLib::OS::sys_color_table</a></div><div class="ttdeci">Colors::ColorsTable sys_color_table</div><div class="ttdoc">Таблица стандартных(системных) цветов</div><div class="ttdef"><b>Definition</b> os.hpp:15</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a9d371dfce7a7c6579a93776e25222f13"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a9d371dfce7a7c6579a93776e25222f13">KolibriLib::OS::Exec</a></div><div class="ttdeci">int Exec(const filesystem::Path &amp;AppName, const std::string &amp;args)</div><div class="ttdoc">Запустить программу</div><div class="ttdef"><b>Definition</b> os.cpp:27</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_abe4a29759805b4449591c8efb1d10d34"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#abe4a29759805b4449591c8efb1d10d34">KolibriLib::OS::Event</a></div><div class="ttdeci">unsigned int Event</div><div class="ttdoc">Ивент</div><div class="ttdef"><b>Definition</b> os.hpp:23</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_ad2be50a93561a32225553fcdc1b0607c"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#ad2be50a93561a32225553fcdc1b0607c">KolibriLib::OS::SpeakerStatus</a></div><div class="ttdeci">bool SpeakerStatus()</div><div class="ttdoc">Получить состояние спикера(Вкл/выкл)</div><div class="ttdef"><b>Definition</b> os.cpp:87</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_afc5cf781adb8afcd4bebfb1d081a1a0f"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#afc5cf781adb8afcd4bebfb1d081a1a0f">KolibriLib::OS::CheckEvent</a></div><div class="ttdeci">Event CheckEvent()</div><div class="ttdoc">Проверить пришёл ли ли ивент</div><div class="ttdef"><b>Definition</b> os.cpp:22</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_afebe1299f35447d01cfb2ea2f9632e3d"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#afebe1299f35447d01cfb2ea2f9632e3d">KolibriLib::OS::FreeMem</a></div><div class="ttdeci">unsigned FreeMem()</div><div class="ttdoc">получить кол-во свободной памяти</div><div class="ttdef"><b>Definition</b> os.cpp:55</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> button.hpp:13</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_html_a40eea0b3d82e0ea121b28f46390f0df6"><div class="ttname"><a href="namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6">KolibriLib::Wait</a></div><div class="ttdeci">void Wait(unsigned time)</div><div class="ttdoc">Подождать</div><div class="ttdef"><b>Definition</b> os.cpp:47</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_html_a40eea0b3d82e0ea121b28f46390f0df6"><div class="ttname"><a href="namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6">KolibriLib::Wait</a></div><div class="ttdeci">void Wait(unsigned time)</div><div class="ttdoc">Подождать</div><div class="ttdef"><b>Definition</b> os.cpp:98</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

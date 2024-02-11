@@ -13,33 +13,37 @@
 9 {
 10 <emphasis role="preprocessor">#include&#32;&lt;kolibri_libimg.h&gt;</emphasis>
 11 }
-12 <emphasis role="preprocessor">#include&#32;&lt;sound.h&gt;</emphasis>
-13 
-14 <emphasis role="preprocessor">#include&#32;&quot;filesystem.hpp&quot;</emphasis>
-15 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
-16 
-19 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-20 {
-21 
-23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>()
-24 &#32;&#32;&#32;&#32;{
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(kolibri_libimg_init()&#32;==&#32;-1)
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;loading&#32;lib_img.obj,&#32;exit\n&quot;</emphasis>);
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-30 
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(&#32;<emphasis role="keywordtype">int</emphasis>&#32;version&#32;=&#32;-1;&#32;!InitSound(&amp;version))
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Erroe&#32;loading&#32;sound.h,&#32;exit&quot;</emphasis>);
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-35 
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_set_event_mask(0x07);
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>();
-38 &#32;&#32;&#32;&#32;}
-39 }
+12 
+13 <emphasis role="preprocessor">#include&#32;&lt;sound.h&gt;</emphasis>
+14 
+15 <emphasis role="preprocessor">#include&#32;&quot;filesystem.hpp&quot;</emphasis>
+16 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
+17 <emphasis role="preprocessor">#include&#32;&quot;thread.hpp&quot;</emphasis>
+18 
+21 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+22 {
+23 
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>()
+26 &#32;&#32;&#32;&#32;{
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(kolibri_libimg_init()&#32;==&#32;-1)
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;loading&#32;lib_img.obj,&#32;exit\n&quot;</emphasis>);
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+32 
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(&#32;<emphasis role="keywordtype">int</emphasis>&#32;version&#32;=&#32;-1;&#32;!InitSound(&amp;version))
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Erroe&#32;loading&#32;sound.h,&#32;exit&quot;</emphasis>);
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+37 
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_set_event_mask(0x07);
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>();
 40 
-41 
-42 
-43 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BASE_H__</emphasis>
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+42 &#32;&#32;&#32;&#32;}
+43 }
+44 
+45 
+46 
+47 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BASE_H__</emphasis>
 </programlisting></section>

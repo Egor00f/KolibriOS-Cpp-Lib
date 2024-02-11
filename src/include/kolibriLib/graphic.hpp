@@ -23,7 +23,6 @@ namespace KolibriLib
         /// @param color Цвет линии
         inline void DrawLine(const UI::Coord& coord, const UI::Coord& b, const Colors::Color& color = OS::sys_color_table.work_graph);
         
-
         /// @brief Нарисовать линию
         /// @param coord Координата от которой рисуется линия
         /// @param lenght Длина линии
@@ -76,6 +75,8 @@ namespace KolibriLib
         /// @param c третья точка
         /// @param color цвет линий
         inline void DrawTriangle(const UI::Coord& a, const UI::Coord& b, const UI::Coord& c, const Colors::Color& color = OS::sys_color_table.work_graph);
+
+        inline Colors::Color ReadPoint(const point<unsigned> Point);
     }
 } // namespace KolibriLib
 

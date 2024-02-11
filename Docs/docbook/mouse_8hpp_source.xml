@@ -7,23 +7,54 @@
 3 
 4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
 5 <emphasis role="preprocessor">#include&#32;&quot;small.hpp&quot;</emphasis>
-6 
-7 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-8 {
-10 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>mouse
-11 &#32;&#32;&#32;&#32;{
-12 
-15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">GetMousePositionOnSreen</link>();
-16 
-19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</link>();
-20 
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;uint32_t&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a7ae50aac73ac33bc25e269c12522a024">GetMouseButtons</link>();
-24 
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;uint32_t&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a56edecd4a7aa3f7af9eadf9ea32e93c0">GetMouseWheels</link>();
-28 
-29 &#32;&#32;&#32;&#32;}
-30 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-31 
-32 
-33 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MOUSE_H__</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&quot;filesystem.hpp&quot;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
+8 
+9 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+10 {
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>mouse
+13 &#32;&#32;&#32;&#32;{
+14 
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">GetMousePositionOnSreen</link>();
+18 
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</link>();
+22 
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;uint32_t&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a7ae50aac73ac33bc25e269c12522a024">GetMouseButtons</link>();
+26 
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;uint32_t&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a56edecd4a7aa3f7af9eadf9ea32e93c0">GetMouseWheels</link>();
+30 
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;MouseButtons
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LeftButton&#32;&#32;=&#32;0x1,
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;RightButton&#32;=&#32;0x10,
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CenterBtton&#32;=&#32;0x100,
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FourButton&#32;&#32;=&#32;0x1000,
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FiveButton&#32;&#32;=&#32;0x10000
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+39 
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a39c94a2a4489ad8d4ec05a07ac13e259">EmulateMouse</link>(uint8_t&#32;m);
+44 
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>*&#32;CursorHandle;
+46 
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;LoadCursor
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FromFile&#32;=&#32;0,
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FromMem,
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Indirect
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+53 
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;CursorHandle&#32;LoadCursor(<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&#32;path);
+59 
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;CursorHandle&#32;LoadCursor(<emphasis role="keywordtype">void</emphasis>*&#32;ptr);
+65 
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;CursorHandle&#32;LoadCursor(<link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">Colors::ARGB</link>[]&#32;cur);
+71 
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;CursorHandle&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</link>(CursorHandle&#32;handle);
+76 
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DeleteCursor(CursorHandle&#32;handle);
+78 &#32;&#32;&#32;&#32;}
+79 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+80 
+81 
+82 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MOUSE_H__</emphasis>
 </programlisting></section>

@@ -2,8 +2,54 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
   <compounddef id="namespace_kolibri_lib_1_1window" kind="namespace" language="C++">
     <compoundname>KolibriLib::window</compoundname>
-    <innerclass refid="struct_kolibri_lib_1_1window_1_1_element" prot="public">KolibriLib::window::Element</innerclass>
     <innerclass refid="class_kolibri_lib_1_1window_1_1_window" prot="public">KolibriLib::window::Window</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Pos</name>
+        <qualifiedname>KolibriLib::window::Pos</qualifiedname>
+        <enumvalue id="namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44a266058ea4510b8671f8cbd3848d85b86" prot="public">
+          <name>BackGround</name>
+          <initializer>= -2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44a08e042d7446edeb45401a64b33718288" prot="public">
+          <name>AlwaysBack</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44a18ee367c465a3a9cf21c5e4842dcfe87" prot="public">
+          <name>Normal</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44ae55f17bf1b2f2aae685dcaa05eb60aa1" prot="public">
+          <name>AlwaysTop</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Список констант положения окна относительно других окон: </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="48" column="9" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" bodystart="48" bodyend="53"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="var">
       <memberdef kind="variable" id="namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d" prot="public" static="no" mutable="no">
         <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
@@ -19,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="20" column="24" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" bodystart="20" bodyend="20"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="22" column="24" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" bodystart="22" bodyend="22"/>
       </memberdef>
       <memberdef kind="variable" id="namespace_kolibri_lib_1_1window_1a0b2c16c6f0b120a6ef83b2366006c6a6" prot="public" static="no" mutable="no">
         <type>const <ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
@@ -35,10 +81,53 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="23" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" bodystart="23" bodyend="23"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="25" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" bodystart="25" bodyend="25"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a89760849073dcbc3f0ceb924cd20042b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::CreateWindow</definition>
+        <argsstring>(UI::Coord coord=DefaultWindowCoord, UI::Size size=DefaultWindowSize, const std::string &amp;title, Colors::Color WorkColor=OS::sys_color_table.frame_area, Colors::Color TitleColor=OS::sys_color_table.work_text, uint32_t style=0x14)</argsstring>
+        <name>CreateWindow</name>
+        <qualifiedname>KolibriLib::window::CreateWindow</qualifiedname>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref></type>
+          <declname>coord</declname>
+          <defval><ref refid="namespace_kolibri_lib_1_1window_1a0b2c16c6f0b120a6ef83b2366006c6a6" kindref="member">DefaultWindowCoord</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref></type>
+          <declname>size</declname>
+          <defval><ref refid="namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d" kindref="member">DefaultWindowSize</ref></defval>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type><ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref></type>
+          <declname>WorkColor</declname>
+          <defval>OS::sys_color_table.frame_area</defval>
+        </param>
+        <param>
+          <type><ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref></type>
+          <declname>TitleColor</declname>
+          <defval>OS::sys_color_table.work_text</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>style</declname>
+          <defval>0x14</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="27" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="5" bodyend="18" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="27" declcolumn="14"/>
+      </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void KolibriLib::window::UnfocusWindow</definition>
@@ -66,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="31" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="5" bodyend="8" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="31" declcolumn="21"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="31" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="20" bodyend="23" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="31" declcolumn="21"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a8522ac0eb50e9a7b5ce0091e5fc9d257" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -95,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="35" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="10" bodyend="13" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="35" declcolumn="21"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="35" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="25" bodyend="28" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="35" declcolumn="21"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1af86ed52f97ce1b6925d0faabc8a0ebe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref></type>
@@ -114,7 +203,117 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="39" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="15" bodyend="24" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="39" declcolumn="22"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="39" column="22" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="30" bodyend="39" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="39" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a1e8e470c8a52494478a075c0c4b10c07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::MinimizeWindow</definition>
+        <argsstring>()</argsstring>
+        <name>MinimizeWindow</name>
+        <qualifiedname>KolibriLib::window::MinimizeWindow</qualifiedname>
+        <briefdescription>
+<para>Свернуть окно </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="42" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="41" bodyend="47" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="42" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a91e8114838ac0faa6b26cb1763643a92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void KolibriLib::window::MinimizeAllWindows</definition>
+        <argsstring>()</argsstring>
+        <name>MinimizeAllWindows</name>
+        <qualifiedname>KolibriLib::window::MinimizeAllWindows</qualifiedname>
+        <briefdescription>
+<para>Свернуть все окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="45" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="49" bodyend="55" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="45" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a250b79696e71e4db883c35beac60b0a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int KolibriLib::window::GetWindowPos</definition>
+        <argsstring>()</argsstring>
+        <name>GetWindowPos</name>
+        <qualifiedname>KolibriLib::window::GetWindowPos</qualifiedname>
+        <briefdescription>
+<para>Получить положение окна относительно других окон </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>одна из констант из списка <ref refid="namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44" kindref="member">Pos</ref></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="57" column="20" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="57" bodyend="66" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="57" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a7a45146a32e2035cedd93968251b5831" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::window::SetWindowPos</definition>
+        <argsstring>(int pos, Thread::PID pid=-1)</argsstring>
+        <name>SetWindowPos</name>
+        <qualifiedname>KolibriLib::window::SetWindowPos</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>Thread::PID</type>
+          <declname>pid</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Изменить положение окна относительно дроугих окон </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>процесс </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>false если ошибка </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="63" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="68" bodyend="77" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="63" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a9b4d6e11048953c9f7a1e530f135fb20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned KolibriLib::window::GetSkinHeight</definition>
+        <argsstring>()</argsstring>
+        <name>GetSkinHeight</name>
+        <qualifiedname>KolibriLib::window::GetSkinHeight</qualifiedname>
+        <briefdescription>
+<para>Получить высоту скина(заголовка окна) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>высота скина </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" line="67" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.cpp" bodystart="79" bodyend="82" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp" declline="67" declcolumn="25"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -122,6 +321,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="29" column="1"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp" line="31" column="1"/>
   </compounddef>
 </doxygen>

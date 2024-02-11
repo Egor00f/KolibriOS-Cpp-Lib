@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['8bit_0',[', для 8bit,',['../struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html#uint8_t',1,'']]]
+  ['4_20то_20круг_20это_20квадрат_0',['рисуется по detalization линий. Да-да если Детализация = 4, то круг это квадрат.',['../graphic_8hpp.html#Круг',1,'']]]
 ];

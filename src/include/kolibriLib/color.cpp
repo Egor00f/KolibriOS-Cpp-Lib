@@ -16,3 +16,31 @@ bool KolibriLib::Colors::ComparisonColorsTables(const ColorsTable &a, const Colo
 {
     return (a.frame_area == b.frame_area) && (a.grab_bar == b.grab_bar) && (a.grab_bar_button == b.grab_bar_button) && (a.grab_button_text == b.grab_button_text);
 }
+
+KolibriLib::Colors::Color::Color(ksys_color_t a)
+{
+    val = a;
+}
+
+Color &KolibriLib::Colors::Color::operator=(const Color &a)
+{
+    val = a.val;
+    return *this;
+}
+
+Color &KolibriLib::Colors::Color::operator+(const Color &a)
+{
+    val /= 2;
+    val += (a.val / 2);
+    return *this;
+}
+
+bool KolibriLib::Colors::Color::operator==(const Color &a) const
+{
+    return val == a.val;
+}
+
+bool KolibriLib::Colors::Color::operator!=(const Color &a) const
+{
+    return val != a.val;
+}

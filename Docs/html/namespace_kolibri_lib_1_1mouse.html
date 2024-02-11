@@ -92,6 +92,8 @@ $(function(){initNavTree('namespace_kolibri_lib_1_1mouse.html',''); initResizabl
 
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">KolibriLib::mouse Namespace Reference</div></div>
 </div><!--header-->
@@ -100,6 +102,30 @@ $(function(){initNavTree('namespace_kolibri_lib_1_1mouse.html',''); initResizabl
 <p>Работа с мышью  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a62aae3bff5a15d2c1aacef753a8a5d05" id="r_a62aae3bff5a15d2c1aacef753a8a5d05"><td class="memItemLeft" align="right" valign="top"><a id="a62aae3bff5a15d2c1aacef753a8a5d05" name="a62aae3bff5a15d2c1aacef753a8a5d05"></a>
+typedef void *&#160;</td><td class="memItemRight" valign="bottom"><b>CursorHandle</b></td></tr>
+<tr class="separator:a62aae3bff5a15d2c1aacef753a8a5d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:af0ffe83fe84c6327086d378dd4270aa9" id="r_af0ffe83fe84c6327086d378dd4270aa9"><td class="memItemLeft" align="right" valign="top"><a id="af0ffe83fe84c6327086d378dd4270aa9" name="af0ffe83fe84c6327086d378dd4270aa9"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>MouseButtons</b> { <br />
+&#160;&#160;<b>LeftButton</b> = 0x1
+, <b>RightButton</b> = 0x10
+, <b>CenterBtton</b> = 0x100
+, <b>FourButton</b> = 0x1000
+, <br />
+&#160;&#160;<b>FiveButton</b> = 0x10000
+<br />
+ }</td></tr>
+<tr class="separator:af0ffe83fe84c6327086d378dd4270aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab685b1d4883b04396954cab9b7ce787f" id="r_ab685b1d4883b04396954cab9b7ce787f"><td class="memItemLeft" align="right" valign="top"><a id="ab685b1d4883b04396954cab9b7ce787f" name="ab685b1d4883b04396954cab9b7ce787f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>LoadCursor</b> { <b>FromFile</b> = 0
+, <b>FromMem</b>
+, <b>Indirect</b>
+ }</td></tr>
+<tr class="separator:ab685b1d4883b04396954cab9b7ce787f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3214167f4881bd080a5f8677f9f748e9" id="r_a3214167f4881bd080a5f8677f9f748e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_kolibri_lib_1_1point.html">point</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3214167f4881bd080a5f8677f9f748e9">GetMousePositionOnSreen</a> ()</td></tr>
@@ -114,10 +140,61 @@ Functions</h2></td></tr>
 <tr class="memitem:a56edecd4a7aa3f7af9eadf9ea32e93c0" id="r_a56edecd4a7aa3f7af9eadf9ea32e93c0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56edecd4a7aa3f7af9eadf9ea32e93c0">GetMouseWheels</a> ()</td></tr>
 <tr class="memdesc:a56edecd4a7aa3f7af9eadf9ea32e93c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">колёсико мыши  <br /></td></tr>
 <tr class="separator:a56edecd4a7aa3f7af9eadf9ea32e93c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39c94a2a4489ad8d4ec05a07ac13e259" id="r_a39c94a2a4489ad8d4ec05a07ac13e259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39c94a2a4489ad8d4ec05a07ac13e259">EmulateMouse</a> (uint8_t m)</td></tr>
+<tr class="memdesc:a39c94a2a4489ad8d4ec05a07ac13e259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Эмулировать нажатия кнопок мыши  <br /></td></tr>
+<tr class="separator:a39c94a2a4489ad8d4ec05a07ac13e259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28b18a7d7c25d015b5c503e9ddecf47" id="r_ad28b18a7d7c25d015b5c503e9ddecf47"><td class="memItemLeft" align="right" valign="top">CursorHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad28b18a7d7c25d015b5c503e9ddecf47">LoadCursor</a> (<a class="el" href="class_kolibri_lib_1_1filesystem_1_1_path.html">filesystem::Path</a> path)</td></tr>
+<tr class="memdesc:ad28b18a7d7c25d015b5c503e9ddecf47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузить курсор мыши  <br /></td></tr>
+<tr class="separator:ad28b18a7d7c25d015b5c503e9ddecf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82f2a9273155c4a3d12aa894c0edb5b" id="r_ac82f2a9273155c4a3d12aa894c0edb5b"><td class="memItemLeft" align="right" valign="top">CursorHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac82f2a9273155c4a3d12aa894c0edb5b">LoadCursor</a> (void *ptr)</td></tr>
+<tr class="memdesc:ac82f2a9273155c4a3d12aa894c0edb5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузить курсор мыши  <br /></td></tr>
+<tr class="separator:ac82f2a9273155c4a3d12aa894c0edb5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1e0e0b256a88def4462f920751fa62e" id="r_af1e0e0b256a88def4462f920751fa62e"><td class="memItemLeft" align="right" valign="top">CursorHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1e0e0b256a88def4462f920751fa62e">LoadCursor</a> (<a class="el" href="struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html">Colors::ARGB</a>[] cur)</td></tr>
+<tr class="memdesc:af1e0e0b256a88def4462f920751fa62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузить курсор мыши  <br /></td></tr>
+<tr class="separator:af1e0e0b256a88def4462f920751fa62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21b758a85831bd3a66ac4cd10ac632a3" id="r_a21b758a85831bd3a66ac4cd10ac632a3"><td class="memItemLeft" align="right" valign="top">CursorHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</a> (CursorHandle handle)</td></tr>
+<tr class="memdesc:a21b758a85831bd3a66ac4cd10ac632a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Установить курсор  <br /></td></tr>
+<tr class="separator:a21b758a85831bd3a66ac4cd10ac632a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3291c052d3b5cbffadecfc548a047b17" id="r_a3291c052d3b5cbffadecfc548a047b17"><td class="memItemLeft" align="right" valign="top"><a id="a3291c052d3b5cbffadecfc548a047b17" name="a3291c052d3b5cbffadecfc548a047b17"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteCursor</b> (CursorHandle handle)</td></tr>
+<tr class="separator:a3291c052d3b5cbffadecfc548a047b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Работа с мышью </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a39c94a2a4489ad8d4ec05a07ac13e259" name="a39c94a2a4489ad8d4ec05a07ac13e259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39c94a2a4489ad8d4ec05a07ac13e259">&#9670;&#160;</a></span>EmulateMouse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KolibriLib::mouse::EmulateMouse </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>m</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Эмулировать нажатия кнопок мыши </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a7ae50aac73ac33bc25e269c12522a024" name="a7ae50aac73ac33bc25e269c12522a024"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7ae50aac73ac33bc25e269c12522a024">&#9670;&#160;</a></span>GetMouseButtons()</h2>
 
@@ -227,6 +304,148 @@ Functions</h2></td></tr>
 
 <p>колёсико мыши </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="af1e0e0b256a88def4462f920751fa62e" name="af1e0e0b256a88def4462f920751fa62e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e0e0b256a88def4462f920751fa62e">&#9670;&#160;</a></span>LoadCursor() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CursorHandle KolibriLib::mouse::LoadCursor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html">Colors::ARGB</a>[]</td>          <td class="paramname"><span class="paramname"><em>cur</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Загрузить курсор мыши </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cur</td><td>путь до файла с курсором </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Хендл загруженного курсора </dd></dl>
+<h4><a class="anchor" id="Файл"></a>
+курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя</h4>
+
+</div>
+</div>
+<a id="ad28b18a7d7c25d015b5c503e9ddecf47" name="ad28b18a7d7c25d015b5c503e9ddecf47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28b18a7d7c25d015b5c503e9ddecf47">&#9670;&#160;</a></span>LoadCursor() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CursorHandle KolibriLib::mouse::LoadCursor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kolibri_lib_1_1filesystem_1_1_path.html">filesystem::Path</a></td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Загрузить курсор мыши </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>путь до файла с курсором </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Хендл загруженного курсора </dd></dl>
+<h4><a class="anchor" id="Файл"></a>
+курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя</h4>
+
+</div>
+</div>
+<a id="ac82f2a9273155c4a3d12aa894c0edb5b" name="ac82f2a9273155c4a3d12aa894c0edb5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac82f2a9273155c4a3d12aa894c0edb5b">&#9670;&#160;</a></span>LoadCursor() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CursorHandle KolibriLib::mouse::LoadCursor </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Загрузить курсор мыши </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>путь до файла с курсором </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Хендл загруженного курсора </dd></dl>
+<h4><a class="anchor" id="Файл"></a>
+курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя</h4>
+
+</div>
+</div>
+<a id="a21b758a85831bd3a66ac4cd10ac632a3" name="a21b758a85831bd3a66ac4cd10ac632a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21b758a85831bd3a66ac4cd10ac632a3">&#9670;&#160;</a></span>SetCursor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CursorHandle KolibriLib::mouse::SetCursor </td>
+          <td>(</td>
+          <td class="paramtype">CursorHandle</td>          <td class="paramname"><span class="paramname"><em>handle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Установить курсор </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>хендл устанавливаемого курсора </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>хендл предыдушего курсора </dd></dl>
 
 </div>
 </div>

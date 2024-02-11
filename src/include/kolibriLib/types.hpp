@@ -1,6 +1,8 @@
 #ifndef __TYPES_H__
 #define __TYPES_H__
 
+#include <sys/ksys.h>
+
 namespace KolibriLib
 {
     template <class T>
@@ -34,6 +36,13 @@ namespace KolibriLib
         typedef point<unsigned> Size;
         typedef point<int> Coord;
     } // namespace UI
+
+    namespace Colors
+    {
+        /// @brief Таблица цветов
+        typedef ksys_colors_table_t ColorsTable;
+    } // namespace Colors
+    
     
 } // namespace KolibriLib
 

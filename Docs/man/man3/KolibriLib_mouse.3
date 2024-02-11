@@ -7,6 +7,23 @@ KolibriLib::mouse \- Работа с мышью
 .SH SYNOPSIS
 .br
 .PP
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef void * \fBCursorHandle\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMouseButtons\fP { \fBLeftButton\fP = 0x1, \fBRightButton\fP = 0x10, \fBCenterBtton\fP = 0x100, \fBFourButton\fP = 0x1000, \fBFiveButton\fP = 0x10000 }"
+.br
+.ti -1c
+.RI "enum \fBLoadCursor\fP { \fBFromFile\fP = 0, \fBFromMem\fP, \fBIndirect\fP }"
+.br
+.in -1c
 .SS "Functions"
 
 .in +1c
@@ -26,12 +43,46 @@ KolibriLib::mouse \- Работа с мышью
 .RI "uint32_t \fBGetMouseWheels\fP ()"
 .br
 .RI "колёсико мыши "
+.ti -1c
+.RI "void \fBEmulateMouse\fP (uint8_t m)"
+.br
+.RI "Эмулировать нажатия кнопок мыши "
+.ti -1c
+.RI "CursorHandle \fBLoadCursor\fP (\fBfilesystem::Path\fP path)"
+.br
+.RI "Загрузить курсор мыши "
+.ti -1c
+.RI "CursorHandle \fBLoadCursor\fP (void *ptr)"
+.br
+.RI "Загрузить курсор мыши "
+.ti -1c
+.RI "CursorHandle \fBLoadCursor\fP (\fBColors::ARGB\fP[] cur)"
+.br
+.RI "Загрузить курсор мыши "
+.ti -1c
+.RI "CursorHandle \fBSetCursor\fP (CursorHandle handle)"
+.br
+.RI "Установить курсор "
+.ti -1c
+.RI "void \fBDeleteCursor\fP (CursorHandle handle)"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
 Работа с мышью 
 .SH "Function Documentation"
 .PP 
+.SS "void KolibriLib::mouse::EmulateMouse (uint8_t m)\fR [inline]\fP"
+
+.PP
+Эмулировать нажатия кнопок мыши 
+.PP
+\fBParameters\fP
+.RS 4
+\fIm\fP 
+.RE
+.PP
+
 .SS "uint32_t KolibriLib::mouse::GetMouseButtons ()\fR [inline]\fP"
 
 .PP
@@ -73,6 +124,73 @@ KolibriLib::mouse \- Работа с мышью
 \fBReturns\fP
 .RS 4
 
+.RE
+.PP
+
+.SS "CursorHandle KolibriLib::mouse::LoadCursor (\fBColors::ARGB\fP[] cur)\fR [inline]\fP"
+
+.PP
+Загрузить курсор мыши 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcur\fP путь до файла с курсором 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Хендл загруженного курсора 
+.RE
+.PP
+.SS "курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пикселя"
+
+.SS "CursorHandle KolibriLib::mouse::LoadCursor (\fBfilesystem::Path\fP path)\fR [inline]\fP"
+
+.PP
+Загрузить курсор мыши 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP путь до файла с курсором 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Хендл загруженного курсора 
+.RE
+.PP
+.SS "курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пикселя"
+
+.SS "CursorHandle KolibriLib::mouse::LoadCursor (void * ptr)\fR [inline]\fP"
+
+.PP
+Загрузить курсор мыши 
+.PP
+\fBParameters\fP
+.RS 4
+\fIptr\fP путь до файла с курсором 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Хендл загруженного курсора 
+.RE
+.PP
+.SS "курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пикселя"
+
+.SS "CursorHandle KolibriLib::mouse::SetCursor (CursorHandle handle)\fR [inline]\fP"
+
+.PP
+Установить курсор 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhandle\fP хендл устанавливаемого курсора 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+хендл предыдушего курсора 
 .RE
 .PP
 

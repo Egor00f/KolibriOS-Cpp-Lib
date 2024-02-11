@@ -1,6 +1,6 @@
 var class_kolibri_lib_1_1window_1_1_window =
 [
-    [ "Window", "class_kolibri_lib_1_1window_1_1_window.html#ac3c0f4cf6baa76cc6959bf61fc8cfb38", null ],
+    [ "Window", "class_kolibri_lib_1_1window_1_1_window.html#a0fe7cedc0760b8f1f4110403d84b154e", null ],
     [ "AddElement", "class_kolibri_lib_1_1window_1_1_window.html#acb8c984eff27ea01b5f35bfbc9fa33a8", null ],
     [ "ChangeTilte", "class_kolibri_lib_1_1window_1_1_window.html#a06c2e7a68970c226447232cbe7d4c8fc", null ],
     [ "ChangeWindow", "class_kolibri_lib_1_1window_1_1_window.html#a784db7e4809ee9ab181d7971ae441e39", null ],
@@ -10,7 +10,7 @@ var class_kolibri_lib_1_1window_1_1_window =
     [ "CreateText", "class_kolibri_lib_1_1window_1_1_window.html#a9a8362bf8c56c57bfe21bc494739cded", null ],
     [ "CreateText", "class_kolibri_lib_1_1window_1_1_window.html#a691c8cb67acbd56187101b06a681bbc4", null ],
     [ "DeleteElement", "class_kolibri_lib_1_1window_1_1_window.html#adf26c28bb805b3491c42d1c7ee348777", null ],
-    [ "DrawWindow", "class_kolibri_lib_1_1window_1_1_window.html#a6c10ca0b0357d91a433edacf699f980e", null ],
+    [ "DrawWindow", "class_kolibri_lib_1_1window_1_1_window.html#add7534ebbd153468ea2699461b0017bb", null ],
     [ "EndRedraw", "class_kolibri_lib_1_1window_1_1_window.html#a1431961e77c27593e30ca06203c2aa62", null ],
     [ "Focus", "class_kolibri_lib_1_1window_1_1_window.html#af24f1580a621e0f7047fc3bbb5138d16", null ],
     [ "GetButton", "class_kolibri_lib_1_1window_1_1_window.html#ae27054bb07212c75af2e91766a0b56d9", null ],
@@ -22,7 +22,7 @@ var class_kolibri_lib_1_1window_1_1_window =
     [ "Handler", "class_kolibri_lib_1_1window_1_1_window.html#ae61336710de30c01f05c04121fa52f52", null ],
     [ "HandlerThread", "class_kolibri_lib_1_1window_1_1_window.html#a61a40d50910101625d4e289821bbd2da", null ],
     [ "Render", "class_kolibri_lib_1_1window_1_1_window.html#a7863fafae23423f404bee7aa3a57e124", null ],
-    [ "SetTextLabel", "class_kolibri_lib_1_1window_1_1_window.html#aa8aadc49fc0714906c2488681bb1f2c0", null ],
+    [ "SetElement", "class_kolibri_lib_1_1window_1_1_window.html#a74453d8adbe91012c4cceedb4e641b54", null ],
     [ "SetWindowColors", "class_kolibri_lib_1_1window_1_1_window.html#ad49c5ec34b3cc382e7e9e5234cd42124", null ],
     [ "StartRedraw", "class_kolibri_lib_1_1window_1_1_window.html#ac7617207760b4cc6a0078e92a1a844b9", null ],
     [ "Unfocus", "class_kolibri_lib_1_1window_1_1_window.html#ae074267ec49af5a67e268aebd1d3aae6", null ]

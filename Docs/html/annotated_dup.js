@@ -24,10 +24,10 @@ var annotated_dup =
         [ "CheckBox", "class_kolibri_lib_1_1_u_i_1_1_check_box.html", "class_kolibri_lib_1_1_u_i_1_1_check_box" ],
         [ "Form", "class_kolibri_lib_1_1_u_i_1_1_form.html", "class_kolibri_lib_1_1_u_i_1_1_form" ],
         [ "Frame", "class_kolibri_lib_1_1_u_i_1_1_frame.html", "class_kolibri_lib_1_1_u_i_1_1_frame" ],
+        [ "Menu", "class_kolibri_lib_1_1_u_i_1_1_menu.html", "class_kolibri_lib_1_1_u_i_1_1_menu" ],
         [ "UIElement", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html", "class_kolibri_lib_1_1_u_i_1_1_u_i_element" ]
       ] ],
       [ "window", "namespace_kolibri_lib_1_1window.html", [
-        [ "Element", "struct_kolibri_lib_1_1window_1_1_element.html", null ],
         [ "Window", "class_kolibri_lib_1_1window_1_1_window.html", "class_kolibri_lib_1_1window_1_1_window" ]
       ] ],
       [ "point", "struct_kolibri_lib_1_1point.html", null ]

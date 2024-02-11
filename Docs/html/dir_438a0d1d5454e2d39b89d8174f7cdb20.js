@@ -12,6 +12,7 @@ var dir_438a0d1d5454e2d39b89d8174f7cdb20 =
     [ "init.hpp", "init_8hpp_source.html", null ],
     [ "input.hpp", "input_8hpp_source.html", null ],
     [ "keyboard.hpp", "keyboard_8hpp_source.html", null ],
+    [ "menu.hpp", "menu_8hpp_source.html", null ],
     [ "mouse.hpp", "mouse_8hpp_source.html", null ],
     [ "network.hpp", "network_8hpp_source.html", null ],
     [ "os.hpp", "os_8hpp_source.html", null ],
@@ -20,6 +21,7 @@ var dir_438a0d1d5454e2d39b89d8174f7cdb20 =
     [ "sound.hpp", "sound_8hpp_source.html", null ],
     [ "text.hpp", "text_8hpp_source.html", null ],
     [ "thread.hpp", "thread_8hpp_source.html", null ],
+    [ "types.hpp", "types_8hpp_source.html", null ],
     [ "UI.hpp", "_u_i_8hpp_source.html", null ],
     [ "window.hpp", "window_8hpp_source.html", null ],
     [ "windowBase.hpp", "window_base_8hpp_source.html", null ]

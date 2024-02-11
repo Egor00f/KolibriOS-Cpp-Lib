@@ -6,20 +6,18 @@ CC	= kos32-gcc
 CXX	= kos32-g++
 LD	= kos32-ld 
 
-LIB_NAME := libkcpp
+LIB_NAME = libkcpp
 
 #DIRs
-CONTRIB_DIR = ../
+CONTRIB_DIR = ../contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
 
 
-INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I C_Layer/INCLUDE 
-LIBPATH = -L $(SDK_DIR)/lib -L C:/MinGW/msys/1.0/home/autobuild/tools/win32/mingw32/lib
+INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I $(SDK_DIR)/sources/libstdc++-v3/include/mingw32 -I $(SDK_DIR)/sources/libstdc++-v3/include/tr1 -I $(SDK_DIR)/sources/libstdc++-v3/include/tr2 -I C_Layer/INCLUDE
 
 #Flags
-CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++14
-LDFLAGS = -static -S -nostdlib -Tapp-dynamic.lds --image-base 0 -O2 -T $(SDK_DIR)/sources/newlib/app.lds
+CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++11
 
 LIB_PATH = src/include/kolibriLib
 
@@ -33,36 +31,26 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a install CLAYER clean EXAMPLES done
+all: $(LIB_NAME).a install CLAYER clean
 
 	
-
-
 
 $(LIB_NAME).a: $(OBJECTS)
 	$(AR) -rcs $(LIB_NAME).a $(OBJECTS)
 
-%.o : %.cpp $(SOURCES)
-	@echo "| compile:" $@
-	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $<
 
-
-CLAYER:
-	@echo "| make C_Layer:" 
-	$(MAKE) -C C_Layer/ASM
-EXAMPLES:
-	@echo "| Make examples"
-	$(MAKE) -C src/examples
 
 install:
 	@echo "| installing lib"
 	@mv $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
 
+CLAYER:
+	@echo "| make C_Layer:" 
+	$(MAKE) -C C_Layer/ASM
+
 clean:
 	@echo "| clean"
 	@rm $(OBJECTS)
-	
-done:
-	@echo "+-------------------------------------+"
-	@echo "|          Compilation Done!          |"
-	@echo "+-------------------------------------+"
+
+%.o : %.cpp Makefile
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 

@@ -13,7 +13,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 
 .in +1c
 .ti -1c
-.RI "\fBWindow\fP (std::string Title='Window', \fBUI::Size\fP size=\fBDefaultWindowSize\fP, int style=0x14, \fBColors::ColorsTable\fP colors=\fBColors::DefaultColorTable\fP, unsigned Margin=0)"
+.RI "\fBWindow\fP (const std::string &Title='Window', const \fBUI::Size\fP &size=\fBDefaultWindowSize\fP, const \fBColors::ColorsTable\fP &colors=\fBColors::DefaultColorTable\fP, const \fBColors::Color\fP &TitleColor=OS::sys_color_table\&.work_text, bool Resize=false, bool Gradient=false, unsigned Transparency=0, const unsigned &Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -77,10 +77,6 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Создать текст в окне "
 .ti -1c
-.RI "void \fBSetTextLabel\fP (unsigned N, const \fBUI::text::TextLabel\fP &text)"
-.br
-.RI "Изменить текст "
-.ti -1c
 .RI "unsigned \fBCreateForm\fP (\fBUI::Form\fP form)"
 .br
 .RI "Создать форму "
@@ -109,6 +105,10 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Добавить UI элемент "
 .ti -1c
+.RI "template<class T > void \fBSetElement\fP (unsigned i, const T &element)"
+.br
+.RI "Изменить элемент "
+.ti -1c
 .RI "void \fBUnfocus\fP () const"
 .br
 .RI "Снять фокус с этого окна "
@@ -122,7 +122,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 Класс для работы с окном 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "Window::Window (std::string Title = \fR'Window'\fP, \fBUI::Size\fP size = \fR\fBDefaultWindowSize\fP\fP, int style = \fR0x14\fP, \fBColors::ColorsTable\fP colors = \fR\fBColors::DefaultColorTable\fP\fP, unsigned Margin = \fR0\fP)"
+.SS "Window::Window (const std::string & Title = \fR'Window'\fP, const \fBUI::Size\fP & size = \fR\fBDefaultWindowSize\fP\fP, const \fBColors::ColorsTable\fP & colors = \fR\fBColors::DefaultColorTable\fP\fP, const \fBColors::Color\fP & TitleColor = \fROS::sys_color_table\&.work_text\fP, bool Resize = \fRfalse\fP, bool Gradient = \fRfalse\fP, unsigned Transparency = \fR0\fP, const unsigned & Margin = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -291,7 +291,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "void Window::DrawWindow (\fBUI::Coord\fP coord = \fR\fBmouse::GetMousePositionOnSreen\fP()\fP)"
+.SS "void KolibriLib::window::Window::DrawWindow (\fBUI::Coord\fP coord = \fR\fBmouse::GetMousePositionOnSreen\fP()\fP)"
 
 .PP
 Отрисовать окно 
@@ -394,16 +394,21 @@ point\&.y - высота окна
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::SetTextLabel (unsigned N, const \fBUI::text::TextLabel\fP & text)"
+.SS "template<class T > void KolibriLib::window::Window::SetElement (unsigned i, const T & element)"
 
 .PP
-Изменить текст 
+Изменить элемент 
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIelement\fP 
+.RE
 .PP
 \fBParameters\fP
 .RS 4
-\fIN\fP Номер элемента в списке 
+\fIelement\fP 
 .br
-\fItext\fP Новая текстовая метка 
+ 
 .RE
 .PP
 

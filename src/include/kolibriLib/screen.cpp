@@ -26,3 +26,32 @@ void KolibriLib::CenterCursor()
         ::"a"(18), "b"(15)
     );
 }
+
+point<unsigned> KolibriLib::GetBackgroundImageSize()
+{
+    point<unsigned> p;
+    unsigned a;
+    asm_inline(
+        "int $0x40"
+        :"=a"(a)
+        :"a"(39), "b"(1)
+    );
+    p.x = (a >> 16);
+    p.y = a;
+    return p;
+}
+
+Colors::Color KolibriLib::ReadBackgroungImagePoint(point<unsigned> Point)
+{
+    Colors::Color c;
+
+    //Смещение
+    unsigned s = GetBackgroundImageSize().x * (Point.y -1) + Point.x;   //я думаю, что изображение это двумерный массив
+
+    asm_inline(
+        "int $0x40"
+        :"=a"(c)
+        :"a"(39), "b"(2), "c"(s)
+    );
+    return c;
+}

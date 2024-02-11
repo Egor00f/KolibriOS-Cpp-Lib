@@ -4,7 +4,8 @@
 
 #include <sys/ksys.h>
 
-#include "small.hpp"
+#include "types.hpp"
+#include "color.hpp"
 #include "thread.hpp"
 
 namespace KolibriLib
@@ -20,6 +21,15 @@ namespace KolibriLib
 
     /// @brief Центрировать курсор
     inline void CenterCursor();
+
+    /// @brief Получить размеры фонового изображения
+    /// @return 
+    point<unsigned> GetBackgroundImageSize();
+
+    /// @brief Прочитать точку на фоне
+    /// @param Point читаема точка
+    /// @return 
+    Colors::Color ReadBackgroungImagePoint(point<unsigned> Point);
 }
 
 

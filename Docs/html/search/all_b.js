@@ -6,5 +6,6 @@ var searchData=
   ['form_3',['Form',['../class_kolibri_lib_1_1_u_i_1_1_form.html',1,'KolibriLib::UI::Form'],['../class_kolibri_lib_1_1_u_i_1_1_form.html#ac495e5c56a48b10881fbf7efb126f05e',1,'KolibriLib::UI::Form::Form()']]],
   ['frame_4',['Frame',['../class_kolibri_lib_1_1_u_i_1_1_frame.html',1,'KolibriLib::UI']]],
   ['freebuttonid_5',['FreeButtonId',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a50f50638d4faadd115e569d5db1e2d1a',1,'KolibriLib::UI::buttons']]],
-  ['fserror_6',['FSError',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3',1,'KolibriLib::filesystem']]]
+  ['freemem_6',['FreeMem',['../namespace_kolibri_lib_1_1_o_s.html#afebe1299f35447d01cfb2ea2f9632e3d',1,'KolibriLib::OS']]],
+  ['fserror_7',['FSError',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3',1,'KolibriLib::filesystem']]]
 ];

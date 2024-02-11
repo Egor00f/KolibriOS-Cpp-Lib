@@ -14,7 +14,7 @@
 10 
 11 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
 12 
-13 
+13 <emphasis role="preprocessor">#include&#32;&quot;types.hpp&quot;</emphasis>
 14 <emphasis role="preprocessor">#include&#32;&quot;input.hpp&quot;</emphasis>
 15 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
 16 <emphasis role="preprocessor">#include&#32;&quot;windowBase.hpp&quot;</emphasis>
@@ -23,137 +23,145 @@
 19 <emphasis role="preprocessor">#include&#32;&quot;checkbox.hpp&quot;</emphasis>
 20 <emphasis role="preprocessor">#include&#32;&quot;form.hpp&quot;</emphasis>
 21 <emphasis role="preprocessor">#include&#32;&quot;frame.hpp&quot;</emphasis>
-22 
-23 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-24 {&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
-25 
-26 &#32;&#32;&#32;&#32;
+22 <emphasis role="preprocessor">#include&#32;&quot;menu.hpp&quot;</emphasis>
+23 <emphasis role="preprocessor">#include&#32;&quot;screen.hpp&quot;</emphasis>
+24 
+25 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+26 {&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
 27 
-29 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>window
-30 &#32;&#32;&#32;&#32;{
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-32 
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1window_1_1_element">Element</link>
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;Type
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None&#32;=&#32;0,
-38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Button,
-39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Image,
-40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CheckBox,
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Form,
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TextLabel,
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Frame
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-45 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&#32;btn;
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;txt;
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">UI::Form</link>&#32;frm;
-50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box">UI::CheckBox</link>&#32;ChckBx;
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">UI::Images::Image</link>&#32;img;
-52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame">UI::Frame</link>&#32;frame;
-53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+28 &#32;&#32;&#32;&#32;
+29 
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>window
+32 &#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+34 
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+36 
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1window_1_1_window">Window</link>
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>Element
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;Type
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None&#32;=&#32;0,
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Button,
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Image,
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CheckBox,
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Form,
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TextLabel,
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Frame,
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Menu
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
 54 
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_type;
-56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;DrawPrioritet;
-57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;use;
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-60 
-62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1window_1_1_window">Window</link>
-63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
-66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_title;
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&#32;btn;
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;txt;
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">UI::Form</link>&#32;frm;
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box">UI::CheckBox</link>&#32;ChckBx;
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">UI::Images::Image</link>&#32;img;
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame">UI::Frame</link>&#32;frame;
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu">UI::Menu</link>&#32;menu;
+62 
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_type;
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;DrawPrioritet;
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;use;
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
 67 
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;_size;
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_title;
 70 
-72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&#32;_colors;
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;_size;
 73 
-75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_MARGIN;
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&#32;_colors;
 76 
-78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;_style;
-79 
-81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;activeForm;
-82 
-84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_Redraw&#32;=&#32;<emphasis role="keyword">false</emphasis>;
-85 
-86 
-88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Element&gt;&#32;_Elements;
-89 
-93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;AddNewButton(<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&#32;btn);
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;_TitleColor;
+78 
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_MARGIN;
+81 
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_style;
+84 
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_Transparency;
+87 
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;activeForm;
+90 
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_Redraw&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+93 
 94 
-98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;AddNewTextLabel(<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;text);
-99 
-103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;AddNewForm(<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">UI::Form</link>&#32;form);
-104 
-105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac3c0f4cf6baa76cc6959bf61fc8cfb38">Window</link>(std::string&#32;Title&#32;=&#32;<emphasis role="stringliteral">&quot;Window&quot;</emphasis>,&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link>,&#32;<emphasis role="keywordtype">int</emphasis>&#32;style&#32;=&#32;0x14,&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&#32;colors&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1ada2166810bf7aa50f1f39154716cc73d">Colors::DefaultColorTable</link>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Margin&#32;=&#32;0);
-113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window">~Window</link>();
-114 
-116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a7863fafae23423f404bee7aa3a57e124">Render</link>();
-117 
-120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac9ea9bd8428a47ef721ed41b84ca1dee">GetMargin</link>();
-121 
-124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a29313e5f7d8a7291b924999e7b6a831e">GetSize</link>();
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Element&gt;&#32;_Elements;
+97 
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;AddNewButton(<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&#32;btn);
+102 
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;AddNewTextLabel(<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;text);
+107 
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;AddNewForm(<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">UI::Form</link>&#32;form);
+112 
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a0fe7cedc0760b8f1f4110403d84b154e">Window</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;Title&#32;=&#32;<emphasis role="stringliteral">&quot;Window&quot;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;&amp;size&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&#32;&amp;colors&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1ada2166810bf7aa50f1f39154716cc73d">Colors::DefaultColorTable</link>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;TitleColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Resize&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Gradient&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Transparency&#32;=&#32;0,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin&#32;=&#32;0);
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window">~Window</link>();
+122 
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a7863fafae23423f404bee7aa3a57e124">Render</link>();
 125 
-128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ad49c5ec34b3cc382e7e9e5234cd42124">SetWindowColors</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&amp;&#32;colorTable);
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac9ea9bd8428a47ef721ed41b84ca1dee">GetMargin</link>();
 129 
-133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac7617207760b4cc6a0078e92a1a844b9">StartRedraw</link>();
-134 
-137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a1431961e77c27593e30ca06203c2aa62">EndRedraw</link>();
-138 
-145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a6c10ca0b0357d91a433edacf699f980e">DrawWindow</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">mouse::GetMousePositionOnSreen</link>());
+132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a29313e5f7d8a7291b924999e7b6a831e">GetSize</link>();
+133 
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ad49c5ec34b3cc382e7e9e5234cd42124">SetWindowColors</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&amp;&#32;colorTable);
+137 
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac7617207760b4cc6a0078e92a1a844b9">StartRedraw</link>();
+142 
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a1431961e77c27593e30ca06203c2aa62">EndRedraw</link>();
 146 
-150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a784db7e4809ee9ab181d7971ae441e39">ChangeWindow</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord,&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size);
-151 
-154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a06c2e7a68970c226447232cbe7d4c8fc">ChangeTilte</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;newTitle);
-155 
-159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a49c15e00d433ce67d424fb68246bfd47">GetWindowSize</link>();
-160 
-170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a2539ca193ef6b3dabd541dddbe686d60">CreateButton</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord&#32;=&#32;{0,&#32;0},&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size&#32;=&#32;{16,&#32;16},&#32;std::string&#32;Text&#32;=&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;margin&#32;=&#32;UI::DefaultMargin,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseWindowColors&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button_text);
-171 
-175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a1d366e0480ed7f2a7e46e4963ba703ff">CreateButton</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&amp;&#32;btn);
-176 
-180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae27054bb07212c75af2e91766a0b56d9">GetButton</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>);
-181 
-190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a691c8cb67acbd56187101b06a681bbc4">CreateText</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord&#32;=&#32;{0,&#32;0},&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size&#32;=&#32;{16,&#32;16},&#32;std::string&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;Text&quot;</emphasis>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;FontSize&#32;=&#32;9,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseWindowColors&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text);
-191 
-195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a691c8cb67acbd56187101b06a681bbc4">CreateText</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&amp;&#32;text);
-196 
-200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1aa8aadc49fc0714906c2488681bb1f2c0">SetTextLabel</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;N,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;&amp;text);
-201 
-205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1aed07039c255cf62c945d8028619e20f4">CreateForm</link>(<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">UI::Form</link>&#32;form);
-206 
-209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1adf26c28bb805b3491c42d1c7ee348777">DeleteElement</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>);
-210 
-213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae61336710de30c01f05c04121fa52f52">Handler</link>();
-214 
-216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UI::buttons::ButtonID&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae946a94344cfa3af152c22ec7e95f9e3">GetPressedButton</link>();
+153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1add7534ebbd153468ea2699461b0017bb">DrawWindow</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">mouse::GetMousePositionOnSreen</link>());
+154 
+158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a784db7e4809ee9ab181d7971ae441e39">ChangeWindow</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord,&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size);
+159 
+162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a06c2e7a68970c226447232cbe7d4c8fc">ChangeTilte</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;newTitle);
+163 
+167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a49c15e00d433ce67d424fb68246bfd47">GetWindowSize</link>();
+168 
+178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a2539ca193ef6b3dabd541dddbe686d60">CreateButton</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord&#32;=&#32;{0,&#32;0},&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size&#32;=&#32;{16,&#32;16},&#32;std::string&#32;Text&#32;=&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;margin&#32;=&#32;UI::DefaultMargin,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseWindowColors&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button_text);
+179 
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a1d366e0480ed7f2a7e46e4963ba703ff">CreateButton</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&amp;&#32;btn);
+184 
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">UI::buttons::Button</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae27054bb07212c75af2e91766a0b56d9">GetButton</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>);
+189 
+198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a691c8cb67acbd56187101b06a681bbc4">CreateText</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord&#32;=&#32;{0,&#32;0},&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size&#32;=&#32;{16,&#32;16},&#32;std::string&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;Text&quot;</emphasis>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;FontSize&#32;=&#32;9,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseWindowColors&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text);
+199 
+203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a691c8cb67acbd56187101b06a681bbc4">CreateText</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&amp;&#32;text);
+204 
+208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1aed07039c255cf62c945d8028619e20f4">CreateForm</link>(<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">UI::Form</link>&#32;form);
+209 
+212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1adf26c28bb805b3491c42d1c7ee348777">DeleteElement</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>);
+213 
+216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae61336710de30c01f05c04121fa52f52">Handler</link>();
 217 
-221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae895984865728348b2da6593a09df6ae">GetInputFromFrom</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;form);
-222 
-224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a61a40d50910101625d4e289821bbd2da">HandlerThread</link>();
+219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UI::buttons::ButtonID&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae946a94344cfa3af152c22ec7e95f9e3">GetPressedButton</link>();
+220 
+224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae895984865728348b2da6593a09df6ae">GetInputFromFrom</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;form);
 225 
-226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1acb8c984eff27ea01b5f35bfbc9fa33a8">AddElement</link>(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;element);
-230 
-232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae074267ec49af5a67e268aebd1d3aae6">Unfocus</link>()&#32;<emphasis role="keyword">const</emphasis>;
-234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1af24f1580a621e0f7047fc3bbb5138d16">Focus</link>()&#32;<emphasis role="keyword">const</emphasis>;
-235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-236 &#32;&#32;&#32;&#32;}
-237 
-238 &#32;&#32;&#32;&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
+227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a61a40d50910101625d4e289821bbd2da">HandlerThread</link>();
+228 
+229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
+232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1acb8c984eff27ea01b5f35bfbc9fa33a8">AddElement</link>(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;element);
+233 
+237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
+238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1a74453d8adbe91012c4cceedb4e641b54">SetElement</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;i,&#32;<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;element);
 239 
-240 &#32;&#32;&#32;&#32;
-241 
-242 }
-243 
-244 
-245 
+241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae074267ec49af5a67e268aebd1d3aae6">Unfocus</link>()&#32;<emphasis role="keyword">const</emphasis>;
+243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window_1af24f1580a621e0f7047fc3bbb5138d16">Focus</link>()&#32;<emphasis role="keyword">const</emphasis>;
+244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+245 &#32;&#32;&#32;&#32;}
 246 
-247 <emphasis role="comment">//=============================================================================================================================================================</emphasis>
+247 &#32;&#32;&#32;&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
 248 
-249 
-250 <emphasis role="preprocessor">#endif</emphasis>
+249 &#32;&#32;&#32;&#32;
+250 
+251 }
+252 
+253 
+254 
+255 
+256 <emphasis role="comment">//=============================================================================================================================================================</emphasis>
+257 
+258 
+259 <emphasis role="preprocessor">#endif</emphasis>
 </programlisting></section>

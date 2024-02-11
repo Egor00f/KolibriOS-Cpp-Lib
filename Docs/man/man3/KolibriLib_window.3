@@ -11,16 +11,24 @@ KolibriLib::window \- Работа с окном
 
 .in +1c
 .ti -1c
-.RI "struct \fBElement\fP"
-.br
-.ti -1c
 .RI "class \fBWindow\fP"
 .br
 .RI "Класс для работы с окном "
 .in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPos\fP { \fBBackGround\fP = -2, \fBAlwaysBack\fP = -1, \fBNormal\fP = 0, \fBAlwaysTop\fP = 1 }"
+.br
+.RI "Список констант положения окна относительно других окон: "
+.in -1c
 .SS "Functions"
 
 .in +1c
+.ti -1c
+.RI "void \fBCreateWindow\fP (\fBUI::Coord\fP coord=\fBDefaultWindowCoord\fP, \fBUI::Size\fP size=\fBDefaultWindowSize\fP, const std::string &title, \fBColors::Color\fP WorkColor=OS::sys_color_table\&.frame_area, \fBColors::Color\fP TitleColor=OS::sys_color_table\&.work_text, uint32_t style=0x14)"
+.br
 .ti -1c
 .RI "void \fBUnfocusWindow\fP (\fBThread::Slot\fP slot)"
 .br
@@ -33,6 +41,26 @@ KolibriLib::window \- Работа с окном
 .RI "\fBThread::Slot\fP \fBGetActiveWindow\fP ()"
 .br
 .RI "Получить слот активного окна "
+.ti -1c
+.RI "void \fBMinimizeWindow\fP ()"
+.br
+.RI "Свернуть окно "
+.ti -1c
+.RI "void \fBMinimizeAllWindows\fP ()"
+.br
+.RI "Свернуть все окна "
+.ti -1c
+.RI "int \fBGetWindowPos\fP ()"
+.br
+.RI "Получить положение окна относительно других окон "
+.ti -1c
+.RI "bool \fBSetWindowPos\fP (int pos, Thread::PID pid=\-1)"
+.br
+.RI "Изменить положение окна относительно дроугих окон "
+.ti -1c
+.RI "unsigned \fBGetSkinHeight\fP ()"
+.br
+.RI "Получить высоту скина(заголовка окна) "
 .in -1c
 .SS "Variables"
 
@@ -72,6 +100,46 @@ KolibriLib::window \- Работа с окном
 
 .br
  
+.RE
+.PP
+
+.SS "unsigned KolibriLib::window::GetSkinHeight ()\fR [inline]\fP"
+
+.PP
+Получить высоту скина(заголовка окна) 
+.PP
+\fBReturns\fP
+.RS 4
+высота скина 
+.RE
+.PP
+
+.SS "int KolibriLib::window::GetWindowPos ()\fR [inline]\fP"
+
+.PP
+Получить положение окна относительно других окон 
+.PP
+\fBReturns\fP
+.RS 4
+одна из констант из списка \fBPos\fP
+.RE
+.PP
+
+.SS "bool KolibriLib::window::SetWindowPos (int pos, Thread::PID pid = \fR\-1\fP)\fR [inline]\fP"
+
+.PP
+Изменить положение окна относительно дроугих окон 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP 
+.br
+\fIpid\fP процесс 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+false если ошибка 
 .RE
 .PP
 

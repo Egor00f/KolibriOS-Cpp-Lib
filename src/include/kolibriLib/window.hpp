@@ -10,7 +10,7 @@
 
 #include <sys/ksys.h>
 
-
+#include "types.hpp"
 #include "input.hpp"
 #include "os.hpp"
 #include "windowBase.hpp"
@@ -19,6 +19,8 @@
 #include "checkbox.hpp"
 #include "form.hpp"
 #include "frame.hpp"
+#include "menu.hpp"
+#include "screen.hpp"
 
 namespace KolibriLib
 { //=============================================================================================================================================================
@@ -30,38 +32,39 @@ namespace KolibriLib
 	{
 		
 
-		struct Element
-		{
-			enum Type
-			{
-				None = 0,
-				Button,
-				Image,
-				CheckBox,
-				Form,
-				TextLabel,
-				Frame
-			};
-
-			
-			UI::buttons::Button btn;
-			UI::text::TextLabel txt;
-			UI::Form frm;
-			UI::CheckBox ChckBx;
-			UI::Images::Image img;
-			UI::Frame frame;
-			
-
-			unsigned _type;
-			unsigned DrawPrioritet;
-			bool use;
-			
-		};
+		
 
 		/// @brief Класс для работы с окном
 		class Window
 		{
 		private:
+			struct Element
+			{
+				enum Type
+				{
+					None = 0,
+					Button,
+					Image,
+					CheckBox,
+					Form,
+					TextLabel,
+					Frame,
+					Menu
+				};
+
+				UI::buttons::Button btn;
+				UI::text::TextLabel txt;
+				UI::Form frm;
+				UI::CheckBox ChckBx;
+				UI::Images::Image img;
+				UI::Frame frame;
+				UI::Menu menu;
+
+				unsigned _type;
+				unsigned DrawPrioritet;
+				bool use;
+			};
+
 			/// @brief Заголовок окна
 			std::string _title;
 
@@ -71,11 +74,16 @@ namespace KolibriLib
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
 
+			Colors::Color _TitleColor;
+
 			/// @brief отступы от края окна
 			unsigned _MARGIN;
 
 			/// @brief Стиль окна
-			int _style;
+			unsigned _style;
+
+			/// @brief Прозрачность окна
+			unsigned _Transparency;
 
 			/// @brief Активная фарма
 			unsigned int activeForm;
@@ -109,7 +117,7 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(std::string Title = "Window", UI::Size size = DefaultWindowSize, int style = 0x14, Colors::ColorsTable colors = Colors::DefaultColorTable, unsigned Margin = 0);
+			Window(const std::string &Title = "Window", const UI::Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::sys_color_table.work_text, bool Resize = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 			~Window();
 
 			/// @brief Отрисовать окно
@@ -194,11 +202,6 @@ namespace KolibriLib
 			/// @returnНомер текста в списке @link _Texts
 			unsigned CreateText(const UI::text::TextLabel& text);
 
-			/// @brief Изменить текст
-			/// @param N Номер элемента в списке
-			/// @param text Новая текстовая метка
-			void SetTextLabel(unsigned N, const UI::text::TextLabel &text);
-
 			/// @brief Создать форму
 			/// @param form форма
 			/// @return номер в списке @link _Forms
@@ -227,6 +230,12 @@ namespace KolibriLib
 			/// @brief Добавить UI элемент
 			/// @param element
 			unsigned AddElement(const T &element);
+
+			/// @brief Изменить элемент
+			/// @tparam element
+			/// @param element 
+			template <class T>
+			void SetElement(unsigned i, const T& element);
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus() const;

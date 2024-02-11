@@ -8,6 +8,8 @@
 #include <sys/ksys.h>
 #include "types.hpp"
 #include "thread.hpp"
+#include "color.hpp"
+#include <string>
 
 namespace KolibriLib
 {
@@ -22,6 +24,7 @@ namespace KolibriLib
         /// @brief Соординаты окна по умолчанию
         const UI::Coord DefaultWindowCoord = {100, 100};
 
+        void CreateWindow(UI::Coord coord = DefaultWindowCoord, UI::Size size = DefaultWindowSize, const std::string& title, Colors::Color WorkColor = OS::sys_color_table.frame_area, Colors::Color TitleColor = OS::sys_color_table.work_text, uint32_t style = 0x14);
 
         /// @brief Снять фокус с окна
         /// @param slot слот окна

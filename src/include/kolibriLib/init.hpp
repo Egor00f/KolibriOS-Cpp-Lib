@@ -9,10 +9,12 @@ extern "C"
 {
 #include <kolibri_libimg.h>
 }
+
 #include <sound.h>
 
 #include "filesystem.hpp"
 #include "os.hpp"
+#include "thread.hpp"
 
 /// \brief Основное пространство имён
 /// \author Egor00f
@@ -35,6 +37,8 @@ namespace KolibriLib
 
         _ksys_set_event_mask(0x07);
         OS::GetSystemColors();
+
+        
     }
 }
 

@@ -21,6 +21,9 @@ KolibriLib::OS \- Работа с системой
 .ti -1c
 .RI "enum \fBEvents\fP { \fBNone\fP = KSYS_EVENT_NONE, \fBRedraw\fP = KSYS_EVENT_REDRAW, \fBButton\fP = KSYS_EVENT_BUTTON, \fBMouse\fP = KSYS_EVENT_MOUSE, \fBKey\fP = KSYS_EVENT_KEY, \fBDesktop\fP = KSYS_EVENT_DESKTOP, \fBDebug\fP = KSYS_EVENT_DEBUG, \fBExit\fP }"
 .br
+.ti -1c
+.RI "enum \fBlang\fP { \fBEng\fP = 0, \fBFi\fP, \fBGer\fP, \fBRus\fP }"
+.br
 .in -1c
 .SS "Functions"
 
@@ -49,6 +52,24 @@ KolibriLib::OS \- Работа с системой
 .RI "ksys_time_t \fBGetTime\fP ()"
 .br
 .RI "Получить системное время "
+.ti -1c
+.RI "bool \fBSpeakerStatus\fP ()"
+.br
+.RI "Получить состояние спикера(Вкл/выкл) "
+.ti -1c
+.RI "void \fBSpeakerSwitch\fP ()"
+.br
+.RI "Переключить состояние спикера "
+.ti -1c
+.RI "unsigned \fBFreeMem\fP ()"
+.br
+.RI "получить кол-во свободной памяти "
+.ti -1c
+.RI "unsigned \fBAllMem\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetLang\fP ()"
+.br
 .in -1c
 .SS "Variables"
 
@@ -114,6 +135,17 @@ KolibriLib::OS \- Работа с системой
 .RE
 .PP
 
+.SS "unsigned KolibriLib::OS::FreeMem ()\fR [inline]\fP"
+
+.PP
+получить кол-во свободной памяти 
+.PP
+\fBReturns\fP
+.RS 4
+размер свободной памяти в килобайтах 
+.RE
+.PP
+
 .SS "\fBColors::ColorsTable\fP KolibriLib::OS::GetSystemColors ()"
 
 .PP
@@ -133,6 +165,17 @@ KolibriLib::OS \- Работа с системой
 \fBReturns\fP
 .RS 4
 
+.RE
+.PP
+
+.SS "bool KolibriLib::OS::SpeakerStatus ()\fR [inline]\fP"
+
+.PP
+Получить состояние спикера(Вкл/выкл) 
+.PP
+\fBReturns\fP
+.RS 4
+true если спикер разрешён, иначе false 
 .RE
 .PP
 

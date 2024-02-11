@@ -101,13 +101,28 @@ unsigned Window::AddNewForm(UI::Form form)
     return _Elements.size();
 }
 
-Window::Window(std::string Title, UI::Size size, int style, Colors::ColorsTable colors, unsigned Margin)
+Window::Window(const std::string &Title, const UI::Size &size, const Colors::ColorsTable &colors, const Colors::Color &TitleColor, bool Resize, bool Gradient, unsigned Transparency, const unsigned &Margin)
 {
-    _ksys_debug_puts("window:");
-    _title = Title;
-    _size = size;
-    _style = style;
-    _MARGIN = Margin;
+    #if DEBUG == true
+    _ksys_debug_puts("KolibriLib::window:::Window constructor\n");
+    #endif
+
+    _title      = Title;
+    _size       = size;
+    _MARGIN     = Margin;
+    _TitleColor = TitleColor;
+
+             /*DCBAYYYYRRRRRRRRGGGGGGGGBBBBBBBB*/
+    _style = 0b00100000;
+    if(Resize)
+    {             /*DCBAYYYYRRRRRRRRGGGGGGGGBBBBBBBB*/
+        _style += 0b00000011;
+    }
+    if(Gradient)
+    {             /*DCBAYYYYRRRRRRRRGGGGGGGGBBBBBBBB*/
+        _style += 0b10000000;
+    }
+
 
     if (Colors::ComparisonColorsTables(colors, Colors::DefaultColorTable)) // Если небыла в аргументах таблица цветов
     {                                                                      // Используется системная
@@ -118,7 +133,7 @@ Window::Window(std::string Title, UI::Size size, int style, Colors::ColorsTable 
         _colors = colors;
     }
 
-    DrawWindow(DefaultWindowCoord); // Отрисовать окно
+    window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style); // Отрисовать окно
 }
 
 Window::~Window()
@@ -145,11 +160,6 @@ void Window::EndRedraw()
     }
 }
 
-void Window::DrawWindow(UI::Coord coord)
-{
-    _ksys_create_window(coord.x, coord.y, _size.x, _size.y, _title.c_str(), _colors.work_area, _style);
-}
-
 void Window::ChangeWindow(UI::Coord coord, UI::Size size)
 {
     _size = size;
@@ -168,7 +178,8 @@ UI::Size Window::GetWindowSize()
 void Window::Render()
 {
     StartRedraw();
-    DrawWindow();
+    window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style);
+    graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
 
     for (int i = 0; i < _Elements.size(); i++)
     {
@@ -197,6 +208,18 @@ void Window::Render()
             default:
                 _ksys_debug_puts("Error in KolibriLib::window::Window::Render(): unklown type\n");
                 break;
+            }
+        }
+    }
+
+    if(_Transparency != 0)  //Прозрачность окна
+    {
+        point<unsigned> size = GetWindowSize();
+        for(unsigned i = 0; i < size.y; i++)
+        {
+            for(unsigned j = 0; j < size.x; j++)
+            {
+                graphic::DrawPixel({(int)j, (int)i}, graphic::ReadPoint({j, i}) + ReadBackgroungImagePoint({j,i})); //Пока так, потом может быть станет лучше
             }
         }
     }
@@ -367,7 +390,11 @@ unsigned Window::AddElement(const T &element)
         a._type = Element::Type::CheckBox;
         break;
     case sizeof(UI::Frame):
-        a.frmae = element
+        a.frmae = element;
+        a._type = Element::Type::Form;
+    case sizeof(UI::Menu):
+        a.menu = element;
+        a._type = Element::Type::Menu;
     default:
         _ksys_debug_puts("KolibriLib::window::Window::AddElement: unknown type, break\n");
         break;
@@ -384,4 +411,41 @@ unsigned Window::AddElement(const T &element)
     
     _Elements.push_back(a); 
     return _Elements.size() - 1;
+}
+
+template <class T>
+void KolibriLib::window::Window::SetElement(unsigned i, const T &element)
+{
+    switch (sizeof(T))
+    {
+    case sizeof(UI::text::TextLabel):
+        _Elements[i].txt = element;
+        _Elements[i]._type = Element::Type::TextLabel;
+        break;
+    case sizeof(UI::buttons::Button):
+        _Elements[i].btn = element;
+        _Elements[i]._type = Element::Type::Button;
+        break;
+    case sizeof(UI::Images::Image):
+        _Elements[i].img = element;
+        _Elements[i]._type = Element::Type::Image;
+        break;
+    case sizeof(UI::Form):
+        _Elements[i].frm = element;
+        _Elements[i]._type = Element::Type::Form;
+        break;
+    case sizeof(UI::CheckBox):
+        _Elements[i].ChckBx = element;
+        _Elements[i]._type = Element::Type::CheckBox;
+        break;
+    case sizeof(UI::Frame):
+        _Elements[i].frmae = element;
+        _Elements[i]._type = Element::Type::Form;
+    case sizeof(UI::Menu):
+        _Elements[i].menu = element;
+        _Elements[i]._type = Element::Type::Menu;
+    default:
+        _ksys_debug_puts("KolibriLib::window::Window::AddElement: unknown type, break\n");
+        break;
+    }
 }

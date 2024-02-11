@@ -2,6 +2,7 @@
 #define __COLOR_H__
 
 #include <sys/ksys.h>
+#include "types.hpp"
 
 namespace KolibriLib
 {
@@ -23,24 +24,15 @@ namespace KolibriLib
                 
             };
             
-            Color(ksys_color_t a = 0)
-            {
-                val = a;
-            }
+            Color(ksys_color_t a = 0);
 
-            Color& operator = (const Color& a)
-            {
-                val = a.val;
-                return *this;
-            }
-            bool operator == (const Color& a) const
-            {
-                return val == a.val;
-            }
-            bool operator != (const Color& a)const
-            {
-                return val != a.val;
-            }
+            Color& operator = (const Color& a);
+
+            Color &operator+(const Color &a);
+
+            bool operator == (const Color& a) const;
+
+            bool operator != (const Color& a)const;
         };
         
         /// @brief Смешать 2 цвета
@@ -48,9 +40,6 @@ namespace KolibriLib
         /// @param b второй цвет
         /// @return Смешение цветов a и b
         Color BlendColors(const Color& a, const Color& b);
-
-        /// @brief Таблица цветов
-        typedef ksys_colors_table_t ColorsTable;
 
         /// @brief Таблица цветов по умолчанию
         const ColorsTable DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

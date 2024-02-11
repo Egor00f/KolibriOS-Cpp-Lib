@@ -53,26 +53,22 @@ INCLUDES += $(KOLIBRILIB_INCLUDE)
 
 ################################################
 
+
+
+
 default: Exapmle
 
 
 
 Exapmle: $(OBJECTS) Makefile
-
-<<<<<<< Updated upstream
-	@echo "linking:" $(OBJECTS)
-	$(LD) $(LDFLAGS) $(LIBPATH) --subsystem console -o $(EXECUTABLE) $(OBJECTS) $(C_LAYER_OBJ) -lstdc++ -lsupc++  -lgcc -lc.dll 
-=======
-	@echo "# linking:" $(OBJECTS)
+	@echo "| linking:" $(OBJECTS)
 	$(LD) $(LDFLAGS) $(LIBPATH) --subsystem console -o $(EXECUTABLE) $(OBJECTS) $(C_LAYER_OBJ) -lstdc++ -lsupc++  -lgcc -lc.dll -lsound -lkcpp
->>>>>>> Stashed changes
 	kos32-strip -s $(EXECUTABLE) -o $(EXECUTABLE)
 	kos32-objcopy $(EXECUTABLE) -O binary
 	@rm $(EXECUTABLE).o
 
 %.o : %.cpp Makefile $(SOURCES)
-	
-	@echo "# compile:" $@
+	@echo "| compile:" $@
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
 
 
