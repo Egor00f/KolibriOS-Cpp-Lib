@@ -416,6 +416,11 @@ unsigned Window::AddElement(const T &element)
 template <class T>
 void KolibriLib::window::Window::SetElement(unsigned i, const T &element)
 {
+    if (i >= _Elements.size())
+    {
+        _ksys_debug_puts("KolibriLib::window::Window::SetElement: i >= _Elements.size(), return\n");
+        return;
+    }
     switch (sizeof(T))
     {
     case sizeof(UI::text::TextLabel):
@@ -438,14 +443,44 @@ void KolibriLib::window::Window::SetElement(unsigned i, const T &element)
         _Elements[i].ChckBx = element;
         _Elements[i]._type = Element::Type::CheckBox;
         break;
-    case sizeof(UI::Frame):
-        _Elements[i].frmae = element;
-        _Elements[i]._type = Element::Type::Form;
     case sizeof(UI::Menu):
         _Elements[i].menu = element;
         _Elements[i]._type = Element::Type::Menu;
+        break;
     default:
         _ksys_debug_puts("KolibriLib::window::Window::AddElement: unknown type, break\n");
         break;
     }
+}
+
+template <class T>
+T KolibriLib::window::Window::GetElement(unsigned i) const
+{
+    if(i >= _Elements.size())
+    {
+        _ksys_debug_puts("KolibriLib::window::Window::SetElement: i >= _Elements.size(), return\n");
+        return 0;
+    }
+
+    switch (_Elements[i]._type)
+    {
+    case Element::Type::TextLabel:
+        return _Elements[i].txt;
+    case Element::Type::Button:
+        return _Elements[i].btn;
+    case Element::Type::Image:
+        return _Elements[i].img;
+    case Element::Type::Form:
+        return _Elements[i].frm;
+    case Element::Type::CheckBox:
+        return _Elements[i].ChckBx;
+    case Element::Type::Frame:
+        return _Elements[i].frame;
+    case Element::Type::Menu:
+        return _Elements[i].menu;
+    default:
+        _ksys_debug_puts("KolibriLib::window::Window::GetElement: unknown type, break\n");
+        break;
+    }
+    return 0;
 }

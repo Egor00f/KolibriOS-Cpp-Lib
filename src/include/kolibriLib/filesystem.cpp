@@ -59,6 +59,16 @@ bool KolibriLib::filesystem::Path::operator!=(const Path &a) const
     return _string != a._string;
 }
 
+bool KolibriLib::filesystem::Path::operator==(const std::string &a) const
+{
+    return _string == a;
+}
+
+bool KolibriLib::filesystem::Path::operator!=(const std::string &a) const
+{
+    return _string != a;
+}
+
 int KolibriLib::filesystem::CreateFile(const char *name)
 {
     return _ksys_file_create(name);

@@ -8,7 +8,7 @@
 
 #include <math.h>
 
-#include "small.hpp"
+#include "types.hpp"
 #include "UI.hpp"
 #include "color.hpp"
 

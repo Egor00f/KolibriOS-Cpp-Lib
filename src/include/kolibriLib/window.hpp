@@ -230,12 +230,20 @@ namespace KolibriLib
 			/// @brief Добавить UI элемент
 			/// @param element
 			unsigned AddElement(const T &element);
-
-			/// @brief Изменить элемент
-			/// @tparam element
-			/// @param element 
+			
 			template <class T>
+			/// @brief Изменить элемент
+			/// tparam T
+			/// @param i
+			/// @param element 
 			void SetElement(unsigned i, const T& element);
+
+			/// @brief 
+			/// @tparam T 
+			/// @param i 
+			/// @return 
+			template <class T>
+			T GetElement(unsigned i) const;
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus() const;

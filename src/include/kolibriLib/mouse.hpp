@@ -2,7 +2,7 @@
 #define __MOUSE_H__
 
 #include <sys/ksys.h>
-#include "small.hpp"
+#include "types.hpp"
 #include "filesystem.hpp"
 #include "color.hpp"
 
@@ -18,7 +18,7 @@ namespace KolibriLib
 
         /// @brief Получить позицияю курсора внутри окна
         /// @return (point) позиция курсора относительно окна
-        inline point<int> GetMousePositionInWindow();
+        inline UI::Coord GetMousePositionInWindow();
 
         /// @brief Проверить какие кнопки мыши нажаты
         /// @return
@@ -30,11 +30,11 @@ namespace KolibriLib
 
         enum MouseButtons
 		{
-            LeftButton	= 0x1,
-            RightButton	= 0x10,
-            CenterBtton	= 0x100,
-            FourButton	= 0x1000,
-            FiveButton	= 0x10000
+            LeftButton	= 0b1,
+            RightButton	= 0b10,
+            CenterBtton	= 0b100,
+            FourButton	= 0b1000,
+            FiveButton	= 0b10000
         };
 
         /// @brief Эмулировать нажатия кнопок мыши
@@ -42,14 +42,19 @@ namespace KolibriLib
 		/// @paragraph Использование: EmulateMouse(EmulateMouse::LeftButton + EmulateMouse::RightButton) //Эмулирует нажатие правой и левой кнопок мыши
         inline void EmulateMouse(uint8_t m);
 
+		/// @brief Центрировать курсор
+		/// @paragraph Функция устанавливает курсор в середину экрана
+		inline void CenterCursor();
+
 		typedef void* CursorHandle;
 
 		enum LoadCursor
 		{
 			FromFile = 0,
-			FromMem,
-			Indirect
+			FromMem = 1,
+			Indirect = 2
 		};
+
 
 		/// @brief Загрузить курсор мыши
 		/// @param path путь до файла с курсором
@@ -63,11 +68,11 @@ namespace KolibriLib
 		/// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел
 		inline CursorHandle LoadCursor(void* ptr);
 
-		/// @brief Загрузить курсор мыши
-		/// @param cur путь до файла с курсором
-		/// @return Хендл загруженного курсора
-		/// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел
-		inline CursorHandle LoadCursor(Colors::ARGB[] cur);
+		// /// @brief Загрузить курсор мыши
+		// /// @param cur путь до файла с курсором
+		// /// @return Хендл загруженного курсора
+		// /// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел
+		// inline CursorHandle LoadCursor(Colors::ARGB[] cur);
 
 		/// @brief Установить курсор
 		/// @param handle хендл устанавливаемого курсора

@@ -3,8 +3,8 @@
 
 /// @mainpage Это всратая библиотека
 /// @mainpage иди нахуй
+/// @mainpage used: C++11
 
-#define __cplusplus 201103L
 
 #include <kolibriLib/init.hpp>
 #include <kolibriLib/window.hpp>

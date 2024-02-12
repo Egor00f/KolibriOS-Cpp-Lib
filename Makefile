@@ -12,21 +12,14 @@ LIB_NAME = libkcpp
 CONTRIB_DIR = ../contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
-
-
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I $(SDK_DIR)/sources/libstdc++-v3/include/mingw32 -I $(SDK_DIR)/sources/libstdc++-v3/include/tr1 -I $(SDK_DIR)/sources/libstdc++-v3/include/tr2 -I C_Layer/INCLUDE
 
 #Flags
-CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++11
+CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++14
 
 LIB_PATH = src/include/kolibriLib
 
-SOURCES = $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp \
-$(LIB_PATH)/scree.cpp $(LIB_PATH)/os.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/UI.cpp \
-$(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp \
-$(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp \
-$(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
-
+SOURCES = $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/scree.cpp $(LIB_PATH)/os.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp $(LIB_PATH)/types.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
@@ -53,4 +46,4 @@ clean:
 	@rm $(OBJECTS)
 
 %.o : %.cpp Makefile
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
+	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $< 

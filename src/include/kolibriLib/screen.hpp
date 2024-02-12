@@ -19,8 +19,6 @@ namespace KolibriLib
     /// @return 
     Thread::Slot ScreenPointAffiliation(point<unsigned> POINT);
 
-    /// @brief Центрировать курсор
-    inline void CenterCursor();
 
     /// @brief Получить размеры фонового изображения
     /// @return 

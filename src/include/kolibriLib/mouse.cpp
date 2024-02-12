@@ -35,6 +35,24 @@ void KolibriLib::mouse::EmulateMouse(uint8_t m)
     );
 }
 
+void KolibriLib::mouse::CenterCursor()
+{
+    asm_inline(
+        "int $0x40"
+        ::"a"(18), "b"(15)
+    );
+}
+
+CursorHandle KolibriLib::mouse::LoadCursor(filesystem::Path path)
+{
+    return _ksys_load_cursor((void*)path.GetChars(), LoadCursor::FromFile);
+}
+
+CursorHandle KolibriLib::mouse::LoadCursor(void *ptr)
+{
+    return _ksys_load_cursor(ptr, LoadCursor::FromMem);
+}
+
 CursorHandle KolibriLib::mouse::SetCursor(CursorHandle handle)
 {
     return _ksys_set_cursor(handle);
@@ -44,3 +62,5 @@ void KolibriLib::mouse::DeleteCursor(CursorHandle handle)
 {
     _ksys_delete_cursor(handle);
 }
+
+

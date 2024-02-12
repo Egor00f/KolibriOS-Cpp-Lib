@@ -50,11 +50,11 @@ namespace KolibriLib
             /// \return @link _inputText (текст который ввели в форму)
             std::string GetInput() const;
 
-            /// @brief
+            /// @brief Получить цвет фонового текста
             /// @return
             std::string GetBackgroundText() const;
 
-            /// @brief
+            /// @brief Получить цвет фона
             /// @return
             Colors::Color GetBackgroundColor() const;
 

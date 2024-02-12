@@ -58,8 +58,22 @@ namespace KolibriLib
             template <class T>
             /// @brief Добавить элемент во фрейм
             /// @param element элемент
-            /// @return номер 
+            /// @return номер элемента
             unsigned AddElement(const T &element);
+
+            template <class T>
+            /// @brief Изменить элемент
+            /// tparam T
+            /// @param i номер элемента
+            /// @param element
+            void SetElement(unsigned i, const T &element);
+
+            /// @brief Полчить элемент
+            /// @tparam T
+            /// @param i номер элемента
+            /// @return
+            template <class T>
+            T GetElement(unsigned i) const;
         };
     } // namespace UI
 } // namespace KolibriLib

@@ -10,24 +10,25 @@ namespace KolibriLib
     /// @paragraph Если необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point<uint64_t> p;
     struct point
     {
+        /// @brief координата по оси X, или ширина
         T x;
+        /// @brief координата по оси Y, или высота
         T y;
 
-        point<T> &operator=(const point<T> &p)
-        {
-            x = p.x;
-            y = p.y;
-            return *this;
-        }
+        /// @brief 
+        /// @param p 
+        /// @return 
+        point<T> &operator=(const point<T> &p);
 
-        bool operator==(const point<T> &a) const
-        {
-            return x == a.x && y == a.y;
-        }
-        bool operator!=(const point<T> &a) const
-        {
-            return x != a.x || y != a.y;
-        }
+        /// @brief 
+        /// @param a 
+        /// @return 
+        bool operator==(const point<T> &a) const;
+        
+        /// @brief 
+        /// @param a 
+        /// @return 
+        bool operator!=(const point<T> &a) const;
     };
 
     namespace UI
@@ -42,9 +43,8 @@ namespace KolibriLib
         /// @brief Таблица цветов
         typedef ksys_colors_table_t ColorsTable;
     } // namespace Colors
-    
-    
-} // namespace KolibriLib
 
+
+} // namespace KolibriLib
 
 #endif // __TYPES_H__

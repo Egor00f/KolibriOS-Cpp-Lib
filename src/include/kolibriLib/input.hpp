@@ -4,6 +4,4 @@
 #include "mouse.hpp"
 #include "keyboard.hpp"
 
-
-
 #endif // __INPUT_H__

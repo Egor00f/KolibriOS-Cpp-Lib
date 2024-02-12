@@ -2,11 +2,12 @@
 #define __FILESYSTEM_H__
 
 
-
-#include <string>
 #include <sys/ksys.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include <cstdarg>
+#include <string>
 
 namespace KolibriLib
 {
@@ -15,7 +16,7 @@ namespace KolibriLib
     namespace filesystem
     {
 
-        /// @brief Файловый путь
+        /// @brief Путь до файла/папки
         class Path
         {
             public:
@@ -29,13 +30,16 @@ namespace KolibriLib
                 /// @return Функция возвращает @link _string
                 std::string GetString() const;
 
-                Path& operator / (const Path& a);
-                Path& operator / (const std::string& a);
+                Path& operator / (const Path &a);
+                Path& operator / (const std::string &a);
                 Path &operator = (const Path &a);
                 Path &operator = (const std::string &a);
 
-                bool operator == (const Path& a) const;
+                bool operator == (const Path &a) const;
                 bool operator != (const Path &a) const;
+
+                bool operator == (const std::string &a) const;
+                bool operator != (const std::string &a) const;
 
             private:
                 std::string _string;
