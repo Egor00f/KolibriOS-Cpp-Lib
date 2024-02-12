@@ -45,12 +45,12 @@ void KolibriLib::mouse::CenterCursor()
 
 CursorHandle KolibriLib::mouse::LoadCursor(filesystem::Path path)
 {
-    return _ksys_load_cursor((void*)path.GetChars(), LoadCursor::FromFile);
+    return _ksys_load_cursor((void*)path.GetChars(), KSYS_CURSOR_FROM_FILE);
 }
 
 CursorHandle KolibriLib::mouse::LoadCursor(void *ptr)
 {
-    return _ksys_load_cursor(ptr, LoadCursor::FromMem);
+    return _ksys_load_cursor(ptr, KSYS_CURSOR_FROM_MEM);
 }
 
 CursorHandle KolibriLib::mouse::SetCursor(CursorHandle handle)

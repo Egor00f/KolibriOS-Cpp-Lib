@@ -2,7 +2,7 @@
 
 using namespace KolibriLib;
 
-void KolibriLib::window::CreateWindow(UI::Coord coord, UI::Size size, const std::string &title, Colors::Color WorkColor, Colors::Color TitleColor, uint32_t style)
+void KolibriLib::window::CreateWindow(const UI::Coord coord, const UI::Size size, const std::string &title, const Colors::Color WorkColor, const Colors::Color TitleColor, const uint32_t style)
 {
     asm_inline(
         "int $0x40"
@@ -26,6 +26,7 @@ void KolibriLib::window::FocusWindow(Thread::Slot slot)
 {
     _ksys_focus_window(slot);
 }
+
 
 Thread::Slot KolibriLib::window::GetActiveWindow()
 {

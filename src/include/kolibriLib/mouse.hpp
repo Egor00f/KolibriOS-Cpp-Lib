@@ -46,14 +46,11 @@ namespace KolibriLib
 		/// @paragraph Функция устанавливает курсор в середину экрана
 		inline void CenterCursor();
 
+		/// @brief Хендл курсора мыши
 		typedef void* CursorHandle;
 
-		enum LoadCursor
-		{
-			FromFile = 0,
-			FromMem = 1,
-			Indirect = 2
-		};
+
+		
 
 
 		/// @brief Загрузить курсор мыши

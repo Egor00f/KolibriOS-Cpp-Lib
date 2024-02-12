@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "small.hpp"
+#include "types.hpp"
 #include "os.hpp"
 #include "color.hpp"
 #include "input.hpp"
@@ -40,16 +40,17 @@ namespace KolibriLib
             /// @brief Угол наклона
             unsigned _angle;
 
-            /// @brief Оносительн
+            /// @brief Оносительны ли координаты
             bool _relative;
 
         public:
-            /// @brief конструктор
-            /// @param coord
-            /// @param size
-            /// @param MainColor
-            /// @param Margin
-            /// @param relative
+            
+            /// @brief Конструктор
+            /// @param coord 
+            /// @param size 
+            /// @param MainColor 
+            /// @param Margin 
+            /// @param relative 
             UIElement(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const Colors::Color& MainColor = OS::sys_color_table.work_graph, const unsigned& Margin = DefaultMargin, bool relative = false);
             
             /// @brief Получить размер элемента

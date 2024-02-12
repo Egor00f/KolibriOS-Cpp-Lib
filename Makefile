@@ -12,14 +12,14 @@ LIB_NAME = libkcpp
 CONTRIB_DIR = ../contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
-INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I $(SDK_DIR)/sources/libstdc++-v3/include/mingw32 -I $(SDK_DIR)/sources/libstdc++-v3/include/tr1 -I $(SDK_DIR)/sources/libstdc++-v3/include/tr2 -I C_Layer/INCLUDE
+INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I C_Layer/INCLUDE -I C:/MinGW/msys/1.0/home/autobuild/tools/win32/lib/gcc/mingw32/5.4.0/include -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++ C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\mingw32 C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr1 -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr2 -I $(SDK_DIR)/sources/libstdc++-v3/include
 
 #Flags
 CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++14
 
 LIB_PATH = src/include/kolibriLib
 
-SOURCES = $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/scree.cpp $(LIB_PATH)/os.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp $(LIB_PATH)/types.cpp
+SOURCES =  $(LIB_PATH)/types.cpp $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/screen.cpp $(LIB_PATH)/os.cpp  $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
@@ -46,4 +46,5 @@ clean:
 	@rm $(OBJECTS)
 
 %.o : %.cpp Makefile
-	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $< 
+	@echo "| installing lib" $@
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 

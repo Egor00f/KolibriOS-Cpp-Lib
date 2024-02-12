@@ -24,7 +24,14 @@ namespace KolibriLib
         /// @brief Соординаты окна по умолчанию
         const UI::Coord DefaultWindowCoord = {100, 100};
 
-        void CreateWindow(UI::Coord coord = DefaultWindowCoord, UI::Size size = DefaultWindowSize, const std::string& title, Colors::Color WorkColor = OS::sys_color_table.frame_area, Colors::Color TitleColor = OS::sys_color_table.work_text, uint32_t style = 0x14);
+        /// @brief 
+        /// @param coord 
+        /// @param size 
+        /// @param string 
+        /// @param  
+        /// @param style 
+        /// @param TitleColor 
+        inline void CreateWindow(const UI::Coord coord, const UI::Size size, const std::string& title, const Colors::Color WorkColor = OS::sys_color_table.frame_area, const Colors::Color TitleColor = OS::sys_color_table.work_text, const uint32_t style = 20);
 
         /// @brief Снять фокус с окна
         /// @param slot слот окна
@@ -36,7 +43,7 @@ namespace KolibriLib
 
         /// @brief Получить слот активного окна
         /// @return 
-        Thread::Slot GetActiveWindow();
+        inline Thread::Slot GetActiveWindow();
 
         /// @brief Свернуть окно
         inline void MinimizeWindow();
