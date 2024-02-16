@@ -44,8 +44,12 @@
 <para>Получить введённый текст </para>
 </listitem>
             <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a9d80cb0e97fff21640570bfe4a83d0af">GetBackgroundText</link> () const</para>
+
+<para>Получить цвет фонового текста </para>
 </listitem>
             <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1af63257610de4d47dcb6f51ad2480fe49">GetBackgroundColor</link> () const</para>
+
+<para>Получить цвет фона </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1acef4ae399e71f5989b082d81e62b6c91">SetBackgroundText</link> (const std::string &amp;NewText)</para>
 
@@ -60,7 +64,7 @@
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
             <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
 
-<para>конструктор </para>
+<para>Конструктор </para>
 </listitem>
             <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847">GetSize</link> () const</para>
 
@@ -128,7 +132,7 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </listitem>
             <listitem><para>bool <emphasis role="strong">_relative</emphasis></para>
 
-<para>Оносительн </para>
+<para>Оносительны ли координаты </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -223,10 +227,14 @@ Parameters</title>
     <title>GetBackgroundColor()</title>
 <indexterm><primary>GetBackgroundColor</primary><secondary>KolibriLib::UI::Form</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::Form</primary><secondary>GetBackgroundColor</secondary></indexterm>
-<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> Form::GetBackgroundColor ( ) const</computeroutput></para>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> Form::GetBackgroundColor ( ) const</computeroutput></para><para>
+
+<para>Получить цвет фона </para>
+</para>
+
 <para><formalpara><title>Returns</title>
 
-<para></para>
+<para>Цвет фона формы </para>
 </formalpara>
 </para>
 </section>
@@ -234,10 +242,14 @@ Parameters</title>
     <title>GetBackgroundText()</title>
 <indexterm><primary>GetBackgroundText</primary><secondary>KolibriLib::UI::Form</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::Form</primary><secondary>GetBackgroundText</secondary></indexterm>
-<para><computeroutput>std::string Form::GetBackgroundText ( ) const</computeroutput></para>
+<para><computeroutput>std::string Form::GetBackgroundText ( ) const</computeroutput></para><para>
+
+<para>Получить цвет фонового текста </para>
+</para>
+
 <para><formalpara><title>Returns</title>
 
-<para></para>
+<para>Цвет фонового текста </para>
 </formalpara>
 </para>
 </section>
@@ -252,7 +264,7 @@ Parameters</title>
 
 <para><formalpara><title>Returns</title>
 
-<para><link linkend="_ab3bc0ef47d85243ebc1152520a4b8e95">(текст который ввели в форму) </link></para>
+<para><link linkend="_">(текст который ввели в форму) </link></para>
 </formalpara>
 </para>
 </section>

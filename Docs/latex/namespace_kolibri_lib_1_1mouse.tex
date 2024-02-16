@@ -10,24 +10,18 @@
 \item 
 \Hypertarget{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}\label{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05} 
 typedef void \texorpdfstring{$\ast$}{*} {\bfseries Cursor\+Handle}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Хендл курсора мыши \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{namespace_kolibri_lib_1_1mouse_af0ffe83fe84c6327086d378dd4270aa9}\label{namespace_kolibri_lib_1_1mouse_af0ffe83fe84c6327086d378dd4270aa9} 
 enum {\bfseries Mouse\+Buttons} \{ \newline
-{\bfseries Left\+Button} = 0x1
-, {\bfseries Right\+Button} = 0x10
-, {\bfseries Center\+Btton} = 0x100
-, {\bfseries Four\+Button} = 0x1000
+{\bfseries Left\+Button} = 0b1
+, {\bfseries Right\+Button} = 0b10
+, {\bfseries Center\+Btton} = 0b100
+, {\bfseries Four\+Button} = 0b1000
 , \newline
-{\bfseries Five\+Button} = 0x10000
- \}
-\item 
-\Hypertarget{namespace_kolibri_lib_1_1mouse_ab685b1d4883b04396954cab9b7ce787f}\label{namespace_kolibri_lib_1_1mouse_ab685b1d4883b04396954cab9b7ce787f} 
-enum {\bfseries Load\+Cursor} \{ {\bfseries From\+File} = 0
-, {\bfseries From\+Mem}
-, {\bfseries Indirect}
+{\bfseries Five\+Button} = 0b10000
  \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
@@ -35,7 +29,7 @@ enum {\bfseries Load\+Cursor} \{ {\bfseries From\+File} = 0
 \item 
 \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a3214167f4881bd080a5f8677f9f748e9}{Get\+Mouse\+Position\+On\+Sreen}} ()
 \begin{DoxyCompactList}\small\item\em Получить позицияю курсора на экране \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ int $>$ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ac2a6b8b5a4e77db980d7dcc2cb79eb26}{Get\+Mouse\+Position\+In\+Window}} ()
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ac2a6b8b5a4e77db980d7dcc2cb79eb26}{Get\+Mouse\+Position\+In\+Window}} ()
 \begin{DoxyCompactList}\small\item\em Получить позицияю курсора внутри окна \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a7ae50aac73ac33bc25e269c12522a024}{Get\+Mouse\+Buttons}} ()
 \begin{DoxyCompactList}\small\item\em Проверить какие кнопки мыши нажаты \end{DoxyCompactList}\item 
@@ -43,16 +37,16 @@ uint32\+\_\+t \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a56edecd4a7aa3f7af
 \begin{DoxyCompactList}\small\item\em колёсико мыши \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a39c94a2a4489ad8d4ec05a07ac13e259}{Emulate\+Mouse}} (uint8\+\_\+t m)
 \begin{DoxyCompactList}\small\item\em Эмулировать нажатия кнопок мыши \end{DoxyCompactList}\item 
-Cursor\+Handle \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ad28b18a7d7c25d015b5c503e9ddecf47}{Load\+Cursor}} (\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}} path)
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ad5181e5115b88147badd22a0c19cbe4f}{Center\+Cursor}} ()
+\begin{DoxyCompactList}\small\item\em Центрировать курсор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ad28b18a7d7c25d015b5c503e9ddecf47}{Load\+Cursor}} (\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}} path)
 \begin{DoxyCompactList}\small\item\em Загрузить курсор мыши \end{DoxyCompactList}\item 
-Cursor\+Handle \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ac82f2a9273155c4a3d12aa894c0edb5b}{Load\+Cursor}} (void \texorpdfstring{$\ast$}{*}ptr)
+\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ac82f2a9273155c4a3d12aa894c0edb5b}{Load\+Cursor}} (void \texorpdfstring{$\ast$}{*}ptr)
 \begin{DoxyCompactList}\small\item\em Загрузить курсор мыши \end{DoxyCompactList}\item 
-Cursor\+Handle \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_af1e0e0b256a88def4462f920751fa62e}{Load\+Cursor}} (\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{Colors\+::\+ARGB}}\mbox{[}$\,$\mbox{]} cur)
-\begin{DoxyCompactList}\small\item\em Загрузить курсор мыши \end{DoxyCompactList}\item 
-Cursor\+Handle \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a21b758a85831bd3a66ac4cd10ac632a3}{Set\+Cursor}} (Cursor\+Handle handle)
+\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a21b758a85831bd3a66ac4cd10ac632a3}{Set\+Cursor}} (\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} handle)
 \begin{DoxyCompactList}\small\item\em Установить курсор \end{DoxyCompactList}\item 
 \Hypertarget{namespace_kolibri_lib_1_1mouse_a3291c052d3b5cbffadecfc548a047b17}\label{namespace_kolibri_lib_1_1mouse_a3291c052d3b5cbffadecfc548a047b17} 
-void {\bfseries Delete\+Cursor} (Cursor\+Handle handle)
+void {\bfseries Delete\+Cursor} (\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} handle)
 \end{DoxyCompactItemize}
 
 
@@ -60,6 +54,17 @@ void {\bfseries Delete\+Cursor} (Cursor\+Handle handle)
 Работа с мышью 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{namespace_kolibri_lib_1_1mouse_ad5181e5115b88147badd22a0c19cbe4f}\label{namespace_kolibri_lib_1_1mouse_ad5181e5115b88147badd22a0c19cbe4f} 
+\index{KolibriLib::mouse@{KolibriLib::mouse}!CenterCursor@{CenterCursor}}
+\index{CenterCursor@{CenterCursor}!KolibriLib::mouse@{KolibriLib::mouse}}
+\doxysubsubsection{\texorpdfstring{CenterCursor()}{CenterCursor()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::mouse\+::\+Center\+Cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Центрировать курсор 
+
+\hypertarget{namespace_kolibri_lib_1_1_o_s_Функция}{}\doxyparagraph{\texorpdfstring{устанавливает курсор в середину экрана}{устанавливает курсор в середину экрана}}\label{namespace_kolibri_lib_1_1_o_s_Функция}
 \Hypertarget{namespace_kolibri_lib_1_1mouse_a39c94a2a4489ad8d4ec05a07ac13e259}\label{namespace_kolibri_lib_1_1mouse_a39c94a2a4489ad8d4ec05a07ac13e259} 
 \index{KolibriLib::mouse@{KolibriLib::mouse}!EmulateMouse@{EmulateMouse}}
 \index{EmulateMouse@{EmulateMouse}!KolibriLib::mouse@{KolibriLib::mouse}}
@@ -127,30 +132,11 @@ void {\bfseries Delete\+Cursor} (Cursor\+Handle handle)
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1mouse_af1e0e0b256a88def4462f920751fa62e}\label{namespace_kolibri_lib_1_1mouse_af1e0e0b256a88def4462f920751fa62e} 
-\index{KolibriLib::mouse@{KolibriLib::mouse}!LoadCursor@{LoadCursor}}
-\index{LoadCursor@{LoadCursor}!KolibriLib::mouse@{KolibriLib::mouse}}
-\doxysubsubsection{\texorpdfstring{LoadCursor()}{LoadCursor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily Cursor\+Handle Kolibri\+Lib\+::mouse\+::\+Load\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{Colors\+::\+ARGB}}\mbox{[}$\,$\mbox{]}}]{cur }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Загрузить курсор мыши 
-
-
-\begin{DoxyParams}{Parameters}
-{\em cur} & путь до файла с курсором \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Хендл загруженного курсора 
-\end{DoxyReturn}
-\hypertarget{namespace_kolibri_lib_1_1mouse_Файл}{}\doxyparagraph{\texorpdfstring{курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32\texorpdfstring{$\ast$}{*}32 пикселя}{курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32\texorpdfstring{$\ast$}{*}32 пикселя}}\label{namespace_kolibri_lib_1_1mouse_Файл}
 \Hypertarget{namespace_kolibri_lib_1_1mouse_ad28b18a7d7c25d015b5c503e9ddecf47}\label{namespace_kolibri_lib_1_1mouse_ad28b18a7d7c25d015b5c503e9ddecf47} 
 \index{KolibriLib::mouse@{KolibriLib::mouse}!LoadCursor@{LoadCursor}}
 \index{LoadCursor@{LoadCursor}!KolibriLib::mouse@{KolibriLib::mouse}}
-\doxysubsubsection{\texorpdfstring{LoadCursor()}{LoadCursor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily Cursor\+Handle Kolibri\+Lib\+::mouse\+::\+Load\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}}}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{LoadCursor()}{LoadCursor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} Kolibri\+Lib\+::mouse\+::\+Load\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}}}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -168,8 +154,8 @@ void {\bfseries Delete\+Cursor} (Cursor\+Handle handle)
 \Hypertarget{namespace_kolibri_lib_1_1mouse_ac82f2a9273155c4a3d12aa894c0edb5b}\label{namespace_kolibri_lib_1_1mouse_ac82f2a9273155c4a3d12aa894c0edb5b} 
 \index{KolibriLib::mouse@{KolibriLib::mouse}!LoadCursor@{LoadCursor}}
 \index{LoadCursor@{LoadCursor}!KolibriLib::mouse@{KolibriLib::mouse}}
-\doxysubsubsection{\texorpdfstring{LoadCursor()}{LoadCursor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily Cursor\+Handle Kolibri\+Lib\+::mouse\+::\+Load\+Cursor (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{LoadCursor()}{LoadCursor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} Kolibri\+Lib\+::mouse\+::\+Load\+Cursor (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -188,7 +174,7 @@ void {\bfseries Delete\+Cursor} (Cursor\+Handle handle)
 \index{KolibriLib::mouse@{KolibriLib::mouse}!SetCursor@{SetCursor}}
 \index{SetCursor@{SetCursor}!KolibriLib::mouse@{KolibriLib::mouse}}
 \doxysubsubsection{\texorpdfstring{SetCursor()}{SetCursor()}}
-{\footnotesize\ttfamily Cursor\+Handle Kolibri\+Lib\+::mouse\+::\+Set\+Cursor (\begin{DoxyParamCaption}\item[{Cursor\+Handle}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}} Kolibri\+Lib\+::mouse\+::\+Set\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{Cursor\+Handle}}}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

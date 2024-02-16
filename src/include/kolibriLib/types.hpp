@@ -3,6 +3,8 @@
 
 #include <sys/ksys.h>
 
+#define X_Y(x, y)(((x) << 16) | (y))
+
 namespace KolibriLib
 {
     template <class T>

@@ -2,7 +2,7 @@
 .ad l
 .nh
 .SH NAME
-KolibriLib::filesystem::Path \- Файловый путь  
+KolibriLib::filesystem::Path \- Путь до файла/папки  
 
 .SH SYNOPSIS
 .br
@@ -13,10 +13,7 @@ KolibriLib::filesystem::Path \- Файловый путь
 
 .in +1c
 .ti -1c
-.RI "\fBPath\fP (std::string path)"
-.br
-.ti -1c
-.RI "\fBPath\fP (char *path)"
+.RI "\fBPath\fP (std::string path='/')"
 .br
 .ti -1c
 .RI "const char * \fBGetChars\fP () const"
@@ -44,10 +41,16 @@ KolibriLib::filesystem::Path \- Файловый путь
 .ti -1c
 .RI "bool \fBoperator!=\fP (const \fBPath\fP &a) const"
 .br
+.ti -1c
+.RI "bool \fBoperator==\fP (const std::string &a) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const std::string &a) const"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
-Файловый путь 
+Путь до файла/папки 
 .SH "Member Function Documentation"
 .PP 
 .SS "const char * Path::GetChars () const"

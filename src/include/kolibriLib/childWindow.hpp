@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include "small.hpp"
+#include "types.hpp"
 #include "UI.hpp"
 #include "window.hpp"
 #include "thread.hpp"
@@ -27,6 +27,7 @@ namespace KolibriLib
         // Я вам запрещаю записывать значения в эту переменную
         bool Used = false;
 
+        //Функция потока окна с сообщением
         void RenderMessageWindow(void*);
 
         /// \brief Создать окно с сообщением

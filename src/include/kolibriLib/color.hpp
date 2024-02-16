@@ -9,14 +9,21 @@ namespace KolibriLib
     /// @brief Набор функций для работы с цветом
     namespace Colors
     {
-
+        /// @brief Тип данных для работы с argb цветом
+        struct ARGB
+        {
+            uint8_t alpha;
+            uint8_t red;
+            uint8_t green;
+            uint8_t blue;
+        };
         /// @brief Цвет
         union Color
         {
             ksys_color_t val;
             struct
             {
-                uint8_t a;
+                uint8_t _a;
                 uint8_t red;
                 uint8_t green;
                 uint8_t blue;
@@ -24,7 +31,11 @@ namespace KolibriLib
                 
             };
             
+            /// @brief Конструктор
+            /// @param a 
             Color(ksys_color_t a = 0);
+            Color(const Color &a);
+            Color(const ARGB &a);
 
             Color& operator = (const Color& a);
 
@@ -51,14 +62,7 @@ namespace KolibriLib
         /// @return true если таблицы равны, иначе false
         bool ComparisonColorsTables(const ColorsTable& a, const ColorsTable& b);
 
-        /// @brief Тип данных для работы с argb цветом
-        struct ARGB
-        {
-            uint8_t alpha;
-            uint8_t red;
-            uint8_t green;
-            uint8_t blue;
-        };
+        
     }
 } // namespace KolibriLib
 

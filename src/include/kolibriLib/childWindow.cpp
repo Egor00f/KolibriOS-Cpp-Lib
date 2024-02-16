@@ -54,8 +54,8 @@ void KolibriLib::childWindow::MessageBox(const std::string &_Message, const std:
             break;;
         }
         else // если занято то ждём
-        {    // Думаю что задержа на 1 мс не критична
-            Wait(1);
+        {
+            _ksys_thread_yield();
         }
     }
 }

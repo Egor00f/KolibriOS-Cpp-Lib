@@ -14,7 +14,7 @@
 10 
 11 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
 12 
-13 <emphasis role="preprocessor">#include&#32;&quot;small.hpp&quot;</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&quot;types.hpp&quot;</emphasis>
 14 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
 15 <emphasis role="preprocessor">#include&#32;&quot;window.hpp&quot;</emphasis>
 16 <emphasis role="preprocessor">#include&#32;&quot;thread.hpp&quot;</emphasis>
@@ -30,70 +30,14 @@
 27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Я&#32;вам&#32;запрещаю&#32;записывать&#32;значения&#32;в&#32;эту&#32;переменную</emphasis>
 28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Used&#32;=&#32;<emphasis role="keyword">false</emphasis>;
 29 
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Функция&#32;потока&#32;нового&#32;окна</emphasis>
-31 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&#32;Updated&#32;upstream
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;RenderMessageWindow(<emphasis role="keywordtype">void</emphasis>)
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_Message&#32;&#32;&#32;&#32;=&#32;Message;
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_Title&#32;&#32;&#32;&#32;&#32;&#32;=&#32;Title;
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1window_1_1_window">window::Window</link>&#32;window(_Title,&#32;{256,128});
-38 
-39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;WindowSize&#32;=&#32;window.GetSize();
-40 
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link>&#32;message({(int)window.GetMargin(),&#32;WindowSize.y&#32;/&#32;2&#32;},&#32;{WindowSize.x,&#32;WindowSize.y&#32;/&#32;2},&#32;_Message);
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;message.<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a03d60493c9d72b8a7ae5f58d38236ae1">SetScale</link>(<emphasis role="keyword">true</emphasis>);
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Функция&#32;потока&#32;окна&#32;с&#32;сообщением</emphasis>
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;RenderMessageWindow(<emphasis role="keywordtype">void</emphasis>*);
+32 
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1child_window_1aa719a69e1532c5c8e7f1fb14d58beba5">MessageBox</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;_Message,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;_Title);
+37 
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1child_window_1adfe18d89f20521dbdcc444cd3ea0fb23">ErrorWindow</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;ErrorMessage);
+41 &#32;&#32;&#32;&#32;}
+42 }
 43 
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;window.CreateText(message);
-45 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link>&#32;<emphasis role="keyword">event</emphasis>&#32;=&#32;window.Handler();
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(event&#32;=&#32;OS::Events::Exit)
-50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;window.~Window();
-52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
-53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-56 =======
-57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;RenderMessageWindow(<emphasis role="keywordtype">void</emphasis>*);
-58 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&#32;Stashed&#32;changes
-59 
-60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-61 
-65 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&#32;Updated&#32;upstream
-66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;MessageBox(std::string&#32;_Message,&#32;std::string&#32;_Title)
-67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(<emphasis role="keyword">true</emphasis>)
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!Used)&#32;<emphasis role="comment">//&#32;Проверка&#32;на&#32;то&#32;создают&#32;ли&#32;другие&#32;потоки&#32;ещё&#32;MessageWindow.</emphasis>
-71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Это&#32;так&#32;потому&#32;что&#32;глобальная&#32;переменная&#32;Newindex&#32;одна&#32;на&#32;всех</emphasis>
-72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Used&#32;=&#32;<emphasis role="keyword">true</emphasis>;
-73 
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Message&#32;=&#32;_Message;
-75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Title&#32;=&#32;_Title;
-76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Used&#32;=&#32;<emphasis role="keyword">true</emphasis>;
-77 
-78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ada14798b8293cbc2d4909e0f7ce4ad00">Thread::CreateThread</link>((<emphasis role="keywordtype">void</emphasis>(*))RenderMessageWindow,&#32;4096);
-80 
-81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Used&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;<emphasis role="comment">//&#32;Я&#32;всё,&#32;заКОНЧИЛ.&#32;Свободно!</emphasis>
-82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
-83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="comment">//&#32;если&#32;занято&#32;то&#32;ждём</emphasis>
-85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6">Wait</link>(1);
-87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-90 =======
-91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;MessageBox(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;_Message,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;_Title);
-92 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&#32;Stashed&#32;changes
-93 
-96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1child_window_1a58c5d59004f1f8e7568031db62c05ab9">ErrorWindow</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;ErrorMessage);
-97 &#32;&#32;&#32;&#32;}
-98 }
-99 
-100 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__CHILDWINDOW_H__</emphasis>
+44 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__CHILDWINDOW_H__</emphasis>
 </programlisting></section>

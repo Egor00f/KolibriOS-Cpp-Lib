@@ -3,7 +3,7 @@ var annotated_dup =
     [ "KolibriLib", "namespace_kolibri_lib.html", [
       [ "Colors", "namespace_kolibri_lib_1_1_colors.html", [
         [ "ARGB", "struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html", null ],
-        [ "Color", "union_kolibri_lib_1_1_colors_1_1_color.html", null ]
+        [ "Color", "union_kolibri_lib_1_1_colors_1_1_color.html", "union_kolibri_lib_1_1_colors_1_1_color" ]
       ] ],
       [ "filesystem", "namespace_kolibri_lib_1_1filesystem.html", [
         [ "Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", "class_kolibri_lib_1_1filesystem_1_1_path" ]
@@ -30,6 +30,6 @@ var annotated_dup =
       [ "window", "namespace_kolibri_lib_1_1window.html", [
         [ "Window", "class_kolibri_lib_1_1window_1_1_window.html", "class_kolibri_lib_1_1window_1_1_window" ]
       ] ],
-      [ "point", "struct_kolibri_lib_1_1point.html", null ]
+      [ "point", "struct_kolibri_lib_1_1point.html", "struct_kolibri_lib_1_1point" ]
     ] ]
 ];

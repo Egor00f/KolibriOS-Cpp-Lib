@@ -34,9 +34,9 @@ bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa12fb4267b5940d7724ad2
 std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a8607cbd77936e827c1f7ca87caab7539}{Get\+Input}} () const
 \begin{DoxyCompactList}\small\item\em Получить введённый текст \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a9d80cb0e97fff21640570bfe4a83d0af}{Get\+Background\+Text}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Получить цвет фонового текста \end{DoxyCompactList}\item 
 \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_af63257610de4d47dcb6f51ad2480fe49}{Get\+Background\+Color}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Получить цвет фона \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_acef4ae399e71f5989b082d81e62b6c91}{Set\+Background\+Text}} (const std\+::string \&New\+Text)
 \begin{DoxyCompactList}\small\item\em Изменить фоновый текст \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa7dc12266923cd98d772c0cd3d026e7d}{Set\+Background\+Color}} (const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&New\+Color)
@@ -45,7 +45,7 @@ void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa7dc12266923cd98d772c0
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a0e8520d7b6e47e5b307b00449702e737}{UIElement}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&size=\{16, 16\}, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Main\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+graph, const unsigned \&Margin=Default\+Margin, bool relative=false)
-\begin{DoxyCompactList}\small\item\em конструктор \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab591105fdaaaece609203d9088948847}{Get\+Size}} () const
 \begin{DoxyCompactList}\small\item\em Получить размер элемента \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3b3eb7370243281576ff27c489db913d}{Set\+Size}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}} \&New\+Size)
@@ -87,7 +87,7 @@ unsigned {\bfseries \+\_\+\+Margin}
 unsigned {\bfseries \+\_\+angle}
 \begin{DoxyCompactList}\small\item\em Угол наклона \end{DoxyCompactList}\item 
 bool {\bfseries \+\_\+relative}
-\begin{DoxyCompactList}\small\item\em Оносительн \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Оносительны ли координаты \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -141,8 +141,12 @@ true если на форму нажали,
 \doxysubsubsection{\texorpdfstring{GetBackgroundColor()}{GetBackgroundColor()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Form\+::\+Get\+Background\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\begin{DoxyReturn}{Returns}
 
+
+Получить цвет фона 
+
+\begin{DoxyReturn}{Returns}
+Цвет фона формы 
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a9d80cb0e97fff21640570bfe4a83d0af}\label{class_kolibri_lib_1_1_u_i_1_1_form_a9d80cb0e97fff21640570bfe4a83d0af} 
 \index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!GetBackgroundText@{GetBackgroundText}}
@@ -150,8 +154,12 @@ true если на форму нажали,
 \doxysubsubsection{\texorpdfstring{GetBackgroundText()}{GetBackgroundText()}}
 {\footnotesize\ttfamily std\+::string Form\+::\+Get\+Background\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-\begin{DoxyReturn}{Returns}
 
+
+Получить цвет фонового текста 
+
+\begin{DoxyReturn}{Returns}
+Цвет фонового текста 
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_a8607cbd77936e827c1f7ca87caab7539}\label{class_kolibri_lib_1_1_u_i_1_1_form_a8607cbd77936e827c1f7ca87caab7539} 
 \index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!GetInput@{GetInput}}
@@ -164,7 +172,7 @@ true если на форму нажали,
 Получить введённый текст 
 
 \begin{DoxyReturn}{Returns}
-\doxylink{ab3bc0ef47d85243ebc1152520a4b8e95}{(текст который ввели в форму) }
+\doxylink{}{(текст который ввели в форму) }
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_form_aa7dc12266923cd98d772c0cd3d026e7d}\label{class_kolibri_lib_1_1_u_i_1_1_form_aa7dc12266923cd98d772c0cd3d026e7d} 
 \index{KolibriLib::UI::Form@{KolibriLib::UI::Form}!SetBackgroundColor@{SetBackgroundColor}}

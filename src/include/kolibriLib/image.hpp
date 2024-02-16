@@ -9,12 +9,9 @@
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-extern "C"
-{
 #include "kolibri_libimg.h"
-}
-
 namespace KolibriLib
 {
 	namespace UI
@@ -22,7 +19,6 @@ namespace KolibriLib
 		/// @brief Работа с изображениями
 		namespace Images
 		{
-			Image_t* Copy(Image_t *img);
 			
 			/// @brief Картинка как элемент интерфейса
 			class Image : public UIElement

@@ -27,7 +27,7 @@ KolibriLib::window \- Работа с окном
 
 .in +1c
 .ti -1c
-.RI "void \fBCreateWindow\fP (\fBUI::Coord\fP coord=\fBDefaultWindowCoord\fP, \fBUI::Size\fP size=\fBDefaultWindowSize\fP, const std::string &title, \fBColors::Color\fP WorkColor=OS::sys_color_table\&.frame_area, \fBColors::Color\fP TitleColor=OS::sys_color_table\&.work_text, uint32_t style=0x14)"
+.RI "void \fBCreateWindow\fP (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string &title, const \fBColors::Color\fP WorkColor=OS::sys_color_table\&.frame_area, const \fBColors::Color\fP TitleColor=OS::sys_color_table\&.work_text, const uint32_t style=20)"
 .br
 .ti -1c
 .RI "void \fBUnfocusWindow\fP (\fBThread::Slot\fP slot)"
@@ -79,6 +79,27 @@ KolibriLib::window \- Работа с окном
 Работа с окном 
 .SH "Function Documentation"
 .PP 
+.SS "void KolibriLib::window::CreateWindow (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string & title, const \fBColors::Color\fP WorkColor = \fROS::sys_color_table\&.frame_area\fP, const \fBColors::Color\fP TitleColor = \fROS::sys_color_table\&.work_text\fP, const uint32_t style = \fR20\fP)\fR [inline]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP 
+.br
+\fIsize\fP 
+.br
+\fIstring\fP 
+.br
+\fI<br>\fP 
+.br
+\fIstyle\fP 
+.br
+\fITitleColor\fP 
+.br
+ 
+.RE
+.PP
+
 .SS "void KolibriLib::window::FocusWindow (\fBThread::Slot\fP slot)\fR [inline]\fP"
 
 .PP
@@ -90,7 +111,7 @@ KolibriLib::window \- Работа с окном
 .RE
 .PP
 
-.SS "\fBThread::Slot\fP KolibriLib::window::GetActiveWindow ()"
+.SS "\fBThread::Slot\fP KolibriLib::window::GetActiveWindow ()\fR [inline]\fP"
 
 .PP
 Получить слот активного окна 

@@ -12,7 +12,7 @@ LIB_NAME = libkcpp
 CONTRIB_DIR = ../contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
-INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I C_Layer/INCLUDE -I C:/MinGW/msys/1.0/home/autobuild/tools/win32/lib/gcc/mingw32/5.4.0/include -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++ C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\mingw32 C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr1 -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr2 -I $(SDK_DIR)/sources/libstdc++-v3/include
+INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I $(SDK_DIR)/sources/libstdc++-v3/include/tr1 -I $(SDK_DIR)/sources/libstdc++-v3/include/mingw32 -I C_Layer/INCLUDE -I C:/MinGW/msys/1.0/home/autobuild/tools/win32/lib/gcc/mingw32/5.4.0/include -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++ C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\mingw32 C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr1 -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr2
 
 #Flags
 CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++14
@@ -46,5 +46,5 @@ clean:
 	@rm $(OBJECTS)
 
 %.o : %.cpp Makefile
-	@echo "| installing lib" $@
+	@echo "| compiling: " $@
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 

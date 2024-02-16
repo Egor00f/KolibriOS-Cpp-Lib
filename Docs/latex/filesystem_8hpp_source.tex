@@ -6,33 +6,33 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_FILESYSTEM\_H\_\_}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string.h>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00012\ \{}
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{namespace\ }filesystem}
-\DoxyCodeLine{00016\ \ \ \ \ \{}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}(std::string\ path);}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}(\textcolor{keywordtype}{char}*\ path);}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_acb469886de44cd4d462c462612037dc3}{GetChars}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_af9336263887d54c6a40581d6c8f8b2a6}{GetString}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\&\ operator\ /\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\&\ a);}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\&\ operator\ /\ (\textcolor{keyword}{const}\ std::string\&\ a);}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&a);}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&operator\ =\ (\textcolor{keyword}{const}\ std::string\ \&a);}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{namespace\ }filesystem}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}(std::string\ path\ =\ \textcolor{stringliteral}{"{}/"{}});}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_acb469886de44cd4d462c462612037dc3}{GetChars}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_af9336263887d54c6a40581d6c8f8b2a6}{GetString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&operator\ /\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&a);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&operator\ /\ (\textcolor{keyword}{const}\ std::string\ \&a);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&a);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&operator\ =\ (\textcolor{keyword}{const}\ std::string\ \&a);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&a)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\&\ a)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ std::string\ \&a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ std::string\ \&a)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00039\ }
 \DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \_string;}
@@ -54,36 +54,23 @@
 \DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac}{OsHaventRam}}\ =\ 12}
 \DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00071\ }
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acce64e48eb08ac5fb8d3f4030142aa0a}{CreateFile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acce64e48eb08ac5fb8d3f4030142aa0a}{CreateFile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{char}\ *path);}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acce64e48eb08ac5fb8d3f4030142aa0a}{CreateFile}}(\textcolor{keyword}{const}\ Path\&\ name);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72}{CreateFile}}(\textcolor{keyword}{const}\ Path\&\ name);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_af8228f98e29fbb8122c93fdc3022d154}{Delete}}(\textcolor{keyword}{const}\ Path\&\ name);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acd34191bdf04b15659a1dd13f13b18ad}{MakeDirectory}}(\textcolor{keyword}{const}\ Path\&\ path);}
 \DoxyCodeLine{00087\ }
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acce64e48eb08ac5fb8d3f4030142aa0a}{CreateFile}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ Path\&\ path);}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a09794e6a053e6f649c0e4ae8ff262a9d}{Delete}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}{Exist}}(\textcolor{keyword}{const}\ Path\&\ Path);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a57a3f302a162ad3a2738ef9e080c193b}{Rename}}(\textcolor{keyword}{const}\ Path\&\ OldName,\ \textcolor{keyword}{const}\ Path\&\ NewName);}
 \DoxyCodeLine{00098\ }
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a09794e6a053e6f649c0e4ae8ff262a9d}{Delete}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{char}\ *path);}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a09794e6a053e6f649c0e4ae8ff262a9d}{Delete}}(\textcolor{keyword}{const}\ Path\&\ name);}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a09794e6a053e6f649c0e4ae8ff262a9d}{Delete}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ Path\&\ path);}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a4a83550cdda24dc9ae8cdf1d30148c76}{MakeDirectory}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a4a83550cdda24dc9ae8cdf1d30148c76}{MakeDirectory}}(\textcolor{keyword}{const}\ Path\&\ path);}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}{Exist}}(\textcolor{keyword}{const}\ Path\&\ Path);}
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Rename(\textcolor{keyword}{const}\ Path\&\ OldName,\ \textcolor{keyword}{const}\ Path\&\ NewName);}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00134\ \ \ \ \ \}}
-\DoxyCodeLine{00135\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ }
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_FILESYSTEM\_H\_\_}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_FILESYSTEM\_H\_\_}}
 
 \end{DoxyCode}

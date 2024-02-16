@@ -9,6 +9,7 @@
 #include <math.h>
 
 #include "types.hpp"
+#include "screen.hpp"
 #include "UI.hpp"
 #include "color.hpp"
 
@@ -41,7 +42,7 @@ namespace KolibriLib
         /// @param detalization Детализация прорисовки окружности (то на сколько круг круглый)
         /// @param color Цвет
         /// @paragraph Круг рисуется по detalization линий. Да-да если Детализация = 4, то круг это квадрат.
-        void DrawCircle(const UI::Coord& coord, unsigned Radius, unsigned detalization = 36, const Colors::Color& color = OS::sys_color_table.work_graph);
+        void DrawCircle(const UI::Coord& coord, const unsigned Radius, const unsigned detalization = 36, const Colors::Color& color = OS::sys_color_table.work_graph);
 
         /// @brief Нарисовать закрашенный прямоугольник
         /// @param position позиция левого верхнего угла
@@ -76,6 +77,9 @@ namespace KolibriLib
         /// @param color цвет линий
         inline void DrawTriangle(const UI::Coord& a, const UI::Coord& b, const UI::Coord& c, const Colors::Color& color = OS::sys_color_table.work_graph);
 
+        /// @brief 
+        /// @param Point 
+        /// @return 
         inline Colors::Color ReadPoint(const point<unsigned> Point);
     }
 } // namespace KolibriLib

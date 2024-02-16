@@ -13,15 +13,13 @@ KolibriLib::mouse \- Работа с мышью
 .ti -1c
 .RI "typedef void * \fBCursorHandle\fP"
 .br
+.RI "Хендл курсора мыши "
 .in -1c
 .SS "Enumerations"
 
 .in +1c
 .ti -1c
-.RI "enum \fBMouseButtons\fP { \fBLeftButton\fP = 0x1, \fBRightButton\fP = 0x10, \fBCenterBtton\fP = 0x100, \fBFourButton\fP = 0x1000, \fBFiveButton\fP = 0x10000 }"
-.br
-.ti -1c
-.RI "enum \fBLoadCursor\fP { \fBFromFile\fP = 0, \fBFromMem\fP, \fBIndirect\fP }"
+.RI "enum \fBMouseButtons\fP { \fBLeftButton\fP = 0b1, \fBRightButton\fP = 0b10, \fBCenterBtton\fP = 0b100, \fBFourButton\fP = 0b1000, \fBFiveButton\fP = 0b10000 }"
 .br
 .in -1c
 .SS "Functions"
@@ -32,7 +30,7 @@ KolibriLib::mouse \- Работа с мышью
 .br
 .RI "Получить позицияю курсора на экране "
 .ti -1c
-.RI "\fBpoint\fP< int > \fBGetMousePositionInWindow\fP ()"
+.RI "\fBUI::Coord\fP \fBGetMousePositionInWindow\fP ()"
 .br
 .RI "Получить позицияю курсора внутри окна "
 .ti -1c
@@ -48,23 +46,23 @@ KolibriLib::mouse \- Работа с мышью
 .br
 .RI "Эмулировать нажатия кнопок мыши "
 .ti -1c
-.RI "CursorHandle \fBLoadCursor\fP (\fBfilesystem::Path\fP path)"
+.RI "void \fBCenterCursor\fP ()"
+.br
+.RI "Центрировать курсор "
+.ti -1c
+.RI "\fBCursorHandle\fP \fBLoadCursor\fP (\fBfilesystem::Path\fP path)"
 .br
 .RI "Загрузить курсор мыши "
 .ti -1c
-.RI "CursorHandle \fBLoadCursor\fP (void *ptr)"
+.RI "\fBCursorHandle\fP \fBLoadCursor\fP (void *ptr)"
 .br
 .RI "Загрузить курсор мыши "
 .ti -1c
-.RI "CursorHandle \fBLoadCursor\fP (\fBColors::ARGB\fP[] cur)"
-.br
-.RI "Загрузить курсор мыши "
-.ti -1c
-.RI "CursorHandle \fBSetCursor\fP (CursorHandle handle)"
+.RI "\fBCursorHandle\fP \fBSetCursor\fP (\fBCursorHandle\fP handle)"
 .br
 .RI "Установить курсор "
 .ti -1c
-.RI "void \fBDeleteCursor\fP (CursorHandle handle)"
+.RI "void \fBDeleteCursor\fP (\fBCursorHandle\fP handle)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -72,6 +70,12 @@ KolibriLib::mouse \- Работа с мышью
 Работа с мышью 
 .SH "Function Documentation"
 .PP 
+.SS "void KolibriLib::mouse::CenterCursor ()\fR [inline]\fP"
+
+.PP
+Центрировать курсор 
+.SS "устанавливает курсор в середину экрана"
+
 .SS "void KolibriLib::mouse::EmulateMouse (uint8_t m)\fR [inline]\fP"
 
 .PP
@@ -127,24 +131,7 @@ KolibriLib::mouse \- Работа с мышью
 .RE
 .PP
 
-.SS "CursorHandle KolibriLib::mouse::LoadCursor (\fBColors::ARGB\fP[] cur)\fR [inline]\fP"
-
-.PP
-Загрузить курсор мыши 
-.PP
-\fBParameters\fP
-.RS 4
-\fIcur\fP путь до файла с курсором 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-Хендл загруженного курсора 
-.RE
-.PP
-.SS "курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пикселя"
-
-.SS "CursorHandle KolibriLib::mouse::LoadCursor (\fBfilesystem::Path\fP path)\fR [inline]\fP"
+.SS "\fBCursorHandle\fP KolibriLib::mouse::LoadCursor (\fBfilesystem::Path\fP path)\fR [inline]\fP"
 
 .PP
 Загрузить курсор мыши 
@@ -161,7 +148,7 @@ KolibriLib::mouse \- Работа с мышью
 .PP
 .SS "курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пикселя"
 
-.SS "CursorHandle KolibriLib::mouse::LoadCursor (void * ptr)\fR [inline]\fP"
+.SS "\fBCursorHandle\fP KolibriLib::mouse::LoadCursor (void * ptr)\fR [inline]\fP"
 
 .PP
 Загрузить курсор мыши 
@@ -178,7 +165,7 @@ KolibriLib::mouse \- Работа с мышью
 .PP
 .SS "курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пикселя"
 
-.SS "CursorHandle KolibriLib::mouse::SetCursor (CursorHandle handle)\fR [inline]\fP"
+.SS "\fBCursorHandle\fP KolibriLib::mouse::SetCursor (\fBCursorHandle\fP handle)\fR [inline]\fP"
 
 .PP
 Установить курсор 

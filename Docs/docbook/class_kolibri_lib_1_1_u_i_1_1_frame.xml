@@ -25,12 +25,20 @@
 
 <para>Добавить элемент во фрейм </para>
 </listitem>
+            <listitem><para>template&lt;class T &gt; </para><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame_1a244d6b019c789e10586dc4411376b95e">SetElement</link> (unsigned i, const T &amp;element)</para>
+
+<para>Изменить элемент tparam T. </para>
+</listitem>
+            <listitem><para>template&lt;class T &gt; </para><para>T <link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame_1a8f799885631b7b6b1a9e7d5c0e98889f">GetElement</link> (unsigned i) const</para>
+
+<para>Полчить элемент </para>
+</listitem>
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
             <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
 
-<para>конструктор </para>
+<para>Конструктор </para>
 </listitem>
             <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847">GetSize</link> () const</para>
 
@@ -98,7 +106,7 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </listitem>
             <listitem><para>bool <emphasis role="strong">_relative</emphasis></para>
 
-<para>Оносительн </para>
+<para>Оносительны ли координаты </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -135,9 +143,100 @@ Parameters</title>
                 </formalpara>
                 <formalpara><title>Returns</title>
 
-<para>номер <?linebreak?> </para>
+<para>номер элемента </para>
 </formalpara>
 </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a8f799885631b7b6b1a9e7d5c0e98889f"/><section>
+    <title>GetElement()</title>
+<indexterm><primary>GetElement</primary><secondary>KolibriLib::UI::Frame</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Frame</primary><secondary>GetElement</secondary></indexterm>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>T UI::Frame::GetElement (unsigned i) const</computeroutput></para><para>
+
+<para>Полчить элемент </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>T</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry>
+<para>номер элемента </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_frame_1a244d6b019c789e10586dc4411376b95e"/><section>
+    <title>SetElement()</title>
+<indexterm><primary>SetElement</primary><secondary>KolibriLib::UI::Frame</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Frame</primary><secondary>SetElement</secondary></indexterm>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>void UI::Frame::SetElement (unsigned i, const T &amp; element)</computeroutput></para><para>
+
+<para>Изменить элемент tparam T. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry>
+<para>номер элемента </para>
+</entry>
+                            </row>
+                            <row>
+<entry>element</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
 </section>
 <para>
 The documentation for this class was generated from the following files:</para>

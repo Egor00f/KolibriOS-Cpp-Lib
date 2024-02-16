@@ -7,6 +7,7 @@ var namespace_kolibri_lib_1_1window =
       [ "Normal", "namespace_kolibri_lib_1_1window.html#a7e5a1c57ea495417e3d2442f66d0fe44a18ee367c465a3a9cf21c5e4842dcfe87", null ],
       [ "AlwaysTop", "namespace_kolibri_lib_1_1window.html#a7e5a1c57ea495417e3d2442f66d0fe44ae55f17bf1b2f2aae685dcaa05eb60aa1", null ]
     ] ],
+    [ "CreateWindow", "namespace_kolibri_lib_1_1window.html#ab4de97f81da73fdfc2975f75c97c23c5", null ],
     [ "FocusWindow", "namespace_kolibri_lib_1_1window.html#a8522ac0eb50e9a7b5ce0091e5fc9d257", null ],
     [ "GetActiveWindow", "namespace_kolibri_lib_1_1window.html#af86ed52f97ce1b6925d0faabc8a0ebe1", null ],
     [ "GetSkinHeight", "namespace_kolibri_lib_1_1window.html#a9b4d6e11048953c9f7a1e530f135fb20", null ],

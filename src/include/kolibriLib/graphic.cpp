@@ -35,7 +35,7 @@ void graphic::DrawCircle(const UI::Coord &coord, unsigned Radius, unsigned detal
     }
 }
 
-void graphic::DrawCircleFill(const UI::Coord &coord, unsigned Radius, unsigned detalization, const Colors::Color &color)
+void graphic::DrawCircleFill(const UI::Coord &coord, const unsigned Radius, const unsigned detalization, const Colors::Color &color)
 {
     DrawCircle(coord, Radius, detalization, color);
 
@@ -67,11 +67,11 @@ void graphic::DrawPoint(const UI::Coord &position, const unsigned &size, const C
     }
     if (fill)
     {
-        DrawCircle(position, size, color.val);
+        DrawCircle(position, size, color);
     }
     else
     {
-        DrawCircleFill(position, size, color.val);
+        DrawCircleFill(position, size, color);
     }
 }
 
@@ -88,4 +88,15 @@ void graphic::DrawTriangle(const UI::Coord &a, const UI::Coord &b, const UI::Coo
     DrawLine(a, b, color);
     DrawLine(a, c, color);
     DrawLine(b, c, color);
+}
+
+Colors::Color KolibriLib::graphic::ReadPoint(const point<unsigned> Point)
+{
+    Colors::Color c;
+    asm_inline(
+        "int $0x40"
+        :"=a"(c)
+        :"a"(35), "b"(Point.x*GetScreenSize().x + Point.y)
+    );
+    return c;
 }

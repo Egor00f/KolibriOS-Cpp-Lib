@@ -54,8 +54,6 @@ INCLUDES += $(KOLIBRILIB_INCLUDE)
 ################################################
 
 
-
-
 default: Exapmle
 
 

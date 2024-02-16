@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sys_5fcolor_5ftable_0',['sys_color_table',['../namespace_kolibri_lib_1_1_o_s.html#a7a87d62172d754e74d0e4bc13af4f78b',1,'KolibriLib::OS']]]
+  ['y_0',['y',['../struct_kolibri_lib_1_1point.html#a2552f28a0a4bd6d41b0b75c7e3dec4e0',1,'KolibriLib::point']]]
 ];

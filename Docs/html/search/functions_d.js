@@ -6,7 +6,7 @@ var searchData=
   ['setcolor_3',['SetColor',['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a969186d6406bb6c11a024e5a91749336',1,'KolibriLib::UI::UIElement']]],
   ['setcoord_4',['SetCoord',['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a16b029a7f35ee44656c2eb2af211873d',1,'KolibriLib::UI::UIElement']]],
   ['setcursor_5',['SetCursor',['../namespace_kolibri_lib_1_1mouse.html#a21b758a85831bd3a66ac4cd10ac632a3',1,'KolibriLib::mouse']]],
-  ['setelement_6',['SetElement',['../class_kolibri_lib_1_1window_1_1_window.html#a74453d8adbe91012c4cceedb4e641b54',1,'KolibriLib::window::Window']]],
+  ['setelement_6',['SetElement',['../class_kolibri_lib_1_1_u_i_1_1_frame.html#a244d6b019c789e10586dc4411376b95e',1,'KolibriLib::UI::Frame::SetElement()'],['../class_kolibri_lib_1_1window_1_1_window.html#a74453d8adbe91012c4cceedb4e641b54',1,'KolibriLib::window::Window::SetElement()']]],
   ['setfontsize_7',['SetFontSize',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#af9013385e39002c6f2bfa32f19904ddc',1,'KolibriLib::UI::text::TextLabel']]],
   ['setimage_8',['SetImage',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a2cb83ed4bca6a6bf72dee94fd682737b',1,'KolibriLib::UI::buttons::Button']]],
   ['setimg_9',['SetImg',['../class_kolibri_lib_1_1_u_i_1_1_images_1_1_image.html#aa3a38bc39030ade711221cb8f41ba76a',1,'KolibriLib::UI::Images::Image']]],

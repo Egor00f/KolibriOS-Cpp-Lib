@@ -7,6 +7,7 @@
     <includes refid="color_8hpp" local="yes">color.hpp</includes>
     <includes refid="thread_8hpp" local="yes">thread.hpp</includes>
     <includedby refid="_kolibri_lib_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/KolibriLib.hpp</includedby>
+    <includedby refid="graphic_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp</includedby>
     <includedby refid="screen_8cpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/screen.cpp</includedby>
     <includedby refid="window_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp</includedby>
     <incdepgraph>
@@ -57,9 +58,51 @@
         <link refid="_kolibri_lib_8hpp_source"/>
       </node>
       <node id="4">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</label>
+        <link refid="checkbox_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
         <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp</label>
         <link refid="child_window_8hpp_source"/>
         <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp</label>
+        <link refid="form_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</label>
+        <link refid="frame_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp</label>
+        <link refid="graphic_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/menu.hpp</label>
+        <link refid="menu_8hpp_source"/>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -69,13 +112,15 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
-      <node id="3">
+      <node id="6">
         <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp</label>
         <link refid="window_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -101,15 +146,14 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref><sp/><ref refid="namespace_kolibri_lib_1a5e62483a2a86b6d4f196cc92de3b9c55" kindref="member">ScreenPointAffiliation</ref>(point&lt;unsigned&gt;<sp/>POINT);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1aeadbff13edda339d9af70ca9f30e8325" kindref="member">CenterCursor</ref>();</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>point&lt;unsigned&gt;<sp/><ref refid="namespace_kolibri_lib_1aee258b1d924d917faae1e8dff6ccaeeb" kindref="member">GetBackgroundImageSize</ref>();</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>Colors::Color<sp/><ref refid="namespace_kolibri_lib_1a59afa938f04ee58f39092deac6fbd8df" kindref="member">ReadBackgroungImagePoint</ref>(point&lt;unsigned&gt;<sp/>Point);</highlight></codeline>
-<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCREEN_H__</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>point&lt;unsigned&gt;<sp/><ref refid="namespace_kolibri_lib_1aee258b1d924d917faae1e8dff6ccaeeb" kindref="member">GetBackgroundImageSize</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>Colors::Color<sp/><ref refid="namespace_kolibri_lib_1a59afa938f04ee58f39092deac6fbd8df" kindref="member">ReadBackgroungImagePoint</ref>(point&lt;unsigned&gt;<sp/>Point);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCREEN_H__</highlight></codeline>
     </programlisting>
     <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/screen.hpp"/>
   </compounddef>

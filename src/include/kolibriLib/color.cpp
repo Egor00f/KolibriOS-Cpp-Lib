@@ -22,6 +22,19 @@ KolibriLib::Colors::Color::Color(ksys_color_t a)
     val = a;
 }
 
+KolibriLib::Colors::Color::Color(const Color &a)
+{
+    val = a.val;
+}
+
+KolibriLib::Colors::Color::Color(const ARGB & a)
+{
+    _a      = a.alpha;
+    red     = a.red;
+    green   = a.green;
+    blue    = a.blue;
+}
+
 Color &KolibriLib::Colors::Color::operator=(const Color &a)
 {
     val = a.val;

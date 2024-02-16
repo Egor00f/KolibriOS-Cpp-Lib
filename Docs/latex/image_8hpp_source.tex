@@ -13,47 +13,43 @@
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
-\DoxyCodeLine{00014\ \{}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}kolibri\_libimg.h"{}}}
-\DoxyCodeLine{00016\ \}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00019\ \{}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
-\DoxyCodeLine{00021\ \ \ \ \ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Images}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ Image\_t*\ Copy(Image\_t\ *img);}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image}{Image}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\_t\ *\_img;}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_a962255c7f8accf8f5e334e48d18cf676}{Image}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size\ =\ \{100,\ 100\});}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_a2a7ce74fcaeb41fc67a6671ac3ad2edb}{\string~Image}}();}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}kolibri\_libimg.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Images}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image}{Image}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image\_t\ *\_img;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_a962255c7f8accf8f5e334e48d18cf676}{Image}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size\ =\ \{100,\ 100\});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_a2a7ce74fcaeb41fc67a6671ac3ad2edb}{\string~Image}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_abd534f8e97525de936700670546fa254}{LoadImage}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\ \&Path\ =\ DefaultImage);}
 \DoxyCodeLine{00042\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_abd534f8e97525de936700670546fa254}{LoadImage}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\ \&Path\ =\ DefaultImage);}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_ae267991744feb487720de4294c7a7986}{Render}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size\ =\ \{0,\ 0\});}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image}{Image}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_ae00f970794772662ac7d8db0fc135771}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image}{Image}}\&\ a);}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}{init}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size\ =\ \{100,\ 100\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\ \&Path\ =\ DefaultImage);}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_aa3a38bc39030ade711221cb8f41ba76a}{SetImg}}(Image\_t*\ img);}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Image}}
-\DoxyCodeLine{00066\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
-\DoxyCodeLine{00067\ \ \ \ \ }
-\DoxyCodeLine{00068\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_IMAGE\_H\_\_}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_ae267991744feb487720de4294c7a7986}{Render}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size\ =\ \{0,\ 0\});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image}{Image}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_ae00f970794772662ac7d8db0fc135771}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image}{Image}}\&\ a);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}{init}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size\ =\ \{100,\ 100\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\ \&Path\ =\ DefaultImage);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_aa3a38bc39030ade711221cb8f41ba76a}{SetImg}}(Image\_t*\ img);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Image}}
+\DoxyCodeLine{00062\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
+\DoxyCodeLine{00063\ \ \ \ \ }
+\DoxyCodeLine{00064\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_IMAGE\_H\_\_}}
 
 \end{DoxyCode}

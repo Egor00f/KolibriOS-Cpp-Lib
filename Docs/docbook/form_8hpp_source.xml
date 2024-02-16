@@ -14,45 +14,46 @@
 10 <emphasis role="preprocessor">#include&#32;&quot;input.hpp&quot;</emphasis>
 11 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
 12 
-13 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-14 {
-15 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
-16 &#32;&#32;&#32;&#32;{
-18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">Form</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>
-19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">buttons::Button</link>&#32;_butt;
-23 
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_inputText;
-26 
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1ac495e5c56a48b10881fbf7efb126f05e">Form</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size&#32;=&#32;{32,&#32;16},&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;BackgroundText&#32;=&#32;<emphasis role="stringliteral">&quot;Text...&quot;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;FormColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;ButtonTextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;DefaultMargin);
-36 
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;coord&#32;=&#32;{0,&#32;0},&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;size&#32;=&#32;{32,&#32;16},&#32;std::string&#32;BackgroundText&#32;=&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;FormColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;ButtonTextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Margin&#32;=&#32;DefaultMargin);
-38 
-40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a0872d4ca05a408cf3177bad337c1209b">Render</link>();
-41 
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a785cbce69e082bba1a39bbcc7b62e573">Handler</link>();
-44 
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1aa12fb4267b5940d7724ad2cb34b513fd">ButtonHandler</link>();
-48 
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a8607cbd77936e827c1f7ca87caab7539">GetInput</link>()&#32;<emphasis role="keyword">const</emphasis>;
-52 
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a9d80cb0e97fff21640570bfe4a83d0af">GetBackgroundText</link>()&#32;<emphasis role="keyword">const</emphasis>;
-56 
-59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1af63257610de4d47dcb6f51ad2480fe49">GetBackgroundColor</link>()&#32;<emphasis role="keyword">const</emphasis>;
-60 
-63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1acef4ae399e71f5989b082d81e62b6c91">SetBackgroundText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;NewText);
-64 
-67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1aa7dc12266923cd98d772c0cd3d026e7d">SetBackgroundColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;NewColor);
-68 
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">~Form</link>();
-70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-71 
-72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-73 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
-74 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+13 
+14 <emphasis role="preprocessor">#include&#32;&quot;kolibri_gui.h&quot;</emphasis>
+15 
+16 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+17 {
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
+19 &#32;&#32;&#32;&#32;{
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">Form</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;editor*&#32;_e;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;*_ed_lock;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1ac495e5c56a48b10881fbf7efb126f05e">Form</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size&#32;=&#32;{32,&#32;16},&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;BackgroundText&#32;=&#32;<emphasis role="stringliteral">&quot;Text...&quot;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;FormColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;ButtonTextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;DefaultMargin);
+35 
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;coord&#32;=&#32;{0,&#32;0},&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;size&#32;=&#32;{32,&#32;16},&#32;std::string&#32;BackgroundText&#32;=&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;FormColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;ButtonTextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Margin&#32;=&#32;DefaultMargin);
+37 
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a0872d4ca05a408cf3177bad337c1209b">Render</link>();
+40 
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a785cbce69e082bba1a39bbcc7b62e573">Handler</link>();
+43 
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1aa12fb4267b5940d7724ad2cb34b513fd">ButtonHandler</link>();
+47 
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a8607cbd77936e827c1f7ca87caab7539">GetInput</link>()&#32;<emphasis role="keyword">const</emphasis>;
+51 
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1a9d80cb0e97fff21640570bfe4a83d0af">GetBackgroundText</link>()&#32;<emphasis role="keyword">const</emphasis>;
+55 
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1af63257610de4d47dcb6f51ad2480fe49">GetBackgroundColor</link>()&#32;<emphasis role="keyword">const</emphasis>;
+59 
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1acef4ae399e71f5989b082d81e62b6c91">SetBackgroundText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;NewText);
+63 
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form_1aa7dc12266923cd98d772c0cd3d026e7d">SetBackgroundColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;NewColor);
+67 
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_form">~Form</link>();
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+70 
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+72 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+73 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+74 
 75 
-76 
-77 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FORM_H__</emphasis>
+76 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FORM_H__</emphasis>
 </programlisting></section>

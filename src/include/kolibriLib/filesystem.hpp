@@ -3,10 +3,7 @@
 
 
 #include <sys/ksys.h>
-#include <string.h>
-#include <stdlib.h>
 
-#include <cstdarg>
 #include <string>
 
 namespace KolibriLib
@@ -20,8 +17,7 @@ namespace KolibriLib
         class Path
         {
             public:
-                Path(std::string path);
-                Path(char* path);
+                Path(std::string path = "/");
                 /// @brief Получить char* строку
                 /// @return Функция возвращает конвертированную строку @link _string
                 const char* GetChars() const;
@@ -30,8 +26,8 @@ namespace KolibriLib
                 /// @return Функция возвращает @link _string
                 std::string GetString() const;
 
-                Path& operator / (const Path &a);
-                Path& operator / (const std::string &a);
+                Path &operator / (const Path &a);
+                Path &operator / (const std::string &a);
                 Path &operator = (const Path &a);
                 Path &operator = (const std::string &a);
 
@@ -73,58 +69,20 @@ namespace KolibriLib
             OsHaventRam = 12
         };
 
-        /// @brief Создать файл
-        /// @param name полный путь до файла
-        /// @return
-        int CreateFile(const char *name);
 
         /// @brief Создать файл
         /// @param name имя файла
-        /// @param path путь до файла
-        /// @return
-        int CreateFile(const char *name, char *path);
-
-        /// @brief Создать файл
-        /// @param name имя файла
-        /// @return
+        /// @return Значение из списка @link Errors
         int CreateFile(const Path& name);
 
-        /// @brief Создать файл
-        /// @param name имя файла
-        /// @param path путь до файла
-        /// @return
-        int CreateFile(const std::string& name, const Path& path);
-
-        /// @brief удалить файл или папку
-        /// @param name полный путь до файла
-        /// @return
-        int Delete(const char *name);
-
-        /// @brief удалить файл или папку
-        /// @param name имя файла
-        /// @param path путь до файла
-        /// @return
-        int Delete(const char *name, char *path);
-        
         /// @brief удалить файл  или папку
         /// @param name имя файла
-        /// @return
+        /// @return Значение из списка @link Errors
         int Delete(const Path& name);
-
-        /// @brief удалить файл или папку
-        /// @param name имя файла
-        /// @param path путь до файла
-        /// @return
-        int Delete(const std::string &name, const Path& path);
-
+        
         /// @brief Создать папку
         /// @param path путь
-        /// @return
-        int MakeDirectory(const char *path);
-
-        /// @brief Создать папку
-        /// @param path путь
-        /// @return
+        /// @return Значение из списка @link Errors
         int MakeDirectory(const Path& path);
 
         /// @brief проверяет существует ли файл или папки
@@ -132,6 +90,10 @@ namespace KolibriLib
         /// @return true если файл или папка существует, иначе false
         bool Exist(const Path& Path);
 
+        /// @brief Аналог mv
+        /// @param OldName 
+        /// @param NewName 
+        /// @return  Значение из списка @link Errors
         int Rename(const Path& OldName, const Path& NewName);
 
         

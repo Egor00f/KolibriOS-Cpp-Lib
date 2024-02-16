@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['а_20её_20link_20_5fid_20становится_20не_20действительным_0',['Деактивированном состоянии кнопка &quot;Не нажимается&quot;, а её @link _id становится не действительным',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#В',1,'']]]
+  ['y_0',['y',['../struct_kolibri_lib_1_1point.html#a2552f28a0a4bd6d41b0b75c7e3dec4e0',1,'KolibriLib::point']]]
 ];

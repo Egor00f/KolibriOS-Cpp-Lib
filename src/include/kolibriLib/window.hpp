@@ -25,19 +25,20 @@
 namespace KolibriLib
 { //=============================================================================================================================================================
 
-	
+
 
 	/// \brief Работа с окном
 	namespace window
 	{
-		
 
-		
+
+
 
 		/// @brief Класс для работы с окном
 		class Window
 		{
 		private:
+			/// @brief Структура содержащая элемент
 			struct Element
 			{
 				enum Type
@@ -52,21 +53,32 @@ namespace KolibriLib
 					Menu
 				};
 
-				UI::buttons::Button btn;
-				UI::text::TextLabel txt;
-				UI::Form frm;
-				UI::CheckBox ChckBx;
-				UI::Images::Image img;
-				UI::Frame frame;
-				UI::Menu menu;
+				void* _element;
 
 				unsigned _type;
 				unsigned DrawPrioritet;
 				bool use;
+
+				Element();
+				~Element();
+
+				template <class T>
+				void SetElement(T elem);
+
+				/// @brief Получить указатель на элемент
+				/// @return 
+				auto GetElement() const;
+
+				/// @brief Получить тип 
+				/// @return Функция возвращает значение из списка @link Type
+				int GetType() const;
 			};
 
 			/// @brief Заголовок окна
 			std::string _title;
+
+			/// @brief Список всех кнопок этого окна
+			std::vector<Element> _Elements;
 
 			/// @brief Размеры окна
 			UI::Size _size;
@@ -90,10 +102,8 @@ namespace KolibriLib
 
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			bool _Redraw = false;
+			bool _RealtimeReadraw;
 
-
-			/// @brief Список всех кнопок этого окна
-			std::vector<Element> _Elements;
 
 			/// @brief Добавить в список новую кнопку
 			/// @param btn кнопка
@@ -117,8 +127,10 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const UI::Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::sys_color_table.work_text, bool Resize = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
+			Window(const std::string &Title = "Window", const UI::Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::sys_color_table.work_text, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 			~Window();
+
+			void Redraw();
 
 			/// @brief Отрисовать окно
 			void Render();
@@ -166,47 +178,6 @@ namespace KolibriLib
 			/// @return point.y - высота окна
 			UI::Size GetWindowSize();
 
-			/// @brief Создать кнопку
-			/// @param coord координата кнопки
-			/// @param size размеры кнопки
-			/// @param Text текст кнопки
-			/// @param margin Отступы границ кноки от текста
-			/// @param UseWindowColors Использовать ли цвет окна(да/нет)
-			/// @param color Цвет кнопки
-			/// @param TextColor Цвет текста кнопки
-			/// @return номер кнопки в списке @link _Buttons
-			unsigned CreateButton(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string Text = " ", unsigned margin = UI::DefaultMargin, bool UseWindowColors = true, Colors::Color color = OS::sys_color_table.work_button, Colors::Color TextColor = OS::sys_color_table.work_button_text);
-
-			/// @brief Создать кнопку
-			/// @param btn кнопка
-			/// @return номер кнопки в списке @link _Buttons
-			unsigned CreateButton(const UI::buttons::Button& btn);
-
-			/// @brief Получить кнопку
-			/// @param id Номер кнопки в списке
-			/// @return Кнопка
-			UI::buttons::Button GetButton(unsigned id);
-
-			/// @brief Создать текст в окне
-			/// @param coord координата текста
-			/// @param size рамер рамок текста
-			/// @param text Сам текст
-			/// @param FontSize Рамер текста
-			/// @param UseWindowColors Использовать цвета окна(да/нет)
-			/// @param color Цвет текста
-			/// @return Номер текста в списке @link _Texts
-			unsigned CreateText(UI::Coord coord = {0, 0}, UI::Size size = {16, 16}, std::string text = "Text", unsigned FontSize = 9, bool UseWindowColors = true, Colors::Color color = OS::sys_color_table.work_text);
-
-			/// @brief Создать текст в окне
-			/// @param text текст
-			/// @returnНомер текста в списке @link _Texts
-			unsigned CreateText(const UI::text::TextLabel& text);
-
-			/// @brief Создать форму
-			/// @param form форма
-			/// @return номер в списке @link _Forms
-			unsigned CreateForm(UI::Form form);
-
 			/// @brief Удалить элемент
 			/// @param id idшник того элемента, которой нужно удалить
 			void DeleteElement(unsigned id);
@@ -223,25 +194,22 @@ namespace KolibriLib
 			/// @return Функция возвращает текст введённый в формы
 			std::string GetInputFromFrom(unsigned form);
 
-			/// @brief Обработчик окна в отдельном потоке
-			void HandlerThread();
-
 			template <class T>
 			/// @brief Добавить UI элемент
 			/// @param element
 			unsigned AddElement(const T &element);
-			
+
 			template <class T>
 			/// @brief Изменить элемент
 			/// tparam T
 			/// @param i
-			/// @param element 
+			/// @param element
 			void SetElement(unsigned i, const T& element);
 
-			/// @brief 
-			/// @tparam T 
-			/// @param i 
-			/// @return 
+			/// @brief
+			/// @tparam T
+			/// @param i
+			/// @return
 			template <class T>
 			T GetElement(unsigned i) const;
 
@@ -254,7 +222,7 @@ namespace KolibriLib
 
     //=============================================================================================================================================================
 
-	
+
 
 }
 

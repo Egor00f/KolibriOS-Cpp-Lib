@@ -40,9 +40,11 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .ti -1c
 .RI "std::string \fBGetBackgroundText\fP () const"
 .br
+.RI "Получить цвет фонового текста "
 .ti -1c
 .RI "\fBColors::Color\fP \fBGetBackgroundColor\fP () const"
 .br
+.RI "Получить цвет фона "
 .ti -1c
 .RI "void \fBSetBackgroundText\fP (const std::string &NewText)"
 .br
@@ -58,7 +60,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .ti -1c
 .RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
-.RI "конструктор "
+.RI "Конструктор "
 .ti -1c
 .RI "\fBSize\fP \fBGetSize\fP () const"
 .br
@@ -134,7 +136,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .ti -1c
 .RI "bool \fB_relative\fP"
 .br
-.RI "Оносительн "
+.RI "Оносительны ли координаты "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -178,18 +180,22 @@ true если на форму нажали,
 .SS "\fBColors::Color\fP Form::GetBackgroundColor () const"
 
 .PP
+Получить цвет фона 
+.PP
 \fBReturns\fP
 .RS 4
-
+Цвет фона формы 
 .RE
 .PP
 
 .SS "std::string Form::GetBackgroundText () const"
 
 .PP
+Получить цвет фонового текста 
+.PP
 \fBReturns\fP
 .RS 4
-
+Цвет фонового текста 
 .RE
 .PP
 

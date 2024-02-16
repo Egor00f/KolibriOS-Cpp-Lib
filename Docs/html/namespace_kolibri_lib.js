@@ -1,17 +1,19 @@
 var namespace_kolibri_lib =
 [
     [ "childWindow", "namespace_kolibri_lib_1_1child_window.html", [
-      [ "ErrorWindow", "namespace_kolibri_lib_1_1child_window.html#a58c5d59004f1f8e7568031db62c05ab9", null ]
+      [ "ErrorWindow", "namespace_kolibri_lib_1_1child_window.html#adfe18d89f20521dbdcc444cd3ea0fb23", null ],
+      [ "MessageBox", "namespace_kolibri_lib_1_1child_window.html#aa719a69e1532c5c8e7f1fb14d58beba5", null ]
     ] ],
     [ "Colors", "namespace_kolibri_lib_1_1_colors.html", "namespace_kolibri_lib_1_1_colors" ],
     [ "filesystem", "namespace_kolibri_lib_1_1filesystem.html", "namespace_kolibri_lib_1_1filesystem" ],
     [ "mouse", "namespace_kolibri_lib_1_1mouse.html", [
+      [ "CursorHandle", "namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05", null ],
+      [ "CenterCursor", "namespace_kolibri_lib_1_1mouse.html#ad5181e5115b88147badd22a0c19cbe4f", null ],
       [ "EmulateMouse", "namespace_kolibri_lib_1_1mouse.html#a39c94a2a4489ad8d4ec05a07ac13e259", null ],
       [ "GetMouseButtons", "namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024", null ],
       [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26", null ],
       [ "GetMousePositionOnSreen", "namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9", null ],
       [ "GetMouseWheels", "namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0", null ],
-      [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#af1e0e0b256a88def4462f920751fa62e", null ],
       [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#ad28b18a7d7c25d015b5c503e9ddecf47", null ],
       [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#ac82f2a9273155c4a3d12aa894c0edb5b", null ],
       [ "SetCursor", "namespace_kolibri_lib_1_1mouse.html#a21b758a85831bd3a66ac4cd10ac632a3", null ]
@@ -42,8 +44,7 @@ var namespace_kolibri_lib =
     ] ],
     [ "Thread", "namespace_kolibri_lib_1_1_thread.html", "namespace_kolibri_lib_1_1_thread" ],
     [ "window", "namespace_kolibri_lib_1_1window.html", "namespace_kolibri_lib_1_1window" ],
-    [ "point", "struct_kolibri_lib_1_1point.html", null ],
-    [ "CenterCursor", "namespace_kolibri_lib.html#aeadbff13edda339d9af70ca9f30e8325", null ],
+    [ "point", "struct_kolibri_lib_1_1point.html", "struct_kolibri_lib_1_1point" ],
     [ "GetBackgroundImageSize", "namespace_kolibri_lib.html#aee258b1d924d917faae1e8dff6ccaeeb", null ],
     [ "GetScreenSize", "namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e", null ],
     [ "init", "namespace_kolibri_lib.html#a79cea121a31a0a2da904f088c3484802", null ],

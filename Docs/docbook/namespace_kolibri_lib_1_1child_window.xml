@@ -8,6 +8,21 @@
  
 </para>
 <simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1child_window_1ae01e1b41f11d365cf5912ac37a0ce8b7"/>void <emphasis role="strong">RenderMessageWindow</emphasis> (void *)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1child_window_1aa719a69e1532c5c8e7f1fb14d58beba5">MessageBox</link> (const std::string &amp;_Message, const std::string &amp;_Title)</para>
+
+<para>Создать окно с сообщением </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1child_window_1adfe18d89f20521dbdcc444cd3ea0fb23">ErrorWindow</link> (const std::string &amp;ErrorMessage)</para>
+
+<para>окошко с ошибкой </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
     <title>Variables    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1child_window_1a2fc47a19ff7ba906db2b46d425611b9f"/>std::string <emphasis role="strong">Message</emphasis></para>
@@ -15,10 +30,6 @@
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1child_window_1a2b5cc9e42f8a8200892fc62ade42890c"/>std::string <emphasis role="strong">Title</emphasis></para>
 </listitem>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1child_window_1a803990b2e51bbd47782b177b3d639f19"/>bool <emphasis role="strong">Used</emphasis> = false</para>
-</listitem>
-            <listitem><para>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream void RenderMessageWindow(void) { std::string _Message=Message;std::string _Title=Title;<link linkend="_class_kolibri_lib_1_1window_1_1_window">window::Window</link> window(_Title, {256, 128});<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> WindowSize=window.GetSize();<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">UI::text::TextLabel</link> message({(int) window.GetMargin(), WindowSize.y/2 }, {WindowSize.x, WindowSize.y/2}, _Message);message.SetScale(true);window.CreateText(message);while(true) { <link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> event=window.Handler();if(event=OS::Events::Exit) { window.~Window();return;} } }=======void RenderMessageWindow(void *);&gt; &gt; &gt; &gt; &gt; &gt; Stashed changes&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream void MessageBox(std::string _Message, std::string _Title) { while(true) { if(!Used) { Used=true;Message=_Message;Title=_Title;Used=true;<link linkend="_namespace_kolibri_lib_1_1_thread_1ada14798b8293cbc2d4909e0f7ce4ad00">Thread::CreateThread</link>((void(*)) RenderMessageWindow, 4096);Used=false;return;} else { <link linkend="_namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6">Wait</link>(1);} } }=======void MessageBox(const std::string &amp;_Message, const std::string &amp;_Title);&gt; &gt; &gt; &gt; &gt; &gt; Stashed changes voi <link linkend="_namespace_kolibri_lib_1_1child_window_1a58c5d59004f1f8e7568031db62c05ab9">ErrorWindow</link> )(const std::string &amp;ErrorMessage)</para>
-
-<para>Создать окно с сообщением </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -28,12 +39,43 @@
 <para>Дочерние окна </para>
 </section>
 <section>
-<title>Variable Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1child_window_1a58c5d59004f1f8e7568031db62c05ab9"/><section>
-    <title>ErrorWindow</title>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1child_window_1adfe18d89f20521dbdcc444cd3ea0fb23"/><section>
+    <title>ErrorWindow()</title>
 <indexterm><primary>ErrorWindow</primary><secondary>KolibriLib::childWindow</secondary></indexterm>
 <indexterm><primary>KolibriLib::childWindow</primary><secondary>ErrorWindow</secondary></indexterm>
 <para><computeroutput>void KolibriLib::childWindow::ErrorWindow (const std::string &amp; ErrorMessage)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>окошко с ошибкой </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>ErrorMessage</entry><entry>
+<para>сообщение об ощибке </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1child_window_1aa719a69e1532c5c8e7f1fb14d58beba5"/><section>
+    <title>MessageBox()</title>
+<indexterm><primary>MessageBox</primary><secondary>KolibriLib::childWindow</secondary></indexterm>
+<indexterm><primary>KolibriLib::childWindow</primary><secondary>MessageBox</secondary></indexterm>
+<para><computeroutput>void KolibriLib::childWindow::MessageBox (const std::string &amp; _Message, const std::string &amp; _Title)</computeroutput></para><para>
 
 <para>Создать окно с сообщением </para>
 </para>
@@ -55,27 +97,7 @@ Parameters</title>
                             </row>
                             <row>
 <entry>Title</entry><entry>
-<para>Заголовок</para>
-</entry>
-                            </row>
-                        </tbody>
-                        </tgroup>
-                    </table>
-                    </para>
-                </formalpara>
-                окошко с ошибкой 
-                <formalpara>
-                    <title>
-Parameters</title>
-                    <para>
-                    <table frame="all">
-                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
-                        <colspec colwidth="1*"/>
-                        <colspec colwidth="4*"/>
-                        <tbody>
-                            <row>
-<entry>ErrorMessage</entry><entry>
-<para>сообщение об ощибке </para>
+<para>Заголовок </para>
 </entry>
                             </row>
                         </tbody>

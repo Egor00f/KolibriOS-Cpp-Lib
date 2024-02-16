@@ -23,8 +23,7 @@ enum \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a7e5a1c57ea495417e3d2442f6
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{namespace_kolibri_lib_1_1window_a89760849073dcbc3f0ceb924cd20042b}\label{namespace_kolibri_lib_1_1window_a89760849073dcbc3f0ceb924cd20042b} 
-void {\bfseries Create\+Window} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord=\mbox{\hyperlink{namespace_kolibri_lib_1_1window_a0b2c16c6f0b120a6ef83b2366006c6a6}{Default\+Window\+Coord}}, \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} size=\mbox{\hyperlink{namespace_kolibri_lib_1_1window_a1f1ae2f8103c37a9b5a88cce14f75f9d}{Default\+Window\+Size}}, const std\+::string \&title, \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Work\+Color=OS\+::sys\+\_\+color\+\_\+table.\+frame\+\_\+area, \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Title\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, uint32\+\_\+t style=0x14)
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ab4de97f81da73fdfc2975f75c97c23c5}{Create\+Window}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} size, const std\+::string \&title, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Work\+Color=OS\+::sys\+\_\+color\+\_\+table.\+frame\+\_\+area, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Title\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, const uint32\+\_\+t style=20)
 \item 
 void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88}{Unfocus\+Window}} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} slot)
 \begin{DoxyCompactList}\small\item\em Снять фокус с окна \end{DoxyCompactList}\item 
@@ -59,6 +58,28 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 Работа с окном 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{namespace_kolibri_lib_1_1window_ab4de97f81da73fdfc2975f75c97c23c5}\label{namespace_kolibri_lib_1_1window_ab4de97f81da73fdfc2975f75c97c23c5} 
+\index{KolibriLib::window@{KolibriLib::window}!CreateWindow@{CreateWindow}}
+\index{CreateWindow@{CreateWindow}!KolibriLib::window@{KolibriLib::window}}
+\doxysubsubsection{\texorpdfstring{CreateWindow()}{CreateWindow()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}}}]{coord,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}}}]{size,  }\item[{const std\+::string \&}]{title,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Work\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.frame\+\_\+area},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Title\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{const uint32\+\_\+t}]{style = {\ttfamily 20} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & \\
+\hline
+{\em size} & \\
+\hline
+{\em string} & \\
+\hline
+{\em $<$br$>$} & \\
+\hline
+{\em style} & \\
+\hline
+{\em Title\+Color} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespace_kolibri_lib_1_1window_a8522ac0eb50e9a7b5ce0091e5fc9d257}\label{namespace_kolibri_lib_1_1window_a8522ac0eb50e9a7b5ce0091e5fc9d257} 
 \index{KolibriLib::window@{KolibriLib::window}!FocusWindow@{FocusWindow}}
 \index{FocusWindow@{FocusWindow}!KolibriLib::window@{KolibriLib::window}}
@@ -78,7 +99,7 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 \index{KolibriLib::window@{KolibriLib::window}!GetActiveWindow@{GetActiveWindow}}
 \index{GetActiveWindow@{GetActiveWindow}!KolibriLib::window@{KolibriLib::window}}
 \doxysubsubsection{\texorpdfstring{GetActiveWindow()}{GetActiveWindow()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} Kolibri\+Lib\+::window\+::\+Get\+Active\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} Kolibri\+Lib\+::window\+::\+Get\+Active\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

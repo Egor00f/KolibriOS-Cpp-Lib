@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include "small.hpp"
+#include "types.hpp"
 #include "UI.hpp"
 #include "button.hpp"
 #include "graphic.hpp"

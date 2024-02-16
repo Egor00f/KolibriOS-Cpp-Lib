@@ -11,22 +11,19 @@
     <title>Typedefs    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05"/>typedef void * <emphasis role="strong">CursorHandle</emphasis></para>
+
+<para>Хендл курсора мыши </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
     <title>Enumerations    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1af0ffe83fe84c6327086d378dd4270aa9"/>enum <emphasis role="strong">MouseButtons</emphasis> { <?linebreak?><emphasis role="strong">LeftButton</emphasis> = 0x1
-, <emphasis role="strong">RightButton</emphasis> = 0x10
-, <emphasis role="strong">CenterBtton</emphasis> = 0x100
-, <emphasis role="strong">FourButton</emphasis> = 0x1000
-, <?linebreak?><emphasis role="strong">FiveButton</emphasis> = 0x10000
- }</para>
-</listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ab685b1d4883b04396954cab9b7ce787f"/>enum <emphasis role="strong">LoadCursor</emphasis> { <emphasis role="strong">FromFile</emphasis> = 0
-, <emphasis role="strong">FromMem</emphasis>
-, <emphasis role="strong">Indirect</emphasis>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1af0ffe83fe84c6327086d378dd4270aa9"/>enum <emphasis role="strong">MouseButtons</emphasis> { <?linebreak?><emphasis role="strong">LeftButton</emphasis> = 0b1
+, <emphasis role="strong">RightButton</emphasis> = 0b10
+, <emphasis role="strong">CenterBtton</emphasis> = 0b100
+, <emphasis role="strong">FourButton</emphasis> = 0b1000
+, <?linebreak?><emphasis role="strong">FiveButton</emphasis> = 0b10000
  }</para>
 </listitem>
         </itemizedlist>
@@ -38,7 +35,7 @@
 
 <para>Получить позицияю курсора на экране </para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; <link linkend="_namespace_kolibri_lib_1_1mouse_1ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</link> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</link> ()</para>
 
 <para>Получить позицияю курсора внутри окна </para>
 </listitem>
@@ -54,23 +51,23 @@
 
 <para>Эмулировать нажатия кнопок мыши </para>
 </listitem>
-            <listitem><para>CursorHandle <link linkend="_namespace_kolibri_lib_1_1mouse_1ad28b18a7d7c25d015b5c503e9ddecf47">LoadCursor</link> (<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> path)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1mouse_1ad5181e5115b88147badd22a0c19cbe4f">CenterCursor</link> ()</para>
+
+<para>Центрировать курсор </para>
+</listitem>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1ad28b18a7d7c25d015b5c503e9ddecf47">LoadCursor</link> (<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> path)</para>
 
 <para>Загрузить курсор мыши </para>
 </listitem>
-            <listitem><para>CursorHandle <link linkend="_namespace_kolibri_lib_1_1mouse_1ac82f2a9273155c4a3d12aa894c0edb5b">LoadCursor</link> (void *ptr)</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1ac82f2a9273155c4a3d12aa894c0edb5b">LoadCursor</link> (void *ptr)</para>
 
 <para>Загрузить курсор мыши </para>
 </listitem>
-            <listitem><para>CursorHandle <link linkend="_namespace_kolibri_lib_1_1mouse_1af1e0e0b256a88def4462f920751fa62e">LoadCursor</link> (<link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">Colors::ARGB</link>[] cur)</para>
-
-<para>Загрузить курсор мыши </para>
-</listitem>
-            <listitem><para>CursorHandle <link linkend="_namespace_kolibri_lib_1_1mouse_1a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</link> (CursorHandle handle)</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</link> (<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> handle)</para>
 
 <para>Установить курсор </para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a3291c052d3b5cbffadecfc548a047b17"/>void <emphasis role="strong">DeleteCursor</emphasis> (CursorHandle handle)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a3291c052d3b5cbffadecfc548a047b17"/>void <emphasis role="strong">DeleteCursor</emphasis> (<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> handle)</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -81,6 +78,18 @@
 </section>
 <section>
 <title>Function Documentation</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ad5181e5115b88147badd22a0c19cbe4f"/><section>
+    <title>CenterCursor()</title>
+<indexterm><primary>CenterCursor</primary><secondary>KolibriLib::mouse</secondary></indexterm>
+<indexterm><primary>KolibriLib::mouse</primary><secondary>CenterCursor</secondary></indexterm>
+<para><computeroutput>void KolibriLib::mouse::CenterCursor ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Центрировать курсор </para>
+</para>
+<section xml:id="_namespace_kolibri_lib_1_1_o_s_1Функция">
+<title><title>устанавливает курсор в середину экрана</title></title>
+</section>
+</section>
 <anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a39c94a2a4489ad8d4ec05a07ac13e259"/><section>
     <title>EmulateMouse()</title>
 <indexterm><primary>EmulateMouse</primary><secondary>KolibriLib::mouse</secondary></indexterm>
@@ -172,49 +181,11 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1af1e0e0b256a88def4462f920751fa62e"/><section>
-    <title>LoadCursor()<computeroutput>[1/3]</computeroutput></title>
-<indexterm><primary>LoadCursor</primary><secondary>KolibriLib::mouse</secondary></indexterm>
-<indexterm><primary>KolibriLib::mouse</primary><secondary>LoadCursor</secondary></indexterm>
-<para><computeroutput>CursorHandle KolibriLib::mouse::LoadCursor (<link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">Colors::ARGB</link>[] cur)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Загрузить курсор мыши </para>
-</para>
-
-<para>
-                <formalpara>
-                    <title>
-Parameters</title>
-                    <para>
-                    <table frame="all">
-                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
-                        <colspec colwidth="1*"/>
-                        <colspec colwidth="4*"/>
-                        <tbody>
-                            <row>
-<entry>cur</entry><entry>
-<para>путь до файла с курсором </para>
-</entry>
-                            </row>
-                        </tbody>
-                        </tgroup>
-                    </table>
-                    </para>
-                </formalpara>
-                <formalpara><title>Returns</title>
-
-<para>Хендл загруженного курсора </para>
-</formalpara>
-</para>
-<section xml:id="_namespace_kolibri_lib_1_1mouse_1Файл">
-<title><title>курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя</title></title>
-</section>
-</section>
 <anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ad28b18a7d7c25d015b5c503e9ddecf47"/><section>
-    <title>LoadCursor()<computeroutput>[2/3]</computeroutput></title>
+    <title>LoadCursor()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>LoadCursor</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>LoadCursor</secondary></indexterm>
-<para><computeroutput>CursorHandle KolibriLib::mouse::LoadCursor (<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> path)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> KolibriLib::mouse::LoadCursor (<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> path)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Загрузить курсор мыши </para>
 </para>
@@ -249,10 +220,10 @@ Parameters</title>
 </section>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ac82f2a9273155c4a3d12aa894c0edb5b"/><section>
-    <title>LoadCursor()<computeroutput>[3/3]</computeroutput></title>
+    <title>LoadCursor()<computeroutput>[2/2]</computeroutput></title>
 <indexterm><primary>LoadCursor</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>LoadCursor</secondary></indexterm>
-<para><computeroutput>CursorHandle KolibriLib::mouse::LoadCursor (void * ptr)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> KolibriLib::mouse::LoadCursor (void * ptr)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Загрузить курсор мыши </para>
 </para>
@@ -290,7 +261,7 @@ Parameters</title>
     <title>SetCursor()</title>
 <indexterm><primary>SetCursor</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>SetCursor</secondary></indexterm>
-<para><computeroutput>CursorHandle KolibriLib::mouse::SetCursor (CursorHandle handle)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> KolibriLib::mouse::SetCursor (<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> handle)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Установить курсор </para>
 </para>

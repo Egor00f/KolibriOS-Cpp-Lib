@@ -7,7 +7,7 @@ var searchData=
   ['defaultwindowcoord_4',['DefaultWindowCoord',['../namespace_kolibri_lib_1_1window.html#a0b2c16c6f0b120a6ef83b2366006c6a6',1,'KolibriLib::window']]],
   ['defaultwindowsize_5',['DefaultWindowSize',['../namespace_kolibri_lib_1_1window.html#a1f1ae2f8103c37a9b5a88cce14f75f9d',1,'KolibriLib::window']]],
   ['definebutton_6',['DefineButton',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a1322e4edab43592d6ebad409ca641115',1,'KolibriLib::UI::buttons']]],
-  ['delete_7',['Delete',['../namespace_kolibri_lib_1_1filesystem.html#a09794e6a053e6f649c0e4ae8ff262a9d',1,'KolibriLib::filesystem::Delete(const char *name)'],['../namespace_kolibri_lib_1_1filesystem.html#a97b53d10e759c38649e601a12cbc3b04',1,'KolibriLib::filesystem::Delete(const char *name, char *path)'],['../namespace_kolibri_lib_1_1filesystem.html#af8228f98e29fbb8122c93fdc3022d154',1,'KolibriLib::filesystem::Delete(const Path &amp;name)'],['../namespace_kolibri_lib_1_1filesystem.html#ada6dc5e7edf18fab6843ecfe4ed43cb3',1,'KolibriLib::filesystem::Delete(const std::string &amp;name, const Path &amp;path)']]],
+  ['delete_7',['Delete',['../namespace_kolibri_lib_1_1filesystem.html#af8228f98e29fbb8122c93fdc3022d154',1,'KolibriLib::filesystem']]],
   ['deletebutton_8',['DeleteButton',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#af05bc94ea0e640d8fe6b668d059a065f',1,'KolibriLib::UI::buttons']]],
   ['deleteelement_9',['DeleteElement',['../class_kolibri_lib_1_1window_1_1_window.html#adf26c28bb805b3491c42d1c7ee348777',1,'KolibriLib::window::Window']]],
   ['deleteitem_10',['DeleteItem',['../class_kolibri_lib_1_1_u_i_1_1_menu.html#a9b380c2eeb680f910ca87903ee78d8ad',1,'KolibriLib::UI::Menu']]],

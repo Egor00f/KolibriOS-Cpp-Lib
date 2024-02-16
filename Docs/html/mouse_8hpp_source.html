@@ -103,7 +103,7 @@ $(function(){initNavTree('mouse_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __MOUSE_H__</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;sys/ksys.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;small.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;types.hpp&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;filesystem.hpp&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;color.hpp&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
@@ -115,7 +115,7 @@ $(function(){initNavTree('mouse_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">inline</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;int&gt;</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9">GetMousePositionOnSreen</a>();</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">inline</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">point&lt;int&gt;</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</a>();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">inline</span> <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">UI::Coord</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</a>();</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">GetMouseButtons</a>();</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
@@ -123,49 +123,54 @@ $(function(){initNavTree('mouse_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keyword">enum</span> MouseButtons</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            LeftButton  = 0x1,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            RightButton = 0x10,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            CenterBtton = 0x100,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            FourButton  = 0x1000,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            FiveButton  = 0x10000</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            LeftButton  = 0b1,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            RightButton = 0b10,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            CenterBtton = 0b100,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            FourButton  = 0b1000,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            FiveButton  = 0b10000</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        };</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a39c94a2a4489ad8d4ec05a07ac13e259">EmulateMouse</a>(uint8_t m);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">typedef</span> <span class="keywordtype">void</span>* CursorHandle;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">enum</span> LoadCursor</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            FromFile = 0,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            FromMem,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            Indirect</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        };</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#ad28b18a7d7c25d015b5c503e9ddecf47">   58</a></span>        <span class="keyword">inline</span> CursorHandle LoadCursor(<a class="code hl_class" href="class_kolibri_lib_1_1filesystem_1_1_path.html">filesystem::Path</a> path);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#ac82f2a9273155c4a3d12aa894c0edb5b">   64</a></span>        <span class="keyword">inline</span> CursorHandle LoadCursor(<span class="keywordtype">void</span>* ptr);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#af1e0e0b256a88def4462f920751fa62e">   70</a></span>        <span class="keyword">inline</span> CursorHandle LoadCursor(<a class="code hl_struct" href="struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html">Colors::ARGB</a>[] cur);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">inline</span> CursorHandle <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</a>(CursorHandle handle);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> DeleteCursor(CursorHandle handle);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#ad5181e5115b88147badd22a0c19cbe4f">CenterCursor</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">   50</a></span>        <span class="keyword">typedef</span> <span class="keywordtype">void</span>* <a class="code hl_typedef" href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">inline</span> <a class="code hl_typedef" href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#ad28b18a7d7c25d015b5c503e9ddecf47">LoadCursor</a>(<a class="code hl_class" href="class_kolibri_lib_1_1filesystem_1_1_path.html">filesystem::Path</a> path);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">inline</span> <a class="code hl_typedef" href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#ad28b18a7d7c25d015b5c503e9ddecf47">LoadCursor</a>(<span class="keywordtype">void</span>* ptr);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment">// /// @brief Загрузить курсор мыши</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">// /// @param cur путь до файла с курсором</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// /// @return Хендл загруженного курсора</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment">// /// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="comment">// inline CursorHandle LoadCursor(Colors::ARGB[] cur);</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">inline</span> <a class="code hl_typedef" href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1mouse.html#a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</a>(<a class="code hl_typedef" href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</a> handle);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> DeleteCursor(<a class="code hl_typedef" href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</a> handle);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>} <span class="comment">// namespace KolibriLib</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif </span><span class="comment">// __MOUSE_H__</span></div>
-<div class="ttc" id="aclass_kolibri_lib_1_1filesystem_1_1_path_html"><div class="ttname"><a href="class_kolibri_lib_1_1filesystem_1_1_path.html">KolibriLib::filesystem::Path</a></div><div class="ttdoc">Файловый путь</div><div class="ttdef"><b>Definition</b> filesystem.hpp:20</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a21b758a85831bd3a66ac4cd10ac632a3"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a21b758a85831bd3a66ac4cd10ac632a3">KolibriLib::mouse::SetCursor</a></div><div class="ttdeci">CursorHandle SetCursor(CursorHandle handle)</div><div class="ttdoc">Установить курсор</div><div class="ttdef"><b>Definition</b> mouse.cpp:38</div></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} <span class="comment">// namespace KolibriLib</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif </span><span class="comment">// __MOUSE_H__</span></div>
+<div class="ttc" id="aclass_kolibri_lib_1_1filesystem_1_1_path_html"><div class="ttname"><a href="class_kolibri_lib_1_1filesystem_1_1_path.html">KolibriLib::filesystem::Path</a></div><div class="ttdoc">Путь до файла/папки</div><div class="ttdef"><b>Definition</b> filesystem.hpp:18</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a21b758a85831bd3a66ac4cd10ac632a3"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a21b758a85831bd3a66ac4cd10ac632a3">KolibriLib::mouse::SetCursor</a></div><div class="ttdeci">CursorHandle SetCursor(CursorHandle handle)</div><div class="ttdoc">Установить курсор</div><div class="ttdef"><b>Definition</b> mouse.cpp:56</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a3214167f4881bd080a5f8677f9f748e9"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9">KolibriLib::mouse::GetMousePositionOnSreen</a></div><div class="ttdeci">point&lt; int &gt; GetMousePositionOnSreen()</div><div class="ttdoc">Получить позицияю курсора на экране</div><div class="ttdef"><b>Definition</b> mouse.cpp:6</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a39c94a2a4489ad8d4ec05a07ac13e259"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a39c94a2a4489ad8d4ec05a07ac13e259">KolibriLib::mouse::EmulateMouse</a></div><div class="ttdeci">void EmulateMouse(uint8_t m)</div><div class="ttdoc">Эмулировать нажатия кнопок мыши</div><div class="ttdef"><b>Definition</b> mouse.cpp:30</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a56edecd4a7aa3f7af9eadf9ea32e93c0"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0">KolibriLib::mouse::GetMouseWheels</a></div><div class="ttdeci">uint32_t GetMouseWheels()</div><div class="ttdoc">колёсико мыши</div><div class="ttdef"><b>Definition</b> mouse.cpp:25</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a62aae3bff5a15d2c1aacef753a8a5d05"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05">KolibriLib::mouse::CursorHandle</a></div><div class="ttdeci">void * CursorHandle</div><div class="ttdoc">Хендл курсора мыши</div><div class="ttdef"><b>Definition</b> mouse.hpp:50</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_a7ae50aac73ac33bc25e269c12522a024"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024">KolibriLib::mouse::GetMouseButtons</a></div><div class="ttdeci">uint32_t GetMouseButtons()</div><div class="ttdoc">Проверить какие кнопки мыши нажаты</div><div class="ttdef"><b>Definition</b> mouse.cpp:20</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_ac2a6b8b5a4e77db980d7dcc2cb79eb26"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26">KolibriLib::mouse::GetMousePositionInWindow</a></div><div class="ttdeci">point&lt; int &gt; GetMousePositionInWindow()</div><div class="ttdoc">Получить позицияю курсора внутри окна</div><div class="ttdef"><b>Definition</b> mouse.cpp:13</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_ac2a6b8b5a4e77db980d7dcc2cb79eb26"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26">KolibriLib::mouse::GetMousePositionInWindow</a></div><div class="ttdeci">UI::Coord GetMousePositionInWindow()</div><div class="ttdoc">Получить позицияю курсора внутри окна</div><div class="ttdef"><b>Definition</b> mouse.cpp:13</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_ad28b18a7d7c25d015b5c503e9ddecf47"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#ad28b18a7d7c25d015b5c503e9ddecf47">KolibriLib::mouse::LoadCursor</a></div><div class="ttdeci">CursorHandle LoadCursor(filesystem::Path path)</div><div class="ttdoc">Загрузить курсор мыши</div><div class="ttdef"><b>Definition</b> mouse.cpp:46</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1mouse_html_ad5181e5115b88147badd22a0c19cbe4f"><div class="ttname"><a href="namespace_kolibri_lib_1_1mouse.html#ad5181e5115b88147badd22a0c19cbe4f">KolibriLib::mouse::CenterCursor</a></div><div class="ttdeci">void CenterCursor()</div><div class="ttdoc">Центрировать курсор</div><div class="ttdef"><b>Definition</b> mouse.cpp:38</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> button.hpp:13</div></div>
-<div class="ttc" id="astruct_kolibri_lib_1_1_colors_1_1_a_r_g_b_html"><div class="ttname"><a href="struct_kolibri_lib_1_1_colors_1_1_a_r_g_b.html">KolibriLib::Colors::ARGB</a></div><div class="ttdoc">Тип данных для работы с argb цветом</div><div class="ttdef"><b>Definition</b> color.hpp:56</div></div>
-<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> types.hpp:12</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> types.hpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

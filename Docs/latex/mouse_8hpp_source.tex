@@ -6,7 +6,7 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_MOUSE\_H\_\_}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}small.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}types.hpp"{}}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}filesystem.hpp"{}}}
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}color.hpp"{}}}
 \DoxyCodeLine{00008\ }
@@ -17,7 +17,7 @@
 \DoxyCodeLine{00014\ }
 \DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<int>}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a3214167f4881bd080a5f8677f9f748e9}{GetMousePositionOnSreen}}();}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<int>}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ac2a6b8b5a4e77db980d7dcc2cb79eb26}{GetMousePositionInWindow}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ac2a6b8b5a4e77db980d7dcc2cb79eb26}{GetMousePositionInWindow}}();}
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ uint32\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a7ae50aac73ac33bc25e269c12522a024}{GetMouseButtons}}();}
 \DoxyCodeLine{00026\ }
@@ -25,37 +25,40 @@
 \DoxyCodeLine{00030\ }
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ MouseButtons}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ LeftButton\ \ =\ 0x1,}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ RightButton\ =\ 0x10,}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ CenterBtton\ =\ 0x100,}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ FourButton\ \ =\ 0x1000,}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ FiveButton\ \ =\ 0x10000}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ LeftButton\ \ =\ 0b1,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ RightButton\ =\ 0b10,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ CenterBtton\ =\ 0b100,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ FourButton\ \ =\ 0b1000,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ FiveButton\ \ =\ 0b10000}
 \DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00039\ }
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a39c94a2a4489ad8d4ec05a07ac13e259}{EmulateMouse}}(uint8\_t\ m);}
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}*\ CursorHandle;}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ LoadCursor}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ FromFile\ =\ 0,}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ FromMem,}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ Indirect}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ CursorHandle\ LoadCursor(\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\ path);}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ CursorHandle\ LoadCursor(\textcolor{keywordtype}{void}*\ ptr);}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ CursorHandle\ LoadCursor(\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{Colors::ARGB}}[]\ cur);}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ CursorHandle\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a21b758a85831bd3a66ac4cd10ac632a3}{SetCursor}}(CursorHandle\ handle);}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DeleteCursor(CursorHandle\ handle);}
-\DoxyCodeLine{00078\ \ \ \ \ \}}
-\DoxyCodeLine{00079\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MOUSE\_H\_\_}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ad5181e5115b88147badd22a0c19cbe4f}{CenterCursor}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{CursorHandle}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{CursorHandle}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ad28b18a7d7c25d015b5c503e9ddecf47}{LoadCursor}}(\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\ path);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{CursorHandle}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ad28b18a7d7c25d015b5c503e9ddecf47}{LoadCursor}}(\textcolor{keywordtype}{void}*\ ptr);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ///\ @brief\ Загрузить\ курсор\ мыши}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ///\ @param\ cur\ путь\ до\ файла\ с\ курсором}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ///\ @return\ Хендл\ загруженного\ курсора}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ///\ @paragraph\ Файл\ курсора\ должен\ быть\ в\ формате\ .cur,\ стандартном\ для\ MS\ Windows,\ причём\ размером\ 32*32\ пиксел}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ inline\ CursorHandle\ LoadCursor(Colors::ARGB[]\ cur);}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{CursorHandle}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a21b758a85831bd3a66ac4cd10ac632a3}{SetCursor}}(\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{CursorHandle}}\ handle);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DeleteCursor(\mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a62aae3bff5a15d2c1aacef753a8a5d05}{CursorHandle}}\ handle);}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MOUSE\_H\_\_}}
 
 \end{DoxyCode}

@@ -111,7 +111,7 @@ $(function(){initNavTree('child_window_8hpp_source.html',''); initResizable(); }
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;small.hpp&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;types.hpp&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;UI.hpp&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;window.hpp&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;thread.hpp&quot;</span></div>
@@ -128,82 +128,20 @@ $(function(){initNavTree('child_window_8hpp_source.html',''); initResizable(); }
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// Я вам запрещаю записывать значения в эту переменную</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">bool</span> Used = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">//Функция потока нового окна</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> RenderMessageWindow(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            std::string _Message    = Message;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            std::string _Title      = Title;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <a class="code hl_class" href="class_kolibri_lib_1_1window_1_1_window.html">window::Window</a> window(_Title, {256,128});</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <a class="code hl_class" href="struct_kolibri_lib_1_1point.html">UI::Size</a> WindowSize = window.GetSize();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <a class="code hl_class" href="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html">UI::text::TextLabel</a> message({(int)window.GetMargin(), WindowSize.y / 2 }, {WindowSize.x, WindowSize.y / 2}, _Message);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            message.<a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a03d60493c9d72b8a7ae5f58d38236ae1">SetScale</a>(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            window.CreateText(message);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <a class="code hl_typedef" href="namespace_kolibri_lib_1_1_o_s.html#abe4a29759805b4449591c8efb1d10d34">OS::Event</a> <span class="keyword">event</span> = window.Handler();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                <span class="keywordflow">if</span>(event = OS::Events::Exit)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                    window.~Window();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            }</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>=======</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">void</span> RenderMessageWindow(<span class="keywordtype">void</span>*);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">void</span> MessageBox(std::string _Message, std::string _Title)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                <span class="keywordflow">if</span> (!Used) <span class="comment">// Проверка на то создают ли другие потоки ещё MessageWindow.</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                {          <span class="comment">// Это так потому что глобальная переменная Newindex одна на всех</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    Used = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    Message = _Message;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                    Title = _Title;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                    Used = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                    </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    <a class="code hl_function" href="namespace_kolibri_lib_1_1_thread.html#ada14798b8293cbc2d4909e0f7ce4ad00">Thread::CreateThread</a>((<span class="keywordtype">void</span>(*))RenderMessageWindow, 4096);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                    Used = <span class="keyword">false</span>; <span class="comment">// Я всё, заКОНЧИЛ. Свободно!</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordflow">else</span> <span class="comment">// если занято то ждём</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    <a class="code hl_function" href="namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6">Wait</a>(1);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        }</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>=======</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordtype">void</span> MessageBox(<span class="keyword">const</span> std::string&amp; _Message, <span class="keyword">const</span> std::string&amp; _Title);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_variable" href="namespace_kolibri_lib_1_1child_window.html#a58c5d59004f1f8e7568031db62c05ab9">ErrorWindow</a>(<span class="keyword">const</span> std::string&amp; ErrorMessage);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="comment">//Функция потока окна с сообщением</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">void</span> RenderMessageWindow(<span class="keywordtype">void</span>*);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1child_window.html#aa719a69e1532c5c8e7f1fb14d58beba5">MessageBox</a>(<span class="keyword">const</span> std::string&amp; _Message, <span class="keyword">const</span> std::string&amp; _Title);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1child_window.html#adfe18d89f20521dbdcc444cd3ea0fb23">ErrorWindow</a>(<span class="keyword">const</span> std::string&amp; ErrorMessage);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
 </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif </span><span class="comment">// __CHILDWINDOW_H__</span></div>
-<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_html"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html">KolibriLib::UI::text::TextLabel</a></div><div class="ttdoc">Текстовая метка</div><div class="ttdef"><b>Definition</b> text.hpp:68</div></div>
-<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_html_a03d60493c9d72b8a7ae5f58d38236ae1"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a03d60493c9d72b8a7ae5f58d38236ae1">KolibriLib::UI::text::TextLabel::SetScale</a></div><div class="ttdeci">void SetScale(bool scale)</div><div class="ttdoc">Изменить значение переменной _TextScale.</div><div class="ttdef"><b>Definition</b> text.cpp:56</div></div>
-<div class="ttc" id="aclass_kolibri_lib_1_1window_1_1_window_html"><div class="ttname"><a href="class_kolibri_lib_1_1window_1_1_window.html">KolibriLib::window::Window</a></div><div class="ttdoc">Класс для работы с окном</div><div class="ttdef"><b>Definition</b> window.hpp:39</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_abe4a29759805b4449591c8efb1d10d34"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#abe4a29759805b4449591c8efb1d10d34">KolibriLib::OS::Event</a></div><div class="ttdeci">unsigned int Event</div><div class="ttdoc">Ивент</div><div class="ttdef"><b>Definition</b> os.hpp:23</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_ada14798b8293cbc2d4909e0f7ce4ad00"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#ada14798b8293cbc2d4909e0f7ce4ad00">KolibriLib::Thread::CreateThread</a></div><div class="ttdeci">PID CreateThread(void(*ThreadEntry)(void *), unsigned ThreadStackSize=1024)</div><div class="ttdoc">Создать поток</div><div class="ttdef"><b>Definition</b> thread.cpp:6</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1child_window_html_a58c5d59004f1f8e7568031db62c05ab9"><div class="ttname"><a href="namespace_kolibri_lib_1_1child_window.html#a58c5d59004f1f8e7568031db62c05ab9">KolibriLib::childWindow::ErrorWindow</a></div><div class="ttdeci">&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream void RenderMessageWindow(void) { std::string _Message=Message;std::string _Title=Title;window::Window window(_Title, {256, 128});UI::Size WindowSize=window.GetSize();UI::text::TextLabel message({(int) window.GetMargin(), WindowSize.y/2 }, {WindowSize.x, WindowSize.y/2}, _Message);message.SetScale(true);window.CreateText(message);while(true) { OS::Event event=window.Handler();if(event=OS::Events::Exit) { window.~Window();return;} } }=======void RenderMessageWindow(void *);&gt; &gt; &gt; &gt; &gt; &gt; Stashed changes&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream void MessageBox(std::string _Message, std::string _Title) { while(true) { if(!Used) { Used=true;Message=_Message;Title=_Title;Used=true;Thread::CreateThread((void(*)) RenderMessageWindow, 4096);Used=false;return;} else { Wait(1);} } }=======void MessageBox(const std::string &amp;_Message, const std::string &amp;_Title);&gt; &gt; &gt; &gt; &gt; &gt; Stashed changes voi ErrorWindow)(const std::string &amp;ErrorMessage)</div><div class="ttdoc">Создать окно с сообщением</div><div class="ttdef"><b>Definition</b> childWindow.cpp:63</div></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">// __CHILDWINDOW_H__</span></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1child_window_html_aa719a69e1532c5c8e7f1fb14d58beba5"><div class="ttname"><a href="namespace_kolibri_lib_1_1child_window.html#aa719a69e1532c5c8e7f1fb14d58beba5">KolibriLib::childWindow::MessageBox</a></div><div class="ttdeci">void MessageBox(const std::string &amp;_Message, const std::string &amp;_Title)</div><div class="ttdoc">Создать окно с сообщением</div><div class="ttdef"><b>Definition</b> childWindow.cpp:40</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1child_window_html_adfe18d89f20521dbdcc444cd3ea0fb23"><div class="ttname"><a href="namespace_kolibri_lib_1_1child_window.html#adfe18d89f20521dbdcc444cd3ea0fb23">KolibriLib::childWindow::ErrorWindow</a></div><div class="ttdeci">void ErrorWindow(const std::string &amp;ErrorMessage)</div><div class="ttdoc">окошко с ошибкой</div><div class="ttdef"><b>Definition</b> childWindow.cpp:63</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> button.hpp:13</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_html_a40eea0b3d82e0ea121b28f46390f0df6"><div class="ttname"><a href="namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6">KolibriLib::Wait</a></div><div class="ttdeci">void Wait(unsigned time)</div><div class="ttdoc">Подождать</div><div class="ttdef"><b>Definition</b> os.cpp:98</div></div>
-<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point&lt; unsigned &gt;</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -58,7 +58,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_kolibri_lib_8hpp_source.html",
-"namespace_kolibri_lib_1_1mouse.html#ad28b18a7d7c25d015b5c503e9ddecf47"
+"namespace_kolibri_lib_1_1window.html#a9b4d6e11048953c9f7a1e530f135fb20"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

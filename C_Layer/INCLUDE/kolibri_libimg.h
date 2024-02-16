@@ -3,6 +3,32 @@
 #ifndef KOLIBRI_LIBIMG_H
 #define KOLIBRI_LIBIMG_H
 
+#pragma pack(push, 1)
+struct Image_t
+{
+  uint32_t Checksum; // ((Width ROL 16) OR Height) XOR Data[0]        ; ignored so far
+  uint32_t Width;
+  uint32_t Height;
+  uint32_t Next;
+  uint32_t Previous;
+  uint32_t Type;     // one of Image.bppN
+  uint32_t* Data;
+  uint32_t Palette;  // used iff Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
+  uint32_t Extended;
+  uint32_t Flags;    // bitfield
+  uint32_t Delay;    // used iff Image.IsAnimated is set in Flags
+  
+	Image_t& operator = (const Image_t& img)
+	{
+		
+		return *this;
+	}
+};
+#pragma pack(pop)
+
+extern "C"
+{
+
 #include <stddef.h>
 #include <stdbool.h>
 
@@ -26,21 +52,7 @@ extern int kolibri_libimg_init(void);
 #define LIBIMG_FORMAT_XBM       13
 #define LIBIMG_FORMAT_Z80       14
 
-#pragma pack(push, 1)
-typedef struct{
-  uint32_t Checksum; // ((Width ROL 16) OR Height) XOR Data[0]        ; ignored so far
-  uint32_t Width;
-  uint32_t Height;
-  uint32_t Next;
-  uint32_t Previous;
-  uint32_t Type;     // one of Image.bppN
-  uint32_t* Data;
-  uint32_t Palette;  // used iff Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
-  uint32_t Extended;
-  uint32_t Flags;    // bitfield
-  uint32_t Delay;    // used iff Image.IsAnimated is set in Flags
-} Image_t;
-#pragma pack(pop)
+
 
 #define IMAGE_BPP8i  1  // indexed
 #define IMAGE_BPP24  2
@@ -124,4 +136,5 @@ void img_fill_color(Image_t* img, uint32_t width, uint32_t height, uint32_t colo
     }
 }
 
+} // extern "C"
 #endif /* KOLIBRI_LIBIMG_H */

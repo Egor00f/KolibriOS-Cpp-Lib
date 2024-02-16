@@ -3,29 +3,6 @@
 using namespace KolibriLib;
 using namespace UI;
 
-Image_t *Images::Copy(Image_t *img)
-{
-    Image_t copy;
-
-    copy.Checksum = img->Checksum;
-    copy.Data = img->Data;
-    copy.Delay = img->Delay;
-    copy.Extended = img->Extended;
-    copy.Flags = img->Flags;
-    copy.Height = img->Height;
-    copy.Next = img->Next;
-    copy.Palette = img->Palette;
-    copy.Previous = img->Previous;
-    copy.Type = img->Type;
-    copy.Width = img->Width;
-
-    Image_t *a = img_create(img->Width, img->Height, img->Type);
-
-    *a = copy;
-
-    return a;
-}
-
 Images::Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size)
 {
     #ifdef DEBUG == true
@@ -121,7 +98,7 @@ void Images::Image::init(const Coord &coord, const Size &size, const filesystem:
 void Images::Image::SetImg(Image_t *img)
 {
     img_destroy(_img);
-    _img = Images::Copy(img);
+    _img = img;
 }
 
 Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image &a)

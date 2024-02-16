@@ -4,39 +4,70 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace window;
 
+Window::Element::Element()
+{
+	_element	= new UIElement;
+	use			= false;
+	_type		= Type::None;
+}
+
+Window::Element::~Element()
+{
+	delete _element;
+}
+
+template <class T>
+void Window::Element::SetElement(T elem)
+{
+    delete _element;
+    _element = new T(elem);
+}
+
+auto KolibriLib::window::Window::Element::GetElement() const
+{
+    switch (_type)
+    {
+    case Type::None:
+        return nullptr;
+    case Type::Button:
+        return (buttons::Button *)_element;
+    case Type::TextLabel:
+        return (text::TextLabel *)_element;
+    case Type::CheckBox:
+        return (UI::CheckBox *)_element;
+    case Type::Image:
+        return (Images::Image *)_element;
+    case Type::Form:
+        return (UI::Form *)_element;
+    case Type::Frame:
+        return (buttons::Button *)_element;
+    default:
+        _ksys_debug_puts("Error in KolibriLib::window::Window::Render(): unklown type\n");
+        break;
+    }
+    return 0;
+}
+
+int Window::Element::GetType() const
+{
+    return _type;
+}
+
 unsigned Window::AddNewButton(UI::buttons::Button btn)
 {
     for (int i = 0; i < _Elements.size(); i++)
     {
         if (!_Elements[i].use)
         {
-            switch (btn.GetType())
-            {
-            case UI::buttons::Button::Type::Image:
-                _Elements[i].btn = btn;
-                break;
-            case UI::buttons::Button::Type::Text:
-                _Elements[i].btn = btn;
-                break;
-            default:
-                break;
-            }
+            _Elements[i].SetElement(btn);
             _Elements[i]._type = Element::Type::Button;
             _Elements[i].use = true;
             return i;
         }
     }
     Element a;
-    switch (btn.GetType())
-    {
-    case UI::buttons::Button::Type::Image:
-        a.btn = btn;
-        break;
-    case UI::buttons::Button::Type::Text:
-        a.btn = btn;
-    default:
-        break;
-    }
+    a.SetElement(btn);
+    a._type = Element::Type::Button;
     a.use = true;
     _Elements.push_back(a);
     return _Elements.size();
@@ -60,13 +91,13 @@ unsigned Window::AddNewTextLabel(UI::text::TextLabel text)
 
         if (!_Elements[i].use)
         {
-            _Elements[i].txt = text;
+            _Elements[i].SetElement(text);
             _Elements[i]._type = Element::Type::TextLabel;
             _Elements[i].use = true;
 
-#if DEBUG == true
+            #if DEBUG == true
             _ksys_debug_puts("done\n");
-#endif
+            #endif
 
             return i;
         }
@@ -74,9 +105,9 @@ unsigned Window::AddNewTextLabel(UI::text::TextLabel text)
 
     Element a;
 
+    a._type = Element::Type::TextLabel;
     a.use = true;
-
-    a.txt = text;
+    a.SetElement(text);
 
     _Elements.push_back(a);
 }
@@ -87,21 +118,21 @@ unsigned Window::AddNewForm(UI::Form form)
     {
         if (!_Elements[i].use)
         {
-            _Elements[i].frm = form;
+            _Elements[i].SetElement(form);
             _Elements[i]._type = Element::Type::Form;
             _Elements[i].use = true;
             return i;
         }
     }
     Element a;
-    a.frm = form;
+    a.SetElement(form);
     a.use = true;
     a._type = Element::Type::Form;
     _Elements.push_back(a);
     return _Elements.size();
 }
 
-Window::Window(const std::string &Title, const UI::Size &size, const Colors::ColorsTable &colors, const Colors::Color &TitleColor, bool Resize, bool Gradient, unsigned Transparency, const unsigned &Margin)
+Window::Window(const std::string &Title, const UI::Size &size, const Colors::ColorsTable &colors, const Colors::Color &TitleColor, bool Resize, bool RealtimeReadraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
 {
     #if DEBUG == true
     _ksys_debug_puts("KolibriLib::window:::Window constructor\n");
@@ -111,6 +142,7 @@ Window::Window(const std::string &Title, const UI::Size &size, const Colors::Col
     _size       = size;
     _MARGIN     = Margin;
     _TitleColor = TitleColor;
+    _RealtimeReadraw = RealtimeReadraw;
 
              /*DCBAYYYYRRRRRRRRGGGGGGGGBBBBBBBB*/
     _style = 0b00100000;
@@ -138,6 +170,35 @@ Window::Window(const std::string &Title, const UI::Size &size, const Colors::Col
 
 Window::~Window()
 {
+}
+
+void KolibriLib::window::Window::Redraw()
+{
+    StartRedraw();
+    window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style);
+    graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
+
+    for (int i = 0; i < _Elements.size(); i++)
+    {
+        if (_Elements[i].use)
+        {
+            _Elements[i].GetElement()->Render();
+        }
+    }
+
+    if (_Transparency != 0) // Прозрачность окна
+    {
+        point<unsigned> size = GetWindowSize();
+        for (unsigned i = 0; i < size.y; i++)
+        {
+            for (unsigned j = 0; j < size.x; j++)
+            {
+                graphic::DrawPixel({(int)j, (int)i}, graphic::ReadPoint({j, i}) + ReadBackgroungImagePoint({j, i})); // Пока так, потом может быть станет лучше
+            }
+        }
+    }
+
+    EndRedraw();
 }
 
 void Window::SetWindowColors(const Colors::ColorsTable &colorTable)
@@ -179,35 +240,14 @@ void Window::Render()
 {
     StartRedraw();
     window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style);
-    graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
 
     for (int i = 0; i < _Elements.size(); i++)
     {
         if (_Elements[i].use)
         {
-            switch (_Elements[i]._type)
+            if(_Elements[i]._type == Element::Type::Button)
             {
-            case Element::Type::Button:
-                _Elements[i].btn.Render();
-                break;
-            case Element::Type::TextLabel:
-                _Elements[i].txt.Render();
-                break;
-            case Element::Type::CheckBox:
-                _Elements[i].ChckBx.Render();
-                break;
-            case Element::Type::Image:
-                _Elements[i].img.Render();
-                break;
-            case Element::Type::Form:
-                _Elements[i].frm.Render();
-                break;
-            case Element::Type::Frame:
-                _Elements[i].frame.Render();
-                break;
-            default:
-                _ksys_debug_puts("Error in KolibriLib::window::Window::Render(): unklown type\n");
-                break;
+                _Elements[i].GetElement()->Render();
             }
         }
     }
@@ -237,33 +277,6 @@ UI::Size Window::GetSize()
     return _size;
 }
 
-unsigned KolibriLib::window::Window::CreateButton(UI::Coord coord, UI::Size size, std::string Text, unsigned margin, bool UseWindowColors, Colors::Color color, Colors::Color TextColor)
-{
-    if (UseWindowColors)
-    {
-        color = _colors.work_button;
-        TextColor = _colors.work_button_text;
-    }
-    return AddNewButton(UI::buttons::Button(coord, size, margin, color));
-}
-
-unsigned Window::CreateText(UI::Coord coord, UI::Size size, std::string text, unsigned FontSize, bool UseWindowColors, Colors::Color color)
-{
-    #if DEBUG == true
-    _ksys_debug_puts("CreateText:");
-    #endif
-    if (UseWindowColors)
-    {
-        color = _colors.work_text;
-    }
-
-    return AddNewTextLabel(UI::text::TextLabel(coord, size, text, FontSize, true, color, _MARGIN));
-}
-
-unsigned Window::CreateText(const UI::text::TextLabel &text)
-{
-    return AddNewTextLabel(UI::text::TextLabel(text));
-}
 
 void Window::DeleteElement(unsigned id)
 {
@@ -272,7 +285,7 @@ void Window::DeleteElement(unsigned id)
 
 OS::Event Window::Handler()
 {
-    OS::Event event = OS::WaitEvent(10);
+    OS::Event event = OS::WaitEvent(8);
 
     switch (event)
     {
@@ -295,12 +308,11 @@ OS::Event Window::Handler()
                 switch (_Elements[i]._type)
                 {
                 case Element::Type::Form:
-
-                    _Elements[i].frm.ButtonHandler();
+                    _Elements[i].GetElement()->ButtonHandler();
                 case Element::CheckBox:
-                    _Elements[i].ChckBx.Handler();
+                    _Elements[i].GetElement()->Handler();
                 case Element::Button:
-                    _Elements[i].btn.Handler();
+                    _Elements[i].GetElement()->Handler();
                 }
             }
         }
@@ -308,10 +320,16 @@ OS::Event Window::Handler()
         break;
     case OS::Events::Key:
 
-        _Elements[activeForm].frm.Handler(); // Обработчик активной на текущий момент формы
+        _Elements[activeForm].GetElement()->Handler(); // Обработчик активной на текущий момент формы
 
         break;
     }
+    UI::Coord Mouse = mouse::GetMousePositionInWindow();
+    if(((Mouse.x > 0 && Mouse.y > 0) && Mouse.x < GetWindowSize().x && Mouse.y < GetSkinHeight()) && )
+    {
+
+    }
+
     return event;
 }
 
@@ -321,9 +339,9 @@ UI::buttons::ButtonID Window::GetPressedButton()
     {
         if (_Elements[i]._type == Element::Type::Button)
         {
-            if (_Elements[i].btn.GetStatus())
+            if (_Elements[i].GetElement()->GetStatus())
             {
-                return _Elements[i].btn.GetId();
+                return _Elements[i].GetElement()->GetId();
             }
         }
     }
@@ -332,25 +350,12 @@ std::string Window::GetInputFromFrom(unsigned form)
 {
     if (_Elements[form]._type == Element::Type::Form)
     {
-        return _Elements[form].frm.GetInput();
+        return _Elements[form].GetElement()->GetInput();
     }
 }
 
-UI::buttons::Button Window::GetButton(unsigned id)
-{
-    return _Elements[id].btn;
-}
 
-void Window::HandlerThread()
-{
-    while (true)
-    {
-        if (Handler() == OS::Events::Exit)
-        {
-            break;
-        }
-    }
-}
+
 
 void KolibriLib::window::Window::Unfocus() const
 {
@@ -366,35 +371,32 @@ template <class T>
 unsigned Window::AddElement(const T &element)
 {
     Element a;
+    
+    a.SetElement(element);
 
     switch (sizeof(T))
     {
     case sizeof(UI::text::TextLabel):
-        a.txt = element;
         a._type = Element::Type::TextLabel;
         break;
     case sizeof(UI::buttons::Button):
-        a.btn = element;
         a._type = Element::Type::Button;
         break;
     case sizeof(UI::Images::Image):
-        a.img = element;
         a._type = Element::Type::Image;
         break;
     case sizeof(UI::Form):
-        a.frm = element;
         a._type = Element::Type::Form;
         break;
     case sizeof(UI::CheckBox):
-        a.ChckBx = element;
         a._type = Element::Type::CheckBox;
         break;
     case sizeof(UI::Frame):
-        a.frmae = element;
         a._type = Element::Type::Form;
+        break;
     case sizeof(UI::Menu):
-        a.menu = element;
         a._type = Element::Type::Menu;
+        break;
     default:
         _ksys_debug_puts("KolibriLib::window::Window::AddElement: unknown type, break\n");
         break;
@@ -408,8 +410,8 @@ unsigned Window::AddElement(const T &element)
             return i;
         }
     }
-    
-    _Elements.push_back(a); 
+
+    _Elements.push_back(a);
     return _Elements.size() - 1;
 }
 
