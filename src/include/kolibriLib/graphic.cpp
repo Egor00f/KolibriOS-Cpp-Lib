@@ -67,11 +67,11 @@ void graphic::DrawPoint(const UI::Coord &position, const unsigned &size, const C
     }
     if (fill)
     {
-        DrawCircle(position, size, color);
+        DrawCircle(position, size, 8, color);
     }
     else
     {
-        DrawCircleFill(position, size, color);
+        DrawCircleFill(position, size, 8, color);
     }
 }
 

@@ -5,57 +5,60 @@ using namespace UI;
 
 Form::Form(const Coord &coord, const Size &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) : UIElement(coord, size, FormColor, Margin)
 {
-    #ifdef DEBUG == true
+#ifdef DEBUG == true
     _ksys_debug_puts("Form Constructor\n");
-    #endif
-    _e = kolibri_new_editor(X_Y(coord.x, coord.y), X_Y(size.x, size.y), , , &_ed_lock);
-    ted_text_add(_e, (char*)BackgroundText.c_str(), BackgroundText.length(), 0);
+#endif
+    _butt.init(coord, size, " ", Margin, ButtonTextColor); // Инициализация кнопки
 }
 
 void Form::init(Coord coord, Size size, std::string BackgroundText, Colors::Color FormColor, Colors::Color ButtonTextColor, unsigned Margin)
 {
-    
+    _coord = coord;
+    _size = size;
+    _MainColor = FormColor;
+    _Margin = Margin;
+    _butt.init(coord, size, "BackgroundText", Margin, ButtonTextColor);
 }
 
-std::string Form::GetBackgroundText() const
+const std::string& Form::GetBackgroundText() const
 {
-    
+    return _butt.GetTextLabel();
 }
 
-Colors::Color Form::GetBackgroundColor() const
+const Colors::Color& Form::GetBackgroundColor() const
 {
-    
-}
-
-void KolibriLib::UI::Form::SetBackgroundText(const std::string &NewText)
-{
-    
-}
-
-void KolibriLib::UI::Form::SetBackgroundColor(const Colors::Color &NewColor)
-{
-    
+    return _butt.GetColor();
 }
 
 Form::~Form()
 {
 }
 
-void Form::Render()
+void Form::Render() const
 {
-    
+    graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
+
+    _butt.Render();
 }
 
-std::string Form::GetInput() const
+const std::string& Form::GetInput() const
 {
-    
+    return _inputText;
 }
 
 void Form::Handler()
 {
-    
+    char input = keyboard::CheckKeyboard();
+    if (input > 33 && input != 127) // Если введённый символ не является спецсимволом, и это не Delete
+    {
+        _inputText.push_back(input);
+    }
+    if (input == 127) // input = Delete
+    {
+        _inputText.erase(_inputText.end() - 1);
+    }
 }
 bool Form::ButtonHandler()
 {
-    
+    return _butt.Handler();
 }

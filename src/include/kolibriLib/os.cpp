@@ -29,7 +29,7 @@ int KolibriLib::OS::Exec(const filesystem::Path& AppName, const std::string& arg
     if (filesystem::Exist(AppName)) // Проверка на существование
     {
         char *a;
-        strcat(a, args.c_str());
+        strcat(a, const_cast<char*>(args.c_str()));
         return _ksys_exec(AppName.GetChars(), a);
     }
     else
@@ -95,7 +95,14 @@ bool KolibriLib::OS::SpeakerStatus()
     return !a;
 }
 
-void KolibriLib::Wait(unsigned time)
+void KolibriLib::Wait(int time)
 {
-    _ksys_delay(time);
+    if(time == -1)
+    {
+        _ksys_thread_yield();
+    }
+    else    //Пох на на то что на проверки уходит время, нам всеравно нужно ждать
+    {
+        _ksys_delay(time);
+    }
 }

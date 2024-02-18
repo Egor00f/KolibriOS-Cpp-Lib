@@ -6,6 +6,7 @@
 
 #include <string>
 #include <vector>
+#include <type_traits>
 
 
 #include <sys/ksys.h>
@@ -23,7 +24,7 @@
 #include "screen.hpp"
 
 namespace KolibriLib
-{ //=============================================================================================================================================================
+{ 
 
 
 
@@ -53,7 +54,13 @@ namespace KolibriLib
 					Menu
 				};
 
-				void* _element;
+				UI::buttons::Button * btn;
+				UI::Images::Image   * img;
+				UI::CheckBox        * checkbox;
+				UI::Form            * form;
+				UI::text::TextLabel * txt;
+				UI::Menu            * menu;
+				UI::Frame           * frame;
 
 				unsigned _type;
 				unsigned DrawPrioritet;
@@ -63,15 +70,9 @@ namespace KolibriLib
 				~Element();
 
 				template <class T>
-				void SetElement(T elem);
+				void SetElement(const T& elem);
 
-				/// @brief Получить указатель на элемент
-				/// @return 
-				auto GetElement() const;
-
-				/// @brief Получить тип 
-				/// @return Функция возвращает значение из списка @link Type
-				int GetType() const;
+				void free();
 			};
 
 			/// @brief Заголовок окна
@@ -98,17 +99,19 @@ namespace KolibriLib
 			unsigned _Transparency;
 
 			/// @brief Активная фарма
-			unsigned int activeForm;
+			mutable int activeForm = -1;
 
 			/// @brief Окно перерисовывается сейчас (да/нет)
-			bool _Redraw = false;
-			bool _RealtimeReadraw;
+			mutable bool _Redraw = false;
+
+			/// @brief Окно пересовывается при перетаскивании
+			bool _RealtimeRedraw;
 
 
 			/// @brief Добавить в список новую кнопку
 			/// @param btn кнопка
 			/// @return номер в списке @link _Buttons
-			unsigned AddNewButton(UI::buttons::Button btn);
+			unsigned AddNewButton(const UI::buttons::Button& btn);
 
 			/// @brief Добавить в список новую текствую метку
 			/// @param text текстовая метка
@@ -130,10 +133,11 @@ namespace KolibriLib
 			Window(const std::string &Title = "Window", const UI::Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::sys_color_table.work_text, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 			~Window();
 
+			/// @brief Полная перересовка окна
 			void Redraw();
 
 			/// @brief Отрисовать окно
-			void Render();
+			void Render(UI::Coord coord = DefaultWindowCoord);
 
 			/// @brief Получить рамер отступов в этом окне
 			/// @return @link _MARGIN
@@ -155,6 +159,10 @@ namespace KolibriLib
 			/// @brief Закончить перересовку окна
 			/// @paragraph Обязательно после должна быть вызвана функция #StartRedraw()
 			void EndRedraw();
+
+			/// @brief Получить координаты окна
+			/// @return 
+			const UI::Coord& GetCoord() const;
 
 			/// @brief Отрисовать окно
 			/// @param coord позиция окна

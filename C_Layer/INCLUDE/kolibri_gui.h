@@ -1,7 +1,8 @@
 #ifndef KOLIBRI_GUI_H
 #define KOLIBRI_GUI_H
 
-
+#include <sys/ksys.h>
+#include <kolibriLib/os.hpp>
 
 #include "kolibri_debug.h" /* work with debug board */
 
@@ -31,44 +32,51 @@ void kolibri_handle_event_redraw(kolibri_window* some_window)
 {
   /*  Draw windows with system color table. */
 
-  BeginDraw();
+  _ksys_start_draw();
 
-  DrawWindow(some_window->topleftx, some_window->toplefty,
-	     some_window->sizex, some_window->sizey,
-	     some_window->window_title,
-	     kolibri_color_table.color_work_area, some_window->XY);
+	_ksys_create_window(
+		some_window->topleftx,
+		some_window->toplefty,
+		some_window->sizex,
+		some_window->sizey,
+		some_window->window_title,
+		KolibriLib::OS::sys_color_table.work_area,
+		some_window->XY
+	);
 
-  /* Enumerate and draw all window elements here */
-  if(some_window->elements) /* Draw all elements added to window */
+	/* Enumerate and draw all window elements here */
+	if(some_window->elements) /* Draw all elements added to window */
     {
-      kolibri_window_element* current_element = some_window -> elements;
+		kolibri_window_element* current_element = some_window -> elements;
 
-      do
-	{
-	  /* The redraw_fn serves as draw_fn on initial draw */
-	  if((int)kolibri_gui_op_table[current_element -> type].redraw_fn > 0)  // -1 if DLL link fail
-	    kolibri_gui_op_table[current_element -> type].redraw_fn(current_element -> element);
+    	do
+		{
+			/* The redraw_fn serves as draw_fn on initial draw */
+			if((int)kolibri_gui_op_table[current_element -> type].redraw_fn > 0)  // -1 if DLL link fail
+				kolibri_gui_op_table[current_element -> type].redraw_fn(current_element -> element);
 
 //sie after fixing calling conventions no more needed
 /*
-	  switch(current_element -> type)
-	    {
-	    case KOLIBRI_EDIT_BOX:
-	    case KOLIBRI_CHECK_BOX:
-	      __asm__ volatile("push $0x13371337"::); / * Random value pushed to balance stack * /
-						      / * otherwise edit_box_draw leaves stack unbalanced * /
-						      / * and GCC jumps like a crazy motha' fucka' * /
+	  		switch(current_element -> type)
+	    	{
+	    		case KOLIBRI_EDIT_BOX:
+	    		case KOLIBRI_CHECK_BOX:
+	      			__asm__ volatile("push $0x13371337"::); / * Random value pushed to balance stack * /
+							      / * otherwise edit_box_draw leaves stack unbalanced * /
+							      / * and GCC jumps like a crazy motha' fucka' * /
 
-	      break;
-	    }
+	      			break;
+				default:
+					break;
+	    	}
 */
-	  current_element = current_element -> next;
+			current_element =(kolibri_window_element *) current_element -> next;
 
-	} while(current_element != some_window->elements); /* Have we covered all elements? */
+		} while(current_element != some_window->elements); /* Have we covered all elements? */
     }
 }
 
-void kolibri_handle_event_key(kolibri_window* some_window, oskey_t key)
+void kolibri_handle_event_key(kolibri_window* some_window, ksys_oskey_t key)
 {
   /* Enumerate and trigger key handling functions of window elements here */
   if(some_window->elements)
@@ -81,7 +89,7 @@ void kolibri_handle_event_key(kolibri_window* some_window, oskey_t key)
 	  if((int)kolibri_gui_op_table[current_element -> type].key_fn > 0)
 	    kolibri_gui_op_table[current_element -> type].key_fn(current_element -> element, key);
 
-	  current_element = current_element -> next;
+	  current_element = (kolibri_window_element *)current_element->next;
 	} while(current_element != some_window->elements); /* Have we covered all elements? */
     }
 }
@@ -98,46 +106,39 @@ void kolibri_handle_event_mouse(kolibri_window* some_window)
 	  if((int)kolibri_gui_op_table[current_element -> type].mouse_fn > 0)
 	    kolibri_gui_op_table[current_element -> type].mouse_fn(current_element -> element);
 
-	  current_element = current_element -> next;
+	  current_element =(kolibri_window_element *) current_element->next;
 
 	} while(current_element != some_window->elements); /* Have we covered all elements? */
     }
 }
 
-void kolibri_exit(void)
+inline int kolibri_gui_init(void)
 {
-  __asm__ volatile (
-    "int $0x40"
-    :
-    :"a"(-1)
-    );
-}
+	int boxlib_init_status = kolibri_boxlib_init();
 
-int kolibri_gui_init(void)
-{
-  int boxlib_init_status = kolibri_boxlib_init();
-
-  if(boxlib_init_status == 0)
-    debug_board_write_str("ashmew2 is happy: Kolibri GUI Successfully Initialized.\n");
-  else
-    {
-      debug_board_write_str("ashmew2 is sad: Kolibri GUI Failed to initialize.\n");
-      kolibri_exit();
+	if(boxlib_init_status == 0)
+		debug_board_write_str("KolibriLib:C_Layer: ashmew2 is happy: Kolibri GUI Successfully Initialized.\n");
+	else
+	{
+		debug_board_write_str("KolibriLib:C_Layer: ashmew2 is sad: Kolibri GUI Failed to initialize.\n");
+		exit(0);
     }
 
-  /* Initialize the global operation table which handles event functions of */
-  /* each individual element type */
-  kolibri_init_gui_op_table();
+	/* Initialize the global operation table which handles event functions of */
+	/* each individual element type */
+	kolibri_init_gui_op_table();
 
-  /* Get the current color table for Kolibri and store in global table*/
-  kolibri_get_system_colors(&kolibri_color_table);
+	/* Get the current color table for Kolibri and store in global table*/
+	//kolibri_get_system_colors(&kolibri_color_table);
 
-  /* Set up system events for buttons, mouse and keyboard and redraw */
-  /* Also set filters so that window receives mouse events only when active
-     and mouse inside window */
-  __asm__ volatile("int $0x40"
-                  :
-                  :"a"(40), "b"(0xC0000027));
+	/* Set up system events for buttons, mouse and keyboard and redraw */
+	/* Also set filters so that window receives mouse events only when active
+	   and mouse inside window */
+	__asm__ volatile(
+		"int $0x40"
+		:
+		:"a"(40), "b"(0xC0000027)
+	);
 
   return boxlib_init_status;
 }

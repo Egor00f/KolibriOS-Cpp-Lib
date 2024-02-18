@@ -12,17 +12,17 @@ namespace KolibriLib
 {
     /// @brief Получить разрешение экрана
     /// @return размер экрана
-    point<unsigned> GetScreenSize();
+    UI::Size GetScreenSize();
 
-    /// @brief Получить принадлежность 
-    /// @param POINT 
-    /// @return 
-    Thread::Slot ScreenPointAffiliation(point<unsigned> POINT);
+    /// @brief Получить принадлежность точки
+    /// @param POINT точка на экране
+    /// @return слот окна которому принадлежит точка
+    Thread::Slot ScreenPointAffiliation(UI::Coord POINT);
 
 
     /// @brief Получить размеры фонового изображения
     /// @return 
-    point<unsigned> GetBackgroundImageSize();
+    UI::Size GetBackgroundImageSize();
 
     /// @brief Прочитать точку на фоне
     /// @param Point читаема точка

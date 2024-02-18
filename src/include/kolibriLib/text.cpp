@@ -17,7 +17,7 @@ text::TextLabel::~TextLabel()
 {
 }
 
-void text::TextLabel::Render()
+void text::TextLabel::Render() const
 {
     if (_TextScale) // Если текст нужно подстраивать размер, то
     {               // Постраиваем
@@ -35,7 +35,7 @@ void text::TextLabel::Render()
     DrawText(_text, {_coord.x + (int)a, _coord.y + ((int)_size.y / 2)}, _FontSize, _MainColor);
 }
 
-std::string text::TextLabel::GetText() const
+const std::string& text::TextLabel::GetText() const
 {
     return _text;
 }
@@ -69,12 +69,21 @@ void text::TextLabel::init(Coord coord, Size size, std::string text, unsigned Fo
 
 text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const TextLabel &a)
 {
-    _coord = a._coord;
-    _size = a._size;
-    _MainColor = a._MainColor;
-    _Margin = a._Margin;
-    _text = a._text;
-    _FontSize = a._FontSize;
-    _TextScale = a._TextScale;
+    _coord      = a._coord;
+    _size       = a._size;
+    _MainColor  = a._MainColor;
+    _Margin     = a._Margin;
+    _text       = a._text;
+    _FontSize   = a._FontSize;
+    _TextScale  = a._TextScale;
     return *this;
+}
+
+bool KolibriLib::UI::text::TextLabel::operator==(const TextLabel &a) const
+{
+    return (_coord == a._coord) && (_size == a._size) && (_MainColor == a._MainColor) && (_Margin == a._Margin) && (_text == a._text) && (_FontSize == a._FontSize) && (_TextScale == a._TextScale);
+}
+void KolibriLib::UI::text::Text::Render(UI::Coord coord, unsigned FontSize)
+{
+    
 }

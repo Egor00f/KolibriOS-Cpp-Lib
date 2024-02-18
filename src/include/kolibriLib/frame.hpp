@@ -12,6 +12,7 @@
 #include "form.hpp"
 #include "image.hpp"
 #include "checkbox.hpp"
+#include "menu.hpp"
 #include "input.hpp"
 
 namespace KolibriLib
@@ -25,23 +26,35 @@ namespace KolibriLib
             struct Element
             {
                 enum Type
-                {
-                    None = 0,
-                    Button,
-                    Image,
-                    CheckBox,
-                    Form,
-                    TextLabel
-                };
+				{
+					None = 0,
+					Button,
+					Image,
+					CheckBox,
+					Form,
+					TextLabel,
+					Frame,
+					Menu
+				};
 
-                UI::buttons::Button btn;
-                UI::text::TextLabel txt;
-                UI::Form frm;
-                UI::CheckBox ChckBx;
-                UI::Images::Image img;
+				UI::buttons::Button * btn;
+				UI::Images::Image   * img;
+				UI::CheckBox        * checkbox;
+				UI::Form            * form;
+				UI::text::TextLabel * txt;
+				UI::Menu            * menu;
 
-                unsigned _type;
-                bool use;
+				unsigned _type;
+				unsigned DrawPrioritet;
+				bool use;
+
+				Element();
+				~Element();
+
+				template <class T>
+				void SetElement(const T& elem);
+
+				void free();
             };
             std::vector<Element> _Elements;
             bool _scroll;
@@ -74,6 +87,10 @@ namespace KolibriLib
             /// @return
             template <class T>
             T GetElement(unsigned i) const;
+
+            /// @brief Удалить элемент из фрейма
+            /// @param i Номер элемента
+            void DeleteElement(unsigned i);
         };
     } // namespace UI
 } // namespace KolibriLib

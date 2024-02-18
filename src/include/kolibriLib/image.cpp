@@ -75,9 +75,9 @@ void Images::Image::LoadImage(const filesystem::Path &Path)
     }
 }
 
-void Images::Image::Render(Size size)
+void Images::Image::Render(Size size) const
 {
-    if (size.x != 0 && size.y != 0)
+    if (size != 0)
     {
         Image_t *img = img_scale(_img, 0, 0, _size.x, _size.y, NULL, LIBIMG_SCALE_STRETCH, LIBIMG_INTER_BILINEAR, size.x, size.y);
         img_draw(img, _coord.x, _coord.y, size.x, size.y, 0, 0);

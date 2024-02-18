@@ -24,7 +24,7 @@ namespace KolibriLib
                 char name[12];                  // process/thread name
                 uint32_t memstart;              // process address in memory
                 uint32_t memused;               // used memory size - 1
-                int pid;                        // identifier (PID/TID)
+                PID pid;                        // identifier (PID/TID)
                 int winx_start;                 // window x-coordinate
                 int winy_start;                 // window y-coordinate
                 int winx_size;                  // x-axis flow window size

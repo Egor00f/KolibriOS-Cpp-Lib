@@ -10,6 +10,7 @@
 #include "color.hpp"
 #include "input.hpp"
 #include "windowBase.hpp"
+#include "screen.hpp"
 
 namespace KolibriLib
 {
@@ -55,7 +56,7 @@ namespace KolibriLib
             
             /// @brief Получить размер элемента
             /// @return Функция возвращает @link _size
-            Size GetSize() const;
+            const Size& GetSize() const;
 
             /// @brief Изменить размер элемента
             /// @param NewSize новый размер
@@ -67,7 +68,7 @@ namespace KolibriLib
 
             /// @brief Получить осносной цвет элемента
             /// @return Функция возвращает @link _MainColor
-            Colors::Color GetColor() const;
+            const Colors::Color& GetColor() const;
 
             /// @brief 
             /// @param NewColor 
@@ -79,7 +80,7 @@ namespace KolibriLib
 
             /// @brief Получить координаты элемента
             /// @return Функция возвращает _coord
-            Coord GetCoord() const;
+            const Coord& GetCoord() const;
 
             /// @brief Повернуть элемент
             /// @param NewAngle Новый угол наклона

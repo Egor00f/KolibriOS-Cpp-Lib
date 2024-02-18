@@ -132,7 +132,7 @@ namespace KolibriLib
                 void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, std::string Path = DefaultImage);
 
                 /// @brief Отрисовать кнопку
-                void Render();
+                void Render() const;
 
                 /// @brief Обработчик кнопки
                 /// @return Состояние кнопки(Нажата/Ненажата)

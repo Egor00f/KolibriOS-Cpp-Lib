@@ -23,19 +23,21 @@ void UI::Frame::Render()
             switch (_Elements[i]._type)
             {
             case Element::Type::TextLabel:
-                _Elements[i].txt.Render();
+                _Elements[i].txt->Render();
                 break;
             case Element::Type::Button:
-                _Elements[i].btn.Render();
+                _Elements[i].btn->Render();
                 break;
             case Element::Type::Image:
-                _Elements[i].img.Render();
+                _Elements[i].img->Render();
                 break;
             case Element::Type::Form:
-                _Elements[i].frm.Render();
+                _Elements[i].form->Render();
                 break;
             case Element::Type::CheckBox:
-                _Elements[i].ChckBx.Render();
+                _Elements[i].checkbox->Render();
+            case Element::Type::Menu:
+                _Elements[i].menu->Render();
             default:
                 break;
             }
@@ -47,7 +49,13 @@ void UI::Frame::Handler()
 {
     if (Hover())
     {
+        
     }
+}
+
+void KolibriLib::UI::Frame::DeleteElement(unsigned i)
+{
+    _Elements[i].use = false;
 }
 
 template <class T>
@@ -55,31 +63,8 @@ unsigned UI::Frame::AddElement(const T &element)
 {
     Element a;
 
-    switch (sizeof(T))
-    {
-    case sizeof(UI::text::TextLabel):
-        a.txt = element;
-        a._type = Element::Type::TextLabel;
-        break;
-    case sizeof(UI::buttons::Button):
-        a.btn = element;
-        a._type = Element::Type::Button;
-        break;
-    case sizeof(UI::Images::Image):
-        a.img = element;
-        a._type = Element::Type::Image;
-        break;
-    case sizeof(UI::Form):
-        a.frm = element;
-        a._type = Element::Type::Form;
-        break;
-    case sizeof(UI::CheckBox):
-        a.ChckBx = element;
-        a._type = Element::Type::CheckBox;
-        break;
-    default:
-        break;
-    }
+    a.SetElement(element);
+
     a.use = true;
 
     for (unsigned i = 0; i < _Elements.size(); i++) // Ищем свободный элемент
@@ -101,36 +86,10 @@ void UI::Frame::SetElement(unsigned i, const T &element)
 {
     if (i >= _Elements.size())
     {
-        _ksys_debug_puts("KolibriLib::window::Window::SetElement: i >= _Elements.size(), return\n");
+        _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
         return;
     }
-    switch (sizeof(T))
-    {
-    case sizeof(UI::text::TextLabel):
-        _Elements[i].txt = element;
-        _Elements[i]._type = Element::Type::TextLabel;
-        break;
-    case sizeof(UI::buttons::Button):
-        _Elements[i].btn = element;
-        _Elements[i]._type = Element::Type::Button;
-        break;
-    case sizeof(UI::Images::Image):
-        _Elements[i].img = element;
-        _Elements[i]._type = Element::Type::Image;
-        break;
-    case sizeof(UI::Form):
-        _Elements[i].frm = element;
-        _Elements[i]._type = Element::Type::Form;
-        break;
-    case sizeof(UI::CheckBox):
-        _Elements[i].ChckBx = element;
-        _Elements[i]._type = Element::Type::CheckBox;
-        break;
-        break;
-    default:
-        _ksys_debug_puts("KolibriLib::window::Window::AddElement: unknown type, break\n");
-        break;
-    }
+    _Elements[i].SetElement(element);
 }
 
 template <class T>
@@ -138,7 +97,7 @@ T UI::Frame::GetElement(unsigned i) const
 {
     if (i >= _Elements.size())
     {
-        _ksys_debug_puts("KolibriLib::window::Window::SetElement: i >= _Elements.size(), return\n");
+        _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
         return 0;
     }
 
@@ -151,14 +110,105 @@ T UI::Frame::GetElement(unsigned i) const
     case Element::Type::Image:
         return _Elements[i].img;
     case Element::Type::Form:
-        return _Elements[i].frm;
+        return _Elements[i].form;
     case Element::Type::CheckBox:
-        return _Elements[i].ChckBx;
-    case Element::Type::Frame:
-        return _Elements[i].frame;
+        return _Elements[i].checkbox;
     default:
-        _ksys_debug_puts("KolibriLib::window::Window::GetElement: unknown type, break\n");
+        _ksys_debug_puts("KolibriLib::UI::Frame::Element::GetElement: unknown type, break\n");
         break;
     }
     return 0;
+}
+
+Frame::Element::Element()
+{
+    use = false;
+    _type = Type::None;
+}
+
+Frame::Element::~Element()
+{
+    free();
+}
+
+void Frame::Element::free()
+{
+    switch (_type)
+    {
+    case Type::Button:
+        delete btn;
+        break;
+    case Type::Image:
+        delete img;
+        break;
+    case Type::CheckBox:
+        delete checkbox;
+        break;
+    case Type::Form:
+        delete form;
+        break;
+    case Type::TextLabel:
+        delete txt;
+        break;
+    case Type::Menu:
+        delete menu;
+        break;
+    default:
+        break;
+    }
+}
+
+template <class T>
+void Frame::Element::SetElement(const T &elem)
+{
+    _ksys_debug_puts("Error in KolibriLib::UI::Frame::Element::SetElement: unklown type");
+}
+
+//=============================================================================================================================================================
+template <>
+void Frame::Element::SetElement<UI::buttons::Button>(const UI::buttons::Button &elem)
+{
+    free();
+    btn = new UI::buttons::Button(elem);
+    _type = Type::Button;
+}
+
+template <>
+void Frame::Element::SetElement<UI::Images::Image>(const UI::Images::Image &elem)
+{
+    free();
+    img = new UI::Images::Image(elem);
+    _type = Type::Image;
+}
+
+template <>
+void Frame::Element::SetElement<UI::CheckBox>(const UI::CheckBox &elem)
+{
+    free();
+    checkbox = new UI::CheckBox(elem);
+    _type = Type::CheckBox;
+}
+
+template <>
+void Frame::Element::SetElement<UI::Form>(const UI::Form &elem)
+{
+    free();
+    form = new UI::Form(elem);
+    _type = Type::Form;
+}
+
+template <>
+void Frame::Element::SetElement<UI::text::TextLabel>(const UI::text::TextLabel &elem)
+{
+    free();
+    txt = new UI::text::TextLabel(elem);
+    _type = Type::TextLabel;
+}
+
+template <>
+void Frame::Element::SetElement<UI::Menu>(const UI::Menu &elem)
+{
+    free();
+    menu = new UI::Menu(elem);
+    _type = Type::Menu;
 }

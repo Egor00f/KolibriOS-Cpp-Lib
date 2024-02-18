@@ -6,8 +6,10 @@
 
 #include <string>
 
+#include "types.hpp"
 #include "UI.hpp"
 #include "color.hpp"
+#include "image.hpp"
 
 namespace KolibriLib
 {
@@ -59,6 +61,25 @@ namespace KolibriLib
                 _ksys_draw_text(text, coord.x, coord.y, strlen(text), color.val);
             }
 
+            class Text
+            {
+            private:
+                struct image
+                {
+                    unsigned pos;
+                    Images::Image img;
+                };
+                
+                std::string _text;
+                std::vector<image> _imgs;
+            public:
+                Text();
+                ~Text();
+
+                void Render(UI::Coord coord, unsigned FontSize = 9);
+            };
+            
+
             //=============================================================================================================================================================
 
             /// @brief Текстовая метка
@@ -76,7 +97,7 @@ namespace KolibriLib
                 */
 
                 /// @brief Размер текста(высота)
-                unsigned _FontSize;
+                mutable unsigned _FontSize;
 
                 /// @brief (Да/Нет)Подстраивать @link _FontSize, чтобы размер текст соответствовал размеру элемента( @link _size)
                 bool _TextScale;
@@ -94,11 +115,11 @@ namespace KolibriLib
                 ~TextLabel();
 
                 /// @brief Отрисовать текстовую метку
-                void Render();
+                void Render() const;
 
                 /// @brief Получить текст
                 /// @return Функция возвращает @link _text
-                std::string GetText() const;
+                const std::string &GetText() const;
 
                 /// @brief Получить Размер шрифта
                 /// @return Функция возвращает @link _FontSize
@@ -125,6 +146,10 @@ namespace KolibriLib
                 /// @return 
                 TextLabel& operator = (const TextLabel& a);
 
+                /// @brief 
+                /// @param a 
+                /// @return 
+                bool operator == (const TextLabel& a) const;
             };
 
             

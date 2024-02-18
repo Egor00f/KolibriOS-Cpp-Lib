@@ -238,11 +238,11 @@ void buttons::Button::init(const Coord &coord, const Size &size, std::string Pat
     }
 }
 
-void buttons::Button::Render()
+void buttons::Button::Render() const
 {
     if (_active)
     {
-        DefineButton(_coord, _size, _id, _MainColor);
+        buttons::DefineButton(_coord, _size, _id, _MainColor);
 
         switch (_type)
         {

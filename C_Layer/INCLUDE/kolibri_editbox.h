@@ -1,9 +1,8 @@
 #ifndef KOLIBRI_EDITBOX_H
 #define KOLIBRI_EDITBOX_H
 
-
-
-#include "kolibri_colors.h"
+#include <sys/ksys.h>
+#include <kolibriLib/os.hpp>
 
 /*  flags meaning
 ed_figure_only= 1000000000000000b   ;���� �������
@@ -35,8 +34,9 @@ ed_alt_off = not (ed_alt_on)
 ed_disabled=        100000000000b
 */
 
-typedef struct edit_box_t {
-  unsigned int width;
+struct edit_box
+{
+    unsigned int width;
     unsigned int left;
     unsigned int top;
     unsigned int color;
@@ -59,7 +59,7 @@ typedef struct edit_box_t {
     unsigned int shift_old;
     unsigned int height;
     unsigned int char_width;
-}edit_box;
+};
 
 /* Initializes an Editbox with sane settings, sufficient for most use.
    This will let you create a box and position it somewhere on the screen.
@@ -79,35 +79,37 @@ typedef struct edit_box_t {
 edit_box* kolibri_new_edit_box(unsigned int tlx, unsigned int tly, unsigned int max_chars, void *editbox_interlock)
 {
     unsigned int PIXELS_PER_CHAR = 7;
-    edit_box *new_textbox = (edit_box *)calloc(1, sizeof(edit_box));
+    edit_box *new_textbox = new edit_box;
     char *text_buffer = (char *)calloc(max_chars + 2, sizeof(char)); // +2 as asked in box_lib src
 
     /* Update blur_border_color and shift_color from box_lib.mac macro */
     /* edit_boxes_set_sys_color */
 
-    new_textbox -> width = max_chars * PIXELS_PER_CHAR;
-    new_textbox -> left = tlx;
-    new_textbox -> top = tly;
-    new_textbox -> color = 0xFFFFFF; /* Always make white edit boxes */
-    new_textbox -> shift_color = 0x6a9480;
-    new_textbox -> focus_border_color = kolibri_color_table.color_work_graph;
-    new_textbox -> blur_border_color = 0x6a9480;
-    new_textbox -> text_color = kolibri_color_table.color_work_text; /* Always black text when typing */
-    new_textbox -> max = max_chars;
-    new_textbox -> text = text_buffer;
-    new_textbox -> mouse_variable = editbox_interlock;
-    new_textbox -> flags = 0x00000000;
+    new_textbox -> width                = max_chars * PIXELS_PER_CHAR;
+    new_textbox -> left                 = tlx;
+    new_textbox -> top                  = tly;
+    new_textbox -> color                = 0xFFFFFF; /* Always make white edit boxes */
+    new_textbox -> shift_color          = 0x6a9480;
+    new_textbox -> focus_border_color   = KolibriLib::OS::sys_color_table.work_graph;
+    new_textbox -> blur_border_color    = 0x6a9480;
+    new_textbox -> text_color           = KolibriLib::OS::sys_color_table.work_text; /* Always black text when typing */
+    new_textbox -> max                  = max_chars;
+    new_textbox -> text                 = text_buffer;
+    new_textbox -> mouse_variable       = editbox_interlock;
+    new_textbox -> flags                = 0x00000000;
 
     return new_textbox;
 }
 
+extern "C"
+{
 extern void (*edit_box_draw)(edit_box *) __attribute__((__stdcall__));
 
 extern void (*edit_box_key)(edit_box *) __attribute__((__stdcall__));
 /* editbox_key is a wrapper written in assembly to handle key press events for editboxes */
 /* because inline assembly in GCC is a PITA and interferes with the EAX (AH) register */
 /* which edit_box_key requires */
-__attribute__((__stdcall__)) void editbox_key(edit_box *e, oskey_t ch)
+__attribute__((__stdcall__)) void editbox_key(edit_box *e, ksys_oskey_t ch)
 /// ���� flags �� �������� ed_focus, ���������� ����
 /// ���� flags �������� ed_mouse_on ��� ed_disabled, ���������� ����
 /// �� ����� ������� ch - ��� �������, ������ � ������ ASCII
@@ -126,4 +128,5 @@ extern void (*edit_box_mouse)(edit_box *) __attribute__((__stdcall__));
 
 extern void (*edit_box_set_text)(edit_box *, char *) __attribute__((__stdcall__));
 extern volatile unsigned press_key;
+}
 #endif /* KOLIBRI_EDITBOX_H */

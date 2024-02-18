@@ -10,9 +10,6 @@
 #include "input.hpp"
 #include "color.hpp"
 
-
-#include "kolibri_gui.h"
-
 namespace KolibriLib
 {
     namespace UI
@@ -21,8 +18,12 @@ namespace KolibriLib
         class Form : public UIElement
         {
         private:
-            editor* _e;
-            void *_ed_lock;
+            /// @brief Кнопка
+            buttons::Button _butt;
+
+            /// @brief Введённый пользователем текст
+            std::string _inputText;
+
         public:
             /// \brief конструктор
             /// \param coord позиция в коне
@@ -36,7 +37,7 @@ namespace KolibriLib
             void init(Coord coord = {0, 0}, Size size = {32, 16}, std::string BackgroundText = " ", Colors::Color FormColor = OS::sys_color_table.work_text, Colors::Color ButtonTextColor = OS::sys_color_table.work_area, unsigned Margin = DefaultMargin);
 
             /// \brief Отрисовать форму
-            void Render();
+            void Render() const;
 
             /// \brief Обработчик
             void Handler();
@@ -47,15 +48,15 @@ namespace KolibriLib
 
             /// \brief Получить введённый текст
             /// \return @link _inputText (текст который ввели в форму)
-            std::string GetInput() const;
+            const std::string& GetInput() const;
 
             /// @brief Получить цвет фонового текста
             /// @return Цвет фонового текста
-            std::string GetBackgroundText() const;
+            const std::string& GetBackgroundText() const;
 
             /// @brief Получить цвет фона
             /// @return Цвет фона формы
-            Colors::Color GetBackgroundColor() const;
+            const Colors::Color& GetBackgroundColor() const;
 
             /// @brief Изменить фоновый текст
             /// @param NewText текст

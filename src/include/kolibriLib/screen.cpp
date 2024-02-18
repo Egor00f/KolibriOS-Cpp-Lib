@@ -2,13 +2,13 @@
 
 using namespace KolibriLib;
 
-point<unsigned> KolibriLib::GetScreenSize()
+UI::Size KolibriLib::GetScreenSize()
 {
     ksys_pos_t a = _ksys_screen_size();
-    return (point<unsigned>){a.x, a.y};
+    return {(int)a.x, (int)a.y};
 }
 
-Thread::Slot KolibriLib::ScreenPointAffiliation(point<unsigned> POINT)
+Thread::Slot KolibriLib::ScreenPointAffiliation(UI::Coord POINT)
 {
     Thread::Slot s;
     __asm__ __volatile__ (
@@ -19,9 +19,9 @@ Thread::Slot KolibriLib::ScreenPointAffiliation(point<unsigned> POINT)
     return s;
 }
 
-point<unsigned> KolibriLib::GetBackgroundImageSize()
+UI::Size KolibriLib::GetBackgroundImageSize()
 {
-    point<unsigned> p;
+    UI::Size p;
     unsigned a;
     asm_inline(
         "int $0x40"
@@ -42,8 +42,9 @@ Colors::Color KolibriLib::ReadBackgroungImagePoint(point<unsigned> Point)
 
     asm_inline(
         "int $0x40"
-        :"=a"(c)
+        :"=a"(c.val)
         :"a"(39), "b"(2), "c"(s)
     );
+
     return c;
 }

@@ -43,7 +43,7 @@ namespace KolibriLib
 				/// @brief Вывести изображение в окно
 				/// @param size Размер выводимого изображения
 				/// @paragraph Можно растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется
-				void Render(Size size = {0, 0});
+				void Render(Size size = {0, 0}) const;
 
 				/// @brief 
 				/// @param a 

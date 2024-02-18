@@ -22,15 +22,29 @@ namespace KolibriLib
         /// @return 
         point<T> &operator=(const point<T> &p);
 
+        point<T> &operator+(const point<T> &p);
+
+        point<T> &operator-(const point<T> &p);
+
         /// @brief 
         /// @param a 
         /// @return 
         bool operator==(const point<T> &a) const;
         
+        /// @brief Сравнивает равны ли обе координаты(x и y) какому либо числу
+        /// @param a число
+        /// @return 
+        bool operator==(const T& a) const;
+
         /// @brief 
         /// @param a 
         /// @return 
         bool operator!=(const point<T> &a) const;
+
+        /// @brief Сравнивает неравны ли обе координаты(x и y) какому либо числу
+        /// @param a число
+        /// @return
+        bool operator!=(const T &a) const;
     };
 
     namespace UI

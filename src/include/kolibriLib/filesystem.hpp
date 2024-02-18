@@ -20,14 +20,16 @@ namespace KolibriLib
                 Path(std::string path = "/");
                 /// @brief Получить char* строку
                 /// @return Функция возвращает конвертированную строку @link _string
-                const char* GetChars() const;
+                char* GetChars() const;
 
                 /// @brief Получить строку
                 /// @return Функция возвращает @link _string
                 std::string GetString() const;
-
+                
                 Path &operator / (const Path &a);
                 Path &operator / (const std::string &a);
+                Path &operator + (const Path &a);
+                Path &operator + (const std::string &a);
                 Path &operator = (const Path &a);
                 Path &operator = (const std::string &a);
 
@@ -37,6 +39,7 @@ namespace KolibriLib
                 bool operator == (const std::string &a) const;
                 bool operator != (const std::string &a) const;
 
+                
             private:
                 std::string _string;
         };
@@ -90,10 +93,11 @@ namespace KolibriLib
         /// @return true если файл или папка существует, иначе false
         bool Exist(const Path& Path);
 
-        /// @brief Аналог mv
-        /// @param OldName 
-        /// @param NewName 
+        /// @brief Переименовать файл
+        /// @param OldName старое имя файла
+        /// @param NewName новое имя файла
         /// @return  Значение из списка @link Errors
+        /// @paragraph Аналог mv. Имена файлов - это полные пути
         int Rename(const Path& OldName, const Path& NewName);
 
         

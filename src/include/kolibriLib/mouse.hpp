@@ -11,7 +11,15 @@ namespace KolibriLib
     /// @brief Работа с мышью
     namespace mouse
     {
-
+		enum MouseButtons
+		{
+            LeftButton	= 0b1,
+            RightButton	= 0b10,
+            CenterBtton	= 0b100,
+            FourButton	= 0b1000,
+            FiveButton	= 0b10000
+        };
+		
         /// @brief Получить позицияю курсора на экране
         /// @return (point) позиция курсора абсолютно
         inline point<int> GetMousePositionOnSreen();
@@ -27,15 +35,6 @@ namespace KolibriLib
         /// @brief колёсико мыши
         /// @return
         inline uint32_t GetMouseWheels();
-
-        enum MouseButtons
-		{
-            LeftButton	= 0b1,
-            RightButton	= 0b10,
-            CenterBtton	= 0b100,
-            FourButton	= 0b1000,
-            FiveButton	= 0b10000
-        };
 
         /// @brief Эмулировать нажатия кнопок мыши
         /// @param m 

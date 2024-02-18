@@ -1,7 +1,9 @@
 #ifndef __OS_H__
 #define __OS_H__
 
-#include "small.hpp"
+#include <string.h>
+
+#include "types.hpp"
 #include "filesystem.hpp"
 #include "color.hpp"
 
@@ -59,9 +61,11 @@ namespace KolibriLib
         /// \return то что возвращает сама программа, -1 если исполняемы файл не найден
         inline int Exec(const filesystem::Path& AppName, const std::string& args);
 
+
+        typedef ksys_time_t Time;
         /// @brief Получить системное время
         /// @return
-        inline ksys_time_t GetTime();
+        inline Time GetTime();
 
         /// @brief Получить состояние спикера(Вкл/выкл)
         /// @return true если спикер разрешён, иначе false
@@ -74,23 +78,35 @@ namespace KolibriLib
         /// @return размер свободной памяти в килобайтах
         inline unsigned FreeMem();
 
+        /// @brief Получить кол-во всей памяти
         inline unsigned AllMem();
 
+
+
+        /// @brief Список языков системы
+        /// @paragraph PS жаль что так мало языков поддерживается...
         enum lang
         {
+            /// @brief Английский 
             Eng = 0,
+            /// @brief Финский
             Fi,
+            /// @brief Немецкий
             Ger,
+            /// @brief Русский
             Rus
         };
 
+        /// @brief Получить язык системы
+        /// @return Занечение из списка @link lang
         inline int GetLang();
 
     } // namespace OS
 
     /// \brief Подождать
     /// \param time время задержки(в 1/100 секунды)
-    inline void Wait(unsigned time);
+    /// @paragraph Функция просто ждёт, ничего не делает
+    inline void Wait(int time = -1);
 
 } // namespace KolibriLib
 

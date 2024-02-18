@@ -55,6 +55,11 @@ void KolibriLib::window::MinimizeAllWindows()
     );
 }
 
+UI::Coord KolibriLib::window::GetWindowCoord()
+{
+    return mouse::GetMousePositionOnSreen() - mouse::GetMousePositionInWindow();
+}
+
 int KolibriLib::window::GetWindowPos()
 {
     int a;

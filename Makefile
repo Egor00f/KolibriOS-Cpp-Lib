@@ -12,10 +12,10 @@ LIB_NAME = libkcpp
 CONTRIB_DIR = ../contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
-INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I $(SDK_DIR)/sources/libstdc++-v3/include/tr1 -I $(SDK_DIR)/sources/libstdc++-v3/include/mingw32 -I C_Layer/INCLUDE -I C:/MinGW/msys/1.0/home/autobuild/tools/win32/lib/gcc/mingw32/5.4.0/include -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++ C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\mingw32 C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr1 -I C:\MinGW\msys\1.0\home\autobuild\tools\win32\lib\gcc\mingw32\5.4.0\include\c++\tr2
+INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I C_Layer/INCLUDE
 
 #Flags
-CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++14
+CFLAGS = -c -std=c++14
 
 LIB_PATH = src/include/kolibriLib
 
@@ -29,11 +29,17 @@ all: $(LIB_NAME).a install CLAYER clean
 	
 
 $(LIB_NAME).a: $(OBJECTS)
+
+	@echo " "
+	@echo "| -------------------------------------"
+	@echo "making static library..."
 	$(AR) -rcs $(LIB_NAME).a $(OBJECTS)
 
 
 
 install:
+	@echo " "
+	@echo "| -------------------------------------"
 	@echo "| installing lib"
 	@mv $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
 
@@ -42,9 +48,13 @@ CLAYER:
 	$(MAKE) -C C_Layer/ASM
 
 clean:
+	@echo " "
+	@echo "| -------------------------------------"
 	@echo "| clean"
 	@rm $(OBJECTS)
 
 %.o : %.cpp Makefile
+	@echo " "
+	@echo "| -------------------------------------"
 	@echo "| compiling: " $@
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
+	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $< 

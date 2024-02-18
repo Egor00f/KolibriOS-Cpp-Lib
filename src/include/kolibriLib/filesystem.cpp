@@ -3,15 +3,14 @@
 using namespace KolibriLib;
 using namespace filesystem;
 
-
-Path::Path(std::string path)
+KolibriLib::filesystem::Path::Path(std::string path)
 {
     _string = path;
 }
 
-const char *Path::GetChars() const
+char *KolibriLib::filesystem::Path::GetChars() const
 {
-    return _string.c_str();
+    return const_cast<char *>(_string.c_str());
 }
 
 std::string KolibriLib::filesystem::Path::GetString() const
@@ -27,6 +26,19 @@ Path &Path::operator/(const Path &a)
 }
 
 Path &KolibriLib::filesystem::Path::operator/(const std::string &a)
+{
+    _string += a;
+    return *this;
+}
+
+Path &Path::operator+(const Path &a)
+{
+    _string += a._string;
+
+    return *this;
+}
+
+Path &KolibriLib::filesystem::Path::operator+(const std::string &a)
 {
     _string += a;
     return *this;
@@ -81,12 +93,10 @@ int KolibriLib::filesystem::MakeDirectory(const Path &path)
 
 bool KolibriLib::filesystem::Exist(const Path &Path)
 {
-    ksys_bdfe_t *buff;
-    if (_ksys_file_info(Path.GetChars(), buff) > 0)
-    {
-        return true;
-    }
-    return false;
+    ksys_bdfe_t *buff = new ksys_bdfe_t;
+    int a = _ksys_file_info(Path.GetChars(), buff);
+    delete buff;
+    return a > 0;
 }
 
 int KolibriLib::filesystem::Rename(const Path &OldName, const Path &NewName)

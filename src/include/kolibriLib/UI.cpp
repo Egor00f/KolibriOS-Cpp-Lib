@@ -8,14 +8,14 @@ KolibriLib::UI::UIElement::UIElement(const Coord & coord, const Size & size, con
 #if DEBUG == true
     _ksys_debug_puts("UIElement:");
 #endif
-    _coord = (Coord){coord.x, coord.y + window::GetSkinHeight()};
+    _coord = (Coord){coord.x, coord.y + (int)window::GetSkinHeight()};
     _size = size;
     _MainColor = MainColor;
     _Margin = Margin;
     _relative = relative;
 }
 
-Size KolibriLib::UI::UIElement::GetSize() const
+const Size& KolibriLib::UI::UIElement::GetSize() const
 {
     return _size;
 }
@@ -30,7 +30,7 @@ unsigned KolibriLib::UI::UIElement::GetMargin() const
     return _Margin;
 }
 
-Colors::Color KolibriLib::UI::UIElement::GetColor() const
+const Colors::Color& KolibriLib::UI::UIElement::GetColor() const
 {
     return _MainColor;
 }
@@ -45,7 +45,7 @@ void KolibriLib::UI::UIElement::SetCoord(const Coord &NewCoord)
     _coord = NewCoord;
 }
 
-Coord KolibriLib::UI::UIElement::GetCoord() const
+const Coord& KolibriLib::UI::UIElement::GetCoord() const
 {
     return _coord;
 }
@@ -62,9 +62,9 @@ unsigned KolibriLib::UI::UIElement::GetRotate() const
 
 bool KolibriLib::UI::UIElement::Hover() const
 {
-    Coord mouse = mouse::GetMousePositionInWindow();
+    Coord Mouse = mouse::GetMousePositionInWindow();
 
-    return (_coord.x < mouse.x) && (_coord.y < mouse.y) && (mouse.x < (_coord.x + _size.x)) && (mouse.y < (_coord.y + _size.y));
+    return ((_coord.x < Mouse.x) && (_coord.y < Mouse.y) && (Mouse.x < (_coord.x + _size.x)) && (Mouse.y < (_coord.y + _size.y))) && (ScreenPointAffiliation(Mouse) == Thread::GetThreadSlot(Thread::GetThreadInfo(-1).pid));
 }
 
 UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
