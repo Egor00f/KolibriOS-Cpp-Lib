@@ -53,15 +53,18 @@ namespace KolibriLib
         Color BlendColors(const Color& a, const Color& b);
 
         /// @brief Таблица цветов по умолчанию
-        const ColorsTable DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+        /// @brief Таблица цветов
+        struct ColorsTable : public ksys_colors_table_t
+        {
+            ColorsTable(ksys_colors_table_t table = DefaultColorTable);
+            
+            bool operator == (const ColorsTable &table) const;
+            bool operator != (const ColorsTable &table) const;
+        };
 
-        /// @brief Сравнить две таблица цветов
-        /// @param a таблица первая
-        /// @param b таблица вторая
-        /// @return true если таблицы равны, иначе false
-        bool ComparisonColorsTables(const ColorsTable& a, const ColorsTable& b);
-
+        
         
     }
 } // namespace KolibriLib

@@ -15,7 +15,7 @@ SDK_DIR = $(CONTRIB_DIR)/sdk
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I C_Layer/INCLUDE
 
 #Flags
-CFLAGS = -c -std=c++14
+CFLAGS = -c -std=c++11 -fpermissive
 
 LIB_PATH = src/include/kolibriLib
 

@@ -12,11 +12,6 @@ Color KolibriLib::Colors::BlendColors(const Color &a, const Color &b)
     return result;
 }
 
-bool KolibriLib::Colors::ComparisonColorsTables(const ColorsTable &a, const ColorsTable &b)
-{
-    return (a.frame_area == b.frame_area) && (a.grab_bar == b.grab_bar) && (a.grab_bar_button == b.grab_bar_button) && (a.grab_button_text == b.grab_button_text);
-}
-
 KolibriLib::Colors::Color::Color(ksys_color_t a)
 {
     val = a;
@@ -56,4 +51,31 @@ bool KolibriLib::Colors::Color::operator==(const Color &a) const
 bool KolibriLib::Colors::Color::operator!=(const Color &a) const
 {
     return val != a.val;
+}
+
+KolibriLib::Colors::ColorsTable::ColorsTable(ksys_colors_table_t table)
+{
+    work_area = table.work_area;
+    work_button = table.work_button;
+    work_button_text = table.work_button_text;
+}
+
+bool KolibriLib::Colors::ColorsTable::operator==(const ColorsTable &table) const
+{
+    return (frame_area == table.frame_area) &&
+           (grab_bar == table.grab_bar) &&
+           (grab_bar_button == table.grab_bar_button) &&
+           (grab_button_text == table.grab_button_text) &&
+           (work_area == table.work_area) &&
+           (work_button == table.work_button);
+}
+
+bool KolibriLib::Colors::ColorsTable::operator!=(const ColorsTable &table) const
+{
+    return (frame_area          != table.frame_area) &&
+           (grab_bar            != table.grab_bar) &&
+           (grab_bar_button     != table.grab_bar_button) &&
+           (grab_button_text    != table.grab_button_text) &&
+           (work_area           != table.work_area) &&
+           (work_button         != table.work_button);
 }

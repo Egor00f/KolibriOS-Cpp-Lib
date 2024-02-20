@@ -6,12 +6,14 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include <type_traits>
 
 
 #include <sys/ksys.h>
 
 #include "types.hpp"
+#include "color.hpp"
 #include "input.hpp"
 #include "os.hpp"
 #include "windowBase.hpp"
@@ -36,6 +38,8 @@ namespace KolibriLib
 
 
 		/// @brief Класс для работы с окном
+		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор
+		/// @paragraph Для тех кто знает: 
 		class Window
 		{
 		private:
@@ -63,8 +67,6 @@ namespace KolibriLib
 				UI::Frame           * frame;
 
 				unsigned _type;
-				unsigned DrawPrioritet;
-				bool use;
 
 				Element();
 				~Element();
@@ -79,7 +81,7 @@ namespace KolibriLib
 			std::string _title;
 
 			/// @brief Список всех кнопок этого окна
-			std::vector<Element> _Elements;
+			std::unordered_map<int, Element> _Elements;
 
 			/// @brief Размеры окна
 			UI::Size _size;
@@ -101,27 +103,13 @@ namespace KolibriLib
 			/// @brief Активная фарма
 			mutable int activeForm = -1;
 
+			mutable int _maxElement = 0;
+
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			mutable bool _Redraw = false;
 
 			/// @brief Окно пересовывается при перетаскивании
 			bool _RealtimeRedraw;
-
-
-			/// @brief Добавить в список новую кнопку
-			/// @param btn кнопка
-			/// @return номер в списке @link _Buttons
-			unsigned AddNewButton(const UI::buttons::Button& btn);
-
-			/// @brief Добавить в список новую текствую метку
-			/// @param text текстовая метка
-			/// @return номер в списке @link _Texts
-			unsigned AddNewTextLabel(UI::text::TextLabel text);
-
-			/// @brief Добавить форму
-			/// @param form Форма
-			/// @return номер в списке @link _Forms
-			unsigned AddNewForm(UI::Form form);
 
 		public:
 			/// @brief Конструктор
@@ -164,14 +152,6 @@ namespace KolibriLib
 			/// @return 
 			const UI::Coord& GetCoord() const;
 
-			/// @brief Отрисовать окно
-			/// @param coord позиция окна
-			/// @param size размер окна
-			/// @param title титул(текст в заголовке)
-			/// @param color цвет рабочей области
-			/// @param style стиль
-			void DrawWindow(UI::Coord coord = mouse::GetMousePositionOnSreen());
-
 			/// @brief Изменить окно
 			/// @param coord позиция
 			/// @param size размер
@@ -188,7 +168,7 @@ namespace KolibriLib
 
 			/// @brief Удалить элемент
 			/// @param id idшник того элемента, которой нужно удалить
-			void DeleteElement(unsigned id);
+			void DeleteElement(int id);
 
 			/// @brief Обработчик окна
 			/// @return Ивент
@@ -200,26 +180,26 @@ namespace KolibriLib
 			/// @brief Получить текст введённый в форму
 			/// @param form номер формы в списке
 			/// @return Функция возвращает текст введённый в формы
-			std::string GetInputFromFrom(unsigned form);
+			const std::string& GetInputFromFrom(int form) const;
 
 			template <class T>
 			/// @brief Добавить UI элемент
 			/// @param element
-			unsigned AddElement(const T &element);
+			int AddElement(const T &element);
 
 			template <class T>
 			/// @brief Изменить элемент
 			/// tparam T
 			/// @param i
 			/// @param element
-			void SetElement(unsigned i, const T& element);
+			void SetElement(int i, const T& element);
 
 			/// @brief
 			/// @tparam T
 			/// @param i
 			/// @return
 			template <class T>
-			T GetElement(unsigned i) const;
+			const T& GetElement(int i) const;
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus() const;

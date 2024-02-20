@@ -5,129 +5,19 @@
 using namespace KolibriLib;
 using namespace UI;
 
-Frame::Frame(const Coord &coord, const Size &size, const Colors::Color &Color, const unsigned &Margin) : UIElement(coord, size, Color, Margin)
-{
-#if DEBUG == true
-    _ksys_debug_puts("Frame constructor\n");
-#endif
-}
-
-void UI::Frame::Render()
-{
-    graphic::DrawRectangleFill(_coord, _size, _MainColor);
-
-    for (unsigned i = 0; i < _Elements.size(); i++)
-    {
-        if (_Elements[i].use)
-        {
-            switch (_Elements[i]._type)
-            {
-            case Element::Type::TextLabel:
-                _Elements[i].txt->Render();
-                break;
-            case Element::Type::Button:
-                _Elements[i].btn->Render();
-                break;
-            case Element::Type::Image:
-                _Elements[i].img->Render();
-                break;
-            case Element::Type::Form:
-                _Elements[i].form->Render();
-                break;
-            case Element::Type::CheckBox:
-                _Elements[i].checkbox->Render();
-            case Element::Type::Menu:
-                _Elements[i].menu->Render();
-            default:
-                break;
-            }
-        }
-    }
-}
-
-void UI::Frame::Handler()
-{
-    if (Hover())
-    {
-        
-    }
-}
-
-void KolibriLib::UI::Frame::DeleteElement(unsigned i)
-{
-    _Elements[i].use = false;
-}
-
-template <class T>
-unsigned UI::Frame::AddElement(const T &element)
-{
-    Element a;
-
-    a.SetElement(element);
-
-    a.use = true;
-
-    for (unsigned i = 0; i < _Elements.size(); i++) // Ищем свободный элемент
-    {
-        if (!_Elements[i].use)
-        {
-            _Elements[i] = a;
-            return i;
-        }
-    }
-
-    _Elements.push_back(a);
-
-    return _Elements.size() - 1;
-}
-
-template <class T>
-void UI::Frame::SetElement(unsigned i, const T &element)
-{
-    if (i >= _Elements.size())
-    {
-        _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
-        return;
-    }
-    _Elements[i].SetElement(element);
-}
-
-template <class T>
-T UI::Frame::GetElement(unsigned i) const
-{
-    if (i >= _Elements.size())
-    {
-        _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
-        return 0;
-    }
-
-    switch (_Elements[i]._type)
-    {
-    case Element::Type::TextLabel:
-        return _Elements[i].txt;
-    case Element::Type::Button:
-        return _Elements[i].btn;
-    case Element::Type::Image:
-        return _Elements[i].img;
-    case Element::Type::Form:
-        return _Elements[i].form;
-    case Element::Type::CheckBox:
-        return _Elements[i].checkbox;
-    default:
-        _ksys_debug_puts("KolibriLib::UI::Frame::Element::GetElement: unknown type, break\n");
-        break;
-    }
-    return 0;
-}
-
 Frame::Element::Element()
 {
-    use = false;
+    #if DEBUG == true
+    _ksys_debug_puts("KolibriLib::Frame::Element constructor\n");
+    #endif
     _type = Type::None;
 }
 
 Frame::Element::~Element()
 {
+    #if DEBUG == true
+    _ksys_debug_puts("KolibriLib::Frame::Element destructor\n");
+    #endif
     free();
 }
 
@@ -159,14 +49,14 @@ void Frame::Element::free()
 }
 
 template <class T>
-void Frame::Element::SetElement(const T &elem)
+void Frame::Element::SetElement(const T& elem)
 {
     _ksys_debug_puts("Error in KolibriLib::UI::Frame::Element::SetElement: unklown type");
 }
 
 //=============================================================================================================================================================
 template <>
-void Frame::Element::SetElement<UI::buttons::Button>(const UI::buttons::Button &elem)
+void Frame::Element::SetElement<UI::buttons::Button>(const UI::buttons::Button& elem)
 {
     free();
     btn = new UI::buttons::Button(elem);
@@ -174,7 +64,7 @@ void Frame::Element::SetElement<UI::buttons::Button>(const UI::buttons::Button &
 }
 
 template <>
-void Frame::Element::SetElement<UI::Images::Image>(const UI::Images::Image &elem)
+void Frame::Element::SetElement<UI::Images::Image>(const UI::Images::Image& elem)
 {
     free();
     img = new UI::Images::Image(elem);
@@ -182,7 +72,7 @@ void Frame::Element::SetElement<UI::Images::Image>(const UI::Images::Image &elem
 }
 
 template <>
-void Frame::Element::SetElement<UI::CheckBox>(const UI::CheckBox &elem)
+void Frame::Element::SetElement<UI::CheckBox>(const UI::CheckBox& elem)
 {
     free();
     checkbox = new UI::CheckBox(elem);
@@ -190,7 +80,7 @@ void Frame::Element::SetElement<UI::CheckBox>(const UI::CheckBox &elem)
 }
 
 template <>
-void Frame::Element::SetElement<UI::Form>(const UI::Form &elem)
+void Frame::Element::SetElement<UI::Form>(const UI::Form& elem)
 {
     free();
     form = new UI::Form(elem);
@@ -198,7 +88,7 @@ void Frame::Element::SetElement<UI::Form>(const UI::Form &elem)
 }
 
 template <>
-void Frame::Element::SetElement<UI::text::TextLabel>(const UI::text::TextLabel &elem)
+void Frame::Element::SetElement<UI::text::TextLabel>(const UI::text::TextLabel& elem)
 {
     free();
     txt = new UI::text::TextLabel(elem);
@@ -206,9 +96,110 @@ void Frame::Element::SetElement<UI::text::TextLabel>(const UI::text::TextLabel &
 }
 
 template <>
-void Frame::Element::SetElement<UI::Menu>(const UI::Menu &elem)
+void Frame::Element::SetElement<UI::Menu>(const UI::Menu& elem)
 {
     free();
     menu = new UI::Menu(elem);
     _type = Type::Menu;
+}
+
+Frame::Frame(const Coord &coord, const Size &size, const Colors::Color &Color, const unsigned &Margin) : UIElement(coord, size, Color, Margin)
+{
+    #if DEBUG == true
+    _ksys_debug_puts("Frame constructor\n");
+    #endif
+}
+
+void UI::Frame::Render()
+{
+    graphic::DrawRectangleFill(_coord, _size, _MainColor);
+
+    if(_maxElement == 0)
+    {
+        return;
+    }
+
+    int* i = new int(0);
+    do
+    {
+        switch (_Elements[*i]._type)
+        {
+        case Element::Type::TextLabel:
+            _Elements[*i].txt->Render();
+            break;
+        case Element::Type::Button:
+            _Elements[*i].btn->Render();
+            break;
+        case Element::Type::Image:
+            _Elements[*i].img->Render();
+            break;
+        case Element::Type::Form:
+            _Elements[*i].form->Render();
+            break;
+        case Element::Type::CheckBox:
+            _Elements[*i].checkbox->Render();
+            break;
+        case Element::Type::Menu:
+            _Elements[*i].menu->Render();
+            break;
+        default:
+            break;
+        }
+        *i++;
+    }while(*i < _maxElement);
+    delete i;
+}
+
+void UI::Frame::Handler()
+{
+    if (Hover())
+    {
+        
+    }
+}
+
+void KolibriLib::UI::Frame::DeleteElement(int i)
+{
+    if(_Elements.count(i)) //Проверка что элемент с таким ключом
+    {
+        _Elements.erase(i);
+    }
+}
+
+template <class T>
+unsigned UI::Frame::AddElement(const T &element)
+{
+    for (unsigned i = 0; i < _Elements.max_size(); i++)
+    {
+        if (_Elements.count(i) == 0)    //Если элемента с таким ключём не существует
+        {
+            _Elements[i].SetElement(element);
+            if(i > _maxElement)
+            {
+                _maxElement = i;
+            }
+            return i;
+        }
+    }
+    
+    _ksys_debug_puts("KolibriLib::UI::Frame::_Elements is overflow\n");
+}
+template <class T>
+void UI::Frame::SetElement(int i, const T &element)
+{
+    if (_Elements.count(i))
+    {
+        _Elements[i].SetElement(element);
+        return;
+    }
+    _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
+}
+
+const Frame::Element& UI::Frame::GetElement(int i)
+{
+    if (_Elements.count(i))
+    {
+        return _Elements[i];
+    }
+    _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
 }

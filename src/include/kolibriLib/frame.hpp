@@ -1,9 +1,7 @@
 #ifndef __FRAME_H__
 #define __FRAME_H__
 
-
-#include <vector>
-#include <type_traits>
+#include <unordered_map>
 
 #include "graphic.hpp"
 #include "UI.hpp"
@@ -20,11 +18,14 @@ namespace KolibriLib
     namespace UI
     {
 
+        /// @brief Фрейм
+        /// @paragraph Может содержать другие элементы 
         class Frame: public UIElement
         {
         private:
             struct Element
             {
+                // Список типов с которыми умеет работать элемент
                 enum Type
 				{
 					None = 0,
@@ -44,21 +45,30 @@ namespace KolibriLib
 				UI::text::TextLabel * txt;
 				UI::Menu            * menu;
 
+				// хранит тип данных который хранит этот элемент
 				unsigned _type;
-				unsigned DrawPrioritet;
-				bool use;
 
+				/// @brief 
 				Element();
 				~Element();
 
+				/// @brief 
+				/// @tparam T 
+				/// @param elem 
 				template <class T>
 				void SetElement(const T& elem);
 
 				void free();
             };
-            std::vector<Element> _Elements;
+            std::unordered_map<int, Element> _Elements;
+            int _maxElement = 0;
             bool _scroll;
         public:
+            /// @brief 
+            /// @param coord 
+            /// @param size 
+            /// @param Color 
+            /// @param Margin 
             Frame(const Coord &coord = {0,0}, const Size &size = {0,0}, const Colors::Color &Color = OS::sys_color_table.work_area, const unsigned &Margin = DefaultMargin);
             
 
@@ -79,18 +89,16 @@ namespace KolibriLib
             /// tparam T
             /// @param i номер элемента
             /// @param element
-            void SetElement(unsigned i, const T &element);
+            void SetElement(int i, const T &element);
 
             /// @brief Полчить элемент
-            /// @tparam T
             /// @param i номер элемента
             /// @return
-            template <class T>
-            T GetElement(unsigned i) const;
+            const Element& GetElement(int i);
 
             /// @brief Удалить элемент из фрейма
             /// @param i Номер элемента
-            void DeleteElement(unsigned i);
+            void DeleteElement(int i);
         };
     } // namespace UI
 } // namespace KolibriLib

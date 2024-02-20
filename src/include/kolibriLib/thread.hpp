@@ -48,6 +48,7 @@ namespace KolibriLib
         /// \param ThreadEntry Имя функции которую нужно запустить в новом потоке
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
+        /// @paragraph Используйте лучше std::thread, а не эту функцию, а то я вот вообще незнаю сколько размер стека сделать
         PID CreateThread(void(*ThreadEntry)(void*), unsigned ThreadStackSize = 1024);
 
         /// @brief Завершить процесс/поток

@@ -56,8 +56,7 @@ namespace KolibriLib
 
     namespace Colors
     {
-        /// @brief Таблица цветов
-        typedef ksys_colors_table_t ColorsTable;
+        
     } // namespace Colors
 
 

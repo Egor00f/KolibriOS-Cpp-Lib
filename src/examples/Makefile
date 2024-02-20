@@ -33,9 +33,9 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 ############### C Layer ############
 #                    
-#       Change it   || 
-#                  \||/
-#                   \/
+#      Change it     || 
+#   (for u project) \||/
+#                    \/
 C_LAYER_DIR = ../../C_Layer
 C_LAYER_OBJ = $(C_LAYER_DIR)/OBJ/loadlibimg.obj
 ####################################
