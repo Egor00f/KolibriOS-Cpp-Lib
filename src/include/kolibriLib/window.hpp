@@ -103,8 +103,6 @@ namespace KolibriLib
 			/// @brief Активная фарма
 			mutable int activeForm = -1;
 
-			mutable int _maxElement = 0;
-
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			mutable bool _Redraw = false;
 
@@ -122,18 +120,18 @@ namespace KolibriLib
 			~Window();
 
 			/// @brief Полная перересовка окна
-			void Redraw();
+			void Redraw() ;
 
 			/// @brief Отрисовать окно
-			void Render(UI::Coord coord = DefaultWindowCoord);
+			void Render(const UI::Coord& coord = DefaultWindowCoord);
 
 			/// @brief Получить рамер отступов в этом окне
 			/// @return @link _MARGIN
-			unsigned GetMargin();
+			unsigned GetMargin() const;
 
 			/// @brief Получить размер окна
 			/// @return @link _size
-			UI::Size GetSize();
+			const UI::Size& GetSize() const;
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
@@ -142,11 +140,11 @@ namespace KolibriLib
 			/// @brief Начать перересовку окна
 			/// @paragraph Стирает всё что было нарисованно в окне
 			/// @paragraph Обязательно после должна быть вызвана функция #EndRedraw()
-			void StartRedraw();
+			void StartRedraw() const;
 
 			/// @brief Закончить перересовку окна
 			/// @paragraph Обязательно после должна быть вызвана функция #StartRedraw()
-			void EndRedraw();
+			void EndRedraw() const;
 
 			/// @brief Получить координаты окна
 			/// @return 
@@ -155,7 +153,7 @@ namespace KolibriLib
 			/// @brief Изменить окно
 			/// @param coord позиция
 			/// @param size размер
-			void ChangeWindow(UI::Coord coord, UI::Size size);
+			void ChangeWindow(const UI::Coord& coord, const UI::Size& size);
 
 			/// @brief Изменить заголовок окна
 			/// @param newTitle новый заголовок
@@ -164,7 +162,7 @@ namespace KolibriLib
 			/// @brief Получить размер окна
 			/// @return point.x - ширина окна,
 			/// @return point.y - высота окна
-			UI::Size GetWindowSize();
+			const UI::Size& GetWindowSize() const;
 
 			/// @brief Удалить элемент
 			/// @param id idшник того элемента, которой нужно удалить

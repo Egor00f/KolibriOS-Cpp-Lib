@@ -114,40 +114,32 @@ void UI::Frame::Render()
 {
     graphic::DrawRectangleFill(_coord, _size, _MainColor);
 
-    if(_maxElement == 0)
+    for (const std::pair<int, Element> &n : _Elements)
     {
-        return;
-    }
-
-    int* i = new int(0);
-    do
-    {
-        switch (_Elements[*i]._type)
+        switch (n.second._type)
         {
         case Element::Type::TextLabel:
-            _Elements[*i].txt->Render();
+            n.second.txt->Render();
             break;
         case Element::Type::Button:
-            _Elements[*i].btn->Render();
+            n.second.btn->Render();
             break;
         case Element::Type::Image:
-            _Elements[*i].img->Render();
+            n.second.img->Render();
             break;
         case Element::Type::Form:
-            _Elements[*i].form->Render();
+            n.second.form->Render();
             break;
         case Element::Type::CheckBox:
-            _Elements[*i].checkbox->Render();
+            n.second.checkbox->Render();
             break;
         case Element::Type::Menu:
-            _Elements[*i].menu->Render();
+            n.second.menu->Render();
             break;
         default:
             break;
         }
-        *i++;
-    }while(*i < _maxElement);
-    delete i;
+    }
 }
 
 void UI::Frame::Handler()
@@ -164,25 +156,19 @@ void KolibriLib::UI::Frame::DeleteElement(int i)
     {
         _Elements.erase(i);
     }
+    _ksys_debug_puts("KolibriLib::UI::Frame::DeleteElement: \n");
 }
 
 template <class T>
 unsigned UI::Frame::AddElement(const T &element)
 {
-    for (unsigned i = 0; i < _Elements.max_size(); i++)
-    {
-        if (_Elements.count(i) == 0)    //Если элемента с таким ключём не существует
-        {
-            _Elements[i].SetElement(element);
-            if(i > _maxElement)
-            {
-                _maxElement = i;
-            }
-            return i;
-        }
-    }
+    Element a;
+    a.SetElement(element);
+
+    auto p = _Elements.emplace(a);
+    return p.first;
     
-    _ksys_debug_puts("KolibriLib::UI::Frame::_Elements is overflow\n");
+    _ksys_debug_puts("KolibriLib::UI::Frame::AddElement _Elements is overflow\n");
 }
 template <class T>
 void UI::Frame::SetElement(int i, const T &element)
@@ -195,11 +181,11 @@ void UI::Frame::SetElement(int i, const T &element)
     _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
 }
 
-const Frame::Element& UI::Frame::GetElement(int i)
+const Frame::Element& UI::Frame::GetElement(int i) const
 {
     if (_Elements.count(i))
     {
-        return _Elements[i];
+        return _Elements.at(i);
     }
     _ksys_debug_puts("KolibriLib::UI::Frame::Element::SetElement: i >= _Elements.size(), return\n");
 }

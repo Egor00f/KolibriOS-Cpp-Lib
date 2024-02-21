@@ -61,7 +61,6 @@ namespace KolibriLib
 				void free();
             };
             std::unordered_map<int, Element> _Elements;
-            int _maxElement = 0;
             bool _scroll;
         public:
             /// @brief 
@@ -94,7 +93,7 @@ namespace KolibriLib
             /// @brief Полчить элемент
             /// @param i номер элемента
             /// @return
-            const Element& GetElement(int i);
+            const Element& GetElement(int i) const;
 
             /// @brief Удалить элемент из фрейма
             /// @param i Номер элемента

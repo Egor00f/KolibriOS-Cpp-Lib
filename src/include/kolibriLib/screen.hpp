@@ -12,22 +12,26 @@ namespace KolibriLib
 {
     /// @brief Получить разрешение экрана
     /// @return размер экрана
-    UI::Size GetScreenSize();
+    inline UI::Size GetScreenSize()
+    {
+        ksys_pos_t a = _ksys_screen_size();
+        return {a.x, a.y};
+    }
 
     /// @brief Получить принадлежность точки
     /// @param POINT точка на экране
     /// @return слот окна которому принадлежит точка
-    Thread::Slot ScreenPointAffiliation(UI::Coord POINT);
+    inline Thread::Slot ScreenPointAffiliation(UI::Coord POINT)
+    {
+        Thread::Slot s;
+        __asm__ __volatile__(
+            "int $0x40"
+            : "=a"(s)
+            : "a"(34), "b"(POINT.x), "c"(POINT.y)
+            );
+        return s;
+    }
 
-
-    /// @brief Получить размеры фонового изображения
-    /// @return 
-    UI::Size GetBackgroundImageSize();
-
-    /// @brief Прочитать точку на фоне
-    /// @param Point читаема точка
-    /// @return 
-    Colors::Color ReadBackgroungImagePoint(point<unsigned> Point);
 }
 
 

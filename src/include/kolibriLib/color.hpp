@@ -17,6 +17,7 @@ namespace KolibriLib
             uint8_t green;
             uint8_t blue;
         };
+        
         /// @brief Цвет
         union Color
         {
@@ -46,11 +47,6 @@ namespace KolibriLib
             bool operator != (const Color& a)const;
         };
         
-        /// @brief Смешать 2 цвета
-        /// @param a первый цвет
-        /// @param b второй цвет
-        /// @return Смешение цветов a и b
-        Color BlendColors(const Color& a, const Color& b);
 
         /// @brief Таблица цветов по умолчанию
         const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

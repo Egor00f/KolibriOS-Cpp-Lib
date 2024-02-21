@@ -12,14 +12,14 @@ void RenderMessageWindow(void*)
 
     UI::Size WindowSize = window.GetSize();
 
-    window.CreateText(UI::text::TextLabel({(int)window.GetMargin(), (int)window.GetMargin()}, {WindowSize.x, WindowSize.y / 2}, _Message));
+    window.AddElement(UI::text::TextLabel({(int)window.GetMargin(), (int)window.GetMargin()}, {WindowSize.x, WindowSize.y / 2}, _Message));
 
     const unsigned ButtonSize = 40;
 
     UI::buttons::Button OK({(int)WindowSize.x - (int)window.GetMargin(), WindowSize.y / 2}, {ButtonSize, WindowSize.y / 2}, 0);
     OK.SetText("Ok");
 
-    unsigned ok = window.CreateButton(OK);
+    unsigned ok = window.AddElement(OK);
     
     OK.~Button();
 
@@ -32,7 +32,7 @@ void RenderMessageWindow(void*)
         if(event = OS::Events::Exit)
         {
             window.~Window();
-            return;
+            _ksys_exit();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace KolibriLib
                 char name[12];                  // process/thread name
                 uint32_t memstart;              // process address in memory
                 uint32_t memused;               // used memory size - 1
-                PID pid;                        // identifier (PID/TID)
+                int pid;                        // identifier (PID/TID)
                 int winx_start;                 // window x-coordinate
                 int winy_start;                 // window y-coordinate
                 int winx_size;                  // x-axis flow window size
@@ -55,19 +55,29 @@ namespace KolibriLib
         /// @param PID ID Процесса/потока
         /// @return true если успешно, инач false
         /// @paragraph Нельзя завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс
-        bool TerminateThread(PID pid);
+        inline bool TerminateThread(PID pid)
+        {
+            int a;
+            asm_inline(
+                "int $0x40"
+                : "=a"(a)
+                : "a"(18), "b"(18), "c"(pid));
+            return !a;
+        }
 
         /// @brief Получить слот потока
         /// @param pid поток
         /// @return Слот потока pid
-        Slot GetThreadSlot(PID pid);
-
+        Slot GetThreadSlot(const PID& pid)
+        {
+            return _ksys_get_thread_slot(pid);
+        }
 
         /// @brief Поличть информацию о потоке
         /// @param thread слот потока
         /// @return информация о потоке
         /// @paragraph если слот -1 то возвращается информация о текущем потоке
-        ThreadInfo GetThreadInfo(Slot thread);
+        ThreadInfo GetThreadInfo(const Slot& thread);
 
 
 

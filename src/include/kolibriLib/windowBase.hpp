@@ -66,6 +66,7 @@ namespace KolibriLib
                   "d"((style << 24) | (WorkColor.val & 0xFFFFFF)),
                   "D"(t),
                   "S"(TitleColor.val)
+                  :"memory"
                 );
             
         }

@@ -170,44 +170,40 @@ void KolibriLib::window::Window::Redraw()
     window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style);
     graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
 
-    for (int i = 0; i < _maxElement; i++)
+    for (const std::pair<int, Element> &n : _Elements)
     {
-        auto it = _Elements.find(i);
-        if (it != _Elements.end())
+        switch (n.second._type)
         {
-            switch (_Elements[i]._type)
-            {
-            case Element::Type::TextLabel:
-                _Elements[i].txt->Render();
-                break;
-            case Element::Type::Button:
-                _Elements[i].btn->Render();
-                break;
-            case Element::Type::Image:
-                _Elements[i].img->Render();
-                break;
-            case Element::Type::Form:
-                _Elements[i].form->Render();
-                break;
-            case Element::Type::CheckBox:
-                _Elements[i].checkbox->Render();
-                break;
-            case Element::Type::Frame:
-                _Elements[i].frame->Render();
-                break;
-            case Element::Type::Menu:
-                _Elements[i].menu->Render();
-                break;
-            default:
-                _ksys_debug_puts("KolibriLib::window::Window::Render unknown type, break\n");
-                break;
-            }
+        case Element::Type::TextLabel:
+            n.second.txt->Render();
+            break;
+        case Element::Type::Button:
+            n.second.btn->Render();
+            break;
+        case Element::Type::Image:
+            n.second.img->Render();
+            break;
+        case Element::Type::Form:
+            n.second.form->Render();
+            break;
+        case Element::Type::CheckBox:
+            n.second.checkbox->Render();
+            break;
+        case Element::Type::Frame:
+            n.second.frame->Render();
+            break;
+        case Element::Type::Menu:
+            n.second.menu->Render();
+            break;
+        default:
+            _ksys_debug_puts("KolibriLib::window::Window::Render unknown type, break\n");
+            break;
         }
     }
 
     if (_Transparency != 0) // Прозрачность окна
     {
-        point<unsigned> size = GetWindowSize();
+        UI::Size size = GetWindowSize();
         for (unsigned i = 0; i < size.y; i++)
         {
             for (unsigned j = 0; j < size.x; j++)
@@ -225,13 +221,13 @@ void Window::SetWindowColors(const Colors::ColorsTable &colorTable)
     _colors = colorTable;
 }
 
-void Window::StartRedraw()
+void Window::StartRedraw() const
 {
     _ksys_start_draw();
     _Redraw = true;
 }
 
-void Window::EndRedraw()
+void Window::EndRedraw() const
 {
     if (_Redraw)
     {
@@ -245,7 +241,7 @@ const UI::Coord &KolibriLib::window::Window::GetCoord() const
     window::GetWindowCoord();
 }
 
-void Window::ChangeWindow(UI::Coord coord, UI::Size size)
+void Window::ChangeWindow(const UI::Coord& coord, const UI::Size& size)
 {
     _size = size;
     _ksys_change_window(coord.x, coord.y, size.x, size.y);
@@ -256,24 +252,43 @@ void Window::ChangeTilte(const std::string &newTitle)
     _ksys_set_window_title(newTitle.c_str());
 }
 
-UI::Size Window::GetWindowSize()
+const UI::Size& Window::GetWindowSize() const
 {
     return _size;
 }
-void Window::Render(UI::Coord coord)
+
+void Window::Render(const UI::Coord& coord)
 {
     StartRedraw();
     window::CreateWindow(coord, _size, _title, _colors.frame_area, _TitleColor, _style);
 
-    for (int i = 0; i < _maxElement; i++)
+    for (const std::pair<int, Element> &n : _Elements)
     {
-        auto it = _Elements.find(i);
-        if (it != _Elements.end())
+        switch (n.second._type)
         {
-            if(it->second._type == Element::Type::Button)
-            {
-                it->second.btn->Render();
-            }
+        case Element::Type::TextLabel:
+            n.second.txt->Render();
+            break;
+        case Element::Type::Button:
+            n.second.btn->Render();
+            break;
+        case Element::Type::Image:
+            n.second.img->Render();
+            break;
+        case Element::Type::Form:
+            n.second.form->Render();
+            break;
+        case Element::Type::CheckBox:
+            n.second.checkbox->Render();
+            break;
+        case Element::Type::Menu:
+            n.second.menu->Render();
+            break;
+        case Element::Type::Frame:
+            n.second.frame->Render();
+            break;
+        default:
+            break;
         }
     }
 
@@ -292,12 +307,12 @@ void Window::Render(UI::Coord coord)
     EndRedraw();
 }
 
-unsigned Window::GetMargin()
+unsigned Window::GetMargin() const
 {
     return _MARGIN;
 }
 
-UI::Size Window::GetSize()
+const UI::Size& Window::GetSize() const
 {
     return _size;
 }
@@ -305,13 +320,13 @@ UI::Size Window::GetSize()
 
 void Window::DeleteElement(int id)
 {
-    if(_Elements.count(i))
+    if(_Elements.count(id))
     {
-        _Elements.erase(id);
-        if(id == _maxElement)
+        if(activeForm == id)
         {
-            
+            activeForm = -1;
         }
+        _Elements.erase(id);
     }
 
 }
@@ -334,20 +349,16 @@ OS::Event Window::Handler()
             return OS::Events::Exit;
         }
 
-        for (int i = 0; i < _maxElement; i++) // Запуск обработчиков всех используемых элементов
+        for (const std::pair<int, Element> &n : _Elements) // Запуск обработчиков всех используемых элементов
         {
-            auto it = _Elements.find(i);
-            if (it != _Elements.end())
+            switch (n.second._type)
             {
-                switch (it->second._type)
-                {
-                case Element::Type::Form:
-                    it->second.form->ButtonHandler();
-                case Element::CheckBox:
-                    it->second.checkbox->Handler();
-                case Element::Button:
-                    it->second.btn->Handler();
-                }
+            case Element::Type::Form:
+                n.second.form->ButtonHandler();
+            case Element::CheckBox:
+                n.second.checkbox->Handler();
+            case Element::Button:
+                n.second.btn->Handler();
             }
         }
 
@@ -379,13 +390,13 @@ OS::Event Window::Handler()
 
 UI::buttons::ButtonID Window::GetPressedButton()
 {
-    for (int i = 0; i < _Elements.size(); i++)
+    for (const std::pair<int, Element> &n : _Elements)
     {
-        if (_Elements[i]._type == Element::Type::Button)
+        if (n.second._type == Element::Type::Button)
         {
-            if (_Elements[i].btn->GetStatus())
+            if (n.second.btn->GetStatus())
             {
-                return _Elements[i].btn->GetId();
+                return n.second.btn->GetId();
             }
         }
     }
@@ -393,7 +404,7 @@ UI::buttons::ButtonID Window::GetPressedButton()
 const std::string& Window::GetInputFromFrom(int form) const
 {
     auto it = _Elements.find(form);
-    if (it != _Elements.end())
+    if (it->second._type == Window::Element::Type::Form)
     {
         return it->second.form->GetInput();
     }
@@ -416,24 +427,11 @@ int Window::AddElement(const T &element)
     
     a.SetElement(element);
 
-    
+    auto it = _Elements.emplace(a);
+    return it.first;
 
-    for (unsigned i = 0; i < _Elements.max_size(); i++) // Ищем свободный элемент
-    {
-        if (_Elements.count(i) == 0)
-        {
-            _Elements[i] = a;
 
-            if(i > _maxElement)
-            {
-                _maxElement = i;
-            }
-
-            return i;
-        }
-    }
-
-    return -1;
+    //return -1;
 }
 
 template <class T>

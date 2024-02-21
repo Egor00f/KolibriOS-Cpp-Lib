@@ -3,15 +3,6 @@
 using namespace KolibriLib;
 using namespace Colors;
 
-Color KolibriLib::Colors::BlendColors(const Color &a, const Color &b)
-{
-    Color result;
-    result.red = (a.red + b.red) / 2; // Среднее арифметическое
-    result.green = (a.green + b.green) / 2;
-    result.blue = (a.blue + b.blue) / 2;
-    return result;
-}
-
 KolibriLib::Colors::Color::Color(ksys_color_t a)
 {
     val = a;

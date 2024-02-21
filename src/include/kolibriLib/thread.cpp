@@ -20,22 +20,9 @@ PID KolibriLib::Thread::CreateThread(void(* ThreadEntry)(void *), unsigned Threa
     return TID;
 }
 
-bool KolibriLib::Thread::TerminateThread(PID pid)
-{
-    int a;
-    asm_inline(
-        "int $0x40"
-        : "=a"(a)
-        : "a"(18), "b"(18), "c"(pid));
-    return !a;
-}
 
-Slot KolibriLib::Thread::GetThreadSlot(PID pid)
-{
-    return _ksys_get_thread_slot(pid);
-}
 
-KolibriLib::Thread::ThreadInfo KolibriLib::Thread::GetThreadInfo(Slot thread)
+KolibriLib::Thread::ThreadInfo KolibriLib::Thread::GetThreadInfo(const Slot& thread)
 {
     ThreadInfo *buff = (ThreadInfo *)malloc(sizeof(ThreadInfo));
 
