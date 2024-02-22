@@ -12,19 +12,19 @@ LIB_NAME = libkcpp
 CONTRIB_DIR = ../contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
-INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I C_Layer/INCLUDE
+INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I C_Layer/INCLUDE -I src/include
 
 #Flags
 CFLAGS = -c -std=c++11 -fpermissive
 
-LIB_PATH = src/include/kolibriLib
+LIB_PATH = src/include/kolibriLib/cpp
 
 SOURCES =  $(LIB_PATH)/types.cpp $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/screen.cpp $(LIB_PATH)/os.cpp  $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a install CLAYER clean
+all: $(LIB_NAME).a install CLAYER clean examples
 
 	
 
@@ -53,8 +53,17 @@ clean:
 	@echo "| clean"
 	@rm $(OBJECTS)
 
+examples:
+	$(MAKE) - C src/examples
+
 %.o : %.cpp Makefile
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| compiling: " $@
-	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $< 
+	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $<
+ 
+%.o : %.c Makefile
+	@echo " "
+	@echo "| -------------------------------------"
+	@echo "| compiling: " $@
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 

@@ -17,6 +17,8 @@ namespace KolibriLib
         /// @brief координата по оси Y, или высота
         T y;
 
+        ksys_pos_t GetKsysPost() const;
+
         /// @brief 
         /// @param p 
         /// @return 

@@ -10,12 +10,11 @@
 
 #include <string>
 
-#include "types.hpp"
-#include "UI.hpp"
-#include "window.hpp"
-#include "thread.hpp"
-#include "os.hpp"
-
+#include <kolibriLib/types.hpp>
+#include <kolibriLib/UI/UI.hpp>
+#include <kolibriLib/window/window.hpp>
+#include <kolibriLib/system/thread.hpp>
+#include <kolibriLib/system/os.hpp>
 
 namespace KolibriLib
 {
@@ -37,7 +36,10 @@ namespace KolibriLib
 
         /// \brief окошко с ошибкой
         /// \param ErrorMessage сообщение об ощибке
-        inline void ErrorWindow(const std::string& ErrorMessage);
+        inline void ErrorWindow(const std::string &ErrorMessage)
+        {
+            MessageBox(ErrorMessage, "Error!");
+        }
     }
 }
 
