@@ -5,11 +5,13 @@
 #include <sys/ksys.h>
 
 #include <string>
+#include <assert.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/UI/image.hpp>
+#include <kolibri_rasterworks.h>
 
 namespace KolibriLib
 {
@@ -45,38 +47,139 @@ namespace KolibriLib
             /// \param text текст
             /// \param coord координаты
             /// \param color цвет текста
-            inline void DrawText(const std::string &text, const Coord &coord, const unsigned &size = 9, Colors::Color color = OS::sys_color_table.work_text)
+            inline void DrawText(const std::string &text, const Coord &coord, const unsigned &size = 9, const Colors::Color &color = OS::sys_color_table.work_text)
             {
                 SetTextSize(size);
                 _ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color.val);
             }
 
-            /// \brief Вывести текст
-            /// \param text текст
-            /// \param coord координаты
-            /// \param color цвет текста
-            inline void DrawText(const char *text, const Coord &coord, const unsigned &size = 9, Colors::Color color = OS::sys_color_table.work_text)
+
+            /// @brief Флаги для RasterWorks
+            enum Flags
             {
-                SetTextSize(size);
-                _ksys_draw_text(text, coord.x, coord.y, strlen(text), color.val);
-            }
+                /// @brief Обычный текст
+                /// @note Указывать не обязательно
+                Normal = 0b0000,
+
+                /// @brief Жирный текст
+                Bold = 0b1,
+
+                /// @brief Курсив
+                Italic = 0b10,
+
+                /// @brief Нижнее подчёркивание
+                Underline = 0b100,
+
+                /// @brief Зачёркнутый
+                StrikeThrough = 0b1000,
+
+                /* 
+                /// @brief Выравнивание по правому краю
+                AlignRight = 0b00010000,
+
+                /// @brief Выравнивание по центру
+                AlignCenter = 0b00100000,
+                */
+            };
+
+            /// @brief Вывести текст
+            /// @param text Текст
+            /// @param coord Координаты текста
+            /// @param size Размеры символа(в px)
+            /// @param flags Флаги
+            /// @param margin Отступы границ фона от текста
+            /// @param colorText Цвет текста
+            /// @param BackgroundColor Цвет фона текста
+            /// @warning Функция не закончена
+            /// @paragraph Функция выводит текст, и фон текста
+            void DrawText(const std::string &text, 
+                const Coord &coord, const Size &size, 
+                unsigned flags, 
+                unsigned margin = 4,
+                const Colors::Color &colorText = OS::sys_color_table.work_text, 
+                const Colors::Color BackgroundColor = OS::sys_color_table.work_area);
+
+            
+
+            /// @brief Символ
+            /// @paragraph Символ который может содержать как текст, так и картинку(например смайлик)
+            class Char
+            {
+            public:
+                enum Type
+                {
+                    None = 0,
+                    Image, 
+                    Text
+                };
+
+                Char(char c = ' ', const UI::Size &size, const unsigned flags = 0, const Colors::Color &TextColor = OS::sys_color_table.work_text, const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
+                Char(const Images::img& img);
+                /// @brief 
+                ~Char();
+
+                /// @brief Получить тип
+                /// @return значение из списка @link Type
+                short GetType() const;
+
+                void Set(const char c, const UI::Size &size, const unsigned flags = 0, const Colors::Color &TextColor = OS::sys_color_table.work_text, const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
+                void Set(const Images::Image& img);
+
+                void SetFlags(unsigned flags);
+                void SetTextColor(const Colors::Color &NewColor);
+                void SetBackgroundColor(const Colors::Color &NewColor);
+
+                char GetChar() const;
+
+                /// @brief Отрисовать
+                /// @param coord Координаты
+                void Print(const UI::Coord &coord) const;
+
+                Char& operator = (char c);
+                Char& operator = (const Images::img &img);
+
+                bool operator == (char c) const;
+                bool operator == (const Images::img &img) const;
+                bool operator == (const Char &img) const;
+                bool operator != (char c) const;
+                bool operator != (const Images::img &img) const;
+
+
+            protected:
+                Images::img *_img;
+                char *_c;
+
+            private:
+                /// @brief Освободить все переменные
+                void Free();
+
+
+                UI::Size *_size;
+                Colors::Color *_TextColor;
+                Colors::Color *_BackgroundColor;
+                unsigned *_flags;
+                unsigned _type;
+            };
+            
 
             class Text
             {
-            private:
-                struct image
-                {
-                    unsigned pos;
-                    Images::Image img;
-                };
-                
-                std::string _text;
-                std::vector<image> _imgs;
+            private:                
+                std::vector<Char> _data;
             public:
                 Text();
                 ~Text();
 
-                void Render(UI::Coord coord, unsigned FontSize = 9);
+                /// @brief Добавить символ
+                /// @param c символ
+                /// @param i номер 
+                /// @param a заполнение
+                void AddChar(const Char& c, int i = -1, const Char& a = ' ');
+
+                /// @brief 
+                /// @param coord 
+                /// @param FontSize 
+                void Print(const UI::Coord &coord, unsigned FontSize = 9) const;
             };
             
 

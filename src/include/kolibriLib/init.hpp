@@ -4,6 +4,7 @@
 #include <sys/ksys.h>
 
 #include <kolibri_libimg.h>
+#include <kolibri_rasterworks.h>
 
 #include <sound.h>
 
@@ -16,30 +17,35 @@
 namespace KolibriLib
 {
 
-    /// @brief инициализация
-    void init()
-    {
-        OS::GetSystemColors();
+	/// @brief инициализация библиотеки
+	inline void init()
+	{
+		OS::GetSystemColors();
 
-        if(kolibri_libimg_init() != 0)
-        {
-            _ksys_debug_puts("Error loading lib_img.obj, exit\n");
-            exit(0);
-        }
+		if(kolibri_libimg_init() != 0)
+		{
+			_ksys_debug_puts("Error loading lib_img.obj, exit\n");
+			exit(0);
+		}
 
-        /*if ( int version = -1; !InitSound(&version))
-        {
-            _ksys_debug_puts("Error loading sound.h, exit\n");
-            exit(0);
-        }*/
+		/*if ( int version = -1; !InitSound(&version))
+		{
+			_ksys_debug_puts("Error loading sound.h, exit\n");
+			exit(0);
+		}*/
 
-        
+		if(kolibri_rasterworks_init())
+		{
+			_ksys_debug_puts("Error loading RasterWorks, exit\n");
+			exit(0);
+		}
+		
 
 
-        _ksys_set_event_mask(0x07);
-    
-        
-    }
+		_ksys_set_event_mask(0xC0000027);
+	
+		
+	}
 }
 
 

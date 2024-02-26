@@ -1,4 +1,5 @@
 #include <kolibriLib/UI/image.hpp>
+#include "image.hpp"
 
 using namespace KolibriLib;
 using namespace UI;
@@ -6,16 +7,16 @@ using namespace UI;
 Images::Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size)
 {
     #ifdef DEBUG == true
-    _ksys_debug_puts("Image Constructor\n");
+    _ksys_debug_puts("I Constructor\n");
     #endif
 }
 
-Images::Image::~Image()
+Images::img::~img()
 {
     img_destroy(_img);
 }
 
-void Images::Image::LoadImage(const filesystem::Path &Path)
+void Images::img::LoadImage(const filesystem::Path &Path)
 {
     int32_t img_size;
     FILE *f = fopen(Path.GetChars(), "rb"); // Этот код взят из примера из /contrib/C_Layer/EXAMPLE/img_example/main.c
@@ -75,18 +76,9 @@ void Images::Image::LoadImage(const filesystem::Path &Path)
     }
 }
 
-void Images::Image::Render(Size size) const
+void Images::img::Render(const Coord& coord, const Size& size) const
 {
-    if (size == 0)
-    {
-
-        img_draw(_img, _coord.x, _coord.y, _size.x, _size.y, 0, 0);
-    }
-    else
-    {
-        Image_t *img = img_scale(_img, 0, 0, _size.x, _size.y, NULL, LIBIMG_SCALE_STRETCH, LIBIMG_INTER_BILINEAR, size.x, size.y);
-        img_draw(img, _coord.x, _coord.y, size.x, size.y, 0, 0);
-    }
+    img_draw(_img, coord.x, coord.y, size.x, size.y, 0, 0);
 }
 
 void Images::Image::init(const Coord &coord, const Size &size, const filesystem::Path &Path)
@@ -96,13 +88,17 @@ void Images::Image::init(const Coord &coord, const Size &size, const filesystem:
     LoadImage(Path);
 }
 
-void Images::Image::SetImg(Image_t *img)
+void Images::img::SetImg(Image_t *img)
 {
     img_destroy(_img);
     _img = img;
 }
+void KolibriLib::UI::Images::Image::Render() const
+{
+    img_draw(_img, _coord.x, _coord.y, _size.x, _size.y, 0, 0);
+}
 
-Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image &a)
+Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image &a) 
 {
     _coord = a._coord;
     _size = a._size;

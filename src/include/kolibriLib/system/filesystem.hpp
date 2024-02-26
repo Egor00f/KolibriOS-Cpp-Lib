@@ -14,17 +14,18 @@ namespace KolibriLib
     {
 
         /// @brief Путь до файла/папки
+        /// @paragraph Полность совместим с std::string
         class Path
         {
             public:
-                Path(std::string path = "/");
+                Path(const std::string& path = "/");
                 /// @brief Получить char* строку
                 /// @return Функция возвращает конвертированную строку @link _string
-                char* GetChars() const;
+                const char* GetChars() const;
 
                 /// @brief Получить строку
                 /// @return Функция возвращает @link _string
-                std::string GetString() const;
+                const std::string& GetString() const;
                 
                 Path &operator / (const Path &a);
                 Path &operator / (const std::string &a);
@@ -56,7 +57,7 @@ namespace KolibriLib
             UnklownFileSystem = 3,
             /// @brief файл не найден
             NotFound = 5,
-            /// @brief файл закончился
+            /// @brief EOF, файл закончился
             EndOfFile = 6,
             /// @brief указатель вне памяти приложения
             ptrOutsideApp = 7,
@@ -76,31 +77,47 @@ namespace KolibriLib
         /// @brief Создать файл
         /// @param name имя файла
         /// @return Значение из списка @link Errors
-        int CreateFile(const Path& name);
+        inline int CreateFile(const Path &name)
+        {
+            return _ksys_file_create(name.GetChars());
+        }
 
         /// @brief удалить файл  или папку
         /// @param name имя файла
         /// @return Значение из списка @link Errors
-        int Delete(const Path& name);
-        
+        inline int Delete(const Path &name)
+        {
+            return _ksys_file_delete(name.GetChars());
+        }
+
         /// @brief Создать папку
         /// @param path путь
         /// @return Значение из списка @link Errors
-        int MakeDirectory(const Path& path);
+        inline int MakeDirectory(const Path &path)
+        {
+            return _ksys_mkdir(path.GetChars());
+        }
 
         /// @brief проверяет существует ли файл или папки
         /// @param путь до файла/папки
         /// @return true если файл или папка существует, иначе false
-        bool Exist(const Path& Path);
+        inline bool Exist(const Path &Path)
+        {
+            ksys_bdfe_t *buff = new ksys_bdfe_t;
+            int a = _ksys_file_info(Path.GetChars(), buff);
+            delete buff;
+            return a > 0;
+        }
 
         /// @brief Переименовать файл
         /// @param OldName старое имя файла
         /// @param NewName новое имя файла
         /// @return  Значение из списка @link Errors
         /// @paragraph Аналог mv. Имена файлов - это полные пути
-        int Rename(const Path& OldName, const Path& NewName);
-
-        
+        inline int Rename(const Path &OldName, const Path &NewName)
+        {
+            return _ksys_file_rename(OldName.GetChars(), NewName.GetChars());
+        }
     }
 } // namespace KolibriLib
 

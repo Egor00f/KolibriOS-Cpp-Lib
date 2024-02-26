@@ -203,12 +203,11 @@ void KolibriLib::window::Window::Redraw()
 
     if (_Transparency != 0) // Прозрачность окна
     {
-        UI::Size size = GetWindowSize();
-        for (int i = 0; i < size.y; i++)
+        for (int i = 0; i < _size.y; i++)
         {
-            for (int j = 0; j < size.x; j++)
+            for (int j = 0; j < _size.x; j++)
             {
-                graphic::DrawPixel({j, i}, graphic::ReadPoint({j, i}) + Background::ReadPoint({j, i})); // Пока так, потом может быть станет лучше
+                graphic::DrawPixel({j, i}, Colors::BlendColors(graphic::ReadPoint({j, i}), Background::ReadPoint({j, i}), 100 / _Transparency)); // Пока так, потом может быть станет лучше
             }
         }
     }
@@ -299,7 +298,7 @@ void Window::Render(const UI::Coord& coord)
         {
             for(int j = 0; j < size.x; j++)
             {
-                graphic::DrawPixel({j, i}, graphic::ReadPoint({j, i}) + Background::ReadPoint({j, i})); // Пока так, потом может быть станет лучше
+                graphic::DrawPixel({j, i}, Colors::BlendColors(graphic::ReadPoint({j, i}), Background::ReadPoint({j, i}), 100 / _Transparency));
             }
         }
     }

@@ -21,11 +21,32 @@ namespace KolibriLib
 		namespace Images
 		{
 			
+			class img
+			{
+			protected:
+				Image_t *_img;
+			public:
+				img();
+				~img();
+
+				virtual void Render(const Coord& coord, const Size& size) const;
+
+				/// @brief Загрузить изображение
+				/// @param Path путь до файла
+				void LoadImage(const filesystem::Path &Path = DefaultImage);
+
+				/// @brief Изменить изображение
+				/// @param img Указатель на струтуру @link Image_t
+				void SetImg(Image_t *img);
+			};
+			
+			
+
 			/// @brief Картинка как элемент интерфейса
-			class Image : public UIElement
+			class Image : public UIElement, public img
 			{
 			private:
-				Image_t *_img;
+				
 			public:
 				/// @brief Конструктор
 				/// @param coord Координаты
@@ -37,14 +58,12 @@ namespace KolibriLib
 				/// @brief Деструктор
 				~Image();
 
-				/// @brief Загрузить изображение
-				/// @param Path путь до файла
-				void LoadImage(const filesystem::Path &Path = DefaultImage);
+				
 
 				/// @brief Вывести изображение в окно
 				/// @param size Размер выводимого изображения
 				/// @paragraph Можно растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется
-				void Render(Size size = {0, 0}) const;
+				void Render() const;
 
 				/// @brief 
 				/// @param a 
@@ -54,9 +73,7 @@ namespace KolibriLib
 		
 				void init(const Coord &coord = {0, 0}, const Size &size = {100, 100}, const filesystem::Path &Path = DefaultImage);
 
-				/// @brief Изменить изображение
-				/// @param img Указатель на струтуру @link Image_t
-				void SetImg(Image_t* img);
+				
 			};
 
 		} // namespace Image

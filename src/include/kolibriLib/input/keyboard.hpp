@@ -9,7 +9,10 @@ namespace KolibriLib
     {
         /// @brief Проверить какая клавиша клавиатуры нажата
         /// @return код(char) нажатой клавишы клавиатуры
-        char CheckKeyboard();
+        inline char CheckKeyboard()
+        {
+            return _ksys_get_key().code;
+        }
 
         enum ControlKeys
         {
@@ -26,19 +29,24 @@ namespace KolibriLib
 
         /// @brief Получить состояние управляющих клавиш
         /// @return Возвращает имя конгстрольной клавиши из списка @link ControlKeys
-        unsigned GetControlKey();
-
+        inline unsigned GetControlKey()
+        {
+            return _ksys_get_control_key_state();
+        }
 
         /// @brief Установить "горячую клавишу"
 		/// @param controlkeys клавиши
 		/// @return true если успешно, иначе false
         /// @warning not done!
-		bool InstallHotKey(uint16_t controlkeys);
+        inline bool InstallHotKey(uint16_t controlkeys)
+        {
+            return !_ksys_set_sys_hotkey(0, controlkeys);
+        }
 
         /// @brief Удалить "горячую клавишу"
         /// @return true если успешно, иначе false
         /// @warning not done!
-        bool DeleteHotKey();
+        inline bool DeleteHotKey();
 
         
     } // namespace keyboard
