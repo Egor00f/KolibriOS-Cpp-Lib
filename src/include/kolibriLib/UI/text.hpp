@@ -90,14 +90,13 @@ namespace KolibriLib
             /// @param margin Отступы границ фона от текста
             /// @param colorText Цвет текста
             /// @param BackgroundColor Цвет фона текста
-            /// @warning Функция не закончена
             /// @paragraph Функция выводит текст, и фон текста
             void DrawText(const std::string &text, 
                 const Coord &coord, const Size &size, 
                 unsigned flags, 
                 unsigned margin = 4,
                 const Colors::Color &colorText = OS::sys_color_table.work_text, 
-                const Colors::Color BackgroundColor = OS::sys_color_table.work_area);
+                const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
 
             
 
@@ -113,23 +112,64 @@ namespace KolibriLib
                     Text
                 };
 
+                /// @brief Конструктор
+                /// @param c символ
+                /// @param size размеры символа
+                /// @param flags флаги
+                /// @param TextColor Цвет текста
+                /// @param BackgroundColor Цвет фона
                 Char(char c = ' ', const UI::Size &size, const unsigned flags = 0, const Colors::Color &TextColor = OS::sys_color_table.work_text, const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
+
+                /// @brief Конструктор
+                /// @param img изображение
                 Char(const Images::img& img);
-                /// @brief 
+
+                /// @brief Деструктор
                 ~Char();
 
                 /// @brief Получить тип
                 /// @return значение из списка @link Type
                 short GetType() const;
 
+                /// @brief 
+                /// @param c 
+                /// @param size Размер символа
+                /// @param flags Флаги из списка @link Flags
+                /// @param TextColor 
+                /// @param BackgroundColor 
                 void Set(const char c, const UI::Size &size, const unsigned flags = 0, const Colors::Color &TextColor = OS::sys_color_table.work_text, const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
+
+                /// @brief 
+                /// @param img 
                 void Set(const Images::Image& img);
 
+                /// @brief Изменить флаги
+                /// @param flags 
                 void SetFlags(unsigned flags);
+
+                /// @brief Изменить цвет текста
+                /// @param NewColor 
                 void SetTextColor(const Colors::Color &NewColor);
+
+                /// @brief Изменить цвет фона текста
+                /// @param NewColor 
                 void SetBackgroundColor(const Colors::Color &NewColor);
 
+                /// @brief Измерить размеры символа
+                /// @param size 
+                void SetSize(const UI::Size& size) const;
+
+                /// @brief Получить ASCII символ
+                /// @return 
                 char GetChar() const;
+
+                /// @brief получить размеры символа
+                /// @return 
+                const UI::Size& GetSize() const;
+
+                /// @brief Получить флаги
+                /// @return 
+                unsigned GetFlags() const;
 
                 /// @brief Отрисовать
                 /// @param coord Координаты
@@ -137,6 +177,7 @@ namespace KolibriLib
 
                 Char& operator = (char c);
                 Char& operator = (const Images::img &img);
+                Char& operator = (const Char &c);
 
                 bool operator == (char c) const;
                 bool operator == (const Images::img &img) const;
@@ -146,40 +187,92 @@ namespace KolibriLib
 
 
             protected:
-                Images::img *_img;
-                char *_c;
+                union 
+                {
+                    Images::img *_img;
+                    char *_c;
+                };
+                
 
             private:
                 /// @brief Освободить все переменные
                 void Free();
 
+/*====================Параметры для текста=================*/
+                mutable UI::Size *_size;
+                mutable Colors::Color *_TextColor;
+                mutable Colors::Color *_BackgroundColor;
+                mutable unsigned *_flags;
+/*=========================================================*/
 
-                UI::Size *_size;
-                Colors::Color *_TextColor;
-                Colors::Color *_BackgroundColor;
-                unsigned *_flags;
+                /// @brief Тип
+                /// @paragraph Хранит значение из спика @link Char::Type
                 unsigned _type;
             };
             
-
+            /// @brief Текст
+            /// @paragraph Фактически std::vector @link Char ов
             class Text
             {
-            private:                
-                std::vector<Char> _data;
             public:
+                /// @brief Конструктор
                 Text();
+                /// @brief Деструктор
                 ~Text();
 
-                /// @brief Добавить символ
+                /// @brief Добавить символ в конец
                 /// @param c символ
-                /// @param i номер 
-                /// @param a заполнение
-                void AddChar(const Char& c, int i = -1, const Char& a = ' ');
+                void Add(const Char& c);
+
+                /// @brief Добавить строку в конец
+                /// @param txt строка
+                void Add(const std::string& txt);
+
+                /// @brief долбавить изображение в конец
+                /// @param img Добавляемое изображение
+                void Add(const Images::img& img);
+
+                /// @brief Вставить элемент
+                /// @param c Символ
+                /// @param i номер
+                void insert(const Char& c, int i);
+
+                /// @brief Вставить строку
+                /// @param txt строка
+                /// @param i номер
+                void insert(const std::string &txt, int i);
+
+                /// @brief Вставить изображение
+                /// @param img изображение
+                /// @param i номер
+                void insert(const Images::img &img, int i);
 
                 /// @brief 
-                /// @param coord 
+                /// @param i 
+                void Delete(int i);
+
+                /// @brief Вывести текст
+                /// @param coord Координаты(левый верхний угол) текста
+                void Print(const UI::Coord &coord) const;
+
+                /// @brief Изменить размер символов
                 /// @param FontSize 
-                void Print(const UI::Coord &coord, unsigned FontSize = 9) const;
+                /// @paragraph Изменяет размер символов для всех символов
+                void SetSize(UI::Size FontSize);
+
+                /// @brief Получить длину текста
+                /// @return длина текста
+                std::size_t length() const;
+
+                Text& operator = (const Text& txt);
+
+                /// @brief 
+                /// @param txt 
+                /// @return 
+                bool operator == (const Text& txt) const;
+
+            protected:                
+                std::vector<Char> _data;
             };
             
 
@@ -188,22 +281,17 @@ namespace KolibriLib
             /// @brief Текстовая метка
             /// @paragraph Простая текстовая метка, ничего особенного.
             /// @paragraph Возможно важные сведения: текст всегда отрисовывается в середине 
-            class TextLabel : public UI::UIElement
+            class TextLabel : public UI::UIElement, public Text
             {
             private:
-                /// @brief Сам текст
-                std::string _text;
-
-                /*  Когданибудь, когда автор сего творения узнает как делать разные шрифты, эта переменная будет использоваться
-                /// @brief Используемый шрифт
-                std::string FontFamily;
-                */
-
-                /// @brief Размер текста(высота)
-                mutable unsigned _FontSize;
+                /// @brief Выравнивание
+                unsigned Align;
 
                 /// @brief (Да/Нет)Подстраивать @link _FontSize, чтобы размер текст соответствовал размеру элемента( @link _size)
                 bool _TextScale;
+
+                mutable bool _Aligned;
+
 
             public:
                 /// @brief Конструктор
@@ -220,29 +308,9 @@ namespace KolibriLib
                 /// @brief Отрисовать текстовую метку
                 void Render() const;
 
-                /// @brief Получить текст
-                /// @return Функция возвращает @link _text
-                const std::string &GetText() const;
-
-                /// @brief Получить Размер шрифта
-                /// @return Функция возвращает @link _FontSize
-                unsigned GetFontSize() const;
-
-
-                /// @brief Изменить текст
-                /// @param NewText Текст
-                void SetText(const std::string &NewText);
-
-                /// @brief Изменить рамер текста
-                /// @param NewTextSize Новый размер текста (в px)
-                void SetFontSize(const unsigned &NewTextSize);
-
-
                 /// @brief Изменить значение переменной @link _TextScale
                 /// @param scale Новое значение
                 void SetScale(bool scale);
-
-                void init(Coord coord, Size size, std::string text = "TextLabel", unsigned FontSize = 9, Colors::Color TextColor = OS::sys_color_table.work_text);
 
                 /// @brief 
                 /// @param a 
@@ -253,6 +321,8 @@ namespace KolibriLib
                 /// @param a 
                 /// @return 
                 bool operator == (const TextLabel& a) const;
+
+                bool operator != (const TextLabel& a) const;
             };
 
             
