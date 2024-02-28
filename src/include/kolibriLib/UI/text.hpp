@@ -81,6 +81,18 @@ namespace KolibriLib
                 AlignCenter = 0b00100000,
                 */
             };
+            
+            /// @brief Пародия на шрифты
+            /// @paragraph На самом деле это не настоящие шрифты, а лишь жалкие пародии, совподающие с настоящими лишь по размерам(ширина/высота)
+            namespace Fonts
+            {
+                const UI::Size Arial = {5,6};
+                const
+            };
+
+            const UI::Size DefaultTextSize = Fonts::Arial;
+
+            
 
             /// @brief Вывести текст
             /// @param text Текст
@@ -91,10 +103,11 @@ namespace KolibriLib
             /// @param colorText Цвет текста
             /// @param BackgroundColor Цвет фона текста
             /// @paragraph Функция выводит текст, и фон текста
+            /// @example DrawText("Text", {0,0}, Fonts::Arial*16); //16 - высота шрифта
             void DrawText(const std::string &text, 
-                const Coord &coord, const Size &size, 
-                unsigned flags, 
-                unsigned margin = 4,
+                const Coord &coord, const Size &size = DefaultTextSize, 
+                unsigned flags = Flags::Normal, 
+                unsigned margin = UI::DefaultMargin,
                 const Colors::Color &colorText = OS::sys_color_table.work_text, 
                 const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
 
@@ -118,11 +131,11 @@ namespace KolibriLib
                 /// @param flags флаги
                 /// @param TextColor Цвет текста
                 /// @param BackgroundColor Цвет фона
-                Char(char c = ' ', const UI::Size &size, const unsigned flags = 0, const Colors::Color &TextColor = OS::sys_color_table.work_text, const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
+                Char(char c = ' ', const UI::Size &size = DefaultTextSize, const unsigned flags = Flags::Normal, const Colors::Color &TextColor = OS::sys_color_table.work_text, const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
 
                 /// @brief Конструктор
                 /// @param img изображение
-                Char(const Images::img& img);
+                Char(const Images::img& img, const UI::Size& size = DefaultTextSize);
 
                 /// @brief Деструктор
                 ~Char();
@@ -140,8 +153,8 @@ namespace KolibriLib
                 void Set(const char c, const UI::Size &size, const unsigned flags = 0, const Colors::Color &TextColor = OS::sys_color_table.work_text, const Colors::Color &BackgroundColor = OS::sys_color_table.work_area);
 
                 /// @brief 
-                /// @param img 
-                void Set(const Images::Image& img);
+                /// @param img
+                void Set(const Images::Image &img, const UI::Size &size = DefaultTextSize);
 
                 /// @brief Изменить флаги
                 /// @param flags 
@@ -162,6 +175,8 @@ namespace KolibriLib
                 /// @brief Получить ASCII символ
                 /// @return 
                 char GetChar() const;
+                
+                const Images::img& GetImg() const;
 
                 /// @brief получить размеры символа
                 /// @return 
@@ -311,6 +326,12 @@ namespace KolibriLib
                 /// @brief Изменить значение переменной @link _TextScale
                 /// @param scale Новое значение
                 void SetScale(bool scale);
+                
+                /// @brief Получить состояние переменной @link _TextScale
+                /// @ return значение переменной @link _TextScale
+                bool GetScale() const; 
+
+
 
                 /// @brief 
                 /// @param a 

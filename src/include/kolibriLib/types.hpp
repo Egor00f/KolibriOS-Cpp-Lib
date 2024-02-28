@@ -28,6 +28,11 @@ namespace KolibriLib
 
         point<T> &operator-(const point<T> &p);
 
+
+        point<T> &operator*(const int &p);
+
+        point<T> &operator/(const int &p);
+
         /// @brief 
         /// @param a 
         /// @return 

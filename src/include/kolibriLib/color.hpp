@@ -10,18 +10,24 @@ namespace KolibriLib
     namespace Colors
     {
         /// @brief Тип данных для работы с argb цветом
-        struct ARGB: public rgb_t
+        struct ARGB
         {
             uint8_t alpha;
+            uint8_t blue;
+            uint8_t green;
+            uint8_t red;
         };
         
         /// @brief Цвет
         union Color
         {
             ksys_color_t val;
-            struct: public rgb_t
+            struct
             {
                 uint8_t _a;
+                uint8_t blue;
+                uint8_t green;
+                uint8_t red;
             };
             
             /// @brief Конструктор

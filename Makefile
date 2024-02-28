@@ -17,7 +17,8 @@ INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libst
 #Flags
 CFLAGS = -c -std=c++11 -fpermissive
 
-LIB_PATH = src/include/kolibriLib/cpp
+# Папка в которой лежат cpp файлы
+LIB_PATH = src/cpp
 
 SOURCES =  $(LIB_PATH)/types.cpp $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/screen.cpp $(LIB_PATH)/os.cpp  $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
@@ -54,6 +55,9 @@ clean:
 	@rm $(OBJECTS)
 
 examples:
+	@echo " "
+	@echo "| -------------------------------------"
+	@echo "| make examples"
 	$(MAKE) - C src/examples
 
 %.o : %.cpp Makefile
