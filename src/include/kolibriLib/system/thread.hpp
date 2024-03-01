@@ -41,7 +41,14 @@ namespace KolibriLib
             };
             uint8_t __reserved3[KSYS_THREAD_INFO_SIZE];
 
-            ThreadInfo& operator = (const ksys_thread_t& a);
+            ThreadInfo &operator=(const ksys_thread_t &a)
+            {
+                for (int i = 0; i < KSYS_THREAD_INFO_SIZE; i++)
+                {
+                    __reserved3[i] = a.__reserved3[i];
+                }
+                return *this;
+            }
         };
 
         /// \brief Создать поток
@@ -49,7 +56,22 @@ namespace KolibriLib
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
         /// @paragraph Используйте лучше std::thread, а не эту функцию, а то я вот вообще незнаю сколько размер стека сделать
-        PID CreateThread(void(*ThreadEntry)(void*), unsigned ThreadStackSize = 1024);
+        PID CreateThread(void(*ThreadEntry)(void*), unsigned ThreadStackSize = 1024)
+        {
+            void *th_stack = malloc(ThreadStackSize);
+            if (!th_stack) //    Если памяти не было выделенно
+            {
+                _ksys_debug_puts("Memory allocation error for thread!");
+                return -1;
+            }
+            int TID = _ksys_create_thread((void *)ThreadEntry, th_stack + ThreadStackSize);
+            if (TID == -1) //   Если поток не был создан
+            {
+                _ksys_debug_puts("Unable to create a new thread!");
+                return TID;
+            }
+            return TID;
+        }
 
         /// @brief Завершить процесс/поток
         /// @param PID ID Процесса/потока
@@ -77,12 +99,19 @@ namespace KolibriLib
         /// @param thread слот потока
         /// @return информация о потоке
         /// @paragraph если слот -1 то возвращается информация о текущем потоке
-        ThreadInfo GetThreadInfo(const Slot& thread);
+        ThreadInfo GetThreadInfo(const Slot &thread)
+        {
+            ThreadInfo *buff = (ThreadInfo *)malloc(sizeof(ThreadInfo));
 
+            _ksys_thread_info((ksys_thread_t *)buff, thread);
 
+            ThreadInfo r = *buff;
 
+            free(buff);
 
-        
+            return r;
+        }
+
     } // namespace Thread
     
 } // namespace KolibriLib

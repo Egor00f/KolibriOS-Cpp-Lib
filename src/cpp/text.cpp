@@ -1,5 +1,4 @@
 #include <kolibriLib/UI/text.hpp>
-#include "text.hpp"
 
 using namespace KolibriLib;
 using namespace UI;
@@ -14,6 +13,13 @@ text::TextLabel::TextLabel(const Coord &coord, const Size &size, const std::stri
 	_TextScale = TextScale;
 }
 
+KolibriLib::UI::text::TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, const unsigned &Margin)
+{
+	Add(text);
+	_TextScale = TextScale;
+	SetFont(Font);
+}
+
 text::TextLabel::~TextLabel()
 {
 }
@@ -24,18 +30,19 @@ void text::TextLabel::Render() const
 	*FontSize = 0;
 	if (_TextScale) // Если текст нужно подстраивать размер, то
 	{			   // Постраиваем
-		*FontSize = _size.x / length();
-	}
-	if(!_Aligned)
-	{
-		for(int i = 0; i < _data.size(); i++)
+		*FontSize = _size.x / lenghtPX();
+		if (!_Aligned)
 		{
-			_data[i].SetSize({*FontSize, _data[i].GetSize().y});
+			for (int i = 0; i < _data.size(); i++)
+			{
+				Fonts::Font buff = _data[i].GetFont();
+				_data[i].SetFont(Fonts::Font(buff._Font, *FontSize, buff._Flags));
+			}
+			_Aligned = true;
 		}
-		_Aligned = true;
 	}
-	Print(_coord);
-	
+	delete FontSize;
+	Print({_coord.x + ((int)_size.x / 2), _coord.y + ((int)_size.y / 2)});
 }
 
 void text::TextLabel::SetScale(bool scale)
@@ -70,24 +77,22 @@ bool KolibriLib::UI::text::TextLabel::operator!=(const TextLabel &a) const
 		   (_MainColor == a._MainColor) ||
 		   (_Margin == a._Margin) ||
 		   (_TextScale == a._TextScale);
-	;
 }
 
-KolibriLib::UI::text::Char::Char(char c, const UI::Size &size, const unsigned flags, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
+KolibriLib::UI::text::Char::Char(char c, const Fonts::Font &font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
 {
-	_c			   = new char(c);
-	_size			= new UI::Size(size);
-	_TextColor	   = new Colors::Color(TextColor);
-	_BackgroundColor = new Colors::Color(BackgroundColor);
-	_flags		   = new unsigned(flags);
-	_type			= Type::Text;
+	_c			  		= new char(c);
+	_font 				= font;
+	_TextColor			= new Colors::Color(TextColor);
+	_BackgroundColor	= new Colors::Color(BackgroundColor);
+	_type				= Type::Text;
 }
 
-KolibriLib::UI::text::Char::Char(const Images::img &img, const UI::Size& size)
+KolibriLib::UI::text::Char::Char(const Images::img &img, const Fonts::Font& font)
 {
-	_img = new Images::img(img);
-	_size = new UI::Size(size);
-	_type = Type::Image;
+	_img	= new Images::img(img);
+	_font	= font;
+	_type	= Type::Image;
 }
 
 KolibriLib::UI::text::Char::~Char()
@@ -100,29 +105,28 @@ short KolibriLib::UI::text::Char::GetType() const
 	return _type;
 }
 
-void KolibriLib::UI::text::Char::Set(const char c, const UI::Size &size, const unsigned flags = 0, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
+void KolibriLib::UI::text::Char::Set(const char c, const Fonts::Font &font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
 {
 	Char::Free();   //Пофиг какой раньше тип был, просто тупо сносим и делаем всё заново
-	_size = new UI::Size(size);
-	_TextColor = new Colors::Color(TextColor);
+	_font 			 = font;
+	_TextColor 		 = new Colors::Color(TextColor);
 	_BackgroundColor = new Colors::Color(BackgroundColor);
-	_flags = new unsigned(flags);
-	_c = new char(c);
-	_type = Type::Text;
+	_c 				 = new char(c);
+	_type			 = Type::Text;
 }
 
-void KolibriLib::UI::text::Char::Set(const Images::Image &img, const UI::Size& size)
+void KolibriLib::UI::text::Char::Set(const Images::Image &img, const Fonts::Font& size)
 {
 	Char::Free();
-	_img = new Images::Image(img);
-	_size = new UI::Size(size);
+	_img  = new Images::Image(img);
+	_font = size;
 	_type = Type::Image;
 }
 
 void KolibriLib::UI::text::Char::SetFlags(unsigned flags)
 {
 	assert(_type == Type::Text);
-	*_flags = flags;
+	_font._Flags = flags;
 }
 
 void KolibriLib::UI::text::Char::SetTextColor(const Colors::Color &NewColor)
@@ -137,10 +141,10 @@ void KolibriLib::UI::text::Char::SetBackgroundColor(const Colors::Color & NewCol
 	*_BackgroundColor = NewColor.val;
 }
 
-void KolibriLib::UI::text::Char::SetSize(const UI::Size &size) const
+void KolibriLib::UI::text::Char::SetFont(const Fonts::Font &newFont) const
 {
 	assert(_type == Type::Text);
-	*_size = size;
+	_font = newFont;
 }
 
 char KolibriLib::UI::text::Char::GetChar() const
@@ -155,16 +159,16 @@ const Images::img &KolibriLib::UI::text::Char::GetImg() const
 	return *_img;
 }
 
-const UI::Size &KolibriLib::UI::text::Char::GetSize() const
+const Fonts::Font &KolibriLib::UI::text::Char::GetFont() const
 {
 	assert(_type == Type::None);
-	return *_size;
+	return _font;
 }
 
 unsigned KolibriLib::UI::text::Char::GetFlags() const
 {
 	assert(_type == Type::Text);
-	return *_flags;
+	return _font._Flags;
 }
 
 void KolibriLib::UI::text::Char::Free()
@@ -178,13 +182,10 @@ void KolibriLib::UI::text::Char::Free()
 		delete _c;
 		delete _TextColor;
 		delete _BackgroundColor;
-		delete _flags;
-		
 		break;
 	default:
 		break;
 	}
-	delete _size;
 }
 
 void KolibriLib::UI::text::Char::Print(const UI::Coord &coord) const
@@ -192,15 +193,32 @@ void KolibriLib::UI::text::Char::Print(const UI::Coord &coord) const
 	switch (_type)
 	{
 	case Type::Image:
-		_img->Render(coord, {_size->x, _size->y});
+		_img->Render(coord, _font.size);
 		break;
 	case Type::Text:
-		DrawText(std::string(_c), coord, *_size, *_flags, NULL, *_TextColor, *_BackgroundColor);
+		DrawText(std::string(_c), coord, _font.size, _font._Flags, NULL, *_TextColor, *_BackgroundColor);
 		break;
 	default:
 		break;
 	}
 }
+
+const std::string &KolibriLib::UI::text::Text::GetText() const
+{
+	std::string result;
+	for (int i = 0; i < _data.size(); i++)
+	{
+		if(_data[i].GetType() == Char::Type::Text)
+		{
+			result += _data[i].GetChar();
+		}
+	}
+	return result;
+}
+
+
+
+
 
 KolibriLib::UI::text::Text::Text()
 {
@@ -239,7 +257,7 @@ void KolibriLib::UI::text::Text::insert(const std::string &txt, int i)
 {
 	for(int j = txt.length(); j > 0; j++)
 	{
-		_data.insert(_data.begin() + i, Char(txt[j], {9, 16}));
+		_data.insert(_data.begin() + i, Char(txt[j], _data[i].GetFont()));
 	}
 }
 
@@ -259,16 +277,37 @@ void KolibriLib::UI::text::Text::Print(const UI::Coord &coord) const
 	for(int i = 0; i < _data.size(); i++)
 	{
 		_data[i].Print({coord.x + buff, coord.y});
-		buff += _data[i].GetSize().x;
+		buff += _data[i].GetFont().size.x;
 	}
-
 }
 
-void KolibriLib::UI::text::Text::SetSize(UI::Size FontSize)
+void KolibriLib::UI::text::Text::SetFont(const Fonts::Font &Font)
 {
 	for(int i = 0; i < _data.size(); i++)
 	{
-		_data[i].SetSize(FontSize);
+		_data[i].SetFont(Font);
+	}
+}
+
+void KolibriLib::UI::text::Text::SetTextColor(const Colors::Color &Color)
+{
+	for(int i = 0; i < _data.size(); i++)
+	{
+		if(_data[i].GetType() == Char::Type::Text)
+		{
+			_data[i].SetTextColor(Color);
+		}
+	}
+}
+
+void KolibriLib::UI::text::Text::SetBackgroundColor(const Colors::Color &Color)
+{
+	for(int i = 0; i < _data.size(); i++)
+	{
+		if (_data[i].GetType() == Char::Type::Text)
+		{
+			_data[i].SetBackgroundColor(Color);
+		}
 	}
 }
 
@@ -282,7 +321,17 @@ std::size_t KolibriLib::UI::text::Text::length() const
 	return _data.size();
 }
 
-Text &KolibriLib::UI::text::Text::operator=(const Text &txt)
+unsigned KolibriLib::UI::text::Text::lenghtPX() const
+{
+	unsigned l = 0;
+	for(unsigned i = 0; i < _data.size(); i++)
+	{
+		l += _data[i].GetFont().size.x;
+	}
+	return l;
+}
+
+Text &KolibriLib::UI::text::Text::operator=(const Text &txt) 
 {
 	_data = txt._data;
 	return *this;
@@ -306,4 +355,39 @@ void KolibriLib::UI::text::DrawText(const std::string & text, const Coord & coor
 	_ksys_draw_bitmap(canvas, coord.x, coord.y, w, h);
 	
 	delete[] canvas;
+}
+
+void KolibriLib::UI::text::DrawText(const std::string & text, const Coord & coord, const Fonts::Font & font, unsigned margin, const Colors::Color & colorText, const Colors::Color & BackgroundColor)
+{
+	const unsigned w = ((margin * 2) + font.size.x);
+	const unsigned h = ((margin * 2) + (font.size.y * text.length()));
+
+	rgb_t *canvas = new rgb_t[w * h];
+
+	for (int i = 0; i < w * h; i++)
+	{
+		canvas[i].red = BackgroundColor.red;
+		canvas[i].blue = BackgroundColor.blue;
+		canvas[i].green = BackgroundColor.green;
+	}
+
+	drawText(canvas, coord.x, coord.y, text.c_str(), text.length(), colorText.val, font._Flags);
+	_ksys_draw_bitmap(canvas, coord.x, coord.y, w, h);
+
+	delete[] canvas;
+}
+
+KolibriLib::UI::text::Fonts::Font::Font(const UI::Size& FontFamily, int FontSize, unsigned flags)
+{
+	_Font = FontFamily;
+	_Flags = flags;
+	SetFontSize((unsigned)FontSize);
+}
+
+void KolibriLib::UI::text::Fonts::Font::SetFontSize(unsigned FontSize)
+{
+	float buff = FontSize / _Font.x;
+	_FontSize = FontSize;
+	size = _Font;
+	size /= static_cast<unsigned>(buff);	//float преобразется в unsigned так как UI::Size это point<unsigned>
 }

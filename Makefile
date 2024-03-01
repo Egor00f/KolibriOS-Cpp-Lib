@@ -58,7 +58,7 @@ examples:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| make examples"
-	$(MAKE) - C src/examples
+	$(MAKE) -C src/examples
 
 %.o : %.cpp Makefile
 	@echo " "

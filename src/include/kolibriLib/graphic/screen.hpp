@@ -15,7 +15,7 @@ namespace KolibriLib
 	inline UI::Size GetScreenSize()
 	{
 		ksys_pos_t a = _ksys_screen_size();
-		return {a.x, a.y};
+		return UI::Size(a.x, a.y);
 	}
 
 	/// @brief Получить принадлежность точки

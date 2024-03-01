@@ -1,5 +1,4 @@
 #include <kolibriLib/color.hpp>
-#include "color.hpp"
 
 using namespace KolibriLib;
 using namespace Colors;

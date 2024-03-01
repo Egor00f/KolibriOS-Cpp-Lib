@@ -5,8 +5,8 @@
 
 #include <stddef.h>
 
-#include "types.hpp"
-#include "color.hpp"
+#include <kolibriLib/types.hpp>
+#include <kolibriLib/color.hpp>
 
 namespace KolibriLib
 {

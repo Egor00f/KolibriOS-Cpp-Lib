@@ -1,5 +1,4 @@
 #include <kolibriLib/system/os.hpp>
-#include "os.hpp"
 
 using namespace KolibriLib;
 using namespace OS;
@@ -9,6 +8,7 @@ Colors::ColorsTable KolibriLib::OS::GetSystemColors()
     _ksys_get_system_colors(&sys_color_table);
     return sys_color_table;
 }
+
 Event KolibriLib::OS::WaitEvent(uint32_t TimeOut)
 {
     if (TimeOut != 0)
@@ -22,7 +22,6 @@ Event KolibriLib::OS::WaitEvent(uint32_t TimeOut)
 }
 
 int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args)
-    
 {
     if (filesystem::Exist(AppName)) // Проверка на существование
     {

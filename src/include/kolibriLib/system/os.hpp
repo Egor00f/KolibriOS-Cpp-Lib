@@ -155,10 +155,50 @@ namespace KolibriLib
 
 	} // namespace OS
 
+
+	Colors::ColorsTable KolibriLib::OS::GetSystemColors()
+	{
+		_ksys_get_system_colors(&sys_color_table);
+		return sys_color_table;
+	}
+
+	OS::Event KolibriLib::OS::WaitEvent(uint32_t TimeOut)
+	{
+		if (TimeOut != 0)
+		{
+			return _ksys_wait_event_timeout(TimeOut);
+		}
+		return _ksys_check_event();
+	}
+
+	int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args)
+	{
+		if (filesystem::Exist(AppName)) // Проверка на существование
+		{
+			char *a;
+			strcat(a, const_cast<char *>(args.c_str()));
+			return _ksys_exec(AppName.GetChars(), a);
+		}
+		else
+		{
+			return -1;
+		}
+	}
+
 	/// \brief Подождать
 	/// \param time время задержки(в 1/100 секунды)
 	/// @paragraph Функция просто ждёт, ничего не делает
-	void Wait(int time = -1);
+	inline void Wait(int time)
+	{
+		_ksys_delay(time);
+	}
+
+	/// \brief Подождать, минимальное кол-во времени
+	/// @paragraph Функция просто ждёт, ничего не делает
+	inline void Wait()
+	{
+		_ksys_thread_yield();
+	}
 
 } // namespace KolibriLib
 

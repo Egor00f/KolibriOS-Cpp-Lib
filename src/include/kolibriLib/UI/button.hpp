@@ -19,9 +19,6 @@ namespace KolibriLib
             /// @brief Id кнопки
             typedef unsigned int ButtonID;
 
-            /// @typedef системный Id кнопки
-            typedef unsigned int SysButtonID;
-
             // Коды кнопок начинаются с этого числа
             const ButtonID StartButtonId = 100;
 
@@ -32,34 +29,22 @@ namespace KolibriLib
             /// \brief Получить свободный номер id кнопки из списка
             /// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
             /// \return номер кнопки из списка @link ButtonsIdList
-            ButtonID GetFreeButtonId();
+            ButtonID GetFreeButtonId()
+            {
+                for (unsigned i = 0; i < ButtonsIdList.size(); i++)
+                {
+                    if (ButtonsIdList.count(i) == 0)
+                    {
+                        return i + StartButtonId;
+                    }
+                }
+            }
 
             /// \brief Освободить номер кнопки
             /// \param id номер номер кнопки из списка @link ButtonsIdList
             inline void FreeButtonId(ButtonID id)
             {
                 ButtonsIdList.erase(id);
-            }
-
-            /// \brief Получить id кнопки
-            /// \param id номер кнопки
-            /// @paragraph id кнопки выдаваемый системой
-            /// \return ButtonsIdList[id].ID
-            inline SysButtonID GetButtonId(ButtonID id)
-            {
-                return StartButtonId + id;
-            }
-
-            /// \brief Создать кнопку, автоматически присвоить ей id
-            /// \param coords координаты
-            /// \param size размер
-            /// \param color цвет
-            /// \return id созданной кнопки
-            inline SysButtonID autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color = OS::sys_color_table.work_button)
-            {
-                SysButtonID id = GetButtonId(GetFreeButtonId()); // Автоматически получаем id для кнопки
-                _ksys_define_button(coords.x, coords.y, size.x, size.y, id, color.val);
-                return id;
             }
 
             /// \brief Создать кнопку, автоматически присвоить ей id
@@ -70,7 +55,7 @@ namespace KolibriLib
             inline ButtonID autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color = OS::sys_color_table.work_button)
             {
                 ButtonID id = GetFreeButtonId(); // Автоматически получаем id для кнопки
-                _ksys_define_button(coords.x, coords.y, size.x, size.y, GetButtonId(id), color.val);
+                _ksys_define_button(coords.x, coords.y, size.x, size.y, id, color.val);
                 return id;
             }
 
@@ -79,7 +64,7 @@ namespace KolibriLib
             /// \param size размер
             /// \param id idшник кнопки
             /// \param color цвет
-            inline void DefineButton(const Coord &coord, const Size &size, const SysButtonID &id, Colors::Color color = OS::sys_color_table.work_button)
+            inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::sys_color_table.work_button)
             {
                 _ksys_define_button(coord.x, coord.y, size.x, size.y, id, color.val);
             }
@@ -103,31 +88,21 @@ namespace KolibriLib
             
 
             /// \brief Класс для работы с кнопками
-            class Button : public UIElement
+            class Button: public text::TextLabel
             {
             private:
-                Images::Image _img;
-                text::TextLabel _text;
 
                 /// @brief Id кнопки
                 ButtonID _id;
 
-                unsigned _type;
-
                 /// @brief Состояние кнопки(Нажата/Ненажата)
-                bool _status;
+                mutable bool _status;
 
                 /// @brief Активна(работает) ли сейчас кнопка
                 /// @paragraph Занчение необходимо для того чтобы функция render не пыталась создать кнопку, так как в неактивном состоянии #_id освобождается и его может занять другая кнопка
                 bool _active;
 
             public:
-                /// @brief Список типов данных которые можно "запихнуть" в кнопку
-                enum Type
-                {
-                    Image = 0,
-                    Text
-                };
 
                 /// \brief Это конструктор
                 /// \param coord координата
@@ -136,35 +111,8 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
-                Button(const Coord &coord = {0, 0}, const Size &size = {20, 20}, const unsigned& Margin = UI::DefaultMargin, const Colors::Color& ButtonColor = OS::sys_color_table.work_button);
-
-                /// \brief инициализировать параметры
-                /// \param coord координата
-                /// \param size размер
-                /// \param text текст
-                /// \param Margin отступы текста от границ
-                /// \param BackgroundColor цвет кнопки
-                /// \param TextColor цвет текста
-                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::string &text = "button", const unsigned &Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = OS::sys_color_table.work_button);
-
-                /// \brief инициализировать параметры
-                /// \param coord координата
-                /// \param size размер
-                /// \param image Изображение
-                /// \param Margin отступы текста от границ
-                /// \param BackgroundColor цвет кнопки
-                /// \param TextColor цвет текста
-                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const Images::Image &image = Images::Image(), const unsigned &Margin = DefaultMargin, const Colors::Color &ButtonColor = OS::sys_color_table.work_button);
-
-                /// \brief инициализировать параметры 
-                /// \param coord координата
-                /// \param size размер
-                /// \param Path Путь до изображения
-                /// \param Margin отступы текста от границ
-                /// \param BackgroundColor цвет кнопки
-                /// \param TextColor цвет текста
-                void init(const Coord &coord = {0, 0}, const Size &size = {0, 0}, std::string Path = DefaultImage);
-
+                Button(const Coord &coord = {0, 0}, const Size &size = {20, 20}, unsigned Margin = UI::DefaultMargin, const Colors::Color& ButtonColor = OS::sys_color_table.work_button);
+                
                 /// @brief Отрисовать кнопку
                 void Render() const;
 
@@ -172,7 +120,7 @@ namespace KolibriLib
                 /// @return Состояние кнопки(Нажата/Ненажата)
                 /// @paragraph устанавливает переменную @link _status в true если эта кнопка нажата, иначе false
                 /// @paragraph Эту функцию нужно вызывать в цикле, чтобы кнопка работала
-                bool Handler();
+                bool Handler() const;
 
                 /// @brief Получить сосояние кнопки на момент последней обработки
                 /// @return @link _status
@@ -191,26 +139,6 @@ namespace KolibriLib
                 /// @paragraph Противоположна функции @link Deactivate, возвращает кнопку в рабочее состояние
                 void Activate();
 
-                /// @brief Возвращает тип данных используемых в кнопке @link _type
-                /// @return Функция возвращает @link ContentType :: <Тип Данных>
-                unsigned GetType() const;
-
-                /// @brief Возвращает текст кнопки
-                /// @return Функция возвращает @link _text
-                std::string GetTextLabel() const;
-
-                /// @brief Получить изображение кнопки
-                /// @return Функция возвращает @link _img
-                Images::Image GetImage() const;
-
-                /// @brief Изменить текст кнопки
-                /// @param Новый текст кнопки
-                void SetText(const std::string& NewText);
-
-                /// @brief Изменить изображение в кнопке
-                /// @param NewImg Изображение
-                void SetImage(const Images::Image& NewImg);
-
                 /// @brief Декструктор
                 ~Button();
 
@@ -218,7 +146,85 @@ namespace KolibriLib
 
                 bool operator ==(const Button& element) const;
             };
+
+        buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor) : TextLabel(coord, size, NULL, NULL, true, NULL, Margin)
+        {
+            _id = GetFreeButtonId();
+        }
+
+        void buttons::Button::Deactivate()
+        {
+            if (_active)
+            {
+                DeleteButton(_id);
+                _active = false;
+            }
+        }
+
+        void buttons::Button::Activate()
+        {
+            if (!_active)
+            {
+                _id = GetFreeButtonId();
+                _active = true;
+            }
+        }
+
+        buttons::Button::~Button()
+        {
+            DeleteButton(_id);
+        }
+
+        buttons::Button &KolibriLib::UI::buttons::Button::operator=(const buttons::Button &element)
+        {
+            _coord = element._coord;
+            _size = element._size;
+            _MainColor = element._MainColor;
+            _Margin = element._Margin;
+            _id = element._id;
+            _active = element._active;
+            _data = element._data;
+
+            return *this;
+        }
+
+        bool KolibriLib::UI::buttons::Button::operator==(const Button &element) const
+        {
+
+            return (_data == element._data) &&
+                   (_coord == element._coord) &&
+                   (_size == element._size) &&
+                   (_angle == element._angle);
+        }
+
+        bool buttons::Button::Handler() const
+        {
+            _status = GetPressedButton() == _id; // Если id нажатой кнопки совпадает к id этой кнопки
+            return _status;
+        }
+
+        bool buttons::Button::GetStatus() const
+        {
+            return _status;
+        }
+
+        void buttons::Button::Render() const
+        {
+            if (_active)
+            {
+                buttons::DefineButton(_coord, _size, _id, _MainColor);
+
+                Print({_coord.x + ((int)_size.x / 2), _coord.y + ((int)_size.y / 2)});
+            }
+        }
+
+        buttons::ButtonID buttons::Button::GetId() const
+        {
+            return _id;
+        }
         } // namespace buttons
+
+        
     } // namespace UI
     
 } // namespace KolibriLib

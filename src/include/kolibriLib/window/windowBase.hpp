@@ -115,14 +115,18 @@ namespace KolibriLib
 			);
 		}
 
-		UI::Coord GetWindowCoord();
+		inline UI::Coord GetWindowCoord()
+		{
+			return mouse::GetMousePositionOnSreen() - mouse::GetMousePositionInWindow();
+		}
 
 		/// @brief Список констант положения окна относительно других окон:
-		enum Pos{
+		enum Pos
+		{
 			BackGround= -2,
 			AlwaysBack= -1,
 			Normal= 0,
-			AlwaysTop = 	
+			AlwaysTop = 1 	
 		};
 
 		/// @brief Получить положение окна относительно других окон

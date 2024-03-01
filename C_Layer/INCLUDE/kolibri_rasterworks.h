@@ -8,6 +8,7 @@ extern "C" {
 /// @brief Инициализировать библиотеку RasterWorks
 /// @return -1 если неудачно
 extern int kolibri_rasterworks_init(void);
+
 /// @brief Список параметров
 enum Params
 {

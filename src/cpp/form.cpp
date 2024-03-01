@@ -8,21 +8,16 @@ Form::Form(const Coord &coord, const Size &size, const std::string &BackgroundTe
 #ifdef DEBUG == true
     _ksys_debug_puts("Form Constructor\n");
 #endif
-    _butt.init(coord, size, " ", Margin, ButtonTextColor); // Инициализация кнопки
-}
-
-void Form::init(Coord coord, Size size, std::string BackgroundText, Colors::Color FormColor, Colors::Color ButtonTextColor, unsigned Margin)
-{
-    _coord = coord;
-    _size = size;
-    _MainColor = FormColor;
-    _Margin = Margin;
-    _butt.init(coord, size, "BackgroundText", Margin, ButtonTextColor);
+    _butt.SetCoord(coord);
+    _butt.SetSize(size);
+    _butt.SetTextColor(ButtonTextColor);
+    _butt.SetBackgroundColor(FormColor);
+    _butt.Add(BackgroundText);
 }
 
 const std::string& Form::GetBackgroundText() const
 {
-    return _butt.GetTextLabel();
+    return _butt.GetText();
 }
 
 const Colors::Color& Form::GetBackgroundColor() const

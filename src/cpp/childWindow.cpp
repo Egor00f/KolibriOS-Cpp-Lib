@@ -1,4 +1,4 @@
-#include "childWindow.hpp"
+#include <kolibriLib/childWindow.hpp>
 
 using namespace KolibriLib;
 using namespace childWindow;
@@ -12,12 +12,12 @@ void RenderMessageWindow(void*)
 
     UI::Size WindowSize = window.GetSize();
 
-    window.AddElement(UI::text::TextLabel({(int)window.GetMargin(), (int)window.GetMargin()}, {WindowSize.x, WindowSize.y / 2}, _Message));
+    window.AddElement(UI::text::TextLabel({(int)window.GetMargin(), (int)window.GetMargin()}, {WindowSize.x, WindowSize.y / 2}, _Message, 16));
 
     const unsigned ButtonSize = 40;
 
     UI::buttons::Button OK({(int)WindowSize.x - (int)window.GetMargin(), WindowSize.y / 2}, {ButtonSize, WindowSize.y / 2}, 0);
-    OK.SetText("Ok");
+    OK.Add("OK");
 
     unsigned ok = window.AddElement(OK);
     

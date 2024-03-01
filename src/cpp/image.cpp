@@ -1,5 +1,4 @@
 #include <kolibriLib/UI/image.hpp>
-#include "image.hpp"
 
 using namespace KolibriLib;
 using namespace UI;
