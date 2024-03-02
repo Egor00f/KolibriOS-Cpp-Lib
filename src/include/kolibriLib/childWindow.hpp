@@ -76,7 +76,7 @@ namespace KolibriLib
 
             const unsigned ButtonSize = 40;
 
-            UI::buttons::Button OK({(int)WindowSize.x - (int)window.GetMargin(), WindowSize.y / 2}, {ButtonSize, WindowSize.y / 2}, 0);
+            UI::buttons::Button OK(UI::Coord((int)WindowSize.x - (int)window.GetMargin(), (int)WindowSize.y / 2), UI::Size(ButtonSize, WindowSize.y / 2));
             OK.Add("OK");
 
             unsigned ok = window.AddElement(OK);

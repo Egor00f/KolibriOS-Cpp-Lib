@@ -56,7 +56,7 @@ namespace KolibriLib
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
         /// @paragraph Используйте лучше std::thread, а не эту функцию, а то я вот вообще незнаю сколько размер стека сделать
-        PID CreateThread(void(*ThreadEntry)(void*), unsigned ThreadStackSize = 1024)
+        PID CreateThread(void(*ThreadEntry)(void*), unsigned ThreadStackSize = 2048)
         {
             void *th_stack = malloc(ThreadStackSize);
             if (!th_stack) //    Если памяти не было выделенно

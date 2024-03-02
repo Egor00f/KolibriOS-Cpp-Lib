@@ -66,7 +66,7 @@ int main(){
     if (image->Type != IMAGE_BPP32) { 
         image = img_convert(image, NULL, IMAGE_BPP32, 0, 0); // Convert image to format BPP32
         if (!image) {
-             printf("Сonvert error!: \n");  
+             printf("Convert error!: \n");  
              exit(0);
         }
     }

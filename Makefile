@@ -25,7 +25,7 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a install CLAYER clean examples
+all: CLAYER examples  
 
 	
 

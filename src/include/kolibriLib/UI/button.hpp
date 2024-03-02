@@ -147,7 +147,7 @@ namespace KolibriLib
                 bool operator ==(const Button& element) const;
             };
 
-        buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor) : TextLabel(coord, size, NULL, NULL, true, NULL, Margin)
+        buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor) : TextLabel(coord, size, "Button", 16, true, OS::sys_color_table.work_text, Margin)
         {
             _id = GetFreeButtonId();
         }

@@ -76,79 +76,97 @@ namespace KolibriLib
 				
 			};
 
-		} // namespace Image
-
-		Images::Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size)
-		{
-#ifdef DEBUG == true
-			_ksys_debug_puts("I Constructor\n");
-#endif
-		}
-
-		Images::img::~img()
-		{
-			img_destroy(_img);
-		}
-
-		void Images::img::LoadImage(const filesystem::Path &Path)
-		{
-			int32_t img_size;
-			FILE *f = fopen(Path.GetChars(), "rb"); // Этот код взят из примера из /contrib/C_Layer/EXAMPLE/img_example/main.c
-
-			if (!f)
+			img::img()
 			{
-				char *a = "LoadImage: Can't open file:";
-				strcat(a, Path.GetChars());
-				strcat(a, "\n");
-				_ksys_debug_puts(a);
+				_img = img_create(32, 32, IMAGE_BPP32);
+			}
+			
+			img::~img()
+			{
+				img_destroy(_img);
 			}
 
-			if (fseek(f, 0, SEEK_END))
+			Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size)
 			{
-				char *a = "Can't SEEK_END file:";
-				strcat(a, Path.GetChars());
-				strcat(a, "\n");
-				_ksys_debug_puts(a);
+				
 			}
 
-			int filesize = ftell(f);
-			rewind(f);
-			char *fdata = (char *)malloc(filesize);
-
-			if (!fdata)
+			Image::~Image()
 			{
-				char *a = "No memory for file:";
-				strcat(a, Path.GetChars());
-				strcat(a, "\n");
-				strcat(a, "malloc not return ptr");
-				_ksys_debug_puts(a);
+
 			}
 
-			img_size = (int32_t)fread(fdata, 1, filesize, f);
-
-			if (ferror(f))
+			void img::LoadImage(const filesystem::Path &Path)
 			{
-				char *a = "Error reading file ";
-				strcat(a, Path.GetChars());
-				strcat(a, "\n");
-				_ksys_debug_puts(a);
-			}
+				int32_t img_size;
+				FILE *f = fopen(Path.GetChars(), "rb"); // Этот код взят из примера из /contrib/C_Layer/EXAMPLE/img_example/main.c
 
-			fclose(f);
-
-			_img = img_decode((void *)fdata, img_size, 0);
-
-			free(fdata);
-
-			if (_img->Type != IMAGE_BPP32)
-			{
-				_img = img_convert(_img, NULL, IMAGE_BPP32, 0, 0); // Convert image to format BPP32
-				if (!_img)
+				if (!f)
 				{
-					_ksys_debug_puts("Convert error");
+					const char *a = "LoadImage: Can't open file:";
+					char *b;
+					strcat(b, a);
+					strcat(b, Path.GetChars());
+					strcat(b, "\n");
+					_ksys_debug_puts(b);
+				}
+
+				if (fseek(f, 0, SEEK_END))
+				{
+					const char *a = "Can't SEEK_END file:";
+					char *b;
+					strcat(b, a);
+					strcat(b, Path.GetChars());
+					strcat(b, "\n");
+					_ksys_debug_puts(b);
+				}
+
+				int filesize = ftell(f);
+				rewind(f);
+				char *fdata = (char *)malloc(filesize);
+
+				if (!fdata)
+				{
+					const char *a = "No memory for file:";
+					char *b;
+					strcat(b, a);
+					strcat(b, Path.GetChars());
+					strcat(b, "\n");
+					strcat(b, "malloc not return ptr");
+					_ksys_debug_puts(b);
+				}
+
+				img_size = (int32_t)fread(fdata, 1, filesize, f);
+
+				if (ferror(f))
+				{
+					const char *a = "Error reading file ";
+					char *b;
+					strcat(b, a);
+					strcat(b, Path.GetChars());
+					strcat(b, "\n");
+					_ksys_debug_puts(b);
+				}
+
+				fclose(f);
+
+				_img = img_decode((void *)fdata, img_size, 0);
+
+				free(fdata);
+
+				if (_img->Type != IMAGE_BPP32)
+				{
+					_img = img_convert(_img, NULL, IMAGE_BPP32, 0, 0); // Convert image to format BPP32
+					if (!_img)
+					{
+						_ksys_debug_puts("Convert error");
+					}
 				}
 			}
-		}
+
+		} // namespace Image
+
+		
 
 		void Images::img::Render(const Coord &coord, const Size &size) const
 		{

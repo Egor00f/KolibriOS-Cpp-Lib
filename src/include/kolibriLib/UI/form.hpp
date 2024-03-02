@@ -69,9 +69,6 @@ namespace KolibriLib
 
         Form::Form(const Coord &coord, const Size &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) : UIElement(coord, size, FormColor, Margin)
         {
-#ifdef DEBUG == true
-            _ksys_debug_puts("Form Constructor\n");
-#endif
             _butt.SetCoord(coord);
             _butt.SetSize(size);
             _butt.SetTextColor(ButtonTextColor);

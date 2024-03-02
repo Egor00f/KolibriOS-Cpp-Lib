@@ -116,6 +116,10 @@ namespace KolibriLib
                     unsigned _Flags;
 
                     mutable UI::Size size;
+
+                    Font& operator=(const Font& f);
+
+                    bool operator==(const Font& f) const;
                 };
 
 
@@ -366,8 +370,11 @@ namespace KolibriLib
 
                 /// @brief Получить текст
                 /// @return 
-                const std::string& GetText() const;
+                std::string& GetText() const;
 
+                /// @brief Получить символ под номером i
+                /// @param i номер
+                /// @return _data[i]
                 const Char& GetChar(int i) const;
 
 
@@ -448,11 +455,70 @@ namespace KolibriLib
                 bool operator != (const TextLabel& a) const;
             };
 
-            text::TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const unsigned &FontSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) : UIElement(coord, size, TextColor, Margin)
+            Fonts::Font& KolibriLib::UI::text::Fonts::Font::operator=(const Fonts::Font &f)
             {
-#if DEBUG == true
-                _ksys_debug_puts("TextLabel Constructor \n");
-#endif;
+                _Font = f._Font;
+                _FontSize = f._FontSize;
+                _Flags = f._Flags;
+                return *this;
+            }
+
+            bool KolibriLib::UI::text::Fonts::Font::operator==(const Fonts::Font &f) const
+            {
+                return (_Font == f._Font) &&
+                       (_FontSize == f._FontSize) &&
+                       (_Flags == f._Flags);
+            }
+
+            Char &KolibriLib::UI::text::Char::operator=(char c)
+            {
+                if(_type == Char::Type::Text)
+                {
+                    *_c = c;
+                }
+                else
+                {
+                    Free();
+                    _c                  = new char(c);
+                    _font               = Fonts::DefaultFont;
+                    _TextColor          = new Colors::Color(OS::sys_color_table.work_text);
+                    _BackgroundColor    = new Colors::Color(OS::sys_color_table.work_area);
+                    _type = Type::Text;
+                }
+            }
+
+            Char &KolibriLib::UI::text::Char::operator=(const Char &c)
+            {
+                Free();
+                _font = c._font;
+
+                switch (c._type)
+                {
+                case Char::Type::Text:
+                    _c = new char(*c._c);
+                    _TextColor = new Colors::Color(c._TextColor->val);
+                    _BackgroundColor = new Colors::Color(c._BackgroundColor->val);
+                    _type = Type::Text;
+                    break;
+                case Char::Type::Image:
+
+                    _img = new Images::img(*c._img);
+                    _type = Type::Image;
+
+                    break;
+                default:
+                    break;
+                }
+            }
+
+			bool Char::operator==(const Char &img) const
+			{
+				return (_type == img._type) &&
+                    (_font == img._font);
+			}
+
+			text::TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const unsigned &FontSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) : UIElement(coord, size, TextColor, Margin)
+            {
                 Add(text);
                 _TextScale = TextScale;
             }
@@ -646,7 +712,7 @@ namespace KolibriLib
                 }
             }
 
-            const std::string &KolibriLib::UI::text::Text::GetText() const
+            std::string &KolibriLib::UI::text::Text::GetText() const
             {
                 std::string result;
                 for (int i = 0; i < _data.size(); i++)

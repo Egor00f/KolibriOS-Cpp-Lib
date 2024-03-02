@@ -6,7 +6,7 @@
 #include <kolibri_libimg.h>
 #include <kolibri_rasterworks.h>
 
-#include <sound.h>
+//#include <sound.h>
 
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/system/os.hpp>
@@ -22,7 +22,7 @@ namespace KolibriLib
 	{
 		OS::GetSystemColors();
 
-		if(kolibri_libimg_init() != 0)
+		if(kolibri_libimg_init() != -1)
 		{
 			_ksys_debug_puts("Error loading lib_img.obj, exit\n");
 			exit(0);
@@ -34,11 +34,7 @@ namespace KolibriLib
 			exit(0);
 		}*/
 
-		if(kolibri_rasterworks_init())
-		{
-			_ksys_debug_puts("Error loading RasterWorks, exit\n");
-			exit(0);
-		}
+		kolibri_rasterworks_init();
 		
 
 
