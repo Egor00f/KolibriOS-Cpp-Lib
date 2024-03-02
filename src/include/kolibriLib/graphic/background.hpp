@@ -52,9 +52,13 @@ namespace KolibriLib
 			_ksys_bg_redraw();
 		}
 
-		inline void RedrawBackground(const UI::Coord coord, const UI::Size size)
+		inline void RedrawBackground(const UI::Coord& coord, const UI::Size& size)
 		{
-			_ksys_bg_redraw_bar(coord.GetKsysPost(), size.GetKsysPost());
+			ksys_pos_t buff = coord.GetKsysPost();
+			ksys_pos_t p2;
+			p2.x = (unsigned)buff.x + size.GetKsysPost().x;
+			p2.y = (unsigned)buff.y + size.GetKsysPost().y;
+			_ksys_bg_redraw_bar(buff, p2);
 		}
 
 		inline void SetSize(const UI::Size &size)
@@ -81,6 +85,8 @@ namespace KolibriLib
 			}
 			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N,  coord.x, coord.y, GetSize().x);
 		}
+
+
 	} // namespace Background
 	
 } // namespace KolibriLib
