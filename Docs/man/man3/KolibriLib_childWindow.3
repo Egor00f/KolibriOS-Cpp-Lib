@@ -11,14 +11,14 @@ KolibriLib::childWindow \- Дочерние окна
 
 .in +1c
 .ti -1c
-.RI "void \fBRenderMessageWindow\fP (void)"
+.RI "void \fBRenderMessageWindow\fP (void *)"
 .br
 .ti -1c
-.RI "void \fBMessageBox\fP (std::string _Message, std::string _Title)"
+.RI "void \fBMessageBox\fP (const std::string &_Message, const std::string &_Title)"
 .br
 .RI "Создать окно с сообщением "
 .ti -1c
-.RI "void \fBErrorWindow\fP (std::string ErrorMessage)"
+.RI "void \fBErrorWindow\fP (const std::string &ErrorMessage)"
 .br
 .RI "окошко с ошибкой "
 .in -1c
@@ -40,7 +40,7 @@ KolibriLib::childWindow \- Дочерние окна
 Дочерние окна 
 .SH "Function Documentation"
 .PP 
-.SS "void KolibriLib::childWindow::ErrorWindow (std::string ErrorMessage)\fR [inline]\fP"
+.SS "void KolibriLib::childWindow::ErrorWindow (const std::string & ErrorMessage)\fR [inline]\fP"
 
 .PP
 окошко с ошибкой 
@@ -51,7 +51,7 @@ KolibriLib::childWindow \- Дочерние окна
 .RE
 .PP
 
-.SS "void KolibriLib::childWindow::MessageBox (std::string _Message, std::string _Title)"
+.SS "void KolibriLib::childWindow::MessageBox (const std::string & _Message, const std::string & _Title)"
 
 .PP
 Создать окно с сообщением 

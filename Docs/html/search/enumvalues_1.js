@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['circle_0',['Circle',['../class_kolibri_lib_1_1_u_i_1_1_check_box.html#ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20',1,'KolibriLib::UI::CheckBox']]]
+  ['button_0',['Button',['../namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8cad8c577b231e2a21dc66bc1aababfc55a',1,'KolibriLib::OS']]]
 ];

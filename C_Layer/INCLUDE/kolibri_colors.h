@@ -1,6 +1,8 @@
 #ifndef KOLIBRI_COLORS_H
 #define KOLIBRI_COLORS_H
 
+
+
 /*
   * +0: dword: frames - ���� �����
   * +4: dword: grab - ���� ���������
@@ -16,18 +18,8 @@
   * +36 = +0x24: dword: work_graph - ���� ������� � ������� �������
 */
 
-typedef struct {
-  unsigned int color_frame_area; // 0 ���� �����
-  unsigned int color_grab_bar; // 4
-  unsigned int color_grab_bar_button; // 8
-  unsigned int color_grab_button_text; // 12
-  unsigned int color_grab_text; // 16
-  unsigned int color_work_area; // 20
-  unsigned int color_work_button; // 24
-  unsigned int color_work_button_text; // 28
-  unsigned int color_work_text; // 32
-  unsigned int color_work_graph; // 36
-}kolibri_system_colors;
+
+/* typedef ksys_colors_table_t kolibri_system_colors;
 
 kolibri_system_colors kolibri_color_table;
 
@@ -39,6 +31,6 @@ void kolibri_get_system_colors(kolibri_system_colors *color_table)
 		    );
 
   /* color_table should point to the system color table */
-}
+} */
 
 #endif /* KOLIBRI_COLORS_H */

@@ -13,6 +13,7 @@ KolibriLib::filesystem \- Работа с файлами
 .ti -1c
 .RI "class \fBPath\fP"
 .br
+.RI "Путь до файла/папки "
 .in -1c
 .SS "Enumerations"
 
@@ -20,46 +21,19 @@ KolibriLib::filesystem \- Работа с файлами
 .ti -1c
 .RI "enum \fBErrors\fP { \fBSuccessfully\fP = 0, \fBNotSupport\fP = 2, \fBUnklownFileSystem\fP = 3, \fBNotFound\fP = 5, \fBEndOfFile\fP = 6, \fBptrOutsideApp\fP = 7, \fBDiskIsFull\fP = 8, \fBFSError\fP = 9, \fBAccessDenied\fP = 10, \fBDeviceError\fP = 11, \fBOsHaventRam\fP = 12 }"
 .br
+.RI "Список ошибок файловой системы "
 .in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "int \fBCreateFile\fP (const char *name)"
-.br
-.RI "Создать файл "
-.ti -1c
-.RI "int \fBCreateFile\fP (const char *name, char *path)"
-.br
-.RI "Создать файл "
-.ti -1c
 .RI "int \fBCreateFile\fP (const \fBPath\fP &name)"
 .br
 .RI "Создать файл "
 .ti -1c
-.RI "int \fBCreateFile\fP (const std::string &name, const \fBPath\fP &path)"
-.br
-.RI "Создать файл "
-.ti -1c
-.RI "int \fBDelete\fP (const char *name)"
-.br
-.RI "удалить файл или папку "
-.ti -1c
-.RI "int \fBDelete\fP (const char *name, char *path)"
-.br
-.RI "удалить файл или папку "
-.ti -1c
 .RI "int \fBDelete\fP (const \fBPath\fP &name)"
 .br
 .RI "удалить файл или папку "
-.ti -1c
-.RI "int \fBDelete\fP (const std::string &name, const \fBPath\fP &path)"
-.br
-.RI "удалить файл или папку "
-.ti -1c
-.RI "int \fBMakeDirectory\fP (const char *path)"
-.br
-.RI "Создать папку "
 .ti -1c
 .RI "int \fBMakeDirectory\fP (const \fBPath\fP &path)"
 .br
@@ -71,6 +45,7 @@ KolibriLib::filesystem \- Работа с файлами
 .ti -1c
 .RI "int \fBRename\fP (const \fBPath\fP &OldName, const \fBPath\fP &NewName)"
 .br
+.RI "Аналог mv\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -83,6 +58,8 @@ KolibriLib::filesystem \- Работа с файлами
 .PP 
 .SS "enum \fBKolibriLib::filesystem::Errors\fP"
 
+.PP
+Список ошибок файловой системы 
 .PP
 \fBEnumerator\fP
 .in +1c
@@ -121,38 +98,6 @@ KolibriLib::filesystem \- Работа с файлами
 файловой системе недостаточно оперативной памяти 
 .SH "Function Documentation"
 .PP 
-.SS "int KolibriLib::filesystem::CreateFile (const char * name)"
-
-.PP
-Создать файл 
-.PP
-\fBParameters\fP
-.RS 4
-\fIname\fP полный путь до файла 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-.RE
-.PP
-
-.SS "int KolibriLib::filesystem::CreateFile (const char * name, char * path)"
-
-.PP
-Создать файл 
-.PP
-\fBParameters\fP
-.RS 4
-\fIname\fP имя файла 
-.br
-\fIpath\fP путь до файла 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-.RE
-.PP
-
 .SS "int KolibriLib::filesystem::CreateFile (const \fBPath\fP & name)"
 
 .PP
@@ -165,55 +110,7 @@ KolibriLib::filesystem \- Работа с файлами
 .PP
 \fBReturns\fP
 .RS 4
-.RE
-.PP
-
-.SS "int KolibriLib::filesystem::CreateFile (const std::string & name, const \fBPath\fP & path)"
-
-.PP
-Создать файл 
-.PP
-\fBParameters\fP
-.RS 4
-\fIname\fP имя файла 
-.br
-\fIpath\fP путь до файла 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-.RE
-.PP
-
-.SS "int KolibriLib::filesystem::Delete (const char * name)"
-
-.PP
-удалить файл или папку 
-.PP
-\fBParameters\fP
-.RS 4
-\fIname\fP полный путь до файла 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-.RE
-.PP
-
-.SS "int KolibriLib::filesystem::Delete (const char * name, char * path)"
-
-.PP
-удалить файл или папку 
-.PP
-\fBParameters\fP
-.RS 4
-\fIname\fP имя файла 
-.br
-\fIpath\fP путь до файла 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
+Значение из списка \fBErrors\fP
 .RE
 .PP
 
@@ -229,23 +126,7 @@ KolibriLib::filesystem \- Работа с файлами
 .PP
 \fBReturns\fP
 .RS 4
-.RE
-.PP
-
-.SS "int KolibriLib::filesystem::Delete (const std::string & name, const \fBPath\fP & path)"
-
-.PP
-удалить файл или папку 
-.PP
-\fBParameters\fP
-.RS 4
-\fIname\fP имя файла 
-.br
-\fIpath\fP путь до файла 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
+Значение из списка \fBErrors\fP
 .RE
 .PP
 
@@ -265,21 +146,6 @@ true если файл или папка существует, иначе false
 .RE
 .PP
 
-.SS "int KolibriLib::filesystem::MakeDirectory (const char * path)"
-
-.PP
-Создать папку 
-.PP
-\fBParameters\fP
-.RS 4
-\fIpath\fP путь 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-.RE
-.PP
-
 .SS "int KolibriLib::filesystem::MakeDirectory (const \fBPath\fP & path)"
 
 .PP
@@ -292,6 +158,25 @@ true если файл или папка существует, иначе false
 .PP
 \fBReturns\fP
 .RS 4
+Значение из списка \fBErrors\fP
+.RE
+.PP
+
+.SS "int KolibriLib::filesystem::Rename (const \fBPath\fP & OldName, const \fBPath\fP & NewName)"
+
+.PP
+Аналог mv\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIOldName\fP 
+.br
+\fINewName\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Значение из списка \fBErrors\fP
 .RE
 .PP
 

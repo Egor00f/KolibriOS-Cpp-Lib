@@ -12,125 +12,40 @@
 \DoxyCodeLine{00008\ }
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <math.h>}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}small.hpp"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}UI.hpp"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}color.hpp"{}}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00016\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Графика}}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{namespace\ }graphic}
-\DoxyCodeLine{00019\ \ \ \ \ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawLine(\textcolor{keyword}{const}\ UI::Coord\&\ coord,\ \textcolor{keyword}{const}\ UI::Coord\&\ b,\ \textcolor{keyword}{const}\ Color::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawLine(\textcolor{keyword}{const}\ UI::Coord\ \&coord,\ \textcolor{keywordtype}{unsigned}\ lenght,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ angle,\ \textcolor{keyword}{const}\ Color::Color\ \&color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}types.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}screen.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}UI.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}color.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ Графика}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{namespace\ }graphic}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawLine(\textcolor{keyword}{const}\ UI::Coord\&\ coord,\ \textcolor{keyword}{const}\ UI::Coord\&\ b,\ \textcolor{keyword}{const}\ Colors::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawLine(\textcolor{keyword}{const}\ UI::Coord\ \&coord,\ \textcolor{keywordtype}{unsigned}\ lenght,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ angle,\ \textcolor{keyword}{const}\ Colors::Color\ \&color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawPixel(\textcolor{keyword}{const}\ UI::Coord\&\ position,\ \textcolor{keyword}{const}\ Color::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawPixel(\textcolor{keyword}{const}\ UI::Coord\&\ position,\ \textcolor{keyword}{const}\ Colors::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircle(\textcolor{keyword}{const}\ UI::Coord\&\ coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keywordtype}{unsigned}\ detalization\ =\ 36,\ \textcolor{keyword}{const}\ Color::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircle(\textcolor{keyword}{const}\ UI::Coord\&\ coord,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ detalization\ =\ 36,\ \textcolor{keyword}{const}\ Colors::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawRectangleFill(UI::Coord\ position,\ UI::Size\ size,\ Color::Color\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawRectangleFill(UI::Coord\ position,\ UI::Size\ size,\ Colors::Color\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
 \DoxyCodeLine{00052\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircleFill(\textcolor{keyword}{const}\ UI::Coord\&\ coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keywordtype}{unsigned}\ detalization\ =\ 36,\ \textcolor{keyword}{const}\ Color::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircleFill(\textcolor{keyword}{const}\ UI::Coord\&\ coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keywordtype}{unsigned}\ detalization\ =\ 36,\ \textcolor{keyword}{const}\ Colors::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
 \DoxyCodeLine{00059\ }
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawPoint(\textcolor{keyword}{const}\ UI::Coord\&\ position,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ size,\ \textcolor{keyword}{const}\ Color::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph,\ \textcolor{keywordtype}{bool}\ fill\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ DrawPoint(\textcolor{keyword}{const}\ UI::Coord\&\ position,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ size,\ \textcolor{keyword}{const}\ Colors::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph,\ \textcolor{keywordtype}{bool}\ fill\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00066\ }
 \DoxyCodeLine{00067\ }
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawRectangleLines(\textcolor{keyword}{const}\ UI::Coord\&\ a,\ \textcolor{keyword}{const}\ UI::Coord\&\ b,\ \textcolor{keyword}{const}\ Color::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawRectangleLines(\textcolor{keyword}{const}\ UI::Coord\&\ a,\ \textcolor{keyword}{const}\ UI::Coord\&\ b,\ \textcolor{keyword}{const}\ Colors::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawTriangle(\textcolor{keyword}{const}\ UI::Coord\&\ a,\ \textcolor{keyword}{const}\ UI::Coord\&\ b,\ \textcolor{keyword}{const}\ UI::Coord\&\ c,\ \textcolor{keyword}{const}\ Color::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8915296792964e4aaeadf4b76f6a109a}{OS::sys\_color\_table}}.work\_graph);}
-\DoxyCodeLine{00079\ \ \ \ \ \}}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawLine(\textcolor{keyword}{const}\ UI::Coord\ \&coord,\ \textcolor{keyword}{const}\ UI::Coord\ \&b,\ \textcolor{keyword}{const}\ Color::Color\ \&color)}
-\DoxyCodeLine{00081\ \ \ \ \ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \_ksys\_draw\_line(coord.x,\ coord.y,\ b.x,\ b.y,\ color.val);}
-\DoxyCodeLine{00083\ \ \ \ \ \}}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawLine(\textcolor{keyword}{const}\ UI::Coord\ \&coord,\ \textcolor{keywordtype}{unsigned}\ lenght,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ angle,\ \textcolor{keyword}{const}\ Color::Color\ \&color)}
-\DoxyCodeLine{00086\ \ \ \ \ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \_ksys\_draw\_line(coord.x,\ coord.y,\ coord.x\ +\ (lenght\ *\ cos(angle)),\ coord.y\ +\ (lenght\ *\ sin(angle)),\ color.val);}
-\DoxyCodeLine{00088\ \ \ \ \ \}}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawPixel(\textcolor{keyword}{const}\ UI::Coord\ \&position,\ \textcolor{keyword}{const}\ Color::Color\ \&color)}
-\DoxyCodeLine{00091\ \ \ \ \ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \_ksys\_draw\_pixel(position.x,\ position.y,\ color.val);}
-\DoxyCodeLine{00093\ \ \ \ \ \}}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawCircle(\textcolor{keyword}{const}\ UI::Coord\ \&coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keywordtype}{unsigned}\ detalization,\ \textcolor{keyword}{const}\ Color::Color\ \&color)}
-\DoxyCodeLine{00096\ \ \ \ \ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ UI::Coord\ buff;}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ b\ =\ Radius;}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ 0;}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ angle\ =\ 1;\ angle\ <=\ detalization\ *\ 10;\ angle\ +=\ 36\ /\ detalization)}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ buff\ =\ \{coord.x\ +\ (int)b,\ coord.y\ +\ (\textcolor{keywordtype}{int})c\};}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ Radius\ *\ cos(angle);}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ Radius\ *\ sin(angle);}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ UI::Coord\ n\ =\ \{coord.x\ +\ (int)b,\ coord.y\ +\ (\textcolor{keywordtype}{int})c\};}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ DrawLine(buff,\ n);}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00111\ \ \ \ \ \}}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawCircleFill(\textcolor{keyword}{const}\ UI::Coord\ \&coord,\ \textcolor{keywordtype}{unsigned}\ Radius,\ \textcolor{keywordtype}{unsigned}\ detalization,\ \textcolor{keyword}{const}\ Color::Color\ \&color)}
-\DoxyCodeLine{00114\ \ \ \ \ \{}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ DrawCircle(coord,\ Radius,\ detalization,\ color);}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ b\ =\ Radius\ *\ cos(90\ +\ 45);}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ c\ =\ Radius\ *\ sin(90\ +\ 45);}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ UI::Coord\ n\ =\ \{coord.x\ +\ (int)b,\ coord.y\ +\ (\textcolor{keywordtype}{int})c\};}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ DrawRectangleFill(n,\ \{(unsigned)(coord.x\ -\/\ n.x)\ *\ 2,\ (unsigned)c\ *\ 2\},\ color);}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ i\ =\ Radius;\ i\ >\ (Radius\ -\/\ (coord.x\ -\/\ n.x));\ i-\/-\/)\ \textcolor{comment}{//\ Дозакрашивание\ пробелов\ между\ квадратом\ и\ границами\ груга}}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(coord,\ i,\ detalization,\ color);}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00127\ \ \ \ \ \}}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawRectangleFill(UI::Coord\ position,\ UI::Size\ size,\ Color::Color\ color)}
-\DoxyCodeLine{00130\ \ \ \ \ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ :}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(13),\ \textcolor{stringliteral}{"{}b"{}}((position.x\ <<\ 16)\ +\ size.x),\ \textcolor{stringliteral}{"{}c"{}}((position.y\ <<\ 16)\ +\ size.y),\ \textcolor{stringliteral}{"{}d"{}}(color.val));}
-\DoxyCodeLine{00135\ \ \ \ \ \}}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawPoint(\textcolor{keyword}{const}\ UI::Coord\ \&position,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&size,\ \textcolor{keyword}{const}\ Color::Color\ \&color,\ \textcolor{keywordtype}{bool}\ fill)}
-\DoxyCodeLine{00138\ \ \ \ \ \{}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ <\ 3)}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ fill\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fill)}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircle(position,\ size,\ color.val);}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ DrawCircleFill(position,\ size,\ color.val);}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00151\ \ \ \ \ \}}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawRectangleLines(\textcolor{keyword}{const}\ UI::Coord\ \&a,\ \textcolor{keyword}{const}\ UI::Coord\ \&b,\ \textcolor{keyword}{const}\ Color::Color\ \&color)}
-\DoxyCodeLine{00154\ \ \ \ \ \{}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ DrawLine(a,\ \{b.x,\ a.y\},\ color);}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ DrawLine(a,\ \{a.x,\ b.y\},\ color);}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ DrawLine(\{b.x,\ a.y\},\ b,\ color);}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ DrawLine(\{a.x,\ b.y\},\ b,\ color);}
-\DoxyCodeLine{00159\ \ \ \ \ \}}
-\DoxyCodeLine{00160\ }
-\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ graphic::DrawTriangle(\textcolor{keyword}{const}\ UI::Coord\ \&a,\ \textcolor{keyword}{const}\ UI::Coord\ \&b,\ \textcolor{keyword}{const}\ UI::Coord\ \&c,\ \textcolor{keyword}{const}\ Color::Color\ \&color)}
-\DoxyCodeLine{00162\ \ \ \ \ \{}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ DrawLine(a,\ b,\ color);}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ DrawLine(a,\ c,\ color);}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ DrawLine(b,\ c,\ color);}
-\DoxyCodeLine{00166\ \ \ \ \ \}}
-\DoxyCodeLine{00167\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00169\ }
-\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_GRAPHIC\_H\_\_}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawTriangle(\textcolor{keyword}{const}\ UI::Coord\&\ a,\ \textcolor{keyword}{const}\ UI::Coord\&\ b,\ \textcolor{keyword}{const}\ UI::Coord\&\ c,\ \textcolor{keyword}{const}\ Colors::Color\&\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_graph);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ Colors::Color\ ReadPoint(\textcolor{keyword}{const}\ point<unsigned>\ Point);}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_GRAPHIC\_H\_\_}}
 
 \end{DoxyCode}

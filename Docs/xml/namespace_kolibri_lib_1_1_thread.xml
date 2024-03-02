@@ -2,15 +2,47 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
   <compounddef id="namespace_kolibri_lib_1_1_thread" kind="namespace" language="C++">
     <compoundname>KolibriLib::Thread</compoundname>
+    <innerclass refid="union_kolibri_lib_1_1_thread_1_1_thread_info" prot="public">KolibriLib::Thread::ThreadInfo</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" prot="public" static="no">
+        <type>int</type>
+        <definition>typedef int KolibriLib::Thread::Slot</definition>
+        <argsstring></argsstring>
+        <name>Slot</name>
+        <qualifiedname>KolibriLib::Thread::Slot</qualifiedname>
+        <briefdescription>
+<para>Слот окна </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="13" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_kolibri_lib_1_1_thread_1a1635692d8eb5eddc602109be07a50a45" prot="public" static="no">
+        <type>int</type>
+        <definition>typedef int KolibriLib::Thread::PID</definition>
+        <argsstring></argsstring>
+        <name>PID</name>
+        <qualifiedname>KolibriLib::Thread::PID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="14" column="21" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="func">
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1a362d0bda7425ff79a1a5346d5eacdd7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>unsigned</type>
-        <definition>unsigned KolibriLib::Thread::CreateThread</definition>
-        <argsstring>(void *ThreadEntry, unsigned ThreadStackSize=1024)</argsstring>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1ada14798b8293cbc2d4909e0f7ce4ad00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PID</type>
+        <definition>PID KolibriLib::Thread::CreateThread</definition>
+        <argsstring>(void(*ThreadEntry)(void *), unsigned ThreadStackSize=1024)</argsstring>
         <name>CreateThread</name>
         <qualifiedname>KolibriLib::Thread::CreateThread</qualifiedname>
         <param>
-          <type>void *</type>
+          <type>void(*)(void *)</type>
           <declname>ThreadEntry</declname>
         </param>
         <param>
@@ -45,17 +77,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="17" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" bodystart="17" bodyend="32"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="51" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.cpp" bodystart="6" bodyend="21" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" declline="51" declcolumn="13"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1a6931d058e76a34196fb9f726db9d91f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1a53a7d295e396cff9eaca2ceae95b6b01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool KolibriLib::Thread::TerminateThread</definition>
-        <argsstring>(int PID)</argsstring>
+        <argsstring>(PID pid)</argsstring>
         <name>TerminateThread</name>
         <qualifiedname>KolibriLib::Thread::TerminateThread</qualifiedname>
         <param>
-          <type>int</type>
-          <declname>PID</declname>
+          <type>PID</type>
+          <declname>pid</declname>
         </param>
         <briefdescription>
 <para>Завершить процесс/поток </para>
@@ -78,7 +110,71 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="38" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" bodystart="38" bodyend="54"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="57" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.cpp" bodystart="23" bodyend="31" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" declline="57" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1a1dcd40d1d36fdb865364df4668fffafb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Slot</ref></type>
+        <definition>Slot KolibriLib::Thread::GetThreadSlot</definition>
+        <argsstring>(PID pid)</argsstring>
+        <name>GetThreadSlot</name>
+        <qualifiedname>KolibriLib::Thread::GetThreadSlot</qualifiedname>
+        <param>
+          <type>PID</type>
+          <declname>pid</declname>
+        </param>
+        <briefdescription>
+<para>Получить слот потока </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>поток </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Слот потока pid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="62" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.cpp" bodystart="33" bodyend="36" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" declline="62" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_thread_1a8803383eace2b5fdc0616c20d04a4a89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="union_kolibri_lib_1_1_thread_1_1_thread_info" kindref="compound">ThreadInfo</ref></type>
+        <definition>KolibriLib::Thread::ThreadInfo KolibriLib::Thread::GetThreadInfo</definition>
+        <argsstring>(Slot thread)</argsstring>
+        <name>GetThreadInfo</name>
+        <qualifiedname>KolibriLib::Thread::GetThreadInfo</qualifiedname>
+        <param>
+          <type><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Slot</ref></type>
+          <declname>thread</declname>
+        </param>
+        <briefdescription>
+<para>Поличть информацию о потоке </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thread</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>слот потока </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>информация о потоке </para>
+</simplesect>
+</para>
+<sect4 id="namespace_kolibri_lib_1_1_thread_1если">
+<title>слот -1 то возвращается информация о текущем потоке</title></sect4>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" line="69" column="20" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.cpp" bodystart="38" bodyend="49" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/thread.hpp" declline="69" declcolumn="20"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

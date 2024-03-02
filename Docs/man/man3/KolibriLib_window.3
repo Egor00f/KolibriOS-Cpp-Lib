@@ -11,24 +11,56 @@ KolibriLib::window \- Работа с окном
 
 .in +1c
 .ti -1c
-.RI "struct \fBElement\fP"
-.br
-.ti -1c
 .RI "class \fBWindow\fP"
 .br
 .RI "Класс для работы с окном "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPos\fP { \fBBackGround\fP = -2, \fBAlwaysBack\fP = -1, \fBNormal\fP = 0, \fBAlwaysTop\fP = 1 }"
+.br
+.RI "Список констант положения окна относительно других окон: "
 .in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBUnfocusWindow\fP (int slot)"
+.RI "void \fBCreateWindow\fP (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string &title, const \fBColors::Color\fP WorkColor=OS::sys_color_table\&.frame_area, const \fBColors::Color\fP TitleColor=OS::sys_color_table\&.work_text, const uint32_t style=20)"
+.br
+.ti -1c
+.RI "void \fBUnfocusWindow\fP (\fBThread::Slot\fP slot)"
 .br
 .RI "Снять фокус с окна "
 .ti -1c
-.RI "void \fBFocusWindow\fP (int slot)"
+.RI "void \fBFocusWindow\fP (\fBThread::Slot\fP slot)"
 .br
 .RI "Поставить фокус на окно "
+.ti -1c
+.RI "\fBThread::Slot\fP \fBGetActiveWindow\fP ()"
+.br
+.RI "Получить слот активного окна "
+.ti -1c
+.RI "void \fBMinimizeWindow\fP ()"
+.br
+.RI "Свернуть окно "
+.ti -1c
+.RI "void \fBMinimizeAllWindows\fP ()"
+.br
+.RI "Свернуть все окна "
+.ti -1c
+.RI "int \fBGetWindowPos\fP ()"
+.br
+.RI "Получить положение окна относительно других окон "
+.ti -1c
+.RI "bool \fBSetWindowPos\fP (int pos, Thread::PID pid=\-1)"
+.br
+.RI "Изменить положение окна относительно дроугих окон "
+.ti -1c
+.RI "unsigned \fBGetSkinHeight\fP ()"
+.br
+.RI "Получить высоту скина(заголовка окна) "
 .in -1c
 .SS "Variables"
 
@@ -47,7 +79,28 @@ KolibriLib::window \- Работа с окном
 Работа с окном 
 .SH "Function Documentation"
 .PP 
-.SS "void KolibriLib::window::FocusWindow (int slot)\fR [inline]\fP"
+.SS "void KolibriLib::window::CreateWindow (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string & title, const \fBColors::Color\fP WorkColor = \fROS::sys_color_table\&.frame_area\fP, const \fBColors::Color\fP TitleColor = \fROS::sys_color_table\&.work_text\fP, const uint32_t style = \fR20\fP)\fR [inline]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIcoord\fP 
+.br
+\fIsize\fP 
+.br
+\fIstring\fP 
+.br
+\fI<br>\fP 
+.br
+\fIstyle\fP 
+.br
+\fITitleColor\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::window::FocusWindow (\fBThread::Slot\fP slot)\fR [inline]\fP"
 
 .PP
 Поставить фокус на окно 
@@ -58,7 +111,60 @@ KolibriLib::window \- Работа с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::UnfocusWindow (int slot)\fR [inline]\fP"
+.SS "\fBThread::Slot\fP KolibriLib::window::GetActiveWindow ()\fR [inline]\fP"
+
+.PP
+Получить слот активного окна 
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "unsigned KolibriLib::window::GetSkinHeight ()\fR [inline]\fP"
+
+.PP
+Получить высоту скина(заголовка окна) 
+.PP
+\fBReturns\fP
+.RS 4
+высота скина 
+.RE
+.PP
+
+.SS "int KolibriLib::window::GetWindowPos ()\fR [inline]\fP"
+
+.PP
+Получить положение окна относительно других окон 
+.PP
+\fBReturns\fP
+.RS 4
+одна из констант из списка \fBPos\fP
+.RE
+.PP
+
+.SS "bool KolibriLib::window::SetWindowPos (int pos, Thread::PID pid = \fR\-1\fP)\fR [inline]\fP"
+
+.PP
+Изменить положение окна относительно дроугих окон 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP 
+.br
+\fIpid\fP процесс 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+false если ошибка 
+.RE
+.PP
+
+.SS "void KolibriLib::window::UnfocusWindow (\fBThread::Slot\fP slot)\fR [inline]\fP"
 
 .PP
 Снять фокус с окна 

@@ -2,6 +2,7 @@
 #define __NETWORK_H__
 
 #include <stdlib.h>
+#include <string>
 
 /// \brief Основное пространство имён
 /// \author Egor00f
@@ -15,10 +16,21 @@ namespace KolibriLib
         /// @brief Работа с сетевой картой
         namespace Devices
         {
+            /// @brief Получить кол-во активных сетевых устройств
+            /// @return кол-во активных сетевых устройств
+            int GetNumberNetworkDevices();
+
+            unsigned GetDeviceType(unsigned Device);
+
+            /// @brief Получить имя сетевого устройства
+            /// @param Device устройство
+            /// @return Имя устройства
+            std::string GetDeviceName(unsigned Device);
+
             /// @brief Сбросить устройство
             /// @param Device Сбрасываемое устройство
             /// @return 
-            int ResetDevice(unsigned short Device);
+            int ResetDevice(unsigned Device);
             
         } // namespace Devices
         

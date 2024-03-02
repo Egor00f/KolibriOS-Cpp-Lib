@@ -15,7 +15,7 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColor::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -43,7 +43,7 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .br
 .RI "Изменить значение переменной \fB_TextScale\&.\fP"
 .ti -1c
-.RI "void \fBinit\fP (\fBCoord\fP coord, \fBSize\fP size, std::string text='TextLabel', unsigned FontSize=9, \fBColor::Color\fP TextColor=OS::sys_color_table\&.work_text)"
+.RI "void \fBinit\fP (\fBCoord\fP coord, \fBSize\fP size, std::string text='TextLabel', unsigned FontSize=9, \fBColors::Color\fP TextColor=OS::sys_color_table\&.work_text)"
 .br
 .ti -1c
 .RI "\fBTextLabel\fP & \fBoperator=\fP (const \fBTextLabel\fP &a)"
@@ -53,32 +53,35 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColor::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
-.RI "конструктор "
+.RI "Конструктор "
 .ti -1c
 .RI "\fBSize\fP \fBGetSize\fP () const"
 .br
 .RI "Получить размер элемента "
 .ti -1c
-.RI "void \fBSetSize\fP (\fBSize\fP NewSize)"
+.RI "void \fBSetSize\fP (const \fBSize\fP &NewSize)"
 .br
+.RI "Изменить размер элемента "
 .ti -1c
 .RI "unsigned \fBGetMargin\fP () const"
 .br
+.RI "Получить отступы "
 .ti -1c
-.RI "\fBColor::Color\fP \fBGetColor\fP () const"
+.RI "\fBColors::Color\fP \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
-.RI "void \fBSetColor\fP (\fBColor::Color\fP NewColor)"
+.RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
 .ti -1c
-.RI "void \fBSetCoord\fP (\fBCoord\fP NewCoord)"
+.RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
 .RI "\fBCoord\fP \fBGetCoord\fP () const"
 .br
+.RI "Получить координаты элемента "
 .ti -1c
 .RI "void \fBRotate\fP (unsigned NewAngle)"
 .br
@@ -88,8 +91,9 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить угол наклона элемента "
 .ti -1c
-.RI "bool \fBHover\fP ()"
+.RI "bool \fBHover\fP () const"
 .br
+.RI "Проверить лежит ли курсор мыши над элементом "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -114,7 +118,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Размер "
 .ti -1c
-.RI "\fBColor::Color\fP \fB_MainColor\fP"
+.RI "\fBColors::Color\fP \fB_MainColor\fP"
 .br
 .ti -1c
 .RI "unsigned \fB_Margin\fP"
@@ -127,7 +131,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .ti -1c
 .RI "bool \fB_relative\fP"
 .br
-.RI "Оносительн "
+.RI "Оносительны ли координаты "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -141,7 +145,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "KolibriLib::UI::text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'TextLabel'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColor::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
+.SS "text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'TextLabel'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -164,7 +168,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 
 .SH "Member Function Documentation"
 .PP 
-.SS "unsigned KolibriLib::UI::text::TextLabel::GetFontSize () const"
+.SS "unsigned text::TextLabel::GetFontSize () const"
 
 .PP
 Получить Размер шрифта 
@@ -175,7 +179,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "std::string KolibriLib::UI::text::TextLabel::GetText () const"
+.SS "std::string text::TextLabel::GetText () const"
 
 .PP
 Получить текст 
@@ -186,7 +190,23 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "void KolibriLib::UI::text::TextLabel::SetFontSize (const unsigned & NewTextSize)"
+.SS "\fBtext::TextLabel\fP & KolibriLib::UI::text::TextLabel::operator= (const \fBTextLabel\fP & a)"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIa\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "void text::TextLabel::SetFontSize (const unsigned & NewTextSize)"
 
 .PP
 Изменить рамер текста 
@@ -197,7 +217,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "void KolibriLib::UI::text::TextLabel::SetScale (bool scale)"
+.SS "void text::TextLabel::SetScale (bool scale)"
 
 .PP
 Изменить значение переменной \fB_TextScale\&.\fP
@@ -208,7 +228,7 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "void KolibriLib::UI::text::TextLabel::SetText (const std::string & NewText)"
+.SS "void text::TextLabel::SetText (const std::string & NewText)"
 
 .PP
 Изменить текст 

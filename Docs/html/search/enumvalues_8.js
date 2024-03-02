@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['smoth_0',['Smoth',['../class_kolibri_lib_1_1_u_i_1_1_check_box.html#ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3',1,'KolibriLib::UI::CheckBox']]],
-  ['successfully_1',['Successfully',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611',1,'KolibriLib::filesystem']]]
+  ['none_0',['None',['../namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca660534ed047f5f24e82812b143dd9c61',1,'KolibriLib::OS']]],
+  ['notfound_1',['NotFound',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67caf14d749d936896e45eb47cf6eec70d14',1,'KolibriLib::filesystem']]],
+  ['notsupport_2',['NotSupport',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb',1,'KolibriLib::filesystem']]]
 ];

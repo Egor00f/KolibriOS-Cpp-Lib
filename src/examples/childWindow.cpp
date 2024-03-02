@@ -1,4 +1,5 @@
 #include <KolibriLib.hpp>
+#include "childWindow.hpp"
 
 using namespace KolibriLib;
 
@@ -29,3 +30,4 @@ int main()
 
     return 0;
 }
+

@@ -15,7 +15,7 @@ KolibriLib \- Основное пространство имён
 .br
 .RI "Дочерние окна "
 .ti -1c
-.RI "namespace \fBColor\fP"
+.RI "namespace \fBColors\fP"
 .br
 .RI "Набор функций для работы с цветом "
 .ti -1c
@@ -59,13 +59,25 @@ KolibriLib \- Основное пространство имён
 .br
 .RI "инициализация "
 .ti -1c
-.RI "void \fBWait\fP (unsigned int time)"
+.RI "void \fBWait\fP (unsigned time)"
 .br
 .RI "Подождать "
 .ti -1c
 .RI "\fBpoint\fP< unsigned > \fBGetScreenSize\fP ()"
 .br
 .RI "Получить разрешение экрана "
+.ti -1c
+.RI "\fBThread::Slot\fP \fBScreenPointAffiliation\fP (\fBpoint\fP< unsigned > POINT)"
+.br
+.RI "Получить принадлежность "
+.ti -1c
+.RI "\fBpoint\fP< unsigned > \fBGetBackgroundImageSize\fP ()"
+.br
+.RI "Получить размеры фонового изображения "
+.ti -1c
+.RI "\fBColors::Color\fP \fBReadBackgroungImagePoint\fP (\fBpoint\fP< unsigned > Point)"
+.br
+.RI "Прочитать точку на фоне "
 .in -1c
 .SS "Variables"
 
@@ -97,6 +109,19 @@ Egor00f
 
 .SH "Function Documentation"
 .PP 
+.SS "\fBpoint\fP< unsigned > KolibriLib::GetBackgroundImageSize ()"
+
+.PP
+Получить размеры фонового изображения 
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
 .SS "\fBpoint\fP< unsigned > KolibriLib::GetScreenSize ()"
 
 .PP
@@ -108,7 +133,43 @@ Egor00f
 .RE
 .PP
 
-.SS "void KolibriLib::Wait (unsigned int time)\fR [inline]\fP"
+.SS "\fBColors::Color\fP KolibriLib::ReadBackgroungImagePoint (\fBpoint\fP< unsigned > Point)"
+
+.PP
+Прочитать точку на фоне 
+.PP
+\fBParameters\fP
+.RS 4
+\fIPoint\fP читаема точка 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "\fBThread::Slot\fP KolibriLib::ScreenPointAffiliation (\fBpoint\fP< unsigned > POINT)"
+
+.PP
+Получить принадлежность 
+.PP
+\fBParameters\fP
+.RS 4
+\fIPOINT\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::Wait (unsigned time)\fR [inline]\fP"
 
 .PP
 Подождать 

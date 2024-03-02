@@ -110,55 +110,69 @@ $(function(){initNavTree('thread_8hpp_source.html',''); initResizable(); });
 <div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_thread.html">   10</a></span>    <span class="keyword">namespace </span>Thread</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_thread.html#a362d0bda7425ff79a1a5346d5eacdd7e">   17</a></span>        <span class="keywordtype">unsigned</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_thread.html#a362d0bda7425ff79a1a5346d5eacdd7e">CreateThread</a>(<span class="keywordtype">void</span> *ThreadEntry, <span class="keywordtype">unsigned</span> ThreadStackSize = 1024)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordtype">void</span>* th_stack = malloc(ThreadStackSize);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keywordflow">if</span> (!th_stack) <span class="comment">//    Если памяти не было выделенно</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                _ksys_debug_puts(<span class="stringliteral">&quot;Memory allocation error for thread!&quot;</span>);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordtype">unsigned</span> TID = _ksys_create_thread(ThreadEntry, th_stack + ThreadStackSize);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">if</span> (TID == -1) <span class="comment">//   Если поток небыл создан</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                _ksys_debug_puts(<span class="stringliteral">&quot;Unable to create a new thread!&quot;</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                <span class="keywordflow">return</span> TID;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keywordflow">return</span> TID;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        }</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51">   13</a></span>        <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code hl_typedef" href="namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51">Slot</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">typedef</span> <span class="keywordtype">int</span> PID;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="union_kolibri_lib_1_1_thread_1_1_thread_info.html">   16</a></span>        <span class="keyword">union </span><a class="code hl_union" href="union_kolibri_lib_1_1_thread_1_1_thread_info.html">ThreadInfo</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">struct</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                uint32_t cpu_usage;             <span class="comment">// CPU usage (cycles per secondgoes)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                uint16_t pos_in_window_stack;   <span class="comment">// position of the thread window in the window stack</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                uint16_t slot_num_window_stack; <span class="comment">// slot number in window stack</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                uint16_t __reserved1;           <span class="comment">// reserved</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                <span class="keywordtype">char</span> name[12];                  <span class="comment">// process/thread name</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                uint32_t memstart;              <span class="comment">// process address in memory</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                uint32_t memused;               <span class="comment">// used memory size - 1</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                <span class="keywordtype">int</span> pid;                        <span class="comment">// identifier (PID/TID)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="keywordtype">int</span> winx_start;                 <span class="comment">// window x-coordinate</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                <span class="keywordtype">int</span> winy_start;                 <span class="comment">// window y-coordinate</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                <span class="keywordtype">int</span> winx_size;                  <span class="comment">// x-axis flow window size</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                <span class="keywordtype">int</span> winy_size;                  <span class="comment">// y-axis flow window size</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                uint16_t slot_state;            <span class="comment">// thread slot state</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                uint16_t __reserved2;           <span class="comment">// reserved</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                <span class="keywordtype">int</span> clientx;                    <span class="comment">// client area start coordinate x-axis</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <span class="keywordtype">int</span> clienty;                    <span class="comment">// client area start coordinate y-axis</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                <span class="keywordtype">int</span> clientwidth;                <span class="comment">// client area width</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                <span class="keywordtype">int</span> clientheight;               <span class="comment">// client area height</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                uint8_t window_state;           <span class="comment">// window state - bitfield</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                uint8_t event_mask;             <span class="comment">// event mask</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                uint8_t key_input_mode;         <span class="comment">// keyboard input mode</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            };</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            uint8_t __reserved3[KSYS_THREAD_INFO_SIZE];</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <a class="code hl_union" href="union_kolibri_lib_1_1_thread_1_1_thread_info.html">ThreadInfo</a>&amp; operator = (<span class="keyword">const</span> ksys_thread_t&amp; a);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        };</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_thread.html#a6931d058e76a34196fb9f726db9d91f9">   38</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_thread.html#a6931d058e76a34196fb9f726db9d91f9">TerminateThread</a>(<span class="keywordtype">int</span> PID)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordtype">int</span> a;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            asm_inline(</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="stringliteral">&quot;int $0x40&quot;</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                :<span class="stringliteral">&quot;=a&quot;</span>(a)</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                :<span class="stringliteral">&quot;a&quot;</span>(18), <span class="stringliteral">&quot;b&quot;</span>(18), <span class="stringliteral">&quot;c&quot;</span>(PID)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            );</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">if</span>(!a)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        }</div>
-</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    } <span class="comment">// namespace Thread</span></div>
-</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>} <span class="comment">// namespace KolibriLib</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        PID <a class="code hl_function" href="namespace_kolibri_lib_1_1_thread.html#ada14798b8293cbc2d4909e0f7ce4ad00">CreateThread</a>(<span class="keywordtype">void</span>(*ThreadEntry)(<span class="keywordtype">void</span>*), <span class="keywordtype">unsigned</span> ThreadStackSize = 1024);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_thread.html#a53a7d295e396cff9eaca2ceae95b6b01">TerminateThread</a>(PID pid);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif </span><span class="comment">// __THREAD_H__</span></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_a362d0bda7425ff79a1a5346d5eacdd7e"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#a362d0bda7425ff79a1a5346d5eacdd7e">KolibriLib::Thread::CreateThread</a></div><div class="ttdeci">unsigned CreateThread(void *ThreadEntry, unsigned ThreadStackSize=1024)</div><div class="ttdoc">Создать поток</div><div class="ttdef"><b>Definition</b> thread.hpp:17</div></div>
-<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_a6931d058e76a34196fb9f726db9d91f9"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#a6931d058e76a34196fb9f726db9d91f9">KolibriLib::Thread::TerminateThread</a></div><div class="ttdeci">bool TerminateThread(int PID)</div><div class="ttdoc">Завершить процесс/поток</div><div class="ttdef"><b>Definition</b> thread.hpp:38</div></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_typedef" href="namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51">Slot</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1_thread.html#a1dcd40d1d36fdb865364df4668fffafb">GetThreadSlot</a>(PID pid);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_union" href="union_kolibri_lib_1_1_thread_1_1_thread_info.html">ThreadInfo</a> <a class="code hl_function" href="namespace_kolibri_lib_1_1_thread.html#a8803383eace2b5fdc0616c20d04a4a89">GetThreadInfo</a>(<a class="code hl_typedef" href="namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51">Slot</a> thread);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    } <span class="comment">// namespace Thread</span></div>
+</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>} <span class="comment">// namespace KolibriLib</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif </span><span class="comment">// __THREAD_H__</span></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_a1dcd40d1d36fdb865364df4668fffafb"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#a1dcd40d1d36fdb865364df4668fffafb">KolibriLib::Thread::GetThreadSlot</a></div><div class="ttdeci">Slot GetThreadSlot(PID pid)</div><div class="ttdoc">Получить слот потока</div><div class="ttdef"><b>Definition</b> thread.cpp:33</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_a53a7d295e396cff9eaca2ceae95b6b01"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#a53a7d295e396cff9eaca2ceae95b6b01">KolibriLib::Thread::TerminateThread</a></div><div class="ttdeci">bool TerminateThread(PID pid)</div><div class="ttdoc">Завершить процесс/поток</div><div class="ttdef"><b>Definition</b> thread.cpp:23</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_a8803383eace2b5fdc0616c20d04a4a89"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#a8803383eace2b5fdc0616c20d04a4a89">KolibriLib::Thread::GetThreadInfo</a></div><div class="ttdeci">ThreadInfo GetThreadInfo(Slot thread)</div><div class="ttdoc">Поличть информацию о потоке</div><div class="ttdef"><b>Definition</b> thread.cpp:38</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_ac583b7a88e5bddeab393a41bf9929c51"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51">KolibriLib::Thread::Slot</a></div><div class="ttdeci">int Slot</div><div class="ttdoc">Слот окна</div><div class="ttdef"><b>Definition</b> thread.hpp:13</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_thread_html_ada14798b8293cbc2d4909e0f7ce4ad00"><div class="ttname"><a href="namespace_kolibri_lib_1_1_thread.html#ada14798b8293cbc2d4909e0f7ce4ad00">KolibriLib::Thread::CreateThread</a></div><div class="ttdeci">PID CreateThread(void(*ThreadEntry)(void *), unsigned ThreadStackSize=1024)</div><div class="ttdoc">Создать поток</div><div class="ttdef"><b>Definition</b> thread.cpp:6</div></div>
 <div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> button.hpp:13</div></div>
+<div class="ttc" id="aunion_kolibri_lib_1_1_thread_1_1_thread_info_html"><div class="ttname"><a href="union_kolibri_lib_1_1_thread_1_1_thread_info.html">KolibriLib::Thread::ThreadInfo</a></div><div class="ttdef"><b>Definition</b> thread.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

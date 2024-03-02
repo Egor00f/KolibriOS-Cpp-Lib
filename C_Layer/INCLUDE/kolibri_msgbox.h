@@ -1,5 +1,6 @@
 #ifndef KOLIBRI_MSGBOX_H
 #define KOLIBRI_MSGBOX_H
+
 #include <stdarg.h>
 
 typedef struct __attribute__ ((__packed__)) {

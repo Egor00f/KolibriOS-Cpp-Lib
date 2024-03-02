@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ebutton_0',['~Button',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a3dddb0a58edf4d60a2bc539859fea95b',1,'KolibriLib::UI::buttons::Button']]]
+  ['x_0',['x',['../struct_kolibri_lib_1_1point.html#add46882563c402c224b23c85049f7f34',1,'KolibriLib::point']]]
 ];

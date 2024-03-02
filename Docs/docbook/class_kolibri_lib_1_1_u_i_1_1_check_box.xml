@@ -31,38 +31,42 @@
         </itemizedlist>
 </simplesect>
 Public Types inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">KolibriLib::UI::buttons::Button</link>        <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440"/>enum <emphasis role="strong">Type</emphasis> { <emphasis role="strong">Image</emphasis> = 0
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440"/>enum <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440">Type</link> { <emphasis role="strong">Image</emphasis> = 0
 , <emphasis role="strong">Text</emphasis>
  }</para>
+
+<para>Список типов данных которые можно &quot;запихнуть&quot; в кнопку </para>
 </listitem>
         </itemizedlist>
 <simplesect>
     <title>Public Member Functions    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ab58af3bf4f0ab4760465e50d0b57cba0"/><emphasis role="strong">CheckBox</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={32, 16}, const int &amp;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778">style</link>=0, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;CheckBoxBorderColor=OS::sys_color_table.work_text, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;BackgroundColor=OS::sys_color_table.work_area, const unsigned &amp;Margin=DefaultMargin)</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ac9ac57c37caa6e4612de7029ae9b33a0"/><emphasis role="strong">CheckBox</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={32, 16}, const int &amp;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778">style</link>=0, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;CheckBoxBorderColor=OS::sys_color_table.work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=OS::sys_color_table.work_area, const unsigned &amp;Margin=DefaultMargin)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40"/>void <emphasis role="strong">Render</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_check_box_1a28dc3c7c30dc63d9a3a05ad7783c78f2"/>void <emphasis role="strong">Render</emphasis> ()</para>
+
+<para>Отрисовать Checkbox. </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4"/>bool <emphasis role="strong">Handler</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_check_box_1a04b026f728f06f2fceb0bef93dab0aa6"/>bool <emphasis role="strong">Handler</emphasis> ()</para>
 
 <para>Обработчик кнопки </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">KolibriLib::UI::buttons::Button</link>        <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aaa98f04affa5c850dbd5ad3faa3c6aa4">Button</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={20, 20}, unsigned Margin=UI::DefaultMargin, <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> ButtonColor=OS::sys_color_table.work_button)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac266a63a1727ed838542a876d3344c6a">Button</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={20, 20}, const unsigned &amp;Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
 
 <para>Это конструктор </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a81904ddeac359eb10d23b8d76818f236">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const std::string &amp;text=&quot;button&quot;, const unsigned &amp;Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7322f320633dafa6c520a5c64f47b2f9">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const std::string &amp;text=&quot;button&quot;, const unsigned &amp;Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
 
 <para>инициализировать параметры </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aa93163b009993db9a67df67ad9653bc5">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp;image=<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>(), const unsigned &amp;Margin=DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a80df5512d57d429bd12b4b694544c2c1">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp;image=<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>(), const unsigned &amp;Margin=DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=OS::sys_color_table.work_button)</para>
 
 <para>инициализировать параметры </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4bcd9cdb3b727f490587f14c15d135f4">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, std::string Path=DefaultImage)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aca7e3a8b33fe924eb03340b0461ac5af">init</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={0, 0}, std::string Path=DefaultImage)</para>
 
 <para>инициализировать параметры </para>
 </listitem>
@@ -70,41 +74,45 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
 
 <para>Отрисовать кнопку </para>
 </listitem>
-            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a018ac30303a5b12365f5251f5771bf6f">Handler</link> ()</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac28b523b166e42343f6e7a5a9886ba1b">Handler</link> ()</para>
 
 <para>Обработчик кнопки </para>
 </listitem>
-            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3f8517f74b2049f07a9da9a9910e9814">GetStatus</link> () const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a6eaba3fc208cd15db6121376871dde57">GetStatus</link> () const</para>
 
 <para>Получить сосояние кнопки на момент последней обработки </para>
 </listitem>
-            <listitem><para>ButtonID <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a45ea9d51be9d17f6afca47ecfd6bdee6">GetId</link> () const</para>
+            <listitem><para>ButtonID <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a67f9b2ce434a2224a0e35d1284679616">GetId</link> () const</para>
 
 <para>Получить номер кнопки </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0a235265d209cec4e8f735d416d25505">Deactivate</link> ()</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8727a99e9bd5a13394cec8c0941b9da6">Deactivate</link> ()</para>
 
 <para>Деактивировать кнопку </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a65b6a0809e8e43892e48065708fa01d1">Activate</link> ()</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aac6f24499abf9a0b978a0c27b2a1e344">Activate</link> ()</para>
 
 <para>Активировать кнопку </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aee40bbc992414d695c0800f7d903f05e">GetType</link> () const</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8c01f1c3092d101ac3c7f5da551eaa77">GetType</link> () const</para>
 
 <para>Возвращает тип данных используемых в кнопке <link linkend="_">_type.</link></para>
 </listitem>
-            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a4387a38fa0a7b981c3a2cea4730704db">GetTextLabel</link> () const</para>
+            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac5bb4447a87ab739eae7a4f5c1ed0a3a">GetTextLabel</link> () const</para>
 
 <para>Возвращает текст кнопки </para>
 </listitem>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7d647394cc692e8dba0dd118c6dcdf63">GetImage</link> () const</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3a82c9b3e441c0e4b0120e20627ef552">GetImage</link> () const</para>
 
 <para>Получить изображение кнопки </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a159f389b9845713368e763ce159c77d7">SetText</link> (std::string NewText)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a886d985af13b7e23d7981e18678e6e66">SetText</link> (const std::string &amp;NewText)</para>
 
 <para>Изменить текст кнопки </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2cb83ed4bca6a6bf72dee94fd682737b">SetImage</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link> &amp;NewImg)</para>
+
+<para>Изменить изображение в кнопке </para>
 </listitem>
             <listitem><para><emphasis role="strong">~Button</emphasis> ()</para>
 
@@ -112,29 +120,37 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
 </listitem>
             <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp;element)</para>
 </listitem>
+            <listitem><para>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link> &amp;element) const</para>
+</listitem>
         </itemizedlist>
 Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a311aecf3edea3bce6cc3c46038d7a1e0">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord={0, 0}, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=OS::sys_color_table.work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
 
-<para>конструктор </para>
+<para>Конструктор </para>
 </listitem>
             <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847">GetSize</link> () const</para>
 
 <para>Получить размер элемента </para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetSize</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Size</link> NewSize)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3b3eb7370243281576ff27c489db913d">SetSize</link> (const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;NewSize)</para>
+
+<para>Изменить размер элемента </para>
 </listitem>
-            <listitem><para>unsigned <emphasis role="strong">GetMargin</emphasis> () const</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2">GetMargin</link> () const</para>
+
+<para>Получить отступы </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a79e0daa11205956c3ad4b64424597aea">GetColor</link> () const</para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adf269accbb7f07330eba3d005061fd1d">GetColor</link> () const</para>
 
 <para>Получить осносной цвет элемента </para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetColor</emphasis> (<link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> NewColor)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a969186d6406bb6c11a024e5a91749336">SetColor</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;NewColor)</para>
 </listitem>
-            <listitem><para>void <emphasis role="strong">SetCoord</emphasis> (<link linkend="_struct_kolibri_lib_1_1point">Coord</link> NewCoord)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d">SetCoord</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;NewCoord)</para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <emphasis role="strong">GetCoord</emphasis> () const</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">Coord</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8">GetCoord</link> () const</para>
+
+<para>Получить координаты элемента </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">Rotate</link> (unsigned NewAngle)</para>
 
@@ -144,13 +160,15 @@ Public Member Functions inherited from <link linkend="_class_kolibri_lib_1_1_u_i
 
 <para>Получить угол наклона элемента </para>
 </listitem>
-            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a56465e500c5b8e95d57c09549da98342">Hover</link> ()</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1acb1303729c55ba615af2562823dd2c8e">Hover</link> () const</para>
+
+<para>Проверить лежит ли курсор мыши над элементом </para>
 </listitem>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700">operator=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
 </listitem>
-            <listitem><para>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c">operator==</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
 </listitem>
-            <listitem><para>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86">operator!=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
 </listitem>
         </itemizedlist>
 <simplesect>
@@ -164,7 +182,7 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 
 <para>Размер </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_color_1_1_color">Color::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <emphasis role="strong">_MainColor</emphasis></para>
 </listitem>
             <listitem><para>unsigned <emphasis role="strong">_Margin</emphasis></para>
 
@@ -176,7 +194,7 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </listitem>
             <listitem><para>bool <emphasis role="strong">_relative</emphasis></para>
 
-<para>Оносительн </para>
+<para>Оносительны ли координаты </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -229,6 +247,6 @@ Protected Attributes inherited from <link linkend="_class_kolibri_lib_1_1_u_i_1_
 </informaltable>
 </section>
 <para>
-The documentation for this class was generated from the following file:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</section>
+The documentation for this class was generated from the following files:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hppF:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.cpp</section>
 </section>

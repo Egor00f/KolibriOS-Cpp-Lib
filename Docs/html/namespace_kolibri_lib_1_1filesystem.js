@@ -1,6 +1,6 @@
 var namespace_kolibri_lib_1_1filesystem =
 [
-    [ "Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", null ],
+    [ "Path", "class_kolibri_lib_1_1filesystem_1_1_path.html", "class_kolibri_lib_1_1filesystem_1_1_path" ],
     [ "Errors", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67c", [
       [ "Successfully", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611", null ],
       [ "NotSupport", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb", null ],
@@ -14,15 +14,9 @@ var namespace_kolibri_lib_1_1filesystem =
       [ "DeviceError", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca416e4e91da3a3d9dc68f1b1a44245244", null ],
       [ "OsHaventRam", "namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac", null ]
     ] ],
-    [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#acce64e48eb08ac5fb8d3f4030142aa0a", null ],
-    [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#a672d3806c6831e87a22ff0d719f476ae", null ],
     [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#ac1f53038467ce2fe309f448c9e0f2f72", null ],
-    [ "CreateFile", "namespace_kolibri_lib_1_1filesystem.html#a56604e14c04c07f1cd5d4a8ccba8ab6d", null ],
-    [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#a09794e6a053e6f649c0e4ae8ff262a9d", null ],
-    [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#a97b53d10e759c38649e601a12cbc3b04", null ],
     [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#af8228f98e29fbb8122c93fdc3022d154", null ],
-    [ "Delete", "namespace_kolibri_lib_1_1filesystem.html#ada6dc5e7edf18fab6843ecfe4ed43cb3", null ],
     [ "Exist", "namespace_kolibri_lib_1_1filesystem.html#ab13318145c165ffcc743aeb33e62b4dc", null ],
-    [ "MakeDirectory", "namespace_kolibri_lib_1_1filesystem.html#a4a83550cdda24dc9ae8cdf1d30148c76", null ],
-    [ "MakeDirectory", "namespace_kolibri_lib_1_1filesystem.html#acd34191bdf04b15659a1dd13f13b18ad", null ]
+    [ "MakeDirectory", "namespace_kolibri_lib_1_1filesystem.html#acd34191bdf04b15659a1dd13f13b18ad", null ],
+    [ "Rename", "namespace_kolibri_lib_1_1filesystem.html#a57a3f302a162ad3a2738ef9e080c193b", null ]
 ];

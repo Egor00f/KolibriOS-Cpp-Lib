@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespace_kolibri_lib_1_1_colors" kind="namespace" language="C++">
+    <compoundname>KolibriLib::Colors</compoundname>
+    <innerclass refid="struct_kolibri_lib_1_1_colors_1_1_a_r_g_b" prot="public">KolibriLib::Colors::ARGB</innerclass>
+    <innerclass refid="union_kolibri_lib_1_1_colors_1_1_color" prot="public">KolibriLib::Colors::Color</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748" prot="public" static="no">
+        <type>ksys_colors_table_t</type>
+        <definition>typedef ksys_colors_table_t KolibriLib::Colors::ColorsTable</definition>
+        <argsstring></argsstring>
+        <name>ColorsTable</name>
+        <qualifiedname>KolibriLib::Colors::ColorsTable</qualifiedname>
+        <briefdescription>
+<para>Таблица цветов </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/types.hpp" line="46" column="37" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/types.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_kolibri_lib_1_1_colors_1ada2166810bf7aa50f1f39154716cc73d" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748" kindref="member">ColorsTable</ref></type>
+        <definition>const ColorsTable KolibriLib::Colors::DefaultColorTable</definition>
+        <argsstring></argsstring>
+        <name>DefaultColorTable</name>
+        <qualifiedname>KolibriLib::Colors::DefaultColorTable</qualifiedname>
+        <initializer>= {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}</initializer>
+        <briefdescription>
+<para>Таблица цветов по умолчанию </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp" line="56" column="27" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp" bodystart="56" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_colors_1af2dd4647f406b9ebab9cbe588f35aceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Color</ref></type>
+        <definition>Color KolibriLib::Colors::BlendColors</definition>
+        <argsstring>(const Color &amp;a, const Color &amp;b)</argsstring>
+        <name>BlendColors</name>
+        <qualifiedname>KolibriLib::Colors::BlendColors</qualifiedname>
+        <param>
+          <type>const <ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Смешать 2 цвета </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>первый цвет </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>второй цвет </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Смешение цветов a и b </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp" line="53" column="15" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.cpp" bodystart="6" bodyend="13" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp" declline="53" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_colors_1a1efe547e71b05f6156bbcf31d55c2999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KolibriLib::Colors::ComparisonColorsTables</definition>
+        <argsstring>(const ColorsTable &amp;a, const ColorsTable &amp;b)</argsstring>
+        <name>ComparisonColorsTables</name>
+        <qualifiedname>KolibriLib::Colors::ComparisonColorsTables</qualifiedname>
+        <param>
+          <type>const <ref refid="namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748" kindref="member">ColorsTable</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748" kindref="member">ColorsTable</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Сравнить две таблица цветов </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>таблица первая </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>таблица вторая </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true если таблицы равны, иначе false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp" line="63" column="14" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.cpp" bodystart="15" bodyend="18" declfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp" declline="63" declcolumn="14"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Набор функций для работы с цветом </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp" line="10" column="5"/>
+  </compounddef>
+</doxygen>

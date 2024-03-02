@@ -14,73 +14,58 @@
 11 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>OS
 12 &#32;&#32;&#32;&#32;{
 13 
-15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">Color::ColorsTable</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">sys_color_table</link>;
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">sys_color_table</link>;
 16 
-20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_color_1af33ee97a2e4e960348f4aa78678bdb58">Color::ColorsTable</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1acd3677ce750619433ac3ed307fd93f06">GetSystemColors</link>()
-21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_get_system_colors(&amp;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">sys_color_table</link>);
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8915296792964e4aaeadf4b76f6a109a">sys_color_table</link>;
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-25 
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>;
-28 
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;Events
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None&#32;&#32;&#32;&#32;=&#32;KSYS_EVENT_NONE,
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Redraw&#32;&#32;=&#32;KSYS_EVENT_REDRAW,
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Button&#32;&#32;=&#32;KSYS_EVENT_BUTTON,
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Mouse&#32;&#32;&#32;=&#32;KSYS_EVENT_MOUSE,
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Key&#32;&#32;&#32;&#32;&#32;=&#32;KSYS_EVENT_KEY,
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Desktop&#32;=&#32;KSYS_EVENT_DESKTOP,
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug&#32;&#32;&#32;=&#32;KSYS_EVENT_DEBUG,
-38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Exit&#32;&#32;&#32;&#32;=&#32;200
-39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-40 
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a58e553f23fc726c3bf5755546f0d615d">WaitEvent</link>()
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_wait_event();
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-47 
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a58e553f23fc726c3bf5755546f0d615d">WaitEvent</link>(uint32_t&#32;TimeOut)
-52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_wait_event_timeout(TimeOut);
-54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">GetSystemColors</link>();
+21 
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>;
+24 
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8c">Events</link>
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca660534ed047f5f24e82812b143dd9c61">None</link>&#32;&#32;&#32;&#32;=&#32;KSYS_EVENT_NONE,
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca070cb13d251187bcb81b8c3fe13c8285">Redraw</link>&#32;&#32;=&#32;KSYS_EVENT_REDRAW,
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8cad8c577b231e2a21dc66bc1aababfc55a">Button</link>&#32;&#32;=&#32;KSYS_EVENT_BUTTON,
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca3c9ab2f8d47522ef1bb2a176396118bd">Mouse</link>&#32;&#32;&#32;=&#32;KSYS_EVENT_MOUSE,
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca7dfe7168df1cbce07260998fe69cc684">Key</link>&#32;&#32;&#32;&#32;&#32;=&#32;KSYS_EVENT_KEY,
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Desktop&#32;=&#32;KSYS_EVENT_DESKTOP,
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Debug&#32;&#32;&#32;=&#32;KSYS_EVENT_DEBUG,
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Exit
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+42 
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a51432114007d25b88f76501910253064">WaitEvent</link>();
+46 
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a51432114007d25b88f76501910253064">WaitEvent</link>(uint32_t&#32;TimeOut);
+51 
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1afc5cf781adb8afcd4bebfb1d081a1a0f">CheckEvent</link>();
 55 
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a15b798e29dc85b78748a71bbf3c0cd2c">CheckEvent</link>()
-59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_check_event();
-61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-62 
-67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1ae46a6edced337a9b167bc5b9014360c8">Exec</link>(std::string&#32;AppName,&#32;std::string&#32;args)
-68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_namespace_kolibri_lib_1_1filesystem_1ab13318145c165ffcc743aeb33e62b4dc">filesystem::Exist</link>(AppName))&#32;<emphasis role="comment">//&#32;Проверка&#32;на&#32;существование</emphasis>
-70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a;
-72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(a,&#32;args.c_str());
-73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_exec(AppName.c_str(),&#32;a);
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
-76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
-78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-80 
-83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;ksys_time_t&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a1744275834206a63ba18a572f5ddd6bb">GetTime</link>()
-84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_time();
-86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-87 
-88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-89 
-90 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;OS</emphasis>
-91 
-94 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a56a5ef2333e7fe22f558aaa6c9276b7c">Wait</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;time)
-95 &#32;&#32;&#32;&#32;{
-96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_delay(time);
-97 &#32;&#32;&#32;&#32;}
-98 
-99 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-100 
-101 
-102 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__OS_H__</emphasis>
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a9d371dfce7a7c6579a93776e25222f13">Exec</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&amp;&#32;AppName,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;args);
+61 
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;ksys_time_t&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a1744275834206a63ba18a572f5ddd6bb">GetTime</link>();
+65 
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1ad2be50a93561a32225553fcdc1b0607c">SpeakerStatus</link>();
+69 
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a19a2cc0aa77148638f95a8c88076d6a3">SpeakerSwitch</link>();
+72 
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1afebe1299f35447d01cfb2ea2f9632e3d">FreeMem</link>();
+76 
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;AllMem();
+78 
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;lang
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Eng&#32;=&#32;0,
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Fi,
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Ger,
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Rus
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+86 
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;GetLang();
+88 
+89 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;OS</emphasis>
+90 
+93 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6">Wait</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;time);
+94 
+95 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+96 
+97 
+98 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__OS_H__</emphasis>
 </programlisting></section>

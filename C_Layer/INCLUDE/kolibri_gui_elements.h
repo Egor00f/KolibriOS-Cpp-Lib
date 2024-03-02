@@ -1,7 +1,7 @@
 #ifndef KOLIBRI_GUI_ELEMENTS_H
 #define KOLIBRI_GUI_ELEMENTS_H
 
-
+#include <sys/ksys.h>
 
 #include "kolibri_colors.h"
 
@@ -46,7 +46,7 @@ typedef struct{
 }kolibri_window_element;
 
 typedef void (*cb_elem_boxlib)(void *) __attribute__((__stdcall__));
-typedef void (*cbkey_elem_boxlib)(void *, oskey_t) __attribute__((__stdcall__));
+typedef void (*cbkey_elem_boxlib)(void *, ksys_oskey_t) __attribute__((__stdcall__));
 
 /* Generic structure for supporting functions on various elements of Kolibri's GUI */
 typedef struct {

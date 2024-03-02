@@ -7,24 +7,50 @@ KolibriLib::Thread \- Работа с потоками
 .SH SYNOPSIS
 .br
 .PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "union \fBThreadInfo\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef int \fBSlot\fP"
+.br
+.RI "Слот окна "
+.ti -1c
+.RI "typedef int \fBPID\fP"
+.br
+.in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "unsigned \fBCreateThread\fP (void *ThreadEntry, unsigned ThreadStackSize=1024)"
+.RI "PID \fBCreateThread\fP (void(*ThreadEntry)(void *), unsigned ThreadStackSize=1024)"
 .br
 .RI "Создать поток "
 .ti -1c
-.RI "bool \fBTerminateThread\fP (int PID)"
+.RI "bool \fBTerminateThread\fP (PID pid)"
 .br
 .RI "Завершить процесс/поток "
+.ti -1c
+.RI "\fBSlot\fP \fBGetThreadSlot\fP (PID pid)"
+.br
+.RI "Получить слот потока "
+.ti -1c
+.RI "\fBThreadInfo\fP \fBGetThreadInfo\fP (\fBSlot\fP thread)"
+.br
+.RI "Поличть информацию о потоке "
 .in -1c
 .SH "Detailed Description"
 .PP 
 Работа с потоками 
 .SH "Function Documentation"
 .PP 
-.SS "unsigned KolibriLib::Thread::CreateThread (void * ThreadEntry, unsigned ThreadStackSize = \fR1024\fP)"
+.SS "PID KolibriLib::Thread::CreateThread (void(*)(void *) ThreadEntry, unsigned ThreadStackSize = \fR1024\fP)"
 
 .PP
 Создать поток 
@@ -42,7 +68,40 @@ ID потока
 .RE
 .PP
 
-.SS "bool KolibriLib::Thread::TerminateThread (int PID)"
+.SS "\fBKolibriLib::Thread::ThreadInfo\fP KolibriLib::Thread::GetThreadInfo (\fBSlot\fP thread)"
+
+.PP
+Поличть информацию о потоке 
+.PP
+\fBParameters\fP
+.RS 4
+\fIthread\fP слот потока 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+информация о потоке 
+.RE
+.PP
+.SS "слот -1 то возвращается информация о текущем потоке"
+
+.SS "\fBSlot\fP KolibriLib::Thread::GetThreadSlot (PID pid)"
+
+.PP
+Получить слот потока 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpid\fP поток 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Слот потока pid 
+.RE
+.PP
+
+.SS "bool KolibriLib::Thread::TerminateThread (PID pid)"
 
 .PP
 Завершить процесс/поток 

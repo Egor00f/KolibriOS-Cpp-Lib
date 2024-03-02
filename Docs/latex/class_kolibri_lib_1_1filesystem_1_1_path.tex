@@ -1,22 +1,83 @@
 \doxysection{Kolibri\+Lib\+::filesystem\+::Path Class Reference}
 \hypertarget{class_kolibri_lib_1_1filesystem_1_1_path}{}\label{class_kolibri_lib_1_1filesystem_1_1_path}\index{KolibriLib::filesystem::Path@{KolibriLib::filesystem::Path}}
+
+
+Путь до файла/папки  
+
+
+
+
+{\ttfamily \#include $<$filesystem.\+hpp$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_ac5f1d7a90cea7631d009ca39a3ea9e86}\label{class_kolibri_lib_1_1filesystem_1_1_path_ac5f1d7a90cea7631d009ca39a3ea9e86} 
-{\bfseries Path} (std\+::string path)
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a5ca1307ff5ea8e1edd1e302f7b41bc54}\label{class_kolibri_lib_1_1filesystem_1_1_path_a5ca1307ff5ea8e1edd1e302f7b41bc54} 
+{\bfseries Path} (std\+::string path="{}/"{})
 \item 
-\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a1ce6078475d3a9b5c340e08b1bc65217}\label{class_kolibri_lib_1_1filesystem_1_1_path_a1ce6078475d3a9b5c340e08b1bc65217} 
-const char \texorpdfstring{$\ast$}{*} {\bfseries Get\+Chars} () const
-\item 
-\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_af9336263887d54c6a40581d6c8f8b2a6}\label{class_kolibri_lib_1_1filesystem_1_1_path_af9336263887d54c6a40581d6c8f8b2a6} 
-std\+::string {\bfseries Get\+String} () const
-\item 
-\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a6c40452c9858b8428c8f1cbc068f11c7}\label{class_kolibri_lib_1_1filesystem_1_1_path_a6c40452c9858b8428c8f1cbc068f11c7} 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_acb469886de44cd4d462c462612037dc3}{Get\+Chars}} () const
+\begin{DoxyCompactList}\small\item\em Получить char\texorpdfstring{$\ast$}{*} строку \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_af9336263887d54c6a40581d6c8f8b2a6}{Get\+String}} () const
+\begin{DoxyCompactList}\small\item\em Получить строку \end{DoxyCompactList}\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a58751fd9a286c24b0f08dc0d00224977}\label{class_kolibri_lib_1_1filesystem_1_1_path_a58751fd9a286c24b0f08dc0d00224977} 
 \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \& {\bfseries operator/} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&a)
+\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_ae68b63e1c7adc51acf4a0844595ae349}\label{class_kolibri_lib_1_1filesystem_1_1_path_ae68b63e1c7adc51acf4a0844595ae349} 
+\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \& {\bfseries operator/} (const std\+::string \&a)
+\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_aa8da971a5bd99ba1efe49ba358d63854}\label{class_kolibri_lib_1_1filesystem_1_1_path_aa8da971a5bd99ba1efe49ba358d63854} 
+\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&a)
+\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a6686962daddadb397f27ab4c61036815}\label{class_kolibri_lib_1_1filesystem_1_1_path_a6686962daddadb397f27ab4c61036815} 
+\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \& {\bfseries operator=} (const std\+::string \&a)
+\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_af72a4615528982cce3d18497a0d46529}\label{class_kolibri_lib_1_1filesystem_1_1_path_af72a4615528982cce3d18497a0d46529} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&a) const
+\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a59e06f6a56954b4b263fc9980ce98c03}\label{class_kolibri_lib_1_1filesystem_1_1_path_a59e06f6a56954b4b263fc9980ce98c03} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&a) const
+\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a19a924343f3d4f4331918c9d1ff83842}\label{class_kolibri_lib_1_1filesystem_1_1_path_a19a924343f3d4f4331918c9d1ff83842} 
+bool {\bfseries operator==} (const std\+::string \&a) const
+\item 
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_a03b02abb06494c259780c9e7862bfd5d}\label{class_kolibri_lib_1_1filesystem_1_1_path_a03b02abb06494c259780c9e7862bfd5d} 
+bool {\bfseries operator!=} (const std\+::string \&a) const
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Detailed Description}
+Путь до файла/папки 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_acb469886de44cd4d462c462612037dc3}\label{class_kolibri_lib_1_1filesystem_1_1_path_acb469886de44cd4d462c462612037dc3} 
+\index{KolibriLib::filesystem::Path@{KolibriLib::filesystem::Path}!GetChars@{GetChars}}
+\index{GetChars@{GetChars}!KolibriLib::filesystem::Path@{KolibriLib::filesystem::Path}}
+\doxysubsubsection{\texorpdfstring{GetChars()}{GetChars()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Path\+::\+Get\+Chars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить char\texorpdfstring{$\ast$}{*} строку 
+
+\begin{DoxyReturn}{Returns}
+Функция возвращает конвертированную строку \doxylink{ab9b061b35b2c9b51c2da59cc0ea16b0c}{\+\_\+string}
+\end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1filesystem_1_1_path_af9336263887d54c6a40581d6c8f8b2a6}\label{class_kolibri_lib_1_1filesystem_1_1_path_af9336263887d54c6a40581d6c8f8b2a6} 
+\index{KolibriLib::filesystem::Path@{KolibriLib::filesystem::Path}!GetString@{GetString}}
+\index{GetString@{GetString}!KolibriLib::filesystem::Path@{KolibriLib::filesystem::Path}}
+\doxysubsubsection{\texorpdfstring{GetString()}{GetString()}}
+{\footnotesize\ttfamily std\+::string Kolibri\+Lib\+::filesystem\+::\+Path\+::\+Get\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить строку 
+
+\begin{DoxyReturn}{Returns}
+Функция возвращает \doxylink{ab9b061b35b2c9b51c2da59cc0ea16b0c}{\+\_\+string}
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-F\+:/\+Kolibri\+Os/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/filesystem.\+hpp\end{DoxyCompactItemize}
+F\+:/\+Kolibri\+Os/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/filesystem.\+hpp\item 
+F\+:/\+Kolibri\+Os/\+Kolibri\+OS-\/\+Cpp-\/\+Lib/src/include/kolibri\+Lib/filesystem.\+cpp\end{DoxyCompactItemize}

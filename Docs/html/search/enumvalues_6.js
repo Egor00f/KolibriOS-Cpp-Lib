@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oshaventram_0',['OsHaventRam',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac',1,'KolibriLib::filesystem']]]
+  ['key_0',['Key',['../namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca7dfe7168df1cbce07260998fe69cc684',1,'KolibriLib::OS']]]
 ];

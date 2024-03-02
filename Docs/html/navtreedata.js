@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "KolibriLib", "index.html", [
-    [ "Это всратая библиотека\\", "index.html", null ],
+    [ "Это всратая библиотека", "index.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -57,7 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_kolibri_lib_8hpp_source.html"
+"_kolibri_lib_8hpp_source.html",
+"namespace_kolibri_lib_1_1window.html#a9b4d6e11048953c9f7a1e530f135fb20"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

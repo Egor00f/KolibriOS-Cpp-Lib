@@ -6,167 +6,70 @@
 2 <emphasis role="preprocessor">#define&#32;__FILESYSTEM_H__</emphasis>
 3 
 4 
-5 
-6 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
-7 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
-8 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
-10 
-11 
-12 
-13 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-14 {
-17 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>filesystem
-18 &#32;&#32;&#32;&#32;{
-19 
-20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>
-21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>(std::string&#32;path);
+5 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+8 
+9 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+10 {
+13 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>filesystem
+14 &#32;&#32;&#32;&#32;{
+15 
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>(std::string&#32;path&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>);
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1acb469886de44cd4d462c462612037dc3">GetChars</link>()&#32;<emphasis role="keyword">const</emphasis>;
 24 
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;GetChars()&#32;<emphasis role="keyword">const</emphasis>;
-26 
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;GetString()&#32;<emphasis role="keyword">const</emphasis>;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1af9336263887d54c6a40581d6c8f8b2a6">GetString</link>()&#32;<emphasis role="keyword">const</emphasis>;
 28 
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&amp;&#32;operator&#32;/&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&amp;&#32;a);
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_string;
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;operator&#32;/&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;a);
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;operator&#32;/&#32;(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;a);
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;operator&#32;=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;a);
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;operator&#32;=&#32;(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;a);
 33 
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67c">Errors</link>
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611">Successfully</link>&#32;=&#32;0,
-39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb">NotSupport</link>&#32;=&#32;2,
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67caad2de3a620f71b1f3dafb9f873be9f2d">UnklownFileSystem</link>&#32;=&#32;3,
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67caf14d749d936896e45eb47cf6eec70d14">NotFound</link>&#32;=&#32;5,
-45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774">EndOfFile</link>&#32;=&#32;6,
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc">ptrOutsideApp</link>&#32;=&#32;7,
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cae876827552df8534ce951cdf21c851c0">DiskIsFull</link>&#32;=&#32;8,
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3">FSError</link>&#32;=&#32;9,
-53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cae88c8afb208f1fe64f9662269c704efd">AccessDenied</link>&#32;=&#32;10,
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca416e4e91da3a3d9dc68f1b1a44245244">DeviceError</link>&#32;=&#32;11,
-57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac">OsHaventRam</link>&#32;=&#32;12
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-59 
-63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name);
-64 
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*path);
-70 
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;name);
-75 
-80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;name,&#32;<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;path);
-81 
-85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name);
-86 
-91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*path);
-92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;name);
-97 
-102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;name,&#32;<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;path);
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
+36 
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
+39 
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_string;
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+43 
+44 
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67c">Errors</link>
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611">Successfully</link>&#32;=&#32;0,
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca453364241c36760dafda5ba19720d4bb">NotSupport</link>&#32;=&#32;2,
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67caad2de3a620f71b1f3dafb9f873be9f2d">UnklownFileSystem</link>&#32;=&#32;3,
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67caf14d749d936896e45eb47cf6eec70d14">NotFound</link>&#32;=&#32;5,
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774">EndOfFile</link>&#32;=&#32;6,
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc">ptrOutsideApp</link>&#32;=&#32;7,
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cae876827552df8534ce951cdf21c851c0">DiskIsFull</link>&#32;=&#32;8,
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cabed91880583fa37c325e08fdb88089c3">FSError</link>&#32;=&#32;9,
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cae88c8afb208f1fe64f9662269c704efd">AccessDenied</link>&#32;=&#32;10,
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67ca416e4e91da3a3d9dc68f1b1a44245244">DeviceError</link>&#32;=&#32;11,
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac">OsHaventRam</link>&#32;=&#32;12
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+71 
+72 
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1ac1f53038467ce2fe309f448c9e0f2f72">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;name);
+77 
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1af8228f98e29fbb8122c93fdc3022d154">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;name);
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acd34191bdf04b15659a1dd13f13b18ad">MakeDirectory</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;path);
+87 
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1ab13318145c165ffcc743aeb33e62b4dc">Exist</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;Path);
+92 
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a57a3f302a162ad3a2738ef9e080c193b">Rename</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;OldName,&#32;<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;NewName);
+98 
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+100 &#32;&#32;&#32;&#32;}
+101 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+102 
 103 
-107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a4a83550cdda24dc9ae8cdf1d30148c76">MakeDirectory</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*path);
-108 
-112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a4a83550cdda24dc9ae8cdf1d30148c76">MakeDirectory</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;path);
-113 
-117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1ab13318145c165ffcc743aeb33e62b4dc">Exist</link>(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;Path);
-118 
-119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;Rename(<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;OldName,&#32;<emphasis role="keyword">const</emphasis>&#32;Path&amp;&#32;NewName);
-120 
-121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Path::Path(std::string&#32;path)
-122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_string&#32;=&#32;path;
-124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-125 
-126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*Path::GetChars()<emphasis role="keyword">&#32;const</emphasis>
-127 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_string.c_str();
-129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-130 
-131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;Path::GetString()<emphasis role="keyword">&#32;const</emphasis>
-132 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_string;
-134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-135 
-136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Path&#32;&amp;Path::operator/(<emphasis role="keyword">const</emphasis>&#32;Path&#32;&amp;a)
-137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_string&#32;+=&#32;a._string;
-139 
-140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-142 
-143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name)
-144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_create(name);
-146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-147 
-148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*path)
-149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(path,&#32;name);
-151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret&#32;=&#32;_ksys_file_create(path);
-152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
-153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-154 
-155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;name)
-156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_create(name.GetChars());
-158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-159 
-160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1acce64e48eb08ac5fb8d3f4030142aa0a">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;name,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;path)
-161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;fullPath&#32;=&#32;path.GetString()&#32;+&#32;name;
-163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_create(fullPath.c_str());
-164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-165 
-166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name)
-167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_delete(name);
-169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-170 
-171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*name,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*path)
-172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(path,&#32;name);
-174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_delete(path);
-175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-176 
-177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;name)
-178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_delete(name.GetChars());
-180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-181 
-182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a09794e6a053e6f649c0e4ae8ff262a9d">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;name,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;path)
-183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;fullPath&#32;=&#32;path.GetString()&#32;+&#32;name;
-185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_delete(fullPath.c_str());
-186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-187 
-188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a4a83550cdda24dc9ae8cdf1d30148c76">MakeDirectory</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*path)
-189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_mkdir(path);
-191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-192 
-193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1a4a83550cdda24dc9ae8cdf1d30148c76">MakeDirectory</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;path)
-194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_mkdir(path.GetChars());
-196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-197 
-198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1ab13318145c165ffcc743aeb33e62b4dc">Exist</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>)
-199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_bdfe_t&#32;*buff;
-201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_ksys_file_info(<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>.GetChars(),&#32;buff)&#32;&gt;&#32;0)
-202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
-204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
-206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-207 
-208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;Rename(<emphasis role="keyword">const</emphasis>&#32;Path&#32;&amp;OldName,&#32;<emphasis role="keyword">const</emphasis>&#32;Path&#32;&amp;NewName)
-209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_rename(OldName.GetChars(),&#32;NewName.GetChars());
-211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-212 &#32;&#32;&#32;&#32;}
-213 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-214 
-215 
-216 
-217 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FILESYSTEM_H__</emphasis>
+104 
+105 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FILESYSTEM_H__</emphasis>
 </programlisting></section>

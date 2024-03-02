@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_menu_8hpp_source" xml:lang="en-US">
+<title>menu.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/menu.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__MENU_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__MENU_H__</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&quot;types.hpp&quot;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
+11 <emphasis role="preprocessor">#include&#32;&quot;button.hpp&quot;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&quot;graphic.hpp&quot;</emphasis>
+13 
+14 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+15 {
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
+17 &#32;&#32;&#32;&#32;{
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu">Menu</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;buttons::Button&gt;&#32;_Buttons;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu">Menu</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&#32;&amp;li,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin&#32;=&#32;DefaultMargin,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu">~Menu</link>();
+26 
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1aba3a01a02c75a282727605f9a7979555">Render</link>();
+29 
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1a6ef3b4324f61a499469b1519bec4c8b7">Handler</link>();
+33 
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1a41d7f8f9019da81f7eb58c3671c44e5c">AddItem</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;item,&#32;<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;-1);
+40 
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1a9b380c2eeb680f910ca87903ee78d8ad">DeleteItem</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;i);
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+46 
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+48 
+49 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+50 
+51 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+52 
+53 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MENU_H__</emphasis>
+</programlisting></section>

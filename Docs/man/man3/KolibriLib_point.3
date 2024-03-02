@@ -8,7 +8,7 @@ KolibriLib::point< T > \- Просто точка
 .br
 .PP
 .PP
-\fR#include <small\&.hpp>\fP
+\fR#include <types\&.hpp>\fP
 .SS "Public Member Functions"
 
 .in +1c
@@ -28,9 +28,11 @@ KolibriLib::point< T > \- Просто точка
 .ti -1c
 .RI "T \fBx\fP"
 .br
+.RI "координата по оси X, или ширина "
 .ti -1c
 .RI "T \fBy\fP"
 .br
+.RI "координата по оси Y, или высота "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -40,7 +42,57 @@ KolibriLib::point< T > \- Просто точка
 struct KolibriLib::point< T >"Просто точка 
 
 
-.SS "необходимо использовать конкретный теип данных для точки используйте шаблоны\&. Например: point<uint64_t> p;"
+.SS "i = -1, то элемент вставляется в конец, иначе вставляется на место под номером i\&. При этом номера всех элементов с номером больше i, нужно увеличить на 1\&."
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T > bool \fBKolibriLib::point\fP< T >::operator!= (const \fBpoint\fP< T > & a) const"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIa\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "template<class T > \fBpoint\fP< T > & \fBKolibriLib::point\fP< T >::operator= (const \fBpoint\fP< T > & p)\fR [inline]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIp\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "template<class T > bool \fBKolibriLib::point\fP< T >::operator== (const \fBpoint\fP< T > & a) const"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIa\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
 
 
 .SH "Author"
