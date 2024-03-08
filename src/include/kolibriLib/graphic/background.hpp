@@ -7,6 +7,8 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
+#include <kolibriLib/UI/fonts.hpp>
+#include <kolibri_rasterworks.h>
 
 namespace KolibriLib
 {
@@ -86,6 +88,55 @@ namespace KolibriLib
 			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N,  coord.x, coord.y, GetSize().x);
 		}
 
+		inline void DrawImage(const UI::Coord coord, rgb_t *rgb, std::size_t N)
+		{
+			if (!f)
+			{
+				SetSize(GetSize());
+			}
+			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N, coord.x, coord.y, GetSize().x);
+		}
+
+		/// @brief Нарисовать линию на фоне
+		/// @param p1 точка перавая
+		/// @param p2 точка вторая
+		/// @param color цвет линии
+		inline void DrawLine(const UI::Coord& p1, const UI::Coord& p2, const Colors::Color &color = OS::sys_color_table.work_graph)
+		{
+			for(int i = 0; i < abs(p1.x - p2.x); i++)
+			{
+				for (int j = 0; j < abs(p1.y - p2.y) / abs(p1.x - p2.x); j++)
+				{
+					DrawPoint(UI::Coord(p1.x + i, p1.y + j), color);
+				}
+			}
+		}
+
+		void DrawText(const std::string &text,
+					  const UI::Coord &coord, const UI::text::Fonts::Font &font = UI::text::Fonts::DefaultFont,
+					  unsigned margin = UI::DefaultMargin,
+					  const Colors::Color &colorText = OS::sys_color_table.work_text,
+					  const Colors::Color &BackgroundColor = OS::sys_color_table.work_area)
+		{
+			const unsigned w = ((margin * 2) + font.size.x);
+			const unsigned h = ((margin * 2) + (font.size.y * text.length()));
+
+			rgb_t *canvas = new rgb_t[w * h];
+
+			for (int i = 0; i < w * h; i++)
+			{
+				canvas[i].red = BackgroundColor.red;
+				canvas[i].blue = BackgroundColor.blue;
+				canvas[i].green = BackgroundColor.green;
+			}
+
+			drawText(canvas, coord.x, coord.y, text.c_str(), text.length(), colorText.val, font._Flags);
+			DrawImage(coord, canvas, w * h);
+
+			delete[] canvas;
+		}
+
+		
 
 	} // namespace Background
 	

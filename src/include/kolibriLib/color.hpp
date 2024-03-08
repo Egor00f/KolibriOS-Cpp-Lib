@@ -35,17 +35,23 @@ namespace KolibriLib
             Color(const ksys_color_t& a = 0);
             Color(const Color &a);
             Color(const ARGB &a);
+            
+            Color(const rgb_t &color);
+
+            /// @brief Получить rgb_t
+            /// @return 
+            rgb_t GetRGB() const;
 
             Color& operator = (const Color& a);
 
             /// @brief Смешивает два цвета (среднее занчение)
             /// @param a 
             /// @return 
-            Color &operator+(const Color &a);
+            Color &operator + (const Color &a);
 
             bool operator == (const Color& a) const;
 
-            bool operator != (const Color& a)const;
+            bool operator != (const Color& a) const;
         };
         
         /// @brief Смешать два цвета
@@ -53,13 +59,19 @@ namespace KolibriLib
         /// @param b Второй цвет
         /// @param k Коофициент, чем он больше, тем больше цвета a, чем меньше, тем больше цвета b
         /// @return получившийся в итоге цвет
-        Color BlendColors(const Color &a, const Color &b, const float k = 0.5)
+        Color BlendColors(const Color &a, const Color &b, float k = 0.5f)
         {
+            if(k > 1.0) //Коэфицент более 1 не имеет смысла
+                k = 1.0;
+
+            // буффер
             Color buff;
-            buff._a = (a._a * static_cast<int>(k)) + (b._a * (1 - static_cast<int>(k)));
-            buff.red = (a.red * static_cast<int>(k)) + (b.red * (1 - static_cast<int>(k)));
-            buff.green = (a.green * static_cast<int>(k)) + (b.green * (1 - static_cast<int>(k)));
-            buff.blue = (a.blue * static_cast<int>(k)) + (b.blue * (1 - static_cast<int>(k)));
+
+            buff._a     = static_cast<uint8_t>((a._a    * k) + (b._a    * (1.0f - k)));
+            buff.red    = static_cast<uint8_t>((a.red   * k) + (b.red   * (1.0f - k)));
+            buff.green  = static_cast<uint8_t>((a.green * k) + (b.green * (1.0f - k)));
+            buff.blue   = static_cast<uint8_t>((a.blue  * k) + (b.blue  * (1.0f - k)));
+
             return buff;
         }
 
@@ -74,6 +86,13 @@ namespace KolibriLib
             bool operator == (const ColorsTable &table) const;
             bool operator != (const ColorsTable &table) const;
         };
+
+
+        ksys_color_t RGBtoINT(const rgb_t color)
+        {
+            return (color.blue << 16) + (color.green << 8) + color.red;
+        }
+
 
         KolibriLib::Colors::Color::Color(const ksys_color_t &a)
         {
@@ -93,7 +112,20 @@ namespace KolibriLib
             blue = a.blue;
         }
 
-        Color &KolibriLib::Colors::Color::operator=(const Color &a)
+		Color::Color(const rgb_t &color)
+		{
+            _a = 1;
+            red   = color.red;
+            green = color.green;
+            red   = color.blue;
+		}
+
+		rgb_t Color::GetRGB() const
+		{
+			return {red, green, blue};
+		}
+
+		Color &KolibriLib::Colors::Color::operator=(const Color &a)
         {
             val = a.val;
             return *this;

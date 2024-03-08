@@ -123,9 +123,9 @@ namespace KolibriLib
 		/// @brief Список констант положения окна относительно других окон:
 		enum Pos
 		{
-			BackGround= -2,
-			AlwaysBack= -1,
-			Normal= 0,
+			BackGround = -2,
+			AlwaysBack = -1,
+			Normal = 0,
 			AlwaysTop = 1 	
 		};
 
@@ -142,9 +142,9 @@ namespace KolibriLib
 		}
 
 		/// @brief Изменить положение окна относительно дроугих окон
-		/// @param pos 
-		/// @param pid процесс
-		/// @return false если ошибка
+		/// @param pos значение из списка @link Pos
+		/// @param pid процесс окна, по умолчанию текущий
+		/// @return false если ошибка,
 		inline bool SetWindowPos(int pos, Thread::PID pid = -1)
 		{
 			bool a;
@@ -154,6 +154,7 @@ namespace KolibriLib
 				: "a"(18), "b"(25), "c"(2), "d"(pid), "S"(pos));
 			return a;
 		}
+
 
 		/// @brief Получить высоту скина(заголовка окна)
 		/// @return высота скина

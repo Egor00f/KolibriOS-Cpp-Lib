@@ -23,5 +23,6 @@
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/network.hpp>
 #include <kolibriLib/input/input.hpp>
+#include <kolibriLib/libini.hpp>
 
 #endif // __KOLIBRILIB_H__

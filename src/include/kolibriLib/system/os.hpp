@@ -19,7 +19,11 @@ namespace KolibriLib
 		/// @brief Получить системные цвета
 		/// @paragraph Функция изменяет переменную @link sys_color_table
 		/// @return Таблица системных цветов
-		Colors::ColorsTable GetSystemColors();
+		Colors::ColorsTable GetSystemColors()
+		{
+			_ksys_get_system_colors(&sys_color_table);
+			return sys_color_table;
+		}
 
 		/// @brief Ивент
 		typedef unsigned int Event;
@@ -155,13 +159,6 @@ namespace KolibriLib
 
 	} // namespace OS
 
-
-	Colors::ColorsTable KolibriLib::OS::GetSystemColors()
-	{
-		_ksys_get_system_colors(&sys_color_table);
-		return sys_color_table;
-	}
-
 	OS::Event KolibriLib::OS::WaitEvent(uint32_t TimeOut)
 	{
 		if (TimeOut != 0)
@@ -183,21 +180,6 @@ namespace KolibriLib
 		{
 			return -1;
 		}
-	}
-
-	/// \brief Подождать
-	/// \param time время задержки(в 1/100 секунды)
-	/// @paragraph Функция просто ждёт, ничего не делает
-	inline void Wait(int time)
-	{
-		_ksys_delay(time);
-	}
-
-	/// \brief Подождать, минимальное кол-во времени
-	/// @paragraph Функция просто ждёт, ничего не делает
-	inline void Wait()
-	{
-		_ksys_thread_yield();
 	}
 
 } // namespace KolibriLib

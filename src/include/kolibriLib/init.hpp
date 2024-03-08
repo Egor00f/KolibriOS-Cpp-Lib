@@ -5,6 +5,7 @@
 
 #include <kolibri_libimg.h>
 #include <kolibri_rasterworks.h>
+#include <kolibri_libini.h>
 
 //#include <sound.h>
 
@@ -34,6 +35,7 @@ namespace KolibriLib
 			exit(0);
 		}*/
 
+		kolibri_libini_init();
 		kolibri_rasterworks_init();
 		
 

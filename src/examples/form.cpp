@@ -6,12 +6,14 @@ int main()
 {
     window::Window window("Example");
 
-    UI::Form f({64,64},{200, 100}, "text");
 
-    unsigned form = window.CreateForm(f);
-    unsigned button = window.CreateButton({264, 64}, {100, 100}, "E");
+    unsigned form = window.AddElement(UI::Form({64,64},{200, 100}, "text"));
+    unsigned button = window.AddElement(UI::text::TextLabel({264, 64}, {100, 100}, "E"));
 
-    while (true)
+    window.Render();
+
+    bool ext = false;
+    while (ext)
     {
         OS::Event event = window.Handler();
 
@@ -25,9 +27,8 @@ int main()
             }
 
             break;
-        }
-        if(event == OS::Events::Exit)
-        {
+        case OS::Events::Exit:
+            ext = true;
             break;
         }
     }

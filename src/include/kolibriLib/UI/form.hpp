@@ -86,8 +86,13 @@ namespace KolibriLib
             return _butt.GetColor();
         }
 
-        Form::~Form()
-        {
+		void Form::SetBackgroundColor(const Colors::Color &NewColor)
+		{
+            _butt.SetColor(NewColor);
+		}
+
+		Form::~Form()
+		{
         }
 
         void Form::Render() const
@@ -114,10 +119,17 @@ namespace KolibriLib
                 _inputText.erase(_inputText.end() - 1);
             }
         }
+
         bool Form::ButtonHandler()
         {
             return _butt.Handler();
         }
+
+        void KolibriLib::UI::Form::SetBackgroundText(const std::string &NewText)
+        {
+            _butt.SetText(NewText);
+        }
+        
     } // namespace UI
 } // namespace KolibriLib
 

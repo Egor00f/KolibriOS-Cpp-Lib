@@ -10,8 +10,11 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/color.hpp>
+#include <kolibriLib/graphic/graphic.hpp>
+#include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/UI/image.hpp>
 #include <kolibri_rasterworks.h>
+#include "fonts.hpp"
 
 namespace KolibriLib
 {
@@ -56,80 +59,6 @@ namespace KolibriLib
                 _ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color.val);
             }
 
-
-            /// @brief Флаги для RasterWorks
-            enum Flags
-            {
-                /// @brief Обычный текст
-                /// @note Указывать не обязательно
-                Normal = 0b0000,
-
-                /// @brief Жирный текст
-                Bold = 0b1,
-
-                /// @brief Курсив
-                Italic = 0b10,
-
-                /// @brief Нижнее подчёркивание
-                Underline = 0b100,
-
-                /// @brief Зачёркнутый
-                StrikeThrough = 0b1000,
-
-                /// @brief Выравнивание по правому краю
-                AlignRight = 0b00010000,
-
-                /// @brief Выравнивание по центру
-                AlignCenter = 0b00100000,
-                
-            };
-            
-            /// @brief Пародия на шрифты
-            /// @paragraph На самом деле это не настоящие шрифты, а лишь жалкие пародии, совподающие с настоящими лишь по размерам(ширина/высота)
-            namespace Fonts
-            {
-                /// @brief Высота шрифта по умолчанию
-                const unsigned DefaultFontSize = 16;
-                
-                //Некоторые заготовки шрифтов
-                
-                const UI::Size Arial         = {5, 6};
-                const UI::Size TimesNewRoman = {4, 5};
-                const UI::Size Micrhoma      = {21, 11};
-                const UI::Size Roboto        = {7, 10};
-                const UI::Size Geologica     = {5, 7};
-
-                /// @brief Шрифт
-                struct Font
-                {
-                    /// @brief 
-                    /// @param FontFamily Шрифт, фактически это соотношение сторон
-                    /// @param FontSize Высота шрифта
-                    Font(const UI::Size &FontFamily = Arial, int FontSize = DefaultFontSize, unsigned flags = Flags::Normal);
-
-                    /// @brief Изменить размер шрифта
-                    /// @param FontSize 
-                    void SetFontSize(unsigned FontSize);
-
-                    UI::Size _Font;
-                    unsigned _FontSize;
-                    unsigned _Flags;
-
-                    mutable UI::Size size;
-
-                    Font& operator=(const Font& f);
-
-                    bool operator==(const Font& f) const;
-                };
-
-
-                
-                /// @brief Шрифт по умолчанию
-                const Font DefaultFont(Arial, DefaultFontSize);
-            };
-
-            
-
             /// @brief Вывести текст
             /// @param text Текст
             /// @param coord Координаты текста
@@ -141,58 +70,124 @@ namespace KolibriLib
             /// @paragraph Функция выводит текст, и фон текста, используя библиотеку RasterWorks
             /// @example DrawText("Text", {0,0}, Fonts::Font(Fonts::Arial, 16).size); //16 - высота шрифта
             /// @example DrawText("Text", {0,0}, Fonts::Font(Fonts::Michroma, 12, Italic).size); //16 - высота шрифта
-            void DrawText(const std::string &text, 
-                const Coord &coord, const Size &size = Fonts::DefaultFont.size, 
-                unsigned flags = Flags::Normal, 
-                unsigned margin = UI::DefaultMargin,
-                const Colors::Color &colorText = OS::sys_color_table.work_text, 
-                const Colors::Color &BackgroundColor = OS::sys_color_table.work_area)
+            void DrawText(const std::string &text,
+                          const Coord &coord, const Size &size = Fonts::DefaultFont.size,
+                          unsigned flags = Flags::Normal,
+                          unsigned margin = UI::DefaultMargin,
+                          const Colors::Color &colorText = OS::sys_color_table.work_text,
+                          const Colors::Color &BackgroundColor = OS::sys_color_table.work_area)
             {
                 const unsigned w = ((margin * 2) + size.x);
                 const unsigned h = ((margin * 2) + (size.y * text.length()));
 
                 rgb_t *canvas = new rgb_t[w * h];
 
-                for (int i = 0; i < w * h; i++)
+                if(BackgroundColor._a < 1)
+                {                           //прозрачность фона
+                    const float k = BackgroundColor._a / 255;
+                    for (int i = 0; i < h; i++)
+                    {
+                        for (int j = 0; j < w; i++)
+                        {
+                            canvas[i * h + j] = Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + coord + Coord(0, i) + Coord(j, 0)),
+                                                                    BackgroundColor,
+                                                                    k)
+                                                    .GetRGB();
+                        }
+                    }
+                }
+                else
                 {
-                    canvas[i].red = BackgroundColor.red;
-                    canvas[i].blue = BackgroundColor.blue;
-                    canvas[i].green = BackgroundColor.green;
+                    memset((void*)canvas, Colors::RGBtoINT(BackgroundColor.GetRGB()), w * h);
                 }
 
+
                 drawText(canvas, coord.x, coord.y, text.c_str(), text.length(), colorText.val, flags);
+
+                if(colorText._a < 1)
+                {                       //Прозрачность текста
+                    const float k = colorText._a / 255;
+                    for (int i = margin; i < h - margin; i++)   //Трогать поля нет смысла
+                    {
+                        for (int j = margin; j < w - margin; i++)
+                        {
+                            Colors::Color b = graphic::ReadPoint(window::GetWindowCoord() + coord + Coord(0, i) + Coord(j, 0));
+                            if (b != canvas[i * (h - margin) + j])
+                            {
+                                canvas[i * (h - margin) + j] = Colors::BlendColors(b,
+                                                                               canvas[i * (h - margin) + j],
+                                                                               k)
+                                                                .GetRGB();
+                            }
+                            
+                        }
+                    }
+                }
+
                 _ksys_draw_bitmap(canvas, coord.x, coord.y, w, h);
 
                 delete[] canvas;
             }
 
             /// @brief Вывести текст
-            /// @param text текст
-            /// @param coord
-            /// @param font
-            /// @param margin
-            /// @param colorText
-            /// @param BackgroundColor
+            /// @param text Текст
+            /// @param coord Координаты
+            /// @param font Шрифт
+            /// @param margin Отступы границ фона от текста
+            /// @param colorText цвет текста
+            /// @param BackgroundColor цвет фона
             /// @paragraph Функция выводить используя библиотеку RasterWorks
-            void DrawText(const std::string &text, 
-                const Coord &coord, const Fonts::Font& font = Fonts::DefaultFont, 
-                unsigned margin = UI::DefaultMargin,
-                const Colors::Color &colorText = OS::sys_color_table.work_text, 
-                const Colors::Color &BackgroundColor = OS::sys_color_table.work_area)
+            void DrawText(const std::string &text,
+                          const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont,
+                          unsigned margin = UI::DefaultMargin,
+                          const Colors::Color &colorText = OS::sys_color_table.work_text,
+                          const Colors::Color &BackgroundColor = OS::sys_color_table.work_area)
             {
                 const unsigned w = ((margin * 2) + font.size.x);
                 const unsigned h = ((margin * 2) + (font.size.y * text.length()));
 
                 rgb_t *canvas = new rgb_t[w * h];
 
-                for (int i = 0; i < w * h; i++)
+                if (BackgroundColor._a < 1)
+                { // прозрачность фона
+                    const float k = BackgroundColor._a / 255;
+                    for (int i = 0; i < h; i++)
+                    {
+                        for (int j = 0; j < w; i++)
+                        {
+                            canvas[i * h + j] = Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + coord + Coord(0, i) + Coord(j, 0)),
+                                                                    BackgroundColor,
+                                                                    k)
+                                                    .GetRGB();
+                        }
+                    }
+                }
+                else
                 {
-                    canvas[i].red = BackgroundColor.red;
-                    canvas[i].blue = BackgroundColor.blue;
-                    canvas[i].green = BackgroundColor.green;
+                    memset((void *)canvas, Colors::RGBtoINT(BackgroundColor.GetRGB()), w*h);
                 }
 
                 drawText(canvas, coord.x, coord.y, text.c_str(), text.length(), colorText.val, font._Flags);
+
+                if (colorText._a < 1)
+                { // Прозрачность текста
+                    const float k = colorText._a / 255;
+                    for (int i = margin; i < h - margin; i++) // Трогать поля нет смысла
+                    {
+                        for (int j = margin; j < w - margin; i++)
+                        {
+                            Colors::Color b = graphic::ReadPoint(window::GetWindowCoord() + coord + Coord(0, i) + Coord(j, 0));
+                            if (b != canvas[i * (h - margin) + j])
+                            {
+                                canvas[i * (h - margin) + j] = Colors::BlendColors(b,
+                                                                                   canvas[i * (h - margin) + j],
+                                                                                   k)
+                                                                   .GetRGB();
+                            }
+                        }
+                    }
+                }
+
                 _ksys_draw_bitmap(canvas, coord.x, coord.y, w, h);
 
                 delete[] canvas;
@@ -377,7 +372,6 @@ namespace KolibriLib
                 /// @return _data[i]
                 const Char& GetChar(int i) const;
 
-
                 /// @brief Получить длину текста
                 /// @return длина текста
                 std::size_t length() const;
@@ -385,6 +379,10 @@ namespace KolibriLib
                 /// @brief Получить длинну текста в пикселях 
                 /// @return 
                 unsigned lenghtPX() const;
+
+                /// @brief 
+                /// @param text 
+                void SetText(std::string text);
 
                 Text& operator = (const Text& txt);
 
@@ -725,7 +723,12 @@ namespace KolibriLib
                 return result;
             }
 
-            KolibriLib::UI::text::Text::Text()
+			const Char &Text::GetChar(int i) const
+			{
+				return _data.at(i);
+			}
+
+			KolibriLib::UI::text::Text::Text()
             {
             }
 
@@ -837,8 +840,16 @@ namespace KolibriLib
                 return l;
             }
 
-            Text &KolibriLib::UI::text::Text::operator=(const Text &txt)
-            {
+			void Text::SetText(std::string text)
+			{
+                for(std::size_t i = 0; i < text.length(); i++)
+                {
+                    _data[i].Set(text[i], _data[i].GetFont());
+                }
+			}
+
+			Text &KolibriLib::UI::text::Text::operator=(const Text &txt)
+			{
                 _data = txt._data;
                 return *this;
             }

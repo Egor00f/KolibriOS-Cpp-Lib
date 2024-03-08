@@ -2,36 +2,30 @@
 
 using namespace KolibriLib;
 
-
-
-
-
 int main()
 {
+    init();
 
-    KolibriLib::init();
+    window::Window window("Main Window");
 
-    window::Window window("Main Window", window::DefaultWindowSize);
-
-    unsigned ButtonID = window.CreateButton({64, 64}, {100, 64}, "Button");
+    unsigned ButtonID = window.AddElement(UI::buttons::Button({64, 64}, {100, 64}, "Button"));
 
     window.Render();
 
-    while (true)
+    bool ext = false;
+    while (!ext)
     {
        OS::Event event = window.Handler();
 
-        if(event == OS::Events::Button)        
+        switch (event)
         {
+        case /* constant-expression */:
             if(ButtonID == window.GetPressedButton())
             {
                 childWindow::MessageBox("You pressed button", "Message");
             }
-        }
-
-        if(event == OS::Events::Exit)
-        {
-            break;
+        case OS::Events::Exit:
+            ext = true;
         }
     }
     

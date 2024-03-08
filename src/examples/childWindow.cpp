@@ -1,5 +1,4 @@
 #include <KolibriLib.hpp>
-#include "childWindow.hpp"
 
 using namespace KolibriLib;
 
@@ -9,9 +8,11 @@ int main()
 
     KolibriLib::init();
 
-    window::Window window("Main Window", window::DefaultWindowSize);
+    window::Window window("Main Window");
 
-    window.CreateText({64, 64}, {100, 64}, "this is main Window", 24, true);
+    window.AddElement(UI::text::TextLabel({64, 64}, {100, 64}, "This is main Window", 24, true));
+
+    window.Render();
 
 
     KolibriLib::childWindow::MessageBox("This is child window", "child window");
@@ -23,7 +24,6 @@ int main()
         switch (event)
         {
         case OS::Events::Exit:
-            
             break;
         }
     }
