@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_background_8hpp_source" xml:lang="ru">
+<title>background.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/background.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__BACKGROUND_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__BACKGROUND_H__</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&lt;stddef.h&gt;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/fonts.hpp&gt;</emphasis>
+11 <emphasis role="preprocessor">#include&#32;&lt;kolibri_rasterworks.h&gt;</emphasis>
+12 
+13 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+14 {
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Background
+17 &#32;&#32;&#32;&#32;{
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;f&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+19 
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>()
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;p;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(p)
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(39),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(1));
+29 
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{(<emphasis role="keywordtype">unsigned</emphasis>&#32;int)p.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>)p.y};
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+32 
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1afcb0fd60be834628d898f534c1628d5a">ReadPoint</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;&amp;Point)
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;c;
+39 
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Смещение</emphasis>
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;s&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>().<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;*&#32;(Point.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;-&#32;1)&#32;+&#32;Point.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>;&#32;<emphasis role="comment">//&#32;я&#32;думаю,&#32;что&#32;изображение&#32;это&#32;двумерный&#32;массив</emphasis>
+42 
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(c.val)
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(39),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(2),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(s));
+47 
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;c;
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+50 
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a49a4b0d2ddebbe46dffa031b6b43cd46">RedrawBackground</link>()
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_bg_redraw();
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+56 
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a49a4b0d2ddebbe46dffa031b6b43cd46">RedrawBackground</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&amp;&#32;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&amp;&#32;size)
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;buff&#32;=&#32;coord.GetKsysPost();
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;p2;
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p2.x&#32;=&#32;(unsigned)buff.x&#32;+&#32;size.GetKsysPost().x;
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p2.y&#32;=&#32;(unsigned)buff.y&#32;+&#32;size.GetKsysPost().y;
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_bg_redraw_bar(buff,&#32;p2);
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+65 
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetSize(<emphasis role="keyword">const</emphasis>&#32;UI::Size&#32;&amp;size)
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;f&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_bg_set_size(size.x,&#32;size.y);
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+71 
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawPoint(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&#32;&amp;color)
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!f)
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SetSize(<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>());
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_bg_put_pixel(coord.x,&#32;coord.y,&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>().x,&#32;color.val);
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+80 
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;std::<emphasis role="keywordtype">size_t</emphasis>&#32;N&gt;
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawImage(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;coord,&#32;rgb_t&#32;(&amp;rgb)[N])
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!f)
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SetSize(<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>());
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_bg_put_bitmap(rgb,&#32;<emphasis role="keyword">sizeof</emphasis>(rgb_t)&#32;*&#32;N,&#32;&#32;coord.x,&#32;coord.y,&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>().x);
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+90 
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawImage(<emphasis role="keyword">const</emphasis>&#32;UI::Coord&#32;coord,&#32;rgb_t&#32;*rgb,&#32;std::size_t&#32;N)
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!f)
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SetSize(<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>());
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_bg_put_bitmap(rgb,&#32;<emphasis role="keyword">sizeof</emphasis>(rgb_t)&#32;*&#32;N,&#32;coord.x,&#32;coord.y,&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link>().x);
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+99 
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149">DrawLine</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&amp;&#32;p1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&amp;&#32;p2,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_graph)
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;abs(p1.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;-&#32;p2.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>);&#32;i++)
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;abs(p1.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;-&#32;p2.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>)&#32;/&#32;abs(p1.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;-&#32;p2.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>);&#32;j++)
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawPoint(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>(p1.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;+&#32;i,&#32;p1.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;j),&#32;color);
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+114 
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawText(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;text,
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">UI::text::Fonts::Font</link>&#32;&amp;font&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">UI::text::Fonts::DefaultFont</link>,
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;margin&#32;=&#32;UI::DefaultMargin,
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;colorText&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;BackgroundColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area)
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;w&#32;=&#32;((margin&#32;*&#32;2)&#32;+&#32;font.size.x);
+122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;h&#32;=&#32;((margin&#32;*&#32;2)&#32;+&#32;(font.size.y&#32;*&#32;text.length()));
+123 
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rgb_t&#32;*canvas&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;rgb_t[w&#32;*&#32;h];
+125 
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;w&#32;*&#32;h;&#32;i++)
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i].red&#32;=&#32;BackgroundColor.red;
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i].blue&#32;=&#32;BackgroundColor.blue;
+130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i].green&#32;=&#32;BackgroundColor.green;
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+132 
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drawText(canvas,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;text.c_str(),&#32;text.length(),&#32;colorText.val,&#32;font._Flags);
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DrawImage(coord,&#32;canvas,&#32;w&#32;*&#32;h);
+135 
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>[]&#32;canvas;
+137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+138 
+139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+140 
+141 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;Background</emphasis>
+142 &#32;&#32;&#32;&#32;
+143 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+144 
+145 
+146 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BACKGROUND_H__</emphasis>
+</programlisting></section>

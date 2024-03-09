@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1mouse" xml:lang="en-US">
-<title>KolibriLib::mouse Namespace Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1mouse" xml:lang="ru">
+<title>Пространство имен KolibriLib::mouse</title>
 <indexterm><primary>KolibriLib::mouse</primary></indexterm>
 <para>
 
@@ -8,7 +8,7 @@
  
 </para>
 <simplesect>
-    <title>Typedefs    </title>
+    <title>Определения типов    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05"/>typedef void * <emphasis role="strong">CursorHandle</emphasis></para>
 
@@ -17,7 +17,7 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Enumerations    </title>
+    <title>Перечисления    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1af0ffe83fe84c6327086d378dd4270aa9"/>enum <emphasis role="strong">MouseButtons</emphasis> { <?linebreak?><emphasis role="strong">LeftButton</emphasis> = 0b1
 , <emphasis role="strong">RightButton</emphasis> = 0b10
@@ -29,13 +29,13 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Functions    </title>
+    <title>Функции    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; <link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">GetMousePositionOnSreen</link> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1a1ed776d98798432ed1d634b3a18dd181">GetMousePositionOnSreen</link> ()</para>
 
 <para>Получить позицияю курсора на экране </para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1ac2a6b8b5a4e77db980d7dcc2cb79eb26">GetMousePositionInWindow</link> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1af5c71bb6951c9963f3e8f7366b343ab0">GetMousePositionInWindow</link> ()</para>
 
 <para>Получить позицияю курсора внутри окна </para>
 </listitem>
@@ -47,15 +47,13 @@
 
 <para>колёсико мыши </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1mouse_1a39c94a2a4489ad8d4ec05a07ac13e259">EmulateMouse</link> (uint8_t m)</para>
-
-<para>Эмулировать нажатия кнопок мыши </para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a39c94a2a4489ad8d4ec05a07ac13e259"/>void <emphasis role="strong">EmulateMouse</emphasis> (uint8_t m)</para>
 </listitem>
             <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1mouse_1ad5181e5115b88147badd22a0c19cbe4f">CenterCursor</link> ()</para>
 
 <para>Центрировать курсор </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1ad28b18a7d7c25d015b5c503e9ddecf47">LoadCursor</link> (<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> path)</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1afa9e02a685efd7b6ab8f92b728ee1a2d">LoadCursor</link> (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> &amp;path)</para>
 
 <para>Загрузить курсор мыши </para>
 </listitem>
@@ -72,12 +70,12 @@
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Работа с мышью </para>
 </section>
 <section>
-<title>Function Documentation</title>
+<title>Функции</title>
 <anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ad5181e5115b88147badd22a0c19cbe4f"/><section>
     <title>CenterCursor()</title>
 <indexterm><primary>CenterCursor</primary><secondary>KolibriLib::mouse</secondary></indexterm>
@@ -86,40 +84,9 @@
 
 <para>Центрировать курсор </para>
 </para>
-<section xml:id="_namespace_kolibri_lib_1_1_o_s_1Функция">
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Функция">
 <title><title>устанавливает курсор в середину экрана</title></title>
 </section>
-</section>
-<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a39c94a2a4489ad8d4ec05a07ac13e259"/><section>
-    <title>EmulateMouse()</title>
-<indexterm><primary>EmulateMouse</primary><secondary>KolibriLib::mouse</secondary></indexterm>
-<indexterm><primary>KolibriLib::mouse</primary><secondary>EmulateMouse</secondary></indexterm>
-<para><computeroutput>void KolibriLib::mouse::EmulateMouse (uint8_t m)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
-
-<para>Эмулировать нажатия кнопок мыши </para>
-</para>
-
-<para>
-                <formalpara>
-                    <title>
-Parameters</title>
-                    <para>
-                    <table frame="all">
-                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
-                        <colspec colwidth="1*"/>
-                        <colspec colwidth="4*"/>
-                        <tbody>
-                            <row>
-<entry>m</entry><entry>
-<para></para>
-</entry>
-                            </row>
-                        </tbody>
-                        </tgroup>
-                    </table>
-                    </para>
-                </formalpara>
-                </para>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a7ae50aac73ac33bc25e269c12522a024"/><section>
     <title>GetMouseButtons()</title>
@@ -130,37 +97,37 @@ Parameters</title>
 <para>Проверить какие кнопки мыши нажаты </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ac2a6b8b5a4e77db980d7dcc2cb79eb26"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1af5c71bb6951c9963f3e8f7366b343ab0"/><section>
     <title>GetMousePositionInWindow()</title>
 <indexterm><primary>GetMousePositionInWindow</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>GetMousePositionInWindow</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; KolibriLib::mouse::GetMousePositionInWindow ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> KolibriLib::mouse::GetMousePositionInWindow ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить позицияю курсора внутри окна </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>(point) позиция курсора относительно окна </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a1ed776d98798432ed1d634b3a18dd181"/><section>
     <title>GetMousePositionOnSreen()</title>
 <indexterm><primary>GetMousePositionOnSreen</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>GetMousePositionOnSreen</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; int &gt; KolibriLib::mouse::GetMousePositionOnSreen ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> KolibriLib::mouse::GetMousePositionOnSreen ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить позицияю курсора на экране </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>(point) позиция курсора абсолютно </para>
 </formalpara>
@@ -175,17 +142,17 @@ Parameters</title>
 <para>колёсико мыши </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ad28b18a7d7c25d015b5c503e9ddecf47"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1afa9e02a685efd7b6ab8f92b728ee1a2d"/><section>
     <title>LoadCursor()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>LoadCursor</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>LoadCursor</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> KolibriLib::mouse::LoadCursor (<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> path)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link> KolibriLib::mouse::LoadCursor (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> &amp; path)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Загрузить курсор мыши </para>
 </para>
@@ -193,7 +160,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -210,7 +177,7 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para>Хендл загруженного курсора </para>
 </formalpara>
@@ -231,7 +198,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -240,7 +207,7 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>ptr</entry><entry>
-<para>путь до файла с курсором </para>
+<para>Указатель на изображение </para>
 </entry>
                             </row>
                         </tbody>
@@ -248,7 +215,7 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para>Хендл загруженного курсора </para>
 </formalpara>
@@ -269,7 +236,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -286,7 +253,7 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para>хендл предыдушего курсора </para>
 </formalpara>

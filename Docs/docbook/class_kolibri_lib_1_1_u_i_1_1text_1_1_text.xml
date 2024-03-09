@@ -1,0 +1,619 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text" xml:lang="ru">
+<title>Класс KolibriLib::UI::text::Text</title>
+<indexterm><primary>KolibriLib::UI::text::Text</primary></indexterm>
+<para>
+
+<para>Текст </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;text.hpp&gt;</computeroutput>
+</para>
+<para>Граф наследования:KolibriLib::UI::text::Text:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_kolibri_lib_1_1_u_i_1_1text_1_1_text.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a848c43c18bd23bf2c36be5de346d9ee0"/><emphasis role="strong">Text</emphasis> ()</para>
+
+<para>Конструктор </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a0c94663549acb84e05bf203673bdf73e"/><emphasis role="strong">~Text</emphasis> ()</para>
+
+<para>Деструктор </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6304a4ae03858133d064303a9f4aa640">Add</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &amp;c)</para>
+
+<para>Добавить символ в конец </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a658e87b66c50a1a6e6d3d39640dad143">Add</link> (const std::string &amp;txt)</para>
+
+<para>Добавить строку в конец </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1af4ad74911003d2d01b88bba3a84782b8">Add</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> &amp;img)</para>
+
+<para>долбавить изображение в конец </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a50f90789d11b5c32a1ca876ec3925ae3">insert</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &amp;c, int i)</para>
+
+<para>Вставить элемент </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a279e3feed8526c479ebcf9d37257f2cf">insert</link> (const std::string &amp;txt, int i)</para>
+
+<para>Вставить строку </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6fea058c7b14276e03d540219763e189">insert</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> &amp;img, int i)</para>
+
+<para>Вставить изображение </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a2b3cc12a6b74de60c7e74f90fed4fec9">Delete</link> (int i)</para>
+
+<para>Удалить <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> из текста </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1ab7918ccccb454f8f7c7d03d1c22f682f">Print</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;coord) const</para>
+
+<para>Вывести текст </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a143c7924e3daa06259bc93b3e7306bc5">SetFont</link> (const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp;Font)</para>
+
+<para>Изменить шрифт символов </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a72454cdc486cd55c422ce58da282702a">SetTextColor</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;Color)</para>
+
+<para>Изменить цвет текста для всех символов </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a3c5e7c50af916002563b29b55822cacd">SetBackgroundColor</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;Color)</para>
+
+<para>Изменить цвет фона для всех символов </para>
+</listitem>
+            <listitem><para>std::string &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6752e4a7728fad2ad4f22c38ded456a5">GetText</link> () const</para>
+
+<para>Получить текст </para>
+</listitem>
+            <listitem><para>const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a583340eae4461e85511dbd1aefeb3e36">GetChar</link> (int i) const</para>
+
+<para>Получить символ под номером i. </para>
+</listitem>
+            <listitem><para>std::size_t <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a20eacf9e8b1e84ae39895be49e88683e">length</link> () const</para>
+
+<para>Получить длину текста </para>
+</listitem>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a924a553bcf51e37053e5f4a365c4d568">lenghtPX</link> () const</para>
+
+<para>Получить длинну текста в пикселях </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a9bb52ff66ccb36a28959277f99807a47">SetText</link> (std::string text)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1aba0d8a544feb5d92e2ceedfda4cb3bea"/><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link> &amp;txt)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a2f5cda180a5ba57e4774fb6bf1e22fa2">operator==</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link> &amp;txt) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Защищенные данные    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a7b913670982e4ab5ab171e70404ec19b"/>std::vector&lt; <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &gt; <emphasis role="strong">_data</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Текст </para>
+
+
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1Фактически">
+<title><title>std::vector <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">ов</link></title></title>
+</section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6304a4ae03858133d064303a9f4aa640"/><section>
+    <title>Add()<computeroutput>[1/3]</computeroutput></title>
+<indexterm><primary>Add</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>Add</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::Add (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &amp; c)</computeroutput></para><para>
+
+<para>Добавить символ в конец </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>c</entry><entry>
+<para>символ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1af4ad74911003d2d01b88bba3a84782b8"/><section>
+    <title>Add()<computeroutput>[2/3]</computeroutput></title>
+<indexterm><primary>Add</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>Add</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::Add (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> &amp; img)</computeroutput></para><para>
+
+<para>долбавить изображение в конец </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>img</entry><entry>
+<para>Добавляемое изображение </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a658e87b66c50a1a6e6d3d39640dad143"/><section>
+    <title>Add()<computeroutput>[3/3]</computeroutput></title>
+<indexterm><primary>Add</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>Add</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::Add (const std::string &amp; txt)</computeroutput></para><para>
+
+<para>Добавить строку в конец </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>txt</entry><entry>
+<para>строка </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a2b3cc12a6b74de60c7e74f90fed4fec9"/><section>
+    <title>Delete()</title>
+<indexterm><primary>Delete</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>Delete</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::Delete (int i)</computeroutput></para><para>
+
+<para>Удалить <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> из текста </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry>
+<para>Номер удаляемого Charа </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a583340eae4461e85511dbd1aefeb3e36"/><section>
+    <title>GetChar()</title>
+<indexterm><primary>GetChar</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>GetChar</secondary></indexterm>
+<para><computeroutput>const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &amp; KolibriLib::UI::text::Text::GetChar (int i) const</computeroutput></para><para>
+
+<para>Получить символ под номером i. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry>
+<para>номер </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para>_data[i] </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6752e4a7728fad2ad4f22c38ded456a5"/><section>
+    <title>GetText()</title>
+<indexterm><primary>GetText</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>GetText</secondary></indexterm>
+<para><computeroutput>std::string &amp; KolibriLib::UI::text::Text::GetText ( ) const</computeroutput></para><para>
+
+<para>Получить текст </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a50f90789d11b5c32a1ca876ec3925ae3"/><section>
+    <title>insert()<computeroutput>[1/3]</computeroutput></title>
+<indexterm><primary>insert</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::insert (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &amp; c, int i)</computeroutput></para><para>
+
+<para>Вставить элемент </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>c</entry><entry>
+<para>Символ </para>
+</entry>
+                            </row>
+                            <row>
+<entry>i</entry><entry>
+<para>номер </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6fea058c7b14276e03d540219763e189"/><section>
+    <title>insert()<computeroutput>[2/3]</computeroutput></title>
+<indexterm><primary>insert</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::insert (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> &amp; img, int i)</computeroutput></para><para>
+
+<para>Вставить изображение </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>img</entry><entry>
+<para>изображение </para>
+</entry>
+                            </row>
+                            <row>
+<entry>i</entry><entry>
+<para>номер </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a279e3feed8526c479ebcf9d37257f2cf"/><section>
+    <title>insert()<computeroutput>[3/3]</computeroutput></title>
+<indexterm><primary>insert</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::insert (const std::string &amp; txt, int i)</computeroutput></para><para>
+
+<para>Вставить строку </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>txt</entry><entry>
+<para>строка </para>
+</entry>
+                            </row>
+                            <row>
+<entry>i</entry><entry>
+<para>номер </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a924a553bcf51e37053e5f4a365c4d568"/><section>
+    <title>lenghtPX()</title>
+<indexterm><primary>lenghtPX</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>lenghtPX</secondary></indexterm>
+<para><computeroutput>unsigned KolibriLib::UI::text::Text::lenghtPX ( ) const</computeroutput></para><para>
+
+<para>Получить длинну текста в пикселях </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a20eacf9e8b1e84ae39895be49e88683e"/><section>
+    <title>length()</title>
+<indexterm><primary>length</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>length</secondary></indexterm>
+<para><computeroutput>std::size_t KolibriLib::UI::text::Text::length ( ) const</computeroutput></para><para>
+
+<para>Получить длину текста </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>длина текста </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a2f5cda180a5ba57e4774fb6bf1e22fa2"/><section>
+    <title>operator==()</title>
+<indexterm><primary>operator==</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>operator==</secondary></indexterm>
+<para><computeroutput>bool KolibriLib::UI::text::Text::operator== (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link> &amp; txt) const</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>txt</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1ab7918ccccb454f8f7c7d03d1c22f682f"/><section>
+    <title>Print()</title>
+<indexterm><primary>Print</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>Print</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::Print (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; coord) const</computeroutput></para><para>
+
+<para>Вывести текст </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>Координаты(левый верхний угол) текста </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a3c5e7c50af916002563b29b55822cacd"/><section>
+    <title>SetBackgroundColor()</title>
+<indexterm><primary>SetBackgroundColor</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>SetBackgroundColor</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::SetBackgroundColor (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; Color)</computeroutput></para><para>
+
+<para>Изменить цвет фона для всех символов </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Color</entry><entry>
+<para><?linebreak?> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a143c7924e3daa06259bc93b3e7306bc5"/><section>
+    <title>SetFont()</title>
+<indexterm><primary>SetFont</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>SetFont</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::SetFont (const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp; Font)</computeroutput></para><para>
+
+<para>Изменить шрифт символов </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>FontSize</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<section xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1Изменяет">
+<title><title>размер символов для всех символов</title></title>
+</section>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a9bb52ff66ccb36a28959277f99807a47"/><section>
+    <title>SetText()</title>
+<indexterm><primary>SetText</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>SetText</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::SetText (std::string text)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>text</entry><entry>
+<para><?linebreak?> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a72454cdc486cd55c422ce58da282702a"/><section>
+    <title>SetTextColor()</title>
+<indexterm><primary>SetTextColor</primary><secondary>KolibriLib::UI::text::Text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Text</primary><secondary>SetTextColor</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Text::SetTextColor (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; Color)</computeroutput></para><para>
+
+<para>Изменить цвет текста для всех символов </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Color</entry><entry>
+<para><?linebreak?> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+Объявления и описания членов класса находятся в файле:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</section>
+</section>

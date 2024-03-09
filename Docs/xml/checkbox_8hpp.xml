@@ -1,20 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="ru">
   <compounddef id="checkbox_8hpp" kind="file" language="C++">
     <compoundname>checkbox.hpp</compoundname>
     <includes local="no">sys/ksys.h</includes>
     <includes local="no">string</includes>
-    <includes refid="types_8hpp" local="yes">types.hpp</includes>
-    <includes refid="_u_i_8hpp" local="yes">UI.hpp</includes>
-    <includes refid="button_8hpp" local="yes">button.hpp</includes>
-    <includes refid="graphic_8hpp" local="yes">graphic.hpp</includes>
-    <includes refid="color_8hpp" local="yes">color.hpp</includes>
-    <includedby refid="checkbox_8cpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.cpp</includedby>
-    <includedby refid="frame_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</includedby>
-    <includedby refid="window_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp</includedby>
+    <includes refid="types_8hpp" local="no">kolibriLib/types.hpp</includes>
+    <includes refid="_u_i_8hpp" local="no">kolibriLib/UI/UI.hpp</includes>
+    <includes refid="button_8hpp" local="no">kolibriLib/UI/button.hpp</includes>
+    <includes refid="graphic_8hpp" local="no">kolibriLib/graphic/graphic.hpp</includes>
+    <includes refid="color_8hpp" local="no">kolibriLib/color.hpp</includes>
+    <includedby refid="frame_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</includedby>
+    <includedby refid="window_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</includedby>
     <incdepgraph>
       <node id="5">
-        <label>UI.hpp</label>
+        <label>kolibriLib/UI/UI.hpp</label>
         <link refid="_u_i_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -30,25 +29,27 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
-      <node id="17">
-        <label>button.hpp</label>
+      <node id="18">
+        <label>kolibriLib/UI/button.hpp</label>
         <link refid="button_8hpp_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</label>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</label>
         <link refid="checkbox_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -58,55 +59,25 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>color.hpp</label>
-        <link refid="color_8hpp_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>filesystem.hpp</label>
-        <link refid="filesystem_8hpp_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>graphic.hpp</label>
-        <link refid="graphic_8hpp_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>image.hpp</label>
+      <node id="29">
+        <label>fonts.hpp</label>
+        <link refid="fonts_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>kolibriLib/UI/image.hpp</label>
         <link refid="image_8hpp_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -116,15 +87,81 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>kolibriLib/UI/text.hpp</label>
+        <link refid="text_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
         <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>kolibriLib/color.hpp</label>
+        <link refid="color_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>kolibriLib/graphic/graphic.hpp</label>
+        <link refid="graphic_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>kolibriLib/graphic/screen.hpp</label>
+        <link refid="screen_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="11">
-        <label>input.hpp</label>
+        <label>kolibriLib/input/input.hpp</label>
         <link refid="input_8hpp_source"/>
         <childnode refid="12" relation="include">
         </childnode>
@@ -149,50 +186,36 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>os.hpp</label>
-        <link refid="os_8hpp_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
       <node id="25">
-        <label>screen.hpp</label>
-        <link refid="screen_8hpp_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>small.hpp</label>
+        <label>kolibriLib/small.hpp</label>
         <link refid="small_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>text.hpp</label>
-        <link refid="text_8hpp_source"/>
+      <node id="9">
+        <label>kolibriLib/system/filesystem.hpp</label>
+        <link refid="filesystem_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+      </node>
+      <node id="7">
+        <label>kolibriLib/system/os.hpp</label>
+        <link refid="os_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="15">
-        <label>thread.hpp</label>
+        <label>kolibriLib/system/thread.hpp</label>
         <link refid="thread_8hpp_source"/>
         <childnode refid="16" relation="include">
         </childnode>
@@ -200,15 +223,17 @@
         </childnode>
       </node>
       <node id="4">
-        <label>types.hpp</label>
+        <label>kolibriLib/types.hpp</label>
         <link refid="types_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="14">
-        <label>windowBase.hpp</label>
+        <label>kolibriLib/window/windowBase.hpp</label>
         <link refid="window_base_8hpp_source"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -216,16 +241,24 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="21">
+        <label>assert.h</label>
+      </node>
+      <node id="27">
         <label>kolibri_libimg.h</label>
       </node>
-      <node id="24">
+      <node id="28">
+        <label>kolibri_rasterworks.h</label>
+      </node>
+      <node id="23">
         <label>math.h</label>
       </node>
-      <node id="20">
+      <node id="26">
         <label>stdio.h</label>
       </node>
       <node id="16">
@@ -234,47 +267,42 @@
       <node id="3">
         <label>string</label>
       </node>
-      <node id="21">
+      <node id="8">
         <label>string.h</label>
       </node>
       <node id="2">
         <label>sys/ksys.h</label>
+      </node>
+      <node id="19">
+        <label>unordered_map</label>
       </node>
       <node id="6">
         <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/KolibriLib.hpp</label>
-        <link refid="_kolibri_lib_8hpp_source"/>
-      </node>
       <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</label>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</label>
         <link refid="checkbox_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp</label>
-        <link refid="child_window_8hpp_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
       <node id="2">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</label>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</label>
         <link refid="frame_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/childWindow.hpp</label>
+        <link refid="child_window_8hpp_source"/>
+      </node>
       <node id="3">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp</label>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</label>
         <link refid="window_8hpp_source"/>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -293,11 +321,11 @@
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;types.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;UI.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;button.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;graphic.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;color.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/types.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/UI/UI.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/UI/button.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/graphic/graphic.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/color.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
 <codeline lineno="15"><highlight class="normal">{</highlight></codeline>
@@ -320,17 +348,70 @@
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box" kindref="compound">CheckBox</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref>&amp;<sp/>coord<sp/>=<sp/>{0,<sp/>0},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Size&amp;<sp/>size<sp/>=<sp/>{32,<sp/>16},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778" kindref="member">style</ref><sp/>=<sp/>0,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>CheckBoxBorderColor<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_text,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>BackgroundColor<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_area,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>Margin<sp/>=<sp/>DefaultMargin);</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>~CheckBox();</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1a28dc3c7c30dc63d9a3a05ad7783c78f2" kindref="member">Render</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40" kindref="member">Render</ref>();</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1a04b026f728f06f2fceb0bef93dab0aa6" kindref="member">Handler</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4" kindref="member">Handler</ref>();</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>UI</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="50"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>KolibriLib</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__CHECKBOX_H__</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CheckBox::CheckBox(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Size<sp/>&amp;size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;style,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;CheckBoxBorderColor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;BackgroundColor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;Margin)<sp/>:<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8cad8c577b231e2a21dc66bc1aababfc55a" kindref="member">Button</ref>(coord,<sp/>size,<sp/>Margin,<sp/>BackgroundColor)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>DEBUG<sp/>==<sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>_ksys_debug_puts(</highlight><highlight class="stringliteral">&quot;CheckBox<sp/>Constructor\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>_style<sp/>=<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778" kindref="member">style</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">CheckBox::~CheckBox()</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40" kindref="member">CheckBox::Render</ref>()</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(_style)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9" kindref="member">Default</ref>:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawRectangleLines(<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>,<sp/>{<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref><sp/>+<sp/>(int)<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref>.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref>,<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref><sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref>.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref>},<sp/>_MainColor);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20" kindref="member">Circle</ref>:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawCircle(<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>,<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref>.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref><sp/>/<sp/>2,<sp/>36,<sp/>_MainColor);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_status)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(_style)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9" kindref="member">Default</ref>:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawRectangleFill({<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref><sp/>+<sp/>(int)<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>,<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref><sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>},<sp/>{(unsigned)<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref>.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref><sp/>-<sp/>(2<sp/>*<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>),<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref>.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref><sp/>+<sp/>(2<sp/>*<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>)},<sp/>_MainColor);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20" kindref="member">Circle</ref>:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawCircle({<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref><sp/>+<sp/>(int)<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>,<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref><sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>},<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref>.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref><sp/>/<sp/>2<sp/>-<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>,<sp/>36,<sp/>_MainColor);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3" kindref="member">Smoth</ref>:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4" kindref="member">CheckBox::Handler</ref>()</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Button::Handler())<sp/></highlight><highlight class="comment">//<sp/>Если<sp/>кнопка<sp/>была<sp/>нажата</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_status<sp/>!=<sp/>_status;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_status;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>UI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>KolibriLib</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__CHECKBOX_H__</highlight></codeline>
     </programlisting>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp"/>
   </compounddef>
 </doxygen>

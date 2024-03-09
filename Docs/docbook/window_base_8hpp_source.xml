@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_window_base_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_window_base_8hpp_source" xml:lang="ru">
 <title>windowBase.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/windowBase.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__WINDOWBASE_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__WINDOWBASE_H__</emphasis>
 3 
@@ -10,51 +10,133 @@
 6 <emphasis role="comment">*/</emphasis>
 7 
 8 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&quot;types.hpp&quot;</emphasis>
-10 <emphasis role="preprocessor">#include&#32;&quot;thread.hpp&quot;</emphasis>
-11 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
-12 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
-13 
-14 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-15 {
+9 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+10 
+11 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/thread.hpp&gt;</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
+14 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+15 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/input/input.hpp&gt;</emphasis>
 16 
-18 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>window
-19 &#32;&#32;&#32;&#32;{
-20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link>&#32;=&#32;{400,&#32;400};
-23 
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a0b2c16c6f0b120a6ef83b2366006c6a6">DefaultWindowCoord</link>&#32;=&#32;{100,&#32;100};
+17 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+18 {
+19 
+21 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>window
+22 &#32;&#32;&#32;&#32;{
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link>&#32;=&#32;{400,&#32;400};
 26 
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1ab4de97f81da73fdfc2975f75c97c23c5">CreateWindow</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;title,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;WorkColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.frame_area,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;TitleColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;uint32_t&#32;style&#32;=&#32;20);
-35 
-38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88">UnfocusWindow</link>(<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;slot);
-39 
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a8522ac0eb50e9a7b5ce0091e5fc9d257">FocusWindow</link>(<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;slot);
-43 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af86ed52f97ce1b6925d0faabc8a0ebe1">GetActiveWindow</link>();
-47 
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a1e8e470c8a52494478a075c0c4b10c07">MinimizeWindow</link>();
-50 
-52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a91e8114838ac0faa6b26cb1763643a92">MinimizeAllWindows</link>();
-53 
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44">Pos</link>{
-56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BackGround&#32;=&#32;-2,
-57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AlwaysBack&#32;=&#32;-1,
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Normal&#32;=&#32;0,
-59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AlwaysTop&#32;=&#32;1
-60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-61 
-64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a250b79696e71e4db883c35beac60b0a3">GetWindowPos</link>();
-65 
-70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a7a45146a32e2035cedd93968251b5831">SetWindowPos</link>(<emphasis role="keywordtype">int</emphasis>&#32;pos,&#32;Thread::PID&#32;pid&#32;=&#32;-1);
-71 
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a9b4d6e11048953c9f7a1e530f135fb20">GetSkinHeight</link>();
-75 
-76 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;window</emphasis>
-77 &#32;&#32;&#32;&#32;
-78 
-79 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-80 
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a0b2c16c6f0b120a6ef83b2366006c6a6">DefaultWindowCoord</link>&#32;=&#32;{100,&#32;100};
+29 
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3">WindowStyle</link>
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da">FixSize</link>&#32;=&#32;0,
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a437c943279eb3aced1be94554420c7cc">NoDraw</link>&#32;=&#32;1,
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">CanResize</link>&#32;=&#32;2,
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573">withSkin</link>&#32;=&#32;3,
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d">FixSizewithSkin</link>&#32;=&#32;4,
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd">NoDrawWorkspace</link>&#32;=&#32;0b01000000,
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">NormalDraw</link>&#32;=&#32;0b00000000,
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218">GradientDraw</link>&#32;=&#32;0b10000000
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+49 
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1ae11ecf3ca59d8ae18ba08bfb128fb5da">CreateWindow</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;title,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;WorkColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.frame_area,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;TitleColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;uint32_t&#32;style&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">WindowStyle::CanResize</link>&#32;+&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">WindowStyle::NormalDraw</link>)
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;t&#32;=&#32;title.c_str();
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(0),
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>((coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;&lt;&lt;&#32;16)&#32;|&#32;((size.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;-&#32;1)&#32;&amp;&#32;0xFFFF)),
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>((coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;&lt;&lt;&#32;16)&#32;|&#32;((size.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;-&#32;1)&#32;&amp;&#32;0xFFFF)),
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>((style&#32;&lt;&lt;&#32;24)&#32;|&#32;(WorkColor.val&#32;&amp;&#32;0xFFFFFF)),
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;D&quot;</emphasis>(t),
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;S&quot;</emphasis>(TitleColor.val)
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:<emphasis role="stringliteral">&quot;memory&quot;</emphasis>
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+73 
+74 
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88">UnfocusWindow</link>(<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;slot)
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_unfocus_window(slot);
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 81 
-82 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__WINDOWBASE_H__</emphasis>
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a8522ac0eb50e9a7b5ce0091e5fc9d257">FocusWindow</link>(<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;slot)
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_focus_window(slot);
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+88 
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1af86ed52f97ce1b6925d0faabc8a0ebe1">GetActiveWindow</link>()
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;s;
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(s)
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(7)
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;s;
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+101 
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a1e8e470c8a52494478a075c0c4b10c07">MinimizeWindow</link>()
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(10)
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+109 
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a91e8114838ac0faa6b26cb1763643a92">MinimizeAllWindows</link>()
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(23)
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+117 
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;GetWindowCoord()
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a1ed776d98798432ed1d634b3a18dd181">mouse::GetMousePositionOnSreen</link>()&#32;-&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1af5c71bb6951c9963f3e8f7366b343ab0">mouse::GetMousePositionInWindow</link>();
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+122 
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44">Pos</link>
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BackGround&#32;=&#32;-2,
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AlwaysBack&#32;=&#32;-1,
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Normal&#32;=&#32;0,
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AlwaysTop&#32;=&#32;1&#32;&#32;&#32;
+130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+131 
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a250b79696e71e4db883c35beac60b0a3">GetWindowPos</link>()
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;a;
+137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(a)
+140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(25),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(1));
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a;
+142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+143 
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a7a45146a32e2035cedd93968251b5831">SetWindowPos</link>(<emphasis role="keywordtype">int</emphasis>&#32;pos,&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1a1635692d8eb5eddc602109be07a50a45">Thread::PID</link>&#32;pid&#32;=&#32;-1)
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;a;
+151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(a)
+154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(25),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(2),&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>(pid),&#32;<emphasis role="stringliteral">&quot;S&quot;</emphasis>(pos));
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a;
+156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+157 
+158 
+161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1window_1a9b4d6e11048953c9f7a1e530f135fb20">GetSkinHeight</link>()
+162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_skin_height();
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+165 
+166 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;window</emphasis>
+167 &#32;&#32;&#32;&#32;
+168 
+169 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+170 
+171 
+172 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__WINDOWBASE_H__</emphasis>
 </programlisting></section>

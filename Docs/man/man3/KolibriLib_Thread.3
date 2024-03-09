@@ -7,14 +7,7 @@ KolibriLib::Thread \- Работа с потоками
 .SH SYNOPSIS
 .br
 .PP
-.SS "Classes"
-
-.in +1c
-.ti -1c
-.RI "union \fBThreadInfo\fP"
-.br
-.in -1c
-.SS "Typedefs"
+.SS "Определения типов"
 
 .in +1c
 .ti -1c
@@ -24,100 +17,106 @@ KolibriLib::Thread \- Работа с потоками
 .ti -1c
 .RI "typedef int \fBPID\fP"
 .br
+.RI "ID процесса "
+.ti -1c
+.RI "typedef ksys_thread_t \fBThreadInfo\fP"
+.br
+.RI "Информация о потоке "
 .in -1c
-.SS "Functions"
+.SS "Функции"
 
 .in +1c
 .ti -1c
-.RI "PID \fBCreateThread\fP (void(*ThreadEntry)(void *), unsigned ThreadStackSize=1024)"
+.RI "\fBPID\fP \fBCreateThread\fP (void(*ThreadEntry)(void *), unsigned ThreadStackSize=2048)"
 .br
 .RI "Создать поток "
 .ti -1c
-.RI "bool \fBTerminateThread\fP (PID pid)"
+.RI "bool \fBTerminateThread\fP (\fBPID\fP pid)"
 .br
 .RI "Завершить процесс/поток "
 .ti -1c
-.RI "\fBSlot\fP \fBGetThreadSlot\fP (PID pid)"
+.RI "\fBSlot\fP \fBGetThreadSlot\fP (const \fBPID\fP &pid)"
 .br
 .RI "Получить слот потока "
 .ti -1c
-.RI "\fBThreadInfo\fP \fBGetThreadInfo\fP (\fBSlot\fP thread)"
+.RI "\fBThreadInfo\fP \fBGetThreadInfo\fP (const \fBSlot\fP &thread)"
 .br
 .RI "Поличть информацию о потоке "
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Работа с потоками 
-.SH "Function Documentation"
+.SH "Функции"
 .PP 
-.SS "PID KolibriLib::Thread::CreateThread (void(*)(void *) ThreadEntry, unsigned ThreadStackSize = \fR1024\fP)"
+.SS "\fBPID\fP KolibriLib::Thread::CreateThread (void(*)(void *) ThreadEntry, unsigned ThreadStackSize = \fR2048\fP)"
 
 .PP
 Создать поток 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIThreadEntry\fP Имя функции которую нужно запустить в новом потоке 
 .br
 \fIThreadStackSize\fP Размер стека нового потока в байтах 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 ID потока 
 .RE
 .PP
+.SS "лучше std::thread, а не эту функцию, а то я вот вообще незнаю сколько размер стека сделать"
 
-.SS "\fBKolibriLib::Thread::ThreadInfo\fP KolibriLib::Thread::GetThreadInfo (\fBSlot\fP thread)"
+.SS "\fBThreadInfo\fP KolibriLib::Thread::GetThreadInfo (const \fBSlot\fP & thread)"
 
 .PP
 Поличть информацию о потоке 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIthread\fP слот потока 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 информация о потоке 
 .RE
 .PP
 .SS "слот -1 то возвращается информация о текущем потоке"
 
-.SS "\fBSlot\fP KolibriLib::Thread::GetThreadSlot (PID pid)"
+.SS "\fBSlot\fP KolibriLib::Thread::GetThreadSlot (const \fBPID\fP & pid)"
 
 .PP
 Получить слот потока 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIpid\fP поток 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Слот потока pid 
 .RE
 .PP
 
-.SS "bool KolibriLib::Thread::TerminateThread (PID pid)"
+.SS "bool KolibriLib::Thread::TerminateThread (\fBPID\fP pid)\fR [inline]\fP"
 
 .PP
 Завершить процесс/поток 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIPID\fP ID Процесса/потока 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 true если успешно, инач false 
 .RE
 .PP
 .SS "завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс"
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

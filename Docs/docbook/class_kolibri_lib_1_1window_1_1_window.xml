@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1window_1_1_window" xml:lang="en-US">
-<title>KolibriLib::window::Window Class Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1window_1_1_window" xml:lang="ru">
+<title>Класс KolibriLib::window::Window</title>
 <indexterm><primary>KolibriLib::window::Window</primary></indexterm>
 <para>
 
@@ -11,79 +11,81 @@
 <computeroutput>#include &lt;window.hpp&gt;</computeroutput>
 </para>
 <simplesect>
-    <title>Public Member Functions    </title>
+    <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1window_1_1_window_1a9f4ebf09a7fd5a74abc69d21e7caab07">Window</link> (const std::string &amp;Title=&quot;Window&quot;, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;size=<link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link>, const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link> &amp;colors=<link linkend="_namespace_kolibri_lib_1_1_colors_1ada2166810bf7aa50f1f39154716cc73d">Colors::DefaultColorTable</link>, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;TitleColor=OS::sys_color_table.work_text, bool Resize=false, bool RealtimeReadraw=false, bool Gradient=false, unsigned Transparency=0, const unsigned &amp;Margin=0)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1window_1_1_window_1ab379a62fdd71ba128d3c06f81bfa5b91">Window</link> (const std::string &amp;Title=&quot;Window&quot;, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;size=<link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link>, const <link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">Colors::ColorsTable</link> &amp;colors=<link linkend="_namespace_kolibri_lib_1_1_colors_1ad6deb13041b3eac69cf1eeaab2b814a8">Colors::DefaultColorTable</link>, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;TitleColor=OS::sys_color_table.work_text, bool Resize=false, bool RealtimeReadraw=false, bool Gradient=false, unsigned Transparency=0, const unsigned &amp;Margin=0)</para>
 
 <para>Конструктор </para>
 </listitem>
             <listitem><para><anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a85dc195e5b5c35e8d8b61f5893438c1a"/>void <emphasis role="strong">Redraw</emphasis> ()</para>
+
+<para>Полная перересовка окна </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a7863fafae23423f404bee7aa3a57e124"/>void <emphasis role="strong">Render</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a4e553d653ac35276f7f334fce3d0cddb"/>void <emphasis role="strong">Render</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;coord=<link linkend="_namespace_kolibri_lib_1_1window_1a0b2c16c6f0b120a6ef83b2366006c6a6">DefaultWindowCoord</link>)</para>
 
 <para>Отрисовать окно </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac9ea9bd8428a47ef721ed41b84ca1dee">GetMargin</link> ()</para>
+            <listitem><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1aeee663e7541c18cd2c703b9b88c281f6">GetMargin</link> () const</para>
 
 <para>Получить рамер отступов в этом окне </para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a29313e5f7d8a7291b924999e7b6a831e">GetSize</link> ()</para>
+            <listitem><para>const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a021f39165e33339ac70044d8b9b99560">GetSize</link> () const</para>
 
 <para>Получить размер окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ad49c5ec34b3cc382e7e9e5234cd42124">SetWindowColors</link> (const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link> &amp;colorTable)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1afdfac77ae4d36dc21c7e6a56b6f106ab">SetWindowColors</link> (const <link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">Colors::ColorsTable</link> &amp;colorTable)</para>
 
 <para>Задать стандартные цвета окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac7617207760b4cc6a0078e92a1a844b9">StartRedraw</link> ()</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a603092d7729140f846c3b23f53885b05">StartRedraw</link> () const</para>
 
 <para>Начать перересовку окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a1431961e77c27593e30ca06203c2aa62">EndRedraw</link> ()</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a2fbcdad4e5e0c3942a479113d2deffb1">EndRedraw</link> () const</para>
 
 <para>Закончить перересовку окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1add7534ebbd153468ea2699461b0017bb">DrawWindow</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord=<link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">mouse::GetMousePositionOnSreen</link>())</para>
+            <listitem><para>const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a5d50b995c57de979294bf615e4e5a1c8">GetCoord</link> () const</para>
 
-<para>Отрисовать окно </para>
+<para>Получить координаты окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a784db7e4809ee9ab181d7971ae441e39">ChangeWindow</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ad8cabebed871cdeb4ae11890188c57be">ChangeWindow</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;size)</para>
 
 <para>Изменить окно </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a06c2e7a68970c226447232cbe7d4c8fc">ChangeTilte</link> (const std::string &amp;newTitle)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a7d76ecef25088a0fd9578fd4b498770c">ChangeTilte</link> (const std::string &amp;newTitle)</para>
 
 <para>Изменить заголовок окна </para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a49c15e00d433ce67d424fb68246bfd47">GetWindowSize</link> ()</para>
+            <listitem><para>const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; <link linkend="_class_kolibri_lib_1_1window_1_1_window_1acc42b4a4739a4cc94e5a5de993e00e87">GetWindowSize</link> () const</para>
 
 <para>Получить размер окна </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1adf26c28bb805b3491c42d1c7ee348777">DeleteElement</link> (unsigned id)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a1ddd735a9156802de746e389a9d2e9c3">DeleteElement</link> (int id)</para>
 
 <para>Удалить элемент </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae61336710de30c01f05c04121fa52f52">Handler</link> ()</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a33a17f79c99855fb543cc060b197ce99">Handler</link> ()</para>
 
 <para>Обработчик окна </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ae946a94344cfa3af152c22ec7e95f9e3"/>UI::buttons::ButtonID <emphasis role="strong">GetPressedButton</emphasis> ()</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ae3132dabb8fc92444c3fa31cb35c2495"/><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">UI::buttons::ButtonID</link> <emphasis role="strong">GetPressedButton</emphasis> ()</para>
 
 <para>Проверить какая нажата </para>
 </listitem>
-            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ae895984865728348b2da6593a09df6ae">GetInputFromFrom</link> (unsigned form)</para>
+            <listitem><para>const std::string &amp; <link linkend="_class_kolibri_lib_1_1window_1_1_window_1aba4c487170073562f7471e41164c6392">GetInputFromFrom</link> (int form) const</para>
 
 <para>Получить текст введённый в форму </para>
 </listitem>
-            <listitem><para>template&lt;class T &gt; </para><para>unsigned <link linkend="_class_kolibri_lib_1_1window_1_1_window_1acb8c984eff27ea01b5f35bfbc9fa33a8">AddElement</link> (const T &amp;element)</para>
+            <listitem><para>template&lt;class T &gt; </para><para>int <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a3d155b43e5beb5467b1db4bdae7bc172">AddElement</link> (const T &amp;element)</para>
 
 <para>Добавить UI элемент </para>
 </listitem>
-            <listitem><para>template&lt;class T &gt; </para><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a74453d8adbe91012c4cceedb4e641b54">SetElement</link> (unsigned i, const T &amp;element)</para>
+            <listitem><para>template&lt;class T &gt; </para><para>void <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a7f9c6a4fc6b2e620ab29acd339955a4b">SetElement</link> (int i, const T &amp;element)</para>
 
 <para>Изменить элемент tparam T. </para>
 </listitem>
-            <listitem><para>template&lt;class T &gt; </para><para>T <link linkend="_class_kolibri_lib_1_1window_1_1_window_1ac9bddde8f77d9cbbe3286dfa349732fb">GetElement</link> (unsigned i) const</para>
+            <listitem><para>template&lt;class T &gt; </para><para>const T &amp; <link linkend="_class_kolibri_lib_1_1window_1_1_window_1a802663a211e98099e9fc9ad4dad6994f">GetElement</link> (int i) const</para>
 </listitem>
             <listitem><para><anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ae074267ec49af5a67e268aebd1d3aae6"/>void <emphasis role="strong">Unfocus</emphasis> () const</para>
 
@@ -96,19 +98,27 @@
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Класс для работы с окном </para>
+
+
+<section xml:id="_class_kolibri_lib_1_1window_1_1_window_1По">
+<title><title>простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор</title></title>
+</section>
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Для">
+<title><title>изменения высоты шрифта используйте <link linkend="_">SetTextSize(unsigned)</link></title></title>
+</section>
 </section>
 <section>
-<title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a9f4ebf09a7fd5a74abc69d21e7caab07"/><section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ab379a62fdd71ba128d3c06f81bfa5b91"/><section>
     <title>Window()</title>
 <indexterm><primary>Window</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>Window</secondary></indexterm>
-<para><computeroutput>Window::Window (const std::string &amp; Title = <computeroutput>&quot;Window&quot;</computeroutput>
+<para><computeroutput>KolibriLib::window::Window::Window (const std::string &amp; Title = <computeroutput>&quot;Window&quot;</computeroutput>
 , const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; size = <computeroutput><link linkend="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d">DefaultWindowSize</link></computeroutput>
-, const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link> &amp; colors = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_colors_1ada2166810bf7aa50f1f39154716cc73d">Colors::DefaultColorTable</link></computeroutput>
+, const <link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">Colors::ColorsTable</link> &amp; colors = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_colors_1ad6deb13041b3eac69cf1eeaab2b814a8">Colors::DefaultColorTable</link></computeroutput>
 , const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; TitleColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
 , bool Resize = <computeroutput>false</computeroutput>
 , bool RealtimeReadraw = <computeroutput>false</computeroutput>
@@ -123,7 +133,7 @@
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -164,12 +174,12 @@ Parameters</title>
 </section>
 </section>
 <section>
-<title>Member Function Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1acb8c984eff27ea01b5f35bfbc9fa33a8"/><section>
+<title>Методы</title>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a3d155b43e5beb5467b1db4bdae7bc172"/><section>
     <title>AddElement()</title>
 <indexterm><primary>AddElement</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>AddElement</secondary></indexterm>
-<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>unsigned Window::AddElement (const T &amp; element)</computeroutput></para><para>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>int KolibriLib::window::Window::AddElement (const T &amp; element)</computeroutput></para><para>
 
 <para>Добавить UI элемент </para>
 </para>
@@ -177,7 +187,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -196,11 +206,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a06c2e7a68970c226447232cbe7d4c8fc"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a7d76ecef25088a0fd9578fd4b498770c"/><section>
     <title>ChangeTilte()</title>
 <indexterm><primary>ChangeTilte</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>ChangeTilte</secondary></indexterm>
-<para><computeroutput>void Window::ChangeTilte (const std::string &amp; newTitle)</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::Window::ChangeTilte (const std::string &amp; newTitle)</computeroutput></para><para>
 
 <para>Изменить заголовок окна </para>
 </para>
@@ -208,7 +218,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -227,11 +237,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a784db7e4809ee9ab181d7971ae441e39"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ad8cabebed871cdeb4ae11890188c57be"/><section>
     <title>ChangeWindow()</title>
 <indexterm><primary>ChangeWindow</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>ChangeWindow</secondary></indexterm>
-<para><computeroutput>void Window::ChangeWindow (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size)</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::Window::ChangeWindow (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; coord, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; size)</computeroutput></para><para>
 
 <para>Изменить окно </para>
 </para>
@@ -239,7 +249,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -263,11 +273,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1adf26c28bb805b3491c42d1c7ee348777"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a1ddd735a9156802de746e389a9d2e9c3"/><section>
     <title>DeleteElement()</title>
 <indexterm><primary>DeleteElement</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>DeleteElement</secondary></indexterm>
-<para><computeroutput>void Window::DeleteElement (unsigned id)</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::Window::DeleteElement (int id)</computeroutput></para><para>
 
 <para>Удалить элемент </para>
 </para>
@@ -275,7 +285,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -294,63 +304,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1add7534ebbd153468ea2699461b0017bb"/><section>
-    <title>DrawWindow()</title>
-<indexterm><primary>DrawWindow</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
-<indexterm><primary>KolibriLib::window::Window</primary><secondary>DrawWindow</secondary></indexterm>
-<para><computeroutput>void KolibriLib::window::Window::DrawWindow (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord = <computeroutput><link linkend="_namespace_kolibri_lib_1_1mouse_1a3214167f4881bd080a5f8677f9f748e9">mouse::GetMousePositionOnSreen</link>()</computeroutput>
-)</computeroutput></para><para>
-
-<para>Отрисовать окно </para>
-</para>
-
-<para>
-                <formalpara>
-                    <title>
-Parameters</title>
-                    <para>
-                    <table frame="all">
-                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
-                        <colspec colwidth="1*"/>
-                        <colspec colwidth="4*"/>
-                        <tbody>
-                            <row>
-<entry>coord</entry><entry>
-<para>позиция окна </para>
-</entry>
-                            </row>
-                            <row>
-<entry>size</entry><entry>
-<para>размер окна </para>
-</entry>
-                            </row>
-                            <row>
-<entry>title</entry><entry>
-<para>титул(текст в заголовке) </para>
-</entry>
-                            </row>
-                            <row>
-<entry>color</entry><entry>
-<para>цвет рабочей области </para>
-</entry>
-                            </row>
-                            <row>
-<entry>style</entry><entry>
-<para>стиль </para>
-</entry>
-                            </row>
-                        </tbody>
-                        </tgroup>
-                    </table>
-                    </para>
-                </formalpara>
-                </para>
-</section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a1431961e77c27593e30ca06203c2aa62"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a2fbcdad4e5e0c3942a479113d2deffb1"/><section>
     <title>EndRedraw()</title>
 <indexterm><primary>EndRedraw</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>EndRedraw</secondary></indexterm>
-<para><computeroutput>void Window::EndRedraw ( )</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::Window::EndRedraw ( ) const</computeroutput></para><para>
 
 <para>Закончить перересовку окна </para>
 </para>
@@ -358,15 +316,30 @@ Parameters</title>
 <title><title>после должна быть вызвана функция #EndRedraw()</title></title>
 </section>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ac9bddde8f77d9cbbe3286dfa349732fb"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a5d50b995c57de979294bf615e4e5a1c8"/><section>
+    <title>GetCoord()</title>
+<indexterm><primary>GetCoord</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window::Window</primary><secondary>GetCoord</secondary></indexterm>
+<para><computeroutput>const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; KolibriLib::window::Window::GetCoord ( ) const</computeroutput></para><para>
+
+<para>Получить координаты окна </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a802663a211e98099e9fc9ad4dad6994f"/><section>
     <title>GetElement()</title>
 <indexterm><primary>GetElement</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>GetElement</secondary></indexterm>
-<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>T KolibriLib::window::Window::GetElement (unsigned i) const</computeroutput></para>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>const T &amp; KolibriLib::window::Window::GetElement (int i) const</computeroutput></para>
 <para>
                 <formalpara>
                     <title>
-Template Parameters</title>
+Параметры шаблона</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -386,7 +359,7 @@ Template Parameters</title>
                 
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -403,17 +376,17 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ae895984865728348b2da6593a09df6ae"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1aba4c487170073562f7471e41164c6392"/><section>
     <title>GetInputFromFrom()</title>
 <indexterm><primary>GetInputFromFrom</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>GetInputFromFrom</secondary></indexterm>
-<para><computeroutput>std::string Window::GetInputFromFrom (unsigned form)</computeroutput></para><para>
+<para><computeroutput>const std::string &amp; KolibriLib::window::Window::GetInputFromFrom (int form) const</computeroutput></para><para>
 
 <para>Получить текст введённый в форму </para>
 </para>
@@ -421,7 +394,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -438,52 +411,52 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para>Функция возвращает текст введённый в формы </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ac9ea9bd8428a47ef721ed41b84ca1dee"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1aeee663e7541c18cd2c703b9b88c281f6"/><section>
     <title>GetMargin()</title>
 <indexterm><primary>GetMargin</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>GetMargin</secondary></indexterm>
-<para><computeroutput>unsigned Window::GetMargin ( )</computeroutput></para><para>
+<para><computeroutput>unsigned KolibriLib::window::Window::GetMargin ( ) const</computeroutput></para><para>
 
 <para>Получить рамер отступов в этом окне </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para><link linkend="_acd07e272bc0305c47a75a2b61fa7b870">_MARGIN</link></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a29313e5f7d8a7291b924999e7b6a831e"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a021f39165e33339ac70044d8b9b99560"/><section>
     <title>GetSize()</title>
 <indexterm><primary>GetSize</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>GetSize</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> Window::GetSize ( )</computeroutput></para><para>
+<para><computeroutput>const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; KolibriLib::window::Window::GetSize ( ) const</computeroutput></para><para>
 
 <para>Получить размер окна </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para><link linkend="_ab4f87a42bcc641f12ee2c88cb32bdc7c">_size</link></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a49c15e00d433ce67d424fb68246bfd47"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1acc42b4a4739a4cc94e5a5de993e00e87"/><section>
     <title>GetWindowSize()</title>
 <indexterm><primary>GetWindowSize</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>GetWindowSize</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> Window::GetWindowSize ( )</computeroutput></para><para>
+<para><computeroutput>const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; KolibriLib::window::Window::GetWindowSize ( ) const</computeroutput></para><para>
 
 <para>Получить размер окна </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para><link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">point.x</link> - ширина окна, </para>
 
@@ -491,26 +464,26 @@ Parameters</title>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ae61336710de30c01f05c04121fa52f52"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a33a17f79c99855fb543cc060b197ce99"/><section>
     <title>Handler()</title>
 <indexterm><primary>Handler</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>Handler</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> Window::Handler ( )</computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> KolibriLib::window::Window::Handler ( )</computeroutput></para><para>
 
 <para>Обработчик окна </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>Ивент </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a74453d8adbe91012c4cceedb4e641b54"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a7f9c6a4fc6b2e620ab29acd339955a4b"/><section>
     <title>SetElement()</title>
 <indexterm><primary>SetElement</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>SetElement</secondary></indexterm>
-<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>void KolibriLib::window::Window::SetElement (unsigned i, const T &amp; element)</computeroutput></para><para>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput>void KolibriLib::window::Window::SetElement (int i, const T &amp; element)</computeroutput></para><para>
 
 <para>Изменить элемент tparam T. </para>
 </para>
@@ -518,7 +491,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -542,11 +515,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ad49c5ec34b3cc382e7e9e5234cd42124"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1afdfac77ae4d36dc21c7e6a56b6f106ab"/><section>
     <title>SetWindowColors()</title>
 <indexterm><primary>SetWindowColors</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>SetWindowColors</secondary></indexterm>
-<para><computeroutput>void Window::SetWindowColors (const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link> &amp; colorTable)</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::Window::SetWindowColors (const <link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">Colors::ColorsTable</link> &amp; colorTable)</computeroutput></para><para>
 
 <para>Задать стандартные цвета окна </para>
 </para>
@@ -554,7 +527,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -573,11 +546,11 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1ac7617207760b4cc6a0078e92a1a844b9"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1window_1_1_window_1a603092d7729140f846c3b23f53885b05"/><section>
     <title>StartRedraw()</title>
 <indexterm><primary>StartRedraw</primary><secondary>KolibriLib::window::Window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window::Window</primary><secondary>StartRedraw</secondary></indexterm>
-<para><computeroutput>void Window::StartRedraw ( )</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::window::Window::StartRedraw ( ) const</computeroutput></para><para>
 
 <para>Начать перересовку окна </para>
 </para>
@@ -589,6 +562,6 @@ Parameters</title>
 </section>
 </section>
 <para>
-The documentation for this class was generated from the following files:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hppF:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.cpp</section>
+Объявления и описания членов класса находятся в файле:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</section>
 </section>

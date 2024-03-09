@@ -1,5 +1,5 @@
 \doxysection{screen.\+hpp}
-\hypertarget{screen_8hpp_source}{}\label{screen_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/screen.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/screen.hpp}}
+\hypertarget{screen_8hpp_source}{}\label{screen_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/graphic/screen.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/graphic/screen.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_SCREEN\_H\_\_}}
@@ -8,23 +8,32 @@
 \DoxyCodeLine{00004\ }
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
 \DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}types.hpp"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}color.hpp"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}thread.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <kolibriLib/types.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <kolibriLib/color.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <kolibriLib/system/thread.hpp>}}
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
 \DoxyCodeLine{00012\ \{}
-\DoxyCodeLine{00015\ \ \ \ \ point<unsigned>\ \mbox{\hyperlink{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e}{GetScreenSize}}();}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread::Slot}}\ \mbox{\hyperlink{namespace_kolibri_lib_a5e62483a2a86b6d4f196cc92de3b9c55}{ScreenPointAffiliation}}(point<unsigned>\ POINT);}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00025\ \ \ \ \ point<unsigned>\ \mbox{\hyperlink{namespace_kolibri_lib_aee258b1d924d917faae1e8dff6ccaeeb}{GetBackgroundImageSize}}();}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00030\ \ \ \ \ Colors::Color\ \mbox{\hyperlink{namespace_kolibri_lib_a59afa938f04ee58f39092deac6fbd8df}{ReadBackgroungImagePoint}}(point<unsigned>\ Point);}
-\DoxyCodeLine{00031\ \}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_SCREEN\_H\_\_}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ \mbox{\hyperlink{namespace_kolibri_lib_aadbd1982a31f43cb6e1e70dafc4edb48}{GetScreenSize}}()}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ ksys\_pos\_t\ a\ =\ \_ksys\_screen\_size();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}(a.x,\ a.y);}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread::Slot}}\ \mbox{\hyperlink{namespace_kolibri_lib_acd69b39f323a74739838c3cfd62bec7d}{ScreenPointAffiliation}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}}\ POINT)}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread::Slot}}\ s;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(s)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(34),\ \textcolor{stringliteral}{"{}b"{}}(POINT.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}}),\ \textcolor{stringliteral}{"{}c"{}}(POINT.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}})}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_SCREEN\_H\_\_}}
 
 \end{DoxyCode}

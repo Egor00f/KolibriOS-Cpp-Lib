@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pos_0',['Pos',['../namespace_kolibri_lib_1_1window.html#a7e5a1c57ea495417e3d2442f66d0fe44',1,'KolibriLib::window']]]
+  ['flags_0',['Flags',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a12e352aac49dd1e92e7f11605add7df5',1,'KolibriLib::UI::text']]]
 ];

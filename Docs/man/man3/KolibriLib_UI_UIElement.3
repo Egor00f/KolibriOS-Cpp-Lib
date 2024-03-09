@@ -10,8 +10,8 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .PP
 \fR#include <UI\&.hpp>\fP
 .PP
-Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibriLib::UI::Images::Image\fP, \fBKolibriLib::UI::Menu\fP, \fBKolibriLib::UI::buttons::Button\fP, and \fBKolibriLib::UI::text::TextLabel\fP\&.
-.SS "Public Member Functions"
+Производные классы:\fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibriLib::UI::Images::Image\fP, \fBKolibriLib::UI::Menu\fP и \fBKolibriLib::UI::text::TextLabel\fP\&.
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
@@ -19,7 +19,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP () const"
+.RI "const \fBSize\fP & \fBGetSize\fP () const"
 .br
 .RI "Получить размер элемента "
 .ti -1c
@@ -31,7 +31,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .br
 .RI "Получить отступы "
 .ti -1c
-.RI "\fBColors::Color\fP \fBGetColor\fP () const"
+.RI "const \fBColors::Color\fP & \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -41,7 +41,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
 .RI "Получить координаты элемента "
 .ti -1c
@@ -66,7 +66,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
-.SS "Protected Attributes"
+.SS "Защищенные данные"
 
 .in +1c
 .ti -1c
@@ -93,21 +93,21 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .br
 .RI "Оносительны ли координаты "
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Элемент интерфейса 
 
 
 .SS "как шиблон для других классов"
 
-.SH "Constructor & Destructor Documentation"
+.SH "Конструктор(ы)"
 .PP 
 .SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const \fBColors::Color\fP & MainColor = \fROS::sys_color_table\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)"
 
 .PP
 Конструктор 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIcoord\fP 
 .br
@@ -123,25 +123,25 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .RE
 .PP
 
-.SH "Member Function Documentation"
+.SH "Методы"
 .PP 
-.SS "\fBColors::Color\fP KolibriLib::UI::UIElement::GetColor () const"
+.SS "const \fBColors::Color\fP & KolibriLib::UI::UIElement::GetColor () const"
 
 .PP
 Получить осносной цвет элемента 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Функция возвращает \fB_MainColor\fP
 .RE
 .PP
 
-.SS "\fBCoord\fP KolibriLib::UI::UIElement::GetCoord () const"
+.SS "const \fBCoord\fP & KolibriLib::UI::UIElement::GetCoord () const"
 
 .PP
 Получить координаты элемента 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Функция возвращает _coord 
 .RE
@@ -152,7 +152,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .PP
 Получить отступы 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Функция возвращает \fB_Margin\fP
 .RE
@@ -163,18 +163,18 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .PP
 Получить угол наклона элемента 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Функция возвращает \fB_angle\fP
 .RE
 .PP
 
-.SS "\fBSize\fP KolibriLib::UI::UIElement::GetSize () const"
+.SS "const \fBSize\fP & KolibriLib::UI::UIElement::GetSize () const"
 
 .PP
 Получить размер элемента 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Функция возвращает \fB_size\fP
 .RE
@@ -185,7 +185,7 @@ Inherited by \fBKolibriLib::UI::Form\fP, \fBKolibriLib::UI::Frame\fP, \fBKolibri
 .PP
 Проверить лежит ли курсор мыши над элементом 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 true если курсор мыши находится в этом эелементе, иначе false 
 .RE
@@ -194,12 +194,12 @@ true если курсор мыши находится в этом эелеме�
 .SS "bool KolibriLib::UI::UIElement::operator!= (const \fBUIElement\fP & Element) const"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIElement\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -210,12 +210,12 @@ true если курсор мыши находится в этом эелеме�
 .SS "\fBUIElement\fP & KolibriLib::UI::UIElement::operator= (const \fBUIElement\fP & Element)"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIElement\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -226,12 +226,12 @@ true если курсор мыши находится в этом эелеме�
 .SS "bool KolibriLib::UI::UIElement::operator== (const \fBUIElement\fP & Element) const"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIElement\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -244,7 +244,7 @@ true если курсор мыши находится в этом эелеме�
 .PP
 Повернуть элемент 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fINewAngle\fP Новый угол наклона 
 .RE
@@ -253,7 +253,7 @@ true если курсор мыши находится в этом эелеме�
 .SS "void KolibriLib::UI::UIElement::SetColor (const \fBColors::Color\fP & NewColor)"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fINewColor\fP 
 .br
@@ -264,7 +264,7 @@ true если курсор мыши находится в этом эелеме�
 .SS "void KolibriLib::UI::UIElement::SetCoord (const \fBCoord\fP & NewCoord)"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fINewCoord\fP 
 .br
@@ -277,13 +277,13 @@ true если курсор мыши находится в этом эелеме�
 .PP
 Изменить размер элемента 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fINewSize\fP новый размер 
 .RE
 .PP
 
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

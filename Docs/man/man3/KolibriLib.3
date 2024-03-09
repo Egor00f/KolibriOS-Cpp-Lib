@@ -7,9 +7,13 @@ KolibriLib \- Основное пространство имён
 .SH SYNOPSIS
 .br
 .PP
-.SS "Namespaces"
+.SS "Пространства имен"
 
 .in +1c
+.ti -1c
+.RI "namespace \fBBackground\fP"
+.br
+.RI "Работа с фоном "
 .ti -1c
 .RI "namespace \fBchildWindow\fP"
 .br
@@ -43,7 +47,7 @@ KolibriLib \- Основное пространство имён
 .br
 .RI "Работа с окном "
 .in -1c
-.SS "Classes"
+.SS "Классы"
 
 .in +1c
 .ti -1c
@@ -51,35 +55,31 @@ KolibriLib \- Основное пространство имён
 .br
 .RI "Просто точка "
 .in -1c
-.SS "Functions"
+.SS "Функции"
 
 .in +1c
 .ti -1c
-.RI "void \fBinit\fP ()"
-.br
-.RI "инициализация "
-.ti -1c
-.RI "void \fBWait\fP (unsigned time)"
-.br
-.RI "Подождать "
-.ti -1c
-.RI "\fBpoint\fP< unsigned > \fBGetScreenSize\fP ()"
+.RI "\fBUI::Size\fP \fBGetScreenSize\fP ()"
 .br
 .RI "Получить разрешение экрана "
 .ti -1c
-.RI "\fBThread::Slot\fP \fBScreenPointAffiliation\fP (\fBpoint\fP< unsigned > POINT)"
+.RI "\fBThread::Slot\fP \fBScreenPointAffiliation\fP (\fBUI::Coord\fP POINT)"
 .br
-.RI "Получить принадлежность "
+.RI "Получить принадлежность точки "
 .ti -1c
-.RI "\fBpoint\fP< unsigned > \fBGetBackgroundImageSize\fP ()"
+.RI "void \fBinit\fP ()"
 .br
-.RI "Получить размеры фонового изображения "
+.RI "инициализация библиотеки "
 .ti -1c
-.RI "\fBColors::Color\fP \fBReadBackgroungImagePoint\fP (\fBpoint\fP< unsigned > Point)"
+.RI "void \fBWait\fP (int time)"
 .br
-.RI "Прочитать точку на фоне "
+.RI "Подождать "
+.ti -1c
+.RI "void \fBWait\fP ()"
+.br
+.RI "Подождать, минимальное кол-во времени "
 .in -1c
-.SS "Variables"
+.SS "Переменные"
 
 .in +1c
 .ti -1c
@@ -95,91 +95,64 @@ KolibriLib \- Основное пространство имён
 .RI "const std::string \fBCursorsDir\fP = ConfigurationDir + 'cursors/'"
 .br
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Основное пространство имён 
 
 
 .PP
-\fBAuthor\fP
+\fBАвтор\fP
 .RS 4
 Egor00f 
 .RE
 .PP
 
-.SH "Function Documentation"
+.SH "Функции"
 .PP 
-.SS "\fBpoint\fP< unsigned > KolibriLib::GetBackgroundImageSize ()"
-
-.PP
-Получить размеры фонового изображения 
-.PP
-\fBReturns\fP
-.RS 4
-
-.br
- 
-.RE
-.PP
-
-.SS "\fBpoint\fP< unsigned > KolibriLib::GetScreenSize ()"
+.SS "\fBUI::Size\fP KolibriLib::GetScreenSize ()\fR [inline]\fP"
 
 .PP
 Получить разрешение экрана 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 размер экрана 
 .RE
 .PP
 
-.SS "\fBColors::Color\fP KolibriLib::ReadBackgroungImagePoint (\fBpoint\fP< unsigned > Point)"
+.SS "\fBThread::Slot\fP KolibriLib::ScreenPointAffiliation (\fBUI::Coord\fP POINT)\fR [inline]\fP"
 
 .PP
-Прочитать точку на фоне 
+Получить принадлежность точки 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
-\fIPoint\fP читаема точка 
+\fIPOINT\fP точка на экране 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
-
-.br
- 
-.RE
-.PP
-
-.SS "\fBThread::Slot\fP KolibriLib::ScreenPointAffiliation (\fBpoint\fP< unsigned > POINT)"
-
-.PP
-Получить принадлежность 
-.PP
-\fBParameters\fP
-.RS 4
-\fIPOINT\fP 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-
-.br
- 
+слот окна которому принадлежит точка 
 .RE
 .PP
 
-.SS "void KolibriLib::Wait (unsigned time)\fR [inline]\fP"
+.SS "void KolibriLib::Wait ()\fR [inline]\fP"
+
+.PP
+Подождать, минимальное кол-во времени 
+.SS "устанавливает курсор в середину экрана"
+
+.SS "void KolibriLib::Wait (int time)\fR [inline]\fP"
 
 .PP
 Подождать 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fItime\fP время задержки(в 1/100 секунды) 
 .RE
 .PP
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

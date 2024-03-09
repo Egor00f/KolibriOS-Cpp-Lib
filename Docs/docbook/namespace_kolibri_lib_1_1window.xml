@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1window" xml:lang="en-US">
-<title>KolibriLib::window Namespace Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1window" xml:lang="ru">
+<title>Пространство имен KolibriLib::window</title>
 <indexterm><primary>KolibriLib::window</primary></indexterm>
 <para>
 
@@ -8,7 +8,7 @@
  
 </para>
 <simplesect>
-    <title>Classes    </title>
+    <title>Классы    </title>
         <itemizedlist>
             <listitem><para>class <link linkend="_class_kolibri_lib_1_1window_1_1_window">Window</link></para>
 
@@ -17,8 +17,18 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Enumerations    </title>
+    <title>Перечисления    </title>
         <itemizedlist>
+            <listitem><para>enum <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3">WindowStyle</link> { <?linebreak?><link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da">FixSize</link> = 0
+, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a437c943279eb3aced1be94554420c7cc">NoDraw</link> = 1
+, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">CanResize</link> = 2
+, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573">withSkin</link> = 3
+, <?linebreak?><link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d">FixSizewithSkin</link> = 4
+, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd">NoDrawWorkspace</link> = 0b01000000
+, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">NormalDraw</link> = 0b00000000
+, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218">GradientDraw</link> = 0b10000000
+ }</para>
+</listitem>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44"/>enum <link linkend="_namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44">Pos</link> { <emphasis role="strong">BackGround</emphasis> = -2
 , <emphasis role="strong">AlwaysBack</emphasis> = -1
 , <emphasis role="strong">Normal</emphasis> = 0
@@ -30,9 +40,9 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Functions    </title>
+    <title>Функции    </title>
         <itemizedlist>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1ab4de97f81da73fdfc2975f75c97c23c5">CreateWindow</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size, const std::string &amp;title, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> WorkColor=OS::sys_color_table.frame_area, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> TitleColor=OS::sys_color_table.work_text, const uint32_t style=20)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1ae11ecf3ca59d8ae18ba08bfb128fb5da">CreateWindow</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size, const std::string &amp;title, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> WorkColor=OS::sys_color_table.frame_area, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> TitleColor=OS::sys_color_table.work_text, const uint32_t style=<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">WindowStyle::CanResize</link>+<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">WindowStyle::NormalDraw</link>)</para>
 </listitem>
             <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88">UnfocusWindow</link> (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> slot)</para>
 
@@ -54,11 +64,13 @@
 
 <para>Свернуть все окна </para>
 </listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1window_1a08fa1c0d034c065f169245ed1ae06842"/><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> <emphasis role="strong">GetWindowCoord</emphasis> ()</para>
+</listitem>
             <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1window_1a250b79696e71e4db883c35beac60b0a3">GetWindowPos</link> ()</para>
 
 <para>Получить положение окна относительно других окон </para>
 </listitem>
-            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1window_1a7a45146a32e2035cedd93968251b5831">SetWindowPos</link> (int pos, Thread::PID pid=-1)</para>
+            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1window_1a7a45146a32e2035cedd93968251b5831">SetWindowPos</link> (int pos, <link linkend="_namespace_kolibri_lib_1_1_thread_1a1635692d8eb5eddc602109be07a50a45">Thread::PID</link> pid=-1)</para>
 
 <para>Изменить положение окна относительно дроугих окон </para>
 </listitem>
@@ -69,7 +81,7 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Variables    </title>
+    <title>Переменные    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1window_1a1f1ae2f8103c37a9b5a88cce14f75f9d"/>const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <emphasis role="strong">DefaultWindowSize</emphasis> = {400, 400}</para>
 
@@ -82,24 +94,73 @@
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Работа с окном </para>
 </section>
 <section>
-<title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1window_1ab4de97f81da73fdfc2975f75c97c23c5"/><section>
+<title>Перечисления</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3"/><section>
+    <title>WindowStyle</title>
+<indexterm><primary>WindowStyle</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>WindowStyle</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3">KolibriLib::window::WindowStyle</link></computeroutput></para><informaltable frame="all">
+<title>Элементы перечислений</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>FixSize</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>FixSize</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da"/>FixSize</entry><entry>
+<para>окно фиксированных размеров </para>
+</entry></row><row><entry><indexterm><primary>NoDraw</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>NoDraw</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a437c943279eb3aced1be94554420c7cc"/>NoDraw</entry><entry>
+<para>только определить область окна, ничего не рисовать </para>
+</entry></row><row><entry><indexterm><primary>CanResize</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>CanResize</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e"/>CanResize</entry><entry>
+<para>окно изменяемых размеров </para>
+</entry></row><row><entry><indexterm><primary>withSkin</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>withSkin</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573"/>withSkin</entry><entry>
+<para>окно со скином </para>
+</entry></row><row><entry><indexterm><primary>FixSizewithSkin</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>FixSizewithSkin</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d"/>FixSizewithSkin</entry><entry>
+<para>окно со скином фиксированных размеров </para>
+</entry></row><row><entry><indexterm><primary>NoDrawWorkspace</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>NoDrawWorkspace</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd"/>NoDrawWorkspace</entry><entry>
+<para>не закрашивать рабочую область при отрисовке окна </para>
+</entry></row><row><entry><indexterm><primary>NormalDraw</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>NormalDraw</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb"/>NormalDraw</entry><entry>
+<para>нормальная заливка рабочей области </para>
+</entry></row><row><entry><indexterm><primary>GradientDraw</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>GradientDraw</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218"/>GradientDraw</entry><entry>
+<para>градиентная заливка рабочей области </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+<section>
+<title>Функции</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1ae11ecf3ca59d8ae18ba08bfb128fb5da"/><section>
     <title>CreateWindow()</title>
 <indexterm><primary>CreateWindow</primary><secondary>KolibriLib::window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window</primary><secondary>CreateWindow</secondary></indexterm>
 <para><computeroutput>void KolibriLib::window::CreateWindow (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> size, const std::string &amp; title, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> WorkColor = <computeroutput>OS::sys_color_table.frame_area</computeroutput>
 , const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> TitleColor = <computeroutput>OS::sys_color_table.work_text</computeroutput>
-, const uint32_t style = <computeroutput>20</computeroutput>
+, const uint32_t style = <computeroutput><link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">WindowStyle::CanResize</link>&#160;+&#160;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">WindowStyle::NormalDraw</link></computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -108,32 +169,32 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>coord</entry><entry>
-<para></para>
+<para>Координаты окна(его левого верхнего угола) на экране </para>
 </entry>
                             </row>
                             <row>
 <entry>size</entry><entry>
-<para></para>
+<para>Размеры окна </para>
 </entry>
                             </row>
                             <row>
-<entry>string</entry><entry>
-<para></para>
+<entry>title</entry><entry>
+<para>Заголовок окна </para>
 </entry>
                             </row>
                             <row>
-<entry>&lt;br&gt;</entry><entry>
-<para></para>
-</entry>
-                            </row>
-                            <row>
-<entry>style</entry><entry>
-<para></para>
+<entry>WorkColor</entry><entry>
+<para>цвет рабочей области окна </para>
 </entry>
                             </row>
                             <row>
 <entry>TitleColor</entry><entry>
-<para><?linebreak?> </para>
+<para>Цвет текста заголовка </para>
+</entry>
+                            </row>
+                            <row>
+<entry>style</entry><entry>
+<para>Стиль </para>
 </entry>
                             </row>
                         </tbody>
@@ -155,7 +216,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -183,9 +244,9 @@ Parameters</title>
 <para>Получить слот активного окна </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
-<para><?linebreak?> </para>
+<para>Слот активного в данный момент окна </para>
 </formalpara>
 </para>
 </section>
@@ -198,7 +259,7 @@ Parameters</title>
 <para>Получить высоту скина(заголовка окна) </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>высота скина </para>
 </formalpara>
@@ -213,7 +274,7 @@ Parameters</title>
 <para>Получить положение окна относительно других окон </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>одна из констант из списка <link linkend="_namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44">Pos</link></para>
 </formalpara>
@@ -223,7 +284,7 @@ Parameters</title>
     <title>SetWindowPos()</title>
 <indexterm><primary>SetWindowPos</primary><secondary>KolibriLib::window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window</primary><secondary>SetWindowPos</secondary></indexterm>
-<para><computeroutput>bool KolibriLib::window::SetWindowPos (int pos, Thread::PID pid = <computeroutput>-1</computeroutput>
+<para><computeroutput>bool KolibriLib::window::SetWindowPos (int pos, <link linkend="_namespace_kolibri_lib_1_1_thread_1a1635692d8eb5eddc602109be07a50a45">Thread::PID</link> pid = <computeroutput>-1</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Изменить положение окна относительно дроугих окон </para>
@@ -232,7 +293,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -241,12 +302,7 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>pos</entry><entry>
-<para></para>
-</entry>
-                            </row>
-                            <row>
-<entry>pid</entry><entry>
-<para>процесс </para>
+<para>значение из списка <link linkend="_namespace_kolibri_lib_1_1window_1a7e5a1c57ea495417e3d2442f66d0fe44">pid процесс окна, по умолчанию текущий  false если ошибка, </link></para>
 </entry>
                             </row>
                         </tbody>
@@ -254,11 +310,7 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
-
-<para>false если ошибка </para>
-</formalpara>
-</para>
+                </para>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88"/><section>
     <title>UnfocusWindow()</title>
@@ -272,7 +324,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">

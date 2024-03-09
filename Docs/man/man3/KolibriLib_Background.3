@@ -1,0 +1,103 @@
+.TH "KolibriLib::Background" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::Background \- Работа с фоном  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Функции"
+
+.in +1c
+.ti -1c
+.RI "\fBUI::Size\fP \fBGetSize\fP ()"
+.br
+.RI "Получить размеры фонового изображения "
+.ti -1c
+.RI "\fBColors::Color\fP \fBReadPoint\fP (const \fBUI::Coord\fP &Point)"
+.br
+.RI "Прочитать точку на фоне "
+.ti -1c
+.RI "void \fBRedrawBackground\fP ()"
+.br
+.RI "Перерисовать фон "
+.ti -1c
+.RI "void \fBRedrawBackground\fP (const \fBUI::Coord\fP &coord, const \fBUI::Size\fP &size)"
+.br
+.ti -1c
+.RI "void \fBSetSize\fP (const \fBUI::Size\fP &size)"
+.br
+.ti -1c
+.RI "void \fBDrawPoint\fP (const \fBUI::Coord\fP coord, const \fBColors::Color\fP &color)"
+.br
+.ti -1c
+.RI "template<std::size_t N> void \fBDrawImage\fP (const \fBUI::Coord\fP coord, rgb_t(&rgb)[N])"
+.br
+.ti -1c
+.RI "void \fBDrawImage\fP (const \fBUI::Coord\fP coord, rgb_t *rgb, std::size_t N)"
+.br
+.ti -1c
+.RI "void \fBDrawLine\fP (const \fBUI::Coord\fP &p1, const \fBUI::Coord\fP &p2, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_graph)"
+.br
+.RI "Нарисовать линию на фоне "
+.ti -1c
+.RI "void \fBDrawText\fP (const std::string &text, const \fBUI::Coord\fP &coord, const \fBUI::text::Fonts::Font\fP &font=\fBUI::text::Fonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.br
+.in -1c
+.SS "Переменные"
+
+.in +1c
+.ti -1c
+.RI "bool \fBf\fP = false"
+.br
+.in -1c
+.SH "Подробное описание"
+.PP 
+Работа с фоном 
+.SH "Функции"
+.PP 
+.SS "void KolibriLib::Background::DrawLine (const \fBUI::Coord\fP & p1, const \fBUI::Coord\fP & p2, const \fBColors::Color\fP & color = \fROS::sys_color_table\&.work_graph\fP)\fR [inline]\fP"
+
+.PP
+Нарисовать линию на фоне 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIp1\fP точка перавая 
+.br
+\fIp2\fP точка вторая 
+.br
+\fIcolor\fP цвет линии 
+.RE
+.PP
+
+.SS "\fBUI::Size\fP KolibriLib::Background::GetSize ()\fR [inline]\fP"
+
+.PP
+Получить размеры фонового изображения 
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.RE
+.PP
+
+.SS "\fBColors::Color\fP KolibriLib::Background::ReadPoint (const \fBUI::Coord\fP & Point)\fR [inline]\fP"
+
+.PP
+Прочитать точку на фоне 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIPoint\fP читаема точка 
+.RE
+.PP
+\fBВозвращает\fP
+.RS 4
+.RE
+.PP
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

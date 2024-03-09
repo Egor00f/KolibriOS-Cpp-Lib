@@ -9,11 +9,11 @@ KolibriLib::Colors::Color \- Цвет
 .PP
 .PP
 \fR#include <color\&.hpp>\fP
-.SS "Public Member Functions"
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
-.RI "\fBColor\fP (ksys_color_t a=0)"
+.RI "\fBColor\fP (const ksys_color_t &a=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -23,11 +23,19 @@ KolibriLib::Colors::Color \- Цвет
 .RI "\fBColor\fP (const \fBARGB\fP &a)"
 .br
 .ti -1c
+.RI "\fBColor\fP (const rgb_t &color)"
+.br
+.ti -1c
+.RI "rgb_t \fBGetRGB\fP () const"
+.br
+.RI "Получить rgb_t\&. "
+.ti -1c
 .RI "\fBColor\fP & \fBoperator=\fP (const \fBColor\fP &a)"
 .br
 .ti -1c
 .RI "\fBColor\fP & \fBoperator+\fP (const \fBColor\fP &a)"
 .br
+.RI "Смешивает два цвета (среднее занчение) "
 .ti -1c
 .RI "bool \fBoperator==\fP (const \fBColor\fP &a) const"
 .br
@@ -35,7 +43,7 @@ KolibriLib::Colors::Color \- Цвет
 .RI "bool \fBoperator!=\fP (const \fBColor\fP &a) const"
 .br
 .in -1c
-.SS "Public Attributes"
+.SS "Открытые атрибуты"
 
 .in +1c
 .ti -1c
@@ -48,29 +56,29 @@ KolibriLib::Colors::Color \- Цвет
 .RI "   uint8_t \fB_a\fP"
 .br
 .ti -1c
-.RI "   uint8_t \fBred\fP"
+.RI "   uint8_t \fBblue\fP"
 .br
 .ti -1c
 .RI "   uint8_t \fBgreen\fP"
 .br
 .ti -1c
-.RI "   uint8_t \fBblue\fP"
+.RI "   uint8_t \fBred\fP"
 .br
 .ti -1c
 .RI "}; "
 .br
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Цвет 
-.SH "Constructor & Destructor Documentation"
+.SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::Colors::Color::Color (ksys_color_t a = \fR0\fP)"
+.SS "KolibriLib::Colors::Color::Color (const ksys_color_t & a = \fR0\fP)"
 
 .PP
 Конструктор 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIa\fP 
 .br
@@ -78,7 +86,40 @@ KolibriLib::Colors::Color \- Цвет
 .RE
 .PP
 
-
-.SH "Author"
+.SH "Методы"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+.SS "rgb_t KolibriLib::Colors::Color::GetRGB () const"
+
+.PP
+Получить rgb_t\&. 
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "\fBKolibriLib::Colors::Color\fP & KolibriLib::Colors::Color::operator+ (const \fBColor\fP & a)"
+
+.PP
+Смешивает два цвета (среднее занчение) 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIa\fP 
+.RE
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

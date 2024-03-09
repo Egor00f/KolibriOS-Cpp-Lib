@@ -1,11 +1,9 @@
 var class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label =
 [
-    [ "TextLabel", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#ab5c98d52ac786155c62755199f8c3508", null ],
-    [ "GetFontSize", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a104d82f29dab26bc36fea354c85a7c1c", null ],
-    [ "GetText", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a7ef5d357de26353d048a9f0d1bb4df40", null ],
-    [ "operator=", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#ade3a8b232411beab67d7a4911143e8cf", null ],
-    [ "Render", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a2db83bcd21ace444e475bddf8d479943", null ],
-    [ "SetFontSize", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#af9013385e39002c6f2bfa32f19904ddc", null ],
-    [ "SetScale", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a03d60493c9d72b8a7ae5f58d38236ae1", null ],
-    [ "SetText", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#af4d3a0cf08dda73880a332c183853633", null ]
+    [ "TextLabel", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a0b8ee0d4fb488c0d32334546b16f5b53", null ],
+    [ "GetScale", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#aab96734da4336a4c8b564279712e1a25", null ],
+    [ "operator=", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a5bd77e24765b2d0aba522f18304cf743", null ],
+    [ "operator==", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#ae6c1737b23aef9af57388e0e9429c10a", null ],
+    [ "Render", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#ab51d60fe7835fcb32c7ab194d50e37a7", null ],
+    [ "SetScale", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a13c115d127bc7f90cb438bbd2b31619d", null ]
 ];

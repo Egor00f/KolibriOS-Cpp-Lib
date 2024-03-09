@@ -1,11 +1,11 @@
 var class_kolibri_lib_1_1_u_i_1_1_u_i_element =
 [
     [ "UIElement", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a0e8520d7b6e47e5b307b00449702e737", null ],
-    [ "GetColor", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#adf269accbb7f07330eba3d005061fd1d", null ],
-    [ "GetCoord", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#adad4d5b75d97484323f46834dbe574c8", null ],
+    [ "GetColor", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a69995a90b6e010f467ab766edfa782d4", null ],
+    [ "GetCoord", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a3f2f4016ffe8414c55cc13c665b0a3a8", null ],
     [ "GetMargin", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a452197bd6d4f5aebf9c432a9a3a088e2", null ],
     [ "GetRotate", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a91df2001fe6967e760d343e42f5d870c", null ],
-    [ "GetSize", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#ab591105fdaaaece609203d9088948847", null ],
+    [ "GetSize", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a7411f3ff0db5a7453f0d23c5ead9ce9e", null ],
     [ "Hover", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#acb1303729c55ba615af2562823dd2c8e", null ],
     [ "operator!=", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a47f5a94da324198946c6567244620f86", null ],
     [ "operator=", "class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a55bc7a13f3d7f444e2004adde9b45700", null ],

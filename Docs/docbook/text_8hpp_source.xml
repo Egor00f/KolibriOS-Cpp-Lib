@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_text_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_text_8hpp_source" xml:lang="ru">
 <title>text.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/text.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__TEXT_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__TEXT_H__</emphasis>
 3 
@@ -9,93 +9,320 @@
 5 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
 6 
 7 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
-8 
-9 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
-10 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
-11 
-12 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-13 {
-14 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
-15 &#32;&#32;&#32;&#32;{
-17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>text
-18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a88c7481d1f3297280474e2d9b5959c64">GetTextSize</link>()
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>;
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=c&quot;</emphasis>(<link linkend="_struct_kolibri_lib_1_1point">Size</link>)
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(48),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(11));
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>;
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-30 
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a5fd094b88dd3cbeb776db5098c742d75">SetTextSize</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;newSize)
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:
-38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:<emphasis role="stringliteral">&quot;a&quot;</emphasis>(48),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(12),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(newSize)
-39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
-40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-41 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1ae4182f0d04de49b3bd8f849dee9e3847">DrawText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;text,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;size&#32;=&#32;9,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text)
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a5fd094b88dd3cbeb776db5098c742d75">SetTextSize</link>(size);
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_text(text.c_str(),&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;text.length(),&#32;color.val);
-50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-51 
-56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1ae4182f0d04de49b3bd8f849dee9e3847">DrawText</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;size&#32;=&#32;9,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text)
+8 <emphasis role="preprocessor">#include&#32;&lt;assert.h&gt;</emphasis>
+9 
+10 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
+11 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/UI.hpp&gt;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/graphic/graphic.hpp&gt;</emphasis>
+14 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/window/windowBase.hpp&gt;</emphasis>
+15 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/image.hpp&gt;</emphasis>
+16 <emphasis role="preprocessor">#include&#32;&lt;kolibri_rasterworks.h&gt;</emphasis>
+17 <emphasis role="preprocessor">#include&#32;&quot;fonts.hpp&quot;</emphasis>
+18 
+19 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+20 {
+21 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
+22 &#32;&#32;&#32;&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>text
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a88c7481d1f3297280474e2d9b5959c64">GetTextSize</link>()
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>;
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=c&quot;</emphasis>(<link linkend="_struct_kolibri_lib_1_1point">Size</link>)
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(48),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(11)
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+39 
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a873ed429723726e235de288ca45b47c0">SetTextSize</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;newSize)
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(48),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(12),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(newSize)
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+50 
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a000ef13c7923745461001a023ed4608e">DrawText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;text,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;size&#32;=&#32;9,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text)
 57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a5fd094b88dd3cbeb776db5098c742d75">SetTextSize</link>(size);
-59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_text(text,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;strlen(text),&#32;color.val);
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a873ed429723726e235de288ca45b47c0">SetTextSize</link>(size);
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_text(text.c_str(),&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;text.length(),&#32;color.val);
 60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 61 
-62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
-63 
-67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UI::UIElement</link>
-68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
-71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;_text;
-72 
-73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;&#32;Когданибудь,&#32;когда&#32;автор&#32;сего&#32;творения&#32;узнает&#32;как&#32;делать&#32;разные&#32;шрифты,&#32;эта&#32;переменная&#32;будет&#32;использоваться</emphasis>
-75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;FontFamily;
-76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/
-77 
-79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_FontSize;
-80 
-82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_TextScale;
-83 
-84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ab5c98d52ac786155c62755199f8c3508">TextLabel</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size&#32;=&#32;{16,&#32;16},&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;TextLabel&quot;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;FontSize&#32;=&#32;9,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;TextScale&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;0);
-93 
-94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">~TextLabel</link>();
-95 
-97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a2db83bcd21ace444e475bddf8d479943">Render</link>();
-98 
-101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a7ef5d357de26353d048a9f0d1bb4df40">GetText</link>()&#32;<emphasis role="keyword">const</emphasis>;
-102 
-105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a104d82f29dab26bc36fea354c85a7c1c">GetFontSize</link>()&#32;<emphasis role="keyword">const</emphasis>;
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a000ef13c7923745461001a023ed4608e">DrawText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;text,
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>.size,
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;flags&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>,
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;margin&#32;=&#32;UI::DefaultMargin,
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;colorText&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;BackgroundColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area)
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;w&#32;=&#32;((margin&#32;*&#32;2)&#32;+&#32;size.x);
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;h&#32;=&#32;((margin&#32;*&#32;2)&#32;+&#32;(size.y&#32;*&#32;text.length()));
+82 
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rgb_t&#32;*canvas&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;rgb_t[w&#32;*&#32;h];
+84 
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(BackgroundColor._a&#32;&lt;&#32;1)
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//прозрачность&#32;фона</emphasis>
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;k&#32;=&#32;BackgroundColor._a&#32;/&#32;255;
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;h;&#32;i++)
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;w;&#32;i++)
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i&#32;*&#32;h&#32;+&#32;j]&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a1d8b4c18bcb459e79bf6f5d140ada7a6">Colors::BlendColors</link>(graphic::ReadPoint(window::GetWindowCoord()&#32;+&#32;coord&#32;+&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>(0,&#32;i)&#32;+&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>(j,&#32;0)),
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BackgroundColor,
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;k)
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a4686f00731471d5cd1f0ea052573da80">GetRGB</link>();
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;memset((<emphasis role="keywordtype">void</emphasis>*)canvas,&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a234ec0266b5f9e86ecbe9c66dd0c7a41">Colors::RGBtoINT</link>(BackgroundColor.GetRGB()),&#32;w&#32;*&#32;h);
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+103 
+104 
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drawText(canvas,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;text.c_str(),&#32;text.length(),&#32;colorText.val,&#32;flags);
 106 
-107 
-110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af4d3a0cf08dda73880a332c183853633">SetText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;NewText);
-111 
-114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1af9013385e39002c6f2bfa32f19904ddc">SetFontSize</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;NewTextSize);
-115 
-116 
-119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a03d60493c9d72b8a7ae5f58d38236ae1">SetScale</link>(<emphasis role="keywordtype">bool</emphasis>&#32;scale);
-120 
-121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;coord,&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;size,&#32;std::string&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;TextLabel&quot;</emphasis>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;FontSize&#32;=&#32;9,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text);
-122 
-126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ade3a8b232411beab67d7a4911143e8cf">operator = </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>&amp;&#32;a);
-127 
-128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-129 
-130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-132 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
-133 &#32;&#32;&#32;&#32;
-134 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-135 
-136 
-137 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__TEXT_H__</emphasis>
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(colorText._a&#32;&lt;&#32;1)
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Прозрачность&#32;текста</emphasis>
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;k&#32;=&#32;colorText._a&#32;/&#32;255;
+110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;margin;&#32;i&#32;&lt;&#32;h&#32;-&#32;margin;&#32;i++)&#32;&#32;&#32;<emphasis role="comment">//Трогать&#32;поля&#32;нет&#32;смысла</emphasis>
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;margin;&#32;j&#32;&lt;&#32;w&#32;-&#32;margin;&#32;i++)
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Colors::Color&#32;b&#32;=&#32;graphic::ReadPoint(window::GetWindowCoord()&#32;+&#32;coord&#32;+&#32;Coord(0,&#32;i)&#32;+&#32;Coord(j,&#32;0));
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(b&#32;!=&#32;canvas[i&#32;*&#32;(h&#32;-&#32;margin)&#32;+&#32;j])
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i&#32;*&#32;(h&#32;-&#32;margin)&#32;+&#32;j]&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a1d8b4c18bcb459e79bf6f5d140ada7a6">Colors::BlendColors</link>(b,
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i&#32;*&#32;(h&#32;-&#32;margin)&#32;+&#32;j],
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;k)
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.GetRGB();
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+126 
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_bitmap(canvas,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;w,&#32;h);
+128 
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>[]&#32;canvas;
+130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+131 
+140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a000ef13c7923745461001a023ed4608e">DrawText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;text,
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&#32;&amp;font&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>,
+142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;margin&#32;=&#32;UI::DefaultMargin,
+143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;colorText&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,
+144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;BackgroundColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area)
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;w&#32;=&#32;((margin&#32;*&#32;2)&#32;+&#32;font.size.x);
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;h&#32;=&#32;((margin&#32;*&#32;2)&#32;+&#32;(font.size.y&#32;*&#32;text.length()));
+148 
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rgb_t&#32;*canvas&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;rgb_t[w&#32;*&#32;h];
+150 
+151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(BackgroundColor._a&#32;&lt;&#32;1)
+152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="comment">//&#32;прозрачность&#32;фона</emphasis>
+153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;k&#32;=&#32;BackgroundColor._a&#32;/&#32;255;
+154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;h;&#32;i++)
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;w;&#32;i++)
+157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i&#32;*&#32;h&#32;+&#32;j]&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a1d8b4c18bcb459e79bf6f5d140ada7a6">Colors::BlendColors</link>(graphic::ReadPoint(window::GetWindowCoord()&#32;+&#32;coord&#32;+&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>(0,&#32;i)&#32;+&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>(j,&#32;0)),
+159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BackgroundColor,
+160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;k)
+161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a4686f00731471d5cd1f0ea052573da80">GetRGB</link>();
+162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;memset((<emphasis role="keywordtype">void</emphasis>&#32;*)canvas,&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a234ec0266b5f9e86ecbe9c66dd0c7a41">Colors::RGBtoINT</link>(BackgroundColor.GetRGB()),&#32;w*h);
+168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+169 
+170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drawText(canvas,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;text.c_str(),&#32;text.length(),&#32;colorText.val,&#32;font._Flags);
+171 
+172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(colorText._a&#32;&lt;&#32;1)
+173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="comment">//&#32;Прозрачность&#32;текста</emphasis>
+174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;k&#32;=&#32;colorText._a&#32;/&#32;255;
+175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;margin;&#32;i&#32;&lt;&#32;h&#32;-&#32;margin;&#32;i++)&#32;<emphasis role="comment">//&#32;Трогать&#32;поля&#32;нет&#32;смысла</emphasis>
+176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;margin;&#32;j&#32;&lt;&#32;w&#32;-&#32;margin;&#32;i++)
+178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;b&#32;=&#32;graphic::ReadPoint(window::GetWindowCoord()&#32;+&#32;coord&#32;+&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>(0,&#32;i)&#32;+&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>(j,&#32;0));
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(b&#32;!=&#32;canvas[i&#32;*&#32;(h&#32;-&#32;margin)&#32;+&#32;j])
+181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i&#32;*&#32;(h&#32;-&#32;margin)&#32;+&#32;j]&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a1d8b4c18bcb459e79bf6f5d140ada7a6">Colors::BlendColors</link>(b,
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;canvas[i&#32;*&#32;(h&#32;-&#32;margin)&#32;+&#32;j],
+184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;k)
+185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;.GetRGB();
+186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+190 
+191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_bitmap(canvas,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;w,&#32;h);
+192 
+193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>[]&#32;canvas;
+194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+195 
+198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>
+199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;Type
+202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;None&#32;=&#32;0,
+204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Image,&#32;
+205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link>
+206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+207 
+214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a1b7d6d5d73d6661e87db922d1fd18cff">Char</link>(<emphasis role="keywordtype">char</emphasis>&#32;c&#32;=&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&amp;&#32;font&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;BackgroundColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area);
+215 
+218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1abc7672ace64c0020b3b814b1861a7d04">Char</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&amp;&#32;img,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&amp;&#32;font&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>);
+219 
+221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1acd2b417f8107d5e7f7615c4ac009eb82">~Char</link>();
+222 
+225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">short</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1ab58ef855da83e63793e8f1e20e0fbc90">GetType</link>()&#32;<emphasis role="keyword">const</emphasis>;
+226 
+233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a4b67c87fde0d21a2270c01cb24b1e3a7">Set</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;c,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&amp;&#32;font&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;BackgroundColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area);
+234 
+237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1ad55360e5bb0506c9a47de9ecc9d25e56">Set</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>&#32;&amp;img,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&#32;&amp;size&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>);
+238 
+241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1ac743c5288a82d3195a5382249c392a15">SetFlags</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;flags);
+242 
+245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a770620d0825f952bccc42c46362e3671">SetTextColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;NewColor);
+246 
+249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a9528b9d25c3e102cb6979e0667b40883">SetBackgroundColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;NewColor);
+250 
+253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a0ff41be7d15e6bf10e372fc61a435ca2">SetFont</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&amp;&#32;size)&#32;<emphasis role="keyword">const</emphasis>;
+254 
+257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a3d266c7b420b1000b1e7207519b2bcb3">GetChar</link>()&#32;<emphasis role="keyword">const</emphasis>;
+258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a9c9f6445dfcb26ebf296cb9d512714c2">GetImg</link>()&#32;<emphasis role="keyword">const</emphasis>;
+262 
+265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a6044f2f7c6b34e70d013e624a74ec8e3">GetFont</link>()&#32;<emphasis role="keyword">const</emphasis>;
+266 
+269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a7d4fa44f1b27b4a97811d8213e089362">GetFlags</link>()&#32;<emphasis role="keyword">const</emphasis>;
+270 
+273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char_1a7c9cbafb0d22201dcdd88d78b22c9ea0">Print</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;&amp;coord)&#32;<emphasis role="keyword">const</emphasis>;
+274 
+275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&amp;&#32;operator&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;c);
+276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&amp;&#32;operator&#32;=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&#32;&amp;img);
+277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&amp;&#32;operator&#32;=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&#32;&amp;c);
+278 
+279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keywordtype">char</emphasis>&#32;c)&#32;<emphasis role="keyword">const</emphasis>;
+280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&#32;&amp;img)&#32;<emphasis role="keyword">const</emphasis>;
+281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&#32;&amp;img)&#32;<emphasis role="keyword">const</emphasis>;
+282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;c)&#32;<emphasis role="keyword">const</emphasis>;
+283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&#32;&amp;img)&#32;<emphasis role="keyword">const</emphasis>;
+284 
+285 
+286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&#32;*_img;
+289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*_c;
+290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Free();
+294 
+295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&#32;_font;
+296 
+297 <emphasis role="comment">/*====================Параметры&#32;для&#32;текста=================*/</emphasis>
+298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;*_TextColor;
+299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;*_BackgroundColor;
+300 <emphasis role="comment">/*=========================================================*/</emphasis>
+301 
+304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_type;
+305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link>
+310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a848c43c18bd23bf2c36be5de346d9ee0">Text</link>();
+314 
+316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a0c94663549acb84e05bf203673bdf73e">~Text</link>();
+317 
+320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6304a4ae03858133d064303a9f4aa640">Add</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&amp;&#32;c);
+321 
+324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a658e87b66c50a1a6e6d3d39640dad143">Add</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;txt);
+325 
+328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1af4ad74911003d2d01b88bba3a84782b8">Add</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&amp;&#32;img);
+329 
+333 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a50f90789d11b5c32a1ca876ec3925ae3">insert</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&amp;&#32;c,&#32;<emphasis role="keywordtype">int</emphasis>&#32;i);
+334 
+338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a279e3feed8526c479ebcf9d37257f2cf">insert</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;txt,&#32;<emphasis role="keywordtype">int</emphasis>&#32;i);
+339 
+343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6fea058c7b14276e03d540219763e189">insert</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link>&#32;&amp;img,&#32;<emphasis role="keywordtype">int</emphasis>&#32;i);
+344 
+347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a2b3cc12a6b74de60c7e74f90fed4fec9">Delete</link>(<emphasis role="keywordtype">int</emphasis>&#32;i);
+348 
+351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1ab7918ccccb454f8f7c7d03d1c22f682f">Print</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;&amp;coord)&#32;<emphasis role="keyword">const</emphasis>;
+352 
+356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a143c7924e3daa06259bc93b3e7306bc5">SetFont</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link>&amp;&#32;Font);
+357 
+360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a72454cdc486cd55c422ce58da282702a">SetTextColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;Color);
+361 
+364 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a3c5e7c50af916002563b29b55822cacd">SetBackgroundColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;Color);
+365 
+368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6752e4a7728fad2ad4f22c38ded456a5">GetText</link>()&#32;<emphasis role="keyword">const</emphasis>;
+369 
+373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a583340eae4461e85511dbd1aefeb3e36">GetChar</link>(<emphasis role="keywordtype">int</emphasis>&#32;i)&#32;<emphasis role="keyword">const</emphasis>;
+374 
+377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::size_t&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a20eacf9e8b1e84ae39895be49e88683e">length</link>()&#32;<emphasis role="keyword">const</emphasis>;
+378 
+381 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a924a553bcf51e37053e5f4a365c4d568">lenghtPX</link>()&#32;<emphasis role="keyword">const</emphasis>;
+382 
+385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a9bb52ff66ccb36a28959277f99807a47">SetText</link>(std::string&#32;text);
+386 
+387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link>&amp;&#32;operator&#32;=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link>&amp;&#32;txt);
+388 
+392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a2f5cda180a5ba57e4774fb6bf1e22fa2">operator == </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link>&amp;&#32;txt)&#32;<emphasis role="keyword">const</emphasis>;
+393 
+394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Char&gt;&#32;_data;
+396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+398 
+399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
+400 
+404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UI::UIElement</link>,&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link>
+405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+406 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Align;
+409 
+411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_TextScale;
+412 
+413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_Aligned;
+414 
+415 
+416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a0b8ee0d4fb488c0d32334546b16f5b53">TextLabel</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size&#32;=&#32;{16,&#32;16},&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;TextLabel&quot;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;FontSize&#32;=&#32;9,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;TextScale&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;0);
+425 
+426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a0b8ee0d4fb488c0d32334546b16f5b53">TextLabel</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;Size&amp;&#32;size&#32;=&#32;{16,&#32;16},&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;text&#32;=&#32;<emphasis role="stringliteral">&quot;TextLabel&quot;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;Fonts::Font&#32;&amp;Font&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&amp;&#32;TextColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&#32;&amp;BackgroundColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.frame_area&#32;,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;TextScale&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;0);
+427 
+428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;~TextLabel();
+429 
+431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ab51d60fe7835fcb32c7ab194d50e37a7">Render</link>()&#32;<emphasis role="keyword">const</emphasis>;
+432 
+435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a13c115d127bc7f90cb438bbd2b31619d">SetScale</link>(<emphasis role="keywordtype">bool</emphasis>&#32;scale);
+436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1aab96734da4336a4c8b564279712e1a25">GetScale</link>()&#32;<emphasis role="keyword">const</emphasis>;&#32;
+440 
+441 
+442 
+446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1a5bd77e24765b2d0aba522f18304cf743">operator = </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>&amp;&#32;a);
+447 
+451 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_1ae6c1737b23aef9af57388e0e9429c10a">operator == </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>&amp;&#32;a)&#32;<emphasis role="keyword">const</emphasis>;
+452 
+453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link>&amp;&#32;a)&#32;<emphasis role="keyword">const</emphasis>;
+454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+455 
+456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+457 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+458 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+459 &#32;&#32;&#32;&#32;
+460 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+461 
+462 
+463 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__TEXT_H__</emphasis>
 </programlisting></section>

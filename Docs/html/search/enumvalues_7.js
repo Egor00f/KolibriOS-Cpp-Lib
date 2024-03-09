@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mouse_0',['Mouse',['../namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca3c9ab2f8d47522ef1bb2a176396118bd',1,'KolibriLib::OS']]]
+  ['italic_0',['Italic',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a12e352aac49dd1e92e7f11605add7df5aee53f564426d65e2bfbcd27c3f2e4041',1,'KolibriLib::UI::text']]]
 ];

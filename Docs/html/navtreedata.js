@@ -25,41 +25,43 @@
 var NAVTREE =
 [
   [ "KolibriLib", "index.html", [
-    [ "Это всратая библиотека", "index.html", null ],
-    [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+    [ "Работа с графикой", "md__f_1_2_kolibri_os_2_kolibri_o_s-_cpp-_lib_2include_2kolibri_lib_2graphic_2_readme.html", null ],
+    [ "User Interface", "md__f_1_2_kolibri_os_2_kolibri_o_s-_cpp-_lib_2include_2kolibri_lib_2_u_i_2_readme.html", null ],
+    [ "Пространства имен", "namespaces.html", [
+      [ "Пространства имен", "namespaces.html", "namespaces_dup" ],
+      [ "Члены пространств имен", "namespacemembers.html", [
+        [ "Указатель", "namespacemembers.html", null ],
+        [ "Функции", "namespacemembers_func.html", null ],
+        [ "Переменные", "namespacemembers_vars.html", null ],
+        [ "Определения типов", "namespacemembers_type.html", null ],
+        [ "Перечисления", "namespacemembers_enum.html", null ],
+        [ "Элементы перечислений", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Enumerator", "functions_eval.html", null ]
+    [ "Классы", "annotated.html", [
+      [ "Классы", "annotated.html", "annotated_dup" ],
+      [ "Алфавитный указатель классов", "classes.html", null ],
+      [ "Иерархия классов", "hierarchy.html", "hierarchy" ],
+      [ "Члены классов", "functions.html", [
+        [ "Указатель", "functions.html", null ],
+        [ "Функции", "functions_func.html", null ],
+        [ "Переменные", "functions_vars.html", null ],
+        [ "Перечисления", "functions_enum.html", null ],
+        [ "Элементы перечислений", "functions_eval.html", null ]
       ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
-    ] ]
+    [ "Файлы", "files.html", [
+      [ "Файлы", "files.html", "files_dup" ]
+    ] ],
+    [ "Примеры", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_kolibri_lib_8hpp_source.html",
-"namespace_kolibri_lib_1_1window.html#a9b4d6e11048953c9f7a1e530f135fb20"
+"_draw_text-example.html",
+"namespace_kolibri_lib_1_1_thread.html#a620ca73995252a0f262597d84b5cc40f"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';
+var SYNCOFFMSG = 'нажмите на включить для синхронизации панелей';

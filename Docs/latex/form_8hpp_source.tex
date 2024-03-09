@@ -1,5 +1,5 @@
 \doxysection{form.\+hpp}
-\hypertarget{form_8hpp_source}{}\label{form_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/form.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/form.hpp}}
+\hypertarget{form_8hpp_source}{}\label{form_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/form.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/form.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_FORM\_H\_\_}}
@@ -7,54 +7,113 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}UI.hpp"{}}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}graphic.hpp"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}text.hpp"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}button.hpp"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}input.hpp"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}color.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <kolibriLib/UI/UI.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <kolibriLib/graphic/graphic.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <kolibriLib/UI/text.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <kolibriLib/UI/button.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <kolibriLib/input/input.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <kolibriLib/color.hpp>}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}kolibri\_gui.h"{}}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00017\ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
-\DoxyCodeLine{00019\ \ \ \ \ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form}{Form}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ editor*\ \_e;}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\_ed\_lock;}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_ac495e5c56a48b10881fbf7efb126f05e}{Form}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size\ =\ \{32,\ 16\},\ \textcolor{keyword}{const}\ std::string\&\ BackgroundText\ =\ \textcolor{stringliteral}{"{}Text..."{}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ FormColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ ButtonTextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ Margin\ =\ DefaultMargin);}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}{init}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ coord\ =\ \{0,\ 0\},\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size\ =\ \{32,\ 16\},\ std::string\ BackgroundText\ =\ \textcolor{stringliteral}{"{}\ "{}},\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ FormColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ ButtonTextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area,\ \textcolor{keywordtype}{unsigned}\ Margin\ =\ DefaultMargin);}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a0872d4ca05a408cf3177bad337c1209b}{Render}}();}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a785cbce69e082bba1a39bbcc7b62e573}{Handler}}();}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa12fb4267b5940d7724ad2cb34b513fd}{ButtonHandler}}();}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a8607cbd77936e827c1f7ca87caab7539}{GetInput}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a9d80cb0e97fff21640570bfe4a83d0af}{GetBackgroundText}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_af63257610de4d47dcb6f51ad2480fe49}{GetBackgroundColor}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_acef4ae399e71f5989b082d81e62b6c91}{SetBackgroundText}}(\textcolor{keyword}{const}\ std::string\&\ NewText);}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa7dc12266923cd98d772c0cd3d026e7d}{SetBackgroundColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ NewColor);}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form}{\string~Form}}();}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00072\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
-\DoxyCodeLine{00073\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_FORM\_H\_\_}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form}{Form}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button}{buttons::Button}}\ \_butt;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \_inputText;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_acbec1f0d5e15b5159c843ec8464b1cea}{Form}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size\ =\ \{32,\ 16\},\ \textcolor{keyword}{const}\ std::string\&\ BackgroundText\ =\ \textcolor{stringliteral}{"{}Text..."{}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ FormColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ ButtonTextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ Margin\ =\ DefaultMargin);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_adb375987e6605ff5e5fecadd3a10206a}{Render}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_abc53102114e1df7f0a10460ff94f03e5}{Handler}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a9a356e929e7a7b8ecf1a945f6c04789a}{ButtonHandler}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a79f97a937cbc49d8a408eccbae0e3738}{GetInput}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a6b2a01c168ad5be5fbb5ab5de995b217}{GetBackgroundText}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a11b08f5f072c63b98e1347ae8fb93afc}{GetBackgroundColor}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_acef4ae399e71f5989b082d81e62b6c91}{SetBackgroundText}}(\textcolor{keyword}{const}\ std::string\&\ NewText);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa7dc12266923cd98d772c0cd3d026e7d}{SetBackgroundColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ NewColor);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form}{\string~Form}}();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_acbec1f0d5e15b5159c843ec8464b1cea}{Form::Form}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size,\ \textcolor{keyword}{const}\ std::string\ \&BackgroundText,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&FormColor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&ButtonTextColor,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&Margin)\ :\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}(coord,\ size,\ FormColor,\ Margin)}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a16b029a7f35ee44656c2eb2af211873d}{SetCoord}}(coord);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3b3eb7370243281576ff27c489db913d}{SetSize}}(size);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a72454cdc486cd55c422ce58da282702a}{SetTextColor}}(ButtonTextColor);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a3c5e7c50af916002563b29b55822cacd}{SetBackgroundColor}}(FormColor);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a6304a4ae03858133d064303a9f4aa640}{Add}}(BackgroundText);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a6b2a01c168ad5be5fbb5ab5de995b217}{Form::GetBackgroundText}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a6752e4a7728fad2ad4f22c38ded456a5}{GetText}}();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a11b08f5f072c63b98e1347ae8fb93afc}{Form::GetBackgroundColor}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00085\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a69995a90b6e010f467ab766edfa782d4}{GetColor}}();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_aa7dc12266923cd98d772c0cd3d026e7d}{Form::SetBackgroundColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&NewColor)}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a969186d6406bb6c11a024e5a91749336}{SetColor}}(NewColor);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ Form::\string~Form()}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_adb375987e6605ff5e5fecadd3a10206a}{Form::Render}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00099\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ graphic::DrawRectangleLines(\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}},\ \{\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}}\ +\ (int)\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a6a32e2b61ba20d655583fcfe6da82668}{\_coord}}.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}}\ +\ (\textcolor{keywordtype}{int})\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\_size}}.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}}\},\ \_MainColor);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_ab4d85223ff685e5400b1fff59b337159}{Render}}();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a79f97a937cbc49d8a408eccbae0e3738}{Form::GetInput}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00106\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_inputText;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_abc53102114e1df7f0a10460ff94f03e5}{Form::Handler}}()}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ input\ =\ keyboard::CheckKeyboard();}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input\ >\ 33\ \&\&\ input\ !=\ 127)\ \textcolor{comment}{//\ Если\ введённый\ символ\ не\ является\ спецсимволом,\ и\ это\ не\ Delete}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_inputText.push\_back(input);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input\ ==\ 127)\ \textcolor{comment}{//\ input\ =\ Delete}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_inputText.erase(\_inputText.end()\ -\/\ 1);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_a9a356e929e7a7b8ecf1a945f6c04789a}{Form::ButtonHandler}}()}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_butt.\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_a9521b0d981e10f6a9466438858439cb9}{Handler}}();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_form_acef4ae399e71f5989b082d81e62b6c91}{KolibriLib::UI::Form::SetBackgroundText}}(\textcolor{keyword}{const}\ std::string\ \&NewText)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \_butt.SetText(NewText);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
+\DoxyCodeLine{00134\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_FORM\_H\_\_}}
 
 \end{DoxyCode}

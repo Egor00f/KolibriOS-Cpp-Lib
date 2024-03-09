@@ -1,20 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_sound_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_sound_8hpp_source" xml:lang="ru">
 <title>sound.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/sound.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/sound.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__SOUND_HPP__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__SOUND_HPP__</emphasis>
 3 
-4 
-5 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-6 {
-7 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Sound
-8 &#32;&#32;&#32;&#32;{
-9 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#include&#32;&lt;sound.h&gt;</emphasis>
-10 
-11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;PlaySound();
-12 &#32;&#32;&#32;&#32;}
-13 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-14 
-15 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__SOUND_HPP__</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;sound.h&gt;</emphasis>
+6 
+7 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+8 {
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Sound
+10 &#32;&#32;&#32;&#32;{
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+12 
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;PlaySound()
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SNDBUF&#32;hBuff;
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;*buffer;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;семплы&#32;в&#32;формате&#32;snd_format</emphasis>
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;buffer_size;&#32;<emphasis role="comment">//&#32;размер&#32;буфера&#32;в&#32;байтах</emphasis>
+18 
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!CreateBuffer(PCM_OUT,&#32;0,&#32;&amp;hBuff))
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;in&#32;CreateBuffer&quot;</emphasis>);
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WaveOut(hBuff,&#32;buffer,&#32;buffer_size);
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+25 &#32;&#32;&#32;&#32;}
+26 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+27 
+28 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__SOUND_HPP__</emphasis>
 </programlisting></section>

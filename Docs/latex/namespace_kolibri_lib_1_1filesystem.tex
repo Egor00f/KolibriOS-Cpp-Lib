@@ -1,16 +1,16 @@
-\doxysection{Kolibri\+Lib\+::filesystem Namespace Reference}
+\doxysection{Пространство имен Kolibri\+Lib\+::filesystem}
 \hypertarget{namespace_kolibri_lib_1_1filesystem}{}\label{namespace_kolibri_lib_1_1filesystem}\index{KolibriLib::filesystem@{KolibriLib::filesystem}}
 
 
 Работа с файлами  
 
 
-\doxysubsubsection*{Classes}
+\doxysubsubsection*{Классы}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}
 \begin{DoxyCompactList}\small\item\em Путь до файла/папки \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Enumerations}
+\doxysubsubsection*{Перечисления}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Errors}} \{ \newline
@@ -29,7 +29,7 @@ enum \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5
 , \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac}{Os\+Havent\+Ram}} = 12
  \}
 \begin{DoxyCompactList}\small\item\em Список ошибок файловой системы \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72}{Create\+File}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&name)
@@ -41,16 +41,18 @@ int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_acd34191bdf04b15659a1dd
 bool \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}{Exist}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}})
 \begin{DoxyCompactList}\small\item\em проверяет существует ли файл или папки \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a57a3f302a162ad3a2738ef9e080c193b}{Rename}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&Old\+Name, const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&New\+Name)
-\begin{DoxyCompactList}\small\item\em Аналог mv. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Переименовать файл \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Подробное описание}
 Работа с файлами 
 
-\hypertarget{namespace_kolibri_lib_1_1filesystem_Это}{}\doxyparagraph{\texorpdfstring{просто чекбокс, ему можно задать различные стили}{просто чекбокс, ему можно задать различные стили}}\label{namespace_kolibri_lib_1_1filesystem_Это}
+\hypertarget{namespace_kolibri_lib_1_1filesystem_Это}{}\doxyparagraph{\texorpdfstring{пространство имён этакий аналог стандартной библиотеки $<$filesystem$>$ ~\newline
+}{пространство имён этакий аналог стандартной библиотеки $<$filesystem$>$ ~\newline
+}}\label{namespace_kolibri_lib_1_1filesystem_Это}
 
 
-\doxysubsection{Enumeration Type Documentation}
+\doxysubsection{Перечисления}
 \Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!Errors@{Errors}}
 \index{Errors@{Errors}!KolibriLib::filesystem@{KolibriLib::filesystem}}
@@ -61,7 +63,7 @@ int \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_a57a3f302a162ad3a2738ef
 
 Список ошибок файловой системы 
 
-\begin{DoxyEnumFields}{Enumerator}
+\begin{DoxyEnumFields}{Элементы перечислений}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Successfully@{Successfully}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!Successfully@{Successfully}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67caad8c088a2142084c219c2d261af21611} 
 Successfully&успешно \\
 \hline
@@ -79,7 +81,7 @@ Not\+Found&файл не найден \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{EndOfFile@{EndOfFile}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!EndOfFile@{EndOfFile}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774} 
-End\+Of\+File&файл закончился \\
+End\+Of\+File&EOF, файл закончился \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ptrOutsideApp@{ptrOutsideApp}!KolibriLib::filesystem@{KolibriLib::filesystem}}\index{KolibriLib::filesystem@{KolibriLib::filesystem}!ptrOutsideApp@{ptrOutsideApp}}}\Hypertarget{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc}\label{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc} 
@@ -109,96 +111,96 @@ Os\+Havent\+Ram&файловой системе недостаточно опе�
 \end{DoxyEnumFields}
 
 
-\doxysubsection{Function Documentation}
+\doxysubsection{Функции}
 \Hypertarget{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72}\label{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!CreateFile@{CreateFile}}
 \index{CreateFile@{CreateFile}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{CreateFile()}{CreateFile()}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Create\+File (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Create\+File (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Создать файл 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em name} & имя файла \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 Значение из списка \doxylink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Errors}
 \end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1filesystem_af8228f98e29fbb8122c93fdc3022d154}\label{namespace_kolibri_lib_1_1filesystem_af8228f98e29fbb8122c93fdc3022d154} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!Delete@{Delete}}
 \index{Delete@{Delete}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Delete (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Delete (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 удалить файл или папку 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em name} & имя файла \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 Значение из списка \doxylink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Errors}
 \end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}\label{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!Exist@{Exist}}
 \index{Exist@{Exist}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{Exist()}{Exist()}}
-{\footnotesize\ttfamily bool Kolibri\+Lib\+::filesystem\+::\+Exist (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{Path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Kolibri\+Lib\+::filesystem\+::\+Exist (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 проверяет существует ли файл или папки 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em путь} & до файла/папки \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 true если файл или папка существует, иначе false 
 \end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1filesystem_acd34191bdf04b15659a1dd13f13b18ad}\label{namespace_kolibri_lib_1_1filesystem_acd34191bdf04b15659a1dd13f13b18ad} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!MakeDirectory@{MakeDirectory}}
 \index{MakeDirectory@{MakeDirectory}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{MakeDirectory()}{MakeDirectory()}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Make\+Directory (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Make\+Directory (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Создать папку 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em path} & путь \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 Значение из списка \doxylink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Errors}
 \end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1filesystem_a57a3f302a162ad3a2738ef9e080c193b}\label{namespace_kolibri_lib_1_1filesystem_a57a3f302a162ad3a2738ef9e080c193b} 
 \index{KolibriLib::filesystem@{KolibriLib::filesystem}!Rename@{Rename}}
 \index{Rename@{Rename}!KolibriLib::filesystem@{KolibriLib::filesystem}}
 \doxysubsubsection{\texorpdfstring{Rename()}{Rename()}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Rename (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{Old\+Name,  }\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{New\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::filesystem\+::\+Rename (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{Old\+Name,  }\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}} \&}]{New\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Аналог mv. 
+Переименовать файл 
 
 
-\begin{DoxyParams}{Parameters}
-{\em Old\+Name} & \\
+\begin{DoxyParams}{Аргументы}
+{\em Old\+Name} & старое имя файла \\
 \hline
-{\em New\+Name} & \\
+{\em New\+Name} & новое имя файла \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Значение из списка \doxylink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Errors}
+\begin{DoxyReturn}{Возвращает}
+Значение из списка \doxylink{namespace_kolibri_lib_1_1filesystem_a6fd3996395f11731751d5ff09edff67c}{Аналог mv. Имена файлов -\/ это полные пути }
 \end{DoxyReturn}

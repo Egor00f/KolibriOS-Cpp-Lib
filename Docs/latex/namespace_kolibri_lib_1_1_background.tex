@@ -1,0 +1,99 @@
+\doxysection{Пространство имен Kolibri\+Lib\+::Background}
+\hypertarget{namespace_kolibri_lib_1_1_background}{}\label{namespace_kolibri_lib_1_1_background}\index{KolibriLib::Background@{KolibriLib::Background}}
+
+
+Работа с фоном  
+
+
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_background_a77949e5ea5d23b4ecc4b652b072017f8}{Get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Получить размеры фонового изображения \end{DoxyCompactList}\item 
+\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_background_afcb0fd60be834628d898f534c1628d5a}{Read\+Point}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&Point)
+\begin{DoxyCompactList}\small\item\em Прочитать точку на фоне \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_a49a4b0d2ddebbe46dffa031b6b43cd46}\label{namespace_kolibri_lib_1_1_background_a49a4b0d2ddebbe46dffa031b6b43cd46} 
+void {\bfseries Redraw\+Background} ()
+\begin{DoxyCompactList}\small\item\em Перерисовать фон \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_a84d8ff24e6442158aac594a3152551aa}\label{namespace_kolibri_lib_1_1_background_a84d8ff24e6442158aac594a3152551aa} 
+void {\bfseries Redraw\+Background} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} \&size)
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_ad3d78860faa31d059c085a5ff9000e1a}\label{namespace_kolibri_lib_1_1_background_ad3d78860faa31d059c085a5ff9000e1a} 
+void {\bfseries Set\+Size} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} \&size)
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_aeef0462c3b90b0a49d0ac65407de12e6}\label{namespace_kolibri_lib_1_1_background_aeef0462c3b90b0a49d0ac65407de12e6} 
+void {\bfseries Draw\+Point} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color)
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_a79bda2b19dd2acc3560b232dbbba9818}\label{namespace_kolibri_lib_1_1_background_a79bda2b19dd2acc3560b232dbbba9818} 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\void {\bfseries Draw\+Image} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord, rgb\+\_\+t(\&rgb)\mbox{[}N\mbox{]})
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_ad51d4dace6f656ccc6badceb3f3af4f6}\label{namespace_kolibri_lib_1_1_background_ad51d4dace6f656ccc6badceb3f3af4f6} 
+void {\bfseries Draw\+Image} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord, rgb\+\_\+t \texorpdfstring{$\ast$}{*}rgb, std\+::size\+\_\+t N)
+\item 
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1_background_a21ad9e230558c6f35cc7e5f859223149}{Draw\+Line}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&p1, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&p2, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+graph)
+\begin{DoxyCompactList}\small\item\em Нарисовать линию на фоне \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_a437e11ee01405056d78e926a397aa1ad}\label{namespace_kolibri_lib_1_1_background_a437e11ee01405056d78e926a397aa1ad} 
+void {\bfseries Draw\+Text} (const std\+::string \&text, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{UI\+::text\+::\+Fonts\+::\+Font}} \&font=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{UI\+::text\+::\+Fonts\+::\+Default\+Font}}, unsigned margin=UI\+::\+Default\+Margin, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color\+Text=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Background\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+area)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_kolibri_lib_1_1_background_a7041f0639a28ce1ef4111cd0e5128194}\label{namespace_kolibri_lib_1_1_background_a7041f0639a28ce1ef4111cd0e5128194} 
+bool {\bfseries f} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Работа с фоном 
+
+\doxysubsection{Функции}
+\Hypertarget{namespace_kolibri_lib_1_1_background_a21ad9e230558c6f35cc7e5f859223149}\label{namespace_kolibri_lib_1_1_background_a21ad9e230558c6f35cc7e5f859223149} 
+\index{KolibriLib::Background@{KolibriLib::Background}!DrawLine@{DrawLine}}
+\index{DrawLine@{DrawLine}!KolibriLib::Background@{KolibriLib::Background}}
+\doxysubsubsection{\texorpdfstring{DrawLine()}{DrawLine()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Background\+::\+Draw\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&}]{p1,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&}]{p2,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+graph} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Нарисовать линию на фоне 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em p1} & точка перавая \\
+\hline
+{\em p2} & точка вторая \\
+\hline
+{\em color} & цвет линии \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespace_kolibri_lib_1_1_background_a77949e5ea5d23b4ecc4b652b072017f8}\label{namespace_kolibri_lib_1_1_background_a77949e5ea5d23b4ecc4b652b072017f8} 
+\index{KolibriLib::Background@{KolibriLib::Background}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!KolibriLib::Background@{KolibriLib::Background}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} Kolibri\+Lib\+::\+Background\+::\+Get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получить размеры фонового изображения 
+
+\begin{DoxyReturn}{Возвращает}
+
+\end{DoxyReturn}
+\Hypertarget{namespace_kolibri_lib_1_1_background_afcb0fd60be834628d898f534c1628d5a}\label{namespace_kolibri_lib_1_1_background_afcb0fd60be834628d898f534c1628d5a} 
+\index{KolibriLib::Background@{KolibriLib::Background}!ReadPoint@{ReadPoint}}
+\index{ReadPoint@{ReadPoint}!KolibriLib::Background@{KolibriLib::Background}}
+\doxysubsubsection{\texorpdfstring{ReadPoint()}{ReadPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Kolibri\+Lib\+::\+Background\+::\+Read\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} \&}]{Point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Прочитать точку на фоне 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em Point} & читаема точка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+
+\end{DoxyReturn}

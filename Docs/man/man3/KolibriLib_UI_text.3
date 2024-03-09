@@ -7,15 +7,39 @@ KolibriLib::UI::text \- Работа с тектсом
 .SH SYNOPSIS
 .br
 .PP
-.SS "Classes"
+.SS "Пространства имен"
 
 .in +1c
+.ti -1c
+.RI "namespace \fBFonts\fP"
+.br
+.RI "Пародия на шрифты "
+.in -1c
+.SS "Классы"
+
+.in +1c
+.ti -1c
+.RI "class \fBChar\fP"
+.br
+.RI "Символ "
+.ti -1c
+.RI "class \fBText\fP"
+.br
+.RI "Текст "
 .ti -1c
 .RI "class \fBTextLabel\fP"
 .br
 .RI "Текстовая метка "
 .in -1c
-.SS "Functions"
+.SS "Перечисления"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFlags\fP { \fBNormal\fP = 0b0000, \fBBold\fP = 0b1, \fBItalic\fP = 0b10, \fBUnderline\fP = 0b100, \fBStrikeThrough\fP = 0b1000, \fBAlignRight\fP = 0b00010000, \fBAlignCenter\fP = 0b00100000 }"
+.br
+.RI "Флаги для RasterWorks\&. "
+.in -1c
+.SS "Функции"
 
 .in +1c
 .ti -1c
@@ -23,29 +47,91 @@ KolibriLib::UI::text \- Работа с тектсом
 .br
 .RI "Получить размер текста "
 .ti -1c
-.RI "void \fBSetTextSize\fP (unsigned int newSize)"
+.RI "void \fBSetTextSize\fP (unsigned newSize)"
 .br
 .RI "Изменить размер текста "
 .ti -1c
-.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const unsigned &size=9, \fBColors::Color\fP color=OS::sys_color_table\&.work_text)"
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const unsigned &size=9, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_text)"
 .br
-.RI "Вывести текст "
+.RI "Просто вывести текст "
 .ti -1c
-.RI "void \fBDrawText\fP (const char *text, const \fBCoord\fP &coord, const unsigned &size=9, \fBColors::Color\fP color=OS::sys_color_table\&.work_text)"
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBSize\fP &size=Fonts::DefaultFont\&.size, unsigned flags=\fBFlags::Normal\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.br
+.ti -1c
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
 .br
 .RI "Вывести текст "
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Работа с тектсом 
-.SH "Function Documentation"
+.SH "Перечисления"
 .PP 
-.SS "void KolibriLib::UI::text::DrawText (const char * text, const \fBCoord\fP & coord, const unsigned & size = \fR9\fP, \fBColors::Color\fP color = \fROS::sys_color_table\&.work_text\fP)\fR [inline]\fP"
+.SS "enum \fBKolibriLib::UI::text::Flags\fP"
+
+.PP
+Флаги для RasterWorks\&. 
+.PP
+\fBЭлементы перечислений\fP
+.in +1c
+.TP
+\fB\fINormal \fP\fP
+Обычный текст 
+.PP
+\fBЗаметки\fP
+.RS 4
+Указывать не обязательно 
+.RE
+.PP
+
+.TP
+\fB\fIBold \fP\fP
+Жирный текст 
+.TP
+\fB\fIItalic \fP\fP
+Курсив 
+.TP
+\fB\fIUnderline \fP\fP
+Нижнее подчёркивание 
+.TP
+\fB\fIStrikeThrough \fP\fP
+Зачёркнутый 
+.TP
+\fB\fIAlignRight \fP\fP
+Выравнивание по правому краю 
+.TP
+\fB\fIAlignCenter \fP\fP
+Выравнивание по центру 
+.SH "Функции"
+.PP 
+.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, unsigned margin = \fRUI::DefaultMargin\fP, const \fBColors::Color\fP & colorText = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fROS::sys_color_table\&.work_area\fP)"
 
 .PP
 Вывести текст 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
+.RS 4
+\fItext\fP Текст 
+.br
+\fIcoord\fP Координаты 
+.br
+\fIfont\fP Шрифт 
+.br
+\fImargin\fP Отступы границ фона от текста 
+.br
+\fIcolorText\fP цвет текста 
+.br
+\fIBackgroundColor\fP цвет фона 
+.RE
+.PP
+.SS "устанавливает курсор в середину экрана"
+
+.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const unsigned & size = \fR9\fP, const \fBColors::Color\fP & color = \fROS::sys_color_table\&.work_text\fP)\fR [inline]\fP"
+
+.PP
+Просто вывести текст 
+.PP
+\fBАргументы\fP
 .RS 4
 \fItext\fP текст 
 .br
@@ -54,44 +140,40 @@ KolibriLib::UI::text \- Работа с тектсом
 \fIcolor\fP цвет текста 
 .RE
 .PP
-
-.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const unsigned & size = \fR9\fP, \fBColors::Color\fP color = \fROS::sys_color_table\&.work_text\fP)\fR [inline]\fP"
-
-.PP
-Вывести текст 
-.PP
-\fBParameters\fP
-.RS 4
-\fItext\fP текст 
-.br
-\fIcoord\fP координаты 
-.br
-\fIcolor\fP цвет текста 
-.RE
-.PP
+.SS "изменения высоты шрифта используйте \fBSetTextSize(unsigned)\fP"
 
 .SS "unsigned int KolibriLib::UI::text::GetTextSize ()\fR [inline]\fP"
 
 .PP
 Получить размер текста 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 текущая высота текста 
 .RE
 .PP
+\fBПредупреждения\fP
+.RS 4
+Функция действует только для текста выводимого через функцию \fBDrawText(const std::string &text, const Coord &coord, const unsigned &size, const Colors::Color &color)\fP
+.RE
+.PP
 
-.SS "void KolibriLib::UI::text::SetTextSize (unsigned int newSize)\fR [inline]\fP"
+.SS "void KolibriLib::UI::text::SetTextSize (unsigned newSize)\fR [inline]\fP"
 
 .PP
 Изменить размер текста 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fInewSize\fP высота текста в px 
 .RE
 .PP
+\fBПредупреждения\fP
+.RS 4
+Функция действует только для текста выводимого через функцию \fBDrawText(const std::string &text, const Coord &coord, const unsigned &size, const Colors::Color &color)\fP
+.RE
+.PP
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

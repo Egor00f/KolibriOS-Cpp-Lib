@@ -1,5 +1,5 @@
 \doxysection{text.\+hpp}
-\hypertarget{text_8hpp_source}{}\label{text_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/text.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/src/include/kolibriLib/text.hpp}}
+\hypertarget{text_8hpp_source}{}\label{text_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/text.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/text.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_TEXT\_H\_\_}}
@@ -9,94 +9,321 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
 \DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}UI.hpp"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}color.hpp"{}}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00013\ \{}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
-\DoxyCodeLine{00015\ \ \ \ \ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }text}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a88c7481d1f3297280474e2d9b5959c64}{GetTextSize}}()}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}};}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=c"{}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}})}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(48),\ \textcolor{stringliteral}{"{}b"{}}(11));}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}};}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a5fd094b88dd3cbeb776db5098c742d75}{SetTextSize}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ newSize)}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\textcolor{stringliteral}{"{}a"{}}(48),\ \textcolor{stringliteral}{"{}b"{}}(12),\ \textcolor{stringliteral}{"{}c"{}}(newSize)}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_ae4182f0d04de49b3bd8f849dee9e3847}{DrawText}}(\textcolor{keyword}{const}\ std::string\ \&text,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&size\ =\ 9,\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text)}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a5fd094b88dd3cbeb776db5098c742d75}{SetTextSize}}(size);}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_text(text.c\_str(),\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}},\ text.length(),\ color.val);}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_ae4182f0d04de49b3bd8f849dee9e3847}{DrawText}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *text,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&size\ =\ 9,\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text)}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <kolibriLib/types.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <kolibriLib/UI/UI.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <kolibriLib/color.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <kolibriLib/graphic/graphic.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <kolibriLib/window/windowBase.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <kolibriLib/UI/image.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <kolibri\_rasterworks.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}fonts.hpp"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }text}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a88c7481d1f3297280474e2d9b5959c64}{GetTextSize}}()}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=c"{}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}})}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(48),\ \textcolor{stringliteral}{"{}b"{}}(11)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a873ed429723726e235de288ca45b47c0}{SetTextSize}}(\textcolor{keywordtype}{unsigned}\ newSize)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ::\textcolor{stringliteral}{"{}a"{}}(48),\ \textcolor{stringliteral}{"{}b"{}}(12),\ \textcolor{stringliteral}{"{}c"{}}(newSize)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a000ef13c7923745461001a023ed4608e}{DrawText}}(\textcolor{keyword}{const}\ std::string\ \&text,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&size\ =\ 9,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text)}
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a5fd094b88dd3cbeb776db5098c742d75}{SetTextSize}}(size);}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_text(text,\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}},\ strlen(text),\ color.val);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a873ed429723726e235de288ca45b47c0}{SetTextSize}}(size);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_text(text.c\_str(),\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}},\ text.length(),\ color.val);}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//=============================================================================================================================================================}}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UI::UIElement}}}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \_text;}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ \ Когданибудь,\ когда\ автор\ сего\ творения\ узнает\ как\ делать\ разные\ шрифты,\ эта\ переменная\ будет\ использоваться}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ FontFamily;}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \_FontSize;}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_TextScale;}
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ab5c98d52ac786155c62755199f8c3508}{TextLabel}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size\ =\ \{16,\ 16\},\ \textcolor{keyword}{const}\ std::string\&\ text\ =\ \textcolor{stringliteral}{"{}TextLabel"{}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ FontSize\ =\ 9,\ \textcolor{keywordtype}{bool}\ TextScale\ =\ \textcolor{keyword}{true},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ TextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ Margin\ =\ 0);}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{\string~TextLabel}}();}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a2db83bcd21ace444e475bddf8d479943}{Render}}();}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a7ef5d357de26353d048a9f0d1bb4df40}{GetText}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a104d82f29dab26bc36fea354c85a7c1c}{GetFontSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a000ef13c7923745461001a023ed4608e}{DrawText}}(\textcolor{keyword}{const}\ std::string\ \&text,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts::DefaultFont}}.size,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ flags\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb}{Flags::Normal}},}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ margin\ =\ UI::DefaultMargin,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&colorText\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&BackgroundColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ w\ =\ ((margin\ *\ 2)\ +\ size.x);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ h\ =\ ((margin\ *\ 2)\ +\ (size.y\ *\ text.length()));}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rgb\_t\ *canvas\ =\ \textcolor{keyword}{new}\ rgb\_t[w\ *\ h];}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(BackgroundColor.\_a\ <\ 1)}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//прозрачность\ фона}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ k\ =\ BackgroundColor.\_a\ /\ 255;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ h;\ i++)}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ w;\ i++)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvas[i\ *\ h\ +\ j]\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}{Colors::BlendColors}}(graphic::ReadPoint(window::GetWindowCoord()\ +\ coord\ +\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}(0,\ i)\ +\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}(j,\ 0)),}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BackgroundColor,}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a4686f00731471d5cd1f0ea052573da80}{GetRGB}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset((\textcolor{keywordtype}{void}*)canvas,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41}{Colors::RGBtoINT}}(BackgroundColor.GetRGB()),\ w\ *\ h);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ drawText(canvas,\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}},\ text.c\_str(),\ text.length(),\ colorText.val,\ flags);}
 \DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af4d3a0cf08dda73880a332c183853633}{SetText}}(\textcolor{keyword}{const}\ std::string\ \&NewText);}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_af9013385e39002c6f2bfa32f19904ddc}{SetFontSize}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&NewTextSize);}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a03d60493c9d72b8a7ae5f58d38236ae1}{SetScale}}(\textcolor{keywordtype}{bool}\ scale);}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}{init}}(\mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ coord,\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ size,\ std::string\ text\ =\ \textcolor{stringliteral}{"{}TextLabel"{}},\ \textcolor{keywordtype}{unsigned}\ FontSize\ =\ 9,\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ TextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text);}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ade3a8b232411beab67d7a4911143e8cf}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}\&\ a);}
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00132\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
-\DoxyCodeLine{00133\ \ \ \ \ }
-\DoxyCodeLine{00134\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_TEXT\_H\_\_}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(colorText.\_a\ <\ 1)}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Прозрачность\ текста}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ k\ =\ colorText.\_a\ /\ 255;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ margin;\ i\ <\ h\ -\/\ margin;\ i++)\ \ \ \textcolor{comment}{//Трогать\ поля\ нет\ смысла}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ margin;\ j\ <\ w\ -\/\ margin;\ i++)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Colors::Color\ b\ =\ graphic::ReadPoint(window::GetWindowCoord()\ +\ coord\ +\ Coord(0,\ i)\ +\ Coord(j,\ 0));}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (b\ !=\ canvas[i\ *\ (h\ -\/\ margin)\ +\ j])}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvas[i\ *\ (h\ -\/\ margin)\ +\ j]\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}{Colors::BlendColors}}(b,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvas[i\ *\ (h\ -\/\ margin)\ +\ j],}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k)}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .GetRGB();}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_bitmap(canvas,\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}},\ w,\ h);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ canvas;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a000ef13c7923745461001a023ed4608e}{DrawText}}(\textcolor{keyword}{const}\ std::string\ \&text,}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\ \&font\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts::DefaultFont}},}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ margin\ =\ UI::DefaultMargin,}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&colorText\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&BackgroundColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area)}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ w\ =\ ((margin\ *\ 2)\ +\ font.size.x);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ h\ =\ ((margin\ *\ 2)\ +\ (font.size.y\ *\ text.length()));}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rgb\_t\ *canvas\ =\ \textcolor{keyword}{new}\ rgb\_t[w\ *\ h];}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (BackgroundColor.\_a\ <\ 1)}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ прозрачность\ фона}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ k\ =\ BackgroundColor.\_a\ /\ 255;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ h;\ i++)}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ w;\ i++)}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvas[i\ *\ h\ +\ j]\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}{Colors::BlendColors}}(graphic::ReadPoint(window::GetWindowCoord()\ +\ coord\ +\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}(0,\ i)\ +\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}(j,\ 0)),}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BackgroundColor,}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k)}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a4686f00731471d5cd1f0ea052573da80}{GetRGB}}();}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memset((\textcolor{keywordtype}{void}\ *)canvas,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41}{Colors::RGBtoINT}}(BackgroundColor.GetRGB()),\ w*h);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ drawText(canvas,\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}},\ text.c\_str(),\ text.length(),\ colorText.val,\ font.\_Flags);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (colorText.\_a\ <\ 1)}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Прозрачность\ текста}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ k\ =\ colorText.\_a\ /\ 255;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ margin;\ i\ <\ h\ -\/\ margin;\ i++)\ \textcolor{comment}{//\ Трогать\ поля\ нет\ смысла}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ margin;\ j\ <\ w\ -\/\ margin;\ i++)}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ b\ =\ graphic::ReadPoint(window::GetWindowCoord()\ +\ coord\ +\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}(0,\ i)\ +\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}(j,\ 0));}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (b\ !=\ canvas[i\ *\ (h\ -\/\ margin)\ +\ j])}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvas[i\ *\ (h\ -\/\ margin)\ +\ j]\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}{Colors::BlendColors}}(b,}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvas[i\ *\ (h\ -\/\ margin)\ +\ j],}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k)}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .GetRGB();}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_draw\_bitmap(canvas,\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}},\ coord.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}},\ w,\ h);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ canvas;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ Type}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ None\ =\ 0,}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Image,\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text}{Text}}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a1b7d6d5d73d6661e87db922d1fd18cff}{Char}}(\textcolor{keywordtype}{char}\ c\ =\ \textcolor{charliteral}{'\ '},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\&\ font\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts::DefaultFont}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&TextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&BackgroundColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_abc7672ace64c0020b3b814b1861a7d04}{Char}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\&\ img,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\&\ font\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts::DefaultFont}});}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_acd2b417f8107d5e7f7615c4ac009eb82}{\string~Char}}();}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_ab58ef855da83e63793e8f1e20e0fbc90}{GetType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a4b67c87fde0d21a2270c01cb24b1e3a7}{Set}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ c,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\&\ font\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts::DefaultFont}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&TextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&BackgroundColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area);}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_ad55360e5bb0506c9a47de9ecc9d25e56}{Set}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1_image}{Images::Image}}\ \&img,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\ \&size\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts::DefaultFont}});}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_ac743c5288a82d3195a5382249c392a15}{SetFlags}}(\textcolor{keywordtype}{unsigned}\ flags);}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a770620d0825f952bccc42c46362e3671}{SetTextColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&NewColor);}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a9528b9d25c3e102cb6979e0667b40883}{SetBackgroundColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&NewColor);}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a0ff41be7d15e6bf10e372fc61a435ca2}{SetFont}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\&\ size)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a3d266c7b420b1000b1e7207519b2bcb3}{GetChar}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a9c9f6445dfcb26ebf296cb9d512714c2}{GetImg}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a6044f2f7c6b34e70d013e624a74ec8e3}{GetFont}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a7d4fa44f1b27b4a97811d8213e089362}{GetFlags}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char_a7c9cbafb0d22201dcdd88d78b22c9ea0}{Print}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}}\ \&coord)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\&\ operator\ =\ (\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\&\ operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\ \&img);}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\&\ operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\ \&c);}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keywordtype}{char}\ c)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\ \&img)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\ \&img)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keywordtype}{char}\ c)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\ \&img)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\ *\_img;}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\_c;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Free();}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{mutable}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\ \_font;}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \textcolor{comment}{/*====================Параметры\ для\ текста=================*/}}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{mutable}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ *\_TextColor;}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{mutable}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ *\_BackgroundColor;}
+\DoxyCodeLine{00300\ \textcolor{comment}{/*=========================================================*/}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \_type;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text}{Text}}}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a848c43c18bd23bf2c36be5de346d9ee0}{Text}}();}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a0c94663549acb84e05bf203673bdf73e}{\string~Text}}();}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a6304a4ae03858133d064303a9f4aa640}{Add}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\&\ c);}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a658e87b66c50a1a6e6d3d39640dad143}{Add}}(\textcolor{keyword}{const}\ std::string\&\ txt);}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_af4ad74911003d2d01b88bba3a84782b8}{Add}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\&\ img);}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a50f90789d11b5c32a1ca876ec3925ae3}{insert}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\&\ c,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a279e3feed8526c479ebcf9d37257f2cf}{insert}}(\textcolor{keyword}{const}\ std::string\ \&txt,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a6fea058c7b14276e03d540219763e189}{insert}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images::img}}\ \&img,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a2b3cc12a6b74de60c7e74f90fed4fec9}{Delete}}(\textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_ab7918ccccb454f8f7c7d03d1c22f682f}{Print}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}}\ \&coord)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a143c7924e3daa06259bc93b3e7306bc5}{SetFont}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts::Font}}\&\ Font);}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a72454cdc486cd55c422ce58da282702a}{SetTextColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&Color);}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a3c5e7c50af916002563b29b55822cacd}{SetBackgroundColor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&Color);}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a6752e4a7728fad2ad4f22c38ded456a5}{GetText}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_char}{Char}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a583340eae4461e85511dbd1aefeb3e36}{GetChar}}(\textcolor{keywordtype}{int}\ i)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a20eacf9e8b1e84ae39895be49e88683e}{length}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a924a553bcf51e37053e5f4a365c4d568}{lenghtPX}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a9bb52ff66ccb36a28959277f99807a47}{SetText}}(std::string\ text);}
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text}{Text}}\&\ operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text}{Text}}\&\ txt);}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_a2f5cda180a5ba57e4774fb6bf1e22fa2}{operator\ ==\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text}{Text}}\&\ txt)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Char>\ \_data;}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//=============================================================================================================================================================}}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UI::UIElement}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text}{Text}}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ Align;}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_TextScale;}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{mutable}\ \textcolor{keywordtype}{bool}\ \_Aligned;}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a0b8ee0d4fb488c0d32334546b16f5b53}{TextLabel}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\&\ size\ =\ \{16,\ 16\},\ \textcolor{keyword}{const}\ std::string\&\ text\ =\ \textcolor{stringliteral}{"{}TextLabel"{}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ FontSize\ =\ 9,\ \textcolor{keywordtype}{bool}\ TextScale\ =\ \textcolor{keyword}{true},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\&\ TextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ Margin\ =\ 0);}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a0b8ee0d4fb488c0d32334546b16f5b53}{TextLabel}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\&\ coord\ =\ \{0,\ 0\},\ \textcolor{keyword}{const}\ Size\&\ size\ =\ \{16,\ 16\},\ \textcolor{keyword}{const}\ std::string\&\ text\ =\ \textcolor{stringliteral}{"{}TextLabel"{}},\ \textcolor{keyword}{const}\ Fonts::Font\ \&Font\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts::DefaultFont}},\ \textcolor{keyword}{const}\ Colors::Color\&\ TextColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_text,\ \textcolor{keyword}{const}\ Colors::Color\ \&BackgroundColor\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.frame\_area\ ,\ \textcolor{keywordtype}{bool}\ TextScale\ =\ \textcolor{keyword}{true},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\&\ Margin\ =\ 0);}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string~TextLabel();}
+\DoxyCodeLine{00429\ }
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ab51d60fe7835fcb32c7ab194d50e37a7}{Render}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a13c115d127bc7f90cb438bbd2b31619d}{SetScale}}(\textcolor{keywordtype}{bool}\ scale);}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_aab96734da4336a4c8b564279712e1a25}{GetScale}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}\&\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_a5bd77e24765b2d0aba522f18304cf743}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}\&\ a);}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label_ae6c1737b23aef9af57388e0e9429c10a}{operator\ ==\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label}{TextLabel}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00458\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
+\DoxyCodeLine{00459\ \ \ \ \ }
+\DoxyCodeLine{00460\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_TEXT\_H\_\_}}
 
 \end{DoxyCode}

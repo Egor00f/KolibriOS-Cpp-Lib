@@ -12,20 +12,21 @@ LIB_NAME = libkcpp
 CONTRIB_DIR = ../contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
-INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I C_Layer/INCLUDE -I src/include
+INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include
 
 #Flags
 CFLAGS = -c -std=c++11 -fpermissive
 
 # Папка в которой лежат cpp файлы
-LIB_PATH = src/cpp
+SRC_PATH = src
 
-SOURCES =  $(LIB_PATH)/types.cpp $(LIB_PATH)/filesystem.cpp $(LIB_PATH)/color.cpp $(LIB_PATH)/mouse.cpp $(LIB_PATH)/keyboard.cpp $(LIB_PATH)/screen.cpp $(LIB_PATH)/os.cpp  $(LIB_PATH)/UI.cpp $(LIB_PATH)/windowBase.cpp $(LIB_PATH)/graphic.cpp $(LIB_PATH)/image.cpp $(LIB_PATH)/text.cpp $(LIB_PATH)/button.cpp $(LIB_PATH)/form.cpp $(LIB_PATH)/thread.cpp $(LIB_PATH)/frame.cpp $(LIB_PATH)/window.cpp $(LIB_PATH)/childWindow.cpp
+SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/text.cpp  $(SRC_PATH)/button.cpp $(SRC_PATH)/window.cpp
+# $(SRC_PATH)/mouse.cpp $(SRC_PATH)/keyboard.cpp $(SRC_PATH)/screen.cpp $(SRC_PATH)/os.cpp  $(SRC_PATH)/UI.cpp $(SRC_PATH)/windowBase.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/image.cpp  $(SRC_PATH)/form.cpp $(SRC_PATH)/thread.cpp $(SRC_PATH)/frame.cpp $(SRC_PATH)/childWindow.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: CLAYER examples  
+all: $(LIB_NAME).a CLAYER install examples done
 
 	
 
@@ -34,7 +35,7 @@ $(LIB_NAME).a: $(OBJECTS)
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "making static library..."
-	$(AR) -rcs $(LIB_NAME).a $(OBJECTS)
+	$(AR) rc $(LIB_NAME).a $(OBJECTS)
 
 
 
@@ -46,7 +47,7 @@ install:
 
 CLAYER:
 	@echo "| make C_Layer:" 
-	$(MAKE) -C C_Layer/ASM
+	$(MAKE) -C include/C_Layer/ASM
 
 clean:
 	@echo " "
@@ -58,7 +59,7 @@ examples:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| make examples"
-	$(MAKE) -C src/examples
+	$(MAKE) -C examples
 
 %.o : %.cpp Makefile
 	@echo " "
@@ -71,3 +72,9 @@ examples:
 	@echo "| -------------------------------------"
 	@echo "| compiling: " $@
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
+
+done:
+	@echo " "
+	@echo "| ----------------------------------- |"
+	@echo "|                 DONE!               |"
+	@echo "| ----------------------------------- |"

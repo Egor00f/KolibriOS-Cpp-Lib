@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib" xml:lang="en-US">
-<title>KolibriLib Namespace Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib" xml:lang="ru">
+<title>Пространство имен KolibriLib</title>
 <indexterm><primary>KolibriLib</primary></indexterm>
 <para>
 
@@ -8,8 +8,12 @@
  
 </para>
 <simplesect>
-    <title>Namespaces    </title>
+    <title>Пространства имен    </title>
         <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_kolibri_lib_1_1_background">Background</link></para>
+
+<para>Работа с фоном </para>
+</listitem>
             <listitem><para>namespace <link linkend="_namespace_kolibri_lib_1_1child_window">childWindow</link></para>
 
 <para>Дочерние окна </para>
@@ -45,7 +49,7 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Classes    </title>
+    <title>Классы    </title>
         <itemizedlist>
             <listitem><para>struct <link linkend="_struct_kolibri_lib_1_1point">point</link></para>
 
@@ -54,36 +58,32 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Functions    </title>
+    <title>Функции    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802"/>void <emphasis role="strong">init</emphasis> ()</para>
-
-<para>инициализация </para>
-</listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6">Wait</link> (unsigned time)</para>
-
-<para>Подождать </para>
-</listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <link linkend="_namespace_kolibri_lib_1a8ef3c016e993ed0a7c2d110d4adae88e">GetScreenSize</link> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <link linkend="_namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48">GetScreenSize</link> ()</para>
 
 <para>Получить разрешение экрана </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> <link linkend="_namespace_kolibri_lib_1a5e62483a2a86b6d4f196cc92de3b9c55">ScreenPointAffiliation</link> (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; POINT)</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> <link linkend="_namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d">ScreenPointAffiliation</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> POINT)</para>
 
-<para>Получить принадлежность </para>
+<para>Получить принадлежность точки </para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; <link linkend="_namespace_kolibri_lib_1aee258b1d924d917faae1e8dff6ccaeeb">GetBackgroundImageSize</link> ()</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802"/>void <emphasis role="strong">init</emphasis> ()</para>
 
-<para>Получить размеры фонового изображения </para>
+<para>инициализация библиотеки </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_namespace_kolibri_lib_1a59afa938f04ee58f39092deac6fbd8df">ReadBackgroungImagePoint</link> (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; Point)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1ab8a227d1c51a256a87817fdf1c37a24c">Wait</link> (int time)</para>
 
-<para>Прочитать точку на фоне </para>
+<para>Подождать </para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1a5538a86d3c38c7c88391e9360e01d023">Wait</link> ()</para>
+
+<para>Подождать, минимальное кол-во времени </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Variables    </title>
+    <title>Переменные    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ac3fc0a4a923e29aa814420d285d1fa9c"/>const std::string <emphasis role="strong">ConfigurationDir</emphasis> = &quot;/kolibrios/etc/&quot;</para>
 </listitem>
@@ -96,96 +96,46 @@
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Основное пространство имён </para>
 
-<para><formalpara><title>Author</title>
+<para><formalpara><title>Автор</title>
 
 <para>Egor00f </para>
 </formalpara>
 </para>
 </section>
 <section>
-<title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1aee258b1d924d917faae1e8dff6ccaeeb"/><section>
-    <title>GetBackgroundImageSize()</title>
-<indexterm><primary>GetBackgroundImageSize</primary><secondary>KolibriLib</secondary></indexterm>
-<indexterm><primary>KolibriLib</primary><secondary>GetBackgroundImageSize</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; KolibriLib::GetBackgroundImageSize ( )</computeroutput></para><para>
-
-<para>Получить размеры фонового изображения </para>
-</para>
-
-<para><formalpara><title>Returns</title>
-
-<para><?linebreak?> </para>
-</formalpara>
-</para>
-</section>
-<anchor xml:id="_namespace_kolibri_lib_1a8ef3c016e993ed0a7c2d110d4adae88e"/><section>
+<title>Функции</title>
+<anchor xml:id="_namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48"/><section>
     <title>GetScreenSize()</title>
 <indexterm><primary>GetScreenSize</primary><secondary>KolibriLib</secondary></indexterm>
 <indexterm><primary>KolibriLib</primary><secondary>GetScreenSize</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; KolibriLib::GetScreenSize ( )</computeroutput></para><para>
+<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> KolibriLib::GetScreenSize ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить разрешение экрана </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>размер экрана </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1a59afa938f04ee58f39092deac6fbd8df"/><section>
-    <title>ReadBackgroungImagePoint()</title>
-<indexterm><primary>ReadBackgroungImagePoint</primary><secondary>KolibriLib</secondary></indexterm>
-<indexterm><primary>KolibriLib</primary><secondary>ReadBackgroungImagePoint</secondary></indexterm>
-<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> KolibriLib::ReadBackgroungImagePoint (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; Point)</computeroutput></para><para>
-
-<para>Прочитать точку на фоне </para>
-</para>
-
-<para>
-                <formalpara>
-                    <title>
-Parameters</title>
-                    <para>
-                    <table frame="all">
-                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
-                        <colspec colwidth="1*"/>
-                        <colspec colwidth="4*"/>
-                        <tbody>
-                            <row>
-<entry>Point</entry><entry>
-<para>читаема точка </para>
-</entry>
-                            </row>
-                        </tbody>
-                        </tgroup>
-                    </table>
-                    </para>
-                </formalpara>
-                <formalpara><title>Returns</title>
-
-<para><?linebreak?> </para>
-</formalpara>
-</para>
-</section>
-<anchor xml:id="_namespace_kolibri_lib_1a5e62483a2a86b6d4f196cc92de3b9c55"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d"/><section>
     <title>ScreenPointAffiliation()</title>
 <indexterm><primary>ScreenPointAffiliation</primary><secondary>KolibriLib</secondary></indexterm>
 <indexterm><primary>KolibriLib</primary><secondary>ScreenPointAffiliation</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> KolibriLib::ScreenPointAffiliation (<link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; unsigned &gt; POINT)</computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> KolibriLib::ScreenPointAffiliation (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> POINT)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
-<para>Получить принадлежность </para>
+<para>Получить принадлежность точки </para>
 </para>
 
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -194,7 +144,7 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>POINT</entry><entry>
-<para></para>
+<para>точка на экране </para>
 </entry>
                             </row>
                         </tbody>
@@ -202,17 +152,29 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
-<para><?linebreak?> </para>
+<para>слот окна которому принадлежит точка </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1a40eea0b3d82e0ea121b28f46390f0df6"/><section>
-    <title>Wait()</title>
+<anchor xml:id="_namespace_kolibri_lib_1a5538a86d3c38c7c88391e9360e01d023"/><section>
+    <title>Wait()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>Wait</primary><secondary>KolibriLib</secondary></indexterm>
 <indexterm><primary>KolibriLib</primary><secondary>Wait</secondary></indexterm>
-<para><computeroutput>void KolibriLib::Wait (unsigned time)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void KolibriLib::Wait ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Подождать, минимальное кол-во времени </para>
+</para>
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Функция">
+<title><title>устанавливает курсор в середину экрана</title></title>
+</section>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1ab8a227d1c51a256a87817fdf1c37a24c"/><section>
+    <title>Wait()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>Wait</primary><secondary>KolibriLib</secondary></indexterm>
+<indexterm><primary>KolibriLib</primary><secondary>Wait</secondary></indexterm>
+<para><computeroutput>void KolibriLib::Wait (int time)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Подождать </para>
 </para>
@@ -220,7 +182,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_fonts_8hpp_source" xml:lang="ru">
+<title>fonts.hpp</title>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__FONTS_H__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__FONTS_H__</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
+9 &#32;&#32;&#32;&#32;{
+10 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>text
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5">Flags</link>
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Normal</link>&#32;=&#32;0b0000,
+18 
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a10e1d7ba50f7e39ad9bda25c7db6bbd1">Bold</link>&#32;=&#32;0b1,
+21 
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5aee53f564426d65e2bfbcd27c3f2e4041">Italic</link>&#32;=&#32;0b10,
+24 
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5ad50974c9f88b95dcd2e5f2734cb6761d">Underline</link>&#32;=&#32;0b100,
+27 
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5aa8e1af1943fbf870356f4a6ec51e5b62">StrikeThrough</link>&#32;=&#32;0b1000,
+30 
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a7dec472363cdd5d34ce3ddecde606433">AlignRight</link>&#32;=&#32;0b00010000,
+33 
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a16fc07ee980cd1ad34b2e65b8cb08fb2">AlignCenter</link>&#32;=&#32;0b00100000,
+36 
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+38 
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Fonts
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>&#32;=&#32;16;
+45 
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Некоторые&#32;заготовки&#32;шрифтов</emphasis>
+47 
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;Arial&#32;=&#32;{5,&#32;6};
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;TimesNewRoman&#32;=&#32;{4,&#32;5};
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;Micrhoma&#32;=&#32;{21,&#32;11};
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;Roboto&#32;=&#32;{7,&#32;10};
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Size&#32;Geologica&#32;=&#32;{5,&#32;7};
+53 
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1abfd73103fbe4c17f47da9949e235793a">Font</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;&amp;FontFamily&#32;=&#32;Arial,&#32;<emphasis role="keywordtype">int</emphasis>&#32;FontSize&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;flags&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>);
+61 
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ac08147be3906bb8b21036dc19284a9fc">SetFontSize</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;FontSize);
+65 
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;_Font;
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_FontSize;
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_Flags;
+69 
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size;
+71 
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;operator=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;f);
+73 
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;f)&#32;<emphasis role="keyword">const</emphasis>;
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+76 
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">DefaultFont</link>(Arial,&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>);
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+81 &#32;&#32;&#32;&#32;}
+82 }
+83 
+84 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FONTS_H__</emphasis>
+</programlisting></section>

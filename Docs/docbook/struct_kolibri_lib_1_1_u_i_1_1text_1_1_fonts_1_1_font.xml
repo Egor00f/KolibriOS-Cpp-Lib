@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font" xml:lang="ru">
+<title>Структура KolibriLib::UI::text::Fonts::Font</title>
+<indexterm><primary>KolibriLib::UI::text::Fonts::Font</primary></indexterm>
+<para>
+
+<para>Шрифт </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;fonts.hpp&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Открытые члены    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1abfd73103fbe4c17f47da9949e235793a">Font</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;FontFamily=Arial, int FontSize=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>, unsigned flags=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>)</para>
+</listitem>
+            <listitem><para>void <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ac08147be3906bb8b21036dc19284a9fc">SetFontSize</link> (unsigned FontSize)</para>
+
+<para>Изменить размер шрифта </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ab57e3885be8efc6c4d38678b631a0cbe"/><link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link> &amp;f)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1a4458c87eee7c96a44adbda4154f80ead"/>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link> &amp;f) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Открытые атрибуты    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ab00a7aa446df1f8e6f195097194a5817"/><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <emphasis role="strong">_Font</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1afd8cbd9f1f689e5bfa15814834d8ae6b"/>unsigned <emphasis role="strong">_FontSize</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1aa5c428e74cd2f6b095802432c18168ee"/>unsigned <emphasis role="strong">_Flags</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1affa0e150312ecc6ff499f7ba5fc30f4b"/><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <emphasis role="strong">size</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Шрифт </para>
+</section>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1abfd73103fbe4c17f47da9949e235793a"/><section>
+    <title>Font()</title>
+<indexterm><primary>Font</primary><secondary>KolibriLib::UI::text::Fonts::Font</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Fonts::Font</primary><secondary>Font</secondary></indexterm>
+<para><computeroutput>KolibriLib::UI::text::Fonts::Font::Font (const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; FontFamily = <computeroutput>Arial</computeroutput>
+, int FontSize = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link></computeroutput>
+, unsigned flags = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link></computeroutput>
+)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>FontFamily</entry><entry>
+<para>Шрифт, фактически это соотношение сторон </para>
+</entry>
+                            </row>
+                            <row>
+<entry>FontSize</entry><entry>
+<para>Высота шрифта </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ac08147be3906bb8b21036dc19284a9fc"/><section>
+    <title>SetFontSize()</title>
+<indexterm><primary>SetFontSize</primary><secondary>KolibriLib::UI::text::Fonts::Font</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text::Fonts::Font</primary><secondary>SetFontSize</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::text::Fonts::Font::SetFontSize (unsigned FontSize)</computeroutput></para><para>
+
+<para>Изменить размер шрифта </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>FontSize</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<para>
+Объявления и описания членов структуры находятся в файле:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp</section>
+</section>

@@ -1,17 +1,29 @@
-\doxysection{Kolibri\+Lib\+::window Namespace Reference}
+\doxysection{Пространство имен Kolibri\+Lib\+::window}
 \hypertarget{namespace_kolibri_lib_1_1window}{}\label{namespace_kolibri_lib_1_1window}\index{KolibriLib::window@{KolibriLib::window}}
 
 
 Работа с окном  
 
 
-\doxysubsubsection*{Classes}
+\doxysubsubsection*{Классы}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_kolibri_lib_1_1window_1_1_window}{Window}}
 \begin{DoxyCompactList}\small\item\em Класс для работы с окном \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Enumerations}
+\doxysubsubsection*{Перечисления}
 \begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3}{Window\+Style}} \{ \newline
+\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da}{Fix\+Size}} = 0
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a437c943279eb3aced1be94554420c7cc}{No\+Draw}} = 1
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}{Can\+Resize}} = 2
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573}{with\+Skin}} = 3
+, \newline
+\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d}{Fix\+Sizewith\+Skin}} = 4
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd}{No\+Draw\+Workspace}} = 0b01000000
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}{Normal\+Draw}} = 0b00000000
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218}{Gradient\+Draw}} = 0b10000000
+ \}
 \item 
 \Hypertarget{namespace_kolibri_lib_1_1window_a7e5a1c57ea495417e3d2442f66d0fe44}\label{namespace_kolibri_lib_1_1window_a7e5a1c57ea495417e3d2442f66d0fe44} 
 enum \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a7e5a1c57ea495417e3d2442f66d0fe44}{Pos}} \{ {\bfseries Back\+Ground} = -\/2
@@ -20,10 +32,10 @@ enum \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a7e5a1c57ea495417e3d2442f6
 , {\bfseries Always\+Top} = 1
  \}
 \begin{DoxyCompactList}\small\item\em Список констант положения окна относительно других окон\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ab4de97f81da73fdfc2975f75c97c23c5}{Create\+Window}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} size, const std\+::string \&title, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Work\+Color=OS\+::sys\+\_\+color\+\_\+table.\+frame\+\_\+area, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Title\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, const uint32\+\_\+t style=20)
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ae11ecf3ca59d8ae18ba08bfb128fb5da}{Create\+Window}} (const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} size, const std\+::string \&title, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Work\+Color=OS\+::sys\+\_\+color\+\_\+table.\+frame\+\_\+area, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Title\+Color=OS\+::sys\+\_\+color\+\_\+table.\+work\+\_\+text, const uint32\+\_\+t style=\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}{Window\+Style\+::\+Can\+Resize}}+\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}{Window\+Style\+::\+Normal\+Draw}})
 \item 
 void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88}{Unfocus\+Window}} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} slot)
 \begin{DoxyCompactList}\small\item\em Снять фокус с окна \end{DoxyCompactList}\item 
@@ -37,13 +49,16 @@ void {\bfseries Minimize\+Window} ()
 \Hypertarget{namespace_kolibri_lib_1_1window_a91e8114838ac0faa6b26cb1763643a92}\label{namespace_kolibri_lib_1_1window_a91e8114838ac0faa6b26cb1763643a92} 
 void {\bfseries Minimize\+All\+Windows} ()
 \begin{DoxyCompactList}\small\item\em Свернуть все окна \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_1_1window_a08fa1c0d034c065f169245ed1ae06842}\label{namespace_kolibri_lib_1_1window_a08fa1c0d034c065f169245ed1ae06842} 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries Get\+Window\+Coord} ()
+\item 
 int \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a250b79696e71e4db883c35beac60b0a3}{Get\+Window\+Pos}} ()
 \begin{DoxyCompactList}\small\item\em Получить положение окна относительно других окон \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a7a45146a32e2035cedd93968251b5831}{Set\+Window\+Pos}} (int pos, Thread\+::\+PID pid=-\/1)
+bool \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a7a45146a32e2035cedd93968251b5831}{Set\+Window\+Pos}} (int pos, \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{Thread\+::\+PID}} pid=-\/1)
 \begin{DoxyCompactList}\small\item\em Изменить положение окна относительно дроугих окон \end{DoxyCompactList}\item 
 unsigned \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a9b4d6e11048953c9f7a1e530f135fb20}{Get\+Skin\+Height}} ()
 \begin{DoxyCompactList}\small\item\em Получить высоту скина(заголовка окна) \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
+\doxysubsubsection*{Переменные}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{namespace_kolibri_lib_1_1window_a1f1ae2f8103c37a9b5a88cce14f75f9d}\label{namespace_kolibri_lib_1_1window_a1f1ae2f8103c37a9b5a88cce14f75f9d} 
@@ -54,30 +69,72 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 \begin{DoxyCompactList}\small\item\em Соординаты окна по умолчанию \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Подробное описание}
 Работа с окном 
 
-\doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_1_1window_ab4de97f81da73fdfc2975f75c97c23c5}\label{namespace_kolibri_lib_1_1window_ab4de97f81da73fdfc2975f75c97c23c5} 
+\doxysubsection{Перечисления}
+\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3} 
+\index{KolibriLib::window@{KolibriLib::window}!WindowStyle@{WindowStyle}}
+\index{WindowStyle@{WindowStyle}!KolibriLib::window@{KolibriLib::window}}
+\doxysubsubsection{\texorpdfstring{WindowStyle}{WindowStyle}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3}{Kolibri\+Lib\+::window\+::\+Window\+Style}}}
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FixSize@{FixSize}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!FixSize@{FixSize}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da} 
+Fix\+Size&окно фиксированных размеров \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoDraw@{NoDraw}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!NoDraw@{NoDraw}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a437c943279eb3aced1be94554420c7cc}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a437c943279eb3aced1be94554420c7cc} 
+No\+Draw&только определить область окна, ничего не рисовать \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CanResize@{CanResize}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!CanResize@{CanResize}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e} 
+Can\+Resize&окно изменяемых размеров \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{withSkin@{withSkin}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!withSkin@{withSkin}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573} 
+with\+Skin&окно со скином \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FixSizewithSkin@{FixSizewithSkin}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!FixSizewithSkin@{FixSizewithSkin}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d} 
+Fix\+Sizewith\+Skin&окно со скином фиксированных размеров \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoDrawWorkspace@{NoDrawWorkspace}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!NoDrawWorkspace@{NoDrawWorkspace}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd} 
+No\+Draw\+Workspace&не закрашивать рабочую область при отрисовке окна \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NormalDraw@{NormalDraw}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!NormalDraw@{NormalDraw}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb} 
+Normal\+Draw&нормальная заливка рабочей области \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GradientDraw@{GradientDraw}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!GradientDraw@{GradientDraw}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218} 
+Gradient\+Draw&градиентная заливка рабочей области \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Функции}
+\Hypertarget{namespace_kolibri_lib_1_1window_ae11ecf3ca59d8ae18ba08bfb128fb5da}\label{namespace_kolibri_lib_1_1window_ae11ecf3ca59d8ae18ba08bfb128fb5da} 
 \index{KolibriLib::window@{KolibriLib::window}!CreateWindow@{CreateWindow}}
 \index{CreateWindow@{CreateWindow}!KolibriLib::window@{KolibriLib::window}}
 \doxysubsubsection{\texorpdfstring{CreateWindow()}{CreateWindow()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}}}]{coord,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}}}]{size,  }\item[{const std\+::string \&}]{title,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Work\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.frame\+\_\+area},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Title\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{const uint32\+\_\+t}]{style = {\ttfamily 20} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}}}]{coord,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}}}]{size,  }\item[{const std\+::string \&}]{title,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Work\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.frame\+\_\+area},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Title\+Color = {\ttfamily OS\+:\+:sys\+\_\+color\+\_\+table.work\+\_\+text},  }\item[{const uint32\+\_\+t}]{style = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}{Window\+Style\+::\+Can\+Resize}}~+~\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}{Window\+Style\+::\+Normal\+Draw}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
-\begin{DoxyParams}{Parameters}
-{\em coord} & \\
+\begin{DoxyParams}{Аргументы}
+{\em coord} & Координаты окна(его левого верхнего угола) на экране \\
 \hline
-{\em size} & \\
+{\em size} & Размеры окна \\
 \hline
-{\em string} & \\
+{\em title} & Заголовок окна \\
 \hline
-{\em $<$br$>$} & \\
+{\em Work\+Color} & цвет рабочей области окна \\
 \hline
-{\em style} & \\
+{\em Title\+Color} & Цвет текста заголовка \\
 \hline
-{\em Title\+Color} & ~\newline
- \\
+{\em style} & Стиль \\
 \hline
 \end{DoxyParams}
 \Hypertarget{namespace_kolibri_lib_1_1window_a8522ac0eb50e9a7b5ce0091e5fc9d257}\label{namespace_kolibri_lib_1_1window_a8522ac0eb50e9a7b5ce0091e5fc9d257} 
@@ -91,7 +148,7 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 Поставить фокус на окно 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em slot} & слот окна \\
 \hline
 \end{DoxyParams}
@@ -105,9 +162,8 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 
 Получить слот активного окна 
 
-\begin{DoxyReturn}{Returns}
-~\newline
- 
+\begin{DoxyReturn}{Возвращает}
+Слот активного в данный момент окна 
 \end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1window_a9b4d6e11048953c9f7a1e530f135fb20}\label{namespace_kolibri_lib_1_1window_a9b4d6e11048953c9f7a1e530f135fb20} 
 \index{KolibriLib::window@{KolibriLib::window}!GetSkinHeight@{GetSkinHeight}}
@@ -119,7 +175,7 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 
 Получить высоту скина(заголовка окна) 
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 высота скина 
 \end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1window_a250b79696e71e4db883c35beac60b0a3}\label{namespace_kolibri_lib_1_1window_a250b79696e71e4db883c35beac60b0a3} 
@@ -132,29 +188,24 @@ const \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} {\bfseries D
 
 Получить положение окна относительно других окон 
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 одна из констант из списка \doxylink{namespace_kolibri_lib_1_1window_a7e5a1c57ea495417e3d2442f66d0fe44}{Pos}
 \end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1window_a7a45146a32e2035cedd93968251b5831}\label{namespace_kolibri_lib_1_1window_a7a45146a32e2035cedd93968251b5831} 
 \index{KolibriLib::window@{KolibriLib::window}!SetWindowPos@{SetWindowPos}}
 \index{SetWindowPos@{SetWindowPos}!KolibriLib::window@{KolibriLib::window}}
 \doxysubsubsection{\texorpdfstring{SetWindowPos()}{SetWindowPos()}}
-{\footnotesize\ttfamily bool Kolibri\+Lib\+::window\+::\+Set\+Window\+Pos (\begin{DoxyParamCaption}\item[{int}]{pos,  }\item[{Thread\+::\+PID}]{pid = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily bool Kolibri\+Lib\+::window\+::\+Set\+Window\+Pos (\begin{DoxyParamCaption}\item[{int}]{pos,  }\item[{\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{Thread\+::\+PID}}}]{pid = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Изменить положение окна относительно дроугих окон 
 
 
-\begin{DoxyParams}{Parameters}
-{\em pos} & \\
-\hline
-{\em pid} & процесс \\
+\begin{DoxyParams}{Аргументы}
+{\em pos} & значение из списка \doxylink{namespace_kolibri_lib_1_1window_a7e5a1c57ea495417e3d2442f66d0fe44}{pid процесс окна, по умолчанию текущий  false если ошибка, }\\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-false если ошибка 
-\end{DoxyReturn}
 \Hypertarget{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88}\label{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88} 
 \index{KolibriLib::window@{KolibriLib::window}!UnfocusWindow@{UnfocusWindow}}
 \index{UnfocusWindow@{UnfocusWindow}!KolibriLib::window@{KolibriLib::window}}
@@ -166,7 +217,7 @@ false если ошибка
 Снять фокус с окна 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em slot} & слот окна \\
 \hline
 \end{DoxyParams}

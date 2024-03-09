@@ -10,8 +10,8 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 .PP
 \fR#include <image\&.hpp>\fP
 .PP
-Inherits \fBKolibriLib::UI::UIElement\fP\&.
-.SS "Public Member Functions"
+Базовые классы:\fBKolibriLib::UI::UIElement\fP и \fBKolibriLib::UI::Images::img\fP\&.
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
@@ -23,11 +23,7 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .br
 .RI "Деструктор "
 .ti -1c
-.RI "void \fBLoadImage\fP (const \fBfilesystem::Path\fP &Path=DefaultImage)"
-.br
-.RI "Загрузить изображение "
-.ti -1c
-.RI "void \fBRender\fP (\fBSize\fP size={0, 0})"
+.RI "void \fBRender\fP () const"
 .br
 .RI "Вывести изображение в окно "
 .ti -1c
@@ -36,20 +32,16 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .ti -1c
 .RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={100, 100}, const \fBfilesystem::Path\fP &Path=DefaultImage)"
 .br
-.ti -1c
-.RI "void \fBSetImg\fP (Image_t *img)"
-.br
-.RI "Изменить изображение "
 .in -1c
 
-Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP () const"
+.RI "const \fBSize\fP & \fBGetSize\fP () const"
 .br
 .RI "Получить размер элемента "
 .ti -1c
@@ -61,7 +53,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить отступы "
 .ti -1c
-.RI "\fBColors::Color\fP \fBGetColor\fP () const"
+.RI "const \fBColors::Color\fP & \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -71,7 +63,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
 .RI "Получить координаты элемента "
 .ti -1c
@@ -96,10 +88,25 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
-.SS "Additional Inherited Members"
+
+Открытые члены унаследованные от \fBKolibriLib::UI::Images::img\fP
+.in +1c
+.ti -1c
+.RI "virtual void \fBRender\fP (const \fBCoord\fP &coord, const \fBSize\fP &size) const"
+.br
+.ti -1c
+.RI "void \fBLoadImage\fP (const \fBfilesystem::Path\fP &Path=DefaultImage)"
+.br
+.RI "Загрузить изображение "
+.ti -1c
+.RI "void \fBSetImg\fP (Image_t *\fBimg\fP)"
+.br
+.RI "Изменить изображение "
+.in -1c
+.SS "Дополнительные унаследованные члены"
 
 
-Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+Защищенные данные унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBCoord\fP \fB_coord\fP"
@@ -125,17 +132,24 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Оносительны ли координаты "
 .in -1c
-.SH "Detailed Description"
+
+Защищенные данные унаследованные от \fBKolibriLib::UI::Images::img\fP
+.in +1c
+.ti -1c
+.RI "Image_t * \fB_img\fP"
+.br
+.in -1c
+.SH "Подробное описание"
 .PP 
 Картинка как элемент интерфейса 
-.SH "Constructor & Destructor Documentation"
+.SH "Конструктор(ы)"
 .PP 
-.SS "Images::Image::Image (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{100, 100}\fP)"
+.SS "KolibriLib::UI::Images::Image::Image (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{100, 100}\fP)"
 
 .PP
 Конструктор 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIcoord\fP Координаты 
 .br
@@ -147,28 +161,17 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SH "Member Function Documentation"
+.SH "Методы"
 .PP 
-.SS "void Images::Image::LoadImage (const \fBfilesystem::Path\fP & Path = \fRDefaultImage\fP)"
-
-.PP
-Загрузить изображение 
-.PP
-\fBParameters\fP
-.RS 4
-\fIPath\fP путь до файла 
-.RE
-.PP
-
 .SS "\fBImages::Image\fP & KolibriLib::UI::Images::Image::operator= (const \fBImage\fP & a)"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIa\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -176,30 +179,19 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "void Images::Image::Render (\fBSize\fP size = \fR{0, 0}\fP)"
+.SS "void KolibriLib::UI::Images::Image::Render () const"
 
 .PP
 Вывести изображение в окно 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIsize\fP Размер выводимого изображения 
 .RE
 .PP
 .SS "растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется"
 
-.SS "void Images::Image::SetImg (Image_t * img)"
 
-.PP
-Изменить изображение 
-.PP
-\fBParameters\fP
-.RS 4
-\fIimg\fP Указатель на струтуру \fBImage_t\fP
-.RE
-.PP
-
-
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

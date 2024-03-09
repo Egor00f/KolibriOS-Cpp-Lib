@@ -23,11 +23,12 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"Main Page",url:"index.html"},
-{text:"Namespaces",url:"namespaces.html",children:[
-{text:"Namespace List",url:"namespaces.html"},
-{text:"Namespace Members",url:"namespacemembers.html",children:[
-{text:"All",url:"namespacemembers.html",children:[
+{text:"Титульная страница",url:"index.html"},
+{text:"Описания",url:"pages.html"},
+{text:"Пространства имен",url:"namespaces.html",children:[
+{text:"Пространства имен",url:"namespaces.html"},
+{text:"Члены пространств имен",url:"namespacemembers.html",children:[
+{text:"Указатель",url:"namespacemembers.html",children:[
 {text:"a",url:"namespacemembers.html#index_a"},
 {text:"b",url:"namespacemembers.html#index_b"},
 {text:"c",url:"namespacemembers.html#index_c"},
@@ -47,7 +48,7 @@ var menudata={children:[
 {text:"t",url:"namespacemembers.html#index_t"},
 {text:"u",url:"namespacemembers.html#index_u"},
 {text:"w",url:"namespacemembers.html#index_w"}]},
-{text:"Functions",url:"namespacemembers_func.html",children:[
+{text:"Функции",url:"namespacemembers_func.html",children:[
 {text:"a",url:"namespacemembers_func.html#index_a"},
 {text:"b",url:"namespacemembers_func.html#index_b"},
 {text:"c",url:"namespacemembers_func.html#index_c"},
@@ -63,16 +64,33 @@ var menudata={children:[
 {text:"t",url:"namespacemembers_func.html#index_t"},
 {text:"u",url:"namespacemembers_func.html#index_u"},
 {text:"w",url:"namespacemembers_func.html#index_w"}]},
-{text:"Variables",url:"namespacemembers_vars.html"},
-{text:"Typedefs",url:"namespacemembers_type.html"},
-{text:"Enumerations",url:"namespacemembers_enum.html"},
-{text:"Enumerator",url:"namespacemembers_eval.html"}]}]},
-{text:"Classes",url:"annotated.html",children:[
-{text:"Class List",url:"annotated.html"},
-{text:"Class Index",url:"classes.html"},
-{text:"Class Hierarchy",url:"hierarchy.html"},
-{text:"Class Members",url:"functions.html",children:[
-{text:"All",url:"functions.html",children:[
+{text:"Переменные",url:"namespacemembers_vars.html"},
+{text:"Определения типов",url:"namespacemembers_type.html"},
+{text:"Перечисления",url:"namespacemembers_enum.html"},
+{text:"Элементы перечислений",url:"namespacemembers_eval.html",children:[
+{text:"a",url:"namespacemembers_eval.html#index_a"},
+{text:"b",url:"namespacemembers_eval.html#index_b"},
+{text:"c",url:"namespacemembers_eval.html#index_c"},
+{text:"d",url:"namespacemembers_eval.html#index_d"},
+{text:"e",url:"namespacemembers_eval.html#index_e"},
+{text:"f",url:"namespacemembers_eval.html#index_f"},
+{text:"g",url:"namespacemembers_eval.html#index_g"},
+{text:"i",url:"namespacemembers_eval.html#index_i"},
+{text:"k",url:"namespacemembers_eval.html#index_k"},
+{text:"m",url:"namespacemembers_eval.html#index_m"},
+{text:"n",url:"namespacemembers_eval.html#index_n"},
+{text:"o",url:"namespacemembers_eval.html#index_o"},
+{text:"p",url:"namespacemembers_eval.html#index_p"},
+{text:"r",url:"namespacemembers_eval.html#index_r"},
+{text:"s",url:"namespacemembers_eval.html#index_s"},
+{text:"u",url:"namespacemembers_eval.html#index_u"},
+{text:"w",url:"namespacemembers_eval.html#index_w"}]}]}]},
+{text:"Классы",url:"annotated.html",children:[
+{text:"Классы",url:"annotated.html"},
+{text:"Алфавитный указатель классов",url:"classes.html"},
+{text:"Иерархия классов",url:"hierarchy.html"},
+{text:"Члены классов",url:"functions.html",children:[
+{text:"Указатель",url:"functions.html",children:[
 {text:"_",url:"functions.html#index__5F"},
 {text:"a",url:"functions.html#index_a"},
 {text:"b",url:"functions.html#index_b"},
@@ -85,6 +103,7 @@ var menudata={children:[
 {text:"i",url:"functions.html#index_i"},
 {text:"l",url:"functions.html#index_l"},
 {text:"o",url:"functions.html#index_o"},
+{text:"p",url:"functions.html#index_p"},
 {text:"r",url:"functions.html#index_r"},
 {text:"s",url:"functions.html#index_s"},
 {text:"t",url:"functions.html#index_t"},
@@ -93,7 +112,7 @@ var menudata={children:[
 {text:"x",url:"functions.html#index_x"},
 {text:"y",url:"functions.html#index_y"},
 {text:"~",url:"functions.html#index__7E"}]},
-{text:"Functions",url:"functions_func.html",children:[
+{text:"Функции",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
 {text:"b",url:"functions_func.html#index_b"},
 {text:"c",url:"functions_func.html#index_c"},
@@ -105,14 +124,16 @@ var menudata={children:[
 {text:"i",url:"functions_func.html#index_i"},
 {text:"l",url:"functions_func.html#index_l"},
 {text:"o",url:"functions_func.html#index_o"},
+{text:"p",url:"functions_func.html#index_p"},
 {text:"r",url:"functions_func.html#index_r"},
 {text:"s",url:"functions_func.html#index_s"},
 {text:"t",url:"functions_func.html#index_t"},
 {text:"u",url:"functions_func.html#index_u"},
 {text:"w",url:"functions_func.html#index_w"},
 {text:"~",url:"functions_func.html#index__7E"}]},
-{text:"Variables",url:"functions_vars.html"},
-{text:"Enumerations",url:"functions_enum.html"},
-{text:"Enumerator",url:"functions_eval.html"}]}]},
-{text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"}]}]}
+{text:"Переменные",url:"functions_vars.html"},
+{text:"Перечисления",url:"functions_enum.html"},
+{text:"Элементы перечислений",url:"functions_eval.html"}]}]},
+{text:"Файлы",url:"files.html",children:[
+{text:"Файлы",url:"files.html"}]},
+{text:"Примеры",url:"examples.html"}]}

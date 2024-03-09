@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_union_kolibri_lib_1_1_colors_1_1_color" xml:lang="en-US">
-<title>KolibriLib::Colors::Color Union Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_union_kolibri_lib_1_1_colors_1_1_color" xml:lang="ru">
+<title>Объединение KolibriLib::Colors::Color</title>
 <indexterm><primary>KolibriLib::Colors::Color</primary></indexterm>
 <para>
 
@@ -11,9 +11,9 @@
 <computeroutput>#include &lt;color.hpp&gt;</computeroutput>
 </para>
 <simplesect>
-    <title>Public Member Functions    </title>
+    <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1ad6f92352e6208a6463a1f31932c19614">Color</link> (ksys_color_t a=0)</para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">Color</link> (const ksys_color_t &amp;a=0)</para>
 
 <para>Конструктор </para>
 </listitem>
@@ -21,9 +21,17 @@
 </listitem>
             <listitem><para><anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1a8a1c4828566c5be205066c547fa7fb2a"/><emphasis role="strong">Color</emphasis> (const <link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">ARGB</link> &amp;a)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1a11ac20ababf35a304f3ec8613941faf6"/><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;a)</para>
+            <listitem><para><anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1aea097d45cc5dc6e00d376377a80409eb"/><emphasis role="strong">Color</emphasis> (const rgb_t &amp;color)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1af5c03ec0be23161994483a05b62de569"/><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; <emphasis role="strong">operator+</emphasis> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;a)</para>
+            <listitem><para>rgb_t <link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a4686f00731471d5cd1f0ea052573da80">GetRGB</link> () const</para>
+
+<para>Получить rgb_t. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1a91f79e0c684f84d8c38ea2f2ed6b4590"/><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;a)</para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; <link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a1eab7c69f57dc723241bf57f7db16ac3">operator+</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;a)</para>
+
+<para>Смешивает два цвета (среднее занчение) </para>
 </listitem>
             <listitem><para><anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1ad9c33bcc9f1a1407b4922750f98f25d8"/>bool <emphasis role="strong">operator==</emphasis> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;a) const</para>
 </listitem>
@@ -32,7 +40,7 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Public Attributes    </title>
+    <title>Открытые атрибуты    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1af06c535f630678e5952f5e20f00cf557"/>ksys_color_t <emphasis role="strong">val</emphasis></para>
 </listitem>
@@ -40,11 +48,11 @@
         <itemizedlist>
             <listitem><para>&#160;&#160;&#160;uint8_t <emphasis role="strong">_a</emphasis></para>
 </listitem>
-            <listitem><para>&#160;&#160;&#160;uint8_t <emphasis role="strong">red</emphasis></para>
+            <listitem><para>&#160;&#160;&#160;uint8_t <emphasis role="strong">blue</emphasis></para>
 </listitem>
             <listitem><para>&#160;&#160;&#160;uint8_t <emphasis role="strong">green</emphasis></para>
 </listitem>
-            <listitem><para>&#160;&#160;&#160;uint8_t <emphasis role="strong">blue</emphasis></para>
+            <listitem><para>&#160;&#160;&#160;uint8_t <emphasis role="strong">red</emphasis></para>
 </listitem>
         </itemizedlist>
 </listitem>
@@ -53,17 +61,17 @@
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Цвет </para>
 </section>
 <section>
-<title>Constructor &amp; Destructor Documentation</title>
-<anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1ad6f92352e6208a6463a1f31932c19614"/><section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537"/><section>
     <title>Color()</title>
 <indexterm><primary>Color</primary><secondary>KolibriLib::Colors::Color</secondary></indexterm>
 <indexterm><primary>KolibriLib::Colors::Color</primary><secondary>Color</secondary></indexterm>
-<para><computeroutput>KolibriLib::Colors::Color::Color (ksys_color_t a = <computeroutput>0</computeroutput>
+<para><computeroutput>KolibriLib::Colors::Color::Color (const ksys_color_t &amp; a = <computeroutput>0</computeroutput>
 )</computeroutput></para><para>
 
 <para>Конструктор </para>
@@ -72,7 +80,7 @@
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -91,7 +99,60 @@ Parameters</title>
                 </formalpara>
                 </para>
 </section>
+</section>
+<section>
+<title>Методы</title>
+<anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1a4686f00731471d5cd1f0ea052573da80"/><section>
+    <title>GetRGB()</title>
+<indexterm><primary>GetRGB</primary><secondary>KolibriLib::Colors::Color</secondary></indexterm>
+<indexterm><primary>KolibriLib::Colors::Color</primary><secondary>GetRGB</secondary></indexterm>
+<para><computeroutput>rgb_t KolibriLib::Colors::Color::GetRGB ( ) const</computeroutput></para><para>
+
+<para>Получить rgb_t. </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_union_kolibri_lib_1_1_colors_1_1_color_1a1eab7c69f57dc723241bf57f7db16ac3"/><section>
+    <title>operator+()</title>
+<indexterm><primary>operator+</primary><secondary>KolibriLib::Colors::Color</secondary></indexterm>
+<indexterm><primary>KolibriLib::Colors::Color</primary><secondary>operator+</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">KolibriLib::Colors::Color</link> &amp; KolibriLib::Colors::Color::operator+ (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; a)</computeroutput></para><para>
+
+<para>Смешивает два цвета (среднее занчение) </para>
+</para>
+
 <para>
-The documentation for this union was generated from the following files:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hppF:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.cpp</section>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<para>
+Объявления и описания членов объединения находятся в файле:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/color.hpp</section>
 </section>

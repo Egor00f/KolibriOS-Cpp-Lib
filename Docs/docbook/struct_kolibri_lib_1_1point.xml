@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_kolibri_lib_1_1point" xml:lang="en-US">
-<title>KolibriLib::point&lt; T &gt; Struct Template Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_kolibri_lib_1_1point" xml:lang="ru">
+<title>Шаблон структуры KolibriLib::point&lt; T &gt;</title>
 <indexterm><primary>KolibriLib::point&lt; T &gt;</primary></indexterm>
 <para>
 
@@ -11,9 +11,33 @@
 <computeroutput>#include &lt;types.hpp&gt;</computeroutput>
 </para>
 <simplesect>
-    <title>Public Member Functions    </title>
+    <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <link linkend="_struct_kolibri_lib_1_1point_1a9622605fb63ef73d9cb0e4ac6ac9fe9c">operator=</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp;p)</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point_1aa3ef97fd19ba3b0935c2ed0ae5f9e55d">point</link> (T X=(T) 0, T Y=(T) 0)</para>
+
+<para>Конструктор </para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point_1a2e4751aebabf649201893564603c925d">point</link> (float f)</para>
+
+<para>Точка как отношение x/y. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1point_1a7a35c1c2e7a7ec711c4ea463a874be8c"/>ksys_pos_t <emphasis role="strong">GetKsysPost</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1point_1ae65636000dd6c32db0b20ef4be4b46b5"/><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <emphasis role="strong">operator+</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp;a)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1point_1abdf5f9fe3cdc00d45291a1eca4b88218"/><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <emphasis role="strong">operator-</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp;a)</para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <link linkend="_struct_kolibri_lib_1_1point_1a4cc022aa1df6376d76b4c0a6102ea92e">operator=</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp;p)</para>
+</listitem>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <link linkend="_struct_kolibri_lib_1_1point_1a0891cef00565f4ca0844407aa83f96fe">operator+=</link> (const T &amp;p)</para>
+
+<para>Прибавить к обоим кординатам значение </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1point_1a686832ea1ce3658590ba27bce10d0493"/><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <emphasis role="strong">operator-=</emphasis> (const T &amp;p)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1point_1a23f4ec164215682c1eb705f6b5db8918"/><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <emphasis role="strong">operator*=</emphasis> (const T &amp;p)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1point_1a7c076a4ec59ecd602763d1751bcea185"/><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <emphasis role="strong">operator/=</emphasis> (const T &amp;p)</para>
 </listitem>
             <listitem><para>bool <link linkend="_struct_kolibri_lib_1_1point_1aea6b20f0975274a5564bfe12945d5bd1">operator==</link> (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp;a) const</para>
 </listitem>
@@ -22,7 +46,7 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Public Attributes    </title>
+    <title>Открытые атрибуты    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34"/>T <emphasis role="strong">x</emphasis></para>
 
@@ -35,18 +59,90 @@
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 <simplesect><title>template&lt;class T&gt;<?linebreak?>struct KolibriLib::point&lt; T &gt;</title></simplesect>
 
 <para>Просто точка </para>
 
 
 <section xml:id="_struct_kolibri_lib_1_1point_1Если">
-<title><title>i = -1, то элемент вставляется в конец, иначе вставляется на место под номером i. При этом номера всех элементов с номером больше i, нужно увеличить на 1.</title></title>
+<title><title>необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point&lt;uint64_t&gt; p;</title></title>
 </section>
 </section>
 <section>
-<title>Member Function Documentation</title>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_struct_kolibri_lib_1_1point_1aa3ef97fd19ba3b0935c2ed0ae5f9e55d"/><section>
+    <title>point()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>point</primary><secondary>KolibriLib::point&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>KolibriLib::point&lt; T &gt;</primary><secondary>point</secondary></indexterm>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link>&lt; T &gt;::point (T X = <computeroutput>(T)0</computeroutput>
+, T Y = <computeroutput>(T)0</computeroutput>
+)</computeroutput></para><para>
+
+<para>Конструктор </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>X</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>Y</entry><entry>
+<para><?linebreak?> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_struct_kolibri_lib_1_1point_1a2e4751aebabf649201893564603c925d"/><section>
+    <title>point()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>point</primary><secondary>KolibriLib::point&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>KolibriLib::point&lt; T &gt;</primary><secondary>point</secondary></indexterm>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link>&lt; T &gt;::point (float f)</computeroutput></para><para>
+
+<para>Точка как отношение x/y. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>f</entry><entry>
+<para>Десятичная дробь, которая ≈ x/y </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+</section>
+<section>
+<title>Методы</title>
 <anchor xml:id="_struct_kolibri_lib_1_1point_1a5a2c05ea1ae850ba4cf0446239afe669"/><section>
     <title>operator!=()</title>
 <indexterm><primary>operator!=</primary><secondary>KolibriLib::point&lt; T &gt;</secondary></indexterm>
@@ -55,7 +151,7 @@
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -72,21 +168,45 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para><?linebreak?> </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_struct_kolibri_lib_1_1point_1a9622605fb63ef73d9cb0e4ac6ac9fe9c"/><section>
-    <title>operator=()</title>
-<indexterm><primary>operator=</primary><secondary>KolibriLib::point&lt; T &gt;</secondary></indexterm>
-<indexterm><primary>KolibriLib::point&lt; T &gt;</primary><secondary>operator=</secondary></indexterm>
-<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link>&lt; T &gt;::operator= (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; p)<computeroutput>[inline]</computeroutput></computeroutput></para>
+<anchor xml:id="_struct_kolibri_lib_1_1point_1a0891cef00565f4ca0844407aa83f96fe"/><section>
+    <title>operator+=()</title>
+<indexterm><primary>operator+=</primary><secondary>KolibriLib::point&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>KolibriLib::point&lt; T &gt;</primary><secondary>operator+=</secondary></indexterm>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link>&lt; T &gt; &amp; <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link>&lt; T &gt;::operator+= (const T &amp; p)</computeroutput></para><para>
+
+<para>Прибавить к обоим кординатам значение </para>
+</para>
+
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Параметры шаблона</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>B</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -103,7 +223,38 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_struct_kolibri_lib_1_1point_1a4cc022aa1df6376d76b4c0a6102ea92e"/><section>
+    <title>operator=()</title>
+<indexterm><primary>operator=</primary><secondary>KolibriLib::point&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>KolibriLib::point&lt; T &gt;</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;class T &gt; </computeroutput><para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link>&lt; T &gt; &amp; <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point</link>&lt; T &gt;::operator= (const <link linkend="_struct_kolibri_lib_1_1point">point</link>&lt; T &gt; &amp; p)</computeroutput></para>
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
 
 <para><?linebreak?> </para>
 </formalpara>
@@ -117,7 +268,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -134,13 +285,13 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para><?linebreak?> </para>
 </formalpara>
 </para>
 </section>
 <para>
-The documentation for this struct was generated from the following files:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/types.hppF:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/types.cpp</section>
+Объявления и описания членов структуры находятся в файле:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/types.hpp</section>
 </section>

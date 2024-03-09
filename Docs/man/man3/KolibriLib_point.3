@@ -9,11 +9,41 @@ KolibriLib::point< T > \- Просто точка
 .PP
 .PP
 \fR#include <types\&.hpp>\fP
-.SS "Public Member Functions"
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
+.RI "\fBpoint\fP (T X=(T) 0, T Y=(T) 0)"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "\fBpoint\fP (float f)"
+.br
+.RI "Точка как отношение x/y\&. "
+.ti -1c
+.RI "ksys_pos_t \fBGetKsysPost\fP () const"
+.br
+.ti -1c
+.RI "\fBpoint\fP< T > & \fBoperator+\fP (const \fBpoint\fP< T > &a)"
+.br
+.ti -1c
+.RI "\fBpoint\fP< T > & \fBoperator\-\fP (const \fBpoint\fP< T > &a)"
+.br
+.ti -1c
 .RI "\fBpoint\fP< T > & \fBoperator=\fP (const \fBpoint\fP< T > &p)"
+.br
+.ti -1c
+.RI "\fBpoint\fP< T > & \fBoperator+=\fP (const T &p)"
+.br
+.RI "Прибавить к обоим кординатам значение "
+.ti -1c
+.RI "\fBpoint\fP< T > & \fBoperator\-=\fP (const T &p)"
+.br
+.ti -1c
+.RI "\fBpoint\fP< T > & \fBoperator*=\fP (const T &p)"
+.br
+.ti -1c
+.RI "\fBpoint\fP< T > & \fBoperator/=\fP (const T &p)"
 .br
 .ti -1c
 .RI "bool \fBoperator==\fP (const \fBpoint\fP< T > &a) const"
@@ -22,7 +52,7 @@ KolibriLib::point< T > \- Просто точка
 .RI "bool \fBoperator!=\fP (const \fBpoint\fP< T > &a) const"
 .br
 .in -1c
-.SS "Public Attributes"
+.SS "Открытые атрибуты"
 
 .in +1c
 .ti -1c
@@ -34,7 +64,7 @@ KolibriLib::point< T > \- Просто точка
 .br
 .RI "координата по оси Y, или высота "
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 
 .SS "template<class T>
@@ -42,19 +72,47 @@ KolibriLib::point< T > \- Просто точка
 struct KolibriLib::point< T >"Просто точка 
 
 
-.SS "i = -1, то элемент вставляется в конец, иначе вставляется на место под номером i\&. При этом номера всех элементов с номером больше i, нужно увеличить на 1\&."
+.SS "необходимо использовать конкретный теип данных для точки используйте шаблоны\&. Например: point<uint64_t> p;"
 
-.SH "Member Function Documentation"
+.SH "Конструктор(ы)"
+.PP 
+.SS "template<class T > \fBKolibriLib::point\fP< T >::point (T X = \fR(T)0\fP, T Y = \fR(T)0\fP)"
+
+.PP
+Конструктор 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIX\fP 
+.br
+\fIY\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "template<class T > \fBKolibriLib::point\fP< T >::point (float f)"
+
+.PP
+Точка как отношение x/y\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIf\fP Десятичная дробь, которая ≈ x/y 
+.RE
+.PP
+
+.SH "Методы"
 .PP 
 .SS "template<class T > bool \fBKolibriLib::point\fP< T >::operator!= (const \fBpoint\fP< T > & a) const"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIa\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -62,15 +120,38 @@ struct KolibriLib::point< T >"Просто точка
 .RE
 .PP
 
-.SS "template<class T > \fBpoint\fP< T > & \fBKolibriLib::point\fP< T >::operator= (const \fBpoint\fP< T > & p)\fR [inline]\fP"
+.SS "template<class T > \fBKolibriLib::point\fP< T > & \fBKolibriLib::point\fP< T >::operator+= (const T & p)"
 
 .PP
-\fBParameters\fP
+Прибавить к обоим кординатам значение 
+.PP
+\fBПараметры шаблона\fP
+.RS 4
+\fIB\fP 
+.RE
+.PP
+\fBАргументы\fP
 .RS 4
 \fIp\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "template<class T > \fBKolibriLib::point\fP< T > & \fBKolibriLib::point\fP< T >::operator= (const \fBpoint\fP< T > & p)"
+
+.PP
+\fBАргументы\fP
+.RS 4
+\fIp\fP 
+.RE
+.PP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -81,12 +162,12 @@ struct KolibriLib::point< T >"Просто точка
 .SS "template<class T > bool \fBKolibriLib::point\fP< T >::operator== (const \fBpoint\fP< T > & a) const"
 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIa\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -95,6 +176,6 @@ struct KolibriLib::point< T >"Просто точка
 .PP
 
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

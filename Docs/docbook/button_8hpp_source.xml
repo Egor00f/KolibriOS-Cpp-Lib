@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_button_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_button_8hpp_source" xml:lang="ru">
 <title>button.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/button.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__BUTTON_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__BUTTON_H__</emphasis>
 3 
-4 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;unordered_map&gt;</emphasis>
 5 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
 6 
-7 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
-8 <emphasis role="preprocessor">#include&#32;&quot;text.hpp&quot;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&quot;image.hpp&quot;</emphasis>
-10 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/UI.hpp&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/text.hpp&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/image.hpp&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
 11 
 12 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
 13 {
@@ -19,95 +19,96 @@
 15 &#32;&#32;&#32;&#32;{
 17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>buttons
 18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;ButtonID;
-20 
-21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Коды&#32;кнопок&#32;начинаются&#32;с&#32;этого&#32;числа</emphasis>
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ButtonID&#32;StartButtonId&#32;=&#32;100;
-23 
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;bool&gt;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1aaaa4c4b6bb4b24c33adfb7e532459565">ButtonsIdList</link>;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&quot;Я&#32;надею&#32;что&#32;это&#32;был&#32;великий&#32;сарказм&quot;</emphasis>
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
-27 
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a4b8f662229c09234036627695a5e9f3b">GetFreeButtonId</link>();
-32 
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a50f50638d4faadd115e569d5db1e2d1a">FreeButtonId</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>);
-36 
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;ButtonID&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a824ea083df7cafa107b704ec6d5dba18">GetButtonId</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>);
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>;
+21 
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Коды&#32;кнопок&#32;начинаются&#32;с&#32;этого&#32;числа</emphasis>
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;StartButtonId&#32;=&#32;100;
+24 
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unordered_map&lt;ButtonID,&#32;bool&gt;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a88a6b23e44e1b1b6efafe4c9eab3c688">ButtonsIdList</link>;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+28 
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a1c3f6c5869b25e5038cef65bb78ec186">GetFreeButtonId</link>()
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">unsigned</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a88a6b23e44e1b1b6efafe4c9eab3c688">ButtonsIdList</link>.size();&#32;i++)
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a88a6b23e44e1b1b6efafe4c9eab3c688">ButtonsIdList</link>.count(i)&#32;==&#32;0)
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;i&#32;+&#32;StartButtonId;
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 42 
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a008dcf87d7d649a7fd5c10ee4af7e388">CutList</link>();
-45 
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;ButtonID&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a04a4707b6f3d90a525612efe811b774e">autoDefineButton</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coords,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button);
-52 
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a1322e4edab43592d6ebad409ca641115">DefineButton</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;ButtonID&#32;&amp;<emphasis role="keywordtype">id</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button);
-59 
-62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1af05bc94ea0e640d8fe6b668d059a065f">DeleteButton</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>);
-63 
-66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;ButtonID&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1ac52202e7410ddc8c76e118acf1a5ccbd">GetPressedButton</link>();
-67 
-68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-70 
-72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>
-73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
-75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>&#32;_img;
-76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">text::TextLabel</link>&#32;_text;
-77 
-79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ButtonID&#32;_id;
-80 
-81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_type;
-82 
-84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_status;
-85 
-88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_active;
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a8ab5aef02c675212bfdd3ce56d82f231">FreeButtonId</link>(<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;<emphasis role="keywordtype">id</emphasis>)
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a88a6b23e44e1b1b6efafe4c9eab3c688">ButtonsIdList</link>.erase(<emphasis role="keywordtype">id</emphasis>);
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+49 
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a8a9c99020d6d16d3ebc7ab8b90e778e0">autoDefineButton</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coords,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button)
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;<emphasis role="keywordtype">id</emphasis>&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a1c3f6c5869b25e5038cef65bb78ec186">GetFreeButtonId</link>();&#32;<emphasis role="comment">//&#32;Автоматически&#32;получаем&#32;id&#32;для&#32;кнопки</emphasis>
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_define_button(coords.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coords.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;size.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;size.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;<emphasis role="keywordtype">id</emphasis>,&#32;color.val);
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;id;
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+61 
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a1322e4edab43592d6ebad409ca641115">DefineButton</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;&amp;<emphasis role="keywordtype">id</emphasis>,&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button)
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_define_button(coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;size.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;size.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;<emphasis role="keywordtype">id</emphasis>,&#32;color.val);
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+71 
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1af05bc94ea0e640d8fe6b668d059a065f">DeleteButton</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">id</emphasis>)
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_delete_button(<emphasis role="keywordtype">id</emphasis>);
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a8ab5aef02c675212bfdd3ce56d82f231">FreeButtonId</link>(<emphasis role="keywordtype">id</emphasis>);&#32;<emphasis role="comment">//&#32;Кнопка&#32;удалена,&#32;теперь&#32;этот&#32;id&#32;не&#32;использется</emphasis>
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+79 
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1ac7dae354425dc950caccfa1c283cbdd7">GetPressedButton</link>()
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_button();
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+86 
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
 89 
-90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0f3e15d49006599b71c2b5e913397440">Type</link>
-93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Image&#32;=&#32;0,
-95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Text
-96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link>:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">text::TextLabel</link>
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+94 
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;_id;
 97 
-105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac266a63a1727ed838542a876d3344c6a">Button</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;{20,&#32;20},&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;UI::DefaultMargin,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;ButtonColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button);
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_status;
+100 
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_active;
+104 
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
 106 
-114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<emphasis role="keyword">const</emphasis>&#32;Coord&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;Size&#32;&amp;size&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;text&#32;=&#32;<emphasis role="stringliteral">&quot;button&quot;</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin&#32;=&#32;UI::DefaultMargin,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&#32;&amp;ButtonColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button);
-115 
-123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<emphasis role="keyword">const</emphasis>&#32;Coord&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;Size&#32;&amp;size&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;Images::Image&#32;&amp;image&#32;=&#32;Images::Image(),&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin&#32;=&#32;DefaultMargin,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&#32;&amp;ButtonColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button);
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a5277e0103de3554e9fe5261f70cfa438">Button</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;{20,&#32;20},&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;Margin&#32;=&#32;UI::DefaultMargin,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;ButtonColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_button);
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ab4d85223ff685e5400b1fff59b337159">Render</link>()&#32;<emphasis role="keyword">const</emphasis>;
+118 
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a9521b0d981e10f6a9466438858439cb9">Handler</link>()&#32;<emphasis role="keyword">const</emphasis>;
 124 
-132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<emphasis role="keyword">const</emphasis>&#32;Coord&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;Size&#32;&amp;size&#32;=&#32;{0,&#32;0},&#32;std::string&#32;Path&#32;=&#32;DefaultImage);
-133 
-135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ae9b96866245ca42f480fa335adc843e6">Render</link>();
-136 
-141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac28b523b166e42343f6e7a5a9886ba1b">Handler</link>();
-142 
-145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a6eaba3fc208cd15db6121376871dde57">GetStatus</link>()&#32;<emphasis role="keyword">const</emphasis>;
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3f8517f74b2049f07a9da9a9910e9814">GetStatus</link>()&#32;<emphasis role="keyword">const</emphasis>;
+128 
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a123bd08097aa09e2265248f3805ab162">GetId</link>()&#32;<emphasis role="keyword">const</emphasis>;
+132 
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a0a235265d209cec4e8f735d416d25505">Deactivate</link>();
+137 
+140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a65b6a0809e8e43892e48065708fa01d1">Activate</link>();
+141 
+143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3dddb0a58edf4d60a2bc539859fea95b">~Button</link>();
+144 
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link>&#32;&amp;operator=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link>&#32;&amp;element);
 146 
-149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ButtonID&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a67f9b2ce434a2224a0e35d1284679616">GetId</link>()&#32;<emphasis role="keyword">const</emphasis>;
-150 
-154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8727a99e9bd5a13394cec8c0941b9da6">Deactivate</link>();
-155 
-158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1aac6f24499abf9a0b978a0c27b2a1e344">Activate</link>();
-159 
-162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a8c01f1c3092d101ac3c7f5da551eaa77">GetType</link>()&#32;<emphasis role="keyword">const</emphasis>;
-163 
-166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac5bb4447a87ab739eae7a4f5c1ed0a3a">GetTextLabel</link>()&#32;<emphasis role="keyword">const</emphasis>;
-167 
-170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Images::Image&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a3a82c9b3e441c0e4b0120e20627ef552">GetImage</link>()&#32;<emphasis role="keyword">const</emphasis>;
-171 
-174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a886d985af13b7e23d7981e18678e6e66">SetText</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;NewText);
-175 
-178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a2cb83ed4bca6a6bf72dee94fd682737b">SetImage</link>(<emphasis role="keyword">const</emphasis>&#32;Images::Image&amp;&#32;NewImg);
-179 
-181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ab57e36f60d8bf268227dbc1114913f6d">~Button</link>();
-182 
-183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac266a63a1727ed838542a876d3344c6a">Button</link>&#32;&amp;operator=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac266a63a1727ed838542a876d3344c6a">Button</link>&#32;&amp;element);
-184 
-185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1ac266a63a1727ed838542a876d3344c6a">Button</link>&amp;&#32;element)&#32;<emphasis role="keyword">const</emphasis>;
-186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;buttons</emphasis>
-188 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
-189 &#32;&#32;&#32;&#32;
-190 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-191 
-192 
-193 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BUTTON_H__</emphasis>
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">Button</link>&amp;&#32;element)&#32;<emphasis role="keyword">const</emphasis>;
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+149 
+150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;buttons</emphasis>
+151 
+152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+153 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+154 &#32;&#32;&#32;&#32;
+155 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+156 
+157 
+158 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BUTTON_H__</emphasis>
 </programlisting></section>

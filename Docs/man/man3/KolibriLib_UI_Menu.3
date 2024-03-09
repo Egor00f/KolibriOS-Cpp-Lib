@@ -10,12 +10,12 @@ KolibriLib::UI::Menu \- Выпадающее менб список
 .PP
 \fR#include <menu\&.hpp>\fP
 .PP
-Inherits \fBKolibriLib::UI::UIElement\fP\&.
-.SS "Public Member Functions"
+Базовые классы:\fBKolibriLib::UI::UIElement\fP\&.
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
-.RI "\fBMenu\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::vector< std::string > &li, const unsigned &Margin=DefaultMargin, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_area)"
+.RI "\fBMenu\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::vector< std::string > &li={'menu', 'menu'}, const unsigned &Margin=DefaultMargin, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_area)"
 .br
 .ti -1c
 .RI "void \fBRender\fP ()"
@@ -35,14 +35,14 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .RI "Удалить элемент "
 .in -1c
 
-Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP () const"
+.RI "const \fBSize\fP & \fBGetSize\fP () const"
 .br
 .RI "Получить размер элемента "
 .ti -1c
@@ -54,7 +54,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить отступы "
 .ti -1c
-.RI "\fBColors::Color\fP \fBGetColor\fP () const"
+.RI "const \fBColors::Color\fP & \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -64,7 +64,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
 .RI "Получить координаты элемента "
 .ti -1c
@@ -89,10 +89,10 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
-.SS "Additional Inherited Members"
+.SS "Дополнительные унаследованные члены"
 
 
-Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+Защищенные данные унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBCoord\fP \fB_coord\fP"
@@ -118,41 +118,41 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Оносительны ли координаты "
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Выпадающее менб список 
-.SH "Member Function Documentation"
+.SH "Методы"
 .PP 
 .SS "int KolibriLib::UI::Menu::AddItem (const std::string & item, int i = \fR\-1\fP)"
 
 .PP
 Добавить элемент в список 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIitem\fP текст элемента 
 .br
 \fIi\fP номер элемента в списке 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 номер элемента в списке, или 0 
 .RE
 .PP
-.SS "i = -1, то элемент вставляется в конец, иначе вставляется на место под номером i\&. При этом номера всех элементов с номером больше i, нужно увеличить на 1\&."
+.SS "необходимо использовать конкретный теип данных для точки используйте шаблоны\&. Например: point<uint64_t> p;"
 
 .SS "bool KolibriLib::UI::Menu::DeleteItem (unsigned i)"
 
 .PP
 Удалить элемент 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIi\fP номер удаляемого элемента 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 true если удачно, иначе false 
 .RE
@@ -163,13 +163,13 @@ true если удачно, иначе false
 .PP
 Обработчик 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Номер нажатого элемента 
 .RE
 .PP
 
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

@@ -1,14 +1,14 @@
 var indexSectionsWithContent =
 {
-  0: "1234:_abcdefghiklmnoprstuwxy~абвдезиклмнопрстуфцчшэ",
+  0: "1234:_abcdefghiklmnoprstuwxy~абвгдежзиклмнопрстуфцчшэя",
   1: "abcfimptuw",
   2: "k",
-  3: "abcdefghilmorstuw~",
+  3: "abcdefghilmoprstuw~",
   4: "_bdsxy",
-  5: "ces",
-  6: "epst",
-  7: "abcdefkmnoprsu",
-  8: "бвэ"
+  5: "bcepst",
+  6: "eflpsw",
+  7: "abcdefgikmnoprsuw",
+  8: "iuгрс"
 };
 
 var indexSectionNames =
@@ -26,14 +26,14 @@ var indexSectionNames =
 
 var indexSectionLabels =
 {
-  0: "All",
-  1: "Classes",
-  2: "Namespaces",
-  3: "Functions",
-  4: "Variables",
-  5: "Typedefs",
-  6: "Enumerations",
-  7: "Enumerator",
-  8: "Pages"
+  0: "Указатель",
+  1: "Классы",
+  2: "Пространства имен",
+  3: "Функции",
+  4: "Переменные",
+  5: "Определения типов",
+  6: "Перечисления",
+  7: "Элементы перечислений",
+  8: "Страницы"
 };
 

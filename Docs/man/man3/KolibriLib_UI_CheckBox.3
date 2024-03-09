@@ -10,8 +10,8 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 .PP
 \fR#include <checkbox\&.hpp>\fP
 .PP
-Inherits \fBKolibriLib::UI::buttons::Button\fP\&.
-.SS "Public Types"
+Базовые классы:\fBKolibriLib::UI::buttons::Button\fP\&.
+.SS "Открытые типы"
 
 .in +1c
 .ti -1c
@@ -19,15 +19,7 @@ Inherits \fBKolibriLib::UI::buttons::Button\fP\&.
 .br
 .RI "Стиль Чекбокса "
 .in -1c
-
-Public Types inherited from \fBKolibriLib::UI::buttons::Button\fP
-.in +1c
-.ti -1c
-.RI "enum \fBType\fP { \fBImage\fP = 0, \fBText\fP }"
-.br
-.RI "Список типов данных которые можно 'запихнуть' в кнопку "
-.in -1c
-.SS "Public Member Functions"
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
@@ -43,30 +35,18 @@ Public Types inherited from \fBKolibriLib::UI::buttons::Button\fP
 .RI "Обработчик кнопки "
 .in -1c
 
-Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
+Открытые члены унаследованные от \fBKolibriLib::UI::buttons::Button\fP
 .in +1c
 .ti -1c
-.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, const unsigned &Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
 .br
 .RI "Это конструктор "
 .ti -1c
-.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::string &text='button', const unsigned &Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
-.br
-.RI "инициализировать параметры "
-.ti -1c
-.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const \fBImages::Image\fP &image=\fBImages::Image\fP(), const unsigned &Margin=DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
-.br
-.RI "инициализировать параметры "
-.ti -1c
-.RI "void \fBinit\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, std::string Path=DefaultImage)"
-.br
-.RI "инициализировать параметры "
-.ti -1c
-.RI "void \fBRender\fP ()"
+.RI "void \fBRender\fP () const"
 .br
 .RI "Отрисовать кнопку "
 .ti -1c
-.RI "bool \fBHandler\fP ()"
+.RI "bool \fBHandler\fP () const"
 .br
 .RI "Обработчик кнопки "
 .ti -1c
@@ -74,7 +54,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .br
 .RI "Получить сосояние кнопки на момент последней обработки "
 .ti -1c
-.RI "ButtonID \fBGetId\fP () const"
+.RI "\fBButtonID\fP \fBGetId\fP () const"
 .br
 .RI "Получить номер кнопки "
 .ti -1c
@@ -85,26 +65,6 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .RI "void \fBActivate\fP ()"
 .br
 .RI "Активировать кнопку "
-.ti -1c
-.RI "unsigned \fBGetType\fP () const"
-.br
-.RI "Возвращает тип данных используемых в кнопке \fB_type\&.\fP"
-.ti -1c
-.RI "std::string \fBGetTextLabel\fP () const"
-.br
-.RI "Возвращает текст кнопки "
-.ti -1c
-.RI "\fBImages::Image\fP \fBGetImage\fP () const"
-.br
-.RI "Получить изображение кнопки "
-.ti -1c
-.RI "void \fBSetText\fP (const std::string &NewText)"
-.br
-.RI "Изменить текст кнопки "
-.ti -1c
-.RI "void \fBSetImage\fP (const \fBImages::Image\fP &NewImg)"
-.br
-.RI "Изменить изображение в кнопке "
 .ti -1c
 .RI "\fB~Button\fP ()"
 .br
@@ -117,14 +77,42 @@ Public Member Functions inherited from \fBKolibriLib::UI::buttons::Button\fP
 .br
 .in -1c
 
-Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+Открытые члены унаследованные от \fBKolibriLib::UI::text::TextLabel\fP
+.in +1c
+.ti -1c
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (bool scale)"
+.br
+.RI "Изменить значение переменной \fB_TextScale\&.\fP"
+.ti -1c
+.RI "bool \fBGetScale\fP () const"
+.br
+.RI "Получить состояние переменной \fB@ return значение переменной  _TextScale\&. \fP"
+.ti -1c
+.RI "\fBTextLabel\fP & \fBoperator=\fP (const \fBTextLabel\fP &a)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBTextLabel\fP &a) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBTextLabel\fP &a) const"
+.br
+.in -1c
+
+Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP () const"
+.RI "const \fBSize\fP & \fBGetSize\fP () const"
 .br
 .RI "Получить размер элемента "
 .ti -1c
@@ -136,7 +124,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить отступы "
 .ti -1c
-.RI "\fBColors::Color\fP \fBGetColor\fP () const"
+.RI "const \fBColors::Color\fP & \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -146,7 +134,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
 .RI "Получить координаты элемента "
 .ti -1c
@@ -171,10 +159,91 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
-.SS "Additional Inherited Members"
+
+Открытые члены унаследованные от \fBKolibriLib::UI::text::Text\fP
+.in +1c
+.ti -1c
+.RI "\fBText\fP ()"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "\fB~Text\fP ()"
+.br
+.RI "Деструктор "
+.ti -1c
+.RI "void \fBAdd\fP (const \fBChar\fP &c)"
+.br
+.RI "Добавить символ в конец "
+.ti -1c
+.RI "void \fBAdd\fP (const std::string &txt)"
+.br
+.RI "Добавить строку в конец "
+.ti -1c
+.RI "void \fBAdd\fP (const \fBImages::img\fP &img)"
+.br
+.RI "долбавить изображение в конец "
+.ti -1c
+.RI "void \fBinsert\fP (const \fBChar\fP &c, int i)"
+.br
+.RI "Вставить элемент "
+.ti -1c
+.RI "void \fBinsert\fP (const std::string &txt, int i)"
+.br
+.RI "Вставить строку "
+.ti -1c
+.RI "void \fBinsert\fP (const \fBImages::img\fP &img, int i)"
+.br
+.RI "Вставить изображение "
+.ti -1c
+.RI "void \fBDelete\fP (int i)"
+.br
+.RI "Удалить \fBChar\fP из текста "
+.ti -1c
+.RI "void \fBPrint\fP (const \fBUI::Coord\fP &coord) const"
+.br
+.RI "Вывести текст "
+.ti -1c
+.RI "void \fBSetFont\fP (const \fBFonts::Font\fP &Font)"
+.br
+.RI "Изменить шрифт символов "
+.ti -1c
+.RI "void \fBSetTextColor\fP (const \fBColors::Color\fP &Color)"
+.br
+.RI "Изменить цвет текста для всех символов "
+.ti -1c
+.RI "void \fBSetBackgroundColor\fP (const \fBColors::Color\fP &Color)"
+.br
+.RI "Изменить цвет фона для всех символов "
+.ti -1c
+.RI "std::string & \fBGetText\fP () const"
+.br
+.RI "Получить текст "
+.ti -1c
+.RI "const \fBChar\fP & \fBGetChar\fP (int i) const"
+.br
+.RI "Получить символ под номером i\&. "
+.ti -1c
+.RI "std::size_t \fBlength\fP () const"
+.br
+.RI "Получить длину текста "
+.ti -1c
+.RI "unsigned \fBlenghtPX\fP () const"
+.br
+.RI "Получить длинну текста в пикселях "
+.ti -1c
+.RI "void \fBSetText\fP (std::string text)"
+.br
+.ti -1c
+.RI "\fBText\fP & \fBoperator=\fP (const \fBText\fP &txt)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBText\fP &txt) const"
+.br
+.in -1c
+.SS "Дополнительные унаследованные члены"
 
 
-Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+Защищенные данные унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBCoord\fP \fB_coord\fP"
@@ -200,21 +269,30 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Оносительны ли координаты "
 .in -1c
-.SH "Detailed Description"
+
+Защищенные данные унаследованные от \fBKolibriLib::UI::text::Text\fP
+.in +1c
+.ti -1c
+.RI "std::vector< \fBChar\fP > \fB_data\fP"
+.br
+.in -1c
+.SH "Подробное описание"
 .PP 
 Класс для работы с чекбоксами 
 
 
-.SS "просто чекбокс, ему можно задать различные стили"
+.SS "пространство имён этакий аналог стандартной библиотеки <filesystem> 
+.br
+"
 
-.SH "Member Enumeration Documentation"
+.SH "Перечисления"
 .PP 
 .SS "enum \fBKolibriLib::UI::CheckBox::style\fP"
 
 .PP
 Стиль Чекбокса 
 .PP
-\fBEnumerator\fP
+\fBЭлементы перечислений\fP
 .in +1c
 .TP
 \fB\fIDefault \fP\fP
@@ -226,13 +304,13 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 \fB\fISmoth \fP\fP
 Квадрат с со сглаженными углами 
 .PP
-\fBWarning\fP
+\fBПредупреждения\fP
 .RS 4
 Не реализованно (пока что) 
 .RE
 .PP
 
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

@@ -1,43 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="ru">
   <compounddef id="class_kolibri_lib_1_1_u_i_1_1_form" kind="class" language="C++" prot="public">
     <compoundname>KolibriLib::UI::Form</compoundname>
     <basecompoundref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" prot="public" virt="non-virtual">KolibriLib::UI::UIElement</basecompoundref>
     <includes refid="form_8hpp" local="no">form.hpp</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_form_1a8a5d4ffbe778ae06f405f634383d6321" prot="private" static="no" mutable="no">
-        <type>editor *</type>
-        <definition>editor* KolibriLib::UI::Form::_e</definition>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_form_1a225ad0d768a944a7001e7cc831b3cb68" prot="private" static="no" mutable="no">
+        <type><ref refid="class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button" kindref="compound">buttons::Button</ref></type>
+        <definition>buttons::Button KolibriLib::UI::Form::_butt</definition>
         <argsstring></argsstring>
-        <name>_e</name>
-        <qualifiedname>KolibriLib::UI::Form::_e</qualifiedname>
+        <name>_butt</name>
+        <qualifiedname>KolibriLib::UI::Form::_butt</qualifiedname>
         <briefdescription>
+<para>Кнопка </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="24" column="20" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" bodystart="24" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="22" column="29" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_form_1a6b4b0552c554554740d59edd9ef932ab" prot="private" static="no" mutable="no">
-        <type>void *</type>
-        <definition>void* KolibriLib::UI::Form::_ed_lock</definition>
+      <memberdef kind="variable" id="class_kolibri_lib_1_1_u_i_1_1_form_1ab3bc0ef47d85243ebc1152520a4b8e95" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string KolibriLib::UI::Form::_inputText</definition>
         <argsstring></argsstring>
-        <name>_ed_lock</name>
-        <qualifiedname>KolibriLib::UI::Form::_ed_lock</qualifiedname>
+        <name>_inputText</name>
+        <qualifiedname>KolibriLib::UI::Form::_inputText</qualifiedname>
         <briefdescription>
+<para>Введённый пользователем текст </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="25" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" bodystart="25" bodyend="-1"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="25" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1ac495e5c56a48b10881fbf7efb126f05e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1acbec1f0d5e15b5159c843ec8464b1cea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>Form::Form</definition>
+        <definition>KolibriLib::UI::Form::Form</definition>
         <argsstring>(const Coord &amp;coord={0, 0}, const Size &amp;size={32, 16}, const std::string &amp;BackgroundText=&quot;Text...&quot;, const Colors::Color &amp;FormColor=OS::sys_color_table.work_text, const Colors::Color &amp;ButtonTextColor=OS::sys_color_table.work_area, const unsigned &amp;Margin=DefaultMargin)</argsstring>
         <name>Form</name>
         <qualifiedname>KolibriLib::UI::Form::Form</qualifiedname>
@@ -128,56 +130,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="34" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="6" bodyend="13"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="35" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="70" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a00ceaaca693fecd7de6f8b7643890d82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1adb375987e6605ff5e5fecadd3a10206a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void Form::init</definition>
-        <argsstring>(Coord coord={0, 0}, Size size={32, 16}, std::string BackgroundText=&quot; &quot;, Colors::Color FormColor=OS::sys_color_table.work_text, Colors::Color ButtonTextColor=OS::sys_color_table.work_area, unsigned Margin=DefaultMargin)</argsstring>
-        <name>init</name>
-        <qualifiedname>KolibriLib::UI::Form::init</qualifiedname>
-        <param>
-          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref></type>
-          <declname>coord</declname>
-          <defval>{0, 0}</defval>
-        </param>
-        <param>
-          <type><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref></type>
-          <declname>size</declname>
-          <defval>{32, 16}</defval>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>BackgroundText</declname>
-          <defval>&quot; &quot;</defval>
-        </param>
-        <param>
-          <type><ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref></type>
-          <declname>FormColor</declname>
-          <defval>OS::sys_color_table.work_text</defval>
-        </param>
-        <param>
-          <type><ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref></type>
-          <declname>ButtonTextColor</declname>
-          <defval>OS::sys_color_table.work_area</defval>
-        </param>
-        <param>
-          <type>unsigned</type>
-          <declname>Margin</declname>
-          <defval>DefaultMargin</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="36" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="15" bodyend="18"/>
-      </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a0872d4ca05a408cf3177bad337c1209b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void Form::Render</definition>
-        <argsstring>()</argsstring>
+        <definition>void KolibriLib::UI::Form::Render</definition>
+        <argsstring>() const</argsstring>
         <name>Render</name>
         <qualifiedname>KolibriLib::UI::Form::Render</qualifiedname>
         <briefdescription>
@@ -187,11 +145,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="39" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="44" bodyend="47"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="38" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="98" bodyend="103"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a785cbce69e082bba1a39bbcc7b62e573" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1abc53102114e1df7f0a10460ff94f03e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void Form::Handler</definition>
+        <definition>void KolibriLib::UI::Form::Handler</definition>
         <argsstring>()</argsstring>
         <name>Handler</name>
         <qualifiedname>KolibriLib::UI::Form::Handler</qualifiedname>
@@ -202,11 +160,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="42" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="54" bodyend="57"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="41" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="110" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1aa12fb4267b5940d7724ad2cb34b513fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a9a356e929e7a7b8ecf1a945f6c04789a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool Form::ButtonHandler</definition>
+        <definition>bool KolibriLib::UI::Form::ButtonHandler</definition>
         <argsstring>()</argsstring>
         <name>ButtonHandler</name>
         <qualifiedname>KolibriLib::UI::Form::ButtonHandler</qualifiedname>
@@ -220,11 +178,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="46" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="58" bodyend="61"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="45" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="123" bodyend="126"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a8607cbd77936e827c1f7ca87caab7539" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
-        <definition>std::string Form::GetInput</definition>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a79f97a937cbc49d8a408eccbae0e3738" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; KolibriLib::UI::Form::GetInput</definition>
         <argsstring>() const</argsstring>
         <name>GetInput</name>
         <qualifiedname>KolibriLib::UI::Form::GetInput</qualifiedname>
@@ -232,17 +190,17 @@
 <para>Получить введённый текст </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para><ref refid="" kindref="compound">(текст который ввели в форму) </ref></para>
+<para><simplesect kind="return"><para><ref refid="_1ab3bc0ef47d85243ebc1152520a4b8e95" kindref="member">(текст который ввели в форму) </ref></para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="50" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="49" bodyend="52"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="49" column="31" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="105" bodyend="108"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a9d80cb0e97fff21640570bfe4a83d0af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
-        <definition>std::string Form::GetBackgroundText</definition>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a6b2a01c168ad5be5fbb5ab5de995b217" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; KolibriLib::UI::Form::GetBackgroundText</definition>
         <argsstring>() const</argsstring>
         <name>GetBackgroundText</name>
         <qualifiedname>KolibriLib::UI::Form::GetBackgroundText</qualifiedname>
@@ -256,11 +214,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="54" column="25" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="20" bodyend="23"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="53" column="31" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="79" bodyend="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1af63257610de4d47dcb6f51ad2480fe49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref></type>
-        <definition>Colors::Color Form::GetBackgroundColor</definition>
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a11b08f5f072c63b98e1347ae8fb93afc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref> &amp;</type>
+        <definition>const Colors::Color &amp; KolibriLib::UI::Form::GetBackgroundColor</definition>
         <argsstring>() const</argsstring>
         <name>GetBackgroundColor</name>
         <qualifiedname>KolibriLib::UI::Form::GetBackgroundColor</qualifiedname>
@@ -274,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="58" column="27" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="25" bodyend="28"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="57" column="33" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="84" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1acef4ae399e71f5989b082d81e62b6c91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -303,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="62" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="30" bodyend="33"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="61" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="128" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1aa7dc12266923cd98d772c0cd3d026e7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -332,11 +290,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="66" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="35" bodyend="38"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="65" column="18" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="89" bodyend="92"/>
       </memberdef>
-      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a9cda7cce41e81bfaca51e922d4f9b98f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_kolibri_lib_1_1_u_i_1_1_form_1a741712abb3f6011e51342c906e28e282" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>Form::~Form</definition>
+        <definition>KolibriLib::UI::Form::~Form</definition>
         <argsstring>()</argsstring>
         <name>~Form</name>
         <qualifiedname>KolibriLib::UI::Form::~Form</qualifiedname>
@@ -346,7 +304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="68" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.cpp" bodystart="40" bodyend="42"/>
+        <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="67" column="13" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -399,33 +357,32 @@
         <link refid="struct_kolibri_lib_1_1point"/>
       </node>
     </collaborationgraph>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" line="21" column="9" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp" bodystart="22" bodyend="69"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" line="18" column="9" bodyfile="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp" bodystart="19" bodyend="68"/>
     <listofallmembers>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_angle</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a225ad0d768a944a7001e7cc831b3cb68" prot="private" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_butt</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_coord</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a8a5d4ffbe778ae06f405f634383d6321" prot="private" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_e</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a6b4b0552c554554740d59edd9ef932ab" prot="private" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_ed_lock</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1ab3bc0ef47d85243ebc1152520a4b8e95" prot="private" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_inputText</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a9b06ab1ff3ebbfd4fad7c34b9d1ea322" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_MainColor</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_Margin</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f6b023df1a1a5737819c6c50e72c5c3" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_relative</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" prot="protected" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>_size</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1aa12fb4267b5940d7724ad2cb34b513fd" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>ButtonHandler</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1ac495e5c56a48b10881fbf7efb126f05e" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Form</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1af63257610de4d47dcb6f51ad2480fe49" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetBackgroundColor</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a9d80cb0e97fff21640570bfe4a83d0af" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetBackgroundText</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adf269accbb7f07330eba3d005061fd1d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetColor</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1adad4d5b75d97484323f46834dbe574c8" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetCoord</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a8607cbd77936e827c1f7ca87caab7539" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetInput</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a9a356e929e7a7b8ecf1a945f6c04789a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>ButtonHandler</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1acbec1f0d5e15b5159c843ec8464b1cea" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Form</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a11b08f5f072c63b98e1347ae8fb93afc" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetBackgroundColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a6b2a01c168ad5be5fbb5ab5de995b217" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetBackgroundText</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a69995a90b6e010f467ab766edfa782d4" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetColor</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3f2f4016ffe8414c55cc13c665b0a3a8" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetCoord</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a79f97a937cbc49d8a408eccbae0e3738" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetInput</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetMargin</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetRotate</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab591105fdaaaece609203d9088948847" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetSize</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a785cbce69e082bba1a39bbcc7b62e573" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Handler</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a7411f3ff0db5a7453f0d23c5ead9ce9e" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>GetSize</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1abc53102114e1df7f0a10460ff94f03e5" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Handler</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1acb1303729c55ba615af2562823dd2c8e" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Hover</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a00ceaaca693fecd7de6f8b7643890d82" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>init</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>operator!=</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>operator=</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>operator==</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a0872d4ca05a408cf3177bad337c1209b" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Render</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1adb375987e6605ff5e5fecadd3a10206a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Render</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>Rotate</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1aa7dc12266923cd98d772c0cd3d026e7d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>SetBackgroundColor</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1acef4ae399e71f5989b082d81e62b6c91" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>SetBackgroundText</name></member>
@@ -433,7 +390,7 @@
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>SetCoord</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3b3eb7370243281576ff27c489db913d" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>SetSize</name></member>
       <member refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>UIElement</name></member>
-      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a9cda7cce41e81bfaca51e922d4f9b98f" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>~Form</name></member>
+      <member refid="class_kolibri_lib_1_1_u_i_1_1_form_1a741712abb3f6011e51342c906e28e282" prot="public" virt="non-virtual"><scope>KolibriLib::UI::Form</scope><name>~Form</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -10,8 +10,10 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 .PP
 \fR#include <text\&.hpp>\fP
 .PP
-Inherits \fBKolibriLib::UI::UIElement\fP\&.
-.SS "Public Member Functions"
+Базовые классы:\fBKolibriLib::UI::UIElement\fP и \fBKolibriLib::UI::text::Text\fP\&.
+.PP
+Производные классы:\fBKolibriLib::UI::buttons::Button\fP\&.
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
@@ -19,45 +21,39 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "void \fBRender\fP ()"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
+.br
+.ti -1c
+.RI "virtual void \fBRender\fP () const"
 .br
 .RI "Отрисовать текстовую метку "
-.ti -1c
-.RI "std::string \fBGetText\fP () const"
-.br
-.RI "Получить текст "
-.ti -1c
-.RI "unsigned \fBGetFontSize\fP () const"
-.br
-.RI "Получить Размер шрифта "
-.ti -1c
-.RI "void \fBSetText\fP (const std::string &NewText)"
-.br
-.RI "Изменить текст "
-.ti -1c
-.RI "void \fBSetFontSize\fP (const unsigned &NewTextSize)"
-.br
-.RI "Изменить рамер текста "
 .ti -1c
 .RI "void \fBSetScale\fP (bool scale)"
 .br
 .RI "Изменить значение переменной \fB_TextScale\&.\fP"
 .ti -1c
-.RI "void \fBinit\fP (\fBCoord\fP coord, \fBSize\fP size, std::string text='TextLabel', unsigned FontSize=9, \fBColors::Color\fP TextColor=OS::sys_color_table\&.work_text)"
+.RI "bool \fBGetScale\fP () const"
 .br
+.RI "Получить состояние переменной \fB@ return значение переменной  _TextScale\&. \fP"
 .ti -1c
 .RI "\fBTextLabel\fP & \fBoperator=\fP (const \fBTextLabel\fP &a)"
 .br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBTextLabel\fP &a) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBTextLabel\fP &a) const"
+.br
 .in -1c
 
-Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP () const"
+.RI "const \fBSize\fP & \fBGetSize\fP () const"
 .br
 .RI "Получить размер элемента "
 .ti -1c
@@ -69,7 +65,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить отступы "
 .ti -1c
-.RI "\fBColors::Color\fP \fBGetColor\fP () const"
+.RI "const \fBColors::Color\fP & \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -79,7 +75,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
 .RI "Получить координаты элемента "
 .ti -1c
@@ -104,10 +100,91 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
-.SS "Additional Inherited Members"
+
+Открытые члены унаследованные от \fBKolibriLib::UI::text::Text\fP
+.in +1c
+.ti -1c
+.RI "\fBText\fP ()"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "\fB~Text\fP ()"
+.br
+.RI "Деструктор "
+.ti -1c
+.RI "void \fBAdd\fP (const \fBChar\fP &c)"
+.br
+.RI "Добавить символ в конец "
+.ti -1c
+.RI "void \fBAdd\fP (const std::string &txt)"
+.br
+.RI "Добавить строку в конец "
+.ti -1c
+.RI "void \fBAdd\fP (const \fBImages::img\fP &img)"
+.br
+.RI "долбавить изображение в конец "
+.ti -1c
+.RI "void \fBinsert\fP (const \fBChar\fP &c, int i)"
+.br
+.RI "Вставить элемент "
+.ti -1c
+.RI "void \fBinsert\fP (const std::string &txt, int i)"
+.br
+.RI "Вставить строку "
+.ti -1c
+.RI "void \fBinsert\fP (const \fBImages::img\fP &img, int i)"
+.br
+.RI "Вставить изображение "
+.ti -1c
+.RI "void \fBDelete\fP (int i)"
+.br
+.RI "Удалить \fBChar\fP из текста "
+.ti -1c
+.RI "void \fBPrint\fP (const \fBUI::Coord\fP &coord) const"
+.br
+.RI "Вывести текст "
+.ti -1c
+.RI "void \fBSetFont\fP (const \fBFonts::Font\fP &Font)"
+.br
+.RI "Изменить шрифт символов "
+.ti -1c
+.RI "void \fBSetTextColor\fP (const \fBColors::Color\fP &Color)"
+.br
+.RI "Изменить цвет текста для всех символов "
+.ti -1c
+.RI "void \fBSetBackgroundColor\fP (const \fBColors::Color\fP &Color)"
+.br
+.RI "Изменить цвет фона для всех символов "
+.ti -1c
+.RI "std::string & \fBGetText\fP () const"
+.br
+.RI "Получить текст "
+.ti -1c
+.RI "const \fBChar\fP & \fBGetChar\fP (int i) const"
+.br
+.RI "Получить символ под номером i\&. "
+.ti -1c
+.RI "std::size_t \fBlength\fP () const"
+.br
+.RI "Получить длину текста "
+.ti -1c
+.RI "unsigned \fBlenghtPX\fP () const"
+.br
+.RI "Получить длинну текста в пикселях "
+.ti -1c
+.RI "void \fBSetText\fP (std::string text)"
+.br
+.ti -1c
+.RI "\fBText\fP & \fBoperator=\fP (const \fBText\fP &txt)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBText\fP &txt) const"
+.br
+.in -1c
+.SS "Дополнительные унаследованные члены"
 
 
-Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+Защищенные данные унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBCoord\fP \fB_coord\fP"
@@ -133,7 +210,14 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Оносительны ли координаты "
 .in -1c
-.SH "Detailed Description"
+
+Защищенные данные унаследованные от \fBKolibriLib::UI::text::Text\fP
+.in +1c
+.ti -1c
+.RI "std::vector< \fBChar\fP > \fB_data\fP"
+.br
+.in -1c
+.SH "Подробное описание"
 .PP 
 Текстовая метка 
 
@@ -143,14 +227,14 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 "
 
-.SH "Constructor & Destructor Documentation"
+.SH "Конструктор(ы)"
 .PP 
-.SS "text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'TextLabel'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
+.SS "KolibriLib::UI::text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'TextLabel'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
 
 .PP
 Конструктор 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIcoord\fP координата 
 .br
@@ -166,39 +250,17 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SH "Member Function Documentation"
+.SH "Методы"
 .PP 
-.SS "unsigned text::TextLabel::GetFontSize () const"
+.SS "\fBTextLabel\fP & KolibriLib::UI::text::TextLabel::operator= (const \fBTextLabel\fP & a)"
 
 .PP
-Получить Размер шрифта 
-.PP
-\fBReturns\fP
-.RS 4
-Функция возвращает \fB_FontSize\fP
-.RE
-.PP
-
-.SS "std::string text::TextLabel::GetText () const"
-
-.PP
-Получить текст 
-.PP
-\fBReturns\fP
-.RS 4
-Функция возвращает \fB_text\fP
-.RE
-.PP
-
-.SS "\fBtext::TextLabel\fP & KolibriLib::UI::text::TextLabel::operator= (const \fBTextLabel\fP & a)"
-
-.PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIa\fP 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .br
@@ -206,40 +268,40 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .RE
 .PP
 
-.SS "void text::TextLabel::SetFontSize (const unsigned & NewTextSize)"
+.SS "bool KolibriLib::UI::text::TextLabel::operator== (const \fBTextLabel\fP & a) const"
 
 .PP
-Изменить рамер текста 
-.PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
-\fINewTextSize\fP Новый размер текста (в px) 
+\fIa\fP 
+.RE
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
 .RE
 .PP
 
-.SS "void text::TextLabel::SetScale (bool scale)"
+.SS "virtual void KolibriLib::UI::text::TextLabel::Render () const\fR [virtual]\fP"
+
+.PP
+Отрисовать текстовую метку 
+.PP
+Переопределяется в \fBKolibriLib::UI::buttons::Button\fP\&.
+.SS "void KolibriLib::UI::text::TextLabel::SetScale (bool scale)"
 
 .PP
 Изменить значение переменной \fB_TextScale\&.\fP
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIscale\fP Новое значение 
 .RE
 .PP
 
-.SS "void text::TextLabel::SetText (const std::string & NewText)"
 
-.PP
-Изменить текст 
-.PP
-\fBParameters\fP
-.RS 4
-\fINewText\fP Текст 
-.RE
-.PP
-
-
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

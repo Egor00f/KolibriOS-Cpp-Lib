@@ -1,20 +1,25 @@
 var namespace_kolibri_lib =
 [
+    [ "Background", "namespace_kolibri_lib_1_1_background.html", [
+      [ "DrawLine", "namespace_kolibri_lib_1_1_background.html#a21ad9e230558c6f35cc7e5f859223149", null ],
+      [ "GetSize", "namespace_kolibri_lib_1_1_background.html#a77949e5ea5d23b4ecc4b652b072017f8", null ],
+      [ "ReadPoint", "namespace_kolibri_lib_1_1_background.html#afcb0fd60be834628d898f534c1628d5a", null ],
+      [ "RedrawBackground", "namespace_kolibri_lib_1_1_background.html#a49a4b0d2ddebbe46dffa031b6b43cd46", null ]
+    ] ],
     [ "childWindow", "namespace_kolibri_lib_1_1child_window.html", [
       [ "ErrorWindow", "namespace_kolibri_lib_1_1child_window.html#adfe18d89f20521dbdcc444cd3ea0fb23", null ],
-      [ "MessageBox", "namespace_kolibri_lib_1_1child_window.html#aa719a69e1532c5c8e7f1fb14d58beba5", null ]
+      [ "MessageBox", "namespace_kolibri_lib_1_1child_window.html#a453f0b44166950e95d776c3a725fe900", null ]
     ] ],
     [ "Colors", "namespace_kolibri_lib_1_1_colors.html", "namespace_kolibri_lib_1_1_colors" ],
     [ "filesystem", "namespace_kolibri_lib_1_1filesystem.html", "namespace_kolibri_lib_1_1filesystem" ],
     [ "mouse", "namespace_kolibri_lib_1_1mouse.html", [
       [ "CursorHandle", "namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05", null ],
       [ "CenterCursor", "namespace_kolibri_lib_1_1mouse.html#ad5181e5115b88147badd22a0c19cbe4f", null ],
-      [ "EmulateMouse", "namespace_kolibri_lib_1_1mouse.html#a39c94a2a4489ad8d4ec05a07ac13e259", null ],
       [ "GetMouseButtons", "namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024", null ],
-      [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#ac2a6b8b5a4e77db980d7dcc2cb79eb26", null ],
-      [ "GetMousePositionOnSreen", "namespace_kolibri_lib_1_1mouse.html#a3214167f4881bd080a5f8677f9f748e9", null ],
+      [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#af5c71bb6951c9963f3e8f7366b343ab0", null ],
+      [ "GetMousePositionOnSreen", "namespace_kolibri_lib_1_1mouse.html#a1ed776d98798432ed1d634b3a18dd181", null ],
       [ "GetMouseWheels", "namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0", null ],
-      [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#ad28b18a7d7c25d015b5c503e9ddecf47", null ],
+      [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#afa9e02a685efd7b6ab8f92b728ee1a2d", null ],
       [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#ac82f2a9273155c4a3d12aa894c0edb5b", null ],
       [ "SetCursor", "namespace_kolibri_lib_1_1mouse.html#a21b758a85831bd3a66ac4cd10ac632a3", null ]
     ] ],
@@ -31,24 +36,39 @@ var namespace_kolibri_lib =
         [ "Debug", "namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca0b19590c1c5b9fc27961bd370c24e346", null ],
         [ "Exit", "namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1", null ]
       ] ],
-      [ "CheckEvent", "namespace_kolibri_lib_1_1_o_s.html#afc5cf781adb8afcd4bebfb1d081a1a0f", null ],
+      [ "lang", "namespace_kolibri_lib_1_1_o_s.html#ad74e24145535693721b73b3d7f315c45", [
+        [ "Eng", "namespace_kolibri_lib_1_1_o_s.html#ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e", null ],
+        [ "Fi", "namespace_kolibri_lib_1_1_o_s.html#ad74e24145535693721b73b3d7f315c45a5ea6247db26489c18e311b948e2355ef", null ],
+        [ "Ger", "namespace_kolibri_lib_1_1_o_s.html#ad74e24145535693721b73b3d7f315c45aaf6062a20261b7229e98a7e9508ca034", null ],
+        [ "Rus", "namespace_kolibri_lib_1_1_o_s.html#ad74e24145535693721b73b3d7f315c45ac0e37e69ddd6b9c8ebc624abdb800162", null ]
+      ] ],
+      [ "AllMem", "namespace_kolibri_lib_1_1_o_s.html#adf72c8ee9534feb5b730246a1157584b", null ],
+      [ "CheckEvent", "namespace_kolibri_lib_1_1_o_s.html#a15b798e29dc85b78748a71bbf3c0cd2c", null ],
       [ "Exec", "namespace_kolibri_lib_1_1_o_s.html#a9d371dfce7a7c6579a93776e25222f13", null ],
-      [ "FreeMem", "namespace_kolibri_lib_1_1_o_s.html#afebe1299f35447d01cfb2ea2f9632e3d", null ],
+      [ "FreeMem", "namespace_kolibri_lib_1_1_o_s.html#a8a27c188f0baab254ac4f236de8259ae", null ],
+      [ "GetLang", "namespace_kolibri_lib_1_1_o_s.html#afdb0884f42641be4566af7cae8cb92ce", null ],
       [ "GetSystemColors", "namespace_kolibri_lib_1_1_o_s.html#a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf", null ],
-      [ "GetTime", "namespace_kolibri_lib_1_1_o_s.html#a1744275834206a63ba18a572f5ddd6bb", null ],
+      [ "GetTime", "namespace_kolibri_lib_1_1_o_s.html#a34e921d6bba683cbba473fb70345f2eb", null ],
       [ "SpeakerStatus", "namespace_kolibri_lib_1_1_o_s.html#ad2be50a93561a32225553fcdc1b0607c", null ],
       [ "SpeakerSwitch", "namespace_kolibri_lib_1_1_o_s.html#a19a2cc0aa77148638f95a8c88076d6a3", null ],
-      [ "WaitEvent", "namespace_kolibri_lib_1_1_o_s.html#a51432114007d25b88f76501910253064", null ],
-      [ "WaitEvent", "namespace_kolibri_lib_1_1_o_s.html#a261b54597e45aad0ef832c7207bb0ed4", null ],
+      [ "WaitEvent", "namespace_kolibri_lib_1_1_o_s.html#a58e553f23fc726c3bf5755546f0d615d", null ],
+      [ "WaitEvent", "namespace_kolibri_lib_1_1_o_s.html#aaf8805f49fe63a5a5b5ca34d7858988a", null ],
       [ "sys_color_table", "namespace_kolibri_lib_1_1_o_s.html#a8ab28572c3f8b9cc876328be1ed3928a", null ]
     ] ],
-    [ "Thread", "namespace_kolibri_lib_1_1_thread.html", "namespace_kolibri_lib_1_1_thread" ],
+    [ "Thread", "namespace_kolibri_lib_1_1_thread.html", [
+      [ "PID", "namespace_kolibri_lib_1_1_thread.html#a1635692d8eb5eddc602109be07a50a45", null ],
+      [ "Slot", "namespace_kolibri_lib_1_1_thread.html#ac583b7a88e5bddeab393a41bf9929c51", null ],
+      [ "ThreadInfo", "namespace_kolibri_lib_1_1_thread.html#a8c4f7f76752ed94392f9409f4f9554da", null ],
+      [ "CreateThread", "namespace_kolibri_lib_1_1_thread.html#a692c4300c1ca95211eabb91947518cf2", null ],
+      [ "GetThreadInfo", "namespace_kolibri_lib_1_1_thread.html#a620ca73995252a0f262597d84b5cc40f", null ],
+      [ "GetThreadSlot", "namespace_kolibri_lib_1_1_thread.html#a6e66cd0e046a044373f8fa5a6ee8ab77", null ],
+      [ "TerminateThread", "namespace_kolibri_lib_1_1_thread.html#a53a7d295e396cff9eaca2ceae95b6b01", null ]
+    ] ],
     [ "window", "namespace_kolibri_lib_1_1window.html", "namespace_kolibri_lib_1_1window" ],
     [ "point", "struct_kolibri_lib_1_1point.html", "struct_kolibri_lib_1_1point" ],
-    [ "GetBackgroundImageSize", "namespace_kolibri_lib.html#aee258b1d924d917faae1e8dff6ccaeeb", null ],
-    [ "GetScreenSize", "namespace_kolibri_lib.html#a8ef3c016e993ed0a7c2d110d4adae88e", null ],
+    [ "GetScreenSize", "namespace_kolibri_lib.html#aadbd1982a31f43cb6e1e70dafc4edb48", null ],
     [ "init", "namespace_kolibri_lib.html#a79cea121a31a0a2da904f088c3484802", null ],
-    [ "ReadBackgroungImagePoint", "namespace_kolibri_lib.html#a59afa938f04ee58f39092deac6fbd8df", null ],
-    [ "ScreenPointAffiliation", "namespace_kolibri_lib.html#a5e62483a2a86b6d4f196cc92de3b9c55", null ],
-    [ "Wait", "namespace_kolibri_lib.html#a40eea0b3d82e0ea121b28f46390f0df6", null ]
+    [ "ScreenPointAffiliation", "namespace_kolibri_lib.html#acd69b39f323a74739838c3cfd62bec7d", null ],
+    [ "Wait", "namespace_kolibri_lib.html#a5538a86d3c38c7c88391e9360e01d023", null ],
+    [ "Wait", "namespace_kolibri_lib.html#ab8a227d1c51a256a87817fdf1c37a24c", null ]
 ];

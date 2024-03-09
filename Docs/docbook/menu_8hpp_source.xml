@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_menu_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_menu_8hpp_source" xml:lang="ru">
 <title>menu.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/menu.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/menu.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__MENU_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__MENU_H__</emphasis>
 3 
 4 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
 5 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
 6 
-7 <emphasis role="preprocessor">#include&#32;&quot;types.hpp&quot;</emphasis>
-8 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&quot;os.hpp&quot;</emphasis>
-10 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/UI.hpp&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
 11 <emphasis role="preprocessor">#include&#32;&quot;button.hpp&quot;</emphasis>
-12 <emphasis role="preprocessor">#include&#32;&quot;graphic.hpp&quot;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/graphic/graphic.hpp&gt;</emphasis>
 13 
 14 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
 15 {
@@ -24,10 +24,10 @@
 21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
 22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;buttons::Button&gt;&#32;_Buttons;
 23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu">Menu</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&#32;&amp;li,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin&#32;=&#32;DefaultMargin,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area);
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu">Menu</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&#32;&amp;li&#32;=&#32;{<emphasis role="stringliteral">&quot;menu&quot;</emphasis>,&#32;<emphasis role="stringliteral">&quot;menu&quot;</emphasis>},&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin&#32;=&#32;DefaultMargin,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area);
 25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu">~Menu</link>();
 26 
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1aba3a01a02c75a282727605f9a7979555">Render</link>();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1aa69ce5e2c73c2251acd408aac65fa58b">Render</link>();
 29 
 32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1a6ef3b4324f61a499469b1519bec4c8b7">Handler</link>();
 33 
@@ -37,10 +37,69 @@
 45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
 46 
 47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-48 
-49 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
-50 
-51 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-52 
-53 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MENU_H__</emphasis>
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+49 Menu::Menu(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&#32;&amp;li,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;color)&#32;:&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>(coord,&#32;size,&#32;color,&#32;Margin)
+50 {
+51 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;li.size();&#32;i++)
+52 &#32;&#32;&#32;&#32;{
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">buttons::Button</link>&#32;btn({coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;((int)(size.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;/&#32;li.size())&#32;*&#32;i)},&#32;{size.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;size.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;/&#32;li.size()},&#32;Margin,&#32;color);
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;btn.<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a50f90789d11b5c32a1ca876ec3925ae3">insert</link>(li[i],&#32;0);
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_Buttons.push_back(btn);
+56 &#32;&#32;&#32;&#32;}
+57 }
+58 
+59 Menu::~Menu()
+60 {
+61 }
+62 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1aa69ce5e2c73c2251acd408aac65fa58b">Menu::Render</link>()
+63 {
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;_Buttons.size();&#32;i++)
+65 &#32;&#32;&#32;&#32;{
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_Buttons[i].Render();
+67 &#32;&#32;&#32;&#32;}
+68 }
+69 
+70 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1a6ef3b4324f61a499469b1519bec4c8b7">KolibriLib::UI::Menu::Handler</link>()
+71 {
+72 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;_Buttons.size();&#32;i++)
+73 &#32;&#32;&#32;&#32;{
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(_Buttons[i].Handler())
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;i;
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+78 &#32;&#32;&#32;&#32;}
+79 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;-1;
+80 }
+81 
+82 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1a41d7f8f9019da81f7eb58c3671c44e5c">KolibriLib::UI::Menu::AddItem</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;item,&#32;<emphasis role="keywordtype">int</emphasis>&#32;i)
+83 {
+84 &#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button">buttons::Button</link>&#32;btn&#32;({_coord.x,&#32;_coord.y&#32;+&#32;((int)(_size.y&#32;/&#32;_Buttons.size())&#32;*&#32;i)},&#32;{_size.x},&#32;_Margin,&#32;_MainColor);
+85 &#32;&#32;&#32;&#32;btn.<link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a50f90789d11b5c32a1ca876ec3925ae3">insert</link>(item,&#32;0);
+86 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(i&#32;==&#32;-1)
+87 &#32;&#32;&#32;&#32;{
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_Buttons.push_back(btn);
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_Buttons.size()&#32;-&#32;1;
+90 &#32;&#32;&#32;&#32;}
+91 &#32;&#32;&#32;&#32;
+92 &#32;&#32;&#32;&#32;_Buttons.insert(_Buttons.begin()&#32;+&#32;i,&#32;btn);
+93 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+94 }
+95 
+96 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1a9b380c2eeb680f910ca87903ee78d8ad">KolibriLib::UI::Menu::DeleteItem</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;i)
+97 {
+98 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(_Buttons.size()&#32;&lt;=&#32;i&#32;||&#32;i&#32;&lt;&#32;0)
+99 &#32;&#32;&#32;&#32;{
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+101 &#32;&#32;&#32;&#32;}
+102 
+103 &#32;&#32;&#32;&#32;_Buttons.erase(_Buttons.begin()&#32;+&#32;i);
+104 
+105 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+106 }
+107 
+108 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+109 
+110 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+111 
+112 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MENU_H__</emphasis>
 </programlisting></section>

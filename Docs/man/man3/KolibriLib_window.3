@@ -7,7 +7,7 @@ KolibriLib::window \- Работа с окном
 .SH SYNOPSIS
 .br
 .PP
-.SS "Classes"
+.SS "Классы"
 
 .in +1c
 .ti -1c
@@ -15,19 +15,22 @@ KolibriLib::window \- Работа с окном
 .br
 .RI "Класс для работы с окном "
 .in -1c
-.SS "Enumerations"
+.SS "Перечисления"
 
 .in +1c
+.ti -1c
+.RI "enum \fBWindowStyle\fP { \fBFixSize\fP = 0, \fBNoDraw\fP = 1, \fBCanResize\fP = 2, \fBwithSkin\fP = 3, \fBFixSizewithSkin\fP = 4, \fBNoDrawWorkspace\fP = 0b01000000, \fBNormalDraw\fP = 0b00000000, \fBGradientDraw\fP = 0b10000000 }"
+.br
 .ti -1c
 .RI "enum \fBPos\fP { \fBBackGround\fP = -2, \fBAlwaysBack\fP = -1, \fBNormal\fP = 0, \fBAlwaysTop\fP = 1 }"
 .br
 .RI "Список констант положения окна относительно других окон: "
 .in -1c
-.SS "Functions"
+.SS "Функции"
 
 .in +1c
 .ti -1c
-.RI "void \fBCreateWindow\fP (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string &title, const \fBColors::Color\fP WorkColor=OS::sys_color_table\&.frame_area, const \fBColors::Color\fP TitleColor=OS::sys_color_table\&.work_text, const uint32_t style=20)"
+.RI "void \fBCreateWindow\fP (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string &title, const \fBColors::Color\fP WorkColor=OS::sys_color_table\&.frame_area, const \fBColors::Color\fP TitleColor=OS::sys_color_table\&.work_text, const uint32_t style=\fBWindowStyle::CanResize\fP+\fBWindowStyle::NormalDraw\fP)"
 .br
 .ti -1c
 .RI "void \fBUnfocusWindow\fP (\fBThread::Slot\fP slot)"
@@ -50,11 +53,14 @@ KolibriLib::window \- Работа с окном
 .br
 .RI "Свернуть все окна "
 .ti -1c
+.RI "\fBUI::Coord\fP \fBGetWindowCoord\fP ()"
+.br
+.ti -1c
 .RI "int \fBGetWindowPos\fP ()"
 .br
 .RI "Получить положение окна относительно других окон "
 .ti -1c
-.RI "bool \fBSetWindowPos\fP (int pos, Thread::PID pid=\-1)"
+.RI "bool \fBSetWindowPos\fP (int pos, \fBThread::PID\fP pid=\-1)"
 .br
 .RI "Изменить положение окна относительно дроугих окон "
 .ti -1c
@@ -62,7 +68,7 @@ KolibriLib::window \- Работа с окном
 .br
 .RI "Получить высоту скина(заголовка окна) "
 .in -1c
-.SS "Variables"
+.SS "Переменные"
 
 .in +1c
 .ti -1c
@@ -74,29 +80,58 @@ KolibriLib::window \- Работа с окном
 .br
 .RI "Соординаты окна по умолчанию "
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Работа с окном 
-.SH "Function Documentation"
+.SH "Перечисления"
 .PP 
-.SS "void KolibriLib::window::CreateWindow (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string & title, const \fBColors::Color\fP WorkColor = \fROS::sys_color_table\&.frame_area\fP, const \fBColors::Color\fP TitleColor = \fROS::sys_color_table\&.work_text\fP, const uint32_t style = \fR20\fP)\fR [inline]\fP"
+.SS "enum \fBKolibriLib::window::WindowStyle\fP"
 
 .PP
-\fBParameters\fP
+\fBЭлементы перечислений\fP
+.in +1c
+.TP
+\fB\fIFixSize \fP\fP
+окно фиксированных размеров 
+.TP
+\fB\fINoDraw \fP\fP
+только определить область окна, ничего не рисовать 
+.TP
+\fB\fICanResize \fP\fP
+окно изменяемых размеров 
+.TP
+\fB\fIwithSkin \fP\fP
+окно со скином 
+.TP
+\fB\fIFixSizewithSkin \fP\fP
+окно со скином фиксированных размеров 
+.TP
+\fB\fINoDrawWorkspace \fP\fP
+не закрашивать рабочую область при отрисовке окна 
+.TP
+\fB\fINormalDraw \fP\fP
+нормальная заливка рабочей области 
+.TP
+\fB\fIGradientDraw \fP\fP
+градиентная заливка рабочей области 
+.SH "Функции"
+.PP 
+.SS "void KolibriLib::window::CreateWindow (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string & title, const \fBColors::Color\fP WorkColor = \fROS::sys_color_table\&.frame_area\fP, const \fBColors::Color\fP TitleColor = \fROS::sys_color_table\&.work_text\fP, const uint32_t style = \fR\fBWindowStyle::CanResize\fP + \fBWindowStyle::NormalDraw\fP\fP)\fR [inline]\fP"
+
+.PP
+\fBАргументы\fP
 .RS 4
-\fIcoord\fP 
+\fIcoord\fP Координаты окна(его левого верхнего угола) на экране 
 .br
-\fIsize\fP 
+\fIsize\fP Размеры окна 
 .br
-\fIstring\fP 
+\fItitle\fP Заголовок окна 
 .br
-\fI<br>\fP 
+\fIWorkColor\fP цвет рабочей области окна 
 .br
-\fIstyle\fP 
+\fITitleColor\fP Цвет текста заголовка 
 .br
-\fITitleColor\fP 
-.br
- 
+\fIstyle\fP Стиль 
 .RE
 .PP
 
@@ -105,7 +140,7 @@ KolibriLib::window \- Работа с окном
 .PP
 Поставить фокус на окно 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIslot\fP слот окна 
 .RE
@@ -116,11 +151,9 @@ KolibriLib::window \- Работа с окном
 .PP
 Получить слот активного окна 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
-
-.br
- 
+Слот активного в данный момент окна 
 .RE
 .PP
 
@@ -129,7 +162,7 @@ KolibriLib::window \- Работа с окном
 .PP
 Получить высоту скина(заголовка окна) 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 высота скина 
 .RE
@@ -140,27 +173,20 @@ KolibriLib::window \- Работа с окном
 .PP
 Получить положение окна относительно других окон 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 одна из констант из списка \fBPos\fP
 .RE
 .PP
 
-.SS "bool KolibriLib::window::SetWindowPos (int pos, Thread::PID pid = \fR\-1\fP)\fR [inline]\fP"
+.SS "bool KolibriLib::window::SetWindowPos (int pos, \fBThread::PID\fP pid = \fR\-1\fP)\fR [inline]\fP"
 
 .PP
 Изменить положение окна относительно дроугих окон 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
-\fIpos\fP 
-.br
-\fIpid\fP процесс 
-.RE
-.PP
-\fBReturns\fP
-.RS 4
-false если ошибка 
+\fIpos\fP значение из списка \fBpid процесс окна, по умолчанию текущий  false если ошибка, \fP
 .RE
 .PP
 
@@ -169,12 +195,12 @@ false если ошибка
 .PP
 Снять фокус с окна 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIslot\fP слот окна 
 .RE
 .PP
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

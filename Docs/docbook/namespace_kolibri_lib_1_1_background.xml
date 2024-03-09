@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_background" xml:lang="ru">
+<title>Пространство имен KolibriLib::Background</title>
+<indexterm><primary>KolibriLib::Background</primary></indexterm>
+<para>
+
+<para>Работа с фоном </para>
+ 
+</para>
+<simplesect>
+    <title>Функции    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link> ()</para>
+
+<para>Получить размеры фонового изображения </para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_namespace_kolibri_lib_1_1_background_1afcb0fd60be834628d898f534c1628d5a">ReadPoint</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;Point)</para>
+
+<para>Прочитать точку на фоне </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a49a4b0d2ddebbe46dffa031b6b43cd46"/>void <emphasis role="strong">RedrawBackground</emphasis> ()</para>
+
+<para>Перерисовать фон </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a84d8ff24e6442158aac594a3152551aa"/>void <emphasis role="strong">RedrawBackground</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;size)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1ad3d78860faa31d059c085a5ff9000e1a"/>void <emphasis role="strong">SetSize</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;size)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1aeef0462c3b90b0a49d0ac65407de12e6"/>void <emphasis role="strong">DrawPoint</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a79bda2b19dd2acc3560b232dbbba9818"/>template&lt;std::size_t N&gt; </para><para>void <emphasis role="strong">DrawImage</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, rgb_t(&amp;rgb)[N])</para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1ad51d4dace6f656ccc6badceb3f3af4f6"/>void <emphasis role="strong">DrawImage</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, rgb_t *rgb, std::size_t N)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149">DrawLine</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;p1, const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;p2, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color=OS::sys_color_table.work_graph)</para>
+
+<para>Нарисовать линию на фоне </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a437e11ee01405056d78e926a397aa1ad"/>void <emphasis role="strong">DrawText</emphasis> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">UI::text::Fonts::Font</link> &amp;font=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">UI::text::Fonts::DefaultFont</link>, unsigned margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText=OS::sys_color_table.work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=OS::sys_color_table.work_area)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Переменные    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a7041f0639a28ce1ef4111cd0e5128194"/>bool <emphasis role="strong">f</emphasis> = false</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Подробное описание</title>
+
+<para>Работа с фоном </para>
+</section>
+<section>
+<title>Функции</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149"/><section>
+    <title>DrawLine()</title>
+<indexterm><primary>DrawLine</primary><secondary>KolibriLib::Background</secondary></indexterm>
+<indexterm><primary>KolibriLib::Background</primary><secondary>DrawLine</secondary></indexterm>
+<para><computeroutput>void KolibriLib::Background::DrawLine (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; p1, const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; p2, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Нарисовать линию на фоне </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>p1</entry><entry>
+<para>точка перавая </para>
+</entry>
+                            </row>
+                            <row>
+<entry>p2</entry><entry>
+<para>точка вторая </para>
+</entry>
+                            </row>
+                            <row>
+<entry>color</entry><entry>
+<para>цвет линии </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8"/><section>
+    <title>GetSize()</title>
+<indexterm><primary>GetSize</primary><secondary>KolibriLib::Background</secondary></indexterm>
+<indexterm><primary>KolibriLib::Background</primary><secondary>GetSize</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> KolibriLib::Background::GetSize ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить размеры фонового изображения </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_background_1afcb0fd60be834628d898f534c1628d5a"/><section>
+    <title>ReadPoint()</title>
+<indexterm><primary>ReadPoint</primary><secondary>KolibriLib::Background</secondary></indexterm>
+<indexterm><primary>KolibriLib::Background</primary><secondary>ReadPoint</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> KolibriLib::Background::ReadPoint (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; Point)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Прочитать точку на фоне </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Point</entry><entry>
+<para>читаема точка </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

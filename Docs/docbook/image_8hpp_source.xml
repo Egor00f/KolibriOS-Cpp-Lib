@@ -1,54 +1,196 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_image_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_image_8hpp_source" xml:lang="ru">
 <title>image.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/image.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__IMAGE_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__IMAGE_H__</emphasis>
 3 
-4 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
-5 <emphasis role="preprocessor">#include&#32;&quot;small.hpp&quot;</emphasis>
-6 <emphasis role="preprocessor">#include&#32;&quot;filesystem.hpp&quot;</emphasis>
-7 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/UI.hpp&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/small.hpp&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/filesystem.hpp&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
 8 
 9 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
 10 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
 11 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
 12 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
 13 
-14 <emphasis role="preprocessor">#include&#32;&quot;kolibri_libimg.h&quot;</emphasis>
-15 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-16 {
-17 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
-18 &#32;&#32;&#32;&#32;{
-20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Images
-21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>
+14 <emphasis role="preprocessor">#include&#32;&lt;kolibri_libimg.h&gt;</emphasis>
+15 
+16 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+17 {
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
+19 &#32;&#32;&#32;&#32;{
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Images
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>
 25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
 27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Image_t&#32;*_img;
 28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a962255c7f8accf8f5e334e48d18cf676">Image</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size&#32;=&#32;{100,&#32;100});
-35 
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a2a7ce74fcaeb41fc67a6671ac3ad2edb">~Image</link>();
-38 
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1abd534f8e97525de936700670546fa254">LoadImage</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&#32;&amp;Path&#32;=&#32;DefaultImage);
-42 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae267991744feb487720de4294c7a7986">Render</link>(<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;size&#32;=&#32;{0,&#32;0});
-47 
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae00f970794772662ac7d8db0fc135771">operator = </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link>&amp;&#32;a);
-52 
-53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;{100,&#32;100},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&#32;&amp;Path&#32;=&#32;DefaultImage);
-55 
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1aa3a38bc39030ade711221cb8f41ba76a">SetImg</link>(Image_t*&#32;img);
-59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>();
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">~img</link>();
+31 
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Render(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size)&#32;<emphasis role="keyword">const</emphasis>;
+33 
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4035876f0222a7ccdc175b595428732f">LoadImage</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&#32;&amp;Path&#32;=&#32;DefaultImage);
+37 
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5">SetImg</link>(Image_t&#32;*<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>);
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+44 
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>,&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0a1195770835be1f5513910bf8eb21d7">Image</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size&#32;=&#32;{100,&#32;100});
+57 
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ad63223057a3cea18f027074d68ff2ecc">~Image</link>();
 60 
-61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;Image</emphasis>
-62 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
-63 &#32;&#32;&#32;&#32;
-64 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-65 
-66 
-67 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__IMAGE_H__</emphasis>
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+62 
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0cafdef164e76cea219923deb39b9f2c">Render</link>()&#32;<emphasis role="keyword">const</emphasis>;
+67 
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae00f970794772662ac7d8db0fc135771">operator = </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Image</link>&amp;&#32;a);
+72 
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size&#32;=&#32;{100,&#32;100},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&#32;&amp;Path&#32;=&#32;DefaultImage);
+75 
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+78 
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img::img()
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_img&#32;=&#32;img_create(32,&#32;32,&#32;IMAGE_BPP32);
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img::~img()
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img_destroy(_img);
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+88 
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0a1195770835be1f5513910bf8eb21d7">Image::Image</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size)&#32;:&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>(coord,&#32;size)
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+93 
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ad63223057a3cea18f027074d68ff2ecc">Image::~Image</link>()
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+96 
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+98 
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4035876f0222a7ccdc175b595428732f">img::LoadImage</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&#32;&amp;Path)
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int32_t&#32;img_size;
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FILE&#32;*f&#32;=&#32;fopen(Path.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>(),&#32;<emphasis role="stringliteral">&quot;rb&quot;</emphasis>);&#32;<emphasis role="comment">//&#32;Этот&#32;код&#32;взят&#32;из&#32;примера&#32;из&#32;/contrib/C_Layer/EXAMPLE/img_example/main.c</emphasis>
+103 
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!f)
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a&#32;=&#32;<emphasis role="stringliteral">&quot;LoadImage:&#32;Can&apos;t&#32;open&#32;file:&quot;</emphasis>;
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>());
+110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+113 
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(fseek(f,&#32;0,&#32;SEEK_END))
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a&#32;=&#32;<emphasis role="stringliteral">&quot;Can&apos;t&#32;SEEK_END&#32;file:&quot;</emphasis>;
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>());
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+123 
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;filesize&#32;=&#32;ftell(f);
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rewind(f);
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fdata&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;*)malloc(filesize);
+127 
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!fdata)
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a&#32;=&#32;<emphasis role="stringliteral">&quot;No&#32;memory&#32;for&#32;file:&quot;</emphasis>;
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>());
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;malloc&#32;not&#32;return&#32;ptr&quot;</emphasis>);
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+138 
+139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img_size&#32;=&#32;(int32_t)fread(fdata,&#32;1,&#32;filesize,&#32;f);
+140 
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ferror(f))
+142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a&#32;=&#32;<emphasis role="stringliteral">&quot;Error&#32;reading&#32;file&#32;&quot;</emphasis>;
+144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>());
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+150 
+151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fclose(f);
+152 
+153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_img&#32;=&#32;img_decode((<emphasis role="keywordtype">void</emphasis>&#32;*)fdata,&#32;img_size,&#32;0);
+154 
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free(fdata);
+156 
+157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_img-&gt;Type&#32;!=&#32;IMAGE_BPP32)
+158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_img&#32;=&#32;img_convert(_img,&#32;NULL,&#32;IMAGE_BPP32,&#32;0,&#32;0);&#32;<emphasis role="comment">//&#32;Convert&#32;image&#32;to&#32;format&#32;BPP32</emphasis>
+160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!_img)
+161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Convert&#32;error&quot;</emphasis>);
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+166 
+167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;Image</emphasis>
+168 
+169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+170 
+171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Images::img::Render(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size)<emphasis role="keyword">&#32;const</emphasis>
+172 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
+173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img_draw(_img,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;size.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;size.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>,&#32;0,&#32;0);
+174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+175 
+176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Images::Image::init(<emphasis role="keyword">const</emphasis>&#32;Coord&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;Size&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&#32;&amp;Path)
+177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_coord&#32;=&#32;coord;
+179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_size&#32;=&#32;size;
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LoadImage(Path);
+181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+182 
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5">Images::img::SetImg</link>(Image_t&#32;*<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>)
+184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img_destroy(_img);
+186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_img&#32;=&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>;
+187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0cafdef164e76cea219923deb39b9f2c">KolibriLib::UI::Images::Image::Render</link>()<emphasis role="keyword">&#32;const</emphasis>
+189 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
+190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img_draw(_img,&#32;_coord.x,&#32;_coord.y,&#32;_size.x,&#32;_size.y,&#32;0,&#32;0);
+191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+192 
+193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">Images::Image</link>&#32;&amp;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae00f970794772662ac7d8db0fc135771">KolibriLib::UI::Images::Image::operator=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1_image">UI::Images::Image</link>&#32;&amp;a)
+194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_coord&#32;=&#32;a.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>;
+196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_size&#32;=&#32;a.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>;
+197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_MainColor&#32;=&#32;a._MainColor;
+198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_Margin&#32;=&#32;a.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>;
+199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SetImg(a._img);
+200 
+201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+203 
+204 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+205 &#32;&#32;&#32;&#32;
+206 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+207 
+208 
+209 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__IMAGE_H__</emphasis>
 </programlisting></section>

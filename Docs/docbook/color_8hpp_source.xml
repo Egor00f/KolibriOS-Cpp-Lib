@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_color_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_color_8hpp_source" xml:lang="ru">
 <title>color.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/color.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/color.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__COLOR_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__COLOR_H__</emphasis>
 3 
 4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
-5 <emphasis role="preprocessor">#include&#32;&quot;types.hpp&quot;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
 6 
 7 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
 8 {
@@ -15,47 +15,171 @@
 13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">ARGB</link>
 14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
 15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;alpha;
-16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;red;
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;blue;
 17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;green;
-18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;blue;
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;red;
 19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">union&#32;</emphasis><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_color_t&#32;val;
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct</emphasis>
-25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;_a;
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;red;
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;green;
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;blue;
-30 
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1ad6f92352e6208a6463a1f31932c19614">Color</link>(ksys_color_t&#32;a&#32;=&#32;0);
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1ad6f92352e6208a6463a1f31932c19614">Color</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;a);
-38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1ad6f92352e6208a6463a1f31932c19614">Color</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">ARGB</link>&#32;&amp;a);
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">union&#32;</emphasis><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_color_t&#32;val;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct</emphasis>
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;_a;
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;blue;
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;green;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;red;
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">Color</link>(<emphasis role="keyword">const</emphasis>&#32;ksys_color_t&amp;&#32;a&#32;=&#32;0);
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">Color</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;a);
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">Color</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">ARGB</link>&#32;&amp;a);
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">Color</link>(<emphasis role="keyword">const</emphasis>&#32;rgb_t&#32;&amp;color);
 39 
-40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;operator&#32;=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;a);
-41 
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;a);
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rgb_t&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a4686f00731471d5cd1f0ea052573da80">GetRGB</link>()&#32;<emphasis role="keyword">const</emphasis>;
 43 
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;a)&#32;<emphasis role="keyword">const</emphasis>;
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;operator&#32;=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;a);
 45 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;a)<emphasis role="keyword">const</emphasis>;
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1af2dd4647f406b9ebab9cbe588f35aceb">BlendColors</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;a,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;b);
-54 
-56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1ada2166810bf7aa50f1f39154716cc73d">DefaultColorTable</link>&#32;=&#32;{0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0};
-57 
-58 
-63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a1efe547e71b05f6156bbcf31d55c2999">ComparisonColorsTables</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link>&amp;&#32;a,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link>&amp;&#32;b);
-64 
-65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-66 &#32;&#32;&#32;&#32;}
-67 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-68 
-69 
-70 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__COLOR_H__</emphasis>
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a1eab7c69f57dc723241bf57f7db16ac3">operator + </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;a);
+50 
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;a)&#32;<emphasis role="keyword">const</emphasis>;
+52 
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&amp;&#32;a)&#32;<emphasis role="keyword">const</emphasis>;
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+55 
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_color_t&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a234ec0266b5f9e86ecbe9c66dd0c7a41">RGBtoINT</link>(<emphasis role="keyword">const</emphasis>&#32;rgb_t&#32;&amp;color);
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a1d8b4c18bcb459e79bf6f5d140ada7a6">BlendColors</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;a,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;b,&#32;<emphasis role="keywordtype">float</emphasis>&#32;k&#32;=&#32;0.5f)
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(k&#32;&gt;&#32;1.0)&#32;<emphasis role="comment">//Коэфицент&#32;более&#32;1&#32;не&#32;имеет&#32;смысла</emphasis>
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;k&#32;=&#32;1.0;
+70 
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;буффер</emphasis>
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;buff;
+73 
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buff._a&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint8_t<emphasis role="keyword">&gt;</emphasis>((a._a&#32;&#32;&#32;&#32;*&#32;k)&#32;+&#32;(b._a&#32;&#32;&#32;&#32;*&#32;(1.0f&#32;-&#32;k)));
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buff.red&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint8_t<emphasis role="keyword">&gt;</emphasis>((a.red&#32;&#32;&#32;*&#32;k)&#32;+&#32;(b.red&#32;&#32;&#32;*&#32;(1.0f&#32;-&#32;k)));
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buff.green&#32;&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint8_t<emphasis role="keyword">&gt;</emphasis>((a.green&#32;*&#32;k)&#32;+&#32;(b.green&#32;*&#32;(1.0f&#32;-&#32;k)));
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buff.blue&#32;&#32;&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint8_t<emphasis role="keyword">&gt;</emphasis>((a.blue&#32;&#32;*&#32;k)&#32;+&#32;(b.blue&#32;&#32;*&#32;(1.0f&#32;-&#32;k)));
+78 
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;buff;
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+81 
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;ksys_colors_table_t&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1ad6deb13041b3eac69cf1eeaab2b814a8">DefaultColorTable</link>&#32;=&#32;{0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0,&#32;0};
+84 
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">ColorsTable</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;ksys_colors_table_t
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">ColorsTable</link>(ksys_colors_table_t&#32;table&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1ad6deb13041b3eac69cf1eeaab2b814a8">DefaultColorTable</link>);
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;==&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">ColorsTable</link>&#32;&amp;table)&#32;<emphasis role="keyword">const</emphasis>;
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator&#32;!=&#32;(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">ColorsTable</link>&#32;&amp;table)&#32;<emphasis role="keyword">const</emphasis>;
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+93 &#32;&#32;&#32;&#32;}
+94 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+95 
+96 <link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">KolibriLib::Colors::Color::Color</link>(<emphasis role="keyword">const</emphasis>&#32;ksys_color_t&#32;&amp;a)
+97 {
+98 &#32;&#32;&#32;&#32;val&#32;=&#32;a;
+99 }
+100 
+101 <link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">KolibriLib::Colors::Color::Color</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">KolibriLib::Colors::Color</link>&#32;&amp;a)
+102 {
+103 &#32;&#32;&#32;&#32;val&#32;=&#32;a.val;
+104 }
+105 
+106 <link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">KolibriLib::Colors::Color::Color</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">KolibriLib::Colors::ARGB</link>&#32;&amp;a)
+107 {
+108 &#32;&#32;&#32;&#32;_a&#32;=&#32;a.alpha;
+109 &#32;&#32;&#32;&#32;red&#32;=&#32;a.red;
+110 &#32;&#32;&#32;&#32;green&#32;=&#32;a.green;
+111 &#32;&#32;&#32;&#32;blue&#32;=&#32;a.blue;
+112 }
+113 
+114 <link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a6850297f0cf19caec6dc0b769f6f5537">KolibriLib::Colors::Color::Color</link>(<emphasis role="keyword">const</emphasis>&#32;rgb_t&#32;&amp;color)
+115 {
+116 &#32;&#32;&#32;&#32;_a&#32;=&#32;1;
+117 &#32;&#32;&#32;&#32;red&#32;=&#32;color.red;
+118 &#32;&#32;&#32;&#32;green&#32;=&#32;color.green;
+119 &#32;&#32;&#32;&#32;red&#32;=&#32;color.blue;
+120 }
+121 
+122 rgb_t&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a4686f00731471d5cd1f0ea052573da80">KolibriLib::Colors::Color::GetRGB</link>()<emphasis role="keyword">&#32;const</emphasis>
+123 <emphasis role="keyword"></emphasis>{
+124 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{red,&#32;green,&#32;blue};
+125 }
+126 
+127 <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">KolibriLib::Colors::Color</link>&#32;&amp;KolibriLib::Colors::Color::operator=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">KolibriLib::Colors::Color</link>&#32;&amp;a)
+128 {
+129 &#32;&#32;&#32;&#32;val&#32;=&#32;a.val;
+130 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+131 }
+132 
+133 <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">KolibriLib::Colors::Color</link>&#32;&amp;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color_1a1eab7c69f57dc723241bf57f7db16ac3">KolibriLib::Colors::Color::operator+</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">KolibriLib::Colors::Color</link>&#32;&amp;a)
+134 {
+135 &#32;&#32;&#32;&#32;_a&#32;/=&#32;2;
+136 &#32;&#32;&#32;&#32;_a&#32;+=&#32;a._a&#32;/&#32;2;
+137 
+138 &#32;&#32;&#32;&#32;red&#32;/=&#32;2;
+139 &#32;&#32;&#32;&#32;red&#32;+=&#32;(a.red&#32;/&#32;2);
+140 
+141 &#32;&#32;&#32;&#32;green&#32;/=&#32;2;
+142 &#32;&#32;&#32;&#32;green&#32;+=&#32;(a.green&#32;/&#32;2);
+143 
+144 &#32;&#32;&#32;&#32;blue&#32;/=&#32;2;
+145 &#32;&#32;&#32;&#32;blue&#32;+=&#32;(a.blue&#32;/&#32;2);
+146 
+147 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+148 }
+149 
+150 <emphasis role="keywordtype">bool</emphasis>&#32;KolibriLib::Colors::Color::operator==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link>&#32;&amp;a)<emphasis role="keyword">&#32;const</emphasis>
+151 <emphasis role="keyword"></emphasis>{
+152 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;val&#32;==&#32;a.val;
+153 }
+154 
+155 <emphasis role="keywordtype">bool</emphasis>&#32;KolibriLib::Colors::Color::operator!=(<emphasis role="keyword">const</emphasis>&#32;Color&#32;&amp;a)<emphasis role="keyword">&#32;const</emphasis>
+156 <emphasis role="keyword"></emphasis>{
+157 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;val&#32;!=&#32;a.val;
+158 }
+159 
+160 KolibriLib::Colors::ColorsTable::ColorsTable(ksys_colors_table_t&#32;table)
+161 {
+162 &#32;&#32;&#32;&#32;work_area&#32;=&#32;table.work_area;
+163 &#32;&#32;&#32;&#32;work_button&#32;=&#32;table.work_button;
+164 &#32;&#32;&#32;&#32;work_button_text&#32;=&#32;table.work_button_text;
+165 &#32;&#32;&#32;&#32;work_graph&#32;=&#32;table.work_graph;
+166 &#32;&#32;&#32;&#32;work_text&#32;=&#32;table.work_text;
+167 &#32;&#32;&#32;&#32;frame_area&#32;=&#32;table.frame_area;
+168 &#32;&#32;&#32;&#32;grab_bar&#32;=&#32;table.grab_bar;
+169 }
+170 
+171 <emphasis role="keywordtype">bool</emphasis>&#32;KolibriLib::Colors::ColorsTable::operator==(<emphasis role="keyword">const</emphasis>&#32;ColorsTable&#32;&amp;table)<emphasis role="keyword">&#32;const</emphasis>
+172 <emphasis role="keyword"></emphasis>{
+173 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(frame_area&#32;==&#32;table.frame_area)&#32;&amp;&amp;
+174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(grab_bar&#32;==&#32;table.grab_bar)&#32;&amp;&amp;
+175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(grab_bar_button&#32;==&#32;table.grab_bar_button)&#32;&amp;&amp;
+176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(grab_button_text&#32;==&#32;table.grab_button_text)&#32;&amp;&amp;
+177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_area&#32;==&#32;table.work_area)&#32;&amp;&amp;
+178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_button&#32;==&#32;table.work_button)&#32;&amp;&amp;
+179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_button_text&#32;==&#32;table.work_button_text)&#32;&amp;&amp;
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_graph&#32;==&#32;table.work_graph)&#32;&amp;&amp;
+181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_text&#32;==&#32;table.work_text);
+182 }
+183 
+184 <emphasis role="keywordtype">bool</emphasis>&#32;KolibriLib::Colors::ColorsTable::operator!=(<emphasis role="keyword">const</emphasis>&#32;ColorsTable&#32;&amp;table)<emphasis role="keyword">&#32;const</emphasis>
+185 <emphasis role="keyword"></emphasis>{
+186 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(frame_area&#32;!=&#32;table.frame_area)&#32;||
+187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(grab_bar&#32;!=&#32;table.grab_bar)&#32;||
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(grab_bar_button&#32;!=&#32;table.grab_bar_button)&#32;||
+189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(grab_button_text&#32;!=&#32;table.grab_button_text)&#32;||
+190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_area&#32;!=&#32;table.work_area)&#32;||
+191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_button&#32;!=&#32;table.work_button)&#32;||
+192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(work_button_text&#32;!=&#32;table.work_button_text);
+193 }
+194 
+195 ksys_color_t&#32;<link linkend="_namespace_kolibri_lib_1_1_colors_1a234ec0266b5f9e86ecbe9c66dd0c7a41">KolibriLib::Colors::RGBtoINT</link>(<emphasis role="keyword">const</emphasis>&#32;rgb_t&#32;&amp;color)
+196 {
+197 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(color.blue&#32;&lt;&lt;&#32;16)&#32;+&#32;(color.green&#32;&lt;&lt;&#32;8)&#32;+&#32;color.red;
+198 }
+199 
+200 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__COLOR_H__</emphasis>
 </programlisting></section>

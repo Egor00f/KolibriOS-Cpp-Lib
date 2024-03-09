@@ -1,24 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="ru">
   <compounddef id="graphic_8hpp" kind="file" language="C++">
     <compoundname>graphic.hpp</compoundname>
     <includes local="no">sys/ksys.h</includes>
     <includes local="no">stdlib.h</includes>
     <includes local="no">string.h</includes>
     <includes local="no">math.h</includes>
-    <includes refid="types_8hpp" local="yes">types.hpp</includes>
-    <includes refid="screen_8hpp" local="yes">screen.hpp</includes>
-    <includes refid="_u_i_8hpp" local="yes">UI.hpp</includes>
-    <includes refid="color_8hpp" local="yes">color.hpp</includes>
-    <includedby refid="_kolibri_lib_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/KolibriLib.hpp</includedby>
-    <includedby refid="checkbox_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</includedby>
-    <includedby refid="form_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp</includedby>
-    <includedby refid="frame_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</includedby>
-    <includedby refid="graphic_8cpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.cpp</includedby>
-    <includedby refid="menu_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/menu.hpp</includedby>
+    <includes refid="types_8hpp" local="no">kolibriLib/types.hpp</includes>
+    <includes refid="screen_8hpp" local="no">kolibriLib/graphic/screen.hpp</includes>
+    <includes refid="_u_i_8hpp" local="no">kolibriLib/UI/UI.hpp</includes>
+    <includes refid="color_8hpp" local="no">kolibriLib/color.hpp</includes>
+    <includedby refid="checkbox_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</includedby>
+    <includedby refid="form_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp</includedby>
+    <includedby refid="frame_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</includedby>
+    <includedby refid="menu_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/menu.hpp</includedby>
+    <includedby refid="text_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</includedby>
     <incdepgraph>
       <node id="10">
-        <label>UI.hpp</label>
+        <label>kolibriLib/UI/UI.hpp</label>
         <link refid="_u_i_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -30,29 +29,23 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="8">
-        <label>color.hpp</label>
+        <label>kolibriLib/color.hpp</label>
         <link refid="color_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="15">
-        <label>filesystem.hpp</label>
-        <link refid="filesystem_8hpp_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
       <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp</label>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/graphic.hpp</label>
         <link refid="graphic_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -71,44 +64,8 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>input.hpp</label>
-        <link refid="input_8hpp_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>keyboard.hpp</label>
-        <link refid="keyboard_8hpp_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>mouse.hpp</label>
-        <link refid="mouse_8hpp_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>os.hpp</label>
-        <link refid="os_8hpp_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
       <node id="7">
-        <label>screen.hpp</label>
+        <label>kolibriLib/graphic/screen.hpp</label>
         <link refid="screen_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -119,16 +76,54 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>small.hpp</label>
-        <link refid="small_8hpp_source"/>
-        <childnode refid="14" relation="include">
+      <node id="15">
+        <label>kolibriLib/input/input.hpp</label>
+        <link refid="input_8hpp_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>keyboard.hpp</label>
+        <link refid="keyboard_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>mouse.hpp</label>
+        <link refid="mouse_8hpp_source"/>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>kolibriLib/system/filesystem.hpp</label>
+        <link refid="filesystem_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>kolibriLib/system/os.hpp</label>
+        <link refid="os_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="9">
-        <label>thread.hpp</label>
+        <label>kolibriLib/system/thread.hpp</label>
         <link refid="thread_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
@@ -136,15 +131,17 @@
         </childnode>
       </node>
       <node id="6">
-        <label>types.hpp</label>
+        <label>kolibriLib/types.hpp</label>
         <link refid="types_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>windowBase.hpp</label>
+      <node id="18">
+        <label>kolibriLib/window/windowBase.hpp</label>
         <link refid="window_base_8hpp_source"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -152,7 +149,9 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -175,42 +174,12 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/KolibriLib.hpp</label>
-        <link refid="_kolibri_lib_8hpp_source"/>
-      </node>
-      <node id="3">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</label>
-        <link refid="checkbox_8hpp_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp</label>
-        <link refid="child_window_8hpp_source"/>
+      <node id="9">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/button.hpp</label>
+        <link refid="button_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="7">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp</label>
-        <link refid="form_8hpp_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</label>
-        <link refid="frame_8hpp_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp</label>
-        <link refid="graphic_8hpp"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -218,21 +187,69 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+      </node>
+      <node id="2">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</label>
+        <link refid="checkbox_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp</label>
+        <link refid="form_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</label>
+        <link refid="frame_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/menu.hpp</label>
+        <link refid="menu_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="8">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/menu.hpp</label>
-        <link refid="menu_8hpp_source"/>
-        <childnode refid="5" relation="include">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</label>
+        <link refid="text_8hpp_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="5">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp</label>
-        <link refid="window_8hpp_source"/>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/childWindow.hpp</label>
+        <link refid="child_window_8hpp_source"/>
+      </node>
+      <node id="1">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/graphic.hpp</label>
+        <link refid="graphic_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</label>
+        <link refid="window_8hpp_source"/>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -253,42 +270,147 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;types.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;screen.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;UI.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;color.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/types.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/graphic/screen.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/UI/UI.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/color.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
 <codeline lineno="17"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Графика</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">graphic</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>b,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>lenght,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>angle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawPixel(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawCircle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>Radius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>detalization<sp/>=<sp/>36,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawRectangleFill(UI::Coord<sp/>position,<sp/>UI::Size<sp/>size,<sp/>Colors::Color<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawCircleFill(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>coord,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>Radius,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>detalization<sp/>=<sp/>36,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawPoint(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fill<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawRectangleLines(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>b,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawTriangle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>b,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Colors::Color<sp/>ReadPoint(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>point&lt;unsigned&gt;<sp/>Point);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="85"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>KolibriLib</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;b,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_draw_line(coord.x,<sp/>coord.y,<sp/>b.x,<sp/>b.y,<sp/>color.val);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>lenght,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>angle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_draw_line(coord.x,<sp/>coord.y,<sp/>coord.x<sp/>+<sp/>(lenght<sp/>*<sp/>cos(angle)),<sp/>coord.y<sp/>+<sp/>(lenght<sp/>*<sp/>sin(angle)),<sp/>color.val);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawPixel(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_draw_pixel(position.x,<sp/>position.y,<sp/>color.val);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawCircle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;Radius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;detalization<sp/>=<sp/>36,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawRectangleFill(UI::Coord<sp/>position,<sp/>UI::Size<sp/>size,<sp/>Colors::Color<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__asm__<sp/>__volatile__(</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;int<sp/>$0x40&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">(13),<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">((position.x<sp/>&lt;&lt;<sp/>16)<sp/>+<sp/>size.x),<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">((position.y<sp/>&lt;&lt;<sp/>16)<sp/>+<sp/>size.y),<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">(color.val)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawCircleFill(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>Radius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>detalization<sp/>=<sp/>36,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawPoint(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord&amp;<sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color&amp;<sp/>color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fill<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__GRAPHIC_H__</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawRectangleLines(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;b,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(a,<sp/>{b.x,<sp/>a.y},<sp/>color);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(a,<sp/>{a.x,<sp/>b.y},<sp/>color);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>({b.x,<sp/>a.y},<sp/>b,<sp/>color);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>({a.x,<sp/>b.y},<sp/>b,<sp/>color);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawTriangle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;b,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color<sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a" kindref="member">OS::sys_color_table</ref>.work_graph)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(a,<sp/>b,<sp/>color);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(a,<sp/>c,<sp/>color);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(b,<sp/>c,<sp/>color);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Colors::Color<sp/><ref refid="namespace_kolibri_lib_1_1_background_1afcb0fd60be834628d898f534c1628d5a" kindref="member">ReadPoint</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>Point)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ksys_color_t<sp/>c;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__asm__<sp/>__volatile__(</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;int<sp/>$0x40&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;=a&quot;</highlight><highlight class="normal">(c)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">(35),</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">((Point.x<sp/>*<sp/><ref refid="namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48" kindref="member">GetScreenSize</ref>().x<sp/>+<sp/>Point.y)));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(Colors::Color)c;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>rgb_t*<sp/>ReadArea(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Size<sp/>&amp;size)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rgb_t*<sp/>result<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>rgb_t[size.x<sp/>*<sp/>size.y];</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>asm_inline<sp/>(</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;int<sp/>$0x40&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>::</highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">(36),<sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">(result),<sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">(X_Y(size.x,<sp/>size.y)),<sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">(X_Y(coord.x,<sp/>coord.y))</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>graphic::DrawCircle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;Radius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;detalization,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UI::Coord<sp/>buff;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>Radius;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>angle<sp/>=<sp/>1;<sp/>angle<sp/>&lt;=<sp/>detalization<sp/>*<sp/>10;<sp/>angle<sp/>+=<sp/>36<sp/>/<sp/>detalization)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buff<sp/>=<sp/>{coord.x<sp/>+<sp/>(int)b,<sp/>coord.y<sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)c};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>Radius<sp/>*<sp/>cos(angle);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c<sp/>=<sp/>Radius<sp/>*<sp/>sin(angle);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UI::Coord<sp/>n<sp/>=<sp/>{coord.x<sp/>+<sp/>(int)b,<sp/>coord.y<sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)c};</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149" kindref="member">DrawLine</ref>(buff,<sp/>n);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>graphic::DrawCircleFill(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;Radius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;detalization,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawCircle(coord,<sp/>Radius,<sp/>detalization,<sp/>color);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>Radius<sp/>*<sp/>cos(90<sp/>+<sp/>45);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>Radius<sp/>*<sp/>sin(90<sp/>+<sp/>45);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UI::Coord<sp/>n<sp/>=<sp/>{coord.x<sp/>+<sp/>(int)b,<sp/>coord.y<sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)c};</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DrawRectangleFill(n,<sp/>{(unsigned)(coord.x<sp/>-<sp/>n.x)<sp/>*<sp/>2,<sp/>(unsigned)c<sp/>*<sp/>2},<sp/>color);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>Radius;<sp/>i<sp/>&gt;<sp/>(Radius<sp/>-<sp/>(coord.x<sp/>-<sp/>n.x));<sp/>i--)<sp/></highlight><highlight class="comment">//<sp/>Дозакрашивание<sp/>пробелов<sp/>между<sp/>квадратом<sp/>и<sp/>границами<sp/>груга</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawCircle(coord,<sp/>i,<sp/>detalization,<sp/>color);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>graphic::DrawPoint(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>UI::Coord<sp/>&amp;position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>&amp;size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Colors::Color<sp/>&amp;color,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fill)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;<sp/>3)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fill<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fill)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawCircle(position,<sp/>size,<sp/>8,<sp/>color);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>graphic::DrawCircleFill(position,<sp/>size,<sp/>8,<sp/>color);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>KolibriLib</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__GRAPHIC_H__</highlight></codeline>
     </programlisting>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/graphic.hpp"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/graphic.hpp"/>
   </compounddef>
 </doxygen>

@@ -7,15 +7,18 @@ KolibriLib::OS \- Работа с системой
 .SH SYNOPSIS
 .br
 .PP
-.SS "Typedefs"
+.SS "Определения типов"
 
 .in +1c
 .ti -1c
 .RI "typedef unsigned int \fBEvent\fP"
 .br
 .RI "Ивент "
+.ti -1c
+.RI "typedef ksys_time_t \fBTime\fP"
+.br
 .in -1c
-.SS "Enumerations"
+.SS "Перечисления"
 
 .in +1c
 .ti -1c
@@ -24,8 +27,9 @@ KolibriLib::OS \- Работа с системой
 .ti -1c
 .RI "enum \fBlang\fP { \fBEng\fP = 0, \fBFi\fP, \fBGer\fP, \fBRus\fP }"
 .br
+.RI "Список языков системы "
 .in -1c
-.SS "Functions"
+.SS "Функции"
 
 .in +1c
 .ti -1c
@@ -37,7 +41,7 @@ KolibriLib::OS \- Работа с системой
 .br
 .RI "Ждать ивента "
 .ti -1c
-.RI "\fBEvent\fP \fBWaitEvent\fP (uint32_t TimeOut)"
+.RI "\fBEvent\fP \fBWaitEvent\fP (uint32_t TimeOut=0)"
 .br
 .RI "Ждать ивента "
 .ti -1c
@@ -49,7 +53,7 @@ KolibriLib::OS \- Работа с системой
 .br
 .RI "Запустить программу "
 .ti -1c
-.RI "ksys_time_t \fBGetTime\fP ()"
+.RI "Time \fBGetTime\fP ()"
 .br
 .RI "Получить системное время "
 .ti -1c
@@ -61,17 +65,19 @@ KolibriLib::OS \- Работа с системой
 .br
 .RI "Переключить состояние спикера "
 .ti -1c
-.RI "unsigned \fBFreeMem\fP ()"
+.RI "std::size_t \fBFreeMem\fP ()"
 .br
 .RI "получить кол-во свободной памяти "
 .ti -1c
-.RI "unsigned \fBAllMem\fP ()"
+.RI "std::size_t \fBAllMem\fP ()"
 .br
+.RI "Получить кол-во всей памяти "
 .ti -1c
 .RI "int \fBGetLang\fP ()"
 .br
+.RI "Получить язык системы "
 .in -1c
-.SS "Variables"
+.SS "Переменные"
 
 .in +1c
 .ti -1c
@@ -79,15 +85,15 @@ KolibriLib::OS \- Работа с системой
 .br
 .RI "Таблица стандартных(системных) цветов "
 .in -1c
-.SH "Detailed Description"
+.SH "Подробное описание"
 .PP 
 Работа с системой 
-.SH "Enumeration Type Documentation"
+.SH "Перечисления"
 .PP 
 .SS "enum \fBKolibriLib::OS::Events\fP"
 
 .PP
-\fBEnumerator\fP
+\fBЭлементы перечислений\fP
 .in +1c
 .TP
 \fB\fINone \fP\fP
@@ -104,45 +110,93 @@ KolibriLib::OS \- Работа с системой
 .TP
 \fB\fIKey \fP\fP
 Активность со стороны клавиатуры 
-.SH "Function Documentation"
+.TP
+\fB\fIExit \fP\fP
+Выход 
+.SS "что пользователь нажал кнопку X"
+
+.SS "enum \fBKolibriLib::OS::lang\fP"
+
+.PP
+Список языков системы 
+.SS "жаль что так мало языков поддерживается\&.\&.\&."
+
+.PP
+\fBЭлементы перечислений\fP
+.in +1c
+.TP
+\fB\fIEng \fP\fP
+Английский 
+.TP
+\fB\fIFi \fP\fP
+Финский 
+.TP
+\fB\fIGer \fP\fP
+Немецкий 
+.TP
+\fB\fIRus \fP\fP
+Русский 
+.SH "Функции"
 .PP 
-.SS "\fBOS::Event\fP KolibriLib::OS::CheckEvent ()\fR [inline]\fP"
+.SS "std::size_t KolibriLib::OS::AllMem ()\fR [inline]\fP"
+
+.PP
+Получить кол-во всей памяти 
+.PP
+\fBВозвращает\fP
+.RS 4
+Размер всей памяти в килобайтах 
+.RE
+.PP
+
+.SS "\fBEvent\fP KolibriLib::OS::CheckEvent ()\fR [inline]\fP"
 
 .PP
 Проверить пришёл ли ли ивент 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Ивент 
 .RE
 .PP
 
-.SS "int KolibriLib::OS::Exec (const \fBfilesystem::Path\fP & AppName, const std::string & args)\fR [inline]\fP"
+.SS "int KolibriLib::OS::Exec (const \fBfilesystem::Path\fP & AppName, const std::string & args)"
 
 .PP
 Запустить программу 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
-\fIAppName\fP путь до программы + имя 
+\fIAppName\fP Полное имя исполняемого файла 
 .br
-\fIargs\fP аргументы 
+\fIargs\fP аргументы\&. Максимум 256 символов 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
-то что возвращает сама программа, -1 если исполняемы файл не найден 
+> 0 - программа загружена, eax содержит PID, < 0 если исполняемы файл не найден 
 .RE
 .PP
 
-.SS "unsigned KolibriLib::OS::FreeMem ()\fR [inline]\fP"
+.SS "std::size_t KolibriLib::OS::FreeMem ()\fR [inline]\fP"
 
 .PP
 получить кол-во свободной памяти 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 размер свободной памяти в килобайтах 
+.RE
+.PP
+
+.SS "int KolibriLib::OS::GetLang ()\fR [inline]\fP"
+
+.PP
+Получить язык системы 
+.PP
+\fBВозвращает\fP
+.RS 4
+Занечение из списка \fBlang\fP
 .RE
 .PP
 
@@ -151,18 +205,18 @@ KolibriLib::OS \- Работа с системой
 .PP
 Получить системные цвета 
 .SS "устанавливает курсор в середину экрана"
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Таблица системных цветов 
 .RE
 .PP
 
-.SS "ksys_time_t KolibriLib::OS::GetTime ()\fR [inline]\fP"
+.SS "Time KolibriLib::OS::GetTime ()\fR [inline]\fP"
 
 .PP
 Получить системное время 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 
 .RE
@@ -173,39 +227,39 @@ KolibriLib::OS \- Работа с системой
 .PP
 Получить состояние спикера(Вкл/выкл) 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 true если спикер разрешён, иначе false 
 .RE
 .PP
 
-.SS "\fBOS::Event\fP KolibriLib::OS::WaitEvent ()\fR [inline]\fP"
+.SS "\fBEvent\fP KolibriLib::OS::WaitEvent ()\fR [inline]\fP"
 
 .PP
 Ждать ивента 
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Ивент 
 .RE
 .PP
 
-.SS "\fBOS::Event\fP KolibriLib::OS::WaitEvent (uint32_t TimeOut)\fR [inline]\fP"
+.SS "\fBOS::Event\fP KolibriLib::OS::WaitEvent (uint32_t TimeOut = \fR0\fP)"
 
 .PP
 Ждать ивента 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
-\fIТаймаут\fP (в 1/100 секунды) 
+\fIТаймаут\fP (в 1/100 секунды), время сколько ждать 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 Ивент 
 .RE
 .PP
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

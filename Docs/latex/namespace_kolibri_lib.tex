@@ -1,13 +1,15 @@
-\doxysection{Kolibri\+Lib Namespace Reference}
+\doxysection{Пространство имен Kolibri\+Lib}
 \hypertarget{namespace_kolibri_lib}{}\label{namespace_kolibri_lib}\index{KolibriLib@{KolibriLib}}
 
 
 Основное пространство имён  
 
 
-\doxysubsubsection*{Namespaces}
+\doxysubsubsection*{Пространства имен}
 \begin{DoxyCompactItemize}
 \item 
+namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_background}{Background}}
+\begin{DoxyCompactList}\small\item\em Работа с фоном \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1child_window}{child\+Window}}
 \begin{DoxyCompactList}\small\item\em Дочерние окна \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors}{Colors}}
@@ -24,28 +26,26 @@ namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread}{Thread}}
 \begin{DoxyCompactList}\small\item\em Работа с потоками \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1window}{window}}
 \begin{DoxyCompactList}\small\item\em Работа с окном \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Classes}
+\doxysubsubsection*{Классы}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}
 \begin{DoxyCompactList}\small\item\em Просто точка \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} \mbox{\hyperlink{namespace_kolibri_lib_aadbd1982a31f43cb6e1e70dafc4edb48}{Get\+Screen\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Получить разрешение экрана \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} \mbox{\hyperlink{namespace_kolibri_lib_acd69b39f323a74739838c3cfd62bec7d}{Screen\+Point\+Affiliation}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} POINT)
+\begin{DoxyCompactList}\small\item\em Получить принадлежность точки \end{DoxyCompactList}\item 
 \Hypertarget{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}\label{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802} 
 void {\bfseries init} ()
-\begin{DoxyCompactList}\small\item\em инициализация \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}{Wait}} (unsigned time)
+\begin{DoxyCompactList}\small\item\em инициализация библиотеки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_kolibri_lib_ab8a227d1c51a256a87817fdf1c37a24c}{Wait}} (int time)
 \begin{DoxyCompactList}\small\item\em Подождать \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \mbox{\hyperlink{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e}{Get\+Screen\+Size}} ()
-\begin{DoxyCompactList}\small\item\em Получить разрешение экрана \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} \mbox{\hyperlink{namespace_kolibri_lib_a5e62483a2a86b6d4f196cc92de3b9c55}{Screen\+Point\+Affiliation}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ POINT)
-\begin{DoxyCompactList}\small\item\em Получить принадлежность \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ \mbox{\hyperlink{namespace_kolibri_lib_aee258b1d924d917faae1e8dff6ccaeeb}{Get\+Background\+Image\+Size}} ()
-\begin{DoxyCompactList}\small\item\em Получить размеры фонового изображения \end{DoxyCompactList}\item 
-\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \mbox{\hyperlink{namespace_kolibri_lib_a59afa938f04ee58f39092deac6fbd8df}{Read\+Backgroung\+Image\+Point}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ Point)
-\begin{DoxyCompactList}\small\item\em Прочитать точку на фоне \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
+void \mbox{\hyperlink{namespace_kolibri_lib_a5538a86d3c38c7c88391e9360e01d023}{Wait}} ()
+\begin{DoxyCompactList}\small\item\em Подождать, минимальное кол-\/во времени \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Переменные}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{namespace_kolibri_lib_ac3fc0a4a923e29aa814420d285d1fa9c}\label{namespace_kolibri_lib_ac3fc0a4a923e29aa814420d285d1fa9c} 
@@ -62,92 +62,69 @@ const std\+::string {\bfseries Cursors\+Dir} = Configuration\+Dir + "{}cursors/"
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Подробное описание}
 Основное пространство имён 
 
-\begin{DoxyAuthor}{Author}
+\begin{DoxyAuthor}{Автор}
 Egor00f 
 \end{DoxyAuthor}
 
 
-\doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_aee258b1d924d917faae1e8dff6ccaeeb}\label{namespace_kolibri_lib_aee258b1d924d917faae1e8dff6ccaeeb} 
-\index{KolibriLib@{KolibriLib}!GetBackgroundImageSize@{GetBackgroundImageSize}}
-\index{GetBackgroundImageSize@{GetBackgroundImageSize}!KolibriLib@{KolibriLib}}
-\doxysubsubsection{\texorpdfstring{GetBackgroundImageSize()}{GetBackgroundImageSize()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ Kolibri\+Lib\+::\+Get\+Background\+Image\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Получить размеры фонового изображения 
-
-\begin{DoxyReturn}{Returns}
-~\newline
- 
-\end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e}\label{namespace_kolibri_lib_a8ef3c016e993ed0a7c2d110d4adae88e} 
+\doxysubsection{Функции}
+\Hypertarget{namespace_kolibri_lib_aadbd1982a31f43cb6e1e70dafc4edb48}\label{namespace_kolibri_lib_aadbd1982a31f43cb6e1e70dafc4edb48} 
 \index{KolibriLib@{KolibriLib}!GetScreenSize@{GetScreenSize}}
 \index{GetScreenSize@{GetScreenSize}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{GetScreenSize()}{GetScreenSize()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$ Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Получить разрешение экрана 
 
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 размер экрана 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_a59afa938f04ee58f39092deac6fbd8df}\label{namespace_kolibri_lib_a59afa938f04ee58f39092deac6fbd8df} 
-\index{KolibriLib@{KolibriLib}!ReadBackgroungImagePoint@{ReadBackgroungImagePoint}}
-\index{ReadBackgroungImagePoint@{ReadBackgroungImagePoint}!KolibriLib@{KolibriLib}}
-\doxysubsubsection{\texorpdfstring{ReadBackgroungImagePoint()}{ReadBackgroungImagePoint()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Kolibri\+Lib\+::\+Read\+Backgroung\+Image\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$}]{Point }\end{DoxyParamCaption})}
-
-
-
-Прочитать точку на фоне 
-
-
-\begin{DoxyParams}{Parameters}
-{\em Point} & читаема точка \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-~\newline
- 
-\end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_a5e62483a2a86b6d4f196cc92de3b9c55}\label{namespace_kolibri_lib_a5e62483a2a86b6d4f196cc92de3b9c55} 
+\Hypertarget{namespace_kolibri_lib_acd69b39f323a74739838c3cfd62bec7d}\label{namespace_kolibri_lib_acd69b39f323a74739838c3cfd62bec7d} 
 \index{KolibriLib@{KolibriLib}!ScreenPointAffiliation@{ScreenPointAffiliation}}
 \index{ScreenPointAffiliation@{ScreenPointAffiliation}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{ScreenPointAffiliation()}{ScreenPointAffiliation()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} Kolibri\+Lib\+::\+Screen\+Point\+Affiliation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}$<$ unsigned $>$}]{POINT }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} Kolibri\+Lib\+::\+Screen\+Point\+Affiliation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}}}]{POINT }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Получить принадлежность 
+Получить принадлежность точки 
 
 
-\begin{DoxyParams}{Parameters}
-{\em POINT} & \\
+\begin{DoxyParams}{Аргументы}
+{\em POINT} & точка на экране \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-~\newline
- 
+\begin{DoxyReturn}{Возвращает}
+слот окна которому принадлежит точка 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6}\label{namespace_kolibri_lib_a40eea0b3d82e0ea121b28f46390f0df6} 
+\Hypertarget{namespace_kolibri_lib_a5538a86d3c38c7c88391e9360e01d023}\label{namespace_kolibri_lib_a5538a86d3c38c7c88391e9360e01d023} 
 \index{KolibriLib@{KolibriLib}!Wait@{Wait}}
 \index{Wait@{Wait}!KolibriLib@{KolibriLib}}
-\doxysubsubsection{\texorpdfstring{Wait()}{Wait()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Wait (\begin{DoxyParamCaption}\item[{unsigned}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{Wait()}{Wait()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Wait (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Подождать, минимальное кол-\/во времени 
+
+\hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_Функция}{}\doxyparagraph{\texorpdfstring{устанавливает курсор в середину экрана}{устанавливает курсор в середину экрана}}\label{namespace_kolibri_lib_1_1_u_i_1_1text_Функция}
+\Hypertarget{namespace_kolibri_lib_ab8a227d1c51a256a87817fdf1c37a24c}\label{namespace_kolibri_lib_ab8a227d1c51a256a87817fdf1c37a24c} 
+\index{KolibriLib@{KolibriLib}!Wait@{Wait}}
+\index{Wait@{Wait}!KolibriLib@{KolibriLib}}
+\doxysubsubsection{\texorpdfstring{Wait()}{Wait()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+Wait (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Подождать 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em time} & время задержки(в 1/100 секунды) \\
 \hline
 \end{DoxyParams}

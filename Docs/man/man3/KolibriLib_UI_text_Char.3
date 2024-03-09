@@ -1,0 +1,307 @@
+.TH "KolibriLib::UI::text::Char" 3 "KolibriLib" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KolibriLib::UI::text::Char \- Символ  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <text\&.hpp>\fP
+.SS "Открытые типы"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBNone\fP = 0, \fBImage\fP, \fBText\fP }"
+.br
+.in -1c
+.SS "Открытые члены"
+
+.in +1c
+.ti -1c
+.RI "\fBChar\fP (char c=' ', const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "\fBChar\fP (const \fBImages::img\fP &img, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP)"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "\fB~Char\fP ()"
+.br
+.RI "Деструктор "
+.ti -1c
+.RI "short \fBGetType\fP () const"
+.br
+.RI "Получить тип "
+.ti -1c
+.RI "void \fBSet\fP (const char c, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.br
+.ti -1c
+.RI "void \fBSet\fP (const \fBImages::Image\fP &img, const \fBFonts::Font\fP &size=\fBFonts::DefaultFont\fP)"
+.br
+.ti -1c
+.RI "void \fBSetFlags\fP (unsigned flags)"
+.br
+.RI "Изменить флаги "
+.ti -1c
+.RI "void \fBSetTextColor\fP (const \fBColors::Color\fP &NewColor)"
+.br
+.RI "Изменить цвет текста "
+.ti -1c
+.RI "void \fBSetBackgroundColor\fP (const \fBColors::Color\fP &NewColor)"
+.br
+.RI "Изменить цвет фона текста "
+.ti -1c
+.RI "void \fBSetFont\fP (const \fBFonts::Font\fP &size) const"
+.br
+.RI "Измерить размеры символа "
+.ti -1c
+.RI "char \fBGetChar\fP () const"
+.br
+.RI "Получить ASCII символ "
+.ti -1c
+.RI "const \fBImages::img\fP & \fBGetImg\fP () const"
+.br
+.RI "Получить \fB_img\&.\fP"
+.ti -1c
+.RI "const \fBFonts::Font\fP & \fBGetFont\fP () const"
+.br
+.RI "получить размеры символа "
+.ti -1c
+.RI "unsigned \fBGetFlags\fP () const"
+.br
+.RI "Получить флаги "
+.ti -1c
+.RI "void \fBPrint\fP (const \fBUI::Coord\fP &coord) const"
+.br
+.RI "Отрисовать "
+.ti -1c
+.RI "\fBChar\fP & \fBoperator=\fP (char c)"
+.br
+.ti -1c
+.RI "\fBChar\fP & \fBoperator=\fP (const \fBImages::img\fP &img)"
+.br
+.ti -1c
+.RI "\fBChar\fP & \fBoperator=\fP (const \fBChar\fP &c)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (char c) const"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBImages::img\fP &img) const"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBChar\fP &img) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (char c) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBImages::img\fP &img) const"
+.br
+.in -1c
+.SS "Защищенные данные"
+
+.in +1c
+.ti -1c
+.RI "\fBImages::img\fP * \fB_img\fP"
+.br
+.ti -1c
+.RI "char * \fB_c\fP"
+.br
+.in -1c
+.SH "Подробное описание"
+.PP 
+Символ 
+
+
+.SS "который может содержать как текст, так и картинку(например смайлик)"
+
+.SH "Конструктор(ы)"
+.PP 
+.SS "KolibriLib::UI::text::Char::Char (char c = \fR' '\fP, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fROS::sys_color_table\&.work_area\fP)"
+
+.PP
+Конструктор 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIc\fP символ 
+.br
+\fIsize\fP размеры символа 
+.br
+\fIflags\fP флаги 
+.br
+\fITextColor\fP Цвет текста 
+.br
+\fIBackgroundColor\fP Цвет фона 
+.RE
+.PP
+
+.SS "KolibriLib::UI::text::Char::Char (const \fBImages::img\fP & img, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP)"
+
+.PP
+Конструктор 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIimg\fP изображение 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "char KolibriLib::UI::text::Char::GetChar () const"
+
+.PP
+Получить ASCII символ 
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "unsigned KolibriLib::UI::text::Char::GetFlags () const"
+
+.PP
+Получить флаги 
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "const \fBFonts::Font\fP & KolibriLib::UI::text::Char::GetFont () const"
+
+.PP
+получить размеры символа 
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "const \fBImages::img\fP & KolibriLib::UI::text::Char::GetImg () const"
+
+.PP
+Получить \fB_img\&.\fP
+.PP
+\fBВозвращает\fP
+.RS 4
+
+.br
+ 
+.RE
+.PP
+
+.SS "short KolibriLib::UI::text::Char::GetType () const"
+
+.PP
+Получить тип 
+.PP
+\fBВозвращает\fP
+.RS 4
+значение из списка \fBType\fP
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::Char::Print (const \fBUI::Coord\fP & coord) const"
+
+.PP
+Отрисовать 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIcoord\fP Координаты 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::Char::Set (const char c, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fROS::sys_color_table\&.work_area\fP)"
+
+.PP
+\fBАргументы\fP
+.RS 4
+\fIc\fP 
+.br
+\fIsize\fP Размер символа 
+.br
+\fIflags\fP Флаги из списка \fBTextColor  BackgroundColor \fP 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::Char::Set (const \fBImages::Image\fP & img, const \fBFonts::Font\fP & size = \fR\fBFonts::DefaultFont\fP\fP)"
+
+.PP
+\fBАргументы\fP
+.RS 4
+\fIimg\fP 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::Char::SetBackgroundColor (const \fBColors::Color\fP & NewColor)"
+
+.PP
+Изменить цвет фона текста 
+.PP
+\fBАргументы\fP
+.RS 4
+\fINewColor\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::Char::SetFlags (unsigned flags)"
+
+.PP
+Изменить флаги 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIflags\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::Char::SetFont (const \fBFonts::Font\fP & size) const"
+
+.PP
+Измерить размеры символа 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIsize\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::text::Char::SetTextColor (const \fBColors::Color\fP & NewColor)"
+
+.PP
+Изменить цвет текста 
+.PP
+\fBАргументы\fP
+.RS 4
+\fINewColor\fP 
+.br
+ 
+.RE
+.PP
+
+
+.SH "Автор"
+.PP 
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

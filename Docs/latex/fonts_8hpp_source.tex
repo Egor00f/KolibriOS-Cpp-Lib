@@ -1,0 +1,71 @@
+\doxysection{fonts.\+hpp}
+\hypertarget{fonts_8hpp_source}{}\label{fonts_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/fonts.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/fonts.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_FONTS\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_FONTS\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <kolibriLib/types.hpp>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
+\DoxyCodeLine{00009\ \ \ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }text}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5}{Flags}}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb}{Normal}}\ =\ 0b0000,}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a10e1d7ba50f7e39ad9bda25c7db6bbd1}{Bold}}\ =\ 0b1,}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5aee53f564426d65e2bfbcd27c3f2e4041}{Italic}}\ =\ 0b10,}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5ad50974c9f88b95dcd2e5f2734cb6761d}{Underline}}\ =\ 0b100,}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5aa8e1af1943fbf870356f4a6ec51e5b62}{StrikeThrough}}\ =\ 0b1000,}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a7dec472363cdd5d34ce3ddecde606433}{AlignRight}}\ =\ 0b00010000,}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a16fc07ee980cd1ad34b2e65b8cb08fb2}{AlignCenter}}\ =\ 0b00100000,}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Fonts}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_ae1524a67fbeab5c6850b62e49fdc862f}{DefaultFontSize}}\ =\ 16;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Некоторые\ заготовки\ шрифтов}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ Arial\ =\ \{5,\ 6\};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ TimesNewRoman\ =\ \{4,\ 5\};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ Micrhoma\ =\ \{21,\ 11\};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ Roboto\ =\ \{7,\ 10\};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ UI::Size\ Geologica\ =\ \{5,\ 7\};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Font}}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_abfd73103fbe4c17f47da9949e235793a}{Font}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ \&FontFamily\ =\ Arial,\ \textcolor{keywordtype}{int}\ FontSize\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_ae1524a67fbeab5c6850b62e49fdc862f}{DefaultFontSize}},\ \textcolor{keywordtype}{unsigned}\ flags\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb}{Flags::Normal}});}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_ac08147be3906bb8b21036dc19284a9fc}{SetFontSize}}(\textcolor{keywordtype}{unsigned}\ FontSize);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ \_Font;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \_FontSize;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \_Flags;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{mutable}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Size}}\ size;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Font}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Font}}\ \&f);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Font}}\ \&f)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Font}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{DefaultFont}}(Arial,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_ae1524a67fbeab5c6850b62e49fdc862f}{DefaultFontSize}});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_FONTS\_H\_\_}}
+
+\end{DoxyCode}

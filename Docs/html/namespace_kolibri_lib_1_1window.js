@@ -7,7 +7,17 @@ var namespace_kolibri_lib_1_1window =
       [ "Normal", "namespace_kolibri_lib_1_1window.html#a7e5a1c57ea495417e3d2442f66d0fe44a18ee367c465a3a9cf21c5e4842dcfe87", null ],
       [ "AlwaysTop", "namespace_kolibri_lib_1_1window.html#a7e5a1c57ea495417e3d2442f66d0fe44ae55f17bf1b2f2aae685dcaa05eb60aa1", null ]
     ] ],
-    [ "CreateWindow", "namespace_kolibri_lib_1_1window.html#ab4de97f81da73fdfc2975f75c97c23c5", null ],
+    [ "WindowStyle", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3", [
+      [ "FixSize", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da", null ],
+      [ "NoDraw", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a437c943279eb3aced1be94554420c7cc", null ],
+      [ "CanResize", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e", null ],
+      [ "withSkin", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573", null ],
+      [ "FixSizewithSkin", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d", null ],
+      [ "NoDrawWorkspace", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd", null ],
+      [ "NormalDraw", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb", null ],
+      [ "GradientDraw", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218", null ]
+    ] ],
+    [ "CreateWindow", "namespace_kolibri_lib_1_1window.html#ae11ecf3ca59d8ae18ba08bfb128fb5da", null ],
     [ "FocusWindow", "namespace_kolibri_lib_1_1window.html#a8522ac0eb50e9a7b5ce0091e5fc9d257", null ],
     [ "GetActiveWindow", "namespace_kolibri_lib_1_1window.html#af86ed52f97ce1b6925d0faabc8a0ebe1", null ],
     [ "GetSkinHeight", "namespace_kolibri_lib_1_1window.html#a9b4d6e11048953c9f7a1e530f135fb20", null ],

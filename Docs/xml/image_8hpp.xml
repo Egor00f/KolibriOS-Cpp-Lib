@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="ru">
   <compounddef id="image_8hpp" kind="file" language="C++">
     <compoundname>image.hpp</compoundname>
-    <includes refid="_u_i_8hpp" local="yes">UI.hpp</includes>
-    <includes refid="small_8hpp" local="yes">small.hpp</includes>
-    <includes refid="filesystem_8hpp" local="yes">filesystem.hpp</includes>
-    <includes refid="color_8hpp" local="yes">color.hpp</includes>
+    <includes refid="_u_i_8hpp" local="no">kolibriLib/UI/UI.hpp</includes>
+    <includes refid="small_8hpp" local="no">kolibriLib/small.hpp</includes>
+    <includes refid="filesystem_8hpp" local="no">kolibriLib/system/filesystem.hpp</includes>
+    <includes refid="color_8hpp" local="no">kolibriLib/color.hpp</includes>
     <includes local="no">string</includes>
     <includes local="no">stdlib.h</includes>
     <includes local="no">stdio.h</includes>
     <includes local="no">string.h</includes>
-    <includes local="yes">kolibri_libimg.h</includes>
-    <includedby refid="button_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp</includedby>
-    <includedby refid="frame_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</includedby>
-    <includedby refid="image_8cpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.cpp</includedby>
-    <includedby refid="window_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp</includedby>
+    <includes local="no">kolibri_libimg.h</includes>
+    <includedby refid="button_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/button.hpp</includedby>
+    <includedby refid="frame_8hpp" local="yes">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</includedby>
+    <includedby refid="text_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</includedby>
+    <includedby refid="window_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</includedby>
     <incdepgraph>
       <node id="2">
-        <label>UI.hpp</label>
+        <label>kolibriLib/UI/UI.hpp</label>
         <link refid="_u_i_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
@@ -33,47 +33,53 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/image.hpp</label>
+        <link refid="image_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
       </node>
       <node id="10">
-        <label>color.hpp</label>
+        <label>kolibriLib/color.hpp</label>
         <link refid="color_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>filesystem.hpp</label>
-        <link refid="filesystem_8hpp_source"/>
+      <node id="17">
+        <label>kolibriLib/graphic/screen.hpp</label>
+        <link refid="screen_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp</label>
-        <link refid="image_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="11">
-        <label>input.hpp</label>
+        <label>kolibriLib/input/input.hpp</label>
         <link refid="input_8hpp_source"/>
         <childnode refid="12" relation="include">
         </childnode>
@@ -93,31 +99,41 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>os.hpp</label>
-        <link refid="os_8hpp_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>small.hpp</label>
-        <link refid="small_8hpp_source"/>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>kolibriLib/small.hpp</label>
+        <link refid="small_8hpp_source"/>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>kolibriLib/system/filesystem.hpp</label>
+        <link refid="filesystem_8hpp_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>kolibriLib/system/os.hpp</label>
+        <link refid="os_8hpp_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
       <node id="15">
-        <label>thread.hpp</label>
+        <label>kolibriLib/system/thread.hpp</label>
         <link refid="thread_8hpp_source"/>
         <childnode refid="16" relation="include">
         </childnode>
@@ -125,15 +141,17 @@
         </childnode>
       </node>
       <node id="5">
-        <label>types.hpp</label>
+        <label>kolibriLib/types.hpp</label>
         <link refid="types_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="14">
-        <label>windowBase.hpp</label>
+        <label>kolibriLib/window/windowBase.hpp</label>
         <link refid="window_base_8hpp_source"/>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -141,22 +159,24 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="20">
         <label>kolibri_libimg.h</label>
       </node>
-      <node id="17">
+      <node id="19">
         <label>stdio.h</label>
       </node>
       <node id="16">
         <label>stdlib.h</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>string</label>
       </node>
-      <node id="18">
+      <node id="7">
         <label>string.h</label>
       </node>
       <node id="3">
@@ -167,16 +187,46 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="6">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/KolibriLib.hpp</label>
-        <link refid="_kolibri_lib_8hpp_source"/>
-      </node>
       <node id="2">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/button.hpp</label>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/button.hpp</label>
         <link refid="button_8hpp_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</label>
+        <link refid="checkbox_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp</label>
+        <link refid="form_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</label>
+        <link refid="frame_8hpp_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/image.hpp</label>
+        <link refid="image_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -185,59 +235,36 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</label>
-        <link refid="checkbox_8hpp_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/childWindow.hpp</label>
-        <link refid="child_window_8hpp_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
       <node id="8">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/form.hpp</label>
-        <link refid="form_8hpp_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/frame.hpp</label>
-        <link refid="frame_8hpp_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp</label>
-        <link refid="image_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/menu.hpp</label>
+        <link refid="menu_8hpp_source"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="9">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/menu.hpp</label>
-        <link refid="menu_8hpp_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/window.hpp</label>
-        <link refid="window_8hpp_source"/>
-        <childnode refid="6" relation="include">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</label>
+        <link refid="text_8hpp_source"/>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/childWindow.hpp</label>
+        <link refid="child_window_8hpp_source"/>
+      </node>
+      <node id="5">
+        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</label>
+        <link refid="window_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
+    <innerclass refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" prot="public">KolibriLib::UI::Images::img</innerclass>
     <innerclass refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" prot="public">KolibriLib::UI::Images::Image</innerclass>
     <innernamespace refid="namespace_kolibri_lib">KolibriLib</innernamespace>
     <innernamespace refid="namespace_kolibri_lib_1_1_u_i">KolibriLib::UI</innernamespace>
@@ -250,53 +277,195 @@
 <codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__IMAGE_H__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__IMAGE_H__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;UI.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;small.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;filesystem.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;color.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/UI/UI.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/small.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/system/filesystem.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/color.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;kolibri_libimg.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
-<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">UI</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="20" refid="namespace_kolibri_lib_1_1_u_i_1_1_images" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Images</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="24" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Image</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" kindref="compound">UIElement</ref></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibri_libimg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">UI</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="21" refid="namespace_kolibri_lib_1_1_u_i_1_1_images" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Images</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="24" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">img</ref></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Image_t<sp/>*_img;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a962255c7f8accf8f5e334e48d18cf676" kindref="member">Image</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref>&amp;<sp/>coord<sp/>=<sp/>{0,<sp/>0},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref>&amp;<sp/>size<sp/>=<sp/>{100,<sp/>100});</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a2a7ce74fcaeb41fc67a6671ac3ad2edb" kindref="member">~Image</ref>();</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1abd534f8e97525de936700670546fa254" kindref="member">LoadImage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1filesystem_1_1_path" kindref="compound">filesystem::Path</ref><sp/>&amp;Path<sp/>=<sp/>DefaultImage);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae267991744feb487720de4294c7a7986" kindref="member">Render</ref>(<ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref><sp/>size<sp/>=<sp/>{0,<sp/>0});</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Image</ref>&amp;<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae00f970794772662ac7d8db0fc135771" kindref="member">operator = </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Image</ref>&amp;<sp/>a);</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802" kindref="member">init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref><sp/>&amp;coord<sp/>=<sp/>{0,<sp/>0},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref><sp/>&amp;size<sp/>=<sp/>{100,<sp/>100},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1filesystem_1_1_path" kindref="compound">filesystem::Path</ref><sp/>&amp;Path<sp/>=<sp/>DefaultImage);</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1aa3a38bc39030ade711221cb8f41ba76a" kindref="member">SetImg</ref>(Image_t*<sp/>img);</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">img</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">~img</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Render(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref>&amp;<sp/>coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref>&amp;<sp/>size)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4035876f0222a7ccdc175b595428732f" kindref="member">LoadImage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1filesystem_1_1_path" kindref="compound">filesystem::Path</ref><sp/>&amp;Path<sp/>=<sp/>DefaultImage);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5" kindref="member">SetImg</ref>(Image_t<sp/>*<ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">img</ref>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Image</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" kindref="compound">UIElement</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">img</ref></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0a1195770835be1f5513910bf8eb21d7" kindref="member">Image</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref>&amp;<sp/>coord<sp/>=<sp/>{0,<sp/>0},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref>&amp;<sp/>size<sp/>=<sp/>{100,<sp/>100});</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ad63223057a3cea18f027074d68ff2ecc" kindref="member">~Image</ref>();</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Image</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>UI</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="64"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>KolibriLib</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__IMAGE_H__</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0cafdef164e76cea219923deb39b9f2c" kindref="member">Render</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Image</ref>&amp;<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae00f970794772662ac7d8db0fc135771" kindref="member">operator = </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Image</ref>&amp;<sp/>a);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802" kindref="member">init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref><sp/>&amp;coord<sp/>=<sp/>{0,<sp/>0},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref><sp/>&amp;size<sp/>=<sp/>{100,<sp/>100},<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1filesystem_1_1_path" kindref="compound">filesystem::Path</ref><sp/>&amp;Path<sp/>=<sp/>DefaultImage);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img::img()</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_img<sp/>=<sp/>img_create(32,<sp/>32,<sp/>IMAGE_BPP32);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img::~img()</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img_destroy(_img);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0a1195770835be1f5513910bf8eb21d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0a1195770835be1f5513910bf8eb21d7" kindref="member">Image::Image</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref><sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref><sp/>&amp;size)<sp/>:<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element" kindref="compound">UIElement</ref>(coord,<sp/>size)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ad63223057a3cea18f027074d68ff2ecc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ad63223057a3cea18f027074d68ff2ecc" kindref="member">Image::~Image</ref>()</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4035876f0222a7ccdc175b595428732f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4035876f0222a7ccdc175b595428732f" kindref="member">img::LoadImage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1filesystem_1_1_path" kindref="compound">filesystem::Path</ref><sp/>&amp;Path)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>img_size;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*f<sp/>=<sp/>fopen(Path.<ref refid="class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217" kindref="member">GetChars</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;rb&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>Этот<sp/>код<sp/>взят<sp/>из<sp/>примера<sp/>из<sp/>/contrib/C_Layer/EXAMPLE/img_example/main.c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!f)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*a<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;LoadImage:<sp/>Can&apos;t<sp/>open<sp/>file:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*b;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>a);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>Path.<ref refid="class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217" kindref="member">GetChars</ref>());</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_debug_puts(b);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fseek(f,<sp/>0,<sp/>SEEK_END))</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*a<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>SEEK_END<sp/>file:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*b;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>a);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>Path.<ref refid="class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217" kindref="member">GetChars</ref>());</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_debug_puts(b);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>filesize<sp/>=<sp/>ftell(f);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rewind(f);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fdata<sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)malloc(filesize);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fdata)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*a<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>memory<sp/>for<sp/>file:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*b;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>a);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>Path.<ref refid="class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217" kindref="member">GetChars</ref>());</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/></highlight><highlight class="stringliteral">&quot;malloc<sp/>not<sp/>return<sp/>ptr&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_debug_puts(b);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img_size<sp/>=<sp/>(int32_t)fread(fdata,<sp/>1,<sp/>filesize,<sp/>f);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ferror(f))</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*a<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>reading<sp/>file<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*b;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>a);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/>Path.<ref refid="class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217" kindref="member">GetChars</ref>());</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcat(b,<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_debug_puts(b);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fclose(f);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_img<sp/>=<sp/>img_decode((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)fdata,<sp/>img_size,<sp/>0);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(fdata);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_img-&gt;Type<sp/>!=<sp/>IMAGE_BPP32)</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_img<sp/>=<sp/>img_convert(_img,<sp/>NULL,<sp/>IMAGE_BPP32,<sp/>0,<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>image<sp/>to<sp/>format<sp/>BPP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!_img)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_ksys_debug_puts(</highlight><highlight class="stringliteral">&quot;Convert<sp/>error&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Image</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Images::img::Render(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref><sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref><sp/>&amp;size)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="172"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img_draw(_img,<sp/>coord.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref>,<sp/>coord.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref>,<sp/>size.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref>,<sp/>size.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref>,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Images::Image::init(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Coord<sp/>&amp;coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Size<sp/>&amp;size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1filesystem_1_1_path" kindref="compound">filesystem::Path</ref><sp/>&amp;Path)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coord<sp/>=<sp/>coord;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_size<sp/>=<sp/>size;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LoadImage(Path);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5" kindref="member">Images::img::SetImg</ref>(Image_t<sp/>*<ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">img</ref>)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img_destroy(_img);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_img<sp/>=<sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">img</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0cafdef164e76cea219923deb39b9f2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1a0cafdef164e76cea219923deb39b9f2c" kindref="member">KolibriLib::UI::Images::Image::Render</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="189"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img_draw(_img,<sp/>_coord.x,<sp/>_coord.y,<sp/>_size.x,<sp/>_size.y,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae00f970794772662ac7d8db0fc135771" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">Images::Image</ref><sp/>&amp;<ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image_1ae00f970794772662ac7d8db0fc135771" kindref="member">KolibriLib::UI::Images::Image::operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1_image" kindref="compound">UI::Images::Image</ref><sp/>&amp;a)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_coord<sp/>=<sp/>a.<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668" kindref="member">_coord</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_size<sp/>=<sp/>a.<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f" kindref="member">_size</ref>;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_MainColor<sp/>=<sp/>a._MainColor;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Margin<sp/>=<sp/>a.<ref refid="class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b" kindref="member">_Margin</ref>;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetImg(a._img);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>UI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>KolibriLib</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__IMAGE_H__</highlight></codeline>
     </programlisting>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/image.hpp"/>
+    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/image.hpp"/>
   </compounddef>
 </doxygen>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text" xml:lang="en-US">
-<title>KolibriLib::UI::text Namespace Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text" xml:lang="ru">
+<title>Пространство имен KolibriLib::UI::text</title>
 <indexterm><primary>KolibriLib::UI::text</primary></indexterm>
 <para>
 
@@ -8,8 +8,25 @@
  
 </para>
 <simplesect>
-    <title>Classes    </title>
+    <title>Пространства имен    </title>
         <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts">Fonts</link></para>
+
+<para>Пародия на шрифты </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Классы    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link></para>
+
+<para>Символ </para>
+</listitem>
+            <listitem><para>class <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text">Text</link></para>
+
+<para>Текст </para>
+</listitem>
             <listitem><para>class <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label">TextLabel</link></para>
 
 <para>Текстовая метка </para>
@@ -17,40 +34,115 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Functions    </title>
+    <title>Перечисления    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5">Flags</link> { <?linebreak?><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Normal</link> = 0b0000
+, <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a10e1d7ba50f7e39ad9bda25c7db6bbd1">Bold</link> = 0b1
+, <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5aee53f564426d65e2bfbcd27c3f2e4041">Italic</link> = 0b10
+, <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5ad50974c9f88b95dcd2e5f2734cb6761d">Underline</link> = 0b100
+, <?linebreak?><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5aa8e1af1943fbf870356f4a6ec51e5b62">StrikeThrough</link> = 0b1000
+, <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a7dec472363cdd5d34ce3ddecde606433">AlignRight</link> = 0b00010000
+, <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a16fc07ee980cd1ad34b2e65b8cb08fb2">AlignCenter</link> = 0b00100000
+ }</para>
+
+<para>Флаги для RasterWorks. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Функции    </title>
         <itemizedlist>
             <listitem><para>unsigned int <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a88c7481d1f3297280474e2d9b5959c64">GetTextSize</link> ()</para>
 
 <para>Получить размер текста </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a5fd094b88dd3cbeb776db5098c742d75">SetTextSize</link> (unsigned int newSize)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a873ed429723726e235de288ca45b47c0">SetTextSize</link> (unsigned newSize)</para>
 
 <para>Изменить размер текста </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1ae4182f0d04de49b3bd8f849dee9e3847">DrawText</link> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord, const unsigned &amp;size=9, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color=OS::sys_color_table.work_text)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a000ef13c7923745461001a023ed4608e">DrawText</link> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord, const unsigned &amp;size=9, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color=OS::sys_color_table.work_text)</para>
 
-<para>Вывести текст </para>
+<para>Просто вывести текст </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1ac22f27265fd72b0249c61495eecba0be">DrawText</link> (const char *text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord, const unsigned &amp;size=9, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color=OS::sys_color_table.work_text)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1ac423cb9cddc40648e2e03a4a5031a869"/>void <emphasis role="strong">DrawText</emphasis> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size=Fonts::DefaultFont.size, unsigned flags=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>, unsigned margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText=OS::sys_color_table.work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=OS::sys_color_table.work_area)</para>
+</listitem>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a89d90baa8f5cf0c64c65ae73ffacc124">DrawText</link> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp;font=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>, unsigned margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText=OS::sys_color_table.work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=OS::sys_color_table.work_area)</para>
 
 <para>Вывести текст </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Работа с тектсом </para>
 </section>
 <section>
-<title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1ac22f27265fd72b0249c61495eecba0be"/><section>
+<title>Перечисления</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5"/><section>
+    <title>Flags</title>
+<indexterm><primary>Flags</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>Flags</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5">KolibriLib::UI::text::Flags</link></computeroutput></para><para>
+
+<para>Флаги для RasterWorks. </para>
+</para>
+<informaltable frame="all">
+<title>Элементы перечислений</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Normal</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>Normal</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb"/>Normal</entry><entry>
+<para>Обычный текст </para>
+
+<para><note><title>Заметки</title>
+
+<para>Указывать не обязательно </para>
+</note>
+</para>
+</entry></row><row><entry><indexterm><primary>Bold</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>Bold</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a10e1d7ba50f7e39ad9bda25c7db6bbd1"/>Bold</entry><entry>
+<para>Жирный текст </para>
+</entry></row><row><entry><indexterm><primary>Italic</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>Italic</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5aee53f564426d65e2bfbcd27c3f2e4041"/>Italic</entry><entry>
+<para>Курсив </para>
+</entry></row><row><entry><indexterm><primary>Underline</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>Underline</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5ad50974c9f88b95dcd2e5f2734cb6761d"/>Underline</entry><entry>
+<para>Нижнее подчёркивание </para>
+</entry></row><row><entry><indexterm><primary>StrikeThrough</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>StrikeThrough</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5aa8e1af1943fbf870356f4a6ec51e5b62"/>StrikeThrough</entry><entry>
+<para>Зачёркнутый </para>
+</entry></row><row><entry><indexterm><primary>AlignRight</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>AlignRight</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a7dec472363cdd5d34ce3ddecde606433"/>AlignRight</entry><entry>
+<para>Выравнивание по правому краю </para>
+</entry></row><row><entry><indexterm><primary>AlignCenter</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::text</primary><secondary>AlignCenter</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a16fc07ee980cd1ad34b2e65b8cb08fb2"/>AlignCenter</entry><entry>
+<para>Выравнивание по центру </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+<section>
+<title>Функции</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a89d90baa8f5cf0c64c65ae73ffacc124"/><section>
     <title>DrawText()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>DrawText</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text</primary><secondary>DrawText</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::text::DrawText (const char * text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord, const unsigned &amp; size = <computeroutput>9</computeroutput>
-, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color = <computeroutput>OS::sys_color_table.work_text</computeroutput>
-)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void KolibriLib::UI::text::DrawText (const std::string &amp; text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp; font = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link></computeroutput>
+, unsigned margin = <computeroutput>UI::DefaultMargin</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; colorText = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; BackgroundColor = <computeroutput>OS::sys_color_table.work_area</computeroutput>
+)</computeroutput></para><para>
 
 <para>Вывести текст </para>
 </para>
@@ -58,7 +150,7 @@
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -67,17 +159,32 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>text</entry><entry>
-<para>текст </para>
+<para>Текст </para>
 </entry>
                             </row>
                             <row>
 <entry>coord</entry><entry>
-<para>координаты </para>
+<para>Координаты </para>
 </entry>
                             </row>
                             <row>
-<entry>color</entry><entry>
+<entry>font</entry><entry>
+<para>Шрифт </para>
+</entry>
+                            </row>
+                            <row>
+<entry>margin</entry><entry>
+<para>Отступы границ фона от текста </para>
+</entry>
+                            </row>
+                            <row>
+<entry>colorText</entry><entry>
 <para>цвет текста </para>
+</entry>
+                            </row>
+                            <row>
+<entry>BackgroundColor</entry><entry>
+<para>цвет фона </para>
 </entry>
                             </row>
                         </tbody>
@@ -86,22 +193,25 @@ Parameters</title>
                     </para>
                 </formalpara>
                 </para>
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Функция">
+<title><title>устанавливает курсор в середину экрана</title></title>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1ae4182f0d04de49b3bd8f849dee9e3847"/><section>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a000ef13c7923745461001a023ed4608e"/><section>
     <title>DrawText()<computeroutput>[2/2]</computeroutput></title>
 <indexterm><primary>DrawText</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text</primary><secondary>DrawText</secondary></indexterm>
 <para><computeroutput>void KolibriLib::UI::text::DrawText (const std::string &amp; text, const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord, const unsigned &amp; size = <computeroutput>9</computeroutput>
-, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color = <computeroutput>OS::sys_color_table.work_text</computeroutput>
+, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color = <computeroutput>OS::sys_color_table.work_text</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
-<para>Вывести текст </para>
+<para>Просто вывести текст </para>
 </para>
 
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -129,6 +239,9 @@ Parameters</title>
                     </para>
                 </formalpara>
                 </para>
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Для">
+<title><title>изменения высоты шрифта используйте <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a873ed429723726e235de288ca45b47c0">SetTextSize(unsigned)</link></title></title>
+</section>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a88c7481d1f3297280474e2d9b5959c64"/><section>
     <title>GetTextSize()</title>
@@ -139,17 +252,21 @@ Parameters</title>
 <para>Получить размер текста </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>текущая высота текста </para>
 </formalpara>
+<warning><title>Предупреждения</title>
+
+<para>Функция действует только для текста выводимого через функцию <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a000ef13c7923745461001a023ed4608e">DrawText(const std::string &amp;text, const Coord &amp;coord, const unsigned &amp;size, const Colors::Color &amp;color)</link></para>
+</warning>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a5fd094b88dd3cbeb776db5098c742d75"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a873ed429723726e235de288ca45b47c0"/><section>
     <title>SetTextSize()</title>
 <indexterm><primary>SetTextSize</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text</primary><secondary>SetTextSize</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::text::SetTextSize (unsigned int newSize)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>void KolibriLib::UI::text::SetTextSize (unsigned newSize)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Изменить размер текста </para>
 </para>
@@ -157,7 +274,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -174,7 +291,11 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                </para>
+                <warning><title>Предупреждения</title>
+
+<para>Функция действует только для текста выводимого через функцию <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a000ef13c7923745461001a023ed4608e">DrawText(const std::string &amp;text, const Coord &amp;coord, const unsigned &amp;size, const Colors::Color &amp;color)</link></para>
+</warning>
+</para>
 </section>
 </section>
 </section>

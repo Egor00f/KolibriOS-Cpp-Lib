@@ -1,79 +1,76 @@
-\doxysection{Kolibri\+Lib\+::Colors Namespace Reference}
+\doxysection{Пространство имен Kolibri\+Lib\+::Colors}
 \hypertarget{namespace_kolibri_lib_1_1_colors}{}\label{namespace_kolibri_lib_1_1_colors}\index{KolibriLib::Colors@{KolibriLib::Colors}}
 
 
 Набор функций для работы с цветом  
 
 
-\doxysubsubsection*{Classes}
+\doxysubsubsection*{Классы}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{ARGB}}
 \begin{DoxyCompactList}\small\item\em Тип данных для работы с argb цветом \end{DoxyCompactList}\item 
 union \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}
-\begin{DoxyCompactList}\small\item\em Цвет \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-\Hypertarget{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}\label{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748} 
-typedef ksys\+\_\+colors\+\_\+table\+\_\+t {\bfseries Colors\+Table}
+\begin{DoxyCompactList}\small\item\em Цвет \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors\+Table}}
 \begin{DoxyCompactList}\small\item\em Таблица цветов \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_af2dd4647f406b9ebab9cbe588f35aceb}{Blend\+Colors}} (const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&a, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&b)
-\begin{DoxyCompactList}\small\item\em Смешать 2 цвета \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1efe547e71b05f6156bbcf31d55c2999}{Comparison\+Colors\+Tables}} (const \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}{Colors\+Table}} \&a, const \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}{Colors\+Table}} \&b)
-\begin{DoxyCompactList}\small\item\em Сравнить две таблица цветов \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
+ksys\+\_\+color\+\_\+t \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41}{RGBto\+INT}} (const rgb\+\_\+t \&color)
+\begin{DoxyCompactList}\small\item\em Конвертирует rgb\+\_\+t в ksys\+\_\+color\+\_\+t. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}{Blend\+Colors}} (const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&a, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&b, float k=0.\+5f)
+\begin{DoxyCompactList}\small\item\em Смешать два цвета \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Переменные}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{namespace_kolibri_lib_1_1_colors_ada2166810bf7aa50f1f39154716cc73d}\label{namespace_kolibri_lib_1_1_colors_ada2166810bf7aa50f1f39154716cc73d} 
-const \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}{Colors\+Table}} {\bfseries Default\+Color\+Table} = \{0, 0, 0, 0, 0, 0, 0, 0, 0, 0\}
+\Hypertarget{namespace_kolibri_lib_1_1_colors_ad6deb13041b3eac69cf1eeaab2b814a8}\label{namespace_kolibri_lib_1_1_colors_ad6deb13041b3eac69cf1eeaab2b814a8} 
+const ksys\+\_\+colors\+\_\+table\+\_\+t {\bfseries Default\+Color\+Table} = \{0, 0, 0, 0, 0, 0, 0, 0, 0, 0\}
 \begin{DoxyCompactList}\small\item\em Таблица цветов по умолчанию \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Подробное описание}
 Набор функций для работы с цветом 
 
-\doxysubsection{Function Documentation}
-\Hypertarget{namespace_kolibri_lib_1_1_colors_af2dd4647f406b9ebab9cbe588f35aceb}\label{namespace_kolibri_lib_1_1_colors_af2dd4647f406b9ebab9cbe588f35aceb} 
+\doxysubsection{Функции}
+\Hypertarget{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}\label{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6} 
 \index{KolibriLib::Colors@{KolibriLib::Colors}!BlendColors@{BlendColors}}
 \index{BlendColors@{BlendColors}!KolibriLib::Colors@{KolibriLib::Colors}}
 \doxysubsubsection{\texorpdfstring{BlendColors()}{BlendColors()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} Kolibri\+Lib\+::\+Colors\+::\+Blend\+Colors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&}]{a,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&}]{b }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} Kolibri\+Lib\+::\+Colors\+::\+Blend\+Colors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&}]{a,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}} \&}]{b,  }\item[{float}]{k = {\ttfamily 0.5f} }\end{DoxyParamCaption})}
 
 
 
-Смешать 2 цвета 
+Смешать два цвета 
 
 
-\begin{DoxyParams}{Parameters}
-{\em a} & первый цвет \\
+\begin{DoxyParams}{Аргументы}
+{\em a} & Первый цвет \\
 \hline
-{\em b} & второй цвет \\
+{\em b} & Второй цвет \\
+\hline
+{\em k} & Коофициент, чем он больше, тем больше цвета a, чем меньше, тем больше цвета b \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Смешение цветов a и b 
+\begin{DoxyReturn}{Возвращает}
+получившийся в итоге цвет 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1_colors_a1efe547e71b05f6156bbcf31d55c2999}\label{namespace_kolibri_lib_1_1_colors_a1efe547e71b05f6156bbcf31d55c2999} 
-\index{KolibriLib::Colors@{KolibriLib::Colors}!ComparisonColorsTables@{ComparisonColorsTables}}
-\index{ComparisonColorsTables@{ComparisonColorsTables}!KolibriLib::Colors@{KolibriLib::Colors}}
-\doxysubsubsection{\texorpdfstring{ComparisonColorsTables()}{ComparisonColorsTables()}}
-{\footnotesize\ttfamily bool Kolibri\+Lib\+::\+Colors\+::\+Comparison\+Colors\+Tables (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}{Colors\+Table}} \&}]{a,  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a6550994b56cf65f67c078179c223a748}{Colors\+Table}} \&}]{b }\end{DoxyParamCaption})}
+\Hypertarget{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41}\label{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41} 
+\index{KolibriLib::Colors@{KolibriLib::Colors}!RGBtoINT@{RGBtoINT}}
+\index{RGBtoINT@{RGBtoINT}!KolibriLib::Colors@{KolibriLib::Colors}}
+\doxysubsubsection{\texorpdfstring{RGBtoINT()}{RGBtoINT()}}
+{\footnotesize\ttfamily ksys\+\_\+color\+\_\+t Kolibri\+Lib\+::\+Colors\+::\+RGBto\+INT (\begin{DoxyParamCaption}\item[{const rgb\+\_\+t \&}]{color }\end{DoxyParamCaption})}
 
 
 
-Сравнить две таблица цветов 
+Конвертирует rgb\+\_\+t в ksys\+\_\+color\+\_\+t. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em a} & таблица первая \\
-\hline
-{\em b} & таблица вторая \\
+\begin{DoxyParams}{Аргументы}
+{\em color} & \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true если таблицы равны, иначе false 
+\begin{DoxyReturn}{Возвращает}
+~\newline
+ 
 \end{DoxyReturn}

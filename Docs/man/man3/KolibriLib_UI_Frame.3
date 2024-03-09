@@ -2,13 +2,16 @@
 .ad l
 .nh
 .SH NAME
-KolibriLib::UI::Frame
+KolibriLib::UI::Frame \- Фрейм  
+
 .SH SYNOPSIS
 .br
 .PP
 .PP
-Inherits \fBKolibriLib::UI::UIElement\fP\&.
-.SS "Public Member Functions"
+\fR#include <frame\&.hpp>\fP
+.PP
+Базовые классы:\fBKolibriLib::UI::UIElement\fP\&.
+.SS "Открытые члены"
 
 .in +1c
 .ti -1c
@@ -26,23 +29,27 @@ Inherits \fBKolibriLib::UI::UIElement\fP\&.
 .br
 .RI "Добавить элемент во фрейм "
 .ti -1c
-.RI "template<class T > void \fBSetElement\fP (unsigned i, const T &element)"
+.RI "template<class T > void \fBSetElement\fP (int i, const T &element)"
 .br
 .RI "Изменить элемент tparam T\&. "
 .ti -1c
-.RI "template<class T > T \fBGetElement\fP (unsigned i) const"
+.RI "const Element & \fBGetElement\fP (int i) const"
 .br
 .RI "Полчить элемент "
+.ti -1c
+.RI "void \fBDeleteElement\fP (int i)"
+.br
+.RI "Удалить элемент из фрейма "
 .in -1c
 
-Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
+Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBSize\fP \fBGetSize\fP () const"
+.RI "const \fBSize\fP & \fBGetSize\fP () const"
 .br
 .RI "Получить размер элемента "
 .ti -1c
@@ -54,7 +61,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Получить отступы "
 .ti -1c
-.RI "\fBColors::Color\fP \fBGetColor\fP () const"
+.RI "const \fBColors::Color\fP & \fBGetColor\fP () const"
 .br
 .RI "Получить осносной цвет элемента "
 .ti -1c
@@ -64,7 +71,7 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
 .ti -1c
-.RI "\fBCoord\fP \fBGetCoord\fP () const"
+.RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
 .RI "Получить координаты элемента "
 .ti -1c
@@ -89,10 +96,10 @@ Public Member Functions inherited from \fBKolibriLib::UI::UIElement\fP
 .RI "bool \fBoperator!=\fP (const \fBUIElement\fP &Element) const"
 .br
 .in -1c
-.SS "Additional Inherited Members"
+.SS "Дополнительные унаследованные члены"
 
 
-Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
+Защищенные данные унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
 .RI "\fBCoord\fP \fB_coord\fP"
@@ -118,50 +125,84 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .br
 .RI "Оносительны ли координаты "
 .in -1c
-.SH "Member Function Documentation"
+.SH "Подробное описание"
 .PP 
-.SS "template<class T > unsigned UI::Frame::AddElement (const T & element)"
+Фрейм 
+
+
+.SS "содержать другие элементы 
+.br
+"
+
+.SH "Конструктор(ы)"
+.PP 
+.SS "KolibriLib::UI::Frame::Frame (const \fBCoord\fP & coord = \fR{0,0}\fP, const \fBSize\fP & size = \fR{0,0}\fP, const \fBColors::Color\fP & Color = \fROS::sys_color_table\&.work_area\fP, const unsigned & Margin = \fRDefaultMargin\fP)"
+
+.PP
+\fBАргументы\fP
+.RS 4
+\fIcoord\fP 
+.br
+\fIsize\fP 
+.br
+\fIColor\fP 
+.br
+\fIMargin\fP 
+.br
+ 
+.RE
+.PP
+
+.SH "Методы"
+.PP 
+.SS "template<class T > unsigned KolibriLib::UI::Frame::AddElement (const T & element)"
 
 .PP
 Добавить элемент во фрейм 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIelement\fP элемент 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 номер элемента 
 .RE
 .PP
 
-.SS "template<class T > T UI::Frame::GetElement (unsigned i) const"
+.SS "void KolibriLib::UI::Frame::DeleteElement (int i)"
+
+.PP
+Удалить элемент из фрейма 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIi\fP Номер элемента 
+.RE
+.PP
+
+.SS "const Frame::Element & KolibriLib::UI::Frame::GetElement (int i) const"
 
 .PP
 Полчить элемент 
 .PP
-\fBTemplate Parameters\fP
-.RS 4
-\fIT\fP 
-.RE
-.PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIi\fP номер элемента 
 .RE
 .PP
-\fBReturns\fP
+\fBВозвращает\fP
 .RS 4
 .RE
 .PP
 
-.SS "template<class T > void UI::Frame::SetElement (unsigned i, const T & element)"
+.SS "template<class T > void KolibriLib::UI::Frame::SetElement (int i, const T & element)"
 
 .PP
 Изменить элемент tparam T\&. 
 .PP
-\fBParameters\fP
+\fBАргументы\fP
 .RS 4
 \fIi\fP номер элемента 
 .br
@@ -170,6 +211,6 @@ Protected Attributes inherited from \fBKolibriLib::UI::UIElement\fP
 .PP
 
 
-.SH "Author"
+.SH "Автор"
 .PP 
-Generated automatically by Doxygen for KolibriLib from the source code\&.
+Автоматически создано Doxygen для KolibriLib из исходного текста\&.

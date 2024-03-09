@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_checkbox_8hpp_source" xml:lang="en-US">
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_checkbox_8hpp_source" xml:lang="ru">
 <title>checkbox.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/checkbox.hpp</primary></indexterm>
+<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__CHECKBOX_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__CHECKBOX_H__</emphasis>
 3 
@@ -9,11 +9,11 @@
 5 
 6 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
 7 
-8 <emphasis role="preprocessor">#include&#32;&quot;types.hpp&quot;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&quot;UI.hpp&quot;</emphasis>
-10 <emphasis role="preprocessor">#include&#32;&quot;button.hpp&quot;</emphasis>
-11 <emphasis role="preprocessor">#include&#32;&quot;graphic.hpp&quot;</emphasis>
-12 <emphasis role="preprocessor">#include&#32;&quot;color.hpp&quot;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/UI.hpp&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/button.hpp&gt;</emphasis>
+11 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/graphic/graphic.hpp&gt;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
 13 
 14 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
 15 {
@@ -36,14 +36,67 @@
 39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box">CheckBox</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;Size&amp;&#32;size&#32;=&#32;{32,&#32;16},&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778">style</link>&#32;=&#32;0,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&amp;&#32;CheckBoxBorderColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_text,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&amp;&#32;BackgroundColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_area,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;DefaultMargin);
 40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;~CheckBox();
 41 
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1a28dc3c7c30dc63d9a3a05ad7783c78f2">Render</link>();
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40">Render</link>();
 44 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1a04b026f728f06f2fceb0bef93dab0aa6">Handler</link>();
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4">Handler</link>();
 47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-48 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
-49 &#32;&#32;&#32;&#32;
-50 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-51 
-52 
-53 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__CHECKBOX_H__</emphasis>
+48 
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CheckBox::CheckBox(<emphasis role="keyword">const</emphasis>&#32;Coord&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;Size&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;style,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&#32;&amp;CheckBoxBorderColor,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&#32;&amp;BackgroundColor,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin)&#32;:&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8cad8c577b231e2a21dc66bc1aababfc55a">Button</link>(coord,&#32;size,&#32;Margin,&#32;BackgroundColor)
+50 {
+51 <emphasis role="preprocessor">#if&#32;DEBUG&#32;==&#32;true</emphasis>
+52 &#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;CheckBox&#32;Constructor\n&quot;</emphasis>);
+53 <emphasis role="preprocessor">#endif</emphasis>
+54 &#32;&#32;&#32;&#32;_style&#32;=&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778">style</link>;
+55 }
+56 
+57 CheckBox::~CheckBox()
+58 {
+59 }
+60 
+61 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40">CheckBox::Render</link>()
+62 {
+63 
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(_style)
+65 &#32;&#32;&#32;&#32;{
+66 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9">Default</link>:
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;graphic::DrawRectangleLines(<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>,&#32;{<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;+&#32;(int)<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>},&#32;_MainColor);
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+69 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20">Circle</link>:
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;graphic::DrawCircle(<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>,&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;/&#32;2,&#32;36,&#32;_MainColor);
+71 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+73 &#32;&#32;&#32;&#32;}
+74 
+75 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(_status)
+76 &#32;&#32;&#32;&#32;{
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>&#32;(_style)
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9">Default</link>:
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;graphic::DrawRectangleFill({<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;+&#32;(int)<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>,&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>},&#32;{(unsigned)<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;-&#32;(2&#32;*&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>),&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;(2&#32;*&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>)},&#32;_MainColor);
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a0c7b30ff968ec2a0479fdb1a98f45f20">Circle</link>:
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;graphic::DrawCircle({<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;+&#32;(int)<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>,&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;(<emphasis role="keywordtype">int</emphasis>)<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>},&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;/&#32;2&#32;-&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>,&#32;36,&#32;_MainColor);
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1ae6e4167e4a0da08cfdf470fcdbe3a778a540e480f15fc54df908db757e024a8c3">Smoth</link>:
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+90 &#32;&#32;&#32;&#32;}
+91 }
+92 
+93 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1a413255ceee97d1b7d0d4318c06f375d4">CheckBox::Handler</link>()
+94 {
+95 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(Button::Handler())&#32;<emphasis role="comment">//&#32;Если&#32;кнопка&#32;была&#32;нажата</emphasis>
+96 &#32;&#32;&#32;&#32;{
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_status&#32;!=&#32;_status;
+98 &#32;&#32;&#32;&#32;}
+99 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_status;
+100 }
+101 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
+102 &#32;&#32;&#32;&#32;
+103 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+104 
+105 
+106 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__CHECKBOX_H__</emphasis>
 </programlisting></section>

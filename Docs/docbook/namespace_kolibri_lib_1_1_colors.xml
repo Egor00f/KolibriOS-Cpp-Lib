@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_colors" xml:lang="en-US">
-<title>KolibriLib::Colors Namespace Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_colors" xml:lang="ru">
+<title>Пространство имен KolibriLib::Colors</title>
 <indexterm><primary>KolibriLib::Colors</primary></indexterm>
 <para>
 
@@ -8,7 +8,7 @@
  
 </para>
 <simplesect>
-    <title>Classes    </title>
+    <title>Классы    </title>
         <itemizedlist>
             <listitem><para>struct <link linkend="_struct_kolibri_lib_1_1_colors_1_1_a_r_g_b">ARGB</link></para>
 
@@ -18,59 +18,55 @@
 
 <para>Цвет </para>
 </listitem>
-        </itemizedlist>
-</simplesect>
-<simplesect>
-    <title>Typedefs    </title>
-        <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748"/>typedef ksys_colors_table_t <emphasis role="strong">ColorsTable</emphasis></para>
+            <listitem><para>struct <link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">ColorsTable</link></para>
 
 <para>Таблица цветов </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Functions    </title>
+    <title>Функции    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> <link linkend="_namespace_kolibri_lib_1_1_colors_1af2dd4647f406b9ebab9cbe588f35aceb">BlendColors</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;a, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;b)</para>
+            <listitem><para>ksys_color_t <link linkend="_namespace_kolibri_lib_1_1_colors_1a234ec0266b5f9e86ecbe9c66dd0c7a41">RGBtoINT</link> (const rgb_t &amp;color)</para>
 
-<para>Смешать 2 цвета </para>
+<para>Конвертирует rgb_t в ksys_color_t. </para>
 </listitem>
-            <listitem><para>bool <link linkend="_namespace_kolibri_lib_1_1_colors_1a1efe547e71b05f6156bbcf31d55c2999">ComparisonColorsTables</link> (const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link> &amp;a, const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link> &amp;b)</para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> <link linkend="_namespace_kolibri_lib_1_1_colors_1a1d8b4c18bcb459e79bf6f5d140ada7a6">BlendColors</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;a, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp;b, float k=0.5f)</para>
 
-<para>Сравнить две таблица цветов </para>
+<para>Смешать два цвета </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Variables    </title>
+    <title>Переменные    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_colors_1ada2166810bf7aa50f1f39154716cc73d"/>const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link> <emphasis role="strong">DefaultColorTable</emphasis> = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_colors_1ad6deb13041b3eac69cf1eeaab2b814a8"/>const ksys_colors_table_t <emphasis role="strong">DefaultColorTable</emphasis> = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}</para>
 
 <para>Таблица цветов по умолчанию </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Набор функций для работы с цветом </para>
 </section>
 <section>
-<title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_colors_1af2dd4647f406b9ebab9cbe588f35aceb"/><section>
+<title>Функции</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_colors_1a1d8b4c18bcb459e79bf6f5d140ada7a6"/><section>
     <title>BlendColors()</title>
 <indexterm><primary>BlendColors</primary><secondary>KolibriLib::Colors</secondary></indexterm>
 <indexterm><primary>KolibriLib::Colors</primary><secondary>BlendColors</secondary></indexterm>
-<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> KolibriLib::Colors::BlendColors (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; a, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; b)</computeroutput></para><para>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> KolibriLib::Colors::BlendColors (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; a, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Color</link> &amp; b, float k = <computeroutput>0.5f</computeroutput>
+)</computeroutput></para><para>
 
-<para>Смешать 2 цвета </para>
+<para>Смешать два цвета </para>
 </para>
 
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -79,12 +75,17 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>a</entry><entry>
-<para>первый цвет </para>
+<para>Первый цвет </para>
 </entry>
                             </row>
                             <row>
 <entry>b</entry><entry>
-<para>второй цвет </para>
+<para>Второй цвет </para>
+</entry>
+                            </row>
+                            <row>
+<entry>k</entry><entry>
+<para>Коофициент, чем он больше, тем больше цвета a, чем меньше, тем больше цвета b </para>
 </entry>
                             </row>
                         </tbody>
@@ -92,25 +93,25 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
-<para>Смешение цветов a и b </para>
+<para>получившийся в итоге цвет </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_colors_1a1efe547e71b05f6156bbcf31d55c2999"/><section>
-    <title>ComparisonColorsTables()</title>
-<indexterm><primary>ComparisonColorsTables</primary><secondary>KolibriLib::Colors</secondary></indexterm>
-<indexterm><primary>KolibriLib::Colors</primary><secondary>ComparisonColorsTables</secondary></indexterm>
-<para><computeroutput>bool KolibriLib::Colors::ComparisonColorsTables (const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link> &amp; a, const <link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">ColorsTable</link> &amp; b)</computeroutput></para><para>
+<anchor xml:id="_namespace_kolibri_lib_1_1_colors_1a234ec0266b5f9e86ecbe9c66dd0c7a41"/><section>
+    <title>RGBtoINT()</title>
+<indexterm><primary>RGBtoINT</primary><secondary>KolibriLib::Colors</secondary></indexterm>
+<indexterm><primary>KolibriLib::Colors</primary><secondary>RGBtoINT</secondary></indexterm>
+<para><computeroutput>ksys_color_t KolibriLib::Colors::RGBtoINT (const rgb_t &amp; color)</computeroutput></para><para>
 
-<para>Сравнить две таблица цветов </para>
+<para>Конвертирует rgb_t в ksys_color_t. </para>
 </para>
 
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -118,13 +119,8 @@ Parameters</title>
                         <colspec colwidth="4*"/>
                         <tbody>
                             <row>
-<entry>a</entry><entry>
-<para>таблица первая </para>
-</entry>
-                            </row>
-                            <row>
-<entry>b</entry><entry>
-<para>таблица вторая </para>
+<entry>color</entry><entry>
+<para></para>
 </entry>
                             </row>
                         </tbody>
@@ -132,9 +128,9 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
-<para>true если таблицы равны, иначе false </para>
+<para><?linebreak?> </para>
 </formalpara>
 </para>
 </section>

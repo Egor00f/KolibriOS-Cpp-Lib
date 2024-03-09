@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_o_s" xml:lang="en-US">
-<title>KolibriLib::OS Namespace Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_kolibri_lib_1_1_o_s" xml:lang="ru">
+<title>Пространство имен KolibriLib::OS</title>
 <indexterm><primary>KolibriLib::OS</primary></indexterm>
 <para>
 
@@ -8,16 +8,18 @@
  
 </para>
 <simplesect>
-    <title>Typedefs    </title>
+    <title>Определения типов    </title>
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34"/>typedef unsigned int <emphasis role="strong">Event</emphasis></para>
 
 <para>Ивент </para>
 </listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ac196af78f5d0a4457eef7e05fc977aa0"/>typedef ksys_time_t <emphasis role="strong">Time</emphasis></para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Enumerations    </title>
+    <title>Перечисления    </title>
         <itemizedlist>
             <listitem><para>enum <link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8c">Events</link> { <?linebreak?><link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca660534ed047f5f24e82812b143dd9c61">None</link> = KSYS_EVENT_NONE
 , <link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca070cb13d251187bcb81b8c3fe13c8285">Redraw</link> = KSYS_EVENT_REDRAW
@@ -26,33 +28,35 @@
 , <?linebreak?><link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca7dfe7168df1cbce07260998fe69cc684">Key</link> = KSYS_EVENT_KEY
 , <emphasis role="strong">Desktop</emphasis> = KSYS_EVENT_DESKTOP
 , <emphasis role="strong">Debug</emphasis> = KSYS_EVENT_DEBUG
-, <emphasis role="strong">Exit</emphasis>
+, <link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1">Exit</link>
  }</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45"/>enum <emphasis role="strong">lang</emphasis> { <emphasis role="strong">Eng</emphasis> = 0
-, <emphasis role="strong">Fi</emphasis>
-, <emphasis role="strong">Ger</emphasis>
-, <emphasis role="strong">Rus</emphasis>
+            <listitem><para>enum <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45">lang</link> { <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e">Eng</link> = 0
+, <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45a5ea6247db26489c18e311b948e2355ef">Fi</link>
+, <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45aaf6062a20261b7229e98a7e9508ca034">Ger</link>
+, <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45ac0e37e69ddd6b9c8ebc624abdb800162">Rus</link>
  }</para>
+
+<para>Список языков системы </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Functions    </title>
+    <title>Функции    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">GetSystemColors</link> ()</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">Colors::ColorsTable</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">GetSystemColors</link> ()</para>
 
 <para>Получить системные цвета </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1a51432114007d25b88f76501910253064">WaitEvent</link> ()</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1a58e553f23fc726c3bf5755546f0d615d">WaitEvent</link> ()</para>
 
 <para>Ждать ивента </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1a261b54597e45aad0ef832c7207bb0ed4">WaitEvent</link> (uint32_t TimeOut)</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1aaf8805f49fe63a5a5b5ca34d7858988a">WaitEvent</link> (uint32_t TimeOut=0)</para>
 
 <para>Ждать ивента </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1afc5cf781adb8afcd4bebfb1d081a1a0f">CheckEvent</link> ()</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> <link linkend="_namespace_kolibri_lib_1_1_o_s_1a15b798e29dc85b78748a71bbf3c0cd2c">CheckEvent</link> ()</para>
 
 <para>Проверить пришёл ли ли ивент </para>
 </listitem>
@@ -60,7 +64,7 @@
 
 <para>Запустить программу </para>
 </listitem>
-            <listitem><para>ksys_time_t <link linkend="_namespace_kolibri_lib_1_1_o_s_1a1744275834206a63ba18a572f5ddd6bb">GetTime</link> ()</para>
+            <listitem><para>Time <link linkend="_namespace_kolibri_lib_1_1_o_s_1a34e921d6bba683cbba473fb70345f2eb">GetTime</link> ()</para>
 
 <para>Получить системное время </para>
 </listitem>
@@ -72,38 +76,42 @@
 
 <para>Переключить состояние спикера </para>
 </listitem>
-            <listitem><para>unsigned <link linkend="_namespace_kolibri_lib_1_1_o_s_1afebe1299f35447d01cfb2ea2f9632e3d">FreeMem</link> ()</para>
+            <listitem><para>std::size_t <link linkend="_namespace_kolibri_lib_1_1_o_s_1a8a27c188f0baab254ac4f236de8259ae">FreeMem</link> ()</para>
 
 <para>получить кол-во свободной памяти </para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1affd2489cfc89c9c72d3bca4bc3050145"/>unsigned <emphasis role="strong">AllMem</emphasis> ()</para>
+            <listitem><para>std::size_t <link linkend="_namespace_kolibri_lib_1_1_o_s_1adf72c8ee9534feb5b730246a1157584b">AllMem</link> ()</para>
+
+<para>Получить кол-во всей памяти </para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1afdb0884f42641be4566af7cae8cb92ce"/>int <emphasis role="strong">GetLang</emphasis> ()</para>
+            <listitem><para>int <link linkend="_namespace_kolibri_lib_1_1_o_s_1afdb0884f42641be4566af7cae8cb92ce">GetLang</link> ()</para>
+
+<para>Получить язык системы </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
-    <title>Variables    </title>
+    <title>Переменные    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a"/><link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link> <emphasis role="strong">sys_color_table</emphasis></para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a"/><link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">Colors::ColorsTable</link> <emphasis role="strong">sys_color_table</emphasis></para>
 
 <para>Таблица стандартных(системных) цветов </para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Работа с системой </para>
 </section>
 <section>
-<title>Enumeration Type Documentation</title>
+<title>Перечисления</title>
 <anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8c"/><section>
     <title>Events</title>
 <indexterm><primary>Events</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>Events</secondary></indexterm>
 <para><computeroutput>enum <link linkend="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8c">KolibriLib::OS::Events</link></computeroutput></para><informaltable frame="all">
-<title>Enumerator</title>
+<title>Элементы перечислений</title>
     <tgroup cols="2" align="left" colsep="1" rowsep="1">
       <colspec colname='c1'/>
       <colspec colname='c2'/>
@@ -128,23 +136,82 @@
 <indexterm><primary>KolibriLib::OS</primary><secondary>Key</secondary></indexterm>
 <anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca7dfe7168df1cbce07260998fe69cc684"/>Key</entry><entry>
 <para>Активность со стороны клавиатуры </para>
+</entry></row><row><entry><indexterm><primary>Exit</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>Exit</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1"/>Exit</entry><entry>
+<para>Выход </para>
+<section xml:id="_os.hpp_1Означает">
+<title><title>что пользователь нажал кнопку X</title></title>
+</section>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45"/><section>
+    <title>lang</title>
+<indexterm><primary>lang</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>lang</secondary></indexterm>
+<para><computeroutput>enum <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45">KolibriLib::OS::lang</link></computeroutput></para><para>
+
+<para>Список языков системы </para>
+</para>
+<section xml:id="_namespace_kolibri_lib_1_1_o_s_1PS">
+<title><title>жаль что так мало языков поддерживается...</title></title>
+</section>
+<informaltable frame="all">
+<title>Элементы перечислений</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>Eng</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>Eng</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e"/>Eng</entry><entry>
+<para>Английский </para>
+</entry></row><row><entry><indexterm><primary>Fi</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>Fi</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45a5ea6247db26489c18e311b948e2355ef"/>Fi</entry><entry>
+<para>Финский </para>
+</entry></row><row><entry><indexterm><primary>Ger</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>Ger</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45aaf6062a20261b7229e98a7e9508ca034"/>Ger</entry><entry>
+<para>Немецкий </para>
+</entry></row><row><entry><indexterm><primary>Rus</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>Rus</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45ac0e37e69ddd6b9c8ebc624abdb800162"/>Rus</entry><entry>
+<para>Русский </para>
 </entry></row>    </tbody>
     </tgroup>
 </informaltable>
 </section>
 </section>
 <section>
-<title>Function Documentation</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1afc5cf781adb8afcd4bebfb1d081a1a0f"/><section>
+<title>Функции</title>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1adf72c8ee9534feb5b730246a1157584b"/><section>
+    <title>AllMem()</title>
+<indexterm><primary>AllMem</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>AllMem</secondary></indexterm>
+<para><computeroutput>std::size_t KolibriLib::OS::AllMem ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить кол-во всей памяти </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>Размер всей памяти в килобайтах </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a15b798e29dc85b78748a71bbf3c0cd2c"/><section>
     <title>CheckEvent()</title>
 <indexterm><primary>CheckEvent</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>CheckEvent</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> KolibriLib::OS::CheckEvent ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> KolibriLib::OS::CheckEvent ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Проверить пришёл ли ли ивент </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>Ивент </para>
 </formalpara>
@@ -154,7 +221,7 @@
     <title>Exec()</title>
 <indexterm><primary>Exec</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>Exec</secondary></indexterm>
-<para><computeroutput>int KolibriLib::OS::Exec (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> &amp; AppName, const std::string &amp; args)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>int KolibriLib::OS::Exec (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> &amp; AppName, const std::string &amp; args)</computeroutput></para><para>
 
 <para>Запустить программу </para>
 </para>
@@ -162,7 +229,7 @@
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -171,12 +238,12 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>AppName</entry><entry>
-<para>путь до программы + имя </para>
+<para>Полное имя исполняемого файла </para>
 </entry>
                             </row>
                             <row>
 <entry>args</entry><entry>
-<para>аргументы </para>
+<para>аргументы. Максимум 256 символов </para>
 </entry>
                             </row>
                         </tbody>
@@ -184,24 +251,39 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
-<para>то что возвращает сама программа, -1 если исполняемы файл не найден </para>
+<para>&gt; 0 - программа загружена, eax содержит PID, &lt; 0 если исполняемы файл не найден </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1afebe1299f35447d01cfb2ea2f9632e3d"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a8a27c188f0baab254ac4f236de8259ae"/><section>
     <title>FreeMem()</title>
 <indexterm><primary>FreeMem</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>FreeMem</secondary></indexterm>
-<para><computeroutput>unsigned KolibriLib::OS::FreeMem ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>std::size_t KolibriLib::OS::FreeMem ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>получить кол-во свободной памяти </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>размер свободной памяти в килобайтах </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1afdb0884f42641be4566af7cae8cb92ce"/><section>
+    <title>GetLang()</title>
+<indexterm><primary>GetLang</primary><secondary>KolibriLib::OS</secondary></indexterm>
+<indexterm><primary>KolibriLib::OS</primary><secondary>GetLang</secondary></indexterm>
+<para><computeroutput>int KolibriLib::OS::GetLang ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Получить язык системы </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para>Занечение из списка <link linkend="_namespace_kolibri_lib_1_1_o_s_1ad74e24145535693721b73b3d7f315c45">lang</link></para>
 </formalpara>
 </para>
 </section>
@@ -209,30 +291,30 @@ Parameters</title>
     <title>GetSystemColors()</title>
 <indexterm><primary>GetSystemColors</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>GetSystemColors</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_colors_1a6550994b56cf65f67c078179c223a748">Colors::ColorsTable</link> KolibriLib::OS::GetSystemColors ( )</computeroutput></para><para>
+<para><computeroutput><link linkend="_struct_kolibri_lib_1_1_colors_1_1_colors_table">Colors::ColorsTable</link> KolibriLib::OS::GetSystemColors ( )</computeroutput></para><para>
 
 <para>Получить системные цвета </para>
 </para>
-<section xml:id="_namespace_kolibri_lib_1_1_o_s_1Функция">
+<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Функция">
 <title><title>устанавливает курсор в середину экрана</title></title>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>Таблица системных цветов </para>
 </formalpara>
 </para>
 </section>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a1744275834206a63ba18a572f5ddd6bb"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a34e921d6bba683cbba473fb70345f2eb"/><section>
     <title>GetTime()</title>
 <indexterm><primary>GetTime</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>GetTime</secondary></indexterm>
-<para><computeroutput>ksys_time_t KolibriLib::OS::GetTime ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>Time KolibriLib::OS::GetTime ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить системное время </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para></para>
 </formalpara>
@@ -247,32 +329,33 @@ Parameters</title>
 <para>Получить состояние спикера(Вкл/выкл) </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>true если спикер разрешён, иначе false </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a51432114007d25b88f76501910253064"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a58e553f23fc726c3bf5755546f0d615d"/><section>
     <title>WaitEvent()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>WaitEvent</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>WaitEvent</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> KolibriLib::OS::WaitEvent ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">Event</link> KolibriLib::OS::WaitEvent ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Ждать ивента </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>Ивент </para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1a261b54597e45aad0ef832c7207bb0ed4"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_o_s_1aaf8805f49fe63a5a5b5ca34d7858988a"/><section>
     <title>WaitEvent()<computeroutput>[2/2]</computeroutput></title>
 <indexterm><primary>WaitEvent</primary><secondary>KolibriLib::OS</secondary></indexterm>
 <indexterm><primary>KolibriLib::OS</primary><secondary>WaitEvent</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> KolibriLib::OS::WaitEvent (uint32_t TimeOut)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1abe4a29759805b4449591c8efb1d10d34">OS::Event</link> KolibriLib::OS::WaitEvent (uint32_t TimeOut = <computeroutput>0</computeroutput>
+)</computeroutput></para><para>
 
 <para>Ждать ивента </para>
 </para>
@@ -280,7 +363,7 @@ Parameters</title>
 <para>
                 <formalpara>
                     <title>
-Parameters</title>
+Аргументы</title>
                     <para>
                     <table frame="all">
                         <tgroup cols="2" align="left" colsep="1" rowsep="1">
@@ -289,7 +372,7 @@ Parameters</title>
                         <tbody>
                             <row>
 <entry>Таймаут</entry><entry>
-<para>(в 1/100 секунды) </para>
+<para>(в 1/100 секунды), время сколько ждать </para>
 </entry>
                             </row>
                         </tbody>
@@ -297,7 +380,7 @@ Parameters</title>
                     </table>
                     </para>
                 </formalpara>
-                <formalpara><title>Returns</title>
+                <formalpara><title>Возвращает</title>
 
 <para>Ивент </para>
 </formalpara>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1filesystem_1_1_path" xml:lang="en-US">
-<title>KolibriLib::filesystem::Path Class Reference</title>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1filesystem_1_1_path" xml:lang="ru">
+<title>Класс KolibriLib::filesystem::Path</title>
 <indexterm><primary>KolibriLib::filesystem::Path</primary></indexterm>
 <para>
 
@@ -11,21 +11,25 @@
 <computeroutput>#include &lt;filesystem.hpp&gt;</computeroutput>
 </para>
 <simplesect>
-    <title>Public Member Functions    </title>
+    <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1a5ca1307ff5ea8e1edd1e302f7b41bc54"/><emphasis role="strong">Path</emphasis> (std::string path=&quot;/&quot;)</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1aadc730b84b546871cf42096c64ec4ba2"/><emphasis role="strong">Path</emphasis> (const std::string &amp;path=&quot;/&quot;)</para>
 </listitem>
-            <listitem><para>const char * <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1acb469886de44cd4d462c462612037dc3">GetChars</link> () const</para>
+            <listitem><para>const char * <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link> () const</para>
 
 <para>Получить char* строку </para>
 </listitem>
-            <listitem><para>std::string <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1af9336263887d54c6a40581d6c8f8b2a6">GetString</link> () const</para>
+            <listitem><para>const std::string &amp; <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a9e652561c552809fd7b5f8b4c87d8565">GetString</link> () const</para>
 
 <para>Получить строку </para>
 </listitem>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1a58751fd9a286c24b0f08dc0d00224977"/><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp; <emphasis role="strong">operator/</emphasis> (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp;a)</para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1a6c40452c9858b8428c8f1cbc068f11c7"/><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp; <emphasis role="strong">operator/</emphasis> (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp;a)</para>
 </listitem>
             <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1ae68b63e1c7adc51acf4a0844595ae349"/><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp; <emphasis role="strong">operator/</emphasis> (const std::string &amp;a)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1aae6322945edc11d62d1f60b62c68f192"/><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp; <emphasis role="strong">operator+</emphasis> (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp;a)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1a77bc19fb66e6ce2a7bf1947ab78fe339"/><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp; <emphasis role="strong">operator+</emphasis> (const std::string &amp;a)</para>
 </listitem>
             <listitem><para><anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1aa8da971a5bd99ba1efe49ba358d63854"/><link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link> &amp;a)</para>
 </listitem>
@@ -42,43 +46,48 @@
         </itemizedlist>
 </simplesect>
 <section>
-<title>Detailed Description</title>
+<title>Подробное описание</title>
 
 <para>Путь до файла/папки </para>
+
+
+<section xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1Полность">
+<title><title>совместим с std::string</title></title>
+</section>
 </section>
 <section>
-<title>Member Function Documentation</title>
-<anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1acb469886de44cd4d462c462612037dc3"/><section>
+<title>Методы</title>
+<anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217"/><section>
     <title>GetChars()</title>
 <indexterm><primary>GetChars</primary><secondary>KolibriLib::filesystem::Path</secondary></indexterm>
 <indexterm><primary>KolibriLib::filesystem::Path</primary><secondary>GetChars</secondary></indexterm>
-<para><computeroutput>const char * Path::GetChars ( ) const</computeroutput></para><para>
+<para><computeroutput>const char * KolibriLib::filesystem::Path::GetChars ( ) const</computeroutput></para><para>
 
 <para>Получить char* строку </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>Функция возвращает конвертированную строку <link linkend="_ab9b061b35b2c9b51c2da59cc0ea16b0c">_string</link></para>
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1af9336263887d54c6a40581d6c8f8b2a6"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1filesystem_1_1_path_1a9e652561c552809fd7b5f8b4c87d8565"/><section>
     <title>GetString()</title>
 <indexterm><primary>GetString</primary><secondary>KolibriLib::filesystem::Path</secondary></indexterm>
 <indexterm><primary>KolibriLib::filesystem::Path</primary><secondary>GetString</secondary></indexterm>
-<para><computeroutput>std::string KolibriLib::filesystem::Path::GetString ( ) const</computeroutput></para><para>
+<para><computeroutput>const std::string &amp; KolibriLib::filesystem::Path::GetString ( ) const</computeroutput></para><para>
 
 <para>Получить строку </para>
 </para>
 
-<para><formalpara><title>Returns</title>
+<para><formalpara><title>Возвращает</title>
 
 <para>Функция возвращает <link linkend="_ab9b061b35b2c9b51c2da59cc0ea16b0c">_string</link></para>
 </formalpara>
 </para>
 </section>
 <para>
-The documentation for this class was generated from the following files:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/filesystem.hppF:/KolibriOs/KolibriOS-Cpp-Lib/src/include/kolibriLib/filesystem.cpp</section>
+Объявления и описания членов класса находятся в файле:</para>
+F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/system/filesystem.hpp</section>
 </section>
