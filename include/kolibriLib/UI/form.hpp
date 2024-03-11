@@ -32,7 +32,7 @@ namespace KolibriLib
             /// \param FormColor цвет рамки формы
             /// \param BackgroundTextColor цвет фонового текста
             /// \param Margin отступы рамки от текста
-            Form(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const std::string& BackgroundText = "Text...", const Colors::Color& FormColor = OS::sys_color_table.work_text, const Colors::Color& ButtonTextColor = OS::sys_color_table.work_area, const unsigned& Margin = DefaultMargin);
+            Form(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const std::string& BackgroundText = "Text...", const Colors::Color& FormColor = OS::GetSystemColors().work_text, const Colors::Color& ButtonTextColor = OS::GetSystemColors().work_area, const unsigned& Margin = DefaultMargin);
 
             /// \brief Отрисовать форму
             void Render() const;

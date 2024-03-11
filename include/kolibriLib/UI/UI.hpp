@@ -52,7 +52,7 @@ namespace KolibriLib
             /// @param MainColor 
             /// @param Margin 
             /// @param relative 
-            UIElement(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const Colors::Color& MainColor = OS::sys_color_table.work_graph, const unsigned& Margin = DefaultMargin, bool relative = false);
+            UIElement(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const Colors::Color& MainColor = OS::GetSystemColors().work_graph, const unsigned& Margin = DefaultMargin, bool relative = false);
             
             /// @brief Получить размер элемента
             /// @return Функция возвращает @link _size
@@ -116,7 +116,7 @@ namespace KolibriLib
         /// \param coord
         /// \param size
         /// \param color
-        inline void DrawBar(const Coord& coord, const Size& size, const Colors::Color& color = OS::sys_color_table.work_graph)
+        inline void DrawBar(const Coord& coord, const Size& size, const Colors::Color& color = OS::GetSystemColors().work_graph)
         {
             _ksys_draw_bar(coord.x, coord.y, size.x, size.y, color.val);
         }

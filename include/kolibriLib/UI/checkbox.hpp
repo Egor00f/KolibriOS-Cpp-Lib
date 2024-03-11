@@ -36,7 +36,7 @@ namespace KolibriLib
                 Smoth,
             };
 
-            CheckBox(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const int& style = 0, const Colors::Color& CheckBoxBorderColor = OS::sys_color_table.work_text, const Colors::Color& BackgroundColor = OS::sys_color_table.work_area, const unsigned& Margin = DefaultMargin);
+            CheckBox(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const int& style = 0, const Colors::Color& CheckBoxBorderColor = OS::GetSystemColors().work_text, const Colors::Color& BackgroundColor = OS::GetSystemColors().work_area, const unsigned& Margin = DefaultMargin);
             ~CheckBox();
 
             /// @brief Отрисовать Checkbox

@@ -3,7 +3,6 @@
 
 #include <string.h>
 
-#include <kolibriLib/types.hpp>
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 
@@ -13,20 +12,18 @@ namespace KolibriLib
 	namespace OS
 	{
 
-		/// @brief Таблица стандартных(системных) цветов
-		Colors::ColorsTable sys_color_table;
-
 		/// @brief Получить системные цвета
 		/// @paragraph Функция изменяет переменную @link sys_color_table
 		/// @return Таблица системных цветов
-		Colors::ColorsTable GetSystemColors()
+		inline Colors::ColorsTable GetSystemColors()
 		{
-			_ksys_get_system_colors(&sys_color_table);
-			return sys_color_table;
+			Colors::ColorsTable buff;
+			_ksys_get_system_colors(&buff);
+			return buff;
 		}
 
 		/// @brief Ивент
-		typedef unsigned int Event;
+		typedef uint32_t Event;
 
 		enum Events
 		{
@@ -42,9 +39,10 @@ namespace KolibriLib
 			Key     = KSYS_EVENT_KEY,
 			/// @brief 
 			Desktop = KSYS_EVENT_DESKTOP,
+			/// @brief 
 			Debug   = KSYS_EVENT_DEBUG,
+
 			/// @brief Выход
-			/// @paragraph Означает что пользователь нажал кнопку X
 			Exit
 		};
 
@@ -58,7 +56,10 @@ namespace KolibriLib
 		/// \brief Ждать ивента
 		/// \param Таймаут (в 1/100 секунды), время сколько ждать
 		/// \return Ивент
-		Event WaitEvent(uint32_t TimeOut = 0);
+		inline Event WaitEvent(uint32_t TimeOut)
+		{
+			return _ksys_wait_event_timeout(TimeOut);
+		}
 
 		/// \brief Проверить пришёл ли ли ивент
 		/// \return Ивент
@@ -70,11 +71,13 @@ namespace KolibriLib
 		/// \brief Запустить программу
 		/// \param AppName Полное имя исполняемого файла
 		/// \param args аргументы. Максимум 256 символов
+		/// @param debug режим дебага
 		/// \return > 0 - программа загружена, eax содержит PID, < 0 если исполняемы файл не найден
-		int Exec(const filesystem::Path& AppName, const std::string& args);
+		int Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
 
+		/// @brief Время
+		typedef ksys_time_bcd_t Time;
 
-		typedef ksys_time_t Time;
 		/// @brief Получить системное время
 		/// @return
 		inline Time GetTime()
@@ -131,7 +134,6 @@ namespace KolibriLib
 		}
 
 		/// @brief Список языков системы
-		/// @paragraph PS жаль что так мало языков поддерживается...
 		enum lang
 		{
 			/// @brief Английский 
@@ -158,29 +160,6 @@ namespace KolibriLib
 		}
 
 	} // namespace OS
-
-	OS::Event KolibriLib::OS::WaitEvent(uint32_t TimeOut)
-	{
-		if (TimeOut != 0)
-		{
-			return _ksys_wait_event_timeout(TimeOut);
-		}
-		return _ksys_check_event();
-	}
-
-	int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args)
-	{
-		if (filesystem::Exist(AppName)) // Проверка на существование
-		{
-			char *a;
-			strcat(a, const_cast<char *>(args.c_str()));
-			return _ksys_exec(AppName.GetChars(), a);
-		}
-		else
-		{
-			return -1;
-		}
-	}
 
 } // namespace KolibriLib
 

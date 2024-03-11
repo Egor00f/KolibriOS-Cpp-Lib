@@ -2,7 +2,7 @@
 #define __IMAGE_H__
 
 #include <kolibriLib/UI/UI.hpp>
-#include <kolibriLib/small.hpp>
+#include <kolibriLib/constants.hpp>
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 
@@ -20,7 +20,7 @@ namespace KolibriLib
 		/// @brief Работа с изображениями
 		namespace Images
 		{
-			
+			/// @brief Изображение
 			class img
 			{
 			protected:

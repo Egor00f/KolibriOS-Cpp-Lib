@@ -15,18 +15,18 @@ SDK_DIR = $(CONTRIB_DIR)/sdk
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include
 
 #Flags
-CFLAGS = -c -std=c++11 -fpermissive
+CFLAGS = -c -std=c++11 -fpermissive -Wreturn-local-addr
 
 # Папка в которой лежат cpp файлы
 SRC_PATH = src
 
-SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/text.cpp  $(SRC_PATH)/button.cpp $(SRC_PATH)/window.cpp
-# $(SRC_PATH)/mouse.cpp $(SRC_PATH)/keyboard.cpp $(SRC_PATH)/screen.cpp $(SRC_PATH)/os.cpp  $(SRC_PATH)/UI.cpp $(SRC_PATH)/windowBase.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/image.cpp  $(SRC_PATH)/form.cpp $(SRC_PATH)/thread.cpp $(SRC_PATH)/frame.cpp $(SRC_PATH)/childWindow.cpp
+SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/fonts.cpp $(SRC_PATH)/thread.cpp
+# $(SRC_PATH)/mouse.cpp $(SRC_PATH)/keyboard.cpp $(SRC_PATH)/screen.cpp $(SRC_PATH)/UI.cpp $(SRC_PATH)/windowBase.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/image.cpp  $(SRC_PATH)/form.cpp $(SRC_PATH)/frame.cpp $(SRC_PATH)/childWindow.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a CLAYER install examples done
+all: $(LIB_NAME).a examples done
 
 	
 
@@ -47,7 +47,8 @@ install:
 
 CLAYER:
 	@echo "| make C_Layer:" 
-	$(MAKE) -C include/C_Layer/ASM
+	@cd examples
+	@make
 
 clean:
 	@echo " "
@@ -61,17 +62,12 @@ examples:
 	@echo "| make examples"
 	$(MAKE) -C examples
 
+
 %.o : %.cpp Makefile
 	@echo " "
 	@echo "| -------------------------------------"
-	@echo "| compiling: " $@
+	@echo "|  compiling: " $@
 	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $<
- 
-%.o : %.c Makefile
-	@echo " "
-	@echo "| -------------------------------------"
-	@echo "| compiling: " $@
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
 
 done:
 	@echo " "

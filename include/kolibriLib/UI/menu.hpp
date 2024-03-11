@@ -21,7 +21,7 @@ namespace KolibriLib
         private:
             std::vector<buttons::Button> _Buttons;
         public:
-            Menu(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::vector<std::string> &li = {"menu", "menu"}, const unsigned &Margin = DefaultMargin, const Colors::Color &color = OS::sys_color_table.work_area);
+            Menu(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::vector<std::string> &li = {"menu", "menu"}, const unsigned &Margin = DefaultMargin, const Colors::Color &color = OS::GetSystemColors().work_area);
             ~Menu();
 
             /// @brief Отрисовать меню

@@ -4,21 +4,6 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace text;
 
-KolibriLib::UI::text::Fonts::Font &KolibriLib::UI::text::Fonts::Font::operator=(const KolibriLib::UI::text::Fonts::Font &f)
-{
-	_Font = f._Font;
-	_FontSize = f._FontSize;
-	_Flags = f._Flags;
-	return *this;
-}
-
-bool KolibriLib::UI::text::Fonts::Font::operator==(const KolibriLib::UI::text::Fonts::Font &f) const
-{
-	return (_Font == f._Font) &&
-		   (_FontSize == f._FontSize) &&
-		   (_Flags == f._Flags);
-}
-
 KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(char c)
 {
 	if (_type == Char::Type::Text)
@@ -30,8 +15,8 @@ KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(char c)
 		Free();
 		_c = new char(c);
 		_font = Fonts::DefaultFont;
-		_TextColor = new Colors::Color(OS::sys_color_table.work_text);
-		_BackgroundColor = new Colors::Color(OS::sys_color_table.work_area);
+		_TextColor = new Colors::Color(OS::GetSystemColors().work_text);
+		_BackgroundColor = new Colors::Color(OS::GetSystemColors().work_area);
 		_type = Type::Text;
 	}
 }
@@ -254,7 +239,7 @@ void KolibriLib::UI::text::Char::Print(const UI::Coord &coord) const
 		_img->Render(coord, _font.size);
 		break;
 	case Type::Text:
-		DrawText(std::string(_c), coord, _font.size, _font._Flags, OS::sys_color_table.work_text, *_TextColor, *_BackgroundColor);
+		DrawText(std::string(_c), coord, _font.size, _font._Flags, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
 		break;
 	default:
 		break;
@@ -403,19 +388,4 @@ KolibriLib::UI::text::Text &KolibriLib::UI::text::Text::operator=(const Text &tx
 {
 	_data = txt._data;
 	return *this;
-}
-
-KolibriLib::UI::text::Fonts::Font::Font(const UI::Size &FontFamily, int FontSize, unsigned flags)
-{
-	_Font = FontFamily;
-	_Flags = flags;
-	SetFontSize((unsigned)FontSize);
-}
-
-void KolibriLib::UI::text::Fonts::Font::SetFontSize(unsigned FontSize)
-{
-	float buff = FontSize / _Font.x;
-	_FontSize = FontSize;
-	size = _Font;
-	size /= static_cast<unsigned>(buff); // float преобразется в unsigned так как UI::Size это point<unsigned>
 }

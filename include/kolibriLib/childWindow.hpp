@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef __CHILDWINDOW_H__
 #define __CHILDWINDOW_H__
 
@@ -47,7 +45,6 @@ namespace KolibriLib
 
                     Used = false; // Я всё, заКОНЧИЛ. Свободно!
                     break;
-                    ;
                 }
                 else // если занято то ждём
                 {

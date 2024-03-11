@@ -54,7 +54,7 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
-		inline void CreateWindow(const UI::Coord coord, const UI::Size size, const std::string& title, const Colors::Color WorkColor = OS::sys_color_table.frame_area, const Colors::Color TitleColor = OS::sys_color_table.work_text, const uint32_t style = WindowStyle::CanResize + WindowStyle::NormalDraw)
+		inline void CreateWindow(const UI::Coord coord, const UI::Size size, const std::string& title, const Colors::Color WorkColor = OS::GetSystemColors().frame_area, const Colors::Color TitleColor = OS::GetSystemColors().work_text, const uint32_t style = WindowStyle::CanResize + WindowStyle::NormalDraw)
 		{
 			const char* t = title.c_str();
 			asm_inline(
@@ -103,7 +103,8 @@ namespace KolibriLib
 		inline void MinimizeWindow()
 		{
 			asm_inline(
-				"int $0x40" ::"a"(18), "b"(10)
+				"int $0x40" 
+				::"a"(18), "b"(10)
 			);
 		}
 
@@ -111,7 +112,8 @@ namespace KolibriLib
 		inline void MinimizeAllWindows()
 		{
 			asm_inline(
-				"int $0x40" ::"a"(18), "b"(23)
+				"int $0x40" 
+				::"a"(18), "b"(23)
 			);
 		}
 

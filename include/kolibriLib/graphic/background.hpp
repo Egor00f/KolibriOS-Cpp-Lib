@@ -101,7 +101,7 @@ namespace KolibriLib
 		/// @param p1 точка перавая
 		/// @param p2 точка вторая
 		/// @param color цвет линии
-		inline void DrawLine(const UI::Coord& p1, const UI::Coord& p2, const Colors::Color &color = OS::sys_color_table.work_graph)
+		inline void DrawLine(const UI::Coord& p1, const UI::Coord& p2, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
 			for(int i = 0; i < abs(p1.x - p2.x); i++)
 			{
@@ -115,8 +115,8 @@ namespace KolibriLib
 		void DrawText(const std::string &text,
 					  const UI::Coord &coord, const UI::text::Fonts::Font &font = UI::text::Fonts::DefaultFont,
 					  unsigned margin = UI::DefaultMargin,
-					  const Colors::Color &colorText = OS::sys_color_table.work_text,
-					  const Colors::Color &BackgroundColor = OS::sys_color_table.work_area)
+					  const Colors::Color &colorText = OS::GetSystemColors().work_text,
+					  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)
 		{
 			const unsigned w = ((margin * 2) + font.size.x);
 			const unsigned h = ((margin * 2) + (font.size.y * text.length()));

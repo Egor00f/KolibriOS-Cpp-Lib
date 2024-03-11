@@ -24,22 +24,19 @@ PID KolibriLib::Thread::CreateThread(void(* ThreadEntry)(void *), unsigned Threa
 
 KolibriLib::Thread::ThreadInfo KolibriLib::Thread::GetThreadInfo(const Slot& thread)
 {
-    ThreadInfo *buff = (ThreadInfo *)malloc(sizeof(ThreadInfo));
+    ThreadInfo *buff = new ThreadInfo;
 
-    _ksys_thread_info((ksys_thread_t*)buff, thread);
+    _ksys_thread_info(buff, thread);
 
     ThreadInfo r = *buff;
 
-    free(buff);
+    for (int i = 0; i < KSYS_THREAD_INFO_SIZE; i++)
+    {
+        r.__reserved3[i] = buff->__reserved3[i];
+    }
+
+    free(buff); // Возвращается копия так как указатель нужно будет удалять
+                //  но в какой то момент точно об этом забудешь...
 
     return r;
-}
-
-ThreadInfo &KolibriLib::Thread::ThreadInfo::operator=(const ksys_thread_t &a)
-{
-    for(int i = 0; i < KSYS_THREAD_INFO_SIZE; i++)
-    {
-        __reserved3[i] = a.__reserved3[i];
-    }
-    return *this;
 }

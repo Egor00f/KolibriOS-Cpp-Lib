@@ -78,7 +78,7 @@ namespace KolibriLib
         /// @return Значение из списка @link Errors
         inline int CreateFile(const Path &name)
         {
-            return _ksys_file_create(name.GetChars());
+            return _ksys_file_create(name.GetChars()).status;
         }
 
         /// @brief удалить файл  или папку
@@ -102,7 +102,7 @@ namespace KolibriLib
         /// @return true если файл или папка существует, иначе false
         inline bool Exist(const Path &Path)
         {
-            ksys_bdfe_t *buff = new ksys_bdfe_t;
+            ksys_file_info_t *buff = new ksys_file_info_t;
             int a = _ksys_file_info(Path.GetChars(), buff);
             delete buff;
             return a > 0;

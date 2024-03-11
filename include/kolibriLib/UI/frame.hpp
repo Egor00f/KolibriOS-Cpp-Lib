@@ -1,7 +1,7 @@
 #ifndef __FRAME_H__
 #define __FRAME_H__
 
-#include <unordered_map>
+#include <map>
 
 #include <kolibriLib/graphic/graphic.hpp>
 #include "UI.hpp"
@@ -60,7 +60,7 @@ namespace KolibriLib
 
 				void free();
             };
-            std::unordered_map<int, Element> _Elements;
+            std::map<int, Element> _Elements;
             bool _scroll;
         public:
             /// @brief 
@@ -68,7 +68,7 @@ namespace KolibriLib
             /// @param size 
             /// @param Color 
             /// @param Margin 
-            Frame(const Coord &coord = {0,0}, const Size &size = {0,0}, const Colors::Color &Color = OS::sys_color_table.work_area, const unsigned &Margin = DefaultMargin);
+            Frame(const Coord &coord = {0,0}, const Size &size = {0,0}, const Colors::Color &Color = OS::GetSystemColors().work_area, const unsigned &Margin = DefaultMargin);
             
 
             /// @brief Отрисовать фрейм

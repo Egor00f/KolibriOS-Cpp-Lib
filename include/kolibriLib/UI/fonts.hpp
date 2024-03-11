@@ -37,19 +37,10 @@ namespace KolibriLib
             };
 
             /// @brief Пародия на шрифты
-            /// @paragraph На самом деле это не настоящие шрифты, а лишь жалкие пародии, совподающие с настоящими лишь по размерам(ширина/высота)
+            /// @note На самом деле это не настоящие шрифты, а лишь жалкие пародии, совподающие с настоящими лишь по размерам(ширина/высота)
             namespace Fonts
             {
-                /// @brief Высота шрифта по умолчанию
-                const unsigned DefaultFontSize = 16;
-
-                // Некоторые заготовки шрифтов
-
-                const UI::Size Arial = {5, 6};
-                const UI::Size TimesNewRoman = {4, 5};
-                const UI::Size Micrhoma = {21, 11};
-                const UI::Size Roboto = {7, 10};
-                const UI::Size Geologica = {5, 7};
+                
 
                 /// @brief Шрифт
                 struct Font
@@ -57,25 +48,26 @@ namespace KolibriLib
                     /// @brief
                     /// @param FontFamily Шрифт, фактически это соотношение сторон
                     /// @param FontSize Высота шрифта
-                    Font(const UI::Size &FontFamily = Arial, int FontSize = DefaultFontSize, unsigned flags = Flags::Normal);
+                    Font(const UI::Size &FontFamily = {5, 6}, int FontSize = 16, unsigned flags = Flags::Normal);
 
                     /// @brief Изменить размер шрифта
                     /// @param FontSize
                     void SetFontSize(unsigned FontSize);
 
+                    /// @brief Шрифт
                     UI::Size _Font;
+                    /// @brief Высота шрифта
                     unsigned _FontSize;
+                    /// @brief Флаги
                     unsigned _Flags;
 
+                    /// @brief Размер текста для функции @link DrawText()
                     mutable UI::Size size;
 
                     Font &operator=(const Font &f);
 
                     bool operator==(const Font &f) const;
                 };
-
-                /// @brief Шрифт по умолчанию
-                const Font DefaultFont(Arial, DefaultFontSize);
             };
         }
     }
