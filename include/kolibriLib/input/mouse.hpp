@@ -89,7 +89,7 @@ namespace KolibriLib
 		/// @brief Загрузить курсор мыши
 		/// @param ptr Указатель на изображение
 		/// @return Хендл загруженного курсора
-		/// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел
+		/// @note Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел
 		inline CursorHandle LoadCursor(void *ptr)
 		{
 			return _ksys_load_cursor(ptr, KSYS_CURSOR_FROM_MEM);

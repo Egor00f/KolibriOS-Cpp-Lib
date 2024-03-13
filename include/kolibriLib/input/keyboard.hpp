@@ -29,6 +29,7 @@ namespace KolibriLib
 
         /// @brief Получить состояние управляющих клавиш
         /// @return Возвращает имя конгстрольной клавиши из списка @link ControlKeys
+        /// @example if(GetContolKey() == ControlKeys::LeftCtrl) { printf("press lCtrl"); }
         inline unsigned GetControlKey()
         {
             return _ksys_get_control_key_state();
@@ -46,7 +47,10 @@ namespace KolibriLib
         /// @brief Удалить "горячую клавишу"
         /// @return true если успешно, иначе false
         /// @warning not done!
-        inline bool DeleteHotKey();
+        inline bool DeleteHotKey()
+        {
+            
+        }
 
         
     } // namespace keyboard

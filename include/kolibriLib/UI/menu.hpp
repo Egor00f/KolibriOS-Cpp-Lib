@@ -38,6 +38,8 @@ namespace KolibriLib
             /// @paragraph Если i = -1, то элемент вставляется в конец, иначе вставляется на место под номером i. При этом номера всех элементов с номером больше i, нужно увеличить на 1.
             int AddItem(const std::string &item, int i = -1);
 
+            void SetItem(const std::string& NewText, int i);
+
             /// @brief Удалить элемент
             /// @param i номер удаляемого элемента
             /// @return true если удачно, иначе false
@@ -91,6 +93,11 @@ int KolibriLib::UI::Menu::AddItem(const std::string &item, int i)
     
     _Buttons.insert(_Buttons.begin() + i, btn);
     return 0;
+}
+
+void Menu::SetItem(const std::string &NewText, int i)
+{
+    _Buttons[i].SetText(NewText);
 }
 
 bool KolibriLib::UI::Menu::DeleteItem(unsigned i)

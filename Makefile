@@ -6,15 +6,18 @@ CC	= kos32-gcc
 CXX	= kos32-g++
 LD	= kos32-ld 
 
+#Имя библиотеки
 LIB_NAME = libkcpp
 
-#DIRs
-CONTRIB_DIR = ../contrib
+#папка до репозитория kolibrios
+KolibriOS_repo_dir = ../kolibrios
+CONTRIB_DIR = $(KolibriOS_repo_dir)/contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
+C_LAYER_DIR = $(SDK_DIR)/C_Layer
 
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include
 
-#Flags
+#Флаги компилятора
 CFLAGS = -c -std=c++11 -fpermissive -Wreturn-local-addr
 
 # Папка в которой лежат cpp файлы
@@ -26,7 +29,10 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a examples done
+all: 
+	$(LIB_NAME).a 
+	examples 
+	done
 
 	
 
@@ -46,9 +52,7 @@ install:
 	@mv $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
 
 CLAYER:
-	@echo "| make C_Layer:" 
-	@cd examples
-	@make
+	$(MAKE) -C $(C_LAYER_DIR)/ASM
 
 clean:
 	@echo " "

@@ -56,7 +56,7 @@ namespace KolibriLib
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
-		void DrawRectangleFill(UI::Coord position, UI::Size size, Colors::Color color = OS::GetSystemColors().work_graph)
+		inline void DrawRectangleFill(UI::Coord position, UI::Size size, Colors::Color color = OS::GetSystemColors().work_graph)
 		{
 			__asm__ __volatile__(
 				"int $0x40"
@@ -106,7 +106,7 @@ namespace KolibriLib
 			DrawLine(b, c, color);
 		}
 
-		/// @brief 
+		/// @brief прочитать цвет точки
 		/// @param Point 
 		/// @return
 		inline Colors::Color ReadPoint(const UI::Coord Point)
@@ -118,6 +118,7 @@ namespace KolibriLib
 				: "=a"(c)
 				: "a"(35),
 				  "b"((Point.x * GetScreenSize().x + Point.y)));
+
 			return (Colors::Color)c;
 		}
 
@@ -132,6 +133,7 @@ namespace KolibriLib
 				"c"(X_Y(size.x, size.y)), 
 				"d"(X_Y(coord.x, coord.y))
 			);
+
 			return result;
 		}
 	}
@@ -174,9 +176,9 @@ namespace KolibriLib
 	{
 		if (size < 3)
 		{
-			fill = true;
+			fill = false;
 		}
-		if (fill)
+		if (!fill)
 		{
 			graphic::DrawCircle(position, size, 8, color);
 		}

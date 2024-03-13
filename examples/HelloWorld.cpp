@@ -15,7 +15,7 @@ int main()
     {
         
         OS::Event event = window.Handler();
-        if (event = OS::Events::Exit)
+        if (event == OS::Events::Exit)
         {
             break;
         }

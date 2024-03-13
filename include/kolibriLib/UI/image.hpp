@@ -86,7 +86,7 @@ namespace KolibriLib
 				img_destroy(_img);
 			}
 
-			Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size)
+			Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size), img()
 			{
 				
 			}

@@ -15,11 +15,7 @@ namespace KolibriLib
     namespace LibIni
     {
         
-        bool EnumSections(const filesystem::Path &path, std::function<bool(const filesystem::Path&, const std::string&)>& func)
-        {
-            LIBINI_enum_sections(path.GetChars(), &func);
-            return true;
-        }
+        
 
     } // namespace LibIni
     
