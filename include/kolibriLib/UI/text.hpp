@@ -523,7 +523,7 @@ namespace KolibriLib
                     _img->Render(coord, _font.size);
                     break;
                 case Type::Text:
-                    DrawText(std::string(_c), coord, _font.size, _font._Flags, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
+                    DrawText(std::string(_c), coord, _font, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
                     break;
                 default:
                     break;

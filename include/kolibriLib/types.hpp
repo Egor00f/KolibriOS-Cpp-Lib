@@ -5,25 +5,28 @@
 #define __TYPES_H__
 
 #include <sys/ksys.h>
+#include <kolibri_libimg.h>
+#include <kolibriLib/constants.hpp>
+#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/color.hpp>
 
 #define X_Y(x, y)(((x) << 16) | (y))
 
 namespace KolibriLib
 {
-    template <class T>
+    
     /// @brief Просто точка
-    /// @paragraph Если необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point<uint64_t> p;
     struct point
     {
         /// @brief координата по оси X, или ширина
-        T x;
+        int x;
         /// @brief координата по оси Y, или высота
-        T y;
+        int y;
 
         /// @brief Конструктор
         /// @param X 
         /// @param Y 
-        point(T X = (T)0, T Y = (T)0);
+        point(int X = 0, int Y = 0);
 
         /// @brief Точка как отношение x/y
         /// @param f Десятичная дробь, которая ≈ x/y
@@ -31,163 +34,112 @@ namespace KolibriLib
 
         ksys_pos_t GetKsysPost() const;
 
-        point<T>& operator+(const point<T> &a);
-        point<T> &operator-(const point<T> &a);
+        point& operator+(const point &a);
+        point &operator-(const point &a);
 
         /// @brief 
         /// @param p 
         /// @return 
-        point<T> &operator=(const point<T> &p);
+        point &operator=(const point &p);
 
         /// @brief Прибавить к обоим кординатам значение
         /// @tparam B 
         /// @param p 
         /// @return 
-        point<T> &operator+=(const T &p);
+        point &operator+=(const int &p);
 
-        point<T> &operator-=(const T &p);
+        point &operator-=(const int &p);
 
-        point<T> &operator*=(const T &p);
+        point &operator*=(const int &p);
 
-        point<T> &operator/=(const T &p);
+        point &operator/=(const int &p);
 
         /// @brief 
         /// @param a 
         /// @return 
-        bool operator==(const point<T> &a) const;
+        bool operator==(const point &a) const;
         
 
         /// @brief 
         /// @param a 
         /// @return 
-        bool operator!=(const point<T> &a) const;
+        bool operator!=(const point &a) const;
     };
 
     namespace UI
     {
         /// @brief Размер
-        typedef point<unsigned> Size;
+        typedef point Size;
         
         /// @brief Координаты
-        typedef point<int> Coord;
+        typedef point Coord;
     } // namespace UI
 
-//=============================================================================================================================================================
 
-    template <class T>
-    KolibriLib::point<T>::point(T X, T Y)
+    namespace UI
     {
-        x = X;
-        y = Y;
-    }
-
-    template <class T>
-    KolibriLib::point<T>::point(float f)
-    {
-        x = f / 10.0;
-        y = 10;
-
-        if (x != y)
+        namespace Images
         {
-            //====================================================
-            int num = x, denom = y, rem;
-            if (num < denom)
+            /// @brief Изображение
+            class img
             {
-                int temp = num;
-                num = denom;
-                denom = temp;
-            }
-            while (rem = num % denom)
-            {
-                num = denom;
-                denom = rem;
-            }
-            //====================================================
-            x /= rem;
-            y /= rem;
-        }
-        else
-        {
-            x = 1;
-            y = 1;
-        }
-    }
+            protected:
+                Image_t *_img;
 
-    template <class T>
-    ksys_pos_t KolibriLib::point<T>::GetKsysPost() const
-    {
-        ksys_pos_t buff;
-        buff.x = x;
-        buff.y = y;
-        return buff;
-    }
+            public:
+                img();
 
-    template <class T>
-    point<T> &KolibriLib::point<T>::operator+(const point<T> &a)
-    {
-        x += a.x;
-        y += a.y;
-        return *this;
-    }
+                /// @brief
+                /// @param color
+                /// @param x размер изображения по оси X
+                /// @param y размер изображения по оси Y
+                img(Colors::Color * color, unsigned x, unsigned y);
 
-    template <class T>
-    point<T> &KolibriLib::point<T>::operator-(const point<T> &a)
-    {
-        x -= a.x;
-        y -= a.y;
-        return *this;
-    }
+                ~img();
 
-    template <class T>
-    point<T> &KolibriLib::point<T>::operator=(const point<T> &p)
-    {
-        x = p.x;
-        y = p.y;
-        return *this;
-    }
+                /// @brief Отрисовать изображение
+                /// @param coord координаты
+                /// @param size кастомный размер
+                virtual void Render(const Coord &coord, const Size &size = {-1,-1}) const;
 
-    template <class T>
-    point<T> &point<T>::operator+=(const T &p)
-    {
-        x += p;
-        y += p;
-        return *this;
-    }
+                /// @brief Загрузить изображение
+                /// @param Path путь до файла
+                void LoadImage(const filesystem::Path &Path = DefaultImage);
 
-    template <class T>
-    point<T> &point<T>::operator-=(const T &p)
-    {
-        x -= p;
-        y -= p;
-        return *this;
-    }
+                /// @brief Изменить изображение
+                /// @param img Указатель на струтуру @link Image_t
+                void SetImg(Image_t *img);
 
-    template <class T>
-    point<T> &point<T>::operator*=(const T &p)
-    {
-        x *= p;
-        y *= p;
-        return *this;
-    }
-    template <class T>
-    point<T> &point<T>::operator/=(const T &p)
-    {
-        x /= p;
-        y /= p;
-        return *this;
-    }
+                /// @brief Изменить цвет пикселя
+                /// @param color 
+                void SetPixel(const Colors::Color &color, unsigned x, unsigned y);
 
-	template <class T>
-	inline bool point<T>::operator==(const point<T> &a) const
-	{
-		return x == a.x && y == a.y;
-	}
+                /// @brief Получить цвет пикселя
+                /// @param x координата пикселя по оси X
+                /// @param y координата пикселя по оси Y
+                /// @return Цвет
+                Colors::Color GetPixel(unsigned x, unsigned y) const;
 
-	template <class T>
-	inline bool point<T>::operator!=(const point<T> &a) const
-	{
-		return x != a.x || y != a.y;
-	}
+                /// @brief 
+                /// @return 
+                Colors::Color* GetColorsMap() const;
+
+                /// @brief получить массив rgb_t
+                /// @return 
+                rgb_t* GetRGBMap() const;
+
+                /// @brief 
+                /// @return 
+                Image_t* GetImaget() const;
+
+                void FillColor(const Colors::Color& color);
+
+                bool operator != (const img& i) const;
+            };
+        } // namespace Images
+        
+    } // namespace UI
+    
 
 } // namespace KolibriLib
 

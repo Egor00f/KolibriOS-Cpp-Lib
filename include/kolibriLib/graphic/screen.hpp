@@ -5,7 +5,6 @@
 #include <sys/ksys.h>
 
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/color.hpp>
 #include <kolibriLib/system/thread.hpp>
 
 namespace KolibriLib

@@ -20,7 +20,7 @@ namespace KolibriLib
         /// @brief Цвет
         union Color
         {
-            ksys_color_t val;
+            uint32_t val;
             struct
             {
                 uint8_t _a;
@@ -57,12 +57,19 @@ namespace KolibriLib
         /// @return 
         ksys_color_t RGBtoINT(const rgb_t &color);
         
+        /// @brief 
+        /// @param color 
+        /// @return 
+        rgb_t UINT32toRGB(const uint32_t &color);
+
         /// @brief Смешать два цвета
         /// @param a Первый цвет
         /// @param b Второй цвет
         /// @param k Коофициент, чем он больше, тем больше цвета a, чем меньше, тем больше цвета b
         /// @return получившийся в итоге цвет
         Color BlendColors(const Color &a, const Color &b, float k = 0.5f);
+
+
 
         /// @brief Таблица цветов по умолчанию
         const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

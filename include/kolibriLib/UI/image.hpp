@@ -20,25 +20,7 @@ namespace KolibriLib
 		/// @brief Работа с изображениями
 		namespace Images
 		{
-			/// @brief Изображение
-			class img
-			{
-			protected:
-				Image_t *_img;
-			public:
-				img();
-				~img();
-
-				virtual void Render(const Coord& coord, const Size& size) const;
-
-				/// @brief Загрузить изображение
-				/// @param Path путь до файла
-				void LoadImage(const filesystem::Path &Path = DefaultImage);
-
-				/// @brief Изменить изображение
-				/// @param img Указатель на струтуру @link Image_t
-				void SetImg(Image_t *img);
-			};
+			
 			
 			
 
@@ -54,6 +36,9 @@ namespace KolibriLib
 				/// @param Path Путь до картинки
 				/// @param Margin
 				Image(const Coord& coord = {0, 0}, const Size& size = {100, 100});
+
+				
+
 
 				/// @brief Деструктор
 				~Image();
@@ -76,15 +61,6 @@ namespace KolibriLib
 				
 			};
 
-			img::img()
-			{
-				_img = img_create(32, 32, IMAGE_BPP32);
-			}
-			
-			img::~img()
-			{
-				img_destroy(_img);
-			}
 
 			Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size), img()
 			{
@@ -168,10 +144,7 @@ namespace KolibriLib
 
 		
 
-		void Images::img::Render(const Coord &coord, const Size &size) const
-		{
-			img_draw(_img, coord.x, coord.y, size.x, size.y, 0, 0);
-		}
+		
 
 		void Images::Image::init(const Coord &coord, const Size &size, const filesystem::Path &Path)
 		{
@@ -180,11 +153,7 @@ namespace KolibriLib
 			LoadImage(Path);
 		}
 
-		void Images::img::SetImg(Image_t *img)
-		{
-			img_destroy(_img);
-			_img = img;
-		}
+		
 		void KolibriLib::UI::Images::Image::Render() const
 		{
 			img_draw(_img, _coord.x, _coord.y, _size.x, _size.y, 0, 0);

@@ -3,8 +3,6 @@
 #ifndef KOLIBRI_LIBIMG_H
 #define KOLIBRI_LIBIMG_H
 
-extern "C"
-{
 
 #include <stddef.h>
 #include <stdbool.h>
@@ -127,6 +125,5 @@ void img_fill_color(Image_t* img, uint32_t width, uint32_t height, uint32_t colo
     }
 }
 
-}
 
 #endif /* KOLIBRI_LIBIMG_H */

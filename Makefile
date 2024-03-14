@@ -23,7 +23,7 @@ CFLAGS = -c -std=c++11 -fpermissive -Wreturn-local-addr
 # Папка в которой лежат cpp файлы
 SRC_PATH = src
 
-SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/fonts.cpp $(SRC_PATH)/thread.cpp
+SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/fonts.cpp $(SRC_PATH)/thread.cpp $(SRC_PATH)/types.cpp $(SRC_PATH)/textBase.cpp
 # $(SRC_PATH)/mouse.cpp $(SRC_PATH)/keyboard.cpp $(SRC_PATH)/screen.cpp $(SRC_PATH)/UI.cpp $(SRC_PATH)/windowBase.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/image.cpp  $(SRC_PATH)/form.cpp $(SRC_PATH)/frame.cpp $(SRC_PATH)/childWindow.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 

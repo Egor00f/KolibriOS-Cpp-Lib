@@ -119,3 +119,8 @@ KolibriLib::Colors::Color KolibriLib::Colors::BlendColors(const KolibriLib::Colo
 
 	return buff;
 }
+
+rgb_t KolibriLib::Colors::UINT32toRGB(const uint32_t &color)
+{
+	return {(color >> 16), (color >> 8), (uint8_t)color};
+}
