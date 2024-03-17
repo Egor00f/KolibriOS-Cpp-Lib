@@ -3,6 +3,8 @@
 #ifndef KOLIBRI_EDITOR_H
 #define KOLIBRI_EDITOR_H
 
+#include <kos32sys.h>
+
 // (êîëè÷åñòâî ñèìâîëîâ â íîâîì äîêóìåíòå + 2)
 #define TE_MAXCHARS 100002
 // ìàêñèìàëüíûé ðàçìåð ôàéëà ñèíòàêñèñà

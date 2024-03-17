@@ -103,7 +103,7 @@ namespace KolibriLib
 
                 /// @brief Отрисовать
                 /// @param coord Координаты
-                void Print(const UI::Coord &coord) const;
+                void Print(const Coord &coord) const;
 
                 Char& operator = (char c);
                 Char& operator = (const Images::img &img);
@@ -183,7 +183,7 @@ namespace KolibriLib
 
                 /// @brief Вывести текст
                 /// @param coord Координаты(левый верхний угол) текста
-                void Print(const UI::Coord &coord) const;
+                void Print(const Coord &coord) const;
 
                 /// @brief Изменить шрифт символов
                 /// @param FontSize 
@@ -515,7 +515,7 @@ namespace KolibriLib
                 }
             }
 
-            void KolibriLib::UI::text::Char::Print(const UI::Coord &coord) const
+            void KolibriLib::UI::text::Char::Print(const Coord &coord) const
             {
                 switch (_type)
                 {
@@ -600,7 +600,7 @@ namespace KolibriLib
                 _data.erase(_data.begin() + i);
             }
 
-            void KolibriLib::UI::text::Text::Print(const UI::Coord &coord) const
+            void KolibriLib::UI::text::Text::Print(const Coord &coord) const
             {
                 int buff = 0;
                 for (int i = 0; i < _data.size(); i++)

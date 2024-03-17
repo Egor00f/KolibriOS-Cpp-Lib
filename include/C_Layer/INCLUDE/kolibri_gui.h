@@ -2,7 +2,7 @@
 #define KOLIBRI_GUI_H
 
 #include <sys/ksys.h>
-#include <kolibriLib/os.hpp>
+#include <kolibriLib/system/os.hpp>
 
 #include "kolibri_debug.h" /* work with debug board */
 
@@ -30,9 +30,9 @@ enum KOLIBRI_GUI_EVENTS {
 
 void kolibri_handle_event_redraw(kolibri_window* some_window)
 {
-  /*  Draw windows with system color table. */
+  	/*  Draw windows with system color table. */
 
-  _ksys_start_draw();
+	_ksys_start_draw();
 
 	_ksys_create_window(
 		some_window->topleftx,
@@ -40,7 +40,7 @@ void kolibri_handle_event_redraw(kolibri_window* some_window)
 		some_window->sizex,
 		some_window->sizey,
 		some_window->window_title,
-		KolibriLib::OS::sys_color_table.work_area,
+		KolibriLib::OS::GetSystemColors().work_area,
 		some_window->XY
 	);
 
@@ -78,19 +78,19 @@ void kolibri_handle_event_redraw(kolibri_window* some_window)
 
 void kolibri_handle_event_key(kolibri_window* some_window, ksys_oskey_t key)
 {
-  /* Enumerate and trigger key handling functions of window elements here */
-  if(some_window->elements)
+	/* Enumerate and trigger key handling functions of window elements here */
+	if(some_window->elements)
     {
-      kolibri_window_element *current_element = some_window -> elements;
+    	kolibri_window_element *current_element = some_window -> elements;
 
-      do
-	{
-	  /* Only execute if the function pointer isn't NULL, or -1 (fail to find in export table) */
-	  if((int)kolibri_gui_op_table[current_element -> type].key_fn > 0)
-	    kolibri_gui_op_table[current_element -> type].key_fn(current_element -> element, key);
+    	do
+		{
+			/* Only execute if the function pointer isn't NULL, or -1 (fail to find in export table) */
+			if((int)kolibri_gui_op_table[current_element -> type].key_fn > 0)
+	    		kolibri_gui_op_table[current_element -> type].key_fn(current_element -> element, key);
 
-	  current_element = (kolibri_window_element *)current_element->next;
-	} while(current_element != some_window->elements); /* Have we covered all elements? */
+	  		current_element = (kolibri_window_element *)current_element->next;
+		} while(current_element != some_window->elements); /* Have we covered all elements? */
     }
 }
 

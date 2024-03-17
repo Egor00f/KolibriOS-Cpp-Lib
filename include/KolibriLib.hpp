@@ -24,5 +24,6 @@
 #include <kolibriLib/network.hpp>
 #include <kolibriLib/input/input.hpp>
 #include <kolibriLib/libini.hpp>
+#include <kolibriLib/UI/fontslist.hpp>
 
 #endif // __KOLIBRILIB_H__

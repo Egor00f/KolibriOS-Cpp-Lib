@@ -1,6 +1,8 @@
 #ifndef KOLIBRI_PROGRESSBAR_H
 #define KOLIBRI_PROGRESSBAR_H
 
+#include <kos32sys.h>
+
 typedef struct {
 	unsigned int value;
     unsigned int left;

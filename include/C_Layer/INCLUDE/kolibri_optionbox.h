@@ -1,6 +1,9 @@
 #ifndef KOLIBRI_OPTIONBOX_H
 #define KOLIBRI_OPTIONBOX_H
 
+#include <kos32sys.h>
+#include <kolibriLib/system/os.hpp>
+
 typedef struct __attribute__ ((__packed__)) option_box_t {
     struct option_box_t **selected;
     uint16_t posx;
@@ -25,9 +28,9 @@ static inline option_box* gui_optionbox(option_box* ob, uint32_t x_y, char* text
     ob->posy = x_y & 0xFFFF;
     ob->text_margin = 4;
     ob->size = 12;
-    ob->color = kolibri_color_table.color_work_button_text;
-    ob->border_color = kolibri_color_table.color_work_button;
-    ob->text_color = kolibri_color_table.color_work_text | 0x80000000;
+    ob->color = KolibriLib::OS::GetSystemColors().work_button_text;
+    ob->border_color = KolibriLib::OS::GetSystemColors().work_button;
+    ob->text_color = KolibriLib::OS::GetSystemColors().work_text | 0x80000000;
     ob->text = text;
     ob->text_len = strlen(text);
     ob->flags = 0; // not used
@@ -37,7 +40,7 @@ static inline option_box* gui_optionbox(option_box* ob, uint32_t x_y, char* text
 
 static inline option_box* gui_new_optionbox(uint32_t x_y, char* text, option_box**select)
 {
-    option_box* ob = malloc(sizeof(option_box));
+    option_box* ob = (option_box*) malloc(sizeof(option_box));
 
     return gui_optionbox(ob, x_y, text, select);
 }

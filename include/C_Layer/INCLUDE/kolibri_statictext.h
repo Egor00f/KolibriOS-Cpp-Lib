@@ -1,6 +1,9 @@
 #ifndef KOLIBRI_STATICTEXT_H
 #define KOLIBRI_STATICTEXT_H
 
+#include <kos32sys.h>
+#include <kolibriLib/system/os.hpp>
+
 typedef enum {
 	cp866,  // 6x9
 	CP866,  // 8x16
@@ -38,7 +41,7 @@ statictext* kolibri_statictext(statictext* st, uint32_t xy, char *text, encoding
 
 statictext* kolibri_statictext_def(statictext* st, uint32_t xy, char *text)
 {
-    return kolibri_statictext(st, xy, text, 0, 0, kolibri_color_table.color_work_text, 0);
+    return kolibri_statictext(st, xy, text, encoding_t::UTF8, 0, KolibriLib::OS::GetSystemColors().work_text, 0);
 }
 
 statictext* kolibri_new_statictext(uint32_t xy, char *text, encoding_t enc, int size, color_t font, color_t bg)
@@ -50,7 +53,7 @@ statictext* kolibri_new_statictext(uint32_t xy, char *text, encoding_t enc, int 
 
 statictext* kolibri_new_statictext_def(uint32_t xy, char *text)
 {
-    return kolibri_new_statictext(xy, text, 0, 0, kolibri_color_table.color_work_text, 0);
+    return kolibri_new_statictext(xy, text, encoding_t::UTF8, 0, KolibriLib::OS::GetSystemColors().work_text, 0);
 }
 
 __attribute__((__stdcall__))

@@ -1,6 +1,8 @@
 #ifndef KOLIBRI_DBUTTON_H
 #define KOLIBRI_DBUTTON_H
 
+#include <kos32sys.h>
+
 typedef struct {
 	uint32_t type;
 	uint32_t x_w;

@@ -1,6 +1,8 @@
 #ifndef KOLIBRI_FILEBROWSE_H
 #define KOLIBRI_FILEBROWSE_H
 
+#include <kos32sys.h>
+
 struct  __attribute__ ((__packed__)) fs_dirinfo {
     uint32_t    subfn; // 1 read dir
     uint32_t    start;

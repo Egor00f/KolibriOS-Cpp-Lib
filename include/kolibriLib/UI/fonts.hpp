@@ -48,21 +48,21 @@ namespace KolibriLib
                     /// @brief
                     /// @param FontFamily Шрифт, фактически это соотношение сторон
                     /// @param FontSize Высота шрифта
-                    Font(const UI::Size &FontFamily = {5, 6}, int FontSize = 16, unsigned flags = Flags::Normal);
+                    Font(const Size &FontFamily = Size(5, 6), int FontSize = 16, unsigned flags = Flags::Normal);
 
                     /// @brief Изменить размер шрифта
                     /// @param FontSize
                     void SetFontSize(unsigned FontSize);
 
                     /// @brief Шрифт
-                    UI::Size _Font;
+                    Size _Font;
                     /// @brief Высота шрифта
                     unsigned _FontSize;
                     /// @brief Флаги
                     unsigned _Flags;
 
                     /// @brief Размер текста для функции @link DrawText()
-                    mutable UI::Size size;
+                    mutable Size size;
 
                     Font &operator=(const Font &f);
 

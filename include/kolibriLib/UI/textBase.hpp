@@ -9,6 +9,7 @@
 #include <kolibriLib/UI/image.hpp>
 #include <kolibri_rasterworks.h>
 #include "fonts.hpp"
+#include <kolibriLib/UI/fontslist.hpp>
 
 namespace KolibriLib
 {

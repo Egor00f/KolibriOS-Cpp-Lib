@@ -1,9 +1,8 @@
 #ifndef KOLIBRI_GUI_ELEMENTS_H
 #define KOLIBRI_GUI_ELEMENTS_H
 
-#include <sys/ksys.h>
-
-#include "kolibri_colors.h"
+#include <kos32sys.h>
+#include <kolibri_debug.h>
 
 /* enum KOLIBRI_GUI_ELEMENT_TYPE contains all available GUI items from box_lib */
 /* More elements can be added from other libraries as required */

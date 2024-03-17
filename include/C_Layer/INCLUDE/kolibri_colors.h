@@ -30,7 +30,7 @@ void kolibri_get_system_colors(kolibri_system_colors *color_table)
 		    :"a"(48),"b"(3),"c"(color_table),"d"(40)
 		    );
 
-  /* color_table should point to the system color table */
+  //color_table should point to the system color table 
 } */
 
 #endif /* KOLIBRI_COLORS_H */

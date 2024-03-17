@@ -3,6 +3,7 @@
 
 #include <sys/ksys.h>
 
+#include <kolibri_gui.h>
 #include <kolibri_libimg.h>
 #include <kolibri_rasterworks.h>
 #include <kolibri_libini.h>
@@ -21,7 +22,6 @@ namespace KolibriLib
 	/// @brief инициализация библиотеки
 	inline void init()
 	{
-		OS::GetSystemColors();
 
 		if(kolibri_libimg_init() != -1)
 		{
@@ -34,15 +34,9 @@ namespace KolibriLib
 			_ksys_debug_puts("Error loading sound.h, exit\n");
 			exit(0);
 		}*/
-
-		kolibri_libini_init();
 		
+		kolibri_gui_init();
 		kolibri_rasterworks_init();
-		
-
-
-		_ksys_set_event_mask(0xC0000027);
-	
 		
 	}
 }

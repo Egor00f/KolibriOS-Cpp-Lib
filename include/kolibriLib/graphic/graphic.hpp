@@ -21,7 +21,7 @@ namespace KolibriLib
 		/// @param a точка первая
 		/// @param b точка вторая
 		/// @param color Цвет линии
-		inline void DrawLine(const UI::Coord &coord, const UI::Coord &b, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawLine(const Coord &coord, const Coord &b, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
 			_ksys_draw_line(coord.x, coord.y, b.x, b.y, color.val);
 		}
@@ -31,7 +31,7 @@ namespace KolibriLib
 		/// @param lenght Длина линии
 		/// @param angle Угол
 		/// @param color Цвет линии
-		inline void DrawLine(const UI::Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
 			_ksys_draw_line(coord.x, coord.y, coord.x + (lenght * cos(angle)), coord.y + (lenght * sin(angle)), color.val);
 		}
@@ -39,7 +39,7 @@ namespace KolibriLib
 		/// @brief Закрасить пиксель точку
 		/// @param position координаты
 		/// @param color Цвет
-		inline void DrawPixel(const UI::Coord &position, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawPixel(const Coord &position, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
 			_ksys_draw_pixel(position.x, position.y, color.val);
 		}
@@ -50,13 +50,13 @@ namespace KolibriLib
 		/// @param detalization Детализация прорисовки окружности (то на сколько круг круглый)
 		/// @param color Цвет
 		/// @paragraph Круг рисуется по detalization линий. Да-да если Детализация = 4, то круг это квадрат.
-		void DrawCircle(const UI::Coord& coord, const unsigned &Radius, const unsigned &detalization = 36, const Colors::Color& color = OS::GetSystemColors().work_graph);
+		void DrawCircle(const Coord& coord, const unsigned &Radius, const unsigned &detalization = 36, const Colors::Color& color = OS::GetSystemColors().work_graph);
 
 		/// @brief Нарисовать закрашенный прямоугольник
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
-		inline void DrawRectangleFill(UI::Coord position, UI::Size size, Colors::Color color = OS::GetSystemColors().work_graph)
+		inline void DrawRectangleFill(Coord position, Size size, Colors::Color color = OS::GetSystemColors().work_graph)
 		{
 			__asm__ __volatile__(
 				"int $0x40"
@@ -73,20 +73,20 @@ namespace KolibriLib
 		/// @param Radius Радиус круга
 		/// @param detalization Детализация круга(то на сколько круг круглый)
 		/// @param color Цвет
-		void DrawCircleFill(const UI::Coord& coord, const unsigned& Radius, const unsigned& detalization = 36, const Colors::Color& color = OS::GetSystemColors().work_graph);
+		void DrawCircleFill(const Coord& coord, const unsigned& Radius, const unsigned& detalization = 36, const Colors::Color& color = OS::GetSystemColors().work_graph);
 
 		/// @brief Нарисовать точку
 		/// @param position Координаты
 		/// @param size Радиус точки в рx
 		/// @param color Цвет
 		/// @param fill Закрашенная/Выколотая точка
-		void DrawPoint(const UI::Coord& position, const unsigned& size, const Colors::Color& color = OS::GetSystemColors().work_graph, bool fill = false);
+		void DrawPoint(const Coord& position, const unsigned& size, const Colors::Color& color = OS::GetSystemColors().work_graph, bool fill = false);
 
 
 		/// @brief Нарисовать прямоугольник
 		/// @param a Точка в левом верхнем углу
 		/// @param b Точка в правом нижнем углу
-		inline void DrawRectangleLines(const UI::Coord &a, const UI::Coord &b, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawRectangleLines(const Coord &a, const Coord &b, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
 			DrawLine(a, {b.x, a.y}, color);
 			DrawLine(a, {a.x, b.y}, color);
@@ -99,7 +99,7 @@ namespace KolibriLib
 		/// @param b вторая точка
 		/// @param c третья точка
 		/// @param color цвет линий
-		inline void DrawTriangle(const UI::Coord &a, const UI::Coord &b, const UI::Coord &c, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawTriangle(const Coord &a, const Coord &b, const Coord &c, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
 			DrawLine(a, b, color);
 			DrawLine(a, c, color);
@@ -109,7 +109,7 @@ namespace KolibriLib
 		/// @brief прочитать цвет точки
 		/// @param Point 
 		/// @return
-		inline Colors::Color ReadPoint(const UI::Coord Point)
+		inline Colors::Color ReadPoint(const Coord Point)
 		{
 			ksys_color_t c;
 
@@ -122,7 +122,7 @@ namespace KolibriLib
 			return (Colors::Color)c;
 		}
 
-		inline rgb_t* ReadArea(const UI::Coord &coord, const UI::Size &size)
+		inline rgb_t* ReadArea(const Coord &coord, const Size &size)
 		{
 			rgb_t* result = new rgb_t[size.x * size.y];
 

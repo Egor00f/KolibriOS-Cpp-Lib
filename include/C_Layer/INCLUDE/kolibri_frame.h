@@ -1,7 +1,8 @@
 #ifndef KOLIBRI_FRAME_H
 #define KOLIBRI_FRAME_H
 
-
+#include <kos32sys.h>
+#include <kolibriLib/system/os.hpp>
 
 enum fr_text_position_t {
 	FR_TOP,
@@ -69,12 +70,12 @@ static inline frame* kolibri_new_frame(uint32_t x_w, uint32_t y_h, color_t ext_c
 
 static inline frame* kolibri_frame_def(frame* f, uint32_t x_w, uint32_t y_h, char *text)
 {
-    return kolibri_frame(f, x_w, y_h, 0x00FCFCFC, 0x00DCDCDC, text, FR_TOP, kolibri_color_table.color_work_text, kolibri_color_table.color_work_area, 0);
+    return kolibri_frame(f, x_w, y_h, 0x00FCFCFC, 0x00DCDCDC, text, FR_TOP, KolibriLib::OS::GetSystemColors().work_text, KolibriLib::OS::GetSystemColors().work_area, 0);
 }
 
 static inline frame* kolibri_new_frame_def(uint32_t x_w, uint32_t y_h, char *text)
 {
-    return kolibri_new_frame(x_w, y_h, 0x00FCFCFC, 0x00DCDCDC, text, FR_TOP, kolibri_color_table.color_work_text, kolibri_color_table.color_work_area, 0);
+    return kolibri_new_frame(x_w, y_h, 0x00FCFCFC, 0x00DCDCDC, text, FR_TOP, KolibriLib::OS::GetSystemColors().work_text, KolibriLib::OS::GetSystemColors().work_area, 0);
 }
 
 static inline void gui_add_frame(kolibri_window *wnd, frame* f)

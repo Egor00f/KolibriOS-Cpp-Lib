@@ -80,7 +80,7 @@ namespace KolibriLib
 			std::map<int, Element> _Elements;
 
 			/// @brief Размеры окна
-			UI::Size _size;
+			Size _size;
 
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
@@ -112,14 +112,14 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const UI::Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::GetSystemColors().work_text, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
+			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::GetSystemColors().work_text, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 			~Window();
 
 			/// @brief Полная перересовка окна
 			void Redraw() ;
 
 			/// @brief Отрисовать окно
-			void Render(const UI::Coord& coord = DefaultWindowCoord);
+			void Render(const Coord& coord = DefaultWindowCoord);
 
 			/// @brief Получить рамер отступов в этом окне
 			/// @return @link _MARGIN
@@ -127,7 +127,7 @@ namespace KolibriLib
 
 			/// @brief Получить размер окна
 			/// @return @link _size
-			const UI::Size& GetSize() const;
+			const Size& GetSize() const;
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
@@ -144,12 +144,12 @@ namespace KolibriLib
 
 			/// @brief Получить координаты окна
 			/// @return 
-			const UI::Coord& GetCoord() const;
+			Coord GetCoord() const;
 
 			/// @brief Изменить окно
 			/// @param coord позиция
 			/// @param size размер
-			void ChangeWindow(const UI::Coord& coord, const UI::Size& size);
+			void ChangeWindow(const Coord& coord, const Size& size);
 
 			/// @brief Изменить заголовок окна
 			/// @param newTitle новый заголовок
@@ -158,7 +158,7 @@ namespace KolibriLib
 			/// @brief Получить размер окна
 			/// @return point.x - ширина окна,
 			/// @return point.y - высота окна
-			const UI::Size& GetWindowSize() const;
+			Size GetWindowSize() const;
 
 			/// @brief Удалить элемент
 			/// @param id idшник того элемента, которой нужно удалить
@@ -371,7 +371,7 @@ namespace KolibriLib
 
 		//=============================================================================================================================================================
 
-		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::UI::Size &size, const KolibriLib::Colors::ColorsTable &colors, const KolibriLib::Colors::Color &TitleColor, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
+		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, const KolibriLib::Colors::Color &TitleColor, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
 		{
 #if DEBUG == true
 			_ksys_debug_puts("KolibriLib::window:::Window constructor\n");
@@ -492,12 +492,12 @@ namespace KolibriLib
 			}
 		}
 
-		const UI::Coord &KolibriLib::window::Window::GetCoord() const
+		Coord KolibriLib::window::Window::GetCoord() const
 		{
 			window::GetWindowCoord();
 		}
 
-		void Window::ChangeWindow(const UI::Coord &coord, const UI::Size &size)
+		void Window::ChangeWindow(const Coord &coord, const Size &size)
 		{
 			_size = size;
 			_ksys_change_window(coord.x, coord.y, size.x, size.y);
@@ -508,12 +508,12 @@ namespace KolibriLib
 			_ksys_set_window_title(newTitle.c_str());
 		}
 
-		const UI::Size &Window::GetWindowSize() const
+		Size Window::GetWindowSize() const
 		{
 			return _size;
 		}
 
-		void Window::Render(const UI::Coord &coord)
+		void Window::Render(const Coord &coord)
 		{
 			StartRedraw();
 			window::CreateWindow(coord, _size, _title, _colors.frame_area, _TitleColor, _style);
@@ -550,7 +550,7 @@ namespace KolibriLib
 
 			if (_Transparency != 0) // Прозрачность окна
 			{
-				UI::Size size = GetWindowSize();
+				Size size = GetWindowSize();
 				for (int i = 0; i < size.y; i++)
 				{
 					for (int j = 0; j < size.x; j++)
@@ -568,7 +568,7 @@ namespace KolibriLib
 			return _MARGIN;
 		}
 
-		const UI::Size &Window::GetSize() const
+		const Size &Window::GetSize() const
 		{
 			return _size;
 		}
@@ -628,7 +628,7 @@ namespace KolibriLib
 			}
 			if (_RealtimeRedraw)
 			{
-				UI::Coord Mouse = mouse::GetMousePositionInWindow();
+				Coord Mouse = mouse::GetMousePositionInWindow();
 				if (((Mouse.x > 0 && Mouse.y > 0) && Mouse.x < GetWindowSize().x && Mouse.y < GetSkinHeight()) && mouse::GetMouseButtons() == mouse::LeftButton)
 				{
 					while (mouse::GetMouseButtons() == mouse::LeftButton)

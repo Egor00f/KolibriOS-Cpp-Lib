@@ -20,7 +20,7 @@ namespace KolibriLib
 
 		/// @brief Получить размеры фонового изображения
 		/// @return
-		inline UI::Size GetSize()
+		inline Size GetSize()
 		{
 			ksys_pos_t p;
 			asm_inline(
@@ -34,7 +34,7 @@ namespace KolibriLib
 		/// @brief Прочитать точку на фоне
 		/// @param Point читаема точка
 		/// @return
-		inline Colors::Color ReadPoint(const UI::Coord &Point)
+		inline Colors::Color ReadPoint(const Coord &Point)
 		{
 			Colors::Color c;
 
@@ -55,7 +55,7 @@ namespace KolibriLib
 			_ksys_bg_redraw();
 		}
 
-		inline void RedrawBackground(const UI::Coord& coord, const UI::Size& size)
+		inline void RedrawBackground(const Coord& coord, const Size& size)
 		{
 			ksys_pos_t buff = coord.GetKsysPost();
 			ksys_pos_t p2;
@@ -64,13 +64,13 @@ namespace KolibriLib
 			_ksys_bg_redraw_bar(buff, p2);
 		}
 
-		inline void SetSize(const UI::Size &size)
+		inline void SetSize(const Size &size)
 		{
 			f = true;
 			_ksys_bg_set_size(size.x, size.y);
 		}
 
-		inline void DrawPoint(const UI::Coord coord, const Colors::Color &color)
+		inline void DrawPoint(const Coord coord, const Colors::Color &color)
 		{
 			if(!f)
 			{
@@ -80,7 +80,7 @@ namespace KolibriLib
 		}
 
 		template <std::size_t N>
-		inline void DrawImage(const UI::Coord coord, rgb_t (&rgb)[N])
+		inline void DrawImage(const Coord coord, rgb_t (&rgb)[N])
 		{
 			if (!f)
 			{
@@ -89,7 +89,7 @@ namespace KolibriLib
 			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N,  coord.x, coord.y, GetSize().x);
 		}
 
-		inline void DrawImage(const UI::Coord coord, rgb_t *rgb, std::size_t N)
+		inline void DrawImage(const Coord coord, rgb_t *rgb, std::size_t N)
 		{
 			if (!f)
 			{
@@ -102,19 +102,19 @@ namespace KolibriLib
 		/// @param p1 точка перавая
 		/// @param p2 точка вторая
 		/// @param color цвет линии
-		inline void DrawLine(const UI::Coord& p1, const UI::Coord& p2, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawLine(const Coord& p1, const Coord& p2, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
 			for(int i = 0; i < abs(p1.x - p2.x); i++)
 			{
 				for (int j = 0; j < abs(p1.y - p2.y) / abs(p1.x - p2.x); j++)
 				{
-					DrawPoint(UI::Coord(p1.x + i, p1.y + j), color);
+					DrawPoint(Coord(p1.x + i, p1.y + j), color);
 				}
 			}
 		}
 
 		void DrawText(const std::string &text,
-					  const UI::Coord &coord, const UI::text::Fonts::Font &font = UI::text::Fonts::DefaultFont,
+					  const Coord &coord, const UI::text::Fonts::Font &font = UI::text::Fonts::DefaultFont,
 					  unsigned margin = UI::DefaultMargin,
 					  const Colors::Color &colorText = OS::GetSystemColors().work_text,
 					  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)

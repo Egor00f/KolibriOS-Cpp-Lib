@@ -1,6 +1,8 @@
 #ifndef KOLIBRI_BUTTON_H
 #define KOLIBRI_BUTTON_H
 
+#include <kos32sys.h>
+
 typedef struct {
   unsigned int x65536sizex;
   unsigned int y65536sizey;
@@ -24,7 +26,7 @@ kolibri_button *kolibri_new_button(unsigned int tlx, unsigned int tly, unsigned 
 __attribute__((__stdcall__))
 static inline void draw_button(kolibri_button *some_button)
 {
-  define_button(some_button -> x65536sizex, some_button -> y65536sizey, some_button -> identifier, some_button -> color);
+	define_button(some_button -> x65536sizex, some_button -> y65536sizey, some_button -> identifier, some_button -> color);
 }
 
 unsigned int kolibri_button_get_identifier(void)

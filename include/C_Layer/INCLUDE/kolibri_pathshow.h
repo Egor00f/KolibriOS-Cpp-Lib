@@ -1,6 +1,8 @@
 #ifndef KOLIBRI_PATHSHOW_H
 #define KOLIBRI_PATHSHOW_H
 
+#include <kos32sys.h>
+
 typedef struct __attribute__ ((__packed__)) {
 	uint32_t type;
 	uint32_t x_y;

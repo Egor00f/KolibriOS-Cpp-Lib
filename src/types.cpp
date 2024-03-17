@@ -176,15 +176,15 @@ void KolibriLib::UI::Images::img::FillColor(const Colors::Color &color)
 	img_fill_color(_img, _img->Width, _img->Height, color.val);
 }
 
-bool KolibriLib::UI::Images::img::operator!=(const img &i) const
+bool KolibriLib::UI::Images::img::operator!=(const img &im) const
 {
-	if(_img->Width != i._img->Width || _img->Height != i._img->Height)
+	if(_img->Width != im._img->Width || _img->Height != im._img->Height)
 	{
 		return true;
 	}
 	for(unsigned i = 0; i < _img->Width * _img->Height; i++)
 	{
-		if(_img->Data[i] != i._img->Data[i])
+		if(_img->Data[i] != im._img->Data[i])
 		{
 			return true;
 		}

@@ -1,6 +1,9 @@
 #ifndef KOLIBRI_SCROLLBAR_H
 #define KOLIBRI_SCROLLBAR_H
 
+#include <kos32sys.h>
+#include <kolibriLib/system/os.hpp>
+
 typedef struct __attribute__ ((__packed__)) {
 //	uint16_t xsize;
 //    uint16_t xpos;
@@ -63,13 +66,15 @@ static inline scrollbar* kolibri_new_scrollbar(uint32_t x_w, uint32_t y_h, uint3
 
 static inline scrollbar* kolibri_scrollbar_def(scrollbar* sb, uint32_t x_w, uint32_t y_h, uint32_t max_area, uint32_t cur_area, uint32_t position)
 {
-    return kolibri_scrollbar(sb, x_w, y_h, 15, max_area, cur_area, position, kolibri_color_table.color_work_area, kolibri_color_table.color_work_button, kolibri_color_table.color_work_button_text);
+    return kolibri_scrollbar(sb, x_w, y_h, 15, max_area, cur_area, position, KolibriLib::OS::GetSystemColors().work_area, 
+                             KolibriLib::OS::GetSystemColors().work_button, KolibriLib::OS::GetSystemColors().work_button_text);
 };
 
 static inline scrollbar* kolibri_new_scrollbar_def(uint32_t x_w, uint32_t y_h, uint32_t max_area, uint32_t cur_area, uint32_t position)
 {
-    return kolibri_new_scrollbar(x_w, y_h, 15, max_area, cur_area, position, kolibri_color_table.color_work_area, kolibri_color_table.color_work_button, kolibri_color_table.color_work_button_text);
-};
+    return kolibri_new_scrollbar(x_w, y_h, 15, max_area, cur_area, position, KolibriLib::OS::GetSystemColors().work_area, 
+                                 KolibriLib::OS::GetSystemColors().work_button, KolibriLib::OS::GetSystemColors().work_button_text);
+}
 
 static inline void gui_add_scrollbar_h(kolibri_window *wnd, scrollbar* sb)
 {

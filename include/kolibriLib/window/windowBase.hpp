@@ -22,10 +22,10 @@ namespace KolibriLib
 	{
 		
 		/// @brief Размер окна поумолчанию
-		const UI::Size DefaultWindowSize = {400, 400};
+		const Size DefaultWindowSize = {400, 400};
 
 		/// @brief Соординаты окна по умолчанию
-		const UI::Coord DefaultWindowCoord = {100, 100};
+		const Coord DefaultWindowCoord = {100, 100};
 
 		enum WindowStyle
 		{
@@ -54,7 +54,7 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
-		inline void CreateWindow(const UI::Coord coord, const UI::Size size, const std::string& title, const Colors::Color WorkColor = OS::GetSystemColors().frame_area, const Colors::Color TitleColor = OS::GetSystemColors().work_text, const uint32_t style = WindowStyle::CanResize + WindowStyle::NormalDraw)
+		inline void CreateWindow(Coord coord, Size size, const std::string& title, Colors::Color WorkColor = OS::GetSystemColors().frame_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize + WindowStyle::NormalDraw)
 		{
 			const char* t = title.c_str();
 			asm_inline(
@@ -117,7 +117,7 @@ namespace KolibriLib
 			);
 		}
 
-		inline UI::Coord GetWindowCoord()
+		inline Coord GetWindowCoord()
 		{
 			return mouse::GetMousePositionOnSreen() - mouse::GetMousePositionInWindow();
 		}

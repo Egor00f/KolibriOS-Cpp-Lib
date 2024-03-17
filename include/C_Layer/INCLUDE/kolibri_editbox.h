@@ -2,7 +2,7 @@
 #define KOLIBRI_EDITBOX_H
 
 #include <sys/ksys.h>
-#include <kolibriLib/os.hpp>
+#include <kolibriLib/system/os.hpp>
 
 /*  flags meaning
 ed_figure_only= 1000000000000000b   ;���� �������
@@ -90,9 +90,9 @@ edit_box* kolibri_new_edit_box(unsigned int tlx, unsigned int tly, unsigned int 
     new_textbox -> top                  = tly;
     new_textbox -> color                = 0xFFFFFF; /* Always make white edit boxes */
     new_textbox -> shift_color          = 0x6a9480;
-    new_textbox -> focus_border_color   = KolibriLib::OS::sys_color_table.work_graph;
+    new_textbox -> focus_border_color   = KolibriLib::OS::GetSystemColors().work_graph;
     new_textbox -> blur_border_color    = 0x6a9480;
-    new_textbox -> text_color           = KolibriLib::OS::sys_color_table.work_text; /* Always black text when typing */
+    new_textbox->text_color             = KolibriLib::OS::GetSystemColors().work_text; /* Always black text when typing */
     new_textbox -> max                  = max_chars;
     new_textbox -> text                 = text_buffer;
     new_textbox -> mouse_variable       = editbox_interlock;

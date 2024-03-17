@@ -17,7 +17,7 @@ bool KolibriLib::UI::text::Fonts::Font::operator==(const KolibriLib::UI::text::F
 		   (_Flags == f._Flags);
 }
 
-KolibriLib::UI::text::Fonts::Font::Font(const UI::Size &FontFamily, int FontSize, unsigned flags)
+KolibriLib::UI::text::Fonts::Font::Font(const Size &FontFamily, int FontSize, unsigned flags)
 {
 	_Font = FontFamily;
 	_Flags = flags;
@@ -29,5 +29,5 @@ void KolibriLib::UI::text::Fonts::Font::SetFontSize(unsigned FontSize)
 	float buff = FontSize / _Font.x;
 	_FontSize = FontSize;
 	size = _Font;
-	size /= static_cast<unsigned>(buff); // float преобразется в unsigned так как UI::Size это point<unsigned>
+	size /= buff;
 }

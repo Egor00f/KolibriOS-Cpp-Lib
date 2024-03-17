@@ -67,13 +67,13 @@ namespace KolibriLib
 
             window::Window window(_Title, {256, 128});
 
-            UI::Size WindowSize = window.GetSize();
+            Size WindowSize = window.GetSize();
 
             window.AddElement(UI::text::TextLabel({(int)window.GetMargin(), (int)window.GetMargin()}, {WindowSize.x, WindowSize.y / 2}, _Message, 16));
 
             const unsigned ButtonSize = 40;
 
-            UI::buttons::Button OK(UI::Coord((int)WindowSize.x - (int)window.GetMargin(), (int)WindowSize.y / 2), UI::Size(ButtonSize, WindowSize.y / 2));
+            UI::buttons::Button OK(Coord((int)WindowSize.x - (int)window.GetMargin(), (int)WindowSize.y / 2), Size(ButtonSize, WindowSize.y / 2));
             OK.Add("OK");
 
             unsigned ok = window.AddElement(OK);

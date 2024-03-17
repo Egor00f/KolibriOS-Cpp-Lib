@@ -11,16 +11,16 @@ namespace KolibriLib
 {
 	/// @brief Получить разрешение экрана
 	/// @return размер экрана
-	inline UI::Size GetScreenSize()
+	inline Size GetScreenSize()
 	{
 		ksys_pos_t a = _ksys_screen_size();
-		return UI::Size(a.x, a.y);
+		return Size(a.x, a.y);
 	}
 
 	/// @brief Получить принадлежность точки
 	/// @param POINT точка на экране
 	/// @return слот окна которому принадлежит точка
-	inline Thread::Slot ScreenPointAffiliation(UI::Coord POINT)
+	inline Thread::Slot ScreenPointAffiliation(Coord POINT)
 	{
 		Thread::Slot s;
 		__asm__ __volatile__(

@@ -1,6 +1,8 @@
 #ifndef KOLIBRI_TREELIST_H
 #define KOLIBRI_TREELIST_H
 
+#include <kos32sys.h>
+#include <kolibri_scrollbar.h>
 
 /// константы стиля
 enum tl_style {

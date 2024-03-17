@@ -13,7 +13,7 @@ LIB_NAME = libkcpp
 KolibriOS_repo_dir = ../kolibrios
 CONTRIB_DIR = $(KolibriOS_repo_dir)/contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
-C_LAYER_DIR = $(SDK_DIR)/C_Layer
+C_LAYER_DIR = $(CONTRIB_DIR)/C_Layer
 
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include
 
@@ -29,10 +29,7 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: 
-	$(LIB_NAME).a 
-	examples 
-	done
+all: $(LIB_NAME).a CLAYER examples clean done
 
 	
 
@@ -52,6 +49,9 @@ install:
 	@mv $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
 
 CLAYER:
+	@echo " "
+	@echo "| -------------------------------------"
+	@echo "| Make C_Layer"
 	$(MAKE) -C $(C_LAYER_DIR)/ASM
 
 clean:
