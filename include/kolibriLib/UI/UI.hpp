@@ -8,7 +8,7 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/input/input.hpp>
+#include <input.hpp>
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 

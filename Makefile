@@ -18,13 +18,12 @@ C_LAYER_DIR = $(CONTRIB_DIR)/C_Layer
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include
 
 #Флаги компилятора
-CFLAGS = -c -std=c++11 -fpermissive -Wreturn-local-addr
+CFLAGS = -c -std=c++11 -fpermissive -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32
 
 # Папка в которой лежат cpp файлы
 SRC_PATH = src
 
-SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/fonts.cpp $(SRC_PATH)/thread.cpp $(SRC_PATH)/types.cpp $(SRC_PATH)/textBase.cpp
-# $(SRC_PATH)/mouse.cpp $(SRC_PATH)/keyboard.cpp $(SRC_PATH)/screen.cpp $(SRC_PATH)/UI.cpp $(SRC_PATH)/windowBase.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/image.cpp  $(SRC_PATH)/form.cpp $(SRC_PATH)/frame.cpp $(SRC_PATH)/childWindow.cpp
+SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/fonts.cpp $(SRC_PATH)/thread.cpp $(SRC_PATH)/types.cpp $(SRC_PATH)/textBase.cpp $(SRC_PATH)/img.cpp $(SRC_PATH)/UI.cpp $(SRC_PATH)/image.cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 

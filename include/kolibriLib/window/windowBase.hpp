@@ -12,7 +12,7 @@
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/os.hpp>
-#include <kolibriLib/input/input.hpp>
+#include <input.hpp>
 
 namespace KolibriLib
 {

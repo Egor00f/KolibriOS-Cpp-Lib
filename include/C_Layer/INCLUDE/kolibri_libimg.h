@@ -30,18 +30,19 @@ extern int kolibri_libimg_init(void);
 #define LIBIMG_FORMAT_Z80       14
 
 #pragma pack(push, 1)
-typedef struct{
-  uint32_t Checksum; // ((Width ROL 16) OR Height) XOR Data[0]        ; ignored so far
-  uint32_t Width;
-  uint32_t Height;
-  uint32_t Next;
-  uint32_t Previous;
-  uint32_t Type;     // one of Image.bppN
-  uint32_t* Data;	//Массив rgb_t
-  uint32_t Palette;  // used iff Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
-  uint32_t Extended;
-  uint32_t Flags;    // bitfield
-  uint32_t Delay;    // used iff Image.IsAnimated is set in Flags
+typedef struct
+{
+	uint32_t Checksum;	// ((Width ROL 16) OR Height) XOR Data[0]        ; ignored so far
+	uint32_t Width;
+	uint32_t Height;
+	uint32_t Next;
+	uint32_t Previous;
+	uint32_t Type;		// one of Image.bppN
+	uint32_t* Data;		//Массив rgb_t
+	uint32_t Palette;	// used iff Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
+	uint32_t Extended;
+	uint32_t Flags;		// bitfield
+	uint32_t Delay;		// used iff Image.IsAnimated is set in Flags
 } Image_t;
 #pragma pack(pop)
 

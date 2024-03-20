@@ -11,7 +11,7 @@
 #include "image.hpp"
 #include "checkbox.hpp"
 #include "menu.hpp"
-#include <kolibriLib/input/input.hpp>
+#include <input.hpp>
 
 namespace KolibriLib
 {

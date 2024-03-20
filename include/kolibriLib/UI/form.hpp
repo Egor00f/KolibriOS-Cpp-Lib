@@ -7,7 +7,7 @@
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/UI/text.hpp>
 #include <kolibriLib/UI/button.hpp>
-#include <kolibriLib/input/input.hpp>
+#include <input.hpp>
 #include <kolibriLib/color.hpp>
 
 namespace KolibriLib

@@ -12,15 +12,10 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/input/input.hpp>
+#include <input.hpp>
 #include <kolibriLib/system/os.hpp>
-#include "windowBase.hpp"
-#include <kolibriLib/UI/button.hpp>
-#include <kolibriLib/UI/image.hpp>
-#include <kolibriLib/UI/checkbox.hpp>
-#include <kolibriLib/UI/form.hpp>
-#include <kolibriLib/UI/frame.hpp>
-#include <kolibriLib/UI/menu.hpp>
+#include <kolibriLib/window/windowBase.hpp>
+#include <UI.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
 

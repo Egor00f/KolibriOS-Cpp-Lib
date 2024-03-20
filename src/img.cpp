@@ -8,17 +8,21 @@ KolibriLib::UI::Images::img::img()
 	_img = img_create(32, 32, IMAGE_BPP32);
 }
 
-KolibriLib::UI::Images::img::img(Colors::Color *color, unsigned x, unsigned y)
+KolibriLib::UI::Images::img::img(Colors::Color *color, Size size)
 {
-	_img = img_create(x, y, IMAGE_BPP32);
-	for (unsigned i = 0; i < x * y; i++)
+	_img = img_create(size.x, size.y, IMAGE_BPP32);
+	for (unsigned i = 0; i < size.x * size.y; i++)
 	{
 		*_img->Data = color[i].val;
 	}
 }
 
-UI::Images::img::~img()
+KolibriLib::UI::Images::img::img(Colors::Color color, Size size)
+{
+	img_fill_color(_img, size.x, size.y, color.val);
+}
 
+UI::Images::img::~img()
 {
 	img_destroy(_img);
 }

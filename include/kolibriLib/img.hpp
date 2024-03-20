@@ -1,9 +1,12 @@
 #ifndef __IMG_H__
 #define __IMG_H__
 
-#include <kolibri_libimg.h>
+#include <sys/ksys.h>
+
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/constants.hpp>
+
+#include <kolibri_libimg.h>
 
 namespace KolibriLib
 {
@@ -21,10 +24,15 @@ namespace KolibriLib
 				img();
 
 				/// @brief Конструктор
+				/// @param color Массив цветов
+				/// @param size размеры изображения
+				img(Colors::Color *color, Size size);
+
+				/// @brief Конструктор
 				/// @param color цвет
-				/// @param x размер изображения по оси X
-				/// @param y размер изображения по оси Y
-				img(Colors::Color *color, unsigned x, unsigned y);
+				/// @param size размеры изображения
+				/// @note Закрашивает изображение в цвет
+				img(Colors::Color color, Size size);
 
 				~img();
 
