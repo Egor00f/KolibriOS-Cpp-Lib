@@ -29,7 +29,7 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a CLAYER examples clean done
+all: $(LIB_NAME).a INSTALL CLAYER examples CLEAN DONE
 
 	
 
@@ -40,13 +40,18 @@ $(LIB_NAME).a: $(OBJECTS)
 	@echo "making static library..."
 	$(AR) rc $(LIB_NAME).a $(OBJECTS)
 
+%.o : %.cpp Makefile
+	@echo " "
+	@echo "| -------------------------------------"
+	@echo "|  compiling: " $@
+	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $<
 
 
-install:
+INSTALL:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| installing lib"
-	@mv $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
+	@mv -f $(LIB_NAME).a $(SDK_DIR)/lib/$(LIB_NAME).a
 
 CLAYER:
 	@echo " "
@@ -54,11 +59,12 @@ CLAYER:
 	@echo "| Make C_Layer"
 	$(MAKE) -C $(C_LAYER_DIR)/ASM
 
-clean:
+CLEAN:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| clean"
 	@rm $(OBJECTS)
+	@rm $(LIB_NAME).a
 
 examples:
 	@echo " "
@@ -67,13 +73,8 @@ examples:
 	$(MAKE) -C examples
 
 
-%.o : %.cpp Makefile
-	@echo " "
-	@echo "| -------------------------------------"
-	@echo "|  compiling: " $@
-	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $<
 
-done:
+DONE:
 	@echo " "
 	@echo "| ----------------------------------- |"
 	@echo "|                 DONE!               |"

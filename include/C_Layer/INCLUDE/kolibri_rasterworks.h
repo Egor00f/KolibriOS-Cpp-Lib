@@ -1,14 +1,6 @@
 #ifndef KOLIBRI_RASTERWORKS_H
 #define KOLIBRI_RASTERWORKS_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/// @brief Инициализировать библиотеку RasterWorks
-/// @return -1 если неудачно
-extern int kolibri_rasterworks_init(void);
-
 /// @brief Список параметров
 enum Params
 {
@@ -31,6 +23,17 @@ enum Params
 	AlignCenter = 0b00100000,
 
 };
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/// @brief Инициализировать библиотеку RasterWorks
+/// @return -1 если неудачно
+extern int kolibri_rasterworks_init(void);
+
+
 
 /// @brief Вывести текст
 /// @param canvas Указатель на буффер

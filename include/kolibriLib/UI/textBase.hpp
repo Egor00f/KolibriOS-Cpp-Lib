@@ -2,7 +2,6 @@
 #define __TEXTBASE_H__
 
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/window/windowBase.hpp>

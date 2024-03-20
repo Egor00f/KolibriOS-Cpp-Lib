@@ -12,7 +12,7 @@ KolibriOS_repo_dir = ../../kolibrios
 CONTRIB_DIR = $(KolibriOS_repo_dir)/contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 TOOLCHAIN_DIR = C:/MinGW/msys/1.0/home/autobuild/tools/win32
-C_LAYER_OBJ_DIR = $(SDK_DIR)/C_Layer/OBJ
+C_LAYER_OBJ_DIR = $(CONTRIB_DIR)/C_Layer/OBJ
 
 
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I$(SDK_DIR)/sources/libstdc++-v3/include
@@ -40,11 +40,10 @@ KOLIBRILIB_INCLUDE_PATH = ../include
 
 ############### C Layer ############
 
-C_LAYER_DIR = $(KOLIBRILIB_INCLUDE_PATH)/C_Layer
-C_LAYER_OBJ = $(C_LAYER_OBJ_DIR)/OBJ/loadlibimg.obj $(C_LAYER_OBJ_DIR)/OBJ/loadrasterworks.obj $(C_LAYER_OBJ_DIR)/OBJ/loadlibini.obj $(C_LAYER_OBJ_DIR)/OBJ/loadbuf2d.obj $(C_LAYER_OBJ_DIR)/OBJ/loadboxlib.obj
+C_LAYER_OBJ = $(C_LAYER_OBJ_DIR)/loadboxlib.obj $(C_LAYER_OBJ_DIR)/loadlibimg.obj $(C_LAYER_OBJ_DIR)/loadrasterworks.obj $(C_LAYER_OBJ_DIR)/loadbuf2d.obj
 ####################################
 
-KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I $(C_LAYER_DIR)/INCLUDE
+KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I ../include/C_Layer/INCLUDE
 
 INCLUDES += $(KOLIBRILIB_INCLUDE)
 

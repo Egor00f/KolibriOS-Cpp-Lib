@@ -22,7 +22,7 @@ namespace KolibriLib
 	{
 		
 		/// @brief Размер окна поумолчанию
-		const Size DefaultWindowSize = {400, 400};
+		const Size DefaultWindowSize = {600, 400};
 
 		/// @brief Соординаты окна по умолчанию
 		const Coord DefaultWindowCoord = {100, 100};
@@ -54,23 +54,10 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
-		inline void CreateWindow(Coord coord, Size size, const std::string& title, Colors::Color WorkColor = OS::GetSystemColors().frame_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize + WindowStyle::NormalDraw)
+		inline void CreateWindow(const Coord &coord, const Size &size, const std::string& title, const Colors::Color& WorkColor = OS::GetSystemColors().frame_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize + WindowStyle::NormalDraw)
 		{
-			const char* t = title.c_str();
-			asm_inline(
-				"int $0x40"
-				:
-				: "a"(0),
-				  "b"((coord.x << 16) | ((size.x - 1) & 0xFFFF)),
-				  "c"((coord.y << 16) | ((size.y - 1) & 0xFFFF)),
-				  "d"((style << 24) | (WorkColor.val & 0xFFFFFF)),
-				  "D"(t),
-				  "S"(TitleColor.val)
-				  :"memory"
-				);
-			
+			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor.val, style);
 		}
-
 
 		/// @brief Снять фокус с окна
 		/// @param slot слот окна

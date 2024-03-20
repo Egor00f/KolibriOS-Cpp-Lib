@@ -10,6 +10,7 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/graphic/screen.hpp>
+#include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
 
 namespace KolibriLib

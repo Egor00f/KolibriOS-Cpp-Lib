@@ -3,6 +3,7 @@
 
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/constants.hpp>
+#include <kolibriLib/img.hpp>
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 
@@ -20,10 +21,6 @@ namespace KolibriLib
 		/// @brief Работа с изображениями
 		namespace Images
 		{
-			
-			
-			
-
 			/// @brief Картинка как элемент интерфейса
 			class Image : public UIElement, public img
 			{
@@ -37,13 +34,8 @@ namespace KolibriLib
 				/// @param Margin
 				Image(const Coord& coord = {0, 0}, const Size& size = {100, 100});
 
-				
-
-
 				/// @brief Деструктор
 				~Image();
-
-				
 
 				/// @brief Вывести изображение в окно
 				/// @param size Размер выводимого изображения
@@ -55,10 +47,7 @@ namespace KolibriLib
 				/// @return 
 				Image& operator = (const Image& a);
 
-		
 				void init(const Coord &coord = {0, 0}, const Size &size = {100, 100}, const filesystem::Path &Path = DefaultImage);
-
-				
 			};
 
 
@@ -79,21 +68,21 @@ namespace KolibriLib
 
 				if (!f)
 				{
-					const char *a = "LoadImage: Can't open file:";
+					const char a[] = "LoadImage: Can't open file: ";
 					char *b;
 					strcat(b, a);
 					strcat(b, Path.GetChars());
-					strcat(b, "\n");
+					strcat(b, " \n ");
 					_ksys_debug_puts(b);
 				}
 
 				if (fseek(f, 0, SEEK_END))
 				{
-					const char *a = "Can't SEEK_END file:";
+					const char a[] = "Can't SEEK_END file: ";
 					char *b;
 					strcat(b, a);
 					strcat(b, Path.GetChars());
-					strcat(b, "\n");
+					strcat(b, " \n ");
 					_ksys_debug_puts(b);
 				}
 
@@ -103,12 +92,12 @@ namespace KolibriLib
 
 				if (!fdata)
 				{
-					const char *a = "No memory for file:";
+					const char a[] = "No memory for file: ";
 					char *b;
 					strcat(b, a);
 					strcat(b, Path.GetChars());
 					strcat(b, "\n");
-					strcat(b, "malloc not return ptr");
+					strcat(b, "malloc not return ptr\n");
 					_ksys_debug_puts(b);
 				}
 
@@ -120,7 +109,7 @@ namespace KolibriLib
 					char *b;
 					strcat(b, a);
 					strcat(b, Path.GetChars());
-					strcat(b, "\n");
+					strcat(b, " \n ");
 					_ksys_debug_puts(b);
 				}
 

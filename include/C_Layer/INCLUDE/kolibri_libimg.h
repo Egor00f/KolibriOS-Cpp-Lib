@@ -3,6 +3,8 @@
 #ifndef KOLIBRI_LIBIMG_H
 #define KOLIBRI_LIBIMG_H
 
+extern "C"
+{
 
 #include <stddef.h>
 #include <stdbool.h>
@@ -118,12 +120,13 @@ extern Image_t*   (*img_convert)(Image_t *src, Image_t *dst, uint32_t dst_type, 
 extern Image_t*   (*img_resize_data)(Image_t *src, uint32_t width, uint32_t height) _stdcall;
 extern Image_t*   (*img_scale)(Image_t* src, uint32_t crop_x, uint32_t crop_y, uint32_t crop_width, uint32_t crop_height, Image_t* dst, uint32_t scale_type, uint32_t inter, uint32_t new_width, uint32_t new_height) _stdcall;
 
-void img_fill_color(Image_t* img, uint32_t width, uint32_t height, uint32_t color) {
+inline void img_fill_color(Image_t* img, uint32_t width, uint32_t height, uint32_t color) {
     uint32_t i;
     for (i = 0; i < width*height; i++) {
         img->Data[i] = color;
     }
 }
 
+}
 
 #endif /* KOLIBRI_LIBIMG_H */

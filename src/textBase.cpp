@@ -10,7 +10,6 @@ Images::img &KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 	const unsigned h = ((margin * 2) + (font.size.y * text.length()));
 
 	Images::img canvas;
-	Images::img buff;
 
 	if (BackgroundColor._a < 1)
 	{ // прозрачность фона
@@ -32,9 +31,14 @@ Images::img &KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 		canvas.FillColor(BackgroundColor);
 	}
 
+
+	Images::img buff;
+
 	buff = canvas;
 
+
 	drawText(canvas.GetRGBMap(), margin, margin, text.c_str(), text.length(), colorText.val, font._Flags);
+
 
 	if (colorText._a < 1)
 	{ // Прозрачность текста

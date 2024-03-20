@@ -116,7 +116,7 @@ namespace KolibriLib
 			~Window();
 
 			/// @brief Полная перересовка окна
-			void Redraw() ;
+			void Redraw();
 
 			/// @brief Отрисовать окно
 			void Render(const Coord& coord = DefaultWindowCoord);
@@ -183,7 +183,7 @@ namespace KolibriLib
 
 			template <class T>
 			/// @brief Изменить элемент
-			/// tparam T
+			/// @tparam T
 			/// @param i
 			/// @param element
 			void SetElement(int i, const T& element);
@@ -328,9 +328,9 @@ namespace KolibriLib
 
 		KolibriLib::window::Window::Element::Element()
 		{
-#if DEBUG == true
+			#if DEBUG == true
 			_ksys_debug_puts("KolibriLib::window::Window::Element constructor\n");
-#endif
+			#endif
 			_type = KolibriLib::window::Window::Element::Type::None;
 		}
 
@@ -373,17 +373,16 @@ namespace KolibriLib
 
 		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, const KolibriLib::Colors::Color &TitleColor, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
 		{
-#if DEBUG == true
+			#if DEBUG == true
 			_ksys_debug_puts("KolibriLib::window:::Window constructor\n");
-#endif
+			#endif
 
 			_title = Title;
 			_size = size;
 			_MARGIN = Margin;
 			_TitleColor = TitleColor;
+			_Transparency = Transparency;
 			_RealtimeRedraw = RealtimeRedraw;
-
-			/*Ненавижу байтодрочерство*/
 
 			/*DCBAYYYY*/
 			_style = 0b00100000;
@@ -414,6 +413,11 @@ namespace KolibriLib
 				_colors = colors;
 			}
 
+			if (_Transparency > 0)
+			{
+				_style += WindowStyle::NoDrawWorkspace;
+			}
+
 			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style); // Отрисовать окно
 		}
 
@@ -424,8 +428,24 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Redraw()
 		{
 			StartRedraw();
-			KolibriLib::window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style);
-			KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
+			ChangeWindow(GetCoord(), _size);
+
+			if (_Transparency > 0 && false)
+			{
+				/*UI::Images::img buff;
+				for (unsigned i = 0; i < GetWindowSize().y; i++)
+				{
+					for (unsigned j = 0; j < GetWindowSize().x; j++)
+					{
+						buff.SetPixel(Colors::BlendColors(Background::ReadPoint(Coord(j, i)), , _Transparency / 100))
+
+					}
+				}*/
+			}
+			else
+			{
+				KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
+			}
 
 			for (const std::pair<int, Window::Element> &n : Window::_Elements)
 			{
@@ -662,6 +682,7 @@ namespace KolibriLib
 			{
 				return it->second.form->GetInput();
 			}
+
 		}
 
 		void KolibriLib::window::Window::Unfocus() const
