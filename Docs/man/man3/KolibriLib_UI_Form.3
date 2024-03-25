@@ -15,7 +15,7 @@ KolibriLib::UI::Form \- Форма для ввода текста
 
 .in +1c
 .ti -1c
-.RI "\fBForm\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const std::string &BackgroundText='Text\&.\&.\&.', const \fBColors::Color\fP &FormColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &ButtonTextColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
+.RI "\fBForm\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const std::string &BackgroundText='Text\&.\&.\&.', const \fBColors::Color\fP &FormColor=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &ButtonTextColor=\fBOS::GetSystemColors\fP()\&.work_area, const unsigned &Margin=DefaultMargin)"
 .br
 .RI "конструктор "
 .ti -1c
@@ -55,7 +55,7 @@ KolibriLib::UI::Form \- Форма для ввода текста
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -140,7 +140,7 @@ KolibriLib::UI::Form \- Форма для ввода текста
 Форма для ввода текста 
 .SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::UI::Form::Form (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{32, 16}\fP, const std::string & BackgroundText = \fR'Text\&.\&.\&.'\fP, const \fBColors::Color\fP & FormColor = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & ButtonTextColor = \fROS::sys_color_table\&.work_area\fP, const unsigned & Margin = \fRDefaultMargin\fP)"
+.SS "KolibriLib::UI::Form::Form (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{32, 16}\fP, const std::string & BackgroundText = \fR'Text\&.\&.\&.'\fP, const \fBColors::Color\fP & FormColor = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, const \fBColors::Color\fP & ButtonTextColor = \fR\fBOS::GetSystemColors\fP()\&.work_area\fP, const unsigned & Margin = \fRDefaultMargin\fP)"
 
 .PP
 конструктор 

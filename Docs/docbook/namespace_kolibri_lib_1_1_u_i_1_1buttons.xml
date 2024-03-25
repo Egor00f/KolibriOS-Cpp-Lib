@@ -36,11 +36,11 @@
 
 <para>Освободить номер кнопки </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a8a9c99020d6d16d3ebc7ab8b90e778e0">autoDefineButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coords, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color=OS::sys_color_table.work_button)</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a47b091a4b21b6d52fd0e94697e3a9601">autoDefineButton</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coords, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_button)</para>
 
 <para>Создать кнопку, автоматически присвоить ей id. </para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a1322e4edab43592d6ebad409ca641115">DefineButton</link> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size, const <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> &amp;id, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color=OS::sys_color_table.work_button)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5d396fd40d3171bdfb8cd25170ce27f2">DefineButton</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size, const <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> &amp;id, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_button)</para>
 
 <para>Создать кнопку, вручную </para>
 </listitem>
@@ -59,7 +59,7 @@
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1af64df30c82ac721e16b143e1f2e97145"/>const <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> <emphasis role="strong">StartButtonId</emphasis> = 100</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a88a6b23e44e1b1b6efafe4c9eab3c688"/>std::unordered_map&lt; <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>, bool &gt; <emphasis role="strong">ButtonsIdList</emphasis></para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a66a2e75dc283c2834e9084cbf44dad88"/>std::map&lt; <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link>, bool &gt; <emphasis role="strong">ButtonsIdList</emphasis></para>
 
 <para>Список idшников кнопок </para>
 </listitem>
@@ -72,11 +72,11 @@
 </section>
 <section>
 <title>Функции</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a8a9c99020d6d16d3ebc7ab8b90e778e0"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a47b091a4b21b6d52fd0e94697e3a9601"/><section>
     <title>autoDefineButton()</title>
 <indexterm><primary>autoDefineButton</primary><secondary>KolibriLib::UI::buttons</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons</primary><secondary>autoDefineButton</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> KolibriLib::UI::buttons::autoDefineButton (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coords, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> KolibriLib::UI::buttons::autoDefineButton (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coords, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_button</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Создать кнопку, автоматически присвоить ей id. </para>
@@ -118,11 +118,11 @@
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a1322e4edab43592d6ebad409ca641115"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5d396fd40d3171bdfb8cd25170ce27f2"/><section>
     <title>DefineButton()</title>
 <indexterm><primary>DefineButton</primary><secondary>KolibriLib::UI::buttons</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons</primary><secondary>DefineButton</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::buttons::DefineButton (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp; coord, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp; size, const <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> &amp; id, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color = <computeroutput>OS::sys_color_table.work_button</computeroutput>
+<para><computeroutput>void KolibriLib::UI::buttons::DefineButton (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size, const <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a5bc139230a84a2c4049ba6677932e35b">ButtonID</link> &amp; id, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_button</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Создать кнопку, вручную </para>
@@ -217,7 +217,7 @@
                         <tbody>
                             <row>
 <entry>id</entry><entry>
-<para>номер номер кнопки из списка <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a88a6b23e44e1b1b6efafe4c9eab3c688">ButtonsIdList</link></para>
+<para>номер номер кнопки из списка <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a66a2e75dc283c2834e9084cbf44dad88">ButtonsIdList</link></para>
 </entry>
                             </row>
                         </tbody>
@@ -240,7 +240,7 @@
 
 <para><formalpara><title>Возвращает</title>
 
-<para>номер кнопки из списка <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a88a6b23e44e1b1b6efafe4c9eab3c688">ButtonsIdList</link></para>
+<para>номер кнопки из списка <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1buttons_1a66a2e75dc283c2834e9084cbf44dad88">ButtonsIdList</link></para>
 </formalpara>
 </para>
 </section>

@@ -1,9 +1,9 @@
 if(WIN32)
-    set(SDK_DIR "F:/KolibriOs/contrib/sdk")
+    set(SDK_DIR "F:/kolibrios/contrib/sdk")
     set(TOOLCHAIN_DIR "C:/MinGW/msys/1.0/home/autobuild/tool/win32")
 endif(WIN32)
 if (UNIX)
-    set(SDK_DIR "~/KolibriOS/contrib")
+    set(SDK_DIR "~/kolbrios/contrib")
     set(TOOLCHAIN_DIR "/home/autobuild/toold/win32")
 endif (UNIX)
 
@@ -22,9 +22,5 @@ include_directories(${NEWLIB_INCLUDE})
 
 #подключение libstdc++-v3
 include_directories(${LIBSTDCppV3_INCLUDE})
-include_directories(${LIBSTDCppV3_INCLUDE}/bits)
-include_directories(${LIBSTDCppV3_INCLUDE}/mingw32)
-include_directories(${LIBSTDCppV3_INCLUDE}/tr1)
-include_directories(${LIBSTDCppV3_INCLUDE}/tr2)
 
 include_directories(src/include)

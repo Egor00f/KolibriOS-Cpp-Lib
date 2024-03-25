@@ -17,6 +17,7 @@ namespace KolibriLib
 		/// @return Таблица системных цветов
 		inline Colors::ColorsTable GetSystemColors()
 		{
+			_ksys_debug_puts("GetSysColros\n");
 			Colors::ColorsTable buff;
 			_ksys_get_system_colors(&buff);
 			return buff;

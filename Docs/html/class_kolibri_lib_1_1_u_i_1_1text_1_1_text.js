@@ -14,7 +14,7 @@ var class_kolibri_lib_1_1_u_i_1_1text_1_1_text =
     [ "lenghtPX", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a924a553bcf51e37053e5f4a365c4d568", null ],
     [ "length", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a20eacf9e8b1e84ae39895be49e88683e", null ],
     [ "operator==", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a2f5cda180a5ba57e4774fb6bf1e22fa2", null ],
-    [ "Print", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#ab7918ccccb454f8f7c7d03d1c22f682f", null ],
+    [ "Print", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#aa295c124569525622fe943eeeb23aecf", null ],
     [ "SetBackgroundColor", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a3c5e7c50af916002563b29b55822cacd", null ],
     [ "SetFont", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a143c7924e3daa06259bc93b3e7306bc5", null ],
     [ "SetText", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a9bb52ff66ccb36a28959277f99807a47", null ],

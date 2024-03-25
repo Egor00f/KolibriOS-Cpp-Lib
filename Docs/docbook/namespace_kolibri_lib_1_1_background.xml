@@ -10,11 +10,11 @@
 <simplesect>
     <title>Функции    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <link linkend="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8">GetSize</link> ()</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> <link linkend="_namespace_kolibri_lib_1_1_background_1a776c9ccf7667bba240cb767f51703736">GetSize</link> ()</para>
 
 <para>Получить размеры фонового изображения </para>
 </listitem>
-            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_namespace_kolibri_lib_1_1_background_1afcb0fd60be834628d898f534c1628d5a">ReadPoint</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;Point)</para>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_namespace_kolibri_lib_1_1_background_1ae55e239046bde105467372aba4a7cd44">ReadPoint</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;Point)</para>
 
 <para>Прочитать точку на фоне </para>
 </listitem>
@@ -22,21 +22,23 @@
 
 <para>Перерисовать фон </para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a84d8ff24e6442158aac594a3152551aa"/>void <emphasis role="strong">RedrawBackground</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;size)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_background_1ab3fe2058b7a0a22640d91ee55f4a2ce0">RedrawBackground</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size)</para>
+
+<para>Перересовать область фона </para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1ad3d78860faa31d059c085a5ff9000e1a"/>void <emphasis role="strong">SetSize</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;size)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a3687537658469d97662c56c6d337b99f"/>void <emphasis role="strong">SetSize</emphasis> (const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1aeef0462c3b90b0a49d0ac65407de12e6"/>void <emphasis role="strong">DrawPoint</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a72585aa28e7e33f28d8409973f62d4de"/>void <emphasis role="strong">DrawPoint</emphasis> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> coord, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color)</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a79bda2b19dd2acc3560b232dbbba9818"/>template&lt;std::size_t N&gt; </para><para>void <emphasis role="strong">DrawImage</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, rgb_t(&amp;rgb)[N])</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1aba8e36651d4a9157a8009428a4fffa7d"/>template&lt;std::size_t N&gt; </para><para>void <emphasis role="strong">DrawImage</emphasis> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> coord, rgb_t(&amp;rgb)[N])</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1ad51d4dace6f656ccc6badceb3f3af4f6"/>void <emphasis role="strong">DrawImage</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> coord, rgb_t *rgb, std::size_t N)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a9504a1faa71e915725cb3c5553e477af"/>void <emphasis role="strong">DrawImage</emphasis> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, rgb_t *rgb, std::size_t N)</para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149">DrawLine</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;p1, const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;p2, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color=OS::sys_color_table.work_graph)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_background_1a023d840ad0755b7f682f973136a8ec3d">DrawLine</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;p1, const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;p2, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_graph)</para>
 
 <para>Нарисовать линию на фоне </para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1a437e11ee01405056d78e926a397aa1ad"/>void <emphasis role="strong">DrawText</emphasis> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">UI::text::Fonts::Font</link> &amp;font=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">UI::text::Fonts::DefaultFont</link>, unsigned margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText=OS::sys_color_table.work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=OS::sys_color_table.work_area)</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_background_1af7ead0ddbaa80b35e8d82c32d41e762a"/>void <emphasis role="strong">DrawText</emphasis> (const std::string &amp;text, const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">UI::text::Fonts::Font</link> &amp;font=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">UI::text::Fonts::DefaultFont</link>, unsigned margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_area)</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -54,11 +56,11 @@
 </section>
 <section>
 <title>Функции</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_background_1a21ad9e230558c6f35cc7e5f859223149"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_background_1a023d840ad0755b7f682f973136a8ec3d"/><section>
     <title>DrawLine()</title>
 <indexterm><primary>DrawLine</primary><secondary>KolibriLib::Background</secondary></indexterm>
 <indexterm><primary>KolibriLib::Background</primary><secondary>DrawLine</secondary></indexterm>
-<para><computeroutput>void KolibriLib::Background::DrawLine (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; p1, const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; p2, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color = <computeroutput>OS::sys_color_table.work_graph</computeroutput>
+<para><computeroutput>void KolibriLib::Background::DrawLine (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; p1, const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; p2, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_graph</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Нарисовать линию на фоне </para>
@@ -96,11 +98,11 @@
                 </formalpara>
                 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_background_1a77949e5ea5d23b4ecc4b652b072017f8"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_background_1a776c9ccf7667bba240cb767f51703736"/><section>
     <title>GetSize()</title>
 <indexterm><primary>GetSize</primary><secondary>KolibriLib::Background</secondary></indexterm>
 <indexterm><primary>KolibriLib::Background</primary><secondary>GetSize</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> KolibriLib::Background::GetSize ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> KolibriLib::Background::GetSize ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить размеры фонового изображения </para>
 </para>
@@ -111,11 +113,11 @@
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_background_1afcb0fd60be834628d898f534c1628d5a"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_background_1ae55e239046bde105467372aba4a7cd44"/><section>
     <title>ReadPoint()</title>
 <indexterm><primary>ReadPoint</primary><secondary>KolibriLib::Background</secondary></indexterm>
 <indexterm><primary>KolibriLib::Background</primary><secondary>ReadPoint</secondary></indexterm>
-<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> KolibriLib::Background::ReadPoint (const <link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> &amp; Point)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> KolibriLib::Background::ReadPoint (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; Point)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Прочитать точку на фоне </para>
 </para>
@@ -145,6 +147,42 @@
 <para></para>
 </formalpara>
 </para>
+</section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_background_1ab3fe2058b7a0a22640d91ee55f4a2ce0"/><section>
+    <title>RedrawBackground()</title>
+<indexterm><primary>RedrawBackground</primary><secondary>KolibriLib::Background</secondary></indexterm>
+<indexterm><primary>KolibriLib::Background</primary><secondary>RedrawBackground</secondary></indexterm>
+<para><computeroutput>void KolibriLib::Background::RedrawBackground (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Перересовать область фона </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>координаты верхненго левого угла области </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>размеры <?linebreak?> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
 </section>
 </section>
 </section>

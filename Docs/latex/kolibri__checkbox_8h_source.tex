@@ -1,0 +1,65 @@
+\doxysection{kolibri\+\_\+checkbox.\+h}
+\hypertarget{kolibri__checkbox_8h_source}{}\label{kolibri__checkbox_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_checkbox.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_checkbox.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_CHECKBOX\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KOLIBRI\_CHECKBOX\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <kos32sys.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <kolibriLib/system/os.hpp>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{ch\_flag\_en\ -\/\ {\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00012\ \textcolor{comment}{ch\_flag\_top\ -\/\ {\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00013\ \textcolor{comment}{ch\_flag\_middle\ -\/\ {\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00014\ \textcolor{comment}{ch\_flag\_bottom\ -\/\ {\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}.{\ucr}.\ {\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum}\ CHECKBOX\_FLAGS\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ CHECKBOX\_IS\_SET\ =\ 0x00000002}
+\DoxyCodeLine{00019\ \ \ \ \ \ \textcolor{comment}{/*\ Add\ more\ flags\ later\ */}}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ left\_s;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ top\_s;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ ch\_text\_margin;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ color;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ border\_color;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ text\_color;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{char}\ *text;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ flags;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{/*\ Users\ can\ use\ members\ above\ this\ */}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\_of\_str;}
+\DoxyCodeLine{00034\ \}\mbox{\hyperlink{structcheck__box}{check\_box}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ void\ (*check\_box\_draw2)(\mbox{\hyperlink{structcheck__box}{check\_box}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ void\ (*check\_box\_mouse2)(\mbox{\hyperlink{structcheck__box}{check\_box}}\ *)\_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ void\ (*init\_checkbox2)(\mbox{\hyperlink{structcheck__box}{check\_box}}\ *)\_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \mbox{\hyperlink{structcheck__box}{check\_box}}*\ kolibri\_new\_check\_box(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tlx,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tly,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sizex,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sizey,\ \textcolor{keywordtype}{char}\ *label\_text)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \mbox{\hyperlink{structcheck__box}{check\_box}}*\ new\_checkbox\ \ \ \ \ \ \ \ =\ (\mbox{\hyperlink{structcheck__box}{check\_box}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcheck__box}{check\_box}}));}
+\DoxyCodeLine{00043\ \ \ \ \ \ new\_checkbox\ -\/>\ left\_s\ \ \ \ \ \ \ \ \ =\ (tlx\ <<\ 16)\ +\ sizex;}
+\DoxyCodeLine{00044\ \ \ \ \ \ new\_checkbox\ -\/>\ top\_s\ \ \ \ \ \ \ \ \ \ =\ (tly\ <<\ 16)\ +\ sizey;}
+\DoxyCodeLine{00045\ \ \ \ \ \ new\_checkbox\ -\/>\ ch\_text\_margin\ =\ 10;}
+\DoxyCodeLine{00046\ \ \ \ \ \ new\_checkbox\ -\/>\ color\ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_area\ |\ 0x80000000;\ \textcolor{comment}{//\ 0xFFFFFFFF;\ //\ 0x80AABBCC,\ 31-\/bit\ mus\ be\ set\ asciiz}}
+\DoxyCodeLine{00047\ \ \ \ \ \ new\_checkbox\ -\/>\ border\_color\ \ \ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_graph;}
+\DoxyCodeLine{00048\ \ \ \ \ \ new\_checkbox-\/>text\_color\ \ \ \ \ \ \ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_text;}
+\DoxyCodeLine{00049\ \ \ \ \ \ new\_checkbox\ -\/>\ text\ \ \ \ \ \ \ \ \ \ \ =\ label\_text;}
+\DoxyCodeLine{00050\ \ \ \ \ \ new\_checkbox\ -\/>\ flags\ \ \ \ \ \ \ \ \ \ =\ 0x00000008;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ (*init\_checkbox2)(new\_checkbox);\ \textcolor{comment}{//\ count\ text\ width\ for\ mouse\ action\ and\ set\ flags}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_checkbox;}
+\DoxyCodeLine{00055\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_CHECKBOX\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

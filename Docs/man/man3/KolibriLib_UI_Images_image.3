@@ -19,10 +19,6 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fB~Image\fP ()"
-.br
-.RI "Деструктор "
-.ti -1c
 .RI "void \fBRender\fP () const"
 .br
 .RI "Вывести изображение в окно "
@@ -37,7 +33,7 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -92,16 +88,64 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 Открытые члены унаследованные от \fBKolibriLib::UI::Images::img\fP
 .in +1c
 .ti -1c
-.RI "virtual void \fBRender\fP (const \fBCoord\fP &coord, const \fBSize\fP &size) const"
+.RI "\fBimg\fP (\fBColors::Color\fP *color, \fBSize\fP size)"
 .br
+.RI "Конструктор "
+.ti -1c
+.RI "\fBimg\fP (\fBColors::Color\fP color, \fBSize\fP size)"
+.br
+.RI "Конструктор "
+.ti -1c
+.RI "virtual void \fBRender\fP (const \fBCoord\fP &coord, const \fBSize\fP &size={\-1, \-1}) const"
+.br
+.RI "Отрисовать изображение "
 .ti -1c
 .RI "void \fBLoadImage\fP (const \fBfilesystem::Path\fP &Path=DefaultImage)"
 .br
 .RI "Загрузить изображение "
 .ti -1c
-.RI "void \fBSetImg\fP (Image_t *\fBimg\fP)"
+.RI "void \fBSetImg\fP (\fBImage_t\fP *\fBimg\fP)"
 .br
 .RI "Изменить изображение "
+.ti -1c
+.RI "void \fBSetPixel\fP (const \fBColors::Color\fP &color, unsigned x, unsigned y)"
+.br
+.RI "Изменить цвет пикселя "
+.ti -1c
+.RI "void \fBSetPixel\fP (const \fBColors::Color\fP &color, \fBCoord\fP coord)"
+.br
+.RI "Изменить цвет пикселя "
+.ti -1c
+.RI "\fBColors::Color\fP \fBGetPixel\fP (unsigned x, unsigned y) const"
+.br
+.RI "Получить цвет пикселя "
+.ti -1c
+.RI "\fBColors::Color\fP \fBGetPixel\fP (\fBCoord\fP coord) const"
+.br
+.RI "Получить цвет пикселя "
+.ti -1c
+.RI "\fBColors::Color\fP * \fBGetColorsMap\fP () const"
+.br
+.ti -1c
+.RI "rgb_t * \fBGetRGBMap\fP () const"
+.br
+.RI "получить массив rgb_t "
+.ti -1c
+.RI "\fBImage_t\fP * \fBGetImaget\fP () const"
+.br
+.ti -1c
+.RI "\fBSize\fP \fBGetSize\fP () const"
+.br
+.RI "Получить разрешение изображения "
+.ti -1c
+.RI "void \fBFillColor\fP (const \fBColors::Color\fP &color)"
+.br
+.ti -1c
+.RI "\fBimg\fP & \fBoperator=\fP (const \fBimg\fP &im)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBimg\fP &im) const"
+.br
 .in -1c
 .SS "Дополнительные унаследованные члены"
 
@@ -136,7 +180,7 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 Защищенные данные унаследованные от \fBKolibriLib::UI::Images::img\fP
 .in +1c
 .ti -1c
-.RI "Image_t * \fB_img\fP"
+.RI "\fBImage_t\fP * \fB_img\fP"
 .br
 .in -1c
 .SH "Подробное описание"
@@ -163,7 +207,7 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 
 .SH "Методы"
 .PP 
-.SS "\fBImages::Image\fP & KolibriLib::UI::Images::Image::operator= (const \fBImage\fP & a)"
+.SS "\fBImage\fP & KolibriLib::UI::Images::Image::operator= (const \fBImage\fP & a)"
 
 .PP
 \fBАргументы\fP

@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['operator_21_3d_0',['operator!=',['../struct_kolibri_lib_1_1point.html#a5a2c05ea1ae850ba4cf0446239afe669',1,'KolibriLib::point::operator!=()'],['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a47f5a94da324198946c6567244620f86',1,'KolibriLib::UI::UIElement::operator!=()']]],
-  ['operator_2b_1',['operator+',['../union_kolibri_lib_1_1_colors_1_1_color.html#a1eab7c69f57dc723241bf57f7db16ac3',1,'KolibriLib::Colors::Color']]],
-  ['operator_2b_3d_2',['operator+=',['../struct_kolibri_lib_1_1point.html#a0891cef00565f4ca0844407aa83f96fe',1,'KolibriLib::point']]],
-  ['operator_3d_3',['operator=',['../struct_kolibri_lib_1_1point.html#a4cc022aa1df6376d76b4c0a6102ea92e',1,'KolibriLib::point::operator=()'],['../class_kolibri_lib_1_1_u_i_1_1_images_1_1_image.html#ae00f970794772662ac7d8db0fc135771',1,'KolibriLib::UI::Images::Image::operator=()'],['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#a5bd77e24765b2d0aba522f18304cf743',1,'KolibriLib::UI::text::TextLabel::operator=()'],['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a55bc7a13f3d7f444e2004adde9b45700',1,'KolibriLib::UI::UIElement::operator=()']]],
-  ['operator_3d_3d_4',['operator==',['../struct_kolibri_lib_1_1point.html#aea6b20f0975274a5564bfe12945d5bd1',1,'KolibriLib::point::operator==()'],['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a2f5cda180a5ba57e4774fb6bf1e22fa2',1,'KolibriLib::UI::text::Text::operator==()'],['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text_label.html#ae6c1737b23aef9af57388e0e9429c10a',1,'KolibriLib::UI::text::TextLabel::operator==()'],['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#aadb7dd820e6edfb96007bb83743bee3c',1,'KolibriLib::UI::UIElement::operator==()']]],
-  ['os_20idle_20номер_20слота_201_20можно_20завершить_20любой_20обычный_20поток_20процесс_5',['завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс',['../namespace_kolibri_lib_1_1_thread.html#Нельзя',1,'']]],
-  ['oshaventram_6',['OsHaventRam',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67cabedf6bbce46d8d6616ba2c33fd9647ac',1,'KolibriLib::filesystem']]]
+  ['path_0',['Path',['../class_kolibri_lib_1_1filesystem_1_1_path.html',1,'KolibriLib::filesystem']]],
+  ['pict_5fbutton_1',['pict_button',['../structpict__button.html',1,'']]],
+  ['pid_2',['PID',['../namespace_kolibri_lib_1_1_thread.html#a1635692d8eb5eddc602109be07a50a45',1,'KolibriLib::Thread']]],
+  ['point_3',['point',['../struct_kolibri_lib_1_1point.html',1,'KolibriLib::point'],['../struct_kolibri_lib_1_1point.html#a265a991978495b66d5cf24346e975bfc',1,'KolibriLib::point::point(int X=0, int Y=0)'],['../struct_kolibri_lib_1_1point.html#a088398ffb8097c6a7cde98e29ee6b37d',1,'KolibriLib::point::point(float f)']]],
+  ['pos_4',['Pos',['../namespace_kolibri_lib_1_1window.html#a7e5a1c57ea495417e3d2442f66d0fe44',1,'KolibriLib::window']]],
+  ['print_5',['Print',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_char.html#ad488577e48f526a72657b5b75f78c836',1,'KolibriLib::UI::text::Char::Print()'],['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#aa295c124569525622fe943eeeb23aecf',1,'KolibriLib::UI::text::Text::Print()']]],
+  ['progressbar_6',['progressbar',['../structprogressbar.html',1,'']]],
+  ['ptroutsideapp_7',['ptrOutsideApp',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca669d7f7e1bef7008d3c4f1c50250bbdc',1,'KolibriLib::filesystem']]]
 ];

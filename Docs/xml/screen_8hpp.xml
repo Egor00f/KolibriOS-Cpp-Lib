@@ -4,36 +4,40 @@
     <compoundname>screen.hpp</compoundname>
     <includes local="no">sys/ksys.h</includes>
     <includes refid="types_8hpp" local="no">kolibriLib/types.hpp</includes>
-    <includes refid="color_8hpp" local="no">kolibriLib/color.hpp</includes>
     <includes refid="thread_8hpp" local="no">kolibriLib/system/thread.hpp</includes>
-    <includedby refid="_u_i_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/UI.hpp</includedby>
-    <includedby refid="graphic_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/graphic.hpp</includedby>
-    <includedby refid="window_8hpp" local="no">F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</includedby>
+    <includedby refid="_kolibri_lib_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/KolibriLib.hpp</includedby>
+    <includedby refid="kolibri_lib_2_u_i_2_u_i_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/UI.hpp</includedby>
+    <includedby refid="graphic_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/graphic.hpp</includedby>
+    <includedby refid="window_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</includedby>
     <incdepgraph>
-      <node id="4">
+      <node id="6">
         <label>kolibriLib/color.hpp</label>
         <link refid="color_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
       </node>
       <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp</label>
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp</label>
         <link refid="screen_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>kolibriLib/system/filesystem.hpp</label>
+        <link refid="filesystem_8hpp_source"/>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="7">
         <label>kolibriLib/system/thread.hpp</label>
         <link refid="thread_8hpp_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -43,9 +47,16 @@
         <link refid="types_8hpp_source"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
-      <node id="6">
+      <node id="8">
         <label>stdlib.h</label>
+      </node>
+      <node id="5">
+        <label>string</label>
       </node>
       <node id="2">
         <label>sys/ksys.h</label>
@@ -53,15 +64,27 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/UI.hpp</label>
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/KolibriLib.hpp</label>
+        <link refid="_kolibri_lib_8hpp_source"/>
+      </node>
+      <node id="4">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/UI.hpp</label>
         <link refid="_u_i_8hpp_source"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
+      </node>
+      <node id="3">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/UI.hpp</label>
+        <link refid="kolibri_lib_2_u_i_2_u_i_8hpp_source"/>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -69,109 +92,137 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/button.hpp</label>
-        <link refid="button_8hpp_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</label>
-        <link refid="checkbox_8hpp_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp</label>
-        <link refid="form_8hpp_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="5">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</label>
-        <link refid="frame_8hpp_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/image.hpp</label>
-        <link refid="image_8hpp_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/button.hpp</label>
+        <link refid="button_8hpp_source"/>
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/menu.hpp</label>
-        <link refid="menu_8hpp_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</label>
-        <link refid="text_8hpp_source"/>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/checkbox.hpp</label>
+        <link refid="checkbox_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/form.hpp</label>
+        <link refid="form_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="7">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/childWindow.hpp</label>
-        <link refid="child_window_8hpp_source"/>
-      </node>
-      <node id="12">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/graphic.hpp</label>
-        <link refid="graphic_8hpp_source"/>
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/frame.hpp</label>
+        <link refid="frame_8hpp_source"/>
         <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/image.hpp</label>
+        <link refid="image_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/menu.hpp</label>
+        <link refid="menu_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</label>
+        <link refid="text_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp</label>
+        <link refid="text_base_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/childWindow.hpp</label>
+        <link refid="child_window_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/background.hpp</label>
+        <link refid="background_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/graphic.hpp</label>
+        <link refid="graphic_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
       </node>
       <node id="1">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp</label>
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp</label>
         <link refid="screen_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</label>
+      <node id="14">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp</label>
         <link refid="window_8hpp_source"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -188,33 +239,32 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/ksys.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/types.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/color.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/system/thread.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
-<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="15" refid="namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref><sp/><ref refid="namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48" kindref="member">GetScreenSize</ref>()</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ksys_pos_t<sp/>a<sp/>=<sp/>_ksys_screen_size();</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Size</ref>(a.x,<sp/>a.y);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref><sp/><ref refid="namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d" kindref="member">ScreenPointAffiliation</ref>(<ref refid="struct_kolibri_lib_1_1point" kindref="compound">UI::Coord</ref><sp/>POINT)</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref><sp/>s;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__asm__<sp/>__volatile__(</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;int<sp/>$0x40&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;=a&quot;</highlight><highlight class="normal">(s)</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">(34),<sp/></highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">(POINT.<ref refid="struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34" kindref="member">x</ref>),<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">(POINT.<ref refid="struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0" kindref="member">y</ref>)</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/system/thread.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_kolibri_lib" kindref="compound">KolibriLib</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14" refid="namespace_kolibri_lib_1a1de80cbbe233f747756fcf3b5d8640f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="struct_kolibri_lib_1_1point" kindref="compound">Size</ref><sp/><ref refid="namespace_kolibri_lib_1a1de80cbbe233f747756fcf3b5d8640f9" kindref="member">GetScreenSize</ref>()</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ksys_pos_t<sp/>a<sp/>=<sp/>_ksys_screen_size();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb" kindref="member">Size</ref>(a.x,<sp/>a.y);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="namespace_kolibri_lib_1a8718c0801595aa4d15d67b638e56839e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref><sp/><ref refid="namespace_kolibri_lib_1a8718c0801595aa4d15d67b638e56839e" kindref="member">ScreenPointAffiliation</ref>(<ref refid="struct_kolibri_lib_1_1point" kindref="compound">Coord</ref><sp/>POINT)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref><sp/>s;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__asm__<sp/>__volatile__(</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;int<sp/>$0x40&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;=a&quot;</highlight><highlight class="normal">(s)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">(34),<sp/></highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">(POINT.<ref refid="struct_kolibri_lib_1_1point_1aba63dd75453b02a799b9cd6ae5773cfe" kindref="member">x</ref>),<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">(POINT.<ref refid="struct_kolibri_lib_1_1point_1a92d76b1b7cb1eabab7bc3916b6341a24" kindref="member">y</ref>)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCREEN_H__</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__SCREEN_H__</highlight></codeline>
     </programlisting>
-    <location file="F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp"/>
+    <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp"/>
   </compounddef>
 </doxygen>

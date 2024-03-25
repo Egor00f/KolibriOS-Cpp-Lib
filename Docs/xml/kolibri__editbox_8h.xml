@@ -1,0 +1,342 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="ru">
+  <compounddef id="kolibri__editbox_8h" kind="file" language="C++">
+    <compoundname>kolibri_editbox.h</compoundname>
+    <includes local="no">sys/ksys.h</includes>
+    <includes refid="os_8hpp" local="no">kolibriLib/system/os.hpp</includes>
+    <includedby refid="kolibri__gui__elements_8h" local="yes">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_gui_elements.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h</label>
+        <link refid="kolibri__editbox_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>kolibriLib/color.hpp</label>
+        <link refid="color_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>kolibriLib/system/filesystem.hpp</label>
+        <link refid="filesystem_8hpp_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>kolibriLib/system/os.hpp</label>
+        <link refid="os_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>string.h</label>
+      </node>
+      <node id="2">
+        <label>sys/ksys.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h</label>
+        <link refid="kolibri__editbox_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_gui.h</label>
+        <link refid="kolibri__gui_8h_source"/>
+      </node>
+      <node id="2">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_gui_elements.h</label>
+        <link refid="kolibri__gui__elements_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structedit__box" prot="public">edit_box</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="kolibri__editbox_8h_1aca4d5e410e207a8b0c7b0f98751ca636" prot="public" static="no" extern="yes" mutable="no">
+        <type>void(*</type>
+        <definition>void(* edit_box_draw) (edit_box *) __attribute__((__stdcall__))</definition>
+        <argsstring>)(edit_box *) __attribute__((__stdcall__))</argsstring>
+        <name>edit_box_draw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="106" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" declline="106" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="variable" id="kolibri__editbox_8h_1a80671d96dab6ff41899f507ad329a833" prot="public" static="no" extern="yes" mutable="no">
+        <type>void(*</type>
+        <definition>void(* edit_box_key) (edit_box *) __attribute__((__stdcall__))</definition>
+        <argsstring>)(edit_box *) __attribute__((__stdcall__))</argsstring>
+        <name>edit_box_key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="108" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" declline="108" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="variable" id="kolibri__editbox_8h_1a8884d56b6a7472781084e9bc44568065" prot="public" static="no" mutable="no">
+        <type>ksys_oskey_t</type>
+        <definition>ksys_oskey_t ch</definition>
+        <argsstring></argsstring>
+        <name>ch</name>
+        <initializer>{
+    __asm__ __volatile__ (
+        &quot;push %2\n\t&quot;
+        &quot;call *%1 \n\t&quot;
+        :
+        :&quot;a&quot;(ch.val), &quot;m&quot;(edit_box_key), &quot;m&quot;(e):
+    )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>���� flags �� �������� ed_focus, ���������� ���� ���� flags �������� ed_mouse_on ��� ed_disabled, ���������� ���� �� ����� ������� ch - ��� �������, ������ � ������ ASCII </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="112" column="31" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="kolibri__editbox_8h_1aef46f82ebdbadf5618f88a76dc22665c" prot="public" static="no" extern="yes" mutable="no">
+        <type>void(*</type>
+        <definition>void(* edit_box_mouse) (edit_box *) __attribute__((__stdcall__))</definition>
+        <argsstring>)(edit_box *) __attribute__((__stdcall__))</argsstring>
+        <name>edit_box_mouse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="125" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" declline="125" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="variable" id="kolibri__editbox_8h_1aa1d2cae7c0075dfd74c55612f8a5c4e4" prot="public" static="no" extern="yes" mutable="no">
+        <type>void(*</type>
+        <definition>void(* edit_box_set_text) (edit_box *, char *) __attribute__((__stdcall__))</definition>
+        <argsstring>)(edit_box *, char *) __attribute__((__stdcall__))</argsstring>
+        <name>edit_box_set_text</name>
+        <briefdescription>
+<para>��� ������ �� ����� �������, �������� *mouse_variable! � ���������� ���� ed_mouse_on </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="129" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" declline="129" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="variable" id="kolibri__editbox_8h_1ab5b37242fb83f9460dc7944d3ba27767" prot="public" static="no" extern="yes" mutable="no">
+        <type>volatile unsigned</type>
+        <definition>volatile unsigned press_key</definition>
+        <argsstring></argsstring>
+        <name>press_key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="130" column="26" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" declline="130" declcolumn="26"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="kolibri__editbox_8h_1aedc407a16042d8cf4058fe01b198c14c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structedit__box" kindref="compound">edit_box</ref> *</type>
+        <definition>edit_box * kolibri_new_edit_box</definition>
+        <argsstring>(unsigned int tlx, unsigned int tly, unsigned int max_chars, void *editbox_interlock)</argsstring>
+        <name>kolibri_new_edit_box</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>tlx</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>tly</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>max_chars</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>editbox_interlock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="79" column="10" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" bodystart="79" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="kolibri__editbox_8h_1a07c84e54a2bc928e0f092acceb66fa1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>__attribute__</definition>
+        <argsstring>((__stdcall__)) void editbox_key(edit_box *e</argsstring>
+        <name>__attribute__</name>
+        <param>
+          <type>(__stdcall__)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h" line="112" column="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>KOLIBRI_EDITBOX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOLIBRI_EDITBOX_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/ksys.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;kolibriLib/system/os.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/>flags<sp/>meaning</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">ed_figure_only=<sp/>1000000000000000b<sp/><sp/><sp/>;����<sp/>�������</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">ed_always_focus=<sp/>100000000000000b<sp/><sp/><sp/>//<sp/>������<sp/>�<sp/>��������<sp/>(�������)</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">ed_focus=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10b<sp/><sp/><sp/>;�����<sp/>�����<sp/>����������,<sp/>�������<sp/>��������������</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">ed_pass=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1b<sp/><sp/><sp/>;����<sp/>�<sp/>�������</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">ed_shift_on=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000b<sp/><sp/><sp/>;����<sp/>��<sp/>����������<sp/>-������<sp/>�������<sp/>�����<sp/>shift,����<sp/>���<sp/>����������,<sp/>������<sp/>��<sp/>���<sp/>���<sp/>-<sp/>��<sp/>������<sp/>���������<sp/>shift</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">ed_shift_on_off=1111111111110111b</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">ed_shift=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100b<sp/><sp/><sp/>;����������<sp/>���<sp/>�������<sp/>��<sp/>shift<sp/>�.�.<sp/>����<sp/>�������</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">ed_shift_off=<sp/><sp/><sp/>1111111111111011b</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">ed_shift_bac=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10000b<sp/><sp/><sp/>;���<sp/>���<sp/>�������<sp/>����������<sp/>shift<sp/>�.�.<sp/>���<sp/>���������<sp/>�������<sp/>���<sp/>����<sp/>���������</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">ed_shift_bac_cl=1111111111101111b<sp/><sp/><sp/>;�������<sp/>���<sp/>��������<sp/>���������</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">ed_shift_cl=<sp/><sp/><sp/><sp/>1111111111100011b</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">ed_shift_mcl=<sp/><sp/><sp/>1111111111111011b</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">ed_left_fl=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100000b</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">ed_right_fl=<sp/><sp/><sp/><sp/>1111111111011111b</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">ed_offset_fl=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000000b</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">ed_offset_cl=<sp/><sp/><sp/>1111111110111111b</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">ed_insert=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10000000b</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">ed_insert_cl=<sp/><sp/><sp/>1111111101111111b</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">ed_mouse_on<sp/>=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100000000b</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">ed_mous_adn_b=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100011000b</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">ed_mouse_on_off=1111111011111111b</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">ed_mouse_on_off=<sp/>not<sp/>(ed_mouse_on)</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">ed_ctrl_on<sp/>=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000000000b</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">ed_ctrl_off<sp/>=<sp/>not<sp/>(ed_ctrl_on)</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">ed_alt_on<sp/>=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10000000000b</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">ed_alt_off<sp/>=<sp/>not<sp/>(ed_alt_on)</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">ed_disabled=<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100000000000b</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="structedit__box" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structedit__box" kindref="compound">edit_box</ref></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>left;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>top;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>color;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shift_color;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>selected<sp/>text<sp/>color</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>focus_border_color;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>blur_border_color;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>text_color;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*text;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*mouse_variable;<sp/></highlight><highlight class="comment">//<sp/>must<sp/>be<sp/>pointer<sp/>edit_box**<sp/>to<sp/>save<sp/>focused<sp/>editbox</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size;<sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>symbols<sp/>in<sp/>buffer<sp/>without<sp/>trailing<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos;<sp/><sp/></highlight><highlight class="comment">//<sp/>cursor<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>The<sp/>following<sp/>struct<sp/>members<sp/>are<sp/>not<sp/>used<sp/>by<sp/>the<sp/>users<sp/>of<sp/>API<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>offset;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cl_curs_x;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cl_curs_y;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shift;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shift_old;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>char_width;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Initializes<sp/>an<sp/>Editbox<sp/>with<sp/>sane<sp/>settings,<sp/>sufficient<sp/>for<sp/>most<sp/>use.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/>This<sp/>will<sp/>let<sp/>you<sp/>create<sp/>a<sp/>box<sp/>and<sp/>position<sp/>it<sp/>somewhere<sp/>on<sp/>the<sp/>screen.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/>The<sp/>text_buffer<sp/>is<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>character<sp/>array<sp/>and<sp/>needs<sp/>to<sp/>be<sp/>as<sp/>long<sp/>as</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/>AT<sp/>LEAST<sp/>MAX_CHARS<sp/>+<sp/>1.If<sp/>the<sp/>text_buffer<sp/>is<sp/>smaller,<sp/>it<sp/>will<sp/>crash<sp/>if<sp/>user</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/>types<sp/>more<sp/>characters<sp/>than<sp/>what<sp/>will<sp/>fit<sp/>into<sp/>the<sp/>text<sp/>buffer.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/>Allocating<sp/>buffer<sp/>space<sp/>automatically<sp/>so<sp/>that<sp/>programmer<sp/>can<sp/>be<sp/>carefree<sp/>now.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/>This<sp/>also<sp/>automatically<sp/>adjusts<sp/>the<sp/>size<sp/>of<sp/>edit<sp/>box<sp/>so<sp/>that<sp/>it<sp/>can<sp/>hold<sp/>enough<sp/>characters.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"></highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/>All<sp/>you<sp/>need<sp/>is<sp/>:</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/>tlx,tly<sp/>=<sp/>Coordinates<sp/>of<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>edit<sp/>box.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>max_chars<sp/>=<sp/>Limit<sp/>of<sp/>number<sp/>of<sp/>characters<sp/>user<sp/>can<sp/>enter<sp/>into<sp/>edit<sp/>box.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><ref refid="structedit__box" kindref="compound">edit_box</ref>*<sp/>kolibri_new_edit_box(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tlx,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tly,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_chars,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*editbox_interlock)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>PIXELS_PER_CHAR<sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structedit__box" kindref="compound">edit_box</ref><sp/>*new_textbox<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="structedit__box" kindref="compound">edit_box</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*text_buffer<sp/>=<sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)calloc(max_chars<sp/>+<sp/>2,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">));<sp/></highlight><highlight class="comment">//<sp/>+2<sp/>as<sp/>asked<sp/>in<sp/>box_lib<sp/>src</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Update<sp/>blur_border_color<sp/>and<sp/>shift_color<sp/>from<sp/>box_lib.mac<sp/>macro<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>edit_boxes_set_sys_color<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>width<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>max_chars<sp/>*<sp/>PIXELS_PER_CHAR;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>left<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>tlx;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>top<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>tly;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>color<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xFFFFFF;<sp/></highlight><highlight class="comment">/*<sp/>Always<sp/>make<sp/>white<sp/>edit<sp/>boxes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>shift_color<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x6a9480;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>focus_border_color<sp/><sp/><sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf" kindref="member">KolibriLib::OS::GetSystemColors</ref>().work_graph;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>blur_border_color<sp/><sp/><sp/><sp/>=<sp/>0x6a9480;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox-&gt;text_color<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf" kindref="member">KolibriLib::OS::GetSystemColors</ref>().work_text;<sp/></highlight><highlight class="comment">/*<sp/>Always<sp/>black<sp/>text<sp/>when<sp/>typing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>max<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>max_chars;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>text<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>text_buffer;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>mouse_variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>editbox_interlock;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>new_textbox<sp/>-&gt;<sp/>flags<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x00000000;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>new_textbox;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>void<sp/>(*edit_box_draw)(<ref refid="structedit__box" kindref="compound">edit_box</ref><sp/>*)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>void<sp/>(*edit_box_key)(<ref refid="structedit__box" kindref="compound">edit_box</ref><sp/>*)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>editbox_key<sp/>is<sp/>a<sp/>wrapper<sp/>written<sp/>in<sp/>assembly<sp/>to<sp/>handle<sp/>key<sp/>press<sp/>events<sp/>for<sp/>editboxes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>because<sp/>inline<sp/>assembly<sp/>in<sp/>GCC<sp/>is<sp/>a<sp/>PITA<sp/>and<sp/>interferes<sp/>with<sp/>the<sp/>EAX<sp/>(AH)<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>which<sp/>edit_box_key<sp/>requires<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">__attribute__((__stdcall__))<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>editbox_key(<ref refid="structedit__box" kindref="compound">edit_box</ref><sp/>*e,<sp/>ksys_oskey_t<sp/>ch)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>__asm__<sp/>__volatile__<sp/>(</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;push<sp/>%2\n\t&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;call<sp/>*%1<sp/>\n\t&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">(ch.val),<sp/></highlight><highlight class="stringliteral">&quot;m&quot;</highlight><highlight class="normal">(edit_box_key),<sp/></highlight><highlight class="stringliteral">&quot;m&quot;</highlight><highlight class="normal">(e):</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>void<sp/>(*edit_box_mouse)(<ref refid="structedit__box" kindref="compound">edit_box</ref><sp/>*)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>void<sp/>(*edit_box_set_text)(<ref refid="structedit__box" kindref="compound">edit_box</ref><sp/>*,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>press_key;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>KOLIBRI_EDITBOX_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_editbox.h"/>
+  </compounddef>
+</doxygen>

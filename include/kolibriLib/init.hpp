@@ -5,7 +5,6 @@
 
 #include <kolibri_libimg.h>
 #include <kolibri_rasterworks.h>
-#include <kolibri_libini.h>
 
 //#include <sound.h>
 
@@ -22,9 +21,9 @@ namespace KolibriLib
 	inline void init()
 	{
 		
-		if(kolibri_libimg_init() != -1)
+		if(kolibri_libimg_init() == -1)
 		{
-			_ksys_debug_puts("Error loading lib_img.obj, exit\n");
+			_ksys_debug_puts("Error loading libimg.obj, exit\n");
 			exit(0);
 		}
 
@@ -34,7 +33,11 @@ namespace KolibriLib
 		//	exit(0);
 		//}
 		
-		kolibri_rasterworks_init();
+		if(kolibri_rasterworks_init() == -1)
+		{
+			_ksys_debug_puts("Error loading RasterWorks, exit\n ");
+			exit(0);
+		}
 		
 	}
 }

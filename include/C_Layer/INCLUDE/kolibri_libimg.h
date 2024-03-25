@@ -8,100 +8,175 @@ extern "C"
 
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 extern int kolibri_libimg_init(void);
 
 #define _stdcall __attribute__((__stdcall__))
 
-//list of format id's
-#define LIBIMG_FORMAT_BMP       1
-#define LIBIMG_FORMAT_ICO       2
-#define LIBIMG_FORMAT_CUR       3
-#define LIBIMG_FORMAT_GIF       4
-#define LIBIMG_FORMAT_PNG       5
-#define LIBIMG_FORMAT_JPEG      6
-#define LIBIMG_FORMAT_TGA       7
-#define LIBIMG_FORMAT_PCX       8
-#define LIBIMG_FORMAT_XCF       9
-#define LIBIMG_FORMAT_TIFF      10
-#define LIBIMG_FORMAT_PNM       11
-#define LIBIMG_FORMAT_WBMP      12
-#define LIBIMG_FORMAT_XBM       13
-#define LIBIMG_FORMAT_Z80       14
 
 #pragma pack(push, 1)
-typedef struct
-{
-	uint32_t Checksum;	// ((Width ROL 16) OR Height) XOR Data[0]        ; ignored so far
-	uint32_t Width;
-	uint32_t Height;
-	uint32_t Next;
-	uint32_t Previous;
-	uint32_t Type;		// one of Image.bppN
-	uint32_t* Data;		//Массив rgb_t
-	uint32_t Palette;	// used iff Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
-	uint32_t Extended;
-	uint32_t Flags;		// bitfield
-	uint32_t Delay;		// used iff Image.IsAnimated is set in Flags
-} Image_t;
+	/// @brief Image
+	typedef struct
+	{
+		/// @brief ((Width ROL 16) OR Height) XOR Data[0]
+		/// @note Ignored so far
+		uint32_t Checksum;
+
+		/// @brief Image width
+		uint32_t Width;
+
+		/// @brief Image height
+		uint32_t Height;
+
+		uint32_t Next;
+
+		uint32_t Previous;
+
+		/// @brief One of Image bppN
+		uint32_t Type;
+
+		/// @brief Image, array of colors
+		uint32_t *Data;
+
+		/// @brief Used if Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
+		uint32_t Palette;
+
+		uint32_t Extended;
+
+		/// @brief Bitfield
+		uint32_t Flags;
+
+		/// @brief Used if Image is animated is set in Flags
+		uint32_t Delay;
+
+	} Image_t;
 #pragma pack(pop)
 
-#define IMAGE_BPP8i  1  // indexed
-#define IMAGE_BPP24  2
-#define IMAGE_BPP32  3
-#define IMAGE_BPP15  4
-#define IMAGE_BPP16  5
-#define IMAGE_BPP1   6
-#define IMAGE_BPP8g  7  // grayscale
-#define IMAGE_BPP2i  8
-#define IMAGE_BPP4i  9
-#define IMAGE_BPP8a 10 
+/// @brief List of bppN
+enum BPP
+{
+	/// @brief indexed
+	IMAGE_BPP8i = 1,
+	/// @brief "True color" 24bit
+	IMAGE_BPP24 = 2,
+	/// @brief 32bit
+	IMAGE_BPP32 = 3,
+	IMAGE_BPP15 = 4,
+	/// @brief 16bit
+	IMAGE_BPP16 = 5,
+	IMAGE_BPP1 = 6,
+	/// @brief grayscale
+	IMAGE_BPP8g = 7,
+	IMAGE_BPP2i = 8,
+	IMAGE_BPP4i = 9,
+	IMAGE_BPP8a = 10
+};
 
-// scale type
-#define LIBIMG_SCALE_NONE       0 
-#define LIBIMG_SCALE_INTEGER    1   
-#define LIBIMG_SCALE_TILE       2    
-#define LIBIMG_SCALE_STRETCH    3  
-#define LIBIMG_SCALE_FIT_BOTH   LIBIMG_SCALE_STRETCH
-#define LIBIMG_SCALE_FIT_MIN    4
-#define LIBIMG_SCALE_FIT_RECT   LIBIMG_SCALE_FIT_MIN
-#define LIBIMG_SCALE_FIT_WIDTH  5  
-#define LIBIMG_SCALE_FIT_HEIGHT 6 
-#define LIBIMG_SCALE_FIT_MAX    7     
+/// @brief List of format id's
+enum Formats
+{
+	/// @brief bmp format
+	LIBIMG_FORMAT_BMP = 1,
+	/// @brief ico format
+	LIBIMG_FORMAT_ICO = 2,
+	/// @brief cur format
+	LIBIMG_FORMAT_CUR = 3,
+	/// @brief gif format
+	LIBIMG_FORMAT_GIF = 4,
+	/// @brief png format
+	LIBIMG_FORMAT_PNG = 5,
+	/// @brief jpeg format
+	LIBIMG_FORMAT_JPEG = 6,
+	/// @brief tga format
+	LIBIMG_FORMAT_TGA = 7,
+	/// @brief pcx format
+	LIBIMG_FORMAT_PCX = 8,
+	/// @brief xcf format
+	LIBIMG_FORMAT_XCF = 9,
+	/// @brief tiff format
+	LIBIMG_FORMAT_TIFF = 10,
+	/// @brief Portable anymap format
+	LIBIMG_FORMAT_PNM = 11,
+	/// @brief Wireless Application Protocol Bitmap format
+	LIBIMG_FORMAT_WBMP = 12,
+	/// @brief X BitMap format
+	LIBIMG_FORMAT_XBM = 13,
 
-// interpolation algorithm
-#define LIBIMG_INTER_NONE       0     // use it with LIBIMG_SCALE_INTEGER, LIBIMG_SCALE_TILE, etc
-#define LIBIMG_INTER_BILINEAR   1
-#define LIBIMG_INTER_BICUBIC    2
-#define LIBIMG_INTER_LANCZOS    3
-#define LIBIMG_INTER_DEFAULT   LIBIMG_INTER_BILINEAR
+	LIBIMG_FORMAT_Z80 = 14
+};
 
-//error codes
-#define LIBIMG_ERROR_OUT_OF_MEMORY      1
-#define LIBIMG_ERROR_FORMAT             2
-#define LIBIMG_ERROR_CONDITIONS         3
-#define LIBIMG_ERROR_BIT_DEPTH          4
-#define LIBIMG_ERROR_ENCODER            5
-#define LIBIMG_ERROR_SRC_TYPE           6
-#define LIBIMG_ERROR_SCALE              7
-#define LIBIMG_ERROR_INTER              8
-#define LIBIMG_ERROR_NOT_INPLEMENTED    9
-#define LIBIMG_ERROR_INVALID_INPUT      10
+/// @brief List of scale type
+enum Scale
+{
+	LIBIMG_SCALE_NONE = 0,
+	LIBIMG_SCALE_INTEGER = 1,
+	LIBIMG_SCALE_TILE = 2,
+	LIBIMG_SCALE_STRETCH = 3,
+	LIBIMG_SCALE_FIT_BOTH = LIBIMG_SCALE_STRETCH,
+	LIBIMG_SCALE_FIT_MIN = 4,
+	LIBIMG_SCALE_FIT_RECT = LIBIMG_SCALE_FIT_MIN,
+	LIBIMG_SCALE_FIT_WIDTH = 5,
+	LIBIMG_SCALE_FIT_HEIGHT = 6,
+	LIBIMG_SCALE_FIT_MAX = 7
+};   
 
-//encode flags (byte 0x02 of _common option)
-#define LIBIMG_ENCODE_STRICT_SPECIFIC   0x01
-#define LIBIMG_ENCODE_STRICT_BIT_DEPTH  0x02
-#define LIBIMG_ENCODE_DELETE_ALPHA      0x08
-#define LIBIMG_ENCODE_FLUSH_ALPHA       0x10
+/// @brief List of interpolation algorithms
+enum Inter
+{
+	/// @note use it with LIBIMG_SCALE_INTEGER, LIBIMG_SCALE_TILE, etc
+	LIBIMG_INTER_NONE = 0,
+	/// @brief Bilinear algorithm
+	LIBIMG_INTER_BILINEAR = 1,
+	/// @brief Bicubic algorithm
+	LIBIMG_INTER_BICUBIC = 2,
+	/// @brief Lanczos algorithm
+	LIBIMG_INTER_LANCZOS = 3,
+	/// @brief Default algorithm
+	LIBIMG_INTER_DEFAULT = LIBIMG_INTER_BILINEAR
+};
 
-#define FLIP_VERTICAL   0x01
-#define FLIP_HORIZONTAL 0x02
+/// @brief error codes
+enum Errors
+{
+	LIBIMG_ERROR_OUT_OF_MEMORY = 1,
+	LIBIMG_ERROR_FORMAT = 2,
+	LIBIMG_ERROR_CONDITIONS = 3,
+	LIBIMG_ERROR_BIT_DEPTH = 4,
+	LIBIMG_ERROR_ENCODER = 5,
+	LIBIMG_ERROR_SRC_TYPE = 6,
+	LIBIMG_ERROR_SCALE = 7,
+	LIBIMG_ERROR_INTER = 8,
+	LIBIMG_ERROR_NOT_INPLEMENTED = 9,
+	LIBIMG_ERROR_INVALID_INPUT = 10
+};
 
-#define ROTATE_90_CW    0x01
-#define ROTATE_180      0x02
-#define ROTATE_270_CW   0x03
-#define ROTATE_90_CCW   ROTATE_270_CW
-#define ROTATE_270_CCW  ROTATE_90_CW
+/// @brief encode flags (byte 0x02 of _common option)
+enum Encode
+{
+	LIBIMG_ENCODE_STRICT_SPECIFIC = 0x01,
+	LIBIMG_ENCODE_STRICT_BIT_DEPTH = 0x02,
+	LIBIMG_ENCODE_DELETE_ALPHA = 0x08,
+	LIBIMG_ENCODE_FLUSH_ALPHA = 0x10
+};
+
+enum Flip
+{
+	FLIP_VERTICAL = 0x01,
+	FLIP_HORIZONTAL = 0x02
+};
+
+enum Rotate
+{
+	ROTATE_90_CW = 0x01,
+	ROTATE_180 = 0x03,
+	ROTATE_270_CW = 0x03,
+	ROTATE_90_CCW = ROTATE_270_CW,
+	ROTATE_270_CCW = ROTATE_90_CW
+
+};
 
 extern Image_t*   (*img_decode)(void* file_data, uint32_t size, uint32_t b_color) _stdcall;
 extern Image_t*   (*img_encode)(Image_t* img, uint32_t length, uint32_t option) _stdcall;
@@ -121,6 +196,74 @@ extern Image_t*   (*img_convert)(Image_t *src, Image_t *dst, uint32_t dst_type, 
 extern Image_t*   (*img_resize_data)(Image_t *src, uint32_t width, uint32_t height) _stdcall;
 extern Image_t*   (*img_scale)(Image_t* src, uint32_t crop_x, uint32_t crop_y, uint32_t crop_width, uint32_t crop_height, Image_t* dst, uint32_t scale_type, uint32_t inter, uint32_t new_width, uint32_t new_height) _stdcall;
 
+} // extern "C"
+
+#ifdef __MakeStaticLib__
+/// @brief Загрузить изображение из файла
+/// @param Path путь до файла
+/// @return Указатель на картинку
+inline Image_t* LoadImageFromFile(const char* Path)
+{
+	int32_t img_size;
+	FILE *f = fopen(Path, "rb"); // Этот код взят из примера из /contrib/C_Layer/EXAMPLE/img_example/main.c
+
+	if (!f)
+	{
+		const char a[] = "LoadImage: Can't open file: ";
+		char *b;
+		strcat(b, a);
+		strcat(b, Path);
+		strcat(b, " \n ");
+		_ksys_debug_puts(b);
+	}
+
+	if (fseek(f, 0, SEEK_END))
+	{
+		const char a[] = "Can't SEEK_END file: ";
+		char *b;
+		strcat(b, a);
+		strcat(b, Path);
+		strcat(b, " \n ");
+		_ksys_debug_puts(b);
+	}
+
+	int filesize = ftell(f);
+	rewind(f);
+	char *fdata = (char *)malloc(filesize);
+
+	if (!fdata)
+	{
+		const char a[] = "No memory for file: ";
+		char *b;
+		strcat(b, a);
+		strcat(b, Path);
+		strcat(b, "\n");
+		strcat(b, "malloc not return ptr\n");
+		_ksys_debug_puts(b);
+	}
+
+	img_size = (int32_t)fread(fdata, 1, filesize, f);
+
+	if (ferror(f))
+	{
+		const char *a = "Error reading file ";
+		char *b;
+		strcat(b, a);
+		strcat(b, Path);
+		strcat(b, " \n ");
+		_ksys_debug_puts(b);
+	}
+
+	fclose(f);
+
+	Image_t *buff = img_decode((void *)fdata, img_size, 0);
+
+	free(fdata);
+
+	return buff;
+}
+#endif
+
 inline void img_fill_color(Image_t* img, uint32_t width, uint32_t height, uint32_t color) {
     uint32_t i;
     for (i = 0; i < width*height; i++) {
@@ -128,6 +271,17 @@ inline void img_fill_color(Image_t* img, uint32_t width, uint32_t height, uint32
     }
 }
 
+/// @brief Fill the image with color
+/// @param img image
+/// @param color Сolor
+inline void img_fill_color(Image_t *img, uint32_t color)
+{
+	for (uint32_t i = 0; i < img->Width * img->Height; i++)
+	{
+		img->Data[i] = color;
+	}
 }
+
+
 
 #endif /* KOLIBRI_LIBIMG_H */

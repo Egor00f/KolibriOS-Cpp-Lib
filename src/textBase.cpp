@@ -4,12 +4,12 @@ using namespace KolibriLib::UI;
 using namespace text;
 
 
-Images::img &KolibriLib::UI::text::DrawTextToImg(const std::string &text, const Fonts::Font &font, unsigned margin, const Colors::Color &colorText, const Colors::Color &BackgroundColor)
+Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const Fonts::Font &font, unsigned margin, const Colors::Color &colorText, const Colors::Color &BackgroundColor)
 {
 	const unsigned w = ((margin * 2) + font.size.x);
 	const unsigned h = ((margin * 2) + (font.size.y * text.length()));
 
-	Images::img canvas;
+	Images::img *canvas = new Images::img;
 
 	if (BackgroundColor._a < 1)
 	{ // прозрачность фона
@@ -18,7 +18,7 @@ Images::img &KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 		{
 			for (int j = 0; j < h; i++)
 			{
-				canvas.SetPixel(Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + (int)margin + Coord(0, i) + Coord(j, 0)),
+				canvas->SetPixel(Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + (int)margin + Coord(0, i) + Coord(j, 0)),
 													BackgroundColor,
 													k),
 													i,
@@ -28,16 +28,14 @@ Images::img &KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 	}
 	else
 	{
-		canvas.FillColor(BackgroundColor);
+		canvas->FillColor(BackgroundColor);
 	}
 
 
-	Images::img buff;
-
-	buff = canvas;
+	Images::img *buff = new Images::img(*canvas);
 
 
-	drawText(canvas.GetRGBMap(), margin, margin, text.c_str(), text.length(), colorText.val, font._Flags);
+	drawText(canvas->GetRGBMap(), margin, margin, text.c_str(), text.length(), colorText.val, font._Flags);
 
 
 	if (colorText._a < 1)
@@ -47,10 +45,10 @@ Images::img &KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 		{
 			for (int j = margin; j < h - margin; i++)
 			{
-				if (buff != canvas)	// Если цвет пикселя отличается от фона
+				if (buff->GetPixel(i, j) != canvas->GetPixel(i, j))	// Если цвет пикселя отличается от фона
 				{
-					canvas.SetPixel(Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + (int)margin + Coord(0, i) + Coord(j, 0)),
-														canvas.GetPixel(i, j),
+					canvas->SetPixel(Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + (int)margin + Coord(0, i) + Coord(j, 0)),
+														canvas->GetPixel(i, j),
 														k),
 									i,
 									j);
@@ -58,6 +56,8 @@ Images::img &KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 			}
 		}
 	}
+	
+	delete buff;
 
 	return canvas;
 }

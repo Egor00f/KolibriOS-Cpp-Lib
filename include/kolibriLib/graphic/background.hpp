@@ -28,7 +28,7 @@ namespace KolibriLib
 				: "=a"(p)
 				: "a"(39), "b"(1));
 
-			return {(unsigned int)p.x, (unsigned int)p.y};
+			return Size(p.x, p.y);
 		}
 
 		/// @brief Прочитать точку на фоне
@@ -55,6 +55,9 @@ namespace KolibriLib
 			_ksys_bg_redraw();
 		}
 
+		/// @brief Перересовать область фона
+		/// @param coord координаты верхненго левого угла области
+		/// @param size размеры 
 		inline void RedrawBackground(const Coord& coord, const Size& size)
 		{
 			ksys_pos_t buff = coord.GetKsysPost();
@@ -89,7 +92,7 @@ namespace KolibriLib
 			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N,  coord.x, coord.y, GetSize().x);
 		}
 
-		inline void DrawImage(const Coord coord, rgb_t *rgb, std::size_t N)
+		inline void DrawImage(const Coord &coord, rgb_t *rgb, std::size_t N)
 		{
 			if (!f)
 			{
@@ -119,22 +122,14 @@ namespace KolibriLib
 					  const Colors::Color &colorText = OS::GetSystemColors().work_text,
 					  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)
 		{
-			const unsigned w = ((margin * 2) + font.size.x);
-			const unsigned h = ((margin * 2) + (font.size.y * text.length()));
+			UI::Images::img *img = UI::text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
 
-			rgb_t *canvas = new rgb_t[w * h];
+			rgb_t * buff = img->GetRGBMap();
 
-			for (int i = 0; i < w * h; i++)
-			{
-				canvas[i].red = BackgroundColor.red;
-				canvas[i].blue = BackgroundColor.blue;
-				canvas[i].green = BackgroundColor.green;
-			}
-
-			drawText(canvas, coord.x, coord.y, text.c_str(), text.length(), colorText.val, font._Flags);
-			DrawImage(coord, canvas, w * h);
-
-			delete[] canvas;
+			DrawImage(coord, buff, img->GetSize().x * img->GetSize().y);
+			
+			delete buff;
+			delete img;
 		}
 
 		

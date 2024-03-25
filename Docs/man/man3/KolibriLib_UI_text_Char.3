@@ -20,7 +20,7 @@ KolibriLib::UI::text::Char \- Символ
 
 .in +1c
 .ti -1c
-.RI "\fBChar\fP (char c=' ', const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.RI "\fBChar\fP (char c=' ', const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.work_area)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -36,7 +36,7 @@ KolibriLib::UI::text::Char \- Символ
 .br
 .RI "Получить тип "
 .ti -1c
-.RI "void \fBSet\fP (const char c, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.RI "void \fBSet\fP (const char c, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.work_area)"
 .br
 .ti -1c
 .RI "void \fBSet\fP (const \fBImages::Image\fP &img, const \fBFonts::Font\fP &size=\fBFonts::DefaultFont\fP)"
@@ -74,7 +74,7 @@ KolibriLib::UI::text::Char \- Символ
 .br
 .RI "Получить флаги "
 .ti -1c
-.RI "void \fBPrint\fP (const \fBUI::Coord\fP &coord) const"
+.RI "void \fBPrint\fP (const \fBCoord\fP &coord) const"
 .br
 .RI "Отрисовать "
 .ti -1c
@@ -117,11 +117,16 @@ KolibriLib::UI::text::Char \- Символ
 Символ 
 
 
-.SS "который может содержать как текст, так и картинку(например смайлик)"
+.PP
+\fBЗаметки\fP
+.RS 4
+Символ который может содержать как текст, так и картинку(например смайлик) 
+.RE
+.PP
 
 .SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::UI::text::Char::Char (char c = \fR' '\fP, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fROS::sys_color_table\&.work_area\fP)"
+.SS "KolibriLib::UI::text::Char::Char (char c = \fR' '\fP, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, const \fBColors::Color\fP & TextColor = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fR\fBOS::GetSystemColors\fP()\&.work_area\fP)"
 
 .PP
 Конструктор 
@@ -216,7 +221,7 @@ KolibriLib::UI::text::Char \- Символ
 .RE
 .PP
 
-.SS "void KolibriLib::UI::text::Char::Print (const \fBUI::Coord\fP & coord) const"
+.SS "void KolibriLib::UI::text::Char::Print (const \fBCoord\fP & coord) const"
 
 .PP
 Отрисовать 
@@ -227,7 +232,7 @@ KolibriLib::UI::text::Char \- Символ
 .RE
 .PP
 
-.SS "void KolibriLib::UI::text::Char::Set (const char c, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fROS::sys_color_table\&.work_area\fP)"
+.SS "void KolibriLib::UI::text::Char::Set (const char c, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, const \fBColors::Color\fP & TextColor = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fR\fBOS::GetSystemColors\fP()\&.work_area\fP)"
 
 .PP
 \fBАргументы\fP

@@ -39,10 +39,10 @@ namespace KolibriLib
 			withSkin = 3,
 			/// @brief окно со скином фиксированных размеров
 			FixSizewithSkin = 4,
+			/// @brief у окна есть заголовок
+			WindowHaveTitle = 0b00010000,
 			/// @brief не закрашивать рабочую область при отрисовке окна
 			NoDrawWorkspace = 0b01000000,
-			/// @brief нормальная заливка рабочей области
-			NormalDraw = 0b00000000,
 			/// @brief градиентная заливка рабочей области
 			GradientDraw = 0b10000000
 		};
@@ -54,8 +54,9 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
-		inline void CreateWindow(const Coord &coord, const Size &size, const std::string& title, const Colors::Color& WorkColor = OS::GetSystemColors().frame_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize + WindowStyle::NormalDraw)
+		inline void CreateWindow(const Coord &coord, const Size &size, const std::string& title, const Colors::Color& WorkColor = OS::GetSystemColors().work_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize)
 		{
+			_ksys_debug_puts("Create wind\n");
 			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor.val, style);
 		}
 

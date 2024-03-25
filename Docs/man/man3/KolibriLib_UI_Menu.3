@@ -15,7 +15,7 @@ KolibriLib::UI::Menu \- Выпадающее менб список
 
 .in +1c
 .ti -1c
-.RI "\fBMenu\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::vector< std::string > &li={'menu', 'menu'}, const unsigned &Margin=DefaultMargin, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_area)"
+.RI "\fBMenu\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={0, 0}, const std::vector< std::string > &li={'menu', 'menu'}, const unsigned &Margin=DefaultMargin, const \fBColors::Color\fP &color=\fBOS::GetSystemColors\fP()\&.work_area)"
 .br
 .ti -1c
 .RI "void \fBRender\fP ()"
@@ -30,6 +30,9 @@ KolibriLib::UI::Menu \- Выпадающее менб список
 .br
 .RI "Добавить элемент в список "
 .ti -1c
+.RI "void \fBSetItem\fP (const std::string &NewText, int i)"
+.br
+.ti -1c
 .RI "bool \fBDeleteItem\fP (unsigned i)"
 .br
 .RI "Удалить элемент "
@@ -38,7 +41,7 @@ KolibriLib::UI::Menu \- Выпадающее менб список
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -140,7 +143,7 @@ KolibriLib::UI::Menu \- Выпадающее менб список
 номер элемента в списке, или 0 
 .RE
 .PP
-.SS "необходимо использовать конкретный теип данных для точки используйте шаблоны\&. Например: point<uint64_t> p;"
+.SS "i = -1, то элемент вставляется в конец, иначе вставляется на место под номером i\&. При этом номера всех элементов с номером больше i, нужно увеличить на 1\&."
 
 .SS "bool KolibriLib::UI::Menu::DeleteItem (unsigned i)"
 

@@ -31,11 +31,11 @@
 <simplesect>
     <title>Функции    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1a1ed776d98798432ed1d634b3a18dd181">GetMousePositionOnSreen</link> ()</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1aeb27a641652f74bc30fba05cfe20ab3a">GetMousePositionOnSreen</link> ()</para>
 
 <para>Получить позицияю курсора на экране </para>
 </listitem>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1af5c71bb6951c9963f3e8f7366b343ab0">GetMousePositionInWindow</link> ()</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> <link linkend="_namespace_kolibri_lib_1_1mouse_1ad979ee2e81616250903162815cc59c27">GetMousePositionInWindow</link> ()</para>
 
 <para>Получить позицияю курсора внутри окна </para>
 </listitem>
@@ -84,15 +84,18 @@
 
 <para>Центрировать курсор </para>
 </para>
-<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Функция">
-<title><title>устанавливает курсор в середину экрана</title></title>
-</section>
+
+<para><note><title>Заметки</title>
+
+<para>Функция устанавливает курсор в середину экрана </para>
+</note>
+</para>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a7ae50aac73ac33bc25e269c12522a024"/><section>
     <title>GetMouseButtons()</title>
 <indexterm><primary>GetMouseButtons</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>GetMouseButtons</secondary></indexterm>
-<para><computeroutput>uint32_t KolibriLib::mouse::GetMouseButtons ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>uint32_t KolibriLib::mouse::GetMouseButtons (void )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Проверить какие кнопки мыши нажаты </para>
 </para>
@@ -103,11 +106,11 @@
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1af5c71bb6951c9963f3e8f7366b343ab0"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1ad979ee2e81616250903162815cc59c27"/><section>
     <title>GetMousePositionInWindow()</title>
 <indexterm><primary>GetMousePositionInWindow</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>GetMousePositionInWindow</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> KolibriLib::mouse::GetMousePositionInWindow ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> KolibriLib::mouse::GetMousePositionInWindow ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить позицияю курсора внутри окна </para>
 </para>
@@ -118,11 +121,11 @@
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a1ed776d98798432ed1d634b3a18dd181"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1mouse_1aeb27a641652f74bc30fba05cfe20ab3a"/><section>
     <title>GetMousePositionOnSreen()</title>
 <indexterm><primary>GetMousePositionOnSreen</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>GetMousePositionOnSreen</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> KolibriLib::mouse::GetMousePositionOnSreen ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> KolibriLib::mouse::GetMousePositionOnSreen ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить позицияю курсора на экране </para>
 </para>
@@ -137,7 +140,7 @@
     <title>GetMouseWheels()</title>
 <indexterm><primary>GetMouseWheels</primary><secondary>KolibriLib::mouse</secondary></indexterm>
 <indexterm><primary>KolibriLib::mouse</primary><secondary>GetMouseWheels</secondary></indexterm>
-<para><computeroutput>uint32_t KolibriLib::mouse::GetMouseWheels ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput>uint32_t KolibriLib::mouse::GetMouseWheels (void )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>колёсико мыши </para>
 </para>
@@ -219,10 +222,11 @@
 
 <para>Хендл загруженного курсора </para>
 </formalpara>
+<note><title>Заметки</title>
+
+<para>Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел </para>
+</note>
 </para>
-<section xml:id="_namespace_kolibri_lib_1_1mouse_1Файл">
-<title><title>курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя</title></title>
-</section>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1_1mouse_1a21b758a85831bd3a66ac4cd10ac632a3"/><section>
     <title>SetCursor()</title>

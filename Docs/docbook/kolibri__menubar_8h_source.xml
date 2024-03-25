@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__menubar_8h_source" xml:lang="ru">
+<title>kolibri_menubar.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_menubar.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_MENUBAR_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_MENUBAR_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;kos32sys.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+6 
+7 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+8 {
+9 &#32;&#32;&#32;&#32;uint32_t&#32;type;&#32;&#32;&#32;<emphasis role="comment">//&#32;1&#32;����&#32;���&#32;�������,&#32;������&#32;�����</emphasis>
+10 
+11 &#32;&#32;&#32;&#32;uint32_t&#32;x_w;&#32;&#32;&#32;<emphasis role="comment">//&#32;�������&#32;�����</emphasis>
+12 &#32;&#32;&#32;&#32;uint32_t&#32;y_h;
+13 
+14 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;text_pointer;
+15 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;pos_pointer;
+16 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;text_end;
+17 &#32;&#32;&#32;&#32;uint32_t&#32;mouse_pos;
+18 &#32;&#32;&#32;&#32;uint32_t&#32;mouse_keys;
+19 
+20 &#32;&#32;&#32;&#32;uint32_t&#32;x_w1;&#32;&#32;<emphasis role="comment">//&#32;�������</emphasis>
+21 &#32;&#32;&#32;&#32;uint32_t&#32;y_h1;
+22 
+23 &#32;&#32;&#32;&#32;color_t&#32;bckg_col;&#32;&#32;<emphasis role="comment">//&#32;���&#32;��������&#32;�����</emphasis>
+24 &#32;&#32;&#32;&#32;color_t&#32;frnt_col;&#32;&#32;<emphasis role="comment">//&#32;���&#32;����������&#32;��������&#32;������</emphasis>
+25 &#32;&#32;&#32;&#32;color_t&#32;menu_col;&#32;&#32;<emphasis role="comment">//&#32;���&#32;����������&#32;�����&#32;(��������)</emphasis>
+26 &#32;&#32;&#32;&#32;uint32_t&#32;select;
+27 &#32;&#32;&#32;&#32;uint32_t&#32;out_select;
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;buf_adress;
+29 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;procinfo;
+30 &#32;&#32;&#32;&#32;uint32_t&#32;click;
+31 &#32;&#32;&#32;&#32;uint32_t&#32;cursor;
+32 &#32;&#32;&#32;&#32;uint32_t&#32;cursor_old;
+33 &#32;&#32;&#32;&#32;uint32_t&#32;interval;
+34 &#32;&#32;&#32;&#32;uint32_t&#32;cursor_max;
+35 &#32;&#32;&#32;&#32;uint32_t&#32;extended_key;
+36 &#32;&#32;&#32;&#32;color_t&#32;menu_sel_col;&#32;&#32;<emphasis role="comment">//&#32;����&#32;����&#32;����������&#32;���������</emphasis>
+37 &#32;&#32;&#32;&#32;color_t&#32;bckg_text_col;&#32;<emphasis role="comment">//&#32;����&#32;������&#32;������������&#32;������</emphasis>
+38 &#32;&#32;&#32;&#32;color_t&#32;frnt_text_col;&#32;&#32;<emphasis role="comment">//&#32;����&#32;������&#32;����������&#32;������</emphasis>
+39 &#32;&#32;&#32;&#32;uint32_t&#32;mouse_keys_old;
+40 &#32;&#32;&#32;&#32;uint32_t&#32;font_height;
+41 &#32;&#32;&#32;&#32;uint32_t&#32;cursor_out;
+42 &#32;&#32;&#32;&#32;uint32_t&#32;get_mouse_flag;
+43 }&#32;<link linkend="_structmenubar">menubar</link>;
+44 
+45 
+46 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_structmenubar">menubar</link>*&#32;kolibri_menubar(<link linkend="_structmenubar">menubar</link>*&#32;bar,&#32;uint32_t&#32;x_w,&#32;uint32_t&#32;y_h,&#32;uint16_t&#32;sub_w,&#32;uint16_t&#32;sub_h,&#32;<emphasis role="keywordtype">char</emphasis>&#32;**menutext,
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;color_t&#32;sel_font,&#32;color_t&#32;unsel_font,&#32;color_t&#32;top_bg,&#32;color_t&#32;top_select,&#32;color_t&#32;sub_bg,&#32;color_t&#32;sub_select)
+48 {
+49 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;procinfo[1024];
+50 &#32;&#32;&#32;&#32;memset(bar,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structmenubar">menubar</link>));
+51 &#32;&#32;&#32;&#32;bar-&gt;type&#32;=&#32;0;
+52 &#32;&#32;&#32;&#32;bar-&gt;x_w&#32;=&#32;x_w;
+53 &#32;&#32;&#32;&#32;bar-&gt;y_h&#32;=&#32;y_h;
+54 
+55 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;count&#32;summary&#32;length</emphasis>
+56 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*pc,&#32;**mitem;
+57 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;len&#32;=&#32;0;
+58 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(mitem&#32;=&#32;menutext;&#32;*mitem;&#32;mitem++)&#32;len&#32;+=&#32;strlen(*mitem)&#32;+&#32;1;
+59 
+60 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;copy&#32;menu&#32;items&#32;in&#32;needed&#32;format</emphasis>
+61 &#32;&#32;&#32;&#32;bar-&gt;text_pointer&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>*)&#32;malloc(len&#32;+&#32;1);&#32;&#32;&#32;<emphasis role="comment">//&#32;need&#32;to&#32;be&#32;freed&#32;manual&#32;at&#32;closing&#32;secondary&#32;windows&#32;with&#32;menu</emphasis>
+62 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(pc&#32;=&#32;bar-&gt;text_pointer,&#32;mitem&#32;=&#32;menutext;&#32;*mitem;&#32;pc&#32;+=&#32;strlen(*mitem++)&#32;+&#32;1)
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcpy(pc,&#32;*mitem);
+64 &#32;&#32;&#32;&#32;*pc&#32;=&#32;0;
+65 &#32;&#32;&#32;&#32;bar-&gt;text_end&#32;=&#32;pc;
+66 &#32;&#32;&#32;&#32;bar-&gt;pos_pointer&#32;=&#32;strchr(bar-&gt;text_pointer,&#32;0)&#32;+&#32;1;
+67 
+68 &#32;&#32;&#32;&#32;bar-&gt;x_w1&#32;=&#32;X_Y(x_w&#32;&gt;&gt;&#32;16,&#32;sub_w);
+69 &#32;&#32;&#32;&#32;bar-&gt;y_h1&#32;=&#32;X_Y((y_h&#32;&gt;&gt;&#32;16)&#32;+&#32;(y_h&#32;&amp;&#32;0xFFFF),&#32;sub_h);
+70 
+71 &#32;&#32;&#32;&#32;bar-&gt;interval&#32;=&#32;16;
+72 &#32;&#32;&#32;&#32;bar-&gt;font_height&#32;=&#32;8;
+73 
+74 &#32;&#32;&#32;&#32;bar-&gt;bckg_col&#32;=&#32;top_bg;
+75 &#32;&#32;&#32;&#32;bar-&gt;frnt_col&#32;=&#32;top_select;
+76 &#32;&#32;&#32;&#32;bar-&gt;menu_col&#32;=&#32;sub_bg;
+77 &#32;&#32;&#32;&#32;bar-&gt;menu_sel_col&#32;=&#32;sub_select;
+78 &#32;&#32;&#32;&#32;bar-&gt;bckg_text_col&#32;=&#32;unsel_font;
+79 &#32;&#32;&#32;&#32;bar-&gt;frnt_text_col&#32;=&#32;sel_font;
+80 &#32;&#32;&#32;&#32;bar-&gt;procinfo&#32;=&#32;procinfo;
+81 
+82 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bar;
+83 }
+84 
+85 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_structmenubar">menubar</link>*&#32;kolibri_new_menubar(uint32_t&#32;x_w,&#32;uint32_t&#32;y_h,&#32;uint16_t&#32;sub_w,&#32;uint16_t&#32;sub_h,&#32;<emphasis role="keywordtype">char</emphasis>&#32;**menutext,
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;color_t&#32;sel_font,&#32;color_t&#32;unsel_font,&#32;color_t&#32;top_bg,&#32;color_t&#32;top_select,&#32;color_t&#32;sub_bg,&#32;color_t&#32;sub_select)
+87 {
+88 &#32;&#32;&#32;&#32;<link linkend="_structmenubar">menubar</link>&#32;*new_bar&#32;=&#32;(<link linkend="_structmenubar">menubar</link>*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structmenubar">menubar</link>));
+89 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_menubar(new_bar,&#32;x_w,&#32;y_h,&#32;sub_w,&#32;sub_h,&#32;menutext,&#32;sel_font,&#32;unsel_font,&#32;top_bg,&#32;top_select,&#32;sub_bg,&#32;sub_select);
+90 }
+91 
+92 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_structmenubar">menubar</link>*&#32;kolibri_menubar_def(<link linkend="_structmenubar">menubar</link>*&#32;bar,&#32;uint32_t&#32;x_w,&#32;uint32_t&#32;y_h,&#32;uint16_t&#32;sub_w,&#32;uint16_t&#32;sub_h,&#32;<emphasis role="keywordtype">char</emphasis>&#32;**menutext)
+93 {
+94 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_menubar(bar,&#32;x_w,&#32;y_h,&#32;sub_w,&#32;sub_h,&#32;menutext,
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button_text,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_text,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_area,
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().grab_bar_button,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button);
+97 }
+98 
+99 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_structmenubar">menubar</link>*&#32;kolibri_new_menubar_def(uint32_t&#32;x_w,&#32;uint32_t&#32;y_h,&#32;uint16_t&#32;sub_w,&#32;uint16_t&#32;sub_h,&#32;<emphasis role="keywordtype">char</emphasis>&#32;**menutext)
+100 {
+101 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_new_menubar(x_w,&#32;y_h,&#32;sub_w,&#32;sub_h,&#32;menutext,
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button_text,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_text,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_area,
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().grab_bar_button,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button);
+104 }
+105 
+106 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;gui_add_menubar(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*wnd,&#32;<link linkend="_structmenubar">menubar</link>*&#32;bar)
+107 {
+108 &#32;&#32;&#32;&#32;kolibri_window_add_element(wnd,&#32;KOLIBRI_MENU_BAR,&#32;bar);
+109 }
+110 
+111 
+112 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*menu_bar_draw)(<link linkend="_structmenubar">menubar</link>&#32;*)&#32;__attribute__((__stdcall__));
+113 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*menu_bar_mouse)(<link linkend="_structmenubar">menubar</link>&#32;*)&#32;__attribute__((__stdcall__));
+114 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*menu_bar_activate)(<link linkend="_structmenubar">menubar</link>&#32;*)&#32;__attribute__((__stdcall__));
+115 
+116 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_MENUBAR_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

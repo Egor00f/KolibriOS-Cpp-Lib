@@ -25,8 +25,10 @@
 var NAVTREE =
 [
   [ "KolibriLib", "index.html", [
-    [ "Работа с графикой", "md__f_1_2_kolibri_os_2_kolibri_o_s-_cpp-_lib_2include_2kolibri_lib_2graphic_2_readme.html", null ],
-    [ "User Interface", "md__f_1_2_kolibri_os_2_kolibri_o_s-_cpp-_lib_2include_2kolibri_lib_2_u_i_2_readme.html", null ],
+    [ "Это всратая библиотека", "index.html", null ],
+    [ "Работа с графикой", "md__c_1_2_users_2yyari_2_documents_2_kolibri_o_s_2_kolibri_o_s-_cpp-_lib_2include_2kolibri_lib_2graphic_2_readme.html", null ],
+    [ "User Interface", "md__c_1_2_users_2yyari_2_documents_2_kolibri_o_s_2_kolibri_o_s-_cpp-_lib_2include_2kolibri_lib_2_u_i_2_readme.html", null ],
+    [ "include", "md__c_1_2_users_2yyari_2_documents_2_kolibri_o_s_2_kolibri_o_s-_cpp-_lib_2include_2_readme.html", null ],
     [ "Пространства имен", "namespaces.html", [
       [ "Пространства имен", "namespaces.html", "namespaces_dup" ],
       [ "Члены пространств имен", "namespacemembers.html", [
@@ -59,8 +61,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_draw_text-example.html",
-"namespace_kolibri_lib_1_1_thread.html#a620ca73995252a0f262597d84b5cc40f"
+"_0dcode-example.html",
+"namespace_kolibri_lib.html#a5538a86d3c38c7c88391e9360e01d023"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

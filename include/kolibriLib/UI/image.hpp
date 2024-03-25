@@ -13,8 +13,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <kolibri_libimg.h>
-
 namespace KolibriLib
 {
 	namespace UI
@@ -35,9 +33,6 @@ namespace KolibriLib
 				/// @param Margin
 				Image(const Coord& coord = {0, 0}, const Size& size = {100, 100});
 
-				/// @brief Деструктор
-				~Image();
-
 				/// @brief Вывести изображение в окно
 				/// @param size Размер выводимого изображения
 				/// @paragraph Можно растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется
@@ -50,9 +45,6 @@ namespace KolibriLib
 
 				void init(const Coord &coord = {0, 0}, const Size &size = {100, 100}, const filesystem::Path &Path = DefaultImage);
 			};
-
-
-			
 
 		} // namespace Image
 

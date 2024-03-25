@@ -15,7 +15,7 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -98,11 +98,16 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 Элемент интерфейса 
 
 
-.SS "как шиблон для других классов"
+.PP
+\fBЗаметки\fP
+.RS 4
+Используется как шаблон для других классов 
+.RE
+.PP
 
 .SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const \fBColors::Color\fP & MainColor = \fROS::sys_color_table\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)"
+.SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const \fBColors::Color\fP & MainColor = \fR\fBOS::GetSystemColors\fP()\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)"
 
 .PP
 Конструктор 

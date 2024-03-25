@@ -1,0 +1,80 @@
+\doxysection{kolibri\+\_\+opendialog.\+h}
+\hypertarget{kolibri__opendialog_8h_source}{}\label{kolibri__opendialog_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_opendialog.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_opendialog.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_OPENDIALOG\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KOLIBRI\_OPENDIALOG\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keywordtype}{char}\ sz\_com\_area\_name[]\ \ \ \ =\ \textcolor{stringliteral}{"{}FFFFFFFF\_open\_dialog"{}};}
+\DoxyCodeLine{00005\ \textcolor{keywordtype}{char}\ sz\_dir\_default\_path[]\ =\ \textcolor{stringliteral}{"{}/sys"{}};}
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{char}\ sz\_start\_path[]\ \ \ \ \ \ \ =\ \textcolor{stringliteral}{"{}/sys/File\ managers/opendial"{}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum}\ open\_dialog\_mode\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ OPEN,}
+\DoxyCodeLine{00010\ \ \ \ \ SAVE,}
+\DoxyCodeLine{00011\ \ \ \ \ SELECT}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_attribute\_\_\ ((\_\_packed\_\_))\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ end;}
+\DoxyCodeLine{00017\ \}od\_filter;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_attribute\_\_\ ((\_\_packed\_\_))\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ mode;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{char}*\ procinfo;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{char}*\ com\_area\_name;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ com\_area;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}*\ opendir\_path;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}*\ dir\_default\_path;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}*\ start\_path;}
+\DoxyCodeLine{00027\ \ \ \ \ void\ (*draw\_window)();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{char}*\ openfile\_path;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{char}*\ filename\_area;}
+\DoxyCodeLine{00031\ \ \ \ \ od\_filter*\ filter\_area;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ x\_size;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ x\_start;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ y\_size;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ y\_start;}
+\DoxyCodeLine{00036\ \}open\_dialog;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ fake\_on\_redraw(\textcolor{keywordtype}{void})\ \{\}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ open\_dialog*\ kolibri\_new\_open\_dialog(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ mode,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ tlx,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ tly,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ x\_size,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ y\_size)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ open\_dialog\ *new\_opendialog\ =\ (open\_dialog\ *)malloc(\textcolor{keyword}{sizeof}(open\_dialog));}
+\DoxyCodeLine{00043\ \ \ \ \ od\_filter\ *new\_od\_filter\ =\ (od\_filter\ *)malloc(\textcolor{keyword}{sizeof}(od\_filter));}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{char}\ *plugin\_path\ =\ (\textcolor{keywordtype}{char}\ *)calloc(4096,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{char}\ *openfile\_path\ =\ (\textcolor{keywordtype}{char}\ *)calloc(4096,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{char}\ *proc\_info\ =\ (\textcolor{keywordtype}{char}\ *)calloc(1024,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{char}\ *filename\_area\ =\ (\textcolor{keywordtype}{char}\ *)calloc(256,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ new\_od\_filter\ -\/>\ size\ =\ 0;}
+\DoxyCodeLine{00050\ \ \ \ \ new\_od\_filter\ -\/>\ end\ =\ 0;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ new\_opendialog\ -\/>\ mode\ =\ mode;}
+\DoxyCodeLine{00053\ \ \ \ \ new\_opendialog\ -\/>\ procinfo\ =\ proc\_info;}
+\DoxyCodeLine{00054\ \ \ \ \ new\_opendialog\ -\/>\ com\_area\_name\ =\ sz\_com\_area\_name;}
+\DoxyCodeLine{00055\ \ \ \ \ new\_opendialog\ -\/>\ com\_area\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ new\_opendialog\ -\/>\ opendir\_path\ =\ plugin\_path;}
+\DoxyCodeLine{00057\ \ \ \ \ new\_opendialog\ -\/>\ dir\_default\_path\ =\ sz\_dir\_default\_path;}
+\DoxyCodeLine{00058\ \ \ \ \ new\_opendialog\ -\/>\ start\_path\ =\ sz\_start\_path;}
+\DoxyCodeLine{00059\ \ \ \ \ new\_opendialog\ -\/>\ draw\_window\ =\ \&fake\_on\_redraw;}
+\DoxyCodeLine{00060\ \ \ \ \ new\_opendialog\ -\/>\ status\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ new\_opendialog\ -\/>\ openfile\_path\ =\ openfile\_path;}
+\DoxyCodeLine{00062\ \ \ \ \ new\_opendialog\ -\/>\ filename\_area\ =\ filename\_area;}
+\DoxyCodeLine{00063\ \ \ \ \ new\_opendialog\ -\/>\ filter\_area\ =\ new\_od\_filter;}
+\DoxyCodeLine{00064\ \ \ \ \ new\_opendialog\ -\/>\ x\_size\ =\ x\_size;}
+\DoxyCodeLine{00065\ \ \ \ \ new\_opendialog\ -\/>\ x\_start\ =\ tlx;}
+\DoxyCodeLine{00066\ \ \ \ \ new\_opendialog\ -\/>\ y\_size\ =\ y\_size;}
+\DoxyCodeLine{00067\ \ \ \ \ new\_opendialog\ -\/>\ y\_start\ =\ tly;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ new\_opendialog;}
+\DoxyCodeLine{00069\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ kolibri\_proclib\_init();}
+\DoxyCodeLine{00072\ \textcolor{keyword}{extern}\ void\ (*OpenDialog\_init)(open\_dialog\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00073\ \textcolor{keyword}{extern}\ void\ (*OpenDialog\_start)(open\_dialog\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_OPENDIALOG\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

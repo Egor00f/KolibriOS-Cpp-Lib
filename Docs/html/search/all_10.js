@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['lang_0',['lang',['../namespace_kolibri_lib_1_1_o_s.html#ad74e24145535693721b73b3d7f315c45',1,'KolibriLib::OS']]],
-  ['lenghtpx_1',['lenghtPX',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a924a553bcf51e37053e5f4a365c4d568',1,'KolibriLib::UI::text::Text']]],
-  ['length_2',['length',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a20eacf9e8b1e84ae39895be49e88683e',1,'KolibriLib::UI::text::Text']]],
-  ['link_20_5fid_20становится_20не_20действительным_3',['Деактивированном состоянии кнопка &quot;Не нажимается&quot;, а её @link _id становится не действительным',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#В',1,'']]],
-  ['link_20_5fstatus_20в_20true_20если_20эта_20кнопка_20нажата_20иначе_20false_4',['переменную @link _status в true если эта кнопка нажата, иначе false',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#устанавливает',1,'']]],
-  ['link_20char_20ов_5',['std::vector @link Char ов',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#Фактически',1,'']]],
-  ['link_20char_3a_3atype_6',['значение из спика @link Char::Type',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_char.html#Хранит',1,'']]],
-  ['link_20deactivate_20возвращает_20кнопку_20в_20рабочее_20состояние_7',['функции @link Deactivate, возвращает кнопку в рабочее состояние',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#Противоположна',1,'']]],
-  ['link_20settextsize_20unsigned_8',['изменения высоты шрифта используйте @link SetTextSize(unsigned)',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#Для',1,'']]],
-  ['loadcursor_9',['LoadCursor',['../namespace_kolibri_lib_1_1mouse.html#afa9e02a685efd7b6ab8f92b728ee1a2d',1,'KolibriLib::mouse::LoadCursor(const filesystem::Path &amp;path)'],['../namespace_kolibri_lib_1_1mouse.html#ac82f2a9273155c4a3d12aa894c0edb5b',1,'KolibriLib::mouse::LoadCursor(void *ptr)']]],
-  ['loadimage_10',['LoadImage',['../class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#a4035876f0222a7ccdc175b595428732f',1,'KolibriLib::UI::Images::img']]]
+  ['makedirectory_0',['MakeDirectory',['../namespace_kolibri_lib_1_1filesystem.html#acd34191bdf04b15659a1dd13f13b18ad',1,'KolibriLib::filesystem']]],
+  ['menu_1',['Menu',['../class_kolibri_lib_1_1_u_i_1_1_menu.html',1,'KolibriLib::UI']]],
+  ['menubar_2',['menubar',['../structmenubar.html',1,'']]],
+  ['messagebox_3',['MessageBox',['../namespace_kolibri_lib_1_1child_window.html#a453f0b44166950e95d776c3a725fe900',1,'KolibriLib::childWindow']]],
+  ['minimizeallwindows_4',['MinimizeAllWindows',['../namespace_kolibri_lib_1_1window.html#a91e8114838ac0faa6b26cb1763643a92',1,'KolibriLib::window']]],
+  ['minimizewindow_5',['MinimizeWindow',['../namespace_kolibri_lib_1_1window.html#a1e8e470c8a52494478a075c0c4b10c07',1,'KolibriLib::window']]],
+  ['mouse_6',['Mouse',['../namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca3c9ab2f8d47522ef1bb2a176396118bd',1,'KolibriLib::OS']]],
+  ['ms_20windows_20причём_20размером_2032_2032_20пикселя_7',['курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя',['../namespace_kolibri_lib_1_1mouse.html#Файл',1,'']]],
+  ['mv_20имена_20файлов_20это_20полные_20пути_8',['mv. Имена файлов - это полные пути',['../namespace_kolibri_lib_1_1filesystem.html#Аналог',1,'']]]
 ];

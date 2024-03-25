@@ -112,15 +112,23 @@ KolibriLib::Colors::Color KolibriLib::Colors::BlendColors(const KolibriLib::Colo
 	// буффер
 	KolibriLib::Colors::Color buff;
 
-	buff._a = static_cast<uint8_t>((a._a * k) + (b._a * (1.0f - k)));
-	buff.red = static_cast<uint8_t>((a.red * k) + (b.red * (1.0f - k)));
-	buff.green = static_cast<uint8_t>((a.green * k) + (b.green * (1.0f - k)));
-	buff.blue = static_cast<uint8_t>((a.blue * k) + (b.blue * (1.0f - k)));
+	buff._a		= static_cast<uint8_t>( (a._a    * k) + (b._a    * (1.0f - k)) );
+	buff.red	= static_cast<uint8_t>( (a.red   * k) + (b.red   * (1.0f - k)) );
+	buff.green	= static_cast<uint8_t>( (a.green * k) + (b.green * (1.0f - k)) );
+	buff.blue	= static_cast<uint8_t>( (a.blue  * k) + (b.blue  * (1.0f - k)) );
 
 	return buff;
 }
 
 rgb_t KolibriLib::Colors::UINT32toRGB(const uint32_t &color)
 {
-	return {(color >> 16), (color >> 8), (uint8_t)color};
+	rgb_t ret;
+	
+	uint8_t *buff = (uint8_t*) color;
+	
+	ret.blue	= buff[1];
+	ret.red		= buff[2];
+	ret.green	= buff[3];
+	
+	return ret;
 }

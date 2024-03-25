@@ -15,10 +15,10 @@ CONTRIB_DIR = $(KolibriOS_repo_dir)/contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 C_LAYER_DIR = $(CONTRIB_DIR)/C_Layer
 
-INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include
+INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include -L $(SDK_DIR)/lib
 
 #Флаги компилятора
-CFLAGS = -c -std=c++11 -fpermissive -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32
+CFLAGS = -c -std=c++11 -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses -D __MakeStaticLib__ -L $(SDK_DIR)/lib -lgcc
 
 # Папка в которой лежат cpp файлы
 SRC_PATH = src
@@ -28,16 +28,19 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a INSTALL CLAYER examples CLEAN DONE
+all: $(LIB_NAME).a INSTALL CLAYER EXAMPLES CLEAN DONE
 
-	
+ma:
+	$(CXX) $(SOURCES) $(INCLUDES) $(CFLAGS)
+mb:
+	$(AR) rcs $(LIB_NAME).a $(OBJECTS)
 
 $(LIB_NAME).a: $(OBJECTS)
 
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "making static library..."
-	$(AR) rc $(LIB_NAME).a $(OBJECTS)
+	$(AR) rcs $(LIB_NAME).a $(OBJECTS)
 
 %.o : %.cpp Makefile
 	@echo " "
@@ -56,16 +59,15 @@ CLAYER:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| Make C_Layer"
-	$(MAKE) -C $(C_LAYER_DIR)/ASM
+	$(MAKE) -C $(C_LAYER_DIR)
 
 CLEAN:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| clean"
 	@rm $(OBJECTS)
-	@rm $(LIB_NAME).a
 
-examples:
+EXAMPLES:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| make examples"

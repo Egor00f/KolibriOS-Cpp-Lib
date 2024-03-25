@@ -35,11 +35,11 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .br
 .RI "Освободить номер кнопки "
 .ti -1c
-.RI "\fBButtonID\fP \fBautoDefineButton\fP (const \fBCoord\fP &coords, const \fBSize\fP &size, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_button)"
+.RI "\fBButtonID\fP \fBautoDefineButton\fP (const \fBCoord\fP &coords, const \fBSize\fP &size, const \fBColors::Color\fP &color=\fBOS::GetSystemColors\fP()\&.work_button)"
 .br
 .RI "Создать кнопку, автоматически присвоить ей id\&. "
 .ti -1c
-.RI "void \fBDefineButton\fP (const \fBCoord\fP &coord, const \fBSize\fP &size, const \fBButtonID\fP &id, \fBColors::Color\fP color=OS::sys_color_table\&.work_button)"
+.RI "void \fBDefineButton\fP (const \fBCoord\fP &coord, const \fBSize\fP &size, const \fBButtonID\fP &id, \fBColors::Color\fP color=\fBOS::GetSystemColors\fP()\&.work_button)"
 .br
 .RI "Создать кнопку, вручную "
 .ti -1c
@@ -58,7 +58,7 @@ KolibriLib::UI::buttons \- Работа с кнопками
 .RI "const \fBButtonID\fP \fBStartButtonId\fP = 100"
 .br
 .ti -1c
-.RI "std::unordered_map< \fBButtonID\fP, bool > \fBButtonsIdList\fP"
+.RI "std::map< \fBButtonID\fP, bool > \fBButtonsIdList\fP"
 .br
 .RI "Список idшников кнопок "
 .in -1c
@@ -67,7 +67,7 @@ KolibriLib::UI::buttons \- Работа с кнопками
 Работа с кнопками 
 .SH "Функции"
 .PP 
-.SS "\fBButtonID\fP KolibriLib::UI::buttons::autoDefineButton (const \fBCoord\fP & coords, const \fBSize\fP & size, const \fBColors::Color\fP & color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+.SS "\fBButtonID\fP KolibriLib::UI::buttons::autoDefineButton (const \fBCoord\fP & coords, const \fBSize\fP & size, const \fBColors::Color\fP & color = \fR\fBOS::GetSystemColors\fP()\&.work_button\fP)\fR [inline]\fP"
 
 .PP
 Создать кнопку, автоматически присвоить ей id\&. 
@@ -87,7 +87,7 @@ id созданной кнопки
 .RE
 .PP
 
-.SS "void KolibriLib::UI::buttons::DefineButton (const \fBCoord\fP & coord, const \fBSize\fP & size, const \fBButtonID\fP & id, \fBColors::Color\fP color = \fROS::sys_color_table\&.work_button\fP)\fR [inline]\fP"
+.SS "void KolibriLib::UI::buttons::DefineButton (const \fBCoord\fP & coord, const \fBSize\fP & size, const \fBButtonID\fP & id, \fBColors::Color\fP color = \fR\fBOS::GetSystemColors\fP()\&.work_button\fP)\fR [inline]\fP"
 
 .PP
 Создать кнопку, вручную 

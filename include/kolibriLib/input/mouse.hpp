@@ -54,9 +54,6 @@ namespace KolibriLib
 
 		/// @brief Эмулировать нажатия кнопок мыши
 		/// @param m
-		/// @paragraph Использование: EmulateMouse(EmulateMouse::LeftButton + EmulateMouse::RightButton) //Эмулирует нажатие правой и левой кнопок мыши
-		/// @example EmulateMouse(MouseButtons::LeftButton); // Эмулирует нажатие ЛКМ
-		/// @example EmulateMouse(MouseButtons::LeftButton + MouseButtons::RightButton); // Эмулирует нажатие ЛКМ и ПКМ
 		inline void EmulateMouse(uint8_t m)
 		{
 			asm_inline(
@@ -65,7 +62,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Центрировать курсор
-		/// @paragraph Функция устанавливает курсор в середину экрана
+		/// @note Функция устанавливает курсор в середину экрана
 		inline void CenterCursor()
 		{
 			asm_inline(

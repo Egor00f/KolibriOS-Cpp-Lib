@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_filesystem_8hpp_source" xml:lang="ru">
 <title>filesystem.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/system/filesystem.hpp</primary></indexterm>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/system/filesystem.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__FILESYSTEM_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__FILESYSTEM_H__</emphasis>
 3 
@@ -59,7 +59,7 @@
 75 
 79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1ac1f53038467ce2fe309f448c9e0f2f72">CreateFile</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;name)
 80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_create(name.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>());
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_file_create(name.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>()).status;
 82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 83 
 87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1af8228f98e29fbb8122c93fdc3022d154">Delete</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;name)
@@ -74,7 +74,7 @@
 99 
 103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1filesystem_1ab13318145c165ffcc743aeb33e62b4dc">Exist</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>&#32;&amp;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>)
 104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_bdfe_t&#32;*buff&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ksys_bdfe_t;
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_file_info_t&#32;*buff&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;ksys_file_info_t;
 106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;a&#32;=&#32;_ksys_file_info(<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">Path</link>.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>(),&#32;buff);
 107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;buff;
 108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a&#32;&gt;&#32;0;

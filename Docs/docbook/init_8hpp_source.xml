@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_init_8hpp_source" xml:lang="ru">
 <title>init.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/init.hpp</primary></indexterm>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/init.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__BASE_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__BASE_H__</emphasis>
 3 
@@ -9,46 +9,37 @@
 5 
 6 <emphasis role="preprocessor">#include&#32;&lt;kolibri_libimg.h&gt;</emphasis>
 7 <emphasis role="preprocessor">#include&#32;&lt;kolibri_rasterworks.h&gt;</emphasis>
-8 <emphasis role="preprocessor">#include&#32;&lt;kolibri_libini.h&gt;</emphasis>
-9 
-10 <emphasis role="comment">//#include&#32;&lt;sound.h&gt;</emphasis>
-11 
-12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/filesystem.hpp&gt;</emphasis>
-13 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
-14 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/thread.hpp&gt;</emphasis>
-15 
-18 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-19 {
-20 
-22 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>()
-23 &#32;&#32;&#32;&#32;{
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>();
-25 
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(kolibri_libimg_init()&#32;!=&#32;-1)
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;loading&#32;lib_img.obj,&#32;exit\n&quot;</emphasis>);
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-31 
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*if&#32;(&#32;int&#32;version&#32;=&#32;-1;&#32;!InitSound(&amp;version))</emphasis>
-33 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{</emphasis>
-34 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(&quot;Error&#32;loading&#32;sound.h,&#32;exit\n&quot;);</emphasis>
-35 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);</emphasis>
-36 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}*/</emphasis>
-37 
-38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kolibri_libini_init();
-39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kolibri_rasterworks_init();
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+8 
+9 <emphasis role="comment">//#include&#32;&lt;sound.h&gt;</emphasis>
+10 
+11 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/filesystem.hpp&gt;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/thread.hpp&gt;</emphasis>
+14 
+17 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+18 {
+19 
+21 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>()
+22 &#32;&#32;&#32;&#32;{
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(kolibri_libimg_init()&#32;!=&#32;-1)
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;loading&#32;lib_img.obj,&#32;exit\n&quot;</emphasis>);
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+29 
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//if&#32;(&#32;int&#32;version&#32;=&#32;-1;&#32;!InitSound(&amp;version))</emphasis>
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//{</emphasis>
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;_ksys_debug_puts(&quot;Error&#32;loading&#32;sound.h,&#32;exit\n&quot;);</emphasis>
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;exit(0);</emphasis>
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//}</emphasis>
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kolibri_rasterworks_init();
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+38 &#32;&#32;&#32;&#32;}
+39 }
+40 
+41 
 42 
-43 
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_set_event_mask(0xC0000027);
-45 &#32;&#32;&#32;&#32;
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-47 &#32;&#32;&#32;&#32;}
-48 }
-49 
-50 
-51 
-52 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BASE_H__</emphasis>
+43 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BASE_H__</emphasis>
 </programlisting></section>

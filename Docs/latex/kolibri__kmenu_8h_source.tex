@@ -1,0 +1,107 @@
+\doxysection{kolibri\+\_\+kmenu.\+h}
+\hypertarget{kolibri__kmenu_8h_source}{}\label{kolibri__kmenu_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_kmenu.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_kmenu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_KMENU\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KOLIBRI\_KMENU\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ KMENUITEM\_NORMAL\ \ \ \ 0}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ KMENUITEM\_SUBMENU\ \ \ 1}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ KMENUITEM\_SEPARATOR\ 2}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ KMENUITEM\_MAINMENU\ \ \ 0x80000000}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ KMENUITEM\_SEPARATOR\_WIDTH\ 10}\textcolor{comment}{//170}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ KMENUITEM\_SEPARATOR\_HEIGHT\ 2}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ KMENU\_LBORDER\_SIZE\ 2}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ KMENU\_DBORDER\_SIZE\ 1}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ type;}
+\DoxyCodeLine{00018\ \ \ \ \ uint32\_t\ color;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ uint32\_t\ bgcolor;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *buffer;}
+\DoxyCodeLine{00022\ \ \ \ \ \};}
+\DoxyCodeLine{00023\ \}\ \mbox{\hyperlink{structt__font}{t\_font}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_attribute\_\_\ ((\_\_packed\_\_))\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ uint16\_t\ left,\ top,\ right,\ bottom;}
+\DoxyCodeLine{00027\ \}\ t\_rect;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}}\{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ type;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{char}\ *text;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *submenu;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//kmenuitem\_callback\_t\ callback;}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ btnid;}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ void\ (*paint)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}}\ *item,\ t\_rect\ *rc)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ is\_focused;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ is\_enabled;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ is\_visible;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ style;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ font\_width,\ font\_height;}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{structt__font}{t\_font}}\ font;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ left,\ top;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ width,\ height,\ pref\_width,\ pref\_height;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ margin\_left,\ margin\_right,\ margin\_top,\ margin\_bottom;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ padding\_left,\ padding\_right,\ padding\_top,\ padding\_bottom;}
+\DoxyCodeLine{00052\ \}\ \mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}\{}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}}\ **items;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ count;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ void\ (*paint)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}\ *menu)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ is\_opened;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ focus\_idx;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ width,\ height;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ left,\ top;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ tid;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ parent\_wnd,\ parent\_tid,\ submenu\_tid,\ self\_wnd;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ level;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ return\_btnid;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ set\_new\_padding,\ set\_new\_margin;}
+\DoxyCodeLine{00071\ \ \ \ \ t\_rect\ items\_padding;}
+\DoxyCodeLine{00072\ \ \ \ \ t\_rect\ items\_margin;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}\ *parent;}
+\DoxyCodeLine{00075\ \}\ \mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}}\ **submenu;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ count;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ width,\ height;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ left,\ top;}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ line\_height;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ focus\_idx;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ submenu\_tid;}
+\DoxyCodeLine{00088\ \}\ \mbox{\hyperlink{structkmenu__t}{kmenu\_t}};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ kolibri\_kmenu\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{extern}\ void\ (*kmainmenu\_draw)(\mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00094\ \textcolor{keyword}{extern}\ void\ (*kmainmenu\_dispatch\_cursorevent)(\mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ void\ (*kmenu\_init)(\textcolor{keywordtype}{void}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}*\ (*ksubmenu\_new)()\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00097\ \textcolor{keyword}{extern}\ void\ (*ksubmenu\_add)(\mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}\ *,\ \mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}}*\ (*kmenuitem\_new)(uint32\_t,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *,\ uint32\_t)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00099\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structkmenuitem__t}{kmenuitem\_t}}*\ (*kmenuitem\_\_submenu\_new)(uint32\_t,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *,\ \mbox{\hyperlink{structksubmenu__t}{ksubmenu\_t}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_KMENU\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_fonts_8hpp_source" xml:lang="ru">
 <title>fonts.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp</primary></indexterm>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__FONTS_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__FONTS_H__</emphasis>
 3 
@@ -33,38 +33,28 @@
 38 
 41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Fonts
 42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>&#32;=&#32;16;
-45 
-46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Некоторые&#32;заготовки&#32;шрифтов</emphasis>
-47 
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;Arial&#32;=&#32;{5,&#32;6};
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;TimesNewRoman&#32;=&#32;{4,&#32;5};
-50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;Micrhoma&#32;=&#32;{21,&#32;11};
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;Roboto&#32;=&#32;{7,&#32;10};
-52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;UI::Size&#32;Geologica&#32;=&#32;{5,&#32;7};
-53 
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>
-56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1abfd73103fbe4c17f47da9949e235793a">Font</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;&amp;FontFamily&#32;=&#32;Arial,&#32;<emphasis role="keywordtype">int</emphasis>&#32;FontSize&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;flags&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>);
-61 
-64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ac08147be3906bb8b21036dc19284a9fc">SetFontSize</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;FontSize);
-65 
-66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;_Font;
-67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_FontSize;
-68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;_Flags;
-69 
-70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;size;
-71 
-72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;operator=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;f);
-73 
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;f)&#32;<emphasis role="keyword">const</emphasis>;
-75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-76 
-78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">DefaultFont</link>(Arial,&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>);
-79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-81 &#32;&#32;&#32;&#32;}
-82 }
-83 
-84 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FONTS_H__</emphasis>
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+44 
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1afb5406ffd3cf049424c553fcc16e204a">Font</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;FontFamily&#32;=&#32;<link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(5,&#32;6),&#32;<emphasis role="keywordtype">int</emphasis>&#32;FontSize&#32;=&#32;16,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;flags&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>);
+52 
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ac08147be3906bb8b21036dc19284a9fc">SetFontSize</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;FontSize);
+56 
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1a424c1d4a23db9b09a9d21a812060c588">_Font</link>;
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1afd8cbd9f1f689e5bfa15814834d8ae6b">_FontSize</link>;
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1aa5c428e74cd2f6b095802432c18168ee">_Flags</link>;
+63 
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">mutable</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1a170d8f55381028c1760d9845e23ce7e6">size</link>;
+66 
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;operator=(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;f);
+68 
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator==(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Font</link>&#32;&amp;f)&#32;<emphasis role="keyword">const</emphasis>;
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+73 &#32;&#32;&#32;&#32;}
+74 }
+75 
+76 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__FONTS_H__</emphasis>
 </programlisting></section>

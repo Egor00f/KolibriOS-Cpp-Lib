@@ -4,6 +4,7 @@ using namespace KolibriLib;
 
 KolibriLib::point::point(int X, int Y)
 {
+	_ksys_debug_puts("Point constructor\n");
 	x = X;
 	y = Y;
 }
@@ -16,6 +17,7 @@ KolibriLib::point::point(float f)
 	if (x != y)
 	{
 		//====================================================
+
 		int num = x, denom = y, rem;
 		if (num < denom)
 		{
@@ -28,6 +30,7 @@ KolibriLib::point::point(float f)
 			num = denom;
 			denom = rem;
 		}
+
 		//====================================================
 		x /= rem;
 		y /= rem;

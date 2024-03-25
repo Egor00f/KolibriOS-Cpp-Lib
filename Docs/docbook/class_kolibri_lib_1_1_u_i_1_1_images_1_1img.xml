@@ -2,6 +2,14 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img" xml:lang="ru">
 <title>Класс KolibriLib::UI::Images::img</title>
 <indexterm><primary>KolibriLib::UI::Images::img</primary></indexterm>
+<para>
+
+<para>Изображение </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;img.hpp&gt;</computeroutput>
+</para>
 <para>Граф наследования:KolibriLib::UI::Images::img:    <informalfigure>
         <mediaobject>
             <imageobject>
@@ -13,27 +21,282 @@
 <simplesect>
     <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af06cc442287b5f60f10a32d7e9f471c0"/>virtual void <emphasis role="strong">Render</emphasis> (const <link linkend="_struct_kolibri_lib_1_1point">Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1point">Size</link> &amp;size) const</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4a6b164ea7961a89e77bba59b7039375">img</link> (<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> *color, <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> size)</para>
+
+<para>Конструктор </para>
+</listitem>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a2b552833d23e76063a821d1eeeb35d6d">img</link> (<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color, <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> size)</para>
+
+<para>Конструктор </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1ab5fb3a1da809e7754d51a89ff4834f42">Render</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size={-1, -1}) const</para>
+
+<para>Отрисовать изображение </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4035876f0222a7ccdc175b595428732f">LoadImage</link> (const <link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link> &amp;Path=DefaultImage)</para>
 
 <para>Загрузить изображение </para>
 </listitem>
-            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5">SetImg</link> (Image_t *<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>)</para>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5">SetImg</link> (<link linkend="_struct_image__t">Image_t</link> *<link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link>)</para>
 
 <para>Изменить изображение </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1aef269679d129307425b2a257c81778ec">SetPixel</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color, unsigned x, unsigned y)</para>
+
+<para>Изменить цвет пикселя </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4b5f94fe529dfbc5c2b194b3dd4d1542">SetPixel</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color, <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> coord)</para>
+
+<para>Изменить цвет пикселя </para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1ad6972d6aee2f879eb5d8123a0567d41f">GetPixel</link> (unsigned x, unsigned y) const</para>
+
+<para>Получить цвет пикселя </para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1ad30306165b48f98f05586e9bc9e787ac">GetPixel</link> (<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> coord) const</para>
+
+<para>Получить цвет пикселя </para>
+</listitem>
+            <listitem><para><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> * <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a1d171fd3fcfe63caf3ba14d2a84171e3">GetColorsMap</link> () const</para>
+</listitem>
+            <listitem><para>rgb_t * <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a10135f526950d233ec9a0721c78c46df">GetRGBMap</link> () const</para>
+
+<para>получить массив rgb_t </para>
+</listitem>
+            <listitem><para><link linkend="_struct_image__t">Image_t</link> * <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4ca5bf67adb5932568a13fe719ad714a">GetImaget</link> () const</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a68f8cf19c39a2d78720415132b70f745">GetSize</link> () const</para>
+
+<para>Получить разрешение изображения </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a6f33e272c317cd94f0f6141632a72ec5"/>void <emphasis role="strong">FillColor</emphasis> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;color)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1acdfbb04e3073fce20474f63f10c0d96e"/><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link> &amp; <emphasis role="strong">operator=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link> &amp;im)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4176790fa42808df10ed7d9f4beb56c8"/>bool <emphasis role="strong">operator!=</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">img</link> &amp;im) const</para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
     <title>Защищенные данные    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af4a03f4296e6014c80ab7eca91e5dcb5"/>Image_t * <emphasis role="strong">_img</emphasis></para>
+            <listitem><para><anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af4a03f4296e6014c80ab7eca91e5dcb5"/><link linkend="_struct_image__t">Image_t</link> * <emphasis role="strong">_img</emphasis></para>
 </listitem>
         </itemizedlist>
 </simplesect>
 <section>
+<title>Подробное описание</title>
+
+<para>Изображение </para>
+</section>
+<section>
+<title>Конструктор(ы)</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4a6b164ea7961a89e77bba59b7039375"/><section>
+    <title>img()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>img</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>img</secondary></indexterm>
+<para><computeroutput>KolibriLib::UI::Images::img::img (<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> * color, <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> size)</computeroutput></para><para>
+
+<para>Конструктор </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>color</entry><entry>
+<para>Массив цветов </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>размеры изображения </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a2b552833d23e76063a821d1eeeb35d6d"/><section>
+    <title>img()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>img</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>img</secondary></indexterm>
+<para><computeroutput>KolibriLib::UI::Images::img::img (<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> color, <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> size)</computeroutput></para><para>
+
+<para>Конструктор </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>color</entry><entry>
+<para>цвет </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>размеры изображения </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <note><title>Заметки</title>
+
+<para>Закрашивает изображение в цвет </para>
+</note>
+</para>
+</section>
+</section>
+<section>
 <title>Методы</title>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a1d171fd3fcfe63caf3ba14d2a84171e3"/><section>
+    <title>GetColorsMap()</title>
+<indexterm><primary>GetColorsMap</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>GetColorsMap</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> * KolibriLib::UI::Images::img::GetColorsMap ( ) const</computeroutput></para>
+<para><formalpara><title>Возвращает</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4ca5bf67adb5932568a13fe719ad714a"/><section>
+    <title>GetImaget()</title>
+<indexterm><primary>GetImaget</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>GetImaget</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_image__t">Image_t</link> * KolibriLib::UI::Images::img::GetImaget ( ) const</computeroutput></para>
+<para><formalpara><title>Возвращает</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1ad30306165b48f98f05586e9bc9e787ac"/><section>
+    <title>GetPixel()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>GetPixel</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>GetPixel</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> KolibriLib::UI::Images::img::GetPixel (<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> coord) const</computeroutput></para><para>
+
+<para>Получить цвет пикселя </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>координаты пикселя </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para>Цвет </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1ad6972d6aee2f879eb5d8123a0567d41f"/><section>
+    <title>GetPixel()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>GetPixel</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>GetPixel</secondary></indexterm>
+<para><computeroutput><link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> KolibriLib::UI::Images::img::GetPixel (unsigned x, unsigned y) const</computeroutput></para><para>
+
+<para>Получить цвет пикселя </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>координата пикселя по оси X </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>координата пикселя по оси Y </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Возвращает</title>
+
+<para>Цвет </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a10135f526950d233ec9a0721c78c46df"/><section>
+    <title>GetRGBMap()</title>
+<indexterm><primary>GetRGBMap</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>GetRGBMap</secondary></indexterm>
+<para><computeroutput>rgb_t * KolibriLib::UI::Images::img::GetRGBMap ( ) const</computeroutput></para><para>
+
+<para>получить массив rgb_t </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para></para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a68f8cf19c39a2d78720415132b70f745"/><section>
+    <title>GetSize()</title>
+<indexterm><primary>GetSize</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>GetSize</secondary></indexterm>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> KolibriLib::UI::Images::img::GetSize ( ) const</computeroutput></para><para>
+
+<para>Получить разрешение изображения </para>
+</para>
+
+<para><formalpara><title>Возвращает</title>
+
+<para><?linebreak?> </para>
+</formalpara>
+</para>
+</section>
 <anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4035876f0222a7ccdc175b595428732f"/><section>
     <title>LoadImage()</title>
 <indexterm><primary>LoadImage</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
@@ -66,11 +329,48 @@
                 </formalpara>
                 </para>
 </section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1ab5fb3a1da809e7754d51a89ff4834f42"/><section>
+    <title>Render()</title>
+<indexterm><primary>Render</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>Render</secondary></indexterm>
+<para><computeroutput>virtual void KolibriLib::UI::Images::img::Render (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size = <computeroutput>{-1,&#160;-1}</computeroutput>
+) const<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Отрисовать изображение </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>coord</entry><entry>
+<para>координаты </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>кастомный размер </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
 <anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1af29a0e50b662f1eabd18c8cfdff392a5"/><section>
     <title>SetImg()</title>
 <indexterm><primary>SetImg</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>SetImg</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::Images::img::SetImg (Image_t * img)</computeroutput></para><para>
+<para><computeroutput>void KolibriLib::UI::Images::img::SetImg (<link linkend="_struct_image__t">Image_t</link> * img)</computeroutput></para><para>
 
 <para>Изменить изображение </para>
 </para>
@@ -87,7 +387,79 @@
                         <tbody>
                             <row>
 <entry>img</entry><entry>
-<para>Указатель на струтуру <link linkend="_">Image_t</link></para>
+<para>Указатель на струтуру <link linkend="_struct_image__t">Image_t</link></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4b5f94fe529dfbc5c2b194b3dd4d1542"/><section>
+    <title>SetPixel()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>SetPixel</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>SetPixel</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::Images::img::SetPixel (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color, <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> coord)</computeroutput></para><para>
+
+<para>Изменить цвет пикселя </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>color</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1aef269679d129307425b2a257c81778ec"/><section>
+    <title>SetPixel()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>SetPixel</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>SetPixel</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::Images::img::SetPixel (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; color, unsigned x, unsigned y)</computeroutput></para><para>
+
+<para>Изменить цвет пикселя </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>color</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>x</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para></para>
 </entry>
                             </row>
                         </tbody>
@@ -99,5 +471,5 @@
 </section>
 <para>
 Объявления и описания членов класса находятся в файле:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/image.hpp</section>
+C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/img.hpp</section>
 </section>

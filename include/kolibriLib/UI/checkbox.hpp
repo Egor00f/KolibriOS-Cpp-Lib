@@ -77,12 +77,17 @@ void CheckBox::Render()
         switch (_style)
         {
         case Default:
-            graphic::DrawRectangleFill({_coord.x + (int)_Margin, _coord.y + (int)_Margin}, {(unsigned)_size.x - (2 * _Margin), _size.y + (2 * _Margin)}, _MainColor);
+            graphic::DrawRectangleFill(Coord(_coord.x + _Margin, _coord.y + _Margin), 
+                                       Size(_size.x - (2 * _Margin), _size.y + (2 * _Margin)),
+                                       _MainColor);
             break;
         case Circle:
-            graphic::DrawCircle({_coord.x + (int)_Margin, _coord.y + (int)_Margin}, _size.x / 2 - _Margin, 36, _MainColor);
+            graphic::DrawCircle(Coord(_coord.x + _Margin, _coord.y + _Margin), 
+                                _size.x / 2 - _Margin, 36,
+                                _MainColor);
             break;
         case Smoth:
+            _ksys_debug_puts("KolibriLib::UI::Checkbox smath style now not support :(");
             break;
         default:
             break;

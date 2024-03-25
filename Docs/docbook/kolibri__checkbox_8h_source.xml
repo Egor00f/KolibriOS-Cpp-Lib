@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__checkbox_8h_source" xml:lang="ru">
+<title>kolibri_checkbox.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_checkbox.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_CHECKBOX_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_CHECKBOX_H</emphasis>
+3 
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;kos32sys.h&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+7 
+8 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>
+9 {
+10 <emphasis role="comment">/*</emphasis>
+11 <emphasis role="comment">ch_flag_en&#32;-&#32;����&#32;��������������&#32;���&#32;�����</emphasis>
+12 <emphasis role="comment">ch_flag_top&#32;-&#32;����&#32;������������&#32;������&#32;������</emphasis>
+13 <emphasis role="comment">ch_flag_middle&#32;-&#32;����&#32;������������&#32;������&#32;�&#32;������</emphasis>
+14 <emphasis role="comment">ch_flag_bottom&#32;-&#32;����&#32;������������&#32;������&#32;�&#32;����&#32;�.�.&#32;��&#32;���������&#32;�����������&#32;��������&#32;�����</emphasis>
+15 <emphasis role="comment">*/</emphasis>
+16 
+17 <emphasis role="keyword">enum</emphasis>&#32;CHECKBOX_FLAGS&#32;{
+18 &#32;&#32;&#32;&#32;&#32;CHECKBOX_IS_SET&#32;=&#32;0x00000002
+19 &#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Add&#32;more&#32;flags&#32;later&#32;*/</emphasis>
+20 };
+21 
+22 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;left_s;
+24 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;top_s;
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;ch_text_margin;
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;color;
+27 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;border_color;
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;text_color;
+29 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text;
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;flags;
+31 
+32 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Users&#32;can&#32;use&#32;members&#32;above&#32;this&#32;*/</emphasis>
+33 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;size_of_str;
+34 }<link linkend="_structcheck__box">check_box</link>;
+35 
+36 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*check_box_draw2)(<link linkend="_structcheck__box">check_box</link>&#32;*)&#32;__attribute__((__stdcall__));
+37 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*check_box_mouse2)(<link linkend="_structcheck__box">check_box</link>&#32;*)__attribute__((__stdcall__));
+38 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*init_checkbox2)(<link linkend="_structcheck__box">check_box</link>&#32;*)__attribute__((__stdcall__));
+39 
+40 <link linkend="_structcheck__box">check_box</link>*&#32;kolibri_new_check_box(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;tlx,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;tly,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizex,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizey,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*label_text)
+41 {
+42 &#32;&#32;&#32;&#32;&#32;<link linkend="_structcheck__box">check_box</link>*&#32;new_checkbox&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(<link linkend="_structcheck__box">check_box</link>&#32;*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structcheck__box">check_box</link>));
+43 &#32;&#32;&#32;&#32;&#32;new_checkbox&#32;-&gt;&#32;left_s&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(tlx&#32;&lt;&lt;&#32;16)&#32;+&#32;sizex;
+44 &#32;&#32;&#32;&#32;&#32;new_checkbox&#32;-&gt;&#32;top_s&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(tly&#32;&lt;&lt;&#32;16)&#32;+&#32;sizey;
+45 &#32;&#32;&#32;&#32;&#32;new_checkbox&#32;-&gt;&#32;ch_text_margin&#32;=&#32;10;
+46 &#32;&#32;&#32;&#32;&#32;new_checkbox&#32;-&gt;&#32;color&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_area&#32;|&#32;0x80000000;&#32;<emphasis role="comment">//&#32;0xFFFFFFFF;&#32;//&#32;0x80AABBCC,&#32;31-bit&#32;mus&#32;be&#32;set&#32;asciiz</emphasis>
+47 &#32;&#32;&#32;&#32;&#32;new_checkbox&#32;-&gt;&#32;border_color&#32;&#32;&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_graph;
+48 &#32;&#32;&#32;&#32;&#32;new_checkbox-&gt;text_color&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_text;
+49 &#32;&#32;&#32;&#32;&#32;new_checkbox&#32;-&gt;&#32;text&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;label_text;
+50 &#32;&#32;&#32;&#32;&#32;new_checkbox&#32;-&gt;&#32;flags&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0x00000008;
+51 
+52 &#32;&#32;&#32;&#32;&#32;(*init_checkbox2)(new_checkbox);&#32;<emphasis role="comment">//&#32;count&#32;text&#32;width&#32;for&#32;mouse&#32;action&#32;and&#32;set&#32;flags</emphasis>
+53 
+54 &#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;new_checkbox;
+55 }
+56 
+57 }
+58 
+59 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_CHECKBOX_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

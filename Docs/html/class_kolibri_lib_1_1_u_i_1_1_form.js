@@ -1,6 +1,6 @@
 var class_kolibri_lib_1_1_u_i_1_1_form =
 [
-    [ "Form", "class_kolibri_lib_1_1_u_i_1_1_form.html#acbec1f0d5e15b5159c843ec8464b1cea", null ],
+    [ "Form", "class_kolibri_lib_1_1_u_i_1_1_form.html#a35ceb3881179aa5963102756c7226112", null ],
     [ "ButtonHandler", "class_kolibri_lib_1_1_u_i_1_1_form.html#a9a356e929e7a7b8ecf1a945f6c04789a", null ],
     [ "GetBackgroundColor", "class_kolibri_lib_1_1_u_i_1_1_form.html#a11b08f5f072c63b98e1347ae8fb93afc", null ],
     [ "GetBackgroundText", "class_kolibri_lib_1_1_u_i_1_1_form.html#a6b2a01c168ad5be5fbb5ab5de995b217", null ],

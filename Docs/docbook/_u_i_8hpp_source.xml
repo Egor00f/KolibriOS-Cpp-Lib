@@ -1,168 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__u_i_8hpp_source" xml:lang="ru">
 <title>UI.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/UI.hpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__UI_HPP__</emphasis>
-2 <emphasis role="preprocessor">#define&#32;__UI_HPP__</emphasis>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/UI.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__UI_H_INCLUDE__</emphasis>
+2 <emphasis role="preprocessor">#define&#32;__UI_H_INCLUDE__</emphasis>
 3 
-4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
-5 
-6 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
-7 
-8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
-10 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
-11 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/input/input.hpp&gt;</emphasis>
-12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/window/windowBase.hpp&gt;</emphasis>
-13 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/graphic/screen.hpp&gt;</emphasis>
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/UI.hpp&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/button.hpp&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/checkbox.hpp&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/form.hpp&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/frame.hpp&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/image.hpp&gt;</emphasis>
+11 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/menu.hpp&gt;</emphasis>
+12 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/text.hpp&gt;</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/UI/fontslist.hpp&gt;</emphasis>
 14 
-15 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-16 {
-17 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Элементы&#32;UI</emphasis>
-18 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
-19 &#32;&#32;&#32;&#32;{
-20 
-22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;DefaultMargin&#32;=&#32;4;
-23 
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>;
-32 
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>;
-35 
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;_MainColor;
-37 
-39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>;
-40 
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37">_angle</link>;
-43 
-45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6f6b023df1a1a5737819c6c50e72c5c3">_relative</link>;
-46 
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
-48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&amp;&#32;coord&#32;=&#32;{0,&#32;0},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&amp;&#32;size&#32;=&#32;{16,&#32;16},&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;MainColor&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_graph,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&amp;&#32;Margin&#32;=&#32;DefaultMargin,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;relative&#32;=&#32;<emphasis role="keyword">false</emphasis>);
-56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;Size&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a7411f3ff0db5a7453f0d23c5ead9ce9e">GetSize</link>()&#32;<emphasis role="keyword">const</emphasis>;
-60 
-63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3b3eb7370243281576ff27c489db913d">SetSize</link>(<emphasis role="keyword">const</emphasis>&#32;Size&amp;&#32;NewSize);
-64 
-67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2">GetMargin</link>()&#32;<emphasis role="keyword">const</emphasis>;
-68 
-71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a69995a90b6e010f467ab766edfa782d4">GetColor</link>()&#32;<emphasis role="keyword">const</emphasis>;
-72 
-75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a969186d6406bb6c11a024e5a91749336">SetColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&amp;&#32;NewColor);
-76 
-79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d">SetCoord</link>(<emphasis role="keyword">const</emphasis>&#32;Coord&amp;&#32;NewCoord);
-80 
-83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;Coord&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3f2f4016ffe8414c55cc13c665b0a3a8">GetCoord</link>()&#32;<emphasis role="keyword">const</emphasis>;
-84 
-87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">Rotate</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;NewAngle);
-88 
-91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c">GetRotate</link>()&#32;<emphasis role="keyword">const</emphasis>;
-92 
-95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1acb1303729c55ba615af2562823dd2c8e">Hover</link>()&#32;<emphasis role="keyword">const</emphasis>;
-96 
-100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link>&amp;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700">operator = </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link>&amp;&#32;Element);
-101 
-105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c">operator == </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link>&amp;&#32;Element)&#32;<emphasis role="keyword">const</emphasis>;
-106 
-110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86">operator != </link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">UIElement</link>&#32;&amp;Element)&#32;<emphasis role="keyword">const</emphasis>;
-111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
-112 
-113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//=============================================================================================================================================================</emphasis>
-114 
-119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawBar(<emphasis role="keyword">const</emphasis>&#32;Coord&amp;&#32;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;Size&amp;&#32;size,&#32;<emphasis role="keyword">const</emphasis>&#32;Colors::Color&amp;&#32;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a8ab28572c3f8b9cc876328be1ed3928a">OS::sys_color_table</link>.work_graph)
-120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_draw_bar(coord.x,&#32;coord.y,&#32;size.x,&#32;size.y,&#32;color.val);
-122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-123 
-124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a0e8520d7b6e47e5b307b00449702e737">KolibriLib::UI::UIElement::UIElement</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;coord,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;size,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;MainColor,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&amp;Margin,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;relative)
-125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-126 <emphasis role="preprocessor">#if&#32;DEBUG&#32;==&#32;true</emphasis>
-127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;UIElement:&quot;</emphasis>);
-128 <emphasis role="preprocessor">#endif</emphasis>
-129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_coord&#32;=&#32;(<link linkend="_struct_kolibri_lib_1_1point">Coord</link>){coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>,&#32;coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;(int)<link linkend="_namespace_kolibri_lib_1_1window_1a9b4d6e11048953c9f7a1e530f135fb20">window::GetSkinHeight</link>()};
-130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_size&#32;=&#32;size;
-131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_MainColor&#32;=&#32;MainColor;
-132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_Margin&#32;=&#32;Margin;
-133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_relative&#32;=&#32;relative;
-134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-135 
-136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a7411f3ff0db5a7453f0d23c5ead9ce9e">KolibriLib::UI::UIElement::GetSize</link>()<emphasis role="keyword">&#32;const</emphasis>
-137 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_size;
-139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-140 
-141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3b3eb7370243281576ff27c489db913d">KolibriLib::UI::UIElement::SetSize</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;&amp;NewSize)
-142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_size&#32;=&#32;NewSize;
-144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-145 
-146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a452197bd6d4f5aebf9c432a9a3a088e2">KolibriLib::UI::UIElement::GetMargin</link>()<emphasis role="keyword">&#32;const</emphasis>
-147 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_Margin;
-149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-150 
-151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a69995a90b6e010f467ab766edfa782d4">KolibriLib::UI::UIElement::GetColor</link>()<emphasis role="keyword">&#32;const</emphasis>
-152 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_MainColor;
-154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-155 
-156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a969186d6406bb6c11a024e5a91749336">KolibriLib::UI::UIElement::SetColor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link>&#32;&amp;NewColor)
-157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_MainColor&#32;=&#32;NewColor;
-159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-160 
-161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d">KolibriLib::UI::UIElement::SetCoord</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;NewCoord)
-162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_coord&#32;=&#32;NewCoord;
-164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-165 
-166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;&amp;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3f2f4016ffe8414c55cc13c665b0a3a8">KolibriLib::UI::UIElement::GetCoord</link>()<emphasis role="keyword">&#32;const</emphasis>
-167 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_coord;
-169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-170 
-171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a">KolibriLib::UI::UIElement::Rotate</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;NewAngle)
-172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_angle&#32;=&#32;NewAngle;
-174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-175 
-176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a91df2001fe6967e760d343e42f5d870c">KolibriLib::UI::UIElement::GetRotate</link>()<emphasis role="keyword">&#32;const</emphasis>
-177 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_angle;
-179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-180 
-181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1acb1303729c55ba615af2562823dd2c8e">KolibriLib::UI::UIElement::Hover</link>()<emphasis role="keyword">&#32;const</emphasis>
-182 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;Mouse&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1af5c71bb6951c9963f3e8f7366b343ab0">mouse::GetMousePositionInWindow</link>();
-184 
-185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;((_coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;&lt;&#32;Mouse.x)&#32;&amp;&amp;&#32;(_coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;&lt;&#32;Mouse.y)&#32;&amp;&amp;&#32;(Mouse.x&#32;&lt;&#32;(_coord.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;+&#32;_size.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>))&#32;&amp;&amp;&#32;(Mouse.y&#32;&lt;&#32;(_coord.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>&#32;+&#32;_size.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>)))&#32;&amp;&amp;&#32;(<link linkend="_namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d">ScreenPointAffiliation</link>(Mouse)&#32;==&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1a6e66cd0e046a044373f8fa5a6ee8ab77">Thread::GetThreadSlot</link>(<link linkend="_namespace_kolibri_lib_1_1_thread_1a620ca73995252a0f262597d84b5cc40f">Thread::GetThreadInfo</link>(-1).pid));
-186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-187 
-188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>&#32;&amp;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700">KolibriLib::UI::UIElement::operator=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>&#32;&amp;Element)
-189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_coord&#32;=&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>;
-191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_size&#32;=&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>;
-192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_MainColor&#32;=&#32;Element._MainColor;
-193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_Margin&#32;=&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link>;
-194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_angle&#32;=&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37">_angle</link>;
-195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-197 
-198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c">KolibriLib::UI::UIElement::operator==</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>&#32;&amp;Element)<emphasis role="keyword">&#32;const</emphasis>
-199 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(_coord&#32;==&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>)&#32;&amp;&amp;&#32;(_size&#32;==&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>)&#32;&amp;&amp;&#32;(_MainColor&#32;==&#32;Element._MainColor)&#32;&amp;&amp;&#32;(_angle&#32;==&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37">_angle</link>);
-201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-202 
-203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a47f5a94da324198946c6567244620f86">KolibriLib::UI::UIElement::operator!=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link>&#32;&amp;Element)<emphasis role="keyword">&#32;const</emphasis>
-204 <emphasis role="keyword">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>{
-205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(_coord&#32;!=&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a6a32e2b61ba20d655583fcfe6da82668">_coord</link>)&#32;||&#32;(_size&#32;!=&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link>)&#32;||&#32;(_MainColor&#32;!=&#32;Element._MainColor)&#32;||&#32;(_angle&#32;!=&#32;Element.<link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37">_angle</link>);
-206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-207 &#32;&#32;&#32;&#32;}
-208 }
-209 
-210 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__UI_H__</emphasis>
+15 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__UI_H__</emphasis>
 </programlisting></section>

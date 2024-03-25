@@ -1,10 +1,11 @@
 var namespace_kolibri_lib =
 [
     [ "Background", "namespace_kolibri_lib_1_1_background.html", [
-      [ "DrawLine", "namespace_kolibri_lib_1_1_background.html#a21ad9e230558c6f35cc7e5f859223149", null ],
-      [ "GetSize", "namespace_kolibri_lib_1_1_background.html#a77949e5ea5d23b4ecc4b652b072017f8", null ],
-      [ "ReadPoint", "namespace_kolibri_lib_1_1_background.html#afcb0fd60be834628d898f534c1628d5a", null ],
-      [ "RedrawBackground", "namespace_kolibri_lib_1_1_background.html#a49a4b0d2ddebbe46dffa031b6b43cd46", null ]
+      [ "DrawLine", "namespace_kolibri_lib_1_1_background.html#a023d840ad0755b7f682f973136a8ec3d", null ],
+      [ "GetSize", "namespace_kolibri_lib_1_1_background.html#a776c9ccf7667bba240cb767f51703736", null ],
+      [ "ReadPoint", "namespace_kolibri_lib_1_1_background.html#ae55e239046bde105467372aba4a7cd44", null ],
+      [ "RedrawBackground", "namespace_kolibri_lib_1_1_background.html#a49a4b0d2ddebbe46dffa031b6b43cd46", null ],
+      [ "RedrawBackground", "namespace_kolibri_lib_1_1_background.html#ab3fe2058b7a0a22640d91ee55f4a2ce0", null ]
     ] ],
     [ "childWindow", "namespace_kolibri_lib_1_1child_window.html", [
       [ "ErrorWindow", "namespace_kolibri_lib_1_1child_window.html#adfe18d89f20521dbdcc444cd3ea0fb23", null ],
@@ -16,8 +17,8 @@ var namespace_kolibri_lib =
       [ "CursorHandle", "namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05", null ],
       [ "CenterCursor", "namespace_kolibri_lib_1_1mouse.html#ad5181e5115b88147badd22a0c19cbe4f", null ],
       [ "GetMouseButtons", "namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024", null ],
-      [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#af5c71bb6951c9963f3e8f7366b343ab0", null ],
-      [ "GetMousePositionOnSreen", "namespace_kolibri_lib_1_1mouse.html#a1ed776d98798432ed1d634b3a18dd181", null ],
+      [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#ad979ee2e81616250903162815cc59c27", null ],
+      [ "GetMousePositionOnSreen", "namespace_kolibri_lib_1_1mouse.html#aeb27a641652f74bc30fba05cfe20ab3a", null ],
       [ "GetMouseWheels", "namespace_kolibri_lib_1_1mouse.html#a56edecd4a7aa3f7af9eadf9ea32e93c0", null ],
       [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#afa9e02a685efd7b6ab8f92b728ee1a2d", null ],
       [ "LoadCursor", "namespace_kolibri_lib_1_1mouse.html#ac82f2a9273155c4a3d12aa894c0edb5b", null ],
@@ -25,7 +26,8 @@ var namespace_kolibri_lib =
     ] ],
     [ "Network", "namespace_kolibri_lib_1_1_network.html", "namespace_kolibri_lib_1_1_network" ],
     [ "OS", "namespace_kolibri_lib_1_1_o_s.html", [
-      [ "Event", "namespace_kolibri_lib_1_1_o_s.html#abe4a29759805b4449591c8efb1d10d34", null ],
+      [ "Event", "namespace_kolibri_lib_1_1_o_s.html#a8355608f015819035015c89a718df9a0", null ],
+      [ "Time", "namespace_kolibri_lib_1_1_o_s.html#a3502f01e66973b6d7858209c512b989b", null ],
       [ "Events", "namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8c", [
         [ "None", "namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca660534ed047f5f24e82812b143dd9c61", null ],
         [ "Redraw", "namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca070cb13d251187bcb81b8c3fe13c8285", null ],
@@ -44,7 +46,7 @@ var namespace_kolibri_lib =
       ] ],
       [ "AllMem", "namespace_kolibri_lib_1_1_o_s.html#adf72c8ee9534feb5b730246a1157584b", null ],
       [ "CheckEvent", "namespace_kolibri_lib_1_1_o_s.html#a15b798e29dc85b78748a71bbf3c0cd2c", null ],
-      [ "Exec", "namespace_kolibri_lib_1_1_o_s.html#a9d371dfce7a7c6579a93776e25222f13", null ],
+      [ "Exec", "namespace_kolibri_lib_1_1_o_s.html#a29b415614ae9099bab7ee86da476245d", null ],
       [ "FreeMem", "namespace_kolibri_lib_1_1_o_s.html#a8a27c188f0baab254ac4f236de8259ae", null ],
       [ "GetLang", "namespace_kolibri_lib_1_1_o_s.html#afdb0884f42641be4566af7cae8cb92ce", null ],
       [ "GetSystemColors", "namespace_kolibri_lib_1_1_o_s.html#a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf", null ],
@@ -52,8 +54,7 @@ var namespace_kolibri_lib =
       [ "SpeakerStatus", "namespace_kolibri_lib_1_1_o_s.html#ad2be50a93561a32225553fcdc1b0607c", null ],
       [ "SpeakerSwitch", "namespace_kolibri_lib_1_1_o_s.html#a19a2cc0aa77148638f95a8c88076d6a3", null ],
       [ "WaitEvent", "namespace_kolibri_lib_1_1_o_s.html#a58e553f23fc726c3bf5755546f0d615d", null ],
-      [ "WaitEvent", "namespace_kolibri_lib_1_1_o_s.html#aaf8805f49fe63a5a5b5ca34d7858988a", null ],
-      [ "sys_color_table", "namespace_kolibri_lib_1_1_o_s.html#a8ab28572c3f8b9cc876328be1ed3928a", null ]
+      [ "WaitEvent", "namespace_kolibri_lib_1_1_o_s.html#a3cf4ee4b4401edccd8b6affa95509d90", null ]
     ] ],
     [ "Thread", "namespace_kolibri_lib_1_1_thread.html", [
       [ "PID", "namespace_kolibri_lib_1_1_thread.html#a1635692d8eb5eddc602109be07a50a45", null ],
@@ -66,9 +67,11 @@ var namespace_kolibri_lib =
     ] ],
     [ "window", "namespace_kolibri_lib_1_1window.html", "namespace_kolibri_lib_1_1window" ],
     [ "point", "struct_kolibri_lib_1_1point.html", "struct_kolibri_lib_1_1point" ],
-    [ "GetScreenSize", "namespace_kolibri_lib.html#aadbd1982a31f43cb6e1e70dafc4edb48", null ],
+    [ "Coord", "namespace_kolibri_lib.html#aa4d36453273d28042aad9d1065b058ff", null ],
+    [ "Size", "namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb", null ],
+    [ "GetScreenSize", "namespace_kolibri_lib.html#a1de80cbbe233f747756fcf3b5d8640f9", null ],
     [ "init", "namespace_kolibri_lib.html#a79cea121a31a0a2da904f088c3484802", null ],
-    [ "ScreenPointAffiliation", "namespace_kolibri_lib.html#acd69b39f323a74739838c3cfd62bec7d", null ],
+    [ "ScreenPointAffiliation", "namespace_kolibri_lib.html#a8718c0801595aa4d15d67b638e56839e", null ],
     [ "Wait", "namespace_kolibri_lib.html#a5538a86d3c38c7c88391e9360e01d023", null ],
     [ "Wait", "namespace_kolibri_lib.html#ab8a227d1c51a256a87817fdf1c37a24c", null ]
 ];

@@ -107,7 +107,7 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::GetSystemColors().work_text, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
+			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::GetSystemColors().work_graph, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 			~Window();
 
 			/// @brief Полная перересовка окна
@@ -264,6 +264,7 @@ namespace KolibriLib
 		template <class T>
 		int KolibriLib::window::Window::AddElement(const T &element)
 		{
+			_ksys_debug_puts("Add element\n");
 			Element a;
 
 			a.SetElement(element);
@@ -394,10 +395,6 @@ namespace KolibriLib
 			{
 				_style += WindowStyle::GradientDraw;
 			}
-			else
-			{
-				_style += WindowStyle::NormalDraw;
-			}
 
 			if (colors == Colors::DefaultColorTable) // Если небыла в аргументах таблица цветов
 			{										 // Используется системная
@@ -413,7 +410,7 @@ namespace KolibriLib
 				_style += WindowStyle::NoDrawWorkspace;
 			}
 
-			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.frame_area, _TitleColor, _style); // Отрисовать окно
+			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.work_area, _TitleColor, _style); // Отрисовать окно
 		}
 
 		KolibriLib::window::Window::~Window()
@@ -531,7 +528,7 @@ namespace KolibriLib
 		void Window::Render(const Coord &coord)
 		{
 			StartRedraw();
-			window::CreateWindow(coord, _size, _title, _colors.frame_area, _TitleColor, _style);
+			window::CreateWindow(coord, _size, _title, _colors.work_area, _TitleColor, _style);
 
 			for (const std::pair<int, Element> &n : _Elements)
 			{

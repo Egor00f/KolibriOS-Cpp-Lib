@@ -18,7 +18,6 @@ namespace KolibriLib
 		{
 			/// \brief Получить размер текста
 			/// \return текущая высота текста
-			/// @warning Функция действует только для текста выводимого через функцию @link DrawText(const std::string &text, const Coord &coord, const unsigned &size, const Colors::Color &color)
 			inline unsigned int GetTextSize()
 			{
 				unsigned Size;
@@ -31,7 +30,6 @@ namespace KolibriLib
 
 			/// \brief Изменить размер текста
 			/// \param newSize высота текста в px
-			/// @warning Функция действует только для текста выводимого через функцию @link DrawText(const std::string &text, const Coord &coord, const unsigned &size, const Colors::Color &color)
 			inline void SetTextSize(unsigned newSize)
 			{
 				asm_inline(
@@ -44,7 +42,7 @@ namespace KolibriLib
 			/// \param text текст
 			/// \param coord координаты
 			/// \param color цвет текста
-			/// @paragraph Для изменения высоты шрифта используйте @link SetTextSize(unsigned)
+			/// @note Для изменения высоты шрифта используйте @link SetTextSize(unsigned)
 			inline void DrawText(const std::string &text, const Coord &coord, const unsigned &size = 9, const Colors::Color &color = OS::GetSystemColors().work_text)
 			{
 				SetTextSize(size);
@@ -56,10 +54,12 @@ namespace KolibriLib
 			/// @param text 
 			/// @param font 
 			/// @param margin 
-			/// @param colorText 
-			/// @param BackgroundColor 
-			/// @return 
-			Images::img& DrawTextToImg(const std::string& text, 
+			/// @param colorText цвет текста
+			/// @param BackgroundColor цвет фона
+			/// @return указатель на Images::img содержащие
+			/// @note цвета фона и текста чувствительны к прозрачности
+			/// @note прозрачность привязывается к контреным координатам и размерам
+			Images::img* DrawTextToImg(const std::string& text, 
 									   const Fonts::Font &font, 
 									   unsigned margin, 
 									   const Colors::Color &colorText, 
@@ -72,16 +72,16 @@ namespace KolibriLib
 			/// @param margin Отступы границ фона от текста
 			/// @param colorText цвет текста
 			/// @param BackgroundColor цвет фона
-			/// @paragraph Функция выводить используя библиотеку RasterWorks
+			/// @note Функция выводить используя библиотеку RasterWorks
 			inline void DrawText(const std::string &text,
 						  const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont,
 						  unsigned margin = UI::DefaultMargin,
 						  const Colors::Color &colorText = OS::GetSystemColors().work_text,
 						  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)
 			{
-				text::DrawTextToImg(text, font, margin, colorText, BackgroundColor).Render(coord, 
-																						   {(margin * 2) + font.size.x, 
-																						   (margin * 2) + (font.size.y * text.length())});
+				Images::img *buff = text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
+				buff->Render(coord, Size((margin * 2) + font.size.x, (margin * 2) + (font.size.y * text.length())));
+				delete buff;
 			}
 			
 		}

@@ -13,7 +13,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 
 .in +1c
 .ti -1c
-.RI "\fBWindow\fP (const std::string &Title='Window', const \fBUI::Size\fP &size=\fBDefaultWindowSize\fP, const \fBColors::ColorsTable\fP &colors=\fBColors::DefaultColorTable\fP, const \fBColors::Color\fP &TitleColor=OS::sys_color_table\&.work_text, bool Resize=false, bool RealtimeReadraw=false, bool Gradient=false, unsigned Transparency=0, const unsigned &Margin=0)"
+.RI "\fBWindow\fP (const std::string &Title='Window', const \fBSize\fP &size=\fBDefaultWindowSize\fP, const \fBColors::ColorsTable\fP &colors=\fBColors::DefaultColorTable\fP, const \fBColors::Color\fP &TitleColor=\fBOS::GetSystemColors\fP()\&.work_text, bool Resize=false, bool RealtimeReadraw=false, bool Gradient=false, unsigned Transparency=0, const unsigned &Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -21,7 +21,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Полная перересовка окна "
 .ti -1c
-.RI "void \fBRender\fP (const \fBUI::Coord\fP &coord=\fBDefaultWindowCoord\fP)"
+.RI "void \fBRender\fP (const \fBCoord\fP &coord=\fBDefaultWindowCoord\fP)"
 .br
 .RI "Отрисовать окно "
 .ti -1c
@@ -29,7 +29,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Получить рамер отступов в этом окне "
 .ti -1c
-.RI "const \fBUI::Size\fP & \fBGetSize\fP () const"
+.RI "const \fBSize\fP & \fBGetSize\fP () const"
 .br
 .RI "Получить размер окна "
 .ti -1c
@@ -45,11 +45,11 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Закончить перересовку окна "
 .ti -1c
-.RI "const \fBUI::Coord\fP & \fBGetCoord\fP () const"
+.RI "\fBCoord\fP \fBGetCoord\fP () const"
 .br
 .RI "Получить координаты окна "
 .ti -1c
-.RI "void \fBChangeWindow\fP (const \fBUI::Coord\fP &coord, const \fBUI::Size\fP &size)"
+.RI "void \fBChangeWindow\fP (const \fBCoord\fP &coord, const \fBSize\fP &size)"
 .br
 .RI "Изменить окно "
 .ti -1c
@@ -57,7 +57,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .br
 .RI "Изменить заголовок окна "
 .ti -1c
-.RI "const \fBUI::Size\fP & \fBGetWindowSize\fP () const"
+.RI "\fBSize\fP \fBGetWindowSize\fP () const"
 .br
 .RI "Получить размер окна "
 .ti -1c
@@ -83,7 +83,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .ti -1c
 .RI "template<class T > void \fBSetElement\fP (int i, const T &element)"
 .br
-.RI "Изменить элемент tparam T\&. "
+.RI "Изменить элемент "
 .ti -1c
 .RI "template<class T > const T & \fBGetElement\fP (int i) const"
 .br
@@ -102,11 +102,13 @@ KolibriLib::window::Window \- Класс для работы с окном
 
 
 .SS "простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор"
-.SS "изменения высоты шрифта используйте \fBSetTextSize(unsigned)\fP"
+.SS "тех кто знает: 
+.br
+"
 
 .SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::window::Window::Window (const std::string & Title = \fR'Window'\fP, const \fBUI::Size\fP & size = \fR\fBDefaultWindowSize\fP\fP, const \fBColors::ColorsTable\fP & colors = \fR\fBColors::DefaultColorTable\fP\fP, const \fBColors::Color\fP & TitleColor = \fROS::sys_color_table\&.work_text\fP, bool Resize = \fRfalse\fP, bool RealtimeReadraw = \fRfalse\fP, bool Gradient = \fRfalse\fP, unsigned Transparency = \fR0\fP, const unsigned & Margin = \fR0\fP)"
+.SS "KolibriLib::window::Window::Window (const std::string & Title = \fR'Window'\fP, const \fBSize\fP & size = \fR\fBDefaultWindowSize\fP\fP, const \fBColors::ColorsTable\fP & colors = \fR\fBColors::DefaultColorTable\fP\fP, const \fBColors::Color\fP & TitleColor = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, bool Resize = \fRfalse\fP, bool RealtimeReadraw = \fRfalse\fP, bool Gradient = \fRfalse\fP, unsigned Transparency = \fR0\fP, const unsigned & Margin = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -149,7 +151,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "void KolibriLib::window::Window::ChangeWindow (const \fBUI::Coord\fP & coord, const \fBUI::Size\fP & size)"
+.SS "void KolibriLib::window::Window::ChangeWindow (const \fBCoord\fP & coord, const \fBSize\fP & size)"
 
 .PP
 Изменить окно 
@@ -179,7 +181,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 Закончить перересовку окна 
 .SS "после должна быть вызвана функция #EndRedraw()"
 
-.SS "const \fBUI::Coord\fP & KolibriLib::window::Window::GetCoord () const"
+.SS "\fBCoord\fP KolibriLib::window::Window::GetCoord () const"
 
 .PP
 Получить координаты окна 
@@ -237,7 +239,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "const \fBUI::Size\fP & KolibriLib::window::Window::GetSize () const"
+.SS "const \fBSize\fP & KolibriLib::window::Window::GetSize () const"
 
 .PP
 Получить размер окна 
@@ -248,7 +250,7 @@ KolibriLib::window::Window \- Класс для работы с окном
 .RE
 .PP
 
-.SS "const \fBUI::Size\fP & KolibriLib::window::Window::GetWindowSize () const"
+.SS "\fBSize\fP KolibriLib::window::Window::GetWindowSize () const"
 
 .PP
 Получить размер окна 
@@ -275,7 +277,12 @@ KolibriLib::window::Window \- Класс для работы с окном
 .SS "template<class T > void KolibriLib::window::Window::SetElement (int i, const T & element)"
 
 .PP
-Изменить элемент tparam T\&. 
+Изменить элемент 
+.PP
+\fBПараметры шаблона\fP
+.RS 4
+\fIT\fP 
+.RE
 .PP
 \fBАргументы\fP
 .RS 4

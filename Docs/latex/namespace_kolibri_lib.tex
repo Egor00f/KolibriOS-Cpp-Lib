@@ -31,12 +31,21 @@ namespace \mbox{\hyperlink{namespace_kolibri_lib_1_1window}{window}}
 \item 
 struct \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}
 \begin{DoxyCompactList}\small\item\em Просто точка \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Определения типов}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}\label{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb} 
+typedef \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} {\bfseries Size}
+\begin{DoxyCompactList}\small\item\em Размер \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}\label{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff} 
+typedef \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}} {\bfseries Coord}
+\begin{DoxyCompactList}\small\item\em Координаты \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} \mbox{\hyperlink{namespace_kolibri_lib_aadbd1982a31f43cb6e1e70dafc4edb48}{Get\+Screen\+Size}} ()
+\mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \mbox{\hyperlink{namespace_kolibri_lib_a1de80cbbe233f747756fcf3b5d8640f9}{Get\+Screen\+Size}} ()
 \begin{DoxyCompactList}\small\item\em Получить разрешение экрана \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} \mbox{\hyperlink{namespace_kolibri_lib_acd69b39f323a74739838c3cfd62bec7d}{Screen\+Point\+Affiliation}} (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}} POINT)
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} \mbox{\hyperlink{namespace_kolibri_lib_a8718c0801595aa4d15d67b638e56839e}{Screen\+Point\+Affiliation}} (\mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} POINT)
 \begin{DoxyCompactList}\small\item\em Получить принадлежность точки \end{DoxyCompactList}\item 
 \Hypertarget{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}\label{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802} 
 void {\bfseries init} ()
@@ -52,13 +61,10 @@ void \mbox{\hyperlink{namespace_kolibri_lib_a5538a86d3c38c7c88391e9360e01d023}{W
 const std\+::string {\bfseries Configuration\+Dir} = "{}/kolibrios/etc/"{}
 \item 
 \Hypertarget{namespace_kolibri_lib_ae42aab2f9795e3359fb723ff5820250c}\label{namespace_kolibri_lib_ae42aab2f9795e3359fb723ff5820250c} 
-const std\+::string {\bfseries Img\+Dir} = Configuration\+Dir + "{}images/"{}
+const std\+::string {\bfseries Img\+Dir} = Configuration\+Dir + "{}Kolibri\+OS-\/Cpp-\/Lib/"{}
 \item 
 \Hypertarget{namespace_kolibri_lib_ab1099de2131804416562ef820927ca2b}\label{namespace_kolibri_lib_ab1099de2131804416562ef820927ca2b} 
 const std\+::string {\bfseries Default\+Image} = Img\+Dir + "{}default.\+png"{}
-\item 
-\Hypertarget{namespace_kolibri_lib_aa47d5ef524ec6197866199e1522047c6}\label{namespace_kolibri_lib_aa47d5ef524ec6197866199e1522047c6} 
-const std\+::string {\bfseries Cursors\+Dir} = Configuration\+Dir + "{}cursors/"{}
 \end{DoxyCompactItemize}
 
 
@@ -71,11 +77,11 @@ Egor00f
 
 
 \doxysubsection{Функции}
-\Hypertarget{namespace_kolibri_lib_aadbd1982a31f43cb6e1e70dafc4edb48}\label{namespace_kolibri_lib_aadbd1982a31f43cb6e1e70dafc4edb48} 
+\Hypertarget{namespace_kolibri_lib_a1de80cbbe233f747756fcf3b5d8640f9}\label{namespace_kolibri_lib_a1de80cbbe233f747756fcf3b5d8640f9} 
 \index{KolibriLib@{KolibriLib}!GetScreenSize@{GetScreenSize}}
 \index{GetScreenSize@{GetScreenSize}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{GetScreenSize()}{GetScreenSize()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Size}} Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} Kolibri\+Lib\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -84,11 +90,11 @@ Egor00f
 \begin{DoxyReturn}{Возвращает}
 размер экрана 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_acd69b39f323a74739838c3cfd62bec7d}\label{namespace_kolibri_lib_acd69b39f323a74739838c3cfd62bec7d} 
+\Hypertarget{namespace_kolibri_lib_a8718c0801595aa4d15d67b638e56839e}\label{namespace_kolibri_lib_a8718c0801595aa4d15d67b638e56839e} 
 \index{KolibriLib@{KolibriLib}!ScreenPointAffiliation@{ScreenPointAffiliation}}
 \index{ScreenPointAffiliation@{ScreenPointAffiliation}!KolibriLib@{KolibriLib}}
 \doxysubsubsection{\texorpdfstring{ScreenPointAffiliation()}{ScreenPointAffiliation()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} Kolibri\+Lib\+::\+Screen\+Point\+Affiliation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI\+::\+Coord}}}]{POINT }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} Kolibri\+Lib\+::\+Screen\+Point\+Affiliation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}}}]{POINT }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -112,7 +118,7 @@ Egor00f
 
 Подождать, минимальное кол-\/во времени 
 
-\hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_Функция}{}\doxyparagraph{\texorpdfstring{устанавливает курсор в середину экрана}{устанавливает курсор в середину экрана}}\label{namespace_kolibri_lib_1_1_u_i_1_1text_Функция}
+\hypertarget{namespace_kolibri_lib_1_1_o_s_Функция}{}\doxyparagraph{\texorpdfstring{изменяет переменную \doxylink{}{sys\+\_\+color\+\_\+table}}{изменяет переменную \doxylink{}{sys\+\_\+color\+\_\+table}}}\label{namespace_kolibri_lib_1_1_o_s_Функция}
 \Hypertarget{namespace_kolibri_lib_ab8a227d1c51a256a87817fdf1c37a24c}\label{namespace_kolibri_lib_ab8a227d1c51a256a87817fdf1c37a24c} 
 \index{KolibriLib@{KolibriLib}!Wait@{Wait}}
 \index{Wait@{Wait}!KolibriLib@{KolibriLib}}

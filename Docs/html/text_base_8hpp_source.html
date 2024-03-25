@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KolibriLib: Исходный файл C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KolibriLib
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('text_base_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">textBase.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __TEXTBASE_H__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __TEXTBASE_H__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;kolibriLib/types.hpp&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;kolibriLib/color.hpp&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;kolibriLib/graphic/graphic.hpp&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;kolibriLib/window/windowBase.hpp&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;kolibriLib/UI/image.hpp&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;kolibri_rasterworks.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;fonts.hpp&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;kolibriLib/UI/fontslist.hpp&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_kolibri_lib.html">KolibriLib</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">namespace </span>UI</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">namespace </span>text</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        {</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a88c7481d1f3297280474e2d9b5959c64">   21</a></span>            <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a88c7481d1f3297280474e2d9b5959c64">GetTextSize</a>()</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                <span class="keywordtype">unsigned</span> <a class="code hl_typedef" href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">Size</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                asm_inline(</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                    <span class="stringliteral">&quot;int $0x40&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                    : <span class="stringliteral">&quot;=c&quot;</span>(<a class="code hl_typedef" href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">Size</a>)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    : <span class="stringliteral">&quot;a&quot;</span>(48), <span class="stringliteral">&quot;b&quot;</span>(11));</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">Size</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            }</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a873ed429723726e235de288ca45b47c0">   33</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a873ed429723726e235de288ca45b47c0">SetTextSize</a>(<span class="keywordtype">unsigned</span> newSize)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                asm_inline(</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    <span class="stringliteral">&quot;int $0x40&quot;</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                    ::<span class="stringliteral">&quot;a&quot;</span>(48), <span class="stringliteral">&quot;b&quot;</span>(12), <span class="stringliteral">&quot;c&quot;</span>(newSize)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                );</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            }</div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a08d69981e33685971096555be813459f">   46</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a08d69981e33685971096555be813459f">DrawText</a>(<span class="keyword">const</span> std::string &amp;text, <span class="keyword">const</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">Coord</a> &amp;coord, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp;size = 9, <span class="keyword">const</span> <a class="code hl_union" href="union_kolibri_lib_1_1_colors_1_1_color.html">Colors::Color</a> &amp;color = <a class="code hl_function" href="namespace_kolibri_lib_1_1_o_s.html#a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</a>().work_text)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <a class="code hl_function" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a873ed429723726e235de288ca45b47c0">SetTextSize</a>(size);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                _ksys_draw_text(text.c_str(), coord.<a class="code hl_variable" href="struct_kolibri_lib_1_1point.html#aba63dd75453b02a799b9cd6ae5773cfe">x</a>, coord.<a class="code hl_variable" href="struct_kolibri_lib_1_1point.html#a92d76b1b7cb1eabab7bc3916b6341a24">y</a>, text.length(), color.val);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            }</div>
+</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a9596497a1ac3a5b6f146e6a9ba76eb91">   62</a></span>            <a class="code hl_class" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html">Images::img</a>* <a class="code hl_function" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a9596497a1ac3a5b6f146e6a9ba76eb91">DrawTextToImg</a>(<span class="keyword">const</span> std::string&amp; text, </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                       <span class="keyword">const</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font.html">Fonts::Font</a> &amp;font, </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                       <span class="keywordtype">unsigned</span> margin, </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                       <span class="keyword">const</span> <a class="code hl_union" href="union_kolibri_lib_1_1_colors_1_1_color.html">Colors::Color</a> &amp;colorText, </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                       <span class="keyword">const</span> <a class="code hl_union" href="union_kolibri_lib_1_1_colors_1_1_color.html">Colors::Color</a> &amp;BackgroundColor);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#af628e6f4afcf276e09900d5aee9d25a2">   76</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a08d69981e33685971096555be813459f">DrawText</a>(<span class="keyword">const</span> std::string &amp;text,</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                          <span class="keyword">const</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1point.html">Coord</a> &amp;coord, <span class="keyword">const</span> <a class="code hl_struct" href="struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font.html">Fonts::Font</a> &amp;font = <a class="code hl_variable" href="namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts.html#abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</a>,</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                          <span class="keywordtype">unsigned</span> margin = UI::DefaultMargin,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                          <span class="keyword">const</span> <a class="code hl_union" href="union_kolibri_lib_1_1_colors_1_1_color.html">Colors::Color</a> &amp;colorText = <a class="code hl_function" href="namespace_kolibri_lib_1_1_o_s.html#a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</a>().work_text,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                          <span class="keyword">const</span> <a class="code hl_union" href="union_kolibri_lib_1_1_colors_1_1_color.html">Colors::Color</a> &amp;BackgroundColor = <a class="code hl_function" href="namespace_kolibri_lib_1_1_o_s.html#a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</a>().work_area)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                <a class="code hl_class" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html">Images::img</a> *buff = <a class="code hl_function" href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a9596497a1ac3a5b6f146e6a9ba76eb91">text::DrawTextToImg</a>(text, font, margin, colorText, BackgroundColor);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                buff-&gt;<a class="code hl_function" href="class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#ab5fb3a1da809e7754d51a89ff4834f42">Render</a>(coord, <a class="code hl_typedef" href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">Size</a>((margin * 2) + font.size.x, (margin * 2) + (font.size.y * text.length())));</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keyword">delete</span> buff;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            }</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#endif </span><span class="comment">// __TEXTBASE_H__</span></div>
+<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1img_html"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html">KolibriLib::UI::Images::img</a></div><div class="ttdoc">Изображение</div><div class="ttdef"><b>Definition</b> img.hpp:27</div></div>
+<div class="ttc" id="aclass_kolibri_lib_1_1_u_i_1_1_images_1_1img_html_ab5fb3a1da809e7754d51a89ff4834f42"><div class="ttname"><a href="class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#ab5fb3a1da809e7754d51a89ff4834f42">KolibriLib::UI::Images::img::Render</a></div><div class="ttdeci">virtual void Render(const Coord &amp;coord, const Size &amp;size={-1, -1}) const</div><div class="ttdoc">Отрисовать изображение</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_o_s_html_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf"><div class="ttname"><a href="namespace_kolibri_lib_1_1_o_s.html#a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</a></div><div class="ttdeci">Colors::ColorsTable GetSystemColors()</div><div class="ttdoc">Получить системные цвета</div><div class="ttdef"><b>Definition</b> os.hpp:18</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_html_abab58341d8cf9048d474cf45a2e00723"><div class="ttname"><a href="namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts.html#abab58341d8cf9048d474cf45a2e00723">KolibriLib::UI::text::Fonts::DefaultFont</a></div><div class="ttdeci">const Font DefaultFont(Arial, DefaultFontSize)</div><div class="ttdoc">Шрифт по умолчанию</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_u_i_1_1text_html_a08d69981e33685971096555be813459f"><div class="ttname"><a href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a08d69981e33685971096555be813459f">KolibriLib::UI::text::DrawText</a></div><div class="ttdeci">void DrawText(const std::string &amp;text, const Coord &amp;coord, const unsigned &amp;size=9, const Colors::Color &amp;color=OS::GetSystemColors().work_text)</div><div class="ttdoc">Просто вывести текст</div><div class="ttdef"><b>Definition</b> textBase.hpp:46</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_u_i_1_1text_html_a873ed429723726e235de288ca45b47c0"><div class="ttname"><a href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a873ed429723726e235de288ca45b47c0">KolibriLib::UI::text::SetTextSize</a></div><div class="ttdeci">void SetTextSize(unsigned newSize)</div><div class="ttdoc">Изменить размер текста</div><div class="ttdef"><b>Definition</b> textBase.hpp:33</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_u_i_1_1text_html_a88c7481d1f3297280474e2d9b5959c64"><div class="ttname"><a href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a88c7481d1f3297280474e2d9b5959c64">KolibriLib::UI::text::GetTextSize</a></div><div class="ttdeci">unsigned int GetTextSize()</div><div class="ttdoc">Получить размер текста</div><div class="ttdef"><b>Definition</b> textBase.hpp:21</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_1_1_u_i_1_1text_html_a9596497a1ac3a5b6f146e6a9ba76eb91"><div class="ttname"><a href="namespace_kolibri_lib_1_1_u_i_1_1text.html#a9596497a1ac3a5b6f146e6a9ba76eb91">KolibriLib::UI::text::DrawTextToImg</a></div><div class="ttdeci">Images::img * DrawTextToImg(const std::string &amp;text, const Fonts::Font &amp;font, unsigned margin, const Colors::Color &amp;colorText, const Colors::Color &amp;BackgroundColor)</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_html"><div class="ttname"><a href="namespace_kolibri_lib.html">KolibriLib</a></div><div class="ttdoc">Основное пространство имён</div><div class="ttdef"><b>Definition</b> childWindow.hpp:18</div></div>
+<div class="ttc" id="anamespace_kolibri_lib_html_ab59db84b9e43745d40d7b9ff8f06f2fb"><div class="ttname"><a href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">KolibriLib::Size</a></div><div class="ttdeci">point Size</div><div class="ttdoc">Размер</div><div class="ttdef"><b>Definition</b> types.hpp:69</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_html"><div class="ttname"><a href="struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font.html">KolibriLib::UI::text::Fonts::Font</a></div><div class="ttdoc">Шрифт</div><div class="ttdef"><b>Definition</b> fonts.hpp:47</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1point_html"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html">KolibriLib::point</a></div><div class="ttdoc">Просто точка</div><div class="ttdef"><b>Definition</b> types.hpp:18</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1point_html_a92d76b1b7cb1eabab7bc3916b6341a24"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html#a92d76b1b7cb1eabab7bc3916b6341a24">KolibriLib::point::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">координата по оси Y, или высота</div><div class="ttdef"><b>Definition</b> types.hpp:22</div></div>
+<div class="ttc" id="astruct_kolibri_lib_1_1point_html_aba63dd75453b02a799b9cd6ae5773cfe"><div class="ttname"><a href="struct_kolibri_lib_1_1point.html#aba63dd75453b02a799b9cd6ae5773cfe">KolibriLib::point::x</a></div><div class="ttdeci">int x</div><div class="ttdoc">координата по оси X, или ширина</div><div class="ttdef"><b>Definition</b> types.hpp:20</div></div>
+<div class="ttc" id="aunion_kolibri_lib_1_1_colors_1_1_color_html"><div class="ttname"><a href="union_kolibri_lib_1_1_colors_1_1_color.html">KolibriLib::Colors::Color</a></div><div class="ttdoc">Цвет</div><div class="ttdef"><b>Definition</b> color.hpp:22</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_0d7e87543bd95304d787a039001ce59d.html">kolibriLib</a></li><li class="navelem"><a class="el" href="dir_97459af66aa2d3620992aca5390a439c.html">UI</a></li><li class="navelem"><b>textBase.hpp</b></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

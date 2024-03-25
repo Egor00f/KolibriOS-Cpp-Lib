@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__optionbox_8h_source" xml:lang="ru">
+<title>kolibri_optionbox.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_optionbox.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_OPTIONBOX_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_OPTIONBOX_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;kos32sys.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+6 
+7 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>__attribute__&#32;((__packed__))&#32;option_box_t&#32;{
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>option_box_t&#32;**selected;
+9 &#32;&#32;&#32;&#32;uint16_t&#32;posx;
+10 &#32;&#32;&#32;&#32;uint16_t&#32;posy;
+11 &#32;&#32;&#32;&#32;uint32_t&#32;text_margin;&#32;<emphasis role="comment">//&#32;=&#32;4&#32;����������&#32;��&#32;��������������&#32;���&#32;�����&#32;��&#32;�������</emphasis>
+12 &#32;&#32;&#32;&#32;uint32_t&#32;size;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;12&#32;������&#32;��������&#32;���&#32;�����</emphasis>
+13 &#32;&#32;&#32;&#32;color_t&#32;color;
+14 &#32;&#32;&#32;&#32;color_t&#32;border_color;&#32;<emphasis role="comment">//&#32;individual&#32;border</emphasis>
+15 &#32;&#32;&#32;&#32;color_t&#32;text_color;
+16 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text;
+17 &#32;&#32;&#32;&#32;uint32_t&#32;text_len;
+18 &#32;&#32;&#32;&#32;uint32_t&#32;flags;
+19 }option_box;
+20 
+21 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*option_box_draw)(option_box&#32;**)&#32;__attribute__((__stdcall__));
+22 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*option_box_mouse)(option_box&#32;**)__attribute__((__stdcall__));
+23 
+24 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;option_box*&#32;gui_optionbox(option_box*&#32;ob,&#32;uint32_t&#32;x_y,&#32;<emphasis role="keywordtype">char</emphasis>*&#32;text,&#32;option_box**select)
+25 {
+26 &#32;&#32;&#32;&#32;ob-&gt;selected&#32;=&#32;select;
+27 &#32;&#32;&#32;&#32;ob-&gt;posx&#32;=&#32;x_y&#32;&gt;&gt;&#32;16;
+28 &#32;&#32;&#32;&#32;ob-&gt;posy&#32;=&#32;x_y&#32;&amp;&#32;0xFFFF;
+29 &#32;&#32;&#32;&#32;ob-&gt;text_margin&#32;=&#32;4;
+30 &#32;&#32;&#32;&#32;ob-&gt;size&#32;=&#32;12;
+31 &#32;&#32;&#32;&#32;ob-&gt;color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button_text;
+32 &#32;&#32;&#32;&#32;ob-&gt;border_color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_button;
+33 &#32;&#32;&#32;&#32;ob-&gt;text_color&#32;=&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_text&#32;|&#32;0x80000000;
+34 &#32;&#32;&#32;&#32;ob-&gt;text&#32;=&#32;text;
+35 &#32;&#32;&#32;&#32;ob-&gt;text_len&#32;=&#32;strlen(text);
+36 &#32;&#32;&#32;&#32;ob-&gt;flags&#32;=&#32;0;&#32;<emphasis role="comment">//&#32;not&#32;used</emphasis>
+37 
+38 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ob;
+39 }
+40 
+41 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;option_box*&#32;gui_new_optionbox(uint32_t&#32;x_y,&#32;<emphasis role="keywordtype">char</emphasis>*&#32;text,&#32;option_box**select)
+42 {
+43 &#32;&#32;&#32;&#32;option_box*&#32;ob&#32;=&#32;(option_box*)&#32;malloc(<emphasis role="keyword">sizeof</emphasis>(option_box));
+44 
+45 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;gui_optionbox(ob,&#32;x_y,&#32;text,&#32;select);
+46 }
+47 
+48 <emphasis role="preprocessor">#define&#32;gui_optionbox_def(a,b,c,d)&#32;gui_optionbox(a,b,c,d)</emphasis>
+49 
+50 <emphasis role="preprocessor">#define&#32;gui_new_optionbox_def(a,b,c)&#32;gui_new_optionbox(a,b,c)</emphasis>
+51 
+52 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;gui_add_optiongroup(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*wnd,&#32;option_box**&#32;option_group)
+53 {
+54 &#32;&#32;&#32;&#32;kolibri_window_add_element(wnd,&#32;KOLIBRI_OPTIONGROUP,&#32;option_group);
+55 }
+56 
+57 
+58 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_OPTIONBOX_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

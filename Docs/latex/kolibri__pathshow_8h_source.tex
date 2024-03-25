@@ -1,0 +1,59 @@
+\doxysection{kolibri\+\_\+pathshow.\+h}
+\hypertarget{kolibri__pathshow_8h_source}{}\label{kolibri__pathshow_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_pathshow.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_pathshow.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_PATHSHOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KOLIBRI\_PATHSHOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <kos32sys.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_attribute\_\_\ ((\_\_packed\_\_))\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ uint32\_t\ type;}
+\DoxyCodeLine{00008\ \ \ \ \ uint32\_t\ x\_y;}
+\DoxyCodeLine{00009\ \ \ \ \ uint16\_t\ font\_size\_x;\ \ \textcolor{comment}{//\ 6\ -\/\ for\ font\ 0,\ 8\ -\/\ for\ font\ 1}}
+\DoxyCodeLine{00010\ \ \ \ \ uint16\_t\ area\_size\_x;}
+\DoxyCodeLine{00011\ \ \ \ \ uint32\_t\ font\_number;\ \ \textcolor{comment}{//\ 0\ -\/\ monospace,\ 1\ -\/\ variable,\ as\ fn4\ (2bit\ only\ 0-\/3)}}
+\DoxyCodeLine{00012\ \ \ \ \ uint32\_t\ background\_flag;\ \textcolor{comment}{//\ as\ fn4,\ if\ 0,\ bk\_color\ unneeded}}
+\DoxyCodeLine{00013\ \ \ \ \ color\_t\ \ font\_color;\ \ \ \ \ \ \textcolor{comment}{//\ as\ fn4}}
+\DoxyCodeLine{00014\ \ \ \ \ color\_t\ \ background\_color;\ \textcolor{comment}{//\ as\ fn4}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{char}*\ text\_pointer;\ \ \ \ \ \ \ \textcolor{comment}{//\ 4096\ ?}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{char}*\ work\_area\_pointer;\ \ \textcolor{comment}{//\ 4096\ ?}}
+\DoxyCodeLine{00017\ \ \ \ \ uint32\_t\ temp\_text\_length;}
+\DoxyCodeLine{00018\ \}\ pathview;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ pathview*\ kolibri\_pathview(pathview*\ p,\ uint32\_t\ x\_y,\ uint32\_t\ width,\ uint32\_t\ font\_number,\ uint32\_t\ is\_bkgr,\ \textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{char}*\ temp\_buf,\ color\_t\ font,\ color\_t\ \ bkgr)}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ p-\/>type\ =\ p-\/>temp\_text\_length\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ \ p-\/>x\_y\ =\ x\_y;}
+\DoxyCodeLine{00026\ \ \ \ \ p-\/>font\_size\_x\ =\ font\_number\ ==\ 0\ ?\ 6\ :\ 8;\ \ \textcolor{comment}{//\ need\ correction\ for\ bigger\ fonts}}
+\DoxyCodeLine{00027\ \ \ \ \ p-\/>area\_size\_x\ =\ width;}
+\DoxyCodeLine{00028\ \ \ \ \ p-\/>font\_number\ =\ font\_number;}
+\DoxyCodeLine{00029\ \ \ \ \ p-\/>background\_flag\ =\ is\_bkgr;}
+\DoxyCodeLine{00030\ \ \ \ \ p-\/>text\_pointer\ =\ text;}
+\DoxyCodeLine{00031\ \ \ \ \ p-\/>work\_area\_pointer\ =\ temp\_buf;}
+\DoxyCodeLine{00032\ \ \ \ \ p-\/>font\_color\ =\ font;}
+\DoxyCodeLine{00033\ \ \ \ \ p-\/>background\_color\ =\ bkgr;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ pathview*\ kolibri\_new\_pathview(pathview*\ p,\ uint32\_t\ x\_y,\ uint32\_t\ width,\ uint32\_t\ font\_number,\ uint32\_t\ is\_bkgr,\ \textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{char}*\ temp\_buf,\ color\_t\ font,\ color\_t\ \ bkgr)}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ pathview\ *new\_pv\ =\ (pathview\ *)malloc(\textcolor{keyword}{sizeof}(pathview));}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ kolibri\_pathview(new\_pv,\ x\_y,\ width,\ font\_number,\ is\_bkgr,\ text,\ temp\_buf,\ font,\ bkgr);}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ gui\_add\_pathview(\mbox{\hyperlink{structkolibri__window}{kolibri\_window}}\ *wnd,\ pathview*\ pv)}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ kolibri\_window\_add\_element(wnd,\ KOLIBRI\_PATHSHOW,\ pv);}
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{extern}\ void\ (*path\_show\_prepare)(pathview\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ void\ (*path\_show\_draw)(pathview\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_PATHSHOW\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,944 @@
+\doxysection{kos32sys.\+h}
+\hypertarget{kos32sys_8h_source}{}\label{kos32sys_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kos32sys.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kos32sys.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_KOS\_32\_SYS\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_KOS\_32\_SYS\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ file\ header\ taken\ from\ newlib}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ added\ many\ sys\ functions,\ compatible\ with\ tcc}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ with\ gcc\ USE\ gcc\ -\/mno-\/ms-\/bitfields!!!}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \#include\ <newlib.h>}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \#include\ <stdint.h>}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \#include\ <sys/kos\_io.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ uint32\_t;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ int32\_t;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ uint8\_t;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ uint16\_t;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ uint64\_t;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ \#ifdef\ CONFIG\_DEBUF}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ \ \ \#define\ DBG(format,...)\ printf(format,\#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ \#else}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ \ \ \#define\ DBG(format,...)}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ \#endif}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ TYPE\_3\_BORDER\_WIDTH\ 5}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ WIN\_STATE\_MINIMIZED\ 0x02}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ WIN\_STATE\_ROLLED\ 0x04}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ POS\_SCREEN\ 0}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ POS\_WINDOW\ 1}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ IPC\_NOBUFFER\ 1}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ IPC\_LOCKED\ 2}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ IPC\_OVERFLOW\ 3}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ IPC\_NOPID\ 4}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ SHM\_OPEN\ 0x00}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ SHM\_OPEN\_ALWAYS\ 0x04}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ SHM\_CREATE\ 0x08}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ SHM\_READ\ 0x00}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ SHM\_WRITE\ 0x01}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ color\_t;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\_\_attribute\_\_((packed))\ pos\_t}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{short}\ x;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{short}\ y;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00061\ \ \ \ \ \}\ pos\_t;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\_\_attribute\_\_((packed))\ oskey\_t}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ state;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ code;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ ctrl\_key;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00072\ \ \ \ \ \}\ oskey\_t;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ handle;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ io\_code;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *input;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inp\_size;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *output;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ out\_size;}
+\DoxyCodeLine{00082\ \ \ \ \ \}\ \mbox{\hyperlink{structioctl__t}{ioctl\_t}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union}}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *data;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}\ x;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ raw;}
+\DoxyCodeLine{00092\ \ \ \ \ \}\ \mbox{\hyperlink{unionufile__t}{ufile\_t}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkolibri__system__colors}{kolibri\_system\_colors}}}
+\DoxyCodeLine{00095\ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ color\_t\ frame\_area;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ color\_t\ grab\_bar;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ color\_t\ grab\_bar\_button;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ color\_t\ grab\_button\_text;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ color\_t\ grab\_text;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ color\_t\ work\_area;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ color\_t\ work\_button;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ color\_t\ work\_button\_text;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ color\_t\ work\_text;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ color\_t\ work\_graph;}
+\DoxyCodeLine{00106\ \ \ \ \ \};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structblit__call}{blit\_call}}}
+\DoxyCodeLine{00109\ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dstx;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dsty;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ w;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ h;}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ srcx;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ srcy;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ srcw;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ srch;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *bitmap;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ stride;}
+\DoxyCodeLine{00122\ \ \ \ \ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structipc__message}{ipc\_message}}}
+\DoxyCodeLine{00125\ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ uint32\_t\ pid;\ \ \ \ \ \textcolor{comment}{//\ PID\ of\ sending\ thread}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ uint32\_t\ datalen;\ \textcolor{comment}{//\ data\ bytes}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ data[0];\ \ \ \ \ \textcolor{comment}{//\ data\ begin}}
+\DoxyCodeLine{00129\ \ \ \ \ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structipc__buffer}{ipc\_buffer}}}
+\DoxyCodeLine{00132\ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ uint32\_t\ lock;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ nonzero\ is\ locked}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ uint32\_t\ used;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ used\ bytes\ in\ buffer}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structipc__message}{ipc\_message}}\ data[0];\ \textcolor{comment}{//\ data\ begin}}
+\DoxyCodeLine{00136\ \ \ \ \ \};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((packed))\ file\_op\_t}
+\DoxyCodeLine{00139\ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ uint32\_t\ fn;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ uint32\_t\ flags;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *args;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ uint32\_t\ res1,\ res2;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ zero;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *app\_name}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#ifdef\ \_\_TINYC\_\_}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_attribute\_\_((packed))}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{00150\ \ \ \ \ \}\ file\_op\_t;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ begin\_draw(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00153\ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(12),\ \textcolor{stringliteral}{"{}b"{}}(1));}
+\DoxyCodeLine{00156\ \ \ \ \ \};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ end\_draw(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00159\ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(12),\ \textcolor{stringliteral}{"{}b"{}}(2));}
+\DoxyCodeLine{00162\ \ \ \ \ \};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ sys\_create\_window(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color\_t\ workcolor,\ uint32\_t\ style)}
+\DoxyCodeLine{00166\ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(0),}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}b"{}}((x\ <<\ 16)\ |\ ((w\ -\/\ 1)\ \&\ 0xFFFF)),}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}c"{}}((y\ <<\ 16)\ |\ ((h\ -\/\ 1)\ \&\ 0xFFFF)),}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}d"{}}((style\ <<\ 24)\ |\ (workcolor\ \&\ 0xFFFFFF)),}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}D"{}}(name),}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}S"{}}(0)\ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{00174\ \ \ \ \ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ define\_button(uint32\_t\ x\_w,\ uint32\_t\ y\_h,\ uint32\_t\ \textcolor{keywordtype}{id},\ uint32\_t\ color)}
+\DoxyCodeLine{00177\ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(8),}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}b"{}}(x\_w),}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}c"{}}(y\_h),}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}d"{}}(id),}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}S"{}}(color));}
+\DoxyCodeLine{00184\ \ \ \ \ \};}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ draw\_line(\textcolor{keywordtype}{int}\ xs,\ \textcolor{keywordtype}{int}\ ys,\ \textcolor{keywordtype}{int}\ xe,\ \textcolor{keywordtype}{int}\ ye,\ color\_t\ color)}
+\DoxyCodeLine{00187\ \ \ \ \ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(38),\ \textcolor{stringliteral}{"{}d"{}}(color),}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}b"{}}((xs\ <<\ 16)\ |\ xe),}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}c"{}}((ys\ <<\ 16)\ |\ ye));}
+\DoxyCodeLine{00192\ \ \ \ \ \}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ draw\_bar(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ color\_t\ color)}
+\DoxyCodeLine{00195\ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(13),\ \textcolor{stringliteral}{"{}d"{}}(color),}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}b"{}}((x\ <<\ 16)\ |\ w),}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}c"{}}((y\ <<\ 16)\ |\ h));}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ draw\_bitmap(\textcolor{keywordtype}{void}\ *bitmap,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h)}
+\DoxyCodeLine{00203\ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(7),\ \textcolor{stringliteral}{"{}b"{}}(bitmap),}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}c"{}}((w\ <<\ 16)\ |\ h),}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}d"{}}((x\ <<\ 16)\ |\ y));}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ draw\_text\_sys(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *text,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ len,\ color\_t\ color)}
+\DoxyCodeLine{00211\ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(4),\ \textcolor{stringliteral}{"{}d"{}}(text),}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}b"{}}((x\ <<\ 16)\ |\ y),}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}S"{}}(len),\ \textcolor{stringliteral}{"{}c"{}}(color)}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{00217\ \ \ \ \ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_skin\_height(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00220\ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ uint32\_t\ height;}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(height)}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(48),\ \textcolor{stringliteral}{"{}b"{}}(4));}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ height;}
+\DoxyCodeLine{00228\ \ \ \ \ \};}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ pos\_t\ get\_mouse\_pos(\textcolor{keywordtype}{int}\ origin)}
+\DoxyCodeLine{00231\ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ pos\_t\ val;}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}rol\ \$16,\ \%\%eax"{}}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(37),\ \textcolor{stringliteral}{"{}b"{}}(origin));}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00240\ \ \ \ \ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_mouse\_buttons(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(37),\ \textcolor{stringliteral}{"{}b"{}}(2));}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00251\ \ \ \ \ \};}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_mouse\_wheels(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00254\ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(37),\ \textcolor{stringliteral}{"{}b"{}}(7));}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00262\ \ \ \ \ \};}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ load\_cursor(\textcolor{keywordtype}{void}\ *path,\ uint32\_t\ flags)}
+\DoxyCodeLine{00265\ \ \ \ \ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(37),\ \textcolor{stringliteral}{"{}b"{}}(4),\ \textcolor{stringliteral}{"{}c"{}}(path),\ \textcolor{stringliteral}{"{}d"{}}(flags));}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ set\_cursor(uint32\_t\ cursor)}
+\DoxyCodeLine{00275\ \ \ \ \ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ uint32\_t\ old;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(old)}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(37),\ \textcolor{stringliteral}{"{}b"{}}(5),\ \textcolor{stringliteral}{"{}c"{}}(cursor));}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ old;}
+\DoxyCodeLine{00282\ \ \ \ \ \};}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ destroy\_cursor(uint32\_t\ cursor)}
+\DoxyCodeLine{00285\ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ret;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(37),\ \textcolor{stringliteral}{"{}b"{}}(6),\ \textcolor{stringliteral}{"{}c"{}}(cursor)}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00293\ \ \ \ \ \};}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ wait\_for\_event(uint32\_t\ time)}
+\DoxyCodeLine{00296\ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(23),\ \textcolor{stringliteral}{"{}b"{}}(time));}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00303\ \ \ \ \ \};}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ check\_os\_event()}
+\DoxyCodeLine{00306\ \ \ \ \ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(11));}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00313\ \ \ \ \ \};}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_os\_event()}
+\DoxyCodeLine{00316\ \ \ \ \ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(10));}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00323\ \ \ \ \ \};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_tick\_count(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00326\ \ \ \ \ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(26),\ \textcolor{stringliteral}{"{}b"{}}(9));}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00333\ \ \ \ \ \};}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint64\_t\ get\_ns\_count(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00336\ \ \ \ \ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ uint64\_t\ val;}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=A"{}}(val)}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(26),\ \textcolor{stringliteral}{"{}b"{}}(10));}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00343\ \ \ \ \ \};}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ oskey\_t\ get\_key(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00346\ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ oskey\_t\ val;}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(2));}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00353\ \ \ \ \ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_os\_button()}
+\DoxyCodeLine{00356\ \ \ \ \ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(17));}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val\ >>\ 8;}
+\DoxyCodeLine{00363\ \ \ \ \ \};}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_service(\textcolor{keywordtype}{char}\ *name)}
+\DoxyCodeLine{00366\ \ \ \ \ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ uint32\_t\ retval\ =\ 0;}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(retval)}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(16),\ \textcolor{stringliteral}{"{}c"{}}(name)}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retval;}
+\DoxyCodeLine{00375\ \ \ \ \ \};}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ call\_service(\mbox{\hyperlink{structioctl__t}{ioctl\_t}}\ *io)}
+\DoxyCodeLine{00378\ \ \ \ \ \{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ retval;}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(retval)}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(17),\ \textcolor{stringliteral}{"{}c"{}}(io)}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}},\ \textcolor{stringliteral}{"{}cc"{}});}
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retval;}
+\DoxyCodeLine{00388\ \ \ \ \ \};}
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00390\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ yield(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00391\ \ \ \ \ \{}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(1));}
+\DoxyCodeLine{00394\ \ \ \ \ \};}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ delay(uint32\_t\ time)}
+\DoxyCodeLine{00397\ \ \ \ \ \{}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(5),\ \textcolor{stringliteral}{"{}b"{}}(time)}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{00401\ \ \ \ \ \};}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ *user\_alloc(\textcolor{keywordtype}{size\_t}\ size)}
+\DoxyCodeLine{00404\ \ \ \ \ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *val;}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(12),\ \textcolor{stringliteral}{"{}c"{}}(size));}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00411\ \ \ \ \ \}}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ user\_free(\textcolor{keywordtype}{void}\ *mem)}
+\DoxyCodeLine{00414\ \ \ \ \ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ val;}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(13),\ \textcolor{stringliteral}{"{}c"{}}(mem));}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00421\ \ \ \ \ \}}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ *user\_realloc(\textcolor{keywordtype}{void}\ *mem,\ \textcolor{keywordtype}{size\_t}\ size)}
+\DoxyCodeLine{00424\ \ \ \ \ \{}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *val;}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(20),\ \textcolor{stringliteral}{"{}c"{}}(size),\ \textcolor{stringliteral}{"{}d"{}}(mem)}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00433\ \ \ \ \ \};}
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ *user\_unmap(\textcolor{keywordtype}{void}\ *base,\ \textcolor{keywordtype}{size\_t}\ offset,\ \textcolor{keywordtype}{size\_t}\ size)}
+\DoxyCodeLine{00436\ \ \ \ \ \{}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *val;}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(26),\ \textcolor{stringliteral}{"{}c"{}}(base),\ \textcolor{stringliteral}{"{}d"{}}(offset),\ \textcolor{stringliteral}{"{}S"{}}(size));}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00443\ \ \ \ \ \};}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{unionufile__t}{ufile\_t}}\ load\_file(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path)}
+\DoxyCodeLine{00446\ \ \ \ \ \{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{unionufile__t}{ufile\_t}}\ uf;}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=A"{}}(uf.raw)}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(27),\ \textcolor{stringliteral}{"{}c"{}}(path));}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uf;}
+\DoxyCodeLine{00455\ \ \ \ \ \};}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ GetScreenSize()}
+\DoxyCodeLine{00458\ \ \ \ \ \{}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ retval;}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(retval)}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(61),\ \textcolor{stringliteral}{"{}b"{}}(1));}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retval;}
+\DoxyCodeLine{00466\ \ \ \ \ \}}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ get\_proc\_info(\textcolor{keywordtype}{char}\ *info)}
+\DoxyCodeLine{00469\ \ \ \ \ \{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(9),\ \textcolor{stringliteral}{"{}b"{}}(info),\ \textcolor{stringliteral}{"{}c"{}}(-\/1)}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{00475\ \ \ \ \ \};}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ Blit(\textcolor{keywordtype}{void}\ *bitmap,\ \textcolor{keywordtype}{int}\ dst\_x,\ \textcolor{keywordtype}{int}\ dst\_y,}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ src\_x,\ \textcolor{keywordtype}{int}\ src\_y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ src\_w,\ \textcolor{keywordtype}{int}\ src\_h,\ \textcolor{keywordtype}{int}\ stride)}
+\DoxyCodeLine{00480\ \ \ \ \ \{}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structblit__call}{blit\_call}}\ bc;}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ bc.dstx\ =\ dst\_x;}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ bc.dsty\ =\ dst\_y;}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ bc.w\ =\ w;}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ bc.h\ =\ h;}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ bc.srcx\ =\ src\_x;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ bc.srcy\ =\ src\_y;}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ bc.srcw\ =\ src\_w;}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ bc.srch\ =\ src\_h;}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ bc.stride\ =\ stride;}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ bc.bitmap\ =\ bitmap;}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(73),\ \textcolor{stringliteral}{"{}b"{}}(0),\ \textcolor{stringliteral}{"{}c"{}}(\&bc.dstx));}
+\DoxyCodeLine{00496\ \ \ \ \ \};}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \textcolor{comment}{//\ newlib\ exclusive}}
+\DoxyCodeLine{00499\ \textcolor{preprocessor}{\#ifndef\ \_\_TINYC\_\_}}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{keywordtype}{int}\ create\_thread(\textcolor{keywordtype}{int}\ (*proc)(\textcolor{keywordtype}{void}\ *param),\ \textcolor{keywordtype}{void}\ *param,\ \textcolor{keywordtype}{int}\ stack\_size);}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keywordtype}{void}\ *load\_library(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keywordtype}{void}\ *get\_proc\_address(\textcolor{keywordtype}{void}\ *handle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *proc\_name);}
+\DoxyCodeLine{00505\ }
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keywordtype}{void}\ enumerate\_libraries(\textcolor{keywordtype}{int}\ (*callback)(\textcolor{keywordtype}{void}\ *handle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ base,\ uint32\_t\ size,\ \textcolor{keywordtype}{void}\ *user\_data),}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *user\_data);}
+\DoxyCodeLine{00509\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00513\ \ \ \ \ \textcolor{comment}{//\ Siemargl\ addenium}}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \textcolor{preprocessor}{\#define\ X\_Y(x,\ y)\ (((x)\ <<\ 16)\ |\ (y))}}
+\DoxyCodeLine{00516\ }
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{keyword}{enum}\ KOLIBRI\_GUI\_EVENTS}
+\DoxyCodeLine{00518\ \ \ \ \ \{}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_NONE\ =\ 0,\ \ \ \ \ \textcolor{comment}{/*\ Event\ queue\ is\ empty\ */}}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_REDRAW\ =\ 1,\ \ \ \textcolor{comment}{/*\ Window\ and\ window\ elements\ should\ be\ redrawn\ */}}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_KEY\ =\ 2,\ \ \ \ \ \ \textcolor{comment}{/*\ A\ key\ on\ the\ keyboard\ was\ pressed\ */}}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_BUTTON\ =\ 3,\ \ \ \textcolor{comment}{/*\ A\ button\ was\ clicked\ with\ the\ mouse\ */}}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_DESKTOP\ =\ 5,\ \ \textcolor{comment}{/*\ Desktop\ redraw\ finished\ */}}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_MOUSE\ =\ 6,\ \ \ \ \textcolor{comment}{/*\ Mouse\ activity\ (movement,\ button\ press)\ was\ detected\ */}}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_IPC\ =\ 7,\ \ \ \ \ \ \textcolor{comment}{/*\ Interprocess\ communication\ notify\ */}}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_NETWORK\ =\ 8,\ \ \textcolor{comment}{/*\ Network\ event\ */}}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_DEBUG\ =\ 9,\ \ \ \ \textcolor{comment}{/*\ Debug\ subsystem\ event\ */}}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ KOLIBRI\_EVENT\_IRQBEGIN\ =\ 16\ \textcolor{comment}{/*\ 16..31\ IRQ0..IRQ15\ interrupt\ =IRQBEGIN+IRQn\ */}}
+\DoxyCodeLine{00529\ \ \ \ \ \};}
+\DoxyCodeLine{00530\ }
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keyword}{enum}\ control\_keys}
+\DoxyCodeLine{00532\ \ \ \ \ \{}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ KM\_SHIFT\ =\ 0x00010000,}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ KM\_CTRL\ =\ 0x00020000,}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ KM\_ALT\ =\ 0x00040000,}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ KM\_NUMLOCK\ =\ 0x00080000}
+\DoxyCodeLine{00537\ \ \ \ \ \};}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{keyword}{struct\ }\_\_attribute\_\_((\_\_packed\_\_))\ fs\_dirinfo}
+\DoxyCodeLine{00540\ \ \ \ \ \{}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ uint32\_t\ subfn;\ \textcolor{comment}{//\ 1\ read\ dir}}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ uint32\_t\ start;}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ uint32\_t\ flags;}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ uint32\_t\ size;}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ uint32\_t\ retval;}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\_\_attribute\_\_((\_\_packed\_\_))}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ zero;\ \textcolor{comment}{//\ 0}}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *ppath;}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ path[5];\ \textcolor{comment}{//\ up\ to\ 4096}}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00555\ \ \ \ \ \};}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ sf\_file(\textcolor{keywordtype}{int}\ subfn,\ \textcolor{keyword}{struct}\ fs\_dirinfo\ *dinfo)}
+\DoxyCodeLine{00560\ \ \ \ \ \{}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ uint32\_t\ retval;}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ dinfo-\/>subfn\ =\ subfn;}
+\DoxyCodeLine{00563\ }
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ "{}}}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(retval)}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(70),\ \textcolor{stringliteral}{"{}b"{}}(dinfo)}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ :);}
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ retval;}
+\DoxyCodeLine{00571\ \ \ \ \ \};}
+\DoxyCodeLine{00572\ }
+\DoxyCodeLine{00573\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfs__dirheader}{fs\_dirheader}}}
+\DoxyCodeLine{00574\ \ \ \ \ \{}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ uint32\_t\ version;\ \ \ \ \ \textcolor{comment}{//\ 1}}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ uint32\_t\ curn\_blocks;\ \textcolor{comment}{//\ number\ of\ read\ dir\ items\ (BDFE)}}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ uint32\_t\ totl\_blocks;\ \textcolor{comment}{//\ directory\ full\ size}}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ other[20];\ \ \ \ \ \ \ \textcolor{comment}{//\ reserved\ 0}}
+\DoxyCodeLine{00579\ \ \ \ \ \};}
+\DoxyCodeLine{00580\ }
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keyword}{enum}\ filetype}
+\DoxyCodeLine{00582\ \ \ \ \ \{}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ FS\_RONLY\ =\ 1,}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ FS\_HIDDEN\ =\ 2,}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ FS\_SYSTEM\ =\ 4,}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ FS\_VOLID\ =\ 8,}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ FS\_SUBDIR\ =\ 16,}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ FS\_FOLDER\ =\ 16,}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ FS\_ARCHIV\ =\ 32}
+\DoxyCodeLine{00590\ \ \ \ \ \};}
+\DoxyCodeLine{00591\ }
+\DoxyCodeLine{00592\ \ \ \ \ \textcolor{keyword}{struct\ }\_\_attribute\_\_((\_\_packed\_\_))\ fs\_filetime}
+\DoxyCodeLine{00593\ \ \ \ \ \{}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ uint8\_t\ sec;}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ uint8\_t\ mm;}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ uint8\_t\ hour;}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ uint8\_t\ zero;}
+\DoxyCodeLine{00598\ \ \ \ \ \};}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00600\ \ \ \ \ \textcolor{keyword}{struct\ }\_\_attribute\_\_((\_\_packed\_\_))\ fs\_filedate}
+\DoxyCodeLine{00601\ \ \ \ \ \{}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ uint8\_t\ day;}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ uint8\_t\ month;}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ uint16\_t\ year;}
+\DoxyCodeLine{00605\ \ \ \ \ \};}
+\DoxyCodeLine{00606\ }
+\DoxyCodeLine{00608\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfs_b_d_f_e}{fsBDFE}}}
+\DoxyCodeLine{00609\ \ \ \ \ \{}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ uint32\_t\ filetype;}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ uint32\_t\ encoding;\ \textcolor{comment}{//\ 0\ -\/\ cp866,\ 1\ -\/\ utf16le}}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filetime\ tm\_created;}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filedate\ dt\_created;}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filetime\ tm\_accessed;}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filedate\ dt\_accessed;}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filetime\ tm\_modified;}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filedate\ dt\_modified;}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ uint64\_t\ size;}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ fname[264];}
+\DoxyCodeLine{00620\ \ \ \ \ \};\ \textcolor{comment}{//\ must\ be\ sized\ 304}}
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00623\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfs_b_d_f_e__16}{fsBDFE\_16}}}
+\DoxyCodeLine{00624\ \ \ \ \ \{}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ uint32\_t\ filetype;}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ uint32\_t\ encoding;\ \textcolor{comment}{//\ 0\ -\/\ cp866,\ 1\ -\/\ utf16le}}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filetime\ tm\_created;}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filedate\ dt\_created;}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filetime\ tm\_accessed;}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filedate\ dt\_accessed;}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filetime\ tm\_modified;}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }fs\_filedate\ dt\_modified;}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ uint64\_t\ size;}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{wchar\_t}\ fname[260];}
+\DoxyCodeLine{00635\ \ \ \ \ \};\ \textcolor{comment}{//\ must\ be\ sized\ 560}}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00637\ \ \ \ \ \textcolor{comment}{//\ copied\ from\ /programs/system/shell/system/kolibri.c}}
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{comment}{//\ fn's\ returned\ -\/1\ as\ syserror,\ 1\ as\ error,\ 0\ as\ OK}}
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ kol\_clip\_num()}
+\DoxyCodeLine{00640\ \ \ \ \ \{}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ val;}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(54),\ \textcolor{stringliteral}{"{}b"{}}(0));}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00644\ \ \ \ \ \}}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{char}\ *kol\_clip\_get(\textcolor{keywordtype}{int}\ n)}
+\DoxyCodeLine{00647\ \ \ \ \ \textcolor{comment}{//\ returned\ buffer\ must\ be\ freed\ by\ user\_free()}}
+\DoxyCodeLine{00648\ \ \ \ \ \{}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ \textcolor{keywordtype}{char}\ *val;}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(54),\ \textcolor{stringliteral}{"{}b"{}}(1),\ \textcolor{stringliteral}{"{}c"{}}(n));}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00652\ \ \ \ \ \}}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ kol\_clip\_set(\textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{char}\ buffer[])}
+\DoxyCodeLine{00655\ \ \ \ \ \{}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ val;}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(54),\ \textcolor{stringliteral}{"{}b"{}}(2),\ \textcolor{stringliteral}{"{}c"{}}(n),\ \textcolor{stringliteral}{"{}d"{}}(buffer));}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00659\ \ \ \ \ \}}
+\DoxyCodeLine{00660\ }
+\DoxyCodeLine{00661\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ kol\_clip\_pop()}
+\DoxyCodeLine{00662\ \ \ \ \ \{}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ val;}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(54),\ \textcolor{stringliteral}{"{}b"{}}(3));}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00666\ \ \ \ \ \}}
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00668\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ kol\_clip\_unlock()}
+\DoxyCodeLine{00669\ \ \ \ \ \{}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ val;}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(54),\ \textcolor{stringliteral}{"{}b"{}}(4));}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00673\ \ \ \ \ \}}
+\DoxyCodeLine{00674\ }
+\DoxyCodeLine{00675\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ get\_system\_colors(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structkolibri__system__colors}{kolibri\_system\_colors}}\ *color\_table)}
+\DoxyCodeLine{00676\ \ \ \ \ \{}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(48),\ \textcolor{stringliteral}{"{}b"{}}(3),\ \textcolor{stringliteral}{"{}c"{}}(color\_table),\ \textcolor{stringliteral}{"{}d"{}}(40));}
+\DoxyCodeLine{00680\ }
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ color\_table\ should\ point\ to\ the\ system\ color\ table\ */}}
+\DoxyCodeLine{00682\ \ \ \ \ \}}
+\DoxyCodeLine{00683\ }
+\DoxyCodeLine{00684\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ debug\_board\_write\_byte(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ ch)}
+\DoxyCodeLine{00685\ \ \ \ \ \{}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(63),\ \textcolor{stringliteral}{"{}b"{}}(1),\ \textcolor{stringliteral}{"{}c"{}}(ch));}
+\DoxyCodeLine{00690\ \ \ \ \ \}}
+\DoxyCodeLine{00691\ }
+\DoxyCodeLine{00692\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ draw\_number\_sys(int32\_t\ number,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ len,\ color\_t\ color)}
+\DoxyCodeLine{00693\ \ \ \ \ \{}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ fmt;}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ fmt\ =\ len\ <<\ 16\ |\ 0x80000000;\ \textcolor{comment}{//\ no\ leading\ zeros\ +\ width}}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ fmt\ =\ len\ <<\ 16\ |\ 0x00000000;\ //\ \ leading\ zeros\ +\ width}}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(47),\ \textcolor{stringliteral}{"{}b"{}}(fmt),\ \textcolor{stringliteral}{"{}c"{}}(number),\ \textcolor{stringliteral}{"{}d"{}}((x\ <<\ 16)\ |\ y),\ \textcolor{stringliteral}{"{}S"{}}(color));}
+\DoxyCodeLine{00701\ \ \ \ \ \}}
+\DoxyCodeLine{00702\ }
+\DoxyCodeLine{00703\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_mouse\_eventstate(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00704\ \ \ \ \ \{}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00706\ }
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(val)}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(37),\ \textcolor{stringliteral}{"{}b"{}}(3));}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00712\ \ \ \ \ \};}
+\DoxyCodeLine{00713\ }
+\DoxyCodeLine{00714\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ set\_event\_mask(uint32\_t\ mask)}
+\DoxyCodeLine{00715\ \ \ \ \ \{}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ val;}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(40),\ \textcolor{stringliteral}{"{}b"{}}(mask));}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00719\ \ \ \ \ \}}
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00721\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (*thread\_proc)(\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00722\ }
+\DoxyCodeLine{00723\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ start\_thread(thread\_proc\ proc,\ \textcolor{keywordtype}{char}\ *stack\_top)}
+\DoxyCodeLine{00724\ \ \ \ \ \{}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ \textcolor{keywordtype}{int}\ val;}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(51),\ \textcolor{stringliteral}{"{}b"{}}(1),\ \textcolor{stringliteral}{"{}c"{}}(proc),\ \textcolor{stringliteral}{"{}d"{}}(stack\_top));}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00728\ \ \ \ \ \}}
+\DoxyCodeLine{00729\ }
+\DoxyCodeLine{00730\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ kos\_exit()}
+\DoxyCodeLine{00731\ \ \ \ \ \{}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(-\/1));}
+\DoxyCodeLine{00733\ \ \ \ \ \}}
+\DoxyCodeLine{00734\ }
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ focus\_window(\textcolor{keywordtype}{int}\ slot)}
+\DoxyCodeLine{00736\ \ \ \ \ \{}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(3),\ \textcolor{stringliteral}{"{}c"{}}(slot));}
+\DoxyCodeLine{00738\ \ \ \ \ \}}
+\DoxyCodeLine{00739\ }
+\DoxyCodeLine{00740\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ get\_thread\_slot(\textcolor{keywordtype}{int}\ tid)}
+\DoxyCodeLine{00741\ \ \ \ \ \{}
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ \textcolor{keywordtype}{int}\ val;}
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(21),\ \textcolor{stringliteral}{"{}c"{}}(tid));}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00745\ \ \ \ \ \}}
+\DoxyCodeLine{00746\ }
+\DoxyCodeLine{00747\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ set\_current\_folder(\textcolor{keywordtype}{char}\ *dir)}
+\DoxyCodeLine{00748\ \ \ \ \ \{}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(30),\ \textcolor{stringliteral}{"{}b"{}}(1),\ \textcolor{stringliteral}{"{}c"{}}(dir));}
+\DoxyCodeLine{00750\ \ \ \ \ \}}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ get\_current\_folder(\textcolor{keywordtype}{char}\ *buf,\ \textcolor{keywordtype}{int}\ bufsize)}
+\DoxyCodeLine{00753\ \ \ \ \ \{}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ \textcolor{keywordtype}{int}\ val;}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(30),\ \textcolor{stringliteral}{"{}b"{}}(2),\ \textcolor{stringliteral}{"{}c"{}}(buf),\ \textcolor{stringliteral}{"{}d"{}}(bufsize));}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00757\ \ \ \ \ \}}
+\DoxyCodeLine{00758\ }
+\DoxyCodeLine{00759\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ ipc\_set\_area(\textcolor{keywordtype}{void}\ *buf,\ \textcolor{keywordtype}{int}\ bufsize)}
+\DoxyCodeLine{00760\ \ \ \ \ \{}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(60),\ \textcolor{stringliteral}{"{}b"{}}(1),\ \textcolor{stringliteral}{"{}c"{}}(buf),\ \textcolor{stringliteral}{"{}d"{}}(bufsize));}
+\DoxyCodeLine{00762\ \ \ \ \ \}}
+\DoxyCodeLine{00763\ }
+\DoxyCodeLine{00764\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ ipc\_send\_message(\textcolor{keywordtype}{int}\ pid\_reciever,\ \textcolor{keywordtype}{void}\ *data,\ \textcolor{keywordtype}{int}\ datalen)}
+\DoxyCodeLine{00765\ \ \ \ \ \{}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ \textcolor{keywordtype}{int}\ val;}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(60),\ \textcolor{stringliteral}{"{}b"{}}(2),\ \textcolor{stringliteral}{"{}c"{}}(pid\_reciever),\ \textcolor{stringliteral}{"{}d"{}}(data),\ \textcolor{stringliteral}{"{}S"{}}(datalen));}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00769\ \ \ \ \ \}}
+\DoxyCodeLine{00770\ }
+\DoxyCodeLine{00771\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ *shm\_open(\textcolor{keywordtype}{char}\ *shm\_name,\ \textcolor{keywordtype}{int}\ msize,\ \textcolor{keywordtype}{int}\ flags,\ \textcolor{keywordtype}{int}\ *retsz)}
+\DoxyCodeLine{00772\ \ \ \ \ \{}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ \textcolor{keywordtype}{int}\ val,\ cod;}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val),\ \textcolor{stringliteral}{"{}=d"{}}(cod)\ :\ \textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(22),\ \textcolor{stringliteral}{"{}c"{}}(shm\_name),\ \textcolor{stringliteral}{"{}d"{}}(msize),\ \textcolor{stringliteral}{"{}S"{}}(flags));}
+\DoxyCodeLine{00775\ }
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (retsz)}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ *retsz\ =\ cod;\ \textcolor{comment}{//\ errcode\ if\ NULL\ or\ memsize\ when\ open}}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{void}\ *)val;}
+\DoxyCodeLine{00779\ \ \ \ \ \}}
+\DoxyCodeLine{00780\ }
+\DoxyCodeLine{00781\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ shm\_close(\textcolor{keywordtype}{char}\ *shm\_name)}
+\DoxyCodeLine{00782\ \ \ \ \ \{}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(68),\ \textcolor{stringliteral}{"{}b"{}}(23),\ \textcolor{stringliteral}{"{}c"{}}(shm\_name));}
+\DoxyCodeLine{00784\ \ \ \ \ \}}
+\DoxyCodeLine{00785\ }
+\DoxyCodeLine{00786\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ start\_app(\textcolor{keywordtype}{char}\ *app\_name,\ \textcolor{keywordtype}{char}\ *args)}
+\DoxyCodeLine{00787\ \ \ \ \ \{}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ file\_op\_t\ file\_op;}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ memset(\&file\_op,\ 0,\ \textcolor{keyword}{sizeof}(file\_op));}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ file\_op.fn\ =\ 7;}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ file\_op.args\ =\ args;}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ file\_op.app\_name\ =\ app\_name;}
+\DoxyCodeLine{00793\ }
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \textcolor{keyword}{register}\ \textcolor{keywordtype}{int}\ val;}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}int\ \$0x40"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(val)\ :\ \textcolor{stringliteral}{"{}a"{}}(70),\ \textcolor{stringliteral}{"{}b"{}}(\&file\_op));}
+\DoxyCodeLine{00796\ }
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00798\ \ \ \ \ \}}
+\DoxyCodeLine{00799\ }
+\DoxyCodeLine{00800\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_control\_keys(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00801\ \ \ \ \ \{}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ uint32\_t\ ctrl;}
+\DoxyCodeLine{00803\ }
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(ctrl)}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(66),\ \textcolor{stringliteral}{"{}b"{}}(3));}
+\DoxyCodeLine{00808\ }
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ctrl;}
+\DoxyCodeLine{00810\ \ \ \ \ \};}
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ get\_keyboard\_layout(\textcolor{keywordtype}{int}\ opt,\ \textcolor{keywordtype}{char}\ *buf)}
+\DoxyCodeLine{00815\ \ \ \ \ \{}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}};}
+\DoxyCodeLine{00817\ }
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}})}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(26),\ \textcolor{stringliteral}{"{}b"{}}(2),\ \textcolor{stringliteral}{"{}c"{}}(opt),\ \textcolor{stringliteral}{"{}d"{}}(buf));}
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}};}
+\DoxyCodeLine{00824\ \ \ \ \ \};}
+\DoxyCodeLine{00825\ }
+\DoxyCodeLine{00826\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ font\_size(\textcolor{keywordtype}{int}\ color)}
+\DoxyCodeLine{00829\ \ \ \ \ \{}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ font\ =\ color\ >>\ 24;}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ font\_multipl\ =\ (font\ \&\ 7)\ +\ 1;}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width\_sym,\ hight\_sym;}
+\DoxyCodeLine{00833\ }
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (font\ \&\ 0x10)\ \textcolor{comment}{//\ 8x16}}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ width\_sym\ =\ 8\ *\ font\_multipl;}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ hight\_sym\ =\ 16\ *\ font\_multipl;}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//\ 6x9}}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ width\_sym\ =\ 6\ *\ font\_multipl;}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \ \ \ hight\_sym\ =\ 9\ *\ font\_multipl;}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hight\_sym\ +\ (width\_sym\ <<\ 16);}
+\DoxyCodeLine{00845\ \ \ \ \ \}}
+\DoxyCodeLine{00846\ }
+\DoxyCodeLine{00847\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00848\ \textcolor{comment}{\ \ \ \ static\ inline\ char\ *getcwd(char\ *buf,\ size\_t\ size)}}
+\DoxyCodeLine{00849\ \textcolor{comment}{\ \ \ \ \{}}
+\DoxyCodeLine{00850\ \textcolor{comment}{\ \ \ \ \ \ \ \ int\ rc\ =\ get\_current\_folder(buf,\ size);}}
+\DoxyCodeLine{00851\ \textcolor{comment}{\ \ \ \ \ \ \ \ if\ (rc\ >\ size)}}
+\DoxyCodeLine{00852\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00853\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ errno\ =\ ERANGE;}}
+\DoxyCodeLine{00854\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return\ 0;}}
+\DoxyCodeLine{00855\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00856\ \textcolor{comment}{\ \ \ \ \ \ \ \ else}}
+\DoxyCodeLine{00857\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return\ buf;}}
+\DoxyCodeLine{00858\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00859\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00860\ \ \ \ \ \textcolor{comment}{/*\ not\ finished}}
+\DoxyCodeLine{00861\ \textcolor{comment}{\ \ \ \ void\ staticnum\_draw(staticnum\ *st)}}
+\DoxyCodeLine{00862\ \textcolor{comment}{\ \ \ \ \{}}
+\DoxyCodeLine{00863\ \textcolor{comment}{\ \ \ \ \ \ \ \ register\ uint32\_t\ fmt;}}
+\DoxyCodeLine{00864\ \textcolor{comment}{\ \ \ \ \ \ \ \ if\ (st-\/>width\ <\ 0)}}
+\DoxyCodeLine{00865\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ fmt\ =\ (-\/st-\/>width\ <<\ 16);\ //\ leading\ zeros,\ decimal}}
+\DoxyCodeLine{00866\ \textcolor{comment}{\ \ \ \ \ \ \ \ else}}
+\DoxyCodeLine{00867\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ fmt\ =\ (st-\/>width\ <<\ 16)\ |\ 0x80000000;\ //\ no\ leading\ zeros,\ decimal}}
+\DoxyCodeLine{00868\ \textcolor{comment}{}}
+\DoxyCodeLine{00869\ \textcolor{comment}{\ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}}
+\DoxyCodeLine{00870\ \textcolor{comment}{\ \ \ \ \ \ \ \ "{}int\ \$0x40"{}}}
+\DoxyCodeLine{00871\ \textcolor{comment}{\ \ \ \ \ \ \ \ ::"{}a"{}(47),}}
+\DoxyCodeLine{00872\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ "{}b"{}(fmt),}}
+\DoxyCodeLine{00873\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ "{}c"{}(st-\/>number),}}
+\DoxyCodeLine{00874\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ "{}d"{}(st-\/>start\_xy),}}
+\DoxyCodeLine{00875\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ "{}S"{}(st-\/>color\_flags),}}
+\DoxyCodeLine{00876\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ "{}D"{}(st-\/>bg\_color)}}
+\DoxyCodeLine{00877\ \textcolor{comment}{\ \ \ \ \ \ \ \ :);}}
+\DoxyCodeLine{00878\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00879\ \textcolor{comment}{}}
+\DoxyCodeLine{00880\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00882\ }
+\DoxyCodeLine{00883\ \ \ \ \ \textcolor{comment}{//\ added\ nonstatic\ inline\ because\ incomfortabre\ stepping\ in\ in\ debugger}}
+\DoxyCodeLine{00884\ \ \ \ \ \textcolor{keywordtype}{void}\ \_\_attribute\_\_((noinline))\ debug\_board\_write\_str(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00885\ \ \ \ \ \textcolor{keywordtype}{void}\ \_\_attribute\_\_((noinline))\ debug\_board\_printf(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *format,\ ...);}
+\DoxyCodeLine{00886\ }
+\DoxyCodeLine{00887\ \textcolor{comment}{/*\ copy\ body\ to\ only\ one\ project\ file}}
+\DoxyCodeLine{00888\ \textcolor{comment}{void\ \_\_attribute\_\_\ ((noinline))\ debug\_board\_write\_str(const\ char*\ str)\{}}
+\DoxyCodeLine{00889\ \textcolor{comment}{\ \ while(*str)}}
+\DoxyCodeLine{00890\ \textcolor{comment}{\ \ \ \ debug\_board\_write\_byte(*str++);}}
+\DoxyCodeLine{00891\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00892\ \textcolor{comment}{}}
+\DoxyCodeLine{00893\ \textcolor{comment}{void\ \_\_attribute\_\_\ ((noinline))\ debug\_board\_printf(const\ char\ *format,...)}}
+\DoxyCodeLine{00894\ \textcolor{comment}{\{}}
+\DoxyCodeLine{00895\ \textcolor{comment}{\ \ \ \ \ \ \ \ va\_list\ ap;}}
+\DoxyCodeLine{00896\ \textcolor{comment}{\ \ \ \ \ \ \ \ char\ log\_board[300];}}
+\DoxyCodeLine{00897\ \textcolor{comment}{}}
+\DoxyCodeLine{00898\ \textcolor{comment}{\ \ \ \ \ \ \ \ va\_start\ (ap,\ format);}}
+\DoxyCodeLine{00899\ \textcolor{comment}{\ \ \ \ \ \ \ \ vsnprintf(log\_board,\ sizeof\ log\_board,\ format,\ ap);}}
+\DoxyCodeLine{00900\ \textcolor{comment}{\ \ \ \ \ \ \ \ va\_end(ap);}}
+\DoxyCodeLine{00901\ \textcolor{comment}{\ \ \ \ \ \ \ \ debug\_board\_write\_str(log\_board);}}
+\DoxyCodeLine{00902\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00903\ \textcolor{comment}{}}
+\DoxyCodeLine{00904\ \textcolor{comment}{\_\_attribute\_\_\ ((noinline))\ void\ trap(int\ n)}}
+\DoxyCodeLine{00905\ \textcolor{comment}{\{}}
+\DoxyCodeLine{00906\ \textcolor{comment}{\ \ \ \ //\ nothing\ todo,\ just\ see\ n\ in\ debugger.\ use\ "{}bp\ trap"{}\ command}}
+\DoxyCodeLine{00907\ \textcolor{comment}{\ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}}
+\DoxyCodeLine{00908\ \textcolor{comment}{\ \ \ \ "{}nop"{}}}
+\DoxyCodeLine{00909\ \textcolor{comment}{\ \ \ \ :}}
+\DoxyCodeLine{00910\ \textcolor{comment}{\ \ \ \ :"{}a"{}(n));}}
+\DoxyCodeLine{00911\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00912\ \textcolor{comment}{}}
+\DoxyCodeLine{00913\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00914\ }
+\DoxyCodeLine{00915\ \textcolor{comment}{//\ TinyC\ don't\ support\ aliasing\ of\ static\ inline\ funcs}}
+\DoxyCodeLine{00916\ \textcolor{preprocessor}{\#ifndef\ \_\_TINYC\_\_}}
+\DoxyCodeLine{00917\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ BeginDraw(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}begin\_draw"{}})));}
+\DoxyCodeLine{00918\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EndDraw(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}end\_draw"{}})));}
+\DoxyCodeLine{00919\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawWindow(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color\_t\ workcolor,\ uint32\_t\ style)}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}sys\_create\_window"{}})));}
+\DoxyCodeLine{00922\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DefineButton(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}define\_button"{}})));}
+\DoxyCodeLine{00923\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawLine(\textcolor{keywordtype}{int}\ xs,\ \textcolor{keywordtype}{int}\ ys,\ \textcolor{keywordtype}{int}\ xe,\ \textcolor{keywordtype}{int}\ ye,\ color\_t\ color)}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}draw\_line"{}})));}
+\DoxyCodeLine{00925\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawBar(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ color\_t\ color)}
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}draw\_bar"{}})));}
+\DoxyCodeLine{00927\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DrawBitmap(\textcolor{keywordtype}{void}\ *bitmap,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h)}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}draw\_bitmap"{}})));}
+\DoxyCodeLine{00929\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ GetSkinHeight(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}get\_skin\_height"{}})));}
+\DoxyCodeLine{00930\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ pos\_t\ GetMousePos(\textcolor{keywordtype}{int}\ origin)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}get\_mouse\_pos"{}})));}
+\DoxyCodeLine{00931\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ GetMouseButtons(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}get\_mouse\_buttons"{}})));}
+\DoxyCodeLine{00932\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ GetMouseWheels(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}get\_mouse\_wheels"{}})));}
+\DoxyCodeLine{00933\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ LoadCursor(\textcolor{keywordtype}{void}\ *path,\ uint32\_t\ flags)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}load\_cursor"{}})));}
+\DoxyCodeLine{00934\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ SetCursor(uint32\_t\ cursor)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}set\_cursor"{}})));}
+\DoxyCodeLine{00935\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ DestroyCursor(uint32\_t\ cursor)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}destroy\_cursor"{}})));}
+\DoxyCodeLine{00936\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ GetOsEvent(\textcolor{keywordtype}{void})\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}get\_os\_event"{}})));}
+\DoxyCodeLine{00937\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ *UserAlloc(\textcolor{keywordtype}{size\_t}\ size)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}user\_alloc"{}})));}
+\DoxyCodeLine{00938\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ UserFree(\textcolor{keywordtype}{void}\ *mem)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}user\_free"{}})));}
+\DoxyCodeLine{00939\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ *UserRealloc(\textcolor{keywordtype}{void}\ *mem,\ \textcolor{keywordtype}{size\_t}\ size)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}user\_realloc"{}})));}
+\DoxyCodeLine{00940\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ *UserUnmap(\textcolor{keywordtype}{void}\ *base,\ \textcolor{keywordtype}{size\_t}\ offset,\ \textcolor{keywordtype}{size\_t}\ size)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}user\_unmap"{}})));}
+\DoxyCodeLine{00941\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{unionufile__t}{ufile\_t}}\ LoadFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}load\_file"{}})));}
+\DoxyCodeLine{00942\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ GetProcInfo(\textcolor{keywordtype}{char}\ *info)\ \_\_attribute\_\_((alias(\textcolor{stringliteral}{"{}get\_proc\_info"{}})));}
+\DoxyCodeLine{00943\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00944\ }
+\DoxyCodeLine{00945\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00946\ \}}
+\DoxyCodeLine{00947\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00948\ }
+\DoxyCodeLine{00949\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

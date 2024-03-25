@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__d__button_8h_source" xml:lang="ru">
+<title>kolibri_d_button.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_d_button.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_DBUTTON_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_DBUTTON_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;kos32sys.h&gt;</emphasis>
+5 
+6 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+7 &#32;&#32;&#32;&#32;uint32_t&#32;type;
+8 &#32;&#32;&#32;&#32;uint32_t&#32;x_w;
+9 &#32;&#32;&#32;&#32;uint32_t&#32;y_h;
+10 &#32;&#32;&#32;&#32;uint32_t&#32;mouse_pos;
+11 &#32;&#32;&#32;&#32;uint32_t&#32;mouse_keys;
+12 &#32;&#32;&#32;&#32;uint32_t&#32;mouse_keys_old;
+13 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;&#32;&#32;&#32;active_raw;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//active&#32;bitmap</emphasis>
+14 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;&#32;&#32;&#32;passive_raw;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//passive&#32;bitmap</emphasis>
+15 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;&#32;&#32;&#32;click_raw;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//pressed&#32;bitmap</emphasis>
+16 &#32;&#32;&#32;&#32;uint32_t&#32;resolution_raw;&#32;<emphasis role="comment">//&#32;bpp,&#32;as&#32;esi&#32;fn65</emphasis>
+17 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;&#32;&#32;&#32;palette_raw;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;palette,&#32;as&#32;edi&#32;fn65</emphasis>
+18 &#32;&#32;&#32;&#32;uint32_t&#32;offset_raw;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;width&#32;as&#32;ebp&#32;fn65</emphasis>
+19 &#32;&#32;&#32;&#32;uint32_t&#32;select;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;internal&#32;state:&#32;0&#32;-&#32;passive,&#32;2&#32;-&#32;pressed,&#32;1&#32;-&#32;clicked</emphasis>
+20 &#32;&#32;&#32;&#32;uint32_t&#32;click;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;clicked&#32;-&#32;1,&#32;zero&#32;it&#32;after&#32;tested</emphasis>
+21 }&#32;<link linkend="_structpict__button">pict_button</link>;
+22 
+23 
+24 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_structpict__button">pict_button</link>*&#32;kolibri_pict_button(<link linkend="_structpict__button">pict_button</link>*&#32;b,&#32;uint32_t&#32;x_w,&#32;uint32_t&#32;y_h,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;active_pict,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;passive_pict,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;pressed_pict,&#32;uint32_t&#32;bpp,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;palette,&#32;int32_t&#32;offset_line)
+25 {
+26 &#32;&#32;&#32;&#32;b-&gt;type&#32;=&#32;b-&gt;mouse_pos&#32;=&#32;b-&gt;mouse_keys&#32;=&#32;b-&gt;mouse_keys_old&#32;=&#32;b-&gt;select&#32;=&#32;b-&gt;click&#32;=&#32;0;
+27 &#32;&#32;&#32;&#32;b-&gt;x_w&#32;=&#32;x_w;
+28 &#32;&#32;&#32;&#32;b-&gt;y_h&#32;=&#32;y_h;
+29 &#32;&#32;&#32;&#32;b-&gt;active_raw&#32;=&#32;active_pict;
+30 &#32;&#32;&#32;&#32;b-&gt;passive_raw&#32;=&#32;passive_pict;
+31 &#32;&#32;&#32;&#32;b-&gt;click_raw&#32;=&#32;pressed_pict;
+32 &#32;&#32;&#32;&#32;b-&gt;resolution_raw&#32;=&#32;bpp;
+33 &#32;&#32;&#32;&#32;b-&gt;palette_raw&#32;=&#32;palette;
+34 &#32;&#32;&#32;&#32;b-&gt;offset_raw&#32;=&#32;offset_line;
+35 
+36 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;b;
+37 }
+38 
+39 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_structpict__button">pict_button</link>*&#32;kolibri_new_pict_button(uint32_t&#32;x_w,&#32;uint32_t&#32;y_h,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;active_pict,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;passive_pict,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;pressed_pict,&#32;uint32_t&#32;bpp,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;palette,&#32;int32_t&#32;offset_line)
+40 {
+41 &#32;&#32;&#32;&#32;<link linkend="_structpict__button">pict_button</link>&#32;*new_d_but&#32;=&#32;(<link linkend="_structpict__button">pict_button</link>&#32;*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structpict__button">pict_button</link>));
+42 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_pict_button(new_d_but,&#32;x_w,&#32;y_h,&#32;active_pict,&#32;passive_pict,&#32;pressed_pict,&#32;bpp,&#32;palette,&#32;offset_line);
+43 }
+44 
+45 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;gui_add_pict_button(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*wnd,&#32;<link linkend="_structpict__button">pict_button</link>*&#32;db)
+46 {
+47 &#32;&#32;&#32;&#32;kolibri_window_add_element(wnd,&#32;KOLIBRI_D_BUTTON,&#32;db);
+48 }
+49 
+50 
+51 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*dynamic_button_draw)(<link linkend="_structpict__button">pict_button</link>&#32;*)&#32;__attribute__((__stdcall__));
+52 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*dynamic_button_mouse)(<link linkend="_structpict__button">pict_button</link>&#32;*)&#32;__attribute__((__stdcall__));
+53 
+54 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_DBUTTON_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

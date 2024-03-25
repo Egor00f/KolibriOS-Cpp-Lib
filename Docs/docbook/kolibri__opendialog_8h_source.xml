@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__opendialog_8h_source" xml:lang="ru">
+<title>kolibri_opendialog.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_opendialog.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_OPENDIALOG_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_OPENDIALOG_H</emphasis>
+3 
+4 <emphasis role="keywordtype">char</emphasis>&#32;sz_com_area_name[]&#32;&#32;&#32;&#32;=&#32;<emphasis role="stringliteral">&quot;FFFFFFFF_open_dialog&quot;</emphasis>;
+5 <emphasis role="keywordtype">char</emphasis>&#32;sz_dir_default_path[]&#32;=&#32;<emphasis role="stringliteral">&quot;/sys&quot;</emphasis>;
+6 <emphasis role="keywordtype">char</emphasis>&#32;sz_start_path[]&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="stringliteral">&quot;/sys/File&#32;managers/opendial&quot;</emphasis>;
+7 
+8 <emphasis role="keyword">enum</emphasis>&#32;open_dialog_mode&#32;{
+9 &#32;&#32;&#32;&#32;OPEN,
+10 &#32;&#32;&#32;&#32;SAVE,
+11 &#32;&#32;&#32;&#32;SELECT
+12 };
+13 
+14 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>__attribute__&#32;((__packed__))&#32;{
+15 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;size;
+16 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;end;
+17 }od_filter;
+18 
+19 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>__attribute__&#32;((__packed__))&#32;{
+20 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;mode;
+21 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;procinfo;
+22 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;com_area_name;
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;com_area;
+24 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;opendir_path;
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;dir_default_path;
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;start_path;
+27 &#32;&#32;&#32;&#32;void&#32;(*draw_window)();
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;status;
+29 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;openfile_path;
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;filename_area;
+31 &#32;&#32;&#32;&#32;od_filter*&#32;filter_area;
+32 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;x_size;
+33 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;x_start;
+34 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;y_size;
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;y_start;
+36 }open_dialog;
+37 
+38 <emphasis role="keywordtype">void</emphasis>&#32;fake_on_redraw(<emphasis role="keywordtype">void</emphasis>)&#32;{}
+39 
+40 open_dialog*&#32;kolibri_new_open_dialog(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;mode,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;tlx,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;tly,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;x_size,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;y_size)
+41 {
+42 &#32;&#32;&#32;&#32;open_dialog&#32;*new_opendialog&#32;=&#32;(open_dialog&#32;*)malloc(<emphasis role="keyword">sizeof</emphasis>(open_dialog));
+43 &#32;&#32;&#32;&#32;od_filter&#32;*new_od_filter&#32;=&#32;(od_filter&#32;*)malloc(<emphasis role="keyword">sizeof</emphasis>(od_filter));
+44 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*plugin_path&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;*)calloc(4096,&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">char</emphasis>));
+45 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*openfile_path&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;*)calloc(4096,&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">char</emphasis>));
+46 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*proc_info&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;*)calloc(1024,&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">char</emphasis>));
+47 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*filename_area&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;*)calloc(256,&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">char</emphasis>));
+48 
+49 &#32;&#32;&#32;&#32;new_od_filter&#32;-&gt;&#32;size&#32;=&#32;0;
+50 &#32;&#32;&#32;&#32;new_od_filter&#32;-&gt;&#32;end&#32;=&#32;0;
+51 
+52 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;mode&#32;=&#32;mode;
+53 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;procinfo&#32;=&#32;proc_info;
+54 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;com_area_name&#32;=&#32;sz_com_area_name;
+55 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;com_area&#32;=&#32;0;
+56 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;opendir_path&#32;=&#32;plugin_path;
+57 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;dir_default_path&#32;=&#32;sz_dir_default_path;
+58 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;start_path&#32;=&#32;sz_start_path;
+59 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;draw_window&#32;=&#32;&amp;fake_on_redraw;
+60 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;status&#32;=&#32;0;
+61 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;openfile_path&#32;=&#32;openfile_path;
+62 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;filename_area&#32;=&#32;filename_area;
+63 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;filter_area&#32;=&#32;new_od_filter;
+64 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;x_size&#32;=&#32;x_size;
+65 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;x_start&#32;=&#32;tlx;
+66 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;y_size&#32;=&#32;y_size;
+67 &#32;&#32;&#32;&#32;new_opendialog&#32;-&gt;&#32;y_start&#32;=&#32;tly;
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;new_opendialog;
+69 }
+70 
+71 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;kolibri_proclib_init();
+72 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*OpenDialog_init)(open_dialog&#32;*)&#32;__attribute__((__stdcall__));
+73 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*OpenDialog_start)(open_dialog&#32;*)&#32;__attribute__((__stdcall__));
+74 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_OPENDIALOG_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

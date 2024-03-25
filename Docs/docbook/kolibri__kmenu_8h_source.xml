@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__kmenu_8h_source" xml:lang="ru">
+<title>kolibri_kmenu.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_kmenu.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_KMENU_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_KMENU_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#define&#32;KMENUITEM_NORMAL&#32;&#32;&#32;&#32;0</emphasis>
+5 <emphasis role="preprocessor">#define&#32;KMENUITEM_SUBMENU&#32;&#32;&#32;1</emphasis>
+6 <emphasis role="preprocessor">#define&#32;KMENUITEM_SEPARATOR&#32;2</emphasis>
+7 
+8 <emphasis role="preprocessor">#define&#32;KMENUITEM_MAINMENU&#32;&#32;&#32;0x80000000</emphasis>
+9 
+10 <emphasis role="preprocessor">#define&#32;KMENUITEM_SEPARATOR_WIDTH&#32;10</emphasis><emphasis role="comment">//170</emphasis>
+11 <emphasis role="preprocessor">#define&#32;KMENUITEM_SEPARATOR_HEIGHT&#32;2</emphasis>
+12 
+13 <emphasis role="preprocessor">#define&#32;KMENU_LBORDER_SIZE&#32;2</emphasis>
+14 <emphasis role="preprocessor">#define&#32;KMENU_DBORDER_SIZE&#32;1</emphasis>
+15 
+16 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+17 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;type;
+18 &#32;&#32;&#32;&#32;uint32_t&#32;color;
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">union&#32;</emphasis>{
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;bgcolor;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;*buffer;
+22 &#32;&#32;&#32;&#32;};
+23 }&#32;<link linkend="_structt__font">t_font</link>;
+24 
+25 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>__attribute__&#32;((__packed__))&#32;{
+26 &#32;&#32;&#32;&#32;uint16_t&#32;left,&#32;top,&#32;right,&#32;bottom;
+27 }&#32;t_rect;
+28 
+29 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structkmenuitem__t">kmenuitem_t</link>{
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;type;
+31 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text;
+32 &#32;&#32;&#32;&#32;<emphasis role="keyword">union&#32;</emphasis>{
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;*submenu;
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//kmenuitem_callback_t&#32;callback;</emphasis>
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;btnid;
+36 &#32;&#32;&#32;&#32;};
+37 
+38 &#32;&#32;&#32;&#32;void&#32;(*paint)(<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structkmenuitem__t">kmenuitem_t</link>&#32;*item,&#32;t_rect&#32;*rc)&#32;__attribute__((__stdcall__));
+39 
+40 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;is_focused;
+41 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;is_enabled;
+42 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;is_visible;
+43 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;style;
+44 
+45 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;font_width,&#32;font_height;
+46 &#32;&#32;&#32;&#32;<link linkend="_structt__font">t_font</link>&#32;font;
+47 
+48 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;left,&#32;top;
+49 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;width,&#32;height,&#32;pref_width,&#32;pref_height;
+50 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;margin_left,&#32;margin_right,&#32;margin_top,&#32;margin_bottom;
+51 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;padding_left,&#32;padding_right,&#32;padding_top,&#32;padding_bottom;
+52 }&#32;<link linkend="_structkmenuitem__t">kmenuitem_t</link>;
+53 
+54 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structksubmenu__t">ksubmenu_t</link>{
+55 &#32;&#32;&#32;&#32;<link linkend="_structkmenuitem__t">kmenuitem_t</link>&#32;**items;
+56 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;count;
+57 
+58 &#32;&#32;&#32;&#32;void&#32;(*paint)(<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structksubmenu__t">ksubmenu_t</link>&#32;*menu)&#32;__attribute__((__stdcall__));
+59 
+60 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;is_opened;
+61 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;focus_idx;
+62 
+63 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;width,&#32;height;
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;left,&#32;top;
+65 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;tid;
+66 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;parent_wnd,&#32;parent_tid,&#32;submenu_tid,&#32;self_wnd;
+67 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;level;
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;return_btnid;
+69 
+70 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;set_new_padding,&#32;set_new_margin;
+71 &#32;&#32;&#32;&#32;t_rect&#32;items_padding;
+72 &#32;&#32;&#32;&#32;t_rect&#32;items_margin;
+73 
+74 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structksubmenu__t">ksubmenu_t</link>&#32;*parent;
+75 }&#32;<link linkend="_structksubmenu__t">ksubmenu_t</link>;
+76 
+77 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+78 &#32;&#32;&#32;&#32;<link linkend="_structkmenuitem__t">kmenuitem_t</link>&#32;**submenu;
+79 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;count;
+80 
+81 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;width,&#32;height;
+82 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;left,&#32;top;
+83 
+84 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;line_height;
+85 
+86 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;focus_idx;
+87 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;submenu_tid;
+88 }&#32;<link linkend="_structkmenu__t">kmenu_t</link>;
+89 
+90 
+91 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;kolibri_kmenu_init(<emphasis role="keywordtype">void</emphasis>);
+92 
+93 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*kmainmenu_draw)(<link linkend="_structksubmenu__t">ksubmenu_t</link>&#32;*)&#32;__attribute__((__stdcall__));
+94 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*kmainmenu_dispatch_cursorevent)(<link linkend="_structksubmenu__t">ksubmenu_t</link>&#32;*)&#32;__attribute__((__stdcall__));
+95 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*kmenu_init)(<emphasis role="keywordtype">void</emphasis>&#32;*)&#32;__attribute__((__stdcall__));
+96 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_structksubmenu__t">ksubmenu_t</link>*&#32;(*ksubmenu_new)()&#32;__attribute__((__stdcall__));
+97 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*ksubmenu_add)(<link linkend="_structksubmenu__t">ksubmenu_t</link>&#32;*,&#32;<link linkend="_structkmenuitem__t">kmenuitem_t</link>&#32;*)&#32;__attribute__((__stdcall__));
+98 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_structkmenuitem__t">kmenuitem_t</link>*&#32;(*kmenuitem_new)(uint32_t,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*,&#32;uint32_t)&#32;__attribute__((__stdcall__));
+99 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_structkmenuitem__t">kmenuitem_t</link>*&#32;(*kmenuitem__submenu_new)(uint32_t,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*,&#32;<link linkend="_structksubmenu__t">ksubmenu_t</link>&#32;*)&#32;__attribute__((__stdcall__));
+100 
+101 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_KMENU_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

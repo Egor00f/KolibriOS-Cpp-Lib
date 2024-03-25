@@ -1,176 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_types_8hpp_source" xml:lang="ru">
 <title>types.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/types.hpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__TYPES_H__</emphasis>
-2 <emphasis role="preprocessor">#define&#32;__TYPES_H__</emphasis>
-3 
-4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
-5 
-6 <emphasis role="preprocessor">#define&#32;X_Y(x,&#32;y)(((x)&#32;&lt;&lt;&#32;16)&#32;|&#32;(y))</emphasis>
-7 
-8 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-9 {
-10 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-13 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1point">point</link>
-14 &#32;&#32;&#32;&#32;{
-16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>;
-18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;T&#32;<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>;
-19 
-23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point_1aa3ef97fd19ba3b0935c2ed0ae5f9e55d">point</link>(T&#32;X&#32;=&#32;(T)0,&#32;T&#32;Y&#32;=&#32;(T)0);
-24 
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point_1a2e4751aebabf649201893564603c925d">point</link>(<emphasis role="keywordtype">float</emphasis>&#32;f);
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/types.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="comment">/*</emphasis>
+2 <emphasis role="comment">всякие&#32;разные&#32;базовые&#32;типы</emphasis>
+3 <emphasis role="comment">*/</emphasis>
+4 <emphasis role="preprocessor">#ifndef&#32;__TYPES_H__</emphasis>
+5 <emphasis role="preprocessor">#define&#32;__TYPES_H__</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/filesystem.hpp&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
+10 
+11 <emphasis role="preprocessor">#define&#32;X_Y(x,&#32;y)(((x)&#32;&lt;&lt;&#32;16)&#32;|&#32;(y))</emphasis>
+12 
+13 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+14 {
+15 &#32;&#32;&#32;&#32;
+17 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_kolibri_lib_1_1point">point</link>
+18 &#32;&#32;&#32;&#32;{
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1aba63dd75453b02a799b9cd6ae5773cfe">x</link>;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1a92d76b1b7cb1eabab7bc3916b6341a24">y</link>;
+23 
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point_1a265a991978495b66d5cf24346e975bfc">point</link>(<emphasis role="keywordtype">int</emphasis>&#32;X&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Y&#32;=&#32;0);
 28 
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;GetKsysPost()&#32;<emphasis role="keyword">const</emphasis>;
-30 
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&amp;&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;a);
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;operator-(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;a);
-33 
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point_1a4cc022aa1df6376d76b4c0a6102ea92e">operator=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;p);
-38 
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point_1a0891cef00565f4ca0844407aa83f96fe">operator+=</link>(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p);
-44 
-45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;operator-=(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p);
-46 
-47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;operator*=(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p);
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point_1a088398ffb8097c6a7cde98e29ee6b37d">point</link>(<emphasis role="keywordtype">float</emphasis>&#32;f);
+32 
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;GetKsysPost()&#32;<emphasis role="keyword">const</emphasis>;
+34 
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&amp;&#32;operator+(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;a);
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;operator-(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;a);
+37 
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point_1a8128ee0637bb637b9ebc243ee13fea16">operator=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;p);
+42 
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point_1a3fe3cb1645f178a4274fc8e8048e275a">operator+=</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;p);
 48 
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;operator/=(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p);
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;operator-=(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;p);
 50 
-54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1aea6b20f0975274a5564bfe12945d5bd1">operator==</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
-55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-56 
-60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1a5a2c05ea1ae850ba4cf0446239afe669">operator!=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;T&gt;</link>&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
-61 &#32;&#32;&#32;&#32;};
-62 
-63 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>UI
-64 &#32;&#32;&#32;&#32;{
-66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;unsigned&gt;</link>&#32;Size;
-67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point&lt;int&gt;</link>&#32;Coord;
-70 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;UI</emphasis>
-71 
-72 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Colors
-73 &#32;&#32;&#32;&#32;{
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-75 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;Colors</emphasis>
-76 
-77 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;operator*=(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;p);
+52 
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;operator/=(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;p);
+54 
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1a7407c78217e0395f96a88692e8cf7421">operator==</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+60 
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1a065d56469c375a2912116f4e7a1c1a2d">operator!=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;&amp;a)&#32;<emphasis role="keyword">const</emphasis>;
+65 &#32;&#32;&#32;&#32;};
+66 
+67 &#32;&#32;&#32;&#32;
+69 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;<link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>;
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+72 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">point</link>&#32;<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link>;
+73 
+74 &#32;&#32;&#32;&#32;<emphasis role="comment">//==================================================================================================</emphasis>
+75 
+76 &#32;&#32;&#32;&#32;
+77 <emphasis role="comment">//==================================================================================================</emphasis>
 78 
-79 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-80 <link linkend="_struct_kolibri_lib_1_1point_1aa3ef97fd19ba3b0935c2ed0ae5f9e55d">KolibriLib::point&lt;T&gt;::point</link>(T&#32;X,&#32;T&#32;Y)
-81 {
-82 &#32;&#32;&#32;&#32;x&#32;=&#32;X;
-83 &#32;&#32;&#32;&#32;y&#32;=&#32;Y;
-84 }
-85 
-86 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-87 <link linkend="_struct_kolibri_lib_1_1point_1aa3ef97fd19ba3b0935c2ed0ae5f9e55d">KolibriLib::point&lt;T&gt;::point</link>(<emphasis role="keywordtype">float</emphasis>&#32;f)
-88 {
-89 &#32;&#32;&#32;&#32;x&#32;=&#32;f&#32;/&#32;10.0;
-90 &#32;&#32;&#32;&#32;y&#32;=&#32;10;
-91 
-92 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(x&#32;!=&#32;y)
-93 &#32;&#32;&#32;&#32;{
-94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//====================================================</emphasis>
-95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num&#32;=&#32;x,&#32;denom&#32;=&#32;y,&#32;rem;
-96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(num&#32;&lt;&#32;denom)
-97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;temp&#32;=&#32;num;
-99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;denom;
-100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;denom&#32;=&#32;temp;
-101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(rem&#32;=&#32;num&#32;%&#32;denom)
-103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;num&#32;=&#32;denom;
-105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;denom&#32;=&#32;rem;
-106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//====================================================</emphasis>
-108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;/=&#32;rem;
-109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;y&#32;/=&#32;rem;
-110 &#32;&#32;&#32;&#32;}
-111 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
-112 &#32;&#32;&#32;&#32;{
-113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;1;
-114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;y&#32;=&#32;1;
-115 &#32;&#32;&#32;&#32;}
-116 }
-117 
-118 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-119 ksys_pos_t&#32;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;::GetKsysPost</link>()<emphasis role="keyword">&#32;const</emphasis>
-120 <emphasis role="keyword"></emphasis>{
-121 &#32;&#32;&#32;&#32;ksys_pos_t&#32;p;
-122 &#32;&#32;&#32;&#32;p.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;=&#32;(uint16_t)x;
-123 &#32;&#32;&#32;&#32;p.y&#32;=&#32;(uint16_t)y;
-124 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;p;
-125 }
-126 
-127 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-128 <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;::operator+</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;a)
-129 {
-130 &#32;&#32;&#32;&#32;x&#32;+=&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>;
-131 &#32;&#32;&#32;&#32;y&#32;+=&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>;
-132 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-133 }
-134 
-135 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-136 <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;::operator-</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;a)
-137 {
-138 &#32;&#32;&#32;&#32;x&#32;-=&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>;
-139 &#32;&#32;&#32;&#32;y&#32;-=&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>;
-140 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-141 }
-142 
-143 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-144 <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point_1a4cc022aa1df6376d76b4c0a6102ea92e">KolibriLib::point&lt;T&gt;::operator=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;p)
-145 {
-146 &#32;&#32;&#32;&#32;x&#32;=&#32;p.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>;
-147 &#32;&#32;&#32;&#32;y&#32;=&#32;p.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>;
-148 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-149 }
-150 
-151 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-152 <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point_1a0891cef00565f4ca0844407aa83f96fe">KolibriLib::point&lt;T&gt;::operator+=</link>(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p)
-153 {
-154 &#32;&#32;&#32;&#32;x&#32;+=&#32;p;
-155 &#32;&#32;&#32;&#32;y&#32;+=&#32;p;
-156 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-157 }
-158 
-159 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-160 <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;::operator-=</link>(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p)
-161 {
-162 &#32;&#32;&#32;&#32;x&#32;-=&#32;p;
-163 &#32;&#32;&#32;&#32;y&#32;-=&#32;p;
-164 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-165 }
-166 
-167 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-168 <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;::operator*=</link>(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p)
-169 {
-170 &#32;&#32;&#32;&#32;x&#32;*=&#32;p;
-171 &#32;&#32;&#32;&#32;y&#32;*=&#32;p;
-172 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-173 }
-174 
-175 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-176 <link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;::operator/=</link>(<emphasis role="keyword">const</emphasis>&#32;T&#32;&amp;p)
-177 {
-178 &#32;&#32;&#32;&#32;x&#32;/=&#32;p;
-179 &#32;&#32;&#32;&#32;y&#32;/=&#32;p;
-180 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
-181 }
-182 
-183 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-184 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1aea6b20f0975274a5564bfe12945d5bd1">KolibriLib::point&lt;T&gt;::operator==</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;a)<emphasis role="keyword">&#32;const</emphasis>
-185 <emphasis role="keyword"></emphasis>{
-186 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;x&#32;==&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;&amp;&amp;&#32;y&#32;==&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>;
-187 }
-188 
-189 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">class</emphasis>&#32;T&gt;
-190 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point_1a5a2c05ea1ae850ba4cf0446239afe669">KolibriLib::point&lt;T&gt;::operator!=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">KolibriLib::point&lt;T&gt;</link>&#32;&amp;a)<emphasis role="keyword">&#32;const</emphasis>
-191 <emphasis role="keyword"></emphasis>{
-192 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;x&#32;!=&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>&#32;||&#32;y&#32;!=&#32;a.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>;
-193 }
-194 
-195 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__TYPES_H__</emphasis>
+79 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+80 
+81 
+82 
+83 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__TYPES_H__</emphasis>
 </programlisting></section>

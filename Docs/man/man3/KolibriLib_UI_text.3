@@ -51,14 +51,14 @@ KolibriLib::UI::text \- Работа с тектсом
 .br
 .RI "Изменить размер текста "
 .ti -1c
-.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const unsigned &size=9, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_text)"
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const unsigned &size=9, const \fBColors::Color\fP &color=\fBOS::GetSystemColors\fP()\&.work_text)"
 .br
 .RI "Просто вывести текст "
 .ti -1c
-.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBSize\fP &size=Fonts::DefaultFont\&.size, unsigned flags=\fBFlags::Normal\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.RI "\fBImages::img\fP * \fBDrawTextToImg\fP (const std::string &text, const \fBFonts::Font\fP &font, unsigned margin, const \fBColors::Color\fP &colorText, const \fBColors::Color\fP &BackgroundColor)"
 .br
 .ti -1c
-.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.work_area)"
 .br
 .RI "Вывести текст "
 .in -1c
@@ -104,7 +104,7 @@ KolibriLib::UI::text \- Работа с тектсом
 Выравнивание по центру 
 .SH "Функции"
 .PP 
-.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, unsigned margin = \fRUI::DefaultMargin\fP, const \fBColors::Color\fP & colorText = \fROS::sys_color_table\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fROS::sys_color_table\&.work_area\fP)"
+.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, unsigned margin = \fRUI::DefaultMargin\fP, const \fBColors::Color\fP & colorText = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fR\fBOS::GetSystemColors\fP()\&.work_area\fP)\fR [inline]\fP"
 
 .PP
 Вывести текст 
@@ -124,9 +124,13 @@ KolibriLib::UI::text \- Работа с тектсом
 \fIBackgroundColor\fP цвет фона 
 .RE
 .PP
-.SS "устанавливает курсор в середину экрана"
+\fBЗаметки\fP
+.RS 4
+Функция выводить используя библиотеку RasterWorks 
+.RE
+.PP
 
-.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const unsigned & size = \fR9\fP, const \fBColors::Color\fP & color = \fROS::sys_color_table\&.work_text\fP)\fR [inline]\fP"
+.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const unsigned & size = \fR9\fP, const \fBColors::Color\fP & color = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP)\fR [inline]\fP"
 
 .PP
 Просто вывести текст 
@@ -140,7 +144,40 @@ KolibriLib::UI::text \- Работа с тектсом
 \fIcolor\fP цвет текста 
 .RE
 .PP
-.SS "изменения высоты шрифта используйте \fBSetTextSize(unsigned)\fP"
+\fBЗаметки\fP
+.RS 4
+Для изменения высоты шрифта используйте \fBSetTextSize(unsigned)\fP
+.RE
+.PP
+
+.SS "\fBImages::img\fP * KolibriLib::UI::text::DrawTextToImg (const std::string & text, const \fBFonts::Font\fP & font, unsigned margin, const \fBColors::Color\fP & colorText, const \fBColors::Color\fP & BackgroundColor)"
+
+.PP
+\fBАргументы\fP
+.RS 4
+\fItext\fP 
+.br
+\fIfont\fP 
+.br
+\fImargin\fP 
+.br
+\fIcolorText\fP цвет текста 
+.br
+\fIBackgroundColor\fP цвет фона 
+.RE
+.PP
+\fBВозвращает\fP
+.RS 4
+указатель на \fBImages::img\fP содержащие 
+.RE
+.PP
+\fBЗаметки\fP
+.RS 4
+цвета фона и текста чувствительны к прозрачности 
+.PP
+прозрачность привязывается к контреным координатам и размерам 
+.RE
+.PP
 
 .SS "unsigned int KolibriLib::UI::text::GetTextSize ()\fR [inline]\fP"
 
@@ -152,11 +189,6 @@ KolibriLib::UI::text \- Работа с тектсом
 текущая высота текста 
 .RE
 .PP
-\fBПредупреждения\fP
-.RS 4
-Функция действует только для текста выводимого через функцию \fBDrawText(const std::string &text, const Coord &coord, const unsigned &size, const Colors::Color &color)\fP
-.RE
-.PP
 
 .SS "void KolibriLib::UI::text::SetTextSize (unsigned newSize)\fR [inline]\fP"
 
@@ -166,11 +198,6 @@ KolibriLib::UI::text \- Работа с тектсом
 \fBАргументы\fP
 .RS 4
 \fInewSize\fP высота текста в px 
-.RE
-.PP
-\fBПредупреждения\fP
-.RS 4
-Функция действует только для текста выводимого через функцию \fBDrawText(const std::string &text, const Coord &coord, const unsigned &size, const Colors::Color &color)\fP
 .RE
 .PP
 

@@ -1,0 +1,47 @@
+\doxysection{kolibri\+\_\+progressbar.\+h}
+\hypertarget{kolibri__progressbar_8h_source}{}\label{kolibri__progressbar_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_progressbar.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_progressbar.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_PROGRESSBAR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KOLIBRI\_PROGRESSBAR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <kos32sys.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ value;}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ left;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ top;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ style;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ back\_color;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ progress\_color;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ frame\_color;}
+\DoxyCodeLine{00018\ \}\ \mbox{\hyperlink{structprogressbar}{progressbar}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \mbox{\hyperlink{structprogressbar}{progressbar}}*\ kolibri\_new\_progressbar(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ min\_value,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_value,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ cur\_value,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tlx,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tly,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sizex,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sizey)}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{structprogressbar}{progressbar}}\ *new\_progressbar\ =\ (\mbox{\hyperlink{structprogressbar}{progressbar}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structprogressbar}{progressbar}}));}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ new\_progressbar\ -\/>\ value\ =\ cur\_value;}
+\DoxyCodeLine{00025\ \ \ \ \ new\_progressbar\ -\/>\ left\ =\ tlx;}
+\DoxyCodeLine{00026\ \ \ \ \ new\_progressbar\ -\/>\ top\ =\ tly;}
+\DoxyCodeLine{00027\ \ \ \ \ new\_progressbar\ -\/>\ width\ =\ sizex;}
+\DoxyCodeLine{00028\ \ \ \ \ new\_progressbar\ -\/>\ height\ =\ sizey;}
+\DoxyCodeLine{00029\ \ \ \ \ new\_progressbar\ -\/>\ style\ =\ 1;}
+\DoxyCodeLine{00030\ \ \ \ \ new\_progressbar\ -\/>\ min\ =\ min\_value;}
+\DoxyCodeLine{00031\ \ \ \ \ new\_progressbar\ -\/>\ max\ =\ max\_value;}
+\DoxyCodeLine{00032\ \ \ \ \ new\_progressbar\ -\/>\ back\_color\ =\ 0xffffff;\ \ \ \textcolor{comment}{//\ white}}
+\DoxyCodeLine{00033\ \ \ \ \ new\_progressbar\ -\/>\ progress\_color\ =\ 0x00ff00;\ \textcolor{comment}{//\ green}}
+\DoxyCodeLine{00034\ \ \ \ \ new\_progressbar\ -\/>\ frame\_color\ =\ 0x000000;\ \textcolor{comment}{//\ black}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ new\_progressbar;}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ void\ (*progressbar\_draw)(\mbox{\hyperlink{structprogressbar}{progressbar}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ void\ (*progressbar\_progress)(\mbox{\hyperlink{structprogressbar}{progressbar}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_PROGRESSBAR\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

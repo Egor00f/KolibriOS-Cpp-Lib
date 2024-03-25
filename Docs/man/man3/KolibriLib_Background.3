@@ -11,11 +11,11 @@ KolibriLib::Background \- Работа с фоном
 
 .in +1c
 .ti -1c
-.RI "\fBUI::Size\fP \fBGetSize\fP ()"
+.RI "\fBSize\fP \fBGetSize\fP ()"
 .br
 .RI "Получить размеры фонового изображения "
 .ti -1c
-.RI "\fBColors::Color\fP \fBReadPoint\fP (const \fBUI::Coord\fP &Point)"
+.RI "\fBColors::Color\fP \fBReadPoint\fP (const \fBCoord\fP &Point)"
 .br
 .RI "Прочитать точку на фоне "
 .ti -1c
@@ -23,26 +23,27 @@ KolibriLib::Background \- Работа с фоном
 .br
 .RI "Перерисовать фон "
 .ti -1c
-.RI "void \fBRedrawBackground\fP (const \fBUI::Coord\fP &coord, const \fBUI::Size\fP &size)"
+.RI "void \fBRedrawBackground\fP (const \fBCoord\fP &coord, const \fBSize\fP &size)"
+.br
+.RI "Перересовать область фона "
+.ti -1c
+.RI "void \fBSetSize\fP (const \fBSize\fP &size)"
 .br
 .ti -1c
-.RI "void \fBSetSize\fP (const \fBUI::Size\fP &size)"
+.RI "void \fBDrawPoint\fP (const \fBCoord\fP coord, const \fBColors::Color\fP &color)"
 .br
 .ti -1c
-.RI "void \fBDrawPoint\fP (const \fBUI::Coord\fP coord, const \fBColors::Color\fP &color)"
+.RI "template<std::size_t N> void \fBDrawImage\fP (const \fBCoord\fP coord, rgb_t(&rgb)[N])"
 .br
 .ti -1c
-.RI "template<std::size_t N> void \fBDrawImage\fP (const \fBUI::Coord\fP coord, rgb_t(&rgb)[N])"
+.RI "void \fBDrawImage\fP (const \fBCoord\fP &coord, rgb_t *rgb, std::size_t N)"
 .br
 .ti -1c
-.RI "void \fBDrawImage\fP (const \fBUI::Coord\fP coord, rgb_t *rgb, std::size_t N)"
-.br
-.ti -1c
-.RI "void \fBDrawLine\fP (const \fBUI::Coord\fP &p1, const \fBUI::Coord\fP &p2, const \fBColors::Color\fP &color=OS::sys_color_table\&.work_graph)"
+.RI "void \fBDrawLine\fP (const \fBCoord\fP &p1, const \fBCoord\fP &p2, const \fBColors::Color\fP &color=\fBOS::GetSystemColors\fP()\&.work_graph)"
 .br
 .RI "Нарисовать линию на фоне "
 .ti -1c
-.RI "void \fBDrawText\fP (const std::string &text, const \fBUI::Coord\fP &coord, const \fBUI::text::Fonts::Font\fP &font=\fBUI::text::Fonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area)"
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBUI::text::Fonts::Font\fP &font=\fBUI::text::Fonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.work_area)"
 .br
 .in -1c
 .SS "Переменные"
@@ -57,7 +58,7 @@ KolibriLib::Background \- Работа с фоном
 Работа с фоном 
 .SH "Функции"
 .PP 
-.SS "void KolibriLib::Background::DrawLine (const \fBUI::Coord\fP & p1, const \fBUI::Coord\fP & p2, const \fBColors::Color\fP & color = \fROS::sys_color_table\&.work_graph\fP)\fR [inline]\fP"
+.SS "void KolibriLib::Background::DrawLine (const \fBCoord\fP & p1, const \fBCoord\fP & p2, const \fBColors::Color\fP & color = \fR\fBOS::GetSystemColors\fP()\&.work_graph\fP)\fR [inline]\fP"
 
 .PP
 Нарисовать линию на фоне 
@@ -72,7 +73,7 @@ KolibriLib::Background \- Работа с фоном
 .RE
 .PP
 
-.SS "\fBUI::Size\fP KolibriLib::Background::GetSize ()\fR [inline]\fP"
+.SS "\fBSize\fP KolibriLib::Background::GetSize ()\fR [inline]\fP"
 
 .PP
 Получить размеры фонового изображения 
@@ -83,7 +84,7 @@ KolibriLib::Background \- Работа с фоном
 .RE
 .PP
 
-.SS "\fBColors::Color\fP KolibriLib::Background::ReadPoint (const \fBUI::Coord\fP & Point)\fR [inline]\fP"
+.SS "\fBColors::Color\fP KolibriLib::Background::ReadPoint (const \fBCoord\fP & Point)\fR [inline]\fP"
 
 .PP
 Прочитать точку на фоне 
@@ -95,6 +96,21 @@ KolibriLib::Background \- Работа с фоном
 .PP
 \fBВозвращает\fP
 .RS 4
+.RE
+.PP
+
+.SS "void KolibriLib::Background::RedrawBackground (const \fBCoord\fP & coord, const \fBSize\fP & size)\fR [inline]\fP"
+
+.PP
+Перересовать область фона 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIcoord\fP координаты верхненго левого угла области 
+.br
+\fIsize\fP размеры 
+.br
+ 
 .RE
 .PP
 

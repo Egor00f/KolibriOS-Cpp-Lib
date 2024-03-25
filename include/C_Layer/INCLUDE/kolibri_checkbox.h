@@ -5,6 +5,8 @@
 #include <kos32sys.h>
 #include <kolibriLib/system/os.hpp>
 
+extern "C"
+{
 /*
 ch_flag_en - ���� �������������� ��� �����
 ch_flag_top - ���� ������������ ������ ������
@@ -52,5 +54,6 @@ check_box* kolibri_new_check_box(unsigned int tlx, unsigned int tly, unsigned in
      return new_checkbox;
 }
 
+}
 
 #endif /* KOLIBRI_CHECKBOX_H */

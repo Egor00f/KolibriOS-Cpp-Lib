@@ -74,11 +74,11 @@ namespace KolibriLib
                 void SetFlags(unsigned flags);
 
                 /// @brief Изменить цвет текста
-                /// @param NewColor 
+                /// @param NewColor новый цвет фона
                 void SetTextColor(const Colors::Color &NewColor);
 
                 /// @brief Изменить цвет фона текста
-                /// @param NewColor 
+                /// @param NewColor новый цвет фона
                 void SetBackgroundColor(const Colors::Color &NewColor);
 
                 /// @brief Измерить размеры символа
@@ -147,8 +147,11 @@ namespace KolibriLib
                 /// @brief Конструктор
                 Text();
 
-                /// @brief Деструктор
-                ~Text();
+                /// @brief Конструктор
+                /// @param text
+                Text( const std::string& text);
+
+                
 
                 /// @brief Добавить символ в конец
                 /// @param c символ
@@ -329,20 +332,21 @@ namespace KolibriLib
                 }
             }
 
-            bool Char::operator==(const KolibriLib::UI::text::Char &img) const
+            bool Char::operator==(const Char &img) const
             {
                 return (_type == img._type) &&
                        (_font == img._font);
             }
 
-            text::TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const unsigned &FontSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) : UIElement(coord, size, TextColor, Margin)
+            TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const unsigned &FontSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) : UIElement(coord, size, TextColor, Margin)
             {
                 Add(text);
                 _TextScale = TextScale;
             }
 
-            KolibriLib::UI::text::TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const KolibriLib::UI::text::Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, const unsigned &Margin)
+            TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const UI::text::Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, const unsigned &Margin)
             {
+                _ksys_debug_puts("TextLabel Constructor\n");
                 Add(text);
                 _TextScale = TextScale;
                 SetFont(Font);
@@ -378,7 +382,12 @@ namespace KolibriLib
                 _TextScale = scale;
             }
 
-            text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const KolibriLib::UI::text::TextLabel &a)
+			bool TextLabel::GetScale() const
+			{
+				return _TextScale;
+			}
+
+			text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const KolibriLib::UI::text::TextLabel &a)
             {
                 _coord = a._coord;
                 _size = a._size;
@@ -408,6 +417,7 @@ namespace KolibriLib
 
             KolibriLib::UI::text::Char::Char(char c, const KolibriLib::UI::text::Fonts::Font &font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
             {
+                _ksys_debug_puts("Char consturctor\n");
                 _c = new char(c);
                 _font = font;
                 _TextColor = new Colors::Color(TextColor);
@@ -417,6 +427,7 @@ namespace KolibriLib
 
             KolibriLib::UI::text::Char::Char(const Images::img &img, const KolibriLib::UI::text::Fonts::Font &font)
             {
+                _ksys_debug_puts("Char constructor\n");
                 _img = new Images::img(img);
                 _font = font;
                 _type = Type::Image;
@@ -548,16 +559,19 @@ namespace KolibriLib
                 return _data.at(i);
             }
 
-            KolibriLib::UI::text::Text::Text()
-            {
-            }
+			Text::Text()
+			{
+                _ksys_debug_puts("Text constructor\n");
+			}
 
-            KolibriLib::UI::text::Text::~Text()
-            {
-            }
+			Text::Text(const std::string &text)
+			{
+                _ksys_debug_puts("Text constructor\n");
+                SetText(text);
+			}
 
-            void KolibriLib::UI::text::Text::Add(const KolibriLib::UI::text::Char &c)
-            {
+			void KolibriLib::UI::text::Text::Add(const KolibriLib::UI::text::Char &c)
+			{
                 _data.push_back(c);
             }
 

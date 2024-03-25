@@ -23,7 +23,7 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 
 .in +1c
 .ti -1c
-.RI "\fBCheckBox\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const int &\fBstyle\fP=0, const \fBColors::Color\fP &CheckBoxBorderColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.work_area, const unsigned &Margin=DefaultMargin)"
+.RI "\fBCheckBox\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={32, 16}, const int &\fBstyle\fP=0, const \fBColors::Color\fP &CheckBoxBorderColor=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.work_area, const unsigned &Margin=DefaultMargin)"
 .br
 .ti -1c
 .RI "void \fBRender\fP ()"
@@ -38,7 +38,7 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 Открытые члены унаследованные от \fBKolibriLib::UI::buttons::Button\fP
 .in +1c
 .ti -1c
-.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=\fBOS::GetSystemColors\fP()\&.work_button)"
 .br
 .RI "Это конструктор "
 .ti -1c
@@ -80,11 +80,11 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 Открытые члены унаследованные от \fBKolibriLib::UI::text::TextLabel\fP
 .in +1c
 .ti -1c
-.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const unsigned &Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (bool scale)"
@@ -108,7 +108,7 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -199,7 +199,7 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 .br
 .RI "Удалить \fBChar\fP из текста "
 .ti -1c
-.RI "void \fBPrint\fP (const \fBUI::Coord\fP &coord) const"
+.RI "void \fBPrint\fP (const \fBCoord\fP &coord) const"
 .br
 .RI "Вывести текст "
 .ti -1c

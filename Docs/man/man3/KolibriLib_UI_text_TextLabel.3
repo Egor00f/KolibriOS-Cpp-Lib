@@ -17,11 +17,11 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 
 .in +1c
 .ti -1c
-.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const unsigned &Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
 .br
 .ti -1c
 .RI "virtual void \fBRender\fP () const"
@@ -49,7 +49,7 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -140,7 +140,7 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 .br
 .RI "Удалить \fBChar\fP из текста "
 .ti -1c
-.RI "void \fBPrint\fP (const \fBUI::Coord\fP &coord) const"
+.RI "void \fBPrint\fP (const \fBCoord\fP &coord) const"
 .br
 .RI "Вывести текст "
 .ti -1c
@@ -229,7 +229,7 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 
 .SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::UI::text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'TextLabel'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColors::Color\fP & TextColor = \fROS::sys_color_table\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
+.SS "KolibriLib::UI::text::TextLabel::TextLabel (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const std::string & text = \fR'TextLabel'\fP, const unsigned & FontSize = \fR9\fP, bool TextScale = \fRtrue\fP, const \fBColors::Color\fP & TextColor = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, const unsigned & Margin = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -252,7 +252,7 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 
 .SH "Методы"
 .PP 
-.SS "\fBTextLabel\fP & KolibriLib::UI::text::TextLabel::operator= (const \fBTextLabel\fP & a)"
+.SS "\fBtext::TextLabel\fP & KolibriLib::UI::text::TextLabel::operator= (const \fBTextLabel\fP & a)"
 
 .PP
 \fBАргументы\fP
@@ -284,7 +284,7 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 .RE
 .PP
 
-.SS "virtual void KolibriLib::UI::text::TextLabel::Render () const\fR [virtual]\fP"
+.SS "void KolibriLib::UI::text::TextLabel::Render () const\fR [virtual]\fP"
 
 .PP
 Отрисовать текстовую метку 

@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__gui_8h_source" xml:lang="ru">
+<title>kolibri_gui.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_gui.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_GUI_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_GUI_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&quot;kolibri_debug.h&quot;</emphasis>&#32;<emphasis role="comment">/*&#32;work&#32;with&#32;debug&#32;board&#32;*/</emphasis>
+8 
+9 <emphasis role="comment">/*&#32;boxlib&#32;loader&#32;*/</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&quot;kolibri_boxlib.h&quot;</emphasis>
+11 
+12 <emphasis role="comment">/*&#32;All&#32;supported&#32;GUI&#32;elements&#32;included&#32;*/</emphasis>
+13 <emphasis role="preprocessor">#include&#32;&quot;kolibri_gui_elements.h&quot;</emphasis>
+14 
+15 <emphasis role="keyword">enum</emphasis>&#32;KOLIBRI_GUI_EVENTS&#32;{
+16 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_NONE&#32;=&#32;0,&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Event&#32;queue&#32;is&#32;empty&#32;*/</emphasis>
+17 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_REDRAW&#32;=&#32;1,&#32;&#32;&#32;<emphasis role="comment">/*&#32;Window&#32;and&#32;window&#32;elements&#32;should&#32;be&#32;redrawn&#32;*/</emphasis>
+18 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_KEY&#32;=&#32;2,&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;A&#32;key&#32;on&#32;the&#32;keyboard&#32;was&#32;pressed&#32;*/</emphasis>
+19 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_BUTTON&#32;=&#32;3,&#32;&#32;&#32;<emphasis role="comment">/*&#32;A&#32;button&#32;was&#32;clicked&#32;with&#32;the&#32;mouse&#32;*/</emphasis>
+20 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_DESKTOP&#32;=&#32;5,&#32;&#32;<emphasis role="comment">/*&#32;Desktop&#32;redraw&#32;finished&#32;*/</emphasis>
+21 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_MOUSE&#32;=&#32;6,&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Mouse&#32;activity&#32;(movement,&#32;button&#32;press)&#32;was&#32;detected&#32;*/</emphasis>
+22 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_IPC&#32;=&#32;7,&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Interprocess&#32;communication&#32;notify&#32;*/</emphasis>
+23 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_NETWORK&#32;=&#32;8,&#32;&#32;<emphasis role="comment">/*&#32;Network&#32;event&#32;*/</emphasis>
+24 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_DEBUG&#32;=&#32;9,&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Debug&#32;subsystem&#32;event&#32;*/</emphasis>
+25 &#32;&#32;&#32;&#32;KOLIBRI_EVENT_IRQBEGIN&#32;=&#32;16&#32;<emphasis role="comment">/*&#32;16..31&#32;IRQ0..IRQ15&#32;interrupt&#32;=IRQBEGIN+IRQn&#32;*/</emphasis>
+26 };
+27 
+28 <emphasis role="preprocessor">#define&#32;BUTTON_CLOSE&#32;0x1</emphasis>
+29 <emphasis role="preprocessor">#define&#32;BTN_QUIT&#32;1</emphasis>
+30 
+31 <emphasis role="keywordtype">void</emphasis>&#32;kolibri_handle_event_redraw(<link linkend="_structkolibri__window">kolibri_window</link>*&#32;some_window)
+32 {
+33 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;&#32;Draw&#32;windows&#32;with&#32;system&#32;color&#32;table.&#32;*/</emphasis>
+34 
+35 &#32;&#32;&#32;&#32;_ksys_start_draw();
+36 
+37 &#32;&#32;&#32;&#32;_ksys_create_window(
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;topleftx,
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;toplefty,
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;sizex,
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;sizey,
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;window_title,
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_area,
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;XY
+45 &#32;&#32;&#32;&#32;);
+46 
+47 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Enumerate&#32;and&#32;draw&#32;all&#32;window&#32;elements&#32;here&#32;*/</emphasis>
+48 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(some_window-&gt;elements)&#32;<emphasis role="comment">/*&#32;Draw&#32;all&#32;elements&#32;added&#32;to&#32;window&#32;*/</emphasis>
+49 &#32;&#32;&#32;&#32;{
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structkolibri__window__element">kolibri_window_element</link>*&#32;current_element&#32;=&#32;some_window&#32;-&gt;&#32;elements;
+51 
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;The&#32;redraw_fn&#32;serves&#32;as&#32;draw_fn&#32;on&#32;initial&#32;draw&#32;*/</emphasis>
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((<emphasis role="keywordtype">int</emphasis>)kolibri_gui_op_table[current_element&#32;-&gt;&#32;type].redraw_fn&#32;&gt;&#32;0)&#32;&#32;<emphasis role="comment">//&#32;-1&#32;if&#32;DLL&#32;link&#32;fail</emphasis>
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kolibri_gui_op_table[current_element&#32;-&gt;&#32;type].redraw_fn(current_element&#32;-&gt;&#32;element);
+57 
+58 <emphasis role="comment">//sie&#32;after&#32;fixing&#32;calling&#32;conventions&#32;no&#32;more&#32;needed</emphasis>
+59 <emphasis role="comment">/*</emphasis>
+60 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;switch(current_element&#32;-&gt;&#32;type)</emphasis>
+61 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{</emphasis>
+62 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;case&#32;KOLIBRI_EDIT_BOX:</emphasis>
+63 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;case&#32;KOLIBRI_CHECK_BOX:</emphasis>
+64 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;__asm__&#32;volatile(&quot;push&#32;$0x13371337&quot;::);&#32;/&#32;*&#32;Random&#32;value&#32;pushed&#32;to&#32;balance&#32;stack&#32;*&#32;/</emphasis>
+65 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;/&#32;*&#32;otherwise&#32;edit_box_draw&#32;leaves&#32;stack&#32;unbalanced&#32;*&#32;/</emphasis>
+66 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;/&#32;*&#32;and&#32;GCC&#32;jumps&#32;like&#32;a&#32;crazy&#32;motha&apos;&#32;fucka&apos;&#32;*&#32;/</emphasis>
+67 <emphasis role="comment"></emphasis>
+68 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;break;</emphasis>
+69 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default:</emphasis>
+70 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;break;</emphasis>
+71 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+72 <emphasis role="comment">*/</emphasis>
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;current_element&#32;=(<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*)&#32;current_element&#32;-&gt;&#32;next;
+74 
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(current_element&#32;!=&#32;some_window-&gt;elements);&#32;<emphasis role="comment">/*&#32;Have&#32;we&#32;covered&#32;all&#32;elements?&#32;*/</emphasis>
+76 &#32;&#32;&#32;&#32;}
+77 }
+78 
+79 <emphasis role="keywordtype">void</emphasis>&#32;kolibri_handle_event_key(<link linkend="_structkolibri__window">kolibri_window</link>*&#32;some_window,&#32;ksys_oskey_t&#32;key)
+80 {
+81 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Enumerate&#32;and&#32;trigger&#32;key&#32;handling&#32;functions&#32;of&#32;window&#32;elements&#32;here&#32;*/</emphasis>
+82 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(some_window-&gt;elements)
+83 &#32;&#32;&#32;&#32;{
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*current_element&#32;=&#32;some_window&#32;-&gt;&#32;elements;
+85 
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Only&#32;execute&#32;if&#32;the&#32;function&#32;pointer&#32;isn&apos;t&#32;NULL,&#32;or&#32;-1&#32;(fail&#32;to&#32;find&#32;in&#32;export&#32;table)&#32;*/</emphasis>
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((<emphasis role="keywordtype">int</emphasis>)kolibri_gui_op_table[current_element&#32;-&gt;&#32;type].key_fn&#32;&gt;&#32;0)
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kolibri_gui_op_table[current_element&#32;-&gt;&#32;type].key_fn(current_element&#32;-&gt;&#32;element,&#32;key);
+91 
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;current_element&#32;=&#32;(<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*)current_element-&gt;next;
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(current_element&#32;!=&#32;some_window-&gt;elements);&#32;<emphasis role="comment">/*&#32;Have&#32;we&#32;covered&#32;all&#32;elements?&#32;*/</emphasis>
+94 &#32;&#32;&#32;&#32;}
+95 }
+96 
+97 <emphasis role="keywordtype">void</emphasis>&#32;kolibri_handle_event_mouse(<link linkend="_structkolibri__window">kolibri_window</link>*&#32;some_window)
+98 {
+99 &#32;&#32;<emphasis role="comment">/*&#32;Enumerate&#32;and&#32;trigger&#32;mouse&#32;handling&#32;functions&#32;of&#32;window&#32;elements&#32;here&#32;*/</emphasis>
+100 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(some_window-&gt;elements)
+101 &#32;&#32;&#32;&#32;{
+102 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*current_element&#32;=&#32;some_window&#32;-&gt;&#32;elements;
+103 
+104 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>
+105 &#32;&#32;&#32;&#32;{
+106 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((<emphasis role="keywordtype">int</emphasis>)kolibri_gui_op_table[current_element&#32;-&gt;&#32;type].mouse_fn&#32;&gt;&#32;0)
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kolibri_gui_op_table[current_element&#32;-&gt;&#32;type].mouse_fn(current_element&#32;-&gt;&#32;element);
+108 
+109 &#32;&#32;&#32;&#32;&#32;&#32;current_element&#32;=(<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*)&#32;current_element-&gt;next;
+110 
+111 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(current_element&#32;!=&#32;some_window-&gt;elements);&#32;<emphasis role="comment">/*&#32;Have&#32;we&#32;covered&#32;all&#32;elements?&#32;*/</emphasis>
+112 &#32;&#32;&#32;&#32;}
+113 }
+114 
+115 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;kolibri_gui_init(<emphasis role="keywordtype">void</emphasis>)
+116 {
+117 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;boxlib_init_status&#32;=&#32;kolibri_boxlib_init();
+118 
+119 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(boxlib_init_status&#32;==&#32;0)
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;debug_board_write_str(<emphasis role="stringliteral">&quot;KolibriLib:C_Layer:&#32;ashmew2&#32;is&#32;happy:&#32;Kolibri&#32;GUI&#32;Successfully&#32;Initialized.\n&quot;</emphasis>);
+121 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+122 &#32;&#32;&#32;&#32;{
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;debug_board_write_str(<emphasis role="stringliteral">&quot;KolibriLib:C_Layer:&#32;ashmew2&#32;is&#32;sad:&#32;Kolibri&#32;GUI&#32;Failed&#32;to&#32;initialize.\n&quot;</emphasis>);
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);
+125 &#32;&#32;&#32;&#32;}
+126 
+127 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Initialize&#32;the&#32;global&#32;operation&#32;table&#32;which&#32;handles&#32;event&#32;functions&#32;of&#32;*/</emphasis>
+128 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;each&#32;individual&#32;element&#32;type&#32;*/</emphasis>
+129 &#32;&#32;&#32;&#32;kolibri_init_gui_op_table();
+130 
+131 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Get&#32;the&#32;current&#32;color&#32;table&#32;for&#32;Kolibri&#32;and&#32;store&#32;in&#32;global&#32;table*/</emphasis>
+132 &#32;&#32;&#32;&#32;<emphasis role="comment">//kolibri_get_system_colors(&amp;kolibri_color_table);</emphasis>
+133 
+134 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Set&#32;up&#32;system&#32;events&#32;for&#32;buttons,&#32;mouse&#32;and&#32;keyboard&#32;and&#32;redraw&#32;*/</emphasis>
+135 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Also&#32;set&#32;filters&#32;so&#32;that&#32;window&#32;receives&#32;mouse&#32;events&#32;only&#32;when&#32;active</emphasis>
+136 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;and&#32;mouse&#32;inside&#32;window&#32;*/</emphasis>
+137 &#32;&#32;&#32;&#32;__asm__&#32;<emphasis role="keyword">volatile</emphasis>(
+138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:
+140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:<emphasis role="stringliteral">&quot;a&quot;</emphasis>(40),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(0xC0000027)
+141 &#32;&#32;&#32;&#32;);
+142 
+143 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;boxlib_init_status;
+144 }
+145 
+146 <emphasis role="comment">/*&#32;Note:&#32;The&#32;current&#32;implementation&#32;tries&#32;to&#32;automatically&#32;colors</emphasis>
+147 <emphasis role="comment">&#32;&#32;&#32;GUI&#32;elements&#32;with&#32;system&#32;theme&#32;*/</emphasis>
+148 
+149 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_GUI_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

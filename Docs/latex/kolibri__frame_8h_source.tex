@@ -1,0 +1,95 @@
+\doxysection{kolibri\+\_\+frame.\+h}
+\hypertarget{kolibri__frame_8h_source}{}\label{kolibri__frame_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_frame.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_frame.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_FRAME\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KOLIBRI\_FRAME\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <kos32sys.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <kolibriLib/system/os.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{enum}\ fr\_text\_position\_t\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ FR\_TOP,}
+\DoxyCodeLine{00009\ \ \ \ \ FR\_BOTTON}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00013\ \textcolor{comment}{;\ FR\_FLAGS\ =\ [x][yyy][z]}}
+\DoxyCodeLine{00014\ \textcolor{comment}{;\ z\ \ \ \ \ \ \ \ -\/\ \ Caption}}
+\DoxyCodeLine{00015\ \textcolor{comment}{;\ yyy\ \ \ \ \ \ -\/\ \ BorderStyle}}
+\DoxyCodeLine{00016\ \textcolor{comment}{;\ x\ \ \ \ \ \ \ \ -\/\ \ BackStyle}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{enum}\ fr\_flags\_t\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ FR\_CAPTION\ =\ 1,\ \ \textcolor{comment}{//\ if\ text\ !=\ null\ set\ auto}}
+\DoxyCodeLine{00020\ \ \ \ \ FR\_DOUBLE\ =\ 0,\ \textcolor{comment}{//\ default}}
+\DoxyCodeLine{00021\ \ \ \ \ FR\_RAISED\ =\ 2,}
+\DoxyCodeLine{00022\ \ \ \ \ FR\_SUNKEN\ =\ 4,}
+\DoxyCodeLine{00023\ \ \ \ \ FR\_ETCHED\ =\ 6,}
+\DoxyCodeLine{00024\ \ \ \ \ FR\_RINGED\ =\ 8,}
+\DoxyCodeLine{00025\ \ \ \ \ FR\_FILLED\ =\ 0x10}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ uint32\_t\ type;}
+\DoxyCodeLine{00030\ \ \ \ \ uint32\_t\ x\_w;}
+\DoxyCodeLine{00031\ \ \ \ \ uint32\_t\ y\_h;}
+\DoxyCodeLine{00032\ \ \ \ \ color\_t\ ext\_col;}
+\DoxyCodeLine{00033\ \ \ \ \ color\_t\ int\_col;}
+\DoxyCodeLine{00034\ \ \ \ \ uint32\_t\ flags;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{char}\ *text\_pointer;}
+\DoxyCodeLine{00036\ \ \ \ \ uint32\_t\ text\_position;}
+\DoxyCodeLine{00037\ \ \ \ \ uint32\_t\ font\_number;}
+\DoxyCodeLine{00038\ \ \ \ \ uint32\_t\ font\_size\_y;}
+\DoxyCodeLine{00039\ \ \ \ \ color\_t\ font\_color;}
+\DoxyCodeLine{00040\ \ \ \ \ color\_t\ font\_bg\_color;}
+\DoxyCodeLine{00041\ \}\mbox{\hyperlink{structframe}{frame}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structframe}{frame}}*\ kolibri\_frame(\mbox{\hyperlink{structframe}{frame}}*\ f,\ uint32\_t\ x\_w,\ uint32\_t\ y\_h,\ color\_t\ ext\_col,\ color\_t\ int\_col,\ \textcolor{keywordtype}{char}\ *text,\ \textcolor{keyword}{enum}\ fr\_text\_position\_t\ text\_position,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color\_t\ font\_color,\ color\_t\ font\_bgcolor,\ \textcolor{keyword}{enum}\ fr\_flags\_t\ flags)}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ f-\/>type\ =\ 0;}
+\DoxyCodeLine{00047\ \ \ \ \ f-\/>x\_w\ =\ x\_w;}
+\DoxyCodeLine{00048\ \ \ \ \ f-\/>y\_h\ =\ y\_h;}
+\DoxyCodeLine{00049\ \ \ \ \ f-\/>ext\_col\ =\ ext\_col;}
+\DoxyCodeLine{00050\ \ \ \ \ f-\/>int\_col\ =\ int\_col;}
+\DoxyCodeLine{00051\ \ \ \ \ f-\/>flags\ =\ flags;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (text)\ f-\/>flags\ |=\ FR\_CAPTION;}
+\DoxyCodeLine{00053\ \ \ \ \ f-\/>text\_pointer\ =\ text;}
+\DoxyCodeLine{00054\ \ \ \ \ f-\/>text\_position\ =\ text\_position;}
+\DoxyCodeLine{00055\ \ \ \ \ f-\/>font\_number\ =\ 0;\ \ \textcolor{comment}{//\ 0\ ==\ font\ 6x9,\ 1==8x16}}
+\DoxyCodeLine{00056\ \ \ \ \ f-\/>font\_size\_y\ =\ 9;}
+\DoxyCodeLine{00057\ \ \ \ \ f-\/>font\_color\ =\ font\_color\ |\ 0x80000000;}
+\DoxyCodeLine{00058\ \ \ \ \ f-\/>font\_bg\_color\ =\ font\_bgcolor;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ f;}
+\DoxyCodeLine{00062\ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structframe}{frame}}*\ kolibri\_new\_frame(uint32\_t\ x\_w,\ uint32\_t\ y\_h,\ color\_t\ ext\_col,\ color\_t\ int\_col,\ \textcolor{keywordtype}{char}\ *text,\ \textcolor{keyword}{enum}\ fr\_text\_position\_t\ text\_position,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color\_t\ font\_color,\ color\_t\ font\_bgcolor,\ \textcolor{keyword}{enum}\ fr\_flags\_t\ flags)}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{structframe}{frame}}\ *new\_frame\ =\ (\mbox{\hyperlink{structframe}{frame}}\ *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structframe}{frame}}));}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ kolibri\_frame(new\_frame,\ x\_w,\ y\_h,\ ext\_col,\ int\_col,\ text,\ text\_position,\ font\_color,\ font\_bgcolor,\ flags);}
+\DoxyCodeLine{00069\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structframe}{frame}}*\ kolibri\_frame\_def(\mbox{\hyperlink{structframe}{frame}}*\ f,\ uint32\_t\ x\_w,\ uint32\_t\ y\_h,\ \textcolor{keywordtype}{char}\ *text)}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{return}\ kolibri\_frame(f,\ x\_w,\ y\_h,\ 0x00FCFCFC,\ 0x00DCDCDC,\ text,\ FR\_TOP,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_text,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_area,\ 0);}
+\DoxyCodeLine{00074\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structframe}{frame}}*\ kolibri\_new\_frame\_def(uint32\_t\ x\_w,\ uint32\_t\ y\_h,\ \textcolor{keywordtype}{char}\ *text)}
+\DoxyCodeLine{00077\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ kolibri\_new\_frame(x\_w,\ y\_h,\ 0x00FCFCFC,\ 0x00DCDCDC,\ text,\ FR\_TOP,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_text,\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_area,\ 0);}
+\DoxyCodeLine{00079\ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ gui\_add\_frame(\mbox{\hyperlink{structkolibri__window}{kolibri\_window}}\ *wnd,\ \mbox{\hyperlink{structframe}{frame}}*\ f)}
+\DoxyCodeLine{00082\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ kolibri\_window\_add\_element(wnd,\ KOLIBRI\_FRAME,\ f);}
+\DoxyCodeLine{00084\ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{extern}\ void\ (*frame\_draw)(\mbox{\hyperlink{structframe}{frame}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_FRAME\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

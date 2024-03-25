@@ -1,11 +1,11 @@
 \doxysection{frame.\+hpp}
-\hypertarget{frame_8hpp_source}{}\label{frame_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/frame.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/frame.hpp}}
+\hypertarget{frame_8hpp_source}{}\label{frame_8hpp_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/frame.hpp@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/UI/frame.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_FRAME\_H\_\_}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_FRAME\_H\_\_}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
 \DoxyCodeLine{00005\ }
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <kolibriLib/graphic/graphic.hpp>}}
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}UI.hpp"{}}}
@@ -15,7 +15,7 @@
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}image.hpp"{}}}
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}checkbox.hpp"{}}}
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}menu.hpp"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <kolibriLib/input/input.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <input.hpp>}}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
 \DoxyCodeLine{00017\ \{}
@@ -58,10 +58,10 @@
 \DoxyCodeLine{00060\ }
 \DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ free();}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<int,\ Element>\ \_Elements;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<int,\ Element>\ \_Elements;}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_scroll;}
 \DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_frame_ae88ef96c34cd65be8faf67351ee42f8c}{Frame}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord\ =\ \{0,0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size\ =\ \{0,0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&Color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{OS::sys\_color\_table}}.work\_area,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&Margin\ =\ DefaultMargin);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_frame_afaba0c435887081edfb0618551f5f5d8}{Frame}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord\ =\ \{0,0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size\ =\ \{0,0\},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&Color\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS::GetSystemColors}}().work\_area,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&Margin\ =\ DefaultMargin);}
 \DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00073\ }
 \DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_frame_a9d8f7281a9cbc096a51839b01045a66a}{Render}}();}
@@ -177,7 +177,7 @@
 \DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \_type\ =\ Type::Menu;}
 \DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00200\ }
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_frame_ae88ef96c34cd65be8faf67351ee42f8c}{Frame::Frame}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&Color,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&Margin)\ :\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}(coord,\ size,\ Color,\ Margin)}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_frame_afaba0c435887081edfb0618551f5f5d8}{Frame::Frame}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \&coord,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Size}}\ \&size,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors::Color}}\ \&Color,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \&Margin)\ :\ \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}}(coord,\ size,\ Color,\ Margin)}
 \DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00203\ \textcolor{preprocessor}{\#if\ DEBUG\ ==\ true}}
 \DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Frame\ constructor\(\backslash\)n"{}});}

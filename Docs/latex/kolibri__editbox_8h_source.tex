@@ -1,0 +1,134 @@
+\doxysection{kolibri\+\_\+editbox.\+h}
+\hypertarget{kolibri__editbox_8h_source}{}\label{kolibri__editbox_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_editbox.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_editbox.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_EDITBOX\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KOLIBRI\_EDITBOX\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <kolibriLib/system/os.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*\ \ flags\ meaning}}
+\DoxyCodeLine{00008\ \textcolor{comment}{ed\_figure\_only=\ 1000000000000000b\ \ \ ;{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00009\ \textcolor{comment}{ed\_always\_focus=\ 100000000000000b\ \ \ //\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ ({\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr})}}
+\DoxyCodeLine{00010\ \textcolor{comment}{ed\_focus=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 10b\ \ \ ;{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr},\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00011\ \textcolor{comment}{ed\_pass=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1b\ \ \ ;{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00012\ \textcolor{comment}{ed\_shift\_on=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1000b\ \ \ ;{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ -\/{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ shift,{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr},\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ -\/\ {\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ shift}}
+\DoxyCodeLine{00013\ \textcolor{comment}{ed\_shift\_on\_off=1111111111110111b}}
+\DoxyCodeLine{00014\ \textcolor{comment}{ed\_shift=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100b\ \ \ ;{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}\ shift\ {\ucr}.{\ucr}.\ {\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00015\ \textcolor{comment}{ed\_shift\_off=\ \ \ 1111111111111011b}}
+\DoxyCodeLine{00016\ \textcolor{comment}{ed\_shift\_bac=\ \ \ \ \ \ \ \ \ \ \ \ \ \ 10000b\ \ \ ;{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ shift\ {\ucr}.{\ucr}.\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00017\ \textcolor{comment}{ed\_shift\_bac\_cl=1111111111101111b\ \ \ ;{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}\ {\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}{\ucr}}}
+\DoxyCodeLine{00018\ \textcolor{comment}{ed\_shift\_cl=\ \ \ \ 1111111111100011b}}
+\DoxyCodeLine{00019\ \textcolor{comment}{ed\_shift\_mcl=\ \ \ 1111111111111011b}}
+\DoxyCodeLine{00020\ \textcolor{comment}{ed\_left\_fl=\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100000b}}
+\DoxyCodeLine{00021\ \textcolor{comment}{ed\_right\_fl=\ \ \ \ 1111111111011111b}}
+\DoxyCodeLine{00022\ \textcolor{comment}{ed\_offset\_fl=\ \ \ \ \ \ \ \ \ \ \ \ 1000000b}}
+\DoxyCodeLine{00023\ \textcolor{comment}{ed\_offset\_cl=\ \ \ 1111111110111111b}}
+\DoxyCodeLine{00024\ \textcolor{comment}{ed\_insert=\ \ \ \ \ \ \ \ \ \ \ \ \ \ 10000000b}}
+\DoxyCodeLine{00025\ \textcolor{comment}{ed\_insert\_cl=\ \ \ 1111111101111111b}}
+\DoxyCodeLine{00026\ \textcolor{comment}{ed\_mouse\_on\ =\ \ \ \ \ \ \ \ \ \ 100000000b}}
+\DoxyCodeLine{00027\ \textcolor{comment}{ed\_mous\_adn\_b=\ \ \ \ \ \ \ \ \ 100011000b}}
+\DoxyCodeLine{00028\ \textcolor{comment}{ed\_mouse\_on\_off=1111111011111111b}}
+\DoxyCodeLine{00029\ \textcolor{comment}{ed\_mouse\_on\_off=\ not\ (ed\_mouse\_on)}}
+\DoxyCodeLine{00030\ \textcolor{comment}{ed\_ctrl\_on\ =\ \ \ \ \ \ \ \ \ \ 1000000000b}}
+\DoxyCodeLine{00031\ \textcolor{comment}{ed\_ctrl\_off\ =\ not\ (ed\_ctrl\_on)}}
+\DoxyCodeLine{00032\ \textcolor{comment}{ed\_alt\_on\ =\ \ \ \ \ \ \ \ \ \ 10000000000b}}
+\DoxyCodeLine{00033\ \textcolor{comment}{ed\_alt\_off\ =\ not\ (ed\_alt\_on)}}
+\DoxyCodeLine{00034\ \textcolor{comment}{ed\_disabled=\ \ \ \ \ \ \ \ 100000000000b}}
+\DoxyCodeLine{00035\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structedit__box}{edit\_box}}}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ left;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ top;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ color;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ shift\_color;\ \ \ \textcolor{comment}{//\ selected\ text\ color}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ focus\_border\_color;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ blur\_border\_color;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ text\_color;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ *text;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ *mouse\_variable;\ \textcolor{comment}{//\ must\ be\ pointer\ edit\_box**\ to\ save\ focused\ editbox}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ flags;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size;\ \ \textcolor{comment}{//\ used\ symbols\ in\ buffer\ without\ trailing\ zero}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pos;\ \ \textcolor{comment}{//\ cursor\ position}}
+\DoxyCodeLine{00054\ \textcolor{comment}{/*\ The\ following\ struct\ members\ are\ not\ used\ by\ the\ users\ of\ API\ */}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ offset;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ cl\_curs\_x;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ cl\_curs\_y;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ shift;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ shift\_old;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ char\_width;}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{/*\ Initializes\ an\ Editbox\ with\ sane\ settings,\ sufficient\ for\ most\ use.}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ This\ will\ let\ you\ create\ a\ box\ and\ position\ it\ somewhere\ on\ the\ screen.}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ The\ text\_buffer\ is\ a\ pointer\ to\ a\ character\ array\ and\ needs\ to\ be\ as\ long\ as}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ AT\ LEAST\ MAX\_CHARS\ +\ 1.If\ the\ text\_buffer\ is\ smaller,\ it\ will\ crash\ if\ user}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ types\ more\ characters\ than\ what\ will\ fit\ into\ the\ text\ buffer.}}
+\DoxyCodeLine{00069\ \textcolor{comment}{}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ Allocating\ buffer\ space\ automatically\ so\ that\ programmer\ can\ be\ carefree\ now.}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ This\ also\ automatically\ adjusts\ the\ size\ of\ edit\ box\ so\ that\ it\ can\ hold\ enough\ characters.}}
+\DoxyCodeLine{00072\ \textcolor{comment}{}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ All\ you\ need\ is\ :}}
+\DoxyCodeLine{00074\ \textcolor{comment}{}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ tlx,tly\ =\ Coordinates\ of\ the\ beginning\ of\ the\ edit\ box.}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ max\_chars\ =\ Limit\ of\ number\ of\ characters\ user\ can\ enter\ into\ edit\ box.}}
+\DoxyCodeLine{00077\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \mbox{\hyperlink{structedit__box}{edit\_box}}*\ kolibri\_new\_edit\_box(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tlx,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ tly,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ max\_chars,\ \textcolor{keywordtype}{void}\ *editbox\_interlock)}
+\DoxyCodeLine{00080\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ PIXELS\_PER\_CHAR\ =\ 7;}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{structedit__box}{edit\_box}}\ *new\_textbox\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{structedit__box}{edit\_box}};}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{char}\ *text\_buffer\ =\ (\textcolor{keywordtype}{char}\ *)calloc(max\_chars\ +\ 2,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));\ \textcolor{comment}{//\ +2\ as\ asked\ in\ box\_lib\ src}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{/*\ Update\ blur\_border\_color\ and\ shift\_color\ from\ box\_lib.mac\ macro\ */}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{/*\ edit\_boxes\_set\_sys\_color\ */}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ new\_textbox\ -\/>\ width\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ max\_chars\ *\ PIXELS\_PER\_CHAR;}
+\DoxyCodeLine{00089\ \ \ \ \ new\_textbox\ -\/>\ left\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ tlx;}
+\DoxyCodeLine{00090\ \ \ \ \ new\_textbox\ -\/>\ top\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ tly;}
+\DoxyCodeLine{00091\ \ \ \ \ new\_textbox\ -\/>\ color\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0xFFFFFF;\ \textcolor{comment}{/*\ Always\ make\ white\ edit\ boxes\ */}}
+\DoxyCodeLine{00092\ \ \ \ \ new\_textbox\ -\/>\ shift\_color\ \ \ \ \ \ \ \ \ \ =\ 0x6a9480;}
+\DoxyCodeLine{00093\ \ \ \ \ new\_textbox\ -\/>\ focus\_border\_color\ \ \ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_graph;}
+\DoxyCodeLine{00094\ \ \ \ \ new\_textbox\ -\/>\ blur\_border\_color\ \ \ \ =\ 0x6a9480;}
+\DoxyCodeLine{00095\ \ \ \ \ new\_textbox-\/>text\_color\ \ \ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{KolibriLib::OS::GetSystemColors}}().work\_text;\ \textcolor{comment}{/*\ Always\ black\ text\ when\ typing\ */}}
+\DoxyCodeLine{00096\ \ \ \ \ new\_textbox\ -\/>\ max\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ max\_chars;}
+\DoxyCodeLine{00097\ \ \ \ \ new\_textbox\ -\/>\ text\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ text\_buffer;}
+\DoxyCodeLine{00098\ \ \ \ \ new\_textbox\ -\/>\ mouse\_variable\ \ \ \ \ \ \ =\ editbox\_interlock;}
+\DoxyCodeLine{00099\ \ \ \ \ new\_textbox\ -\/>\ flags\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0x00000000;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{return}\ new\_textbox;}
+\DoxyCodeLine{00102\ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00105\ \{}
+\DoxyCodeLine{00106\ \textcolor{keyword}{extern}\ void\ (*edit\_box\_draw)(\mbox{\hyperlink{structedit__box}{edit\_box}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{extern}\ void\ (*edit\_box\_key)(\mbox{\hyperlink{structedit__box}{edit\_box}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00109\ \textcolor{comment}{/*\ editbox\_key\ is\ a\ wrapper\ written\ in\ assembly\ to\ handle\ key\ press\ events\ for\ editboxes\ */}}
+\DoxyCodeLine{00110\ \textcolor{comment}{/*\ because\ inline\ assembly\ in\ GCC\ is\ a\ PITA\ and\ interferes\ with\ the\ EAX\ (AH)\ register\ */}}
+\DoxyCodeLine{00111\ \textcolor{comment}{/*\ which\ edit\_box\_key\ requires\ */}}
+\DoxyCodeLine{00112\ \_\_attribute\_\_((\_\_stdcall\_\_))\ \textcolor{keywordtype}{void}\ editbox\_key(\mbox{\hyperlink{structedit__box}{edit\_box}}\ *e,\ ksys\_oskey\_t\ ch)}
+\DoxyCodeLine{00116\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_\ (}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}push\ \%2\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}call\ *\%1\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ :\textcolor{stringliteral}{"{}a"{}}(ch.val),\ \textcolor{stringliteral}{"{}m"{}}(edit\_box\_key),\ \textcolor{stringliteral}{"{}m"{}}(e):}
+\DoxyCodeLine{00122\ \ \ \ \ );}
+\DoxyCodeLine{00123\ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{extern}\ void\ (*edit\_box\_mouse)(\mbox{\hyperlink{structedit__box}{edit\_box}}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{extern}\ void\ (*edit\_box\_set\_text)(\mbox{\hyperlink{structedit__box}{edit\_box}}\ *,\ \textcolor{keywordtype}{char}\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00130\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{unsigned}\ press\_key;}
+\DoxyCodeLine{00131\ \}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_EDITBOX\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

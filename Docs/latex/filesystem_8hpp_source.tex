@@ -1,5 +1,5 @@
 \doxysection{filesystem.\+hpp}
-\hypertarget{filesystem_8hpp_source}{}\label{filesystem_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/filesystem.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/filesystem.hpp}}
+\hypertarget{filesystem_8hpp_source}{}\label{filesystem_8hpp_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/filesystem.hpp@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/filesystem.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_FILESYSTEM\_H\_\_}}
@@ -59,7 +59,7 @@
 \DoxyCodeLine{00075\ }
 \DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ac1f53038467ce2fe309f448c9e0f2f72}{CreateFile}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&name)}
 \DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_file\_create(name.\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_a1ce6078475d3a9b5c340e08b1bc65217}{GetChars}}());}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_file\_create(name.\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_a1ce6078475d3a9b5c340e08b1bc65217}{GetChars}}()).status;}
 \DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00083\ }
 \DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_af8228f98e29fbb8122c93fdc3022d154}{Delete}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&name)}
@@ -74,7 +74,7 @@
 \DoxyCodeLine{00099\ }
 \DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}{Exist}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}\ \&\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}})}
 \DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ ksys\_bdfe\_t\ *buff\ =\ \textcolor{keyword}{new}\ ksys\_bdfe\_t;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ ksys\_file\_info\_t\ *buff\ =\ \textcolor{keyword}{new}\ ksys\_file\_info\_t;}
 \DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ \_ksys\_file\_info(\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{Path}}.\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_a1ce6078475d3a9b5c340e08b1bc65217}{GetChars}}(),\ buff);}
 \DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ buff;}
 \DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ >\ 0;}

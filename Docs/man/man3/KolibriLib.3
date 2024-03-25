@@ -55,15 +55,27 @@ KolibriLib \- Основное пространство имён
 .br
 .RI "Просто точка "
 .in -1c
+.SS "Определения типов"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBpoint\fP \fBSize\fP"
+.br
+.RI "Размер "
+.ti -1c
+.RI "typedef \fBpoint\fP \fBCoord\fP"
+.br
+.RI "Координаты "
+.in -1c
 .SS "Функции"
 
 .in +1c
 .ti -1c
-.RI "\fBUI::Size\fP \fBGetScreenSize\fP ()"
+.RI "\fBSize\fP \fBGetScreenSize\fP ()"
 .br
 .RI "Получить разрешение экрана "
 .ti -1c
-.RI "\fBThread::Slot\fP \fBScreenPointAffiliation\fP (\fBUI::Coord\fP POINT)"
+.RI "\fBThread::Slot\fP \fBScreenPointAffiliation\fP (\fBCoord\fP POINT)"
 .br
 .RI "Получить принадлежность точки "
 .ti -1c
@@ -86,13 +98,10 @@ KolibriLib \- Основное пространство имён
 .RI "const std::string \fBConfigurationDir\fP = '/kolibrios/etc/'"
 .br
 .ti -1c
-.RI "const std::string \fBImgDir\fP = ConfigurationDir + 'images/'"
+.RI "const std::string \fBImgDir\fP = ConfigurationDir + 'KolibriOS\-Cpp\-Lib/'"
 .br
 .ti -1c
 .RI "const std::string \fBDefaultImage\fP = ImgDir + 'default\&.png'"
-.br
-.ti -1c
-.RI "const std::string \fBCursorsDir\fP = ConfigurationDir + 'cursors/'"
 .br
 .in -1c
 .SH "Подробное описание"
@@ -109,7 +118,7 @@ Egor00f
 
 .SH "Функции"
 .PP 
-.SS "\fBUI::Size\fP KolibriLib::GetScreenSize ()\fR [inline]\fP"
+.SS "\fBSize\fP KolibriLib::GetScreenSize ()\fR [inline]\fP"
 
 .PP
 Получить разрешение экрана 
@@ -120,7 +129,7 @@ Egor00f
 .RE
 .PP
 
-.SS "\fBThread::Slot\fP KolibriLib::ScreenPointAffiliation (\fBUI::Coord\fP POINT)\fR [inline]\fP"
+.SS "\fBThread::Slot\fP KolibriLib::ScreenPointAffiliation (\fBCoord\fP POINT)\fR [inline]\fP"
 
 .PP
 Получить принадлежность точки 
@@ -140,7 +149,7 @@ Egor00f
 
 .PP
 Подождать, минимальное кол-во времени 
-.SS "устанавливает курсор в середину экрана"
+.SS "изменяет переменную \fBsys_color_table\fP"
 
 .SS "void KolibriLib::Wait (int time)\fR [inline]\fP"
 

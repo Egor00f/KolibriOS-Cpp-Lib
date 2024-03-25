@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_screen_8hpp_source" xml:lang="ru">
 <title>screen.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp</primary></indexterm>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/screen.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__SCREEN_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__SCREEN_H__</emphasis>
 3 
@@ -9,30 +9,29 @@
 5 <emphasis role="preprocessor">#include&#32;&lt;sys/ksys.h&gt;</emphasis>
 6 
 7 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/types.hpp&gt;</emphasis>
-8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/color.hpp&gt;</emphasis>
-9 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/thread.hpp&gt;</emphasis>
-10 
-11 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
-12 {
-15 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>&#32;<link linkend="_namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48">GetScreenSize</link>()
-16 &#32;&#32;&#32;&#32;{
-17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;a&#32;=&#32;_ksys_screen_size();
-18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">UI::Size</link>(a.x,&#32;a.y);
-19 &#32;&#32;&#32;&#32;}
-20 
-24 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;<link linkend="_namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d">ScreenPointAffiliation</link>(<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link>&#32;POINT)
-25 &#32;&#32;&#32;&#32;{
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;s;
-27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;__asm__&#32;__volatile__(
-28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
-29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(s)
-30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(34),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(POINT.<link linkend="_struct_kolibri_lib_1_1point_1add46882563c402c224b23c85049f7f34">x</link>),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(POINT.<link linkend="_struct_kolibri_lib_1_1point_1a2552f28a0a4bd6d41b0b75c7e3dec4e0">y</link>)
-31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;s;
-33 &#32;&#32;&#32;&#32;}
-34 
-35 }
+8 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/thread.hpp&gt;</emphasis>
+9 
+10 <emphasis role="keyword">namespace&#32;</emphasis><link linkend="_namespace_kolibri_lib">KolibriLib</link>
+11 {
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_kolibri_lib_1_1point">Size</link>&#32;<link linkend="_namespace_kolibri_lib_1a1de80cbbe233f747756fcf3b5d8640f9">GetScreenSize</link>()
+15 &#32;&#32;&#32;&#32;{
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ksys_pos_t&#32;a&#32;=&#32;_ksys_screen_size();
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(a.x,&#32;a.y);
+18 &#32;&#32;&#32;&#32;}
+19 
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;<link linkend="_namespace_kolibri_lib_1a8718c0801595aa4d15d67b638e56839e">ScreenPointAffiliation</link>(<link linkend="_struct_kolibri_lib_1_1point">Coord</link>&#32;POINT)
+24 &#32;&#32;&#32;&#32;{
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link>&#32;s;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;__asm__&#32;__volatile__(
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;=a&quot;</emphasis>(s)
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="stringliteral">&quot;a&quot;</emphasis>(34),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(POINT.<link linkend="_struct_kolibri_lib_1_1point_1aba63dd75453b02a799b9cd6ae5773cfe">x</link>),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(POINT.<link linkend="_struct_kolibri_lib_1_1point_1a92d76b1b7cb1eabab7bc3916b6341a24">y</link>)
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;s;
+32 &#32;&#32;&#32;&#32;}
+33 
+34 }
+35 
 36 
-37 
-38 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__SCREEN_H__</emphasis>
+37 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__SCREEN_H__</emphasis>
 </programlisting></section>

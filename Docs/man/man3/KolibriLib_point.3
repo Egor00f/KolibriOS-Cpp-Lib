@@ -1,8 +1,8 @@
-.TH "KolibriLib::point< T >" 3 "KolibriLib" \" -*- nroff -*-
+.TH "KolibriLib::point" 3 "KolibriLib" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-KolibriLib::point< T > \- Просто точка  
+KolibriLib::point \- Просто точка  
 
 .SH SYNOPSIS
 .br
@@ -13,7 +13,7 @@ KolibriLib::point< T > \- Просто точка
 
 .in +1c
 .ti -1c
-.RI "\fBpoint\fP (T X=(T) 0, T Y=(T) 0)"
+.RI "\fBpoint\fP (int X=0, int Y=0)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -24,59 +24,52 @@ KolibriLib::point< T > \- Просто точка
 .RI "ksys_pos_t \fBGetKsysPost\fP () const"
 .br
 .ti -1c
-.RI "\fBpoint\fP< T > & \fBoperator+\fP (const \fBpoint\fP< T > &a)"
+.RI "\fBpoint\fP & \fBoperator+\fP (const \fBpoint\fP &a)"
 .br
 .ti -1c
-.RI "\fBpoint\fP< T > & \fBoperator\-\fP (const \fBpoint\fP< T > &a)"
+.RI "\fBpoint\fP & \fBoperator\-\fP (const \fBpoint\fP &a)"
 .br
 .ti -1c
-.RI "\fBpoint\fP< T > & \fBoperator=\fP (const \fBpoint\fP< T > &p)"
+.RI "\fBpoint\fP & \fBoperator=\fP (const \fBpoint\fP &p)"
 .br
 .ti -1c
-.RI "\fBpoint\fP< T > & \fBoperator+=\fP (const T &p)"
+.RI "\fBpoint\fP & \fBoperator+=\fP (const int &p)"
 .br
 .RI "Прибавить к обоим кординатам значение "
 .ti -1c
-.RI "\fBpoint\fP< T > & \fBoperator\-=\fP (const T &p)"
+.RI "\fBpoint\fP & \fBoperator\-=\fP (const int &p)"
 .br
 .ti -1c
-.RI "\fBpoint\fP< T > & \fBoperator*=\fP (const T &p)"
+.RI "\fBpoint\fP & \fBoperator*=\fP (const int &p)"
 .br
 .ti -1c
-.RI "\fBpoint\fP< T > & \fBoperator/=\fP (const T &p)"
+.RI "\fBpoint\fP & \fBoperator/=\fP (const int &p)"
 .br
 .ti -1c
-.RI "bool \fBoperator==\fP (const \fBpoint\fP< T > &a) const"
+.RI "bool \fBoperator==\fP (const \fBpoint\fP &a) const"
 .br
 .ti -1c
-.RI "bool \fBoperator!=\fP (const \fBpoint\fP< T > &a) const"
+.RI "bool \fBoperator!=\fP (const \fBpoint\fP &a) const"
 .br
 .in -1c
 .SS "Открытые атрибуты"
 
 .in +1c
 .ti -1c
-.RI "T \fBx\fP"
+.RI "int \fBx\fP"
 .br
 .RI "координата по оси X, или ширина "
 .ti -1c
-.RI "T \fBy\fP"
+.RI "int \fBy\fP"
 .br
 .RI "координата по оси Y, или высота "
 .in -1c
 .SH "Подробное описание"
 .PP 
-
-.SS "template<class T>
-.br
-struct KolibriLib::point< T >"Просто точка 
-
-
-.SS "необходимо использовать конкретный теип данных для точки используйте шаблоны\&. Например: point<uint64_t> p;"
-
+Просто точка 
 .SH "Конструктор(ы)"
 .PP 
-.SS "template<class T > \fBKolibriLib::point\fP< T >::point (T X = \fR(T)0\fP, T Y = \fR(T)0\fP)"
+.SS "KolibriLib::point::point (int X = \fR0\fP, int Y = \fR0\fP)"
 
 .PP
 Конструктор 
@@ -91,7 +84,7 @@ struct KolibriLib::point< T >"Просто точка
 .RE
 .PP
 
-.SS "template<class T > \fBKolibriLib::point\fP< T >::point (float f)"
+.SS "KolibriLib::point::point (float f)"
 
 .PP
 Точка как отношение x/y\&. 
@@ -104,7 +97,7 @@ struct KolibriLib::point< T >"Просто точка
 
 .SH "Методы"
 .PP 
-.SS "template<class T > bool \fBKolibriLib::point\fP< T >::operator!= (const \fBpoint\fP< T > & a) const"
+.SS "bool KolibriLib::point::operator!= (const \fBpoint\fP & a) const"
 
 .PP
 \fBАргументы\fP
@@ -120,7 +113,7 @@ struct KolibriLib::point< T >"Просто точка
 .RE
 .PP
 
-.SS "template<class T > \fBKolibriLib::point\fP< T > & \fBKolibriLib::point\fP< T >::operator+= (const T & p)"
+.SS "\fBpoint\fP & KolibriLib::point::operator+= (const int & p)"
 
 .PP
 Прибавить к обоим кординатам значение 
@@ -143,7 +136,7 @@ struct KolibriLib::point< T >"Просто точка
 .RE
 .PP
 
-.SS "template<class T > \fBKolibriLib::point\fP< T > & \fBKolibriLib::point\fP< T >::operator= (const \fBpoint\fP< T > & p)"
+.SS "\fBpoint\fP & KolibriLib::point::operator= (const \fBpoint\fP & p)"
 
 .PP
 \fBАргументы\fP
@@ -159,7 +152,7 @@ struct KolibriLib::point< T >"Просто точка
 .RE
 .PP
 
-.SS "template<class T > bool \fBKolibriLib::point\fP< T >::operator== (const \fBpoint\fP< T > & a) const"
+.SS "bool KolibriLib::point::operator== (const \fBpoint\fP & a) const"
 
 .PP
 \fBАргументы\fP

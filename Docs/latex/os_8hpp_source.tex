@@ -1,5 +1,5 @@
 \doxysection{os.\+hpp}
-\hypertarget{os_8hpp_source}{}\label{os_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/os.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/os.hpp}}
+\hypertarget{os_8hpp_source}{}\label{os_8hpp_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/os.hpp@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/os.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_OS\_H\_\_}}
@@ -7,146 +7,125 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <kolibriLib/types.hpp>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <kolibriLib/system/filesystem.hpp>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <kolibriLib/color.hpp>}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00011\ \{}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{namespace\ }OS}
-\DoxyCodeLine{00014\ \ \ \ \ \{}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors::ColorsTable}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{sys\_color\_table}};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors::ColorsTable}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{GetSystemColors}}()}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_get\_system\_colors(\&\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{sys\_color\_table}});}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}{sys\_color\_table}};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <kolibriLib/system/filesystem.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <kolibriLib/color.hpp>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{namespace\ }OS}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors::ColorsTable}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{GetSystemColors}}()}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors::ColorsTable}}\ buff;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_get\_system\_colors(\&buff);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buff;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ uint32\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}};}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8c}{Events}}}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca660534ed047f5f24e82812b143dd9c61}{None}}\ \ \ \ =\ KSYS\_EVENT\_NONE,}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca070cb13d251187bcb81b8c3fe13c8285}{Redraw}}\ \ =\ KSYS\_EVENT\_REDRAW,}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8cad8c577b231e2a21dc66bc1aababfc55a}{Button}}\ \ =\ KSYS\_EVENT\_BUTTON,}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca3c9ab2f8d47522ef1bb2a176396118bd}{Mouse}}\ \ \ =\ KSYS\_EVENT\_MOUSE,}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca7dfe7168df1cbce07260998fe69cc684}{Key}}\ \ \ \ \ =\ KSYS\_EVENT\_KEY,}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ Desktop\ =\ KSYS\_EVENT\_DESKTOP,}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ Debug\ \ \ =\ KSYS\_EVENT\_DEBUG,}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1}{Exit}}}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{WaitEvent}}()}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_wait\_event();}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{WaitEvent}}(uint32\_t\ TimeOut\ =\ 0);}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a15b798e29dc85b78748a71bbf3c0cd2c}{CheckEvent}}()}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_check\_event();}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a9d371dfce7a7c6579a93776e25222f13}{Exec}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\&\ AppName,\ \textcolor{keyword}{const}\ std::string\&\ args);}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ ksys\_time\_t\ Time;}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ Time\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a34e921d6bba683cbba473fb70345f2eb}{GetTime}}()}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_time();}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad2be50a93561a32225553fcdc1b0607c}{SpeakerStatus}}()}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ a;}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(8),\ \textcolor{stringliteral}{"{}c"{}}(1)}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !a;}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a19a2cc0aa77148638f95a8c88076d6a3}{SpeakerSwitch}}()}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ }
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ::\textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(8),\ \textcolor{stringliteral}{"{}c"{}}(2)}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8a27c188f0baab254ac4f236de8259ae}{FreeMem}}()}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ a;}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(16)}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_adf72c8ee9534feb5b730246a1157584b}{AllMem}}()}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ a;}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(17)}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}}}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e}{Eng}}\ =\ 0,}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45a5ea6247db26489c18e311b948e2355ef}{Fi}},}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45aaf6062a20261b7229e98a7e9508ca034}{Ger}},}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45ac0e37e69ddd6b9c8ebc624abdb800162}{Rus}}}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00146\ }
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_afdb0884f42641be4566af7cae8cb92ce}{GetLang}}()}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(26),\ \textcolor{stringliteral}{"{}b"{}}(5)}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00159\ }
-\DoxyCodeLine{00160\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ OS}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8c}{Events}}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca660534ed047f5f24e82812b143dd9c61}{None}}\ \ \ \ =\ KSYS\_EVENT\_NONE,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca070cb13d251187bcb81b8c3fe13c8285}{Redraw}}\ \ =\ KSYS\_EVENT\_REDRAW,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8cad8c577b231e2a21dc66bc1aababfc55a}{Button}}\ \ =\ KSYS\_EVENT\_BUTTON,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca3c9ab2f8d47522ef1bb2a176396118bd}{Mouse}}\ \ \ =\ KSYS\_EVENT\_MOUSE,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca7dfe7168df1cbce07260998fe69cc684}{Key}}\ \ \ \ \ =\ KSYS\_EVENT\_KEY,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Desktop\ =\ KSYS\_EVENT\_DESKTOP,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ Debug\ \ \ =\ KSYS\_EVENT\_DEBUG,}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1}{Exit}}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{WaitEvent}}()}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_wait\_event();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{WaitEvent}}(uint32\_t\ TimeOut)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_wait\_event\_timeout(TimeOut);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a15b798e29dc85b78748a71bbf3c0cd2c}{CheckEvent}}()}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_check\_event();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a29b415614ae9099bab7ee86da476245d}{Exec}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\&\ AppName,\ \textcolor{keyword}{const}\ std::string\&\ args,\ \textcolor{keywordtype}{bool}\ debug\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ ksys\_time\_bcd\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3502f01e66973b6d7858209c512b989b}{Time}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3502f01e66973b6d7858209c512b989b}{Time}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a34e921d6bba683cbba473fb70345f2eb}{GetTime}}()}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_time();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad2be50a93561a32225553fcdc1b0607c}{SpeakerStatus}}()}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ a;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(8),\ \textcolor{stringliteral}{"{}c"{}}(1)}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !a;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a19a2cc0aa77148638f95a8c88076d6a3}{SpeakerSwitch}}()}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ::\textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(8),\ \textcolor{stringliteral}{"{}c"{}}(2)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8a27c188f0baab254ac4f236de8259ae}{FreeMem}}()}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ a;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(16)}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_adf72c8ee9534feb5b730246a1157584b}{AllMem}}()}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ a;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(17)}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e}{Eng}}\ =\ 0,}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45a5ea6247db26489c18e311b948e2355ef}{Fi}},}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45aaf6062a20261b7229e98a7e9508ca034}{Ger}},}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45ac0e37e69ddd6b9c8ebc624abdb800162}{Rus}}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_afdb0884f42641be4566af7cae8cb92ce}{GetLang}}()}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(26),\ \textcolor{stringliteral}{"{}b"{}}(5)}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00161\ }
-\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{OS::Event}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{KolibriLib::OS::WaitEvent}}(uint32\_t\ TimeOut)}
-\DoxyCodeLine{00163\ \ \ \ \ \{}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TimeOut\ !=\ 0)}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_wait\_event\_timeout(TimeOut);}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_check\_event();}
-\DoxyCodeLine{00169\ \ \ \ \ \}}
-\DoxyCodeLine{00170\ }
-\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a9d371dfce7a7c6579a93776e25222f13}{KolibriLib::OS::Exec}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem::Path}}\ \&AppName,\ \textcolor{keyword}{const}\ std::string\ \&args)}
-\DoxyCodeLine{00172\ \ \ \ \ \{}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_kolibri_lib_1_1filesystem_ab13318145c165ffcc743aeb33e62b4dc}{filesystem::Exist}}(AppName))\ \textcolor{comment}{//\ Проверка\ на\ существование}}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *a;}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ strcat(a,\ \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(args.c\_str()));}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_exec(AppName.\mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path_a1ce6078475d3a9b5c340e08b1bc65217}{GetChars}}(),\ a);}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00183\ \ \ \ \ \}}
-\DoxyCodeLine{00184\ }
-\DoxyCodeLine{00185\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00186\ }
-\DoxyCodeLine{00187\ }
-\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_OS\_H\_\_}}
+\DoxyCodeLine{00162\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ OS}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_OS\_H\_\_}}
 
 \end{DoxyCode}

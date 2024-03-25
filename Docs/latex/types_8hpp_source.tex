@@ -1,177 +1,66 @@
 \doxysection{types.\+hpp}
-\hypertarget{types_8hpp_source}{}\label{types_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/types.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/types.hpp}}
+\hypertarget{types_8hpp_source}{}\label{types_8hpp_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/types.hpp@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/types.hpp}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_TYPES\_H\_\_}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_TYPES\_H\_\_}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ X\_Y(x,\ y)(((x)\ <<\ 16)\ |\ (y))}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00009\ \{}
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}
-\DoxyCodeLine{00014\ \ \ \ \ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}};}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}};}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point_aa3ef97fd19ba3b0935c2ed0ae5f9e55d}{point}}(T\ X\ =\ (T)0,\ T\ Y\ =\ (T)0);}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a2e4751aebabf649201893564603c925d}{point}}(\textcolor{keywordtype}{float}\ f);}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{всякие\ разные\ базовые\ типы}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ \_\_TYPES\_H\_\_}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ \_\_TYPES\_H\_\_}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <kolibriLib/system/filesystem.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <kolibriLib/color.hpp>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ X\_Y(x,\ y)(((x)\ <<\ 16)\ |\ (y))}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_aba63dd75453b02a799b9cd6ae5773cfe}{x}};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a92d76b1b7cb1eabab7bc3916b6341a24}{y}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a265a991978495b66d5cf24346e975bfc}{point}}(\textcolor{keywordtype}{int}\ X\ =\ 0,\ \textcolor{keywordtype}{int}\ Y\ =\ 0);}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ ksys\_pos\_t\ GetKsysPost()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\&\ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&a);}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&a);}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point_a4cc022aa1df6376d76b4c0a6102ea92e}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&p);}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point_a0891cef00565f4ca0844407aa83f96fe}{operator+=}}(\textcolor{keyword}{const}\ T\ \&p);}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&operator-\/=(\textcolor{keyword}{const}\ T\ \&p);}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&operator*=(\textcolor{keyword}{const}\ T\ \&p);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a088398ffb8097c6a7cde98e29ee6b37d}{point}}(\textcolor{keywordtype}{float}\ f);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ ksys\_pos\_t\ GetKsysPost()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\&\ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&a);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&a);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point_a8128ee0637bb637b9ebc243ee13fea16}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&p);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point_a3fe3cb1645f178a4274fc8e8048e275a}{operator+=}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&p);}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&operator/=(\textcolor{keyword}{const}\ T\ \&p);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&operator-\/=(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&p);}
 \DoxyCodeLine{00050\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_aea6b20f0975274a5564bfe12945d5bd1}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&a)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a5a2c05ea1ae850ba4cf0446239afe669}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<T>}}\ \&a)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00061\ \ \ \ \ \};}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{namespace\ }UI}
-\DoxyCodeLine{00064\ \ \ \ \ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<unsigned>}}\ Size;}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point<int>}}\ Coord;}
-\DoxyCodeLine{00070\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ UI}}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{namespace\ }Colors}
-\DoxyCodeLine{00073\ \ \ \ \ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00075\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Colors}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&operator*=(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&p);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&operator/=(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&p);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a7407c78217e0395f96a88692e8cf7421}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a065d56469c375a2912116f4e7a1c1a2d}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \&a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{point}}\ \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//==================================================================================================}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00077\ \textcolor{comment}{//==================================================================================================}}
 \DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00080\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_aa3ef97fd19ba3b0935c2ed0ae5f9e55d}{KolibriLib::point<T>::point}}(T\ X,\ T\ Y)}
-\DoxyCodeLine{00081\ \{}
-\DoxyCodeLine{00082\ \ \ \ \ x\ =\ X;}
-\DoxyCodeLine{00083\ \ \ \ \ y\ =\ Y;}
-\DoxyCodeLine{00084\ \}}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00086\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00087\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_aa3ef97fd19ba3b0935c2ed0ae5f9e55d}{KolibriLib::point<T>::point}}(\textcolor{keywordtype}{float}\ f)}
-\DoxyCodeLine{00088\ \{}
-\DoxyCodeLine{00089\ \ \ \ \ x\ =\ f\ /\ 10.0;}
-\DoxyCodeLine{00090\ \ \ \ \ y\ =\ 10;}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ !=\ y)}
-\DoxyCodeLine{00093\ \ \ \ \ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//====================================================}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ x,\ denom\ =\ y,\ rem;}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ <\ denom)}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ temp\ =\ num;}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ denom;}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ denom\ =\ temp;}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (rem\ =\ num\ \%\ denom)}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ denom;}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ denom\ =\ rem;}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//====================================================}}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ x\ /=\ rem;}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ y\ /=\ rem;}
-\DoxyCodeLine{00110\ \ \ \ \ \}}
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00112\ \ \ \ \ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ x\ =\ 1;}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ y\ =\ 1;}
-\DoxyCodeLine{00115\ \ \ \ \ \}}
-\DoxyCodeLine{00116\ \}}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00119\ ksys\_pos\_t\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>::GetKsysPost}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00120\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00121\ \ \ \ \ ksys\_pos\_t\ p;}
-\DoxyCodeLine{00122\ \ \ \ \ p.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}}\ =\ (uint16\_t)x;}
-\DoxyCodeLine{00123\ \ \ \ \ p.y\ =\ (uint16\_t)y;}
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
-\DoxyCodeLine{00125\ \}}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00128\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>::operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&a)}
-\DoxyCodeLine{00129\ \{}
-\DoxyCodeLine{00130\ \ \ \ \ x\ +=\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}};}
-\DoxyCodeLine{00131\ \ \ \ \ y\ +=\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}};}
-\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00133\ \}}
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00136\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>::operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&a)}
-\DoxyCodeLine{00137\ \{}
-\DoxyCodeLine{00138\ \ \ \ \ x\ -\/=\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}};}
-\DoxyCodeLine{00139\ \ \ \ \ y\ -\/=\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}};}
-\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00141\ \}}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00143\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00144\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point_a4cc022aa1df6376d76b4c0a6102ea92e}{KolibriLib::point<T>::operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&p)}
-\DoxyCodeLine{00145\ \{}
-\DoxyCodeLine{00146\ \ \ \ \ x\ =\ p.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}};}
-\DoxyCodeLine{00147\ \ \ \ \ y\ =\ p.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}};}
-\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00149\ \}}
-\DoxyCodeLine{00150\ }
-\DoxyCodeLine{00151\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00152\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point_a0891cef00565f4ca0844407aa83f96fe}{KolibriLib::point<T>::operator+=}}(\textcolor{keyword}{const}\ T\ \&p)}
-\DoxyCodeLine{00153\ \{}
-\DoxyCodeLine{00154\ \ \ \ \ x\ +=\ p;}
-\DoxyCodeLine{00155\ \ \ \ \ y\ +=\ p;}
-\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00157\ \}}
-\DoxyCodeLine{00158\ }
-\DoxyCodeLine{00159\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00160\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>::operator-\/=}}(\textcolor{keyword}{const}\ T\ \&p)}
-\DoxyCodeLine{00161\ \{}
-\DoxyCodeLine{00162\ \ \ \ \ x\ -\/=\ p;}
-\DoxyCodeLine{00163\ \ \ \ \ y\ -\/=\ p;}
-\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00165\ \}}
-\DoxyCodeLine{00166\ }
-\DoxyCodeLine{00167\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00168\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>::operator*=}}(\textcolor{keyword}{const}\ T\ \&p)}
-\DoxyCodeLine{00169\ \{}
-\DoxyCodeLine{00170\ \ \ \ \ x\ *=\ p;}
-\DoxyCodeLine{00171\ \ \ \ \ y\ *=\ p;}
-\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00173\ \}}
-\DoxyCodeLine{00174\ }
-\DoxyCodeLine{00175\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00176\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&\mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>::operator/=}}(\textcolor{keyword}{const}\ T\ \&p)}
-\DoxyCodeLine{00177\ \{}
-\DoxyCodeLine{00178\ \ \ \ \ x\ /=\ p;}
-\DoxyCodeLine{00179\ \ \ \ \ y\ /=\ p;}
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00181\ \}}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00184\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_aea6b20f0975274a5564bfe12945d5bd1}{KolibriLib::point<T>::operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&a)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00185\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{return}\ x\ ==\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}}\ \&\&\ y\ ==\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}};}
-\DoxyCodeLine{00187\ \}}
-\DoxyCodeLine{00188\ }
-\DoxyCodeLine{00189\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
-\DoxyCodeLine{00190\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point_a5a2c05ea1ae850ba4cf0446239afe669}{KolibriLib::point<T>::operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{KolibriLib::point<T>}}\ \&a)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00191\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{return}\ x\ !=\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_add46882563c402c224b23c85049f7f34}{x}}\ ||\ y\ !=\ a.\mbox{\hyperlink{struct_kolibri_lib_1_1point_a2552f28a0a4bd6d41b0b75c7e3dec4e0}{y}};}
-\DoxyCodeLine{00193\ \}}
-\DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_TYPES\_H\_\_}}
+\DoxyCodeLine{00079\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_TYPES\_H\_\_}}
 
 \end{DoxyCode}

@@ -58,13 +58,26 @@
         </itemizedlist>
 </simplesect>
 <simplesect>
+    <title>Определения типов    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb"/>typedef <link linkend="_struct_kolibri_lib_1_1point">point</link> <emphasis role="strong">Size</emphasis></para>
+
+<para>Размер </para>
+</listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff"/>typedef <link linkend="_struct_kolibri_lib_1_1point">point</link> <emphasis role="strong">Coord</emphasis></para>
+
+<para>Координаты </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
     <title>Функции    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <link linkend="_namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48">GetScreenSize</link> ()</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> <link linkend="_namespace_kolibri_lib_1a1de80cbbe233f747756fcf3b5d8640f9">GetScreenSize</link> ()</para>
 
 <para>Получить разрешение экрана </para>
 </listitem>
-            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> <link linkend="_namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d">ScreenPointAffiliation</link> (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> POINT)</para>
+            <listitem><para><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> <link linkend="_namespace_kolibri_lib_1a8718c0801595aa4d15d67b638e56839e">ScreenPointAffiliation</link> (<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> POINT)</para>
 
 <para>Получить принадлежность точки </para>
 </listitem>
@@ -87,11 +100,9 @@
         <itemizedlist>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ac3fc0a4a923e29aa814420d285d1fa9c"/>const std::string <emphasis role="strong">ConfigurationDir</emphasis> = &quot;/kolibrios/etc/&quot;</para>
 </listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ae42aab2f9795e3359fb723ff5820250c"/>const std::string <emphasis role="strong">ImgDir</emphasis> = ConfigurationDir + &quot;images/&quot;</para>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ae42aab2f9795e3359fb723ff5820250c"/>const std::string <emphasis role="strong">ImgDir</emphasis> = ConfigurationDir + &quot;KolibriOS-Cpp-Lib/&quot;</para>
 </listitem>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1ab1099de2131804416562ef820927ca2b"/>const std::string <emphasis role="strong">DefaultImage</emphasis> = ImgDir + &quot;default.png&quot;</para>
-</listitem>
-            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1aa47d5ef524ec6197866199e1522047c6"/>const std::string <emphasis role="strong">CursorsDir</emphasis> = ConfigurationDir + &quot;cursors/&quot;</para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -108,11 +119,11 @@
 </section>
 <section>
 <title>Функции</title>
-<anchor xml:id="_namespace_kolibri_lib_1aadbd1982a31f43cb6e1e70dafc4edb48"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1a1de80cbbe233f747756fcf3b5d8640f9"/><section>
     <title>GetScreenSize()</title>
 <indexterm><primary>GetScreenSize</primary><secondary>KolibriLib</secondary></indexterm>
 <indexterm><primary>KolibriLib</primary><secondary>GetScreenSize</secondary></indexterm>
-<para><computeroutput><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> KolibriLib::GetScreenSize ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> KolibriLib::GetScreenSize ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить разрешение экрана </para>
 </para>
@@ -123,11 +134,11 @@
 </formalpara>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1acd69b39f323a74739838c3cfd62bec7d"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1a8718c0801595aa4d15d67b638e56839e"/><section>
     <title>ScreenPointAffiliation()</title>
 <indexterm><primary>ScreenPointAffiliation</primary><secondary>KolibriLib</secondary></indexterm>
 <indexterm><primary>KolibriLib</primary><secondary>ScreenPointAffiliation</secondary></indexterm>
-<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> KolibriLib::ScreenPointAffiliation (<link linkend="_struct_kolibri_lib_1_1point">UI::Coord</link> POINT)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+<para><computeroutput><link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> KolibriLib::ScreenPointAffiliation (<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> POINT)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Получить принадлежность точки </para>
 </para>
@@ -166,8 +177,8 @@
 
 <para>Подождать, минимальное кол-во времени </para>
 </para>
-<section xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1Функция">
-<title><title>устанавливает курсор в середину экрана</title></title>
+<section xml:id="_namespace_kolibri_lib_1_1_o_s_1Функция">
+<title><title>изменяет переменную <link linkend="_">sys_color_table</link></title></title>
 </section>
 </section>
 <anchor xml:id="_namespace_kolibri_lib_1ab8a227d1c51a256a87817fdf1c37a24c"/><section>

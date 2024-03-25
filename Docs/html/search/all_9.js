@@ -1,21 +1,15 @@
 var searchData=
 [
-  ['deactivate_0',['Deactivate',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#a0a235265d209cec4e8f735d416d25505',1,'KolibriLib::UI::buttons::Button']]],
-  ['deactivate_20возвращает_20кнопку_20в_20рабочее_20состояние_1',['функции @link Deactivate, возвращает кнопку в рабочее состояние',['../class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button.html#Противоположна',1,'']]],
-  ['default_2',['Default',['../class_kolibri_lib_1_1_u_i_1_1_check_box.html#ae6e4167e4a0da08cfdf470fcdbe3a778a789fcd47ce15cf03f3e62e5993ab30f9',1,'KolibriLib::UI::CheckBox']]],
-  ['defaultcolortable_3',['DefaultColorTable',['../namespace_kolibri_lib_1_1_colors.html#ad6deb13041b3eac69cf1eeaab2b814a8',1,'KolibriLib::Colors']]],
-  ['defaultfont_4',['DefaultFont',['../namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts.html#abab58341d8cf9048d474cf45a2e00723',1,'KolibriLib::UI::text::Fonts']]],
-  ['defaultfontsize_5',['DefaultFontSize',['../namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts.html#ae1524a67fbeab5c6850b62e49fdc862f',1,'KolibriLib::UI::text::Fonts']]],
-  ['defaultwindowcoord_6',['DefaultWindowCoord',['../namespace_kolibri_lib_1_1window.html#a0b2c16c6f0b120a6ef83b2366006c6a6',1,'KolibriLib::window']]],
-  ['defaultwindowsize_7',['DefaultWindowSize',['../namespace_kolibri_lib_1_1window.html#a1f1ae2f8103c37a9b5a88cce14f75f9d',1,'KolibriLib::window']]],
-  ['definebutton_8',['DefineButton',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#a1322e4edab43592d6ebad409ca641115',1,'KolibriLib::UI::buttons']]],
-  ['delete_9',['Delete',['../class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a2b3cc12a6b74de60c7e74f90fed4fec9',1,'KolibriLib::UI::text::Text::Delete()'],['../namespace_kolibri_lib_1_1filesystem.html#af8228f98e29fbb8122c93fdc3022d154',1,'KolibriLib::filesystem::Delete()']]],
-  ['deletebutton_10',['DeleteButton',['../namespace_kolibri_lib_1_1_u_i_1_1buttons.html#af05bc94ea0e640d8fe6b668d059a065f',1,'KolibriLib::UI::buttons']]],
-  ['deleteelement_11',['DeleteElement',['../class_kolibri_lib_1_1_u_i_1_1_frame.html#a822e95972871f8266a4c22ba18ac330e',1,'KolibriLib::UI::Frame::DeleteElement()'],['../class_kolibri_lib_1_1window_1_1_window.html#a1ddd735a9156802de746e389a9d2e9c3',1,'KolibriLib::window::Window::DeleteElement()']]],
-  ['deleteitem_12',['DeleteItem',['../class_kolibri_lib_1_1_u_i_1_1_menu.html#a9b380c2eeb680f910ca87903ee78d8ad',1,'KolibriLib::UI::Menu']]],
-  ['detalization_20линий_20да_20да_20если_20детализация_204_20то_20круг_20это_20квадрат_13',['рисуется по detalization линий. Да-да если Детализация = 4, то круг это квадрат.',['../graphic_8hpp.html#Круг',1,'']]],
-  ['deviceerror_14',['DeviceError',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca416e4e91da3a3d9dc68f1b1a44245244',1,'KolibriLib::filesystem']]],
-  ['diskisfull_15',['DiskIsFull',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67cae876827552df8534ce951cdf21c851c0',1,'KolibriLib::filesystem']]],
-  ['drawline_16',['DrawLine',['../namespace_kolibri_lib_1_1_background.html#a21ad9e230558c6f35cc7e5f859223149',1,'KolibriLib::Background']]],
-  ['drawtext_17',['DrawText',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a000ef13c7923745461001a023ed4608e',1,'KolibriLib::UI::text::DrawText(const std::string &amp;text, const Coord &amp;coord, const unsigned &amp;size=9, const Colors::Color &amp;color=OS::sys_color_table.work_text)'],['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a89d90baa8f5cf0c64c65ae73ffacc124',1,'KolibriLib::UI::text::DrawText(const std::string &amp;text, const Coord &amp;coord, const Fonts::Font &amp;font=Fonts::DefaultFont, unsigned margin=UI::DefaultMargin, const Colors::Color &amp;colorText=OS::sys_color_table.work_text, const Colors::Color &amp;BackgroundColor=OS::sys_color_table.work_area)']]]
+  ['edit_5fbox_0',['edit_box',['../structedit__box.html',1,'']]],
+  ['editor_5fsyntax_5ffile_1',['editor_syntax_file',['../structeditor__syntax__file.html',1,'']]],
+  ['endoffile_2',['EndOfFile',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67ca4f1a1e3970d3a29b7ab9d9dff441a774',1,'KolibriLib::filesystem']]],
+  ['endredraw_3',['EndRedraw',['../class_kolibri_lib_1_1window_1_1_window.html#Обязательно',1,'после должна быть вызвана функция #EndRedraw()'],['../class_kolibri_lib_1_1window_1_1_window.html#a2fbcdad4e5e0c3942a479113d2deffb1',1,'KolibriLib::window::Window::EndRedraw()']]],
+  ['eng_4',['Eng',['../namespace_kolibri_lib_1_1_o_s.html#ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e',1,'KolibriLib::OS']]],
+  ['errors_5',['Errors',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67c',1,'KolibriLib::filesystem']]],
+  ['errorwindow_6',['ErrorWindow',['../namespace_kolibri_lib_1_1child_window.html#adfe18d89f20521dbdcc444cd3ea0fb23',1,'KolibriLib::childWindow']]],
+  ['event_7',['Event',['../namespace_kolibri_lib_1_1_o_s.html#a8355608f015819035015c89a718df9a0',1,'KolibriLib::OS']]],
+  ['events_8',['Events',['../namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8c',1,'KolibriLib::OS']]],
+  ['exec_9',['Exec',['../namespace_kolibri_lib_1_1_o_s.html#a29b415614ae9099bab7ee86da476245d',1,'KolibriLib::OS']]],
+  ['exist_10',['Exist',['../namespace_kolibri_lib_1_1filesystem.html#ab13318145c165ffcc743aeb33e62b4dc',1,'KolibriLib::filesystem']]],
+  ['exit_11',['Exit',['../namespace_kolibri_lib_1_1_o_s.html#a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1',1,'KolibriLib::OS']]]
 ];

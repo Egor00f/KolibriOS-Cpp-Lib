@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__rasterworks_8h_source" xml:lang="ru">
+<title>kolibri_rasterworks.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_RASTERWORKS_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_RASTERWORKS_H</emphasis>
+3 
+4 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>
+5 {
+6 
+8 <emphasis role="keyword">enum</emphasis>&#32;Params
+9 {
+11 &#32;&#32;&#32;&#32;Bold&#32;=&#32;0b1,
+12 
+14 &#32;&#32;&#32;&#32;Italic&#32;=&#32;0b10,
+15 
+17 &#32;&#32;&#32;&#32;Underline&#32;=&#32;0b100,
+18 
+20 &#32;&#32;&#32;&#32;StrikeThrough&#32;=&#32;0b1000,
+21 
+23 &#32;&#32;&#32;&#32;AlignRight&#32;=&#32;0b00010000,
+24 
+26 &#32;&#32;&#32;&#32;AlignCenter&#32;=&#32;0b00100000,
+27 
+28 };
+29 
+30 
+33 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;kolibri_rasterworks_init(<emphasis role="keywordtype">void</emphasis>);
+34 
+43 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*drawText)(<emphasis role="keywordtype">void</emphasis>&#32;*canvas,&#32;<emphasis role="keywordtype">int</emphasis>&#32;x,&#32;<emphasis role="keywordtype">int</emphasis>&#32;y,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*string,&#32;<emphasis role="keywordtype">int</emphasis>&#32;charQuantity,&#32;<emphasis role="keywordtype">int</emphasis>&#32;fontColor,&#32;<emphasis role="keywordtype">int</emphasis>&#32;params)&#32;__attribute__((__stdcall__));
+44 <emphasis role="keyword">extern</emphasis>&#32;int&#32;(*countUTF8Z)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*string,&#32;<emphasis role="keywordtype">int</emphasis>&#32;byteQuantity)&#32;__attribute__((__stdcall__));
+45 <emphasis role="keyword">extern</emphasis>&#32;int&#32;(*charsFit)(<emphasis role="keywordtype">int</emphasis>&#32;areaWidth,&#32;<emphasis role="keywordtype">int</emphasis>&#32;charHeight)&#32;__attribute__((__stdcall__));
+46 <emphasis role="keyword">extern</emphasis>&#32;int&#32;(*strWidth)(<emphasis role="keywordtype">int</emphasis>&#32;charQuantity,&#32;<emphasis role="keywordtype">int</emphasis>&#32;charHeight)&#32;__attribute__((__stdcall__));
+47 
+48 }
+49 &#32;
+50 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_RASTERWORKS_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

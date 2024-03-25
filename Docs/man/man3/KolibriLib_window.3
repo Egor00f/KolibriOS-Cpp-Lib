@@ -30,7 +30,28 @@ KolibriLib::window \- Работа с окном
 
 .in +1c
 .ti -1c
-.RI "void \fBCreateWindow\fP (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string &title, const \fBColors::Color\fP WorkColor=OS::sys_color_table\&.frame_area, const \fBColors::Color\fP TitleColor=OS::sys_color_table\&.work_text, const uint32_t style=\fBWindowStyle::CanResize\fP+\fBWindowStyle::NormalDraw\fP)"
+.RI "template<> void \fBKolibriLib::window::Window::Element::SetElement< KolibriLib::UI::buttons::Button >\fP (const \fBKolibriLib::UI::buttons::Button\fP &elem)"
+.br
+.ti -1c
+.RI "template<> void \fBKolibriLib::window::Window::Element::SetElement< KolibriLib::UI::Images::Image >\fP (const \fBKolibriLib::UI::Images::Image\fP &elem)"
+.br
+.ti -1c
+.RI "template<> void \fBKolibriLib::window::Window::Element::SetElement< KolibriLib::UI::CheckBox >\fP (const \fBKolibriLib::UI::CheckBox\fP &elem)"
+.br
+.ti -1c
+.RI "template<> void \fBKolibriLib::window::Window::Element::SetElement< KolibriLib::UI::Form >\fP (const \fBKolibriLib::UI::Form\fP &elem)"
+.br
+.ti -1c
+.RI "template<> void \fBKolibriLib::window::Window::Element::SetElement< KolibriLib::UI::text::TextLabel >\fP (const \fBKolibriLib::UI::text::TextLabel\fP &elem)"
+.br
+.ti -1c
+.RI "template<> void \fBKolibriLib::window::Window::Element::SetElement< KolibriLib::UI::Menu >\fP (const \fBKolibriLib::UI::Menu\fP &elem)"
+.br
+.ti -1c
+.RI "template<> void \fBKolibriLib::window::Window::Element::SetElement< KolibriLib::UI::Frame >\fP (const \fBKolibriLib::UI::Frame\fP &elem)"
+.br
+.ti -1c
+.RI "void \fBCreateWindow\fP (const \fBCoord\fP &coord, const \fBSize\fP &size, const std::string &title, const \fBColors::Color\fP &WorkColor=\fBOS::GetSystemColors\fP()\&.frame_area, \fBColors::Color\fP TitleColor=\fBOS::GetSystemColors\fP()\&.work_text, uint32_t style=\fBWindowStyle::CanResize\fP+\fBWindowStyle::NormalDraw\fP)"
 .br
 .ti -1c
 .RI "void \fBUnfocusWindow\fP (\fBThread::Slot\fP slot)"
@@ -53,7 +74,7 @@ KolibriLib::window \- Работа с окном
 .br
 .RI "Свернуть все окна "
 .ti -1c
-.RI "\fBUI::Coord\fP \fBGetWindowCoord\fP ()"
+.RI "\fBCoord\fP \fBGetWindowCoord\fP ()"
 .br
 .ti -1c
 .RI "int \fBGetWindowPos\fP ()"
@@ -72,11 +93,11 @@ KolibriLib::window \- Работа с окном
 
 .in +1c
 .ti -1c
-.RI "const \fBUI::Size\fP \fBDefaultWindowSize\fP = {400, 400}"
+.RI "const \fBSize\fP \fBDefaultWindowSize\fP = {600, 400}"
 .br
 .RI "Размер окна поумолчанию "
 .ti -1c
-.RI "const \fBUI::Coord\fP \fBDefaultWindowCoord\fP = {100, 100}"
+.RI "const \fBCoord\fP \fBDefaultWindowCoord\fP = {100, 100}"
 .br
 .RI "Соординаты окна по умолчанию "
 .in -1c
@@ -116,7 +137,7 @@ KolibriLib::window \- Работа с окном
 градиентная заливка рабочей области 
 .SH "Функции"
 .PP 
-.SS "void KolibriLib::window::CreateWindow (const \fBUI::Coord\fP coord, const \fBUI::Size\fP size, const std::string & title, const \fBColors::Color\fP WorkColor = \fROS::sys_color_table\&.frame_area\fP, const \fBColors::Color\fP TitleColor = \fROS::sys_color_table\&.work_text\fP, const uint32_t style = \fR\fBWindowStyle::CanResize\fP + \fBWindowStyle::NormalDraw\fP\fP)\fR [inline]\fP"
+.SS "void KolibriLib::window::CreateWindow (const \fBCoord\fP & coord, const \fBSize\fP & size, const std::string & title, const \fBColors::Color\fP & WorkColor = \fR\fBOS::GetSystemColors\fP()\&.frame_area\fP, \fBColors::Color\fP TitleColor = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, uint32_t style = \fR\fBWindowStyle::CanResize\fP + \fBWindowStyle::NormalDraw\fP\fP)\fR [inline]\fP"
 
 .PP
 \fBАргументы\fP
@@ -157,7 +178,7 @@ KolibriLib::window \- Работа с окном
 .RE
 .PP
 
-.SS "unsigned KolibriLib::window::GetSkinHeight ()\fR [inline]\fP"
+.SS "unsigned KolibriLib::window::GetSkinHeight (void)\fR [inline]\fP"
 
 .PP
 Получить высоту скина(заголовка окна) 

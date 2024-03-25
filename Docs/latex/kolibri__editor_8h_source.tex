@@ -1,0 +1,422 @@
+\doxysection{kolibri\+\_\+editor.\+h}
+\hypertarget{kolibri__editor_8h_source}{}\label{kolibri__editor_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_editor.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_editor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_EDITOR\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ KOLIBRI\_EDITOR\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <kos32sys.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ (êîëè÷åñòâî\ ñèìâîëîâ\ â\ íîâîì\ äîêóìåíòå\ +\ 2)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ TE\_MAXCHARS\ 100002}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ ìàêñèìàëüíûé\ ðàçìåð\ ôàéëà\ ñèíòàêñèñà}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ TE\_MAX\_SYNTAX\_FILESIZE\ 410000}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ buffer\ for\ copy|paste}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ TE\_BUF\_SIZE\ 4096}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ void\ (*editor\_callback)(void);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((\_\_packed\_\_))\ editor\_symbol}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ uint8\_t\ c;\ \ \ \ \ \textcolor{comment}{//\ \ +0\ ñèìâîë}}
+\DoxyCodeLine{00019\ \ \ \ \ uint8\_t\ col;\ \ \ \textcolor{comment}{//\ \ +1\ öâåò}}
+\DoxyCodeLine{00020\ \ \ \ \ uint32\_t\ prev;\ \textcolor{comment}{//\ \ +2\ èíäåêñ\ ïðåäûäóùåãî}}
+\DoxyCodeLine{00021\ \ \ \ \ uint32\_t\ next;\ \textcolor{comment}{//\ \ +6\ óêàçàòåëè\ (èíäåêñ\ ñëåäóþùåãî)}}
+\DoxyCodeLine{00022\ \ \ \ \ uint32\_t\ tc;\ \ \ \textcolor{comment}{//\ \ +10\ âðåì.\ ñîçäàíèÿ}}
+\DoxyCodeLine{00023\ \ \ \ \ uint32\_t\ td;\ \ \ \textcolor{comment}{//\ +14\ âðåì.\ óäàëåíèÿ}}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((\_\_packed\_\_))}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ uint32\_t\ x\_pos;\ \ \ \ \ \textcolor{comment}{//\ 0}}
+\DoxyCodeLine{00030\ \ \ \ \ uint32\_t\ y\_pos;\ \ \ \ \ \textcolor{comment}{//\ 50}}
+\DoxyCodeLine{00031\ \ \ \ \ uint32\_t\ width;\ \ \ \ \ \textcolor{comment}{//\ 440}}
+\DoxyCodeLine{00032\ \ \ \ \ uint32\_t\ hight;\ \ \ \ \ \textcolor{comment}{//\ 150}}
+\DoxyCodeLine{00033\ \ \ \ \ uint32\_t\ w\_pane;\ \ \ \ \textcolor{comment}{//\ 30\ øèðèíà\ ïàíåëè\ â\ îêíå,\ width\ of\ left\ pane\ with\ line\ numbers}}
+\DoxyCodeLine{00034\ \ \ \ \ uint32\_t\ h\_pane;\ \ \ \ \textcolor{comment}{//\ 25\ âûñîòà\ ïàíåëè\ â\ îêíå,\ hight\ of\ top\ pane\ with\ Rows,\ Cols\ Undo\ info}}
+\DoxyCodeLine{00035\ \ \ \ \ uint32\_t\ width\_sym;\ \textcolor{comment}{//\ 9\ øèðèíà\ ñèìâîëà\ (çíàêîìåñòà)\ â\ îêíå}}
+\DoxyCodeLine{00036\ \ \ \ \ uint32\_t\ hight\_sym;\ \textcolor{comment}{//\ 16\ âûñîòà\ ñèìâîëà\ (çíàêîìåñòà)\ â\ îêíå}}
+\DoxyCodeLine{00037\ \ \ \ \ uint8\_t\ drag\_m;\ \ \ \ \ \textcolor{comment}{//\ âûäåëåíèå\ îò\ ìûøè}}
+\DoxyCodeLine{00038\ \ \ \ \ uint8\_t\ drag\_k;\ \ \ \ \ \textcolor{comment}{//\ âûäåëåíèå\ îò\ êëàâèàòóðû}}
+\DoxyCodeLine{00039\ \ \ \ \ uint32\_t\ sel\_x0;\ \ \ \ \textcolor{comment}{//\ ñòðóêòóðà\ âûäåëåíèÿ}}
+\DoxyCodeLine{00040\ \ \ \ \ uint32\_t\ sel\_y0;}
+\DoxyCodeLine{00041\ \ \ \ \ uint32\_t\ sel\_x1;}
+\DoxyCodeLine{00042\ \ \ \ \ uint32\_t\ sel\_y1;}
+\DoxyCodeLine{00043\ \ \ \ \ uint32\_t\ seln\_x0;\ \textcolor{comment}{//\ äîïîëíèòåëüíàÿ\ ñòðóêòóðà\ âûäåëåíèÿ}}
+\DoxyCodeLine{00044\ \ \ \ \ uint32\_t\ seln\_y0;}
+\DoxyCodeLine{00045\ \ \ \ \ uint32\_t\ seln\_x1;}
+\DoxyCodeLine{00046\ \ \ \ \ uint32\_t\ seln\_y1;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{struct\ }editor\_symbol\ *tex;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ text\ memory\ pointer}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{struct\ }editor\_symbol\ *tex\_1;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ çà\ ïîñëåäíèì\ ñóùåñòâóþùèì\ ñèìâîëîì\ (êîíåö\ ôàéëà)}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{struct\ }editor\_symbol\ *tex\_end;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ text\ end\ memory\ pointer\ (óêàçàòåëü\ çà\ êîíöîì\ âûäåëåííîãî\ áóôåðà\ äëÿ\ òåêñòà)}}
+\DoxyCodeLine{00050\ \ \ \ \ uint32\_t\ cur\_x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ êîîðäèíàòà\ x\ êóðñîðà}}
+\DoxyCodeLine{00051\ \ \ \ \ uint32\_t\ cur\_y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ êîîðäèíàòà\ y\ êóðñîðà}}
+\DoxyCodeLine{00052\ \ \ \ \ uint32\_t\ max\_chars;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TE\_MAXCHARS\ ;+86\ ìàêñèìàëüíîå\ ÷èñëî\ ñèìâîëîâ\ â\ îäíîì\ äîêóìåíòå}}
+\DoxyCodeLine{00053\ \ \ \ \ uint32\_t\ count\_colors\_text;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1\ ;+90\ êîëè÷åñòâî\ öâåòîâ\ òåêñòà}}
+\DoxyCodeLine{00054\ \ \ \ \ uint32\_t\ count\_key\_words;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//+94\ êîëëè÷åñòâî\ êëþ÷åâûõ\ ñëîâ}}
+\DoxyCodeLine{00055\ \ \ \ \ color\_t\ color\_cursor;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x808080\ ;+98\ öâåò\ êóðñîðà}}
+\DoxyCodeLine{00056\ \ \ \ \ color\_t\ color\_wnd\_capt;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x80\ ;+102\ öâåò\ ïîëåé\ âîêðóã\ îêíà}}
+\DoxyCodeLine{00057\ \ \ \ \ color\_t\ color\_wnd\_work;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x0\ ;+106\ öâåò\ ôîíà\ îêíà}}
+\DoxyCodeLine{00058\ \ \ \ \ color\_t\ color\_wnd\_bord;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0xd0d0d0\ ;+110\ öâåò\ òåêñòà\ íà\ ïîëÿõ}}
+\DoxyCodeLine{00059\ \ \ \ \ color\_t\ color\_select;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0x208080\ ;+114\ öâåò\ âûäåëåíèÿ}}
+\DoxyCodeLine{00060\ \ \ \ \ color\_t\ color\_cur\_text;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0xff0000\ ;+118\ öâåò\ ñèìâîëà\ ïîä\ êóðñîðîì}}
+\DoxyCodeLine{00061\ \ \ \ \ color\_t\ color\_wnd\_text;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0xffff00\ ;+122\ öâåò\ òåêñòà\ â\ îêíå}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{char}\ *syntax\_file;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ íà÷àëî\ ôàéëà\ ñèíòàêñèñà}}
+\DoxyCodeLine{00063\ \ \ \ \ uint32\_t\ syntax\_file\_size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TE\_MAX\_SYNTAX\_FILESIZE\ ;+130\ ìàêñèìàëüíûé\ ðàçìåð\ ôàéëà\ ñèíòàêñèñà}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ *text\_colors;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ìàññèâ\ öâåòîâ\ òåêñòà}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{char}\ *help\_text\_f1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ òåêñò\ ñïðàâêè\ (ïî\ íàæàòèè\ F1)}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ help\_id;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/1\ ;+142\ èäåíòèôèêàòîð\ äëÿ\ ñïðàâêè}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ *key\_words\_data;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ñòðóêòóðû\ êëþ÷åâûõ\ ñëîâ\ TexColViv}}
+\DoxyCodeLine{00068\ \ \ \ \ uint32\_t\ tim\_ch;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ êîëè÷åñòâî\ èçìåíåíèé\ â\ ôàéëå}}
+\DoxyCodeLine{00069\ \ \ \ \ uint32\_t\ tim\_undo;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ êîëè÷åñòâî\ îòìåíåííûõ\ äåéñòâèé}}
+\DoxyCodeLine{00070\ \ \ \ \ uint32\_t\ tim\_ls;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ âðåìÿ\ ïîñëåäíåãî\ ñîõðàíåíèÿ}}
+\DoxyCodeLine{00071\ \ \ \ \ uint32\_t\ tim\_co;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ âðåìÿ\ ïîñëåäíåé\ öâåòîâîé\ ðàçìåòêè}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ *el\_focus;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ïåðåìåííóþ\ ýëåìåíòà\ â\ ôîêóñå\ pointer\ to\ pointer**}}
+\DoxyCodeLine{00073\ \ \ \ \ uint8\_t\ err\_save;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ îøèáêà\ ñîõðàíåíèÿ\ ôàéëà}}
+\DoxyCodeLine{00074\ \ \ \ \ uint8\_t\ panel\_id;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ íîìåð\ îòêðûòîé\ ïàíåëè}}
+\DoxyCodeLine{00075\ \ \ \ \ uint8\_t\ key\_new;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ñèìâîë,\ êîòîðûé\ áóäåò\ äîáàâëÿòñÿ\ ñ\ êëàâèàòóðû}}
+\DoxyCodeLine{00076\ \ \ \ \ uint8\_t\ symbol\_new\_line;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ascii\ 20\ ñèìâîë\ çàâåðøåíèÿ\ ñòðîêè}}
+\DoxyCodeLine{00077\ \ \ \ \ scrollbar\ *scr\_w;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ âåðòèêàëüíûé\ ñêðîëëèíã\ !=\ NULL}}
+\DoxyCodeLine{00078\ \ \ \ \ scrollbar\ *scr\_h;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ãîðèçîíòàëüíûé\ ñêðîëëèíã\ !=\ NULL}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{char}\ *arr\_key\_pos;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ìàññèâ\ ïîçèöèé\ êëþ÷åâûõ\ ñëîâ}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{char}\ *buffer;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ áóôåð\ êîïèðîâàíèÿ/âñòàâêè\ !=\ NULL,\ also\ size}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{char}\ *buffer\_find;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ áóôåð\ äëÿ\ ïîèñêà\ (sized\ 302)}}
+\DoxyCodeLine{00082\ \ \ \ \ uint8\_t\ cur\_ins;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1\ ðåæèì\ ðàáîòû\ êóðñîðà\ (îáû÷íûé\ èëè\ çàìåíà)}}
+\DoxyCodeLine{00083\ \ \ \ \ uint8\_t\ mode\_color;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1\ ðåæèì\ âûäåëåíèÿ\ ñëîâ\ öâåòîì\ (0-\/âûêë.\ 1-\/âêë.)}}
+\DoxyCodeLine{00084\ \ \ \ \ uint8\_t\ mode\_invis;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0\ ðåæèì\ ïîêàçà\ íåïå÷àòàåìûõ\ ñèìâîëîâ}}
+\DoxyCodeLine{00085\ \ \ \ \ uint8\_t\ gp\_opt;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0\ îïöèè\ âîçâðàùàåìûå\ ôóíêöèåé\ ted\_get\_pos\_by\_cursor}}
+\DoxyCodeLine{00086\ \ \ \ \ editor\_callback\ fun\_on\_key\_ctrl\_all;\ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ôóíêöèþ\ âûçûâàåìóþ\ ïðè\ íàæàòèè\ Ctrl+N,O,S,F,G,H,\ can\ be\ NULL}}
+\DoxyCodeLine{00087\ \ \ \ \ uint32\_t\ reserved\_1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{00088\ \ \ \ \ uint32\_t\ reserved\_2;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{00089\ \ \ \ \ uint32\_t\ reserved\_3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{00090\ \ \ \ \ uint32\_t\ buffer\_size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ BUF\_SIZE\ ðàçìåð\ áóôåðà\ êîïèðîâàíèÿ/âñòàâêè}}
+\DoxyCodeLine{00091\ \ \ \ \ editor\_callback\ fun\_find\_err;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ôóíêöèþ\ âûçûâàåìóþ\ åñëè\ ïîèñê\ çàêîí÷èëñÿ\ íåóäà÷íî}}
+\DoxyCodeLine{00092\ \ \ \ \ editor\_callback\ fun\_init\_synt\_err;\ \ \ \ \ \ \textcolor{comment}{//\ unused\ óêàçàòåëü\ íà\ ôóíêöèþ\ âûçûâàåìóþ\ ïðè\ îøèáî÷íîì\ îòêðûòèè\ ôàéëà\ ñèíòàêñèñà}}
+\DoxyCodeLine{00093\ \ \ \ \ editor\_callback\ fun\_draw\_panel\_buttons;\ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ôóíêöèþ\ ðèñîâàíèÿ\ ïàíåëè\ ñ\ êíîïêàìè}}
+\DoxyCodeLine{00094\ \ \ \ \ editor\_callback\ fun\_draw\_panels;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ôóíêöèþ\ ðèñîâàíèÿ\ ïàíåëè\ ïîèñêà|çàìåíû|ïåðåõîäà|ñèíòàêñèñà}}
+\DoxyCodeLine{00095\ \ \ \ \ uint32\_t\ reserved\_4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{00096\ \ \ \ \ editor\_callback\ fun\_save\_err;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ óêàçàòåëü\ íà\ ôóíêöèþ\ âûçûâàåìóþ\ åñëè\ ñîõðàíåíèå\ ôàéëà\ çàêîí÷èëîñü\ íåóäà÷íî}}
+\DoxyCodeLine{00097\ \ \ \ \ uint32\_t\ increase\_size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 200\ ÷èñëî\ ñèìâîëîâ\ íà\ êîòîðûå\ áóäåò\ óâå÷èâàòüñÿ\ ïàìÿòü\ ïðè\ íåõâàòêå}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ *ptr\_free\_symb;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ èñïîëüçóåòñÿ\ âíóòðè\ ýëåìåíòà\ äëÿ\ óñêîðåíèÿ\ âñòàâêè\ òåêñòà}}
+\DoxyCodeLine{00099\ \ \ \ \ uint32\_t\ font\_size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ;+250\ ìíîæèòåëü\ äëÿ\ ðàçìåðà\ øðèôòà\ //\ binary\ OR\ mask\ for\ ECX\ SysFn4}}
+\DoxyCodeLine{00100\ \}\ editor;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{struct\ }\_\_attribute\_\_((\_\_packed\_\_))\ editor\_color\_item}
+\DoxyCodeLine{00103\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{char}\ word[40];\ \ \ \ \ \ \textcolor{comment}{//\ ñëîâî\ äëÿ\ ïîäñâåòêè}}
+\DoxyCodeLine{00105\ \ \ \ \ uint32\_t\ f1\_offset;\ \textcolor{comment}{//\ ñìåùåíèå\ â\ òàáëèöå\ F1\ ïîäñêàçîê}}
+\DoxyCodeLine{00106\ \ \ \ \ uint8\_t\ flags;\ \ \ \ \ \ \textcolor{comment}{//\ ôëàãè\ èñïîëüçóåìûå\ ïðè\ âûäåëåíèè}}
+\DoxyCodeLine{00107\ \ \ \ \ uint8\_t\ endc;\ \ \ \ \ \ \ \textcolor{comment}{//\ ñèìâîë\ êîíöà\ âûäåëåíèÿ\ (èñïîëüçóåòñÿ\ ïðè\ flags\&4)}}
+\DoxyCodeLine{00108\ \ \ \ \ uint8\_t\ escc;\ \ \ \ \ \ \ \textcolor{comment}{//\ ýêðàíèðóþùèé\ ñèìâîë\ (èñïîëüçóåòñÿ\ ïðè\ flags\&4)\ \ ascii(34)\ ïðèìåðû\ ýêðàíèðîâàíèÿ\ \(\backslash\)r\ \(\backslash\)n\ \(\backslash\)t}}
+\DoxyCodeLine{00109\ \ \ \ \ uint8\_t\ color;\ \ \ \ \ \ \textcolor{comment}{//\ öâåò\ ïî\ òàáëèöå\ öâåòîâ}}
+\DoxyCodeLine{00110\ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structeditor__syntax__file}{editor\_syntax\_file}}}
+\DoxyCodeLine{00113\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ uint32\_t\ count\_colors\_text;\ \textcolor{comment}{//\ êîë-\/âî\ öâåòîâ\ òåêñòà\ dd\ (text-\/color\_wnd\_text)/4}}
+\DoxyCodeLine{00115\ \ \ \ \ uint32\_t\ count\_key\_words;\ \ \ \textcolor{comment}{//\ êîë-\/âî\ êëþ÷åâûõ\ ñëîâ\ dd\ (f1-\/text)/48}}
+\DoxyCodeLine{00116\ \ \ \ \ color\_t\ color\_cursor;\ \ \ \ \ \ \ \textcolor{comment}{//\ dd\ 0xf1fcd0}}
+\DoxyCodeLine{00117\ \ \ \ \ color\_t\ color\_wnd\_capt;\ \ \ \ \ \textcolor{comment}{//\ dd\ 0x080808}}
+\DoxyCodeLine{00118\ \ \ \ \ color\_t\ color\_wnd\_work;\ \ \ \ \ \textcolor{comment}{//\ dd\ 0x1C1C1C}}
+\DoxyCodeLine{00119\ \ \ \ \ color\_t\ color\_wnd\_bord;\ \ \ \ \ \textcolor{comment}{//\ dd\ 0xc0c0c0}}
+\DoxyCodeLine{00120\ \ \ \ \ color\_t\ color\_select;\ \ \ \ \ \ \ \textcolor{comment}{//\ dd\ 0x3E3D32}}
+\DoxyCodeLine{00121\ \ \ \ \ color\_t\ color\_cur\_text;\ \ \ \ \ \textcolor{comment}{//\ dd\ 0x808080}}
+\DoxyCodeLine{00122\ \ \ \ \ color\_t\ color\_wnd\_text[];\ \ \ \textcolor{comment}{//\ òàáëèöà\ öâåòîâ\ ðàçìåðîì\ count\_colors\_text}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ editor\_color\_item[];\ \ \ \ \ \ \ \ \ //\ òàáëèöà\ êëþ÷åâûõ\ ïîäñâå÷åííûõ\ ñëîâ\ ðàçìåðîì\ count\_key\_words}}
+\DoxyCodeLine{00124\ \};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{keyword}{static}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structeditor__syntax__file}{editor\_syntax\_file}}\ default\_syntax\ =\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ 10,\ \ \ \ \ \ \ \textcolor{comment}{//\ count\_colors\_text}}
+\DoxyCodeLine{00128\ \ \ \ \ 1,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ count\_key\_words\ dd\ (f1-\/text)/48,\ minimum\ 1}}
+\DoxyCodeLine{00129\ \ \ \ \ 0xf1fcd0,\ \textcolor{comment}{//\ color\_cursor\ dd\ 0xf1fcd0}}
+\DoxyCodeLine{00130\ \ \ \ \ 0x080808,\ \textcolor{comment}{//\ color\_wnd\_capt\ dd\ 0x080808}}
+\DoxyCodeLine{00131\ \ \ \ \ 0x1C1C1C,\ \textcolor{comment}{//\ color\_wnd\_work\ dd\ 0x1C1C1C}}
+\DoxyCodeLine{00132\ \ \ \ \ 0xc0c0c0,\ \textcolor{comment}{//\ color\_wnd\_bord\ dd\ 0xc0c0c0}}
+\DoxyCodeLine{00133\ \ \ \ \ 0x3E3D32,\ \textcolor{comment}{//\ color\_select\ dd\ 0x3E3D32}}
+\DoxyCodeLine{00134\ \ \ \ \ 0x808080,\ \textcolor{comment}{//\ color\_cur\_text\ dd\ 0x808080}}
+\DoxyCodeLine{00135\ \ \ \ \ \{0xD0D0D0,\ 0xffff00,\ 0x00ff00,\ 0x00ffff,\ 0x808080,\ 0xff40ff,\ 0x4080ff,\ 0xff0000,\ 0x8080ff,\ 0x00ccff\}\};}
+\DoxyCodeLine{00136\ \textcolor{comment}{//\ next\ structure\ must\ follow\ syntax\ definition,\ at\ least\ has\ 1\ element\ !!!}}
+\DoxyCodeLine{00137\ \textcolor{keyword}{static}\ \textcolor{keyword}{struct\ }editor\_color\_item\ word1\ =\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{stringliteral}{"{}siemargl"{}},\ 1,\ 0,\ 0,\ 1\ \textcolor{comment}{//\ test\ word\ colored\ as\ 1st\ in\ table}}
+\DoxyCodeLine{00139\ \};}
+\DoxyCodeLine{00140\ \textcolor{comment}{//\ next\ structure\ preferably\ follow\ syntax\ definition,\ at\ least\ has\ 1\ element\ !!!}}
+\DoxyCodeLine{00141\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ f1\_table[]\ =\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)0"{}}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{stringliteral}{"{}First\(\backslash\)0"{}}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{stringliteral}{"{}Last\(\backslash\)0"{}}\};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{keyword}{extern}\ void\ (*ted\_draw)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00147\ \textcolor{keyword}{extern}\ void\ (*ted\_init\_scroll\_bars)(editor\ *,\ \textcolor{keywordtype}{int}\ opt)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00149\ \textcolor{keyword}{extern}\ void\ (*ted\_init\_syntax\_file)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00150\ \textcolor{keyword}{extern}\ void\ (*ted\_mouse)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00151\ \textcolor{keyword}{extern}\ void\ (*ted\_text\_add)(editor\ *,\ \textcolor{keywordtype}{char}\ *text,\ \textcolor{keywordtype}{int}\ textlen,\ \textcolor{keywordtype}{int}\ opt)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00156\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_select\_word)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00158\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_copy)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00159\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_paste)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_find)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00162\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_replace)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_sumb\_upper)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_sumb\_lover)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_convert\_by\_table)(editor\ *,\ \textcolor{keywordtype}{char}\ *table)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00172\ \textcolor{keyword}{extern}\ int\ (*ted\_can\_save)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00175\ \textcolor{keyword}{extern}\ void\ (*ted\_clear)(editor\ *,\ \textcolor{keywordtype}{int}\ all)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \textcolor{keyword}{extern}\ void\ (*ted\_delete)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00178\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ editor\_delete(editor\ *ed)}
+\DoxyCodeLine{00180\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ (*ted\_delete)(ed);}
+\DoxyCodeLine{00182\ \ \ \ \ free(ed-\/>scr\_w);}
+\DoxyCodeLine{00183\ \ \ \ \ free(ed-\/>scr\_h);}
+\DoxyCodeLine{00184\ \ \ \ \ free(ed-\/>buffer);}
+\DoxyCodeLine{00185\ \ \ \ \ free(ed-\/>buffer\_find);}
+\DoxyCodeLine{00186\ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00189\ \textcolor{keyword}{extern}\ void\ (*ted\_init)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{extern}\ int\ (*ted\_is\_select)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \textcolor{keyword}{enum}\ control\_keys}
+\DoxyCodeLine{00195\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ KM\_SHIFT\ =\ 0x00010000,}
+\DoxyCodeLine{00197\ \ \ \ \ KM\_CTRL\ =\ 0x00020000,}
+\DoxyCodeLine{00198\ \ \ \ \ KM\_ALT\ =\ 0x00040000,}
+\DoxyCodeLine{00199\ \ \ \ \ KM\_NUMLOCK\ =\ 0x00080000}
+\DoxyCodeLine{00200\ \};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \textcolor{keyword}{extern}\ void\ (*ted\_key\_asm)(editor\ *,\ \textcolor{keywordtype}{char}\ *table,\ \textcolor{keywordtype}{int}\ control)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00203\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \_\_attribute\_\_((\_\_stdcall\_\_))\ \textcolor{keywordtype}{void}\ editor\_keyboard(editor\ *ed,\ \textcolor{keywordtype}{char}\ *table,\ \textcolor{keyword}{enum}\ control\_keys\ control,\ \textcolor{keywordtype}{int}\ ch)}
+\DoxyCodeLine{00207\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}push\ \%4\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}push\ \%3\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}push\ \%2\(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}call\ *\%1\ \(\backslash\)n\(\backslash\)t"{}}\ ::\textcolor{stringliteral}{"{}a"{}}(ch),}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}m"{}}(ted\_key\_asm),\ \textcolor{stringliteral}{"{}m"{}}(ed),\ \textcolor{stringliteral}{"{}m"{}}(table),\ \textcolor{stringliteral}{"{}m"{}}(control)\ :);}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00215\ \textcolor{comment}{\ \ \ \ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_\ (}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}nop\ \(\backslash\)n\(\backslash\)t"{}::"{}a"{}(ch):);}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ \ \ \ \ \ \ \ (*ted\_key\_asm)(ed,\ table,\ control);}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00219\ \}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \textcolor{keyword}{extern}\ void\ (*ted\_open\_file\_asm)(editor\ *,\ \textcolor{keyword}{struct\ }fs\_dirinfo\ *,\ \textcolor{keywordtype}{char}\ *fname)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00222\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ editor\_openfile(editor\ *ed,\ \textcolor{keywordtype}{char}\ *fname,\ \textcolor{keywordtype}{int}\ *readbytes)}
+\DoxyCodeLine{00224\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{int}\ ret;}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{struct\ }fs\_dirinfo\ di;}
+\DoxyCodeLine{00227\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}push\ \%\%edi\ \(\backslash\)n\(\backslash\)t"{}}\ :::);}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ (*ted\_open\_file\_asm)(ed,\ \&di,\ fname);}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}pop\ \%\%edi\ \(\backslash\)n\(\backslash\)t"{}}\ :\ \textcolor{stringliteral}{"{}=b"{}}(*readbytes),\ \textcolor{stringliteral}{"{}=a"{}}(ret)::);}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00235\ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \textcolor{keyword}{extern}\ void\ (*ted\_save\_file\_asm)(editor\ *,\ \textcolor{keyword}{struct\ }fs\_dirinfo\ *,\ \textcolor{keywordtype}{char}\ *fname)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00238\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ editor\_savefile(editor\ *ed,\ \textcolor{keywordtype}{char}\ *fname)}
+\DoxyCodeLine{00240\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{struct\ }fs\_dirinfo\ di;}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ (*ted\_save\_file\_asm)(ed,\ \&di,\ fname);}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{return}\ ed-\/>err\_save;}
+\DoxyCodeLine{00246\ \}}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_cut)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_undo)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_redo)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \textcolor{keyword}{extern}\ void\ (*ted\_but\_reverse)(editor\ *)\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \textcolor{keyword}{extern}\ void\ (*ted\_text\_colored\_asm)()\ \_\_attribute\_\_((\_\_stdcall\_\_));}
+\DoxyCodeLine{00257\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ editor\_text\_colored(editor\ *ed)}
+\DoxyCodeLine{00258\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}call\ *\%0\ \(\backslash\)n\(\backslash\)t"{}}\ ::\textcolor{stringliteral}{"{}m"{}}(ted\_text\_colored\_asm),\ \textcolor{stringliteral}{"{}D"{}}(ed)\ :);}
+\DoxyCodeLine{00261\ \}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ get\_control\_keys(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00264\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ uint32\_t\ ctrl;}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(ctrl)}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(66),\ \textcolor{stringliteral}{"{}b"{}}(3));}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordflow}{return}\ ctrl;}
+\DoxyCodeLine{00273\ \};}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ get\_keyboard\_layout(\textcolor{keywordtype}{int}\ opt,\ \textcolor{keywordtype}{char}\ *buf)}
+\DoxyCodeLine{00278\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}};}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40\ \(\backslash\)n\(\backslash\)t"{}}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}})}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(26),\ \textcolor{stringliteral}{"{}b"{}}(2),\ \textcolor{stringliteral}{"{}c"{}}(opt),\ \textcolor{stringliteral}{"{}d"{}}(buf));}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45}{lang}};}
+\DoxyCodeLine{00287\ \};}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \_\_attribute\_\_((\_\_stdcall\_\_))\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ editor\_key(editor\ *ed,\ oskey\_t\ key)}
+\DoxyCodeLine{00290\ \textcolor{comment}{//\ callback\ for\ gui}}
+\DoxyCodeLine{00291\ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{comment}{//\ if(ed-\/>el\_focus\ !=\ ed)\ return;\ \ //\ need\ to\ check\ not\ to\ lose\ keyb\ buffer}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ uint32\_t\ control\ =\ get\_control\_keys();}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keyword}{enum}\ control\_keys\ ed\_ctrl\ =\ 0;}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordtype}{int}\ ly\_opt\ =\ 1;}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordflow}{if}\ (control\ \&\ 3)}
+\DoxyCodeLine{00298\ \ \ \ \ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ ed\_ctrl\ |=\ KM\_SHIFT;}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ ly\_opt\ =\ 2;}
+\DoxyCodeLine{00301\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordflow}{if}\ (control\ \&\ 0xC)}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ ed\_ctrl\ |=\ KM\_CTRL;}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{if}\ (control\ \&\ 0x30)}
+\DoxyCodeLine{00305\ \ \ \ \ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ ed\_ctrl\ |=\ KM\_ALT;}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ ly\_opt\ =\ 3;}
+\DoxyCodeLine{00308\ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordflow}{if}\ (control\ \&\ 0x80)}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ ed\_ctrl\ |=\ KM\_NUMLOCK;}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \ \ \ \textcolor{keywordtype}{char}\ conv\_table[128];}
+\DoxyCodeLine{00313\ \ \ \ \ get\_keyboard\_layout(ly\_opt,\ conv\_table);}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ editor\_keyboard(ed,\ conv\_table,\ ed\_ctrl,\ key.val);}
+\DoxyCodeLine{00316\ \}}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ gui\_add\_editor(\mbox{\hyperlink{structkolibri__window}{kolibri\_window}}\ *wnd,\ editor\ *e)}
+\DoxyCodeLine{00319\ \{}
+\DoxyCodeLine{00320\ \ \ \ \ kolibri\_window\_add\_element(wnd,\ KOLIBRI\_EDITOR,\ e);}
+\DoxyCodeLine{00321\ \}}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ editor\ *kolibri\_new\_editor(uint32\_t\ x\_w,\ uint32\_t\ y\_h,\ uint32\_t\ font,\ uint32\_t\ max\_chars,\ \textcolor{keywordtype}{void}\ *editor\_interlock)}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \{}
+\DoxyCodeLine{00327\ \ \ \ \ editor\ *ed\ =\ (editor\ *)calloc(1,\ \textcolor{keyword}{sizeof}(editor));}
+\DoxyCodeLine{00328\ \ \ \ \ ed-\/>x\_pos\ =\ x\_w\ >>\ 16;}
+\DoxyCodeLine{00329\ \ \ \ \ ed-\/>width\ =\ x\_w\ \&\ 0xFFFF;}
+\DoxyCodeLine{00330\ \ \ \ \ ed-\/>y\_pos\ =\ y\_h\ >>\ 16;}
+\DoxyCodeLine{00331\ \ \ \ \ ed-\/>hight\ =\ y\_h\ \&\ 0xFFFF;}
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ \ \ \ \ ed-\/>w\_pane\ =\ 30;}
+\DoxyCodeLine{00334\ \ \ \ \ ed-\/>h\_pane\ =\ 20;}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{comment}{//\ font}}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordflow}{if}\ (font\ ==\ 0)}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ font\ =\ 0x10;\ \textcolor{comment}{//\ default\ 16\ =\ 8x16}}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keywordtype}{int}\ font\_multipl\ =\ (font\ \&\ 7)\ +\ 1;}
+\DoxyCodeLine{00339\ \ \ \ \ ed-\/>font\_size\ =\ font\ <<\ 24;}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordflow}{if}\ (font\ \&\ 0x10)\ \textcolor{comment}{//\ 8x16}}
+\DoxyCodeLine{00341\ \ \ \ \ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ ed-\/>width\_sym\ =\ 8\ *\ font\_multipl;}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ ed-\/>hight\_sym\ =\ 16\ *\ font\_multipl;}
+\DoxyCodeLine{00344\ \ \ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//\ 6x9}}
+\DoxyCodeLine{00346\ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ ed-\/>width\_sym\ =\ 6\ *\ font\_multipl;}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ ed-\/>hight\_sym\ =\ 9\ *\ font\_multipl;}
+\DoxyCodeLine{00349\ \ \ \ \ \}}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{comment}{//\ memory\ sizing\ for\ text\ \&\ syntax}}
+\DoxyCodeLine{00351\ \ \ \ \ ed-\/>max\_chars\ =\ max\_chars;}
+\DoxyCodeLine{00352\ \ \ \ \ ed-\/>increase\_size\ =\ max\_chars\ /\ 2;}
+\DoxyCodeLine{00353\ \ \ \ \ ed-\/>syntax\_file\_size\ =\ \textcolor{keyword}{sizeof}(default\_syntax);}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{comment}{/*\ //\ loaded\ auto\ from\ syntax}}
+\DoxyCodeLine{00356\ \textcolor{comment}{\ \ \ \ \ \ \ \ ed-\/>color\_cursor\ =\ 0x808080;}}
+\DoxyCodeLine{00357\ \textcolor{comment}{\ \ \ \ \ \ \ \ ed-\/>color\_wnd\_capt\ =\ 0x80;}}
+\DoxyCodeLine{00358\ \textcolor{comment}{\ \ \ \ \ \ \ \ ed-\/>color\_wnd\_bord\ =\ 0xd0d0d0;}}
+\DoxyCodeLine{00359\ \textcolor{comment}{\ \ \ \ \ \ \ \ ed-\/>color\_select\ =\ 0x208080;}}
+\DoxyCodeLine{00360\ \textcolor{comment}{\ \ \ \ \ \ \ \ ed-\/>color\_cur\_text\ =\ 0xff0000;}}
+\DoxyCodeLine{00361\ \textcolor{comment}{\ \ \ \ \ \ \ \ ed-\/>color\_wnd\_text\ =\ 0xffff00;}}
+\DoxyCodeLine{00362\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00363\ \ \ \ \ ed-\/>symbol\_new\_line\ =\ 20;\ \textcolor{comment}{//\ ascii(20)}}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \ \ \ \ ed-\/>scr\_w\ =\ kolibri\_new\_scrollbar\_def(X\_Y(0,\ 16),\ X\_Y(0,\ 0),\ 100,\ 30,\ 0);\ \textcolor{comment}{//\ cur\_area\ will\ be\ inited\ ltr,\ max\ \&\ pos\ undef}}
+\DoxyCodeLine{00366\ \ \ \ \ ed-\/>scr\_h\ =\ kolibri\_new\_scrollbar\_def(X\_Y(0,\ 0),\ X\_Y(0,\ 16),\ 100,\ 30,\ 0);\ \textcolor{comment}{//\ cur\_area\ will\ be\ inited\ ltr,\ max\ \&\ pos\ undef}}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ ed-\/>buffer\_size\ =\ TE\_BUF\_SIZE;}
+\DoxyCodeLine{00369\ \ \ \ \ ed-\/>buffer\ =\ malloc(TE\_BUF\_SIZE);}
+\DoxyCodeLine{00370\ \ \ \ \ ed-\/>buffer\_find\ =\ malloc(TE\_BUF\_SIZE\ /\ 8);\ \textcolor{comment}{//\ where\ to\ store\ text\ to\ search}}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \ \ ed-\/>cur\_ins\ =\ 1;\ \ \ \ \textcolor{comment}{//\ insert\ mode\ default}}
+\DoxyCodeLine{00373\ \ \ \ \ ed-\/>mode\_color\ =\ 1;\ \textcolor{comment}{//\ can\ select\ text}}
+\DoxyCodeLine{00374\ \ \ \ \ ed-\/>mode\_invis\ =\ 1;\ \textcolor{comment}{//\ show\ nonprinted\ symbols}}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \ \ \ ed-\/>el\_focus\ =\ editor\_interlock;}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00378\ \ \ \ \ (*ted\_init)(ed);\ \textcolor{comment}{//\ memory\ allocation,\ cleaning}}
+\DoxyCodeLine{00379\ \ \ \ \ ed-\/>syntax\_file\ =\ (\textcolor{keywordtype}{char}\ *)\&default\_syntax;}
+\DoxyCodeLine{00380\ \ \ \ \ (*ted\_init\_syntax\_file)(ed);\ \textcolor{comment}{//\ load\ colors\ and\ syntax\ highlight}}
+\DoxyCodeLine{00381\ \ \ \ \ ed-\/>help\_text\_f1\ =\ f1\_table;\ \textcolor{comment}{//\ override\ if\ not\ aligned\ immediately\ after\ syntax\ words}}
+\DoxyCodeLine{00382\ \ \ \ \ ed-\/>key\_words\_data\ =\ \&word1;}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keywordflow}{return}\ ed;}
+\DoxyCodeLine{00385\ \}}
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00388\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ editor\_symbol\_not\_vis(editor\ *ed,\ \textcolor{keyword}{struct}\ editor\_symbol\ *sym)}
+\DoxyCodeLine{00389\ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \textcolor{keywordflow}{return}\ (sym-\/>td\ \&\&\ sym-\/>td\ +\ ed-\/>tim\_undo\ <=\ ed-\/>tim\_ch)\ ||\ (sym-\/>tc\ >\ ed-\/>tim\_ch\ -\/\ ed-\/>tim\_undo);}
+\DoxyCodeLine{00391\ \}}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00394\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ editor\_iterat\_next(editor\ *ed,\ uint32\_t\ idx)}
+\DoxyCodeLine{00395\ \{}
+\DoxyCodeLine{00396\ \ \ \ \ uint32\_t\ i;}
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{keywordflow}{if}\ (ed-\/>tim\_undo)}
+\DoxyCodeLine{00398\ \ \ \ \ \{}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ ed-\/>tex[idx].next;\ i\ !=\ 0\ \&\&\ (ed-\/>tex[i].c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'}\ ||\ editor\_symbol\_not\_vis(ed,\ ed-\/>tex\ +\ i));\ i\ =\ ed-\/>tex[i].next)}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{00401\ \ \ \ \ \}}
+\DoxyCodeLine{00402\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00403\ \ \ \ \ \{}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ ed-\/>tex[idx].next;\ i\ !=\ 0\ \&\&\ (ed-\/>tex[i].c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'}\ ||\ ed-\/>tex[i].td);\ i\ =\ ed-\/>tex[i].next)}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{00406\ \ \ \ \ \}}
+\DoxyCodeLine{00407\ \ \ \ \ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{00408\ \}}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00410\ \textcolor{comment}{//\ returns\ malloc'ed\ mem}}
+\DoxyCodeLine{00411\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{char}\ *editor\_get\_text(editor\ *ed)}
+\DoxyCodeLine{00412\ \{}
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{keywordtype}{char}\ *buf\ =\ malloc(ed-\/>max\_chars),\ *pc\ =\ buf;}
+\DoxyCodeLine{00414\ \ \ \ \ \textcolor{keywordflow}{if}\ (!pc)}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00418\ \ \ \ \ \textcolor{comment}{//\ \ \ \ *pc++\ =\ ed-\/>tex[0].c;}}
+\DoxyCodeLine{00419\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ ed-\/>tex[0].next;\ i;\ i\ =\ editor\_iterat\_next(ed,\ i))}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ *pc++\ =\ ed-\/>tex[i].c;}
+\DoxyCodeLine{00421\ \ \ \ \ *pc++\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{keywordflow}{return}\ buf;}
+\DoxyCodeLine{00424\ \}}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00427\ \textcolor{comment}{char*\ \ editor\_get\_text20(editor*\ ed)}}
+\DoxyCodeLine{00428\ \textcolor{comment}{\{}}
+\DoxyCodeLine{00429\ \textcolor{comment}{\ \ \ \ char\ \ \ \ *buf\ =\ malloc(ed-\/>max\_chars),\ *pc\ =\ buf;}}
+\DoxyCodeLine{00430\ \textcolor{comment}{\ \ \ \ if\ (!pc)\ return\ NULL;}}
+\DoxyCodeLine{00431\ \textcolor{comment}{}}
+\DoxyCodeLine{00432\ \textcolor{comment}{\ \ \ \ int\ \ i\ =\ ed-\/>tex[0].next,\ c\ =\ 0;}}
+\DoxyCodeLine{00433\ \textcolor{comment}{\ \ \ \ for\ (;\ i\ >\ 0\ \&\&\ c\ <\ 30;\ c++,\ i\ =\ ed-\/>tex[i].next)\ *pc++\ =\ ed-\/>tex[i].c;}}
+\DoxyCodeLine{00434\ \textcolor{comment}{\ \ \ \ *pc++\ =\ '\(\backslash\)0';}}
+\DoxyCodeLine{00435\ \textcolor{comment}{}}
+\DoxyCodeLine{00436\ \textcolor{comment}{\ \ \ \ return\ buf;}}
+\DoxyCodeLine{00437\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00438\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00439\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ KOLIBRI\_EDITOR\_H}}
+
+\end{DoxyCode}

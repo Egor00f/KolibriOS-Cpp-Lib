@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_keyboard_8hpp_source" xml:lang="ru">
 <title>keyboard.hpp</title>
-<indexterm><primary>F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/input/keyboard.hpp</primary></indexterm>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/input/keyboard.hpp</primary></indexterm>
 <programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;__KEYBOARD_H__</emphasis>
 2 <emphasis role="preprocessor">#define&#32;__KEYBOARD_H__</emphasis>
 3 
@@ -29,22 +29,25 @@
 27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ScrollLock&#32;&#32;=&#32;KSYS_CONTROL_SCROLL_LOCK
 28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
 29 
-32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;GetControlKey()
-33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_control_key_state();
-35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-36 
-41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;InstallHotKey(uint16_t&#32;controlkeys)
-42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;!_ksys_set_sys_hotkey(0,&#32;controlkeys);
-44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-45 
-49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DeleteHotKey();
-50 
-51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-52 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;keyboard</emphasis>
-53 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;GetControlKey()
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_control_key_state();
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+37 
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;InstallHotKey(uint16_t&#32;controlkeys)
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;!_ksys_set_sys_hotkey(0,&#32;controlkeys);
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+46 
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DeleteHotKey()
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 54 
-55 
-56 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__KEYBOARD_H__</emphasis>
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+56 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//&#32;namespace&#32;keyboard</emphasis>
+57 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+58 
+59 
+60 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__KEYBOARD_H__</emphasis>
 </programlisting></section>

@@ -5,6 +5,9 @@
  * voxel function
  */
 
+extern "C"
+{
+
 extern int kolibri_buf2d_init(void);
 
 typedef struct __attribute__ ((__packed__)) {
@@ -79,4 +82,7 @@ extern unsigned int (*buf2d_get_pixel)(buf2d_struct *, unsigned int, unsigned in
 extern void (*buf2d_flip_h)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_flip_v)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_filter_dither)(buf2d_struct *, unsigned int) __attribute__((__stdcall__));
+
+}
+
 #endif /* KOLIBRI_BUF2D_H */

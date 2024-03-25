@@ -1,5 +1,5 @@
 \doxysection{thread.\+hpp}
-\hypertarget{thread_8hpp_source}{}\label{thread_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/thread.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/thread.hpp}}
+\hypertarget{thread_8hpp_source}{}\label{thread_8hpp_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/thread.hpp@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/system/thread.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_THREAD\_H\_\_}}
@@ -28,62 +28,31 @@
 \DoxyCodeLine{00031\ }
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ ksys\_thread\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a8c4f7f76752ed94392f9409f4f9554da}{ThreadInfo}};}
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{PID}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a692c4300c1ca95211eabb91947518cf2}{CreateThread}}(\textcolor{keywordtype}{void}(*ThreadEntry)(\textcolor{keywordtype}{void}*),\ \textcolor{keywordtype}{unsigned}\ ThreadStackSize\ =\ 2048)}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *th\_stack\ =\ malloc(ThreadStackSize);}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!th\_stack)\ \textcolor{comment}{//\ \ \ \ Если\ памяти\ не\ было\ выделенно}}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Memory\ allocation\ error\ for\ thread!"{}});}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ TID\ =\ \_ksys\_create\_thread((\textcolor{keywordtype}{void}\ *)ThreadEntry,\ th\_stack\ +\ ThreadStackSize);}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TID\ ==\ -\/1)\ \textcolor{comment}{//\ \ \ Если\ поток\ не\ был\ создан}}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Unable\ to\ create\ a\ new\ thread!"{}});}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TID;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ TID;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{PID}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a692c4300c1ca95211eabb91947518cf2}{CreateThread}}(\textcolor{keywordtype}{void}(*ThreadEntry)(\textcolor{keywordtype}{void}*),\ \textcolor{keywordtype}{unsigned}\ ThreadStackSize\ =\ 2048);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a53a7d295e396cff9eaca2ceae95b6b01}{TerminateThread}}(\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{PID}}\ pid)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(18),\ \textcolor{stringliteral}{"{}c"{}}(pid));}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !a;}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00056\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a53a7d295e396cff9eaca2ceae95b6b01}{TerminateThread}}(\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{PID}}\ pid)}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}int\ \$0x40"{}}}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}=a"{}}(a)}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}a"{}}(18),\ \textcolor{stringliteral}{"{}b"{}}(18),\ \textcolor{stringliteral}{"{}c"{}}(pid));}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !a;}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Slot}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6e66cd0e046a044373f8fa5a6ee8ab77}{GetThreadSlot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{PID}}\&\ pid)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_thread\_slot(pid);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a8c4f7f76752ed94392f9409f4f9554da}{ThreadInfo}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a620ca73995252a0f262597d84b5cc40f}{GetThreadInfo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Slot}}\ \&thread);}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Slot}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a6e66cd0e046a044373f8fa5a6ee8ab77}{GetThreadSlot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a1635692d8eb5eddc602109be07a50a45}{PID}}\&\ pid)}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_thread\_slot(pid);}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a8c4f7f76752ed94392f9409f4f9554da}{ThreadInfo}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a620ca73995252a0f262597d84b5cc40f}{GetThreadInfo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Slot}}\ \&thread)}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a8c4f7f76752ed94392f9409f4f9554da}{ThreadInfo}}\ *buff\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a8c4f7f76752ed94392f9409f4f9554da}{ThreadInfo}};}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_thread\_info(buff,\ thread);}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_a8c4f7f76752ed94392f9409f4f9554da}{ThreadInfo}}\ r\ =\ *buff;}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ KSYS\_THREAD\_INFO\_SIZE;\ i++)}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.\_\_reserved3[i]\ =\ buff-\/>\_\_reserved3[i];}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ free(buff);\ \textcolor{comment}{//Возвращается\ копия\ так\ как\ указатель\ нужно\ будет\ удалять}}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ но\ в\ какой\ то\ момент\ точно\ об\ этом\ забудешь...}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00102\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Thread}}
-\DoxyCodeLine{00103\ \ \ \ \ }
-\DoxyCodeLine{00104\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_THREAD\_H\_\_}}
+\DoxyCodeLine{00071\ \ \ \ \ \}\ \textcolor{comment}{//\ namespace\ Thread}}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_THREAD\_H\_\_}}
 
 \end{DoxyCode}

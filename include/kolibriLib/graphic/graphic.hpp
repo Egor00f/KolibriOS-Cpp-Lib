@@ -63,8 +63,8 @@ namespace KolibriLib
 				"int $0x40"
 				:
 				: "a"(13), 
-				"b"((position.x << 16) + size.x), 
-				"c"((position.y << 16) + size.y), 
+				"b"( (position.x << 16) + size.x ), 
+				"c"( (position.y << 16) + size.y ), 
 				"d"(color.val)
 				);
 		}
@@ -136,6 +136,44 @@ namespace KolibriLib
 			);
 
 			return result;
+		}
+
+
+		//Почему то линковщик ругается "undefined reference cos()"
+
+		inline void DrawCircle(const Coord &coord, const unsigned &Radius, const unsigned &detalization, const Colors::Color &color)
+		{
+			Coord buff;
+			unsigned b = Radius;
+			unsigned c = 0;
+
+			for (unsigned angle = 1; angle <= detalization * 10; angle += 36 / detalization)
+			{
+				buff = Size(coord.x + (int)b, coord.y + (int)c);
+
+				b = Radius * cos(angle);
+				c = Radius * sin(angle);
+
+				Coord n(coord.x + (int)b, coord.y + (int)c);
+
+				DrawLine(buff, n);
+			}
+		}
+
+		inline void DrawCircleFill(const Coord &coord, const unsigned &Radius, const unsigned &detalization, const Colors::Color &color)
+		{
+			DrawCircle(coord, Radius, detalization, color);
+
+			unsigned b = Radius * cos(90 + 45);
+			unsigned c = Radius * sin(90 + 45);
+			Coord n(coord.x + (int)b, coord.y + (int)c);
+
+			DrawRectangleFill(n, Size((coord.x - n.x) * 2, c * 2), color);
+
+			for (unsigned i = Radius; i > (Radius - (coord.x - n.x)); i--) // Дозакрашивание пробелов между квадратом и границами груга
+			{
+				DrawCircle(coord, i, detalization, color);
+			}
 		}
 	}
 

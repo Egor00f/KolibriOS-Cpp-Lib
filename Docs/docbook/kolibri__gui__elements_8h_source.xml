@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__gui__elements_8h_source" xml:lang="ru">
+<title>kolibri_gui_elements.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_gui_elements.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_GUI_ELEMENTS_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_GUI_ELEMENTS_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;kos32sys.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibri_debug.h&gt;</emphasis>
+6 
+7 <emphasis role="comment">/*&#32;enum&#32;KOLIBRI_GUI_ELEMENT_TYPE&#32;contains&#32;all&#32;available&#32;GUI&#32;items&#32;from&#32;box_lib&#32;*/</emphasis>
+8 <emphasis role="comment">/*&#32;More&#32;elements&#32;can&#32;be&#32;added&#32;from&#32;other&#32;libraries&#32;as&#32;required&#32;*/</emphasis>
+9 <emphasis role="keyword">enum</emphasis>&#32;KOLIBRI_GUI_ELEMENT_TYPE&#32;{
+10 &#32;&#32;&#32;&#32;KOLIBRI_EDIT_BOX,
+11 &#32;&#32;&#32;&#32;KOLIBRI_CHECK_BOX,
+12 &#32;&#32;&#32;&#32;KOLIBRI_OPTIONGROUP,
+13 &#32;&#32;&#32;&#32;KOLIBRI_SCROLL_BAR_H,
+14 &#32;&#32;&#32;&#32;KOLIBRI_SCROLL_BAR_V,
+15 &#32;&#32;&#32;&#32;KOLIBRI_DYNAMIC_BUTTON,
+16 &#32;&#32;&#32;&#32;KOLIBRI_MENU_BAR,
+17 &#32;&#32;&#32;&#32;KOLIBRI_FILE_BROWSER,
+18 &#32;&#32;&#32;&#32;KOLIBRI_TREE_LIST,
+19 &#32;&#32;&#32;&#32;KOLIBRI_PATH_SHOW,
+20 &#32;&#32;&#32;&#32;KOLIBRI_TEXT_EDITOR,
+21 &#32;&#32;&#32;&#32;KOLIBRI_FRAME,
+22 &#32;&#32;&#32;&#32;KOLIBRI_PROGRESS_BAR,
+23 &#32;&#32;&#32;&#32;KOLIBRI_STATICTEXT,
+24 &#32;&#32;&#32;&#32;KOLIBRI_STATICNUM,
+25 &#32;&#32;&#32;&#32;KOLIBRI_BUTTON,
+26 &#32;&#32;&#32;&#32;KOLIBRI_D_BUTTON,
+27 &#32;&#32;&#32;&#32;KOLIBRI_PATHSHOW,
+28 &#32;&#32;&#32;&#32;KOLIBRI_FILEBROWSE,
+29 &#32;&#32;&#32;&#32;KOLIBRI_EDITOR,
+30 &#32;&#32;&#32;&#32;KOLIBRI_TREELIST,
+31 
+32 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Add&#32;elements&#32;above&#32;this&#32;element&#32;in&#32;order&#32;to&#32;let&#32;KOLIBRI_NUM_GUI_ELEMENTS&#32;*/</emphasis>
+33 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;stay&#32;at&#32;correct&#32;value&#32;*/</emphasis>
+34 
+35 &#32;&#32;&#32;&#32;KOLIBRI_NUM_GUI_ELEMENTS
+36 };
+37 
+38 <emphasis role="preprocessor">#define&#32;X_Y(x,y)&#32;(((x)&lt;&lt;16)|(y))</emphasis>
+39 
+40 <emphasis role="comment">/*&#32;Linked&#32;list&#32;which&#32;connects&#32;together&#32;all&#32;the&#32;elements&#32;drawn&#32;inside&#32;a&#32;GUI&#32;window&#32;*/</emphasis>
+41 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>{
+42 &#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;KOLIBRI_GUI_ELEMENT_TYPE&#32;type;
+43 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;*element;
+44 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;*next,&#32;*prev;
+45 }<link linkend="_structkolibri__window__element">kolibri_window_element</link>;
+46 
+47 <emphasis role="keyword">typedef</emphasis>&#32;void&#32;(*cb_elem_boxlib)(<emphasis role="keywordtype">void</emphasis>&#32;*)&#32;__attribute__((__stdcall__));
+48 <emphasis role="keyword">typedef</emphasis>&#32;void&#32;(*cbkey_elem_boxlib)(<emphasis role="keywordtype">void</emphasis>&#32;*,&#32;ksys_oskey_t)&#32;__attribute__((__stdcall__));
+49 
+50 <emphasis role="comment">/*&#32;Generic&#32;structure&#32;for&#32;supporting&#32;functions&#32;on&#32;various&#32;elements&#32;of&#32;Kolibri&apos;s&#32;GUI&#32;*/</emphasis>
+51 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+52 &#32;&#32;&#32;&#32;cb_elem_boxlib&#32;&#32;redraw_fn;
+53 &#32;&#32;&#32;&#32;cb_elem_boxlib&#32;&#32;mouse_fn;
+54 &#32;&#32;&#32;&#32;cbkey_elem_boxlib&#32;&#32;&#32;key_fn;
+55 }<link linkend="_structkolibri__element__operations">kolibri_element_operations</link>;
+56 
+57 <emphasis role="comment">/*&#32;Structure&#32;for&#32;a&#32;GUI&#32;Window&#32;on&#32;Kolibri.&#32;It&#32;also&#32;contains&#32;all&#32;the&#32;elements&#32;drawn&#32;in&#32;window&#32;*/</emphasis>
+58 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>{
+59 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;topleftx,&#32;toplefty;
+60 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizex,&#32;sizey;
+61 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*window_title;
+62 
+63 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Refer&#32;to&#32;sysfuncs,&#32;value&#32;to&#32;be&#32;stored&#32;in&#32;EDX&#32;(Function&#32;0)&#32;*/</emphasis>
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;XY;
+65 
+66 &#32;&#32;&#32;&#32;<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*elements;
+67 }<link linkend="_structkolibri__window">kolibri_window</link>;
+68 
+69 <emphasis role="comment">/*---------------------End&#32;of&#32;Structure&#32;and&#32;enum&#32;definitions---------------*/</emphasis>
+70 
+71 <emphasis role="keywordtype">void</emphasis>&#32;kolibri_window_add_element(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*some_window,&#32;<emphasis role="keyword">enum</emphasis>&#32;KOLIBRI_GUI_ELEMENT_TYPE&#32;element_type,&#32;<emphasis role="keywordtype">void</emphasis>&#32;*some_gui_element);&#32;<emphasis role="comment">//&#32;forward&#32;declaration</emphasis>
+72 
+73 <emphasis role="comment">/*&#32;GUI&#32;Elements&#32;being&#32;used&#32;*/</emphasis>
+74 <emphasis role="preprocessor">#include&#32;&quot;kolibri_button.h&quot;</emphasis>
+75 <emphasis role="preprocessor">#include&#32;&quot;kolibri_checkbox.h&quot;</emphasis>
+76 <emphasis role="preprocessor">#include&#32;&quot;kolibri_d_button.h&quot;</emphasis>
+77 <emphasis role="preprocessor">#include&#32;&quot;kolibri_editbox.h&quot;</emphasis>
+78 <emphasis role="preprocessor">#include&#32;&quot;kolibri_frame.h&quot;</emphasis>
+79 <emphasis role="preprocessor">#include&#32;&quot;kolibri_menubar.h&quot;</emphasis>
+80 <emphasis role="preprocessor">#include&#32;&quot;kolibri_optionbox.h&quot;</emphasis>
+81 <emphasis role="preprocessor">#include&#32;&quot;kolibri_pathshow.h&quot;</emphasis>
+82 <emphasis role="preprocessor">#include&#32;&quot;kolibri_progressbar.h&quot;</emphasis>
+83 <emphasis role="preprocessor">#include&#32;&quot;kolibri_scrollbar.h&quot;</emphasis>
+84 <emphasis role="preprocessor">#include&#32;&quot;kolibri_statictext.h&quot;</emphasis>
+85 <emphasis role="preprocessor">#include&#32;&quot;kolibri_filebrowse.h&quot;</emphasis>
+86 <emphasis role="preprocessor">#include&#32;&quot;kolibri_editor.h&quot;</emphasis>
+87 <emphasis role="preprocessor">#include&#32;&quot;kolibri_treelist.h&quot;</emphasis>
+88 
+89 
+90 <emphasis role="comment">/*---------------------Define&#32;various&#32;functions&#32;for&#32;initializing&#32;GUI-------*/</emphasis>
+91 
+92 <emphasis role="comment">/*&#32;Master&#32;table&#32;containing&#32;operations&#32;for&#32;various&#32;GUI&#32;elements&#32;in&#32;one&#32;place&#32;*/</emphasis>
+93 <link linkend="_structkolibri__element__operations">kolibri_element_operations</link>&#32;kolibri_gui_op_table[KOLIBRI_NUM_GUI_ELEMENTS];
+94 
+95 <emphasis role="keywordtype">void</emphasis>&#32;kolibri_init_gui_op_table(<emphasis role="keywordtype">void</emphasis>)
+96 {
+97 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Setting&#32;up&#32;functions&#32;for&#32;edit&#32;box&#32;GUI&#32;elements*/</emphasis>
+98 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_EDIT_BOX].redraw_fn&#32;=&#32;(cb_elem_boxlib)edit_box_draw;
+99 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_EDIT_BOX].mouse_fn&#32;=&#32;(cb_elem_boxlib)edit_box_mouse;
+100 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_EDIT_BOX].key_fn&#32;=&#32;(cbkey_elem_boxlib)editbox_key;
+101 &#32;&#32;&#32;&#32;
+102 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Setting&#32;up&#32;functions&#32;for&#32;check&#32;box&#32;GUI&#32;elements*/</emphasis>
+103 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_CHECK_BOX].redraw_fn&#32;=&#32;(cb_elem_boxlib)check_box_draw2;
+104 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_CHECK_BOX].mouse_fn&#32;=&#32;(cb_elem_boxlib)check_box_mouse2;
+105 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_CHECK_BOX].key_fn&#32;=&#32;NULL;
+106 &#32;&#32;&#32;&#32;
+107 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Setting&#32;up&#32;functions&#32;for&#32;Kolibri&#32;Buttons&#32;(&#32;SysFunc&#32;8&#32;)*/</emphasis>
+108 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_BUTTON].redraw_fn&#32;=&#32;(cb_elem_boxlib)draw_button;
+109 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_BUTTON].mouse_fn&#32;=&#32;NULL;
+110 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_BUTTON].key_fn&#32;=&#32;NULL;
+111 &#32;&#32;&#32;&#32;
+112 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Setting&#32;up&#32;functions&#32;for&#32;progress&#32;bar&#32;GUI&#32;elements*/</emphasis>
+113 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_PROGRESS_BAR].redraw_fn&#32;=&#32;(cb_elem_boxlib)progressbar_draw;
+114 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_PROGRESS_BAR].mouse_fn&#32;=&#32;NULL;
+115 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_PROGRESS_BAR].key_fn&#32;=&#32;NULL;
+116 &#32;&#32;&#32;&#32;
+117 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Setting&#32;up&#32;functions&#32;for&#32;frame&#32;GUI&#32;elements*/</emphasis>
+118 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_FRAME].redraw_fn&#32;=&#32;(cb_elem_boxlib)frame_draw;
+119 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_FRAME].mouse_fn&#32;=&#32;NULL;
+120 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_FRAME].key_fn&#32;=&#32;NULL;
+121 &#32;&#32;&#32;&#32;
+122 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;scrollbars&#32;*/</emphasis>
+123 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_SCROLL_BAR_H].redraw_fn&#32;=&#32;(cb_elem_boxlib)scrollbar_h_draw;
+124 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_SCROLL_BAR_H].mouse_fn&#32;=&#32;(cb_elem_boxlib)scrollbar_h_mouse;
+125 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_SCROLL_BAR_H].key_fn&#32;=&#32;NULL;
+126 &#32;&#32;&#32;&#32;
+127 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_SCROLL_BAR_V].redraw_fn&#32;=&#32;(cb_elem_boxlib)scrollbar_v_draw;
+128 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_SCROLL_BAR_V].mouse_fn&#32;=&#32;(cb_elem_boxlib)scrollbar_v_mouse;
+129 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_SCROLL_BAR_V].key_fn&#32;=&#32;NULL;
+130 &#32;&#32;&#32;&#32;
+131 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_STATICTEXT].redraw_fn&#32;=&#32;(cb_elem_boxlib)statictext_draw;
+132 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_STATICTEXT].mouse_fn&#32;=&#32;NULL;
+133 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_STATICTEXT].key_fn&#32;=&#32;NULL;
+134 &#32;&#32;&#32;&#32;
+135 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_STATICNUM].redraw_fn&#32;=&#32;(cb_elem_boxlib)staticnum_draw;
+136 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_STATICNUM].mouse_fn&#32;=&#32;NULL;
+137 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_STATICNUM].key_fn&#32;=&#32;NULL;
+138 &#32;&#32;&#32;&#32;
+139 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_OPTIONGROUP].redraw_fn&#32;=&#32;(cb_elem_boxlib)option_box_draw;
+140 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_OPTIONGROUP].mouse_fn&#32;=&#32;(cb_elem_boxlib)option_box_mouse;
+141 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_OPTIONGROUP].key_fn&#32;=&#32;NULL;
+142 &#32;&#32;&#32;&#32;
+143 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_MENU_BAR].redraw_fn&#32;=&#32;(cb_elem_boxlib)menu_bar_draw;
+144 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_MENU_BAR].mouse_fn&#32;=&#32;(cb_elem_boxlib)menu_bar_mouse;
+145 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_MENU_BAR].key_fn&#32;=&#32;NULL;
+146 &#32;&#32;&#32;&#32;
+147 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_D_BUTTON].redraw_fn&#32;=&#32;(cb_elem_boxlib)dynamic_button_draw;
+148 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_D_BUTTON].mouse_fn&#32;=&#32;(cb_elem_boxlib)dynamic_button_mouse;
+149 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_D_BUTTON].key_fn&#32;=&#32;NULL;
+150 &#32;&#32;&#32;&#32;
+151 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_PATHSHOW].redraw_fn&#32;=&#32;(cb_elem_boxlib)path_show_draw;
+152 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_PATHSHOW].mouse_fn&#32;=&#32;NULL;
+153 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_PATHSHOW].key_fn&#32;=&#32;NULL;
+154 &#32;&#32;&#32;&#32;
+155 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_FILEBROWSE].redraw_fn&#32;=&#32;(cb_elem_boxlib)filebrowse_draw;
+156 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_FILEBROWSE].mouse_fn&#32;=&#32;(cb_elem_boxlib)filebrowse_mouse;
+157 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_FILEBROWSE].key_fn&#32;=&#32;(cbkey_elem_boxlib)filebrowser_key;
+158 &#32;&#32;&#32;&#32;
+159 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_EDITOR].redraw_fn&#32;=&#32;(cb_elem_boxlib)ted_draw;
+160 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_EDITOR].mouse_fn&#32;=&#32;(cb_elem_boxlib)ted_mouse;
+161 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_EDITOR].key_fn&#32;=&#32;(cbkey_elem_boxlib)editor_key;
+162 &#32;&#32;&#32;&#32;
+163 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_TREELIST].redraw_fn&#32;=&#32;(cb_elem_boxlib)treelist_draw;
+164 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_TREELIST].mouse_fn&#32;=&#32;(cb_elem_boxlib)tl_mouse;
+165 &#32;&#32;&#32;&#32;kolibri_gui_op_table[KOLIBRI_TREELIST].key_fn&#32;=&#32;(cbkey_elem_boxlib)treelist_key;
+166 &#32;&#32;&#32;&#32;debug_board_printf(<emphasis role="stringliteral">&quot;KOLIBRI_TREELIST&#32;(%x,%x,%x)\n&quot;</emphasis>,&#32;treelist_draw,&#32;tl_mouse,&#32;treelist_key);
+167 }
+168 
+169 <emphasis role="comment">/*&#32;Create&#32;a&#32;new&#32;main&#32;GUI&#32;window&#32;for&#32;KolibriOS&#32;*/</emphasis>
+170 <emphasis role="comment">/*&#32;tl&#32;stands&#32;for&#32;TOP&#32;LEFT.&#32;x&#32;and&#32;y&#32;are&#32;coordinates.&#32;*/</emphasis>
+171 
+172 <link linkend="_structkolibri__window">kolibri_window</link>&#32;*&#32;kolibri_new_window(<emphasis role="keywordtype">int</emphasis>&#32;tlx,&#32;<emphasis role="keywordtype">int</emphasis>&#32;tly,&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizex,&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizey,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*title)
+173 {
+174 &#32;&#32;&#32;&#32;<link linkend="_structkolibri__window">kolibri_window</link>&#32;*new_win&#32;=&#32;(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structkolibri__window">kolibri_window</link>));
+175 
+176 &#32;&#32;&#32;&#32;new_win-&gt;topleftx&#32;=&#32;tlx;
+177 &#32;&#32;&#32;&#32;new_win-&gt;toplefty&#32;=&#32;tly;
+178 &#32;&#32;&#32;&#32;new_win-&gt;sizex&#32;=&#32;sizex;
+179 &#32;&#32;&#32;&#32;new_win-&gt;sizey&#32;=&#32;sizey;
+180 &#32;&#32;&#32;&#32;new_win-&gt;window_title&#32;=&#32;title;
+181 &#32;&#32;&#32;&#32;new_win-&gt;XY&#32;=&#32;0x33;
+182 &#32;&#32;&#32;&#32;new_win-&gt;elements&#32;=&#32;NULL;
+183 
+184 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;new_win;
+185 }
+186 
+187 <emphasis role="comment">/*&#32;Add&#32;an&#32;element&#32;to&#32;an&#32;existing&#32;window&#32;*/</emphasis>
+188 <emphasis role="keywordtype">void</emphasis>&#32;kolibri_window_add_element(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*some_window,&#32;<emphasis role="keyword">enum</emphasis>&#32;KOLIBRI_GUI_ELEMENT_TYPE&#32;element_type,&#32;<emphasis role="keywordtype">void</emphasis>&#32;*some_gui_element)
+189 {
+190 &#32;&#32;&#32;&#32;<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*new_element&#32;=&#32;(<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structkolibri__window__element">kolibri_window_element</link>));
+191 
+192 &#32;&#32;&#32;&#32;new_element&#32;-&gt;&#32;type&#32;=&#32;element_type;
+193 &#32;&#32;&#32;&#32;new_element&#32;-&gt;&#32;element&#32;=&#32;some_gui_element;
+194 
+195 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!(some_window-&gt;elements))&#32;<emphasis role="comment">/*&#32;No&#32;elements&#32;in&#32;window&#32;yet&#32;*/</emphasis>
+196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;elements&#32;=&#32;new_element;
+198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;elements&#32;-&gt;&#32;prev&#32;=&#32;some_window-&gt;elements;
+199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window-&gt;elements&#32;-&gt;&#32;next&#32;=&#32;some_window-&gt;elements;
+200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+201 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structkolibri__window__element">kolibri_window_element</link>&#32;*last_element&#32;=&#32;(<link linkend="_structkolibri__window__element">kolibri_window_element</link>*)some_window-&gt;elements-&gt;prev;
+204 
+205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;last_element&#32;-&gt;&#32;next&#32;=&#32;new_element;
+206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;new_element&#32;-&gt;&#32;next&#32;=&#32;some_window&#32;-&gt;&#32;elements;&#32;<emphasis role="comment">/*&#32;start&#32;of&#32;linked&#32;list&#32;&#32;*/</emphasis>
+207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;some_window&#32;-&gt;&#32;elements&#32;-&gt;&#32;prev&#32;=&#32;new_element;
+208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;new_element&#32;-&gt;&#32;prev&#32;=&#32;last_element;
+209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+210 }
+211 
+212 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_GUI_ELEMENTS_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

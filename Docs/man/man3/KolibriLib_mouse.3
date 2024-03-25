@@ -26,11 +26,11 @@ KolibriLib::mouse \- Работа с мышью
 
 .in +1c
 .ti -1c
-.RI "\fBUI::Coord\fP \fBGetMousePositionOnSreen\fP ()"
+.RI "\fBCoord\fP \fBGetMousePositionOnSreen\fP ()"
 .br
 .RI "Получить позицияю курсора на экране "
 .ti -1c
-.RI "\fBUI::Coord\fP \fBGetMousePositionInWindow\fP ()"
+.RI "\fBCoord\fP \fBGetMousePositionInWindow\fP ()"
 .br
 .RI "Получить позицияю курсора внутри окна "
 .ti -1c
@@ -73,9 +73,14 @@ KolibriLib::mouse \- Работа с мышью
 
 .PP
 Центрировать курсор 
-.SS "устанавливает курсор в середину экрана"
+.PP
+\fBЗаметки\fP
+.RS 4
+Функция устанавливает курсор в середину экрана 
+.RE
+.PP
 
-.SS "uint32_t KolibriLib::mouse::GetMouseButtons ()\fR [inline]\fP"
+.SS "uint32_t KolibriLib::mouse::GetMouseButtons (void)\fR [inline]\fP"
 
 .PP
 Проверить какие кнопки мыши нажаты 
@@ -86,7 +91,7 @@ KolibriLib::mouse \- Работа с мышью
 .RE
 .PP
 
-.SS "\fBUI::Coord\fP KolibriLib::mouse::GetMousePositionInWindow ()\fR [inline]\fP"
+.SS "\fBCoord\fP KolibriLib::mouse::GetMousePositionInWindow ()\fR [inline]\fP"
 
 .PP
 Получить позицияю курсора внутри окна 
@@ -97,7 +102,7 @@ KolibriLib::mouse \- Работа с мышью
 .RE
 .PP
 
-.SS "\fBUI::Coord\fP KolibriLib::mouse::GetMousePositionOnSreen ()\fR [inline]\fP"
+.SS "\fBCoord\fP KolibriLib::mouse::GetMousePositionOnSreen ()\fR [inline]\fP"
 
 .PP
 Получить позицияю курсора на экране 
@@ -108,7 +113,7 @@ KolibriLib::mouse \- Работа с мышью
 .RE
 .PP
 
-.SS "uint32_t KolibriLib::mouse::GetMouseWheels ()\fR [inline]\fP"
+.SS "uint32_t KolibriLib::mouse::GetMouseWheels (void)\fR [inline]\fP"
 
 .PP
 колёсико мыши 
@@ -151,7 +156,11 @@ KolibriLib::mouse \- Работа с мышью
 Хендл загруженного курсора 
 .RE
 .PP
-.SS "курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пикселя"
+\fBЗаметки\fP
+.RS 4
+Файл курсора должен быть в формате \&.cur, стандартном для MS Windows, причём размером 32*32 пиксел 
+.RE
+.PP
 
 .SS "\fBCursorHandle\fP KolibriLib::mouse::SetCursor (\fBCursorHandle\fP handle)\fR [inline]\fP"
 

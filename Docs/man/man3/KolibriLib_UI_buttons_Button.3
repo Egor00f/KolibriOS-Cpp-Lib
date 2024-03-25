@@ -17,7 +17,7 @@ KolibriLib::UI::buttons::Button \- Класс для работы с кнопк�
 
 .in +1c
 .ti -1c
-.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=OS::sys_color_table\&.work_button)"
+.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=\fBOS::GetSystemColors\fP()\&.work_button)"
 .br
 .RI "Это конструктор "
 .ti -1c
@@ -59,11 +59,11 @@ KolibriLib::UI::buttons::Button \- Класс для работы с кнопк�
 Открытые члены унаследованные от \fBKolibriLib::UI::text::TextLabel\fP
 .in +1c
 .ti -1c
-.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const unsigned &Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const unsigned &FontSize=9, bool TextScale=true, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const unsigned &Margin=0)"
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=OS::sys_color_table\&.work_text, const \fBColors::Color\fP &BackgroundColor=OS::sys_color_table\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
+.RI "\fBTextLabel\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const std::string &text='TextLabel', const \fBFonts::Font\fP &Font=\fBFonts::DefaultFont\fP, const \fBColors::Color\fP &TextColor=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.frame_area, bool TextScale=true, const unsigned &Margin=0)"
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (bool scale)"
@@ -87,7 +87,7 @@ KolibriLib::UI::buttons::Button \- Класс для работы с кнопк�
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=OS::sys_color_table\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -178,7 +178,7 @@ KolibriLib::UI::buttons::Button \- Класс для работы с кнопк�
 .br
 .RI "Удалить \fBChar\fP из текста "
 .ti -1c
-.RI "void \fBPrint\fP (const \fBUI::Coord\fP &coord) const"
+.RI "void \fBPrint\fP (const \fBCoord\fP &coord) const"
 .br
 .RI "Вывести текст "
 .ti -1c
@@ -260,7 +260,7 @@ KolibriLib::UI::buttons::Button \- Класс для работы с кнопк�
 Класс для работы с кнопками 
 .SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::UI::buttons::Button::Button (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{20, 20}\fP, unsigned Margin = \fRUI::DefaultMargin\fP, const \fBColors::Color\fP & ButtonColor = \fROS::sys_color_table\&.work_button\fP)"
+.SS "KolibriLib::UI::buttons::Button::Button (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{20, 20}\fP, unsigned Margin = \fRUI::DefaultMargin\fP, const \fBColors::Color\fP & ButtonColor = \fR\fBOS::GetSystemColors\fP()\&.work_button\fP)"
 
 .PP
 Это конструктор 
@@ -296,7 +296,7 @@ KolibriLib::UI::buttons::Button \- Класс для работы с кнопк�
 .SS "функция может выполнятся очень долго, если вы уже создали довольно много кнопок\&. Это становится действительно важно когда у вас объявленно более 2000 кнопок"
 .SS "Деактивированном состоянии кнопка 'Не нажимается', а её \fBстановится не действительным\fP"
 
-.SS "\fBButtonID\fP KolibriLib::UI::buttons::Button::GetId () const"
+.SS "\fBbuttons::ButtonID\fP KolibriLib::UI::buttons::Button::GetId () const"
 
 .PP
 Получить номер кнопки 

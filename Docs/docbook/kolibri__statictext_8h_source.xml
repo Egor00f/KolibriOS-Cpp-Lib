@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__statictext_8h_source" xml:lang="ru">
+<title>kolibri_statictext.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_statictext.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_STATICTEXT_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_STATICTEXT_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;kos32sys.h&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;kolibriLib/system/os.hpp&gt;</emphasis>
+6 
+7 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>&#32;{
+8 &#32;&#32;&#32;&#32;cp866,&#32;&#32;<emphasis role="comment">//&#32;6x9</emphasis>
+9 &#32;&#32;&#32;&#32;CP866,&#32;&#32;<emphasis role="comment">//&#32;8x16</emphasis>
+10 &#32;&#32;&#32;&#32;UTF16,
+11 &#32;&#32;&#32;&#32;UTF8
+12 }&#32;encoding_t;
+13 
+14 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+15 &#32;&#32;&#32;&#32;uint32_t&#32;start_xy;
+16 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text;
+17 &#32;&#32;&#32;&#32;uint32_t&#32;color_flags;
+18 &#32;&#32;&#32;&#32;uint32_t&#32;bg_color;
+19 }<link linkend="_structstatictext">statictext</link>;
+20 
+21 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+22 &#32;&#32;&#32;&#32;uint32_t&#32;start_xy;
+23 &#32;&#32;&#32;&#32;int32_t&#32;number;
+24 &#32;&#32;&#32;&#32;uint32_t&#32;color_flags;
+25 &#32;&#32;&#32;&#32;uint32_t&#32;bg_color;
+26 &#32;&#32;&#32;&#32;uint16_t&#32;width;
+27 }<link linkend="_structstaticnum">staticnum</link>;
+28 
+29 <link linkend="_structstatictext">statictext</link>*&#32;kolibri_statictext(<link linkend="_structstatictext">statictext</link>*&#32;st,&#32;uint32_t&#32;xy,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text,&#32;encoding_t&#32;enc,&#32;<emphasis role="keywordtype">int</emphasis>&#32;size,&#32;color_t&#32;font,&#32;color_t&#32;bg)
+30 {
+31 &#32;&#32;&#32;&#32;st-&gt;start_xy&#32;=&#32;xy;
+32 &#32;&#32;&#32;&#32;st-&gt;text&#32;=&#32;text;
+33 &#32;&#32;&#32;&#32;st-&gt;color_flags&#32;=&#32;0x80000000;&#32;<emphasis role="comment">//&#32;asciiz</emphasis>
+34 &#32;&#32;&#32;&#32;st-&gt;bg_color&#32;=&#32;bg;
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(bg&#32;&amp;&#32;0xFFFFFF)&#32;st-&gt;color_flags&#32;|=&#32;0x40000000;<emphasis role="comment">//&#32;use&#32;background</emphasis>
+36 &#32;&#32;&#32;&#32;st-&gt;color_flags&#32;|=&#32;((enc&#32;&amp;&#32;1)&#32;&lt;&lt;&#32;4)&#32;|&#32;(size&#32;&amp;&#32;7)&#32;&lt;&lt;&#32;24;
+37 &#32;&#32;&#32;&#32;st-&gt;color_flags&#32;|=&#32;font&#32;&amp;&#32;0xFFFFFF;
+38 
+39 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;st;
+40 }
+41 
+42 <link linkend="_structstatictext">statictext</link>*&#32;kolibri_statictext_def(<link linkend="_structstatictext">statictext</link>*&#32;st,&#32;uint32_t&#32;xy,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text)
+43 {
+44 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_statictext(st,&#32;xy,&#32;text,&#32;encoding_t::UTF8,&#32;0,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_text,&#32;0);
+45 }
+46 
+47 <link linkend="_structstatictext">statictext</link>*&#32;kolibri_new_statictext(uint32_t&#32;xy,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text,&#32;encoding_t&#32;enc,&#32;<emphasis role="keywordtype">int</emphasis>&#32;size,&#32;color_t&#32;font,&#32;color_t&#32;bg)
+48 {
+49 &#32;&#32;&#32;&#32;<link linkend="_structstatictext">statictext</link>&#32;*st&#32;=&#32;(<link linkend="_structstatictext">statictext</link>*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structstatictext">statictext</link>));
+50 
+51 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_statictext(st,&#32;xy,&#32;text,&#32;enc,&#32;size,&#32;font,&#32;bg);
+52 }
+53 
+54 <link linkend="_structstatictext">statictext</link>*&#32;kolibri_new_statictext_def(uint32_t&#32;xy,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*text)
+55 {
+56 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_new_statictext(xy,&#32;text,&#32;encoding_t::UTF8,&#32;0,&#32;<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">KolibriLib::OS::GetSystemColors</link>().work_text,&#32;0);
+57 }
+58 
+59 __attribute__((__stdcall__))
+60 <emphasis role="keywordtype">void</emphasis>&#32;statictext_draw(<link linkend="_structstatictext">statictext</link>&#32;*st)
+61 {
+62 &#32;&#32;&#32;&#32;__asm__&#32;__volatile__(
+63 &#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+64 &#32;&#32;&#32;&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(4),
+65 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(st-&gt;start_xy),
+66 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(st-&gt;color_flags),
+67 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>(st-&gt;text),
+68 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;D&quot;</emphasis>(st-&gt;bg_color)
+69 &#32;&#32;&#32;&#32;:);
+70 }
+71 
+72 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;gui_add_statictext(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*wnd,&#32;<link linkend="_structstatictext">statictext</link>*&#32;st)
+73 {
+74 &#32;&#32;&#32;&#32;kolibri_window_add_element(wnd,&#32;KOLIBRI_STATICTEXT,&#32;st);
+75 }
+76 
+77 
+78 
+79 <link linkend="_structstaticnum">staticnum</link>*&#32;kolibri_staticnum(<link linkend="_structstaticnum">staticnum</link>*&#32;st,&#32;uint32_t&#32;xy,&#32;int32_t&#32;width,&#32;int16_t&#32;number,&#32;encoding_t&#32;enc,&#32;<emphasis role="keywordtype">int</emphasis>&#32;size,&#32;color_t&#32;font,&#32;color_t&#32;bg)
+80 {
+81 &#32;&#32;&#32;&#32;st-&gt;start_xy&#32;=&#32;xy;
+82 &#32;&#32;&#32;&#32;st-&gt;number&#32;=&#32;number;
+83 &#32;&#32;&#32;&#32;st-&gt;color_flags&#32;=&#32;0;
+84 &#32;&#32;&#32;&#32;st-&gt;bg_color&#32;=&#32;bg;
+85 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(bg&#32;&amp;&#32;0xFFFFFF)&#32;st-&gt;color_flags&#32;|=&#32;0x40000000;<emphasis role="comment">//&#32;use&#32;background</emphasis>
+86 &#32;&#32;&#32;&#32;st-&gt;color_flags&#32;|=&#32;((enc&#32;&amp;&#32;1)&#32;&lt;&lt;&#32;4)&#32;|&#32;(size&#32;&amp;&#32;7)&#32;&lt;&lt;&#32;24;
+87 &#32;&#32;&#32;&#32;st-&gt;color_flags&#32;|=&#32;font&#32;&amp;&#32;0xFFFFFF;
+88 &#32;&#32;&#32;&#32;st-&gt;width&#32;=&#32;width;
+89 
+90 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;st;
+91 }
+92 
+93 <link linkend="_structstaticnum">staticnum</link>*&#32;kolibri_staticnum_def(<link linkend="_structstaticnum">staticnum</link>*&#32;st,&#32;uint32_t&#32;xy,&#32;int16_t&#32;width,&#32;int32_t&#32;number)
+94 {
+95 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_staticnum(st,&#32;xy,&#32;width,&#32;number,&#32;0,&#32;0,&#32;kolibri_color_table.color_work_text,&#32;0);
+96 }
+97 
+98 <link linkend="_structstaticnum">staticnum</link>*&#32;kolibri_new_staticnum(uint32_t&#32;xy,&#32;int32_t&#32;width,&#32;int32_t&#32;number,&#32;encoding_t&#32;enc,&#32;<emphasis role="keywordtype">int</emphasis>&#32;size,&#32;color_t&#32;font,&#32;color_t&#32;bg)
+99 {
+100 &#32;&#32;&#32;&#32;<link linkend="_structstaticnum">staticnum</link>&#32;*st&#32;=&#32;(<link linkend="_structstaticnum">staticnum</link>*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structstaticnum">staticnum</link>));
+101 
+102 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_staticnum(st,&#32;xy,&#32;width,&#32;number,&#32;enc,&#32;size,&#32;font,&#32;bg);
+103 }
+104 
+105 <link linkend="_structstaticnum">staticnum</link>*&#32;kolibri_new_staticnum_def(uint32_t&#32;xy,&#32;int32_t&#32;width,&#32;int32_t&#32;number)
+106 {
+107 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;kolibri_new_staticnum(xy,&#32;width,&#32;number,&#32;cp866,&#32;0,&#32;kolibri_color_table.color_work_text,&#32;0);
+108 }
+109 
+110 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;gui_add_staticnum(<link linkend="_structkolibri__window">kolibri_window</link>&#32;*wnd,&#32;<link linkend="_structstaticnum">staticnum</link>*&#32;sn)
+111 {
+112 &#32;&#32;&#32;&#32;kolibri_window_add_element(wnd,&#32;KOLIBRI_STATICNUM,&#32;sn);
+113 }
+114 
+115 
+116 __attribute__((__stdcall__))
+117 <emphasis role="keywordtype">void</emphasis>&#32;staticnum_draw(<link linkend="_structstaticnum">staticnum</link>&#32;*st)
+118 {
+119 &#32;&#32;&#32;&#32;<emphasis role="keyword">register</emphasis>&#32;uint32_t&#32;fmt;
+120 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(st-&gt;width&#32;&lt;&#32;0)
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fmt&#32;=&#32;(-st-&gt;width&#32;&lt;&lt;&#32;16);&#32;<emphasis role="comment">//&#32;leading&#32;zeros,&#32;decimal</emphasis>
+122 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fmt&#32;=&#32;(st-&gt;width&#32;&lt;&lt;&#32;16)&#32;|&#32;0x80000000;&#32;<emphasis role="comment">//&#32;no&#32;leading&#32;zeros,&#32;decimal</emphasis>
+124 
+125 &#32;&#32;&#32;&#32;__asm__&#32;__volatile__(
+126 &#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>
+127 &#32;&#32;&#32;&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(47),
+128 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(fmt),
+129 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(st-&gt;number),
+130 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>(st-&gt;start_xy),
+131 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;S&quot;</emphasis>(st-&gt;color_flags),
+132 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;D&quot;</emphasis>(st-&gt;bg_color)
+133 &#32;&#32;&#32;&#32;:);
+134 }
+135 
+136 
+137 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_STATICTEXT_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

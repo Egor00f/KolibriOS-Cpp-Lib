@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_kolibri__progressbar_8h_source" xml:lang="ru">
+<title>kolibri_progressbar.h</title>
+<indexterm><primary>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_progressbar.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;KOLIBRI_PROGRESSBAR_H</emphasis>
+2 <emphasis role="preprocessor">#define&#32;KOLIBRI_PROGRESSBAR_H</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;kos32sys.h&gt;</emphasis>
+5 
+6 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct&#32;</emphasis>{
+7 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;value;
+8 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;left;
+9 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;top;
+10 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;width;
+11 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;height;
+12 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;style;
+13 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;min;
+14 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;max;
+15 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;back_color;
+16 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;progress_color;
+17 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;frame_color;
+18 }&#32;<link linkend="_structprogressbar">progressbar</link>;
+19 
+20 <link linkend="_structprogressbar">progressbar</link>*&#32;kolibri_new_progressbar(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;min_value,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_value,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;cur_value,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;tlx,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;tly,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizex,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizey)
+21 {
+22 &#32;&#32;&#32;&#32;<link linkend="_structprogressbar">progressbar</link>&#32;*new_progressbar&#32;=&#32;(<link linkend="_structprogressbar">progressbar</link>*)malloc(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_structprogressbar">progressbar</link>));
+23 
+24 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;value&#32;=&#32;cur_value;
+25 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;left&#32;=&#32;tlx;
+26 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;top&#32;=&#32;tly;
+27 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;width&#32;=&#32;sizex;
+28 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;height&#32;=&#32;sizey;
+29 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;style&#32;=&#32;1;
+30 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;min&#32;=&#32;min_value;
+31 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;max&#32;=&#32;max_value;
+32 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;back_color&#32;=&#32;0xffffff;&#32;&#32;&#32;<emphasis role="comment">//&#32;white</emphasis>
+33 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;progress_color&#32;=&#32;0x00ff00;&#32;<emphasis role="comment">//&#32;green</emphasis>
+34 &#32;&#32;&#32;&#32;new_progressbar&#32;-&gt;&#32;frame_color&#32;=&#32;0x000000;&#32;<emphasis role="comment">//&#32;black</emphasis>
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;new_progressbar;
+36 }
+37 
+38 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*progressbar_draw)(<link linkend="_structprogressbar">progressbar</link>&#32;*)&#32;__attribute__((__stdcall__));
+39 <emphasis role="keyword">extern</emphasis>&#32;void&#32;(*progressbar_progress)(<link linkend="_structprogressbar">progressbar</link>&#32;*)&#32;__attribute__((__stdcall__));
+40 
+41 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_PROGRESSBAR_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+</programlisting></section>

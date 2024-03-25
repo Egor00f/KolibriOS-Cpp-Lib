@@ -13,7 +13,7 @@
 <simplesect>
     <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1abfd73103fbe4c17f47da9949e235793a">Font</link> (const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp;FontFamily=Arial, int FontSize=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link>, unsigned flags=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>)</para>
+            <listitem><para><link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1afb5406ffd3cf049424c553fcc16e204a">Font</link> (const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;FontFamily=<link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(5, 6), int FontSize=16, unsigned flags=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link>)</para>
 </listitem>
             <listitem><para>void <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ac08147be3906bb8b21036dc19284a9fc">SetFontSize</link> (unsigned FontSize)</para>
 
@@ -28,13 +28,21 @@
 <simplesect>
     <title>Открытые атрибуты    </title>
         <itemizedlist>
-            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1ab00a7aa446df1f8e6f195097194a5817"/><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <emphasis role="strong">_Font</emphasis></para>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1a424c1d4a23db9b09a9d21a812060c588"/><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> <emphasis role="strong">_Font</emphasis></para>
+
+<para>Шрифт </para>
 </listitem>
             <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1afd8cbd9f1f689e5bfa15814834d8ae6b"/>unsigned <emphasis role="strong">_FontSize</emphasis></para>
+
+<para>Высота шрифта </para>
 </listitem>
             <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1aa5c428e74cd2f6b095802432c18168ee"/>unsigned <emphasis role="strong">_Flags</emphasis></para>
+
+<para>Флаги </para>
 </listitem>
-            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1affa0e150312ecc6ff499f7ba5fc30f4b"/><link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> <emphasis role="strong">size</emphasis></para>
+            <listitem><para><anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1a170d8f55381028c1760d9845e23ce7e6"/><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> <emphasis role="strong">size</emphasis></para>
+
+<para>Размер текста для функции <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a08d69981e33685971096555be813459f">DrawText()</link></para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -45,12 +53,12 @@
 </section>
 <section>
 <title>Конструктор(ы)</title>
-<anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1abfd73103fbe4c17f47da9949e235793a"/><section>
+<anchor xml:id="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font_1afb5406ffd3cf049424c553fcc16e204a"/><section>
     <title>Font()</title>
 <indexterm><primary>Font</primary><secondary>KolibriLib::UI::text::Fonts::Font</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text::Fonts::Font</primary><secondary>Font</secondary></indexterm>
-<para><computeroutput>KolibriLib::UI::text::Fonts::Font::Font (const <link linkend="_struct_kolibri_lib_1_1point">UI::Size</link> &amp; FontFamily = <computeroutput>Arial</computeroutput>
-, int FontSize = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1ae1524a67fbeab5c6850b62e49fdc862f">DefaultFontSize</link></computeroutput>
+<para><computeroutput>KolibriLib::UI::text::Fonts::Font::Font (const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; FontFamily = <computeroutput><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(5,&#160;6)</computeroutput>
+, int FontSize = <computeroutput>16</computeroutput>
 , unsigned flags = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a12e352aac49dd1e92e7f11605add7df5a261222d71959c7951f9ea9766b412abb">Flags::Normal</link></computeroutput>
 )</computeroutput></para>
 <para>
@@ -116,5 +124,5 @@
 </section>
 <para>
 Объявления и описания членов структуры находятся в файле:</para>
-F:/KolibriOs/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp</section>
+C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp</section>
 </section>

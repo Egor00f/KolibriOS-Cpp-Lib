@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['uielement_0',['UIElement',['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html',1,'KolibriLib::UI::UIElement'],['../class_kolibri_lib_1_1_u_i_1_1_u_i_element.html#a0e8520d7b6e47e5b307b00449702e737',1,'KolibriLib::UI::UIElement::UIElement()']]],
-  ['uint64_5ft_20p_1',['необходимо использовать конкретный теип данных для точки используйте шаблоны. Например: point&lt;uint64_t&gt; p;',['../struct_kolibri_lib_1_1point.html#Если',1,'']]],
-  ['underline_2',['Underline',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a12e352aac49dd1e92e7f11605add7df5ad50974c9f88b95dcd2e5f2734cb6761d',1,'KolibriLib::UI::text']]],
-  ['unfocus_3',['Unfocus',['../class_kolibri_lib_1_1window_1_1_window.html#ae074267ec49af5a67e268aebd1d3aae6',1,'KolibriLib::window::Window']]],
-  ['unfocuswindow_4',['UnfocusWindow',['../namespace_kolibri_lib_1_1window.html#ac230d3b4ccb7fb8668ce4e2e8cb30c88',1,'KolibriLib::window']]],
-  ['unklownfilesystem_5',['UnklownFileSystem',['../namespace_kolibri_lib_1_1filesystem.html#a6fd3996395f11731751d5ff09edff67caad2de3a620f71b1f3dafb9f873be9f2d',1,'KolibriLib::filesystem']]],
-  ['unsigned_6',['изменения высоты шрифта используйте @link SetTextSize(unsigned)',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#Для',1,'']]],
-  ['user_20interface_7',['User Interface',['../md__f_1_2_kolibri_os_2_kolibri_o_s-_cpp-_lib_2include_2kolibri_lib_2_u_i_2_readme.html',1,'']]]
+  ['wait_0',['Wait',['../namespace_kolibri_lib.html#ab8a227d1c51a256a87817fdf1c37a24c',1,'KolibriLib::Wait(int time)'],['../namespace_kolibri_lib.html#a5538a86d3c38c7c88391e9360e01d023',1,'KolibriLib::Wait()']]],
+  ['waitevent_1',['WaitEvent',['../namespace_kolibri_lib_1_1_o_s.html#a58e553f23fc726c3bf5755546f0d615d',1,'KolibriLib::OS::WaitEvent()'],['../namespace_kolibri_lib_1_1_o_s.html#a3cf4ee4b4401edccd8b6affa95509d90',1,'KolibriLib::OS::WaitEvent(uint32_t TimeOut)']]],
+  ['window_2',['Window',['../class_kolibri_lib_1_1window_1_1_window.html',1,'KolibriLib::window::Window'],['../class_kolibri_lib_1_1window_1_1_window.html#a932d33deb791291ec033cdb82af98051',1,'KolibriLib::window::Window::Window()']]],
+  ['windows_20причём_20размером_2032_2032_20пикселя_3',['курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя',['../namespace_kolibri_lib_1_1mouse.html#Файл',1,'']]],
+  ['windowstyle_4',['WindowStyle',['../namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3',1,'KolibriLib::window']]],
+  ['withskin_5',['withSkin',['../namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573',1,'KolibriLib::window']]]
 ];

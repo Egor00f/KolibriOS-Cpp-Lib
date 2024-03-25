@@ -1,5 +1,5 @@
 \doxysection{mouse.\+hpp}
-\hypertarget{mouse_8hpp_source}{}\label{mouse_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/input/mouse.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/input/mouse.hpp}}
+\hypertarget{mouse_8hpp_source}{}\label{mouse_8hpp_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/input/mouse.hpp@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/input/mouse.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_MOUSE\_H\_\_}}
@@ -23,18 +23,18 @@
 \DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ FiveButton\ \ =\ 0b10000}
 \DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a1ed776d98798432ed1d634b3a18dd181}{GetMousePositionOnSreen}}()}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_aeb27a641652f74bc30fba05cfe20ab3a}{GetMousePositionOnSreen}}()}
 \DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ ksys\_pos\_t\ a\ =\ \_ksys\_get\_mouse\_pos(KSYS\_MOUSE\_SCREEN\_POS);}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}})\{a.x,\ a.y\};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}}(a.x,\ a.y);}
 \DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_af5c71bb6951c9963f3e8f7366b343ab0}{GetMousePositionInWindow}}()}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_kolibri_lib_1_1point}{Coord}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_ad979ee2e81616250903162815cc59c27}{GetMousePositionInWindow}}()}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ ksys\_pos\_t\ a\ =\ \_ksys\_get\_mouse\_pos(KSYS\_MOUSE\_WINDOW\_POS);}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{struct_kolibri_lib_1_1point}{UI::Coord}})\{a.x,\ a.y\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}}(a.x,\ a.y);}
 \DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00040\ }
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ uint32\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1mouse_a7ae50aac73ac33bc25e269c12522a024}{GetMouseButtons}}()}
@@ -47,6 +47,8 @@
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_ksys\_get\_mouse\_wheels();}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ EmulateMouse(MouseButtons::LeftButton);\ \textcolor{comment}{//\ Эмулирует\ нажатие\ ЛКМ\ \(\backslash\)}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ \ \ \ \ \ @endcode}}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ EmulateMouse(uint8\_t\ m)}
 \DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ asm\_inline(}

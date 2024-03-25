@@ -6,6 +6,12 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/constants.hpp>
 
+#include <string>
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 #include <kolibri_libimg.h>
 
 namespace KolibriLib
@@ -56,7 +62,7 @@ namespace KolibriLib
 				void SetPixel(const Colors::Color &color, unsigned x, unsigned y);
 
 				/// @brief Изменить цвет пикселя
-				/// @param color
+				/// @param color новый цвет
 				void SetPixel(const Colors::Color &color, Coord coord);
 
 				/// @brief Получить цвет пикселя
@@ -64,6 +70,11 @@ namespace KolibriLib
 				/// @param y координата пикселя по оси Y
 				/// @return Цвет
 				Colors::Color GetPixel(unsigned x, unsigned y) const;
+				
+				/// @brief Получить цвет пикселя
+				/// @param coord координаты пикселя
+				/// @return Цвет
+				Colors::Color GetPixel(Coord coord) const;
 
 				/// @brief
 				/// @return
@@ -77,10 +88,18 @@ namespace KolibriLib
 				/// @return
 				Image_t *GetImaget() const;
 
-				void FillColor(const Colors::Color &color);
+				/// @brief Получить разрешение изображения
+				/// @return 
+				Size GetSize() const;
 
-				bool operator!=(const img &i) const;
+				void FillColor(const Colors::Color &color);
+				
+				img& operator = (const img& im);
+
+				bool operator!=(const img &im) const;
 			};
+
+
 		} // namespace Images
 
 	} // namespace UI

@@ -1,186 +1,72 @@
 \doxysection{color.\+hpp}
-\hypertarget{color_8hpp_source}{}\label{color_8hpp_source}\index{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/color.hpp@{F:/KolibriOs/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/color.hpp}}
+\hypertarget{color_8hpp_source}{}\label{color_8hpp_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/color.hpp@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/kolibriLib/color.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_COLOR\_H\_\_}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_COLOR\_H\_\_}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sys/ksys.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <kolibriLib/types.hpp>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
-\DoxyCodeLine{00008\ \{}
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{namespace\ }Colors}
-\DoxyCodeLine{00011\ \ \ \ \ \{}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{ARGB}}}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ alpha;}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ blue;}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ green;}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ red;}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ ksys\_color\_t\ val;}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \_a;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ blue;}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ green;}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ red;}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ ksys\_color\_t\&\ a\ =\ 0);}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&a);}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{ARGB}}\ \&a);}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ rgb\_t\ \&color);}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ rgb\_t\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a4686f00731471d5cd1f0ea052573da80}{GetRGB}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ a);}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a1eab7c69f57dc723241bf57f7db16ac3}{operator\ +\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&a);}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ a)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ a)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ ksys\_color\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41}{RGBtoINT}}(\textcolor{keyword}{const}\ rgb\_t\ \&color);}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}{BlendColors}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&b,\ \textcolor{keywordtype}{float}\ k\ =\ 0.5f)}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(k\ >\ 1.0)\ \textcolor{comment}{//Коэфицент\ более\ 1\ не\ имеет\ смысла}}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ 1.0;}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ буффер}}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ buff;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_kolibri_lib}{KolibriLib}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{namespace\ }Colors}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{ARGB}}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ alpha;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ blue;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ green;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ red;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ val;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \_a;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ blue;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ green;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ red;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ ksys\_color\_t\&\ a\ =\ 0);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&a);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{ARGB}}\ \&a);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{Color}}(\textcolor{keyword}{const}\ rgb\_t\ \&color);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ rgb\_t\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a4686f00731471d5cd1f0ea052573da80}{GetRGB}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ a);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_af5c03ec0be23161994483a05b62de569}{operator\ +\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&a);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\&\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ ksys\_color\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41}{RGBtoINT}}(\textcolor{keyword}{const}\ rgb\_t\ \&color);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ rgb\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a3bf97c2285f8e829ccc0bc5c5b61dca2}{UINT32toRGB}}(\textcolor{keyword}{const}\ uint32\_t\ \&color);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a1d8b4c18bcb459e79bf6f5d140ada7a6}{BlendColors}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&b,\ \textcolor{keywordtype}{float}\ k\ =\ 0.5f);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
 \DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ buff.\_a\ \ \ \ \ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}((a.\_a\ \ \ \ *\ k)\ +\ (b.\_a\ \ \ \ *\ (1.0f\ -\/\ k)));}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ buff.red\ \ \ \ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}((a.red\ \ \ *\ k)\ +\ (b.red\ \ \ *\ (1.0f\ -\/\ k)));}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ buff.green\ \ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}((a.green\ *\ k)\ +\ (b.green\ *\ (1.0f\ -\/\ k)));}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ buff.blue\ \ \ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}((a.blue\ \ *\ k)\ +\ (b.blue\ \ *\ (1.0f\ -\/\ k)));}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buff;}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ksys\_colors\_table\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_ad6deb13041b3eac69cf1eeaab2b814a8}{DefaultColorTable}}\ =\ \{0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\};}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}\ :\ \textcolor{keyword}{public}\ ksys\_colors\_table\_t}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}(ksys\_colors\_table\_t\ table\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_ad6deb13041b3eac69cf1eeaab2b814a8}{DefaultColorTable}});}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}\ \&table)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}\ \&table)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00093\ \ \ \ \ \}}
-\DoxyCodeLine{00094\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{KolibriLib::Colors::Color::Color}}(\textcolor{keyword}{const}\ ksys\_color\_t\ \&a)}
-\DoxyCodeLine{00097\ \{}
-\DoxyCodeLine{00098\ \ \ \ \ val\ =\ a;}
-\DoxyCodeLine{00099\ \}}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{KolibriLib::Colors::Color::Color}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{KolibriLib::Colors::Color}}\ \&a)}
-\DoxyCodeLine{00102\ \{}
-\DoxyCodeLine{00103\ \ \ \ \ val\ =\ a.val;}
-\DoxyCodeLine{00104\ \}}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{KolibriLib::Colors::Color::Color}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_a_r_g_b}{KolibriLib::Colors::ARGB}}\ \&a)}
-\DoxyCodeLine{00107\ \{}
-\DoxyCodeLine{00108\ \ \ \ \ \_a\ =\ a.alpha;}
-\DoxyCodeLine{00109\ \ \ \ \ red\ =\ a.red;}
-\DoxyCodeLine{00110\ \ \ \ \ green\ =\ a.green;}
-\DoxyCodeLine{00111\ \ \ \ \ blue\ =\ a.blue;}
-\DoxyCodeLine{00112\ \}}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a6850297f0cf19caec6dc0b769f6f5537}{KolibriLib::Colors::Color::Color}}(\textcolor{keyword}{const}\ rgb\_t\ \&color)}
-\DoxyCodeLine{00115\ \{}
-\DoxyCodeLine{00116\ \ \ \ \ \_a\ =\ 1;}
-\DoxyCodeLine{00117\ \ \ \ \ red\ =\ color.red;}
-\DoxyCodeLine{00118\ \ \ \ \ green\ =\ color.green;}
-\DoxyCodeLine{00119\ \ \ \ \ red\ =\ color.blue;}
-\DoxyCodeLine{00120\ \}}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00122\ rgb\_t\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a4686f00731471d5cd1f0ea052573da80}{KolibriLib::Colors::Color::GetRGB}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00123\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{return}\ \{red,\ green,\ blue\};}
-\DoxyCodeLine{00125\ \}}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{KolibriLib::Colors::Color}}\ \&KolibriLib::Colors::Color::operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{KolibriLib::Colors::Color}}\ \&a)}
-\DoxyCodeLine{00128\ \{}
-\DoxyCodeLine{00129\ \ \ \ \ val\ =\ a.val;}
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00131\ \}}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00133\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{KolibriLib::Colors::Color}}\ \&\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color_a1eab7c69f57dc723241bf57f7db16ac3}{KolibriLib::Colors::Color::operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{KolibriLib::Colors::Color}}\ \&a)}
-\DoxyCodeLine{00134\ \{}
-\DoxyCodeLine{00135\ \ \ \ \ \_a\ /=\ 2;}
-\DoxyCodeLine{00136\ \ \ \ \ \_a\ +=\ a.\_a\ /\ 2;}
-\DoxyCodeLine{00137\ }
-\DoxyCodeLine{00138\ \ \ \ \ red\ /=\ 2;}
-\DoxyCodeLine{00139\ \ \ \ \ red\ +=\ (a.red\ /\ 2);}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00141\ \ \ \ \ green\ /=\ 2;}
-\DoxyCodeLine{00142\ \ \ \ \ green\ +=\ (a.green\ /\ 2);}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \ \ \ \ blue\ /=\ 2;}
-\DoxyCodeLine{00145\ \ \ \ \ blue\ +=\ (a.blue\ /\ 2);}
-\DoxyCodeLine{00146\ }
-\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00148\ \}}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00150\ \textcolor{keywordtype}{bool}\ KolibriLib::Colors::Color::operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Color}}\ \&a)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00151\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{return}\ val\ ==\ a.val;}
-\DoxyCodeLine{00153\ \}}
-\DoxyCodeLine{00154\ }
-\DoxyCodeLine{00155\ \textcolor{keywordtype}{bool}\ KolibriLib::Colors::Color::operator!=(\textcolor{keyword}{const}\ Color\ \&a)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00156\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordflow}{return}\ val\ !=\ a.val;}
-\DoxyCodeLine{00158\ \}}
-\DoxyCodeLine{00159\ }
-\DoxyCodeLine{00160\ KolibriLib::Colors::ColorsTable::ColorsTable(ksys\_colors\_table\_t\ table)}
-\DoxyCodeLine{00161\ \{}
-\DoxyCodeLine{00162\ \ \ \ \ work\_area\ =\ table.work\_area;}
-\DoxyCodeLine{00163\ \ \ \ \ work\_button\ =\ table.work\_button;}
-\DoxyCodeLine{00164\ \ \ \ \ work\_button\_text\ =\ table.work\_button\_text;}
-\DoxyCodeLine{00165\ \ \ \ \ work\_graph\ =\ table.work\_graph;}
-\DoxyCodeLine{00166\ \ \ \ \ work\_text\ =\ table.work\_text;}
-\DoxyCodeLine{00167\ \ \ \ \ frame\_area\ =\ table.frame\_area;}
-\DoxyCodeLine{00168\ \ \ \ \ grab\_bar\ =\ table.grab\_bar;}
-\DoxyCodeLine{00169\ \}}
-\DoxyCodeLine{00170\ }
-\DoxyCodeLine{00171\ \textcolor{keywordtype}{bool}\ KolibriLib::Colors::ColorsTable::operator==(\textcolor{keyword}{const}\ ColorsTable\ \&table)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00172\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ (frame\_area\ ==\ table.frame\_area)\ \&\&}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ (grab\_bar\ ==\ table.grab\_bar)\ \&\&}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ (grab\_bar\_button\ ==\ table.grab\_bar\_button)\ \&\&}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ (grab\_button\_text\ ==\ table.grab\_button\_text)\ \&\&}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ (work\_area\ ==\ table.work\_area)\ \&\&}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ (work\_button\ ==\ table.work\_button)\ \&\&}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ (work\_button\_text\ ==\ table.work\_button\_text)\ \&\&}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ (work\_graph\ ==\ table.work\_graph)\ \&\&}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ (work\_text\ ==\ table.work\_text);}
-\DoxyCodeLine{00182\ \}}
-\DoxyCodeLine{00183\ }
-\DoxyCodeLine{00184\ \textcolor{keywordtype}{bool}\ KolibriLib::Colors::ColorsTable::operator!=(\textcolor{keyword}{const}\ ColorsTable\ \&table)\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00185\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{return}\ (frame\_area\ !=\ table.frame\_area)\ ||}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ (grab\_bar\ !=\ table.grab\_bar)\ ||}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ (grab\_bar\_button\ !=\ table.grab\_bar\_button)\ ||}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ (grab\_button\_text\ !=\ table.grab\_button\_text)\ ||}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ (work\_area\ !=\ table.work\_area)\ ||}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ (work\_button\ !=\ table.work\_button)\ ||}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ (work\_button\_text\ !=\ table.work\_button\_text);}
-\DoxyCodeLine{00193\ \}}
-\DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ ksys\_color\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_a234ec0266b5f9e86ecbe9c66dd0c7a41}{KolibriLib::Colors::RGBtoINT}}(\textcolor{keyword}{const}\ rgb\_t\ \&color)}
-\DoxyCodeLine{00196\ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{return}\ (color.blue\ <<\ 16)\ +\ (color.green\ <<\ 8)\ +\ color.red;}
-\DoxyCodeLine{00198\ \}}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_COLOR\_H\_\_}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ksys\_colors\_table\_t\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_ad6deb13041b3eac69cf1eeaab2b814a8}{DefaultColorTable}}\ =\ \{0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}\ :\ \textcolor{keyword}{public}\ ksys\_colors\_table\_t}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}(ksys\_colors\_table\_t\ table\ =\ \mbox{\hyperlink{namespace_kolibri_lib_1_1_colors_ad6deb13041b3eac69cf1eeaab2b814a8}{DefaultColorTable}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}\ \&table)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{ColorsTable}}\ \&table)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \}\ \textcolor{comment}{//\ namespace\ KolibriLib}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_COLOR\_H\_\_}}
 
 \end{DoxyCode}

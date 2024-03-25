@@ -1,0 +1,204 @@
+\doxysection{kolibri\+\_\+libimg.\+h}
+\hypertarget{kolibri__libimg_8h_source}{}\label{kolibri__libimg_8h_source}\index{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_libimg.h@{C:/Users/yyari/Documents/KolibriOS/KolibriOS-\/Cpp-\/Lib/include/C\_Layer/INCLUDE/kolibri\_libimg.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Written\ by\ turbocat2001\ (Logaev\ Maxim)\ */}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ KOLIBRI\_LIBIMG\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ KOLIBRI\_LIBIMG\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ kolibri\_libimg\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ \_stdcall\ \_\_attribute\_\_((\_\_stdcall\_\_))}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//list\ of\ format\ id's}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_BMP\ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_ICO\ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_CUR\ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_GIF\ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_PNG\ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_JPEG\ \ \ \ \ \ 6}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_TGA\ \ \ \ \ \ \ 7}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_PCX\ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_XCF\ \ \ \ \ \ \ 9}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_TIFF\ \ \ \ \ \ 10}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_PNM\ \ \ \ \ \ \ 11}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_WBMP\ \ \ \ \ \ 12}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_XBM\ \ \ \ \ \ \ 13}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ LIBIMG\_FORMAT\_Z80\ \ \ \ \ \ \ 14}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#pragma\ pack(push,\ 1)}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ uint32\_t\ Checksum;\ \ \textcolor{comment}{//\ ((Width\ ROL\ 16)\ OR\ Height)\ XOR\ Data[0]\ \ \ \ \ \ \ \ ;\ ignored\ so\ far}}
+\DoxyCodeLine{00039\ \ \ \ \ uint32\_t\ Width;}
+\DoxyCodeLine{00040\ \ \ \ \ uint32\_t\ Height;}
+\DoxyCodeLine{00041\ \ \ \ \ uint32\_t\ Next;}
+\DoxyCodeLine{00042\ \ \ \ \ uint32\_t\ Previous;}
+\DoxyCodeLine{00043\ \ \ \ \ uint32\_t\ Type;\ \ \ \ \ \ \textcolor{comment}{//\ one\ of\ Image.bppN}}
+\DoxyCodeLine{00044\ \ \ \ \ uint32\_t*\ Data;\ \ \ \ \ \textcolor{comment}{//Массив\ rgb\_t}}
+\DoxyCodeLine{00045\ \ \ \ \ uint32\_t\ Palette;\ \ \ \textcolor{comment}{//\ used\ iff\ Type\ eq\ Image.bpp1,\ Image.bpp2,\ Image.bpp4\ or\ Image.bpp8i}}
+\DoxyCodeLine{00046\ \ \ \ \ uint32\_t\ Extended;}
+\DoxyCodeLine{00047\ \ \ \ \ uint32\_t\ Flags;\ \ \ \ \ \textcolor{comment}{//\ bitfield}}
+\DoxyCodeLine{00048\ \ \ \ \ uint32\_t\ Delay;\ \ \ \ \ \textcolor{comment}{//\ used\ iff\ Image.IsAnimated\ is\ set\ in\ Flags}}
+\DoxyCodeLine{00049\ \}\ \mbox{\hyperlink{struct_image__t}{Image\_t}};}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#pragma\ pack(pop)}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP8i\ \ 1\ \ }\textcolor{comment}{//\ indexed}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP24\ \ 2}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP32\ \ 3}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP15\ \ 4}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP16\ \ 5}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP1\ \ \ 6}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP8g\ \ 7\ \ }\textcolor{comment}{//\ grayscale}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP2i\ \ 8}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP4i\ \ 9}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ IMAGE\_BPP8a\ 10\ }}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ scale\ type}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_NONE\ \ \ \ \ \ \ 0\ }}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_INTEGER\ \ \ \ 1\ \ \ }}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_TILE\ \ \ \ \ \ \ 2\ \ \ \ }}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_STRETCH\ \ \ \ 3\ \ }}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_FIT\_BOTH\ \ \ LIBIMG\_SCALE\_STRETCH}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_FIT\_MIN\ \ \ \ 4}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_FIT\_RECT\ \ \ LIBIMG\_SCALE\_FIT\_MIN}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_FIT\_WIDTH\ \ 5\ \ }}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_FIT\_HEIGHT\ 6\ }}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ LIBIMG\_SCALE\_FIT\_MAX\ \ \ \ 7\ \ \ \ \ }}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ interpolation\ algorithm}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ LIBIMG\_INTER\_NONE\ \ \ \ \ \ \ 0\ \ \ \ \ }\textcolor{comment}{//\ use\ it\ with\ LIBIMG\_SCALE\_INTEGER,\ LIBIMG\_SCALE\_TILE,\ etc}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ LIBIMG\_INTER\_BILINEAR\ \ \ 1}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ LIBIMG\_INTER\_BICUBIC\ \ \ \ 2}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ LIBIMG\_INTER\_LANCZOS\ \ \ \ 3}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ LIBIMG\_INTER\_DEFAULT\ \ \ LIBIMG\_INTER\_BILINEAR}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{comment}{//error\ codes}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_OUT\_OF\_MEMORY\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_FORMAT\ \ \ \ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_CONDITIONS\ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_BIT\_DEPTH\ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_ENCODER\ \ \ \ \ \ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_SRC\_TYPE\ \ \ \ \ \ \ \ \ \ \ 6}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_SCALE\ \ \ \ \ \ \ \ \ \ \ \ \ \ 7}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_INTER\ \ \ \ \ \ \ \ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_NOT\_INPLEMENTED\ \ \ \ 9}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ LIBIMG\_ERROR\_INVALID\_INPUT\ \ \ \ \ \ 10}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{//encode\ flags\ (byte\ 0x02\ of\ \_common\ option)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ LIBIMG\_ENCODE\_STRICT\_SPECIFIC\ \ \ 0x01}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ LIBIMG\_ENCODE\_STRICT\_BIT\_DEPTH\ \ 0x02}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ LIBIMG\_ENCODE\_DELETE\_ALPHA\ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ LIBIMG\_ENCODE\_FLUSH\_ALPHA\ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ FLIP\_VERTICAL\ \ \ 0x01}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ FLIP\_HORIZONTAL\ 0x02}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ ROTATE\_90\_CW\ \ \ \ 0x01}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ ROTATE\_180\ \ \ \ \ \ 0x02}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ ROTATE\_270\_CW\ \ \ 0x03}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ ROTATE\_90\_CCW\ \ \ ROTATE\_270\_CW}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ ROTATE\_270\_CCW\ \ ROTATE\_90\_CW}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_decode)(\textcolor{keywordtype}{void}*\ file\_data,\ uint32\_t\ size,\ uint32\_t\ b\_color)\ \_stdcall;}
+\DoxyCodeLine{00110\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_encode)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ img,\ uint32\_t\ length,\ uint32\_t\ option)\ \_stdcall;}
+\DoxyCodeLine{00111\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_create)(uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ type)\ \_stdcall;}
+\DoxyCodeLine{00112\ \textcolor{keyword}{extern}\ void\ \ \ \ \ (*img\_to\_rgb2)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ img,\ \textcolor{keywordtype}{void}\ *rgb\_data)\ \_stdcall;}
+\DoxyCodeLine{00113\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_to\_rgb)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ img)\ \_stdcall;}
+\DoxyCodeLine{00114\ \textcolor{keyword}{extern}\ bool\ \ \ \ \ (*img\_flip)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ img,\ uint32\_t\ flip)\ \_stdcall;}
+\DoxyCodeLine{00115\ \textcolor{keyword}{extern}\ bool\ \ \ \ \ (*img\_flip\_layer)(\mbox{\hyperlink{struct_image__t}{Image\_t}}\ *img,\ uint32\_t\ flip)\ \_stdcall;}
+\DoxyCodeLine{00116\ \textcolor{keyword}{extern}\ bool\ \ \ \ \ (*img\_rotate)(\mbox{\hyperlink{struct_image__t}{Image\_t}}\ *img,\ uint32\_t\ rotate)\ \_stdcall;}
+\DoxyCodeLine{00117\ \textcolor{keyword}{extern}\ bool\ \ \ \ \ (*img\_rotate\_layer)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ data,\ uint32\_t\ rotate)\ \_stdcall;}
+\DoxyCodeLine{00118\ \textcolor{keyword}{extern}\ void\ \ \ \ \ (*img\_draw)(\mbox{\hyperlink{struct_image__t}{Image\_t}}\ *img,\ uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ w,\ uint32\_t\ h,\ uint32\_t\ xoff,\ \ uint32\_t\ yoff)\ \_stdcall;}
+\DoxyCodeLine{00119\ \textcolor{keyword}{extern}\ int32\_t\ \ (*img\_count)(\mbox{\hyperlink{struct_image__t}{Image\_t}}\ *img)\ \_stdcall;}
+\DoxyCodeLine{00120\ \textcolor{keyword}{extern}\ bool\ \ \ \ \ (*img\_destroy)(\mbox{\hyperlink{struct_image__t}{Image\_t}}\ *img)\ \_stdcall;}
+\DoxyCodeLine{00121\ \textcolor{keyword}{extern}\ bool\ \ \ \ \ (*img\_destroy\_layer)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ img)\ \_stdcall;}
+\DoxyCodeLine{00122\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_blend)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ dst,\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ src,\ uint32\_t\ out\_x,\ uint32\_t\ out\_y,\ uint32\_t\ in\_x,\ uint32\_t\ in\_y,\ uint32\_t\ width,\ uint32\_t\ height)\ \_stdcall;\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_convert)(\mbox{\hyperlink{struct_image__t}{Image\_t}}\ *src,\ \mbox{\hyperlink{struct_image__t}{Image\_t}}\ *dst,\ uint32\_t\ dst\_type,\ uint32\_t,\ uint32\_t)\ \_stdcall;\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_resize\_data)(\mbox{\hyperlink{struct_image__t}{Image\_t}}\ *src,\ uint32\_t\ width,\ uint32\_t\ height)\ \_stdcall;}
+\DoxyCodeLine{00125\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ \ \ (*img\_scale)(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ src,\ uint32\_t\ crop\_x,\ uint32\_t\ crop\_y,\ uint32\_t\ crop\_width,\ uint32\_t\ crop\_height,\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ dst,\ uint32\_t\ scale\_type,\ uint32\_t\ inter,\ uint32\_t\ new\_width,\ uint32\_t\ new\_height)\ \_stdcall;}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_image__t}{Image\_t}}*\ LoadImageFromFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ Path)}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ int32\_t\ img\_size;}
+\DoxyCodeLine{00134\ \ \ \ \ FILE\ *f\ =\ fopen(Path,\ \textcolor{stringliteral}{"{}rb"{}});\ \textcolor{comment}{//\ Этот\ код\ взят\ из\ примера\ из\ /contrib/C\_Layer/EXAMPLE/img\_example/main.c}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{if}\ (!f)}
+\DoxyCodeLine{00137\ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ a[]\ =\ \textcolor{stringliteral}{"{}LoadImage:\ Can't\ open\ file:\ "{}};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *b;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ strcat(b,\ a);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ strcat(b,\ Path);}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ strcat(b,\ \textcolor{stringliteral}{"{}\ \(\backslash\)n\ "{}});}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(b);}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (fseek(f,\ 0,\ SEEK\_END))}
+\DoxyCodeLine{00147\ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ a[]\ =\ \textcolor{stringliteral}{"{}Can't\ SEEK\_END\ file:\ "{}};}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *b;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ strcat(b,\ a);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ strcat(b,\ Path);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ strcat(b,\ \textcolor{stringliteral}{"{}\ \(\backslash\)n\ "{}});}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(b);}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{int}\ filesize\ =\ ftell(f);}
+\DoxyCodeLine{00157\ \ \ \ \ rewind(f);}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{char}\ *fdata\ =\ (\textcolor{keywordtype}{char}\ *)malloc(filesize);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordflow}{if}\ (!fdata)}
+\DoxyCodeLine{00161\ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ a[]\ =\ \textcolor{stringliteral}{"{}No\ memory\ for\ file:\ "{}};}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *b;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ strcat(b,\ a);}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ strcat(b,\ Path);}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ strcat(b,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ strcat(b,\ \textcolor{stringliteral}{"{}malloc\ not\ return\ ptr\(\backslash\)n"{}});}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(b);}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ img\_size\ =\ (int32\_t)fread(fdata,\ 1,\ filesize,\ f);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{if}\ (ferror(f))}
+\DoxyCodeLine{00174\ \ \ \ \ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *a\ =\ \textcolor{stringliteral}{"{}Error\ reading\ file\ "{}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *b;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ strcat(b,\ a);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ strcat(b,\ Path);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ strcat(b,\ \textcolor{stringliteral}{"{}\ \(\backslash\)n\ "{}});}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(b);}
+\DoxyCodeLine{00181\ \ \ \ \ \}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ fclose(f);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{struct_image__t}{Image\_t}}\ *buff\ =\ img\_decode((\textcolor{keywordtype}{void}\ *)fdata,\ img\_size,\ 0);}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ free(fdata);}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{return}\ buff;}
+\DoxyCodeLine{00190\ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ img\_fill\_color(\mbox{\hyperlink{struct_image__t}{Image\_t}}*\ img,\ uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ color)\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ uint32\_t\ i;}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ width*height;\ i++)\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ img-\/>Data[i]\ =\ color;}
+\DoxyCodeLine{00196\ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \}\ \textcolor{comment}{//\ extern\ "{}C"{}}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ KOLIBRI\_LIBIMG\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

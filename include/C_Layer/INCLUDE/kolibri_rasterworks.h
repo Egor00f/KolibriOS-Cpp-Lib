@@ -1,6 +1,9 @@
 #ifndef KOLIBRI_RASTERWORKS_H
 #define KOLIBRI_RASTERWORKS_H
 
+extern "C"
+{
+
 /// @brief Список параметров
 enum Params
 {
@@ -25,15 +28,9 @@ enum Params
 };
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /// @brief Инициализировать библиотеку RasterWorks
 /// @return -1 если неудачно
 extern int kolibri_rasterworks_init(void);
-
-
 
 /// @brief Вывести текст
 /// @param canvas Указатель на буффер
@@ -48,7 +45,6 @@ extern int (*countUTF8Z)(const char *string, int byteQuantity) __attribute__((__
 extern int (*charsFit)(int areaWidth, int charHeight) __attribute__((__stdcall__));
 extern int (*strWidth)(int charQuantity, int charHeight) __attribute__((__stdcall__));
 
-#ifdef __cplusplus
 }
-#endif 
+ 
 #endif /* KOLIBRI_RASTERWORKS_H */

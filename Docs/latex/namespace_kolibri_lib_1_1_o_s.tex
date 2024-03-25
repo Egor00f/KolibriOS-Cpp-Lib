@@ -8,12 +8,12 @@
 \doxysubsubsection*{Определения типов}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}\label{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34} 
-typedef unsigned int {\bfseries Event}
+\Hypertarget{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}\label{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0} 
+typedef uint32\+\_\+t {\bfseries Event}
 \begin{DoxyCompactList}\small\item\em Ивент \end{DoxyCompactList}\item 
-\Hypertarget{namespace_kolibri_lib_1_1_o_s_ac196af78f5d0a4457eef7e05fc977aa0}\label{namespace_kolibri_lib_1_1_o_s_ac196af78f5d0a4457eef7e05fc977aa0} 
-typedef ksys\+\_\+time\+\_\+t {\bfseries Time}
-\end{DoxyCompactItemize}
+\Hypertarget{namespace_kolibri_lib_1_1_o_s_a3502f01e66973b6d7858209c512b989b}\label{namespace_kolibri_lib_1_1_o_s_a3502f01e66973b6d7858209c512b989b} 
+typedef ksys\+\_\+time\+\_\+bcd\+\_\+t {\bfseries Time}
+\begin{DoxyCompactList}\small\item\em Время \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Перечисления}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,15 +40,15 @@ enum \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f3
 \item 
 \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors\+::\+Colors\+Table}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{Get\+System\+Colors}} ()
 \begin{DoxyCompactList}\small\item\em Получить системные цвета \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{Wait\+Event}} ()
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a58e553f23fc726c3bf5755546f0d615d}{Wait\+Event}} ()
 \begin{DoxyCompactList}\small\item\em Ждать ивента \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_aaf8805f49fe63a5a5b5ca34d7858988a}{Wait\+Event}} (uint32\+\_\+t Time\+Out=0)
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3cf4ee4b4401edccd8b6affa95509d90}{Wait\+Event}} (uint32\+\_\+t Time\+Out)
 \begin{DoxyCompactList}\small\item\em Ждать ивента \end{DoxyCompactList}\item 
-\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a15b798e29dc85b78748a71bbf3c0cd2c}{Check\+Event}} ()
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a15b798e29dc85b78748a71bbf3c0cd2c}{Check\+Event}} ()
 \begin{DoxyCompactList}\small\item\em Проверить пришёл ли ли ивент \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a9d371dfce7a7c6579a93776e25222f13}{Exec}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}} \&App\+Name, const std\+::string \&args)
+int \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a29b415614ae9099bab7ee86da476245d}{Exec}} (const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}} \&App\+Name, const std\+::string \&args, bool debug=false)
 \begin{DoxyCompactList}\small\item\em Запустить программу \end{DoxyCompactList}\item 
-Time \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a34e921d6bba683cbba473fb70345f2eb}{Get\+Time}} ()
+\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3502f01e66973b6d7858209c512b989b}{Time}} \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a34e921d6bba683cbba473fb70345f2eb}{Get\+Time}} ()
 \begin{DoxyCompactList}\small\item\em Получить системное время \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_ad2be50a93561a32225553fcdc1b0607c}{Speaker\+Status}} ()
 \begin{DoxyCompactList}\small\item\em Получить состояние спикера(Вкл/выкл) \end{DoxyCompactList}\item 
@@ -61,12 +61,6 @@ std\+::size\+\_\+t \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_adf72c8ee9534f
 \begin{DoxyCompactList}\small\item\em Получить кол-\/во всей памяти \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_afdb0884f42641be4566af7cae8cb92ce}{Get\+Lang}} ()
 \begin{DoxyCompactList}\small\item\em Получить язык системы \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Переменные}
-\begin{DoxyCompactItemize}
-\item 
-\Hypertarget{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a}\label{namespace_kolibri_lib_1_1_o_s_a8ab28572c3f8b9cc876328be1ed3928a} 
-\mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors\+::\+Colors\+Table}} {\bfseries sys\+\_\+color\+\_\+table}
-\begin{DoxyCompactList}\small\item\em Таблица стандартных(системных) цветов \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Подробное описание}
@@ -101,8 +95,7 @@ Key&Активность со стороны клавиатуры \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Exit@{Exit}!KolibriLib::OS@{KolibriLib::OS}}\index{KolibriLib::OS@{KolibriLib::OS}!Exit@{Exit}}}\Hypertarget{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1}\label{namespace_kolibri_lib_1_1_o_s_a646e1d145346d739ce458767c2152c8ca4eaa5a9d956e283926ff30144844e6d1} 
-Exit&Выход \hypertarget{os.hpp_Означает}{}\doxyparagraph{\texorpdfstring{что пользователь нажал кнопку X}{что пользователь нажал кнопку X}}\label{os.hpp_Означает}
-\\
+Exit&Выход \\
 \hline
 
 \end{DoxyEnumFields}
@@ -116,7 +109,6 @@ Exit&Выход \hypertarget{os.hpp_Означает}{}\doxyparagraph{\texorpdfs
 
 Список языков системы 
 
-\hypertarget{namespace_kolibri_lib_1_1_o_s_PS}{}\doxyparagraph{\texorpdfstring{жаль что так мало языков поддерживается...}{жаль что так мало языков поддерживается...}}\label{namespace_kolibri_lib_1_1_o_s_PS}
 \begin{DoxyEnumFields}{Элементы перечислений}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Eng@{Eng}!KolibriLib::OS@{KolibriLib::OS}}\index{KolibriLib::OS@{KolibriLib::OS}!Eng@{Eng}}}\Hypertarget{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e}\label{namespace_kolibri_lib_1_1_o_s_ad74e24145535693721b73b3d7f315c45ab86c32f7e82238435c39625892f1296e} 
 Eng&Английский \\
@@ -155,7 +147,7 @@ Rus&Русский \\
 \index{KolibriLib::OS@{KolibriLib::OS}!CheckEvent@{CheckEvent}}
 \index{CheckEvent@{CheckEvent}!KolibriLib::OS@{KolibriLib::OS}}
 \doxysubsubsection{\texorpdfstring{CheckEvent()}{CheckEvent()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}} Kolibri\+Lib\+::\+OS\+::\+Check\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}} Kolibri\+Lib\+::\+OS\+::\+Check\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -164,11 +156,11 @@ Rus&Русский \\
 \begin{DoxyReturn}{Возвращает}
 Ивент 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1_o_s_a9d371dfce7a7c6579a93776e25222f13}\label{namespace_kolibri_lib_1_1_o_s_a9d371dfce7a7c6579a93776e25222f13} 
+\Hypertarget{namespace_kolibri_lib_1_1_o_s_a29b415614ae9099bab7ee86da476245d}\label{namespace_kolibri_lib_1_1_o_s_a29b415614ae9099bab7ee86da476245d} 
 \index{KolibriLib::OS@{KolibriLib::OS}!Exec@{Exec}}
 \index{Exec@{Exec}!KolibriLib::OS@{KolibriLib::OS}}
 \doxysubsubsection{\texorpdfstring{Exec()}{Exec()}}
-{\footnotesize\ttfamily int Kolibri\+Lib\+::\+OS\+::\+Exec (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}} \&}]{App\+Name,  }\item[{const std\+::string \&}]{args }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Kolibri\+Lib\+::\+OS\+::\+Exec (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kolibri_lib_1_1filesystem_1_1_path}{filesystem\+::\+Path}} \&}]{App\+Name,  }\item[{const std\+::string \&}]{args,  }\item[{bool}]{debug = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -179,6 +171,8 @@ Rus&Русский \\
 {\em App\+Name} & Полное имя исполняемого файла \\
 \hline
 {\em args} & аргументы. Максимум 256 символов \\
+\hline
+{\em debug} & режим дебага \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
@@ -214,13 +208,13 @@ Rus&Русский \\
 \index{KolibriLib::OS@{KolibriLib::OS}!GetSystemColors@{GetSystemColors}}
 \index{GetSystemColors@{GetSystemColors}!KolibriLib::OS@{KolibriLib::OS}}
 \doxysubsubsection{\texorpdfstring{GetSystemColors()}{GetSystemColors()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors\+::\+Colors\+Table}} Kolibri\+Lib\+::\+OS\+::\+Get\+System\+Colors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_kolibri_lib_1_1_colors_1_1_colors_table}{Colors\+::\+Colors\+Table}} Kolibri\+Lib\+::\+OS\+::\+Get\+System\+Colors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Получить системные цвета 
 
-\hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_Функция}{}\doxyparagraph{\texorpdfstring{устанавливает курсор в середину экрана}{устанавливает курсор в середину экрана}}\label{namespace_kolibri_lib_1_1_u_i_1_1text_Функция}
+\hypertarget{namespace_kolibri_lib_1_1_o_s_Функция}{}\doxyparagraph{\texorpdfstring{изменяет переменную \doxylink{}{sys\+\_\+color\+\_\+table}}{изменяет переменную \doxylink{}{sys\+\_\+color\+\_\+table}}}\label{namespace_kolibri_lib_1_1_o_s_Функция}
 \begin{DoxyReturn}{Возвращает}
 Таблица системных цветов 
 \end{DoxyReturn}
@@ -228,7 +222,7 @@ Rus&Русский \\
 \index{KolibriLib::OS@{KolibriLib::OS}!GetTime@{GetTime}}
 \index{GetTime@{GetTime}!KolibriLib::OS@{KolibriLib::OS}}
 \doxysubsubsection{\texorpdfstring{GetTime()}{GetTime()}}
-{\footnotesize\ttfamily Time Kolibri\+Lib\+::\+OS\+::\+Get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3502f01e66973b6d7858209c512b989b}{Time}} Kolibri\+Lib\+::\+OS\+::\+Get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -254,7 +248,7 @@ true если спикер разрешён, иначе false
 \index{KolibriLib::OS@{KolibriLib::OS}!WaitEvent@{WaitEvent}}
 \index{WaitEvent@{WaitEvent}!KolibriLib::OS@{KolibriLib::OS}}
 \doxysubsubsection{\texorpdfstring{WaitEvent()}{WaitEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{Event}} Kolibri\+Lib\+::\+OS\+::\+Wait\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}} Kolibri\+Lib\+::\+OS\+::\+Wait\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -263,11 +257,11 @@ true если спикер разрешён, иначе false
 \begin{DoxyReturn}{Возвращает}
 Ивент 
 \end{DoxyReturn}
-\Hypertarget{namespace_kolibri_lib_1_1_o_s_aaf8805f49fe63a5a5b5ca34d7858988a}\label{namespace_kolibri_lib_1_1_o_s_aaf8805f49fe63a5a5b5ca34d7858988a} 
+\Hypertarget{namespace_kolibri_lib_1_1_o_s_a3cf4ee4b4401edccd8b6affa95509d90}\label{namespace_kolibri_lib_1_1_o_s_a3cf4ee4b4401edccd8b6affa95509d90} 
 \index{KolibriLib::OS@{KolibriLib::OS}!WaitEvent@{WaitEvent}}
 \index{WaitEvent@{WaitEvent}!KolibriLib::OS@{KolibriLib::OS}}
 \doxysubsubsection{\texorpdfstring{WaitEvent()}{WaitEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_abe4a29759805b4449591c8efb1d10d34}{OS\+::\+Event}} Kolibri\+Lib\+::\+OS\+::\+Wait\+Event (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{Time\+Out = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a8355608f015819035015c89a718df9a0}{Event}} Kolibri\+Lib\+::\+OS\+::\+Wait\+Event (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{Time\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

@@ -11,12 +11,13 @@ KolibriLib::OS \- Работа с системой
 
 .in +1c
 .ti -1c
-.RI "typedef unsigned int \fBEvent\fP"
+.RI "typedef uint32_t \fBEvent\fP"
 .br
 .RI "Ивент "
 .ti -1c
-.RI "typedef ksys_time_t \fBTime\fP"
+.RI "typedef ksys_time_bcd_t \fBTime\fP"
 .br
+.RI "Время "
 .in -1c
 .SS "Перечисления"
 
@@ -41,7 +42,7 @@ KolibriLib::OS \- Работа с системой
 .br
 .RI "Ждать ивента "
 .ti -1c
-.RI "\fBEvent\fP \fBWaitEvent\fP (uint32_t TimeOut=0)"
+.RI "\fBEvent\fP \fBWaitEvent\fP (uint32_t TimeOut)"
 .br
 .RI "Ждать ивента "
 .ti -1c
@@ -49,11 +50,11 @@ KolibriLib::OS \- Работа с системой
 .br
 .RI "Проверить пришёл ли ли ивент "
 .ti -1c
-.RI "int \fBExec\fP (const \fBfilesystem::Path\fP &AppName, const std::string &args)"
+.RI "int \fBExec\fP (const \fBfilesystem::Path\fP &AppName, const std::string &args, bool debug=false)"
 .br
 .RI "Запустить программу "
 .ti -1c
-.RI "Time \fBGetTime\fP ()"
+.RI "\fBTime\fP \fBGetTime\fP ()"
 .br
 .RI "Получить системное время "
 .ti -1c
@@ -76,14 +77,6 @@ KolibriLib::OS \- Работа с системой
 .RI "int \fBGetLang\fP ()"
 .br
 .RI "Получить язык системы "
-.in -1c
-.SS "Переменные"
-
-.in +1c
-.ti -1c
-.RI "\fBColors::ColorsTable\fP \fBsys_color_table\fP"
-.br
-.RI "Таблица стандартных(системных) цветов "
 .in -1c
 .SH "Подробное описание"
 .PP 
@@ -113,14 +106,10 @@ KolibriLib::OS \- Работа с системой
 .TP
 \fB\fIExit \fP\fP
 Выход 
-.SS "что пользователь нажал кнопку X"
-
 .SS "enum \fBKolibriLib::OS::lang\fP"
 
 .PP
 Список языков системы 
-.SS "жаль что так мало языков поддерживается\&.\&.\&."
-
 .PP
 \fBЭлементы перечислений\fP
 .in +1c
@@ -160,7 +149,7 @@ KolibriLib::OS \- Работа с системой
 .RE
 .PP
 
-.SS "int KolibriLib::OS::Exec (const \fBfilesystem::Path\fP & AppName, const std::string & args)"
+.SS "int KolibriLib::OS::Exec (const \fBfilesystem::Path\fP & AppName, const std::string & args, bool debug = \fRfalse\fP)"
 
 .PP
 Запустить программу 
@@ -170,6 +159,8 @@ KolibriLib::OS \- Работа с системой
 \fIAppName\fP Полное имя исполняемого файла 
 .br
 \fIargs\fP аргументы\&. Максимум 256 символов 
+.br
+\fIdebug\fP режим дебага 
 .RE
 .PP
 \fBВозвращает\fP
@@ -200,18 +191,18 @@ KolibriLib::OS \- Работа с системой
 .RE
 .PP
 
-.SS "\fBColors::ColorsTable\fP KolibriLib::OS::GetSystemColors ()"
+.SS "\fBColors::ColorsTable\fP KolibriLib::OS::GetSystemColors ()\fR [inline]\fP"
 
 .PP
 Получить системные цвета 
-.SS "устанавливает курсор в середину экрана"
+.SS "изменяет переменную \fBsys_color_table\fP"
 \fBВозвращает\fP
 .RS 4
 Таблица системных цветов 
 .RE
 .PP
 
-.SS "Time KolibriLib::OS::GetTime ()\fR [inline]\fP"
+.SS "\fBTime\fP KolibriLib::OS::GetTime ()\fR [inline]\fP"
 
 .PP
 Получить системное время 
@@ -244,7 +235,7 @@ true если спикер разрешён, иначе false
 .RE
 .PP
 
-.SS "\fBOS::Event\fP KolibriLib::OS::WaitEvent (uint32_t TimeOut = \fR0\fP)"
+.SS "\fBEvent\fP KolibriLib::OS::WaitEvent (uint32_t TimeOut)\fR [inline]\fP"
 
 .PP
 Ждать ивента 

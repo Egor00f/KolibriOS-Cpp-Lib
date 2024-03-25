@@ -7,10 +7,11 @@ var dir_0d7e87543bd95304d787a039001ce59d =
     [ "window", "dir_1834dda66b6245ac01346a8593778972.html", "dir_1834dda66b6245ac01346a8593778972" ],
     [ "childWindow.hpp", "child_window_8hpp_source.html", null ],
     [ "color.hpp", "color_8hpp_source.html", null ],
+    [ "constants.hpp", "constants_8hpp_source.html", null ],
+    [ "img.hpp", "img_8hpp_source.html", null ],
     [ "init.hpp", "init_8hpp_source.html", null ],
     [ "libini.hpp", "libini_8hpp_source.html", null ],
     [ "network.hpp", "network_8hpp_source.html", null ],
-    [ "small.hpp", "small_8hpp_source.html", null ],
     [ "sound.hpp", "sound_8hpp_source.html", null ],
     [ "types.hpp", "types_8hpp_source.html", null ]
 ];
