@@ -7,9 +7,9 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/UI/fonts.hpp>
+#include <kolibriLib/UI/text/fonts.hpp>
 #include <kolibri_rasterworks.h>
-#include <kolibriLib/UI/textBase.hpp>
+#include <kolibriLib/UI/text/textBase.hpp>
 
 namespace KolibriLib
 {
@@ -33,7 +33,7 @@ namespace KolibriLib
 
 		/// @brief Прочитать точку на фоне
 		/// @param Point читаема точка
-		/// @return
+		/// @return Цвет точки
 		inline Colors::Color ReadPoint(const Coord &Point)
 		{
 			Colors::Color c;

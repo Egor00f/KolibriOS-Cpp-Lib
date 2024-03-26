@@ -61,7 +61,7 @@ namespace KolibriLib
                     /// @brief Флаги
                     unsigned _Flags;
 
-                    /// @brief Размер текста для функции @link DrawText()
+                    /// @brief Размер текста для функции DrawText()
                     mutable Size size;
 
                     Font &operator=(const Font &f);

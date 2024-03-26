@@ -15,7 +15,7 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord=\fBCoord\fP(0, 0), const \fBSize\fP &size=\fBSize\fP(32, 32), const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -37,9 +37,11 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
+.RI "Изменить цвет "
 .ti -1c
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
+.RI "изменить координаты "
 .ti -1c
 .RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
@@ -56,6 +58,10 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .RI "bool \fBHover\fP () const"
 .br
 .RI "Проверить лежит ли курсор мыши над элементом "
+.ti -1c
+.RI "virtual void \fBRender\fP ()"
+.br
+.RI "отрисовать элемент "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -107,24 +113,22 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 
 .SH "Конструктор(ы)"
 .PP 
-.SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR{0, 0}\fP, const \fBSize\fP & size = \fR{16, 16}\fP, const \fBColors::Color\fP & MainColor = \fR\fBOS::GetSystemColors\fP()\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)"
+.SS "KolibriLib::UI::UIElement::UIElement (const \fBCoord\fP & coord = \fR\fBCoord\fP(0, 0)\fP, const \fBSize\fP & size = \fR\fBSize\fP(32, 32)\fP, const \fBColors::Color\fP & MainColor = \fR\fBOS::GetSystemColors\fP()\&.work_graph\fP, const unsigned & Margin = \fRDefaultMargin\fP, bool relative = \fRfalse\fP)"
 
 .PP
 Конструктор 
 .PP
 \fBАргументы\fP
 .RS 4
-\fIcoord\fP 
+\fIcoord\fP координаты 
 .br
-\fIsize\fP 
+\fIsize\fP размер 
 .br
-\fIMainColor\fP 
+\fIMainColor\fP основной цвет 
 .br
-\fIMargin\fP 
+\fIMargin\fP отступы 
 .br
-\fIrelative\fP 
-.br
- 
+\fIrelative\fP отностельность 
 .RE
 .PP
 
@@ -137,7 +141,7 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .PP
 \fBВозвращает\fP
 .RS 4
-Функция возвращает \fB_MainColor\fP
+Функция возвращает _MainColor 
 .RE
 .PP
 
@@ -159,7 +163,7 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .PP
 \fBВозвращает\fP
 .RS 4
-Функция возвращает \fB_Margin\fP
+Функция возвращает _Margin 
 .RE
 .PP
 
@@ -170,7 +174,7 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .PP
 \fBВозвращает\fP
 .RS 4
-Функция возвращает \fB_angle\fP
+Функция возвращает _angle 
 .RE
 .PP
 
@@ -181,7 +185,7 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .PP
 \fBВозвращает\fP
 .RS 4
-Функция возвращает \fB_size\fP
+Функция возвращает _size 
 .RE
 .PP
 
@@ -192,7 +196,7 @@ KolibriLib::UI::UIElement \- Элемент интерфейса
 .PP
 \fBВозвращает\fP
 .RS 4
-true если курсор мыши находится в этом эелементе, иначе false 
+true если курсор мыши находится в этом элементе, иначе false 
 .RE
 .PP
 
@@ -244,6 +248,12 @@ true если курсор мыши находится в этом эелеме�
 .RE
 .PP
 
+.SS "virtual void KolibriLib::UI::UIElement::Render ()\fR [virtual]\fP"
+
+.PP
+отрисовать элемент 
+.PP
+Переопределяется в \fBKolibriLib::UI::CheckBox\fP, \fBKolibriLib::UI::Frame\fP и \fBKolibriLib::UI::Menu\fP\&.
 .SS "void KolibriLib::UI::UIElement::Rotate (unsigned NewAngle)"
 
 .PP
@@ -258,22 +268,22 @@ true если курсор мыши находится в этом эелеме�
 .SS "void KolibriLib::UI::UIElement::SetColor (const \fBColors::Color\fP & NewColor)"
 
 .PP
+Изменить цвет 
+.PP
 \fBАргументы\fP
 .RS 4
-\fINewColor\fP 
-.br
- 
+\fINewColor\fP новый цвет 
 .RE
 .PP
 
 .SS "void KolibriLib::UI::UIElement::SetCoord (const \fBCoord\fP & NewCoord)"
 
 .PP
+изменить координаты 
+.PP
 \fBАргументы\fP
 .RS 4
-\fINewCoord\fP 
-.br
- 
+\fINewCoord\fP новые координаты 
 .RE
 .PP
 

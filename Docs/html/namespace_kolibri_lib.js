@@ -16,6 +16,7 @@ var namespace_kolibri_lib =
     [ "mouse", "namespace_kolibri_lib_1_1mouse.html", [
       [ "CursorHandle", "namespace_kolibri_lib_1_1mouse.html#a62aae3bff5a15d2c1aacef753a8a5d05", null ],
       [ "CenterCursor", "namespace_kolibri_lib_1_1mouse.html#ad5181e5115b88147badd22a0c19cbe4f", null ],
+      [ "EmulateMouse", "namespace_kolibri_lib_1_1mouse.html#a39c94a2a4489ad8d4ec05a07ac13e259", null ],
       [ "GetMouseButtons", "namespace_kolibri_lib_1_1mouse.html#a7ae50aac73ac33bc25e269c12522a024", null ],
       [ "GetMousePositionInWindow", "namespace_kolibri_lib_1_1mouse.html#ad979ee2e81616250903162815cc59c27", null ],
       [ "GetMousePositionOnSreen", "namespace_kolibri_lib_1_1mouse.html#aeb27a641652f74bc30fba05cfe20ab3a", null ],

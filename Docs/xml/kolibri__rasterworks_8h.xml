@@ -2,10 +2,22 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="ru">
   <compounddef id="kolibri__rasterworks_8h" kind="file" language="C++">
     <compoundname>kolibri_rasterworks.h</compoundname>
+    <includes local="no">sys/ksys.h</includes>
     <includedby refid="text_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/text.hpp</includedby>
     <includedby refid="text_base_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp</includedby>
     <includedby refid="background_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/graphic/background.hpp</includedby>
     <includedby refid="init_8hpp" local="no">C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/init.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h</label>
+        <link refid="kolibri__rasterworks_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sys/ksys.h</label>
+      </node>
+    </incdepgraph>
     <invincdepgraph>
       <node id="1">
         <label>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h</label>
@@ -123,81 +135,125 @@
       </node>
     </invincdepgraph>
     <sectiondef kind="enum">
-      <memberdef kind="enum" id="kolibri__rasterworks_8h_1ab126c13bc335f4a996ef88c85aec7a24" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="kolibri__rasterworks_8h_1afe0f42561b99996f419a3a8d0c8f109a" prot="public" static="no" strong="no">
         <type></type>
-        <name>Params</name>
-        <enumvalue id="kolibri__rasterworks_8h_1ab126c13bc335f4a996ef88c85aec7a24aa529a7a50505042b4f78439ecc3fb0d6" prot="public">
-          <name>Bold</name>
-          <initializer>= 0b1</initializer>
+        <name>RasterworksEncoding</name>
+        <enumvalue id="kolibri__rasterworks_8h_1afe0f42561b99996f419a3a8d0c8f109aa7a1ba91ea44b65d73be1c123c0e0da9e" prot="public">
+          <name>Rasterworks_cp688</name>
+          <initializer>= 1</initializer>
           <briefdescription>
-<para>Жирный текст </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="kolibri__rasterworks_8h_1ab126c13bc335f4a996ef88c85aec7a24ac2a214096085052039c5b35d6aae7bd0" prot="public">
-          <name>Italic</name>
-          <initializer>= 0b10</initializer>
+        <enumvalue id="kolibri__rasterworks_8h_1afe0f42561b99996f419a3a8d0c8f109aaa7812ef6cef148dc43ff54ea4852cc80" prot="public">
+          <name>Rasterworks_UTF8</name>
+          <initializer>= 2</initializer>
           <briefdescription>
-<para>Курсив </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="kolibri__rasterworks_8h_1ab126c13bc335f4a996ef88c85aec7a24aa909c5f2b588ba35fcc40b3b504ad2ed" prot="public">
-          <name>Underline</name>
-          <initializer>= 0b100</initializer>
+        <enumvalue id="kolibri__rasterworks_8h_1afe0f42561b99996f419a3a8d0c8f109aa4b7a420256083c95ceef179fb7a7ccc5" prot="public">
+          <name>Rasterworks_UTF16LE</name>
+          <initializer>= 3</initializer>
           <briefdescription>
-<para>Нижнее подчёркивание </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="kolibri__rasterworks_8h_1ab126c13bc335f4a996ef88c85aec7a24ae452f9f9eb572f91e272123cda564e20" prot="public">
-          <name>StrikeThrough</name>
-          <initializer>= 0b1000</initializer>
-          <briefdescription>
-<para>Зачёркнутый </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="kolibri__rasterworks_8h_1ab126c13bc335f4a996ef88c85aec7a24a4758d977046d9c084a0eaf7434fd29e1" prot="public">
-          <name>AlignRight</name>
-          <initializer>= 0b00010000</initializer>
-          <briefdescription>
-<para>Выравнивание по правому краю </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="kolibri__rasterworks_8h_1ab126c13bc335f4a996ef88c85aec7a24afed76d6718c0a44a25c5e19ae8fb51d1" prot="public">
-          <name>AlignCenter</name>
-          <initializer>= 0b00100000</initializer>
-          <briefdescription>
-<para>Выравнивание по центру </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
-<para>Список параметров </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="8" column="1" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" bodystart="9" bodyend="28"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="10" column="1" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" bodystart="11" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="enum" id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65" prot="public" static="no" strong="no">
+        <type></type>
+        <name>RasterworksParams</name>
+        <enumvalue id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65aa529a7a50505042b4f78439ecc3fb0d6" prot="public">
+          <name>Bold</name>
+          <initializer>= 0b1</initializer>
+          <briefdescription>
+<para>Bold text. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65ac2a214096085052039c5b35d6aae7bd0" prot="public">
+          <name>Italic</name>
+          <initializer>= 0b10</initializer>
+          <briefdescription>
+<para>Italics. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65aa909c5f2b588ba35fcc40b3b504ad2ed" prot="public">
+          <name>Underline</name>
+          <initializer>= 0b100</initializer>
+          <briefdescription>
+<para>Underscore. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65ae452f9f9eb572f91e272123cda564e20" prot="public">
+          <name>StrikeThrough</name>
+          <initializer>= 0b1000</initializer>
+          <briefdescription>
+<para>Strikethrough. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65a4758d977046d9c084a0eaf7434fd29e1" prot="public">
+          <name>AlignRight</name>
+          <initializer>= 0b00010000</initializer>
+          <briefdescription>
+<para>Right alignment. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65afed76d6718c0a44a25c5e19ae8fb51d1" prot="public">
+          <name>AlignCenter</name>
+          <initializer>= 0b00100000</initializer>
+          <briefdescription>
+<para>Center alignment. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="kolibri__rasterworks_8h_1aed8cfa894472863abfeaa3290bcdfa65a2595738543a149c36efe4210abfca7e3" prot="public">
+          <name>Use32bit</name>
+          <initializer>= 0b010000000</initializer>
+          <briefdescription>
+<para>32bpp canvas insted of 24bpp </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>List of parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="18" column="1" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" bodystart="19" bodyend="40"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
-      <memberdef kind="variable" id="kolibri__rasterworks_8h_1a5144721ab30b914ca5ee359b24ceb267" prot="public" static="no" extern="yes" mutable="no">
-        <type>void(*</type>
-        <definition>void(* drawText) (void *canvas, int x, int y, const char *string, int charQuantity, int fontColor, int params) __attribute__((__stdcall__))</definition>
-        <argsstring>)(void *canvas, int x, int y, const char *string, int charQuantity, int fontColor, int params) __attribute__((__stdcall__))</argsstring>
-        <name>drawText</name>
+      <memberdef kind="variable" id="kolibri__rasterworks_8h_1af7ccd8d63caab8f1882a2de961ff34fa" prot="public" static="no" mutable="no">
+        <type>hh char height ww char</type>
+        <definition>hh char height ww char width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
         <briefdescription>
-<para>Вывести текст </para>
+<para>Draw text on 24bpp or 32bpp image. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -205,7 +261,7 @@
 <parametername>canvas</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Указатель на буффер </para>
+<para>Pointer to image (array of colors) </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -213,7 +269,7 @@
 <parametername>x</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>координата текста по оси X </para>
+<para>Coordinate of the text along the X axis </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -221,7 +277,7 @@
 <parametername>y</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>координата текста по оси Y </para>
+<para>Coordinate of the text along the Y axis </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -229,7 +285,7 @@
 <parametername>string</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>указатель на строку </para>
+<para>Pointer to string </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -237,7 +293,7 @@
 <parametername>charQuantity</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>длина строки </para>
+<para>String length </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -245,7 +301,7 @@
 <parametername>fontColor</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Цвет текста </para>
+<para>Text color </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -253,7 +309,7 @@
 <parametername>params</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>параметры из списк <ref refid="_1ab126c13bc335f4a996ef88c85aec7a24" kindref="member">Params</ref></para>
+<para>ffeewwhh \ </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -261,20 +317,45 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="43" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="43" declcolumn="8"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="55" column="10" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="kolibri__rasterworks_8h_1afd0d07b5a6fb419ab7353b6176518814" prot="public" static="no" extern="yes" mutable="no">
         <type>int(*</type>
         <definition>int(* countUTF8Z) (const char *string, int byteQuantity) __attribute__((__stdcall__))</definition>
         <argsstring>)(const char *string, int byteQuantity) __attribute__((__stdcall__))</argsstring>
         <name>countUTF8Z</name>
+        <initializer>= UTF-8 
+ff - Parameters from the RasterworksParams list
+
+extern void (*drawText)(void *canvas, int x, int y, const char *string, int charQuantity, ksys_color_t fontColor, uint32_t params) __attribute__((__stdcall__))</initializer>
         <briefdescription>
+<para>Calculate amount of valid chars in UTF-8 string. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="note"><para>Supports zero terminated string (set byteQuantity = -1) </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byteQuantity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="44" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="44" declcolumn="8"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="66" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="66" declcolumn="8"/>
       </memberdef>
       <memberdef kind="variable" id="kolibri__rasterworks_8h_1a328f64d5f3e48e70d19f021afb680b00" prot="public" static="no" extern="yes" mutable="no">
         <type>int(*</type>
@@ -282,12 +363,13 @@
         <argsstring>)(int areaWidth, int charHeight) __attribute__((__stdcall__))</argsstring>
         <name>charsFit</name>
         <briefdescription>
+<para>Calculate amount of chars that fits given width. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="45" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="45" declcolumn="8"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="69" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="69" declcolumn="8"/>
       </memberdef>
       <memberdef kind="variable" id="kolibri__rasterworks_8h_1a2cd1f0075885890478a9713f0998cbb5" prot="public" static="no" extern="yes" mutable="no">
         <type>int(*</type>
@@ -295,12 +377,31 @@
         <argsstring>)(int charQuantity, int charHeight) __attribute__((__stdcall__))</argsstring>
         <name>strWidth</name>
         <briefdescription>
+<para>Calculate string width in pixels. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>charQuantity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Characters </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>charHeight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>character height </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="46" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="46" declcolumn="8"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="74" column="8" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="74" declcolumn="8"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -313,16 +414,167 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Инициализировать библиотеку RasterWorks. </para>
+<para>Initialize the RasterWorks library. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>-1 если неудачно </para>
+<para><simplesect kind="return"><para>-1 if unsuccessful </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="33" column="12" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="33" declcolumn="12"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="44" column="12" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" declline="44" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="kolibri__rasterworks_8h_1ae0db0de64779f2cea40e8b1fd14ae63a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>rgb_t *</type>
+        <definition>rgb_t * DrawTextToRGBMap</definition>
+        <argsstring>(const rgb_t *canvas, int canvasWidth, int canvasHeight, int x, int y, const char *string, uint8_t width, uint8_t height, ksys_color_t fontColor, uint8_t flags, uint8_t encoding=Rasterworks_UTF8)</argsstring>
+        <name>DrawTextToRGBMap</name>
+        <param>
+          <type>const rgb_t *</type>
+          <declname>canvas</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>canvasWidth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>canvasHeight</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>ksys_color_t</type>
+          <declname>fontColor</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>flags</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>encoding</declname>
+          <defval>Rasterworks_UTF8</defval>
+        </param>
+        <briefdescription>
+<para>Draw text on 24bpp or 32bpp image. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>canvas</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to image (array of colors) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>canvasWidth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>image width </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>canvasHeight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>image height </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordinate of the text along the X axis </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordinate of the text along the Y axis </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>char width (0 - auto) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>char height </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fontColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text color </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value from enum RasterworksParams </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>encoding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value fram enum RasterworksEncoding </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>don&apos;t forget free(buff) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" line="89" column="7" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h" bodystart="89" bodyend="103"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -333,36 +585,69 @@
 <codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>KOLIBRI_RASTERWORKS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>KOLIBRI_RASTERWORKS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/ksys.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Params</highlight></codeline>
-<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>Bold<sp/>=<sp/>0b1,</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>Italic<sp/>=<sp/>0b10,</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>Underline<sp/>=<sp/>0b100,</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>StrikeThrough<sp/>=<sp/>0b1000,</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>AlignRight<sp/>=<sp/>0b00010000,</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>AlignCenter<sp/>=<sp/>0b00100000,</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kolibri_rasterworks_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>RasterworksEncoding</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>Rasterworks_cp688<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>Rasterworks_UTF8<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>Rasterworks_UTF16LE<sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>RasterworksParams</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>Bold<sp/>=<sp/>0b1,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>Italic<sp/>=<sp/>0b10,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>Underline<sp/>=<sp/>0b100,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>StrikeThrough<sp/>=<sp/>0b1000,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>AlignRight<sp/>=<sp/>0b00010000,</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>void<sp/>(*drawText)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*canvas,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*string,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charQuantity,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fontColor,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>params)<sp/>__attribute__((__stdcall__));</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int<sp/>(*countUTF8Z)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*string,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>byteQuantity)<sp/>__attribute__((__stdcall__));</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int<sp/>(*charsFit)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>areaWidth,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charHeight)<sp/>__attribute__((__stdcall__));</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int<sp/>(*strWidth)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charQuantity,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charHeight)<sp/>__attribute__((__stdcall__));</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>KOLIBRI_RASTERWORKS_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>AlignCenter<sp/>=<sp/>0b00100000,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>Use32bit<sp/>=<sp/>0b010000000</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kolibri_rasterworks_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">hh<sp/>-<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>height<sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">ww<sp/>-<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>width<sp/>;<sp/>0<sp/>=<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>(proportional)<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">ee<sp/>-<sp/>encoding<sp/><sp/><sp/>;<sp/>1<sp/>=<sp/>cp866,<sp/>2<sp/>=<sp/>UTF-16LE,<sp/>3<sp/>=<sp/>UTF-8<sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">ff<sp/>-<sp/>Parameters<sp/>from<sp/>the<sp/>RasterworksParams<sp/>list</highlight></codeline>
+<codeline lineno="60"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>void<sp/>(*drawText)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*canvas,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*string,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charQuantity,<sp/>ksys_color_t<sp/>fontColor,<sp/>uint32_t<sp/>params)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int<sp/>(*countUTF8Z)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*string,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>byteQuantity)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int<sp/>(*charsFit)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>areaWidth,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charHeight)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int<sp/>(*strWidth)(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charQuantity,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>charHeight)<sp/>__attribute__((__stdcall__));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">rgb_t<sp/>*DrawTextToRGBMap(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rgb_t<sp/>*canvas,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>canvasWidth,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>canvasHeight,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>uint8_t<sp/>width,<sp/>uint8_t<sp/>height,<sp/>ksys_color_t<sp/>fontColor,<sp/>uint8_t<sp/>flags,<sp/>uint8_t<sp/>encoding<sp/>=<sp/>Rasterworks_UTF8)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l<sp/>=<sp/>canvasHeight<sp/>*<sp/>canvasHeight<sp/>*<sp/>3<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(char);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>rgb_t<sp/>*buff<sp/>=(rgb_t*)<sp/>malloc(l);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>*((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*)buff)<sp/>=<sp/>canvasWidth;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>*((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*)buff<sp/>+<sp/>1)<sp/>=<sp/>canvasHeight;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(buff+8,<sp/>canvas,<sp/>l);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>drawText(buff,<sp/>x,<sp/>y,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>countUTF8Z(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>-1),<sp/>fontColor,<sp/>(flags<sp/>&gt;&gt;<sp/>24)<sp/>+<sp/>(width<sp/>&gt;&gt;<sp/>16)<sp/>+<sp/>(height<sp/>&gt;&gt;<sp/>8)<sp/>+<sp/>encoding);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(buff,<sp/>buff+8,<sp/>l);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buff;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>KOLIBRI_RASTERWORKS_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/kolibri_rasterworks.h"/>
   </compounddef>

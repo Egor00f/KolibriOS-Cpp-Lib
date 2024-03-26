@@ -30,7 +30,7 @@ void {\bfseries init} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273
 \doxysubsection*{Открытые члены унаследованные от \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{Kolibri\+Lib\+::\+UI\+::\+UIElement}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a33831abb04efdef35c3a895590a60137}{UIElement}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size=\{16, 16\}, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Main\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+graph, const unsigned \&Margin=Default\+Margin, bool relative=false)
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aeb3d53b3e8e382240c87700e4273e820}{UIElement}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord=\mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}}(0, 0), const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size=\mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}}(32, 32), const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Main\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+graph, const unsigned \&Margin=Default\+Margin, bool relative=false)
 \begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a7411f3ff0db5a7453f0d23c5ead9ce9e}{Get\+Size}} () const
 \begin{DoxyCompactList}\small\item\em Получить размер элемента \end{DoxyCompactList}\item 
@@ -41,9 +41,9 @@ unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a452197bd6d4
 const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a69995a90b6e010f467ab766edfa782d4}{Get\+Color}} () const
 \begin{DoxyCompactList}\small\item\em Получить осносной цвет элемента \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a969186d6406bb6c11a024e5a91749336}{Set\+Color}} (const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&New\+Color)
-\item 
+\begin{DoxyCompactList}\small\item\em Изменить цвет \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a16b029a7f35ee44656c2eb2af211873d}{Set\+Coord}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&New\+Coord)
-\item 
+\begin{DoxyCompactList}\small\item\em изменить координаты \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3f2f4016ffe8414c55cc13c665b0a3a8}{Get\+Coord}} () const
 \begin{DoxyCompactList}\small\item\em Получить координаты элемента \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a983464b962931621091affaa11f0472a}{Rotate}} (unsigned New\+Angle)
@@ -52,6 +52,8 @@ unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a91df2001fe6
 \begin{DoxyCompactList}\small\item\em Получить угол наклона элемента \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_acb1303729c55ba615af2562823dd2c8e}{Hover}} () const
 \begin{DoxyCompactList}\small\item\em Проверить лежит ли курсор мыши над элементом \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a515d066817fa6db183323fb0e6ff7467}{Render}} ()
+\begin{DoxyCompactList}\small\item\em отрисовать элемент \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a55bc7a13f3d7f444e2004adde9b45700}{operator=}} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element)
 \item 
 bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aadb7dd820e6edfb96007bb83743bee3c}{operator==}} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element) const
@@ -83,6 +85,8 @@ void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a4b5f94fe529df
 \item 
 rgb\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a10135f526950d233ec9a0721c78c46df}{Get\+RGBMap}} () const
 \begin{DoxyCompactList}\small\item\em получить массив rgb\+\_\+t \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a238bee9fee1c1969b78de32f9ccac7b0}{Set\+RGBMap}} (const rgb\+\_\+t \texorpdfstring{$\ast$}{*}rgbmap, const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size)
+\begin{DoxyCompactList}\small\item\em Изменить изображение по изображению из rgb\+\_\+t. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_image__t}{Image\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a4ca5bf67adb5932568a13fe719ad714a}{Get\+Imaget}} () const
 \item 
 \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a68f8cf19c39a2d78720415132b70f745}{Get\+Size}} () const

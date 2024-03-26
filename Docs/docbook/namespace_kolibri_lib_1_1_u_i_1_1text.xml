@@ -47,6 +47,11 @@
 
 <para>Флаги для RasterWorks. </para>
 </listitem>
+            <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a08ac20390abf8e19e9df8100a3c1589e"/>enum <emphasis role="strong">Encoding</emphasis> { <emphasis role="strong">cp688</emphasis> = 1
+, <emphasis role="strong">UTF8</emphasis> = 2
+, <emphasis role="strong">UTF16LE</emphasis> = 3
+ }</para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <simplesect>
@@ -64,9 +69,9 @@
 
 <para>Просто вывести текст </para>
 </listitem>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> * <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a9596497a1ac3a5b6f146e6a9ba76eb91">DrawTextToImg</link> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp;font, unsigned margin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> * <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1a06d3f98cb8d674397f08e94f8ce5dd95">DrawTextToImg</link> (const std::string &amp;text, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp;font, unsigned margin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor, uint8_t encoding=Encoding::UTF8)</para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1af628e6f4afcf276e09900d5aee9d25a2">DrawText</link> (const std::string &amp;text, const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp;font=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>, unsigned margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_area)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1ad6738e0b71e3dd55f80d25b4efc0844a">DrawText</link> (const std::string &amp;text, const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp;font=<link linkend="_namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1abab58341d8cf9048d474cf45a2e00723">Fonts::DefaultFont</link>, unsigned margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;colorText=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_text, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;BackgroundColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_area, uint8_t encoding=Encoding::UTF8)</para>
 
 <para>Вывести текст </para>
 </listitem>
@@ -134,7 +139,7 @@
 </section>
 <section>
 <title>Функции</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1af628e6f4afcf276e09900d5aee9d25a2"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1ad6738e0b71e3dd55f80d25b4efc0844a"/><section>
     <title>DrawText()<computeroutput>[1/2]</computeroutput></title>
 <indexterm><primary>DrawText</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text</primary><secondary>DrawText</secondary></indexterm>
@@ -142,6 +147,7 @@
 , unsigned margin = <computeroutput>UI::DefaultMargin</computeroutput>
 , const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; colorText = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_text</computeroutput>
 , const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; BackgroundColor = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_area</computeroutput>
+, uint8_t encoding = <computeroutput>Encoding::UTF8</computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
 
 <para>Вывести текст </para>
@@ -245,11 +251,12 @@
 </note>
 </para>
 </section>
-<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a9596497a1ac3a5b6f146e6a9ba76eb91"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1_u_i_1_1text_1a06d3f98cb8d674397f08e94f8ce5dd95"/><section>
     <title>DrawTextToImg()</title>
 <indexterm><primary>DrawTextToImg</primary><secondary>KolibriLib::UI::text</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::text</primary><secondary>DrawTextToImg</secondary></indexterm>
-<para><computeroutput><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> * KolibriLib::UI::text::DrawTextToImg (const std::string &amp; text, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp; font, unsigned margin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; colorText, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; BackgroundColor)</computeroutput></para>
+<para><computeroutput><link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img">Images::img</link> * KolibriLib::UI::text::DrawTextToImg (const std::string &amp; text, const <link linkend="_struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font">Fonts::Font</link> &amp; font, unsigned margin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; colorText, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; BackgroundColor, uint8_t encoding = <computeroutput>Encoding::UTF8</computeroutput>
+)</computeroutput></para>
 <para>
                 <formalpara>
                     <title>

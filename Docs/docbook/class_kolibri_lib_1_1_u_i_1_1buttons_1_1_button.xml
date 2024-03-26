@@ -21,7 +21,7 @@
 <simplesect>
     <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a5757bc491cfd13c0b11a35549732db1c">Button</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord={0, 0}, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size={20, 20}, unsigned Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_button)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7c5d4583711cb30f0010d894af2c295e">Button</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord=<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link>(0, 0), const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size=<link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(20, 20), unsigned Margin=UI::DefaultMargin, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;ButtonColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_button)</para>
 
 <para>Это конструктор </para>
 </listitem>
@@ -82,7 +82,7 @@
 </listitem>
         </itemizedlist>
 Открытые члены унаследованные от <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">KolibriLib::UI::UIElement</link>        <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a33831abb04efdef35c3a895590a60137">UIElement</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord={0, 0}, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aeb3d53b3e8e382240c87700e4273e820">UIElement</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord=<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link>(0, 0), const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size=<link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(32, 32), const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
 
 <para>Конструктор </para>
 </listitem>
@@ -103,8 +103,12 @@
 <para>Получить осносной цвет элемента </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a969186d6406bb6c11a024e5a91749336">SetColor</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;NewColor)</para>
+
+<para>Изменить цвет </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d">SetCoord</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;NewCoord)</para>
+
+<para>изменить координаты </para>
 </listitem>
             <listitem><para>const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3f2f4016ffe8414c55cc13c665b0a3a8">GetCoord</link> () const</para>
 
@@ -122,6 +126,10 @@
 
 <para>Проверить лежит ли курсор мыши над элементом </para>
 </listitem>
+            <listitem><para>virtual void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a515d066817fa6db183323fb0e6ff7467">Render</link> ()</para>
+
+<para>отрисовать элемент </para>
+</listitem>
             <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700">operator=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
 </listitem>
             <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aadb7dd820e6edfb96007bb83743bee3c">operator==</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element) const</para>
@@ -134,9 +142,9 @@
 
 <para>Конструктор </para>
 </listitem>
-            <listitem><para><emphasis role="strong">~Text</emphasis> ()</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1ae4dc7b9436433bb14c182669716c04c5">Text</link> (const std::string &amp;text)</para>
 
-<para>Деструктор </para>
+<para>Конструктор </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_text_1a6304a4ae03858133d064303a9f4aa640">Add</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1text_1_1_char">Char</link> &amp;c)</para>
 
@@ -243,12 +251,12 @@
 </section>
 <section>
 <title>Конструктор(ы)</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a5757bc491cfd13c0b11a35549732db1c"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1buttons_1_1_button_1a7c5d4583711cb30f0010d894af2c295e"/><section>
     <title>Button()</title>
 <indexterm><primary>Button</primary><secondary>KolibriLib::UI::buttons::Button</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::buttons::Button</primary><secondary>Button</secondary></indexterm>
-<para><computeroutput>KolibriLib::UI::buttons::Button::Button (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
-, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size = <computeroutput>{20,&#160;20}</computeroutput>
+<para><computeroutput>KolibriLib::UI::buttons::Button::Button (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord = <computeroutput><link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link>(0,0)</computeroutput>
+, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size = <computeroutput><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(20,20)</computeroutput>
 , unsigned Margin = <computeroutput>UI::DefaultMargin</computeroutput>
 , const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; ButtonColor = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_button</computeroutput>
 )</computeroutput></para><para>

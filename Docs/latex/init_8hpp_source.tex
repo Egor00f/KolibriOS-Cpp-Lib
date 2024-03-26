@@ -22,9 +22,9 @@
 \DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_kolibri_lib_a79cea121a31a0a2da904f088c3484802}{init}}()}
 \DoxyCodeLine{00022\ \ \ \ \ \{}
 \DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(kolibri\_libimg\_init()\ !=\ -\/1)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(kolibri\_libimg\_init()\ ==\ -\/1)}
 \DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Error\ loading\ lib\_img.obj,\ exit\(\backslash\)n"{}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Error\ loading\ libimg.obj,\ exit\(\backslash\)n"{}});}
 \DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ exit(0);}
 \DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00029\ }
@@ -34,13 +34,17 @@
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ exit(0);}}
 \DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ kolibri\_rasterworks\_init();}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00038\ \ \ \ \ \}}
-\DoxyCodeLine{00039\ \}}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_BASE\_H\_\_}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(kolibri\_rasterworks\_init()\ ==\ -\/1)}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_ksys\_debug\_puts(\textcolor{stringliteral}{"{}Error\ loading\ RasterWorks,\ exit\(\backslash\)n\ "{}});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ exit(0);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_BASE\_H\_\_}}
 
 \end{DoxyCode}

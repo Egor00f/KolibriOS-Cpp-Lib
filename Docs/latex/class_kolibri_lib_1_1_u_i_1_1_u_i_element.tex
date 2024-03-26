@@ -18,7 +18,7 @@
 \doxysubsubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a33831abb04efdef35c3a895590a60137}{UIElement}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord=\{0, 0\}, const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size=\{16, 16\}, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Main\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+graph, const unsigned \&Margin=Default\+Margin, bool relative=false)
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aeb3d53b3e8e382240c87700e4273e820}{UIElement}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord=\mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}}(0, 0), const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size=\mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}}(32, 32), const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Main\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+graph, const unsigned \&Margin=Default\+Margin, bool relative=false)
 \begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a7411f3ff0db5a7453f0d23c5ead9ce9e}{Get\+Size}} () const
 \begin{DoxyCompactList}\small\item\em Получить размер элемента \end{DoxyCompactList}\item 
@@ -29,9 +29,9 @@ unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a452197bd6d4
 const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a69995a90b6e010f467ab766edfa782d4}{Get\+Color}} () const
 \begin{DoxyCompactList}\small\item\em Получить осносной цвет элемента \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a969186d6406bb6c11a024e5a91749336}{Set\+Color}} (const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&New\+Color)
-\item 
+\begin{DoxyCompactList}\small\item\em Изменить цвет \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a16b029a7f35ee44656c2eb2af211873d}{Set\+Coord}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&New\+Coord)
-\item 
+\begin{DoxyCompactList}\small\item\em изменить координаты \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3f2f4016ffe8414c55cc13c665b0a3a8}{Get\+Coord}} () const
 \begin{DoxyCompactList}\small\item\em Получить координаты элемента \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a983464b962931621091affaa11f0472a}{Rotate}} (unsigned New\+Angle)
@@ -40,6 +40,8 @@ unsigned \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a91df2001fe6
 \begin{DoxyCompactList}\small\item\em Получить угол наклона элемента \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_acb1303729c55ba615af2562823dd2c8e}{Hover}} () const
 \begin{DoxyCompactList}\small\item\em Проверить лежит ли курсор мыши над элементом \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a515d066817fa6db183323fb0e6ff7467}{Render}} ()
+\begin{DoxyCompactList}\small\item\em отрисовать элемент \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \& \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a55bc7a13f3d7f444e2004adde9b45700}{operator=}} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element)
 \item 
 bool \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aadb7dd820e6edfb96007bb83743bee3c}{operator==}} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_u_i_element}{UIElement}} \&Element) const
@@ -78,11 +80,11 @@ bool {\bfseries \+\_\+relative}
 
 
 \doxysubsection{Конструктор(ы)}
-\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a33831abb04efdef35c3a895590a60137}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a33831abb04efdef35c3a895590a60137} 
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aeb3d53b3e8e382240c87700e4273e820}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_aeb3d53b3e8e382240c87700e4273e820} 
 \index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!UIElement@{UIElement}}
 \index{UIElement@{UIElement}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
 \doxysubsubsection{\texorpdfstring{UIElement()}{UIElement()}}
-{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+UIElement (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&}]{coord = {\ttfamily \{0,~0\}},  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&}]{size = {\ttfamily \{16,~16\}},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Main\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+graph},  }\item[{const unsigned \&}]{Margin = {\ttfamily DefaultMargin},  }\item[{bool}]{relative = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+UIElement (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&}]{coord = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}}(0,~0)},  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&}]{size = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}}(32,~32)},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Main\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+graph},  }\item[{const unsigned \&}]{Margin = {\ttfamily DefaultMargin},  }\item[{bool}]{relative = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -90,16 +92,15 @@ bool {\bfseries \+\_\+relative}
 
 
 \begin{DoxyParams}{Аргументы}
-{\em coord} & \\
+{\em coord} & координаты \\
 \hline
-{\em size} & \\
+{\em size} & размер \\
 \hline
-{\em Main\+Color} & \\
+{\em Main\+Color} & основной цвет \\
 \hline
-{\em Margin} & \\
+{\em Margin} & отступы \\
 \hline
-{\em relative} & ~\newline
- \\
+{\em relative} & отностельность \\
 \hline
 \end{DoxyParams}
 
@@ -116,7 +117,7 @@ bool {\bfseries \+\_\+relative}
 Получить осносной цвет элемента 
 
 \begin{DoxyReturn}{Возвращает}
-Функция возвращает \doxylink{a9b06ab1ff3ebbfd4fad7c34b9d1ea322}{\+\_\+\+Main\+Color}
+Функция возвращает \+\_\+\+Main\+Color 
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3f2f4016ffe8414c55cc13c665b0a3a8}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3f2f4016ffe8414c55cc13c665b0a3a8} 
 \index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!GetCoord@{GetCoord}}
@@ -142,7 +143,7 @@ bool {\bfseries \+\_\+relative}
 Получить отступы 
 
 \begin{DoxyReturn}{Возвращает}
-Функция возвращает \doxylink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a1f504101c3f76fb890f4dc1bf38c637b}{\+\_\+\+Margin}
+Функция возвращает \+\_\+\+Margin 
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a91df2001fe6967e760d343e42f5d870c}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a91df2001fe6967e760d343e42f5d870c} 
 \index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!GetRotate@{GetRotate}}
@@ -155,7 +156,7 @@ bool {\bfseries \+\_\+relative}
 Получить угол наклона элемента 
 
 \begin{DoxyReturn}{Возвращает}
-Функция возвращает \doxylink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_ab5290f9d9259a6402581a74ca3699a37}{\+\_\+angle}
+Функция возвращает \+\_\+angle 
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a7411f3ff0db5a7453f0d23c5ead9ce9e}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a7411f3ff0db5a7453f0d23c5ead9ce9e} 
 \index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!GetSize@{GetSize}}
@@ -168,7 +169,7 @@ bool {\bfseries \+\_\+relative}
 Получить размер элемента 
 
 \begin{DoxyReturn}{Возвращает}
-Функция возвращает \doxylink{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a4094c4e31f3891565dbbbcc5b8de8e3f}{\+\_\+size}
+Функция возвращает \+\_\+size 
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_acb1303729c55ba615af2562823dd2c8e}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_acb1303729c55ba615af2562823dd2c8e} 
 \index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!Hover@{Hover}}
@@ -181,7 +182,7 @@ bool {\bfseries \+\_\+relative}
 Проверить лежит ли курсор мыши над элементом 
 
 \begin{DoxyReturn}{Возвращает}
-true если курсор мыши находится в этом эелементе, иначе false 
+true если курсор мыши находится в этом элементе, иначе false 
 \end{DoxyReturn}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a47f5a94da324198946c6567244620f86}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a47f5a94da324198946c6567244620f86} 
 \index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!operator"!=@{operator"!=}}
@@ -228,6 +229,20 @@ true если курсор мыши находится в этом эелеме�
 ~\newline
  
 \end{DoxyReturn}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a515d066817fa6db183323fb0e6ff7467}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a515d066817fa6db183323fb0e6ff7467} 
+\index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!Render@{Render}}
+\index{Render@{Render}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily virtual void Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+отрисовать элемент 
+
+
+
+Переопределяется в \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_check_box_aba21f5e09a9b4908cb82766844dedd40}{Kolibri\+Lib\+::\+UI\+::\+Check\+Box}}, \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_frame_a9d8f7281a9cbc096a51839b01045a66a}{Kolibri\+Lib\+::\+UI\+::\+Frame}} и \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_menu_aa69ce5e2c73c2251acd408aac65fa58b}{Kolibri\+Lib\+::\+UI\+::\+Menu}}.
+
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a983464b962931621091affaa11f0472a}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a983464b962931621091affaa11f0472a} 
 \index{KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}!Rotate@{Rotate}}
 \index{Rotate@{Rotate}!KolibriLib::UI::UIElement@{KolibriLib::UI::UIElement}}
@@ -250,9 +265,12 @@ true если курсор мыши находится в этом эелеме�
 {\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Set\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{New\+Color }\end{DoxyParamCaption})}
 
 
+
+Изменить цвет 
+
+
 \begin{DoxyParams}{Аргументы}
-{\em New\+Color} & ~\newline
- \\
+{\em New\+Color} & новый цвет \\
 \hline
 \end{DoxyParams}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a16b029a7f35ee44656c2eb2af211873d}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a16b029a7f35ee44656c2eb2af211873d} 
@@ -262,9 +280,12 @@ true если курсор мыши находится в этом эелеме�
 {\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::\+UIElement\+::\+Set\+Coord (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&}]{New\+Coord }\end{DoxyParamCaption})}
 
 
+
+изменить координаты 
+
+
 \begin{DoxyParams}{Аргументы}
-{\em New\+Coord} & ~\newline
- \\
+{\em New\+Coord} & новые координаты \\
 \hline
 \end{DoxyParams}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3b3eb7370243281576ff27c489db913d}\label{class_kolibri_lib_1_1_u_i_1_1_u_i_element_a3b3eb7370243281576ff27c489db913d} 

@@ -20,184 +20,228 @@
 16 
 17 <emphasis role="preprocessor">#define&#32;_stdcall&#32;__attribute__((__stdcall__))</emphasis>
 18 
-19 <emphasis role="comment">//list&#32;of&#32;format&#32;id&apos;s</emphasis>
-20 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_BMP&#32;&#32;&#32;&#32;&#32;&#32;&#32;1</emphasis>
-21 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_ICO&#32;&#32;&#32;&#32;&#32;&#32;&#32;2</emphasis>
-22 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_CUR&#32;&#32;&#32;&#32;&#32;&#32;&#32;3</emphasis>
-23 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_GIF&#32;&#32;&#32;&#32;&#32;&#32;&#32;4</emphasis>
-24 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_PNG&#32;&#32;&#32;&#32;&#32;&#32;&#32;5</emphasis>
-25 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_JPEG&#32;&#32;&#32;&#32;&#32;&#32;6</emphasis>
-26 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_TGA&#32;&#32;&#32;&#32;&#32;&#32;&#32;7</emphasis>
-27 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_PCX&#32;&#32;&#32;&#32;&#32;&#32;&#32;8</emphasis>
-28 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_XCF&#32;&#32;&#32;&#32;&#32;&#32;&#32;9</emphasis>
-29 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_TIFF&#32;&#32;&#32;&#32;&#32;&#32;10</emphasis>
-30 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_PNM&#32;&#32;&#32;&#32;&#32;&#32;&#32;11</emphasis>
-31 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_WBMP&#32;&#32;&#32;&#32;&#32;&#32;12</emphasis>
-32 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_XBM&#32;&#32;&#32;&#32;&#32;&#32;&#32;13</emphasis>
-33 <emphasis role="preprocessor">#define&#32;LIBIMG_FORMAT_Z80&#32;&#32;&#32;&#32;&#32;&#32;&#32;14</emphasis>
-34 
-35 <emphasis role="preprocessor">#pragma&#32;pack(push,&#32;1)</emphasis>
-36 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
-37 {
-38 &#32;&#32;&#32;&#32;uint32_t&#32;Checksum;&#32;&#32;<emphasis role="comment">//&#32;((Width&#32;ROL&#32;16)&#32;OR&#32;Height)&#32;XOR&#32;Data[0]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;;&#32;ignored&#32;so&#32;far</emphasis>
-39 &#32;&#32;&#32;&#32;uint32_t&#32;Width;
-40 &#32;&#32;&#32;&#32;uint32_t&#32;Height;
-41 &#32;&#32;&#32;&#32;uint32_t&#32;Next;
-42 &#32;&#32;&#32;&#32;uint32_t&#32;Previous;
-43 &#32;&#32;&#32;&#32;uint32_t&#32;Type;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;one&#32;of&#32;Image.bppN</emphasis>
-44 &#32;&#32;&#32;&#32;uint32_t*&#32;Data;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Массив&#32;rgb_t</emphasis>
-45 &#32;&#32;&#32;&#32;uint32_t&#32;Palette;&#32;&#32;&#32;<emphasis role="comment">//&#32;used&#32;iff&#32;Type&#32;eq&#32;Image.bpp1,&#32;Image.bpp2,&#32;Image.bpp4&#32;or&#32;Image.bpp8i</emphasis>
-46 &#32;&#32;&#32;&#32;uint32_t&#32;Extended;
-47 &#32;&#32;&#32;&#32;uint32_t&#32;Flags;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;bitfield</emphasis>
-48 &#32;&#32;&#32;&#32;uint32_t&#32;Delay;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;used&#32;iff&#32;Image.IsAnimated&#32;is&#32;set&#32;in&#32;Flags</emphasis>
-49 }&#32;<link linkend="_struct_image__t">Image_t</link>;
-50 <emphasis role="preprocessor">#pragma&#32;pack(pop)</emphasis>
+19 
+20 <emphasis role="preprocessor">#pragma&#32;pack(push,&#32;1)</emphasis>
+22 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">struct</emphasis>
+23 &#32;&#32;&#32;&#32;{
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_struct_image__t_1ab6ccd0a0070bcf1df847d66d7e1745e8">Checksum</link>;
+27 
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_struct_image__t_1a7f65cc0a1bf3b4f78aec1f3bf2ea9707">Width</link>;
+30 
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_struct_image__t_1a724c6884766f30652ad3d5e8ce2cd524">Height</link>;
+33 
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;Next;
+35 
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;Previous;
+37 
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_struct_image__t_1a57f990e156530b7b0229add1a6feb7d5">Type</link>;
+40 
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;*<link linkend="_struct_image__t_1a925d0700ce7381dcd4a5f1d07d79bf8b">Data</link>;
+43 
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_struct_image__t_1a676b08001731600b122e88980dba76dd">Palette</link>;
+46 
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;Extended;
+48 
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_struct_image__t_1a7febbffbc146c6f9e3c83fae7a2cc87a">Flags</link>;
 51 
-52 <emphasis role="preprocessor">#define&#32;IMAGE_BPP8i&#32;&#32;1&#32;&#32;</emphasis><emphasis role="comment">//&#32;indexed</emphasis>
-53 <emphasis role="preprocessor">#define&#32;IMAGE_BPP24&#32;&#32;2</emphasis>
-54 <emphasis role="preprocessor">#define&#32;IMAGE_BPP32&#32;&#32;3</emphasis>
-55 <emphasis role="preprocessor">#define&#32;IMAGE_BPP15&#32;&#32;4</emphasis>
-56 <emphasis role="preprocessor">#define&#32;IMAGE_BPP16&#32;&#32;5</emphasis>
-57 <emphasis role="preprocessor">#define&#32;IMAGE_BPP1&#32;&#32;&#32;6</emphasis>
-58 <emphasis role="preprocessor">#define&#32;IMAGE_BPP8g&#32;&#32;7&#32;&#32;</emphasis><emphasis role="comment">//&#32;grayscale</emphasis>
-59 <emphasis role="preprocessor">#define&#32;IMAGE_BPP2i&#32;&#32;8</emphasis>
-60 <emphasis role="preprocessor">#define&#32;IMAGE_BPP4i&#32;&#32;9</emphasis>
-61 <emphasis role="preprocessor">#define&#32;IMAGE_BPP8a&#32;10&#32;</emphasis>
-62 
-63 <emphasis role="comment">//&#32;scale&#32;type</emphasis>
-64 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_NONE&#32;&#32;&#32;&#32;&#32;&#32;&#32;0&#32;</emphasis>
-65 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_INTEGER&#32;&#32;&#32;&#32;1&#32;&#32;&#32;</emphasis>
-66 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_TILE&#32;&#32;&#32;&#32;&#32;&#32;&#32;2&#32;&#32;&#32;&#32;</emphasis>
-67 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_STRETCH&#32;&#32;&#32;&#32;3&#32;&#32;</emphasis>
-68 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_FIT_BOTH&#32;&#32;&#32;LIBIMG_SCALE_STRETCH</emphasis>
-69 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_FIT_MIN&#32;&#32;&#32;&#32;4</emphasis>
-70 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_FIT_RECT&#32;&#32;&#32;LIBIMG_SCALE_FIT_MIN</emphasis>
-71 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_FIT_WIDTH&#32;&#32;5&#32;&#32;</emphasis>
-72 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_FIT_HEIGHT&#32;6&#32;</emphasis>
-73 <emphasis role="preprocessor">#define&#32;LIBIMG_SCALE_FIT_MAX&#32;&#32;&#32;&#32;7&#32;&#32;&#32;&#32;&#32;</emphasis>
-74 
-75 <emphasis role="comment">//&#32;interpolation&#32;algorithm</emphasis>
-76 <emphasis role="preprocessor">#define&#32;LIBIMG_INTER_NONE&#32;&#32;&#32;&#32;&#32;&#32;&#32;0&#32;&#32;&#32;&#32;&#32;</emphasis><emphasis role="comment">//&#32;use&#32;it&#32;with&#32;LIBIMG_SCALE_INTEGER,&#32;LIBIMG_SCALE_TILE,&#32;etc</emphasis>
-77 <emphasis role="preprocessor">#define&#32;LIBIMG_INTER_BILINEAR&#32;&#32;&#32;1</emphasis>
-78 <emphasis role="preprocessor">#define&#32;LIBIMG_INTER_BICUBIC&#32;&#32;&#32;&#32;2</emphasis>
-79 <emphasis role="preprocessor">#define&#32;LIBIMG_INTER_LANCZOS&#32;&#32;&#32;&#32;3</emphasis>
-80 <emphasis role="preprocessor">#define&#32;LIBIMG_INTER_DEFAULT&#32;&#32;&#32;LIBIMG_INTER_BILINEAR</emphasis>
-81 
-82 <emphasis role="comment">//error&#32;codes</emphasis>
-83 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_OUT_OF_MEMORY&#32;&#32;&#32;&#32;&#32;&#32;1</emphasis>
-84 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_FORMAT&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;2</emphasis>
-85 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_CONDITIONS&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;3</emphasis>
-86 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_BIT_DEPTH&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;4</emphasis>
-87 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_ENCODER&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;5</emphasis>
-88 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_SRC_TYPE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;6</emphasis>
-89 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_SCALE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;7</emphasis>
-90 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_INTER&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;8</emphasis>
-91 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_NOT_INPLEMENTED&#32;&#32;&#32;&#32;9</emphasis>
-92 <emphasis role="preprocessor">#define&#32;LIBIMG_ERROR_INVALID_INPUT&#32;&#32;&#32;&#32;&#32;&#32;10</emphasis>
-93 
-94 <emphasis role="comment">//encode&#32;flags&#32;(byte&#32;0x02&#32;of&#32;_common&#32;option)</emphasis>
-95 <emphasis role="preprocessor">#define&#32;LIBIMG_ENCODE_STRICT_SPECIFIC&#32;&#32;&#32;0x01</emphasis>
-96 <emphasis role="preprocessor">#define&#32;LIBIMG_ENCODE_STRICT_BIT_DEPTH&#32;&#32;0x02</emphasis>
-97 <emphasis role="preprocessor">#define&#32;LIBIMG_ENCODE_DELETE_ALPHA&#32;&#32;&#32;&#32;&#32;&#32;0x08</emphasis>
-98 <emphasis role="preprocessor">#define&#32;LIBIMG_ENCODE_FLUSH_ALPHA&#32;&#32;&#32;&#32;&#32;&#32;&#32;0x10</emphasis>
-99 
-100 <emphasis role="preprocessor">#define&#32;FLIP_VERTICAL&#32;&#32;&#32;0x01</emphasis>
-101 <emphasis role="preprocessor">#define&#32;FLIP_HORIZONTAL&#32;0x02</emphasis>
-102 
-103 <emphasis role="preprocessor">#define&#32;ROTATE_90_CW&#32;&#32;&#32;&#32;0x01</emphasis>
-104 <emphasis role="preprocessor">#define&#32;ROTATE_180&#32;&#32;&#32;&#32;&#32;&#32;0x02</emphasis>
-105 <emphasis role="preprocessor">#define&#32;ROTATE_270_CW&#32;&#32;&#32;0x03</emphasis>
-106 <emphasis role="preprocessor">#define&#32;ROTATE_90_CCW&#32;&#32;&#32;ROTATE_270_CW</emphasis>
-107 <emphasis role="preprocessor">#define&#32;ROTATE_270_CCW&#32;&#32;ROTATE_90_CW</emphasis>
-108 
-109 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_decode)(<emphasis role="keywordtype">void</emphasis>*&#32;file_data,&#32;uint32_t&#32;size,&#32;uint32_t&#32;b_color)&#32;_stdcall;
-110 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_encode)(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;uint32_t&#32;length,&#32;uint32_t&#32;option)&#32;_stdcall;
-111 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_create)(uint32_t&#32;width,&#32;uint32_t&#32;height,&#32;uint32_t&#32;type)&#32;_stdcall;
-112 <emphasis role="keyword">extern</emphasis>&#32;void&#32;&#32;&#32;&#32;&#32;(*img_to_rgb2)(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;<emphasis role="keywordtype">void</emphasis>&#32;*rgb_data)&#32;_stdcall;
-113 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_to_rgb)(<link linkend="_struct_image__t">Image_t</link>*&#32;img)&#32;_stdcall;
-114 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_flip)(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;uint32_t&#32;flip)&#32;_stdcall;
-115 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_flip_layer)(<link linkend="_struct_image__t">Image_t</link>&#32;*img,&#32;uint32_t&#32;flip)&#32;_stdcall;
-116 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_rotate)(<link linkend="_struct_image__t">Image_t</link>&#32;*img,&#32;uint32_t&#32;rotate)&#32;_stdcall;
-117 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_rotate_layer)(<link linkend="_struct_image__t">Image_t</link>*&#32;data,&#32;uint32_t&#32;rotate)&#32;_stdcall;
-118 <emphasis role="keyword">extern</emphasis>&#32;void&#32;&#32;&#32;&#32;&#32;(*img_draw)(<link linkend="_struct_image__t">Image_t</link>&#32;*img,&#32;uint32_t&#32;x,&#32;uint32_t&#32;y,&#32;uint32_t&#32;w,&#32;uint32_t&#32;h,&#32;uint32_t&#32;xoff,&#32;&#32;uint32_t&#32;yoff)&#32;_stdcall;
-119 <emphasis role="keyword">extern</emphasis>&#32;int32_t&#32;&#32;(*img_count)(<link linkend="_struct_image__t">Image_t</link>&#32;*img)&#32;_stdcall;
-120 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_destroy)(<link linkend="_struct_image__t">Image_t</link>&#32;*img)&#32;_stdcall;
-121 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_destroy_layer)(<link linkend="_struct_image__t">Image_t</link>*&#32;img)&#32;_stdcall;
-122 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_blend)(<link linkend="_struct_image__t">Image_t</link>*&#32;dst,&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;src,&#32;uint32_t&#32;out_x,&#32;uint32_t&#32;out_y,&#32;uint32_t&#32;in_x,&#32;uint32_t&#32;in_y,&#32;uint32_t&#32;width,&#32;uint32_t&#32;height)&#32;_stdcall;&#32;
-123 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_convert)(<link linkend="_struct_image__t">Image_t</link>&#32;*src,&#32;<link linkend="_struct_image__t">Image_t</link>&#32;*dst,&#32;uint32_t&#32;dst_type,&#32;uint32_t,&#32;uint32_t)&#32;_stdcall;&#32;
-124 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_resize_data)(<link linkend="_struct_image__t">Image_t</link>&#32;*src,&#32;uint32_t&#32;width,&#32;uint32_t&#32;height)&#32;_stdcall;
-125 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_scale)(<link linkend="_struct_image__t">Image_t</link>*&#32;src,&#32;uint32_t&#32;crop_x,&#32;uint32_t&#32;crop_y,&#32;uint32_t&#32;crop_width,&#32;uint32_t&#32;crop_height,&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;dst,&#32;uint32_t&#32;scale_type,&#32;uint32_t&#32;inter,&#32;uint32_t&#32;new_width,&#32;uint32_t&#32;new_height)&#32;_stdcall;
-126 
-127 
-131 <emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;LoadImageFromFile(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;Path)
-132 {
-133 &#32;&#32;&#32;&#32;int32_t&#32;img_size;
-134 &#32;&#32;&#32;&#32;FILE&#32;*f&#32;=&#32;fopen(Path,&#32;<emphasis role="stringliteral">&quot;rb&quot;</emphasis>);&#32;<emphasis role="comment">//&#32;Этот&#32;код&#32;взят&#32;из&#32;примера&#32;из&#32;/contrib/C_Layer/EXAMPLE/img_example/main.c</emphasis>
-135 
-136 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!f)
-137 &#32;&#32;&#32;&#32;{
-138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;a[]&#32;=&#32;<emphasis role="stringliteral">&quot;LoadImage:&#32;Can&apos;t&#32;open&#32;file:&#32;&quot;</emphasis>;
-139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
-140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
-141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
-142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;&#32;\n&#32;&quot;</emphasis>);
-143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
-144 &#32;&#32;&#32;&#32;}
-145 
-146 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(fseek(f,&#32;0,&#32;SEEK_END))
-147 &#32;&#32;&#32;&#32;{
-148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;a[]&#32;=&#32;<emphasis role="stringliteral">&quot;Can&apos;t&#32;SEEK_END&#32;file:&#32;&quot;</emphasis>;
-149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
-150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
-151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
-152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;&#32;\n&#32;&quot;</emphasis>);
-153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
-154 &#32;&#32;&#32;&#32;}
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_struct_image__t_1ab5d965e72d7aa50923145bc5d2f7e62b">Delay</link>;
+54 
+55 &#32;&#32;&#32;&#32;}&#32;<link linkend="_struct_image__t">Image_t</link>;
+56 <emphasis role="preprocessor">#pragma&#32;pack(pop)</emphasis>
+57 
+59 <emphasis role="keyword">enum</emphasis>&#32;BPP
+60 {
+62 &#32;&#32;&#32;&#32;IMAGE_BPP8i&#32;=&#32;1,
+64 &#32;&#32;&#32;&#32;IMAGE_BPP24&#32;=&#32;2,
+66 &#32;&#32;&#32;&#32;IMAGE_BPP32&#32;=&#32;3,
+67 &#32;&#32;&#32;&#32;IMAGE_BPP15&#32;=&#32;4,
+69 &#32;&#32;&#32;&#32;IMAGE_BPP16&#32;=&#32;5,
+70 &#32;&#32;&#32;&#32;IMAGE_BPP1&#32;=&#32;6,
+72 &#32;&#32;&#32;&#32;IMAGE_BPP8g&#32;=&#32;7,
+73 &#32;&#32;&#32;&#32;IMAGE_BPP2i&#32;=&#32;8,
+74 &#32;&#32;&#32;&#32;IMAGE_BPP4i&#32;=&#32;9,
+75 &#32;&#32;&#32;&#32;IMAGE_BPP8a&#32;=&#32;10
+76 };
+77 
+79 <emphasis role="keyword">enum</emphasis>&#32;Formats
+80 {
+82 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_BMP&#32;=&#32;1,
+84 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_ICO&#32;=&#32;2,
+86 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_CUR&#32;=&#32;3,
+88 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_GIF&#32;=&#32;4,
+90 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_PNG&#32;=&#32;5,
+92 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_JPEG&#32;=&#32;6,
+94 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_TGA&#32;=&#32;7,
+96 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_PCX&#32;=&#32;8,
+98 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_XCF&#32;=&#32;9,
+100 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_TIFF&#32;=&#32;10,
+102 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_PNM&#32;=&#32;11,
+104 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_WBMP&#32;=&#32;12,
+106 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_XBM&#32;=&#32;13,
+107 
+108 &#32;&#32;&#32;&#32;LIBIMG_FORMAT_Z80&#32;=&#32;14
+109 };
+110 
+112 <emphasis role="keyword">enum</emphasis>&#32;Scale
+113 {
+114 &#32;&#32;&#32;&#32;LIBIMG_SCALE_NONE&#32;=&#32;0,
+115 &#32;&#32;&#32;&#32;LIBIMG_SCALE_INTEGER&#32;=&#32;1,
+116 &#32;&#32;&#32;&#32;LIBIMG_SCALE_TILE&#32;=&#32;2,
+117 &#32;&#32;&#32;&#32;LIBIMG_SCALE_STRETCH&#32;=&#32;3,
+118 &#32;&#32;&#32;&#32;LIBIMG_SCALE_FIT_BOTH&#32;=&#32;LIBIMG_SCALE_STRETCH,
+119 &#32;&#32;&#32;&#32;LIBIMG_SCALE_FIT_MIN&#32;=&#32;4,
+120 &#32;&#32;&#32;&#32;LIBIMG_SCALE_FIT_RECT&#32;=&#32;LIBIMG_SCALE_FIT_MIN,
+121 &#32;&#32;&#32;&#32;LIBIMG_SCALE_FIT_WIDTH&#32;=&#32;5,
+122 &#32;&#32;&#32;&#32;LIBIMG_SCALE_FIT_HEIGHT&#32;=&#32;6,
+123 &#32;&#32;&#32;&#32;LIBIMG_SCALE_FIT_MAX&#32;=&#32;7
+124 };&#32;&#32;&#32;
+125 
+127 <emphasis role="keyword">enum</emphasis>&#32;Inter
+128 {
+130 &#32;&#32;&#32;&#32;LIBIMG_INTER_NONE&#32;=&#32;0,
+132 &#32;&#32;&#32;&#32;LIBIMG_INTER_BILINEAR&#32;=&#32;1,
+134 &#32;&#32;&#32;&#32;LIBIMG_INTER_BICUBIC&#32;=&#32;2,
+136 &#32;&#32;&#32;&#32;LIBIMG_INTER_LANCZOS&#32;=&#32;3,
+138 &#32;&#32;&#32;&#32;LIBIMG_INTER_DEFAULT&#32;=&#32;LIBIMG_INTER_BILINEAR
+139 };
+140 
+142 <emphasis role="keyword">enum</emphasis>&#32;Errors
+143 {
+144 &#32;&#32;&#32;&#32;LIBIMG_ERROR_OUT_OF_MEMORY&#32;=&#32;1,
+145 &#32;&#32;&#32;&#32;LIBIMG_ERROR_FORMAT&#32;=&#32;2,
+146 &#32;&#32;&#32;&#32;LIBIMG_ERROR_CONDITIONS&#32;=&#32;3,
+147 &#32;&#32;&#32;&#32;LIBIMG_ERROR_BIT_DEPTH&#32;=&#32;4,
+148 &#32;&#32;&#32;&#32;LIBIMG_ERROR_ENCODER&#32;=&#32;5,
+149 &#32;&#32;&#32;&#32;LIBIMG_ERROR_SRC_TYPE&#32;=&#32;6,
+150 &#32;&#32;&#32;&#32;LIBIMG_ERROR_SCALE&#32;=&#32;7,
+151 &#32;&#32;&#32;&#32;LIBIMG_ERROR_INTER&#32;=&#32;8,
+152 &#32;&#32;&#32;&#32;LIBIMG_ERROR_NOT_INPLEMENTED&#32;=&#32;9,
+153 &#32;&#32;&#32;&#32;LIBIMG_ERROR_INVALID_INPUT&#32;=&#32;10
+154 };
 155 
-156 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;filesize&#32;=&#32;ftell(f);
-157 &#32;&#32;&#32;&#32;rewind(f);
-158 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fdata&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;*)malloc(filesize);
-159 
-160 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!fdata)
-161 &#32;&#32;&#32;&#32;{
-162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;a[]&#32;=&#32;<emphasis role="stringliteral">&quot;No&#32;memory&#32;for&#32;file:&#32;&quot;</emphasis>;
-163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
-164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
-165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
-166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
-167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;malloc&#32;not&#32;return&#32;ptr\n&quot;</emphasis>);
-168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
-169 &#32;&#32;&#32;&#32;}
+157 <emphasis role="keyword">enum</emphasis>&#32;Encode
+158 {
+159 &#32;&#32;&#32;&#32;LIBIMG_ENCODE_STRICT_SPECIFIC&#32;=&#32;0x01,
+160 &#32;&#32;&#32;&#32;LIBIMG_ENCODE_STRICT_BIT_DEPTH&#32;=&#32;0x02,
+161 &#32;&#32;&#32;&#32;LIBIMG_ENCODE_DELETE_ALPHA&#32;=&#32;0x08,
+162 &#32;&#32;&#32;&#32;LIBIMG_ENCODE_FLUSH_ALPHA&#32;=&#32;0x10
+163 };
+164 
+165 <emphasis role="keyword">enum</emphasis>&#32;Flip
+166 {
+167 &#32;&#32;&#32;&#32;FLIP_VERTICAL&#32;=&#32;0x01,
+168 &#32;&#32;&#32;&#32;FLIP_HORIZONTAL&#32;=&#32;0x02
+169 };
 170 
-171 &#32;&#32;&#32;&#32;img_size&#32;=&#32;(int32_t)fread(fdata,&#32;1,&#32;filesize,&#32;f);
-172 
-173 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ferror(f))
-174 &#32;&#32;&#32;&#32;{
-175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a&#32;=&#32;<emphasis role="stringliteral">&quot;Error&#32;reading&#32;file&#32;&quot;</emphasis>;
-176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
-177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
-178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
-179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;&#32;\n&#32;&quot;</emphasis>);
-180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
-181 &#32;&#32;&#32;&#32;}
-182 
-183 &#32;&#32;&#32;&#32;fclose(f);
-184 
-185 &#32;&#32;&#32;&#32;<link linkend="_struct_image__t">Image_t</link>&#32;*buff&#32;=&#32;img_decode((<emphasis role="keywordtype">void</emphasis>&#32;*)fdata,&#32;img_size,&#32;0);
-186 
-187 &#32;&#32;&#32;&#32;free(fdata);
-188 
-189 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;buff;
-190 }
-191 
-192 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;img_fill_color(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;uint32_t&#32;width,&#32;uint32_t&#32;height,&#32;uint32_t&#32;color)&#32;{
-193 &#32;&#32;&#32;&#32;uint32_t&#32;i;
-194 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(i&#32;=&#32;0;&#32;i&#32;&lt;&#32;width*height;&#32;i++)&#32;{
-195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img-&gt;Data[i]&#32;=&#32;color;
-196 &#32;&#32;&#32;&#32;}
-197 }
+171 <emphasis role="keyword">enum</emphasis>&#32;Rotate
+172 {
+173 &#32;&#32;&#32;&#32;ROTATE_90_CW&#32;=&#32;0x01,
+174 &#32;&#32;&#32;&#32;ROTATE_180&#32;=&#32;0x03,
+175 &#32;&#32;&#32;&#32;ROTATE_270_CW&#32;=&#32;0x03,
+176 &#32;&#32;&#32;&#32;ROTATE_90_CCW&#32;=&#32;ROTATE_270_CW,
+177 &#32;&#32;&#32;&#32;ROTATE_270_CCW&#32;=&#32;ROTATE_90_CW
+178 
+179 };
+180 
+181 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_decode)(<emphasis role="keywordtype">void</emphasis>*&#32;file_data,&#32;uint32_t&#32;size,&#32;uint32_t&#32;b_color)&#32;_stdcall;
+182 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_encode)(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;uint32_t&#32;length,&#32;uint32_t&#32;option)&#32;_stdcall;
+183 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_create)(uint32_t&#32;width,&#32;uint32_t&#32;height,&#32;uint32_t&#32;type)&#32;_stdcall;
+184 <emphasis role="keyword">extern</emphasis>&#32;void&#32;&#32;&#32;&#32;&#32;(*img_to_rgb2)(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;<emphasis role="keywordtype">void</emphasis>&#32;*rgb_data)&#32;_stdcall;
+185 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_to_rgb)(<link linkend="_struct_image__t">Image_t</link>*&#32;img)&#32;_stdcall;
+186 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_flip)(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;uint32_t&#32;flip)&#32;_stdcall;
+187 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_flip_layer)(<link linkend="_struct_image__t">Image_t</link>&#32;*img,&#32;uint32_t&#32;flip)&#32;_stdcall;
+188 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_rotate)(<link linkend="_struct_image__t">Image_t</link>&#32;*img,&#32;uint32_t&#32;rotate)&#32;_stdcall;
+189 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_rotate_layer)(<link linkend="_struct_image__t">Image_t</link>*&#32;data,&#32;uint32_t&#32;rotate)&#32;_stdcall;
+190 <emphasis role="keyword">extern</emphasis>&#32;void&#32;&#32;&#32;&#32;&#32;(*img_draw)(<link linkend="_struct_image__t">Image_t</link>&#32;*img,&#32;uint32_t&#32;x,&#32;uint32_t&#32;y,&#32;uint32_t&#32;w,&#32;uint32_t&#32;h,&#32;uint32_t&#32;xoff,&#32;&#32;uint32_t&#32;yoff)&#32;_stdcall;
+191 <emphasis role="keyword">extern</emphasis>&#32;int32_t&#32;&#32;(*img_count)(<link linkend="_struct_image__t">Image_t</link>&#32;*img)&#32;_stdcall;
+192 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_destroy)(<link linkend="_struct_image__t">Image_t</link>&#32;*img)&#32;_stdcall;
+193 <emphasis role="keyword">extern</emphasis>&#32;bool&#32;&#32;&#32;&#32;&#32;(*img_destroy_layer)(<link linkend="_struct_image__t">Image_t</link>*&#32;img)&#32;_stdcall;
+194 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_blend)(<link linkend="_struct_image__t">Image_t</link>*&#32;dst,&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;src,&#32;uint32_t&#32;out_x,&#32;uint32_t&#32;out_y,&#32;uint32_t&#32;in_x,&#32;uint32_t&#32;in_y,&#32;uint32_t&#32;width,&#32;uint32_t&#32;height)&#32;_stdcall;&#32;
+195 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_convert)(<link linkend="_struct_image__t">Image_t</link>&#32;*src,&#32;<link linkend="_struct_image__t">Image_t</link>&#32;*dst,&#32;uint32_t&#32;dst_type,&#32;uint32_t,&#32;uint32_t)&#32;_stdcall;&#32;
+196 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_resize_data)(<link linkend="_struct_image__t">Image_t</link>&#32;*src,&#32;uint32_t&#32;width,&#32;uint32_t&#32;height)&#32;_stdcall;
+197 <emphasis role="keyword">extern</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;&#32;&#32;(*img_scale)(<link linkend="_struct_image__t">Image_t</link>*&#32;src,&#32;uint32_t&#32;crop_x,&#32;uint32_t&#32;crop_y,&#32;uint32_t&#32;crop_width,&#32;uint32_t&#32;crop_height,&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;dst,&#32;uint32_t&#32;scale_type,&#32;uint32_t&#32;inter,&#32;uint32_t&#32;new_width,&#32;uint32_t&#32;new_height)&#32;_stdcall;
 198 
 199 }&#32;<emphasis role="comment">//&#32;extern&#32;&quot;C&quot;</emphasis>
 200 
-201 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_LIBIMG_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
+201 <emphasis role="preprocessor">#ifdef&#32;__MakeStaticLib__</emphasis>
+205 <emphasis role="keyword">inline</emphasis>&#32;<link linkend="_struct_image__t">Image_t</link>*&#32;LoadImageFromFile(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;Path)
+206 {
+207 &#32;&#32;&#32;&#32;int32_t&#32;img_size;
+208 &#32;&#32;&#32;&#32;FILE&#32;*f&#32;=&#32;fopen(Path,&#32;<emphasis role="stringliteral">&quot;rb&quot;</emphasis>);&#32;<emphasis role="comment">//&#32;Этот&#32;код&#32;взят&#32;из&#32;примера&#32;из&#32;/contrib/C_Layer/EXAMPLE/img_example/main.c</emphasis>
+209 
+210 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!f)
+211 &#32;&#32;&#32;&#32;{
+212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;a[]&#32;=&#32;<emphasis role="stringliteral">&quot;LoadImage:&#32;Can&apos;t&#32;open&#32;file:&#32;&quot;</emphasis>;
+213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
+216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;&#32;\n&#32;&quot;</emphasis>);
+217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+218 &#32;&#32;&#32;&#32;}
+219 
+220 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(fseek(f,&#32;0,&#32;SEEK_END))
+221 &#32;&#32;&#32;&#32;{
+222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;a[]&#32;=&#32;<emphasis role="stringliteral">&quot;Can&apos;t&#32;SEEK_END&#32;file:&#32;&quot;</emphasis>;
+223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
+226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;&#32;\n&#32;&quot;</emphasis>);
+227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+228 &#32;&#32;&#32;&#32;}
+229 
+230 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;filesize&#32;=&#32;ftell(f);
+231 &#32;&#32;&#32;&#32;rewind(f);
+232 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*fdata&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>&#32;*)malloc(filesize);
+233 
+234 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!fdata)
+235 &#32;&#32;&#32;&#32;{
+236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;a[]&#32;=&#32;<emphasis role="stringliteral">&quot;No&#32;memory&#32;for&#32;file:&#32;&quot;</emphasis>;
+237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
+240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;malloc&#32;not&#32;return&#32;ptr\n&quot;</emphasis>);
+242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+243 &#32;&#32;&#32;&#32;}
+244 
+245 &#32;&#32;&#32;&#32;img_size&#32;=&#32;(int32_t)fread(fdata,&#32;1,&#32;filesize,&#32;f);
+246 
+247 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(ferror(f))
+248 &#32;&#32;&#32;&#32;{
+249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*a&#32;=&#32;<emphasis role="stringliteral">&quot;Error&#32;reading&#32;file&#32;&quot;</emphasis>;
+250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;*b;
+251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;a);
+252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;Path);
+253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(b,&#32;<emphasis role="stringliteral">&quot;&#32;\n&#32;&quot;</emphasis>);
+254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(b);
+255 &#32;&#32;&#32;&#32;}
+256 
+257 &#32;&#32;&#32;&#32;fclose(f);
+258 
+259 &#32;&#32;&#32;&#32;<link linkend="_struct_image__t">Image_t</link>&#32;*buff&#32;=&#32;img_decode((<emphasis role="keywordtype">void</emphasis>&#32;*)fdata,&#32;img_size,&#32;0);
+260 
+261 &#32;&#32;&#32;&#32;free(fdata);
+262 
+263 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;buff;
+264 }
+265 <emphasis role="preprocessor">#endif</emphasis>
+266 
+267 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;img_fill_color(<link linkend="_struct_image__t">Image_t</link>*&#32;img,&#32;uint32_t&#32;width,&#32;uint32_t&#32;height,&#32;uint32_t&#32;color)&#32;{
+268 &#32;&#32;&#32;&#32;uint32_t&#32;i;
+269 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(i&#32;=&#32;0;&#32;i&#32;&lt;&#32;width*height;&#32;i++)&#32;{
+270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img-&gt;<link linkend="_struct_image__t_1a925d0700ce7381dcd4a5f1d07d79bf8b">Data</link>[i]&#32;=&#32;color;
+271 &#32;&#32;&#32;&#32;}
+272 }
+273 
+277 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;img_fill_color(<link linkend="_struct_image__t">Image_t</link>&#32;*img,&#32;uint32_t&#32;color)
+278 {
+279 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(uint32_t&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;img-&gt;<link linkend="_struct_image__t_1a7f65cc0a1bf3b4f78aec1f3bf2ea9707">Width</link>&#32;*&#32;img-&gt;<link linkend="_struct_image__t_1a724c6884766f30652ad3d5e8ce2cd524">Height</link>;&#32;i++)
+280 &#32;&#32;&#32;&#32;{
+281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;img-&gt;<link linkend="_struct_image__t_1a925d0700ce7381dcd4a5f1d07d79bf8b">Data</link>[i]&#32;=&#32;color;
+282 &#32;&#32;&#32;&#32;}
+283 }
+284 
+285 
+286 
+287 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">/*&#32;KOLIBRI_LIBIMG_H&#32;*/</emphasis><emphasis role="preprocessor"></emphasis>
 </programlisting></section>

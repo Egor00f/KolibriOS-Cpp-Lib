@@ -1,7 +1,7 @@
 var class_kolibri_lib_1_1_u_i_1_1text_1_1_text =
 [
     [ "Text", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a848c43c18bd23bf2c36be5de346d9ee0", null ],
-    [ "~Text", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a0c94663549acb84e05bf203673bdf73e", null ],
+    [ "Text", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#ae4dc7b9436433bb14c182669716c04c5", null ],
     [ "Add", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a6304a4ae03858133d064303a9f4aa640", null ],
     [ "Add", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#af4ad74911003d2d01b88bba3a84782b8", null ],
     [ "Add", "class_kolibri_lib_1_1_u_i_1_1text_1_1_text.html#a658e87b66c50a1a6e6d3d39640dad143", null ],

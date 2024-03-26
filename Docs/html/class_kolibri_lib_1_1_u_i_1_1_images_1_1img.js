@@ -12,5 +12,6 @@ var class_kolibri_lib_1_1_u_i_1_1_images_1_1img =
     [ "Render", "class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#ab5fb3a1da809e7754d51a89ff4834f42", null ],
     [ "SetImg", "class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#af29a0e50b662f1eabd18c8cfdff392a5", null ],
     [ "SetPixel", "class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#a4b5f94fe529dfbc5c2b194b3dd4d1542", null ],
-    [ "SetPixel", "class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#aef269679d129307425b2a257c81778ec", null ]
+    [ "SetPixel", "class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#aef269679d129307425b2a257c81778ec", null ],
+    [ "SetRGBMap", "class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html#a238bee9fee1c1969b78de32f9ccac7b0", null ]
 ];

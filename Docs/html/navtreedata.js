@@ -61,8 +61,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_0dcode-example.html",
-"namespace_kolibri_lib.html#a5538a86d3c38c7c88391e9360e01d023"
+"_kolibri_lib_8hpp_source.html",
+"namespace_kolibri_lib.html#a1de80cbbe233f747756fcf3b5d8640f9"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

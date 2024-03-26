@@ -143,3 +143,12 @@ void img::LoadImage(const filesystem::Path &Path)
 		}
 	}
 }
+
+void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &size)
+{
+	img_resize_data(_img, size.x, size.y);
+	for(unsigned i = 0; i < size.x + size.y; i++)
+	{
+		_img->Data[i] = Colors::RGBtoINT(rgbmap[i]);
+	}
+}

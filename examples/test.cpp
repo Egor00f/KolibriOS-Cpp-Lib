@@ -9,8 +9,13 @@ int main()
 	init();
 	_ksys_debug_puts("test: init done!\n");    
 	window::Window window("Example Window");
-	_ksys_debug_puts("addElement:\n");
-	window.AddElement(UI::text::TextLabel(KolibriLib::Coord(0,0), window.GetWindowSize(), "Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma)));
+
+	_ksys_debug_puts("cretae label\n");
+	UI::text::TextLabel label(KolibriLib::Coord(0,0), window.GetWindowSize(), "Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma));
+
+	_ksys_debug_puts("test: render lable\n");
+	label.Render();
+
 	_ksys_debug_puts("Start Main loop\n");
 	bool exit = false;
 	while (!exit)

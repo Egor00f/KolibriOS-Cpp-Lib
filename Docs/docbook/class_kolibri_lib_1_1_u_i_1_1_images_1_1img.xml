@@ -63,6 +63,10 @@
 
 <para>получить массив rgb_t </para>
 </listitem>
+            <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a238bee9fee1c1969b78de32f9ccac7b0">SetRGBMap</link> (const rgb_t *rgbmap, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size)</para>
+
+<para>Изменить изображение по изображению из rgb_t. </para>
+</listitem>
             <listitem><para><link linkend="_struct_image__t">Image_t</link> * <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a4ca5bf67adb5932568a13fe719ad714a">GetImaget</link> () const</para>
 </listitem>
             <listitem><para><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> <link linkend="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a68f8cf19c39a2d78720415132b70f745">GetSize</link> () const</para>
@@ -418,7 +422,7 @@
                         <tbody>
                             <row>
 <entry>color</entry><entry>
-<para></para>
+<para>новый цвет </para>
 </entry>
                             </row>
                         </tbody>
@@ -468,6 +472,46 @@
                     </para>
                 </formalpara>
                 </para>
+</section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_images_1_1img_1a238bee9fee1c1969b78de32f9ccac7b0"/><section>
+    <title>SetRGBMap()</title>
+<indexterm><primary>SetRGBMap</primary><secondary>KolibriLib::UI::Images::img</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::Images::img</primary><secondary>SetRGBMap</secondary></indexterm>
+<para><computeroutput>void KolibriLib::UI::Images::img::SetRGBMap (const rgb_t * rgbmap, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size)</computeroutput></para><para>
+
+<para>Изменить изображение по изображению из rgb_t. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Аргументы</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rgbmap</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>размер rgbmap </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <note><title>Заметки</title>
+
+<para>Теряется Alpha </para>
+</note>
+</para>
 </section>
 <para>
 Объявления и описания членов класса находятся в файле:</para>

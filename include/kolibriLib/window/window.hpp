@@ -174,7 +174,7 @@ namespace KolibriLib
 			template <class T>
 			/// @brief Добавить UI элемент
 			/// @param element
-			int AddElement(const T &element);
+			int AddElement(const T element);
 
 			template <class T>
 			/// @brief Изменить элемент
@@ -262,9 +262,12 @@ namespace KolibriLib
 		}
 
 		template <class T>
-		int KolibriLib::window::Window::AddElement(const T &element)
+		int KolibriLib::window::Window::AddElement(const T element)
 		{
-			_ksys_debug_puts("Add element\n");
+			#ifdef DEBUG
+			_ksys_debug_puts("Add element-\n");
+			#endif
+
 			Element a;
 
 			a.SetElement(element);
@@ -288,6 +291,7 @@ namespace KolibriLib
 				return;
 			}
 			_ksys_debug_puts("KolibriLib::window::Window::SetElement: i >= _Elements.size(), return\n");
+			return;
 		}
 
 		template <class T>

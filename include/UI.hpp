@@ -9,7 +9,8 @@
 #include <kolibriLib/UI/frame.hpp>
 #include <kolibriLib/UI/image.hpp>
 #include <kolibriLib/UI/menu.hpp>
-#include <kolibriLib/UI/text.hpp>
-#include <kolibriLib/UI/fontslist.hpp>
+#include <kolibriLib/UI/text/textlabel.hpp>
+#include <kolibriLib/UI/text/fonts.hpp>
+#include <kolibriLib/UI/text/fontslist.hpp>
 
 #endif // __UI_H__

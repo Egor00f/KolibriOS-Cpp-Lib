@@ -49,7 +49,7 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord=\fBCoord\fP(0, 0), const \fBSize\fP &size=\fBSize\fP(32, 32), const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -71,9 +71,11 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
+.RI "Изменить цвет "
 .ti -1c
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
+.RI "изменить координаты "
 .ti -1c
 .RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
@@ -90,6 +92,10 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 .RI "bool \fBHover\fP () const"
 .br
 .RI "Проверить лежит ли курсор мыши над элементом "
+.ti -1c
+.RI "virtual void \fBRender\fP ()"
+.br
+.RI "отрисовать элемент "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -108,9 +114,9 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fB~Text\fP ()"
+.RI "\fBText\fP (const std::string &text)"
 .br
-.RI "Деструктор "
+.RI "Конструктор "
 .ti -1c
 .RI "void \fBAdd\fP (const \fBChar\fP &c)"
 .br
@@ -222,10 +228,16 @@ KolibriLib::UI::text::TextLabel \- Текстовая метка
 Текстовая метка 
 
 
-.SS "текстовая метка, ничего особенного\&."
-.SS "важные сведения: текст всегда отрисовывается в середине 
+.PP
+\fBЗаметки\fP
+.RS 4
+Простая текстовая метка, ничего особенного\&. 
+.PP
+Возможно важные сведения: текст всегда отрисовывается в середине 
 .br
-"
+ 
+.RE
+.PP
 
 .SH "Конструктор(ы)"
 .PP 

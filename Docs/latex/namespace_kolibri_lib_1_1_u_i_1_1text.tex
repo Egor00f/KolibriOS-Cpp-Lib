@@ -32,7 +32,13 @@ enum \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7
 , \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a7dec472363cdd5d34ce3ddecde606433}{Align\+Right}} = 0b00010000
 , \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a12e352aac49dd1e92e7f11605add7df5a16fc07ee980cd1ad34b2e65b8cb08fb2}{Align\+Center}} = 0b00100000
  \}
-\begin{DoxyCompactList}\small\item\em Флаги для Raster\+Works. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Флаги для Raster\+Works. \end{DoxyCompactList}\item 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_a08ac20390abf8e19e9df8100a3c1589e}\label{namespace_kolibri_lib_1_1_u_i_1_1text_a08ac20390abf8e19e9df8100a3c1589e} 
+enum {\bfseries Encoding} \{ {\bfseries cp688} = 1
+, {\bfseries UTF8} = 2
+, {\bfseries UTF16\+LE} = 3
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,9 +48,9 @@ void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a873ed429723726e235d
 \begin{DoxyCompactList}\small\item\em Изменить размер текста \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a08d69981e33685971096555be813459f}{Draw\+Text}} (const std\+::string \&text, const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord, const unsigned \&size=9, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text)
 \begin{DoxyCompactList}\small\item\em Просто вывести текст \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images\+::img}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a9596497a1ac3a5b6f146e6a9ba76eb91}{Draw\+Text\+To\+Img}} (const std\+::string \&text, const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&font, unsigned margin, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color\+Text, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Background\+Color)
+\mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images\+::img}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_a06d3f98cb8d674397f08e94f8ce5dd95}{Draw\+Text\+To\+Img}} (const std\+::string \&text, const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&font, unsigned margin, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color\+Text, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Background\+Color, uint8\+\_\+t encoding=Encoding\+::\+UTF8)
 \item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_af628e6f4afcf276e09900d5aee9d25a2}{Draw\+Text}} (const std\+::string \&text, const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&font=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts\+::\+Default\+Font}}, unsigned margin=UI\+::\+Default\+Margin, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color\+Text=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Background\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+area)
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_ad6738e0b71e3dd55f80d25b4efc0844a}{Draw\+Text}} (const std\+::string \&text, const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord, const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&font=\mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts\+::\+Default\+Font}}, unsigned margin=UI\+::\+Default\+Margin, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&color\+Text=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Background\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+area, uint8\+\_\+t encoding=Encoding\+::\+UTF8)
 \begin{DoxyCompactList}\small\item\em Вывести текст \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -98,11 +104,11 @@ Align\+Center&Выравнивание по центру \\
 
 
 \doxysubsection{Функции}
-\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_af628e6f4afcf276e09900d5aee9d25a2}\label{namespace_kolibri_lib_1_1_u_i_1_1text_af628e6f4afcf276e09900d5aee9d25a2} 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_ad6738e0b71e3dd55f80d25b4efc0844a}\label{namespace_kolibri_lib_1_1_u_i_1_1text_ad6738e0b71e3dd55f80d25b4efc0844a} 
 \index{KolibriLib::UI::text@{KolibriLib::UI::text}!DrawText@{DrawText}}
 \index{DrawText@{DrawText}!KolibriLib::UI::text@{KolibriLib::UI::text}}
 \doxysubsubsection{\texorpdfstring{DrawText()}{DrawText()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Draw\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&}]{coord,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&}]{font = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts\+::\+Default\+Font}}},  }\item[{unsigned}]{margin = {\ttfamily UI\+:\+:DefaultMargin},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{color\+Text = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Background\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+area} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::text\+::\+Draw\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&}]{coord,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&}]{font = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_abab58341d8cf9048d474cf45a2e00723}{Fonts\+::\+Default\+Font}}},  }\item[{unsigned}]{margin = {\ttfamily UI\+:\+:DefaultMargin},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{color\+Text = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text},  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Background\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+area},  }\item[{uint8\+\_\+t}]{encoding = {\ttfamily Encoding\+:\+:UTF8} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -148,11 +154,11 @@ Align\+Center&Выравнивание по центру \\
 \begin{DoxyNote}{Заметки}
 Для изменения высоты шрифта используйте \doxylink{namespace_kolibri_lib_1_1_u_i_1_1text_a873ed429723726e235de288ca45b47c0}{Set\+Text\+Size(unsigned)}
 \end{DoxyNote}
-\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_a9596497a1ac3a5b6f146e6a9ba76eb91}\label{namespace_kolibri_lib_1_1_u_i_1_1text_a9596497a1ac3a5b6f146e6a9ba76eb91} 
+\Hypertarget{namespace_kolibri_lib_1_1_u_i_1_1text_a06d3f98cb8d674397f08e94f8ce5dd95}\label{namespace_kolibri_lib_1_1_u_i_1_1text_a06d3f98cb8d674397f08e94f8ce5dd95} 
 \index{KolibriLib::UI::text@{KolibriLib::UI::text}!DrawTextToImg@{DrawTextToImg}}
 \index{DrawTextToImg@{DrawTextToImg}!KolibriLib::UI::text@{KolibriLib::UI::text}}
 \doxysubsubsection{\texorpdfstring{DrawTextToImg()}{DrawTextToImg()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images\+::img}} \texorpdfstring{$\ast$}{*} Kolibri\+Lib\+::\+UI\+::text\+::\+Draw\+Text\+To\+Img (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&}]{font,  }\item[{unsigned}]{margin,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{color\+Text,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Background\+Color }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img}{Images\+::img}} \texorpdfstring{$\ast$}{*} Kolibri\+Lib\+::\+UI\+::text\+::\+Draw\+Text\+To\+Img (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const \mbox{\hyperlink{struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font}{Fonts\+::\+Font}} \&}]{font,  }\item[{unsigned}]{margin,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{color\+Text,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Background\+Color,  }\item[{uint8\+\_\+t}]{encoding = {\ttfamily Encoding\+:\+:UTF8} }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Аргументы}

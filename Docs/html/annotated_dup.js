@@ -46,7 +46,7 @@ var annotated_dup =
     [ "fs_dirheader", "structfs__dirheader.html", null ],
     [ "fsBDFE", "structfs_b_d_f_e.html", null ],
     [ "fsBDFE_16", "structfs_b_d_f_e__16.html", null ],
-    [ "Image_t", "struct_image__t.html", null ],
+    [ "Image_t", "struct_image__t.html", "struct_image__t" ],
     [ "ioctl_t", "structioctl__t.html", null ],
     [ "ipc_buffer", "structipc__buffer.html", null ],
     [ "ipc_message", "structipc__message.html", null ],

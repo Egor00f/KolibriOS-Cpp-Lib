@@ -21,7 +21,7 @@
 <simplesect>
     <title>Открытые члены    </title>
         <itemizedlist>
-            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a33831abb04efdef35c3a895590a60137">UIElement</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord={0, 0}, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size={16, 16}, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
+            <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aeb3d53b3e8e382240c87700e4273e820">UIElement</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord=<link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link>(0, 0), const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size=<link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(32, 32), const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;MainColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_graph, const unsigned &amp;Margin=DefaultMargin, bool relative=false)</para>
 
 <para>Конструктор </para>
 </listitem>
@@ -42,8 +42,12 @@
 <para>Получить осносной цвет элемента </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a969186d6406bb6c11a024e5a91749336">SetColor</link> (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;NewColor)</para>
+
+<para>Изменить цвет </para>
 </listitem>
             <listitem><para>void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a16b029a7f35ee44656c2eb2af211873d">SetCoord</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;NewCoord)</para>
+
+<para>изменить координаты </para>
 </listitem>
             <listitem><para>const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a3f2f4016ffe8414c55cc13c665b0a3a8">GetCoord</link> () const</para>
 
@@ -60,6 +64,10 @@
             <listitem><para>bool <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1acb1303729c55ba615af2562823dd2c8e">Hover</link> () const</para>
 
 <para>Проверить лежит ли курсор мыши над элементом </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a515d066817fa6db183323fb0e6ff7467">Render</link> ()</para>
+
+<para>отрисовать элемент </para>
 </listitem>
             <listitem><para><link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp; <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a55bc7a13f3d7f444e2004adde9b45700">operator=</link> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element">UIElement</link> &amp;Element)</para>
 </listitem>
@@ -111,12 +119,12 @@
 </section>
 <section>
 <title>Конструктор(ы)</title>
-<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a33831abb04efdef35c3a895590a60137"/><section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1aeb3d53b3e8e382240c87700e4273e820"/><section>
     <title>UIElement()</title>
 <indexterm><primary>UIElement</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>UIElement</secondary></indexterm>
-<para><computeroutput>KolibriLib::UI::UIElement::UIElement (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord = <computeroutput>{0,&#160;0}</computeroutput>
-, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size = <computeroutput>{16,&#160;16}</computeroutput>
+<para><computeroutput>KolibriLib::UI::UIElement::UIElement (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord = <computeroutput><link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link>(0,&#160;0)</computeroutput>
+, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size = <computeroutput><link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link>(32,&#160;32)</computeroutput>
 , const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; MainColor = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_graph</computeroutput>
 , const unsigned &amp; Margin = <computeroutput>DefaultMargin</computeroutput>
 , bool relative = <computeroutput>false</computeroutput>
@@ -137,27 +145,27 @@
                         <tbody>
                             <row>
 <entry>coord</entry><entry>
-<para></para>
+<para>координаты </para>
 </entry>
                             </row>
                             <row>
 <entry>size</entry><entry>
-<para></para>
+<para>размер </para>
 </entry>
                             </row>
                             <row>
 <entry>MainColor</entry><entry>
-<para></para>
+<para>основной цвет </para>
 </entry>
                             </row>
                             <row>
 <entry>Margin</entry><entry>
-<para></para>
+<para>отступы </para>
 </entry>
                             </row>
                             <row>
 <entry>relative</entry><entry>
-<para><?linebreak?> </para>
+<para>отностельность </para>
 </entry>
                             </row>
                         </tbody>
@@ -181,7 +189,7 @@
 
 <para><formalpara><title>Возвращает</title>
 
-<para>Функция возвращает <link linkend="_a9b06ab1ff3ebbfd4fad7c34b9d1ea322">_MainColor</link></para>
+<para>Функция возвращает _MainColor </para>
 </formalpara>
 </para>
 </section>
@@ -211,7 +219,7 @@
 
 <para><formalpara><title>Возвращает</title>
 
-<para>Функция возвращает <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a1f504101c3f76fb890f4dc1bf38c637b">_Margin</link></para>
+<para>Функция возвращает _Margin </para>
 </formalpara>
 </para>
 </section>
@@ -226,7 +234,7 @@
 
 <para><formalpara><title>Возвращает</title>
 
-<para>Функция возвращает <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1ab5290f9d9259a6402581a74ca3699a37">_angle</link></para>
+<para>Функция возвращает _angle </para>
 </formalpara>
 </para>
 </section>
@@ -241,7 +249,7 @@
 
 <para><formalpara><title>Возвращает</title>
 
-<para>Функция возвращает <link linkend="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a4094c4e31f3891565dbbbcc5b8de8e3f">_size</link></para>
+<para>Функция возвращает _size </para>
 </formalpara>
 </para>
 </section>
@@ -256,7 +264,7 @@
 
 <para><formalpara><title>Возвращает</title>
 
-<para>true если курсор мыши находится в этом эелементе, иначе false </para>
+<para>true если курсор мыши находится в этом элементе, иначе false </para>
 </formalpara>
 </para>
 </section>
@@ -353,6 +361,17 @@
 </formalpara>
 </para>
 </section>
+<anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a515d066817fa6db183323fb0e6ff7467"/><section>
+    <title>Render()</title>
+<indexterm><primary>Render</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
+<indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>Render</secondary></indexterm>
+<para><computeroutput>virtual void KolibriLib::UI::UIElement::Render ( )<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>отрисовать элемент </para>
+</para>
+<para>
+Переопределяется в <link linkend="_class_kolibri_lib_1_1_u_i_1_1_check_box_1aba21f5e09a9b4908cb82766844dedd40">KolibriLib::UI::CheckBox</link>, <link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame_1a9d8f7281a9cbc096a51839b01045a66a">KolibriLib::UI::Frame</link> и <link linkend="_class_kolibri_lib_1_1_u_i_1_1_menu_1aa69ce5e2c73c2251acd408aac65fa58b">KolibriLib::UI::Menu</link>.</para>
+</section>
 <anchor xml:id="_class_kolibri_lib_1_1_u_i_1_1_u_i_element_1a983464b962931621091affaa11f0472a"/><section>
     <title>Rotate()</title>
 <indexterm><primary>Rotate</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
@@ -388,7 +407,11 @@
     <title>SetColor()</title>
 <indexterm><primary>SetColor</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>SetColor</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::UIElement::SetColor (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; NewColor)</computeroutput></para>
+<para><computeroutput>void KolibriLib::UI::UIElement::SetColor (const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; NewColor)</computeroutput></para><para>
+
+<para>Изменить цвет </para>
+</para>
+
 <para>
                 <formalpara>
                     <title>
@@ -401,7 +424,7 @@
                         <tbody>
                             <row>
 <entry>NewColor</entry><entry>
-<para><?linebreak?> </para>
+<para>новый цвет </para>
 </entry>
                             </row>
                         </tbody>
@@ -415,7 +438,11 @@
     <title>SetCoord()</title>
 <indexterm><primary>SetCoord</primary><secondary>KolibriLib::UI::UIElement</secondary></indexterm>
 <indexterm><primary>KolibriLib::UI::UIElement</primary><secondary>SetCoord</secondary></indexterm>
-<para><computeroutput>void KolibriLib::UI::UIElement::SetCoord (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; NewCoord)</computeroutput></para>
+<para><computeroutput>void KolibriLib::UI::UIElement::SetCoord (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; NewCoord)</computeroutput></para><para>
+
+<para>изменить координаты </para>
+</para>
+
 <para>
                 <formalpara>
                     <title>
@@ -428,7 +455,7 @@
                         <tbody>
                             <row>
 <entry>NewCoord</entry><entry>
-<para><?linebreak?> </para>
+<para>новые координаты </para>
 </entry>
                             </row>
                         </tbody>

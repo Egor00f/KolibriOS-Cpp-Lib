@@ -5,7 +5,7 @@
 
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
-#include <kolibriLib/UI/text.hpp>
+#include <kolibriLib/UI/text/textlabel.hpp>
 #include <kolibriLib/UI/button.hpp>
 #include <input.hpp>
 #include <kolibriLib/color.hpp>

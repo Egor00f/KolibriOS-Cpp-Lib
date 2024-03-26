@@ -5,7 +5,7 @@ var searchData=
   ['filesystem_20br_2',['пространство имён этакий аналог стандартной библиотеки &lt;filesystem&gt;  &lt;br&gt;',['../namespace_kolibri_lib_1_1filesystem.html#Это',1,'']]],
   ['fixsize_3',['FixSize',['../namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a82a7abe67023e161d701d6a16731f2da',1,'KolibriLib::window']]],
   ['fixsizewithskin_4',['FixSizewithSkin',['../namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d',1,'KolibriLib::window']]],
-  ['flags_5',['Flags',['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a12e352aac49dd1e92e7f11605add7df5',1,'KolibriLib::UI::text']]],
+  ['flags_5',['Flags',['../struct_image__t.html#a7febbffbc146c6f9e3c83fae7a2cc87a',1,'Image_t::Flags'],['../namespace_kolibri_lib_1_1_u_i_1_1text.html#a12e352aac49dd1e92e7f11605add7df5',1,'KolibriLib::UI::text::Flags']]],
   ['focus_6',['Focus',['../class_kolibri_lib_1_1window_1_1_window.html#af24f1580a621e0f7047fc3bbb5138d16',1,'KolibriLib::window::Window']]],
   ['focuswindow_7',['FocusWindow',['../namespace_kolibri_lib_1_1window.html#a8522ac0eb50e9a7b5ce0091e5fc9d257',1,'KolibriLib::window']]],
   ['font_8',['Font',['../struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font.html',1,'KolibriLib::UI::text::Fonts::Font'],['../struct_kolibri_lib_1_1_u_i_1_1text_1_1_fonts_1_1_font.html#afb5406ffd3cf049424c553fcc16e204a',1,'KolibriLib::UI::text::Fonts::Font::Font()']]],

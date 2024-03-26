@@ -53,20 +53,20 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a4b55971bca493db19ccb0a807d018c03" prot="public">
+          <name>WindowHaveTitle</name>
+          <initializer>= 0b00010000</initializer>
+          <briefdescription>
+<para>у окна есть заголовок </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <enumvalue id="namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd" prot="public">
           <name>NoDrawWorkspace</name>
           <initializer>= 0b01000000</initializer>
           <briefdescription>
 <para>не закрашивать рабочую область при отрисовке окна </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb" prot="public">
-          <name>NormalDraw</name>
-          <initializer>= 0b00000000</initializer>
-          <briefdescription>
-<para>нормальная заливка рабочей области </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="113" column="1" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="114" bodyend="119"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="114" column="1" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="115" bodyend="120"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -309,10 +309,10 @@
         </inbodydescription>
         <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp" line="257" column="1" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/window.hpp" bodystart="257" bodyend="262"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a4efb6a0d4df27882168f79c771f875a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1add96c1b0dec1400b7f69b8d50e4a0a2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void KolibriLib::window::CreateWindow</definition>
-        <argsstring>(const Coord &amp;coord, const Size &amp;size, const std::string &amp;title, const Colors::Color &amp;WorkColor=OS::GetSystemColors().frame_area, Colors::Color TitleColor=OS::GetSystemColors().work_text, uint32_t style=WindowStyle::CanResize+WindowStyle::NormalDraw)</argsstring>
+        <argsstring>(const Coord &amp;coord, const Size &amp;size, const std::string &amp;title, const Colors::Color &amp;WorkColor=OS::GetSystemColors().work_area, Colors::Color TitleColor=OS::GetSystemColors().work_text, uint32_t style=WindowStyle::CanResize)</argsstring>
         <name>CreateWindow</name>
         <qualifiedname>KolibriLib::window::CreateWindow</qualifiedname>
         <param>
@@ -330,7 +330,7 @@
         <param>
           <type>const <ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref> &amp;</type>
           <declname>WorkColor</declname>
-          <defval><ref refid="namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf" kindref="member">OS::GetSystemColors</ref>().frame_area</defval>
+          <defval><ref refid="namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf" kindref="member">OS::GetSystemColors</ref>().work_area</defval>
         </param>
         <param>
           <type><ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref></type>
@@ -340,7 +340,7 @@
         <param>
           <type>uint32_t</type>
           <declname>style</declname>
-          <defval><ref refid="namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e" kindref="member">WindowStyle::CanResize</ref>+<ref refid="namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb" kindref="member">WindowStyle::NormalDraw</ref></defval>
+          <defval><ref refid="namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e" kindref="member">WindowStyle::CanResize</ref></defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -398,7 +398,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="57" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="57" bodyend="60"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="57" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="57" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -427,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="64" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="64" bodyend="67"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="65" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="65" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a8522ac0eb50e9a7b5ce0091e5fc9d257" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -456,7 +456,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="71" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="71" bodyend="74"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="72" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1af86ed52f97ce1b6925d0faabc8a0ebe1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51" kindref="member">Thread::Slot</ref></type>
@@ -474,7 +474,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="78" column="21" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="78" bodyend="87"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="79" column="21" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="79" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a1e8e470c8a52494478a075c0c4b10c07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -489,7 +489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="90" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="90" bodyend="96"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="91" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="91" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a91e8114838ac0faa6b26cb1763643a92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -504,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="99" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="99" bodyend="105"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="100" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="100" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a0967b5d59bd2f60559fe29fdaaffd6c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff" kindref="member">Coord</ref></type>
@@ -518,7 +518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="107" column="14" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="107" bodyend="110"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="108" column="14" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="108" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a250b79696e71e4db883c35beac60b0a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -536,7 +536,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="123" column="12" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="123" bodyend="131"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="124" column="12" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="124" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a7a45146a32e2035cedd93968251b5831" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -570,7 +570,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="137" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="137" bodyend="145"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="138" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="138" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="namespace_kolibri_lib_1_1window_1a9b4d6e11048953c9f7a1e530f135fb20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
@@ -588,7 +588,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="150" column="17" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="150" bodyend="153"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" line="151" column="17" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/window/windowBase.hpp" bodystart="151" bodyend="154"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

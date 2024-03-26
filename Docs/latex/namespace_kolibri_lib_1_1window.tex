@@ -20,8 +20,8 @@ enum \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b
 , \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573}{with\+Skin}} = 3
 , \newline
 \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d}{Fix\+Sizewith\+Skin}} = 4
+, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a4b55971bca493db19ccb0a807d018c03}{Window\+Have\+Title}} = 0b00010000
 , \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd}{No\+Draw\+Workspace}} = 0b01000000
-, \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}{Normal\+Draw}} = 0b00000000
 , \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218}{Gradient\+Draw}} = 0b10000000
  \}
 \item 
@@ -56,7 +56,7 @@ template$<$$>$ void {\bfseries Kolibri\+Lib\+::window\+::\+Window\+::\+Element\+
 \Hypertarget{namespace_kolibri_lib_1_1window_a0452d19f7ae680a5a9e01b8e77c0a70e}\label{namespace_kolibri_lib_1_1window_a0452d19f7ae680a5a9e01b8e77c0a70e} 
 template$<$$>$ void {\bfseries Kolibri\+Lib\+::window\+::\+Window\+::\+Element\+::\+Set\+Element$<$ Kolibri\+Lib\+::\+UI\+::\+Frame $>$} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_frame}{Kolibri\+Lib\+::\+UI\+::\+Frame}} \&elem)
 \item 
-void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_a4efb6a0d4df27882168f79c771f875a0}{Create\+Window}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord, const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size, const std\+::string \&title, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Work\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().frame\+\_\+area, \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Title\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text, uint32\+\_\+t style=\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}{Window\+Style\+::\+Can\+Resize}}+\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}{Window\+Style\+::\+Normal\+Draw}})
+void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_add96c1b0dec1400b7f69b8d50e4a0a2c}{Create\+Window}} (const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&coord, const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size, const std\+::string \&title, const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&Work\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+area, \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} Title\+Color=\mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text, uint32\+\_\+t style=\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}{Window\+Style\+::\+Can\+Resize}})
 \item 
 void \mbox{\hyperlink{namespace_kolibri_lib_1_1window_ac230d3b4ccb7fb8668ce4e2e8cb30c88}{Unfocus\+Window}} (\mbox{\hyperlink{namespace_kolibri_lib_1_1_thread_ac583b7a88e5bddeab393a41bf9929c51}{Thread\+::\+Slot}} slot)
 \begin{DoxyCompactList}\small\item\em Снять фокус с окна \end{DoxyCompactList}\item 
@@ -121,12 +121,12 @@ with\+Skin&окно со скином \\
 Fix\+Sizewith\+Skin&окно со скином фиксированных размеров \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NoDrawWorkspace@{NoDrawWorkspace}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!NoDrawWorkspace@{NoDrawWorkspace}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd} 
-No\+Draw\+Workspace&не закрашивать рабочую область при отрисовке окна \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WindowHaveTitle@{WindowHaveTitle}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!WindowHaveTitle@{WindowHaveTitle}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a4b55971bca493db19ccb0a807d018c03}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a4b55971bca493db19ccb0a807d018c03} 
+Window\+Have\+Title&у окна есть заголовок \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NormalDraw@{NormalDraw}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!NormalDraw@{NormalDraw}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb} 
-Normal\+Draw&нормальная заливка рабочей области \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoDrawWorkspace@{NoDrawWorkspace}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!NoDrawWorkspace@{NoDrawWorkspace}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd} 
+No\+Draw\+Workspace&не закрашивать рабочую область при отрисовке окна \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{GradientDraw@{GradientDraw}!KolibriLib::window@{KolibriLib::window}}\index{KolibriLib::window@{KolibriLib::window}!GradientDraw@{GradientDraw}}}\Hypertarget{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218}\label{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218} 
@@ -137,11 +137,11 @@ Gradient\+Draw&градиентная заливка рабочей област
 
 
 \doxysubsection{Функции}
-\Hypertarget{namespace_kolibri_lib_1_1window_a4efb6a0d4df27882168f79c771f875a0}\label{namespace_kolibri_lib_1_1window_a4efb6a0d4df27882168f79c771f875a0} 
+\Hypertarget{namespace_kolibri_lib_1_1window_add96c1b0dec1400b7f69b8d50e4a0a2c}\label{namespace_kolibri_lib_1_1window_add96c1b0dec1400b7f69b8d50e4a0a2c} 
 \index{KolibriLib::window@{KolibriLib::window}!CreateWindow@{CreateWindow}}
 \index{CreateWindow@{CreateWindow}!KolibriLib::window@{KolibriLib::window}}
 \doxysubsubsection{\texorpdfstring{CreateWindow()}{CreateWindow()}}
-{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&}]{coord,  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&}]{size,  }\item[{const std\+::string \&}]{title,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Work\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().frame\+\_\+area},  }\item[{\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Title\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text},  }\item[{uint32\+\_\+t}]{style = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}{Window\+Style\+::\+Can\+Resize}}~+~\mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb}{Window\+Style\+::\+Normal\+Draw}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::window\+::\+Create\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespace_kolibri_lib_aa4d36453273d28042aad9d1065b058ff}{Coord}} \&}]{coord,  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&}]{size,  }\item[{const std\+::string \&}]{title,  }\item[{const \mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}} \&}]{Work\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+area},  }\item[{\mbox{\hyperlink{union_kolibri_lib_1_1_colors_1_1_color}{Colors\+::\+Color}}}]{Title\+Color = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1_o_s_a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf}{OS\+::\+Get\+System\+Colors}}().work\+\_\+text},  }\item[{uint32\+\_\+t}]{style = {\ttfamily \mbox{\hyperlink{namespace_kolibri_lib_1_1window_af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e}{Window\+Style\+::\+Can\+Resize}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 \begin{DoxyParams}{Аргументы}

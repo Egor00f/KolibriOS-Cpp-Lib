@@ -23,7 +23,10 @@ CFLAGS = -c -std=c++11 -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fom
 # Папка в которой лежат cpp файлы
 SRC_PATH = src
 
-SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/fonts.cpp $(SRC_PATH)/thread.cpp $(SRC_PATH)/types.cpp $(SRC_PATH)/textBase.cpp $(SRC_PATH)/img.cpp $(SRC_PATH)/UI.cpp $(SRC_PATH)/image.cpp
+SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/fonts.cpp \
+$(SRC_PATH)/thread.cpp $(SRC_PATH)/types.cpp $(SRC_PATH)/textBase.cpp $(SRC_PATH)/img.cpp $(SRC_PATH)/UI.cpp $(SRC_PATH)/image.cpp \
+$(SRC_PATH)/char.cpp $(SRC_PATH)/text.cpp
+
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 

@@ -52,7 +52,7 @@ Menu::Menu(const Coord &coord, const Size &size, const std::vector<std::string> 
 {
     for (int i = 0; i < li.size(); i++)
     {
-        buttons::Button btn({coord.x, coord.y + ((int)(size.y / li.size()) * i)}, {size.x, size.y / li.size()}, Margin, color);
+        buttons::Button btn(Coord(coord.x, coord.y + ((size.y / li.size()) * i)), Size(size.x, size.y / li.size()), Margin, color);
         btn.insert(li[i], 0);
         _Buttons.push_back(btn);
     }

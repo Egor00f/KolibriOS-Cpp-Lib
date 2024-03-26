@@ -83,3 +83,8 @@ bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 {
 	return (_coord != Element._coord) || (_size != Element._size) || (_MainColor != Element._MainColor) || (_angle != Element._angle);
 }
+
+void KolibriLib::UI::UIElement::Render()
+{
+	graphic::DrawRectangleFill(_coord, _size, _MainColor);
+}

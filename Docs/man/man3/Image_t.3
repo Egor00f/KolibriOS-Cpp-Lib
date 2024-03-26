@@ -2,22 +2,28 @@
 .ad l
 .nh
 .SH NAME
-Image_t
+Image_t \- Image\&.  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <kolibri_libimg\&.h>\fP
 .SS "Открытые атрибуты"
 
 .in +1c
 .ti -1c
 .RI "uint32_t \fBChecksum\fP"
 .br
+.RI "((Width ROL 16) OR Height) XOR Data[0] "
 .ti -1c
 .RI "uint32_t \fBWidth\fP"
 .br
+.RI "Image width\&. "
 .ti -1c
 .RI "uint32_t \fBHeight\fP"
 .br
+.RI "Image height\&. "
 .ti -1c
 .RI "uint32_t \fBNext\fP"
 .br
@@ -27,22 +33,43 @@ Image_t
 .ti -1c
 .RI "uint32_t \fBType\fP"
 .br
+.RI "One of Image bppN\&. "
 .ti -1c
 .RI "uint32_t * \fBData\fP"
 .br
+.RI "Image, array of colors\&. "
 .ti -1c
 .RI "uint32_t \fBPalette\fP"
 .br
+.RI "Used if Type eq Image\&.bpp1, Image\&.bpp2, Image\&.bpp4 or Image\&.bpp8i\&. "
 .ti -1c
 .RI "uint32_t \fBExtended\fP"
 .br
 .ti -1c
 .RI "uint32_t \fBFlags\fP"
 .br
+.RI "Bitfield\&. "
 .ti -1c
 .RI "uint32_t \fBDelay\fP"
 .br
+.RI "Used if Image is animated is set in Flags\&. "
 .in -1c
+.SH "Подробное описание"
+.PP 
+Image\&. 
+.SH "Данные класса"
+.PP 
+.SS "uint32_t Image_t::Checksum"
+
+.PP
+((Width ROL 16) OR Height) XOR Data[0] 
+.PP
+\fBЗаметки\fP
+.RS 4
+Ignored so far 
+.RE
+.PP
+
 
 .SH "Автор"
 .PP 

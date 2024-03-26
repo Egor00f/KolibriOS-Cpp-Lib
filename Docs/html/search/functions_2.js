@@ -8,5 +8,5 @@ var searchData=
   ['color_5',['Color',['../union_kolibri_lib_1_1_colors_1_1_color.html#a6850297f0cf19caec6dc0b769f6f5537',1,'KolibriLib::Colors::Color']]],
   ['createfile_6',['CreateFile',['../namespace_kolibri_lib_1_1filesystem.html#ac1f53038467ce2fe309f448c9e0f2f72',1,'KolibriLib::filesystem']]],
   ['createthread_7',['CreateThread',['../namespace_kolibri_lib_1_1_thread.html#a692c4300c1ca95211eabb91947518cf2',1,'KolibriLib::Thread']]],
-  ['createwindow_8',['CreateWindow',['../namespace_kolibri_lib_1_1window.html#a4efb6a0d4df27882168f79c771f875a0',1,'KolibriLib::window']]]
+  ['createwindow_8',['CreateWindow',['../namespace_kolibri_lib_1_1window.html#add96c1b0dec1400b7f69b8d50e4a0a2c',1,'KolibriLib::window']]]
 ];

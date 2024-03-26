@@ -24,8 +24,8 @@
 , <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">CanResize</link> = 2
 , <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573">withSkin</link> = 3
 , <?linebreak?><link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d">FixSizewithSkin</link> = 4
+, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a4b55971bca493db19ccb0a807d018c03">WindowHaveTitle</link> = 0b00010000
 , <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd">NoDrawWorkspace</link> = 0b01000000
-, <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">NormalDraw</link> = 0b00000000
 , <link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218">GradientDraw</link> = 0b10000000
  }</para>
 </listitem>
@@ -56,7 +56,7 @@
 </listitem>
             <listitem><para><anchor xml:id="_namespace_kolibri_lib_1_1window_1a0452d19f7ae680a5a9e01b8e77c0a70e"/>template&lt;&gt; </para><para>void <emphasis role="strong">KolibriLib::window::Window::Element::SetElement&lt; KolibriLib::UI::Frame &gt;</emphasis> (const <link linkend="_class_kolibri_lib_1_1_u_i_1_1_frame">KolibriLib::UI::Frame</link> &amp;elem)</para>
 </listitem>
-            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1a4efb6a0d4df27882168f79c771f875a0">CreateWindow</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size, const std::string &amp;title, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;WorkColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().frame_area, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> TitleColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_text, uint32_t style=<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">WindowStyle::CanResize</link>+<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">WindowStyle::NormalDraw</link>)</para>
+            <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1add96c1b0dec1400b7f69b8d50e4a0a2c">CreateWindow</link> (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp;coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp;size, const std::string &amp;title, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp;WorkColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_area, <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> TitleColor=<link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_text, uint32_t style=<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">WindowStyle::CanResize</link>)</para>
 </listitem>
             <listitem><para>void <link linkend="_namespace_kolibri_lib_1_1window_1ac230d3b4ccb7fb8668ce4e2e8cb30c88">UnfocusWindow</link> (<link linkend="_namespace_kolibri_lib_1_1_thread_1ac583b7a88e5bddeab393a41bf9929c51">Thread::Slot</link> slot)</para>
 
@@ -144,14 +144,14 @@
 <indexterm><primary>KolibriLib::window</primary><secondary>FixSizewithSkin</secondary></indexterm>
 <anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d"/>FixSizewithSkin</entry><entry>
 <para>окно со скином фиксированных размеров </para>
+</entry></row><row><entry><indexterm><primary>WindowHaveTitle</primary><secondary>KolibriLib::window</secondary></indexterm>
+<indexterm><primary>KolibriLib::window</primary><secondary>WindowHaveTitle</secondary></indexterm>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a4b55971bca493db19ccb0a807d018c03"/>WindowHaveTitle</entry><entry>
+<para>у окна есть заголовок </para>
 </entry></row><row><entry><indexterm><primary>NoDrawWorkspace</primary><secondary>KolibriLib::window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window</primary><secondary>NoDrawWorkspace</secondary></indexterm>
 <anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd"/>NoDrawWorkspace</entry><entry>
 <para>не закрашивать рабочую область при отрисовке окна </para>
-</entry></row><row><entry><indexterm><primary>NormalDraw</primary><secondary>KolibriLib::window</secondary></indexterm>
-<indexterm><primary>KolibriLib::window</primary><secondary>NormalDraw</secondary></indexterm>
-<anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb"/>NormalDraw</entry><entry>
-<para>нормальная заливка рабочей области </para>
 </entry></row><row><entry><indexterm><primary>GradientDraw</primary><secondary>KolibriLib::window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window</primary><secondary>GradientDraw</secondary></indexterm>
 <anchor xml:id="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218"/>GradientDraw</entry><entry>
@@ -163,13 +163,13 @@
 </section>
 <section>
 <title>Функции</title>
-<anchor xml:id="_namespace_kolibri_lib_1_1window_1a4efb6a0d4df27882168f79c771f875a0"/><section>
+<anchor xml:id="_namespace_kolibri_lib_1_1window_1add96c1b0dec1400b7f69b8d50e4a0a2c"/><section>
     <title>CreateWindow()</title>
 <indexterm><primary>CreateWindow</primary><secondary>KolibriLib::window</secondary></indexterm>
 <indexterm><primary>KolibriLib::window</primary><secondary>CreateWindow</secondary></indexterm>
-<para><computeroutput>void KolibriLib::window::CreateWindow (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size, const std::string &amp; title, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; WorkColor = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().frame_area</computeroutput>
+<para><computeroutput>void KolibriLib::window::CreateWindow (const <link linkend="_namespace_kolibri_lib_1aa4d36453273d28042aad9d1065b058ff">Coord</link> &amp; coord, const <link linkend="_namespace_kolibri_lib_1ab59db84b9e43745d40d7b9ff8f06f2fb">Size</link> &amp; size, const std::string &amp; title, const <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> &amp; WorkColor = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_area</computeroutput>
 , <link linkend="_union_kolibri_lib_1_1_colors_1_1_color">Colors::Color</link> TitleColor = <computeroutput><link linkend="_namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf">OS::GetSystemColors</link>().work_text</computeroutput>
-, uint32_t style = <computeroutput><link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">WindowStyle::CanResize</link>&#160;+&#160;<link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb">WindowStyle::NormalDraw</link></computeroutput>
+, uint32_t style = <computeroutput><link linkend="_namespace_kolibri_lib_1_1window_1af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e">WindowStyle::CanResize</link></computeroutput>
 )<computeroutput>[inline]</computeroutput></computeroutput></para>
 <para>
                 <formalpara>

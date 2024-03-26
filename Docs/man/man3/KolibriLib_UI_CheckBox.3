@@ -38,7 +38,7 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 Открытые члены унаследованные от \fBKolibriLib::UI::buttons::Button\fP
 .in +1c
 .ti -1c
-.RI "\fBButton\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={20, 20}, unsigned Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=\fBOS::GetSystemColors\fP()\&.work_button)"
+.RI "\fBButton\fP (const \fBCoord\fP &coord=\fBCoord\fP(0, 0), const \fBSize\fP &size=\fBSize\fP(20, 20), unsigned Margin=UI::DefaultMargin, const \fBColors::Color\fP &ButtonColor=\fBOS::GetSystemColors\fP()\&.work_button)"
 .br
 .RI "Это конструктор "
 .ti -1c
@@ -108,7 +108,7 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord=\fBCoord\fP(0, 0), const \fBSize\fP &size=\fBSize\fP(32, 32), const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -130,9 +130,11 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
+.RI "Изменить цвет "
 .ti -1c
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
+.RI "изменить координаты "
 .ti -1c
 .RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
@@ -167,9 +169,9 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 .br
 .RI "Конструктор "
 .ti -1c
-.RI "\fB~Text\fP ()"
+.RI "\fBText\fP (const std::string &text)"
 .br
-.RI "Деструктор "
+.RI "Конструктор "
 .ti -1c
 .RI "void \fBAdd\fP (const \fBChar\fP &c)"
 .br
@@ -310,6 +312,14 @@ KolibriLib::UI::CheckBox \- Класс для работы с чекбоксам
 .RE
 .PP
 
+.SH "Методы"
+.PP 
+.SS "void KolibriLib::UI::CheckBox::Render ()\fR [virtual]\fP"
+
+.PP
+Отрисовать Checkbox\&. 
+.PP
+Переопределяет метод предка \fBKolibriLib::UI::UIElement\fP\&.
 
 .SH "Автор"
 .PP 

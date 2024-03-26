@@ -5,7 +5,7 @@
 
 #include <kolibriLib/graphic/graphic.hpp>
 #include "UI.hpp"
-#include "text.hpp"
+#include "text/textlabel.hpp"
 #include "button.hpp"
 #include "form.hpp"
 #include "image.hpp"

@@ -22,9 +22,9 @@
 21 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1a79cea121a31a0a2da904f088c3484802">init</link>()
 22 &#32;&#32;&#32;&#32;{
 23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(kolibri_libimg_init()&#32;!=&#32;-1)
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(kolibri_libimg_init()&#32;==&#32;-1)
 25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;loading&#32;lib_img.obj,&#32;exit\n&quot;</emphasis>);
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;loading&#32;libimg.obj,&#32;exit\n&quot;</emphasis>);
 27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);
 28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 29 
@@ -34,12 +34,16 @@
 33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;exit(0);</emphasis>
 34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//}</emphasis>
 35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kolibri_rasterworks_init();
-37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
-38 &#32;&#32;&#32;&#32;}
-39 }
-40 
-41 
-42 
-43 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BASE_H__</emphasis>
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(kolibri_rasterworks_init()&#32;==&#32;-1)
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_debug_puts(<emphasis role="stringliteral">&quot;Error&#32;loading&#32;RasterWorks,&#32;exit\n&#32;&quot;</emphasis>);
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(0);
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+42 &#32;&#32;&#32;&#32;}
+43 }
+44 
+45 
+46 
+47 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__BASE_H__</emphasis>
 </programlisting></section>

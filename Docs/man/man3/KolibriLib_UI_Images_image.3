@@ -33,7 +33,7 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord=\fBCoord\fP(0, 0), const \fBSize\fP &size=\fBSize\fP(32, 32), const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -55,9 +55,11 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
+.RI "Изменить цвет "
 .ti -1c
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
+.RI "изменить координаты "
 .ti -1c
 .RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
@@ -74,6 +76,10 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 .RI "bool \fBHover\fP () const"
 .br
 .RI "Проверить лежит ли курсор мыши над элементом "
+.ti -1c
+.RI "virtual void \fBRender\fP ()"
+.br
+.RI "отрисовать элемент "
 .ti -1c
 .RI "\fBUIElement\fP & \fBoperator=\fP (const \fBUIElement\fP &Element)"
 .br
@@ -130,6 +136,10 @@ KolibriLib::UI::Images::Image \- Картинка как элемент инте
 .RI "rgb_t * \fBGetRGBMap\fP () const"
 .br
 .RI "получить массив rgb_t "
+.ti -1c
+.RI "void \fBSetRGBMap\fP (const rgb_t *rgbmap, const \fBSize\fP &size)"
+.br
+.RI "Изменить изображение по изображению из rgb_t\&. "
 .ti -1c
 .RI "\fBImage_t\fP * \fBGetImaget\fP () const"
 .br

@@ -13,11 +13,11 @@ var namespace_kolibri_lib_1_1window =
       [ "CanResize", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3ae1b6e2066477f6b4ad1b746f27b3ed4e", null ],
       [ "withSkin", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a48f4ce149dde530a52a5cae2960ff573", null ],
       [ "FixSizewithSkin", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3aa55ea9bbd14415e821b5687bc5d0845d", null ],
+      [ "WindowHaveTitle", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a4b55971bca493db19ccb0a807d018c03", null ],
       [ "NoDrawWorkspace", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a96343d8bb6ab6cf4e43457156dd9a1cd", null ],
-      [ "NormalDraw", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3a26c600ed61b038f96324592065b013fb", null ],
       [ "GradientDraw", "namespace_kolibri_lib_1_1window.html#af574e171423936362ed377f0b72a73e3aefab60a60b546ca487f58a2909ca1218", null ]
     ] ],
-    [ "CreateWindow", "namespace_kolibri_lib_1_1window.html#a4efb6a0d4df27882168f79c771f875a0", null ],
+    [ "CreateWindow", "namespace_kolibri_lib_1_1window.html#add96c1b0dec1400b7f69b8d50e4a0a2c", null ],
     [ "FocusWindow", "namespace_kolibri_lib_1_1window.html#a8522ac0eb50e9a7b5ce0091e5fc9d257", null ],
     [ "GetActiveWindow", "namespace_kolibri_lib_1_1window.html#af86ed52f97ce1b6925d0faabc8a0ebe1", null ],
     [ "GetSkinHeight", "namespace_kolibri_lib_1_1window.html#a9b4d6e11048953c9f7a1e530f135fb20", null ],

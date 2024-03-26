@@ -38,6 +38,9 @@ KolibriLib::UI::text \- Работа с тектсом
 .RI "enum \fBFlags\fP { \fBNormal\fP = 0b0000, \fBBold\fP = 0b1, \fBItalic\fP = 0b10, \fBUnderline\fP = 0b100, \fBStrikeThrough\fP = 0b1000, \fBAlignRight\fP = 0b00010000, \fBAlignCenter\fP = 0b00100000 }"
 .br
 .RI "Флаги для RasterWorks\&. "
+.ti -1c
+.RI "enum \fBEncoding\fP { \fBcp688\fP = 1, \fBUTF8\fP = 2, \fBUTF16LE\fP = 3 }"
+.br
 .in -1c
 .SS "Функции"
 
@@ -55,10 +58,10 @@ KolibriLib::UI::text \- Работа с тектсом
 .br
 .RI "Просто вывести текст "
 .ti -1c
-.RI "\fBImages::img\fP * \fBDrawTextToImg\fP (const std::string &text, const \fBFonts::Font\fP &font, unsigned margin, const \fBColors::Color\fP &colorText, const \fBColors::Color\fP &BackgroundColor)"
+.RI "\fBImages::img\fP * \fBDrawTextToImg\fP (const std::string &text, const \fBFonts::Font\fP &font, unsigned margin, const \fBColors::Color\fP &colorText, const \fBColors::Color\fP &BackgroundColor, uint8_t encoding=Encoding::UTF8)"
 .br
 .ti -1c
-.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.work_area)"
+.RI "void \fBDrawText\fP (const std::string &text, const \fBCoord\fP &coord, const \fBFonts::Font\fP &font=\fBFonts::DefaultFont\fP, unsigned margin=UI::DefaultMargin, const \fBColors::Color\fP &colorText=\fBOS::GetSystemColors\fP()\&.work_text, const \fBColors::Color\fP &BackgroundColor=\fBOS::GetSystemColors\fP()\&.work_area, uint8_t encoding=Encoding::UTF8)"
 .br
 .RI "Вывести текст "
 .in -1c
@@ -104,7 +107,7 @@ KolibriLib::UI::text \- Работа с тектсом
 Выравнивание по центру 
 .SH "Функции"
 .PP 
-.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, unsigned margin = \fRUI::DefaultMargin\fP, const \fBColors::Color\fP & colorText = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fR\fBOS::GetSystemColors\fP()\&.work_area\fP)\fR [inline]\fP"
+.SS "void KolibriLib::UI::text::DrawText (const std::string & text, const \fBCoord\fP & coord, const \fBFonts::Font\fP & font = \fR\fBFonts::DefaultFont\fP\fP, unsigned margin = \fRUI::DefaultMargin\fP, const \fBColors::Color\fP & colorText = \fR\fBOS::GetSystemColors\fP()\&.work_text\fP, const \fBColors::Color\fP & BackgroundColor = \fR\fBOS::GetSystemColors\fP()\&.work_area\fP, uint8_t encoding = \fREncoding::UTF8\fP)\fR [inline]\fP"
 
 .PP
 Вывести текст 
@@ -150,7 +153,7 @@ KolibriLib::UI::text \- Работа с тектсом
 .RE
 .PP
 
-.SS "\fBImages::img\fP * KolibriLib::UI::text::DrawTextToImg (const std::string & text, const \fBFonts::Font\fP & font, unsigned margin, const \fBColors::Color\fP & colorText, const \fBColors::Color\fP & BackgroundColor)"
+.SS "\fBImages::img\fP * KolibriLib::UI::text::DrawTextToImg (const std::string & text, const \fBFonts::Font\fP & font, unsigned margin, const \fBColors::Color\fP & colorText, const \fBColors::Color\fP & BackgroundColor, uint8_t encoding = \fREncoding::UTF8\fP)"
 
 .PP
 \fBАргументы\fP

@@ -45,7 +45,7 @@ KolibriLib::UI::Frame \- Фрейм
 Открытые члены унаследованные от \fBKolibriLib::UI::UIElement\fP
 .in +1c
 .ti -1c
-.RI "\fBUIElement\fP (const \fBCoord\fP &coord={0, 0}, const \fBSize\fP &size={16, 16}, const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
+.RI "\fBUIElement\fP (const \fBCoord\fP &coord=\fBCoord\fP(0, 0), const \fBSize\fP &size=\fBSize\fP(32, 32), const \fBColors::Color\fP &MainColor=\fBOS::GetSystemColors\fP()\&.work_graph, const unsigned &Margin=DefaultMargin, bool relative=false)"
 .br
 .RI "Конструктор "
 .ti -1c
@@ -67,9 +67,11 @@ KolibriLib::UI::Frame \- Фрейм
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColors::Color\fP &NewColor)"
 .br
+.RI "Изменить цвет "
 .ti -1c
 .RI "void \fBSetCoord\fP (const \fBCoord\fP &NewCoord)"
 .br
+.RI "изменить координаты "
 .ti -1c
 .RI "const \fBCoord\fP & \fBGetCoord\fP () const"
 .br
@@ -197,6 +199,12 @@ KolibriLib::UI::Frame \- Фрейм
 .RE
 .PP
 
+.SS "void KolibriLib::UI::Frame::Render ()\fR [virtual]\fP"
+
+.PP
+Отрисовать фрейм 
+.PP
+Переопределяет метод предка \fBKolibriLib::UI::UIElement\fP\&.
 .SS "template<class T > void KolibriLib::UI::Frame::SetElement (int i, const T & element)"
 
 .PP

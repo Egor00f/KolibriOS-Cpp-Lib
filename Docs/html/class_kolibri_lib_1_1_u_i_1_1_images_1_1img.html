@@ -149,6 +149,9 @@ $(function(){initNavTree('class_kolibri_lib_1_1_u_i_1_1_images_1_1img.html','');
 <tr class="memitem:a10135f526950d233ec9a0721c78c46df" id="r_a10135f526950d233ec9a0721c78c46df"><td class="memItemLeft" align="right" valign="top">rgb_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10135f526950d233ec9a0721c78c46df">GetRGBMap</a> () const</td></tr>
 <tr class="memdesc:a10135f526950d233ec9a0721c78c46df"><td class="mdescLeft">&#160;</td><td class="mdescRight">получить массив rgb_t  <br /></td></tr>
 <tr class="separator:a10135f526950d233ec9a0721c78c46df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a238bee9fee1c1969b78de32f9ccac7b0" id="r_a238bee9fee1c1969b78de32f9ccac7b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a238bee9fee1c1969b78de32f9ccac7b0">SetRGBMap</a> (const rgb_t *rgbmap, const <a class="el" href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">Size</a> &amp;size)</td></tr>
+<tr class="memdesc:a238bee9fee1c1969b78de32f9ccac7b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Изменить изображение по изображению из rgb_t.  <br /></td></tr>
+<tr class="separator:a238bee9fee1c1969b78de32f9ccac7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ca5bf67adb5932568a13fe719ad714a" id="r_a4ca5bf67adb5932568a13fe719ad714a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_image__t.html">Image_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ca5bf67adb5932568a13fe719ad714a">GetImaget</a> () const</td></tr>
 <tr class="separator:a4ca5bf67adb5932568a13fe719ad714a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68f8cf19c39a2d78720415132b70f745" id="r_a68f8cf19c39a2d78720415132b70f745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">Size</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68f8cf19c39a2d78720415132b70f745">GetSize</a> () const</td></tr>
@@ -479,7 +482,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <p>Изменить цвет пикселя </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color</td><td></td></tr>
+    <tr><td class="paramname">color</td><td>новый цвет </td></tr>
   </table>
   </dd>
 </dl>
@@ -519,6 +522,37 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a238bee9fee1c1969b78de32f9ccac7b0" name="a238bee9fee1c1969b78de32f9ccac7b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a238bee9fee1c1969b78de32f9ccac7b0">&#9670;&#160;</a></span>SetRGBMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KolibriLib::UI::Images::img::SetRGBMap </td>
+          <td>(</td>
+          <td class="paramtype">const rgb_t *</td>          <td class="paramname"><span class="paramname"><em>rgbmap</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespace_kolibri_lib.html#ab59db84b9e43745d40d7b9ff8f06f2fb">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Изменить изображение по изображению из rgb_t. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rgbmap</td><td></td></tr>
+    <tr><td class="paramname">size</td><td>размер rgbmap </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Заметки</dt><dd>Теряется Alpha </dd></dl>
 
 </div>
 </div>

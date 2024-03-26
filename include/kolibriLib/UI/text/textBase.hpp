@@ -7,8 +7,8 @@
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/UI/image.hpp>
 #include <kolibri_rasterworks.h>
+
 #include "fonts.hpp"
-#include <kolibriLib/UI/fontslist.hpp>
 
 namespace KolibriLib
 {
@@ -42,28 +42,30 @@ namespace KolibriLib
 			/// \param text текст
 			/// \param coord координаты
 			/// \param color цвет текста
-			/// @note Для изменения высоты шрифта используйте @link SetTextSize(unsigned)
+			/// @note Для изменения высоты шрифта используйте SetTextSize()
 			inline void DrawText(const std::string &text, const Coord &coord, const unsigned &size = 9, const Colors::Color &color = OS::GetSystemColors().work_text)
 			{
 				SetTextSize(size);
 				_ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color.val);
 			}
 		
+			
 
-			/// @brief 
-			/// @param text 
-			/// @param font 
-			/// @param margin 
+			/// @brief Вывести текст на изображение
+			/// @param text текст
+			/// @param font шрифт
+			/// @param margin отступы фона от текста
 			/// @param colorText цвет текста
 			/// @param BackgroundColor цвет фона
-			/// @return указатель на Images::img содержащие
+			/// @return указатель на Images::img на котором нарисован текст
 			/// @note цвета фона и текста чувствительны к прозрачности
 			/// @note прозрачность привязывается к контреным координатам и размерам
 			Images::img* DrawTextToImg(const std::string& text, 
 									   const Fonts::Font &font, 
 									   unsigned margin, 
 									   const Colors::Color &colorText, 
-									   const Colors::Color &BackgroundColor);
+									   const Colors::Color &BackgroundColor,
+									   uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8);
 
 			/// @brief Вывести текст
 			/// @param text Текст
@@ -74,12 +76,13 @@ namespace KolibriLib
 			/// @param BackgroundColor цвет фона
 			/// @note Функция выводить используя библиотеку RasterWorks
 			inline void DrawText(const std::string &text,
-						  const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont,
-						  unsigned margin = UI::DefaultMargin,
-						  const Colors::Color &colorText = OS::GetSystemColors().work_text,
-						  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)
+								 const Coord &coord, const Fonts::Font &font,
+								 unsigned margin = UI::DefaultMargin,
+								 const Colors::Color &colorText = OS::GetSystemColors().work_text,
+								 const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area,
+								 uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
 			{
-				Images::img *buff = text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
+				Images::img *buff = text::DrawTextToImg(text, font, margin, colorText, BackgroundColor, encoding);
 				buff->Render(coord, Size((margin * 2) + font.size.x, (margin * 2) + (font.size.y * text.length())));
 				delete buff;
 			}

@@ -5,7 +5,7 @@
 #include <string>
 
 #include <kolibriLib/UI/UI.hpp>
-#include <kolibriLib/UI/text.hpp>
+#include <kolibriLib/UI/text/textlabel.hpp>
 #include <kolibriLib/UI/image.hpp>
 #include <kolibriLib/color.hpp>
 
@@ -111,7 +111,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
-                Button(const Coord &coord = {0, 0}, const Size &size = {20, 20}, unsigned Margin = UI::DefaultMargin, const Colors::Color& ButtonColor = OS::GetSystemColors().work_button);
+                Button(const Coord &coord = Coord(0,0), const Size &size = Size(20,20), unsigned Margin = UI::DefaultMargin, const Colors::Color& ButtonColor = OS::GetSystemColors().work_button);
                 
                 /// @brief Отрисовать кнопку
                 void Render() const;

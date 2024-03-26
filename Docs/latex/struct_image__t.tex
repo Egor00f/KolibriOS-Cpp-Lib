@@ -1,17 +1,25 @@
 \doxysection{Структура Image\+\_\+t}
 \hypertarget{struct_image__t}{}\label{struct_image__t}\index{Image\_t@{Image\_t}}
+
+
+Image.  
+
+
+
+
+{\ttfamily \#include $<$kolibri\+\_\+libimg.\+h$>$}
+
 \doxysubsubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{struct_image__t_ab6ccd0a0070bcf1df847d66d7e1745e8}\label{struct_image__t_ab6ccd0a0070bcf1df847d66d7e1745e8} 
-uint32\+\_\+t {\bfseries Checksum}
-\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_image__t_ab6ccd0a0070bcf1df847d66d7e1745e8}{Checksum}}
+\begin{DoxyCompactList}\small\item\em ((Width ROL 16) OR Height) XOR Data\mbox{[}0\mbox{]} \end{DoxyCompactList}\item 
 \Hypertarget{struct_image__t_a7f65cc0a1bf3b4f78aec1f3bf2ea9707}\label{struct_image__t_a7f65cc0a1bf3b4f78aec1f3bf2ea9707} 
 uint32\+\_\+t {\bfseries Width}
-\item 
+\begin{DoxyCompactList}\small\item\em Image width. \end{DoxyCompactList}\item 
 \Hypertarget{struct_image__t_a724c6884766f30652ad3d5e8ce2cd524}\label{struct_image__t_a724c6884766f30652ad3d5e8ce2cd524} 
 uint32\+\_\+t {\bfseries Height}
-\item 
+\begin{DoxyCompactList}\small\item\em Image height. \end{DoxyCompactList}\item 
 \Hypertarget{struct_image__t_ae0063ecf73748b8cb8a970eb41abc320}\label{struct_image__t_ae0063ecf73748b8cb8a970eb41abc320} 
 uint32\+\_\+t {\bfseries Next}
 \item 
@@ -20,22 +28,41 @@ uint32\+\_\+t {\bfseries Previous}
 \item 
 \Hypertarget{struct_image__t_a57f990e156530b7b0229add1a6feb7d5}\label{struct_image__t_a57f990e156530b7b0229add1a6feb7d5} 
 uint32\+\_\+t {\bfseries Type}
-\item 
+\begin{DoxyCompactList}\small\item\em One of Image bppN. \end{DoxyCompactList}\item 
 \Hypertarget{struct_image__t_a925d0700ce7381dcd4a5f1d07d79bf8b}\label{struct_image__t_a925d0700ce7381dcd4a5f1d07d79bf8b} 
 uint32\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries Data}
-\item 
+\begin{DoxyCompactList}\small\item\em Image, array of colors. \end{DoxyCompactList}\item 
 \Hypertarget{struct_image__t_a676b08001731600b122e88980dba76dd}\label{struct_image__t_a676b08001731600b122e88980dba76dd} 
 uint32\+\_\+t {\bfseries Palette}
-\item 
+\begin{DoxyCompactList}\small\item\em Used if Type eq Image.\+bpp1, Image.\+bpp2, Image.\+bpp4 or Image.\+bpp8i. \end{DoxyCompactList}\item 
 \Hypertarget{struct_image__t_a1bef0c4f5380fa30e4efc2873db48a95}\label{struct_image__t_a1bef0c4f5380fa30e4efc2873db48a95} 
 uint32\+\_\+t {\bfseries Extended}
 \item 
 \Hypertarget{struct_image__t_a7febbffbc146c6f9e3c83fae7a2cc87a}\label{struct_image__t_a7febbffbc146c6f9e3c83fae7a2cc87a} 
 uint32\+\_\+t {\bfseries Flags}
-\item 
+\begin{DoxyCompactList}\small\item\em Bitfield. \end{DoxyCompactList}\item 
 \Hypertarget{struct_image__t_ab5d965e72d7aa50923145bc5d2f7e62b}\label{struct_image__t_ab5d965e72d7aa50923145bc5d2f7e62b} 
 uint32\+\_\+t {\bfseries Delay}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Used if Image is animated is set in Flags. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Image. 
+
+\doxysubsection{Данные класса}
+\Hypertarget{struct_image__t_ab6ccd0a0070bcf1df847d66d7e1745e8}\label{struct_image__t_ab6ccd0a0070bcf1df847d66d7e1745e8} 
+\index{Image\_t@{Image\_t}!Checksum@{Checksum}}
+\index{Checksum@{Checksum}!Image\_t@{Image\_t}}
+\doxysubsubsection{\texorpdfstring{Checksum}{Checksum}}
+{\footnotesize\ttfamily uint32\+\_\+t Image\+\_\+t\+::\+Checksum}
+
+
+
+((Width ROL 16) OR Height) XOR Data\mbox{[}0\mbox{]} 
+
+\begin{DoxyNote}{Заметки}
+Ignored so far 
+\end{DoxyNote}
 
 
 Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}

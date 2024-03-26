@@ -1,4 +1,4 @@
-#include <kolibriLib/UI/fonts.hpp>
+#include <kolibriLib/UI/text/fonts.hpp>
 
 using namespace KolibriLib;
 
@@ -27,9 +27,18 @@ KolibriLib::UI::text::Fonts::Font::Font(const Size &FontFamily, int FontSize, un
 
 void KolibriLib::UI::text::Fonts::Font::SetFontSize(unsigned FontSize)
 {
-	_ksys_debug_puts("Font setfotnsize\n");
-	float buff = FontSize / _Font.x;
+	#ifdef DEBUG
+	_ksys_debug_puts("Font setfotnsize:");
+	#endif
+
 	_FontSize = FontSize;
 	size = _Font;
-	size /= buff;
+	
+	float buff = static_cast<float>(FontSize) / static_cast<float>(_Font.y);
+	
+	size *= static_cast<int>(buff);
+
+	#ifdef DEBUG
+	_ksys_debug_puts("done!\n");
+	#endif
 }

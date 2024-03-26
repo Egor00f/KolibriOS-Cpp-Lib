@@ -1,7 +1,7 @@
 var class_kolibri_lib_1_1window_1_1_window =
 [
-    [ "Window", "class_kolibri_lib_1_1window_1_1_window.html#a932d33deb791291ec033cdb82af98051", null ],
-    [ "AddElement", "class_kolibri_lib_1_1window_1_1_window.html#a3d155b43e5beb5467b1db4bdae7bc172", null ],
+    [ "Window", "class_kolibri_lib_1_1window_1_1_window.html#a7a3a8ea732a0748acd8ece9fceb412fd", null ],
+    [ "AddElement", "class_kolibri_lib_1_1window_1_1_window.html#ae455e681f6cacdd7462aa173ebb35d16", null ],
     [ "ChangeTilte", "class_kolibri_lib_1_1window_1_1_window.html#a7d76ecef25088a0fd9578fd4b498770c", null ],
     [ "ChangeWindow", "class_kolibri_lib_1_1window_1_1_window.html#a3d32c544cc35840b7e26e673794b6330", null ],
     [ "DeleteElement", "class_kolibri_lib_1_1window_1_1_window.html#a1ddd735a9156802de746e389a9d2e9c3", null ],

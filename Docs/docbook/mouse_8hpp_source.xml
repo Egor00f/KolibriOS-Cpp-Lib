@@ -47,53 +47,51 @@
 52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_get_mouse_wheels();
 53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
 54 
-58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EmulateMouse(MouseButtons::LeftButton);&#32;<emphasis role="comment">//&#32;Эмулирует&#32;нажатие&#32;ЛКМ&#32;\</emphasis>
-59 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;@endcode</emphasis>
-60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;EmulateMouse(uint8_t&#32;m)
-61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
-63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(19),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(5),&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>(m)
-64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
-65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-66 
-69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1ad5181e5115b88147badd22a0c19cbe4f">CenterCursor</link>()
-70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
-72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(15)
-73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
-74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a39c94a2a4489ad8d4ec05a07ac13e259">EmulateMouse</link>(uint8_t&#32;m)
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(19),&#32;<emphasis role="stringliteral">&quot;c&quot;</emphasis>(5),&#32;<emphasis role="stringliteral">&quot;d&quot;</emphasis>(m)
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+63 
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1ad5181e5115b88147badd22a0c19cbe4f">CenterCursor</link>()
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;asm_inline(
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;int&#32;$0x40&quot;</emphasis>&#32;::<emphasis role="stringliteral">&quot;a&quot;</emphasis>(18),&#32;<emphasis role="stringliteral">&quot;b&quot;</emphasis>(15)
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+72 
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>*&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>;
 75 
-77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>*&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>;
-78 
-79 
-84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1afa9e02a685efd7b6ab8f92b728ee1a2d">LoadCursor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&amp;&#32;path)
-85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_load_cursor((<emphasis role="keywordtype">void</emphasis>&#32;*)path.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>(),&#32;KSYS_CURSOR_FROM_FILE);
-87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-88 
-93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1afa9e02a685efd7b6ab8f92b728ee1a2d">LoadCursor</link>(<emphasis role="keywordtype">void</emphasis>&#32;*ptr)
-94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_load_cursor(ptr,&#32;KSYS_CURSOR_FROM_MEM);
-96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-97 
-98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@brief&#32;Загрузить&#32;курсор&#32;мыши</emphasis>
-99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@param&#32;cur&#32;путь&#32;до&#32;файла&#32;с&#32;курсором</emphasis>
-100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@return&#32;Хендл&#32;загруженного&#32;курсора</emphasis>
-101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@paragraph&#32;Файл&#32;курсора&#32;должен&#32;быть&#32;в&#32;формате&#32;.cur,&#32;стандартном&#32;для&#32;MS&#32;Windows,&#32;причём&#32;размером&#32;32*32&#32;пиксел</emphasis>
-102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;inline&#32;CursorHandle&#32;LoadCursor(Colors::ARGB[]&#32;cur);</emphasis>
-103 
-107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</link>(<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;handle)
-108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_set_cursor(handle);
-110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-111 
-112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DeleteCursor(<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;handle)
-113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_delete_cursor(handle);
-115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-116 &#32;&#32;&#32;&#32;}
-117 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
-118 
-119 
-120 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MOUSE_H__</emphasis>
+76 
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1afa9e02a685efd7b6ab8f92b728ee1a2d">LoadCursor</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path">filesystem::Path</link>&amp;&#32;path)
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_load_cursor((<emphasis role="keywordtype">void</emphasis>&#32;*)path.<link linkend="_class_kolibri_lib_1_1filesystem_1_1_path_1a1ce6078475d3a9b5c340e08b1bc65217">GetChars</link>(),&#32;KSYS_CURSOR_FROM_FILE);
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+85 
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1afa9e02a685efd7b6ab8f92b728ee1a2d">LoadCursor</link>(<emphasis role="keywordtype">void</emphasis>&#32;*ptr)
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_load_cursor(ptr,&#32;KSYS_CURSOR_FROM_MEM);
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+94 
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@brief&#32;Загрузить&#32;курсор&#32;мыши</emphasis>
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@param&#32;cur&#32;путь&#32;до&#32;файла&#32;с&#32;курсором</emphasis>
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@return&#32;Хендл&#32;загруженного&#32;курсора</emphasis>
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;///&#32;@paragraph&#32;Файл&#32;курсора&#32;должен&#32;быть&#32;в&#32;формате&#32;.cur,&#32;стандартном&#32;для&#32;MS&#32;Windows,&#32;причём&#32;размером&#32;32*32&#32;пиксел</emphasis>
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;inline&#32;CursorHandle&#32;LoadCursor(Colors::ARGB[]&#32;cur);</emphasis>
+100 
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;<link linkend="_namespace_kolibri_lib_1_1mouse_1a21b758a85831bd3a66ac4cd10ac632a3">SetCursor</link>(<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;handle)
+105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ksys_set_cursor(handle);
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+108 
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DeleteCursor(<link linkend="_namespace_kolibri_lib_1_1mouse_1a62aae3bff5a15d2c1aacef753a8a5d05">CursorHandle</link>&#32;handle)
+110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_ksys_delete_cursor(handle);
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+113 &#32;&#32;&#32;&#32;}
+114 }&#32;<emphasis role="comment">//&#32;namespace&#32;KolibriLib</emphasis>
+115 
+116 
+117 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;__MOUSE_H__</emphasis>
 </programlisting></section>

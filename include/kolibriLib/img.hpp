@@ -84,6 +84,12 @@ namespace KolibriLib
 				/// @return
 				rgb_t *GetRGBMap() const;
 
+				/// @brief Изменить изображение по изображению из rgb_t
+				/// @param rgbmap 
+				/// @param size размер rgbmap
+				/// @note Теряется Alpha
+				void SetRGBMap(const rgb_t* rgbmap, const Size &size);
+
 				/// @brief
 				/// @return
 				Image_t *GetImaget() const;

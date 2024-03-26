@@ -10,6 +10,7 @@
 #include <kolibriLib/color.hpp>
 #include <input.hpp>
 #include <kolibriLib/window/windowBase.hpp>
+#include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 
 namespace KolibriLib
@@ -47,15 +48,15 @@ namespace KolibriLib
         public:
             
             /// @brief Конструктор
-            /// @param coord 
-            /// @param size 
-            /// @param MainColor 
-            /// @param Margin 
-            /// @param relative 
-            UIElement(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const Colors::Color& MainColor = OS::GetSystemColors().work_graph, const unsigned& Margin = DefaultMargin, bool relative = false);
+            /// @param coord координаты
+            /// @param size размер
+            /// @param MainColor основной цвет
+            /// @param Margin отступы
+            /// @param relative отностельность
+            UIElement(const Coord& coord = Coord(0,0), const Size& size = Size(32,32), const Colors::Color& MainColor = OS::GetSystemColors().work_graph, const unsigned& Margin = DefaultMargin, bool relative = false);
             
             /// @brief Получить размер элемента
-            /// @return Функция возвращает @link _size
+            /// @return Функция возвращает _size
             const Size& GetSize() const;
 
             /// @brief Изменить размер элемента
@@ -63,19 +64,19 @@ namespace KolibriLib
             void SetSize(const Size& NewSize);
 
             /// @brief Получить отступы
-            /// @return Функция возвращает @link _Margin
+            /// @return Функция возвращает _Margin
             unsigned GetMargin() const;
 
             /// @brief Получить осносной цвет элемента
-            /// @return Функция возвращает @link _MainColor
+            /// @return Функция возвращает _MainColor
             const Colors::Color& GetColor() const;
 
-            /// @brief 
-            /// @param NewColor 
+            /// @brief Изменить цвет
+            /// @param NewColor новый цвет
             void SetColor(const Colors::Color& NewColor);
 
-            /// @brief 
-            /// @param NewCoord 
+            /// @brief изменить координаты
+            /// @param NewCoord новые координаты
             void SetCoord(const Coord& NewCoord);
 
             /// @brief Получить координаты элемента
@@ -87,12 +88,15 @@ namespace KolibriLib
             void Rotate(unsigned NewAngle);
 
             /// @brief Получить угол наклона элемента
-            /// @return Функция возвращает @link _angle
+            /// @return Функция возвращает _angle
             unsigned GetRotate() const;
 
             /// @brief Проверить лежит ли курсор мыши над элементом
-            /// @return true если курсор мыши находится в этом эелементе, иначе false
+            /// @return true если курсор мыши находится в этом элементе, иначе false
             bool Hover() const;
+
+            /// @brief отрисовать элемент
+            virtual void Render();
 
             /// @brief 
             /// @param Element 

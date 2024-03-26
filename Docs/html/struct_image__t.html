@@ -97,17 +97,24 @@ $(function(){initNavTree('struct_image__t.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Структура Image_t</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Image.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="kolibri__libimg_8h_source.html">kolibri_libimg.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Открытые атрибуты</h2></td></tr>
-<tr class="memitem:ab6ccd0a0070bcf1df847d66d7e1745e8" id="r_ab6ccd0a0070bcf1df847d66d7e1745e8"><td class="memItemLeft" align="right" valign="top"><a id="ab6ccd0a0070bcf1df847d66d7e1745e8" name="ab6ccd0a0070bcf1df847d66d7e1745e8"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Checksum</b></td></tr>
+<tr class="memitem:ab6ccd0a0070bcf1df847d66d7e1745e8" id="r_ab6ccd0a0070bcf1df847d66d7e1745e8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6ccd0a0070bcf1df847d66d7e1745e8">Checksum</a></td></tr>
+<tr class="memdesc:ab6ccd0a0070bcf1df847d66d7e1745e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">((Width ROL 16) OR Height) XOR Data[0]  <br /></td></tr>
 <tr class="separator:ab6ccd0a0070bcf1df847d66d7e1745e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f65cc0a1bf3b4f78aec1f3bf2ea9707" id="r_a7f65cc0a1bf3b4f78aec1f3bf2ea9707"><td class="memItemLeft" align="right" valign="top"><a id="a7f65cc0a1bf3b4f78aec1f3bf2ea9707" name="a7f65cc0a1bf3b4f78aec1f3bf2ea9707"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Width</b></td></tr>
+<tr class="memdesc:a7f65cc0a1bf3b4f78aec1f3bf2ea9707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image width. <br /></td></tr>
 <tr class="separator:a7f65cc0a1bf3b4f78aec1f3bf2ea9707"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a724c6884766f30652ad3d5e8ce2cd524" id="r_a724c6884766f30652ad3d5e8ce2cd524"><td class="memItemLeft" align="right" valign="top"><a id="a724c6884766f30652ad3d5e8ce2cd524" name="a724c6884766f30652ad3d5e8ce2cd524"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Height</b></td></tr>
+<tr class="memdesc:a724c6884766f30652ad3d5e8ce2cd524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image height. <br /></td></tr>
 <tr class="separator:a724c6884766f30652ad3d5e8ce2cd524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0063ecf73748b8cb8a970eb41abc320" id="r_ae0063ecf73748b8cb8a970eb41abc320"><td class="memItemLeft" align="right" valign="top"><a id="ae0063ecf73748b8cb8a970eb41abc320" name="ae0063ecf73748b8cb8a970eb41abc320"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Next</b></td></tr>
@@ -117,23 +124,48 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Previous</b></td>
 <tr class="separator:a9acc2e673115c658db29d3bc5eabef45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57f990e156530b7b0229add1a6feb7d5" id="r_a57f990e156530b7b0229add1a6feb7d5"><td class="memItemLeft" align="right" valign="top"><a id="a57f990e156530b7b0229add1a6feb7d5" name="a57f990e156530b7b0229add1a6feb7d5"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Type</b></td></tr>
+<tr class="memdesc:a57f990e156530b7b0229add1a6feb7d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">One of Image bppN. <br /></td></tr>
 <tr class="separator:a57f990e156530b7b0229add1a6feb7d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a925d0700ce7381dcd4a5f1d07d79bf8b" id="r_a925d0700ce7381dcd4a5f1d07d79bf8b"><td class="memItemLeft" align="right" valign="top"><a id="a925d0700ce7381dcd4a5f1d07d79bf8b" name="a925d0700ce7381dcd4a5f1d07d79bf8b"></a>
 uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><b>Data</b></td></tr>
+<tr class="memdesc:a925d0700ce7381dcd4a5f1d07d79bf8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image, array of colors. <br /></td></tr>
 <tr class="separator:a925d0700ce7381dcd4a5f1d07d79bf8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a676b08001731600b122e88980dba76dd" id="r_a676b08001731600b122e88980dba76dd"><td class="memItemLeft" align="right" valign="top"><a id="a676b08001731600b122e88980dba76dd" name="a676b08001731600b122e88980dba76dd"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Palette</b></td></tr>
+<tr class="memdesc:a676b08001731600b122e88980dba76dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used if Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i. <br /></td></tr>
 <tr class="separator:a676b08001731600b122e88980dba76dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bef0c4f5380fa30e4efc2873db48a95" id="r_a1bef0c4f5380fa30e4efc2873db48a95"><td class="memItemLeft" align="right" valign="top"><a id="a1bef0c4f5380fa30e4efc2873db48a95" name="a1bef0c4f5380fa30e4efc2873db48a95"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Extended</b></td></tr>
 <tr class="separator:a1bef0c4f5380fa30e4efc2873db48a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7febbffbc146c6f9e3c83fae7a2cc87a" id="r_a7febbffbc146c6f9e3c83fae7a2cc87a"><td class="memItemLeft" align="right" valign="top"><a id="a7febbffbc146c6f9e3c83fae7a2cc87a" name="a7febbffbc146c6f9e3c83fae7a2cc87a"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Flags</b></td></tr>
+<tr class="memdesc:a7febbffbc146c6f9e3c83fae7a2cc87a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitfield. <br /></td></tr>
 <tr class="separator:a7febbffbc146c6f9e3c83fae7a2cc87a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5d965e72d7aa50923145bc5d2f7e62b" id="r_ab5d965e72d7aa50923145bc5d2f7e62b"><td class="memItemLeft" align="right" valign="top"><a id="ab5d965e72d7aa50923145bc5d2f7e62b" name="ab5d965e72d7aa50923145bc5d2f7e62b"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Delay</b></td></tr>
+<tr class="memdesc:ab5d965e72d7aa50923145bc5d2f7e62b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used if Image is animated is set in Flags. <br /></td></tr>
 <tr class="separator:ab5d965e72d7aa50923145bc5d2f7e62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Image. </p>
+</div><h2 class="groupheader">Данные класса</h2>
+<a id="ab6ccd0a0070bcf1df847d66d7e1745e8" name="ab6ccd0a0070bcf1df847d66d7e1745e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ccd0a0070bcf1df847d66d7e1745e8">&#9670;&#160;</a></span>Checksum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Image_t::Checksum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>((Width ROL 16) OR Height) XOR Data[0] </p>
+<dl class="section note"><dt>Заметки</dt><dd>Ignored so far </dd></dl>
+
+</div>
+</div>
 <hr/>Объявления и описания членов структуры находятся в файле:<ul>
 <li>C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/C_Layer/INCLUDE/<a class="el" href="kolibri__libimg_8h_source.html">kolibri_libimg.h</a></li>
 </ul>

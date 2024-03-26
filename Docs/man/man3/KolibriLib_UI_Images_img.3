@@ -58,6 +58,10 @@ KolibriLib::UI::Images::img \- Изображение
 .br
 .RI "получить массив rgb_t "
 .ti -1c
+.RI "void \fBSetRGBMap\fP (const rgb_t *rgbmap, const \fBSize\fP &size)"
+.br
+.RI "Изменить изображение по изображению из rgb_t\&. "
+.ti -1c
 .RI "\fBImage_t\fP * \fBGetImaget\fP () const"
 .br
 .ti -1c
@@ -237,7 +241,7 @@ KolibriLib::UI::Images::img \- Изображение
 .PP
 \fBАргументы\fP
 .RS 4
-\fIcolor\fP 
+\fIcolor\fP новый цвет 
 .RE
 .PP
 
@@ -253,6 +257,24 @@ KolibriLib::UI::Images::img \- Изображение
 \fIx\fP 
 .br
 \fIy\fP 
+.RE
+.PP
+
+.SS "void KolibriLib::UI::Images::img::SetRGBMap (const rgb_t * rgbmap, const \fBSize\fP & size)"
+
+.PP
+Изменить изображение по изображению из rgb_t\&. 
+.PP
+\fBАргументы\fP
+.RS 4
+\fIrgbmap\fP 
+.br
+\fIsize\fP размер rgbmap 
+.RE
+.PP
+\fBЗаметки\fP
+.RS 4
+Теряется Alpha 
 .RE
 .PP
 

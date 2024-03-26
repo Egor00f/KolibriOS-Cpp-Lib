@@ -5,7 +5,7 @@
 #define __FONTS_LIST_HPP__
 
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/UI/fonts.hpp>
+#include <kolibriLib/UI/text/fonts.hpp>
 
 namespace KolibriLib
 {
@@ -19,7 +19,7 @@ namespace KolibriLib
                 const unsigned DefaultFontSize = 16;
 
                 // Некоторые заготовки шрифтов
-
+                const Size System = {1, 0};
                 const Size Arial = {5, 6};
                 const Size TimesNewRoman = {4, 5};
                 const Size Micrhoma = {21, 11};

@@ -1,10 +1,38 @@
-#include <kolibriLib/UI/textBase.hpp>
+#include <kolibriLib/UI/text/textBase.hpp>
 
 using namespace KolibriLib::UI;
 using namespace text;
 
+/// @brief Draw text on 24bpp or 32bpp image
+/// @param canvas Pointer to image (array of colors)
+/// @param canvasWidth image width
+/// @param canvasHeight image height
+/// @param x Coordinate of the text along the X axis
+/// @param y Coordinate of the text along the Y axis
+/// @param string Pointer to string
+/// @param width char width (0 - auto)
+/// @param height char height
+/// @param fontColor Text color
+/// @param flags value from enum RasterworksParams
+/// @param encoding value fram enum RasterworksEncoding
+/// @note don't forget free(buff)
+rgb_t *DrawTextToRGBMap(const rgb_t *canvas, int canvasWidth, int canvasHeight, int x, int y, const char *string, uint8_t width, uint8_t height, ksys_color_t fontColor, uint8_t flags, uint8_t encoding = Rasterworks_UTF8)
+{
+	const int l = canvasHeight * canvasHeight * 3 * sizeof(char);
 
-Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const Fonts::Font &font, unsigned margin, const Colors::Color &colorText, const Colors::Color &BackgroundColor)
+	rgb_t *buff = (rgb_t *)malloc(l);
+	*((int *)buff) = canvasWidth;
+	*((int *)buff + 1) = canvasHeight;
+	memcpy(buff + 8, canvas, l);
+
+	drawText(buff, x, y, string, countUTF8Z(string, -1), fontColor, (flags >> 24) + (width >> 16) + (height >> 8) + encoding);
+
+	memcpy(buff, buff + 8, l);
+
+	return buff;
+}
+
+Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const Fonts::Font &font, unsigned margin, const Colors::Color &colorText, const Colors::Color &BackgroundColor, uint8_t encoding)
 {
 	const unsigned w = ((margin * 2) + font.size.x);
 	const unsigned h = ((margin * 2) + (font.size.y * text.length()));
@@ -31,12 +59,12 @@ Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 		canvas->FillColor(BackgroundColor);
 	}
 
-
 	Images::img *buff = new Images::img(*canvas);
 
+	*canvas = *buff;
 
-	drawText(canvas->GetRGBMap(), margin, margin, text.c_str(), text.length(), colorText.val, font._Flags);
-
+	buff->SetRGBMap(DrawTextToRGBMap(canvas->GetRGBMap(), canvas->GetSize().x, canvas->GetSize().y, margin, margin, text.c_str(), font.size.x, font.size.y, colorText.val, font._Flags), 
+					Size(w, h));
 
 	if (colorText._a < 1)
 	{ // Прозрачность текста

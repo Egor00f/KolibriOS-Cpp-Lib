@@ -1,50 +1,79 @@
+#pragma once
 #ifndef KOLIBRI_RASTERWORKS_H
 #define KOLIBRI_RASTERWORKS_H
+
+#include <sys/ksys.h>
+
 
 extern "C"
 {
 
-/// @brief Список параметров
-enum Params
+enum RasterworksEncoding
 {
-	/// @brief Жирный текст
-	Bold = 0b1,
-
-	/// @brief Курсив
-	Italic = 0b10,
-
-	/// @brief Нижнее подчёркивание
-	Underline = 0b100,
-
-	/// @brief Зачёркнутый
-	StrikeThrough = 0b1000,
-
-	/// @brief Выравнивание по правому краю
-	AlignRight = 0b00010000,
-
-	/// @brief Выравнивание по центру
-	AlignCenter = 0b00100000,
-
+	Rasterworks_cp688 = 1,
+	Rasterworks_UTF8 = 2,
+	Rasterworks_UTF16LE = 3,
 };
 
+/// @brief List of parameters
+enum RasterworksParams
+{
+  /// @brief Bold text
+  Bold = 0b1,
 
-/// @brief Инициализировать библиотеку RasterWorks
-/// @return -1 если неудачно
+  /// @brief Italics
+  Italic = 0b10,
+
+  /// @brief Underscore
+  Underline = 0b100,
+
+  /// @brief Strikethrough
+  StrikeThrough = 0b1000,
+
+  /// @brief Right alignment
+  AlignRight = 0b00010000,
+
+  /// @brief Center alignment
+  AlignCenter = 0b00100000,
+
+  /// @brief 32bpp canvas insted of 24bpp
+  Use32bit = 0b010000000
+};
+
+/// @brief Initialize the RasterWorks library
+/// @return -1 if unsuccessful
 extern int kolibri_rasterworks_init(void);
 
-/// @brief Вывести текст
-/// @param canvas Указатель на буффер
-/// @param x координата текста по оси X
-/// @param y координата текста по оси Y
-/// @param string указатель на строку
-/// @param charQuantity длина строки
-/// @param fontColor Цвет текста
-/// @param params параметры из списк @link Params
-extern void (*drawText)(void *canvas, int x, int y, const char *string, int charQuantity, int fontColor, int params) __attribute__((__stdcall__));
+/// @brief Draw text on 24bpp or 32bpp image
+/// @param canvas Pointer to image (array of colors)
+/// @param x Coordinate of the text along the X axis
+/// @param y Coordinate of the text along the Y axis
+/// @param string Pointer to string
+/// @param charQuantity String length
+/// @param fontColor Text color
+ /// @param params ffeewwhh  \
+hh - char height  \
+ww - char width	; 0 = auto (proportional) \
+ee - encoding	; 1 = cp866, 2 = UTF-16LE, 3 = UTF-8 \
+ff - Parameters from the RasterworksParams list
+/// @note All flags combinable, except align right + align center
+/// @note The text is drawn on the image, in order for changes to occur in the window, you need to draw the image after calling this function
+extern void (*drawText)(void *canvas, int x, int y, const char *string, int charQuantity, ksys_color_t fontColor, uint32_t params) __attribute__((__stdcall__));
+
+/// @brief Calculate amount of valid chars in UTF-8 string
+/// @note Supports zero terminated string (set byteQuantity = -1)
+/// @param string
+/// @param byteQuantity
 extern int (*countUTF8Z)(const char *string, int byteQuantity) __attribute__((__stdcall__));
+
+/// @brief Calculate amount of chars that fits given width
 extern int (*charsFit)(int areaWidth, int charHeight) __attribute__((__stdcall__));
+
+/// @brief Calculate string width in pixels
+/// @param charQuantity Characters
+/// @param charHeight character height
 extern int (*strWidth)(int charQuantity, int charHeight) __attribute__((__stdcall__));
 
-}
+} // extern "C"
  
 #endif /* KOLIBRI_RASTERWORKS_H */

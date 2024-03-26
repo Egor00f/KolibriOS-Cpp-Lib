@@ -40,6 +40,8 @@ void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a4b5f94fe529df
 \item 
 rgb\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a10135f526950d233ec9a0721c78c46df}{Get\+RGBMap}} () const
 \begin{DoxyCompactList}\small\item\em получить массив rgb\+\_\+t \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a238bee9fee1c1969b78de32f9ccac7b0}{Set\+RGBMap}} (const rgb\+\_\+t \texorpdfstring{$\ast$}{*}rgbmap, const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&size)
+\begin{DoxyCompactList}\small\item\em Изменить изображение по изображению из rgb\+\_\+t. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_image__t}{Image\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a4ca5bf67adb5932568a13fe719ad714a}{Get\+Imaget}} () const
 \item 
 \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a68f8cf19c39a2d78720415132b70f745}{Get\+Size}} () const
@@ -247,7 +249,7 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_
 
 
 \begin{DoxyParams}{Аргументы}
-{\em color} & \\
+{\em color} & новый цвет \\
 \hline
 \end{DoxyParams}
 \Hypertarget{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_aef269679d129307425b2a257c81778ec}\label{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_aef269679d129307425b2a257c81778ec} 
@@ -269,6 +271,26 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{class_kolibri_lib_1_1_u_i_1_
 {\em y} & \\
 \hline
 \end{DoxyParams}
+\Hypertarget{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a238bee9fee1c1969b78de32f9ccac7b0}\label{class_kolibri_lib_1_1_u_i_1_1_images_1_1img_a238bee9fee1c1969b78de32f9ccac7b0} 
+\index{KolibriLib::UI::Images::img@{KolibriLib::UI::Images::img}!SetRGBMap@{SetRGBMap}}
+\index{SetRGBMap@{SetRGBMap}!KolibriLib::UI::Images::img@{KolibriLib::UI::Images::img}}
+\doxysubsubsection{\texorpdfstring{SetRGBMap()}{SetRGBMap()}}
+{\footnotesize\ttfamily void Kolibri\+Lib\+::\+UI\+::\+Images\+::img\+::\+Set\+RGBMap (\begin{DoxyParamCaption}\item[{const rgb\+\_\+t \texorpdfstring{$\ast$}{*}}]{rgbmap,  }\item[{const \mbox{\hyperlink{namespace_kolibri_lib_ab59db84b9e43745d40d7b9ff8f06f2fb}{Size}} \&}]{size }\end{DoxyParamCaption})}
+
+
+
+Изменить изображение по изображению из rgb\+\_\+t. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em rgbmap} & \\
+\hline
+{\em size} & размер rgbmap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Заметки}
+Теряется Alpha 
+\end{DoxyNote}
 
 
 Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}

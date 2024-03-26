@@ -86,6 +86,42 @@
         </inbodydescription>
         <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp" line="13" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/fonts.hpp" bodystart="14" bodyend="37"/>
       </memberdef>
+      <memberdef kind="enum" id="namespace_kolibri_lib_1_1_u_i_1_1text_1a08ac20390abf8e19e9df8100a3c1589e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Encoding</name>
+        <qualifiedname>KolibriLib::UI::text::Encoding</qualifiedname>
+        <enumvalue id="namespace_kolibri_lib_1_1_u_i_1_1text_1a08ac20390abf8e19e9df8100a3c1589eab1e0af5d6dbf0a322f317450dc546d1c" prot="public">
+          <name>cp688</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_kolibri_lib_1_1_u_i_1_1text_1a08ac20390abf8e19e9df8100a3c1589ea512c7e6bb23963296452de10daf12b50" prot="public">
+          <name>UTF8</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_kolibri_lib_1_1_u_i_1_1text_1a08ac20390abf8e19e9df8100a3c1589eab6d4c16b4e14f0c780dd905ce3ed1da8" prot="public">
+          <name>UTF16LE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" line="53" column="1" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" bodystart="54" bodyend="58"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1text_1a88c7481d1f3297280474e2d9b5959c64" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -196,10 +232,10 @@
         </inbodydescription>
         <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" line="46" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" bodystart="46" bodyend="50"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1text_1a9596497a1ac3a5b6f146e6a9ba76eb91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1text_1a06d3f98cb8d674397f08e94f8ce5dd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_kolibri_lib_1_1_u_i_1_1_images_1_1img" kindref="compound">Images::img</ref> *</type>
         <definition>Images::img * KolibriLib::UI::text::DrawTextToImg</definition>
-        <argsstring>(const std::string &amp;text, const Fonts::Font &amp;font, unsigned margin, const Colors::Color &amp;colorText, const Colors::Color &amp;BackgroundColor)</argsstring>
+        <argsstring>(const std::string &amp;text, const Fonts::Font &amp;font, unsigned margin, const Colors::Color &amp;colorText, const Colors::Color &amp;BackgroundColor, uint8_t encoding=Encoding::UTF8)</argsstring>
         <name>DrawTextToImg</name>
         <qualifiedname>KolibriLib::UI::text::DrawTextToImg</qualifiedname>
         <param>
@@ -221,6 +257,11 @@
         <param>
           <type>const <ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref> &amp;</type>
           <declname>BackgroundColor</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>encoding</declname>
+          <defval>Encoding::UTF8</defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -276,12 +317,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" line="62" column="13" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" declline="62" declcolumn="13"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" line="69" column="13" declfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" declline="69" declcolumn="13"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1text_1af628e6f4afcf276e09900d5aee9d25a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespace_kolibri_lib_1_1_u_i_1_1text_1ad6738e0b71e3dd55f80d25b4efc0844a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void KolibriLib::UI::text::DrawText</definition>
-        <argsstring>(const std::string &amp;text, const Coord &amp;coord, const Fonts::Font &amp;font=Fonts::DefaultFont, unsigned margin=UI::DefaultMargin, const Colors::Color &amp;colorText=OS::GetSystemColors().work_text, const Colors::Color &amp;BackgroundColor=OS::GetSystemColors().work_area)</argsstring>
+        <argsstring>(const std::string &amp;text, const Coord &amp;coord, const Fonts::Font &amp;font=Fonts::DefaultFont, unsigned margin=UI::DefaultMargin, const Colors::Color &amp;colorText=OS::GetSystemColors().work_text, const Colors::Color &amp;BackgroundColor=OS::GetSystemColors().work_area, uint8_t encoding=Encoding::UTF8)</argsstring>
         <name>DrawText</name>
         <qualifiedname>KolibriLib::UI::text::DrawText</qualifiedname>
         <param>
@@ -311,6 +352,11 @@
           <type>const <ref refid="union_kolibri_lib_1_1_colors_1_1_color" kindref="compound">Colors::Color</ref> &amp;</type>
           <declname>BackgroundColor</declname>
           <defval><ref refid="namespace_kolibri_lib_1_1_o_s_1a3d1ea9fa87ea6d6c8e1a33c18dfb1ebf" kindref="member">OS::GetSystemColors</ref>().work_area</defval>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>encoding</declname>
+          <defval>Encoding::UTF8</defval>
         </param>
         <briefdescription>
 <para>Вывести текст </para>
@@ -371,7 +417,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" line="76" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" bodystart="76" bodyend="85"/>
+        <location file="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" line="84" column="13" bodyfile="C:/Users/yyari/Documents/KolibriOS/KolibriOS-Cpp-Lib/include/kolibriLib/UI/textBase.hpp" bodystart="84" bodyend="94"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
