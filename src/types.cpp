@@ -4,7 +4,6 @@ using namespace KolibriLib;
 
 KolibriLib::point::point(int X, int Y)
 {
-	_ksys_debug_puts("Point constructor\n");
 	x = X;
 	y = Y;
 }

@@ -1,10 +1,10 @@
 #ifndef __WINDOW_H__
 #define __WINDOW_H__
 
-
+#include <stdlib.h>
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <type_traits>
 
 
@@ -18,6 +18,7 @@
 #include <UI.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
+
 
 namespace KolibriLib
 { 
@@ -65,6 +66,9 @@ namespace KolibriLib
 				template <class T>
 				void SetElement(const T& elem);
 
+				/// @brief вывести элемент
+				void Render();
+
 				void free();
 			};
 
@@ -72,7 +76,7 @@ namespace KolibriLib
 			std::string _title;
 
 			/// @brief Список всех кнопок этого окна
-			std::map<int, Element> _Elements;
+			std::unordered_map<int, Element> _Elements;
 
 			/// @brief Размеры окна
 			Size _size;
@@ -122,7 +126,7 @@ namespace KolibriLib
 
 			/// @brief Получить размер окна
 			/// @return @link _size
-			const Size& GetSize() const;
+			Size GetSize() const;
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
@@ -188,7 +192,7 @@ namespace KolibriLib
 			/// @param i
 			/// @return
 			template <class T>
-			const T& GetElement(int i) const;
+			T GetElement(int i) const;
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus() const;
@@ -272,14 +276,22 @@ namespace KolibriLib
 
 			a.SetElement(element);
 
-			for (int i = 0; i < _Elements.size(); i++)
+			for (int i = 0; i < _Elements.max_size(); i++)
 			{
 				if (_Elements.count(i) == 0)
 				{
 					_Elements[i] = a;
+					#ifdef DEBUG
+					_ksys_debug_puts("");
+					#endif
 					return i;
 				}
 			}
+			if(_Elements.size() == 0)
+			{
+				_Elements[0] = a;
+			}
+			return 0;
 		}
 
 		template <class T>
@@ -290,14 +302,14 @@ namespace KolibriLib
 				_Elements[i].SetElement(element);
 				return;
 			}
-			_ksys_debug_puts("KolibriLib::window::Window::SetElement: i >= _Elements.size(), return\n");
+			_ksys_debug_puts("KolibriLib::window::Window::SetElement: not found element\n");
 			return;
 		}
 
 		template <class T>
-		const T &KolibriLib::window::Window::GetElement(int i) const
+		T KolibriLib::window::Window::GetElement(int i) const
 		{
-			auto it = _Elements.find(i);
+			std::unordered_map<int, Window::Element>::iterator it = _Elements.find(i);
 			if (it != _Elements.end())
 			{
 				switch (it->second._type)
@@ -321,7 +333,6 @@ namespace KolibriLib
 					break;
 				}
 			}
-			_ksys_debug_puts("KolibriLib::window::Window::SetElement: i >= _Elements.size(), return\n");
 
 			return 0;
 		}
@@ -369,6 +380,43 @@ namespace KolibriLib
 			}
 		}
 
+		void KolibriLib::window::Window::Element::Render()
+		{
+			#ifdef DEBUG
+			_ksys_debug_puts("Element Render:\n");
+			#endif
+			
+			switch (_type)
+			{
+			case Element::Type::TextLabel:
+				txt->Render();
+				break;
+			case Element::Type::Button:
+				btn->Render();
+				break;
+			case Element::Type::Image:
+				img->Render();
+				break;
+			case Element::Type::Form:
+				form->Render();
+				break;
+			case Element::Type::CheckBox:
+				checkbox->Render();
+				break;
+			case Element::Type::Menu:
+				menu->Render();
+				break;
+			case Element::Type::Frame:
+				frame->Render();
+				break;
+			default:
+				_ksys_debug_puts("Error in KolibriLib::Window::Element::Render() undefined type");
+			}
+			#ifdef DEBUG
+			_ksys_debug_puts("Element Render: done\n");
+			#endif
+		}
+
 		//=============================================================================================================================================================
 
 		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, const KolibriLib::Colors::Color &TitleColor, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
@@ -384,8 +432,8 @@ namespace KolibriLib
 			_Transparency = Transparency;
 			_RealtimeRedraw = RealtimeRedraw;
 
-			/*DCBAYYYY*/
-			_style = 0b00100000;
+			
+			_style = WindowStyle::Relative + WindowStyle::WindowHaveTitle + WindowStyle::withSkin;
 			if (Resize)
 			{
 				_style += WindowStyle::CanResize;
@@ -423,8 +471,12 @@ namespace KolibriLib
 
 		void KolibriLib::window::Window::Redraw()
 		{
+			#ifdef DEBUG
+			_ksys_debug_puts("Redraw window:");
+			#endif
+
 			StartRedraw();
-			ChangeWindow(GetCoord(), _size);
+			window::CreateWindow(GetCoord(), _size, _title, _colors.work_area, _TitleColor, _style);
 
 			if (_Transparency > 0 && false)
 			{
@@ -443,35 +495,9 @@ namespace KolibriLib
 				KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
 			}
 
-			for (const std::pair<int, Window::Element> &n : Window::_Elements)
+			for (std::unordered_map<int, Window::Element>::iterator it = _Elements.begin(); it != _Elements.end(); it++)
 			{
-				switch (n.second._type)
-				{
-				case KolibriLib::window::Window::Element::Type::TextLabel:
-					n.second.txt->Render();
-					break;
-				case KolibriLib::window::Window::Element::Type::Button:
-					n.second.btn->Render();
-					break;
-				case KolibriLib::window::Window::Element::Type::Image:
-					n.second.img->Render();
-					break;
-				case KolibriLib::window::Window::Element::Type::Form:
-					n.second.form->Render();
-					break;
-				case KolibriLib::window::Window::Element::Type::CheckBox:
-					n.second.checkbox->Render();
-					break;
-				case KolibriLib::window::Window::Element::Type::Frame:
-					n.second.frame->Render();
-					break;
-				case KolibriLib::window::Window::Element::Type::Menu:
-					n.second.menu->Render();
-					break;
-				default:
-					_ksys_debug_puts("KolibriLib::window::Window::Render unknown type, break\n");
-					break;
-				}
+				_Elements[it->first].Render();
 			}
 
 			if (_Transparency != 0) // Прозрачность окна
@@ -486,6 +512,9 @@ namespace KolibriLib
 			}
 
 			EndRedraw();
+			#ifdef DEBUG
+			_ksys_debug_puts("done redraw!\n");
+			#endif
 		}
 
 		void Window::SetWindowColors(const Colors::ColorsTable &colorTable)
@@ -531,38 +560,25 @@ namespace KolibriLib
 
 		void Window::Render(const Coord &coord)
 		{
+			#ifdef DEBUG
+			_ksys_debug_puts("Render window\n");
+			#endif
+
 			StartRedraw();
 			window::CreateWindow(coord, _size, _title, _colors.work_area, _TitleColor, _style);
 
-			for (const std::pair<int, Element> &n : _Elements)
+			for (std::unordered_map<int, Window::Element>::iterator it = _Elements.begin(); it != _Elements.end(); it++)
 			{
-				switch (n.second._type)
-				{
-				case Element::Type::TextLabel:
-					n.second.txt->Render();
-					break;
-				case Element::Type::Button:
-					n.second.btn->Render();
-					break;
-				case Element::Type::Image:
-					n.second.img->Render();
-					break;
-				case Element::Type::Form:
-					n.second.form->Render();
-					break;
-				case Element::Type::CheckBox:
-					n.second.checkbox->Render();
-					break;
-				case Element::Type::Menu:
-					n.second.menu->Render();
-					break;
-				case Element::Type::Frame:
-					n.second.frame->Render();
-					break;
-				default:
-					break;
-				}
+				#ifdef DEBUG
+				_ksys_debug_puts("Render window Element №");
+				_ksys_debug_puts(__itoa(it->first, nullptr, 10));
+				#endif
+				_Elements[it->first].Render();
 			}
+
+			#ifdef DEBUG
+			_ksys_debug_puts("\nDone render elements\n");
+			#endif
 
 			if (_Transparency != 0) // Прозрачность окна
 			{
@@ -584,7 +600,7 @@ namespace KolibriLib
 			return _MARGIN;
 		}
 
-		const Size &Window::GetSize() const
+		Size Window::GetSize() const
 		{
 			return _size;
 		}
@@ -597,13 +613,13 @@ namespace KolibriLib
 				{
 					activeForm = -1;
 				}
-				_Elements.erase(id);
+				_Elements.erase(_Elements.find(id));
 			}
 		}
 
 		OS::Event Window::Handler()
 		{
-			OS::Event event = OS::WaitEvent(8);
+			OS::Event event = OS::WaitEvent();
 
 			switch (event)
 			{
@@ -619,16 +635,19 @@ namespace KolibriLib
 					return OS::Events::Exit;
 				}
 
-				for (const std::pair<int, Element> &n : _Elements) // Запуск обработчиков всех используемых элементов
+				for (std::unordered_map<int, Window::Element>::iterator it = _Elements.begin(); it != _Elements.end(); it++) // Запуск обработчиков всех используемых элементов
 				{
-					switch (n.second._type)
+					switch (it->second._type)
 					{
 					case Element::Type::Form:
-						n.second.form->ButtonHandler();
+						it->second.form->ButtonHandler();
+						break;
 					case Element::CheckBox:
-						n.second.checkbox->Handler();
+						it->second.checkbox->Handler();
+						break;
 					case Element::Button:
-						n.second.btn->Handler();
+						it->second.btn->Handler();
+						break;
 					}
 				}
 

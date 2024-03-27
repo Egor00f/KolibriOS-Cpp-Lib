@@ -18,20 +18,23 @@ C_LAYER_DIR = $(CONTRIB_DIR)/C_Layer
 INCLUDES = -I $(SDK_DIR)/sources/newlib/libc/include -I $(SDK_DIR)/sources/libstdc++-v3/include -I include/C_Layer/INCLUDE -I include -L $(SDK_DIR)/lib
 
 #Флаги компилятора
-CFLAGS = -c -std=c++11 -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses -D __MakeStaticLib__ -L $(SDK_DIR)/lib -lgcc
+CFLAGS = -c -std=c++11 -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses -D __MakeStaticLib__ -D DEBUG -L $(SDK_DIR)/lib -lgcc
 
 # Папка в которой лежат cpp файлы
 SRC_PATH = src
 
 SOURCES = $(SRC_PATH)/filesystem.cpp $(SRC_PATH)/color.cpp $(SRC_PATH)/os.cpp $(SRC_PATH)/graphic.cpp $(SRC_PATH)/fonts.cpp \
 $(SRC_PATH)/thread.cpp $(SRC_PATH)/types.cpp $(SRC_PATH)/textBase.cpp $(SRC_PATH)/img.cpp $(SRC_PATH)/UI.cpp $(SRC_PATH)/image.cpp \
-$(SRC_PATH)/char.cpp $(SRC_PATH)/text.cpp
+$(SRC_PATH)/char.cpp $(SRC_PATH)/text.cpp $(SRC_PATH)/textlabel.cpp $(SRC_PATH)/button.cpp $(SRC_PATH)/checkbox.cpp
 
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
 
-all: $(LIB_NAME).a INSTALL CLAYER EXAMPLES CLEAN DONE
+all: RELEASE
+
+RELEASE: $(LIB_NAME).a INSTALL CLAYER CLEAN DONE
+DEBUG: $(LIB_NAME).a INSTALLDEBUG CLAYER EXAMPLES CLEAN DONE
 
 ma:
 	$(CXX) $(SOURCES) $(INCLUDES) $(CFLAGS)
@@ -50,6 +53,13 @@ $(LIB_NAME).a: $(OBJECTS)
 	@echo "| -------------------------------------"
 	@echo "|  compiling: " $@
 	$(CXX) $(CFLAGS) $(INCLUDES) -o $@ $<
+
+INSTALLDEBUG:
+	@echo " "
+	@echo "| -------------------------------------"
+	@echo "| installing DEBUG lib"
+	@mv $(LIB_NAME).a $(LIB_NAME)debug.a
+	@mv -f $(LIB_NAME)debug.a $(SDK_DIR)/lib/$(LIB_NAME)debug.a
 
 
 INSTALL:

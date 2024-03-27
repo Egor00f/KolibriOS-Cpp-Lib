@@ -13,16 +13,16 @@ int main()
 	_ksys_debug_puts("cretae label\n");
 	UI::text::TextLabel label(KolibriLib::Coord(0,0), window.GetWindowSize(), "Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma));
 
-	_ksys_debug_puts("test: render lable\n");
-	label.Render();
+	window.AddElement(label);
+
+	_ksys_debug_puts("test: render window\n");
+	window.Render();
 
 	_ksys_debug_puts("Start Main loop\n");
 	bool exit = false;
 	while (!exit)
 	{
-		_ksys_debug_puts("windiow handler\n");
 		OS::Event event = window.Handler();
-		_ksys_debug_puts("Handler not crash");
 		if (event == OS::Events::Exit)
 		{
 			exit = true;

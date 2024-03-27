@@ -146,8 +146,14 @@ unsigned KolibriLib::UI::text::Txt::lenghtPX() const
 	return l;
 }
 
-void KolibriLib::UI::text::Txt::SetText(std::string text)
+void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 {
+	#ifdef DEBUG
+	_ksys_debug_puts("Set Text to:");
+	_ksys_debug_puts(text.c_str());
+	_ksys_debug_puts("\n");
+	#endif
+	
 	for (std::size_t i = 0; i < text.length(); i++)
 	{
 		_data[i].Set(text[i], _data[i].GetFont());

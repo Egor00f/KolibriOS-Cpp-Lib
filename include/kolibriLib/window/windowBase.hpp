@@ -27,6 +27,7 @@ namespace KolibriLib
 		/// @brief Соординаты окна по умолчанию
 		const Coord DefaultWindowCoord = {100, 100};
 
+		/// @brief Список стилей для окна
 		enum WindowStyle
 		{
 			/// @brief окно фиксированных размеров
@@ -41,6 +42,8 @@ namespace KolibriLib
 			FixSizewithSkin = 4,
 			/// @brief у окна есть заголовок
 			WindowHaveTitle = 0b00010000,
+			/// @brief Координаты крафических приметивов относительно окна
+			Relative = 0b00100000,
 			/// @brief не закрашивать рабочую область при отрисовке окна
 			NoDrawWorkspace = 0b01000000,
 			/// @brief градиентная заливка рабочей области

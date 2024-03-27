@@ -7,8 +7,6 @@
 #include <string>
 #include <kolibriLib/types.hpp>
 
-#define DEBUG true
-
 namespace KolibriLib
 {
     const std::string ConfigurationDir = "/kolibrios/etc/";

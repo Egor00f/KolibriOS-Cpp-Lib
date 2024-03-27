@@ -20,7 +20,7 @@ LIBPATH = -L $(SDK_DIR)/lib -L $(TOOLCHAIN_DIR)/lib -L $(TOOLCHAIN_DIR)/mingw32/
 
 #Flags
 CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -O2 -g -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++11 -Wpointer-arith -fpermissive 
-LDFLAGS = -static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds -start-group  -lgcc -lc.dll  -lstdc++  -lsupc++ -lclayer -lkcpp -end-group
+LDFLAGS = -static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds -start-group  -lgcc -lc.dll  -lstdc++  -lsupc++ -lclayer -lkcppdebug -end-group
 
 
 
@@ -37,11 +37,6 @@ OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 #                           \||/
 #                            \/
 KOLIBRILIB_INCLUDE_PATH = ../include
-
-############### C Layer ############
-
-#C_LAYER_OBJ = $(C_LAYER_OBJ_DIR)/loadboxlib.obj $(C_LAYER_OBJ_DIR)/loadlibimg.obj $(C_LAYER_OBJ_DIR)/loadrasterworks.obj $(C_LAYER_OBJ_DIR)/loadbuf2d.obj
-####################################
 
 KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH) -I ../include/C_Layer/INCLUDE
 

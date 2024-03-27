@@ -11,6 +11,7 @@ namespace KolibriLib
     /// @brief Работа с мышью
     namespace mouse
     {
+		/// @brief Список кодов кнопок мыши
 		enum MouseButtons
 		{
             LeftButton	= 0b1,
@@ -39,7 +40,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Проверить какие кнопки мыши нажаты
-        /// @return
+		/// @return значения из списка MouseButtons
 		inline uint32_t GetMouseButtons()
 		{
 			return _ksys_get_mouse_buttons();
@@ -53,11 +54,12 @@ namespace KolibriLib
 		}
 
 		/// @brief Эмулировать нажатия кнопок мыши
-		/// @param m
+		/// @param m занчения из списка MouseButtons
 		inline void EmulateMouse(uint8_t m)
 		{
 			asm_inline(
-				"int $0x40" ::"a"(18), "b"(19), "c"(5), "d"(m)
+				"int $0x40" 
+				::"a"(18), "b"(19), "c"(5), "d"(m)
 			);
 		}
 
@@ -66,7 +68,8 @@ namespace KolibriLib
 		inline void CenterCursor()
 		{
 			asm_inline(
-				"int $0x40" ::"a"(18), "b"(15)
+				"int $0x40" 
+				::"a"(18), "b"(15)
 			);
 		}
 
@@ -86,7 +89,7 @@ namespace KolibriLib
 		/// @brief Загрузить курсор мыши
 		/// @param ptr Указатель на изображение
 		/// @return Хендл загруженного курсора
-		/// @note Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел
+		/// @note Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя
 		inline CursorHandle LoadCursor(void *ptr)
 		{
 			return _ksys_load_cursor(ptr, KSYS_CURSOR_FROM_MEM);
@@ -95,7 +98,7 @@ namespace KolibriLib
 		// /// @brief Загрузить курсор мыши
 		// /// @param cur путь до файла с курсором
 		// /// @return Хендл загруженного курсора
-		// /// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пиксел
+		// /// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя
 		// inline CursorHandle LoadCursor(Colors::ARGB[] cur);
 
 		/// @brief Установить курсор
@@ -106,6 +109,8 @@ namespace KolibriLib
 			return _ksys_set_cursor(handle);
 		}
 
+		/// @brief Удалить курсор
+		/// @param Хендл удаляемого курсора
 		inline void DeleteCursor(CursorHandle handle)
 		{
 			_ksys_delete_cursor(handle);

@@ -94,7 +94,7 @@ namespace KolibriLib
 
 				/// @brief
 				/// @param text
-				void SetText(std::string text);
+				void SetText(const std::string &text);
 
 				Txt &operator=(const Txt &txt);
 

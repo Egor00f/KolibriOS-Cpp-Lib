@@ -43,13 +43,13 @@ namespace KolibriLib
 				~Char();
 
 				/// @brief Получить тип
-				/// @return значение из списка @link Type
+				/// @return значение из списка Type
 				short GetType() const;
 
 				/// @brief
 				/// @param c
 				/// @param size Размер символа
-				/// @param flags Флаги из списка @link Flags
+				/// @param flags Флаги из списка Flags
 				/// @param TextColor
 				/// @param BackgroundColor
 				void Set(const char c, const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
@@ -78,7 +78,7 @@ namespace KolibriLib
 				/// @return
 				char GetChar() const;
 
-				/// @brief Получить @link _img
+				/// @brief Получить _img
 				/// @return
 				const Images::img &GetImg() const;
 
@@ -120,7 +120,7 @@ namespace KolibriLib
 				/*=========================================================*/
 
 				/// @brief Тип
-				/// @paragraph Хранит значение из спика @link Char::Type
+				/// @paragraph Хранит значение из спика Char::Type
 				unsigned _type;
 			};
 
