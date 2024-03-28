@@ -46,15 +46,15 @@ namespace KolibriLib
 
             /// \brief Получить введённый текст
             /// \return @link _inputText (текст который ввели в форму)
-            const std::string& GetInput() const;
+            std::string GetInput() const;
 
             /// @brief Получить цвет фонового текста
             /// @return Цвет фонового текста
-            const std::string& GetBackgroundText() const;
+            std::string GetBackgroundText() const;
 
             /// @brief Получить цвет фона
             /// @return Цвет фона формы
-            const Colors::Color& GetBackgroundColor() const;
+            Colors::Color GetBackgroundColor() const;
 
             /// @brief Изменить фоновый текст
             /// @param NewText текст
@@ -63,8 +63,6 @@ namespace KolibriLib
             /// @brief Изменить цвет фона
             /// @param NewColor цвет
             void SetBackgroundColor(const Colors::Color& NewColor);
-
-            ~Form();
         };
 
         Form::Form(const Coord &coord, const Size &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) : UIElement(coord, size, FormColor, Margin)
@@ -76,12 +74,12 @@ namespace KolibriLib
             _butt.Add(BackgroundText);
         }
 
-        const std::string &Form::GetBackgroundText() const
+        std::string Form::GetBackgroundText() const
         {
             return _butt.GetText();
         }
 
-        const Colors::Color &Form::GetBackgroundColor() const
+        Colors::Color Form::GetBackgroundColor() const
         {
             return _butt.GetColor();
         }
@@ -91,10 +89,6 @@ namespace KolibriLib
             _butt.SetColor(NewColor);
 		}
 
-		Form::~Form()
-		{
-        }
-
         void Form::Render() const
         {
             graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
@@ -102,7 +96,7 @@ namespace KolibriLib
             _butt.Render();
         }
 
-        const std::string &Form::GetInput() const
+        std::string Form::GetInput() const
         {
             return _inputText;
         }

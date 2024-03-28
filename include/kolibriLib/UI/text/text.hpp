@@ -77,12 +77,12 @@ namespace KolibriLib
 
 				/// @brief Получить текст
 				/// @return
-				std::string &GetText() const;
+				std::string GetText() const;
 
 				/// @brief Получить символ под номером i
 				/// @param i номер
 				/// @return _data[i]
-				const Char &GetChar(int i) const;
+				Char GetChar(int i) const;
 
 				/// @brief Получить длину текста
 				/// @return длина текста

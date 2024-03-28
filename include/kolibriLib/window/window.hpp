@@ -134,7 +134,7 @@ namespace KolibriLib
 			/// @brief Получить текст введённый в форму
 			/// @param form номер формы в списке
 			/// @return Функция возвращает текст введённый в формы
-			const std::string& GetInputFromFrom(int form) const;
+			std::string GetInputFromFrom(int form) const;
 
 			template <class T>
 			/// @brief Добавить UI элемент
@@ -656,7 +656,7 @@ namespace KolibriLib
 				}
 			}
 		}
-		const std::string &Window::GetInputFromFrom(int form) const
+		std::string Window::GetInputFromFrom(int form) const
 		{
 			auto it = _Elements.find(form);
 			if (it->second._type == Window::Element::Type::Form)

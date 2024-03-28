@@ -4,12 +4,13 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace text;
 
-const Char &Txt::GetChar(int i) const
+Char Txt::GetChar(int i) const
 {
+	assert(i < _data.size() && i >= 0);
     return _data.at(i);
 }
 
-std::string &KolibriLib::UI::text::Txt::GetText() const
+std::string KolibriLib::UI::text::Txt::GetText() const
 {
 	std::string result;
 	for (int i = 0; i < _data.size(); i++)
@@ -88,6 +89,13 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 	int buff = 0;
 	for (int i = 0; i < _data.size(); i++)
 	{
+		#ifdef DEBUG
+		char* b;
+		b[0] = _data[i].GetChar();
+		b[1] = 0;
+		_ksys_debug_puts(b);
+		#endif
+
 		_data[i].Print(Coord(coord.x + buff, coord.y));
 		buff += _data[i].GetFont().size.x;
 	}
@@ -153,10 +161,18 @@ void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 	_ksys_debug_puts(text.c_str());
 	_ksys_debug_puts("\n");
 	#endif
-	
+	_data.clear();
 	for (std::size_t i = 0; i < text.length(); i++)
 	{
-		_data[i].Set(text[i], _data[i].GetFont());
+		_data.push_back(Char(text.at(i)));
+
+		#ifdef DEBUG
+		// char* b;
+		// b[0] = _data[i].GetChar();
+		// b[1] = '\n';
+		// b[2] = '\0';
+		// _ksys_debug_puts(b);
+		#endif
 	}
 }
 

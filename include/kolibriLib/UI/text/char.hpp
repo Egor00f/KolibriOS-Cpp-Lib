@@ -20,7 +20,7 @@ namespace KolibriLib
 			class Char
 			{
 			public:
-				enum Type
+				typedef enum Type
 				{
 					None = 0,
 					Image,
@@ -33,7 +33,7 @@ namespace KolibriLib
 				/// @param flags флаги
 				/// @param TextColor Цвет текста
 				/// @param BackgroundColor Цвет фона
-				Char(char c = ' ', const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
+				Char(const char &c = ' ', const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
 
 				/// @brief Конструктор
 				/// @param img изображение
@@ -44,7 +44,7 @@ namespace KolibriLib
 
 				/// @brief Получить тип
 				/// @return значение из списка Type
-				short GetType() const;
+				Type GetType() const;
 
 				/// @brief
 				/// @param c
@@ -106,7 +106,7 @@ namespace KolibriLib
 
 			protected:
 				Images::img *_img;
-				char *_c;
+				char _c;
 
 			private:
 				/// @brief Освободить все переменные
@@ -120,8 +120,7 @@ namespace KolibriLib
 				/*=========================================================*/
 
 				/// @brief Тип
-				/// @paragraph Хранит значение из спика Char::Type
-				unsigned _type;
+				Type _type;
 			};
 
 		} // namespace text
