@@ -45,17 +45,29 @@ namespace KolibriLib
 			/// \param size размер
 			/// \param id idшник кнопки
 			/// \param color цвет
-			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().work_button);
+			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().work_button)
+			{
+				_ksys_define_button(coord.x, coord.y, size.x, size.y, id, color.val);
+			}
 
 			/// \brief Удалить кнопу
 			/// \param id id удаляемой кнопки
-			inline void DeleteButton(unsigned id);
+			inline void DeleteButton(unsigned id)
+			{
+				_ksys_delete_button(id);
+				FreeButtonId(id); // Кнопка удалена, теперь этот id не использется
+			}
 
 			/// @brief проверить какая кнопка нажата
 			/// @return id нажатой кнопки
-			inline unsigned GetPressedButton();
+			inline unsigned GetPressedButton()
+			{
+				return _ksys_get_button();
+			}
 
 			#ifndef __MakeStaticLib__
+
+			// Не должно быть видимо для компилятора во время сборки библиотеки
 
 			ButtonID GetFreeButtonId()
 			{
@@ -73,29 +85,12 @@ namespace KolibriLib
 				ButtonsIdList.erase(id);
 			}
 
-			ButtonID autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color = OS::GetSystemColors().work_button)
+			ButtonID autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color )
 			{
 				ButtonID id = GetFreeButtonId(); // Автоматически получаем id для кнопки
 				_ksys_define_button(coords.x, coords.y, size.x, size.y, id, color.val);
 				return id;
 			}
-
-			void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().work_button)
-			{
-				_ksys_define_button(coord.x, coord.y, size.x, size.y, id, color.val);
-			}
-
-			inline void DeleteButton(unsigned id)
-			{
-				_ksys_delete_button(id);
-				FreeButtonId(id); // Кнопка удалена, теперь этот id не использется
-			}
-
-			inline unsigned GetPressedButton()
-			{
-				return _ksys_get_button();
-			}
-
 			#endif
 		} // namespace buttons
 		

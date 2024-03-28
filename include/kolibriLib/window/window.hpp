@@ -34,7 +34,7 @@ namespace KolibriLib
 		/// @paragraph Для тех кто знает: 
 		class Window
 		{
-		private:
+		public:
 			/// @brief Структура содержащая элемент
 			struct Element
 			{
@@ -50,21 +50,16 @@ namespace KolibriLib
 					Menu
 				};
 
-				UI::buttons::Button * btn;
-				UI::Images::Image   * img;
-				UI::CheckBox        * checkbox;
-				UI::Form            * form;
-				UI::text::TextLabel * txt;
-				UI::Menu            * menu;
-				UI::Frame           * frame;
+				void *pointer;
 
-				unsigned _type;
+				/// @brief Тип элемента
+				unsigned _type = Type::None;
 
 				Element();
 				~Element();
 
 				template <class T>
-				void SetElement(const T& elem);
+				void SetElement(const T &elem);
 
 				/// @brief вывести элемент
 				void Render();
@@ -72,39 +67,6 @@ namespace KolibriLib
 				void free();
 			};
 
-			/// @brief Заголовок окна
-			std::string _title;
-
-			/// @brief Список всех кнопок этого окна
-			std::unordered_map<int, Element> _Elements;
-
-			/// @brief Размеры окна
-			Size _size;
-
-			/// @brief Цвета окна
-			Colors::ColorsTable _colors;
-
-			Colors::Color _TitleColor;
-
-			/// @brief отступы от края окна
-			unsigned _MARGIN;
-
-			/// @brief Стиль окна
-			unsigned _style;
-
-			/// @brief Прозрачность окна
-			unsigned _Transparency;
-
-			/// @brief Активная фарма
-			mutable int activeForm = -1;
-
-			/// @brief Окно перерисовывается сейчас (да/нет)
-			mutable bool _Redraw = false;
-
-			/// @brief Окно пересовывается при перетаскивании
-			bool _RealtimeRedraw;
-
-		public:
 			/// @brief Конструктор
 			/// @param Title Заголовок окна
 			/// @param size Размер окна
@@ -112,7 +74,6 @@ namespace KolibriLib
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
 			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::GetSystemColors().work_graph, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
-			~Window();
 
 			/// @brief Полная перересовка окна
 			void Redraw();
@@ -187,17 +148,48 @@ namespace KolibriLib
 			/// @param element
 			void SetElement(int i, const T& element);
 
-			/// @brief
-			/// @tparam T
-			/// @param i
+			/// @brief Получить Window::Element
+			/// @param i ключ
 			/// @return
-			template <class T>
-			T GetElement(int i) const;
+			Window::Element GetElement(int i);
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus() const;
 			/// @brief Поставить фокус на это окно
 			void Focus() const;
+
+		private:
+			/// @brief Заголовок окна
+			std::string _title;
+
+			/// @brief Список всех кнопок этого окна
+			std::unordered_map<int, Element> _Elements;
+
+			/// @brief Размеры окна
+			Size _size;
+
+			/// @brief Цвета окна
+			Colors::ColorsTable _colors;
+
+			Colors::Color _TitleColor;
+
+			/// @brief отступы от края окна
+			unsigned _MARGIN;
+
+			/// @brief Стиль окна
+			unsigned _style;
+
+			/// @brief Прозрачность окна
+			unsigned _Transparency;
+
+			/// @brief Активная фарма
+			mutable int activeForm = -1;
+
+			/// @brief Окно перерисовывается сейчас (да/нет)
+			mutable bool _Redraw = false;
+
+			/// @brief Окно пересовывается при перетаскивании
+			bool _RealtimeRedraw;
 		};
 
 		//=============================================================================================================================================================
@@ -213,7 +205,7 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::buttons::Button>(const KolibriLib::UI::buttons::Button &elem)
 		{
 			free();
-			btn = new UI::buttons::Button(elem);
+			pointer = new UI::buttons::Button(elem);
 			_type = Type::Button;
 		}
 
@@ -221,7 +213,7 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Images::Image>(const KolibriLib::UI::Images::Image &elem)
 		{
 			free();
-			img = new UI::Images::Image(elem);
+			pointer = new UI::Images::Image(elem);
 			_type = Type::Image;
 		}
 
@@ -229,7 +221,7 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::CheckBox>(const KolibriLib::UI::CheckBox &elem)
 		{
 			free();
-			checkbox = new UI::CheckBox(elem);
+			pointer = new UI::CheckBox(elem);
 			_type = Type::CheckBox;
 		}
 
@@ -237,7 +229,7 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Form>(const KolibriLib::UI::Form &elem)
 		{
 			free();
-			form = new UI::Form(elem);
+			pointer = new UI::Form(elem);
 			_type = Type::Form;
 		}
 
@@ -245,7 +237,7 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::text::TextLabel>(const KolibriLib::UI::text::TextLabel &elem)
 		{
 			free();
-			txt = new UI::text::TextLabel(elem);
+			pointer = new UI::text::TextLabel(elem);
 			_type = Type::TextLabel;
 		}
 
@@ -253,7 +245,7 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Menu>(const KolibriLib::UI::Menu &elem)
 		{
 			free();
-			menu = new UI::Menu(elem);
+			pointer = new UI::Menu(elem);
 			_type = Type::Menu;
 		}
 
@@ -261,7 +253,7 @@ namespace KolibriLib
 		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Frame>(const KolibriLib::UI::Frame &elem)
 		{
 			free();
-			frame = new UI::Frame(elem);
+			pointer = new UI::Frame(elem);
 			_type = Type::Frame;
 		}
 
@@ -306,43 +298,11 @@ namespace KolibriLib
 			return;
 		}
 
-		template <class T>
-		T KolibriLib::window::Window::GetElement(int i) const
-		{
-			std::unordered_map<int, Window::Element>::iterator it = _Elements.find(i);
-			if (it != _Elements.end())
-			{
-				switch (it->second._type)
-				{
-				case Element::Type::TextLabel:
-					return it->second.txt;
-				case Element::Type::Button:
-					return it->second.btn;
-				case Element::Type::Image:
-					return it->second.img;
-				case Element::Type::Form:
-					return it->second.form;
-				case Element::Type::CheckBox:
-					return it->second.checkbox;
-				case Element::Type::Frame:
-					return it->second.frame;
-				case Element::Type::Menu:
-					return it->second.menu;
-				default:
-					_ksys_debug_puts("KolibriLib::window::Window::GetElement: unknown type, break\n");
-					break;
-				}
-			}
-
-			return 0;
-		}
-
 		KolibriLib::window::Window::Element::Element()
 		{
 			#if DEBUG == true
 			_ksys_debug_puts("KolibriLib::window::Window::Element constructor\n");
 			#endif
-			_type = KolibriLib::window::Window::Element::Type::None;
 		}
 
 		KolibriLib::window::Window::Element::~Element()
@@ -354,29 +314,31 @@ namespace KolibriLib
 		{
 			switch (_type)
 			{
-			case Type::Button:
-				delete btn;
+			case Element::Type::TextLabel:
+				delete ((UI::text::TextLabel *)pointer);
 				break;
-			case Type::Image:
-				delete img;
+			case Element::Type::Button:
+				delete ((UI::buttons::Button *)pointer);
 				break;
-			case Type::CheckBox:
-				delete checkbox;
+			case Element::Type::Image:
+				delete ((UI::Images::Image *)pointer);
 				break;
-			case Type::Form:
-				delete form;
+			case Element::Type::Form:
+				delete ((UI::Form *)pointer);
 				break;
-			case Type::TextLabel:
-				delete txt;
+			case Element::Type::CheckBox:
+				delete ((UI::CheckBox *)pointer);
 				break;
-			case Type::Menu:
-				delete menu;
+			case Element::Type::Menu:
+				delete ((UI::Menu *)pointer);
 				break;
-			case Type::Frame:
-				delete frame;
+			case Element::Type::Frame:
+				delete ((UI::Frame *)pointer);
+				break;
+			case Element::Type::None:
 				break;
 			default:
-				break;
+				_ksys_debug_puts("Error in KolibriLib::Window::Element::free() undefined type");
 			}
 		}
 
@@ -389,25 +351,28 @@ namespace KolibriLib
 			switch (_type)
 			{
 			case Element::Type::TextLabel:
-				txt->Render();
+				((UI::text::TextLabel*)pointer)->Render();
 				break;
 			case Element::Type::Button:
-				btn->Render();
+				((UI::buttons::Button*)pointer)->Render();
 				break;
 			case Element::Type::Image:
-				img->Render();
+				((UI::Images::Image*)pointer)->Render();
 				break;
 			case Element::Type::Form:
-				form->Render();
+				((UI::Form*)pointer)->Render();
 				break;
 			case Element::Type::CheckBox:
-				checkbox->Render();
+				((UI::CheckBox*)pointer)->Render();
 				break;
 			case Element::Type::Menu:
-				menu->Render();
+				((UI::Menu*)pointer)->Render();
 				break;
 			case Element::Type::Frame:
-				frame->Render();
+				((UI::Frame*)pointer)->Render();
+				break;
+			case Element::Type::None:
+				_ksys_debug_puts("Warn: KolibriLib::Window::Element::Render() type = None");
 				break;
 			default:
 				_ksys_debug_puts("Error in KolibriLib::Window::Element::Render() undefined type");
@@ -465,8 +430,9 @@ namespace KolibriLib
 			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.work_area, _TitleColor, _style); // Отрисовать окно
 		}
 
-		KolibriLib::window::Window::~Window()
+		Window::Element KolibriLib::window::Window::GetElement(int i)
 		{
+			return _Elements.at(i);
 		}
 
 		void KolibriLib::window::Window::Redraw()
@@ -640,13 +606,13 @@ namespace KolibriLib
 					switch (it->second._type)
 					{
 					case Element::Type::Form:
-						it->second.form->ButtonHandler();
+						((UI::Form *)it->second.pointer)->ButtonHandler();
 						break;
 					case Element::CheckBox:
-						it->second.checkbox->Handler();
+						((UI::CheckBox*)it->second.pointer)->Handler();
 						break;
 					case Element::Button:
-						it->second.btn->Handler();
+						((UI::buttons::Button*)it->second.pointer)->Handler();
 						break;
 					}
 				}
@@ -656,7 +622,7 @@ namespace KolibriLib
 
 				if (activeForm != -1)
 				{
-					_Elements[activeForm].form->Handler(); // Обработчик активной на текущий момент формы
+					((UI::Form*)_Elements[activeForm].pointer)->Handler(); // Обработчик активной на текущий момент формы
 				}
 
 				break;
@@ -683,9 +649,9 @@ namespace KolibriLib
 			{
 				if (n.second._type == Element::Type::Button)
 				{
-					if (n.second.btn->GetStatus())
+					if (((UI::buttons::Button*)n.second.pointer)->GetStatus())
 					{
-						return n.second.btn->GetId();
+						return ((UI::buttons::Button*)n.second.pointer)->GetId();
 					}
 				}
 			}
@@ -695,7 +661,7 @@ namespace KolibriLib
 			auto it = _Elements.find(form);
 			if (it->second._type == Window::Element::Type::Form)
 			{
-				return it->second.form->GetInput();
+				return ((UI::Form*)it->second.pointer)->GetInput();
 			}
 
 		}
