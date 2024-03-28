@@ -1,5 +1,8 @@
 #include <kolibriLib/color.hpp>
 
+using namespace KolibriLib;
+using namespace Colors;
+
 KolibriLib::Colors::Color::Color(const ksys_color_t &a)
 {
 	val = a;
@@ -34,6 +37,12 @@ rgb_t KolibriLib::Colors::Color::GetRGB() const
 KolibriLib::Colors::Color &KolibriLib::Colors::Color::operator=(const KolibriLib::Colors::Color &a)
 {
 	val = a.val;
+	return *this;
+}
+
+Color &KolibriLib::Colors::Color::operator=(const uint32_t &color)
+{
+	val = color;
 	return *this;
 }
 

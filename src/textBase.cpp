@@ -61,8 +61,6 @@ Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 
 	Images::img *buff = new Images::img(*canvas);
 
-	*buff = *canvas;
-
 	buff->SetRGBMap(DrawTextToRGBMap(canvas->GetRGBMap(), canvas->GetSize().x, canvas->GetSize().y, margin, margin, text.c_str(), font.size.x, font.size.y, colorText.val, font._Flags), 
 					Size(w, h));
 

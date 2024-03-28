@@ -8,6 +8,11 @@ KolibriLib::filesystem::Path::Path(const std::string &path)
     _string = path;
 }
 
+KolibriLib::filesystem::Path::Path(const char * path)
+{
+    _string = std::string(path);
+}
+
 const char *KolibriLib::filesystem::Path::GetChars() const
 {
     return _string.c_str();

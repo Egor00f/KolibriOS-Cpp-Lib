@@ -42,8 +42,10 @@ namespace KolibriLib
 
             Color& operator = (const Color& a);
 
+            Color& operator = (const uint32_t& color);
+
             /// @brief Смешивает два цвета (среднее занчение)
-            /// @param a 
+            /// @param a второй цвет
             /// @return 
             Color &operator + (const Color &a);
 

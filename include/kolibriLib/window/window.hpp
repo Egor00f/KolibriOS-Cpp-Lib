@@ -533,13 +533,14 @@ namespace KolibriLib
 			StartRedraw();
 			window::CreateWindow(coord, _size, _title, _colors.work_area, _TitleColor, _style);
 
-			for (std::unordered_map<int, Window::Element>::iterator it = _Elements.begin(); it != _Elements.end(); it++)
+			for (const auto& it: _Elements)
 			{
 				#ifdef DEBUG
-				_ksys_debug_puts("Render window Element №");
-				_ksys_debug_puts(__itoa(it->first, nullptr, 10));
+				_ksys_debug_puts("Render window Element N");
+				_ksys_debug_puts(__itoa(it.first, nullptr, 10));
+				_ksys_debug_puts("\n");
 				#endif
-				_Elements[it->first].Render();
+				_Elements[it.first].Render();
 			}
 
 			#ifdef DEBUG

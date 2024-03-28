@@ -59,6 +59,7 @@ void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, Coord coo
 {
 	_img->Data[coord.x * _img->Width + coord.y] = color.val;
 }
+
 Colors::Color KolibriLib::UI::Images::img::GetPixel(unsigned x, unsigned y) const
 {
 	return _img->Data[x * _img->Width + y];
@@ -102,7 +103,7 @@ KolibriLib::UI::Images::img& KolibriLib::UI::Images::img::operator = (const Imag
 	{
 		for(unsigned j = 0; j < _img->Height; j++)
 		{
-			SetPixel(Colors::UINT32toRGB(im._img->Data[i*_img->Width + j]), j, i);
+			_img->Data[i * _img->Width + j] = im._img->Data[i * _img->Width + j];
 		}
 	}
 	
@@ -123,6 +124,11 @@ bool KolibriLib::UI::Images::img::operator!=(const img &im) const
 		}
 	}
 	return false;
+}
+
+Colors::Color *KolibriLib::UI::Images::img::GetColorsMap() const
+{
+	return (Colors::Color*)_img->Data;
 }
 
 Size img::GetSize() const

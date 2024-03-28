@@ -3,6 +3,7 @@
 #ifndef KOLIBRI_LIBIMG_H
 #define KOLIBRI_LIBIMG_H
 
+
 extern "C"
 {
 
@@ -213,7 +214,7 @@ inline Image_t* LoadImageFromFile(const char* Path)
 		char *b;
 		strcat(b, a);
 		strcat(b, Path);
-		strcat(b, " \n ");
+		strcat(b, " \n \0");
 		_ksys_debug_puts(b);
 	}
 
@@ -223,7 +224,7 @@ inline Image_t* LoadImageFromFile(const char* Path)
 		char *b;
 		strcat(b, a);
 		strcat(b, Path);
-		strcat(b, " \n ");
+		strcat(b, " \n \0");
 		_ksys_debug_puts(b);
 	}
 
@@ -238,7 +239,7 @@ inline Image_t* LoadImageFromFile(const char* Path)
 		strcat(b, a);
 		strcat(b, Path);
 		strcat(b, "\n");
-		strcat(b, "malloc not return ptr\n");
+		strcat(b, "malloc not return ptr\n\0");
 		_ksys_debug_puts(b);
 	}
 
@@ -250,7 +251,7 @@ inline Image_t* LoadImageFromFile(const char* Path)
 		char *b;
 		strcat(b, a);
 		strcat(b, Path);
-		strcat(b, " \n ");
+		strcat(b, " \n \0");
 		_ksys_debug_puts(b);
 	}
 

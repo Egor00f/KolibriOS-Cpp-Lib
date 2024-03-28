@@ -30,9 +30,9 @@ Txt::Txt()
 
 Txt::Txt(const std::string &text)
 {
-#ifdef DEBUG
+	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor\n");
-#endif
+	#endif
 
 	SetText(text);
 }
@@ -67,7 +67,7 @@ void KolibriLib::UI::text::Txt::insert(const std::string &txt, int i)
 {
 	for (int j = txt.length(); j > 0; j++)
 	{
-		_data.insert(_data.begin() + i, Char(txt[j], _data[i].GetFont()));
+		_data.insert(_data.begin() + i, Char(txt[j]));
 	}
 }
 
@@ -92,7 +92,8 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 		#ifdef DEBUG
 		char* b;
 		b[0] = _data[i].GetChar();
-		b[1] = 0;
+		b[1] = '\n';
+		b[2] = '\0';
 		_ksys_debug_puts(b);
 		#endif
 
@@ -161,19 +162,23 @@ void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 	_ksys_debug_puts(text.c_str());
 	_ksys_debug_puts("\n");
 	#endif
-	_data.clear();
+	
+	_data.reserve(text.length());
+
+	
 	for (std::size_t i = 0; i < text.length(); i++)
 	{
 		_data.push_back(Char(text.at(i)));
 
 		#ifdef DEBUG
-		// char* b;
-		// b[0] = _data[i].GetChar();
-		// b[1] = '\n';
-		// b[2] = '\0';
-		// _ksys_debug_puts(b);
+		char* b;
+		b[0] = _data.at(i).GetChar();
+		b[1] = '\n';
+		b[2] = '\0';
+		_ksys_debug_puts(b);
 		#endif
 	}
+	
 }
 
 KolibriLib::UI::text::Txt &KolibriLib::UI::text::Txt::operator=(const Txt &txt)

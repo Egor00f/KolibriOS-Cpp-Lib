@@ -57,7 +57,7 @@ void text::TextLabel::Render() const
 	//    #endif
 	// }
 	// delete FontSize;
-	Print(Coord(_coord.x + (_size.x / 2), _coord.y + (_size.y / 2)));
+	Print(Coord(_coord.x, _coord.y));
 }
 
 void text::TextLabel::SetScale(bool scale)

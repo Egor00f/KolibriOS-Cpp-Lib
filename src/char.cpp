@@ -4,32 +4,48 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace text;
 
-KolibriLib::UI::text::Char::Char(const char &c, const KolibriLib::UI::text::Fonts::Font &font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
-{
-	#ifdef DEBUG
-	_ksys_debug_puts("Char consturctor\n");
-	#endif
-
-	_c = c;
-	_font = font;
-	_TextColor = new Colors::Color(TextColor);
-	_BackgroundColor = new Colors::Color(BackgroundColor);
-	_type = Type::Text;
-}
-
 KolibriLib::UI::text::Char::Char(const Images::img &img, const KolibriLib::UI::text::Fonts::Font &font)
+	: _img(new Images::img(img)), _font(font), _type(Type::Image)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Char constructor\n");
 	#endif
+}
 
-	_img = new Images::img(img);
-	_font = font;
-	_type = Type::Image;
+KolibriLib::UI::text::Char::Char(const char &c, const Fonts::Font &font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
+	: _c(new char(c)), _font(font), _TextColor(new Colors::Color(TextColor)), _BackgroundColor(new Colors::Color(BackgroundColor)), _type(Type::Text)
+{
+	#ifdef DEBUG
+	_ksys_debug_puts("Char consturctor\n");
+	#endif
+}
+
+KolibriLib::UI::text::Char::Char(const Char &copy) : _font(copy._font), _type(copy._type)
+{
+	switch (copy._type)
+	{
+	case Type::Text:
+		_c = new char;
+		std::memcpy(_c, copy._c, 1);
+
+		_TextColor = new Colors::Color(copy._TextColor->val);
+		_BackgroundColor = new Colors::Color(copy._BackgroundColor->val);
+
+		break;
+	case Type::Image:
+		_img = new Images::img(copy._img->GetColorsMap(), copy._img->GetSize());
+
+		break;
+	default:
+		break;
+	}
 }
 
 KolibriLib::UI::text::Char::~Char()
 {
+	#ifdef DEBUG
+	_ksys_debug_puts("Char desconstructor\n");
+	#endif
 	Char::Free();
 }
 
@@ -44,7 +60,7 @@ void KolibriLib::UI::text::Char::Set(const char c, const Fonts::Font &font, cons
 	_font = font; // да это дольше, но проще
 	_TextColor = new Colors::Color(TextColor);
 	_BackgroundColor = new Colors::Color(BackgroundColor);
-	_c = c;
+	_c = new char(c);
 	_type = Type::Text;
 }
 
@@ -83,7 +99,7 @@ void KolibriLib::UI::text::Char::SetFont(const KolibriLib::UI::text::Fonts::Font
 char KolibriLib::UI::text::Char::GetChar() const
 {
 	assert(_type == Type::Text);
-	return _c;
+	return *_c;
 }
 
 const Images::img &KolibriLib::UI::text::Char::GetImg() const
@@ -111,6 +127,7 @@ void KolibriLib::UI::text::Char::Free()
 		delete _img;
 		break;
 	case Type::Text:
+		delete _c;
 		delete _TextColor;
 		delete _BackgroundColor;
 		break;
@@ -124,21 +141,26 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 	#ifdef DEBUG
 	_ksys_debug_puts("Print Char:\n");
 	#endif
+
 	switch (_type)
 	{
 	case Type::Image:
+
 		#ifdef DEBUG
 		_ksys_debug_puts("Char is img");
 		#endif
+
 		_img->Render(coord, _font.size);
 		break;
 	case Type::Text:
+
 		#ifdef DEBUG
 		_ksys_debug_puts("Char is text");
 		#endif
+
 		char *b;
-		b[0] = _c;
-		b[1] = 0;
+		b[0] = *_c;
+		b[1] = '\0';
 		DrawText(std::string(b), coord, _font, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
 		break;
 	default:
@@ -151,7 +173,7 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 
 KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(char c)
 {
-	_c = c;
+	*_c = c;
 	if (_type != Char::Type::Text)
 	{
 		Free();

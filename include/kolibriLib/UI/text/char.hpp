@@ -7,6 +7,10 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/img.hpp>
+
+#include <cstddef>
+#include <cstring>
+
 #include "fontslist.hpp"
 
 namespace KolibriLib
@@ -27,17 +31,20 @@ namespace KolibriLib
 					Text
 				};
 
-				/// @brief Конструктор
-				/// @param c символ
-				/// @param size размеры символа
-				/// @param flags флаги
-				/// @param TextColor Цвет текста
-				/// @param BackgroundColor Цвет фона
+				/// @brief 
+				/// @param c 
+				/// @param font 
+				/// @param TextColor 
+				/// @param BackgroundColor 
 				Char(const char &c = ' ', const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
 
 				/// @brief Конструктор
 				/// @param img изображение
 				Char(const Images::img &img, const Fonts::Font &font = Fonts::DefaultFont);
+
+				/// @brief Конструктор копирования
+				/// @param copy 
+				Char(const Char &copy);
 
 				/// @brief Деструктор
 				~Char();
@@ -106,11 +113,13 @@ namespace KolibriLib
 
 			protected:
 				Images::img *_img;
-				char _c;
+				char *_c;
 
 			private:
-				/// @brief Освободить все переменные
+				/// @brief Удалить указатели
 				void Free();
+
+				
 
 				mutable Fonts::Font _font;
 

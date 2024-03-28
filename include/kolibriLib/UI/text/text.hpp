@@ -92,7 +92,7 @@ namespace KolibriLib
 				/// @return
 				unsigned lenghtPX() const;
 
-				/// @brief
+				/// @brief Изменить текст
 				/// @param text
 				void SetText(const std::string &text);
 

@@ -78,7 +78,6 @@ CLEAN:
 	@echo " "
 	@echo "| -------------------------------------"
 	@echo "| clean"
-	@rm $(OBJECTS)
 
 EXAMPLES:
 	@echo " "

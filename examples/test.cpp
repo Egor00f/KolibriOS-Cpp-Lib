@@ -5,15 +5,15 @@ using namespace KolibriLib;
 
 int main()
 {
-	_ksys_debug_puts("test: init\n");
-	init();
-	_ksys_debug_puts("test: init done!\n");    
+	init(); 
 	window::Window window("Example Window");
 
-	_ksys_debug_puts("cretae label\n");
-	UI::text::TextLabel label(KolibriLib::Coord(0,0), window.GetWindowSize(), "Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma));
+	unsigned label = window.AddElement(UI::text::TextLabel(KolibriLib::Coord(0, 0), window.GetWindowSize(),
+														   "Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma)));
 
-	window.AddElement(label);
+	UI::Images::Image i(Coord(40, 40));
+	i.LoadImage("/kolibrios/media/logo.png");
+	unsigned img = window.AddElement(img);
 
 	_ksys_debug_puts("test: render window\n");
 	window.Render();

@@ -18,6 +18,7 @@ namespace KolibriLib
         class Path
         {
             public:
+                Path(const char* path = "/");
                 Path(const std::string& path = "/");
                 /// @brief Получить char* строку
                 /// @return Функция возвращает конвертированную строку @link _string
