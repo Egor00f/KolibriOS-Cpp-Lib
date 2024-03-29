@@ -16,13 +16,18 @@
 
 ## Сборка
 
-Для сборки без 100% вероятности ошибки необходимо отредактировать `CONTRIB_DIR` в файле Makefile (`CONTRIB_DIR = Path_to_KolibriOS/contrib`)
+По умолчанию предпологается что репозитрий kolibrios лежит в той же папке что и папка этого проекта, но вы можете отредактировать include.cmake
 
-И просто собрать:
 ```
+install.bat
+```
+
+```
+mkdir build
+cmake ..
 make
 ```
-Ждите...
+
 
 ## Как использовать это
 
@@ -31,20 +36,6 @@ make
 ```
 #include <KolibriLib.hpp>
 ```
-Добавть в ваш Makefile:
-```
-C_LAYER_DIR = ../../C_Layer
-C_LAYER_OBJ = $(C_LAYER_DIR)/OBJ/loadlibimg.obj
-
-KOLIBRILIB_INCLUDE_PATH = F:/KolibriOs/KolibriOS-Cpp-Lib/src/include
-
-KOLIBRILIB_INCLUDE = -I $(KOLIBRILIB_INCLUDE_PATH)
-
-INCLUDES += $(KOLIBRILIB_INCLUDE)
-```
-KOLIBRILIB_INCLUDE_PATH и C_LAYER_DIR нужно отредактировать для вашего проекта
-
-это все можно также найти в src/examples/Makefile
 
 Примеры использования лежат в src/examples/
 
