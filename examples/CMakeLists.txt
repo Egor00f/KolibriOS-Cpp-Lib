@@ -7,13 +7,9 @@ project(KolibriLibExamples)
 ################################################
                                                #
 SET(DEBUG ON)                                  #
-SET(KOLIBRIOS_REPO "../../kolibrios")             #
+SET(KOLIBRIOS_REPO "../../kolibrios")          #
                                                #
 ################################################
-
-
-
-
 
 
 
@@ -23,9 +19,10 @@ SET(KOLIBRIOS_REPO "../../kolibrios")             #
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 SET(LIB_DIR ${SDK_DIR}/lib)
 
+link_directories(${LIB_DIR})
 
 SET(CMAKE_CXX_FLAGS  "-c -std=c++11 -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
-SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++  -lsupc++")
+SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib -T $(SDK_DIR)/sources/newlib/app.lds -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++  -lsupc++")
 
 if(DEBUG)
 	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -D DEBUG")
@@ -59,15 +56,16 @@ SET(CMAKE_CXX_LINKER ${TOOLCHAIN_DIR}/bin/kos32-ld)
 SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
 
 SET(C_LAYER_OBJ ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ)
-SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${C_LAYER_OBJ}/loadboxlib.obj")
-SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${C_LAYER_OBJ}/loadlibimg.obj")
-SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${C_LAYER_OBJ}/loadrasterworks.obj")
-SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${C_LAYER_OBJ}/loadbuf2d.obj")
-
-
 
 
 
 
 add_executable(Example example.cpp)
 
+target_link_libraries(Example 
+    ${C_LAYER_OBJ}/loadboxlib.obj 
+    ${C_LAYER_OBJ}/loadbuf2d.obj 
+    ${C_LAYER_OBJ}/loadlibimg.obj 
+    ${C_LAYER_OBJ}/loadrasterworks.obj 
+    ../build/libKolibriLib.a
+)

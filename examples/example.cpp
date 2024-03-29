@@ -10,9 +10,6 @@ int main()
 	unsigned label = window.AddElement(UI::text::TextLabel(KolibriLib::Coord(0, 0), window.GetWindowSize(),
 														   "Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma)));
 
-	UI::Images::Image i(Coord(40, 40));
-	i.LoadImage("/kolibrios/media/logo.png");
-	unsigned img = window.AddElement(img);
 
 	_ksys_debug_puts("test: render window\n");
 	window.Render();

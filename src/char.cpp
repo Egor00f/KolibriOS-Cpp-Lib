@@ -7,17 +7,13 @@ using namespace text;
 KolibriLib::UI::text::Char::Char(const Images::img &img, const KolibriLib::UI::text::Fonts::Font &font)
 	: _img(new Images::img(img)), _font(font), _type(Type::Image)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Char constructor\n");
-	#endif
+	
 }
 
 KolibriLib::UI::text::Char::Char(const char &c, const Fonts::Font &font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
 	: _c(new char(c)), _font(font), _TextColor(new Colors::Color(TextColor)), _BackgroundColor(new Colors::Color(BackgroundColor)), _type(Type::Text)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Char consturctor\n");
-	#endif
+	
 }
 
 KolibriLib::UI::text::Char::Char(const Char &copy) : _font(copy._font), _type(copy._type)
@@ -43,13 +39,10 @@ KolibriLib::UI::text::Char::Char(const Char &copy) : _font(copy._font), _type(co
 
 KolibriLib::UI::text::Char::~Char()
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Char desconstructor\n");
-	#endif
 	Char::Free();
 }
 
-Char::Type KolibriLib::UI::text::Char::GetType() const
+uint8_t KolibriLib::UI::text::Char::GetType() const
 {
 	return _type;
 }
@@ -150,7 +143,7 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 		_ksys_debug_puts("Char is img");
 		#endif
 
-		_img->Render(coord, _font.size);
+		_img->Draw(coord, _font.size);
 		break;
 	case Type::Text:
 

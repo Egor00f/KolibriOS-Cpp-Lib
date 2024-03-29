@@ -20,7 +20,7 @@ namespace KolibriLib
 	/// @brief Работа с окном
 	namespace window
 	{
-		
+
 		/// @brief Размер окна поумолчанию
 		const Size DefaultWindowSize = {600, 400};
 
@@ -50,14 +50,14 @@ namespace KolibriLib
 			GradientDraw = 0b10000000
 		};
 
-		/// @brief 
+		/// @brief
 		/// @param coord Координаты окна(его левого верхнего угола) на экране
 		/// @param size Размеры окна
 		/// @param title Заголовок окна
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
-		inline void CreateWindow(const Coord &coord, const Size &size, const std::string& title, const Colors::Color& WorkColor = OS::GetSystemColors().work_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize)
+		inline void CreateWindow(const Coord &coord, const Size &size, const std::string &title, const Colors::Color &WorkColor = OS::GetSystemColors().work_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize)
 		{
 			_ksys_debug_puts("Create wind\n");
 			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor.val, style);
@@ -85,8 +85,7 @@ namespace KolibriLib
 			asm_inline(
 				"int $0x40"
 				: "=a"(s)
-				: "a"(18), "b"(7)
-			);
+				: "a"(18), "b"(7));
 			return s;
 		}
 
@@ -94,18 +93,14 @@ namespace KolibriLib
 		inline void MinimizeWindow()
 		{
 			asm_inline(
-				"int $0x40" 
-				::"a"(18), "b"(10)
-			);
+				"int $0x40" ::"a"(18), "b"(10));
 		}
 
 		/// @brief Свернуть все окна
 		inline void MinimizeAllWindows()
 		{
 			asm_inline(
-				"int $0x40" 
-				::"a"(18), "b"(23)
-			);
+				"int $0x40" ::"a"(18), "b"(23));
 		}
 
 		inline Coord GetWindowCoord()
@@ -119,7 +114,7 @@ namespace KolibriLib
 			BackGround = -2,
 			AlwaysBack = -1,
 			Normal = 0,
-			AlwaysTop = 1 	
+			AlwaysTop = 1
 		};
 
 		/// @brief Получить положение окна относительно других окон
@@ -137,7 +132,8 @@ namespace KolibriLib
 		/// @brief Изменить положение окна относительно дроугих окон
 		/// @param pos значение из списка @link Pos
 		/// @param pid процесс окна, по умолчанию текущий
-		/// @return false если ошибка,
+		/// @return false если ошибка
+		//// @return true если успешно
 		inline bool SetWindowPos(int pos, Thread::PID pid = -1)
 		{
 			bool a;
@@ -148,7 +144,6 @@ namespace KolibriLib
 			return a;
 		}
 
-
 		/// @brief Получить высоту скина(заголовка окна)
 		/// @return высота скина
 		inline unsigned GetSkinHeight()
@@ -157,9 +152,7 @@ namespace KolibriLib
 		}
 
 	} // namespace window
-	
 
 } // namespace KolibriLib
-
 
 #endif // __WINDOWBASE_H__

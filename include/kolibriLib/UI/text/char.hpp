@@ -24,7 +24,7 @@ namespace KolibriLib
 			class Char
 			{
 			public:
-				typedef enum Type
+				enum Type
 				{
 					None = 0,
 					Image,
@@ -51,7 +51,7 @@ namespace KolibriLib
 
 				/// @brief Получить тип
 				/// @return значение из списка Type
-				Type GetType() const;
+				uint8_t GetType() const;
 
 				/// @brief
 				/// @param c
@@ -129,7 +129,7 @@ namespace KolibriLib
 				/*=========================================================*/
 
 				/// @brief Тип
-				Type _type;
+				uint8_t _type;
 			};
 
 		} // namespace text

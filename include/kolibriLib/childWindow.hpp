@@ -84,7 +84,7 @@ namespace KolibriLib
             while (true)
             {
                 OS::Event event = window.Handler();
-                if (event = OS::Events::Exit)
+                if (event == OS::Events::Exit)
                 {
                     window.~Window();
                     _ksys_exit();

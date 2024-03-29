@@ -263,6 +263,40 @@ inline Image_t* LoadImageFromFile(const char* Path)
 
 	return buff;
 }
+
+inline Image_t* img_Copy(const Image_t* src)
+{
+	Image_t *copy = img_create(src->Width, src->Height, src->Type);
+
+	copy->Flags = src->Flags;
+	copy->Palette = src->Palette;
+	copy->Extended = src->Extended;
+
+
+	for(unsigned i = 0; i < src->Width * src->Height; i++)
+	{
+		copy->Data[i] = src->Data[i];
+	}
+
+	return copy;
+}
+
+inline Image_t *img_Copy(Image_t src)
+{
+	Image_t *copy = img_create(src.Width, src.Height, src.Type);
+
+	copy->Flags = src.Flags;
+	copy->Palette = src.Palette;
+	copy->Extended = src.Extended;
+
+	for (unsigned i = 0; i < src.Width * src.Height; i++)
+	{
+		copy->Data[i] = src.Data[i];
+	}
+
+	return copy;
+}
+
 #endif
 
 inline void img_fill_color(Image_t* img, uint32_t width, uint32_t height, uint32_t color) {

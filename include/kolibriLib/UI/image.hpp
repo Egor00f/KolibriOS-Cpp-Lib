@@ -22,9 +22,7 @@ namespace KolibriLib
 		{
 			/// @brief Картинка как элемент интерфейса
 			class Image : public UIElement, public img
-			{
-			private:
-				
+			{				
 			public:
 				/// @brief Конструктор
 				/// @param coord Координаты
@@ -33,9 +31,12 @@ namespace KolibriLib
 				/// @param Margin
 				Image(const Coord& coord = {0, 0}, const Size& size = {100, 100});
 
+				/// @brief Конструктор копирования
+				/// @param copy 
+				Image(const Image &copy);
+
 				/// @brief Вывести изображение в окно
 				/// @param size Размер выводимого изображения
-				/// @paragraph Можно растянуть/сжать выводимое изображение введя новые размеры в переменную size, само изображение при этом не изменяется
 				void Render() const;
 
 				/// @brief 

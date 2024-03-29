@@ -26,10 +26,6 @@ namespace KolibriLib
 		/// @param Y 
 		point(int X = 0, int Y = 0);
 
-		/// @brief Точка как отношение x/y
-		/// @param f Десятичная дробь, которая ≈ x/y
-		point(float f);
-
 		ksys_pos_t GetKsysPost() const;
 
 		point& operator+(const point &a);

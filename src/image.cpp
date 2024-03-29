@@ -9,6 +9,12 @@ Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size), img
 	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor");
 }
 
+KolibriLib::UI::Images::Image::Image(const Image & copy)
+	:UIElement(copy._coord, copy._size, copy._MainColor, copy._Margin)
+{
+	_img = img_Copy(copy._img);
+}
+
 void Images::Image::init(const Coord &coord, const Size &size, const filesystem::Path &Path)
 {
 	_coord = coord;

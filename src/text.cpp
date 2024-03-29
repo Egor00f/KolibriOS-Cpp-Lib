@@ -169,14 +169,6 @@ void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 	for (std::size_t i = 0; i < text.length(); i++)
 	{
 		_data.push_back(Char(text.at(i)));
-
-		#ifdef DEBUG
-		char* b;
-		b[0] = _data.at(i).GetChar();
-		b[1] = '\n';
-		b[2] = '\0';
-		_ksys_debug_puts(b);
-		#endif
 	}
 	
 }

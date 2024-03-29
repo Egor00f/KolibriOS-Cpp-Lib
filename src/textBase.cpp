@@ -61,10 +61,14 @@ Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 
 	Images::img *buff = new Images::img(*canvas);
 
-	buff->SetRGBMap(DrawTextToRGBMap(canvas->GetRGBMap(), canvas->GetSize().x, canvas->GetSize().y, margin, margin, text.c_str(), font.size.x, font.size.y, colorText.val, font._Flags), 
-					Size(w, h));
+	rgb_t* b = buff->GetRGBMap();
 
-	if (colorText._a < 1)
+	canvas->SetRGBMap(DrawTextToRGBMap(b, canvas->GetSize().x, canvas->GetSize().y, margin, margin, text.c_str(), font.size.x, font.size.y, colorText.val, font._Flags), 
+					Size(w, h));
+	
+	delete b;
+
+	if (colorText._a != 0 || colorText != 1)
 	{ // Прозрачность текста
 		const float k = colorText._a / 255;
 		for (int i = margin; i < h - margin; i++) // Трогать поля нет смысла
@@ -74,7 +78,7 @@ Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 				if (buff->GetPixel(i, j) != canvas->GetPixel(i, j))	// Если цвет пикселя отличается от фона
 				{
 					canvas->SetPixel(Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + (int)margin + Coord(0, i) + Coord(j, 0)),
-														canvas->GetPixel(i, j),
+														buff->GetPixel(i, j),
 														k),
 									i,
 									j);

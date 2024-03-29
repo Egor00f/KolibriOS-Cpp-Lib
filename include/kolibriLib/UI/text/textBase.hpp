@@ -83,7 +83,7 @@ namespace KolibriLib
 								 uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
 			{
 				Images::img *buff = text::DrawTextToImg(text, font, margin, colorText, BackgroundColor, encoding);
-				buff->Render(coord, Size((margin * 2) + font.size.x, (margin * 2) + (font.size.y * text.length())));
+				buff->Draw(coord, Size((margin * 2) + font.size.x, (margin * 2) + (font.size.y * text.length())));
 				delete buff;
 			}
 			

@@ -7,13 +7,19 @@ using namespace Images;
 
 KolibriLib::UI::Images::img::img()
 {
-	_ksys_debug_puts("img consturctor\n");
+	#ifdef DEBUG
+	_ksys_debug_puts("img consturctor(empety)\n");
+	#endif
+
 	_img = img_create(32, 32, IMAGE_BPP32);
 }
 
-KolibriLib::UI::Images::img::img(Colors::Color *color, Size size)
+KolibriLib::UI::Images::img::img(Colors::Color *color, const Size &size)
 {
+	#ifdef DEBUG
 	_ksys_debug_puts("img consturctor\n");
+	#endif
+
 	_img = img_create(size.x, size.y, IMAGE_BPP32);
 	for (unsigned i = 0; i < size.x * size.y; i++)
 	{
@@ -21,10 +27,24 @@ KolibriLib::UI::Images::img::img(Colors::Color *color, Size size)
 	}
 }
 
-KolibriLib::UI::Images::img::img(Colors::Color color, Size size)
+KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
 {
+	#ifdef DEBUG
 	_ksys_debug_puts("img consturctor\n");
+	#endif
+
+
+	_img = img_create(size.x, size.y, IMAGE_BPP32);
 	img_fill_color(_img, size.x, size.y, color.val);
+}
+
+KolibriLib::UI::Images::img::img(const img & copy)
+{
+	#ifdef DEBUG
+	_ksys_debug_puts("img consturctor(copy)\n");
+	#endif
+
+	_img = img_Copy(copy._img);
 }
 
 UI::Images::img::~img()
@@ -32,9 +52,17 @@ UI::Images::img::~img()
 	img_destroy(_img);
 }
 
-void UI::Images::img::Render(const Coord &coord, const Size &size) const
+void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 {
-	if (size.x != -1 || size.y != -1)
+	#ifdef DEBUG
+	_ksys_debug_puts("Draw img size:");
+	_ksys_debug_puts(__itoa(size.x, nullptr, 10));
+	_ksys_debug_putc(' ');
+	_ksys_debug_puts(__itoa(size.y, nullptr, 10));
+	_ksys_debug_putc('\n');
+	#endif
+
+	if ((size.x != -1 && size.y != -1) || (size.x == _img->Width && size.y == _img->Height))
 	{
 		img_draw(_img, coord.x, coord.y, size.x, size.y, 0, 0);
 	}
@@ -44,30 +72,30 @@ void UI::Images::img::Render(const Coord &coord, const Size &size) const
 	}
 }
 
-void UI::Images::img::SetImg(Image_t *img)
+void UI::Images::img::SetImg(const Image_t *img)
 {
 	img_destroy(_img);
-	_img = img;
+	_img = img_Copy(img);
 }
 
 void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, unsigned x, unsigned y)
 {
-	_img->Data[x * _img->Width + y] = color.val;
+	_img->Data[(y-1) * _img->Width + x] = color.val;
 }
 
 void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, Coord coord)
 {
-	_img->Data[coord.x * _img->Width + coord.y] = color.val;
+	_img->Data[(coord.y-1) * _img->Width + coord.x] = color.val;
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(unsigned x, unsigned y) const
 {
-	return _img->Data[x * _img->Width + y];
+	return _img->Data[(y - 1) * _img->Width + x];
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(Coord coord) const
 {
-	return _img->Data[coord.x * _img->Width + coord.y];
+	return _img->Data[(coord.y - 1) * _img->Width + coord.x];
 }
 
 rgb_t *KolibriLib::UI::Images::img::GetRGBMap() const
@@ -94,17 +122,14 @@ void KolibriLib::UI::Images::img::FillColor(const Colors::Color &color)
 
 KolibriLib::UI::Images::img& KolibriLib::UI::Images::img::operator = (const Images::img& im)
 {
-	if(_img->Width != im._img->Width || _img->Height != im._img->Height) //Если размеры картинок разные
+	if (_img->Width != im._img->Width || _img->Height != im._img->Height) // Если размеры картинок разные
 	{
 		img_resize_data(_img, im._img->Width, im._img->Height);
 	}
-	
-	for(unsigned i = 0; i < _img->Width; i++)
+
+	for (unsigned i = 0; i < _img->Width * _img->Height; i++)
 	{
-		for(unsigned j = 0; j < _img->Height; j++)
-		{
-			_img->Data[i * _img->Width + j] = im._img->Data[i * _img->Width + j];
-		}
+		_img->Data[i] = im._img->Data[i];
 	}
 	
 	return *this;

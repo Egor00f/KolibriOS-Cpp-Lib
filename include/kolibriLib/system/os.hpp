@@ -13,11 +13,9 @@ namespace KolibriLib
 	{
 
 		/// @brief Получить системные цвета
-		/// @paragraph Функция изменяет переменную @link sys_color_table
 		/// @return Таблица системных цветов
 		inline Colors::ColorsTable GetSystemColors()
 		{
-			_ksys_debug_puts("GetSysColros\n");
 			Colors::ColorsTable buff;
 			_ksys_get_system_colors(&buff);
 			return buff;
@@ -148,7 +146,7 @@ namespace KolibriLib
 		};
 
 		/// @brief Получить язык системы
-		/// @return Занечение из списка @link lang
+		/// @return Занечение из списка lang
 		inline int GetLang()
 		{
 			int a;

@@ -32,28 +32,33 @@ namespace KolibriLib
 				/// @brief Конструктор
 				/// @param color Массив цветов
 				/// @param size размеры изображения
-				img(Colors::Color *color, Size size);
+				img(Colors::Color *color, const Size &size);
 
 				/// @brief Конструктор
 				/// @param color цвет
 				/// @param size размеры изображения
 				/// @note Закрашивает изображение в цвет
-				img(Colors::Color color, Size size);
+				img(const Colors::Color &color, const Size &size);
 
+				/// @brief Коструктор копирования
+				/// @param copy то что будет копироваться
+				img(const img &copy);
+
+				/// @brief Деструктор
 				~img();
 
 				/// @brief Отрисовать изображение
 				/// @param coord координаты
 				/// @param size кастомный размер
-				virtual void Render(const Coord &coord, const Size &size = {-1, -1}) const;
+				void Draw(const Coord &coord, const Size &size = {-1, -1}) const;
 
 				/// @brief Загрузить изображение
 				/// @param Path путь до файла
 				void LoadImage(const filesystem::Path &Path = DefaultImage);
 
 				/// @brief Изменить изображение
-				/// @param img Указатель на струтуру @link Image_t
-				void SetImg(Image_t *img);
+				/// @param img Указатель на струтуру Image_t
+				void SetImg(const Image_t *img);
 
 				/// @brief Изменить цвет пикселя
 				/// @param color
@@ -76,12 +81,13 @@ namespace KolibriLib
 				/// @return Цвет
 				Colors::Color GetPixel(Coord coord) const;
 
-				/// @brief
-				/// @return
+				/// @brief Получить изображение как массив Colors::Color
+				/// @return Указатель на img::_img->Data
 				Colors::Color *GetColorsMap() const;
 
 				/// @brief получить массив rgb_t
-				/// @return
+				/// @return возврацается копия
+				/// @note не забудьте удалить копию после использования!
 				rgb_t *GetRGBMap() const;
 
 				/// @brief Изменить изображение по изображению из rgb_t
@@ -98,6 +104,8 @@ namespace KolibriLib
 				/// @return 
 				Size GetSize() const;
 
+				/// @brief Заполнить изображение цветом
+				/// @param color цвет
 				void FillColor(const Colors::Color &color);
 				
 				img& operator = (const img& im);

@@ -56,10 +56,37 @@ namespace KolibriLib
 				unsigned _type = Type::None;
 
 				Element();
+
+				/// @brief Деструктор
 				~Element();
 
-				template <class T>
-				void SetElement(const T &elem);
+				/// @brief Изменить элемент
+				/// @param elem элемент
+				void SetElement(const UI::text::TextLabel &elem);
+
+				/// @brief Изменить элемент
+				/// @param elem элемент
+				void SetElement(const UI::CheckBox &elem);
+
+				/// @brief Изменить элемент
+				/// @param elem элемент
+				void SetElement(const UI::Images::Image &elem);
+
+				/// @brief Изменить элемент
+				/// @param elem элемент
+				void SetElement(const UI::buttons::Button &elem);
+
+				/// @brief Изменить элемент
+				/// @param elem элемент
+				void SetElement(const UI::Form &elem);
+
+				/// @brief Изменить элемент
+				/// @param elem элемент
+				void SetElement(const UI::Frame &elem);
+
+				/// @brief Изменить элемент
+				/// @param elem элемент
+				void SetElement(const UI::Menu &elem);
 
 				/// @brief вывести элемент
 				void Render();
@@ -136,17 +163,23 @@ namespace KolibriLib
 			/// @return Функция возвращает текст введённый в формы
 			std::string GetInputFromFrom(int form) const;
 
-			template <class T>
 			/// @brief Добавить UI элемент
 			/// @param element
-			int AddElement(const T element);
+			int AddElement(const UI::text::TextLabel &element);
+
+			/// @brief Добавить UI элемент
+			/// @param element
+			int AddElement(const UI::Images::Image &element);
+
+			/// @brief Добавить UI элемент
+			/// @param element
+			int AddElement(const UI::buttons::Button &element);
 
 			template <class T>
 			/// @brief Изменить элемент
-			/// @tparam T
 			/// @param i
 			/// @param element
-			void SetElement(int i, const T& element);
+			void SetElement(int i, const T &element);
 
 			/// @brief Получить Window::Element
 			/// @param i ключ
@@ -194,71 +227,59 @@ namespace KolibriLib
 
 		//=============================================================================================================================================================
 
-		template <class T>
-		void KolibriLib::window::Window::Element::SetElement(const T &elem)
-		{
-			_ksys_debug_puts("Error in KolibriLib::window::Window::Element::SetElement: unklown type");
-		}
-
-		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
-		template <>
-		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::buttons::Button>(const KolibriLib::UI::buttons::Button &elem)
+		void KolibriLib::window::Window::Element::SetElement(const UI::buttons::Button &elem)
 		{
 			free();
 			pointer = new UI::buttons::Button(elem);
 			_type = Type::Button;
 		}
 
-		template <>
-		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Images::Image>(const KolibriLib::UI::Images::Image &elem)
+		void KolibriLib::window::Window::Element::SetElement(const UI::Images::Image &elem)
 		{
 			free();
 			pointer = new UI::Images::Image(elem);
 			_type = Type::Image;
 		}
 
-		template <>
-		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::CheckBox>(const KolibriLib::UI::CheckBox &elem)
+		void KolibriLib::window::Window::Element::SetElement(const UI::CheckBox &elem)
 		{
 			free();
 			pointer = new UI::CheckBox(elem);
 			_type = Type::CheckBox;
 		}
 
-		template <>
-		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Form>(const KolibriLib::UI::Form &elem)
+		void KolibriLib::window::Window::Element::SetElement(const KolibriLib::UI::Form &elem)
 		{
 			free();
 			pointer = new UI::Form(elem);
 			_type = Type::Form;
 		}
 
-		template <>
-		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::text::TextLabel>(const KolibriLib::UI::text::TextLabel &elem)
+		void KolibriLib::window::Window::Element::SetElement(const KolibriLib::UI::text::TextLabel &elem)
 		{
 			free();
 			pointer = new UI::text::TextLabel(elem);
 			_type = Type::TextLabel;
 		}
 
-		template <>
-		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Menu>(const KolibriLib::UI::Menu &elem)
+		void KolibriLib::window::Window::Element::SetElement(const KolibriLib::UI::Menu &elem)
 		{
 			free();
 			pointer = new UI::Menu(elem);
 			_type = Type::Menu;
 		}
 
-		template <>
-		void KolibriLib::window::Window::Element::SetElement<KolibriLib::UI::Frame>(const KolibriLib::UI::Frame &elem)
+
+		void KolibriLib::window::Window::Element::SetElement(const KolibriLib::UI::Frame &elem)
 		{
 			free();
 			pointer = new UI::Frame(elem);
 			_type = Type::Frame;
 		}
 
-		template <class T>
-		int KolibriLib::window::Window::AddElement(const T element)
+		//=============================================================================================================================================================
+
+		int KolibriLib::window::Window::AddElement(const UI::text::TextLabel &element)
 		{
 			#ifdef DEBUG
 			_ksys_debug_puts("Add element-\n");
@@ -273,9 +294,56 @@ namespace KolibriLib
 				if (_Elements.count(i) == 0)
 				{
 					_Elements[i] = a;
-					#ifdef DEBUG
-					_ksys_debug_puts("");
-					#endif
+					return i;
+				}
+			}
+			if(_Elements.size() == 0)
+			{
+				_Elements[0] = a;
+			}
+			return 0;
+		}
+
+		int KolibriLib::window::Window::AddElement(const UI::Images::Image &element)
+		{
+			#ifdef DEBUG
+			_ksys_debug_puts("Add element-\n");
+			#endif
+
+			Element a;
+
+			a.SetElement(element);
+
+			for (int i = 0; i < _Elements.max_size(); i++)
+			{
+				if (_Elements.count(i) == 0)
+				{
+					_Elements[i] = a;
+					return i;
+				}
+			}
+			if (_Elements.size() == 0)
+			{
+				_Elements[0] = a;
+			}
+			return 0;
+		}
+
+		int KolibriLib::window::Window::AddElement(const UI::buttons::Button &element)
+		{
+			#ifdef DEBUG
+			_ksys_debug_puts("Add element-\n");
+			#endif
+
+			Element a;
+
+			a.SetElement(element);
+
+			for (int i = 0; i < _Elements.max_size(); i++)
+			{
+				if (_Elements.count(i) == 0)
+				{
+					_Elements[i] = a;
 					return i;
 				}
 			}
@@ -582,6 +650,7 @@ namespace KolibriLib
 				}
 				_Elements.erase(_Elements.find(id));
 			}
+			_ksys_debug_puts("element this this id not being\n");
 		}
 
 		OS::Event Window::Handler()

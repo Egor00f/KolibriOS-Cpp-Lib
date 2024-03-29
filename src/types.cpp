@@ -8,39 +8,6 @@ KolibriLib::point::point(int X, int Y)
 	y = Y;
 }
 
-KolibriLib::point::point(float f)
-{
-	x = f / 10.0;
-	y = 10;
-
-	if (x != y)
-	{
-		//====================================================
-
-		int num = x, denom = y, rem;
-		if (num < denom)
-		{
-			int temp = num;
-			num = denom;
-			denom = temp;
-		}
-		while (rem = num % denom)
-		{
-			num = denom;
-			denom = rem;
-		}
-
-		//====================================================
-		x /= rem;
-		y /= rem;
-	}
-	else
-	{
-		x = 1;
-		y = 1;
-	}
-}
-
 ksys_pos_t KolibriLib::point::GetKsysPost() const
 {
 	ksys_pos_t buff;
