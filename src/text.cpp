@@ -13,11 +13,11 @@ Char Txt::GetChar(int i) const
 std::string KolibriLib::UI::text::Txt::GetText() const
 {
 	std::string result;
-	for (int i = 0; i < _data.size(); i++)
+	for (Char i : _data)
 	{
-		if (_data[i].GetType() == Char::Type::Text)
+		if (i.GetType() == Char::Type::Text)
 		{
-			result += _data[i].GetChar();
+			result += i.GetChar();
 		}
 	}
 	return result;
@@ -44,11 +44,7 @@ void KolibriLib::UI::text::Txt::Add(const KolibriLib::UI::text::Char &c)
 
 void KolibriLib::UI::text::Txt::Add(const std::string &txt)
 {
-	if (_data.size() == 0)
-	{
-		_data.push_back(Char(txt[0])); // На случай если вектор пустой
-	}
-	for (int i = 1; i < txt.length(); i++)
+	for (int i = 0; i < txt.length(); i++)
 	{
 		_data.push_back(Char(txt[i]));
 	}
@@ -87,18 +83,18 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 	_ksys_debug_puts("Print Txt:");
 	#endif
 	int buff = 0;
-	for (int i = 0; i < _data.size(); i++)
+	for (Char i : _data)
 	{
 		#ifdef DEBUG
 		char* b;
-		b[0] = _data[i].GetChar();
+		b[0] = i.GetChar();
 		b[1] = '\n';
 		b[2] = '\0';
 		_ksys_debug_puts(b);
 		#endif
 
-		_data[i].Print(Coord(coord.x + buff, coord.y));
-		buff += _data[i].GetFont().size.x;
+		i.Print(Coord(coord.x + buff, coord.y));
+		buff += i.GetFont().size.x;
 	}
 	#ifdef DEBUG
 	_ksys_debug_puts("done!\n");
@@ -148,9 +144,9 @@ std::size_t KolibriLib::UI::text::Txt::length() const
 unsigned KolibriLib::UI::text::Txt::lenghtPX() const
 {
 	unsigned l = 0;
-	for (unsigned i = 0; i < _data.size(); i++)
+	for (Char i : _data)
 	{
-		l += _data[i].GetFont().size.x;
+		l += i.GetFont().size.x;
 	}
 	return l;
 }
@@ -177,4 +173,14 @@ KolibriLib::UI::text::Txt &KolibriLib::UI::text::Txt::operator=(const Txt &txt)
 {
 	_data = txt._data;
 	return *this;
+}
+
+unsigned KolibriLib::UI::text::Txt::GetWidth() const
+{
+	unsigned width = 0;
+	for( Char i : _data)
+	{
+		width += i.GetFont().size.x;
+	}
+	return width;
 }

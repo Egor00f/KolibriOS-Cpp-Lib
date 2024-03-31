@@ -37,9 +37,9 @@ Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 	const unsigned w = ((margin * 2) + font.size.x);
 	const unsigned h = ((margin * 2) + (font.size.y * text.length()));
 
-	Images::img *canvas = new Images::img;
+	Images::img *canvas = new Images::img(BackgroundColor, Size(w, h));
 
-	if (BackgroundColor._a < 1)
+	if (BackgroundColor._a != 0xFF)
 	{ // прозрачность фона
 		const float k = BackgroundColor._a / 255;
 		for (int i = 0; i < w; i++)
@@ -59,26 +59,26 @@ Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 		canvas->FillColor(BackgroundColor);
 	}
 
-	Images::img *buff = new Images::img(*canvas);
+	Images::img buff(*canvas);
 
-	rgb_t* b = buff->GetRGBMap();
+	rgb_t* b = canvas->GetRGBMap();
 
-	canvas->SetRGBMap(DrawTextToRGBMap(b, canvas->GetSize().x, canvas->GetSize().y, margin, margin, text.c_str(), font.size.x, font.size.y, colorText.val, font._Flags), 
-					Size(w, h));
-	
+	canvas->SetRGBMap(DrawTextToRGBMap(b, canvas->GetSize().x, canvas->GetSize().y, margin, margin, text.c_str(), font.size.x, font.size.y, colorText.val, font._Flags),
+					  Size(w, h));
+
 	delete b;
 
-	if (colorText._a != 0 || colorText != 1)
+	if (colorText._a != 0xFF)
 	{ // Прозрачность текста
 		const float k = colorText._a / 255;
 		for (int i = margin; i < h - margin; i++) // Трогать поля нет смысла
 		{
 			for (int j = margin; j < w - margin; i++)
 			{
-				if (buff->GetPixel(i, j) != canvas->GetPixel(i, j))	// Если цвет пикселя отличается от фона
+				if (buff.GetPixel(i, j) != canvas->GetPixel(i, j))	// Если цвет пикселя отличается от фона
 				{
 					canvas->SetPixel(Colors::BlendColors(graphic::ReadPoint(window::GetWindowCoord() + (int)margin + Coord(0, i) + Coord(j, 0)),
-														buff->GetPixel(i, j),
+														buff.GetPixel(i, j),
 														k),
 									i,
 									j);
@@ -86,8 +86,7 @@ Images::img *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const 
 			}
 		}
 	}
-	
-	delete buff;
+
 
 	return canvas;
 }

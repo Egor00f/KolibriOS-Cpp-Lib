@@ -23,7 +23,7 @@ KolibriLib::Colors::Color::Color(const KolibriLib::Colors::ARGB &a)
 
 KolibriLib::Colors::Color::Color(const rgb_t &color)
 {
-	_a = 1;
+	_a = 0xFF;
 	red = color.red;
 	green = color.green;
 	red = color.blue;

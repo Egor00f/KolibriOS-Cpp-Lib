@@ -27,6 +27,9 @@ SET(LIB_DIR ${SDK_DIR}/lib)
 SET(CMAKE_CXX_FLAGS  "-c -std=c++11 -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
 SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++  -lsupc++")
 
+
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
+
 if(DEBUG)
 	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -D DEBUG")
 endif()
@@ -68,8 +71,6 @@ SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
 include_directories("./include")
 include_directories("./include/C_Layer/INCLUDE")
 
-
-SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -D __MakeStaticLib__")
 
 SET(SRC_PATH src)
 

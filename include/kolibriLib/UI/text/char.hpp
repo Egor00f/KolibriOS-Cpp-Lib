@@ -87,11 +87,11 @@ namespace KolibriLib
 
 				/// @brief Получить _img
 				/// @return
-				const Images::img &GetImg() const;
+				const Images::img GetImg() const;
 
 				/// @brief получить размеры символа
 				/// @return
-				const Fonts::Font &GetFont() const;
+				const Fonts::Font GetFont() const;
 
 				/// @brief Получить флаги
 				/// @return

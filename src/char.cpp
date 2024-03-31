@@ -95,13 +95,13 @@ char KolibriLib::UI::text::Char::GetChar() const
 	return *_c;
 }
 
-const Images::img &KolibriLib::UI::text::Char::GetImg() const
+const Images::img KolibriLib::UI::text::Char::GetImg() const
 {
 	assert(_type == Type::Image);
 	return *_img;
 }
 
-const Fonts::Font &KolibriLib::UI::text::Char::GetFont() const
+const Fonts::Font KolibriLib::UI::text::Char::GetFont() const
 {
 	return _font;
 }
@@ -151,16 +151,12 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 		_ksys_debug_puts("Char is text");
 		#endif
 
-		char *b;
-		b[0] = *_c;
-		b[1] = '\0';
-		DrawText(std::string(b), coord, _font, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
-		break;
-	default:
+		char b = _c[0];
+		DrawText(std::string(1, b), coord, _font, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
 		break;
 	}
 	#ifdef DEBUG
-	_ksys_debug_puts("  Print Char: done\n");
+	_ksys_debug_puts(" Print Char: done\n");
 	#endif
 }
 

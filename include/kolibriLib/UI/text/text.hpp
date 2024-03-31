@@ -96,6 +96,10 @@ namespace KolibriLib
 				/// @param text
 				void SetText(const std::string &text);
 
+				/// @brief Получить ширину текста
+				/// @return ширина тектса в px
+				unsigned GetWidth() const;
+
 				Txt &operator=(const Txt &txt);
 
 				/// @brief

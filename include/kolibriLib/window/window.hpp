@@ -57,6 +57,14 @@ namespace KolibriLib
 
 				Element();
 
+				/// @brief 
+				/// @tparam T 
+				/// @param UIE 
+				template <class T>
+				Element(const T &UIE);
+
+				Element(const Element &e);
+
 				/// @brief Деструктор
 				~Element();
 
@@ -191,6 +199,8 @@ namespace KolibriLib
 			/// @brief Поставить фокус на это окно
 			void Focus() const;
 
+			void RenderAllElements() const;
+
 		private:
 			/// @brief Заголовок окна
 			std::string _title;
@@ -226,6 +236,54 @@ namespace KolibriLib
 		};
 
 		//=============================================================================================================================================================
+
+		template <class T>
+		KolibriLib::window::Window::Element::Element(const T &UIE)
+		{
+			pointer = new T (UIE);
+			if(std::is_same<T, UI::text::TextLabel>().value)
+			{
+				_type = Type::TextLabel;
+			}
+			else if(std::is_same<T, UI::buttons::Button>().value)
+			{
+				_type = Element::Type::Button;
+			}
+			else
+			{
+				_ksys_debug_puts("KolibriLib::Window::Element::Element: Not supported Type");
+			}
+		}
+
+		KolibriLib::window::Window::Element::Element(const Element &e): _type(e._type)
+		{
+			switch (e._type)
+			{
+			case Window::Element::Type::TextLabel:
+				pointer = new UI::text::TextLabel(*((UI::text::TextLabel *)e.pointer));
+				break;
+			case Window::Element::Type::Image:
+				pointer = new UI::Images::Image(*((UI::Images::Image *)e.pointer));
+				break;
+			case Window::Element::Type::Form:
+				pointer = new UI::Form(*((UI::Form *)e.pointer));
+				break;
+			case Window::Element::Type::CheckBox:
+				pointer = new UI::CheckBox(*((UI::CheckBox *)e.pointer));
+				break;
+			case Window::Element::Type::Button :
+				pointer = new UI::buttons::Button(*((UI::buttons::Button *)e.pointer));
+				break;
+			case Window::Element::Type::Frame:
+				pointer = new UI::Frame(*((UI::Frame *)e.pointer));
+				break;
+			case Window::Element::Type::Menu:
+				pointer = new UI::Menu(*((UI::Menu *)e.pointer));
+				break;
+			default:
+				break;
+			}
+		}
 
 		void KolibriLib::window::Window::Element::SetElement(const UI::buttons::Button &elem)
 		{
@@ -410,45 +468,6 @@ namespace KolibriLib
 			}
 		}
 
-		void KolibriLib::window::Window::Element::Render()
-		{
-			#ifdef DEBUG
-			_ksys_debug_puts("Element Render:\n");
-			#endif
-			
-			switch (_type)
-			{
-			case Element::Type::TextLabel:
-				((UI::text::TextLabel*)pointer)->Render();
-				break;
-			case Element::Type::Button:
-				((UI::buttons::Button*)pointer)->Render();
-				break;
-			case Element::Type::Image:
-				((UI::Images::Image*)pointer)->Render();
-				break;
-			case Element::Type::Form:
-				((UI::Form*)pointer)->Render();
-				break;
-			case Element::Type::CheckBox:
-				((UI::CheckBox*)pointer)->Render();
-				break;
-			case Element::Type::Menu:
-				((UI::Menu*)pointer)->Render();
-				break;
-			case Element::Type::Frame:
-				((UI::Frame*)pointer)->Render();
-				break;
-			case Element::Type::None:
-				_ksys_debug_puts("Warn: KolibriLib::Window::Element::Render() type = None");
-				break;
-			default:
-				_ksys_debug_puts("Error in KolibriLib::Window::Element::Render() undefined type");
-			}
-			#ifdef DEBUG
-			_ksys_debug_puts("Element Render: done\n");
-			#endif
-		}
 
 		//=============================================================================================================================================================
 
@@ -498,6 +517,42 @@ namespace KolibriLib
 			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.work_area, _TitleColor, _style); // Отрисовать окно
 		}
 
+		void Window::RenderAllElements() const
+		{
+			for (const auto it : _Elements)
+			{
+				switch (it.second._type)
+				{
+				case Element::Type::TextLabel:
+					((UI::text::TextLabel *)it.second.pointer)->Render();
+					break;
+				case Element::Type::Button:
+					((UI::buttons::Button *)it.second.pointer)->Render();
+					break;
+				case Element::Type::Image:
+					((UI::Images::Image *)it.second.pointer)->Render();
+					break;
+				case Element::Type::Form:
+					((UI::Form *)it.second.pointer)->Render();
+					break;
+				case Element::Type::CheckBox:
+					((UI::CheckBox *)it.second.pointer)->Render();
+					break;
+				case Element::Type::Menu:
+					((UI::Menu *)it.second.pointer)->Render();
+					break;
+				case Element::Type::Frame:
+					((UI::Frame *)it.second.pointer)->Render();
+					break;
+				case Element::Type::None:
+					_ksys_debug_puts("Warn: KolibriLib::Window::Element::Render() type = None");
+					break;
+				default:
+					_ksys_debug_puts("Error in KolibriLib::Window::Element::Render() undefined type");
+				}
+			}
+		}
+
 		Window::Element KolibriLib::window::Window::GetElement(int i)
 		{
 			return _Elements.at(i);
@@ -529,10 +584,7 @@ namespace KolibriLib
 				KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
 			}
 
-			for (std::unordered_map<int, Window::Element>::iterator it = _Elements.begin(); it != _Elements.end(); it++)
-			{
-				_Elements[it->first].Render();
-			}
+			RenderAllElements();
 
 			if (_Transparency != 0) // Прозрачность окна
 			{
@@ -601,15 +653,7 @@ namespace KolibriLib
 			StartRedraw();
 			window::CreateWindow(coord, _size, _title, _colors.work_area, _TitleColor, _style);
 
-			for (const auto& it: _Elements)
-			{
-				#ifdef DEBUG
-				_ksys_debug_puts("Render window Element N");
-				_ksys_debug_puts(__itoa(it.first, nullptr, 10));
-				_ksys_debug_puts("\n");
-				#endif
-				_Elements[it.first].Render();
-			}
+			RenderAllElements();
 
 			#ifdef DEBUG
 			_ksys_debug_puts("\nDone render elements\n");
@@ -671,18 +715,18 @@ namespace KolibriLib
 					return OS::Events::Exit;
 				}
 
-				for (std::unordered_map<int, Window::Element>::iterator it = _Elements.begin(); it != _Elements.end(); it++) // Запуск обработчиков всех используемых элементов
+				for (const auto& it : _Elements) // Запуск обработчиков всех используемых элементов
 				{
-					switch (it->second._type)
+					switch (it.second._type)
 					{
 					case Element::Type::Form:
-						((UI::Form *)it->second.pointer)->ButtonHandler();
+						((UI::Form *)it.second.pointer)->ButtonHandler();
 						break;
 					case Element::CheckBox:
-						((UI::CheckBox*)it->second.pointer)->Handler();
+						((UI::CheckBox*)it.second.pointer)->Handler();
 						break;
 					case Element::Button:
-						((UI::buttons::Button*)it->second.pointer)->Handler();
+						((UI::buttons::Button*)it.second.pointer)->Handler();
 						break;
 					}
 				}
