@@ -19,6 +19,8 @@ namespace KolibriLib
                 const unsigned DefaultFontSize = 16;
 
                 // Некоторые заготовки шрифтов
+				// ээти шрифты лишь похожи на оригинальные
+				
                 const Size System = {1, 0};
                 const Size Arial = {5, 6};
                 const Size TimesNewRoman = {4, 5};

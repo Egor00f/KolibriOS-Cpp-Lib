@@ -14,17 +14,14 @@ KolibriLib::UI::Images::img::img()
 	_img = img_create(32, 32, IMAGE_BPP32);
 }
 
-KolibriLib::UI::Images::img::img(Colors::Color *color, const Size &size)
+KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("img consturctor\n");
 	#endif
 
 	_img = img_create(size.x, size.y, IMAGE_BPP32);
-	for (unsigned i = 0; i < size.x * size.y; i++)
-	{
-		*_img->Data = color[i].val;
-	}
+	memcpy(_img->Data, color, size.x * size.y);
 }
 
 KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
@@ -32,7 +29,6 @@ KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
 	#ifdef DEBUG
 	_ksys_debug_puts("img consturctor\n");
 	#endif
-
 
 	_img = img_create(size.x, size.y, IMAGE_BPP32);
 	img_fill_color(_img, size.x, size.y, color.val);
@@ -47,8 +43,22 @@ KolibriLib::UI::Images::img::img(const img & copy)
 	_img = img_Copy(copy._img);
 }
 
+KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size)
+{
+	#ifdef DEBUG
+	_ksys_debug_puts("img consturctor\n");
+	#endif
+
+	_img = img_create(size.x, size.y, IMAGE_BPP32);
+
+	SetRGBMap(color, size);
+}
+
 UI::Images::img::~img()
 {
+	#ifdef DEBUG
+	_ksys_debug_puts("img desturctor\n");
+	#endif
 	img_destroy(_img);
 }
 
@@ -83,7 +93,7 @@ void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, unsigned 
 	_img->Data[(y-1) * _img->Width + x] = color.val;
 }
 
-void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, Coord coord)
+void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, const Coord &coord)
 {
 	_img->Data[(coord.y-1) * _img->Width + coord.x] = color.val;
 }
@@ -93,7 +103,7 @@ Colors::Color KolibriLib::UI::Images::img::GetPixel(unsigned x, unsigned y) cons
 	return _img->Data[(y - 1) * _img->Width + x];
 }
 
-Colors::Color KolibriLib::UI::Images::img::GetPixel(Coord coord) const
+Colors::Color KolibriLib::UI::Images::img::GetPixel(const Coord &coord) const
 {
 	return _img->Data[(coord.y - 1) * _img->Width + coord.x];
 }
@@ -102,7 +112,7 @@ rgb_t *KolibriLib::UI::Images::img::GetRGBMap() const
 {
 	rgb_t *buff = new rgb_t[_img->Width * _img->Height];
 
-	for (unsigned i = 0; i < _img->Width * _img->Height; i++)
+	for (int i = 0; i < _img->Width * _img->Height; i++)
 	{
 		buff[i] = Colors::UINT32toRGB(_img->Data[i]);
 	}
@@ -127,17 +137,16 @@ KolibriLib::UI::Images::img& KolibriLib::UI::Images::img::operator = (const Imag
 		img_resize_data(_img, im._img->Width, im._img->Height);
 	}
 
-	for (unsigned i = 0; i < _img->Width * _img->Height; i++)
-	{
-		_img->Data[i] = im._img->Data[i];
-	}
+	img_resize_data(_img, im._img->Width, im._img->Height);
+
+	memcpy(_img->Data, im._img->Data, im._img->Width * im._img->Height);
 	
 	return *this;
 }
 
 bool KolibriLib::UI::Images::img::operator!=(const img &im) const
 {
-	if (_img->Width != im._img->Width || _img->Height != im._img->Height)
+	if (_img->Width != im._img->Width || _img->Height != im._img->Height)	// если размеры изображний не совпадают то значит они точно не одинаковы
 	{
 		return true;
 	}
@@ -177,9 +186,17 @@ void img::LoadImage(const filesystem::Path &Path)
 
 void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &size)
 {
-	img_resize_data(_img, size.x, size.y);
-	for(unsigned i = 0; i < size.x + size.y; i++)
+	_img = img_scale(_img, 0, 0, _img->Width, _img->Height, NULL, LIBIMG_SCALE_STRETCH, LIBIMG_INTER_DEFAULT,  size.x, size.y);
+
+	int l = size.x * size.y;
+
+	Colors::Color *buff = new Colors::Color[l];
+	for(int i = 0; i < l; i++)
 	{
-		_img->Data[i] = Colors::RGBtoINT(rgbmap[i]);
+		buff[i] = rgbmap[i];
 	}
+
+	memcpy(_img->Data, buff, l);
+
+	delete[] buff;
 }

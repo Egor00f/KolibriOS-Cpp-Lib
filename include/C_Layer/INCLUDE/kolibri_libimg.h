@@ -268,31 +268,17 @@ inline Image_t* img_Copy(const Image_t* src)
 {
 	Image_t *copy = img_create(src->Width, src->Height, src->Type);
 
-	copy->Flags = src->Flags;
-	copy->Palette = src->Palette;
-	copy->Extended = src->Extended;
-
-
-	for(unsigned i = 0; i < src->Width * src->Height; i++)
-	{
-		copy->Data[i] = src->Data[i];
-	}
+	memcpy(copy, src, sizeof(Image_t));
 
 	return copy;
 }
 
-inline Image_t *img_Copy(Image_t src)
+inline Image_t *img_Copy(const Image_t &src)
 {
 	Image_t *copy = img_create(src.Width, src.Height, src.Type);
 
-	copy->Flags = src.Flags;
-	copy->Palette = src.Palette;
-	copy->Extended = src.Extended;
 
-	for (unsigned i = 0; i < src.Width * src.Height; i++)
-	{
-		copy->Data[i] = src.Data[i];
-	}
+	memcpy(copy, &src, sizeof(Image_t));
 
 	return copy;
 }

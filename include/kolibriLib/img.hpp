@@ -32,7 +32,12 @@ namespace KolibriLib
 				/// @brief Конструктор
 				/// @param color Массив цветов
 				/// @param size размеры изображения
-				img(Colors::Color *color, const Size &size);
+				img(const rgb_t *color, const Size &size);
+
+				/// @brief Конструктор
+				/// @param color Массив цветов
+				/// @param size размеры изображения
+				img(const Colors::Color *color, const Size &size);
 
 				/// @brief Конструктор
 				/// @param color цвет
@@ -68,7 +73,9 @@ namespace KolibriLib
 
 				/// @brief Изменить цвет пикселя
 				/// @param color новый цвет
-				void SetPixel(const Colors::Color &color, Coord coord);
+				void SetPixel(const Colors::Color &color, const Coord &coord);
+
+				void Rotate(int value);
 
 				/// @brief Получить цвет пикселя
 				/// @param x координата пикселя по оси X
@@ -79,7 +86,7 @@ namespace KolibriLib
 				/// @brief Получить цвет пикселя
 				/// @param coord координаты пикселя
 				/// @return Цвет
-				Colors::Color GetPixel(Coord coord) const;
+				Colors::Color GetPixel(const Coord &coord) const;
 
 				/// @brief Получить изображение как массив Colors::Color
 				/// @return Указатель на img::_img->Data

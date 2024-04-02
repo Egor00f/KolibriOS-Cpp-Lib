@@ -27,23 +27,18 @@ namespace KolibriLib
             {
                 // Список типов с которыми умеет работать элемент
                 enum Type
-				             {
-				             	   None = 0,
-					                Button,
-			                		Image,
-			                		CheckBox,
-				                	Form,
-		                			TextLabel,
-			                		Frame,
-			                		Menu
-			             	};
+				{
+				    None = 0,
+					Button,
+			        Image,
+			        CheckBox,
+				    Form,
+		            TextLabel,
+			        Frame,
+			        Menu
+			    };
 
-				UI::buttons::Button * btn;
-				UI::Images::Image   * img;
-				UI::CheckBox        * checkbox;
-				UI::Form            * form;
-				UI::text::TextLabel * txt;
-				UI::Menu            * menu;
+				void *pointer;
 
 				// хранит тип данных который хранит этот элемент
 				unsigned _type;
@@ -102,17 +97,17 @@ namespace KolibriLib
 
         Frame::Element::Element()
         {
-#if DEBUG == true
+            #if DEBUG == true
             _ksys_debug_puts("KolibriLib::Frame::Element constructor\n");
-#endif
+            #endif
             _type = Type::None;
         }
 
         Frame::Element::~Element()
         {
-#if DEBUG == true
+            #if DEBUG == true
             _ksys_debug_puts("KolibriLib::Frame::Element destructor\n");
-#endif
+            #endif
             free();
         }
 
@@ -121,24 +116,22 @@ namespace KolibriLib
             switch (_type)
             {
             case Type::Button:
-                delete btn;
+                delete ((buttons::Button*)pointer);
                 break;
             case Type::Image:
-                delete img;
+                delete ((Images::Image*)pointer);
                 break;
             case Type::CheckBox:
-                delete checkbox;
+                delete ((UI::CheckBox*)pointer);
                 break;
             case Type::Form:
-                delete form;
+                delete ((UI::Form*)pointer);
                 break;
             case Type::TextLabel:
-                delete txt;
+                delete ((text::TextLabel*)pointer);
                 break;
             case Type::Menu:
-                delete menu;
-                break;
-            default:
+                delete ((UI::Menu*)pointer);
                 break;
             }
         }
@@ -154,7 +147,7 @@ namespace KolibriLib
         void Frame::Element::SetElement<UI::buttons::Button>(const UI::buttons::Button &elem)
         {
             free();
-            btn = new UI::buttons::Button(elem);
+            pointer = new UI::buttons::Button(elem);
             _type = Type::Button;
         }
 
@@ -162,7 +155,7 @@ namespace KolibriLib
         void Frame::Element::SetElement<UI::Images::Image>(const UI::Images::Image &elem)
         {
             free();
-            img = new UI::Images::Image(elem);
+            pointer = new UI::Images::Image(elem);
             _type = Type::Image;
         }
 
@@ -170,7 +163,7 @@ namespace KolibriLib
         void Frame::Element::SetElement<UI::CheckBox>(const UI::CheckBox &elem)
         {
             free();
-            checkbox = new UI::CheckBox(elem);
+            pointer = new UI::CheckBox(elem);
             _type = Type::CheckBox;
         }
 
@@ -178,7 +171,7 @@ namespace KolibriLib
         void Frame::Element::SetElement<UI::Form>(const UI::Form &elem)
         {
             free();
-            form = new UI::Form(elem);
+            pointer = new UI::Form(elem);
             _type = Type::Form;
         }
 
@@ -186,7 +179,7 @@ namespace KolibriLib
         void Frame::Element::SetElement<UI::text::TextLabel>(const UI::text::TextLabel &elem)
         {
             free();
-            txt = new UI::text::TextLabel(elem);
+            pointer = new UI::text::TextLabel(elem);
             _type = Type::TextLabel;
         }
 
@@ -194,15 +187,15 @@ namespace KolibriLib
         void Frame::Element::SetElement<UI::Menu>(const UI::Menu &elem)
         {
             free();
-            menu = new UI::Menu(elem);
+            pointer = new UI::Menu(elem);
             _type = Type::Menu;
         }
 
         Frame::Frame(const Coord &coord, const Size &size, const Colors::Color &Color, const unsigned &Margin) : UIElement(coord, size, Color, Margin)
         {
-#if DEBUG == true
+            #if DEBUG == true
             _ksys_debug_puts("Frame constructor\n");
-#endif
+            #endif
         }
 
         void UI::Frame::Render()
@@ -214,22 +207,22 @@ namespace KolibriLib
                 switch (n.second._type)
                 {
                 case Element::Type::TextLabel:
-                    n.second.txt->Render();
+                    ((text::TextLabel*)n.second.pointer)->Render();
                     break;
                 case Element::Type::Button:
-                    n.second.btn->Render();
+                    ((buttons::Button*)n.second.pointer)->Render();
                     break;
                 case Element::Type::Image:
-                    n.second.img->Render();
+                    ((Images::Image*)n.second.pointer)->Render();
                     break;
                 case Element::Type::Form:
-                    n.second.form->Render();
+                    ((UI::Form*)n.second.pointer)->Render();
                     break;
                 case Element::Type::CheckBox:
-                    n.second.checkbox->Render();
+                    ((UI::CheckBox*)n.second.pointer)->Render();
                     break;
                 case Element::Type::Menu:
-                    n.second.menu->Render();
+                    ((UI::Menu*)n.second.pointer)->Render();
                     break;
                 default:
                     break;

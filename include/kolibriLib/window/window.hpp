@@ -734,7 +734,7 @@ namespace KolibriLib
 				break;
 			case OS::Events::Key:
 
-				if (activeForm != -1)
+				if (activeForm != -1 && _Elements[activeForm]._type == Element::Type::Form)
 				{
 					((UI::Form*)_Elements[activeForm].pointer)->Handler(); // Обработчик активной на текущий момент формы
 				}

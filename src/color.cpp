@@ -133,11 +133,9 @@ rgb_t KolibriLib::Colors::UINT32toRGB(const uint32_t &color)
 {
 	rgb_t ret;
 	
-	uint8_t *buff = (uint8_t*) color;
-	
-	ret.blue	= buff[1];
-	ret.red		= buff[2];
-	ret.green	= buff[3];
+	ret.blue	= ((const Color&)color).blue;
+	ret.red		= ((const Color&)color).red;
+	ret.green	= ((const Color&)color).green;
 	
 	return ret;
 }

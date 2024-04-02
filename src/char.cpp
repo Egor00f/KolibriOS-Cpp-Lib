@@ -124,8 +124,6 @@ void KolibriLib::UI::text::Char::Free()
 		delete _TextColor;
 		delete _BackgroundColor;
 		break;
-	default:
-		break;
 	}
 }
 
@@ -151,13 +149,13 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 		_ksys_debug_puts("Char is text");
 		#endif
 
-		char b = _c[0];
-		DrawText(std::string(1, b), coord, _font, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
+		char *buff = new char[2];
+		buff[0] = *_c;
+		buff[1] = '\0';
+		DrawText(std::string(buff), coord, _font, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
+		delete buff;
 		break;
 	}
-	#ifdef DEBUG
-	_ksys_debug_puts(" Print Char: done\n");
-	#endif
 }
 
 KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(char c)
