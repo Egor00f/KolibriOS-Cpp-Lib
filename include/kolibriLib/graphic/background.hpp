@@ -122,14 +122,11 @@ namespace KolibriLib
 					  const Colors::Color &colorText = OS::GetSystemColors().work_text,
 					  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)
 		{
-			UI::Images::img *img = UI::text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
+			buf2d_struct * buff = UI::text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
 
-			rgb_t * buff = img->GetRGBMap();
-
-			DrawImage(coord, buff, img->GetSize().x * img->GetSize().y);
+			DrawImage(coord, (rgb_t*)buff->buf_pointer, buff->width * buff->height);
 			
-			delete buff;
-			delete img;
+			free(buff);
 		}
 
 		

@@ -10,6 +10,8 @@
 
 #include "fonts.hpp"
 
+#include <kolibri_buf2d.h>
+
 namespace KolibriLib
 {
 	namespace UI
@@ -60,7 +62,7 @@ namespace KolibriLib
 			/// @return указатель на Images::img на котором нарисован текст
 			/// @note цвета фона и текста чувствительны к прозрачности
 			/// @note прозрачность привязывается к контреным координатам и размерам
-			Images::img* DrawTextToImg(const std::string& text, 
+			buf2d_struct* DrawTextToImg(const std::string& text, 
 									   const Fonts::Font &font, 
 									   unsigned margin, 
 									   const Colors::Color &colorText, 
@@ -83,13 +85,11 @@ namespace KolibriLib
 								 uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
 			{
 
-				Images::img *buff = text::DrawTextToImg(text, font, margin, colorText, BackgroundColor, encoding);
+				buf2d_struct *buff = text::DrawTextToImg(text, font, margin, colorText, BackgroundColor, encoding);
 
-				buff->Draw(coord, 
-				           Size((margin * 2) + font.size.x, 
-						        (margin * 2) + (font.size.y * text.length())) );
+				buf2d_draw(buff);
 
-				delete buff;
+				free(buff);
 			}
 			
 		}

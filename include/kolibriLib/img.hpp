@@ -24,7 +24,7 @@ namespace KolibriLib
 			class img
 			{
 			protected:
-				Image_t *_img;
+				mutable Image_t *_img;
 
 			public:
 				img();

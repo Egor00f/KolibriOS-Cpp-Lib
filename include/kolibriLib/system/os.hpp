@@ -158,6 +158,20 @@ namespace KolibriLib
 			return a;
 		}
 
+		inline void Notify(const std::string &Title, const std::string &Text)
+		{
+
+		}
+
+		/// @brief Уведомление об ошибке через увдомления системы
+		/// @param Title 
+		/// @param Text 
+		inline void ErrorNotify(const std::string &Title, const std::string &Text)
+		{
+			std::string a = "\"'" + Title + "\n" + Text + "' -E -t";
+			_ksys_exec("/sys/@notify", (char*)a.c_str(), false);
+		}
+
 	} // namespace OS
 
 } // namespace KolibriLib

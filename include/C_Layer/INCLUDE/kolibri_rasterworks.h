@@ -40,6 +40,13 @@ enum RasterworksParams
   Use32bit = 0b010000000
 };
 
+struct RasterWorksBuff
+{
+  uint8_t width;
+  uint8_t height;
+  rgb_t* buff;
+};
+
 /// @brief Initialize the RasterWorks library
 /// @return -1 if unsuccessful
 extern int kolibri_rasterworks_init(void);
@@ -58,7 +65,7 @@ ee - encoding	; 1 = cp866, 2 = UTF-16LE, 3 = UTF-8 \
 ff - Parameters from the RasterworksParams list
 /// @note All flags combinable, except align right + align center
 /// @note The text is drawn on the image, in order for changes to occur in the window, you need to draw the image after calling this function
-extern void (*drawText)(void *canvas, int x, int y, const char *string, int charQuantity, ksys_color_t fontColor, uint32_t params) __attribute__((__stdcall__));
+extern void (*drawText)(void *canvas, int x, int y, const char *string, int charQuantity, uint32_t fontColor, uint32_t params) __attribute__((__stdcall__));
 
 /// @brief Calculate amount of valid chars in UTF-8 string
 /// @note Supports zero terminated string (set byteQuantity = -1)

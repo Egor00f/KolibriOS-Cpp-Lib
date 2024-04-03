@@ -72,13 +72,17 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 	_ksys_debug_putc('\n');
 	#endif
 
-	if ((size.x != -1 && size.y != -1) || (size.x == _img->Width && size.y == _img->Height))
+	if ((size.x != -1 && size.y != -1) 							// Если значения по умолчанию
+	    || (size.x == _img->Width && size.y == _img->Height))	// Или размеры изображения совпадают
 	{
+		img_to_rgb(_img);
 		img_draw(_img, coord.x, coord.y, size.x, size.y, 0, 0);
 	}
 	else
 	{
-		img_draw(img_resize_data(_img, size.x, size.y), coord.x, coord.y, size.x, size.y, 0, 0);
+		_img = img_resize_data(_img, size.x, size.y);
+		img_to_rgb(_img);
+		img_draw(_img, coord.x, coord.y, size.x, size.y, 0, 0);
 	}
 }
 
@@ -190,10 +194,10 @@ void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &siz
 
 	int l = size.x * size.y;
 
-	Colors::Color *buff = new Colors::Color[l];
+	uint32_t *buff = new uint32_t[l];
 	for(int i = 0; i < l; i++)
 	{
-		buff[i] = rgbmap[i];
+		buff[i] = Colors::RGBtoINT(rgbmap[i]);
 	}
 
 	memcpy(_img->Data, buff, l);

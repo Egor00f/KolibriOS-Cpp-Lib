@@ -1,6 +1,9 @@
 #ifndef KOLIBRI_BUF2D_H
 #define KOLIBRI_BUF2D_H
 
+#include <sys/ksys.h>
+#include <stdlib.h>
+
 /*ToDo
  * voxel function
  */
@@ -18,7 +21,7 @@ typedef struct __attribute__ ((__packed__)) {
 	unsigned int height;
 	unsigned int bgcolor;
 	uint8_t color_bit;
-}buf2d_struct;
+} buf2d_struct;
 
 enum BUF2D_ALGORITM_FILTR {
 	SIERRA_LITE,
@@ -38,9 +41,11 @@ enum BUF2D_OPT_CROP {
 extern void (*buf2d_create_asm)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_curve_bezier_asm)(buf2d_struct *, unsigned int, unsigned int, unsigned int, unsigned int) __attribute__((__stdcall__));
 
-buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, unsigned int font_bgcolor, uint8_t color_bit)
+#ifdef __MakeStaticLib__
+
+inline buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, unsigned int font_bgcolor, uint8_t color_bit)
 {
-    buf2d_struct *new_buf2d_struct = (buf2d_struct *)malloc(sizeof(buf2d_struct));
+    buf2d_struct *new_buf2d_struct = (buf2d_struct *) malloc(sizeof(buf2d_struct));
     new_buf2d_struct -> left = tlx;
 	new_buf2d_struct -> top = tly;
 	new_buf2d_struct -> width = sizex;
@@ -51,11 +56,15 @@ buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsig
     return new_buf2d_struct;
 }
 
-void buf2d_curve_bezier(buf2d_struct *buf, unsigned int p0_x, unsigned int p0_y, unsigned int p1_x, unsigned int p1_y, unsigned int p2_x, unsigned int p2_y, unsigned int color)
+#endif
+
+inline void buf2d_curve_bezier(buf2d_struct *buf, unsigned int p0_x, unsigned int p0_y, unsigned int p1_x, unsigned int p1_y, unsigned int p2_x, unsigned int p2_y, unsigned int color)
 {
 	buf2d_curve_bezier_asm(buf, (p0_x<<16)+p0_y, (p1_x<<16)+p1_y, (p2_x<<16)+p2_y, color);
 }
 
+/// @brief исует буфер на экране (работает через системную ф. 7). Рисуются только буфера с глубиной цвета 24 бита.
+/// @param buff Указаетль на buf2d_struct
 extern void (*buf2d_draw)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_clear)(buf2d_struct *, unsigned int) __attribute__((__stdcall__));
 extern void (*buf2d_delete)(buf2d_struct *) __attribute__((__stdcall__));

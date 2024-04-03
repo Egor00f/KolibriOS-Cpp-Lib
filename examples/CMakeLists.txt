@@ -1,6 +1,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
-project(KolibriLibExamples)
+project(KolibriLibExamples
+    LANGUAGE CXX
+)
 
 ################################################
 ################### CONFIG #####################
@@ -52,11 +54,10 @@ include_directories("../include/C_Layer/INCLUDE")
 # Compiler
 SET(CMAKE_C_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-gcc)
 SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-g++)
-SET(CMAKE_CXX_LINKER ${TOOLCHAIN_DIR}/bin/kos32-ld)
+SET(CMAKE_LINKER ${TOOLCHAIN_DIR}/bin/kos32-ld)
 SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
 
 SET(C_LAYER_OBJ ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ)
-
 
 
 
