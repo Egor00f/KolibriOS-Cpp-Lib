@@ -8,12 +8,8 @@
  * voxel function
  */
 
-extern "C"
+typedef struct __attribute__((__packed__))
 {
-
-extern int kolibri_buf2d_init(void);
-
-typedef struct __attribute__ ((__packed__)) {
 	unsigned int *buf_pointer;
 	uint16_t left;
 	uint16_t top;
@@ -22,6 +18,10 @@ typedef struct __attribute__ ((__packed__)) {
 	unsigned int bgcolor;
 	uint8_t color_bit;
 } buf2d_struct;
+
+extern int kolibri_buf2d_init(void);
+
+
 
 enum BUF2D_ALGORITM_FILTR {
 	SIERRA_LITE,
@@ -40,28 +40,6 @@ enum BUF2D_OPT_CROP {
 
 extern void (*buf2d_create_asm)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_curve_bezier_asm)(buf2d_struct *, unsigned int, unsigned int, unsigned int, unsigned int) __attribute__((__stdcall__));
-
-#ifdef __MakeStaticLib__
-
-inline buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, unsigned int font_bgcolor, uint8_t color_bit)
-{
-    buf2d_struct *new_buf2d_struct = (buf2d_struct *) malloc(sizeof(buf2d_struct));
-    new_buf2d_struct -> left = tlx;
-	new_buf2d_struct -> top = tly;
-	new_buf2d_struct -> width = sizex;
-	new_buf2d_struct -> height = sizey;
-	new_buf2d_struct -> bgcolor = font_bgcolor;
-	new_buf2d_struct -> color_bit = color_bit;
-	buf2d_create_asm(new_buf2d_struct);
-    return new_buf2d_struct;
-}
-
-#endif
-
-inline void buf2d_curve_bezier(buf2d_struct *buf, unsigned int p0_x, unsigned int p0_y, unsigned int p1_x, unsigned int p1_y, unsigned int p2_x, unsigned int p2_y, unsigned int color)
-{
-	buf2d_curve_bezier_asm(buf, (p0_x<<16)+p0_y, (p1_x<<16)+p1_y, (p2_x<<16)+p2_y, color);
-}
 
 /// @brief исует буфер на экране (работает через системную ф. 7). Рисуются только буфера с глубиной цвета 24 бита.
 /// @param buff Указаетль на buf2d_struct
@@ -92,6 +70,12 @@ extern void (*buf2d_flip_h)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_flip_v)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_filter_dither)(buf2d_struct *, unsigned int) __attribute__((__stdcall__));
 
+buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, unsigned int font_bgcolor, uint8_t color_bit);
+
+
+inline void buf2d_curve_bezier(buf2d_struct *buf, unsigned int p0_x, unsigned int p0_y, unsigned int p1_x, unsigned int p1_y, unsigned int p2_x, unsigned int p2_y, unsigned int color)
+{
+	buf2d_curve_bezier_asm(buf, (p0_x<<16)+p0_y, (p1_x<<16)+p1_y, (p2_x<<16)+p2_y, color);
 }
 
 #endif /* KOLIBRI_BUF2D_H */

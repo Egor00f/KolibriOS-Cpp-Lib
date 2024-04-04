@@ -31,7 +31,7 @@ KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
 	#endif
 
 	_img = img_create(size.x, size.y, IMAGE_BPP32);
-	img_fill_color(_img, size.x, size.y, color.val);
+	img_fill_color(_img, color.val);
 }
 
 KolibriLib::UI::Images::img::img(const img & copy)
@@ -131,7 +131,7 @@ Image_t *KolibriLib::UI::Images::img::GetImaget() const
 
 void KolibriLib::UI::Images::img::FillColor(const Colors::Color &color)
 {
-	img_fill_color(_img, _img->Width, _img->Height, color.val);
+	img_fill_color(_img, color.val);
 }
 
 KolibriLib::UI::Images::img& KolibriLib::UI::Images::img::operator = (const Images::img& im)

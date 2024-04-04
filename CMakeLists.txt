@@ -75,6 +75,8 @@ include_directories("./include/C_Layer/INCLUDE")
 SET(SRC_PATH src)
 
 SET(SOURCES 
+	${SRC_PATH}/C_Layer/kolibri_buf2d.c
+	${SRC_PATH}/C_Layer/kolibri_libimg.c
 	${SRC_PATH}/filesystem.cpp 
 	${SRC_PATH}/color.cpp 
 	${SRC_PATH}/os.cpp 
@@ -95,6 +97,11 @@ SET(SOURCES
 
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
-
-
 TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include)
+
+target_link_libraries(KolibriLib PUBLIC ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ/loadlibimg.obj)
+target_link_libraries(KolibriLib PUBLIC ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ/loadbuf2d.obj)
+target_link_libraries(KolibriLib PUBLIC ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ/loadrasterworks.obj)
+
+
+

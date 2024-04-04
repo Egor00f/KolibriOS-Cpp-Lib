@@ -34,7 +34,7 @@ rgb_t *DrawTextToRGBMap(const void *canvas, Size coord, int x, int y, const std:
 			 string.c_str(), 
 			 string.length(),
 			 fontColor, 
-			 (flags >> 24) + (width >> 16) + (height >> 8) + encoding);
+			 (flags << 24) + (width << 16) + (height << 8) + encoding);
 
 	rgb_t *res = (rgb_t*) malloc(l);
 
@@ -53,14 +53,20 @@ buf2d_struct *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const
 	_ksys_debug_putc('\n');
 	#endif
 
-	const int w = ((margin * 2) + font.size.x);
-	const int h = ((margin * 2) + (font.size.y * text.length()));
+	const int w = (margin * 2) + font.size.x;
+	const int h = (margin * 2) + (font.size.y * text.length());
 
 	buf2d_struct *canvas = buf2d_create(0, 0, h, w, BackgroundColor.val, 24);
 
 	rgb_t* buff = new rgb_t[w*h];
 
-	buff = DrawTextToRGBMap(canvas->buf_pointer, {w, h}, margin, margin, text, font.size.x, font.size.y, colorText.val, font._Flags);
+	buff = DrawTextToRGBMap(canvas->buf_pointer, 
+	                        {w, h}, 
+							margin, margin, 
+							text, 
+							font.size.x, font.size.y, 
+							colorText.val, 
+							font._Flags);
 
 	memcpy(canvas->buf_pointer, 
 	       buff,
