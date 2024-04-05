@@ -6,7 +6,7 @@ using namespace text;
 
 TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const unsigned &FontSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) : UIElement(coord, size, TextColor, Margin), Txt(text)
 {
-	#ifdef DEBUG
+	#ifdef Debug
 	_ksys_debug_puts("TextLabel Constructor\n");
 	#endif
 
@@ -20,7 +20,7 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 
 TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const UI::text::Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, unsigned Margin) : UIElement(coord, size, TextColor, Margin), Txt(text)
 {
-#ifdef DEBUG
+#ifdef Debug
 	_ksys_debug_puts("TextLabel Constructor\n");
 #endif
 	_TextScale = TextScale;
@@ -29,7 +29,7 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 
 void text::TextLabel::Render() const
 {
-	#ifdef DEBUG
+	#ifdef Debug
 	_ksys_debug_puts("Render textLabel:");
 	#endif
 

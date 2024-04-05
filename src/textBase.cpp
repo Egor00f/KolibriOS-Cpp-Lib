@@ -47,7 +47,7 @@ rgb_t *DrawTextToRGBMap(const void *canvas, Size coord, int x, int y, const std:
 
 buf2d_struct *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const Fonts::Font &font, unsigned margin, const Colors::Color &colorText, const Colors::Color &BackgroundColor, uint8_t encoding)
 {
-	#ifdef DEBUG
+	#ifdef Debug
 	_ksys_debug_puts("\nprint text:");
 	_ksys_debug_puts(text.c_str());
 	_ksys_debug_putc('\n');

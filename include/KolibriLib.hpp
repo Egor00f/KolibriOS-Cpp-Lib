@@ -1,11 +1,6 @@
 #ifndef __KOLIBRILIB_H__
 #define __KOLIBRILIB_H__
 
-/// @mainpage Это всратая библиотека
-/// @mainpage иди нахуй
-/// @mainpage used: C++11
-
-
 #include <kolibriLib/init.hpp>
 #include <kolibriLib/window/window.hpp>
 #include <kolibriLib/graphic/screen.hpp>

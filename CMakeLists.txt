@@ -24,7 +24,10 @@ SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 SET(LIB_DIR ${SDK_DIR}/lib)
 
 
-SET(CMAKE_CXX_FLAGS  "-c -std=c++11 -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+enable_language("ASM_FASM")
+
+SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
 SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++  -lsupc++")
 
 
@@ -35,7 +38,6 @@ if(DEBUG)
 endif()
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 
@@ -57,24 +59,37 @@ include_directories(${NEWLIB_INCLUDE})
 include_directories(${LIBSTDCppV3_INCLUDE})
 
 
+# CONFIGURED C_Layer ASM
+set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
+set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
+
+set(C_Layer_Sources
+	${C_Layer_SRC_PATH}/loadlibimg.asm
+	${C_Layer_SRC_PATH}/loadrasterworks.asm
+	${C_Layer_SRC_PATH}/loadbuf2d.asm
+)
+
+
+
 
 # Compiler
 SET(CMAKE_C_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-gcc)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+
 SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-g++)
 SET(CMAKE_LINKER ${TOOLCHAIN_DIR}/bin/kos32-ld)
 SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
 
 
-
-
-
 include_directories("./include")
 include_directories("./include/C_Layer/INCLUDE")
+include_directories(${KOLIBRIOS_REPO}/programs)
 
 
 SET(SRC_PATH src)
 
 SET(SOURCES 
+	${C_Layer_Sources}
 	${SRC_PATH}/C_Layer/kolibri_buf2d.c
 	${SRC_PATH}/C_Layer/kolibri_libimg.c
 	${SRC_PATH}/filesystem.cpp 
@@ -93,15 +108,12 @@ SET(SOURCES
 	${SRC_PATH}/textlabel.cpp 
 	${SRC_PATH}/button.cpp 
 	${SRC_PATH}/checkbox.cpp
+	${SRC_PATH}/form.cpp
 )
 
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include)
-
-target_link_libraries(KolibriLib PUBLIC ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ/loadlibimg.obj)
-target_link_libraries(KolibriLib PUBLIC ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ/loadbuf2d.obj)
-target_link_libraries(KolibriLib PUBLIC ${KOLIBRIOS_REPO}/contrib/C_Layer/OBJ/loadrasterworks.obj)
-
+TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include/C_Layer/INCLUDE)
 
 

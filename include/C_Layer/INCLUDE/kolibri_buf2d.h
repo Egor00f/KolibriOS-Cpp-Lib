@@ -8,6 +8,10 @@
  * voxel function
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct __attribute__((__packed__))
 {
 	unsigned int *buf_pointer;
@@ -19,8 +23,8 @@ typedef struct __attribute__((__packed__))
 	uint8_t color_bit;
 } buf2d_struct;
 
-extern int kolibri_buf2d_init(void);
 
+extern int kolibri_buf2d_init(void);
 
 
 enum BUF2D_ALGORITM_FILTR {
@@ -70,8 +74,12 @@ extern void (*buf2d_flip_h)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_flip_v)(buf2d_struct *) __attribute__((__stdcall__));
 extern void (*buf2d_filter_dither)(buf2d_struct *, unsigned int) __attribute__((__stdcall__));
 
+
 buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, unsigned int font_bgcolor, uint8_t color_bit);
 
+#ifdef __cplusplus
+}
+#endif
 
 inline void buf2d_curve_bezier(buf2d_struct *buf, unsigned int p0_x, unsigned int p0_y, unsigned int p1_x, unsigned int p1_y, unsigned int p2_x, unsigned int p2_y, unsigned int color)
 {

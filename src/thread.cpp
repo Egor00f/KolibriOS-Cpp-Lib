@@ -8,13 +8,13 @@ PID KolibriLib::Thread::CreateThread(void(* ThreadEntry)(void *), unsigned Threa
     void *th_stack = malloc(ThreadStackSize);
     if (!th_stack) //    Если памяти не было выделенно
     {
-        _ksys_debug_puts("Memory allocation error for thread!");
+        _ksys_debug_puts("Memory allocation error for thread!\n");
         return -1;
     }
     int TID = _ksys_create_thread((void*)ThreadEntry, ((uint8_t*)th_stack) + ThreadStackSize);
     if (TID == -1) //   Если поток не был создан
     {
-        _ksys_debug_puts("Unable to create a new thread!");
+        _ksys_debug_puts("Unable to create a new thread!\n");
         return TID;
     }
     return TID;

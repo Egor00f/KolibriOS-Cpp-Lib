@@ -12,6 +12,10 @@
 
 #include <sys/ksys.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern int kolibri_libimg_init(void);
 
 #define _stdcall __attribute__((__stdcall__))
@@ -196,21 +200,25 @@ extern Image_t*   (*img_convert)(Image_t *src, Image_t *dst, uint32_t dst_type, 
 extern Image_t*   (*img_resize_data)(Image_t *src, uint32_t width, uint32_t height) _stdcall;
 extern Image_t*   (*img_scale)(Image_t* src, uint32_t crop_x, uint32_t crop_y, uint32_t crop_width, uint32_t crop_height, Image_t* dst, uint32_t scale_type, uint32_t inter, uint32_t new_width, uint32_t new_height) _stdcall;
 
-/// @brief Загрузить изображение из файла
-/// @param Path путь до файла
-/// @return Указатель на картинку
-extern Image_t* LoadImageFromFile(const char* Path);
+
+	/// @brief Загрузить изображение из файла
+	/// @param Path путь до файла
+	/// @return Указатель на картинку
+	Image_t *
+	LoadImageFromFile(const char *Path);
 
 /// @brief Скопировать изображение
 /// @param src 
 /// @return 
-extern Image_t *img_Copy(const Image_t *src);
+Image_t *img_Copy(const Image_t *src);
 
 /// @brief Fill the image with color
 /// @param img image
 /// @param color Сolor
-extern void img_fill_color(Image_t *img, uint32_t color);
+void img_fill_color(Image_t *img, uint32_t color);
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* KOLIBRI_LIBIMG_H */
