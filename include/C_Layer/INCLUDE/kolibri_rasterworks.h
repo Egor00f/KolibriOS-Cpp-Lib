@@ -5,8 +5,7 @@
 #include <sys/ksys.h>
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
   enum RasterworksEncoding

@@ -68,7 +68,6 @@ namespace KolibriLib
 			#ifndef __MakeStaticLib__
 
 			// Не должно быть видимо для компилятора во время сборки библиотеки
-
 			ButtonID GetFreeButtonId()
 			{
 				for (unsigned i = 0; i < ButtonsIdList.size(); i++)
@@ -85,12 +84,6 @@ namespace KolibriLib
 				ButtonsIdList.erase(id);
 			}
 
-			ButtonID autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color )
-			{
-				ButtonID id = GetFreeButtonId(); // Автоматически получаем id для кнопки
-				_ksys_define_button(coords.x, coords.y, size.x, size.y, id, color.val);
-				return id;
-			}
 			#endif
 		} // namespace buttons
 		

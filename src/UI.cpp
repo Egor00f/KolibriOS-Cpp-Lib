@@ -4,12 +4,9 @@ using namespace KolibriLib;
 using namespace UI;
 
 KolibriLib::UI::UIElement::UIElement(const Coord &coord, const Size &size, const Colors::Color &MainColor, const unsigned &Margin, bool relative)
+	: _coord((Coord){coord.x, coord.y + (int)window::GetSkinHeight()}), _size(size), _MainColor(MainColor), _Margin(Margin), _relative(relative)
 {
-	_coord = (Coord){coord.x, coord.y + (int)window::GetSkinHeight()};
-	_size = size;
-	_MainColor = MainColor;
-	_Margin = Margin;
-	_relative = relative;
+	
 }
 
 const Size &KolibriLib::UI::UIElement::GetSize() const

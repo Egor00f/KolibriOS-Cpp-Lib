@@ -97,7 +97,7 @@ namespace KolibriLib
 
         Frame::Element::Element()
         {
-            #if DEBUG == true
+            #ifdef Debug
             _ksys_debug_puts("KolibriLib::Frame::Element constructor\n");
             #endif
             _type = Type::None;
@@ -105,7 +105,7 @@ namespace KolibriLib
 
         Frame::Element::~Element()
         {
-            #if DEBUG == true
+            #ifdef Debug
             _ksys_debug_puts("KolibriLib::Frame::Element destructor\n");
             #endif
             free();

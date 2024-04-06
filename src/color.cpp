@@ -4,29 +4,26 @@ using namespace KolibriLib;
 using namespace Colors;
 
 KolibriLib::Colors::Color::Color(const ksys_color_t &a)
+	: val(a)
 {
-	val = a;
 }
 
-KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color &a)
+KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color &a) 
+	: val(a.val)
 {
-	val = a.val;
+
 }
 
 KolibriLib::Colors::Color::Color(const KolibriLib::Colors::ARGB &a)
+	: _a(a.alpha), red(a.red), green(a.green), blue(a.blue)
 {
-	_a = a.alpha;
-	red = a.red;
-	green = a.green;
-	blue = a.blue;
+
 }
 
 KolibriLib::Colors::Color::Color(const rgb_t &color)
+	: _a(0xFF), red(color.red), green(color.green), blue(color.blue)
 {
-	_a = 0xFF;
-	red = color.red;
-	green = color.green;
-	red = color.blue;
+
 }
 
 rgb_t KolibriLib::Colors::Color::GetRGB() const

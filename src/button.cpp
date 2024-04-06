@@ -4,9 +4,10 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace buttons;
 
-buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor) : TextLabel(coord, size, "Button", 16, true, OS::GetSystemColors().work_text, Margin)
+buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor)
+	: TextLabel(coord, size, "Button", 16, true, OS::GetSystemColors().work_text, Margin), _id(GetFreeButtonId())
 {
-	_id = GetFreeButtonId();
+	
 }
 
 void buttons::Button::Deactivate()

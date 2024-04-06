@@ -106,9 +106,11 @@ SET(SOURCES
 	${SRC_PATH}/char.cpp 
 	${SRC_PATH}/text.cpp 
 	${SRC_PATH}/textlabel.cpp 
+	${SRC_PATH}/buttonsBase.cpp
 	${SRC_PATH}/button.cpp 
 	${SRC_PATH}/checkbox.cpp
 	${SRC_PATH}/form.cpp
+	${SRC_PATH}/menu.cpp
 )
 
 

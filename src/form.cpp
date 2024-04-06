@@ -3,7 +3,8 @@
 using namespace KolibriLib;
 using namespace UI;
 
-Form::Form(const Coord &coord, const Size &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) : UIElement(coord, size, FormColor, Margin)
+Form::Form(const Coord &coord, const Size &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) 
+	: UIElement(coord, size, FormColor, Margin)
 {
 	_butt.SetCoord(coord);
 	_butt.SetSize(size);

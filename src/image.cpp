@@ -4,7 +4,8 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace Images;
 
-Image::Image(const Coord &coord, const Size &size) : UIElement(coord, size), img(OS::GetSystemColors().work_graph, size)
+Image::Image(const Coord &coord, const Size &size) 
+	: UIElement(coord, size), img(OS::GetSystemColors().work_graph, size)
 {
 	#ifdef Debug
 	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor");

@@ -3,9 +3,8 @@
 using namespace KolibriLib;
 
 KolibriLib::point::point(int X, int Y)
+	: x(X), y(Y)
 {
-	x = X;
-	y = Y;
 }
 
 ksys_pos_t KolibriLib::point::GetKsysPost() const

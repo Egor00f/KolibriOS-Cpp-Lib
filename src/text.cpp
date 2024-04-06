@@ -6,7 +6,6 @@ using namespace text;
 
 Char Txt::GetChar(int i) const
 {
-	assert(i < _data.size() && i >= 0);
     return _data.at(i);
 }
 
@@ -37,6 +36,14 @@ Txt::Txt(const std::string &text)
 	#endif
 
 	SetText(text);
+}
+
+KolibriLib::UI::text::Txt::Txt(const Txt & copy)
+	:_data(copy._data)
+{
+	#ifdef Debug
+	_ksys_debug_puts("Text constructor(copy)\n");
+	#endif
 }
 
 void KolibriLib::UI::text::Txt::Add(const KolibriLib::UI::text::Char &c)
@@ -85,18 +92,18 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 	_ksys_debug_puts("Print Txt:");
 	#endif
 	int buff = 0;
-	for (Char i : _data)
+	for (int i = 0; i < _data.size(); i++)
 	{
 		#ifdef Debug
 		char* b;
-		b[0] = i.GetChar();
+		b[0] = _data[i].GetChar();
 		b[1] = '\n';
 		b[2] = '\0';
 		_ksys_debug_puts(b);
 		#endif
 
-		i.Print(Coord(coord.x + buff, coord.y));
-		buff += i.GetFont().size.x;
+		_data[i].Print(Coord(coord.x + buff, coord.y));
+		buff += _data[i].GetFont().size.x;
 	}
 	#ifdef Debug
 	_ksys_debug_puts("done!\n");

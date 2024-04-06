@@ -18,23 +18,20 @@ bool KolibriLib::UI::text::Fonts::Font::operator==(const KolibriLib::UI::text::F
 }
 
 KolibriLib::UI::text::Fonts::Font::Font(const Size &FontFamily, int FontSize, unsigned flags)
+	: _Font(FontFamily), _Flags(flags)
 {
 	#ifdef Debug
 	_ksys_debug_puts("Font constructor\n");
 	#endif
-	_Font = FontFamily;
-	_Flags = flags;
 	SetFontSize((unsigned)FontSize);
 }
 
 void KolibriLib::UI::text::Fonts::Font::SetFontSize(unsigned FontSize)
 {
-
 	_FontSize = FontSize;
 	size = _Font;
 	
 	float buff = static_cast<float>(FontSize) / static_cast<float>(_Font.y);
 	
 	size *= static_cast<int>(buff);
-
 }

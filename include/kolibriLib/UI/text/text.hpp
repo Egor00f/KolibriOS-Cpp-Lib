@@ -27,6 +27,10 @@ namespace KolibriLib
 				/// @param text
 				Txt(const std::string &text);
 
+				/// @brief Конструктор копирования
+				/// @param copy объект который будет копироваться
+				Txt(const Txt &copy);
+
 				/// @brief Добавить символ в конец
 				/// @param c символ
 				void Add(const Char &c);
