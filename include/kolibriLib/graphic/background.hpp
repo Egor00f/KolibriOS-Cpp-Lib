@@ -10,6 +10,7 @@
 #include <kolibriLib/UI/text/fonts.hpp>
 #include <kolibri_rasterworks.h>
 #include <kolibriLib/UI/text/textBase.hpp>
+#include <kolibriLib/img.hpp>
 
 namespace KolibriLib
 {
@@ -116,17 +117,15 @@ namespace KolibriLib
 			}
 		}
 
-		void DrawText(const std::string &text,
+		inline void DrawText(const std::string &text,
 					  const Coord &coord, const UI::text::Fonts::Font &font = UI::text::Fonts::DefaultFont,
 					  unsigned margin = UI::DefaultMargin,
 					  const Colors::Color &colorText = OS::GetSystemColors().work_text,
 					  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)
 		{
-			buf2d_struct * buff = UI::text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
+			UI::Images::img buff = UI::text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
 
-			DrawImage(coord, (rgb_t*)buff->buf_pointer, buff->width * buff->height);
-			
-			free(buff);
+			buff.Draw(coord);
 		}
 
 		

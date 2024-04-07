@@ -16,21 +16,25 @@ KolibriLib::UI::text::Char::Char(const char &c, const Fonts::Font &font, const C
 	
 }
 
-KolibriLib::UI::text::Char::Char(const Char &copy) : _font(copy._font), _type(copy._type)
+KolibriLib::UI::text::Char::Char(const Char &copy) 
+	: _font(copy._font), _type(copy._type)
 {
+	#ifdef DEBUG
+	_ksys_debug_puts("Char constructor(copy)\n");
+	#endif
+
 	switch (copy._type)
 	{
 	case Type::Text:
 		_c = new char;
-		std::memcpy(_c, copy._c, 1);
+		*_c = *copy._c;
 
 		_TextColor = new Colors::Color(copy._TextColor->val);
 		_BackgroundColor = new Colors::Color(copy._BackgroundColor->val);
 
 		break;
 	case Type::Image:
-		_img = new Images::img(copy._img->GetColorsMap(), copy._img->GetSize());
-
+		_img = new Images::img(*copy._img);
 		break;
 	default:
 		break;

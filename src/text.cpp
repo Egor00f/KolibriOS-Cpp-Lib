@@ -24,14 +24,14 @@ std::string KolibriLib::UI::text::Txt::GetText() const
 
 Txt::Txt()
 {
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor\n");
 	#endif
 }
 
 Txt::Txt(const std::string &text)
 {
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor\n");
 	#endif
 
@@ -41,7 +41,7 @@ Txt::Txt(const std::string &text)
 KolibriLib::UI::text::Txt::Txt(const Txt & copy)
 	:_data(copy._data)
 {
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor(copy)\n");
 	#endif
 }
@@ -88,13 +88,13 @@ void KolibriLib::UI::text::Txt::Delete(int i)
 
 void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 {
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("Print Txt:");
 	#endif
 	int buff = 0;
 	for (int i = 0; i < _data.size(); i++)
 	{
-		#ifdef Debug
+		#ifdef DEBUG
 		char* b;
 		b[0] = _data[i].GetChar();
 		b[1] = '\n';
@@ -105,7 +105,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 		_data[i].Print(Coord(coord.x + buff, coord.y));
 		buff += _data[i].GetFont().size.x;
 	}
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("done!\n");
 	#endif
 }
@@ -162,7 +162,7 @@ unsigned KolibriLib::UI::text::Txt::lenghtPX() const
 
 void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 {
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("Set Text to:");
 	_ksys_debug_puts(text.c_str());
 	_ksys_debug_puts("\n");

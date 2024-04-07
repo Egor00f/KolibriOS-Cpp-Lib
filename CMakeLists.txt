@@ -6,8 +6,9 @@ project(KolibriLib)
 ################### CONFIG #####################
 ################################################
                                                #
-SET(DEBUG ON)                                  #
-SET(KOLIBRIOS_REPO "../kolibrios")             #
+option(DEBUG ON)                               #
+option(CUSTOM_TOOCLAIN_PATH OFF)               #
+set(KOLIBRIOS_REPO "../kolibrios")             #
                                                #
 ################################################
 
@@ -17,25 +18,32 @@ SET(KOLIBRIOS_REPO "../kolibrios")             #
 
 
 
-
+if(DEBUG)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D DEBUG")
+endif()
 
 
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 SET(LIB_DIR ${SDK_DIR}/lib)
 
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+
+#enable FASM
+include(CMakeDetermineASM_FASMCompiler)
+include(CMakeASM_FASMInformation)
+include(CMakeTestASM_FASMCompiler)
+
 enable_language("ASM_FASM")
 
+
+#Flags
 SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
 SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++  -lsupc++")
 
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
-
-if(DEBUG)
-	SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -D DEBUG")
-endif()
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -47,6 +55,10 @@ endif(WIN32)
 if (UNIX)
     SET(TOOLCHAIN_DIR "/home/autobuild/tools/win32")
 endif (UNIX)
+if(CUSTOM_TOOCLAIN_PATH)
+	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
+endif()
+
 
 # stdlib
 SET(NEWLIB_INCLUDE ${SDK_DIR}/sources/libstdc++-v3/include)
@@ -68,14 +80,12 @@ set(C_Layer_Sources
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
 )
-
+include_directories(${KOLIBRIOS_REPO}/programs)
 
 
 
 # Compiler
 SET(CMAKE_C_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-gcc)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-
 SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-g++)
 SET(CMAKE_LINKER ${TOOLCHAIN_DIR}/bin/kos32-ld)
 SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
@@ -83,7 +93,7 @@ SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
 
 include_directories("./include")
 include_directories("./include/C_Layer/INCLUDE")
-include_directories(${KOLIBRIOS_REPO}/programs)
+
 
 
 SET(SRC_PATH src)
@@ -115,6 +125,7 @@ SET(SOURCES
 
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
+
 TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include)
 TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include/C_Layer/INCLUDE)
 

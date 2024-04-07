@@ -13,6 +13,7 @@
 #include <string.h>
 
 #include <kolibri_libimg.h>
+#include <kolibri_buf2d.h>
 
 namespace KolibriLib
 {
@@ -23,8 +24,8 @@ namespace KolibriLib
 			/// @brief Изображение
 			class img
 			{
-			protected:
-				mutable Image_t *_img;
+			private:
+				buf2d_struct *_buff;
 
 			public:
 				img();
@@ -62,8 +63,8 @@ namespace KolibriLib
 				void LoadImage(const filesystem::Path &Path = DefaultImage);
 
 				/// @brief Изменить изображение
-				/// @param img Указатель на струтуру Image_t
-				void SetImg(const Image_t *img);
+				/// @param img Указатель на струтуру
+				void SetImg(const buf2d_struct *img);
 
 				/// @brief Изменить цвет пикселя
 				/// @param color
@@ -103,9 +104,11 @@ namespace KolibriLib
 				/// @note Теряется Alpha
 				void SetRGBMap(const rgb_t* rgbmap, const Size &size);
 
+				void SetColorMap(const Colors::Color* rgbmap, const Size &size);
+
 				/// @brief
 				/// @return
-				Image_t *GetImaget() const;
+				buf2d_struct *GetBuff() const;
 
 				/// @brief Получить разрешение изображения
 				/// @return 

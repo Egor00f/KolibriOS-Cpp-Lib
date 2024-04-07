@@ -25,6 +25,7 @@ namespace KolibriLib
 		if(kolibri_libimg_init() == -1)
 		{
 			_ksys_debug_puts("Error loading libimg.obj, exit\n");
+			OS::ErrorNotify("Error loading libimg", "exit");
 			exit(0);
 		}
 
@@ -36,11 +37,17 @@ namespace KolibriLib
 		
 		if(kolibri_rasterworks_init() == -1)
 		{
-			_ksys_debug_puts("Error loading RasterWorks, exit\n ");
+			_ksys_debug_puts("Error loading lib RasterWorks, exit\n");
+			OS::ErrorNotify("Error loading lib RasterWorks", "exit");
 			exit(0);
 		}
 
-		kolibri_buf2d_init();
+		if(kolibri_buf2d_init() == -1)
+		{
+			_ksys_debug_puts("Error loading RasterWorks, exit\n");
+			OS::ErrorNotify("Error loading lib buf2d", "exit");
+			exit(0);
+		}
 		
 	}
 }

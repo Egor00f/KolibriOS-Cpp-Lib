@@ -20,7 +20,7 @@ bool KolibriLib::UI::text::Fonts::Font::operator==(const KolibriLib::UI::text::F
 KolibriLib::UI::text::Fonts::Font::Font(const Size &FontFamily, int FontSize, unsigned flags)
 	: _Font(FontFamily), _Flags(flags)
 {
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("Font constructor\n");
 	#endif
 	SetFontSize((unsigned)FontSize);

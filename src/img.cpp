@@ -11,7 +11,7 @@ KolibriLib::UI::Images::img::img()
 	_ksys_debug_puts("img consturctor(empety)\n");
 	#endif
 
-	_img = img_create(32, 32, IMAGE_BPP32);
+	_buff = buf2d_create(0,0, 32, 32, 0xFFFFFF, 24);
 }
 
 KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size)
@@ -20,8 +20,8 @@ KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size)
 	_ksys_debug_puts("img consturctor\n");
 	#endif
 
-	_img = img_create(size.x, size.y, IMAGE_BPP32);
-	memcpy(_img->Data, color, size.x * size.y);
+	_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
+	SetColorMap(color, size);
 }
 
 KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
@@ -30,8 +30,7 @@ KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
 	_ksys_debug_puts("img consturctor\n");
 	#endif
 
-	_img = img_create(size.x, size.y, IMAGE_BPP32);
-	img_fill_color(_img, color.val);
+	_buff = buf2d_create(0, 0, size.x, size.y, color.val, 24);
 }
 
 KolibriLib::UI::Images::img::img(const img & copy)
@@ -40,7 +39,8 @@ KolibriLib::UI::Images::img::img(const img & copy)
 	_ksys_debug_puts("img consturctor(copy)\n");
 	#endif
 
-	_img = img_Copy(copy._img);
+	_buff = buf2d_create(copy._buff->left, copy._buff->top, copy._buff->width, copy._buff->height, copy._buff->bgcolor, copy._buff->color_bit);
+	memcpy(_buff->buf_pointer, copy._buff->buf_pointer, copy._buff->width * copy._buff->height);
 }
 
 KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size)
@@ -49,8 +49,7 @@ KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size)
 	_ksys_debug_puts("img consturctor\n");
 	#endif
 
-	_img = img_create(size.x, size.y, IMAGE_BPP32);
-
+	_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
 	SetRGBMap(color, size);
 }
 
@@ -59,104 +58,95 @@ UI::Images::img::~img()
 	#ifdef DEBUG
 	_ksys_debug_puts("img desturctor\n");
 	#endif
-	img_destroy(_img);
+	
+	buf2d_delete(_buff);
 }
 
 void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 {
 	#ifdef DEBUG
-	_ksys_debug_puts("Draw img size:");
-	_ksys_debug_puts(__itoa(size.x, nullptr, 10));
-	_ksys_debug_putc(' ');
-	_ksys_debug_puts(__itoa(size.y, nullptr, 10));
-	_ksys_debug_putc('\n');
+	_ksys_debug_puts("Draw");
 	#endif
 
-	if ((size.x != -1 && size.y != -1) 							// Если значения по умолчанию
-	    || (size.x == _img->Width && size.y == _img->Height))	// Или размеры изображения совпадают
+	if(size != -1)
 	{
-		img_to_rgb(_img);
-		img_draw(_img, coord.x, coord.y, size.x, size.y, 0, 0);
+		buf2d_struct *buff = buf2d_copy(_buff);
+
+		buff->left = coord.x;
+		buff->top = coord.y;
+
+		buf2d_resize(buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
+
+		buf2d_draw(buff);
+
 	}
 	else
 	{
-		_img = img_resize_data(_img, size.x, size.y);
-		img_to_rgb(_img);
-		img_draw(_img, coord.x, coord.y, size.x, size.y, 0, 0);
+		buf2d_draw(_buff);
 	}
+	
 }
 
-void UI::Images::img::SetImg(const Image_t *img)
+void UI::Images::img::SetImg(const buf2d_struct *img)
 {
-	img_destroy(_img);
-	_img = img_Copy(img);
+	_buff = buf2d_copy(img);
 }
 
 void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, unsigned x, unsigned y)
 {
-	_img->Data[(y-1) * _img->Width + x] = color.val;
+	buf2d_set_pixel(_buff, x, y, color.val);
 }
 
 void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, const Coord &coord)
 {
-	_img->Data[(coord.y-1) * _img->Width + coord.x] = color.val;
+	buf2d_set_pixel(_buff, coord.x, coord.y, color.val);
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(unsigned x, unsigned y) const
 {
-	return _img->Data[(y - 1) * _img->Width + x];
+	return buf2d_get_pixel(_buff, x, y);
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(const Coord &coord) const
 {
-	return _img->Data[(coord.y - 1) * _img->Width + coord.x];
+	return buf2d_get_pixel(_buff, coord.x, coord.y);
 }
 
 rgb_t *KolibriLib::UI::Images::img::GetRGBMap() const
 {
-	rgb_t *buff = new rgb_t[_img->Width * _img->Height];
-
-	for (int i = 0; i < _img->Width * _img->Height; i++)
+	if(_buff->color_bit == 24)
 	{
-		buff[i] = Colors::UINT32toRGB(_img->Data[i]);
+		return (rgb_t*)_buff->buf_pointer;
 	}
 
-	return buff;
 }
 
-Image_t *KolibriLib::UI::Images::img::GetImaget() const
+buf2d_struct *KolibriLib::UI::Images::img::GetBuff() const
 {
-	return _img;
+	return _buff;
 }
 
 void KolibriLib::UI::Images::img::FillColor(const Colors::Color &color)
 {
-	img_fill_color(_img, color.val);
+	buf2d_clear(_buff, color.val);
 }
 
 KolibriLib::UI::Images::img& KolibriLib::UI::Images::img::operator = (const Images::img& im)
 {
-	if (_img->Width != im._img->Width || _img->Height != im._img->Height) // Если размеры картинок разные
-	{
-		img_resize_data(_img, im._img->Width, im._img->Height);
-	}
-
-	img_resize_data(_img, im._img->Width, im._img->Height);
-
-	memcpy(_img->Data, im._img->Data, im._img->Width * im._img->Height);
+	_buff = buf2d_copy(im._buff);
 	
 	return *this;
 }
 
 bool KolibriLib::UI::Images::img::operator!=(const img &im) const
 {
-	if (_img->Width != im._img->Width || _img->Height != im._img->Height)	// если размеры изображний не совпадают то значит они точно не одинаковы
+	if (_buff->height != im._buff->height || _buff->width != im._buff->width) // если размеры изображний не совпадают то значит они точно не одинаковы
 	{
 		return true;
 	}
-	for (unsigned i = 0; i < _img->Width * _img->Height; i++)
+	for (unsigned i = 0; i < _buff->width * _buff->height; i++)
 	{
-		if (_img->Data[i] != im._img->Data[i])
+		if (_buff->buf_pointer[i] != im._buff->buf_pointer[i])
 		{
 			return true;
 		}
@@ -166,41 +156,58 @@ bool KolibriLib::UI::Images::img::operator!=(const img &im) const
 
 Colors::Color *KolibriLib::UI::Images::img::GetColorsMap() const
 {
-	return (Colors::Color*)_img->Data;
+	return (Colors::Color*)_buff->buf_pointer;
 }
 
 Size img::GetSize() const
 {
-	return Size(_img->Width, _img->Height);
+	return Size(_buff->width, _buff->height);
 }
 
 void img::LoadImage(const filesystem::Path &Path)
 {
-	_img = LoadImageFromFile(Path.GetChars());
+	Image_t *buff = LoadImageFromFile(Path.GetChars());
 
-	if (_img->Type != IMAGE_BPP32)
+	if (buff->Type != IMAGE_BPP24)
 	{
-		_img = img_convert(_img, NULL, IMAGE_BPP32, 0, 0); // Convert image to format BPP32
-		if (!_img)
+		buff = img_convert(buff, NULL, IMAGE_BPP24, 0, 0); // Convert image to format BPP24
+		if (!buff)
 		{
-			_ksys_debug_puts("Convert error");
+			_ksys_debug_puts("Convert error\n");
 		}
 	}
+	
+	img_to_rgb2(buff, _buff->buf_pointer);
 }
 
 void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &size)
 {
-	_img = img_scale(_img, 0, 0, _img->Width, _img->Height, NULL, LIBIMG_SCALE_STRETCH, LIBIMG_INTER_DEFAULT,  size.x, size.y);
-
-	int l = size.x * size.y;
-
-	uint32_t *buff = new uint32_t[l];
-	for(int i = 0; i < l; i++)
-	{
-		buff[i] = Colors::RGBtoINT(rgbmap[i]);
+	if (_buff->width != size.x && _buff->height != size.y) // Если рамеры буфера не соответсвуют размерам rgbmap
+	{													   // Изменяится размеры
+		buf2d_resize(_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
 	}
 
-	memcpy(_img->Data, buff, l);
+	for (int i = 0; i < size.y; i++)
+	{
+		for (int j = 0; j < size.x; j++)
+		{
+			buf2d_set_pixel(_buff, j, i, Colors::RGBtoINT(rgbmap[(i * size.x) + j]));
+		}
+	}
+}
 
-	delete[] buff;
+void KolibriLib::UI::Images::img::SetColorMap(const Colors::Color * rgbmap, const Size & size)
+{
+	if(_buff->width != size.x && _buff->height != size.y)	// Если рамеры буфера не соответсвуют размерам rgbmap
+	{														// Изменяится размеры
+		buf2d_resize(_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
+	}
+
+	for(int i = 0; i < size.y; i++)
+	{
+		for(int j = 0; j < size.x; j++)
+		{
+			buf2d_set_pixel(_buff, j, i, rgbmap[(i * size.x) + j].val);
+		}
+	}
 }

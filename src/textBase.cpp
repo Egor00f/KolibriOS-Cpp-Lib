@@ -45,9 +45,9 @@ rgb_t *DrawTextToRGBMap(const void *canvas, Size coord, int x, int y, const std:
 	return res;
 }
 
-buf2d_struct *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const Fonts::Font &font, unsigned margin, const Colors::Color &colorText, const Colors::Color &BackgroundColor, uint8_t encoding)
+Images::img KolibriLib::UI::text::DrawTextToImg(const std::string &text, const Fonts::Font &font, unsigned margin, const Colors::Color &colorText, const Colors::Color &BackgroundColor, uint8_t encoding)
 {
-	#ifdef Debug
+	#ifdef DEBUG
 	_ksys_debug_puts("\nprint text:");
 	_ksys_debug_puts(text.c_str());
 	_ksys_debug_putc('\n');
@@ -56,11 +56,11 @@ buf2d_struct *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const
 	const int w = (margin * 2) + font.size.x;
 	const int h = (margin * 2) + (font.size.y * text.length());
 
-	buf2d_struct *canvas = buf2d_create(0, 0, h, w, BackgroundColor.val, 24);
+	Images::img canvas(BackgroundColor, {w, h});
 
 	rgb_t* buff = new rgb_t[w*h];
 
-	buff = DrawTextToRGBMap(canvas->buf_pointer, 
+	buff = DrawTextToRGBMap(canvas.GetBuff()->buf_pointer, 
 	                        {w, h}, 
 							margin, margin, 
 							text, 
@@ -68,9 +68,7 @@ buf2d_struct *KolibriLib::UI::text::DrawTextToImg(const std::string &text, const
 							colorText.val, 
 							font._Flags);
 
-	memcpy(canvas->buf_pointer, 
-	       buff,
-		   w*h);
+	canvas.SetRGBMap(buff, {w, h});
 		   
 	delete[] buff;
 

@@ -7,9 +7,8 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (!f)
 	{
-		const char a[] = "LoadImage: Can't open file: ";
 		char *b;
-		strcat(b, a);
+		strcat(b, "LoadImage: Can't open file: ");
 		strcat(b, Path);
 		strcat(b, " \n \0");
 		_ksys_debug_puts(b);
@@ -17,9 +16,8 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (fseek(f, 0, SEEK_END))
 	{
-		const char a[] = "Can't SEEK_END file: ";
 		char *b;
-		strcat(b, a);
+		strcat(b, "Can't SEEK_END file: ");
 		strcat(b, Path);
 		strcat(b, " \n \0");
 		_ksys_debug_puts(b);
@@ -31,12 +29,10 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (!fdata)
 	{
-		const char a[] = "No memory for file: ";
 		char *b;
-		strcat(b, a);
+		strcat(b, "No memory for file: ");
 		strcat(b, Path);
-		strcat(b, "\n");
-		strcat(b, "malloc not return ptr\n\0");
+		strcat(b, "\nmalloc not return ptr\n\0");
 		_ksys_debug_puts(b);
 	}
 
@@ -44,9 +40,8 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (ferror(f))
 	{
-		const char *a = "Error reading file ";
 		char *b;
-		strcat(b, a);
+		strcat(b, "Error reading file ");
 		strcat(b, Path);
 		strcat(b, " \n \0");
 		_ksys_debug_puts(b);

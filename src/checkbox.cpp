@@ -5,7 +5,7 @@ using namespace UI;
 
 CheckBox::CheckBox(const Coord &coord, const Size &size, const int &style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin) : Button(coord, size, Margin, BackgroundColor)
 {
-	#if Debug
+	#if DEBUG
 	_ksys_debug_puts("CheckBox Constructor\n");
 	#endif
 	_style = style;

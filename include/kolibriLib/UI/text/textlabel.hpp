@@ -62,6 +62,10 @@ namespace KolibriLib
                 /// @param Margin 
                 TextLabel(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const std::string& text = "TextLabel", const Fonts::Font &Font = Fonts::DefaultFont, const Colors::Color& TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area , bool TextScale = true, unsigned Margin = 0);
 
+                /// @brief Конструктор копирования
+                /// @param copy объекто который будет копироваться
+                TextLabel(const TextLabel &copy);
+
                 /// @brief Отрисовать текстовую метку
                 virtual void Render() const;
 
