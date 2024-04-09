@@ -63,6 +63,11 @@ extern void (*buf2d_create_asm)(buf2d_struct *buffer) __attribute__((__stdcall__
 /// @param color Color of curve
 extern void (*buf2d_curve_bezier_asm)(buf2d_struct *buffer, uint32_t p1, uint32_t p2, uint32_t p3, ksys_color_t color) __attribute__((__stdcall__));
 
+/// @brief
+/// @param buffer
+/// @param imgbuff Pointer to rgb buffer
+extern void (*buf2d_create_f_img)(buf2d_struct *buffer, void *imgbuff) __attribute__((__stdcall__));
+
 /// @brief Draws a buffer on the screen (works through system f. 7).
 /// @param buffer Poiter to buf2d_struct
 /// @note Only buffers with a color depth of 24 bits are drawn.

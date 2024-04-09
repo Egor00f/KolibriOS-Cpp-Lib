@@ -7,7 +7,17 @@ using namespace buttons;
 buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor)
 	: TextLabel(coord, size, "Button", 16, true, OS::GetSystemColors().work_text, Margin), _id(GetFreeButtonId())
 {
-	
+	#ifdef DEBUG
+	_ksys_debug_puts("Button contructor\n");
+	#endif
+}
+
+Button::Button(const Button &copy)
+	: TextLabel(copy), _id(copy._id)
+{
+	#ifdef DEBUG
+	_ksys_debug_puts("Button contructor(copy)\n");
+	#endif
 }
 
 void buttons::Button::Deactivate()

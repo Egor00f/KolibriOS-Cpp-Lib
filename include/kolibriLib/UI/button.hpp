@@ -36,7 +36,7 @@ namespace KolibriLib
 
                 /// @brief Активна(работает) ли сейчас кнопка
                 /// @paragraph Занчение необходимо для того чтобы функция render не пыталась создать кнопку, так как в неактивном состоянии #_id освобождается и его может занять другая кнопка
-                bool _active;
+                bool _active = true;
 
             public:
 
@@ -48,14 +48,27 @@ namespace KolibriLib
                 /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
                 Button(const Coord &coord = Coord(0,0), const Size &size = Size(20,20), unsigned Margin = UI::DefaultMargin, const Colors::Color& ButtonColor = OS::GetSystemColors().work_button);
-                
+
+                /// \brief Это конструктор
+                /// \param coord координата
+                /// \param size размер
+                /// \param text текст
+                /// \param Margin отступы текста от границ
+                /// \param ButtonColor цвет кнопки
+                /// \param TextColor цвет текста
+                Button(const Txt &text, const Coord &coord = Coord(0, 0), const Size &size = Size(20, 20), unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = OS::GetSystemColors().work_button);
+
+                /// @brief Конструктор копирования
+                /// @param copy Кнопка которую будут копировать
+                Button(const Button &copy);
+
                 /// @brief Отрисовать кнопку
                 void Render() const;
 
                 /// @brief Обработчик кнопки
                 /// @return Состояние кнопки(Нажата/Ненажата)
-                /// @paragraph устанавливает переменную _status в true если эта кнопка нажата, иначе false
-                /// @paragraph Эту функцию нужно вызывать в цикле, чтобы кнопка работала
+                /// @details устанавливает переменную _status в true если эта кнопка нажата, иначе false
+                /// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
                 bool Handler() const;
 
                 /// @brief Получить сосояние кнопки на момент последней обработки

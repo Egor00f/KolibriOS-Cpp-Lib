@@ -53,6 +53,20 @@ KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size)
 	SetRGBMap(color, size);
 }
 
+KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
+{
+	#ifdef DEBUG
+	_ksys_debug_puts("img consturctor\n");
+	#endif
+
+	Image_t *buff = new Image_t;
+	buff = LoadImageFromFile(ImageFile.GetChars());
+
+	buf2d_create_f_img(_buff, buff->Data);
+
+	img_destroy(buff);
+}
+
 UI::Images::img::~img()
 {
 	#ifdef DEBUG
@@ -78,7 +92,6 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 		buf2d_resize(buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
 
 		buf2d_draw(buff);
-
 	}
 	else
 	{

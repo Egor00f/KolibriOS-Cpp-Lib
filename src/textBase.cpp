@@ -6,8 +6,7 @@ using namespace text;
 
 /// @brief Draw text on 24bpp or 32bpp image
 /// @param canvas Pointer to image (array of colors)
-/// @param canvasWidth image width
-/// @param canvasHeight image height
+/// @param size 
 /// @param x Coordinate of the text along the X axis
 /// @param y Coordinate of the text along the Y axis
 /// @param string Pointer to string
@@ -17,20 +16,19 @@ using namespace text;
 /// @param flags value from enum RasterworksParams
 /// @param encoding value fram enum RasterworksEncoding
 /// @note don't forget free(buff)
-rgb_t *DrawTextToRGBMap(const void *canvas, Size coord, int x, int y, const std::string &string, uint8_t width, uint8_t height, ksys_color_t fontColor, uint8_t flags, uint8_t encoding = Rasterworks_UTF8)
+rgb_t *DrawTextToRGBMap(const void *canvas, Size size, int x, int y, const std::string &string, uint8_t width, uint8_t height, ksys_color_t fontColor, uint8_t flags, uint8_t encoding = Rasterworks_UTF8)
 {
-	const int l = coord.x * coord.y * 3;
+	const int l = size.x * size.y * 3;
 
 	RasterWorksBuff *buff = (RasterWorksBuff *)malloc(l + 8);
 
-	buff->width = coord.x;
-	buff->height = coord.y;
+	buff->wh = (size.x << 8) + size.y;
 
 	memcpy(buff + 8, canvas, l);
 
 	drawText(buff,
-			 coord.x,
-			 coord.y, 
+			 size.x,
+			 size.y, 
 			 string.c_str(), 
 			 string.length(),
 			 fontColor, 

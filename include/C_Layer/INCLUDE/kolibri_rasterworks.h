@@ -42,8 +42,8 @@ extern "C" {
 
   struct RasterWorksBuff
   {
-    uint8_t width;
-    uint8_t height;
+    /// @brief (width << 8) + height
+    uint8_t wh;
     rgb_t *buff;
   };
 

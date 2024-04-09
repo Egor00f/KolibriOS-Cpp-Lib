@@ -18,10 +18,29 @@ namespace KolibriLib
         /// @brief Выпадающее менб список
         class Menu : public UIElement
         {
-        private:
-            std::vector<buttons::Button> _Buttons;
         public:
-            Menu(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::vector<std::string> &li = {"menu", "menu"}, const unsigned &Margin = DefaultMargin, const Colors::Color &color = OS::GetSystemColors().work_area);
+
+            struct Item: public buttons::Button
+            {
+                /// @brief Poiter to Menu
+                Menu* _undermenu = nullptr;
+
+                /// @brief 
+                /// @param text 
+                /// @param TextColor 
+                /// @param BackgroundColor 
+                Item(const text::Txt &text, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_button, Menu *underMenu);
+                Item(const Item &copy);
+                Item(const buttons::Button &copy);
+                ~Item();
+            };
+
+            Menu(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::vector<Item> &li = {"menu", "menu"}, const unsigned &Margin = DefaultMargin, const Colors::Color &color = OS::GetSystemColors().work_area);
+
+            /// @brief 
+            /// @param copy 
+            Menu(const Menu &copy);
+
             ~Menu();
 
             /// @brief Отрисовать меню
@@ -44,6 +63,9 @@ namespace KolibriLib
             /// @param i номер удаляемого элемента
             /// @return true если удачно, иначе false
             bool DeleteItem(unsigned i);
+
+        private:
+            std::vector<Item> _Buttons;
         };
 
     } // namespace UI

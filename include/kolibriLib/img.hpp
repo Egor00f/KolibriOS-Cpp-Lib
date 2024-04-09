@@ -46,6 +46,8 @@ namespace KolibriLib
 				/// @note Закрашивает изображение в цвет
 				img(const Colors::Color &color, const Size &size);
 
+				img(const filesystem::Path &ImageFile);
+
 				/// @brief Коструктор копирования
 				/// @param copy то что будет копироваться
 				img(const img &copy);
