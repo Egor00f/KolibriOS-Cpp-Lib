@@ -12,6 +12,14 @@ buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, c
 	#endif
 }
 
+KolibriLib::UI::buttons::Button::Button(const Txt &text, const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor)
+	: TextLabel(coord, size, text)
+{
+	#ifdef DEBUG
+	_ksys_debug_puts("Button contructor\n");
+	#endif
+}
+
 Button::Button(const Button &copy)
 	: TextLabel(copy), _id(copy._id)
 {

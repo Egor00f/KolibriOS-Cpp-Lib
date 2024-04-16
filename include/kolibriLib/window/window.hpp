@@ -464,7 +464,7 @@ namespace KolibriLib
 			case Element::Type::None:
 				break;
 			default:
-				_ksys_debug_puts("Error in KolibriLib::Window::Element::free() undefined type");
+				_ksys_debug_puts("Error in KolibriLib::Window::Element::free() undefined type\n");
 			}
 		}
 
@@ -519,11 +519,17 @@ namespace KolibriLib
 
 		void Window::RenderAllElements() const
 		{
-			for (const auto it : _Elements)
+			for (auto& it : _Elements)
 			{
+				#ifdef DEBUG
+				_ksys_debug_puts("-Render Element as");
+				#endif
 				switch (it.second._type)
 				{
 				case Element::Type::TextLabel:
+					#ifdef DEBUG
+					_ksys_debug_puts("TextLabel");
+					#endif
 					((UI::text::TextLabel *)it.second.pointer)->Render();
 					break;
 				case Element::Type::Button:
@@ -545,10 +551,10 @@ namespace KolibriLib
 					((UI::Frame *)it.second.pointer)->Render();
 					break;
 				case Element::Type::None:
-					_ksys_debug_puts("Warn: KolibriLib::Window::Element::Render() type = None");
+					_ksys_debug_puts("Warn: KolibriLib::Window::Element::Render() type = None\n");
 					break;
 				default:
-					_ksys_debug_puts("Error in KolibriLib::Window::Element::Render() undefined type");
+					_ksys_debug_puts("Error in KolibriLib::Window::Element::Render() undefined type\n");
 				}
 			}
 		}

@@ -71,17 +71,28 @@ include_directories(${NEWLIB_INCLUDE})
 include_directories(${LIBSTDCppV3_INCLUDE})
 
 
+
+SET(SRC_PATH src)
+
+
 # CONFIGURED C_Layer ASM
 set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
 set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
 
-set(C_Layer_Sources
+set(C_Layer_ASM_Sources
 	${C_Layer_SRC_PATH}/loadlibimg.asm
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
 )
 include_directories(${KOLIBRIOS_REPO}/programs)
 
+
+set(C_Layer_C_Sources
+	${SRC_PATH}/C_Layer/kolibri_buf2d.c
+	${SRC_PATH}/C_Layer/kolibri_libimg.c
+	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
+)
+include_directories("./include/C_Layer/INCLUDE")
 
 
 # Compiler
@@ -92,16 +103,15 @@ SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
 
 
 include_directories("./include")
-include_directories("./include/C_Layer/INCLUDE")
 
 
 
-SET(SRC_PATH src)
+
+
 
 SET(SOURCES 
-	${C_Layer_Sources}
-	${SRC_PATH}/C_Layer/kolibri_buf2d.c
-	${SRC_PATH}/C_Layer/kolibri_libimg.c
+	${C_Layer_ASM_Sources}
+	${C_Layer_C_Sources}
 	${SRC_PATH}/filesystem.cpp 
 	${SRC_PATH}/color.cpp 
 	${SRC_PATH}/os.cpp 

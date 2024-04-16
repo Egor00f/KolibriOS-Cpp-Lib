@@ -201,11 +201,10 @@ extern Image_t*   (*img_resize_data)(Image_t *src, uint32_t width, uint32_t heig
 extern Image_t*   (*img_scale)(Image_t* src, uint32_t crop_x, uint32_t crop_y, uint32_t crop_width, uint32_t crop_height, Image_t* dst, uint32_t scale_type, uint32_t inter, uint32_t new_width, uint32_t new_height) _stdcall;
 
 
-	/// @brief Загрузить изображение из файла
-	/// @param Path путь до файла
-	/// @return Указатель на картинку
-	Image_t *
-	LoadImageFromFile(const char *Path);
+/// @brief Загрузить изображение из файла
+/// @param Path путь до файла
+/// @return Указатель на картинку
+Image_t *LoadImageFromFile(const char *Path);
 
 /// @brief Скопировать изображение
 /// @param src 

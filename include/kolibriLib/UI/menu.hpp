@@ -29,13 +29,17 @@ namespace KolibriLib
                 /// @param text 
                 /// @param TextColor 
                 /// @param BackgroundColor 
-                Item(const text::Txt &text, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_button, Menu *underMenu);
+                Item(const text::Txt &text, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_button, Menu *underMenu = nullptr);
                 Item(const Item &copy);
                 Item(const buttons::Button &copy);
                 ~Item();
             };
 
-            Menu(const Coord &coord = {0, 0}, const Size &size = {0, 0}, const std::vector<Item> &li = {"menu", "menu"}, const unsigned &Margin = DefaultMargin, const Colors::Color &color = OS::GetSystemColors().work_area);
+            Menu(const Coord &coord = {0, 0}, 
+                const Size &size = {0, 0}, 
+                const std::vector<Item> &li = { Menu::Item(std::string("menu1")), Menu::Item(std::string("menu2")) }, 
+                const unsigned &Margin = DefaultMargin, 
+                const Colors::Color &color = OS::GetSystemColors().work_area);
 
             /// @brief 
             /// @param copy 

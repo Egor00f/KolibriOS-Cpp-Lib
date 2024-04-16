@@ -26,15 +26,15 @@ KolibriLib::UI::text::Char::Char(const Char &copy)
 	switch (copy._type)
 	{
 	case Type::Text:
-		_c = new char;
+		this->_c = new char;
 		*_c = *copy._c;
 
-		_TextColor = new Colors::Color(copy._TextColor->val);
-		_BackgroundColor = new Colors::Color(copy._BackgroundColor->val);
+		this->_TextColor = new Colors::Color(copy._TextColor->val);
+		this->_BackgroundColor = new Colors::Color(copy._BackgroundColor->val);
 
 		break;
 	case Type::Image:
-		_img = new Images::img(*copy._img);
+		this->_img = new Images::img(*copy._img);
 		break;
 	default:
 		break;
@@ -48,23 +48,23 @@ KolibriLib::UI::text::Char::~Char()
 
 uint8_t KolibriLib::UI::text::Char::GetType() const
 {
-	return _type;
+	return this->_type;
 }
 
 void KolibriLib::UI::text::Char::Set(const char c, const Fonts::Font &font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
 {
 	Char::Free(); // Пофиг какой раньше тип был, просто тупо сносим и делаем всё заново
 	_font = font; // да это дольше, но проще
-	_TextColor = new Colors::Color(TextColor);
-	_BackgroundColor = new Colors::Color(BackgroundColor);
-	_c = new char(c);
+	this->_TextColor = new Colors::Color(TextColor);
+	this->_BackgroundColor = new Colors::Color(BackgroundColor);
+	this->_c = new char(c);
 	_type = Type::Text;
 }
 
 void KolibriLib::UI::text::Char::Set(const Images::Image &img, const KolibriLib::UI::text::Fonts::Font &size)
 {
 	Char::Free();
-	_img = new Images::Image(img);
+	this->_img = new Images::Image(img);
 	_font = size;
 	_type = Type::Image;
 }
@@ -78,13 +78,13 @@ void KolibriLib::UI::text::Char::SetFlags(unsigned flags)
 void KolibriLib::UI::text::Char::SetTextColor(const Colors::Color &NewColor)
 {
 	assert(_type == Type::Text);
-	*_TextColor = NewColor.val;
+	*this->_TextColor = NewColor.val;
 }
 
 void KolibriLib::UI::text::Char::SetBackgroundColor(const Colors::Color &NewColor)
 {
 	assert(_type == Type::Text);
-	*_BackgroundColor = NewColor.val;
+	*this->_BackgroundColor = NewColor.val;
 }
 
 void KolibriLib::UI::text::Char::SetFont(const KolibriLib::UI::text::Fonts::Font &newFont) const
@@ -96,13 +96,13 @@ void KolibriLib::UI::text::Char::SetFont(const KolibriLib::UI::text::Fonts::Font
 char KolibriLib::UI::text::Char::GetChar() const
 {
 	assert(_type == Type::Text);
-	return *_c;
+	return *this->_c;
 }
 
 const Images::img KolibriLib::UI::text::Char::GetImg() const
 {
 	assert(_type == Type::Image);
-	return *_img;
+	return *this->_img;
 }
 
 const Fonts::Font KolibriLib::UI::text::Char::GetFont() const
@@ -145,7 +145,7 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 		_ksys_debug_puts("Char is img");
 		#endif
 
-		_img->Draw(coord, _font.size);
+		this->_img->Draw(coord, _font.size);
 		break;
 	case Type::Text:
 
@@ -154,9 +154,9 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 		#endif
 
 		char *buff = new char[2];
-		buff[0] = *_c;
+		buff[0] = *this->_c;
 		buff[1] = '\0';
-		DrawText(std::string(buff), coord, _font, OS::GetSystemColors().work_text, *_TextColor, *_BackgroundColor);
+		DrawText(std::string(buff), coord, _font, OS::GetSystemColors().work_text, *this->_TextColor, *this->_BackgroundColor);
 		delete buff;
 		break;
 	}
@@ -164,13 +164,13 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 
 KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(char c)
 {
-	*_c = c;
+	*this->_c = c;
 	if (_type != Char::Type::Text)
 	{
 		Free();
 		_font = Fonts::DefaultFont;
-		_TextColor = new Colors::Color(OS::GetSystemColors().work_text);
-		_BackgroundColor = new Colors::Color(OS::GetSystemColors().work_area);
+		this->_TextColor = new Colors::Color(OS::GetSystemColors().work_text);
+		this->_BackgroundColor = new Colors::Color(OS::GetSystemColors().work_area);
 		_type = Type::Text;
 	}
 }
@@ -179,12 +179,12 @@ Char &Char::operator=(const Images::img &img)
 {
 	if (_type == Char::Type::Image)
 	{
-		*_img = img;
+		*this->_img = img;
 	}
 	else
 	{
 		Free();
-		_img = new Images::img(img);
+		this->_img = new Images::img(img);
 		_type = Char::Type::Image;
 	}
 }
@@ -197,18 +197,16 @@ KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(const KolibriL
 	switch (c._type)
 	{
 	case Char::Type::Text:
-		_c = c._c;
-		_TextColor = new Colors::Color(c._TextColor->val);
-		_BackgroundColor = new Colors::Color(c._BackgroundColor->val);
+		this->_c = c._c;
+		this->_TextColor = new Colors::Color(c._TextColor->val);
+		this->_BackgroundColor = new Colors::Color(c._BackgroundColor->val);
 		_type = Type::Text;
 		break;
 	case Char::Type::Image:
 
-		_img = new Images::img(*c._img);
+		this->_img = new Images::img(*c._img);
 		_type = Type::Image;
 
-		break;
-	default:
 		break;
 	}
 }
@@ -227,6 +225,6 @@ bool KolibriLib::UI::text::Char::operator==(const Images::img &img) const
 	}
 	else
 	{
-		return _img->GetSize() == img.GetSize();
+		return this->_img->GetSize() == img.GetSize();
 	}
 }

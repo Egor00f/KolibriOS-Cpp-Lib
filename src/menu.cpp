@@ -4,8 +4,10 @@ using namespace KolibriLib;
 using namespace UI;
 
 KolibriLib::UI::Menu::Item::Item(const text::Txt &text, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, Menu *underMenu)
-	: buttons::Button(text, NULL, NULL, NULL, BackgroundColor)
+	: buttons::Button(text)
 {
+	SetTextColor(TextColor);
+	SetBackgroundColor(BackgroundColor);
 	_undermenu = underMenu;
 }
 
@@ -13,6 +15,11 @@ KolibriLib::UI::Menu::Item::Item(const Item &copy)
 	: buttons::Button(copy)
 {
 	_undermenu = copy._undermenu;
+}
+
+KolibriLib::UI::Menu::Item::~Item()
+{
+
 }
 
 Menu::Menu(const Coord &coord, const Size &size, const std::vector<Menu::Item> &li, const unsigned &Margin, const Colors::Color &color) 
@@ -27,6 +34,11 @@ Menu::Menu(const Coord &coord, const Size &size, const std::vector<Menu::Item> &
 
 KolibriLib::UI::Menu::Menu(const Menu &copy)
 	: UIElement(copy), _Buttons(copy._Buttons)
+{
+}
+
+KolibriLib::UI::Menu::Item::Item(const buttons::Button &copy)
+	: buttons::Button(copy)
 {
 }
 

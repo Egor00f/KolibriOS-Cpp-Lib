@@ -11,7 +11,7 @@ KolibriLib::UI::Images::img::img()
 	_ksys_debug_puts("img consturctor(empety)\n");
 	#endif
 
-	_buff = buf2d_create(0,0, 32, 32, 0xFFFFFF, 24);
+	this->_buff = buf2d_create(0,0, 32, 32, 0xFFFFFF, 24);
 }
 
 KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size)
@@ -20,7 +20,7 @@ KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size)
 	_ksys_debug_puts("img consturctor\n");
 	#endif
 
-	_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
+	this->_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
 	SetColorMap(color, size);
 }
 
@@ -30,7 +30,7 @@ KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
 	_ksys_debug_puts("img consturctor\n");
 	#endif
 
-	_buff = buf2d_create(0, 0, size.x, size.y, color.val, 24);
+	this->_buff = buf2d_create(0, 0, size.x, size.y, color.val, 24);
 }
 
 KolibriLib::UI::Images::img::img(const img & copy)
@@ -49,7 +49,7 @@ KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size)
 	_ksys_debug_puts("img consturctor\n");
 	#endif
 
-	_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
+	this->_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
 	SetRGBMap(color, size);
 }
 
@@ -62,7 +62,7 @@ KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
 	Image_t *buff = new Image_t;
 	buff = LoadImageFromFile(ImageFile.GetChars());
 
-	buf2d_create_f_img(_buff, buff->Data);
+	buf2d_create_f_img(this->_buff, buff->Data);
 
 	img_destroy(buff);
 }
@@ -73,7 +73,7 @@ UI::Images::img::~img()
 	_ksys_debug_puts("img desturctor\n");
 	#endif
 	
-	buf2d_delete(_buff);
+	buf2d_delete(this->_buff);
 }
 
 void UI::Images::img::Draw(const Coord &coord, const Size &size) const
@@ -84,7 +84,7 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 
 	if(size != -1)
 	{
-		buf2d_struct *buff = buf2d_copy(_buff);
+		buf2d_struct *buff = buf2d_copy(this->_buff);
 
 		buff->left = coord.x;
 		buff->top = coord.y;
@@ -95,71 +95,71 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 	}
 	else
 	{
-		buf2d_draw(_buff);
+		buf2d_draw(this->_buff);
 	}
 	
 }
 
 void UI::Images::img::SetImg(const buf2d_struct *img)
 {
-	_buff = buf2d_copy(img);
+	this->_buff = buf2d_copy(img);
 }
 
 void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, unsigned x, unsigned y)
 {
-	buf2d_set_pixel(_buff, x, y, color.val);
+	buf2d_set_pixel(this->_buff, x, y, color.val);
 }
 
 void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, const Coord &coord)
 {
-	buf2d_set_pixel(_buff, coord.x, coord.y, color.val);
+	buf2d_set_pixel(this->_buff, coord.x, coord.y, color.val);
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(unsigned x, unsigned y) const
 {
-	return buf2d_get_pixel(_buff, x, y);
+	return buf2d_get_pixel(this->_buff, x, y);
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(const Coord &coord) const
 {
-	return buf2d_get_pixel(_buff, coord.x, coord.y);
+	return buf2d_get_pixel(this->_buff, coord.x, coord.y);
 }
 
 rgb_t *KolibriLib::UI::Images::img::GetRGBMap() const
 {
-	if(_buff->color_bit == 24)
+	if(this->_buff->color_bit == 24)
 	{
-		return (rgb_t*)_buff->buf_pointer;
+		return (rgb_t*)this->_buff->buf_pointer;
 	}
 
 }
 
 buf2d_struct *KolibriLib::UI::Images::img::GetBuff() const
 {
-	return _buff;
+	return this->_buff;
 }
 
 void KolibriLib::UI::Images::img::FillColor(const Colors::Color &color)
 {
-	buf2d_clear(_buff, color.val);
+	buf2d_clear(this->_buff, color.val);
 }
 
 KolibriLib::UI::Images::img& KolibriLib::UI::Images::img::operator = (const Images::img& im)
 {
-	_buff = buf2d_copy(im._buff);
+	this->_buff = buf2d_copy(im._buff);
 	
 	return *this;
 }
 
 bool KolibriLib::UI::Images::img::operator!=(const img &im) const
 {
-	if (_buff->height != im._buff->height || _buff->width != im._buff->width) // если размеры изображний не совпадают то значит они точно не одинаковы
+	if (this->_buff->height != im._buff->height || this->_buff->width != im._buff->width) // если размеры изображний не совпадают то значит они точно не одинаковы
 	{
 		return true;
 	}
-	for (unsigned i = 0; i < _buff->width * _buff->height; i++)
+	for (unsigned i = 0; i < this->_buff->width * this->_buff->height; i++)
 	{
-		if (_buff->buf_pointer[i] != im._buff->buf_pointer[i])
+		if (this->_buff->buf_pointer[i] != im._buff->buf_pointer[i])
 		{
 			return true;
 		}
@@ -169,12 +169,12 @@ bool KolibriLib::UI::Images::img::operator!=(const img &im) const
 
 Colors::Color *KolibriLib::UI::Images::img::GetColorsMap() const
 {
-	return (Colors::Color*)_buff->buf_pointer;
+	return (Colors::Color *)this->_buff->buf_pointer;
 }
 
 Size img::GetSize() const
 {
-	return Size(_buff->width, _buff->height);
+	return Size(this->_buff->width, this->_buff->height);
 }
 
 void img::LoadImage(const filesystem::Path &Path)
@@ -189,13 +189,13 @@ void img::LoadImage(const filesystem::Path &Path)
 			_ksys_debug_puts("Convert error\n");
 		}
 	}
-	
-	img_to_rgb2(buff, _buff->buf_pointer);
+
+	img_to_rgb2(buff, this->_buff->buf_pointer);
 }
 
 void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &size)
 {
-	if (_buff->width != size.x && _buff->height != size.y) // Если рамеры буфера не соответсвуют размерам rgbmap
+	if (this->_buff->width != size.x && this->_buff->height != size.y) // Если рамеры буфера не соответсвуют размерам rgbmap
 	{													   // Изменяится размеры
 		buf2d_resize(_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
 	}
@@ -204,23 +204,23 @@ void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &siz
 	{
 		for (int j = 0; j < size.x; j++)
 		{
-			buf2d_set_pixel(_buff, j, i, Colors::RGBtoINT(rgbmap[(i * size.x) + j]));
+			buf2d_set_pixel(this->_buff, j, i, Colors::RGBtoINT(rgbmap[(i * size.x) + j]));
 		}
 	}
 }
 
 void KolibriLib::UI::Images::img::SetColorMap(const Colors::Color * rgbmap, const Size & size)
 {
-	if(_buff->width != size.x && _buff->height != size.y)	// Если рамеры буфера не соответсвуют размерам rgbmap
+	if (size != -1 && this->_buff->width != size.x && this->_buff->height != size.y) // Если рамеры буфера не соответсвуют размерам rgbmap
 	{														// Изменяится размеры
-		buf2d_resize(_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
+		buf2d_resize(this->_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
 	}
 
 	for(int i = 0; i < size.y; i++)
 	{
 		for(int j = 0; j < size.x; j++)
 		{
-			buf2d_set_pixel(_buff, j, i, rgbmap[(i * size.x) + j].val);
+			buf2d_set_pixel(this->_buff, j, i, rgbmap[(i * size.x) + j].val);
 		}
 	}
 }

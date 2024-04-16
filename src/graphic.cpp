@@ -6,6 +6,7 @@ using namespace KolibriLib;
 
 void graphic::DrawPoint(const Coord &position, const unsigned &size, const Colors::Color &color, bool fill)
 {
+	if(size < 4)
 	{
 		fill = false;
 	}

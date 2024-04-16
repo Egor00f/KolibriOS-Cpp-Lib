@@ -92,18 +92,10 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 	_ksys_debug_puts("Print Txt:");
 	#endif
 	int buff = 0;
-	for (int i = 0; i < _data.size(); i++)
+	for (const Char i : _data)
 	{
-		#ifdef DEBUG
-		char* b;
-		b[0] = _data[i].GetChar();
-		b[1] = '\n';
-		b[2] = '\0';
-		_ksys_debug_puts(b);
-		#endif
-
-		_data[i].Print(Coord(coord.x + buff, coord.y));
-		buff += _data[i].GetFont().size.x;
+		i.Print({coord.x + buff, coord.y});
+		buff += i.GetFont().size.x;
 	}
 	#ifdef DEBUG
 	_ksys_debug_puts("done!\n");

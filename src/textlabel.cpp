@@ -20,10 +20,18 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const UI::text::Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, unsigned Margin) 
 	: UIElement(coord, size, TextColor, Margin), Txt(text), _TextScale(TextScale)
 {
-#ifdef DEBUG
+	#ifdef DEBUG
 	_ksys_debug_puts("TextLabel Constructor\n");
-#endif
+	#endif
 	SetFont(Font);
+}
+
+KolibriLib::UI::text::TextLabel::TextLabel(const Coord &coord, const Size size, const Txt &text)
+	: UIElement(coord, size), Txt(text)
+{
+	#ifdef DEBUG
+	_ksys_debug_puts("TextLabel Constructor\n");
+	#endif
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
@@ -35,7 +43,7 @@ TextLabel::TextLabel(const TextLabel &copy)
 void text::TextLabel::Render() const
 {
 	#ifdef DEBUG
-	_ksys_debug_puts("Render textLabel:");
+	_ksys_debug_puts("Render textLabel:\n");
 	#endif
 
 	Print(Coord(_coord.x, _coord.y));

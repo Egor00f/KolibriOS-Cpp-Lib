@@ -102,11 +102,11 @@ namespace KolibriLib
 
 				/// @brief Изменить изображение по изображению из rgb_t
 				/// @param rgbmap 
-				/// @param size размер rgbmap
+				/// @param size размер rgbmap, можно не указывать, но размер буфера rgbmap должен соответсвовать размерам изображения
 				/// @note Теряется Alpha
-				void SetRGBMap(const rgb_t* rgbmap, const Size &size);
+				void SetRGBMap(const rgb_t* rgbmap, const Size &size = {-1, -1});
 
-				void SetColorMap(const Colors::Color* rgbmap, const Size &size);
+				void SetColorMap(const Colors::Color* rgbmap, const Size &size = {-1, -1});
 
 				/// @brief
 				/// @return
