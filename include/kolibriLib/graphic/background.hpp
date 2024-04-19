@@ -7,9 +7,6 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/UI/text/fonts.hpp>
-#include <kolibri_rasterworks.h>
-#include <kolibriLib/UI/text/textBase.hpp>
 #include <kolibriLib/img.hpp>
 
 namespace KolibriLib
@@ -116,20 +113,6 @@ namespace KolibriLib
 				}
 			}
 		}
-
-		inline void DrawText(const std::string &text,
-					  const Coord &coord, const UI::text::Fonts::Font &font = UI::text::Fonts::DefaultFont,
-					  unsigned margin = UI::DefaultMargin,
-					  const Colors::Color &colorText = OS::GetSystemColors().work_text,
-					  const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area)
-		{
-			UI::Images::img buff = UI::text::DrawTextToImg(text, font, margin, colorText, BackgroundColor);
-
-			buff.Draw(coord);
-		}
-
-		
-
 	} // namespace Background
 	
 } // namespace KolibriLib

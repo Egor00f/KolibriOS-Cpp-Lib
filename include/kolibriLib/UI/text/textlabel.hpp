@@ -14,7 +14,7 @@
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/UI/image.hpp>
 #include <kolibriLib/UI/text/text.hpp>
-#include "fonts.hpp"
+#include "font.hpp"
 #include "fontslist.hpp"
 
 #include <kolibri_rasterworks.h>

@@ -9,7 +9,7 @@ int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &arg
     {
         char *a;
         strcat(a, args.c_str());
-        return _ksys_exec(AppName.GetChars(), a, debug);
+        return _ksys_exec(AppName, a, debug);
     }
     return -1;
 }

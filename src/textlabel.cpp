@@ -12,7 +12,6 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 	#endif
 
 	Fonts::Font f(Fonts::DefaultFont);
-	f.SetFontSize(FontSize);
 	SetFont(f);
 	f.~Font();
 }

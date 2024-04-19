@@ -7,11 +7,10 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/img.hpp>
-
+#include <kolibriLib/UI/text/font.hpp>
+#include <kolibriLib/UI/text/fontslist.hpp>
 #include <cstddef>
 #include <cstring>
-
-#include "fontslist.hpp"
 
 namespace KolibriLib
 {
@@ -24,23 +23,14 @@ namespace KolibriLib
 			class Char
 			{
 			public:
-				enum Type
-				{
-					None = 0,
-					Image,
-					Text
-				};
+				Char();
 
 				/// @brief 
 				/// @param c 
 				/// @param font 
 				/// @param TextColor 
-				/// @param BackgroundColor 
-				Char(const char &c = ' ', const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
-
-				/// @brief Конструктор
-				/// @param img изображение
-				Char(const Images::img &img, const Fonts::Font &font = Fonts::DefaultFont);
+				/// @param BackgroundColor
+				Char(char c, const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
 
 				/// @brief Конструктор копирования
 				/// @param copy 
@@ -48,23 +38,7 @@ namespace KolibriLib
 
 				/// @brief Деструктор
 				~Char();
-
-				/// @brief Получить тип
-				/// @return значение из списка Type
-				uint8_t GetType() const;
-
-				/// @brief
-				/// @param c
-				/// @param size Размер символа
-				/// @param flags Флаги из списка Flags
-				/// @param TextColor
-				/// @param BackgroundColor
-				void Set(const char c, const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
-
-				/// @brief
-				/// @param img
-				void Set(const Images::Image &img, const Fonts::Font &size = Fonts::DefaultFont);
-
+				
 				/// @brief Изменить флаги
 				/// @param flags
 				void SetFlags(unsigned flags);
@@ -85,10 +59,6 @@ namespace KolibriLib
 				/// @return
 				char GetChar() const;
 
-				/// @brief Получить _img
-				/// @return
-				const Images::img GetImg() const;
-
 				/// @brief получить размеры символа
 				/// @return
 				const Fonts::Font GetFont() const;
@@ -102,34 +72,28 @@ namespace KolibriLib
 				void Print(const Coord &coord) const;
 
 				Char &operator=(char c);
-				Char &operator=(const Images::img &img);
 				Char &operator=(const Char &c);
 
 				bool operator==(char c) const;
-				bool operator==(const Images::img &img) const;
 				bool operator==(const Char &img) const;
 				bool operator!=(char c) const;
-				bool operator!=(const Images::img &img) const;
 
 			protected:
-				Images::img *_img;
-				char *_c;
+				char _c;
 
-			private:
-				/// @brief Удалить указатели
-				void Free();
+			private:				
+				/// @brief Указатель на шрифт
+				Fonts::Font *_font = nullptr;
 
+				/// @brief
+				Colors::Color *_TextColor = nullptr;
+
+				/// @brief
+				Colors::Color *_BackgroundColor = nullptr;
 				
-
-				mutable Fonts::Font _font;
-
-				/*====================Параметры для текста=================*/
-				mutable Colors::Color *_TextColor;
-				mutable Colors::Color *_BackgroundColor;
-				/*=========================================================*/
-
-				/// @brief Тип
-				uint8_t _type;
+				bool ExternFont;
+				bool ExternTextColor;
+				bool ExternBackgroundColor;
 			};
 
 		} // namespace text

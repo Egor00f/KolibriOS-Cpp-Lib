@@ -13,16 +13,6 @@ KolibriLib::filesystem::Path::Path(const char * path)
     _string = std::string(path);
 }
 
-const char *KolibriLib::filesystem::Path::GetChars() const
-{
-    return _string.c_str();
-}
-
-const std::string &KolibriLib::filesystem::Path::GetString() const
-{
-    return _string;
-}
-
 KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator/(const KolibriLib::filesystem::Path &a)
 {
     _string += a._string;
@@ -79,4 +69,14 @@ bool KolibriLib::filesystem::Path::operator==(const std::string &a) const
 bool KolibriLib::filesystem::Path::operator!=(const std::string &a) const
 {
     return _string != a;
+}
+
+KolibriLib::filesystem::Path::operator std::string() const
+{
+    return _string;
+}
+
+KolibriLib::filesystem::Path::operator const char*() const
+{
+    return _string.c_str();
 }

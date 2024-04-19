@@ -48,7 +48,14 @@ namespace KolibriLib
 			OS::ErrorNotify("Error loading lib buf2d", "exit");
 			exit(0);
 		}
+
 		
+		if (FT_Init_FreeType(&_ft))
+		{
+			_ksys_debug_puts("Error Loading FreeType lib, exit\n");
+			OS::ErrorNotify("Error Loading FreeType lib", "exit");
+			exit(0);
+		}
 	}
 }
 

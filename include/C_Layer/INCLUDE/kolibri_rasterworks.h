@@ -95,7 +95,7 @@ extern "C" {
                        int x, 
                        int y, 
                        const char *string, 
-                       uint8_t stringLenght, 
+                       int stringLenght, 
                        uint8_t CharWidth,
                        uint8_t CharHeight, 
                        ksys_color_t fontColor, 

@@ -55,7 +55,7 @@ namespace KolibriLib
 		/// \brief Ждать ивента
 		/// \param Таймаут (в 1/100 секунды), время сколько ждать
 		/// \return Ивент
-		inline Event WaitEvent(uint32_t TimeOut)
+		inline Event WaitEvent(const uint32_t &TimeOut)
 		{
 			return _ksys_wait_event_timeout(TimeOut);
 		}

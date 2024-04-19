@@ -6,8 +6,8 @@ project(KolibriLib)
 ################### CONFIG #####################
 ################################################
                                                #
-option(DEBUG ON)                               #
-option(CUSTOM_TOOCLAIN_PATH OFF)               #
+set(DEBUG ON)                                  #
+set(CUSTOM_TOOCLAIN_PATH OFF)                  #
 set(KOLIBRIOS_REPO "../kolibrios")             #
                                                #
 ################################################
@@ -16,11 +16,6 @@ set(KOLIBRIOS_REPO "../kolibrios")             #
 
 
 
-
-
-if(DEBUG)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D DEBUG")
-endif()
 
 
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
@@ -38,15 +33,6 @@ include(CMakeTestASM_FASMCompiler)
 enable_language("ASM_FASM")
 
 
-#Flags
-SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
-SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++  -lsupc++")
-
-
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
-
-set(CMAKE_CXX_STANDARD 11)
-
 
 
 if(WIN32)
@@ -59,18 +45,28 @@ if(CUSTOM_TOOCLAIN_PATH)
 	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
 endif()
 
+#Flags
+SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
+SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib --image-base 0 -T ${SDK_DIR}/sources/newlib/app.lds -L ${TOOLCHAIN_DIR}/lib -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++ -lsupc++ -lfreetype")
 
-# stdlib
-SET(NEWLIB_INCLUDE ${SDK_DIR}/sources/libstdc++-v3/include)
-SET(LIBSTDCppV3_INCLUDE ${SDK_DIR}/sources/newlib/libc/include)
+if(DEBUG)
+	message("DEBUG ON")
+	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG")
+endif()
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
+
+set(CMAKE_CXX_STANDARD 11)
+
+set(LIBS_DIR ${SDK_DIR}/sources)
 
 #поключение newlib
-include_directories(${NEWLIB_INCLUDE})
+include_directories(${LIBS_DIR}/libstdc++-v3/include)
 
 #подключение libstdc++-v3
-include_directories(${LIBSTDCppV3_INCLUDE})
+include_directories(${LIBS_DIR}/newlib/libc/include)
 
 
+include_directories(${LIBS_DIR}/freetype/include)
 
 SET(SRC_PATH src)
 
@@ -116,7 +112,7 @@ SET(SOURCES
 	${SRC_PATH}/color.cpp 
 	${SRC_PATH}/os.cpp 
 	${SRC_PATH}/graphic.cpp 
-	${SRC_PATH}/fonts.cpp 
+	${SRC_PATH}/font.cpp 
 	${SRC_PATH}/thread.cpp 
 	${SRC_PATH}/types.cpp 
 	${SRC_PATH}/textBase.cpp 
@@ -131,6 +127,7 @@ SET(SOURCES
 	${SRC_PATH}/checkbox.cpp
 	${SRC_PATH}/form.cpp
 	${SRC_PATH}/menu.cpp
+	${SRC_PATH}/freetypefuncs.cpp
 )
 
 

@@ -35,7 +35,8 @@ namespace KolibriLib
         } // namespace Devices
         
 
-        /*/// @brief Работа с сокетами
+        /* может быть когда нибудь
+        /// @brief Работа с сокетами
         namespace Socket
         {
             #include <sys/socket.h>

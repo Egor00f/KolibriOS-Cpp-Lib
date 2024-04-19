@@ -8,10 +8,6 @@
 #include <kolibriLib/UI/image.hpp>
 #include <kolibri_rasterworks.h>
 
-#include "fonts.hpp"
-
-#include <kolibri_buf2d.h>
-
 namespace KolibriLib
 {
 	namespace UI
@@ -50,46 +46,6 @@ namespace KolibriLib
 				SetTextSize(size);
 				_ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color.val);
 			}
-		
-			
-
-			/// @brief Вывести текст на изображение
-			/// @param text текст
-			/// @param font шрифт
-			/// @param margin отступы фона от текста
-			/// @param colorText цвет текста
-			/// @param BackgroundColor цвет фона
-			/// @return указатель на Images::img на котором нарисован текст
-			/// @note цвета фона и текста чувствительны к прозрачности
-			/// @note прозрачность привязывается к контреным координатам и размерам
-			Images::img DrawTextToImg(const std::string& text, 
-									   const Fonts::Font &font, 
-									   unsigned margin, 
-									   const Colors::Color &colorText, 
-									   const Colors::Color &BackgroundColor,
-									   uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8);
-
-			/// @brief Вывести текст
-			/// @param text Текст
-			/// @param coord Координаты
-			/// @param font Шрифт
-			/// @param margin Отступы границ фона от текста
-			/// @param colorText цвет текста
-			/// @param BackgroundColor цвет фона
-			/// @note Функция выводить используя библиотеку RasterWorks
-			inline void DrawText(const std::string &text,
-								 const Coord &coord, const Fonts::Font &font,
-								 unsigned margin = UI::DefaultMargin,
-								 const Colors::Color &colorText = OS::GetSystemColors().work_text,
-								 const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area,
-								 uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
-			{
-
-				Images::img buff = text::DrawTextToImg(text, font, margin, colorText, BackgroundColor, encoding);
-
-				buff.Draw(coord);
-			}
-			
 		}
 	}
 }

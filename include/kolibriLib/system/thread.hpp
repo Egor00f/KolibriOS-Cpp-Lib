@@ -8,13 +8,13 @@ namespace KolibriLib
 {
     /// \brief Подождать
     /// \param time время задержки(в 1/100 секунды)
-    inline void Wait(int time)
+    inline void Wait(const uint32_t &time)
     {
         _ksys_delay(time);
     }
 
     /// \brief Подождать, минимальное кол-во времени
-    /// @paragraph Функция передаёт управление другим процессам
+    /// @details Функция передаёт управление другим процессам
     inline void Wait()
     {
         _ksys_thread_yield();

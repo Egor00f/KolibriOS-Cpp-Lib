@@ -121,7 +121,7 @@ namespace KolibriLib
 				void FillColor(const Colors::Color &color);
 				
 				img& operator = (const img& im);
-
+				bool operator==(const img &im) const;
 				bool operator!=(const img &im) const;
 			};
 

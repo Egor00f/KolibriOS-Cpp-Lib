@@ -7,8 +7,8 @@ int main()
 	init(); 
 	window::Window window("Example Window");
 
-	UI::text::TextLabel label(KolibriLib::Coord(0, 0), window.GetWindowSize(),
-						"Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma));
+	UI::text::TextLabel label(KolibriLib::Coord(10, 10), {200, 200},
+						"Hello World!", UI::text::Fonts::Font(UI::text::Fonts::DefaultFont));
 
 	label.Render();
 
@@ -18,10 +18,12 @@ int main()
 	while (!exit)
 	{
 		OS::Event event = window.Handler();
+		label.Render();
 		if (event == OS::Events::Exit)
 		{
 			exit = true;
 		}
 	}
+
 	return 0;
 }

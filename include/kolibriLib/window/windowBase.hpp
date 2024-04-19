@@ -59,20 +59,19 @@ namespace KolibriLib
 		/// @param style Стиль
 		inline void CreateWindow(const Coord &coord, const Size &size, const std::string &title, const Colors::Color &WorkColor = OS::GetSystemColors().work_area, Colors::Color TitleColor = OS::GetSystemColors().work_text, uint32_t style = WindowStyle::CanResize)
 		{
-			_ksys_debug_puts("Create wind\n");
 			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor.val, style);
 		}
 
 		/// @brief Снять фокус с окна
 		/// @param slot слот окна
-		inline void UnfocusWindow(Thread::Slot slot)
+		inline void UnfocusWindow(const Thread::Slot &slot)
 		{
 			_ksys_unfocus_window(slot);
 		}
 
 		/// @brief Поставить фокус на окно
 		/// @param slot слот окна
-		inline void FocusWindow(Thread::Slot slot)
+		inline void FocusWindow(const Thread::Slot &slot)
 		{
 			_ksys_focus_window(slot);
 		}

@@ -57,11 +57,6 @@ namespace KolibriLib
 
 				Element();
 
-				/// @brief 
-				/// @tparam T 
-				/// @param UIE 
-				template <class T>
-				Element(const T &UIE);
 
 				Element(const Element &e);
 
@@ -95,9 +90,6 @@ namespace KolibriLib
 				/// @brief Изменить элемент
 				/// @param elem элемент
 				void SetElement(const UI::Menu &elem);
-
-				/// @brief вывести элемент
-				void Render();
 
 				void free();
 			};
@@ -237,24 +229,6 @@ namespace KolibriLib
 
 		//=============================================================================================================================================================
 
-		template <class T>
-		KolibriLib::window::Window::Element::Element(const T &UIE)
-		{
-			pointer = new T (UIE);
-			if(std::is_same<T, UI::text::TextLabel>().value)
-			{
-				_type = Type::TextLabel;
-			}
-			else if(std::is_same<T, UI::buttons::Button>().value)
-			{
-				_type = Element::Type::Button;
-			}
-			else
-			{
-				_ksys_debug_puts("KolibriLib::Window::Element::Element: Not supported Type");
-			}
-		}
-
 		KolibriLib::window::Window::Element::Element(const Element &e): _type(e._type)
 		{
 			switch (e._type)
@@ -279,8 +253,6 @@ namespace KolibriLib
 				break;
 			case Window::Element::Type::Menu:
 				pointer = new UI::Menu(*((UI::Menu *)e.pointer));
-				break;
-			default:
 				break;
 			}
 		}
@@ -461,10 +433,6 @@ namespace KolibriLib
 			case Element::Type::Frame:
 				delete ((UI::Frame *)pointer);
 				break;
-			case Element::Type::None:
-				break;
-			default:
-				_ksys_debug_puts("Error in KolibriLib::Window::Element::free() undefined type\n");
 			}
 		}
 
@@ -553,8 +521,6 @@ namespace KolibriLib
 				case Element::Type::None:
 					_ksys_debug_puts("Warn: KolibriLib::Window::Element::Render() type = None\n");
 					break;
-				default:
-					_ksys_debug_puts("Error in KolibriLib::Window::Element::Render() undefined type\n");
 				}
 			}
 		}
@@ -604,9 +570,6 @@ namespace KolibriLib
 			}
 
 			EndRedraw();
-			#ifdef DEBUG
-			_ksys_debug_puts("done redraw!\n");
-			#endif
 		}
 
 		void Window::SetWindowColors(const Colors::ColorsTable &colorTable)

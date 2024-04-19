@@ -112,6 +112,7 @@ namespace KolibriLib
 				bool operator==(const Txt &txt) const;
 
 			protected:
+				std::vector<Fonts::Font> _fonts;
 				std::vector<Char> _data;
 			};
 		} // namespace text

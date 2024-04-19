@@ -14,10 +14,7 @@ std::string KolibriLib::UI::text::Txt::GetText() const
 	std::string result;
 	for (Char i : _data)
 	{
-		if (i.GetType() == Char::Type::Text)
-		{
-			result += i.GetChar();
-		}
+		result += i.GetChar();
 	}
 	return result;
 }
@@ -59,10 +56,6 @@ void KolibriLib::UI::text::Txt::Add(const std::string &txt)
 	}
 }
 
-void KolibriLib::UI::text::Txt::Add(const Images::img &img)
-{
-	_data.push_back(Char(img));
-}
 void KolibriLib::UI::text::Txt::insert(const KolibriLib::UI::text::Char &c, int i)
 {
 	_data.insert(_data.begin() + i, c);
@@ -74,11 +67,6 @@ void KolibriLib::UI::text::Txt::insert(const std::string &txt, int i)
 	{
 		_data.insert(_data.begin() + i, Char(txt[j]));
 	}
-}
-
-void KolibriLib::UI::text::Txt::insert(const Images::img &img, int i)
-{
-	_data.insert(_data.begin() + i, Char(img));
 }
 
 void KolibriLib::UI::text::Txt::Delete(int i)
@@ -95,7 +83,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 	for (const Char i : _data)
 	{
 		i.Print({coord.x + buff, coord.y});
-		buff += i.GetFont().size.x;
+		buff += 16;
 	}
 	#ifdef DEBUG
 	_ksys_debug_puts("done!\n");
@@ -114,10 +102,7 @@ void KolibriLib::UI::text::Txt::SetTextColor(const Colors::Color &Color)
 {
 	for (int i = 0; i < _data.size(); i++)
 	{
-		if (_data[i].GetType() == Char::Type::Text)
-		{
-			_data[i].SetTextColor(Color);
-		}
+		_data[i].SetTextColor(Color);
 	}
 }
 
@@ -125,10 +110,7 @@ void KolibriLib::UI::text::Txt::SetBackgroundColor(const Colors::Color &Color)
 {
 	for (int i = 0; i < _data.size(); i++)
 	{
-		if (_data[i].GetType() == Char::Type::Text)
-		{
-			_data[i].SetBackgroundColor(Color);
-		}
+		_data[i].SetBackgroundColor(Color);
 	}
 }
 
@@ -147,7 +129,7 @@ unsigned KolibriLib::UI::text::Txt::lenghtPX() const
 	unsigned l = 0;
 	for (Char i : _data)
 	{
-		l += i.GetFont().size.x;
+		l += 16;
 	}
 	return l;
 }
@@ -181,7 +163,7 @@ unsigned KolibriLib::UI::text::Txt::GetWidth() const
 	unsigned width = 0;
 	for( Char i : _data)
 	{
-		width += i.GetFont().size.x;
+		width += 16;
 	}
 	return width;
 }

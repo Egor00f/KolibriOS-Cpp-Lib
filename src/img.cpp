@@ -60,7 +60,7 @@ KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
 	#endif
 
 	Image_t *buff = new Image_t;
-	buff = LoadImageFromFile(ImageFile.GetChars());
+	buff = LoadImageFromFile(ImageFile);
 
 	buf2d_create_f_img(this->_buff, buff->Data);
 
@@ -81,13 +81,13 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 	#ifdef DEBUG
 	_ksys_debug_puts("Draw");
 	#endif
+	
+	_buff->left = coord.x;
+	_buff->top = coord.y;
 
 	if(size != -1)
 	{
 		buf2d_struct *buff = buf2d_copy(this->_buff);
-
-		buff->left = coord.x;
-		buff->top = coord.y;
 
 		buf2d_resize(buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
 
@@ -179,7 +179,7 @@ Size img::GetSize() const
 
 void img::LoadImage(const filesystem::Path &Path)
 {
-	Image_t *buff = LoadImageFromFile(Path.GetChars());
+	Image_t *buff = LoadImageFromFile(Path);
 
 	if (buff->Type != IMAGE_BPP24)
 	{
@@ -209,18 +209,24 @@ void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &siz
 	}
 }
 
-void KolibriLib::UI::Images::img::SetColorMap(const Colors::Color * rgbmap, const Size & size)
+void KolibriLib::UI::Images::img::SetColorMap(const Colors::Color *rgbmap, const Size & size)
 {
 	if (size != -1 && this->_buff->width != size.x && this->_buff->height != size.y) // Если рамеры буфера не соответсвуют размерам rgbmap
 	{														// Изменяится размеры
 		buf2d_resize(this->_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
 	}
 
-	for(int i = 0; i < size.y; i++)
-	{
-		for(int j = 0; j < size.x; j++)
-		{
-			buf2d_set_pixel(this->_buff, j, i, rgbmap[(i * size.x) + j].val);
-		}
-	}
+	unsigned int* buff =(unsigned int*) malloc(size.x * size.y * sizeof(Colors::Color));
+	memcpy(buff, rgbmap, size.x * size.y);
+	free(_buff->buf_pointer);
+	_buff->buf_pointer = buff;
+}
+
+bool KolibriLib::UI::Images::img::operator==(const img &im) const
+{
+	return _buff->color_bit == im._buff->color_bit &&
+	       im._buff->width == _buff->width &&
+           _buff->top == im._buff->top &&
+		   _buff->left == im._buff->left &&
+	       _buff->height == im._buff->height;
 }
