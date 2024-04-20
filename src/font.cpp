@@ -18,16 +18,15 @@ void KolibriLib::UI::text::Fonts::Font::SetSize(const Size &size)
 
 bool KolibriLib::UI::text::Fonts::Font::loadFontFromTTF(const char *path)
 {
-	return LoadFace(_face, path);
+	return LoadFace(&_face, path);
 }
 
 void KolibriLib::UI::text::DrawText(const std::string & text, const Fonts::Font & font, Coord coord)
 {
-	FT_GlyphSlot slot = font._face->glyph;
 	for(int i = 0; i < text.length(); i++)
 	{
 		FT_Error error = FT_Load_Char(font._face, text[i], FT_LOAD_RENDER);
-		DrawGlyphSlot(slot, coord);
-		coord.x += slot->advance.x >> 6;
+		DrawGlyphSlot(font._face->glyph, coord);
+		coord.x += font._face->glyph->advance.x >> 6;
 	}
 }

@@ -50,7 +50,7 @@ namespace KolibriLib
 		}
 
 		
-		if (FT_Init_FreeType(&_ft))
+		if (FT_Init_FreeType(&Globals::_ft))
 		{
 			_ksys_debug_puts("Error Loading FreeType lib, exit\n");
 			OS::ErrorNotify("Error Loading FreeType lib", "exit");

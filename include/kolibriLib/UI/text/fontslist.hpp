@@ -15,7 +15,7 @@ namespace KolibriLib
         {
             namespace Fonts
             {
-                const Font DefaultFont();
+                const Font DefaultFont("/kolibrios/fonts/Roboto-Regular.ttf");
             }
         }
     }
