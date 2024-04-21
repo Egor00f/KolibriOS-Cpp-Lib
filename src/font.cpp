@@ -4,29 +4,39 @@ using namespace KolibriLib;
 
 KolibriLib::UI::text::Fonts::Font::Font(const char *ttf_file)
 {
-	if (loadFontFromTTF(ttf_file))
-	{
-		_ksys_debug_puts("failed load ttf file");
-	}
+	loadFontFromTTF(ttf_file);
+	SetSize({32, 0}, {100, 0});
 }
 
-void KolibriLib::UI::text::Fonts::Font::SetSize(const Size &size)
+KolibriLib::UI::text::Fonts::Font::~Font()
+{
+	FT_Done_Face(_face);
+}
+
+void KolibriLib::UI::text::Fonts::Font::SetSize(const Size &size, const Size &dpi)
 {
 	_size = size;
-	FT_Set_Pixel_Sizes(_face, size.x, size.y);
+	FT_Set_Char_Size(_face, size.x * 64, 
+                     size.y, dpi.x, dpi.y);
 }
 
-bool KolibriLib::UI::text::Fonts::Font::loadFontFromTTF(const char *path)
+FT_Error KolibriLib::UI::text::Fonts::Font::loadFontFromTTF(const char *path)
 {
-	return LoadFace(&_face, path);
-}
-
-void KolibriLib::UI::text::DrawText(const std::string & text, const Fonts::Font & font, Coord coord)
-{
-	for(int i = 0; i < text.length(); i++)
+	FT_Error error = LoadFace(&_face, path);
+	
+	switch (error)
 	{
-		FT_Error error = FT_Load_Char(font._face, text[i], FT_LOAD_RENDER);
-		DrawGlyphSlot(font._face->glyph, coord);
-		coord.x += font._face->glyph->advance.x >> 6;
+	case FT_Err_Unknown_File_Format:
+		_ksys_debug_puts("Unklown font file format\n");
+		break;
+	default:
+		break;
 	}
+
+	return error;
+}
+
+KolibriLib::UI::text::Fonts::Font::Font(const Font * copy)
+	: _face(copy->_face), _size(copy->_size)
+{
 }

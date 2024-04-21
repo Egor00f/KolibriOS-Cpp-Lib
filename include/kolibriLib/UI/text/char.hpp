@@ -53,7 +53,7 @@ namespace KolibriLib
 
 				/// @brief Измерить размеры символа
 				/// @param size
-				void SetFont(const Fonts::Font &size) const;
+				void SetFont(const Fonts::Font &size);
 
 				/// @brief Получить ASCII символ
 				/// @return
@@ -63,9 +63,6 @@ namespace KolibriLib
 				/// @return
 				const Fonts::Font GetFont() const;
 
-				/// @brief Получить флаги
-				/// @return
-				unsigned GetFlags() const;
 
 				/// @brief Отрисовать
 				/// @param coord Координаты
@@ -95,6 +92,16 @@ namespace KolibriLib
 				bool ExternTextColor;
 				bool ExternBackgroundColor;
 			};
+
+			/// @brief Вывести текст со шрифтом
+			/// @param text текст
+			/// @param font шрифт
+			/// @param coord координыты текста
+			/// @throw FT_Error
+			inline FT_Error DrawText(const std::string &text, const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont)
+			{
+				DrawText(text.c_str(), font._face, coord);
+			}
 
 		} // namespace text
 		

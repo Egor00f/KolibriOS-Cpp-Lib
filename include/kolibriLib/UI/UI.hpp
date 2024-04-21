@@ -29,7 +29,7 @@ namespace KolibriLib
         protected:
         
             /// @brief Координаты
-            Coord _coord;
+            CoordA _coord;
 
             /// @brief Размер
             Size _size;
@@ -38,9 +38,6 @@ namespace KolibriLib
 
             /// @brief Отступы
             unsigned _Margin;
-
-            /// @brief Угол наклона
-            unsigned _angle;
 
             /// @brief Оносительны ли координаты
             bool _relative;

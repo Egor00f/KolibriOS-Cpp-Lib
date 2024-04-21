@@ -12,6 +12,8 @@
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/system/thread.hpp>
+#include <kolibriLib/globals.hpp>
+#include <kolibriLib/UI/text/freetypefuncs.hpp>
 
 /// \brief Основное пространство имён
 /// \author Egor00f
@@ -50,12 +52,7 @@ namespace KolibriLib
 		}
 
 		
-		if (FT_Init_FreeType(&Globals::_ft))
-		{
-			_ksys_debug_puts("Error Loading FreeType lib, exit\n");
-			OS::ErrorNotify("Error Loading FreeType lib", "exit");
-			exit(0);
-		}
+		
 	}
 }
 

@@ -7,9 +7,10 @@
 
 namespace KolibriLib
 {
+	/// @brief Список глобальных переменных
 	namespace Globals
 	{
-		FT_Library _ft;
+
 	} // namespace Globals
 	
 } // namespace KolibriLib

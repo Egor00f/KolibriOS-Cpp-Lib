@@ -89,10 +89,10 @@ namespace KolibriLib
 		/// @param b Точка в правом нижнем углу
 		inline void DrawRectangleLines(const Coord &a, const Coord &b, const Colors::Color &color = OS::GetSystemColors().work_graph)
 		{
-			DrawLine(a, {b.x, a.y}, color);
-			DrawLine(a, {a.x, b.y}, color);
-			DrawLine({b.x, a.y}, b, color);
-			DrawLine({a.x, b.y}, b, color);
+			DrawLine(a, Coord(b.x, a.y), color);
+			DrawLine(a, Coord(a.x, b.y), color);
+			DrawLine(Coord(b.x, a.y), b, color);
+			DrawLine(Coord(a.x, b.y), b, color);
 		}
 
 		/// @brief Нарисовать треугольник

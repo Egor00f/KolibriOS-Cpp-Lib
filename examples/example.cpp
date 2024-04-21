@@ -7,8 +7,8 @@ int main()
 	init(); 
 	window::Window window("Example Window");
 
-	UI::text::TextLabel label(KolibriLib::Coord(10, 10), {200, 200},
-						"Hello World!", UI::text::Fonts::Font(UI::text::Fonts::DefaultFont));
+	UI::text::TextLabel label(KolibriLib::Coord(64, 64), {200, 200},
+						"Hello World!", UI::text::Fonts::DefaultFont);
 
 	label.Render();
 
@@ -18,7 +18,7 @@ int main()
 	while (!exit)
 	{
 		OS::Event event = window.Handler();
-		label.Render();
+		UI::text::DrawText("Hello Horld", {64, 64}, UI::text::Fonts::DefaultFont);
 		if (event == OS::Events::Exit)
 		{
 			exit = true;

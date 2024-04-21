@@ -69,8 +69,7 @@ bool KolibriLib::UI::buttons::Button::operator==(const Button &element) const
 
 	return (_data == element._data) &&
 		   (_coord == element._coord) &&
-		   (_size == element._size) &&
-		   (_angle == element._angle);
+		   (_size == element._size);
 }
 
 bool buttons::Button::Handler() const

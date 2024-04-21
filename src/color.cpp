@@ -8,7 +8,13 @@ KolibriLib::Colors::Color::Color(const ksys_color_t &a)
 {
 }
 
-KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color &a) 
+KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color *a)
+	: val(a->val)
+{
+
+}
+
+KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color &a)
 	: val(a.val)
 {
 
@@ -135,4 +141,14 @@ rgb_t KolibriLib::Colors::UINT32toRGB(const uint32_t &color)
 	ret.green	= ((const Color&)color).green;
 	
 	return ret;
+}
+
+KolibriLib::Colors::Color::operator rgb_t()
+{
+	return GetRGB();
+}
+
+KolibriLib::Colors::Color::operator ksys_color_t()
+{
+	return val;
 }

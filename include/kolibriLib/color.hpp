@@ -20,7 +20,7 @@ namespace KolibriLib
         /// @brief Цвет
         union Color
         {
-            uint32_t val;
+            ksys_color_t val;
             struct
             {
                 uint8_t _a;
@@ -28,13 +28,17 @@ namespace KolibriLib
                 uint8_t green;
                 uint8_t red;
             };
-            
+            Color(){};
             /// @brief Конструктор
             /// @param a 
-            Color(const ksys_color_t& a = 0);
+            Color(const ksys_color_t& a);
+            Color(const Color *a);
             Color(const Color &a);
             Color(const ARGB &a);
             Color(const rgb_t &color);
+
+            operator rgb_t();
+            operator ksys_color_t();
 
             /// @brief Получить rgb_t
             /// @return 

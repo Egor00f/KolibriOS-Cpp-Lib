@@ -15,6 +15,9 @@ namespace KolibriLib
 	{
 		namespace text
 		{
+
+			
+
 			/// @brief Текст
 			/// @note Фактически std::vector Char ов
 			class Txt
@@ -112,9 +115,12 @@ namespace KolibriLib
 				bool operator==(const Txt &txt) const;
 
 			protected:
-				std::vector<Fonts::Font> _fonts;
+				Fonts::Font *_font;
+				Colors::Color *_TextColor;
 				std::vector<Char> _data;
 			};
+
+			
 		} // namespace text
 	} // namespace UI
 } // namespace KolibriLib

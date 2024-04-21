@@ -26,29 +26,31 @@ namespace KolibriLib
                     /// @brief инициализировать библиотеку freetype и загрузить ttf файл.
                     Font(const char *ttf_file);
 
+                    Font(const Font* copy);
+
+                    /// @brief Деструктор
+                    ~Font();
+
                     /// @brief Загрузить шрифт из файла
                     /// @param path путь до файла
                     /// @return true если произошла ошибка
-                    bool loadFontFromTTF(const char* path);
+                    FT_Error loadFontFromTTF(const char* path);
 
                     /// @brief Изменить размеры символов шрифта
                     /// @param size 
                     /// @note Если size.x == 0, то ширина символов выбирается автоматически
-                    void SetSize(const Size &size);
+                    void SetSize(const Size &size, const Size &dpi);
 
                     
                     FT_Face _face;
+
+                    /// @brief Размеры шрифта
                     Size _size;
                 };
             }
 
             
 
-            /// @brief 
-            /// @param text 
-            /// @param font 
-            /// @param coord 
-            void DrawText(const std::string &text, const Fonts::Font &font, Coord coord);
         }
     }
 }

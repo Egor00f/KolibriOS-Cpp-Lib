@@ -167,3 +167,4 @@ unsigned KolibriLib::UI::text::Txt::GetWidth() const
 	}
 	return width;
 }
+

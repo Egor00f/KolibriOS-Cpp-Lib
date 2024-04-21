@@ -108,6 +108,7 @@ include_directories("./include")
 SET(SOURCES 
 	${C_Layer_ASM_Sources}
 	${C_Layer_C_Sources}
+	${SRC_PATH}/freetypefuncs.cpp
 	${SRC_PATH}/filesystem.cpp 
 	${SRC_PATH}/color.cpp 
 	${SRC_PATH}/os.cpp 
@@ -127,7 +128,6 @@ SET(SOURCES
 	${SRC_PATH}/checkbox.cpp
 	${SRC_PATH}/form.cpp
 	${SRC_PATH}/menu.cpp
-	${SRC_PATH}/freetypefuncs.cpp
 )
 
 
@@ -135,5 +135,3 @@ ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 
 TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include)
 TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include/C_Layer/INCLUDE)
-
-
