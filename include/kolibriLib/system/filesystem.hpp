@@ -18,12 +18,12 @@ namespace KolibriLib
         {
             public:
                 /// @brief Конструктор
-                /// @param path 
+                /// @param path Путь
                 Path(const char* path = "/");
 
                 /// @brief Конструктор
-                /// @param path 
-                Path(const std::string& path = "/");
+                /// @param path путь
+                Path(const std::string& path);
 
                 operator const char*() const;
                 operator std::string() const;

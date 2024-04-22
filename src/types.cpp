@@ -114,7 +114,7 @@ bool KolibriLib::CoordA::operator==(const point &p) const
 
 KolibriLib::CoordA::operator point() const
 {
-	return point(x, y);
+	return {x, y};
 }
 
 KolibriLib::CoordA::CoordA(const point &p)

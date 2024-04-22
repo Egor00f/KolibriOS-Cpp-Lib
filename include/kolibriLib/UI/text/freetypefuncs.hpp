@@ -9,7 +9,7 @@
 #include FT_GLYPH_H
 
 #include <kolibriLib/types.hpp>
-
+#include <kolibriLib/system/os.hpp>
 #include <sys/ksys.h>
 #include <cmath>
 #include <kolibriLib/globals.hpp>
@@ -40,7 +40,11 @@ namespace KolibriLib
 	/// @brief Отрисовать глиф
 	/// @param slot слот
 	/// @param Coord координаты отрисовки
-	void DrawGlyphSlot(const FT_GlyphSlot &slot, FT_Int x, FT_Int y, const Coord &coord);
+	void DrawGlyphSlot(const FT_GlyphSlot &slot, 
+	                   FT_Int x, FT_Int y, 
+					   const Coord &coord,
+					    const Colors::Color &TextColor = OS::GetSystemColors().work_text, 
+						const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
 
 	/// @brief Отрисовать текст
 	/// @param text текст

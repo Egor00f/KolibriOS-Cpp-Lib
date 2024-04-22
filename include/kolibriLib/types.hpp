@@ -73,9 +73,11 @@ namespace KolibriLib
 	
 	/// @brief Размер
 	typedef point Size;
+
+	/// @brief Координаты
 	typedef point Coord;
 		
-	/// @brief Координаты
+	/// @brief Координаты c углом
 	struct CoordA: public point
 	{
 		CoordA(int X = 0, int Y = 0);

@@ -79,12 +79,37 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 	#ifdef DEBUG
 	_ksys_debug_puts("Print Txt:");
 	#endif
-	int buff = 0;
-	for (const Char i : _data)
+
+	bool e = false;
+	Fonts::Font f = _data[0].GetFont();
+	for(const Char i : _data)
 	{
-		i.Print({coord.x + buff, coord.y});
-		buff += 16;
+		if( f != i.GetFont())
+		{
+			e = true;
+		}
 	}
+
+	if(e)
+	{
+		int buff = 0;
+		for (const Char i : _data)
+		{
+			i.Print({coord.x + buff, coord.y});
+			buff += i.GetFont()._size.x;
+		}
+	}
+	else
+	{
+		std::string s;
+		for(std::size_t i = 0; i < _data.size(); i++)
+		{
+			s += _data[i].GetChar();
+		}
+		DrawText(s.c_str(), f._face, coord);
+	}
+
+	
 	#ifdef DEBUG
 	_ksys_debug_puts("done!\n");
 	#endif
