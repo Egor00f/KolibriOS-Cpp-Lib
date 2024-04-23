@@ -1,5 +1,9 @@
 #include <kolibriLib/UI/text/freetypefuncs.hpp>
 
+using namespace KolibriLib;
+using namespace FreeType;
+
+
 FreeTypeLib::FreeTypeLib()
 {
 	FT_Error error = FT_Init_FreeType(&_FreeType);
@@ -23,14 +27,12 @@ FreeTypeLib::operator FT_Library()
 	return _FreeType;
 }
 
-using namespace KolibriLib;
+FreeType::FreeTypeLib FreeType::ft;
 
-FreeTypeLib KolibriLib::Globals::_ft;
-
-FT_Error KolibriLib::DrawText(const char *text, const FT_Face &face, const KolibriLib::CoordA &coord, uint32_t loadFlags)
+FT_Error FreeType::DrawText(const char *text, const FT_Face &face, const KolibriLib::CoordA &coord, uint32_t loadFlags)
 {
 	#ifdef DEBUG
-	_ksys_debug_puts("DraText\n");
+	_ksys_debug_puts("DrawText\n");
 	#endif
 	FT_Matrix matrix;
 	FT_Vector pen;
@@ -55,13 +57,13 @@ FT_Error KolibriLib::DrawText(const char *text, const FT_Face &face, const Kolib
 			#endif
 			return error;
 		}
-		DrawGlyphSlot(face->glyph, face->glyph->bitmap_left, face->glyph->bitmap_top, coord);
+		FreeType::DrawGlyphSlot(face->glyph, face->glyph->bitmap_left, face->glyph->bitmap_top, coord);
 		pen.x += face->glyph->advance.x;
 		pen.y += face->glyph->advance.y;
 	}
 }
 
-void KolibriLib::DrawGlyphSlot(const FT_GlyphSlot &slot, FT_Int x, FT_Int y, const Coord &coord, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
+void FreeType::DrawGlyphSlot(const FT_GlyphSlot &slot, FT_Int x, FT_Int y, const KolibriLib::Coord &coord, const KolibriLib::Colors::Color &TextColor, const KolibriLib::Colors::Color &BackgroundColor)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("DrawGLyph\n");
@@ -73,7 +75,7 @@ void KolibriLib::DrawGlyphSlot(const FT_GlyphSlot &slot, FT_Int x, FT_Int y, con
 	const unsigned int RenderWidth = 128;
 	const unsigned int RenderHeight = 128;
 
-	Colors::Color *image = new Colors::Color[RenderWidth * RenderHeight];
+	UI::Images::img image(BackgroundColor, RenderWidth * RenderHeight);
 
 	unsigned char um[RenderHeight][RenderWidth];
 
@@ -95,26 +97,21 @@ void KolibriLib::DrawGlyphSlot(const FT_GlyphSlot &slot, FT_Int x, FT_Int y, con
 		{
 			if(um[i][j] != 0)
 			{
-				image[i * RenderHeight + j] = TextColor;
-				image[i * RenderHeight + j]._a = um[i][j];
-			}
-			else
-			{
-				image[i * RenderHeight + j] = BackgroundColor;
+				Colors::Color b(TextColor);
+				b._a = um[i][j];
+				image.SetPixel(b, i * RenderHeight + j);
 			}
 		}
 	}
 
 
 
-	ksys_draw_bitmap_palette(image,
-							 coord.x,
-							 coord.y,
-							 RenderWidth,
-							 RenderHeight,
-							 32,
-							 &slot->bitmap.palette,
-							 0);
+	image.Draw(coord);
 	
-	delete[] image;
+
+}
+
+FT_Error FreeType::LoadFace(FT_Face *face, const char *Path)
+{
+	return FT_New_Face(ft, Path, 0, face);
 }

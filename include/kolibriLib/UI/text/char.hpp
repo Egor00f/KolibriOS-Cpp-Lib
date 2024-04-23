@@ -98,7 +98,7 @@ namespace KolibriLib
 			/// @param font шрифт
 			/// @param coord координыты текста
 			/// @throw FT_Error
-			inline FT_Error DrawText(const std::string &text, const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont)
+			inline FreeType::FT_Error DrawText(const std::string &text, const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont)
 			{
 				DrawText(text.c_str(), font._face, coord);
 			}

@@ -34,18 +34,19 @@ namespace KolibriLib
                     /// @param path путь до файла
                     /// @return true если произошла ошибка
                     /// @note Изменяет значение переменной font_file
-                    FT_Error loadFontFromFile(const filesystem::Path &path);
+                    FreeType::FT_Error loadFontFromFile(const filesystem::Path &path);
 
                     /// @brief Изменить размеры символов шрифта
                     /// @param size 
                     /// @note Если size.x == 0, то ширина символов выбирается автоматически
                     /// @note Изменяет значения переменных _size и _dpi
-                    void SetSize(const Size &size, const Size &dpi = {0,0});
+                    void SetSize(const Size &size);
 
                     
                     /// @brief 
                     /// @note Вручную лучше не трогать
-                    FT_Face _face;
+                    FreeType::FT_Face _face;
+                    bool faceloaded = false;
 
                     /// @brief Путь до файла со шрифтом
                     filesystem::Path font_file;
@@ -53,7 +54,6 @@ namespace KolibriLib
                     /// @brief Размеры шрифта
                     Size _size;
                     
-                    Size _dpi;
 
                     Font& operator =(const Font &f);
                     bool operator ==(const Font &f) const;

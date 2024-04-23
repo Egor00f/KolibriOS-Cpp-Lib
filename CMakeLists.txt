@@ -35,19 +35,16 @@ enable_language("ASM_FASM")
 
 
 
-if(WIN32)
-    SET(TOOLCHAIN_DIR "C:/MinGW/msys/1.0/home/autobuild/tools/win32")
-endif(WIN32)
-if (UNIX)
-    SET(TOOLCHAIN_DIR "/home/autobuild/tools/win32")
-endif (UNIX)
+include(CMakeLoadToolchainPath)
 if(CUSTOM_TOOCLAIN_PATH)
 	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
 endif()
 
+include(CMakeKOS32gcc)
+
 #Flags
-SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -Wparentheses")
-SET(CMAKE_EXE_LINKER_FLAGS "-static -S -nostdlib --image-base 0 -T ${SDK_DIR}/sources/newlib/app.lds -L ${TOOLCHAIN_DIR}/lib -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++ -lsupc++ -lfreetype")
+SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -Wparentheses")
+SET(CMAKE_EXE_LINKER_FLAGS "-lfreetype")
 
 if(DEBUG)
 	message("DEBUG ON")
@@ -91,11 +88,7 @@ set(C_Layer_C_Sources
 include_directories("./include/C_Layer/INCLUDE")
 
 
-# Compiler
-SET(CMAKE_C_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-gcc)
-SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-g++)
-SET(CMAKE_LINKER ${TOOLCHAIN_DIR}/bin/kos32-ld)
-SET(CMAKE_AR ${TOOLCHAIN_DIR}/bin/kos32-ar)
+
 
 
 include_directories("./include")

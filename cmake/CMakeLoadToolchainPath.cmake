@@ -1,0 +1,6 @@
+if(WIN32)
+    SET(TOOLCHAIN_DIR "C:/MinGW/msys/1.0/home/autobuild/tools/win32")
+endif(WIN32)
+if (UNIX)
+    SET(TOOLCHAIN_DIR "/home/autobuild/tools/win32")
+endif (UNIX)

@@ -21,6 +21,7 @@ namespace KolibriLib
 	{
 		namespace Images
 		{
+
 			/// @brief Изображение
 			class img
 			{
@@ -28,25 +29,38 @@ namespace KolibriLib
 				buf2d_struct *_buff;
 
 			public:
-				img();
+				/// @brief Глубина цвета
+				typedef enum
+				{
+					/// @brief  8 битный цвет
+					bpp8 = 8,
+
+					/// @brief 24 битный цвет
+					RGB = 24,
+
+					/// @brief 32 битный цвет
+					RGBA = 32
+				} imgBPP;
+
+				img(imgBPP bpp = imgBPP::RGB);
 
 				/// @brief Конструктор
 				/// @param color Массив цветов
 				/// @param size размеры изображения
-				img(const rgb_t *color, const Size &size);
+				img(const rgb_t *color, const Size &size, imgBPP bpp = imgBPP::RGB);
 
 				/// @brief Конструктор
 				/// @param color Массив цветов
 				/// @param size размеры изображения
-				img(const Colors::Color *color, const Size &size);
+				img(const Colors::Color *color, const Size &size, imgBPP bpp = imgBPP::RGB);
 
 				/// @brief Конструктор
 				/// @param color цвет
 				/// @param size размеры изображения
 				/// @note Закрашивает изображение в цвет
-				img(const Colors::Color &color, const Size &size);
+				img(const Colors::Color &color, const Size &size, imgBPP bpp = imgBPP::RGB);
 
-				img(const filesystem::Path &ImageFile);
+				img(const filesystem::Path &ImageFile, imgBPP bpp = imgBPP::RGB);
 
 				/// @brief Коструктор копирования
 				/// @param copy то что будет копироваться
@@ -119,10 +133,12 @@ namespace KolibriLib
 				/// @brief Заполнить изображение цветом
 				/// @param color цвет
 				void FillColor(const Colors::Color &color);
+
+				void SetBPP(imgBPP bpp, void *data);
 				
 				img& operator = (const img& im);
-				bool operator==(const img &im) const;
-				bool operator!=(const img &im) const;
+				bool operator == (const img &im) const;
+				bool operator != (const img &im) const;
 			};
 
 

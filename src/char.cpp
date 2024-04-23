@@ -77,7 +77,7 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 	char *b = new char[2];
 	b[0] = _c;
 	b[1] = '\0';
-	FT_Error error = DrawText(b, _font->_face, coord);
+	FreeType::FT_Error error = FreeType::DrawText(b, _font->_face, coord);
 	delete[] b;
 	if(error != 0)
 	{

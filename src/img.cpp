@@ -5,60 +5,36 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace Images;
 
-KolibriLib::UI::Images::img::img()
+KolibriLib::UI::Images::img::img(imgBPP bpp)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("img consturctor(empety)\n");
-	#endif
-
-	this->_buff = buf2d_create(0,0, 32, 32, 0xFFFFFF, 24);
+	this->_buff = buf2d_create(0,0, 32, 32, 0xFFFFFF, bpp);
 }
 
-KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size)
+KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size, imgBPP bpp)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("img consturctor\n");
-	#endif
-
-	this->_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
+	this->_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, bpp);
 	SetColorMap(color, size);
 }
 
-KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
+KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size, imgBPP bpp)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("img consturctor\n");
-	#endif
-
-	this->_buff = buf2d_create(0, 0, size.x, size.y, color.val, 24);
+	this->_buff = buf2d_create(0, 0, size.x, size.y, color.val, bpp);
 }
 
 KolibriLib::UI::Images::img::img(const img & copy)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("img consturctor(copy)\n");
-	#endif
-
 	_buff = buf2d_create(copy._buff->left, copy._buff->top, copy._buff->width, copy._buff->height, copy._buff->bgcolor, copy._buff->color_bit);
 	memcpy(_buff->buf_pointer, copy._buff->buf_pointer, copy._buff->width * copy._buff->height);
 }
 
-KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size)
+KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size, imgBPP bpp)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("img consturctor\n");
-	#endif
-
-	this->_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, 24);
+	this->_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, bpp);
 	SetRGBMap(color, size);
 }
 
-KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
+KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile, imgBPP bpp)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("img consturctor\n");
-	#endif
-
 	Image_t *buff = new Image_t;
 	buff = LoadImageFromFile(ImageFile);
 
@@ -69,35 +45,46 @@ KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
 
 UI::Images::img::~img()
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("img desturctor\n");
-	#endif
-	
+
 	buf2d_delete(this->_buff);
 }
 
 void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 {
 	#ifdef DEBUG
-	_ksys_debug_puts("Draw");
+	_ksys_debug_puts("DrawIMG\n");
 	#endif
-	
+
+	buf2d_struct *buff;
+
 	_buff->left = coord.x;
 	_buff->top = coord.y;
 
+	// флаг того что буфер уже создан
+	bool buffCreated = false;
+	
+	if(_buff->color_bit == 32)
+	{
+		buff = buf2d_create(coord.x, coord.y, _buff->width, _buff->height, _buff->bgcolor, 24); // Создаётся буфер, создаётся только для того чтобы был
+		buf2d_bit_blt_transp(buff, 0, 0, _buff);                                                // Применяется прозрачность
+		buffCreated = true;                                                                     // буфер создан, поднять его
+	}
+
 	if(size != -1)
 	{
-		buf2d_struct *buff = buf2d_copy(this->_buff);
+		if(!buffCreated)                   // Если буфер не был создан ранее
+		{                                  // То копируем _buff в buff
+			buff = buf2d_copy(this->_buff);
+		}
 
 		buf2d_resize(buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
-
-		buf2d_draw(buff);
 	}
 	else
-	{
-		buf2d_draw(this->_buff);
+	{                 // Ничё с буфером делать не надо
+		buff = _buff; 
 	}
-	
+
+	buf2d_draw(buff);	// Наконец можно его вывести
 }
 
 void UI::Images::img::SetImg(const buf2d_struct *img)
@@ -229,4 +216,38 @@ bool KolibriLib::UI::Images::img::operator==(const img &im) const
            _buff->top == im._buff->top &&
 		   _buff->left == im._buff->left &&
 	       _buff->height == im._buff->height;
+}
+
+void KolibriLib::UI::Images::img::SetBPP(imgBPP bpp, void *data)
+{
+	if(bpp == _buff->color_bit)
+	{
+		return;
+	}
+	else if(bpp == img::imgBPP::RGB)
+	{
+		if(_buff->color_bit == img::imgBPP::RGBA)
+		{
+			
+		}
+		else if(_buff->color_bit == imgBPP::bpp8)
+		{
+			buf2d_conv_24_to_8(_buff, *(unsigned int*)data);
+		}
+	}
+	else if (bpp == img::imgBPP::RGBA)
+	{
+		if(_buff->color_bit == imgBPP::RGB)
+		{
+			buf2d_conv_24_to_32(_buff, *(unsigned int*)data);
+		}
+		else if(true)
+		{
+
+		}
+	}
+	else
+	{
+
+	}
 }

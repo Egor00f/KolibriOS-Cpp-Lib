@@ -106,7 +106,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 		{
 			s += _data[i].GetChar();
 		}
-		DrawText(s.c_str(), f._face, coord);
+		FreeType::DrawText(s.c_str(), f._face, coord);
 	}
 
 	
