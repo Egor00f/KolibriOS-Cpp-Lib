@@ -3,12 +3,12 @@
 using namespace KolibriLib;
 using namespace UI;
 
-CheckBox::CheckBox(const Coord &coord, const Size &size, const int &style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin) : Button(coord, size, Margin, BackgroundColor)
+CheckBox::CheckBox(const Coord &coord, const Size &size, const style &Style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin)
+	: Button(coord, size, Margin, BackgroundColor), _style(Style)
 {
 	#if DEBUG
 	_ksys_debug_puts("CheckBox Constructor\n");
 	#endif
-	_style = style;
 }
 
 void CheckBox::Render()
@@ -51,7 +51,7 @@ bool CheckBox::Handler()
 {
 	if (Button::Handler()) // Если кнопка была нажата
 	{
-		_status != _status;
+		_status = !_status;
 	}
 	return _status;
 }

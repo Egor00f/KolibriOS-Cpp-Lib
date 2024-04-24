@@ -1,6 +1,5 @@
 #include <kolibriLib/UI/text/freetypefuncs.hpp>
 
-using namespace KolibriLib;
 using namespace FreeType;
 
 
@@ -8,17 +7,20 @@ FreeTypeLib::FreeTypeLib()
 {
 	FT_Error error = FT_Init_FreeType(&_FreeType);
 	if (error)
-	{
 		throw error;
-	}
+	else
+		loaded = true;
 }
 
 FreeTypeLib::~FreeTypeLib()
 {
-	FT_Error error = FT_Done_FreeType(_FreeType);
-	if(error)
-	{
-		throw error;
+	if (loaded)						 // Если библитека была загружена
+	{                                                //
+		FT_Error error = FT_Done_FreeType(_FreeType);
+		if (error)
+		{
+			throw error;
+		}
 	}
 }
 
@@ -55,7 +57,7 @@ FT_Error FreeType::DrawText(const char *text, const FT_Face &face, const Kolibri
 			#ifdef DEBUG
 			_ksys_debug_puts("Ret error\n");
 			#endif
-			return error;
+			//return error;
 		}
 		FreeType::DrawGlyphSlot(face->glyph, face->glyph->bitmap_left, face->glyph->bitmap_top, coord);
 		pen.x += face->glyph->advance.x;
@@ -68,47 +70,26 @@ void FreeType::DrawGlyphSlot(const FT_GlyphSlot &slot, FT_Int x, FT_Int y, const
 	#ifdef DEBUG
 	_ksys_debug_puts("DrawGLyph\n");
 	#endif
-	FT_Int i, j, p, q;
-	FT_Int x_max = x + slot->bitmap.width;
-	FT_Int y_max = y + slot->bitmap.rows;
+	FT_Int RenderWidth = x + slot->bitmap.width;
+	FT_Int RenderHeight = y + slot->bitmap.rows;
 
-	const unsigned int RenderWidth = 128;
-	const unsigned int RenderHeight = 128;
 
-	UI::Images::img image(BackgroundColor, RenderWidth * RenderHeight);
+	KolibriLib::UI::Images::img image(BackgroundColor, {RenderWidth, RenderHeight}, KolibriLib::UI::Images::img::RGBA);
 
-	unsigned char um[RenderHeight][RenderWidth];
-
-	for (i = x, p = 0; i < x_max; i++, p++)
+	for (int i = 0; i < RenderWidth; i++)
 	{
-		for (j = y, q = 0; j < y_max; j++, q++)
+		for ( int j = 0; j < RenderHeight; j++)
 		{
-			if (i < 0 || j < 0 ||
-				i >= RenderWidth || j >= RenderHeight)
-				continue;
-
-			um[j][i] |= slot->bitmap.buffer[q * slot->bitmap.width + p];
-		}
-	}
-
-	for (i = 0; i < RenderHeight; i++)
-	{
-		for (j = 0; j < RenderWidth; j++)
-		{
-			if(um[i][j] != 0)
+			if(slot->bitmap.buffer[i * slot->bitmap.width + j] > 0)
 			{
-				Colors::Color b(TextColor);
-				b._a = um[i][j];
-				image.SetPixel(b, i * RenderHeight + j);
+				KolibriLib::Colors::Color b(TextColor);
+				b._a |= slot->bitmap.buffer[i * slot->bitmap.width + j];
+				image.SetPixel(b, {i, j});	
 			}
 		}
 	}
 
-
-
 	image.Draw(coord);
-	
-
 }
 
 FT_Error FreeType::LoadFace(FT_Face *face, const char *Path)

@@ -19,13 +19,9 @@ namespace KolibriLib
         /// @note Это просто чекбокс, ему можно задать различные стили
         class CheckBox : public buttons::Button
         {
-        private:
-            int _style;
-            bool _status;
-
         public:
             /// @brief Стиль Чекбокса
-            enum style
+            typedef enum
             {
                 /// @brief По вид умолчанию, квадрат
                 Default,
@@ -34,15 +30,23 @@ namespace KolibriLib
                 /// @brief Квадрат с со сглаженными углами
                 /// @warning Не реализованно (пока что)
                 Smoth,
-            };
+            } style;
 
-            CheckBox(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const int& style = 0, const Colors::Color& CheckBoxBorderColor = OS::GetSystemColors().work_text, const Colors::Color& BackgroundColor = OS::GetSystemColors().work_area, const unsigned& Margin = DefaultMargin);
+            CheckBox(const Coord& coord = {0, 0}, const Size& size = {32, 16}, const style& Style = style::Default, const Colors::Color& CheckBoxBorderColor = OS::GetSystemColors().work_text, const Colors::Color& BackgroundColor = OS::GetSystemColors().work_area, const unsigned& Margin = DefaultMargin);
 
             /// @brief Отрисовать Checkbox
             void Render();
 
-            /// @brief Обработчик кнопки
+            /// @brief Изменить стиль
+            /// @param s 
+            void SetStyle(style s);
+
+            /// @brief Обработчик
             bool Handler();
+
+            private:
+                style _style;
+                bool _status;
         };
     } // namespace UI
     

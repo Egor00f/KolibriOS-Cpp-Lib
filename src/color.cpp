@@ -20,12 +20,6 @@ KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color &a)
 
 }
 
-KolibriLib::Colors::Color::Color(const KolibriLib::Colors::ARGB &a)
-	: _a(a.alpha), red(a.red), green(a.green), blue(a.blue)
-{
-
-}
-
 KolibriLib::Colors::Color::Color(const rgb_t &color)
 	: _a(0xFF), red(color.red), green(color.green), blue(color.blue)
 {

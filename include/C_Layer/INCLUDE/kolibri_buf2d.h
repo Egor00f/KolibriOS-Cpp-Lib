@@ -28,7 +28,8 @@ typedef struct __attribute__((__packed__))
 extern int kolibri_buf2d_init(void);
 
 
-enum BUF2D_ALGORITM_FILTR {
+enum BUF2D_ALGORITM_FILTR 
+{
 	SIERRA_LITE,
 	FLOYD_STEINBERG,
 	BURKERS,
@@ -44,7 +45,7 @@ enum BUF2D_OPT_CROP {
 };
 
 /// @brief Params for function buf2d_resize
-enum ResizeParams
+enum BUF2D_RESIZE_PARAMS
 {
 	BUF2D_Resize_ChangeSize = 1,
 	/// @brief Change image in buffer
@@ -65,7 +66,7 @@ extern void (*buf2d_curve_bezier_asm)(buf2d_struct *buffer, uint32_t p1, uint32_
 
 /// @brief
 /// @param buffer
-/// @param imgbuff Pointer to rgb buffer
+/// @param imgbuff Pointer to Image->Data buffer
 extern void (*buf2d_create_f_img)(buf2d_struct *buffer, void *imgbuff) __attribute__((__stdcall__));
 
 /// @brief Draws a buffer on the screen (works through system f. 7).
@@ -91,7 +92,7 @@ extern void (*buf2d_rotate)(buf2d_struct *buffer, unsigned int angle) __attribut
 /// @param buffer Poiter to buf2d_struct
 /// @param newWidth New buffer width
 /// @param newHeight New buffer height
-/// @param param param, value from enum ResizeParams
+/// @param param param, value from enum BUF2D_RESIZE_PARAMS
 extern void (*buf2d_resize)(buf2d_struct *buffer, unsigned int newWidth, unsigned int newHeight, unsigned int param) __attribute__((__stdcall__));
 
 /// @brief Draws a line in the buffer with the specified color and coordinates
@@ -240,6 +241,7 @@ inline void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, 
 {
 	buf2d_curve_bezier_asm(buf, (p1.x << 16) + p1.y, (p2.x << 16) + p2.y, (p3.x << 16) + p3.y, color);
 }
+
 
 #ifdef __cplusplus
 }

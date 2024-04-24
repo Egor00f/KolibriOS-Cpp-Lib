@@ -6,6 +6,8 @@
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 
+#include <vector>
+
 namespace KolibriLib
 {
 	/// @brief Работа с системой
@@ -133,21 +135,21 @@ namespace KolibriLib
 		}
 
 		/// @brief Список языков системы
-		enum lang
+		typedef enum 
 		{
 			/// @brief Английский 
 			Eng = 0,
 			/// @brief Финский
-			Fi,
+			Fi = 1,
 			/// @brief Немецкий
-			Ger,
+			Ger = 2,
 			/// @brief Русский
-			Rus
-		};
+			Rus = 3
+		} lang;
 
 		/// @brief Получить язык системы
 		/// @return Занечение из списка lang
-		inline int GetLang()
+		inline lang GetLang()
 		{
 			int a;
 			asm_inline(
@@ -155,13 +157,44 @@ namespace KolibriLib
 				: "=a"(a)
 				: "a"(26), "b"(5)
 			);
-			return a;
+			return (lang)a;
 		}
 
-		inline void Notify(const std::string &Title, const std::string &Text)
+		/// @brief Иконки в сообщениях
+		/// @image notify.orig.png
+		typedef enum 
 		{
+			/// @brief 
+			Application = 'A',
+			Error = 'E',
+			Warning = 'W',
+			Ok = 'O',
+			Network = 'N',
+			Info = 'I',
+			Folder = 'F',
+			Component = 'C',
+			Mail = 'M',
+			Download = 'D',
+			Sound = 'S'
+		} notifyIcon;
 
-		}
+		typedef enum
+		{
+			/// @brief не закрывать автоматически
+			NoAutoClose = 'd',
+			NoClose = 'c',
+			/// @brief Есть заголовок
+			Title = 't',
+			ProgressBar = 'p'
+		} notifyKey;
+
+		/// @brief Уведмление
+		/// @param Title Заголовок, может быть пустым если заголовок не нужен
+		/// @param Text текст после заголовка
+		/// @param icon иконка
+		/// @param keys ключи
+		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, std::vector<notifyKey> keys = {notifyKey::Title});
+		
 
 		/// @brief Уведомление об ошибке через увдомления системы
 		/// @param Title 

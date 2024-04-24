@@ -16,7 +16,8 @@
 
 
 
-
+/// @brief Библиотека FreeType
+/// @details Содержит библиотеку freetype и функции объёденяющие freetype и KoibriLib
 namespace FreeType
 {
 	#include <ft2build.h>
@@ -36,6 +37,7 @@ namespace FreeType
 		operator FT_Library();
 
 		FT_Library _FreeType;
+		bool loaded = false;
 	};
 
 	

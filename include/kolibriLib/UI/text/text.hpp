@@ -19,7 +19,7 @@ namespace KolibriLib
 			
 
 			/// @brief Текст
-			/// @note Фактически std::vector Char ов
+			/// @details Фактически std::vector Char ов
 			class Txt
 			{
 			public:
@@ -71,7 +71,7 @@ namespace KolibriLib
 
 				/// @brief Изменить шрифт символов
 				/// @param FontSize
-				/// @paragraph Изменяет размер символов для всех символов
+				/// @details Изменяет размер символов для всех символов
 				void SetFont(const Fonts::Font &Font);
 
 				/// @brief Изменить цвет текста для всех символов

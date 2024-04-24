@@ -25,6 +25,8 @@ namespace KolibriLib
                     /// @brief инициализировать библиотеку freetype и загрузить ttf файл.
                     Font(const filesystem::Path &ttf_file);
 
+                    /// @brief Конструктор копирования
+                    /// @param copy 
                     Font(const Font* copy);
 
                     /// @brief Деструктор

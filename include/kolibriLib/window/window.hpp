@@ -121,12 +121,12 @@ namespace KolibriLib
 			void SetWindowColors(const Colors::ColorsTable& colorTable);
 
 			/// @brief Начать перересовку окна
-			/// @paragraph Стирает всё что было нарисованно в окне
-			/// @paragraph Обязательно после должна быть вызвана функция #EndRedraw()
+			/// @note Стирает всё что было нарисованно в окне
+			/// @note Обязательно после должна быть вызвана функция #EndRedraw()
 			void StartRedraw() const;
 
 			/// @brief Закончить перересовку окна
-			/// @paragraph Обязательно после должна быть вызвана функция #StartRedraw()
+			/// @note Обязательно после должна быть вызвана функция #StartRedraw()
 			void EndRedraw() const;
 
 			/// @brief Получить координаты окна
@@ -483,6 +483,7 @@ namespace KolibriLib
 			}
 
 			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.work_area, _TitleColor, _style); // Отрисовать окно
+			Redraw();
 		}
 
 		void Window::RenderAllElements() const
@@ -538,6 +539,7 @@ namespace KolibriLib
 
 			StartRedraw();
 			window::CreateWindow(GetCoord(), _size, _title, _colors.work_area, _TitleColor, _style);
+			graphic::DrawRectangleFill({0, window::GetSkinHeight()}, GetWindowSize(), _colors.work_area);
 
 			if (_Transparency > 0 && false)
 			{

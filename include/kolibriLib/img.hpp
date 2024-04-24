@@ -86,12 +86,18 @@ namespace KolibriLib
 				/// @param color
 				/// @param x
 				/// @param y
-				void SetPixel(const Colors::Color &color, unsigned x, unsigned y);
+				/// @return true если всё ок
+				/// @return false если указаного пикселя не должно существовать
+				bool SetPixel(const Colors::Color &color, unsigned x, unsigned y);
 
 				/// @brief Изменить цвет пикселя
 				/// @param color новый цвет
-				void SetPixel(const Colors::Color &color, const Coord &coord);
+				/// @return true если всё ок
+				/// @return false если указаного пикселя не должно существовать
+				bool SetPixel(const Colors::Color &color, const Coord &coord);
 
+				/// @brief Повернуть изображение на определённый угол
+				/// @param value значения 90, 180, 270
 				void Rotate(int value);
 
 				/// @brief Получить цвет пикселя
@@ -115,25 +121,32 @@ namespace KolibriLib
 				rgb_t *GetRGBMap() const;
 
 				/// @brief Изменить изображение по изображению из rgb_t
-				/// @param rgbmap 
-				/// @param size размер rgbmap, можно не указывать, но размер буфера rgbmap должен соответсвовать размерам изображения
+				/// @param rgbmap указатель на массив rgb_t
+				/// @param size размер rgbmap, можно не указывать, но тогда размер буфера rgbmap должен соответсвовать размерам изображения
 				/// @note Теряется Alpha
 				void SetRGBMap(const rgb_t* rgbmap, const Size &size = {-1, -1});
 
+				/// @brief Изменить изображение по изображению из цветов
+				/// @param rgbmap указатель на массив Colors::Color
+				/// @param size размер rgbmap, можно не указывать, но тогда размер буфера rgbmap должен соответсвовать размерам изображения
+				/// @note Теряется Alpha
 				void SetColorMap(const Colors::Color* rgbmap, const Size &size = {-1, -1});
 
-				/// @brief
-				/// @return
+				/// @brief Получить укзатель на img::_buff
+				/// @return 
 				buf2d_struct *GetBuff() const;
 
 				/// @brief Получить разрешение изображения
-				/// @return 
+				/// @return {img::_buff->width, img::_buff->height}
 				Size GetSize() const;
 
 				/// @brief Заполнить изображение цветом
 				/// @param color цвет
 				void FillColor(const Colors::Color &color);
 
+				/// @brief Изменить кол-во бит на пиксель
+				/// @param bpp кол-во бит на пиксель
+				/// @param data дополнительные данные
 				void SetBPP(imgBPP bpp, void *data);
 				
 				img& operator = (const img& im);

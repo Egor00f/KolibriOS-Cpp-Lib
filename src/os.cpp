@@ -13,3 +13,13 @@ int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &arg
     }
     return -1;
 }
+
+void Notify(const std::string &Title, const std::string &Text, notifyIcon icon, std::vector<notifyKey> keys)
+{
+	std::string a = "\"'" + Title + "\n" + Text + "' " + (char)icon;
+	for(short i = 0; i < keys.size(); i++)
+    {
+		a += (" -" + (char)keys[i]);
+	}
+	_ksys_exec("/sys/@notify", (char *)a.c_str(), false);
+}

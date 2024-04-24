@@ -67,7 +67,7 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 	{
 		buff = buf2d_create(coord.x, coord.y, _buff->width, _buff->height, _buff->bgcolor, 24); // Создаётся буфер, создаётся только для того чтобы был
 		buf2d_bit_blt_transp(buff, 0, 0, _buff);                                                // Применяется прозрачность
-		buffCreated = true;                                                                     // буфер создан, поднять его
+		buffCreated = true;                                                                     // буфер создан, поднять флаг
 	}
 
 	if(size != -1)
@@ -77,7 +77,7 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 			buff = buf2d_copy(this->_buff);
 		}
 
-		buf2d_resize(buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
+		buf2d_resize(buff, size.x, size.y, BUF2D_RESIZE_PARAMS::BUF2D_Resize_ChangeSize);
 	}
 	else
 	{                 // Ничё с буфером делать не надо
@@ -85,6 +85,11 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 	}
 
 	buf2d_draw(buff);	// Наконец можно его вывести
+
+	if(buffCreated)
+	{
+		buf2d_delete(buff);
+	}
 }
 
 void UI::Images::img::SetImg(const buf2d_struct *img)
@@ -92,23 +97,37 @@ void UI::Images::img::SetImg(const buf2d_struct *img)
 	this->_buff = buf2d_copy(img);
 }
 
-void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, unsigned x, unsigned y)
+bool KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, unsigned x, unsigned y)
 {
+	if(x >= _buff->width || y >= _buff->height)
+		return false;
+
 	buf2d_set_pixel(this->_buff, x, y, color.val);
+	return true;
 }
 
-void KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, const Coord &coord)
+bool KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, const Coord &coord)
 {
-	buf2d_set_pixel(this->_buff, coord.x, coord.y, color.val);
+	if(coord.x >= _buff->width || coord.y >= _buff->height)
+		return false;
+	
+	buf2d_set_pixel(_buff, coord.x, coord.y, color.val);
+	return true;
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(unsigned x, unsigned y) const
 {
+	if(x >= _buff->width || y >= _buff->height)
+		throw;
+
 	return buf2d_get_pixel(this->_buff, x, y);
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(const Coord &coord) const
 {
+	if(coord.x >= _buff->width || coord.y >= _buff->height)
+		throw;
+
 	return buf2d_get_pixel(this->_buff, coord.x, coord.y);
 }
 
@@ -118,7 +137,7 @@ rgb_t *KolibriLib::UI::Images::img::GetRGBMap() const
 	{
 		return (rgb_t*)this->_buff->buf_pointer;
 	}
-
+	return nullptr;
 }
 
 buf2d_struct *KolibriLib::UI::Images::img::GetBuff() const
@@ -184,7 +203,7 @@ void KolibriLib::UI::Images::img::SetRGBMap(const rgb_t *rgbmap, const Size &siz
 {
 	if (this->_buff->width != size.x && this->_buff->height != size.y) // Если рамеры буфера не соответсвуют размерам rgbmap
 	{													   // Изменяится размеры
-		buf2d_resize(_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
+		buf2d_resize(_buff, size.x, size.y, BUF2D_RESIZE_PARAMS::BUF2D_Resize_ChangeSize);
 	}
 
 	for (int i = 0; i < size.y; i++)
@@ -200,7 +219,7 @@ void KolibriLib::UI::Images::img::SetColorMap(const Colors::Color *rgbmap, const
 {
 	if (size != -1 && this->_buff->width != size.x && this->_buff->height != size.y) // Если рамеры буфера не соответсвуют размерам rgbmap
 	{														// Изменяится размеры
-		buf2d_resize(this->_buff, size.x, size.y, ResizeParams::BUF2D_Resize_ChangeSize);
+		buf2d_resize(this->_buff, size.x, size.y, BUF2D_RESIZE_PARAMS::BUF2D_Resize_ChangeSize);
 	}
 
 	unsigned int* buff =(unsigned int*) malloc(size.x * size.y * sizeof(Colors::Color));
@@ -250,4 +269,9 @@ void KolibriLib::UI::Images::img::SetBPP(imgBPP bpp, void *data)
 	{
 
 	}
+}
+
+void KolibriLib::UI::Images::img::Rotate(int value)
+{
+	buf2d_rotate(_buff, value);
 }

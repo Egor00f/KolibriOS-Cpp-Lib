@@ -102,6 +102,8 @@ namespace KolibriLib
 				"int $0x40" ::"a"(18), "b"(23));
 		}
 
+		/// @brief получить координаты окна
+		/// @return Координаты окна
 		inline Coord GetWindowCoord()
 		{
 			return mouse::GetMousePositionOnSreen() - mouse::GetMousePositionInWindow();
@@ -110,9 +112,13 @@ namespace KolibriLib
 		/// @brief Список констант положения окна относительно других окон:
 		enum Pos
 		{
+			/// @brief На фоне
 			BackGround = -2,
+			/// @brief всегда за другими окнами
 			AlwaysBack = -1,
+			/// @brief обчное
 			Normal = 0,
+			/// @brief Всегда поверх остальных окон
 			AlwaysTop = 1
 		};
 

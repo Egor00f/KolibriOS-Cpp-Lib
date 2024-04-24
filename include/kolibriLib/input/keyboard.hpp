@@ -28,8 +28,7 @@ namespace KolibriLib
         };
 
         /// @brief Получить состояние управляющих клавиш
-        /// @return Возвращает имя конгстрольной клавиши из списка @link ControlKeys
-        /// @example if(GetContolKey() == ControlKeys::LeftCtrl) { printf("press lCtrl"); }
+        /// @return Возвращает имя конгстрольной клавиши из списка ControlKeys
         inline unsigned GetControlKey()
         {
             return _ksys_get_control_key_state();
