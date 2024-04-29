@@ -16,10 +16,10 @@ void CheckBox::Render()
 	switch (_style)
 	{
 	case Default:
-		graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
+		//graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
 		break;
 	case Circle:
-		graphic::DrawCircle(_coord, _size.x / 2, 36, _MainColor);
+		//graphic::DrawCircle(_coord, _size.x / 2, _MainColor);
 	default:
 		break;
 	}
@@ -29,14 +29,14 @@ void CheckBox::Render()
 		switch (_style)
 		{
 		case CheckBox::style::Default:
-			graphic::DrawRectangleFill(Coord(_coord.x + _Margin, _coord.y + _Margin),
-									   Size(_size.x - (2 * _Margin), _size.y + (2 * _Margin)),
-									   _MainColor);
+			//graphic::DrawRectangleFill(Coord(_coord.x + _Margin, _coord.y + _Margin),
+			//						   Size(_size.x - (2 * _Margin), _size.y + (2 * _Margin)),
+			//						   _MainColor);
 			break;
 		case CheckBox::style::Circle:
-			graphic::DrawCircle(Coord(_coord.x + _Margin, _coord.y + _Margin),
-								_size.x / 2 - _Margin, 36,
-								_MainColor);
+			//graphic::DrawCircle(Coord(_coord.x + _Margin, _coord.y + _Margin),
+			//					_size.x / 2 - _Margin,
+			//					_MainColor);
 			break;
 		case CheckBox::style::Smoth:
 			_ksys_debug_puts("KolibriLib::UI::Checkbox smath style now not support :(");

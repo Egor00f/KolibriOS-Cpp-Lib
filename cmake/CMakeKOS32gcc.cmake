@@ -1,5 +1,5 @@
 
-message("Toolchain dir:" ${TOOLCHAIN_DIR})
+message("Toolchain dir: " ${TOOLCHAIN_DIR})
 
 # Compiler
 SET(CMAKE_C_COMPILER ${TOOLCHAIN_DIR}/bin/kos32-gcc)

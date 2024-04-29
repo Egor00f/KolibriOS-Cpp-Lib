@@ -18,12 +18,18 @@ KolibriLib::UI::Images::img::img(const Colors::Color *color, const Size &size, i
 
 KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size, imgBPP bpp)
 {
-	this->_buff = buf2d_create(0, 0, size.x, size.y, color.val, bpp);
+	_buff = buf2d_create(0, 0, size.x, size.y, color.val, bpp);
 }
 
 KolibriLib::UI::Images::img::img(const img & copy)
 {
-	_buff = buf2d_create(copy._buff->left, copy._buff->top, copy._buff->width, copy._buff->height, copy._buff->bgcolor, copy._buff->color_bit);
+	_buff = buf2d_create(copy._buff->left,
+	                     copy._buff->top, 
+						 copy._buff->width, 
+						 copy._buff->height, 
+						 copy._buff->bgcolor, 
+						 copy._buff->color_bit);
+
 	memcpy(_buff->buf_pointer, copy._buff->buf_pointer, copy._buff->width * copy._buff->height);
 }
 
@@ -274,4 +280,14 @@ void KolibriLib::UI::Images::img::SetBPP(imgBPP bpp, void *data)
 void KolibriLib::UI::Images::img::Rotate(int value)
 {
 	buf2d_rotate(_buff, value);
+}
+
+void KolibriLib::UI::Images::img::Clear(const Colors::Color &backgroundColor)
+{
+	buf2d_clear(_buff, backgroundColor.val);
+}
+
+void KolibriLib::UI::Images::img::DrawCircle(const Coord & coord, unsigned radius, const Colors::Color & color)
+{
+	buf2d_circle(_buff, coord.x, coord.y, radius, color.val);
 }

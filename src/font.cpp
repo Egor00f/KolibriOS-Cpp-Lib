@@ -48,8 +48,11 @@ FreeType::FT_Error KolibriLib::UI::text::Fonts::Font::loadFontFromFile(const fil
 	case FreeType::FT_Err_Cannot_Open_Resource:
 		_ksys_debug_puts("can't open resource\n");
 		break;
+	case FreeType::FT_Err_Invalid_Handle:
+		_ksys_debug_puts("Invalid handle\n");
+		break;
 	default:
-		_ksys_debug_puts("Error load FT_Face\n");
+		_ksys_debug_puts("Error load FT_Face: ");
 		_ksys_debug_puts(itoa(error, nullptr, 10));
 		_ksys_debug_putc('\n');
 		break;

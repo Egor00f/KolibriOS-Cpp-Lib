@@ -6,12 +6,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <math.h>
+#include <cmath>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
+#include <kolibriLib/img.hpp>
 
 namespace KolibriLib
 {
@@ -51,7 +52,7 @@ namespace KolibriLib
 		/// @param detalization Детализация прорисовки окружности (то на сколько круг круглый)
 		/// @param color Цвет
 		/// @paragraph Круг рисуется по detalization линий. Да-да если Детализация = 4, то круг это квадрат.
-		void DrawCircle(const Coord& coord, const unsigned &Radius, const unsigned &detalization = 36, const Colors::Color& color = OS::GetSystemColors().work_graph);
+		void DrawCircle(const Coord& coord, unsigned Radius, const Colors::Color& color = OS::GetSystemColors().work_graph);
 
 		/// @brief Нарисовать закрашенный прямоугольник
 		/// @param position позиция левого верхнего угла
@@ -63,9 +64,9 @@ namespace KolibriLib
 				"int $0x40"
 				:
 				: "a"(13), 
-				"b"( (position.x << 16) + size.x ), 
-				"c"( (position.y << 16) + size.y ), 
-				"d"(color.val)
+				  "b"( (position.x << 16) + size.x ), 
+				  "c"( (position.y << 16) + size.y ), 
+				  "d"(color.val)
 				);
 		}
 
@@ -74,7 +75,7 @@ namespace KolibriLib
 		/// @param Radius Радиус круга
 		/// @param detalization Детализация круга(то на сколько круг круглый)
 		/// @param color Цвет
-		void DrawCircleFill(const Coord& coord, const unsigned& Radius, const unsigned& detalization = 36, const Colors::Color& color = OS::GetSystemColors().work_graph);
+		void DrawCircleFill(const Coord& coord, const unsigned& Radius, const Colors::Color& color = OS::GetSystemColors().work_graph);
 
 		/// @brief Нарисовать точку
 		/// @param position Координаты
@@ -138,43 +139,6 @@ namespace KolibriLib
 			return result;
 		}
 
-
-		//Почему то линковщик ругается "undefined reference cos()"
-
-		inline void DrawCircle(const Coord &coord, const unsigned &Radius, const unsigned &detalization, const Colors::Color &color)
-		{
-			Coord buff;
-			unsigned b = Radius;
-			unsigned c = 0;
-
-			for (unsigned angle = 1; angle <= detalization * 10; angle += 36 / detalization)
-			{
-				buff = Size(coord.x + (int)b, coord.y + (int)c);
-
-				b = Radius * cos(angle);
-				c = Radius * sin(angle);
-
-				Coord n(coord.x + (int)b, coord.y + (int)c);
-
-				DrawLine(buff, n);
-			}
-		}
-
-		inline void DrawCircleFill(const Coord &coord, const unsigned &Radius, const unsigned &detalization, const Colors::Color &color)
-		{
-			DrawCircle(coord, Radius, detalization, color);
-
-			unsigned b = Radius * cos(90 + 45);
-			unsigned c = Radius * sin(90 + 45);
-			Coord n(coord.x + (int)b, coord.y + (int)c);
-
-			DrawRectangleFill(n, Size((coord.x - n.x) * 2, c * 2), color);
-
-			for (unsigned i = Radius; i > (Radius - (coord.x - n.x)); i--) // Дозакрашивание пробелов между квадратом и границами груга
-			{
-				DrawCircle(coord, i, detalization, color);
-			}
-		}
 	}
 
 } // namespace KolibriLib

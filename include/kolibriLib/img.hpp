@@ -100,6 +100,28 @@ namespace KolibriLib
 				/// @param value значения 90, 180, 270
 				void Rotate(int value);
 
+				/// @brief Очистить изображение, 
+				/// @param backgroundColor 
+				void Clear(const Colors::Color &backgroundColor);
+
+				/// @brief Нарисовать
+				/// @param coord 
+				/// @param radius 
+				/// @param color 
+				void DrawCircle(const Coord &coord, unsigned radius, const Colors::Color &color);
+
+				/// @brief 
+				/// @param point1 
+				/// @param point2 
+				/// @param color 
+				void DrawLine(const Coord &point1, const Coord &point2, const Colors::Color &color);
+
+				/// @brief 
+				/// @param point1 
+				/// @param point2 
+				/// @param color 
+				void DrawRectangle(const Coord &point1, const Coord &point2, const Colors::Color &color);
+
 				/// @brief Получить цвет пикселя
 				/// @param x координата пикселя по оси X
 				/// @param y координата пикселя по оси Y

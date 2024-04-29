@@ -2,20 +2,20 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 
 project(KolibriLib)
 
-################################################
-################### CONFIG #####################
-################################################
-                                               #
-set(DEBUG ON)                                  #
-set(CUSTOM_TOOCLAIN_PATH OFF)                  #
-set(KOLIBRIOS_REPO "../kolibrios")             #
-                                               #
-################################################
+#################################################
+################### CONFIG ######################
+#################################################
+#												#
+set(DEBUG ON)									#
+set(CUSTOM_TOOCLAIN_PATH OFF)					#
+#												#
+#################################################
 
 
 
 
 
+set(KOLIBRIOS_REPO "../kolibrios")
 
 
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
@@ -35,12 +35,19 @@ enable_language("ASM_FASM")
 
 
 
+
+
+
+
+#include toochain
 include(CMakeLoadToolchainPath)
 if(CUSTOM_TOOCLAIN_PATH)
 	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
 endif()
 
 include(CMakeKOS32gcc)
+
+
 
 #Flags
 SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -Wparentheses")
@@ -49,6 +56,8 @@ SET(CMAKE_EXE_LINKER_FLAGS "-lfreetype")
 if(DEBUG)
 	message("DEBUG ON")
 	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG")
+else()
+	message("DEBUG OFF")
 endif()
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
 

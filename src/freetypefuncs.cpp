@@ -76,19 +76,21 @@ void FreeType::DrawGlyphSlot(const FT_GlyphSlot &slot, FT_Int x, FT_Int y, const
 
 	KolibriLib::UI::Images::img image(BackgroundColor, {RenderWidth, RenderHeight}, KolibriLib::UI::Images::img::RGBA);
 
-	for (int i = 0; i < RenderWidth; i++)
+	_ksys_debug_puts("AA\n");
+
+	for (int i = 0, k = y; i < RenderHeight && k < RenderHeight; i++, k++)
 	{
-		for ( int j = 0; j < RenderHeight; j++)
+		for ( int j = 0, l = x; j < RenderWidth && l < RenderWidth; j++, k++)
 		{
 			if(slot->bitmap.buffer[i * slot->bitmap.width + j] > 0)
 			{
 				KolibriLib::Colors::Color b(TextColor);
 				b._a |= slot->bitmap.buffer[i * slot->bitmap.width + j];
-				image.SetPixel(b, {i, j});	
+				image.SetPixel(b, {k, l});	
 			}
 		}
 	}
-
+	
 	image.Draw(coord);
 }
 

@@ -13,23 +13,36 @@
 extern "C" {
 #endif
 
-typedef struct __attribute__((__packed__))
+// @brief Inilizate buf2d library
+/// @return -1 if unsuccessful
+extern int kolibri_buf2d_init(void);
+
+/// @brief Buffer struct
+typedef struct __attribute__ ((__packed__)) 
 {
+	/// @brief Pointer to buffer
 	unsigned int *buf_pointer;
+
+	/// @brief coord by X axis
 	uint16_t left;
+
+	/// @brief coord by Y axis
 	uint16_t top;
+
+	/// @brief Buffer width
 	unsigned int width;
+
+	/// @brief Buffer heigth
 	unsigned int height;
+
+	/// @brief Background color
 	unsigned int bgcolor;
+
+	/// @brief Color depth
 	uint8_t color_bit;
 } buf2d_struct;
 
-
-extern int kolibri_buf2d_init(void);
-
-
-enum BUF2D_ALGORITM_FILTR 
-{
+enum BUF2D_ALGORITM_FILTR {
 	SIERRA_LITE,
 	FLOYD_STEINBERG,
 	BURKERS,
@@ -47,6 +60,7 @@ enum BUF2D_OPT_CROP {
 /// @brief Params for function buf2d_resize
 enum BUF2D_RESIZE_PARAMS
 {
+	/// @brief Change buffer size
 	BUF2D_Resize_ChangeSize = 1,
 	/// @brief Change image in buffer
 	BUF2D_Resize_ChangeImage = 2
