@@ -40,7 +40,7 @@ namespace KolibriLib
 			{
 				enum Type
 				{
-					None = 0,
+					None,
 					Button,
 					Image,
 					CheckBox,
@@ -92,6 +92,9 @@ namespace KolibriLib
 				void SetElement(const UI::Menu &elem);
 
 				void free();
+
+				/// @brief Отрисовать элемент
+				void Render() const;
 			};
 
 			/// @brief Конструктор
@@ -100,7 +103,7 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = Colors::DefaultColorTable, const Colors::Color &TitleColor = OS::GetSystemColors().work_graph, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
+			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), const Colors::Color &TitleColor = OS::GetSystemColors().work_graph, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 
 			/// @brief Полная перересовка окна
 			void Redraw();
@@ -245,7 +248,7 @@ namespace KolibriLib
 			case Window::Element::Type::CheckBox:
 				pointer = new UI::CheckBox(*((UI::CheckBox *)e.pointer));
 				break;
-			case Window::Element::Type::Button :
+			case Window::Element::Type::Button:
 				pointer = new UI::buttons::Button(*((UI::buttons::Button *)e.pointer));
 				break;
 			case Window::Element::Type::Frame:
@@ -307,6 +310,36 @@ namespace KolibriLib
 			_type = Type::Frame;
 		}
 
+		void Window::Element::Render() const
+		{
+			switch (_type)
+			{
+			case TextLabel:
+				((UI::text::TextLabel*)pointer)->Render();
+				break;
+			case Button:
+				((UI::buttons::Button*)pointer)->Render();
+				break;
+			case Image:
+				((UI::Images::Image*)pointer)->Render();
+				break;
+			case Form:
+				((UI::Form*)pointer)->Render();
+				break;
+			case CheckBox:
+				((UI::CheckBox*)pointer)->Render();
+				break;
+			case Menu:
+				((UI::Menu*)pointer)->Render();
+				break;
+			case Frame:
+				((UI::Frame*)pointer)->Render();
+				break;
+			default:
+				break;
+			}
+		}
+
 		//=============================================================================================================================================================
 
 		int KolibriLib::window::Window::AddElement(const UI::text::TextLabel &element)
@@ -323,15 +356,11 @@ namespace KolibriLib
 			{
 				if (_Elements.count(i) == 0)
 				{
-					_Elements[i] = a;
+					_Elements.emplace(i, a);
 					return i;
 				}
 			}
-			if(_Elements.size() == 0)
-			{
-				_Elements[0] = a;
-			}
-			return 0;
+			return -1;
 		}
 
 		int KolibriLib::window::Window::AddElement(const UI::Images::Image &element)
@@ -348,7 +377,7 @@ namespace KolibriLib
 			{
 				if (_Elements.count(i) == 0)
 				{
-					_Elements[i] = a;
+					_Elements.emplace(i, a);
 					return i;
 				}
 			}
@@ -373,7 +402,8 @@ namespace KolibriLib
 			{
 				if (_Elements.count(i) == 0)
 				{
-					_Elements[i] = a;
+					_Elements.emplace(i, a);
+					;
 					return i;
 				}
 			}
@@ -440,18 +470,16 @@ namespace KolibriLib
 		//=============================================================================================================================================================
 
 		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, const KolibriLib::Colors::Color &TitleColor, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
+			: _title(Title), _size(size), _colors(colors)
 		{
 			#if DEBUG == true
 			_ksys_debug_puts("KolibriLib::window:::Window constructor\n");
 			#endif
 
-			_title = Title;
-			_size = size;
 			_MARGIN = Margin;
 			_TitleColor = TitleColor;
 			_Transparency = Transparency;
 			_RealtimeRedraw = RealtimeRedraw;
-
 			
 			_style = WindowStyle::Relative + WindowStyle::WindowHaveTitle + WindowStyle::withSkin;
 			if (Resize)
@@ -468,22 +496,12 @@ namespace KolibriLib
 				_style += WindowStyle::GradientDraw;
 			}
 
-			if (colors == Colors::DefaultColorTable) // Если небыла в аргументах таблица цветов
-			{										 // Используется системная
-				_colors = OS::GetSystemColors();
-			}
-			else
-			{
-				_colors = colors;
-			}
-
 			if (_Transparency > 0)
 			{
 				_style += WindowStyle::NoDrawWorkspace;
 			}
 
 			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.work_area, _TitleColor, _style); // Отрисовать окно
-			Redraw();
 		}
 
 		void Window::RenderAllElements() const
@@ -493,36 +511,7 @@ namespace KolibriLib
 				#ifdef DEBUG
 				_ksys_debug_puts("-Render Element as");
 				#endif
-				switch (it.second._type)
-				{
-				case Element::Type::TextLabel:
-					#ifdef DEBUG
-					_ksys_debug_puts("TextLabel");
-					#endif
-					((UI::text::TextLabel *)it.second.pointer)->Render();
-					break;
-				case Element::Type::Button:
-					((UI::buttons::Button *)it.second.pointer)->Render();
-					break;
-				case Element::Type::Image:
-					((UI::Images::Image *)it.second.pointer)->Render();
-					break;
-				case Element::Type::Form:
-					((UI::Form *)it.second.pointer)->Render();
-					break;
-				case Element::Type::CheckBox:
-					((UI::CheckBox *)it.second.pointer)->Render();
-					break;
-				case Element::Type::Menu:
-					((UI::Menu *)it.second.pointer)->Render();
-					break;
-				case Element::Type::Frame:
-					((UI::Frame *)it.second.pointer)->Render();
-					break;
-				case Element::Type::None:
-					_ksys_debug_puts("Warn: KolibriLib::Window::Element::Render() type = None\n");
-					break;
-				}
+				it.second.Render();
 			}
 		}
 
@@ -539,7 +528,6 @@ namespace KolibriLib
 
 			StartRedraw();
 			window::CreateWindow(GetCoord(), _size, _title, _colors.work_area, _TitleColor, _style);
-			graphic::DrawRectangleFill({0, window::GetSkinHeight()}, GetWindowSize(), _colors.work_area);
 
 			if (_Transparency > 0 && false)
 			{

@@ -131,18 +131,18 @@ rgb_t KolibriLib::Colors::UINT32toRGB(const uint32_t &color)
 	rgb_t ret;
 	
 	ret.blue	= ((const Color&)color).blue;
-	ret.red		= ((const Color&)color).red;
+	ret.red 	= ((const Color&)color).red;
 	ret.green	= ((const Color&)color).green;
 	
 	return ret;
 }
 
-KolibriLib::Colors::Color::operator rgb_t()
+KolibriLib::Colors::Color::operator rgb_t() const
 {
 	return GetRGB();
 }
 
-KolibriLib::Colors::Color::operator ksys_color_t()
+KolibriLib::Colors::Color::operator ksys_color_t() const
 {
 	return val;
 }

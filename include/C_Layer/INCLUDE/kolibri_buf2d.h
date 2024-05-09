@@ -5,10 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*ToDo
- * voxel function
- */
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -36,7 +32,7 @@ typedef struct __attribute__ ((__packed__))
 	unsigned int height;
 
 	/// @brief Background color
-	unsigned int bgcolor;
+	ksys_color_t bgcolor;
 
 	/// @brief Color depth
 	uint8_t color_bit;
@@ -238,7 +234,15 @@ extern void (*buf2d_flip_v)(buf2d_struct *buffer) __attribute__((__stdcall__));
 
 extern void (*buf2d_filter_dither)(buf2d_struct *, unsigned int) __attribute__((__stdcall__));
 
-buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, unsigned int font_bgcolor, uint8_t color_bit);
+/// @brief 
+/// @param tlx 
+/// @param tly 
+/// @param sizex 
+/// @param sizey 
+/// @param font_bgcolor 
+/// @param color_bit 
+/// @return 
+buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, ksys_color_t font_bgcolor, uint8_t color_bit);
 
 /// @brief Copy buf2d_struct
 /// @param buff struct to be copy
@@ -256,9 +260,17 @@ inline void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, 
 	buf2d_curve_bezier_asm(buf, (p1.x << 16) + p1.y, (p2.x << 16) + p2.y, (p3.x << 16) + p3.y, color);
 }
 
+/// @brief Конвертирует 32 битный буфер в 24 битный, координаты не учитываются
+/// @param buffer32bit Буфер который будет конвертироваться
+/// @param buffer24bit Буфер в который будет конвертирован 32 битный буфер
+/// @return Функция возвращает buffer24bit
+buf2d_struct *buf2d_conv_32_to_24(const buf2d_struct* buffer32bit, buf2d_struct *buffer24bit);
 
 #ifdef __cplusplus
 }
 #endif
 
+
+
 #endif /* KOLIBRI_BUF2D_H */
+

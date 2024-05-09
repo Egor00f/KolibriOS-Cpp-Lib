@@ -13,4 +13,17 @@
 #include <kolibriLib/libini.hpp>
 #include <UI.hpp>
 
+namespace KolibriLib
+{
+	using KolibriLib::Colors::Color;
+	using KolibriLib::window::Window;
+	using filesystem::Path;
+
+
+	using KolibriLib::OS::GetSystemColors;
+	using KolibriLib::OS::Event;
+
+} // namespace KolibriLib
+
+
 #endif // __KOLIBRILIB_H__

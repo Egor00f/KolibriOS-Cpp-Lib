@@ -23,7 +23,7 @@ namespace KolibriLib
                 struct Font
                 {
                     /// @brief инициализировать библиотеку freetype и загрузить ttf файл.
-                    Font(const filesystem::Path &ttf_file);
+                    Font(const filesystem::Path &ttf_file, const Size &size = {32, 16});
 
                     /// @brief Конструктор копирования
                     /// @param copy 

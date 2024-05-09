@@ -34,7 +34,7 @@ namespace FreeType
 		/// @throw генерирует исключение если прозошла ошибка
 		~FreeTypeLib();
 
-		operator FT_Library();
+		operator FT_Library() const;
 
 		FT_Library _FreeType;
 		bool loaded = false;
@@ -44,14 +44,15 @@ namespace FreeType
 	extern FreeTypeLib ft;
 
 
-	/// @brief Отрисовать глиф
+	/// @brief Отрисовать
 	/// @param slot слот
 	/// @param Coord координаты отрисовки
-	void DrawGlyphSlot(const FT_GlyphSlot &slot,
-					   FT_Int x, FT_Int y,
-					   const KolibriLib::Coord &coord,
-					   const KolibriLib::Colors::Color &TextColor = KolibriLib::OS::GetSystemColors().work_text,
-					   const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::OS::GetSystemColors().work_area);
+	/// @warning Вызывает page fault, хз почему
+	void DrawBitmap(FT_Bitmap *bitmap,
+					const FT_Int &x, const FT_Int &y,
+					const KolibriLib::Coord &coord,
+					const KolibriLib::Colors::Color &TextColor = KolibriLib::OS::GetSystemColors().work_text,
+					const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::OS::GetSystemColors().work_area);
 
 	/// @brief Отрисовать текст
 	/// @param text текст
@@ -59,7 +60,7 @@ namespace FreeType
 	/// @param coord коорд
 	/// @param loadFlags
 	/// @return Ошибка
-	FT_Error DrawText(const char *text, const FT_Face &face, const KolibriLib::CoordA &coord, uint32_t loadFlags = FT_LOAD_RENDER);
+	FT_Error DrawText(const char *text, FT_Face face, const KolibriLib::CoordA &coord, uint32_t loadFlags = FT_LOAD_RENDER);
 
 	/// @brief Загрузить FT_Face
 	/// @param face face

@@ -19,6 +19,20 @@ namespace KolibriLib
     namespace UI
     {
 
+        /// @brief Координаты/Размеры для элементов UI
+        struct UIDim
+        {
+            /// @brief Абсолютные значения
+            Coord Offset;
+
+            /// @brief Относительно размеров окна
+            Coord Scale;
+
+            /// @brief 
+            /// @param p 
+            UIDim(const point &p);
+        };
+
         /// @brief Отступы поумолчанию
         const unsigned DefaultMargin = 4;
 
@@ -54,7 +68,7 @@ namespace KolibriLib
             
             /// @brief Получить размер элемента
             /// @return Функция возвращает _size
-            const Size& GetSize() const;
+            Size GetSize() const;
 
             /// @brief Изменить размер элемента
             /// @param NewSize новый размер
@@ -66,7 +80,7 @@ namespace KolibriLib
 
             /// @brief Получить осносной цвет элемента
             /// @return Функция возвращает _MainColor
-            const Colors::Color& GetColor() const;
+            Colors::Color GetColor() const;
 
             /// @brief Изменить цвет
             /// @param NewColor новый цвет
@@ -78,7 +92,7 @@ namespace KolibriLib
 
             /// @brief Получить координаты элемента
             /// @return Функция возвращает _coord
-            const Coord& GetCoord() const;
+            Coord GetCoord() const;
 
             /// @brief Повернуть элемент
             /// @param NewAngle Новый угол наклона

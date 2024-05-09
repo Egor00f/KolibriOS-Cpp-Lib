@@ -21,10 +21,16 @@ namespace KolibriLib
 		/// @brief координата по оси Y, или высота
 		int y;
 
+		point();
+
 		/// @brief Конструктор
 		/// @param X 
 		/// @param Y 
-		point(int X = 0, int Y = 0);
+		point(int X, int Y);
+
+		/// @brief конструктор
+		/// @param Number 
+		point(int Number);
 
 		/// @brief 
 		/// @param pos 

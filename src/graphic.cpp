@@ -23,7 +23,7 @@ void graphic::DrawPoint(const Coord &position, const unsigned &size, const Color
 void DrawCircle(const Coord &coord, unsigned Radius, const Colors::Color &color)
 {
 	UI::Images::img buff(Colors::Color(), {((int)Radius * 2), ((int)Radius * 2)}, UI::Images::img::RGBA);
-	buff.DrawCircle({(int)Radius, (int)Radius}, Radius, color.val);
+	buff.DrawCircle({(int)Radius, (int)Radius}, Radius, color);
 	buff.Draw(coord);
 }
 
@@ -35,7 +35,7 @@ void DrawCircleFill(const Coord &coord, const unsigned &Radius, const Colors::Co
 	unsigned c = Radius * sin(90 + 45);
 	Coord n(coord.x + (int)b, coord.y + (int)c);
 
-	DrawRectangleFill(n, Size((coord.x - n.x) * 2, c * 2), color);
+	DrawRectangleFill(n, {(coord.x - n.x) * 2, (int)c * 2}, color);
 
 	for (unsigned i = Radius; i > (Radius - (coord.x - n.x)); i--) // Дозакрашивание пробелов между квадратом и границами груга
 	{

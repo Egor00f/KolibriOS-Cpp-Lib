@@ -77,12 +77,13 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 	char *b = new char[2];
 	b[0] = _c;
 	b[1] = '\0';
-	FreeType::FT_Error error = FreeType::DrawText(b, _font->_face, coord);
+	DrawText(b, coord, _font);
+	//FreeType::FT_Error error = FreeType::DrawText(b, _font->_face, coord);
 	delete[] b;
-	if(error != 0)
-	{
-		_ksys_debug_puts("Error Load Char\n");
-	}
+	//if(error != 0)
+	//{
+	//	_ksys_debug_puts("Error Load Char\n");
+	//}
 }
 
 KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(char c)

@@ -23,9 +23,8 @@ namespace KolibriLib
 			return buff;
 		}
 
-		/// @brief Ивент
-		typedef uint32_t Event;
-
+		
+		/// @brief Перечисление всех ивнтов
 		enum Events
 		{
 			/// @brief Ивента небыло
@@ -47,11 +46,14 @@ namespace KolibriLib
 			Exit
 		};
 
+		/// @brief Ивент
+		typedef Events Event;
+
 		/// \brief Ждать ивента
 		/// \return Ивент
 		inline Event WaitEvent()
 		{
-			return _ksys_wait_event();
+			return (Event)_ksys_wait_event();
 		}
 
 		/// \brief Ждать ивента
@@ -59,14 +61,14 @@ namespace KolibriLib
 		/// \return Ивент
 		inline Event WaitEvent(const uint32_t &TimeOut)
 		{
-			return _ksys_wait_event_timeout(TimeOut);
+			return (Event)_ksys_wait_event_timeout(TimeOut);
 		}
 
 		/// \brief Проверить пришёл ли ли ивент
 		/// \return Ивент
 		inline Event CheckEvent()
 		{
-			return _ksys_check_event();
+			return (Event)_ksys_check_event();
 		}
 
 		/// \brief Запустить программу
@@ -182,9 +184,12 @@ namespace KolibriLib
 		{
 			/// @brief не закрывать автоматически
 			NoAutoClose = 'd',
+			
 			NoClose = 'c',
+
 			/// @brief Есть заголовок
 			Title = 't',
+
 			ProgressBar = 'p'
 		} notifyKey;
 

@@ -11,9 +11,7 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 	_ksys_debug_puts("TextLabel Constructor\n");
 	#endif
 
-	Fonts::Font f(Fonts::DefaultFont);
-	SetFont(f);
-	f.~Font();
+	SetFont(Fonts::Font(Fonts::DefaultFont.font_file, FontSize));
 }
 
 TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const UI::text::Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, unsigned Margin) 
@@ -22,6 +20,7 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 	#ifdef DEBUG
 	_ksys_debug_puts("TextLabel Constructor\n");
 	#endif
+	
 	SetFont(Font);
 }
 

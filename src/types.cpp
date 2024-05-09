@@ -2,6 +2,11 @@
 
 using namespace KolibriLib;
 
+KolibriLib::point::point()
+	: x(0), y(0)
+{
+}
+
 KolibriLib::point::point(int X, int Y)
 	: x(X), y(Y)
 {
@@ -14,6 +19,11 @@ KolibriLib::point::point(const point & p)
 
 KolibriLib::point::point(const ksys_pos_t & pos)
 	: x(pos.x), y(pos.y)
+{
+}
+
+KolibriLib::point::point(int Number)
+	:  x(Number), y(Number)
 {
 }
 

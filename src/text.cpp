@@ -106,7 +106,8 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 		{
 			s += _data[i].GetChar();
 		}
-		FreeType::DrawText(s.c_str(), f._face, coord);
+		DrawText(s, coord, f._size.y, _data[0].GetTextColor());
+		// FreeType::DrawText(s.c_str(), f._face, coord);
 	}
 
 	
@@ -167,6 +168,7 @@ void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 	_ksys_debug_puts("\n");
 	#endif
 	
+	_data.clear();
 	_data.reserve(text.length());
 
 	

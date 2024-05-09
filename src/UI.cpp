@@ -3,13 +3,18 @@
 using namespace KolibriLib;
 using namespace UI;
 
+KolibriLib::UI::UIDim::UIDim(const point &p)
+	: Offset(p), Scale(0)
+{
+}
+
 KolibriLib::UI::UIElement::UIElement(const Coord &coord, const Size &size, const Colors::Color &MainColor, const unsigned &Margin, bool relative)
 	: _coord(coord.x, coord.y + (int)window::GetSkinHeight()), _size(size), _MainColor(MainColor), _Margin(Margin), _relative(relative)
 {
 	
 }
 
-const Size &KolibriLib::UI::UIElement::GetSize() const
+Size KolibriLib::UI::UIElement::GetSize() const
 {
 	return _size;
 }
@@ -24,7 +29,7 @@ unsigned KolibriLib::UI::UIElement::GetMargin() const
 	return _Margin;
 }
 
-const Colors::Color &KolibriLib::UI::UIElement::GetColor() const
+Colors::Color KolibriLib::UI::UIElement::GetColor() const
 {
 	return _MainColor;
 }
@@ -39,7 +44,7 @@ void KolibriLib::UI::UIElement::SetCoord(const Coord &NewCoord)
 	_coord = NewCoord;
 }
 
-const Coord &KolibriLib::UI::UIElement::GetCoord() const
+Coord KolibriLib::UI::UIElement::GetCoord() const
 {
 	return _coord;
 }

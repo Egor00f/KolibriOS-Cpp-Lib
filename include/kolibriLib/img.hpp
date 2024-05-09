@@ -8,11 +8,7 @@
 
 #include <string>
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
-#include <kolibri_libimg.h>
 #include <kolibri_buf2d.h>
 
 namespace KolibriLib
@@ -50,17 +46,12 @@ namespace KolibriLib
 				img(const rgb_t *color, const Size &size, imgBPP bpp = imgBPP::RGB);
 
 				/// @brief Конструктор
-				/// @param color Массив цветов
-				/// @param size размеры изображения
-				img(const Colors::Color *color, const Size &size, imgBPP bpp = imgBPP::RGB);
-
-				/// @brief Конструктор
 				/// @param color цвет
 				/// @param size размеры изображения
 				/// @note Закрашивает изображение в цвет
 				img(const Colors::Color &color, const Size &size, imgBPP bpp = imgBPP::RGB);
 
-				img(const filesystem::Path &ImageFile, imgBPP bpp = imgBPP::RGB);
+				img(const filesystem::Path &ImageFile);
 
 				/// @brief Коструктор копирования
 				/// @param copy то что будет копироваться
@@ -97,7 +88,7 @@ namespace KolibriLib
 				bool SetPixel(const Colors::Color &color, const Coord &coord);
 
 				/// @brief Повернуть изображение на определённый угол
-				/// @param value значения 90, 180, 270
+				/// @param value значения 90, 180
 				void Rotate(int value);
 
 				/// @brief Очистить изображение, 
@@ -133,8 +124,8 @@ namespace KolibriLib
 				/// @return Цвет
 				Colors::Color GetPixel(const Coord &coord) const;
 
-				/// @brief Получить изображение как массив Colors::Color
-				/// @return Указатель на img::_img->Data
+				/// @brief Получить изображение как массив цветов (Colors::Color)
+				/// @return копия
 				Colors::Color *GetColorsMap() const;
 
 				/// @brief получить массив rgb_t

@@ -2,10 +2,10 @@
 
 using namespace KolibriLib;
 
-KolibriLib::UI::text::Fonts::Font::Font(const filesystem::Path &ttf_file)
+KolibriLib::UI::text::Fonts::Font::Font(const filesystem::Path &ttf_file, const Size &size)
 {
 	loadFontFromFile(ttf_file);
-	SetSize({32, 0});
+	SetSize(size);
 }
 
 KolibriLib::UI::text::Fonts::Font::~Font()

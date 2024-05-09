@@ -1,12 +1,10 @@
 #ifndef __TEXTBASE_H__
 #define __TEXTBASE_H__
 
-#include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/UI/image.hpp>
-#include <kolibri_rasterworks.h>
 
 namespace KolibriLib
 {

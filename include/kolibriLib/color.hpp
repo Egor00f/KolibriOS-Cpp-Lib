@@ -30,8 +30,8 @@ namespace KolibriLib
             Color(const Color &a);
             Color(const rgb_t &color);
 
-            operator rgb_t();
-            operator ksys_color_t();
+            operator rgb_t() const;
+            operator ksys_color_t() const;
 
             /// @brief Получить rgb_t
             /// @return 

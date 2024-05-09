@@ -47,6 +47,10 @@ namespace KolibriLib
 				/// @param NewColor новый цвет фона
 				void SetTextColor(const Colors::Color &NewColor);
 
+				/// @brief 
+				/// @return 
+				Colors::Color GetTextColor() const;
+
 				/// @brief Изменить цвет фона текста
 				/// @param NewColor новый цвет фона
 				void SetBackgroundColor(const Colors::Color &NewColor);
@@ -100,7 +104,8 @@ namespace KolibriLib
 			/// @throw FT_Error
 			inline FreeType::FT_Error DrawText(const std::string &text, const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont)
 			{
-				DrawText(text.c_str(), font._face, coord);
+				DrawText(text, coord, font._size.y);
+				// DrawText(text.c_str(), font._face, coord);
 			}
 
 		} // namespace text

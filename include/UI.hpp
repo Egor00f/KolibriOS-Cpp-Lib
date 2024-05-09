@@ -13,4 +13,18 @@
 #include <kolibriLib/UI/text/font.hpp>
 #include <kolibriLib/UI/text/fontslist.hpp>
 
+namespace KolibriLib
+{
+	using KolibriLib::UI::Images::img;
+	using KolibriLib::UI::text::TextLabel;
+	using UI::buttons::Button;
+	using UI::text::Fonts::Font;
+	using UI::Menu;
+	using UI::CheckBox;
+	using UI::Form;
+
+	using UI::text::DrawText;
+} // namespace KolibriLib
+
+
 #endif // __UI_H__

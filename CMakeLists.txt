@@ -97,29 +97,21 @@ set(C_Layer_C_Sources
 include_directories("./include/C_Layer/INCLUDE")
 
 
-
-
-
 include_directories("./include")
-
-
-
-
-
 
 SET(SOURCES 
 	${C_Layer_ASM_Sources}
 	${C_Layer_C_Sources}
-	${SRC_PATH}/freetypefuncs.cpp
 	${SRC_PATH}/filesystem.cpp 
 	${SRC_PATH}/color.cpp 
 	${SRC_PATH}/os.cpp 
 	${SRC_PATH}/graphic.cpp 
-	${SRC_PATH}/font.cpp 
+	${SRC_PATH}/img.cpp 
+	${SRC_PATH}/freetypefuncs.cpp
+	${SRC_PATH}/font.cpp
 	${SRC_PATH}/thread.cpp 
 	${SRC_PATH}/types.cpp 
 	${SRC_PATH}/textBase.cpp 
-	${SRC_PATH}/img.cpp 
 	${SRC_PATH}/UI.cpp 
 	${SRC_PATH}/image.cpp 
 	${SRC_PATH}/char.cpp 
