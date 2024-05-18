@@ -76,7 +76,7 @@ namespace KolibriLib
             UI::buttons::Button OK(Coord((int)WindowSize.x - (int)window.GetMargin(), (int)WindowSize.y / 2), Size(ButtonSize, WindowSize.y / 2));
             OK.Add("OK");
 
-            unsigned ok = window.AddElement(OK);
+            auto ok = window.AddElement(OK);
 
             OK.~Button();
 

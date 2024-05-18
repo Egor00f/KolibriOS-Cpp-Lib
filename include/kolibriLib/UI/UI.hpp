@@ -20,17 +20,21 @@ namespace KolibriLib
     {
 
         /// @brief Координаты/Размеры для элементов UI
-        struct UIDim
+        struct UDim
         {
             /// @brief Абсолютные значения
-            Coord Offset;
+            point Offset;
 
             /// @brief Относительно размеров окна
-            Coord Scale;
+            point Scale;
 
-            /// @brief 
-            /// @param p 
-            UIDim(const point &p);
+            /// @brief Конструктор
+            /// @param p
+            UDim(const point &p);
+
+			/// @brief получить абсолютный размер
+			/// @return 
+			point AbsoluteSize();
         };
 
         /// @brief Отступы поумолчанию
@@ -43,36 +47,34 @@ namespace KolibriLib
         protected:
         
             /// @brief Координаты
-            CoordA _coord;
+            UDim _coord;
+
+			int _rotation;
 
             /// @brief Размер
-            Size _size;
+            UDim _size;
 
             Colors::Color _MainColor;
 
             /// @brief Отступы
             unsigned _Margin;
-
-            /// @brief Оносительны ли координаты
-            bool _relative;
-
         public:
             
             /// @brief Конструктор
-            /// @param coord координаты
+            /// @param UDim координаты
             /// @param size размер
             /// @param MainColor основной цвет
             /// @param Margin отступы
             /// @param relative отностельность
-            UIElement(const Coord& coord = Coord(0,0), const Size& size = Size(32,32), const Colors::Color& MainColor = OS::GetSystemColors().work_graph, const unsigned& Margin = DefaultMargin, bool relative = false);
-            
-            /// @brief Получить размер элемента
+			UIElement(const UDim &coord = {{0,0}, {0,0}}, const UDim &size = {(point){100, 100}, (point){0,0}}, const Colors::Color &MainColor = OS::GetSystemColors().work_graph, const unsigned &Margin = DefaultMargin, bool relative = false);
+
+			/// @brief Получить размер элемента
             /// @return Функция возвращает _size
-            Size GetSize() const;
+            UDim GetSize() const;
 
             /// @brief Изменить размер элемента
             /// @param NewSize новый размер
-            void SetSize(const Size& NewSize);
+            void SetSize(const UDim& NewSize);
 
             /// @brief Получить отступы
             /// @return Функция возвращает _Margin
@@ -88,11 +90,11 @@ namespace KolibriLib
 
             /// @brief изменить координаты
             /// @param NewCoord новые координаты
-            void SetCoord(const Coord& NewCoord);
+            void SetCoord(const UDim& NewCoord);
 
             /// @brief Получить координаты элемента
             /// @return Функция возвращает _coord
-            Coord GetCoord() const;
+            UDim GetCoord() const;
 
             /// @brief Повернуть элемент
             /// @param NewAngle Новый угол наклона

@@ -91,22 +91,20 @@ void FreeType::DrawBitmap(FT_Bitmap *bitmap, const FT_Int &x, const FT_Int &y, c
 	{
 		for (j = y, q = 0; j < y_max; j++, q++)
 
-			if (i < 0 || j < 0 ||
-				i >= RenderWidth || j >= RenderHeight)
+			if (i < 0 || j < 0 || i >= RenderWidth || j >= RenderHeight)
 				continue;
 
-			unsigned char buff = 0;
-			if(!(q * bitmap->width + p > bitmap->width * bitmap->rows))
-			{
-				_ksys_debug_puts("AAAAA\n");
-				buff = bitmap->buffer[q * bitmap->width + p];
-			}
+			_ksys_debug_puts("continue\n");
 
+			unsigned char buff = bitmap->buffer[q * bitmap->width + p];
+		
 			if(buff > 0)
 			{
+				_ksys_debug_puts("buf>0\n");
 				KolibriLib::Colors::Color b(TextColor);
 				b._a |= buff;
-				image.SetPixel(b, {j, i});	
+				image.SetPixel(b, {j, i});
+				_ksys_debug_puts("done 1 cycle\n");	
 			}
 	}
 	

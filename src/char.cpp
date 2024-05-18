@@ -12,6 +12,12 @@ KolibriLib::UI::text::Char::Char(char c, const Fonts::Font &font, const Colors::
 	
 }
 
+KolibriLib::UI::text::Char::Char()
+{
+
+}
+
+
 KolibriLib::UI::text::Char::Char(const Char &copy)
 	: _c(copy._c), ExternBackgroundColor(copy.ExternBackgroundColor), ExternFont(copy._font), ExternTextColor(copy.ExternTextColor)
 {
@@ -49,8 +55,25 @@ void KolibriLib::UI::text::Char::SetFlags(unsigned flags)
 
 void KolibriLib::UI::text::Char::SetTextColor(const Colors::Color &NewColor)
 {
-	*this->_TextColor = NewColor.val;
+	if(!ExternTextColor)
+	{
+		delete _TextColor;
+	}
+
+	*this->_TextColor = new Colors::Color(NewColor);
+	ExternTextColor = false;
 }
+void KolibriLib::UI::text::Char::SetTextColor(Colors::Color *NewColor)
+{
+	if (!ExternTextColor)
+	{
+		delete _TextColor;
+	}
+	
+	ExternTextColor = true;
+	_TextColor = NewColor;
+}
+
 
 void KolibriLib::UI::text::Char::SetBackgroundColor(const Colors::Color &NewColor)
 {
@@ -66,6 +89,16 @@ void KolibriLib::UI::text::Char::SetFont(const KolibriLib::UI::text::Fonts::Font
 	_font = new Fonts::Font(newFont);
 }
 
+void KolibriLib::UI::text::Char::SetFont(Fonts::Font *font)
+{
+	if (!ExternFont)
+	{
+		delete _font;
+	}
+	ExternFont = true;
+	_font = font;
+}
+
 const Fonts::Font KolibriLib::UI::text::Char::GetFont() const
 {
 	return *_font;
@@ -77,6 +110,7 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 	char *b = new char[2];
 	b[0] = _c;
 	b[1] = '\0';
+
 	DrawText(b, coord, _font);
 	//FreeType::FT_Error error = FreeType::DrawText(b, _font->_face, coord);
 	delete[] b;
@@ -84,6 +118,11 @@ void KolibriLib::UI::text::Char::Print(const Coord &coord) const
 	//{
 	//	_ksys_debug_puts("Error Load Char\n");
 	//}
+}
+
+Colors::Color KolibriLib::UI::text::Char::GetTextColor() const
+{
+	return *_TextColor;
 }
 
 KolibriLib::UI::text::Char &KolibriLib::UI::text::Char::operator=(char c)

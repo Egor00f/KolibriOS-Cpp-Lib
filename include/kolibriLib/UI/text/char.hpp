@@ -47,6 +47,10 @@ namespace KolibriLib
 				/// @param NewColor новый цвет фона
 				void SetTextColor(const Colors::Color &NewColor);
 
+				/// @brief Изменить цвет текста
+				/// @param NewColor erfpfntkm новый цвет фона
+				void SetTextColor(Colors::Color *NewColor);
+
 				/// @brief 
 				/// @return 
 				Colors::Color GetTextColor() const;
@@ -57,7 +61,10 @@ namespace KolibriLib
 
 				/// @brief Измерить размеры символа
 				/// @param size
-				void SetFont(const Fonts::Font &size);
+				void SetFont(const Fonts::Font &newFont);
+				/// @brief 
+				/// @param font 
+				void SetFont(Fonts::Font *font);
 
 				/// @brief Получить ASCII символ
 				/// @return

@@ -12,9 +12,9 @@ Char Txt::GetChar(int i) const
 std::string KolibriLib::UI::text::Txt::GetText() const
 {
 	std::string result;
-	for (Char i : _data)
+	for (std::size_t i = 0; i <_data.size(); i++)
 	{
-		result += i.GetChar();
+		result += _data[i].GetChar();
 	}
 	return result;
 }
@@ -24,6 +24,8 @@ Txt::Txt()
 	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor\n");
 	#endif
+	_font = new Fonts::Font(Fonts::DefaultFont);
+	_TextColor = new Colors::Color(OS::GetSystemColors().work_text);
 }
 
 Txt::Txt(const std::string &text)
@@ -32,15 +34,20 @@ Txt::Txt(const std::string &text)
 	_ksys_debug_puts("Text constructor\n");
 	#endif
 
+	_font = new Fonts::Font(Fonts::DefaultFont);
+	_TextColor = new Colors::Color(OS::GetSystemColors().work_text);
+
 	SetText(text);
 }
 
-KolibriLib::UI::text::Txt::Txt(const Txt & copy)
+KolibriLib::UI::text::Txt::Txt(const Txt &copy)
 	:_data(copy._data)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor(copy)\n");
 	#endif
+	_font = new Fonts::Font(*copy._font);
+	_TextColor = new Colors::Color(*copy._TextColor);
 }
 
 void KolibriLib::UI::text::Txt::Add(const KolibriLib::UI::text::Char &c)
@@ -118,25 +125,27 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 
 void KolibriLib::UI::text::Txt::SetFont(const Fonts::Font &Font)
 {
-	for (int i = 0; i < _data.size(); i++)
+	*_font = Font;
+	for (Char i : _data)
 	{
-		_data[i].SetFont(Font);
+		i.SetFont(_font);
 	}
 }
 
 void KolibriLib::UI::text::Txt::SetTextColor(const Colors::Color &Color)
 {
-	for (int i = 0; i < _data.size(); i++)
+	*_TextColor = Color;
+	for (Char i : _data)
 	{
-		_data[i].SetTextColor(Color);
+		i.SetTextColor(_TextColor);
 	}
 }
 
 void KolibriLib::UI::text::Txt::SetBackgroundColor(const Colors::Color &Color)
 {
-	for (int i = 0; i < _data.size(); i++)
+	for (Char i : _data)
 	{
-		_data[i].SetBackgroundColor(Color);
+		i.SetBackgroundColor(Color);
 	}
 }
 

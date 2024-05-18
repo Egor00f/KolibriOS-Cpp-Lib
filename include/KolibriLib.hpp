@@ -17,11 +17,19 @@ namespace KolibriLib
 {
 	using KolibriLib::Colors::Color;
 	using KolibriLib::window::Window;
+
 	using filesystem::Path;
+	using filesystem::CreateFile;
+	using filesystem::MakeDirectory;
+	using filesystem::Delete;
 
-
-	using KolibriLib::OS::GetSystemColors;
 	using KolibriLib::OS::Event;
+	using KolibriLib::OS::Time;
+	using KolibriLib::OS::GetSystemColors;
+	using KolibriLib::OS::GetTime;
+	using KolibriLib::OS::Exec;
+	using KolibriLib::OS::FreeMem;
+	using KolibriLib::OS::AllMem;
 
 } // namespace KolibriLib
 

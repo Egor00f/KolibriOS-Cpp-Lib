@@ -115,8 +115,8 @@ namespace KolibriLib
 				bool operator==(const Txt &txt) const;
 
 			protected:
-				Fonts::Font *_font;
-				Colors::Color *_TextColor;
+				Fonts::Font *_font = nullptr;
+				Colors::Color *_TextColor = nullptr;
 				std::vector<Char> _data;
 			};
 

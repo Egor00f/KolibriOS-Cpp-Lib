@@ -38,6 +38,7 @@ namespace KolibriLib
 			/// @brief Структура содержащая элемент
 			struct Element
 			{
+				/// @brief Тип элемента
 				enum Type
 				{
 					None,
@@ -97,6 +98,9 @@ namespace KolibriLib
 				void Render() const;
 			};
 
+			/// @brief Номер элемента в Window::_Elements
+			typedef int ElementNumber;
+
 			/// @brief Конструктор
 			/// @param Title Заголовок окна
 			/// @param size Размер окна
@@ -152,7 +156,7 @@ namespace KolibriLib
 
 			/// @brief Удалить элемент
 			/// @param id idшник того элемента, которой нужно удалить
-			void DeleteElement(int id);
+			void DeleteElement(Window::ElementNumber id);
 
 			/// @brief Обработчик окна
 			/// @return Ивент
@@ -166,23 +170,17 @@ namespace KolibriLib
 			/// @return Функция возвращает текст введённый в формы
 			std::string GetInputFromFrom(int form) const;
 
+			template <class T>
 			/// @brief Добавить UI элемент
 			/// @param element
-			int AddElement(const UI::text::TextLabel &element);
-
-			/// @brief Добавить UI элемент
-			/// @param element
-			int AddElement(const UI::Images::Image &element);
-
-			/// @brief Добавить UI элемент
-			/// @param element
-			int AddElement(const UI::buttons::Button &element);
+			/// @return std::pair<номер элемента в списке, указатель на элемент>
+			std::pair<Window::ElementNumber, T*> AddElement(const T &element);
 
 			template <class T>
 			/// @brief Изменить элемент
 			/// @param i
 			/// @param element
-			void SetElement(int i, const T &element);
+			void SetElement(Window::ElementNumber i, const T &element);
 
 			/// @brief Получить Window::Element
 			/// @param i ключ
@@ -201,7 +199,7 @@ namespace KolibriLib
 			std::string _title;
 
 			/// @brief Список всех кнопок этого окна
-			std::unordered_map<int, Element> _Elements;
+			std::unordered_map<Window::ElementNumber, Element> _Elements;
 
 			/// @brief Размеры окна
 			Size _size;
@@ -340,95 +338,9 @@ namespace KolibriLib
 			}
 		}
 
-		//=============================================================================================================================================================
-
-		int KolibriLib::window::Window::AddElement(const UI::text::TextLabel &element)
-		{
-			#ifdef DEBUG
-			_ksys_debug_puts("Add element-\n");
-			#endif
-
-			Element a;
-
-			a.SetElement(element);
-
-			for (int i = 0; i < _Elements.max_size(); i++)
-			{
-				if (_Elements.count(i) == 0)
-				{
-					_Elements.emplace(i, a);
-					return i;
-				}
-			}
-			return -1;
-		}
-
-		int KolibriLib::window::Window::AddElement(const UI::Images::Image &element)
-		{
-			#ifdef DEBUG
-			_ksys_debug_puts("Add element-\n");
-			#endif
-
-			Element a;
-
-			a.SetElement(element);
-
-			for (int i = 0; i < _Elements.max_size(); i++)
-			{
-				if (_Elements.count(i) == 0)
-				{
-					_Elements.emplace(i, a);
-					return i;
-				}
-			}
-			if (_Elements.size() == 0)
-			{
-				_Elements[0] = a;
-			}
-			return 0;
-		}
-
-		int KolibriLib::window::Window::AddElement(const UI::buttons::Button &element)
-		{
-			#ifdef DEBUG
-			_ksys_debug_puts("Add element-\n");
-			#endif
-
-			Element a;
-
-			a.SetElement(element);
-
-			for (int i = 0; i < _Elements.max_size(); i++)
-			{
-				if (_Elements.count(i) == 0)
-				{
-					_Elements.emplace(i, a);
-					;
-					return i;
-				}
-			}
-			if(_Elements.size() == 0)
-			{
-				_Elements[0] = a;
-			}
-			return 0;
-		}
-
-		template <class T>
-		void KolibriLib::window::Window::SetElement(int i, const T &element)
-		{
-			if (_Elements.count(i))
-			{
-				_Elements[i].SetElement(element);
-				return;
-			}
-			_ksys_debug_puts("KolibriLib::window::Window::SetElement: not found element\n");
-			return;
-		}
-
 		KolibriLib::window::Window::Element::Element()
 		{
-			#if DEBUG == true
+			#ifdef DEBUG
 			_ksys_debug_puts("KolibriLib::window::Window::Element constructor\n");
 			#endif
 		}
@@ -463,9 +375,55 @@ namespace KolibriLib
 			case Element::Type::Frame:
 				delete ((UI::Frame *)pointer);
 				break;
+			default:
+				break;
 			}
 		}
 
+		//=============================================================================================================================================================
+		template <class T>
+		std::pair<Window::ElementNumber, T*> KolibriLib::window::Window::AddElement(const T &element)
+		{
+			#ifdef DEBUG
+			_ksys_debug_puts("Add element-\n");
+			#endif
+
+			Element a;
+
+			a.SetElement(element);
+
+			std::pair<Window::ElementNumber, T *> ret;
+
+			for (int i = 0; i < _Elements.max_size(); i++)
+			{
+				if (_Elements.count(i) == 0)
+				{
+					_Elements.emplace(i, a);
+
+					std::pair<Window::ElementNumber, T *> ret;
+					ret.first = i;
+					ret.second = (T*)_Elements.find(i)->second.pointer;
+					break;
+				}
+			}
+			ret.first = -1;
+			ret.second = nullptr;
+			return ret;
+		}
+
+		template <class T>
+		void KolibriLib::window::Window::SetElement(ElementNumber i, const T &element)
+		{
+			if (_Elements.count(i))
+			{
+				_Elements[i].SetElement(element);
+				return;
+			}
+			_ksys_debug_puts("KolibriLib::window::Window::SetElement: not found element\n");
+			return;
+		}
+
+		
 
 		//=============================================================================================================================================================
 
@@ -643,7 +601,7 @@ namespace KolibriLib
 			return _size;
 		}
 
-		void Window::DeleteElement(int id)
+		void Window::DeleteElement(ElementNumber id)
 		{
 			if (_Elements.count(id))
 			{
@@ -653,7 +611,7 @@ namespace KolibriLib
 				}
 				_Elements.erase(_Elements.find(id));
 			}
-			_ksys_debug_puts("element this this id not being\n");
+			_ksys_debug_puts("element this this id not found\n");
 		}
 
 		OS::Event Window::Handler()

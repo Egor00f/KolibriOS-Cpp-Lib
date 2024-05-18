@@ -44,7 +44,7 @@ void text::TextLabel::Render() const
 	_ksys_debug_puts("Render textLabel:\n");
 	#endif
 
-	Print(Coord(_coord.x, _coord.y));
+	Print(Coord((_size.x / 2) - (lenghtPX() / 2), (_size.y / 2) - _font->_size.y));
 }
 
 void text::TextLabel::SetScale(bool scale)
@@ -59,28 +59,28 @@ bool TextLabel::GetScale() const
 
 text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const KolibriLib::UI::text::TextLabel &a)
 {
-	_coord = a._coord;
-	_size = a._size;
-	_MainColor = a._MainColor;
-	_Margin = a._Margin;
-	_TextScale = a._TextScale;
+	_coord	= a._coord;
+	_size	= a._size;
+	_MainColor	= a._MainColor;
+	_Margin	= a._Margin;
+	_TextScale	= a._TextScale;
 	return *this;
 }
 
 bool KolibriLib::UI::text::TextLabel::operator==(const KolibriLib::UI::text::TextLabel &a) const
 {
-	return (_coord == a._coord) &&
-		   (_size == a._size) &&
-		   (_MainColor == a._MainColor) &&
-		   (_Margin == a._Margin) &&
-		   (_TextScale == a._TextScale);
+	return (_coord	==	a._coord)	&&
+		   (_size	==	a._size)	&&
+		   (_MainColor	==	a._MainColor)	&&
+		   (_Margin	==	a._Margin)	&&
+		   (_TextScale	==	a._TextScale);
 }
 
 bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::TextLabel &a) const
 {
-	return (_coord == a._coord) ||
-		   (_size == a._size) ||
-		   (_MainColor == a._MainColor) ||
-		   (_Margin == a._Margin) ||
-		   (_TextScale == a._TextScale);
+	return (_coord	==	a._coord)	||
+		   (_size	==	a._size)	||
+		   (_MainColor	==	a._MainColor)	||
+		   (_Margin	==	a._Margin)	||
+		   (_TextScale	==	a._TextScale);
 }

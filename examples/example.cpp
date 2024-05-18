@@ -7,12 +7,7 @@ int main()
 	init(); 
 	Window window("Example Window");
 
-	UI::text::TextLabel textlabel({64, 64}, {100, 100}, "Hello World", 32);
-
-	unsigned label = window.AddElement(textlabel);
-
-	
-
+	TextLabel *textlabel = window.AddElement(TextLabel({0, window::GetSkinHeight()}, window.GetWindowSize(), "Hello World", 32)).second;
 
 	window.Redraw();
 

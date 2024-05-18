@@ -39,10 +39,10 @@ namespace KolibriLib
 			/// \param coord координаты
 			/// \param color цвет текста
 			/// @note Для изменения высоты шрифта используйте SetTextSize()
-			inline void DrawText(const std::string &text, const Coord &coord, const unsigned &size = 9, const Colors::Color &color = OS::GetSystemColors().work_text)
+			inline void DrawText(const std::string &text, const Coord &coord, unsigned size = 9, const Colors::Color &color = OS::GetSystemColors().work_text)
 			{
 				SetTextSize(size);
-				_ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color.val);
+				_ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
 			}
 		}
 	}

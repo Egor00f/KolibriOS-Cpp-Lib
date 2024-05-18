@@ -48,54 +48,64 @@ namespace KolibriLib
 
 
         /// @brief Список ошибок файловой системы
-        enum Errors
+        typedef enum Errors
         {
             /// @brief успешно
             Successfully = 0,
+
             /// @brief функция не поддерживается для данной файловой системы
             NotSupport = 2,
+
             /// @brief неизвестная файловая система
             UnklownFileSystem = 3,
+
             /// @brief файл не найден
             NotFound = 5,
+
             /// @brief EOF, файл закончился
             EndOfFile = 6,
+
             /// @brief указатель вне памяти приложения
             ptrOutsideApp = 7,
+
             /// @brief диск заполнен
             DiskIsFull = 8,
+
             /// @brief ошибка файловой системы
             FSError = 9,
+
             /// @brief доступ запрещён
             AccessDenied = 10,
+
             /// @brief ошибка устройства
             DeviceError = 11,
+            
             /// @brief файловой системе недостаточно оперативной памяти
             OsHaventRam = 12
-        };
+        } Errors;
 
         /// @brief Создать файл
         /// @param name имя файла
-        /// @return Значение из списка @link Errors
-        inline int CreateFile(const Path &name)
+        /// @return Значение из списка Errors
+        inline Errors CreateFile(const Path &name)
         {
-            return _ksys_file_create(name).status;
+            return (Errors)_ksys_file_create(name).status;
         }
 
-        /// @brief удалить файл  или папку
+        /// @brief удалить файл или папку
         /// @param name имя файла
-        /// @return Значение из списка @link Errors
-        inline int Delete(const Path &name)
+        /// @return Значение из списка Errors
+        inline Errors Delete(const Path &name)
         {
-            return _ksys_file_delete(name);
+            return (Errors)_ksys_file_delete(name);
         }
 
         /// @brief Создать папку
         /// @param path путь
-        /// @return Значение из списка @link Errors
-        inline int MakeDirectory(const Path &path)
+        /// @return Значение из списка Errors
+        inline Errors MakeDirectory(const Path &path)
         {
-            return _ksys_mkdir(path);
+            return (Errors)_ksys_mkdir(path);
         }
 
         /// @brief проверяет существует ли файл или папки
@@ -112,11 +122,11 @@ namespace KolibriLib
         /// @brief Переименовать файл
         /// @param OldName старое имя файла
         /// @param NewName новое имя файла
-        /// @return  Значение из списка @link Errors
+        /// @return  Значение из списка Errors
         /// @paragraph Аналог mv. Имена файлов - это полные пути
-        inline int Rename(const Path &OldName, const Path &NewName)
+        inline Errors Rename(const Path &OldName, const Path &NewName)
         {
-            return _ksys_file_rename(OldName, NewName);
+            return (Errors)_ksys_file_rename(OldName, NewName);
         }
         
 

@@ -36,14 +36,14 @@ namespace KolibriLib
         /// \param ThreadEntry Имя функции которую нужно запустить в новом потоке
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
-        /// @paragraph Используйте лучше std::thread, а не эту функцию, а то я вот вообще незнаю сколько размер стека сделать
+        /// @note Используйте лучше std::thread, а то есть шанс проебаться с размером стека
         PID CreateThread(void(*ThreadEntry)(void*), unsigned ThreadStackSize = 2048);
         
 
         /// @brief Завершить процесс/поток
         /// @param PID ID Процесса/потока
         /// @return true если успешно, инач false
-        /// @paragraph Нельзя завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс
+        /// @note Нельзя завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс
         inline bool TerminateThread(PID pid)
         {
             int a;
@@ -65,8 +65,8 @@ namespace KolibriLib
         /// @brief Поличть информацию о потоке
         /// @param thread слот потока
         /// @return информация о потоке
-        /// @paragraph если слот -1 то возвращается информация о текущем потоке
-        ThreadInfo GetThreadInfo(const Slot &thread);
+        /// @details по умолчанию возвращается информация о текущем потоке
+        ThreadInfo GetThreadInfo(const Slot &thread = -1);
 
     } // namespace Thread
     
