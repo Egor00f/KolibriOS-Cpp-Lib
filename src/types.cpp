@@ -99,6 +99,16 @@ KolibriLib::point::operator ksys_pos_t() const
 	return GetKsysPost();
 }
 
+bool KolibriLib::point::operator<(const point &obj) const
+{
+	return (x < obj.x) || (y < obj.y);
+}
+
+bool KolibriLib::point::operator>(const point &obj) const
+{
+	return (x > obj.x) || (y > obj.y);
+}
+
 KolibriLib::CoordA::CoordA(int X, int Y) 
 	: point(X, Y), angle(0)
 {

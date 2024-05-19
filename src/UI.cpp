@@ -5,21 +5,54 @@ using namespace KolibriLib;
 using namespace UI;
 
 KolibriLib::UI::UDim::UDim(const point &p)
-	: Offset(p), Scale(0)
+{
+	X.Offset = p.x;
+	Y.Offset = p.y;
+}
+
+KolibriLib::UI::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
+{
+	X.Scale = XScale;
+	X.Offset = XOffset;
+	Y.Scale = YScale;
+	Y.Offset = YOffset;
+}
+
+KolibriLib::UI::UDim::Axis::Axis(float scale, int offset)
+	: Scale(scale), Offset(offset)
 {
 }
 
-point KolibriLib::UI::UDim::AbsoluteSize()
+bool UI::UDim::Axis::operator==(const UDim::Axis &axis) const
+{
+	return Scale == axis.Scale && Offset == axis.Offset;
+}
+
+bool UI::UDim::Axis::operator!=(const UDim::Axis &axis) const
+{
+	return Scale != axis.Scale || Offset != axis.Offset;
+}
+
+point KolibriLib::UI::UDim::GetAbsolute() const
 {
 	Thread::ThreadInfo Info = Thread::GetThreadInfo();
-	return { (Info.winx_size * Scale.x) + Offset.x, 
-	         (Info.winy_size * Scale.y) + Offset.y };
+	return { (Info.winx_size * X.Scale) + X.Offset, 
+	         (Info.winy_size * Y.Scale) + Y.Offset };
+}
+
+bool KolibriLib::UI::UDim::operator==(const UDim &obj) const
+{
+	return X == obj.X && Y == obj.Y;
+}
+
+bool KolibriLib::UI::UDim::operator!=(const UDim &obj) const
+{
+	return X != obj.X || Y != obj.Y;
 }
 
 KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const Colors::Color &MainColor, const unsigned &Margin, bool relative)
 	: _coord(coord), _size(size), _MainColor(MainColor), _Margin(Margin)
 {
-	_coord.Offset.y += window::GetSkinHeight();
 }
 
 UDim KolibriLib::UI::UIElement::GetSize() const
@@ -71,18 +104,21 @@ bool KolibriLib::UI::UIElement::Hover() const
 {
 	Coord Mouse = mouse::GetMousePositionInWindow();
 
-	return ((_coord.AbsoluteSize() < UDim(Mouse).AbsoluteSize())	&&
-			(Mouse.x < (_coord.AbsoluteSize().x + _size.AbsoluteSize().x))	&&
-			(Mouse.y < (_coord.AbsoluteSize().x + _size.AbsoluteSize().y)))	&&
+	point coord	= _coord.GetAbsolute();
+	Size size = _size.GetAbsolute();
+
+	return ((coord < Mouse)	&&
+			(Mouse.x < (coord.x + size.x))	&&
+			(Mouse.y < (coord.x + size.y)))	&&
 		   (ScreenPointAffiliation(Mouse) == Thread::GetThreadSlot(Thread::GetThreadInfo().pid));
 }
 
 UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
 {
-	_coord = Element._coord;
-	_size = Element._size;
-	_MainColor = Element._MainColor;
-	_Margin = Element._Margin;
+	_coord	= Element._coord;
+	_size	= Element._size;
+	_MainColor	= Element._MainColor;
+	_Margin	= Element._Margin;
 	return *this;
 }
 
@@ -102,5 +138,15 @@ bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 
 void KolibriLib::UI::UIElement::Render()
 {
-	graphic::DrawRectangleFill(_coord.AbsoluteSize(), _size.AbsoluteSize(), _MainColor);
+	graphic::DrawRectangleFill(_coord.GetAbsolute(), _size.GetAbsolute(), _MainColor);
+}
+
+Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
+{
+	return _size.GetAbsolute();
+}
+
+Coord KolibriLib::UI::UIElement::GetAbsolutePos() const
+{
+	return _coord.GetAbsolute();
 }

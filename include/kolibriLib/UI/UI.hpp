@@ -22,23 +22,43 @@ namespace KolibriLib
         /// @brief Координаты/Размеры для элементов UI
         struct UDim
         {
-            /// @brief Абсолютные значения
-            point Offset;
+            struct Axis
+            {
+                /// @brief Относительно размера окна
+                float Scale;
+                /// @brief В пикселях
+                int Offset;
 
-            /// @brief Относительно размеров окна
-            point Scale;
+                Axis(float scale = 0, int offset = 0);
+                bool operator == (const Axis& axis) const;
+                bool operator !=(const Axis &axis) const;
+            };
+
+            UDim::Axis X, Y;
 
             /// @brief Конструктор
             /// @param p
             UDim(const point &p);
 
-			/// @brief получить абсолютный размер
+            /// @brief 
+            /// @param XScale 
+            /// @param XOffset 
+            /// @param YScale 
+            /// @param YOffset 
+            UDim(float XScale, int XOffset, float YScale, int YOffset);
+
+			/// @brief получить абсолютные значения(в пикселях)
 			/// @return 
-			point AbsoluteSize();
+			point GetAbsolute() const;
+
+            bool operator == (const UDim &obj) const;
+            bool operator != (const UDim &obj) const;
+
         };
 
         /// @brief Отступы поумолчанию
         const unsigned DefaultMargin = 4;
+        const Size DefaultSize = {200, 100};
 
         /// @brief Элемент интерфейса
         /// @note Используется как шаблон для других классов
@@ -66,7 +86,7 @@ namespace KolibriLib
             /// @param MainColor основной цвет
             /// @param Margin отступы
             /// @param relative отностельность
-			UIElement(const UDim &coord = {{0,0}, {0,0}}, const UDim &size = {(point){100, 100}, (point){0,0}}, const Colors::Color &MainColor = OS::GetSystemColors().work_graph, const unsigned &Margin = DefaultMargin, bool relative = false);
+			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().work_graph, const unsigned &Margin = DefaultMargin, bool relative = false);
 
 			/// @brief Получить размер элемента
             /// @return Функция возвращает _size
@@ -107,6 +127,14 @@ namespace KolibriLib
             /// @brief Проверить лежит ли курсор мыши над элементом
             /// @return true если курсор мыши находится в этом элементе, иначе false
             bool Hover() const;
+
+            /// @brief Получить абсолютный размер элемента
+            /// @return размер
+            Size GetAbsoluteSize() const;
+
+            /// @brief Получить абсолютные координаты элемента
+            /// @return 
+            Coord GetAbsolutePos() const;
 
             /// @brief отрисовать элемент
             virtual void Render();

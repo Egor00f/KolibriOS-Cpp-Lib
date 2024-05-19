@@ -7,7 +7,7 @@ int main()
 	init(); 
 	Window window("Example Window");
 
-	TextLabel *textlabel = window.AddElement(TextLabel({0, window::GetSkinHeight()}, window.GetWindowSize(), "Hello World", 32)).second;
+	TextLabel *textlabel = window.AddElement(TextLabel(UDim(0,0,0,0), UDim(1,0,1,0), "Hello World", 32)).second;
 
 	window.Redraw();
 

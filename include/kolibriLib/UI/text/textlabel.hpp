@@ -49,7 +49,7 @@ namespace KolibriLib
                 /// @param FontSize Размер текста
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin Отступы от границ
-                TextLabel(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const std::string& text = "TextLabel", const unsigned& FontSize = 9, bool TextScale = true, const Colors::Color& TextColor = OS::GetSystemColors().work_text, const unsigned& Margin = 0);
+                TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const unsigned& FontSize = 9, bool TextScale = true, const Colors::Color& TextColor = OS::GetSystemColors().work_text, const unsigned& Margin = 0);
 
                 /// @brief Коснтруктор
                 /// @param coord коорднаты
@@ -59,14 +59,14 @@ namespace KolibriLib
                 /// @param TextColor цвет текста
                 /// @param BackgroundColor цвет фона
                 /// @param TextScale 
-                /// @param Margin 
-                TextLabel(const Coord& coord = {0, 0}, const Size& size = {16, 16}, const std::string& text = "TextLabel", const Fonts::Font &Font = Fonts::DefaultFont, const Colors::Color& TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area , bool TextScale = true, unsigned Margin = 0);
+                /// @param Margin
+                TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const std::string &text = "TextLabel", const Fonts::Font &Font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area, bool TextScale = true, unsigned Margin = 0);
 
                 /// @brief 
                 /// @param coord 
                 /// @param size
-                /// @param text 
-                TextLabel(const Coord &coord = {0,0}, const Size size = {16, 16}, const Txt &text = Txt());
+                /// @param text
+                TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const Txt &text = Txt());
 
                 /// @brief Конструктор копирования
                 /// @param copy объекто который будет копироваться

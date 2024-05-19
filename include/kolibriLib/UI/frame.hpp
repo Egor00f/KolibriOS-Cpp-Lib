@@ -62,9 +62,8 @@ namespace KolibriLib
             /// @param coord 
             /// @param size 
             /// @param Color 
-            /// @param Margin 
-            Frame(const Coord &coord = {0,0}, const Size &size = {0,0}, const Colors::Color &Color = OS::GetSystemColors().work_area, const unsigned &Margin = DefaultMargin);
-            
+            /// @param Margin
+            Frame(const UDim &coord = point(0), const UDim &size = DefaultSize, const Colors::Color &Color = OS::GetSystemColors().work_area, const unsigned &Margin = DefaultMargin);
 
             /// @brief Отрисовать фрейм
             void Render();
@@ -191,7 +190,7 @@ namespace KolibriLib
             _type = Type::Menu;
         }
 
-        Frame::Frame(const Coord &coord, const Size &size, const Colors::Color &Color, const unsigned &Margin) : UIElement(coord, size, Color, Margin)
+        Frame::Frame(const UDim &coord, const UDim &size, const Colors::Color &Color, const unsigned &Margin) : UIElement(coord, size, Color, Margin)
         {
             #if DEBUG == true
             _ksys_debug_puts("Frame constructor\n");
@@ -200,7 +199,7 @@ namespace KolibriLib
 
         void UI::Frame::Render()
         {
-            graphic::DrawRectangleFill(_coord, _size, _MainColor);
+            graphic::DrawRectangleFill(_coord.GetAbsolute(), _size.GetAbsolute(), _MainColor);
 
             for (const std::pair<int, Element> &n : _Elements)
             {

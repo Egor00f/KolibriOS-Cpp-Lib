@@ -69,7 +69,7 @@ namespace KolibriLib
 
             Size WindowSize = window.GetSize();
 
-            window.AddElement(UI::text::TextLabel({(int)window.GetMargin(), (int)window.GetMargin()}, {WindowSize.x, WindowSize.y / 2}, _Message, 16));
+            window.AddElement(UI::text::TextLabel(UI::UDim(0, UI::DefaultMargin, 0, UI::DefaultMargin), UI::UDim(1, 0, 0.5, 0), _Message, 16));
 
             const unsigned ButtonSize = 40;
 

@@ -4,7 +4,7 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace text;
 
-TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const unsigned &FontSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) 
+TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, const unsigned &FontSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) 
 	: UIElement(coord, size, TextColor, Margin), Txt(text), _TextScale(TextScale)
 {
 	#ifdef DEBUG
@@ -14,7 +14,7 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 	SetFont(Fonts::Font(Fonts::DefaultFont.font_file, FontSize));
 }
 
-TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &text, const UI::text::Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, unsigned Margin) 
+TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, const UI::text::Fonts::Font &Font, const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, unsigned Margin)
 	: UIElement(coord, size, TextColor, Margin), Txt(text), _TextScale(TextScale)
 {
 	#ifdef DEBUG
@@ -24,7 +24,7 @@ TextLabel::TextLabel(const Coord &coord, const Size &size, const std::string &te
 	SetFont(Font);
 }
 
-KolibriLib::UI::text::TextLabel::TextLabel(const Coord &coord, const Size size, const Txt &text)
+KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, const Txt &text)
 	: UIElement(coord, size), Txt(text)
 {
 	#ifdef DEBUG
@@ -44,7 +44,7 @@ void text::TextLabel::Render() const
 	_ksys_debug_puts("Render textLabel:\n");
 	#endif
 
-	Print(Coord((_size.x / 2) - (lenghtPX() / 2), (_size.y / 2) - _font->_size.y));
+	Print(Coord((_size.GetAbsolute().x / 2) - (lenghtPX() / 2), (_size.GetAbsolute().y / 2) - _font->_size.y));
 }
 
 void text::TextLabel::SetScale(bool scale)

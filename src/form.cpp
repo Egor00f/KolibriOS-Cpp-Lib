@@ -3,7 +3,7 @@
 using namespace KolibriLib;
 using namespace UI;
 
-Form::Form(const Coord &coord, const Size &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) 
+Form::Form(const UDim &coord, const UDim &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) 
 	: UIElement(coord, size, FormColor, Margin)
 {
 	_butt.SetCoord(coord);
@@ -30,7 +30,7 @@ void Form::SetBackgroundColor(const Colors::Color &NewColor)
 
 void Form::Render() const
 {
-	graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
+	graphic::DrawRectangleLines(_coord.GetAbsolute(), {_coord.GetAbsolute().x + (int)_size.GetAbsolute().x, _coord.GetAbsolute().y + (int)_size.GetAbsolute().y}, _MainColor);
 
 	_butt.Render();
 }

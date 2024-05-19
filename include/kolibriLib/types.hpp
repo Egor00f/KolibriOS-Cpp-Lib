@@ -74,6 +74,9 @@ namespace KolibriLib
 		/// @param a 
 		/// @return 
 		bool operator!=(const point &a) const;
+
+		bool operator < (const point &obj) const;
+		bool operator > (const point &obj) const;
 	};
 
 	

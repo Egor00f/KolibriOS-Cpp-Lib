@@ -3,7 +3,7 @@
 using namespace KolibriLib;
 using namespace UI;
 
-CheckBox::CheckBox(const Coord &coord, const Size &size, const style &Style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin)
+CheckBox::CheckBox(const UDim &coord, const UDim &size, const style &Style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin)
 	: Button(coord, size, Margin, BackgroundColor), _style(Style)
 {
 	#if DEBUG

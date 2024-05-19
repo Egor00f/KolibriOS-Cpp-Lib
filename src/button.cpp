@@ -4,7 +4,7 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace buttons;
 
-buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor)
+buttons::Button::Button(const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
 	: TextLabel(coord, size, "Button", 16, true, OS::GetSystemColors().work_text, Margin), _id(GetFreeButtonId())
 {
 	#ifdef DEBUG
@@ -12,7 +12,7 @@ buttons::Button::Button(const Coord &coord, const Size &size, unsigned Margin, c
 	#endif
 }
 
-KolibriLib::UI::buttons::Button::Button(const Txt &text, const Coord &coord, const Size &size, unsigned Margin, const Colors::Color &ButtonColor)
+KolibriLib::UI::buttons::Button::Button(const Txt &text, const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
 	: TextLabel(coord, size, text)
 {
 	#ifdef DEBUG
@@ -87,9 +87,9 @@ void buttons::Button::Render() const
 {
 	if (_active)
 	{
-		buttons::DefineButton(_coord, _size, _id, _MainColor);
+		buttons::DefineButton(_coord.GetAbsolute(), _size.GetAbsolute(), _id, _MainColor);
 
-		Print({_coord.x + ((int)_size.x / 2), _coord.y + ((int)_size.y / 2)});
+		Print({_coord.GetAbsolute().x + ((int)_size.GetAbsolute().x / 2), _coord.GetAbsolute().y + ((int)_size.GetAbsolute().y / 2)});
 	}
 }
 

@@ -35,11 +35,11 @@ namespace KolibriLib
                 ~Item();
             };
 
-            Menu(const Coord &coord = {0, 0}, 
-                const Size &size = {0, 0}, 
-                const std::vector<Item> &li = { Menu::Item(std::string("menu1")), Menu::Item(std::string("menu2")) }, 
-                const unsigned &Margin = DefaultMargin, 
-                const Colors::Color &color = OS::GetSystemColors().work_area);
+            Menu(const UDim &coord = point(0),
+                 const UDim &size = DefaultSize,
+                 const std::vector<Item> &li = {Menu::Item(std::string("menu1")), Menu::Item(std::string("menu2"))},
+                 const unsigned &Margin = DefaultMargin,
+                 const Colors::Color &color = OS::GetSystemColors().work_area);
 
             /// @brief 
             /// @param copy 

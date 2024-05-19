@@ -15,6 +15,8 @@
 
 namespace KolibriLib
 {
+	using UI::UDim;
+	using UI::UIElement;
 	using KolibriLib::UI::Images::img;
 	using KolibriLib::UI::text::TextLabel;
 	using UI::buttons::Button;

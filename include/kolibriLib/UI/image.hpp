@@ -29,7 +29,7 @@ namespace KolibriLib
 				/// @param size Размер
 				/// @param Path Путь до картинки
 				/// @param Margin
-				Image(const Coord& coord = {0, 0}, const Size& size = {100, 100});
+				Image(const UDim& coord = point(0), const UDim& size = DefaultSize);
 
 				/// @brief Конструктор копирования
 				/// @param copy 

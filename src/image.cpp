@@ -4,8 +4,8 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace Images;
 
-Image::Image(const Coord &coord, const Size &size) 
-	: UIElement(coord, size), img(OS::GetSystemColors().work_graph, size)
+Image::Image(const UDim &coord, const UDim &size)
+	: UIElement(coord, size), img(OS::GetSystemColors().work_graph, size.GetAbsolute())
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor");
@@ -30,7 +30,7 @@ void Images::Image::init(const Coord &coord, const Size &size, const filesystem:
 
 void KolibriLib::UI::Images::Image::Render() const
 {
-	Draw(_coord, _size);
+	Draw(_coord.GetAbsolute(), _size.GetAbsolute());
 }
 
 Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image &a)
