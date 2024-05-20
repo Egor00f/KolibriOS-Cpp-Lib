@@ -30,7 +30,7 @@ namespace KolibriLib
 				/// @param font 
 				/// @param TextColor 
 				/// @param BackgroundColor
-				Char(char c, const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area);
+				Char(char c, const Fonts::Font &font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().win_body);
 
 				/// @brief Конструктор копирования
 				/// @param copy 
@@ -69,7 +69,7 @@ namespace KolibriLib
 				/// @brief Получить ASCII символ
 				/// @return
 				char GetChar() const;
-
+				
 				/// @brief получить размеры символа
 				/// @return
 				const Fonts::Font GetFont() const;
@@ -111,8 +111,8 @@ namespace KolibriLib
 			/// @throw FT_Error
 			inline FreeType::FT_Error DrawText(const std::string &text, const Coord &coord, const Fonts::Font &font = Fonts::DefaultFont)
 			{
-				DrawText(text, coord, font._size.y);
-				// DrawText(text.c_str(), font._face, coord);
+				//DrawText(text, coord, font._size.y);
+				DrawText(text.c_str(), font._face, coord);
 			}
 
 		} // namespace text

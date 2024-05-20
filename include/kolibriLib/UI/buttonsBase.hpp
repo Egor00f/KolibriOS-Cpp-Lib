@@ -38,14 +38,14 @@ namespace KolibriLib
 			/// \param size размер
 			/// \param color цвет
 			/// \return id созданной кнопки
-			ButtonID autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color = OS::GetSystemColors().work_button);
+			ButtonID autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color = OS::GetSystemColors().btn_frame);
 
 			/// \brief Создать кнопку, вручную
 			/// \param coords координаты
 			/// \param size размер
 			/// \param id idшник кнопки
 			/// \param color цвет
-			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().work_button)
+			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().btn_frame)
 			{
 				_ksys_define_button(coord.x, coord.y, size.x, size.y, id, color.val);
 			}

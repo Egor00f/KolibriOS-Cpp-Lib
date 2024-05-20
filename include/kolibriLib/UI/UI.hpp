@@ -86,7 +86,7 @@ namespace KolibriLib
             /// @param MainColor основной цвет
             /// @param Margin отступы
             /// @param relative отностельность
-			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().work_graph, const unsigned &Margin = DefaultMargin, bool relative = false);
+			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().gui_frame, const unsigned &Margin = DefaultMargin, bool relative = false);
 
 			/// @brief Получить размер элемента
             /// @return Функция возвращает _size

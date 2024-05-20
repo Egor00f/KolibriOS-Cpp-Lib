@@ -5,7 +5,7 @@ using namespace UI;
 using namespace Images;
 
 Image::Image(const UDim &coord, const UDim &size)
-	: UIElement(coord, size), img(OS::GetSystemColors().work_graph, size.GetAbsolute())
+	: UIElement(coord, size), img(OS::GetSystemColors().gui_frame, size.GetAbsolute())
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor");

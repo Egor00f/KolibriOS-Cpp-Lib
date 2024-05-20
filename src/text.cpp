@@ -25,7 +25,7 @@ Txt::Txt()
 	_ksys_debug_puts("Text constructor\n");
 	#endif
 	_font = new Fonts::Font(Fonts::DefaultFont);
-	_TextColor = new Colors::Color(OS::GetSystemColors().work_text);
+	_TextColor = new Colors::Color(OS::GetSystemColors().gui_text);
 }
 
 Txt::Txt(const std::string &text)
@@ -35,7 +35,7 @@ Txt::Txt(const std::string &text)
 	#endif
 
 	_font = new Fonts::Font(Fonts::DefaultFont);
-	_TextColor = new Colors::Color(OS::GetSystemColors().work_text);
+	_TextColor = new Colors::Color(OS::GetSystemColors().gui_text);
 
 	SetText(text);
 }
@@ -81,7 +81,7 @@ void KolibriLib::UI::text::Txt::Delete(int i)
 	_data.erase(_data.begin() + i);
 }
 
-void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
+void KolibriLib::UI::text::Txt::Print(const UDim &coord) const
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Print Txt:");
@@ -102,7 +102,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 		int buff = 0;
 		for (const Char i : _data)
 		{
-			i.Print({coord.x + buff, coord.y});
+			i.Print({coord.GetAbsolute().x + buff, coord.GetAbsolute().y});
 			buff += i.GetFont()._size.x;
 		}
 	}
@@ -113,7 +113,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 		{
 			s += _data[i].GetChar();
 		}
-		DrawText(s, coord, f._size.y, _data[0].GetTextColor());
+		DrawText(s, coord.GetAbsolute(), f);
 		// FreeType::DrawText(s.c_str(), f._face, coord);
 	}
 

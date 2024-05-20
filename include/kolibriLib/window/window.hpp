@@ -107,7 +107,7 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), const Colors::Color &TitleColor = OS::GetSystemColors().work_graph, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
+			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), const Colors::Color &TitleColor = OS::GetSystemColors().win_title, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 
 			/// @brief Полная перересовка окна
 			void Redraw();
@@ -174,7 +174,7 @@ namespace KolibriLib
 			/// @brief Добавить UI элемент
 			/// @param element
 			/// @return std::pair<номер элемента в списке, указатель на элемент>
-			std::pair<Window::ElementNumber, T*> AddElement(const T &element);
+			ElementNumber AddElement(const T &element);
 
 			template <class T>
 			/// @brief Изменить элемент
@@ -382,7 +382,7 @@ namespace KolibriLib
 
 		//=============================================================================================================================================================
 		template <class T>
-		std::pair<Window::ElementNumber, T*> KolibriLib::window::Window::AddElement(const T &element)
+		Window::ElementNumber KolibriLib::window::Window::AddElement(const T &element)
 		{
 			#ifdef DEBUG
 			_ksys_debug_puts("Add element-\n");
@@ -399,16 +399,11 @@ namespace KolibriLib
 				if (_Elements.count(i) == 0)
 				{
 					_Elements.emplace(i, a);
-
-					std::pair<Window::ElementNumber, T *> ret;
-					ret.first = i;
-					ret.second = (T*)_Elements.find(i)->second.pointer;
-					break;
+					
+					return i;
 				}
 			}
-			ret.first = -1;
-			ret.second = nullptr;
-			return ret;
+			return -1;
 		}
 
 		template <class T>
@@ -459,7 +454,7 @@ namespace KolibriLib
 				_style += WindowStyle::NoDrawWorkspace;
 			}
 
-			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.work_area, _TitleColor, _style); // Отрисовать окно
+			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.win_body, _TitleColor, _style); // Отрисовать окно
 		}
 
 		void Window::RenderAllElements() const
@@ -485,7 +480,7 @@ namespace KolibriLib
 			#endif
 
 			StartRedraw();
-			window::CreateWindow(GetCoord(), _size, _title, _colors.work_area, _TitleColor, _style);
+			window::CreateWindow(GetCoord(), _size, _title, _colors.win_body, _TitleColor, _style);
 
 			if (_Transparency > 0 && false)
 			{
@@ -501,7 +496,7 @@ namespace KolibriLib
 			}
 			else
 			{
-				KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.frame_area);
+				KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.win_body);
 			}
 
 			RenderAllElements();
@@ -568,7 +563,7 @@ namespace KolibriLib
 			#endif
 
 			StartRedraw();
-			window::CreateWindow(coord, _size, _title, _colors.work_area, _TitleColor, _style);
+			window::CreateWindow(coord, _size, _title, _colors.win_body, _TitleColor, _style);
 
 			RenderAllElements();
 

@@ -103,7 +103,7 @@ namespace KolibriLib
 		/// @param p1 точка перавая
 		/// @param p2 точка вторая
 		/// @param color цвет линии
-		inline void DrawLine(const Coord& p1, const Coord& p2, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawLine(const Coord& p1, const Coord& p2, const Colors::Color &color = OS::GetSystemColors().gui_frame)
 		{
 			for(int i = 0; i < abs(p1.x - p2.x); i++)
 			{

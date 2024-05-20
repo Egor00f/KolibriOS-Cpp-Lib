@@ -65,7 +65,7 @@ namespace KolibriLib
             std::string _Message = Message;
             std::string _Title = Title;
 
-            window::Window window(_Title, {256, 128});
+            window::Window window(_Title);
 
             Size WindowSize = window.GetSize();
 

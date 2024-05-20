@@ -47,7 +47,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
-                Button(const UDim &coord = point(0), const UDim &size = DefaultSize, unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = OS::GetSystemColors().work_button);
+                Button(const UDim &coord = point(0), const UDim &size = DefaultSize, unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = OS::GetSystemColors().btn_frame);
 
                 /// \brief Это конструктор
                 /// \param coord координата
@@ -56,7 +56,7 @@ namespace KolibriLib
                 /// \param Margin отступы текста от границ
                 /// \param ButtonColor цвет кнопки
                 /// \param TextColor цвет текста
-                Button(const Txt &text, const UDim &coord = point(0), const UDim &size = DefaultSize, unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = OS::GetSystemColors().work_button);
+                Button(const Txt &text, const UDim &coord = point(0), const UDim &size = DefaultSize, unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = OS::GetSystemColors().btn_frame);
 
                 /// @brief Конструктор копирования
                 /// @param copy Кнопка которую будут копировать

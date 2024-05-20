@@ -53,6 +53,8 @@ namespace KolibriLib
 			return _ksys_get_mouse_wheels();
 		}
 
+		
+
 		/// @brief Эмулировать нажатия кнопок мыши
 		/// @param m занчения из списка MouseButtons
 		inline void EmulateMouse(uint8_t m)

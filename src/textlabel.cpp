@@ -36,6 +36,8 @@ TextLabel::TextLabel(const TextLabel &copy)
 	: UIElement(copy), _TextScale(copy._TextScale)
 {
 	_data = copy._data;
+	_font = new Fonts::Font(*copy._font);
+	_TextColor = new Colors::Color(*copy._TextColor);
 }
 
 void text::TextLabel::Render() const
@@ -43,8 +45,36 @@ void text::TextLabel::Render() const
 	#ifdef DEBUG
 	_ksys_debug_puts("Render textLabel:\n");
 	#endif
+	if(_TextScale)
+	{
+		Size size = {0,0};
+		for(Char i :_data)
+		{
+			if(i.GetFont()._size > size)
+			{
+				size > i.GetFont()._size;
+			}
+		}
 
-	Print(Coord((_size.GetAbsolute().x / 2) - (lenghtPX() / 2), (_size.GetAbsolute().y / 2) - _font->_size.y));
+		size  = _size.GetAbsolute() - Size(size.x * length(), size.y * length());
+
+		Txt t(*this);
+
+		for(std::size_t i = 0; i < t.length(); i++)
+		{
+			Char q = t.GetChar(i);
+			Fonts::Font p = q.GetFont();
+
+			p._size = p._size + size;
+
+			q.SetFont(p);
+		}
+
+	}
+	else
+	{
+		Print(_coord);
+	}
 }
 
 void text::TextLabel::SetScale(bool scale)

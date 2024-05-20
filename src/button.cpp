@@ -5,7 +5,7 @@ using namespace UI;
 using namespace buttons;
 
 buttons::Button::Button(const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
-	: TextLabel(coord, size, "Button", 16, true, OS::GetSystemColors().work_text, Margin), _id(GetFreeButtonId())
+	: TextLabel(coord, size, "Button", 16, true, OS::GetSystemColors().gui_text, Margin), _id(GetFreeButtonId())
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Button contructor\n");

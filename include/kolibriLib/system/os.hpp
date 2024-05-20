@@ -19,7 +19,10 @@ namespace KolibriLib
 		inline Colors::ColorsTable GetSystemColors()
 		{
 			Colors::ColorsTable buff;
-			_ksys_get_system_colors(&buff);
+			asm_inline(
+				"int $0x40"
+				::"a"(47), "b"(3), "c"(&buff), "d"(sizeof(Colors::ColorsTable))
+			);
 			return buff;
 		}
 
@@ -208,6 +211,46 @@ namespace KolibriLib
 		{
 			std::string a = "\"'" + Title + "\n" + Text + "' -E -t";
 			_ksys_exec("/sys/@notify", (char*)a.c_str(), false);
+		}
+
+
+		/// @brief Версия ядра
+		struct CoreVersion{
+			struct{
+				/// @brief Версия
+				uint32_t version;
+				union{
+					uint8_t a;
+					uint8_t b;
+					uint8_t c;
+					uint8_t d;
+				};
+			};
+			/// @brief Зарезервированно
+			uint8_t reserved;
+
+			/// @brief Ревизия
+			uint16_t Rev;
+		};
+
+		/// @brief Получить версию ядра
+		/// @return Указатель на структуру версии ядра
+		inline CoreVersion* GetCoreVersion()
+		{
+			CoreVersion* p = new CoreVersion;
+			asm_inline(
+				"int $0x40"
+				:"=a"(p)
+				:"a"(18), "b"(13)
+			);
+			return p;
+		}
+
+		/// @brief Получить тактовую частоту процессора
+		/// @return тактовая частота (по модулю 2^32 тактов = 4ГГц)
+		inline uint32_t GetCPUClock()
+		{
+			return _ksys_get_cpu_clock();
 		}
 
 	} // namespace OS

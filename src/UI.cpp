@@ -36,8 +36,8 @@ bool UI::UDim::Axis::operator!=(const UDim::Axis &axis) const
 point KolibriLib::UI::UDim::GetAbsolute() const
 {
 	Thread::ThreadInfo Info = Thread::GetThreadInfo();
-	return { (Info.winx_size * X.Scale) + X.Offset, 
-	         (Info.winy_size * Y.Scale) + Y.Offset };
+	return { static_cast<int>(static_cast<float>(Info.winx_size) * X.Scale) + X.Offset, 
+	         static_cast<int>(static_cast<float>(Info.winy_size) * Y.Scale) + Y.Offset };
 }
 
 bool KolibriLib::UI::UDim::operator==(const UDim &obj) const

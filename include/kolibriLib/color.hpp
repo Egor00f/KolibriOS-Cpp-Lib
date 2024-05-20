@@ -14,11 +14,11 @@ namespace KolibriLib
             ksys_color_t val;
             struct
             {
+                /// @brief Альфа канал
+                uint8_t _a;
                 uint8_t blue;
                 uint8_t green;
                 uint8_t red;
-                /// @brief Альфа канал
-                uint8_t _a;
             };
 
             Color():val(0xFFFFFFFF){};
@@ -73,13 +73,80 @@ namespace KolibriLib
         /// @brief Таблица цветов по умолчанию
         const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        /// @brief Таблица цветов
-        struct ColorsTable : public ksys_colors_table_t
+        /// @brief Таблица системных цветов
+        struct ColorsTable
         {
-            ColorsTable(ksys_colors_table_t table = DefaultColorTable);
-            
-            bool operator == (const ColorsTable &table) const;
-            bool operator != (const ColorsTable &table) const;
+            /// @brief цвет фона системного меню
+            Color menu_body;
+
+            /// @brief цвет фона для придания 3D эффекта
+            Color face_3d;
+
+            /// @brief цвет темной обводки для придания 3D эффекта
+            Color dark_3d;
+
+            /// @brief цвет светлой обводки для придания 3D эффекта
+            Color light_3d;
+
+            /// @brief цвет текста в заголовке окна приложения
+            Color win_title;
+
+            /// @brief цвет фона окна
+            Color win_body;
+
+            /// @brief цвет активной кнопки
+            Color btn_face;
+
+            /// @brief цвет текста активной кнопки
+            Color btn_text;
+            Color win_text;
+            Color panel_frame;
+            Color win_face;
+            Color win_inface;
+            Color win_frame;
+            Color win_inframe;
+            Color win_border;
+            Color win_inborder;
+            Color win_graytext;
+            Color menu_frame ;
+            Color menu_text ;
+            Color panel_body;
+            Color panel_text;
+            Color hint_frame;
+            Color hint_body;
+            Color hint_text;
+            Color btn_inface;
+            Color btn_fcface;
+            Color btn_frame;
+            Color btn_inframe;
+            Color btn_fcframe;
+            Color btn_intext;
+            Color btn_fctex;
+            Color gui_shadow;
+            Color gui_face;
+            Color gui_inface;
+            Color gui_fcface;
+            Color gui_frame;
+            Color gui_inframe;
+            Color gui_fcframe;
+            Color gui_text;
+            Color gui_intex;
+            Color gui_fctext;
+            Color gui_select;
+
+            // ksys_color_t frame_area;
+            // ksys_color_t grab_bar;
+            // ksys_color_t grab_bar_button;
+            // ksys_color_t grab_button_text;
+            // ksys_color_t grab_text;
+            // ksys_color_t work_area;
+            // ksys_color_t work_button;
+            // ksys_color_t work_button_text;
+            // ksys_color_t work_text;
+            // ksys_color_t work_graph;
+
+            ColorsTable(const ColorsTable &table);
+            ColorsTable(const ksys_colors_table_t &table = DefaultColorTable);
         };
     }
 } // namespace KolibriLib

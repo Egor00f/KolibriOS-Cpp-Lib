@@ -51,8 +51,8 @@ namespace FreeType
 	void DrawBitmap(FT_Bitmap *bitmap,
 					const FT_Int &x, const FT_Int &y,
 					const KolibriLib::Coord &coord,
-					const KolibriLib::Colors::Color &TextColor = KolibriLib::OS::GetSystemColors().work_text,
-					const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::OS::GetSystemColors().work_area);
+					const KolibriLib::Colors::Color &TextColor = KolibriLib::OS::GetSystemColors().gui_text,
+					const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::OS::GetSystemColors().win_body);
 
 	/// @brief Отрисовать текст
 	/// @param text текст

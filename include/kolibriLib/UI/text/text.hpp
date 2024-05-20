@@ -42,10 +42,6 @@ namespace KolibriLib
 				/// @param txt строка
 				void Add(const std::string &txt);
 
-				/// @brief долбавить изображение в конец
-				/// @param img Добавляемое изображение
-				void Add(const Images::img &img);
-
 				/// @brief Вставить элемент
 				/// @param c Символ
 				/// @param i номер
@@ -56,18 +52,13 @@ namespace KolibriLib
 				/// @param i номер
 				void insert(const std::string &txt, int i);
 
-				/// @brief Вставить изображение
-				/// @param img изображение
-				/// @param i номер
-				void insert(const Images::img &img, int i);
-
 				/// @brief Удалить Char из текста
 				/// @param i Номер удаляемого Charа
 				void Delete(int i);
 
 				/// @brief Вывести текст
 				/// @param coord Координаты(левый верхний угол) текста
-				void Print(const Coord &coord) const;
+				void Print(const UDim &coord) const;
 
 				/// @brief Изменить шрифт символов
 				/// @param FontSize

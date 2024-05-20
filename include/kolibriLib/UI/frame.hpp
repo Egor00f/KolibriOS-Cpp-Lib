@@ -63,7 +63,7 @@ namespace KolibriLib
             /// @param size 
             /// @param Color 
             /// @param Margin
-            Frame(const UDim &coord = point(0), const UDim &size = DefaultSize, const Colors::Color &Color = OS::GetSystemColors().work_area, const unsigned &Margin = DefaultMargin);
+            Frame(const UDim &coord = point(0), const UDim &size = DefaultSize, const Colors::Color &Color = OS::GetSystemColors().gui_frame, const unsigned &Margin = DefaultMargin);
 
             /// @brief Отрисовать фрейм
             void Render();
