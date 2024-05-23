@@ -40,6 +40,8 @@ namespace KolibriLib
 
             public:
 
+                std::string ClassName = "Button";
+
                 /// \brief Это конструктор
                 /// \param coord координата
                 /// \param size размер

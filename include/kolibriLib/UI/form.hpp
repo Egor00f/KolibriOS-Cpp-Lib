@@ -25,6 +25,8 @@ namespace KolibriLib
             std::string _inputText;
 
         public:
+            std::string ClassName = "Form";
+
             /// \brief конструктор
             /// \param coord позиция в коне
             /// \param size размеры

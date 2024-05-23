@@ -53,13 +53,13 @@ buttons::Button::~Button()
 
 buttons::Button &KolibriLib::UI::buttons::Button::operator=(const buttons::Button &element)
 {
-	_coord = element._coord;
-	_size = element._size;
-	_MainColor = element._MainColor;
-	_Margin = element._Margin;
-	_id = element._id;
-	_active = element._active;
-	_data = element._data;
+	_coord	= element._coord;
+	_size	= element._size;
+	_MainColor	= element._MainColor;
+	_Margin	= element._Margin;
+	_id	= element._id;
+	_active	= element._active;
+	_data	= element._data;
 
 	return *this;
 }
@@ -67,8 +67,8 @@ buttons::Button &KolibriLib::UI::buttons::Button::operator=(const buttons::Butto
 bool KolibriLib::UI::buttons::Button::operator==(const Button &element) const
 {
 
-	return (_data == element._data) &&
-		   (_coord == element._coord) &&
+	return (_data == element._data)	&&
+		   (_coord == element._coord)	&&
 		   (_size == element._size);
 }
 
@@ -89,7 +89,8 @@ void buttons::Button::Render() const
 	{
 		buttons::DefineButton(_coord.GetAbsolute(), _size.GetAbsolute(), _id, _MainColor);
 
-		Print({_coord.GetAbsolute().x + ((int)_size.GetAbsolute().x / 2), _coord.GetAbsolute().y + ((int)_size.GetAbsolute().y / 2)});
+		Print(Coord(_coord.GetAbsolute().x + ((int)_size.GetAbsolute().x / 2), 
+		            _coord.GetAbsolute().y + ((int)_size.GetAbsolute().y / 2)));
 	}
 }
 

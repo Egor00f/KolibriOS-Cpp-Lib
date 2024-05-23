@@ -74,6 +74,8 @@ include_directories(${LIBS_DIR}/newlib/libc/include)
 
 include_directories(${LIBS_DIR}/freetype/include)
 
+include_directories(any)
+
 SET(SRC_PATH src)
 
 
@@ -123,7 +125,6 @@ SET(SOURCES
 	${SRC_PATH}/form.cpp
 	${SRC_PATH}/menu.cpp
 )
-
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 

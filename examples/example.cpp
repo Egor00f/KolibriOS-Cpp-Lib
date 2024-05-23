@@ -11,12 +11,12 @@ int main()
 
 	Window::ElementNumber button = window.AddElement(Button(UDim(0.6, 0, 0.8, 0), UDim(0.2, 0, 0.1, 0)));
 
-	Button tmp = *((Button*)window.GetElement(button).pointer);
+	Button tmp(*(Button*)window.GetElement(button).pointer);
 
 	tmp.SetText("Button");
 
 	window.SetElement(button, tmp);
-
+	
 	window.Redraw();
 
 	bool exit = false;
@@ -32,7 +32,7 @@ int main()
 		case Event::Button:
 			if(window.GetPressedButton() == ((Button*)window.GetElement(button).pointer)->GetId())
 			{
-				_ksys_debug_puts("ButtonPressed");
+				childWindow::MessageBox("button pressed", "Message");
 			}
 		default:
 			break;

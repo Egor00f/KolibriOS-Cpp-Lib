@@ -24,6 +24,8 @@ namespace KolibriLib
 			class Image : public UIElement, public img
 			{				
 			public:
+				std::string ClassName = "Image";
+
 				/// @brief Конструктор
 				/// @param coord Координаты
 				/// @param size Размер

@@ -116,7 +116,7 @@ bool KolibriLib::UI::Images::img::SetPixel(const Colors::Color &color, const Coo
 	assert(coord.x >= _buff->width || coord.y >= _buff->height);
 	
 	
-	buf2d_set_pixel(_buff, coord.x, coord.y, color);
+	buf2d_set_pixel(_buff, coord.y, coord.x, color);
 	return true;
 }
 
@@ -124,7 +124,7 @@ Colors::Color KolibriLib::UI::Images::img::GetPixel(unsigned x, unsigned y) cons
 {
 	assert(x >= _buff->width || y >= _buff->height);
 
-	return buf2d_get_pixel(_buff, x, y);
+	return buf2d_get_pixel(_buff, y, x);
 }
 
 Colors::Color KolibriLib::UI::Images::img::GetPixel(const Coord &coord) const

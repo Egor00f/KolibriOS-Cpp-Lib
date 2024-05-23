@@ -42,6 +42,8 @@ namespace KolibriLib
 
                 mutable bool _Aligned;
             public:
+                const std::string ClassName = "TextLabel";
+
                 /// @brief Конструктор
                 /// @param coord координата
                 /// @param size Рамер элемента, игнорируется если TextScale = false

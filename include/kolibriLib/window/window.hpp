@@ -7,7 +7,6 @@
 #include <unordered_map>
 #include <type_traits>
 
-
 #include <sys/ksys.h>
 
 #include <kolibriLib/types.hpp>
@@ -19,11 +18,8 @@
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
 
-
 namespace KolibriLib
-{ 
-
-
+{
 
 	/// \brief Работа с окном
 	namespace window
@@ -31,7 +27,7 @@ namespace KolibriLib
 
 		/// @brief Класс для работы с окном
 		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор
-		/// @paragraph Для тех кто знает: 
+		/// @paragraph Для тех кто знает:
 		class Window
 		{
 		public:
@@ -57,7 +53,6 @@ namespace KolibriLib
 				unsigned _type = Type::None;
 
 				Element();
-
 
 				Element(const Element &e);
 
@@ -113,7 +108,7 @@ namespace KolibriLib
 			void Redraw();
 
 			/// @brief Отрисовать окно
-			void Render(const Coord& coord = DefaultWindowCoord);
+			void Render(const Coord &coord = DefaultWindowCoord);
 
 			/// @brief Получить рамер отступов в этом окне
 			/// @return @link _MARGIN
@@ -125,7 +120,7 @@ namespace KolibriLib
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
-			void SetWindowColors(const Colors::ColorsTable& colorTable);
+			void SetWindowColors(const Colors::ColorsTable &colorTable);
 
 			/// @brief Начать перересовку окна
 			/// @note Стирает всё что было нарисованно в окне
@@ -137,22 +132,17 @@ namespace KolibriLib
 			void EndRedraw() const;
 
 			/// @brief Получить координаты окна
-			/// @return 
+			/// @return
 			Coord GetCoord() const;
 
 			/// @brief Изменить окно
 			/// @param coord позиция
 			/// @param size размер
-			void ChangeWindow(const Coord& coord, const Size& size);
+			void ChangeWindow(const Coord &coord, const Size &size);
 
 			/// @brief Изменить заголовок окна
 			/// @param newTitle новый заголовок
-			void ChangeTilte(const std::string& newTitle);
-
-			/// @brief Получить размер окна
-			/// @return point.x - ширина окна,
-			/// @return point.y - высота окна
-			Size GetWindowSize() const;
+			void ChangeTilte(const std::string &newTitle);
 
 			/// @brief Удалить элемент
 			/// @param id idшник того элемента, которой нужно удалить
@@ -201,9 +191,6 @@ namespace KolibriLib
 			/// @brief Список всех кнопок этого окна
 			std::unordered_map<Window::ElementNumber, Element> _Elements;
 
-			/// @brief Размеры окна
-			Size _size;
-
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
 
@@ -230,7 +217,7 @@ namespace KolibriLib
 
 		//=============================================================================================================================================================
 
-		KolibriLib::window::Window::Element::Element(const Element &e): _type(e._type)
+		KolibriLib::window::Window::Element::Element(const Element &e) : _type(e._type)
 		{
 			switch (e._type)
 			{
@@ -300,7 +287,6 @@ namespace KolibriLib
 			_type = Type::Menu;
 		}
 
-
 		void KolibriLib::window::Window::Element::SetElement(const KolibriLib::UI::Frame &elem)
 		{
 			free();
@@ -313,25 +299,25 @@ namespace KolibriLib
 			switch (_type)
 			{
 			case TextLabel:
-				((UI::text::TextLabel*)pointer)->Render();
+				((UI::text::TextLabel *)pointer)->Render();
 				break;
 			case Button:
-				((UI::buttons::Button*)pointer)->Render();
+				((UI::buttons::Button *)pointer)->Render();
 				break;
 			case Image:
-				((UI::Images::Image*)pointer)->Render();
+				((UI::Images::Image *)pointer)->Render();
 				break;
 			case Form:
-				((UI::Form*)pointer)->Render();
+				((UI::Form *)pointer)->Render();
 				break;
 			case CheckBox:
-				((UI::CheckBox*)pointer)->Render();
+				((UI::CheckBox *)pointer)->Render();
 				break;
 			case Menu:
-				((UI::Menu*)pointer)->Render();
+				((UI::Menu *)pointer)->Render();
 				break;
 			case Frame:
-				((UI::Frame*)pointer)->Render();
+				((UI::Frame *)pointer)->Render();
 				break;
 			default:
 				break;
@@ -340,9 +326,9 @@ namespace KolibriLib
 
 		KolibriLib::window::Window::Element::Element()
 		{
-			#ifdef DEBUG
+#ifdef DEBUG
 			_ksys_debug_puts("KolibriLib::window::Window::Element constructor\n");
-			#endif
+#endif
 		}
 
 		KolibriLib::window::Window::Element::~Element()
@@ -399,7 +385,7 @@ namespace KolibriLib
 				if (_Elements.count(i) == 0)
 				{
 					_Elements.emplace(i, a);
-					
+
 					return i;
 				}
 			}
@@ -418,22 +404,20 @@ namespace KolibriLib
 			return;
 		}
 
-		
-
 		//=============================================================================================================================================================
 
 		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, const KolibriLib::Colors::Color &TitleColor, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
-			: _title(Title), _size(size), _colors(colors)
+			: _title(Title), _colors(colors)
 		{
-			#if DEBUG == true
+#if DEBUG == true
 			_ksys_debug_puts("KolibriLib::window:::Window constructor\n");
-			#endif
+#endif
 
 			_MARGIN = Margin;
 			_TitleColor = TitleColor;
 			_Transparency = Transparency;
 			_RealtimeRedraw = RealtimeRedraw;
-			
+
 			_style = WindowStyle::Relative + WindowStyle::WindowHaveTitle + WindowStyle::withSkin;
 			if (Resize)
 			{
@@ -454,16 +438,16 @@ namespace KolibriLib
 				_style += WindowStyle::NoDrawWorkspace;
 			}
 
-			window::CreateWindow(DefaultWindowCoord, _size, _title, _colors.win_body, _TitleColor, _style); // Отрисовать окно
+			window::CreateWindow(DefaultWindowCoord, size, _title, _colors.win_body, _TitleColor, _style); // Отрисовать окно
 		}
 
 		void Window::RenderAllElements() const
 		{
-			for (auto& it : _Elements)
+			for (auto &it : _Elements)
 			{
-				#ifdef DEBUG
+#ifdef DEBUG
 				_ksys_debug_puts("-Render Element as");
-				#endif
+#endif
 				it.second.Render();
 			}
 		}
@@ -475,12 +459,12 @@ namespace KolibriLib
 
 		void KolibriLib::window::Window::Redraw()
 		{
-			#ifdef DEBUG
+#ifdef DEBUG
 			_ksys_debug_puts("Redraw window:");
-			#endif
+#endif
 
 			StartRedraw();
-			window::CreateWindow(GetCoord(), _size, _title, _colors.win_body, _TitleColor, _style);
+			window::CreateWindow(GetCoord(), {0,0}, _title, _colors.win_body, _TitleColor, _style);
 
 			if (_Transparency > 0 && false)
 			{
@@ -503,13 +487,13 @@ namespace KolibriLib
 
 			if (_Transparency != 0) // Прозрачность окна
 			{
-				for (int i = 0; i < _size.y; i++)
-				{
-					for (int j = 0; j < _size.x; j++)
-					{
-						graphic::DrawPixel({j, i}, Colors::BlendColors(graphic::ReadPoint({j, i}), Background::ReadPoint({j, i}), 100 / _Transparency)); // Пока так, потом может быть станет лучше
-					}
-				}
+				//for (int i = 0; i < _size.y; i++)
+				//{
+				//	for (int j = 0; j < _size.x; j++)
+				//	{
+				//		graphic::DrawPixel({j, i}, Colors::BlendColors(graphic::ReadPoint({j, i}), Background::ReadPoint({j, i}), 100 / _Transparency)); // Пока так, потом может быть станет лучше
+				//	}
+				//}
 			}
 
 			EndRedraw();
@@ -542,34 +526,28 @@ namespace KolibriLib
 
 		void Window::ChangeWindow(const Coord &coord, const Size &size)
 		{
-			_size = size;
 			_ksys_change_window(coord.x, coord.y, size.x, size.y);
 		}
 
 		void Window::ChangeTilte(const std::string &newTitle)
 		{
 			_ksys_set_window_title(newTitle.c_str());
-		}
-
-		Size Window::GetWindowSize() const
-		{
-			return _size;
-		}
+		}		
 
 		void Window::Render(const Coord &coord)
 		{
-			#ifdef DEBUG
+#ifdef DEBUG
 			_ksys_debug_puts("Render window\n");
-			#endif
+#endif
 
 			StartRedraw();
-			window::CreateWindow(coord, _size, _title, _colors.win_body, _TitleColor, _style);
+			window::CreateWindow(coord, DefaultWindowSize, _title, _colors.win_body, _TitleColor, _style);
 
 			RenderAllElements();
 
-			#ifdef DEBUG
+#ifdef DEBUG
 			_ksys_debug_puts("\nDone render elements\n");
-			#endif
+#endif
 
 			if (_Transparency != 0) // Прозрачность окна
 			{
@@ -593,7 +571,7 @@ namespace KolibriLib
 
 		Size Window::GetSize() const
 		{
-			return _size;
+			return window::GetWindowSize();
 		}
 
 		void Window::DeleteElement(ElementNumber id)
@@ -627,7 +605,7 @@ namespace KolibriLib
 					return OS::Events::Exit;
 				}
 
-				for (const auto& it : _Elements) // Запуск обработчиков всех используемых элементов
+				for (const auto &it : _Elements) // Запуск обработчиков всех используемых элементов
 				{
 					switch (it.second._type)
 					{
@@ -635,10 +613,10 @@ namespace KolibriLib
 						((UI::Form *)it.second.pointer)->ButtonHandler();
 						break;
 					case Element::CheckBox:
-						((UI::CheckBox*)it.second.pointer)->Handler();
+						((UI::CheckBox *)it.second.pointer)->Handler();
 						break;
 					case Element::Button:
-						((UI::buttons::Button*)it.second.pointer)->Handler();
+						((UI::buttons::Button *)it.second.pointer)->Handler();
 						break;
 					}
 				}
@@ -648,7 +626,7 @@ namespace KolibriLib
 
 				if (activeForm != -1 && _Elements[activeForm]._type == Element::Type::Form)
 				{
-					((UI::Form*)_Elements[activeForm].pointer)->Handler(); // Обработчик активной на текущий момент формы
+					((UI::Form *)_Elements[activeForm].pointer)->Handler(); // Обработчик активной на текущий момент формы
 				}
 
 				break;
@@ -675,9 +653,9 @@ namespace KolibriLib
 			{
 				if (n.second._type == Element::Type::Button)
 				{
-					if (((UI::buttons::Button*)n.second.pointer)->GetStatus())
+					if (((UI::buttons::Button *)n.second.pointer)->GetStatus())
 					{
-						return ((UI::buttons::Button*)n.second.pointer)->GetId();
+						return ((UI::buttons::Button *)n.second.pointer)->GetId();
 					}
 				}
 			}
@@ -687,9 +665,8 @@ namespace KolibriLib
 			auto it = _Elements.find(form);
 			if (it->second._type == Window::Element::Type::Form)
 			{
-				return ((UI::Form*)it->second.pointer)->GetInput();
+				return ((UI::Form *)it->second.pointer)->GetInput();
 			}
-
 		}
 
 		void KolibriLib::window::Window::Unfocus() const
@@ -704,12 +681,6 @@ namespace KolibriLib
 
 	} // namespace window
 
-    
-
-
-
 }
-
-
 
 #endif

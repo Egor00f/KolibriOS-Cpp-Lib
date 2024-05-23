@@ -58,6 +58,8 @@ namespace KolibriLib
             std::map<int, Element> _Elements;
             bool _scroll;
         public:
+             std::string ClassName = "Frame";
+
             /// @brief 
             /// @param coord 
             /// @param size 

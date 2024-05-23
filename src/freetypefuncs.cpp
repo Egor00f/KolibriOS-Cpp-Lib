@@ -77,37 +77,29 @@ void FreeType::DrawBitmap(FT_Bitmap *bitmap, const FT_Int &x, const FT_Int &y, c
 	#ifdef DEBUG
 	_ksys_debug_puts("DrawGLyph\n");
 	#endif
-	const unsigned RenderWidth = 256;
-	const unsigned RenderHeight = 256;
+	const unsigned RenderWidth = 480;
+	const unsigned RenderHeight = 400;
+
+	FT_Int i, j, p, q;
 	FT_Int x_max = x + bitmap->width;
 	FT_Int y_max = y + bitmap->rows;
 
-	FT_Int i, j, p, q;
 
-	KolibriLib::UI::Images::img image((const Color&)BackgroundColor, {RenderWidth, RenderHeight}, KolibriLib::UI::Images::img::RGBA);
+	KolibriLib::UI::Images::img image((const Color&)BackgroundColor, {RenderHeight, RenderWidth}, KolibriLib::UI::Images::img::RGBA);
 	_ksys_debug_puts("AA\n");
 
-	for (i = x, p = 0; i < x_max; i++, p++)
+	for ( i = x, p = 0; i < x_max; i++, p++ )
 	{
-		for (j = y, q = 0; j < y_max; j++, q++)
-
+    	for ( j = y, q = 0; j < y_max; j++, q++ )
+		{
 			if (i < 0 || j < 0 || i >= RenderWidth || j >= RenderHeight)
 				continue;
-
-			_ksys_debug_puts("continue\n");
-
-			unsigned char buff = bitmap->buffer[q * bitmap->width + p];
 		
-			if(buff > 0)
-			{
-				_ksys_debug_puts("buf>0\n");
-				KolibriLib::Colors::Color b(TextColor);
-				b._a |= buff;
-				image.SetPixel(b, {j, i});
-				_ksys_debug_puts("done 1 cycle\n");	
-			}
+			KolibriLib::Colors::Color b(TextColor);
+			b._a |= bitmap->buffer[q * bitmap->width + p];
+			image.SetPixel(b, j, i);
+		}
 	}
-	
 	image.Draw(coord);
 }
 

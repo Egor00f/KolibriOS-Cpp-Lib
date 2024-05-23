@@ -11,6 +11,7 @@ Form::Form(const UDim &coord, const UDim &size, const std::string &BackgroundTex
 	_butt.SetTextColor(ButtonTextColor);
 	_butt.SetBackgroundColor(FormColor);
 	_butt.Add(BackgroundText);
+
 }
 
 std::string Form::GetBackgroundText() const

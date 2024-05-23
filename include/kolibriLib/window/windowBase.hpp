@@ -32,20 +32,27 @@ namespace KolibriLib
 		{
 			/// @brief окно фиксированных размеров
 			FixSize = 0,
+			
 			/// @brief только определить область окна, ничего не рисовать
 			NoDraw = 1,
+
 			/// @brief окно изменяемых размеров
 			CanResize = 2,
+
 			/// @brief окно со скином
 			withSkin = 3,
+
 			/// @brief окно со скином фиксированных размеров
 			FixSizewithSkin = 4,
+
 			/// @brief у окна есть заголовок
 			WindowHaveTitle = 0b00010000,
 			/// @brief Координаты крафических приметивов относительно окна
 			Relative = 0b00100000,
+
 			/// @brief не закрашивать рабочую область при отрисовке окна
 			NoDrawWorkspace = 0b01000000,
+
 			/// @brief градиентная заливка рабочей области
 			GradientDraw = 0b10000000
 		};
@@ -69,6 +76,12 @@ namespace KolibriLib
 			_ksys_unfocus_window(slot);
 		}
 
+		inline Size GetWindowSize()
+		{
+			auto inf = Thread::GetThreadInfo();
+			return {inf.winx_size, inf.winy_size};
+		}
+
 		/// @brief Поставить фокус на окно
 		/// @param slot слот окна
 		inline void FocusWindow(const Thread::Slot &slot)
@@ -85,6 +98,7 @@ namespace KolibriLib
 				"int $0x40"
 				: "=a"(s)
 				: "a"(18), "b"(7));
+			
 			return s;
 		}
 
@@ -106,7 +120,8 @@ namespace KolibriLib
 		/// @return Координаты окна
 		inline Coord GetWindowCoord()
 		{
-			return mouse::GetMousePositionOnSreen() - mouse::GetMousePositionInWindow();
+			auto inf = Thread::GetThreadInfo();
+			return {inf.winx_start, inf.winy_start};
 		}
 
 		/// @brief Список констант положения окна относительно других окон:
@@ -123,7 +138,7 @@ namespace KolibriLib
 		};
 
 		/// @brief Получить положение окна относительно других окон
-		/// @return одна из констант из списка @link Pos
+		/// @return одна из констант из списка Pos
 		inline int GetWindowPos()
 		{
 			int a;
@@ -135,7 +150,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Изменить положение окна относительно дроугих окон
-		/// @param pos значение из списка @link Pos
+		/// @param pos значение из списка Pos
 		/// @param pid процесс окна, по умолчанию текущий
 		/// @return false если ошибка
 		//// @return true если успешно

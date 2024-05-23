@@ -50,7 +50,7 @@ bool KolibriLib::UI::UDim::operator!=(const UDim &obj) const
 	return X != obj.X || Y != obj.Y;
 }
 
-KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const Colors::Color &MainColor, const unsigned &Margin, bool relative)
+KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const Colors::Color &MainColor, const unsigned &Margin)
 	: _coord(coord), _size(size), _MainColor(MainColor), _Margin(Margin)
 {
 }
@@ -64,7 +64,6 @@ void KolibriLib::UI::UIElement::SetSize(const UDim &NewSize)
 {
 	_size = NewSize;
 }
-
 unsigned KolibriLib::UI::UIElement::GetMargin() const
 {
 	return _Margin;
@@ -136,7 +135,7 @@ bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 		   (_MainColor != Element._MainColor);
 }
 
-void KolibriLib::UI::UIElement::Render()
+void KolibriLib::UI::UIElement::Render() const
 {
 	graphic::DrawRectangleFill(_coord.GetAbsolute(), _size.GetAbsolute(), _MainColor);
 }

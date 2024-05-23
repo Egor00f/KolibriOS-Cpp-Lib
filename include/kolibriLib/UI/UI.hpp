@@ -78,66 +78,73 @@ namespace KolibriLib
 
             /// @brief Отступы
             unsigned _Margin;
+
+       
+           
         public:
-            
+            /// @brief Имя класса, (для наследуемых классов)
+            std::string ClassName = "UIElement";
+
             /// @brief Конструктор
             /// @param UDim координаты
             /// @param size размер
             /// @param MainColor основной цвет
             /// @param Margin отступы
             /// @param relative отностельность
-			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().gui_frame, const unsigned &Margin = DefaultMargin, bool relative = false);
+			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().gui_frame, const unsigned &Margin = DefaultMargin);
+
+            virtual ~UIElement() = default;
 
 			/// @brief Получить размер элемента
             /// @return Функция возвращает _size
-            UDim GetSize() const;
+            virtual UDim GetSize() const;
 
             /// @brief Изменить размер элемента
             /// @param NewSize новый размер
-            void SetSize(const UDim& NewSize);
+            virtual void SetSize(const UDim& NewSize);
 
             /// @brief Получить отступы
             /// @return Функция возвращает _Margin
-            unsigned GetMargin() const;
+            virtual unsigned GetMargin() const;
 
             /// @brief Получить осносной цвет элемента
             /// @return Функция возвращает _MainColor
-            Colors::Color GetColor() const;
+            virtual Colors::Color GetColor() const;
 
             /// @brief Изменить цвет
             /// @param NewColor новый цвет
-            void SetColor(const Colors::Color& NewColor);
+            virtual void SetColor(const Colors::Color& NewColor);
 
             /// @brief изменить координаты
             /// @param NewCoord новые координаты
-            void SetCoord(const UDim& NewCoord);
+            virtual void SetCoord(const UDim& NewCoord);
 
             /// @brief Получить координаты элемента
             /// @return Функция возвращает _coord
-            UDim GetCoord() const;
+            virtual UDim GetCoord() const;
 
             /// @brief Повернуть элемент
             /// @param NewAngle Новый угол наклона
-            void Rotate(unsigned NewAngle);
+            virtual void Rotate(unsigned NewAngle);
 
             /// @brief Получить угол наклона элемента
             /// @return Функция возвращает _angle
-            unsigned GetRotate() const;
+            virtual unsigned GetRotate() const;
 
             /// @brief Проверить лежит ли курсор мыши над элементом
             /// @return true если курсор мыши находится в этом элементе, иначе false
-            bool Hover() const;
+            virtual bool Hover() const;
 
             /// @brief Получить абсолютный размер элемента
             /// @return размер
-            Size GetAbsoluteSize() const;
+            virtual Size GetAbsoluteSize() const;
 
             /// @brief Получить абсолютные координаты элемента
             /// @return 
-            Coord GetAbsolutePos() const;
+            virtual Coord GetAbsolutePos() const;
 
             /// @brief отрисовать элемент
-            virtual void Render();
+            virtual void Render() const;
 
             /// @brief 
             /// @param Element 

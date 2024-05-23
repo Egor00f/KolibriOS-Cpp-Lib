@@ -20,6 +20,8 @@ namespace KolibriLib
         class CheckBox : public buttons::Button
         {
         public:
+            const std::string ClassName = "CheckBox";
+
             /// @brief Стиль Чекбокса
             typedef enum
             {
