@@ -14,10 +14,10 @@
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/UI/image.hpp>
 #include <kolibriLib/UI/text/text.hpp>
-#include "font.hpp"
-#include "fontslist.hpp"
+//#include "font.hpp"
+//#include "fontslist.hpp"
 
-#include <kolibri_rasterworks.h>
+//#include <kolibri_rasterworks.h>
 
 namespace KolibriLib
 {
@@ -51,8 +51,9 @@ namespace KolibriLib
                 /// @param FontSize Размер текста
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin Отступы от границ
-                TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const unsigned& FontSize = 9, bool TextScale = true, const Colors::Color& TextColor = OS::GetSystemColors().gui_text, const unsigned& Margin = 0);
+                TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const Size &CharSize = {8, 16}, bool TextScale = true, const Colors::Color& TextColor = OS::GetSystemColors().gui_text, const unsigned& Margin = 0);
 
+                
                 /// @brief Коснтруктор
                 /// @param coord коорднаты
                 /// @param size размер
@@ -62,7 +63,8 @@ namespace KolibriLib
                 /// @param BackgroundColor цвет фона
                 /// @param TextScale 
                 /// @param Margin
-                TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const std::string &text = "TextLabel", const Fonts::Font &Font = Fonts::DefaultFont, const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().gui_frame, bool TextScale = true, unsigned Margin = 0);
+                // TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const std::string &text = "TextLabel",/* const Fonts::Font &Font = Fonts::DefaultFont,*/ const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().gui_frame, bool TextScale = true, unsigned Margin = 0);
+                
 
                 /// @brief 
                 /// @param coord 

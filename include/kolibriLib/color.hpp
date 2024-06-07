@@ -146,7 +146,7 @@ namespace KolibriLib
             // ksys_color_t work_graph;
 
             ColorsTable(const ColorsTable &table);
-            ColorsTable(const ksys_colors_table_t &table = DefaultColorTable);
+            // ColorsTable(const ksys_colors_table_t &table = DefaultColorTable);
         };
     }
 } // namespace KolibriLib

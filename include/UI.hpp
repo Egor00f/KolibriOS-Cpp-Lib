@@ -10,8 +10,8 @@
 #include <kolibriLib/UI/image.hpp>
 #include <kolibriLib/UI/menu.hpp>
 #include <kolibriLib/UI/text/textlabel.hpp>
-#include <kolibriLib/UI/text/font.hpp>
-#include <kolibriLib/UI/text/fontslist.hpp>
+//#include <kolibriLib/UI/text/font.hpp>
+//#include <kolibriLib/UI/text/fontslist.hpp>
 
 namespace KolibriLib
 {
@@ -20,7 +20,7 @@ namespace KolibriLib
 	using KolibriLib::UI::Images::img;
 	using KolibriLib::UI::text::TextLabel;
 	using UI::buttons::Button;
-	using UI::text::Fonts::Font;
+	//using UI::text::Fonts::Font;
 	using UI::Menu;
 	using UI::CheckBox;
 	using UI::Form;

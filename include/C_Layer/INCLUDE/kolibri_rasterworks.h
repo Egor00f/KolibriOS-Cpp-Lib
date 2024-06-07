@@ -104,6 +104,42 @@ extern "C" {
 
 #ifdef __cplusplus
 }
+
+#include <kolibriLib/types.hpp>
+#include <string>
+
+/// @brief 
+/// @param canvas буффер
+/// @param coord координаты текста в буфере
+/// @param size размеры буфера
+/// @param text текст
+/// @param CharSize Размеры символов
+/// @param FontColor цвет текста
+/// @param flags флаги
+/// @param encoding 
+/// @return
+inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const uint8_t &flags, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
+{
+  return drawTextToBuff(canvas, size.x, size.y, coord.x, coord.y, text.c_str(), text.length(), CharSize.x, CharSize.y, FontColor, flags, encoding);
+}
+
+inline void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const KolibriLib::Colors::Color &BackgroundColor, const uint8_t &flags, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
+{
+  void *canvas = malloc(3 * size.x * size.y);
+
+  for(std::size_t i = 0; i < size.x * size.y; i++)
+  {
+    ((rgb_t *)canvas)[i] = BackgroundColor.GetRGB();
+  }
+
+  void *buff = drawTextToBuff(canvas, {0,0}, size, text, CharSize, FontColor, flags, encoding);
+  free(canvas);
+  _ksys_draw_bitmap(buff, coord.x, coord.y, size.x, size.y);
+  free(buff);
+	
+}
+
+
 #endif
 
 #endif /* KOLIBRI_RASTERWORKS_H */

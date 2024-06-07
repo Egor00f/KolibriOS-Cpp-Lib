@@ -109,14 +109,11 @@ SET(SOURCES
 	${SRC_PATH}/os.cpp 
 	${SRC_PATH}/graphic.cpp 
 	${SRC_PATH}/img.cpp 
-	${SRC_PATH}/freetypefuncs.cpp
-	${SRC_PATH}/font.cpp
 	${SRC_PATH}/thread.cpp 
 	${SRC_PATH}/types.cpp 
 	${SRC_PATH}/textBase.cpp 
 	${SRC_PATH}/UI.cpp 
 	${SRC_PATH}/image.cpp 
-	${SRC_PATH}/char.cpp 
 	${SRC_PATH}/text.cpp 
 	${SRC_PATH}/textlabel.cpp 
 	${SRC_PATH}/buttonsBase.cpp

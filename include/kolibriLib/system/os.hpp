@@ -16,15 +16,7 @@ namespace KolibriLib
 
 		/// @brief Получить системные цвета
 		/// @return Таблица системных цветов
-		inline Colors::ColorsTable GetSystemColors()
-		{
-			Colors::ColorsTable buff;
-			asm_inline(
-				"int $0x40"
-				::"a"(47), "b"(3), "c"(&buff), "d"(sizeof(Colors::ColorsTable))
-			);
-			return buff;
-		}
+		Colors::ColorsTable GetSystemColors();
 
 		
 		/// @brief Перечисление всех ивнтов
@@ -32,16 +24,22 @@ namespace KolibriLib
 		{
 			/// @brief Ивента небыло
 			None    = KSYS_EVENT_NONE,
+
 			/// @brief Перересовка окна
 			Redraw  = KSYS_EVENT_REDRAW,
+
 			/// @brief Нажата кнопка
 			Button  = KSYS_EVENT_BUTTON,
+
 			/// @brief Активность мыши
 			Mouse   = KSYS_EVENT_MOUSE,
+
 			/// @brief Активность со стороны клавиатуры
 			Key     = KSYS_EVENT_KEY,
+
 			/// @brief 
 			Desktop = KSYS_EVENT_DESKTOP,
+			
 			/// @brief 
 			Debug   = KSYS_EVENT_DEBUG,
 
@@ -201,12 +199,12 @@ namespace KolibriLib
 		/// @param Text текст после заголовка
 		/// @param icon иконка
 		/// @param keys ключи
-		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, std::vector<notifyKey> keys = {notifyKey::Title});
+		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const std::vector<notifyKey> &keys = {notifyKey::Title});
 		
 
 		/// @brief Уведомление об ошибке через увдомления системы
-		/// @param Title 
-		/// @param Text 
+		/// @param Title Заголовок уведомления об ошибке
+		/// @param Text текст
 		inline void ErrorNotify(const std::string &Title, const std::string &Text)
 		{
 			std::string a = "\"'" + Title + "\n" + Text + "' -E -t";
@@ -215,17 +213,21 @@ namespace KolibriLib
 
 
 		/// @brief Версия ядра
-		struct CoreVersion{
-			struct{
+		struct CoreVersion
+		{
+			struct
+			{
 				/// @brief Версия
 				uint32_t version;
-				union{
+				union
+				{
 					uint8_t a;
 					uint8_t b;
 					uint8_t c;
 					uint8_t d;
 				};
 			};
+
 			/// @brief Зарезервированно
 			uint8_t reserved;
 

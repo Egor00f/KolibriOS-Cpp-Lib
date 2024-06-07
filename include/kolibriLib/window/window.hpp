@@ -102,7 +102,7 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), const Colors::Color &TitleColor = OS::GetSystemColors().win_title, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
+			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 
 			/// @brief Полная перересовка окна
 			void Redraw();
@@ -193,8 +193,6 @@ namespace KolibriLib
 
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
-
-			Colors::Color _TitleColor;
 
 			/// @brief отступы от края окна
 			unsigned _MARGIN;
@@ -406,48 +404,42 @@ namespace KolibriLib
 
 		//=============================================================================================================================================================
 
-		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, const KolibriLib::Colors::Color &TitleColor, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
+		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
 			: _title(Title), _colors(colors)
 		{
-#if DEBUG == true
-			_ksys_debug_puts("KolibriLib::window:::Window constructor\n");
-#endif
+
 
 			_MARGIN = Margin;
-			_TitleColor = TitleColor;
 			_Transparency = Transparency;
 			_RealtimeRedraw = RealtimeRedraw;
 
-			_style = WindowStyle::Relative + WindowStyle::WindowHaveTitle + WindowStyle::withSkin;
+			_style = WindowStyle::Relative | WindowStyle::WindowHaveTitle | WindowStyle::withSkin;
 			if (Resize)
 			{
-				_style += WindowStyle::CanResize;
+				_style |= WindowStyle::CanResize;
 			}
 			else
 			{
-				_style += WindowStyle::FixSize;
+				_style |= WindowStyle::FixSize;
 			}
 
 			if (Gradient)
 			{
-				_style += WindowStyle::GradientDraw;
+				_style |= WindowStyle::GradientDraw;
 			}
 
 			if (_Transparency > 0)
 			{
-				_style += WindowStyle::NoDrawWorkspace;
+				_style |= WindowStyle::NoDrawWorkspace;
 			}
 
-			window::CreateWindow(DefaultWindowCoord, size, _title, _colors.win_body, _TitleColor, _style); // Отрисовать окно
+			window::CreateWindow(GetCoord(), size, _title, _colors.win_body, _colors.win_title, _style);
 		}
 
 		void Window::RenderAllElements() const
 		{
 			for (auto &it : _Elements)
 			{
-#ifdef DEBUG
-				_ksys_debug_puts("-Render Element as");
-#endif
 				it.second.Render();
 			}
 		}
@@ -459,24 +451,16 @@ namespace KolibriLib
 
 		void KolibriLib::window::Window::Redraw()
 		{
-#ifdef DEBUG
+			#ifdef DEBUG
 			_ksys_debug_puts("Redraw window:");
-#endif
+			#endif
 
 			StartRedraw();
-			window::CreateWindow(GetCoord(), {0,0}, _title, _colors.win_body, _TitleColor, _style);
+			window::CreateWindow(GetCoord(), {0,0}, _title, _colors.win_body, _colors.win_title, _style);
 
 			if (_Transparency > 0 && false)
 			{
-				/*UI::Images::img buff;
-				for (unsigned i = 0; i < GetWindowSize().y; i++)
-				{
-					for (unsigned j = 0; j < GetWindowSize().x; j++)
-					{
-						buff.SetPixel(Colors::BlendColors(Background::ReadPoint(Coord(j, i)), , _Transparency / 100))
-
-					}
-				}*/
+				// когданибудьбудетреализовано
 			}
 			else
 			{
@@ -536,18 +520,12 @@ namespace KolibriLib
 
 		void Window::Render(const Coord &coord)
 		{
-#ifdef DEBUG
-			_ksys_debug_puts("Render window\n");
-#endif
 
 			StartRedraw();
-			window::CreateWindow(coord, DefaultWindowSize, _title, _colors.win_body, _TitleColor, _style);
+			window::CreateWindow(coord, DefaultWindowSize, _title, _colors.win_body, _colors.win_title, _style);
 
 			RenderAllElements();
 
-#ifdef DEBUG
-			_ksys_debug_puts("\nDone render elements\n");
-#endif
 
 			if (_Transparency != 0) // Прозрачность окна
 			{

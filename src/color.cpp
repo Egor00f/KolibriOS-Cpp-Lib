@@ -70,11 +70,12 @@ bool KolibriLib::Colors::Color::operator!=(const Color &a) const
 	return val != a.val;
 }
 
+/*
 KolibriLib::Colors::ColorsTable::ColorsTable(const ksys_colors_table_t &table)
 {
 	menu_body = table.frame_area;
 	gui_face = table.grab_bar;
-	btn_face = table.grab_bar_button;
+	btn_face = table.work_button;
 	btn_intext = table.grab_button_text;
 	gui_text = table.grab_text;
 	win_body = table.work_area;
@@ -82,44 +83,44 @@ KolibriLib::Colors::ColorsTable::ColorsTable(const ksys_colors_table_t &table)
 	btn_text = table.work_button_text;
 	gui_frame = table.work_graph;
 	btn_text = table.work_text;
-}
+}*/
 
 KolibriLib::Colors::ColorsTable::ColorsTable(const ColorsTable &table)
 {//Ужос
-	btn_text = table.btn_text;
-	win_text = table.win_text;
-	panel_frame  = table.panel_frame;
-	win_face = table.win_face;
-	win_inface = table.win_inface;
-	win_frame = table.win_frame;
-	win_inframe = table.win_inframe;
-	win_inborder = table.win_inborder;
-	win_graytext = table.win_graytext;
-	menu_frame = table.menu_frame;
-	menu_text = table.menu_text;
-	panel_body = table.panel_body;
-	panel_body = table.panel_body;
-	hint_frame = table.hint_frame;
-	hint_body = table.hint_body;
-	hint_text = table.hint_text;
-	btn_inface = table.btn_inface;
-	btn_fcface = table.btn_fcface;
-	btn_frame = table.btn_frame;
-	btn_inframe = table.btn_inframe;
-	btn_fcframe = table.btn_fcframe;
-	btn_intext = table.btn_intext;
-	btn_fctex = table.btn_fctex;
-	gui_shadow = table.gui_shadow;
-	gui_face = table.gui_face;
-	gui_inface = table.gui_inface;
-	gui_fcface = table.gui_fcface;
-	gui_frame = table.gui_frame;
-	gui_inframe = table.gui_inframe;
-	gui_fcframe = table.gui_fcframe;
-	gui_text = table.gui_text;
-	gui_intex = table.gui_intex;
-	gui_fctext = table.gui_fctext;
-	gui_select = table.gui_select;
+	btn_text	= table.btn_text;
+	win_text	= table.win_text;
+	panel_frame	= table.panel_frame;
+	win_face	= table.win_face;
+	win_inface	= table.win_inface;
+	win_frame	= table.win_frame;
+	win_inframe	= table.win_inframe;
+	win_inborder	= table.win_inborder;
+	win_graytext	= table.win_graytext;
+	menu_frame	= table.menu_frame;
+	menu_text	= table.menu_text;
+	panel_body	= table.panel_body;
+	panel_body	= table.panel_body;
+	hint_frame	= table.hint_frame;
+	hint_body	= table.hint_body;
+	hint_text	= table.hint_text;
+	btn_inface	= table.btn_inface;
+	btn_fcface	= table.btn_fcface;
+	btn_frame	= table.btn_frame;
+	btn_inframe	= table.btn_inframe;
+	btn_fcframe	= table.btn_fcframe;
+	btn_intext	= table.btn_intext;
+	btn_fctex	= table.btn_fctex;
+	gui_shadow	= table.gui_shadow;
+	gui_face	= table.gui_face;
+	gui_inface	= table.gui_inface;
+	gui_fcface	= table.gui_fcface;
+	gui_frame	= table.gui_frame;
+	gui_inframe	= table.gui_inframe;
+	gui_fcframe	= table.gui_fcframe;
+	gui_text	= table.gui_text;
+	gui_intex	= table.gui_intex;
+	gui_fctext	= table.gui_fctext;
+	gui_select	= table.gui_select;
 }
 
 ksys_color_t KolibriLib::Colors::RGBtoINT(const rgb_t &color)

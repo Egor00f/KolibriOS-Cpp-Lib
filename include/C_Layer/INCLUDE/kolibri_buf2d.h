@@ -218,7 +218,7 @@ extern void (*buf2d_flood_fill)(buf2d_struct *buffer, unsigned int start_x, unsi
 /// @param x coord of point
 /// @param y coord of point
 /// @param color color of point
-extern void (*buf2d_set_pixel)(buf2d_struct *buffer, unsigned int x, unsigned int y, ksys_color_t color) __attribute__((__stdcall__));
+extern void (*buf2d_set_pixel)(buf2d_struct *buffer, unsigned int y, unsigned int x, ksys_color_t color) __attribute__((__stdcall__));
 
 /// @brief Get pixel color
 /// @param buffer Pointer to buf2d_struct

@@ -6,8 +6,8 @@ void *drawTextToBuff(const void *canvas, uint8_t width, uint8_t height, int x, i
 
 	void *buff = malloc(l + 8);
 
-	*((int *)buff) = width;
-	*((int *)buff + 1) = height;
+	*((int *)buff)	= width;
+	*((int *)buff + 1)	= height;
 
 	memcpy((char *)buff + 8, canvas, l);
 
@@ -22,7 +22,7 @@ void *drawTextToBuff(const void *canvas, uint8_t width, uint8_t height, int x, i
 			 string,
 			 stringLenght,
 			 fontColor,
-			 (flags << 24) + (CharWidth << 16) + (CharHeight << 8) + encoding);
+			 (flags << 24) | (CharWidth << 16) | (CharHeight << 8) | encoding);
 
 	return buff;
 }

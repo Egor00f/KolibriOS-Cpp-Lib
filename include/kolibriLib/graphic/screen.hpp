@@ -30,7 +30,7 @@ namespace KolibriLib
 			);
 		return s;
 	}
-
+	
 }
 
 

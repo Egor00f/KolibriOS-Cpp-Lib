@@ -28,35 +28,13 @@ FreeType::FT_Error KolibriLib::UI::text::Fonts::Font::loadFontFromFile(const fil
 	{
 		FT_Done_Face(_face);
 	}
-	
-	FreeType::FT_Error error = LoadFace(&_face, path);
-	
-	switch (error)
+
+	FreeType::FT_Error error = FreeType::LoadFace(&_face, path);
+	if(error == FreeType::FT_Err_Ok)
 	{
-	case FreeType::FT_Err_Ok:	//Если всё ок, то уходим
 		faceloaded = true;
-		break;
-	case FreeType::FT_Err_Unknown_File_Format:
-		_ksys_debug_puts("Unknown font file format\n");
-		break;
-	case FreeType::FT_Err_Corrupted_Font_Header:
-		_ksys_debug_puts("Corrupted Font Header\n");
-		break;
-	case FreeType::FT_Err_Invalid_Face_Handle:
-		_ksys_debug_puts("invalid face handle\n");
-		break;
-	case FreeType::FT_Err_Cannot_Open_Resource:
-		_ksys_debug_puts("can't open resource\n");
-		break;
-	case FreeType::FT_Err_Invalid_Handle:
-		_ksys_debug_puts("Invalid handle\n");
-		break;
-	default:
-		_ksys_debug_puts("Error load FT_Face: ");
-		_ksys_debug_puts(itoa(error, nullptr, 10));
-		_ksys_debug_putc('\n');
-		break;
 	}
+
 
 	return error;
 }

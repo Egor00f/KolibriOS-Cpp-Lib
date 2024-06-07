@@ -1,9 +1,25 @@
 #include <kolibriLib/system/os.hpp>
+#include <stdlib.h>
 
 using namespace KolibriLib;
 using namespace OS;
 
+Colors::ColorsTable KolibriLib::OS::GetSystemColors()
+{
+	Colors::ColorsTable *buff = (Colors::ColorsTable*) malloc(sizeof(Colors::ColorsTable));
+
+	asm_inline(
+		"int $0x40"
+		::"a"(47), "b"(3), "c"(buff), "d"(sizeof(Colors::ColorsTable))
+	);
+
+	Colors::ColorsTable ret(*buff);
+    free(buff);
+	return ret;
+}	
+
 int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, bool debug)
+
 {
     if (filesystem::Exist(AppName)) // Проверка на существование
     {
@@ -14,7 +30,7 @@ int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &arg
     return -1;
 }
 
-void Notify(const std::string &Title, const std::string &Text, notifyIcon icon, std::vector<notifyKey> keys)
+void Notify(const std::string &Title, const std::string &Text, notifyIcon icon, const std::vector<notifyKey> &keys)
 {
 	std::string a = "\"'" + Title + "\n" + Text + "' " + (char)icon;
 	for(short i = 0; i < keys.size(); i++)

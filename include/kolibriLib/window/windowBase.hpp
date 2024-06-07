@@ -47,6 +47,7 @@ namespace KolibriLib
 
 			/// @brief у окна есть заголовок
 			WindowHaveTitle = 0b00010000,
+
 			/// @brief Координаты крафических приметивов относительно окна
 			Relative = 0b00100000,
 
@@ -64,9 +65,14 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
-		inline void CreateWindow(const Coord &coord, const Size &size, const std::string &title, const Colors::Color &WorkColor = OS::GetSystemColors().win_body, Colors::Color TitleColor = OS::GetSystemColors().win_title, uint32_t style = WindowStyle::CanResize)
+		inline void CreateWindow(const Coord &coord, 
+		                         const Size &size, 
+								 const std::string &title,
+								 const Colors::Color &WorkColor = OS::GetSystemColors().win_body,
+								 Colors::Color TitleColor = OS::GetSystemColors().win_title, 
+								 uint32_t style = WindowStyle::CanResize || WindowStyle::Relative)
 		{
-			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor.val, style);
+			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
 		}
 
 		/// @brief Снять фокус с окна
@@ -97,7 +103,8 @@ namespace KolibriLib
 			asm_inline(
 				"int $0x40"
 				: "=a"(s)
-				: "a"(18), "b"(7));
+				: "a"(18), "b"(7)
+			);
 			
 			return s;
 		}
@@ -106,14 +113,18 @@ namespace KolibriLib
 		inline void MinimizeWindow()
 		{
 			asm_inline(
-				"int $0x40" ::"a"(18), "b"(10));
+				"int $0x40" 
+				::"a"(18), "b"(10)
+			);
 		}
 
 		/// @brief Свернуть все окна
 		inline void MinimizeAllWindows()
 		{
 			asm_inline(
-				"int $0x40" ::"a"(18), "b"(23));
+				"int $0x40" 
+				::"a"(18), "b"(23)
+			);
 		}
 
 		/// @brief получить координаты окна
@@ -125,23 +136,26 @@ namespace KolibriLib
 		}
 
 		/// @brief Список констант положения окна относительно других окон:
-		enum Pos
+		typedef enum Pos
 		{
 			/// @brief На фоне
 			BackGround = -2,
+
 			/// @brief всегда за другими окнами
 			AlwaysBack = -1,
+
 			/// @brief обчное
 			Normal = 0,
+
 			/// @brief Всегда поверх остальных окон
 			AlwaysTop = 1
-		};
+		} Pos;
 
 		/// @brief Получить положение окна относительно других окон
 		/// @return одна из констант из списка Pos
-		inline int GetWindowPos()
+		inline Pos GetWindowPos()
 		{
-			int a;
+			Pos a;
 			asm_inline(
 				"int $0x40"
 				: "=a"(a)
@@ -154,7 +168,7 @@ namespace KolibriLib
 		/// @param pid процесс окна, по умолчанию текущий
 		/// @return false если ошибка
 		//// @return true если успешно
-		inline bool SetWindowPos(int pos, Thread::PID pid = -1)
+		inline bool SetWindowPos(Pos pos, Thread::PID pid = -1)
 		{
 			bool a;
 			asm_inline(
@@ -169,6 +183,17 @@ namespace KolibriLib
 		inline unsigned GetSkinHeight()
 		{
 			return _ksys_get_skin_height();
+		}
+
+		/// @brief Получить размер рабочей области окна
+		inline Size GetWorkArea()
+		{
+			ksys_pos_t a, b;
+			asm_inline(
+				"int $0x40"
+				: "=a"(a), "=b"(b)
+				: "a"(48), "b"(5));
+			return {a.y - a.x + 1, b.y - b.x + 1};
 		}
 
 	} // namespace window

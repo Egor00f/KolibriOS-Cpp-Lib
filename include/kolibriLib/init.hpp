@@ -13,7 +13,7 @@
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/globals.hpp>
-#include <kolibriLib/UI/text/freetypefuncs.hpp>
+//#include <kolibriLib/UI/text/freetypefuncs.hpp>
 
 /// \brief Основное пространство имён
 /// \author Egor00f
