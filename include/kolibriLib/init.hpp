@@ -3,9 +3,9 @@
 
 #include <sys/ksys.h>
 
-#include <kolibri_libimg.h>
-#include <kolibri_rasterworks.h>
-#include <kolibri_buf2d.h>
+#include <C_Layer/INCLUDE/kolibri_libimg.h>
+#include <C_Layer/INCLUDE/kolibri_rasterworks.h>
+#include <C_Layer/INCLUDE/kolibri_buf2d.h>
 
 //#include <sound.h>
 

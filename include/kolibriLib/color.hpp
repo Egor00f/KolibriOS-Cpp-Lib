@@ -108,8 +108,8 @@ namespace KolibriLib
             Color win_border;
             Color win_inborder;
             Color win_graytext;
-            Color menu_frame ;
-            Color menu_text ;
+            Color menu_frame;
+            Color menu_text;
             Color panel_body;
             Color panel_text;
             Color hint_frame;
@@ -145,8 +145,9 @@ namespace KolibriLib
             // ksys_color_t work_text;
             // ksys_color_t work_graph;
 
+
             ColorsTable(const ColorsTable &table);
-            // ColorsTable(const ksys_colors_table_t &table = DefaultColorTable);
+            ColorsTable(const ksys_colors_table_t &table);
         };
     }
 } // namespace KolibriLib

@@ -26,6 +26,7 @@ namespace KolibriLib
 
         public:
             std::string ClassName = "Form";
+            bool RenderOnEverythingRedraw = true;
 
             /// \brief конструктор
             /// \param coord позиция в коне

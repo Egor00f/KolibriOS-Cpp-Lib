@@ -65,12 +65,12 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
-		inline void CreateWindow(const Coord &coord, 
-		                         const Size &size, 
+		inline void CreateWindow(const Coord &coord,
+								 const Size &size,
 								 const std::string &title,
-								 const Colors::Color &WorkColor = OS::GetSystemColors().win_body,
-								 Colors::Color TitleColor = OS::GetSystemColors().win_title, 
-								 uint32_t style = WindowStyle::CanResize || WindowStyle::Relative)
+								 const Colors::Color &WorkColor	= OS::GetSystemColors().win_body,
+								 Colors::Color TitleColor	= OS::GetSystemColors().win_title,
+								 uint8_t style	= WindowStyle::CanResize | WindowStyle::Relative)
 		{
 			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
 		}

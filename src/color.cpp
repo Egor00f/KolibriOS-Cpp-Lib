@@ -70,7 +70,6 @@ bool KolibriLib::Colors::Color::operator!=(const Color &a) const
 	return val != a.val;
 }
 
-/*
 KolibriLib::Colors::ColorsTable::ColorsTable(const ksys_colors_table_t &table)
 {
 	menu_body = table.frame_area;
@@ -83,10 +82,10 @@ KolibriLib::Colors::ColorsTable::ColorsTable(const ksys_colors_table_t &table)
 	btn_text = table.work_button_text;
 	gui_frame = table.work_graph;
 	btn_text = table.work_text;
-}*/
+}
 
 KolibriLib::Colors::ColorsTable::ColorsTable(const ColorsTable &table)
-{//Ужос
+{	//Ужос
 	btn_text	= table.btn_text;
 	win_text	= table.win_text;
 	panel_frame	= table.panel_frame;

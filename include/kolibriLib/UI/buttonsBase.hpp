@@ -5,7 +5,6 @@
 
 #include <kolibriLib/UI/UI.hpp>
 
-#include <unordered_map>
 
 namespace KolibriLib
 {
@@ -14,23 +13,24 @@ namespace KolibriLib
 		namespace buttons
 		{
 			/// @brief Id кнопки
-			typedef unsigned int ButtonID;
+			typedef uint32_t ButtonID;
+
+			/// @brief Id кнопки закрытия окна
+			const ButtonID CloseButton = 1;
+
+			/// @brief Id кнопки минимизации окна
+			const ButtonID MinimizeButton = 0xffff;
 
 			// Коды кнопок начинаются с этого числа
-			const ButtonID StartButtonId = 100;
-
-			#ifndef __MakeStaticLib__
-			/// @brief Список idшников кнопок
-			std::unordered_map<ButtonID, bool> ButtonsIdList;
-			#endif
+			const ButtonID StartButtonId = 2;
 
 			/// \brief Получить свободный номер id кнопки из списка
 			/// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
-			/// \return номер кнопки из списка @link ButtonsIdList
+			/// \return номер кнопки из списка ButtonsIdList
 			ButtonID GetFreeButtonId();
 
 			/// \brief Освободить номер кнопки
-			/// \param id номер номер кнопки из списка @link ButtonsIdList
+			/// \param id номер номер кнопки из списка ButtonsIdList
 			void FreeButtonId(const ButtonID &id);
 
 			/// \brief Создать кнопку, автоматически присвоить ей id
@@ -47,7 +47,7 @@ namespace KolibriLib
 			/// \param color цвет
 			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().btn_frame)
 			{
-				_ksys_define_button(coord.x, coord.y, size.x, size.y, id, color.val);
+				_ksys_define_button(coord.x, coord.y, size.x, size.y, 0x00FFFFFF&id, color.val);
 			}
 
 			/// \brief Удалить кнопу
@@ -60,31 +60,11 @@ namespace KolibriLib
 
 			/// @brief проверить какая кнопка нажата
 			/// @return id нажатой кнопки
-			inline unsigned GetPressedButton()
+			inline ButtonID GetPressedButton()
 			{
-				return _ksys_get_button();
+				return (ButtonID)_ksys_get_button();
 			}
 
-			#ifndef __MakeStaticLib__
-
-			// Не должно быть видимо для компилятора во время сборки библиотеки
-			ButtonID GetFreeButtonId()
-			{
-				for (unsigned i = 0; i < ButtonsIdList.size(); i++)
-				{
-					if (ButtonsIdList.count(i) == 0)
-					{
-						return i + StartButtonId;
-					}
-				}
-			}
-
-			void FreeButtonId(const ButtonID &id)
-			{
-				ButtonsIdList.erase(id);
-			}
-
-			#endif
 		} // namespace buttons
 		
 	} // namespace UI

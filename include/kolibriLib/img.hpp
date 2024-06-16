@@ -8,8 +8,7 @@
 
 #include <string>
 
-
-#include <kolibri_buf2d.h>
+#include <C_Layer/INCLUDE/kolibri_buf2d.h>
 
 namespace KolibriLib
 {
@@ -23,7 +22,6 @@ namespace KolibriLib
 			{
 			private:
 				buf2d_struct *_buff;
-
 			public:
 				/// @brief Глубина цвета
 				typedef enum

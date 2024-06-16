@@ -41,6 +41,7 @@ namespace KolibriLib
             public:
 
                 std::string ClassName = "Button";
+                bool RenderOnEverythingRedraw = true;
 
                 /// \brief Это конструктор
                 /// \param coord координата

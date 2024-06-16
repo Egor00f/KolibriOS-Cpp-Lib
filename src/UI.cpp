@@ -11,11 +11,9 @@ KolibriLib::UI::UDim::UDim(const point &p)
 }
 
 KolibriLib::UI::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
+	: X(XScale, XOffset), Y(YScale, YOffset)
 {
-	X.Scale = XScale;
-	X.Offset = XOffset;
-	Y.Scale = YScale;
-	Y.Offset = YOffset;
+	
 }
 
 KolibriLib::UI::UDim::Axis::Axis(float scale, int offset)

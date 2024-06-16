@@ -27,16 +27,19 @@ int main()
 	Window::ElementNumber button = window.AddElement(Button(UDim(0.6, 0, 0.8, 0), UDim(0.2, 0, 0.1, 0)));
 
 	// Получение кнопки обратно
-	Button tmp(*(Button*)window.GetElement(button).pointer);
+	Button tmp(*(Button*)window.GetElement(button));
 
 	// изменение текста в полученной кнопке
 	tmp.SetText("Button");
 
 	// Замена кнопки в окне на изменнёную
 	window.SetElement(button, tmp);
+
+	// больше не пригодится
+	tmp.~Button();
 	
 	// Отрисовка окна
-	window.Redraw();
+	window.Render();
 
 	bool exit = false;
 	while (!exit)
@@ -51,7 +54,7 @@ int main()
 			exit = true;
 			break;
 		case Event::Button:
-			if(window.GetPressedButton() == ((Button*)window.GetElement(button).pointer)->GetId())
+			if(window.GetPressedButton() == ((Button*)window.GetElement(button))->GetId())
 			{
 				childWindow::MessageBox("button pressed", "Message");
 			}

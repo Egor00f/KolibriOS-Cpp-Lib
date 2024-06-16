@@ -138,7 +138,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Список языков системы
-		typedef enum 
+		typedef enum lang
 		{
 			/// @brief Английский 
 			Eng = 0,

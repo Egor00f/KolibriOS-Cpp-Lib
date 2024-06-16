@@ -63,15 +63,6 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(LIBS_DIR ${SDK_DIR}/sources)
-
-#поключение newlib
-include_directories(${LIBS_DIR}/libstdc++-v3/include)
-
-#подключение libstdc++-v3
-include_directories(${LIBS_DIR}/newlib/libc/include)
-
-
 include_directories(${LIBS_DIR}/freetype/include)
 
 include_directories(any)

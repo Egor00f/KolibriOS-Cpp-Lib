@@ -79,11 +79,14 @@ namespace KolibriLib
             /// @brief Отступы
             unsigned _Margin;
 
-       
+            
            
         public:
             /// @brief Имя класса, (для наследуемых классов)
             std::string ClassName = "UIElement";
+
+            /// @brief Флаг того нужно ли отрисовывать этот элемент при каждой перерисовке окна
+            bool RenderOnEverythingRedraw;
 
             /// @brief Конструктор
             /// @param UDim координаты

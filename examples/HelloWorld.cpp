@@ -9,7 +9,7 @@ int main()
     
     window::Window window("Example Window");
 
-    window.AddElement(UI::text::TextLabel({0, 0}, window.GetWindowSize(), "Hello World!", UI::text::Fonts::Font(UI::text::Fonts::Micrhoma))); // Текст на всё окно
+    window.AddElement(); // Текст на всё окно
 
     while (true)
     {
