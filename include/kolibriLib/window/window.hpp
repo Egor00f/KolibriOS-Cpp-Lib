@@ -195,22 +195,24 @@ namespace KolibriLib
 
 			if (Resize)
 			{
-				_style += WindowStyle::CanResize;
+				_style |= WindowStyle::CanResize;
 			}
 			else
 			{
-				_style += WindowStyle::FixSize;
+				_style |= WindowStyle::FixSize;
 			}
 
 			if (Gradient)
 			{
-				_style += WindowStyle::GradientDraw;
+				_style |= WindowStyle::GradientDraw;
 			}
 
 			/* if (_Transparency > 0)
 			{
 				_style |= WindowStyle::NoDrawWorkspace;
 			} */
+
+			window::CreateWindow(DefaultWindowCoord, size, _title, _colors.win_body, _colors.win_title, _style);
 		}
 
 		KolibriLib::window::Window::~Window()
@@ -312,7 +314,7 @@ namespace KolibriLib
 		{
 
 			StartRedraw();
-			window::CreateWindow(coord, DefaultWindowSize, _title, _colors.win_body, _colors.win_title, _style);
+			window::CreateWindow(GetCoord(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
 
 			KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.win_body);
 
@@ -393,6 +395,27 @@ namespace KolibriLib
 				if (activeForm != -1 && _Elements[activeForm]->ClassName == "Form")
 				{
 					((UI::Form *)_Elements[activeForm])->Handler(); // Обработчик активной на текущий момент формы
+				}
+
+				break;
+			case OS::Events::Mouse:
+
+				if(mouse::MouseButtons::RightButton && mouse::MouseButtons())	// Если нажата правая кнопка
+				{
+					Coord m = mouse::GetMousePositionInWindow();
+
+					if(m.x < GetSize().x && m.y < window::GetSkinHeight())
+					{
+						
+					}
+				}
+
+				for(const auto n : _Elements)
+				{
+					if(n.second->ClassName == "Frame")
+					{
+						((UI::Frame*)n.second)->Handler();
+					}
 				}
 
 				break;

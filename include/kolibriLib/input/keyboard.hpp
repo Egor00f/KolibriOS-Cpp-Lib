@@ -38,7 +38,7 @@ namespace KolibriLib
 		/// @param controlkeys клавиши
 		/// @return true если успешно, иначе false
         /// @warning not done!
-        inline bool InstallHotKey(uint16_t controlkeys)
+        inline bool InstallHotKey(const uint16_t &controlkeys)
         {
             return !_ksys_set_sys_hotkey(0, controlkeys);
         }
@@ -46,9 +46,9 @@ namespace KolibriLib
         /// @brief Удалить "горячую клавишу"
         /// @return true если успешно, иначе false
         /// @warning not done!
-        inline bool DeleteHotKey()
+        inline bool DeleteHotKey(const uint16_t &controlKeys)
         {
-            
+            return _ksys_del_sys_hotkey(0, controlKeys);
         }
 
         

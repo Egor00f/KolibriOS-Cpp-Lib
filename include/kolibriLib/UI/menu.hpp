@@ -15,7 +15,7 @@ namespace KolibriLib
 {
     namespace UI
     {
-        /// @brief Выпадающее менб список
+        /// @brief Выпадающее меню/список
         class Menu : public UIElement
         {
         public:

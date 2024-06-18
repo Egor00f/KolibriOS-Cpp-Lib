@@ -1,25 +1,35 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
 
-project(KolibriLib)
+
+project(
+	KolibriLib
+	VERSION 0.0.3
+)
 
 #################################################
 ################### CONFIG ######################
 #################################################
-#												#
-set(DEBUG ON)									#
-set(CUSTOM_TOOCLAIN_PATH OFF)					#
-#												#
+#
+set(DEBUG	ON)
+set(CUSTOM_TOOCLAIN_PATH	OFF)
+set(KOLIBRIOS_REPO	"../kolibrios")
+set(BuildExamples	ON)
+set(INSTALL_LIB	ON)
+#
 #################################################
 
 
 
 
+get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-set(KOLIBRIOS_REPO "../kolibrios")
+if(IS_SUBPROJECT)
+	set(BuildExamples OFF)
+endif()
+
 
 
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
-SET(LIB_DIR ${SDK_DIR}/lib)
 
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -50,20 +60,22 @@ include(CMakeKOS32gcc)
 
 
 #Flags
-SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -O2 -fomit-frame-pointer -Wparentheses")
-SET(CMAKE_EXE_LINKER_FLAGS "-lfreetype")
+SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -fomit-frame-pointer -Wparentheses")
+#SET(CMAKE_EXE_LINKER_FLAGS "-lfreetype")
 
 if(DEBUG)
 	message("DEBUG ON")
 	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 else()
 	message("DEBUG OFF")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 endif()
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
 
 set(CMAKE_CXX_STANDARD 11)
 
-include_directories(${LIBS_DIR}/freetype/include)
+#include_directories(${LIBS_DIR}/freetype/include)
 
 include_directories(any)
 
@@ -116,5 +128,104 @@ SET(SOURCES
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 
-TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include)
-TARGET_INCLUDE_DIRECTORIES(KolibriLib PUBLIC include/C_Layer/INCLUDE)
+
+target_include_directories(KolibriLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+################### Doxygen #####################################
+
+MACRO(CONFIGURE_DOXYGEN_FILE DOXYGEN_CONFIG_FILE FILE_NAME_SUFFIX)
+
+ IF(EXISTS ${DOXYGEN_CONFIG_FILE})
+
+    FILE(REMOVE ${CMAKE_CURRENT_BINARY_DIR}/doxy-${FILE_NAME_SUFFIX}.conf)
+
+    FILE(READ ${DOXYGEN_CONFIG_FILE} DOXYFILE_CONTENTS)
+
+     STRING(REGEX REPLACE ";" "\\\\;" DOXYFILE_CONTENTS "${DOXYFILE_CONTENTS}")
+
+     STRING(REGEX REPLACE "\n" ";" DOXYFILE_LINES "${DOXYFILE_CONTENTS}")
+
+     LIST(LENGTH DOXYFILE_LINES ROW)
+
+     MATH(EXPR ROW "${ROW} - 1")
+
+     FOREACH(I RANGE ${ROW})
+
+        LIST(GET DOXYFILE_LINES ${I} LINE)
+
+        IF(LINE STRGREATER "")
+
+         STRING(REGEX MATCH "^[a-zA-Z]([^ ])+" DOXY_PARAM ${LINE})
+
+         IF(DEFINED DOXY_${DOXY_PARAM})
+
+            STRING(REGEX REPLACE "=([^\n])+" "= ${DOXY_${DOXY_PARAM}}" LINE ${LINE})
+
+         ENDIF(DEFINED DOXY_${DOXY_PARAM})
+
+        ENDIF()
+
+        FILE(APPEND ${CMAKE_CURRENT_BINARY_DIR}/doxy-${FILE_NAME_SUFFIX}.conf "${LINE}\n")
+
+     ENDFOREACH()
+
+ ELSE()
+
+    MESSAGE(SEND_ERROR "Doxygen configuration file '${DOXYGEN_CONFIG_FILE}' not found. Documentation will not be generated")
+
+ ENDIF()
+
+ENDMACRO(CONFIGURE_DOXYGEN_FILE)
+
+
+MACRO(ADD_DOCUMENTATION TARGET DOXYGEN_CONFIG_FILE)
+
+   FIND_PACKAGE(Doxygen)
+
+   IF(DOXYGEN_FOUND)
+      CONFIGURE_DOXYGEN_FILE(${DOXYGEN_CONFIG_FILE} ${TARGET})
+
+      ADD_CUSTOM_TARGET(${TARGET} COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/doxy-${TARGET}.conf)
+
+   ELSE(DOXYGEN_FOUND)
+      MESSAGE(STATUS "Doxygen not found. Documentation will not be generated")
+
+   ENDIF(DOXYGEN_FOUND)
+   
+ENDMACRO(ADD_DOCUMENTATION)
+
+
+
+if(NOT IS_SUBPROJECT)
+	SET(DOXY_OUTPUT_LANGUAGE "Russian")
+
+	SET(DOXY_INPUT ${PROJECT_SOURCE_DIR})
+
+	ADD_DOCUMENTATION(doc "${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile")
+
+endif()
+
+
+if(INSTALL_LIB)
+	
+	message("Install Lib ON")
+	
+	add_custom_command(TARGET KolibriLib POST_BUILD
+		COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/install ${TOOLCHAIN_DIR} ${CMAKE_CURRENT_BINARY_DIR}
+		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+		COMMENT "Install Lib"
+	)
+	
+endif(INSTALL_LIB)
+
+if(BuildExamples)
+	message("Build Examples ON")
+	
+	
+	#Examples build with make, see to examples/Makefile
+	add_custom_command(TARGET KolibriLib POST_BUILD
+		COMMAND make
+		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/examples
+		COMMENT "Build Example"
+	)
+endif(BuildExamples)

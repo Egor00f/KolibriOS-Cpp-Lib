@@ -72,16 +72,16 @@ bool KolibriLib::Colors::Color::operator!=(const Color &a) const
 
 KolibriLib::Colors::ColorsTable::ColorsTable(const ksys_colors_table_t &table)
 {
-	menu_body = table.frame_area;
-	gui_face = table.grab_bar;
-	btn_face = table.work_button;
-	btn_intext = table.grab_button_text;
-	gui_text = table.grab_text;
-	win_body = table.work_area;
-	btn_frame = table.work_button;
-	btn_text = table.work_button_text;
-	gui_frame = table.work_graph;
-	btn_text = table.work_text;
+	menu_body	= table.frame_area;
+	gui_face	= table.grab_bar;
+	btn_face	= table.work_button;
+	btn_intext	= table.grab_button_text;
+	gui_text	= table.grab_text;
+	win_body	= table.work_area;
+	btn_face	= table.work_button;
+	btn_text	= table.work_button_text;
+	gui_frame	= table.work_graph;
+	btn_text	= table.work_text;
 }
 
 KolibriLib::Colors::ColorsTable::ColorsTable(const ColorsTable &table)

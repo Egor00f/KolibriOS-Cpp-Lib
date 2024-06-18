@@ -14,10 +14,10 @@ namespace KolibriLib
 		/// @brief Список кодов кнопок мыши
 		enum MouseButtons
 		{
-            LeftButton	= 0b1,
-            RightButton	= 0b10,
-            CenterBtton	= 0b100,
-            FourButton	= 0b1000,
+            LeftButton	= 0b00001,
+            RightButton	= 0b00010,
+            CenterBtton	= 0b00100,
+            FourButton	= 0b01000,
             FiveButton	= 0b10000
         };
 		
