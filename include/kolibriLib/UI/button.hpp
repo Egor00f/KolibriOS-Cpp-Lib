@@ -72,7 +72,7 @@ namespace KolibriLib
                 /// @return Состояние кнопки(Нажата/Ненажата)
                 /// @details устанавливает переменную _status в true если эта кнопка нажата, иначе false
                 /// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
-                bool Handler() const;
+                int Handler();
 
                 /// @brief Получить сосояние кнопки на момент последней обработки
                 /// @return @link _status

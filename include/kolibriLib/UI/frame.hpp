@@ -41,7 +41,7 @@ namespace KolibriLib
             void Render();
 
             /// @brief 
-            void Handler();
+            int Handler();
 
             template <class T>
             /// @brief Добавить элемент во фрейм
@@ -83,7 +83,7 @@ namespace KolibriLib
 
         void UI::Frame::Render()
         {
-            graphic::DrawRectangleFill(_coord.GetAbsolute(), _size.GetAbsolute(), _MainColor);
+            graphic::DrawRectangleFill(_coord.GetAbsolute(_size.GetAbsolute()), _size.GetAbsolute(), _MainColor);
 
             for (const auto &n : _Elements)
             {
@@ -91,7 +91,7 @@ namespace KolibriLib
             }
         }
 
-        void UI::Frame::Handler()
+        int UI::Frame::Handler()
         {
             if(_scroll)
             {

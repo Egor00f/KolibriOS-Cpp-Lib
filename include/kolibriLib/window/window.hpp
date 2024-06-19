@@ -28,7 +28,7 @@ namespace KolibriLib
 		/// @brief Класс для работы с окном
 		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор
 		/// @paragraph Для тех кто знает:
-		class Window
+		class Window: public UI::GuiObject
 		{
 		public:
 			
@@ -57,7 +57,7 @@ namespace KolibriLib
 
 			/// @brief Получить размер окна
 			/// @return @link _size
-			Size GetSize() const;
+			UI::UDim GetSize() const;
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
@@ -74,7 +74,7 @@ namespace KolibriLib
 
 			/// @brief Получить координаты окна
 			/// @return
-			Coord GetCoord() const;
+			UI::UDim GetCoord() const;
 
 			/// @brief Изменить окно
 			/// @param coord позиция
@@ -168,7 +168,9 @@ namespace KolibriLib
 			{
 				if (_Elements.count(i) == 0)
 				{
-					_Elements.emplace(i, new T(element));
+					auto a = new T(element);
+					a->SetParent(this);
+					_Elements.emplace(i, a);
 
 					return i;
 				}
@@ -256,9 +258,9 @@ namespace KolibriLib
 			}
 		}
 
-		Coord KolibriLib::window::Window::GetCoord() const
+		UI::UDim KolibriLib::window::Window::GetCoord() const
 		{
-			window::GetWindowCoord();
+			return window::GetWindowCoord();
 		}
 
 		void Window::ChangeWindow(const Coord &coord, const Size &size)
@@ -275,7 +277,7 @@ namespace KolibriLib
 		{
 
 			StartRedraw();
-			window::CreateWindow(GetCoord(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
+			window::CreateWindow(GetCoord().GetAbsolute(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
 
 			static Size LastWindowSize;
 
@@ -314,7 +316,7 @@ namespace KolibriLib
 		{
 
 			StartRedraw();
-			window::CreateWindow(GetCoord(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
+			window::CreateWindow(GetCoord().GetAbsolute(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
 
 			KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.win_body);
 
@@ -340,10 +342,6 @@ namespace KolibriLib
 			return _MARGIN;
 		}
 
-		Size Window::GetSize() const
-		{
-			return window::GetWindowSize();
-		}
 
 		void Window::DeleteElement(const ElementNumber &id)
 		{
@@ -404,7 +402,7 @@ namespace KolibriLib
 				{
 					Coord m = mouse::GetMousePositionInWindow();
 
-					if(m.x < GetSize().x && m.y < window::GetSkinHeight())
+					if(m.x < GetSize().GetAbsolute().x && m.y < window::GetSkinHeight())
 					{
 						
 					}

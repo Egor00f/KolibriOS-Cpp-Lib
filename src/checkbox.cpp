@@ -47,7 +47,7 @@ void CheckBox::Render()
 	}
 }
 
-bool CheckBox::Handler()
+int CheckBox::Handler()
 {
 	if (Button::Handler()) // Если кнопка была нажата
 	{

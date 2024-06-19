@@ -72,7 +72,7 @@ bool KolibriLib::UI::buttons::Button::operator==(const Button &element) const
 		   (_size == element._size);
 }
 
-bool buttons::Button::Handler() const
+int buttons::Button::Handler()
 {
 	_status = GetPressedButton() == _id; // Если id нажатой кнопки совпадает к id этой кнопки
 	return _status;

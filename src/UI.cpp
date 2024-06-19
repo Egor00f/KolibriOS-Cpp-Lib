@@ -52,6 +52,12 @@ KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const 
 {
 }
 
+KolibriLib::UI::UIElement::UIElement(const UIElement &cp)
+	: _coord(cp._coord), _size(cp._size), _MainColor(cp._MainColor), _Margin(cp._Margin)
+{
+	Parent = cp.Parent;
+}
+
 UDim KolibriLib::UI::UIElement::GetSize() const
 {
 	return _size;
@@ -79,6 +85,11 @@ void KolibriLib::UI::UIElement::SetColor(const Colors::Color &NewColor)
 void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 {
 	_coord = NewCoord;
+}
+
+Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
+{
+	return _size.GetAbsolute(Parent->GetAbsoluteSize());
 }
 
 UDim KolibriLib::UI::UIElement::GetCoord() const
@@ -109,9 +120,19 @@ bool KolibriLib::UI::UIElement::Hover() const
 		   (ScreenPointAffiliation(Mouse) == Thread::GetThreadSlot(Thread::GetThreadInfo().pid));
 }
 
-void KolibriLib::UI::UIElement::Handler() const
+int KolibriLib::UI::UIElement::Handler()
 {
 	_ksys_debug_puts("call KolibriLib::UIElement \n");
+}
+
+void KolibriLib::UI::UIElement::SetParent(const GuiObject *Parent)
+{
+	Parent = Parent;
+}
+
+const GuiObject *KolibriLib::UI::UIElement::GetParent() const
+{
+	return Parent;
 }
 
 UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)

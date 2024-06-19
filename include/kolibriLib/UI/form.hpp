@@ -41,7 +41,7 @@ namespace KolibriLib
             void Render() const;
 
             /// \brief Обработчик
-            void Handler();
+            int Handler();
 
             /// @brief Обработчик кнопки
             /// @return true если на форму нажали,

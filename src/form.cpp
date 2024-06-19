@@ -41,7 +41,7 @@ std::string Form::GetInput() const
 	return _inputText;
 }
 
-void Form::Handler()
+int Form::Handler()
 {
 	char input = keyboard::CheckKeyboard();
 	if (input > 33 && input != 127) // Если введённый символ не является спецсимволом, и это не Delete

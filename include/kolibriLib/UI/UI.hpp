@@ -57,30 +57,68 @@ namespace KolibriLib
 
         };
 
+
+        class GuiObject
+        {
+            public:
+                /// @brief Получить размер элемента
+                /// @return Функция возвращает _size
+                virtual UDim GetSize() const;
+
+                /// @brief Изменить размер элемента
+                /// @param NewSize новый размер
+                virtual void SetSize(const UDim &NewSize);
+
+                /// @brief изменить координаты
+                /// @param NewCoord новые координаты
+                virtual void SetCoord(const UDim &NewCoord);
+
+                /// @brief Получить координаты элемента
+                /// @return Функция возвращает _coord
+                virtual UDim GetCoord() const;
+
+
+                /// @brief Изменить размер элемента
+                /// @param NewSize новый размер
+                virtual void SetSize(const Size &NewSize);
+
+                /// @brief изменить координаты
+                /// @param NewCoord новые координаты
+                virtual void SetCoord(const Coord &NewCoord);
+
+
+                virtual Size GetAbsoluteSize() const;
+                virtual Size GetAbsoluteCoord() const;
+
+        };
+
+
         /// @brief Отступы поумолчанию
         const unsigned DefaultMargin = 4;
         const Size DefaultSize = {200, 100};
 
         /// @brief Элемент интерфейса
         /// @note Используется как шаблон для других классов
-        class UIElement
+        class UIElement: public GuiObject
         {
         protected:
         
             /// @brief Координаты
             UDim _coord;
 
-			int _rotation;
-
             /// @brief Размер
             UDim _size;
 
+            /// @brief Основной цвет элемента
             Colors::Color _MainColor;
 
             /// @brief Отступы
             unsigned _Margin;
 
-            
+			int _rotation;
+
+            /// @brief Элемент gui относительно которого просиходят расчёты относительного размера
+            GuiObject *Parent = nullptr;
            
         public:
             /// @brief Имя класса, (для наследуемых классов)
@@ -97,7 +135,19 @@ namespace KolibriLib
             /// @param relative отностельность
 			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().gui_frame, const unsigned &Margin = DefaultMargin);
 
+            /// @brief 
+            /// @param cp 
+            UIElement(const UIElement &cp);
+
             virtual ~UIElement() = default;
+
+            /// @brief 
+            /// @param Parent 
+            void SetParent(const GuiObject* Parent);
+
+            /// @brief 
+            /// @return 
+            const GuiObject* GetParent() const;
 
 			/// @brief Получить размер элемента
             /// @return Функция возвращает _size
@@ -119,14 +169,6 @@ namespace KolibriLib
             /// @param NewColor новый цвет
             virtual void SetColor(const Colors::Color& NewColor);
 
-            /// @brief изменить координаты
-            /// @param NewCoord новые координаты
-            virtual void SetCoord(const UDim& NewCoord);
-
-            /// @brief Получить координаты элемента
-            /// @return Функция возвращает _coord
-            virtual UDim GetCoord() const;
-
             /// @brief Повернуть элемент
             /// @param NewAngle Новый угол наклона
             virtual void Rotate(unsigned NewAngle);
@@ -135,11 +177,21 @@ namespace KolibriLib
             /// @return Функция возвращает _angle
             virtual unsigned GetRotate() const;
 
+            /// @brief изменить координаты
+            /// @param NewCoord новые координаты
+            virtual void SetCoord(const UDim &NewCoord);
+
+            /// @brief Получить координаты элемента
+            /// @return Функция возвращает _coord
+            virtual UDim GetCoord() const;
+
             /// @brief Проверить лежит ли курсор мыши над элементом
             /// @return true если курсор мыши находится в этом элементе, иначе false
             virtual bool Hover() const;
 
-            virtual void Handler() const;
+            Size GetAbsoluteSize() const;
+
+            virtual int Handler();
 
             /// @brief Получить абсолютный размер элемента
             /// @return размер

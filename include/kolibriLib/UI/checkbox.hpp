@@ -44,7 +44,7 @@ namespace KolibriLib
             void SetStyle(style s);
 
             /// @brief Обработчик
-            bool Handler();
+            int Handler();
 
             private:
                 style _style;

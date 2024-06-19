@@ -2,7 +2,7 @@
 
 title Install KolbriLib
 
-	set DefaultToochainPath=C:\MinGW\msys\1.0\home\autobuild\tools\win32
+set DefaultToochainPath=C:\MinGW\msys\1.0\home\autobuild\tools\win32
 
 
 if %1.==. goto Input else set arg=%1
@@ -13,17 +13,20 @@ if %1 == default set arg=%DefaultToochainPath%
 
 :start
 	if %arg%.==. goto WrongToolchain
-	if exist %arg% goto build else goto WrongToolchain
-	
+	if exist %arg% (
+		goto build 
+	)
+	goto WrongToolchain
 	
 :build
 	echo "Build Lib"
 	mkdir build
 	cd build
-	cmake .. -G "MinGW Makefiles"
+	cmake .. -G "MinGW Makefiles" -DCUSTOM_TOOCLAIN_PATH=%arg%
 	make
 	cd ..
 	goto EndProgramm
+
 	
 :help
 	echo Instalator of KolibriLib 
@@ -38,7 +41,10 @@ if %1 == default set arg=%DefaultToochainPath%
 
 	set /p arg="Path to kos32 Toolchain: "
 	
-	if %arg% == default  echo "use default (%DefaultToochainPath%)" set arg=%DefaultToochainPath%
+	if %arg% == default (
+		echo use default path (%DefaultToochainPath% ) 
+		set arg=%DefaultToochainPath%
+	)
 	
 	goto start
 	

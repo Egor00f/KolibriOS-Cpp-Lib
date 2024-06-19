@@ -12,7 +12,7 @@ project(
 #
 set(DEBUG	ON)
 set(CUSTOM_TOOCLAIN_PATH	OFF)
-set(KOLIBRIOS_REPO	"../kolibrios")
+set(KOLIBRIOS_REPO	../kolibrios)
 set(BuildExamples	ON)
 set(INSTALL_LIB	ON)
 #
@@ -28,7 +28,6 @@ if(IS_SUBPROJECT)
 endif()
 
 
-
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 
 
@@ -41,12 +40,6 @@ include(CMakeASM_FASMInformation)
 include(CMakeTestASM_FASMCompiler)
 
 enable_language("ASM_FASM")
-
-
-
-
-
-
 
 
 #include toochain
@@ -65,8 +58,7 @@ SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -fomit
 
 if(DEBUG)
 	message("DEBUG ON")
-	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG -Wall")
 else()
 	message("DEBUG OFF")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
