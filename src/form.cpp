@@ -6,34 +6,34 @@ using namespace UI;
 Form::Form(const UDim &coord, const UDim &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) 
 	: UIElement(coord, size, FormColor, Margin)
 {
-	_butt.SetCoord(coord);
-	_butt.SetSize(size);
-	_butt.SetTextColor(ButtonTextColor);
-	_butt.SetBackgroundColor(FormColor);
-	_butt.Add(BackgroundText);
+	_butt.get()->SetCoord(coord);
+	_butt.get()->SetSize(size);
+	_butt.get()->SetTextColor(ButtonTextColor);
+	_butt.get()->SetBackgroundColor(FormColor);
+	_butt.get()->Add(BackgroundText);
 
 }
 
 std::string Form::GetBackgroundText() const
 {
-	return _butt.GetText();
+	return _butt.get()->GetText();
 }
 
 Colors::Color Form::GetBackgroundColor() const
 {
-	return _butt.GetColor();
+	return _butt.get()->GetColor();
 }
 
 void Form::SetBackgroundColor(const Colors::Color &NewColor)
 {
-	_butt.SetColor(NewColor);
+	_butt.get()->SetColor(NewColor);
 }
 
 void Form::Render() const
 {
 	graphic::DrawRectangleLines(_coord.GetAbsolute(), {_coord.GetAbsolute().x + (int)_size.GetAbsolute().x, _coord.GetAbsolute().y + (int)_size.GetAbsolute().y}, _MainColor);
 
-	_butt.Render();
+	_butt.get()->Render();
 }
 
 std::string Form::GetInput() const
@@ -52,14 +52,15 @@ int Form::Handler()
 	{
 		_inputText.erase(_inputText.end() - 1);
 	}
+	return 0;
 }
 
 bool Form::ButtonHandler()
 {
-	return _butt.Handler();
+	return _butt.get()->Handler();
 }
 
 void KolibriLib::UI::Form::SetBackgroundText(const std::string &NewText)
 {
-	_butt.SetText(NewText);
+	_butt.get()->SetText(NewText);
 }

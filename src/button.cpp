@@ -1,5 +1,8 @@
 #include <kolibriLib/UI/checkbox.hpp>
 
+#include <kolibriLib/UI/image.hpp>
+
+
 using namespace KolibriLib;
 using namespace UI;
 using namespace buttons;

@@ -6,7 +6,6 @@
 
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/UI/text/textlabel.hpp>
-#include <kolibriLib/UI/image.hpp>
 #include <kolibriLib/color.hpp>
 
 #include "buttonsBase.hpp"

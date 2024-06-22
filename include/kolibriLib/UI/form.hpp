@@ -9,6 +9,7 @@
 #include <kolibriLib/UI/button.hpp>
 #include <input.hpp>
 #include <kolibriLib/color.hpp>
+#include <memory>
 
 namespace KolibriLib
 {
@@ -19,7 +20,7 @@ namespace KolibriLib
         {
         private:
             /// @brief Кнопка
-            buttons::Button _butt;
+            std::unique_ptr<buttons::Button> _butt;
 
             /// @brief Введённый пользователем текст
             std::string _inputText;

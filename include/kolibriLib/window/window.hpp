@@ -56,8 +56,21 @@ namespace KolibriLib
 			unsigned GetMargin() const;
 
 			/// @brief Получить размер окна
-			/// @return @link _size
+			/// @return _size
 			UI::UDim GetSize() const;
+
+			/// @brief Получить координаты окна
+			/// @return
+			UI::UDim GetCoord() const;
+
+
+			/// @brief 
+			/// @return 
+			Coord GetAbsoluteCoord() const;
+
+			/// @brief 
+			/// @return 
+			Size GetAbsoluteSize() const;
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
@@ -72,9 +85,7 @@ namespace KolibriLib
 			/// @note Обязательно после должна быть вызвана функция #StartRedraw()
 			void EndRedraw() const;
 
-			/// @brief Получить координаты окна
-			/// @return
-			UI::UDim GetCoord() const;
+			
 
 			/// @brief Изменить окно
 			/// @param coord позиция
@@ -263,6 +274,16 @@ namespace KolibriLib
 			return window::GetWindowCoord();
 		}
 
+		inline Coord Window::GetAbsoluteCoord() const
+		{
+			return window::GetWindowCoord();
+		}
+
+		inline Size Window::GetAbsoluteSize() const
+		{
+			return window::GetWindowSize();
+		}
+
 		void Window::ChangeWindow(const Coord &coord, const Size &size)
 		{
 			_ksys_change_window(coord.x, coord.y, size.x, size.y);
@@ -277,7 +298,7 @@ namespace KolibriLib
 		{
 
 			StartRedraw();
-			window::CreateWindow(GetCoord().GetAbsolute(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
+			window::CreateWindow(GetAbsoluteCoord(), {0,0}, _title, _colors.win_body, _colors.win_title, _style);
 
 			static Size LastWindowSize;
 

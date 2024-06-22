@@ -3,13 +3,15 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
 #include "button.hpp"
-#include <kolibriLib/graphic/graphic.hpp>
+
+
 
 namespace KolibriLib
 {
@@ -39,7 +41,7 @@ namespace KolibriLib
 
             Menu(const UDim &coord = point(0),
                  const UDim &size = DefaultSize,
-                 const std::vector<Item> &li = {Menu::Item(std::string("menu1")), Menu::Item(std::string("menu2"))},
+                 const std::vector<std::string> li = {"p1", "p2"},
                  const unsigned &Margin = DefaultMargin,
                  const Colors::Color &color = OS::GetSystemColors().menu_body);
 
@@ -47,7 +49,6 @@ namespace KolibriLib
             /// @param copy 
             Menu(const Menu &copy);
 
-            ~Menu();
 
             /// @brief Отрисовать меню
             void Render();
@@ -71,7 +72,7 @@ namespace KolibriLib
             bool DeleteItem(unsigned i);
 
         private:
-            std::vector<Item> _Buttons;
+            std::vector<std::unique_ptr<Item>> _Buttons;
         };
 
     } // namespace UI

@@ -4,14 +4,12 @@
 #include <sys/ksys.h>
 
 #include <vector>
+#include <memory>
 
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
-#include <input.hpp>
-#include <kolibriLib/window/windowBase.hpp>
-#include <kolibriLib/graphic/graphic.hpp>
-#include <kolibriLib/graphic/screen.hpp>
+#include <kolibriLib/system/thread.hpp>
+#include <kolibriLib/system/os.hpp>
 
 namespace KolibriLib
 {
@@ -29,7 +27,11 @@ namespace KolibriLib
                 /// @brief В пикселях
                 int Offset;
 
+                /// @brief Конструктор
+                /// @param scale 
+                /// @param offset 
                 Axis(float scale = 0, int offset = 0);
+
                 bool operator == (const Axis& axis) const;
                 bool operator !=(const Axis &axis) const;
             };
@@ -61,34 +63,37 @@ namespace KolibriLib
         class GuiObject
         {
             public:
+                
+                virtual ~GuiObject() = default;
+
                 /// @brief Получить размер элемента
                 /// @return Функция возвращает _size
-                virtual UDim GetSize() const;
+                virtual UDim GetSize() const = 0;
 
                 /// @brief Изменить размер элемента
                 /// @param NewSize новый размер
-                virtual void SetSize(const UDim &NewSize);
+                virtual void SetSize(const UDim &NewSize) = 0;
 
                 /// @brief изменить координаты
                 /// @param NewCoord новые координаты
-                virtual void SetCoord(const UDim &NewCoord);
+                virtual void SetCoord(const UDim &NewCoord) = 0;
 
                 /// @brief Получить координаты элемента
                 /// @return Функция возвращает _coord
-                virtual UDim GetCoord() const;
+                virtual UDim GetCoord() const = 0;
 
 
                 /// @brief Изменить размер элемента
                 /// @param NewSize новый размер
-                virtual void SetSize(const Size &NewSize);
+                virtual void SetSize(const Size &NewSize) = 0;
 
                 /// @brief изменить координаты
                 /// @param NewCoord новые координаты
-                virtual void SetCoord(const Coord &NewCoord);
+                virtual void SetCoord(const Coord &NewCoord) = 0;
 
 
-                virtual Size GetAbsoluteSize() const;
-                virtual Size GetAbsoluteCoord() const;
+                virtual Size GetAbsoluteSize() const = 0;
+                virtual Size GetAbsoluteCoord() const = 0;
 
         };
 
@@ -99,7 +104,7 @@ namespace KolibriLib
 
         /// @brief Элемент интерфейса
         /// @note Используется как шаблон для других классов
-        class UIElement: public GuiObject
+        class UIElement: virtual public GuiObject
         {
         protected:
         
@@ -118,7 +123,7 @@ namespace KolibriLib
 			int _rotation;
 
             /// @brief Элемент gui относительно которого просиходят расчёты относительного размера
-            GuiObject *Parent = nullptr;
+            std::shared_ptr<GuiObject> Parent {nullptr};
            
         public:
             /// @brief Имя класса, (для наследуемых классов)
@@ -139,8 +144,6 @@ namespace KolibriLib
             /// @param cp 
             UIElement(const UIElement &cp);
 
-            virtual ~UIElement() = default;
-
             /// @brief 
             /// @param Parent 
             void SetParent(const GuiObject* Parent);
@@ -151,58 +154,56 @@ namespace KolibriLib
 
 			/// @brief Получить размер элемента
             /// @return Функция возвращает _size
-            virtual UDim GetSize() const;
+            UDim GetSize() const override;
 
             /// @brief Изменить размер элемента
             /// @param NewSize новый размер
-            virtual void SetSize(const UDim& NewSize);
+            void SetSize(const UDim& NewSize) override;
 
             /// @brief Получить отступы
             /// @return Функция возвращает _Margin
-            virtual unsigned GetMargin() const;
+            unsigned GetMargin() const;
 
             /// @brief Получить осносной цвет элемента
             /// @return Функция возвращает _MainColor
-            virtual Colors::Color GetColor() const;
+            Colors::Color GetColor() const;
 
             /// @brief Изменить цвет
             /// @param NewColor новый цвет
-            virtual void SetColor(const Colors::Color& NewColor);
+            void SetColor(const Colors::Color& NewColor);
 
             /// @brief Повернуть элемент
             /// @param NewAngle Новый угол наклона
-            virtual void Rotate(unsigned NewAngle);
+            void Rotate(unsigned NewAngle);
 
             /// @brief Получить угол наклона элемента
             /// @return Функция возвращает _angle
-            virtual unsigned GetRotate() const;
+            unsigned GetRotate() const;
 
             /// @brief изменить координаты
             /// @param NewCoord новые координаты
-            virtual void SetCoord(const UDim &NewCoord);
+            void SetCoord(const UDim &NewCoord) override;
 
             /// @brief Получить координаты элемента
             /// @return Функция возвращает _coord
-            virtual UDim GetCoord() const;
+            UDim GetCoord() const override;
 
             /// @brief Проверить лежит ли курсор мыши над элементом
             /// @return true если курсор мыши находится в этом элементе, иначе false
-            virtual bool Hover() const;
+            bool Hover() const;
 
-            Size GetAbsoluteSize() const;
-
-            virtual int Handler();
+            int Handler();
 
             /// @brief Получить абсолютный размер элемента
             /// @return размер
-            virtual Size GetAbsoluteSize() const;
+            Size GetAbsoluteSize() const override;
 
             /// @brief Получить абсолютные координаты элемента
             /// @return 
-            virtual Coord GetAbsolutePos() const;
+            Coord GetAbsoluteCoord() const override;
 
             /// @brief отрисовать элемент
-            virtual void Render() const;
+            void Render() const;
 
             /// @brief 
             /// @param Element 

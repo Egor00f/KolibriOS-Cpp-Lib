@@ -1,5 +1,8 @@
 #include <kolibriLib/UI/menu.hpp>
 
+#include <kolibriLib/graphic/graphic.hpp>
+
+
 using namespace KolibriLib;
 using namespace UI;
 
@@ -22,20 +25,20 @@ KolibriLib::UI::Menu::Item::~Item()
 
 }
 
-Menu::Menu(const UDim &coord, const UDim &size, const std::vector<Menu::Item> &li, const unsigned &Margin, const Colors::Color &color)
+Menu::Menu(const UDim &coord, const UDim &size, const std::vector<std::string> &li, const unsigned &Margin, const Colors::Color &color)
 	: UIElement(coord, size, color, Margin)
 {
 	for (int i = 0; i < li.size(); i++)
 	{
-		_Buttons.push_back(Menu::Item(buttons::Button(
-			                                          li[i], 
-		                                              UDim(coord.X.Scale, 
-		                                                   coord.X.Offset, 
-		                                                   coord.Y.Scale * i, 
-		                                                   coord.Y.Offset * i), 
-													  UDim(size), 
-													  Margin, 
-													  color) ));
+		_Buttons.push_back(new Menu::Item(buttons::Button(
+			li[i],
+			UDim(coord.X.Scale,
+				 coord.X.Offset,
+				 coord.Y.Scale * i,
+				 coord.Y.Offset * i),
+			UDim(size),
+			Margin,
+			color)));
 	}
 
 }
@@ -50,23 +53,21 @@ KolibriLib::UI::Menu::Item::Item(const buttons::Button &copy)
 {
 }
 
-Menu::~Menu()
-{
-}
+
 
 void Menu::Render()
 {
-	for (Menu::Item i : _Buttons)
+	for (auto i : _Buttons)
 	{
-		i.Render();
+		i.get()->Render();
 	}
 }
 
 int KolibriLib::UI::Menu::Handler()
 {
-	for (int i = 0; i < _Buttons.size(); i++)
+	for (std::size_t i = 0; i < _Buttons.size(); i++)
 	{
-		if (_Buttons[i].Handler())
+		if (_Buttons[i].get()->Handler())
 		{
 			return i;
 		}

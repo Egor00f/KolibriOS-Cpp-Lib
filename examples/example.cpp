@@ -39,7 +39,7 @@ int main()
 	tmp.~Button();
 	
 	// Отрисовка окна
-	window.Render();
+	window.Render(window::DefaultWindowCoord);
 
 	bool exit = false;
 	while (!exit)

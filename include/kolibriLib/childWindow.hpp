@@ -67,7 +67,7 @@ namespace KolibriLib
 
             window::Window window(_Title);
 
-            Size WindowSize = window.GetSize();
+            Size WindowSize = window.GetAbsoluteSize();
 
             window.AddElement(UI::text::TextLabel(UI::UDim(0, UI::DefaultMargin, 0, UI::DefaultMargin), UI::UDim(1, 0, 0.5, 0), _Message, 16));
 

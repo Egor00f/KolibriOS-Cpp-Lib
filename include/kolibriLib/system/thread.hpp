@@ -54,19 +54,26 @@ namespace KolibriLib
             return !a;
         }
 
-        /// @brief Получить слот потока
-        /// @param pid поток
-        /// @return Слот потока pid
-        inline Slot GetThreadSlot(const PID& pid)
-        {
-            return _ksys_get_thread_slot(pid);
-        }
-
         /// @brief Поличть информацию о потоке
         /// @param thread слот потока
         /// @return информация о потоке
         /// @details по умолчанию возвращается информация о текущем потоке
         ThreadInfo GetThreadInfo(const Slot &thread = -1);
+
+        inline PID GetThisThreadPid()
+        {
+            return GetThreadInfo().pid;
+        }
+
+        /// @brief Получить слот потока
+        /// @param pid поток, по умолчанию поток который вызывает эту функцию
+        /// @return Слот потока pid
+        inline Slot GetThreadSlot(const PID& pid = GetThisThreadPid())
+        {
+            return _ksys_get_thread_slot(pid);
+        }
+
+        
 
     } // namespace Thread
     
