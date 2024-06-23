@@ -14,7 +14,7 @@ set(DEBUG	ON)
 set(CUSTOM_TOOCLAIN_PATH	OFF)
 set(KOLIBRIOS_REPO	"../kolibrios")
 set(BuildExamples	ON)
-set(INSTALL_LIB	ON)
+
 #
 #################################################
 
@@ -206,17 +206,7 @@ if(NOT IS_SUBPROJECT)
 endif()
 
 
-if(INSTALL_LIB)
-	
-	message("Install Lib ON")
-	
-	add_custom_command(TARGET KolibriLib POST_BUILD
-		COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/scripts/install ${TOOLCHAIN_DIR} ${CMAKE_CURRENT_BINARY_DIR}
-		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-		COMMENT "Install Lib"
-	)
-	
-endif(INSTALL_LIB)
+
 
 if(BuildExamples)
 	message("Build Examples ON")
