@@ -65,6 +65,19 @@ namespace KolibriLib
 				return (ButtonID)_ksys_get_button();
 			}
 
+			typedef enum ButtonStyle{
+				flat = 0,
+ 				volumetric = 1
+			} buttonStyle;
+
+			inline void SetButtonStyle(buttonStyle style)
+			{
+				asm_inline(
+					"int $0x40"
+					::"a"(48), "b"(1), "c"(style)
+				);
+			}
+
 		} // namespace buttons
 		
 	} // namespace UI

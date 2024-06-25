@@ -99,8 +99,14 @@ namespace KolibriLib
 
             /// @brief цвет текста активной кнопки
             Color btn_text;
+
+            /// @brief цвет текста в рабочей области окна
             Color win_text;
+
+            /// @brief цвет рамки области панели
             Color panel_frame;
+
+            /// @brief цвет бордюра окна между внешней и внутренней рамкой
             Color win_face;
             Color win_inface;
             Color win_frame;

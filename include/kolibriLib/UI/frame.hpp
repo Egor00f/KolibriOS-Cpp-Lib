@@ -19,7 +19,8 @@ namespace KolibriLib
     {
 
         /// @brief Фрейм
-        /// @paragraph Может содержать другие элементы 
+        /// @details Может содержать другие элементы 
+        /// @warning Класс не закончен, не используёте его!!!
         class Frame: public UIElement
         {
         public:
@@ -92,8 +93,12 @@ namespace KolibriLib
 
         void UI::Frame::Handler()
         {
-            if (Hover())
+            if(_scroll)
             {
+                if (Hover())
+                {
+
+                }
             }
         }
 

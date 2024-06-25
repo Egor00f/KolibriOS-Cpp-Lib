@@ -47,9 +47,10 @@ namespace KolibriLib
             /// @param YOffset 
             UDim(float XScale, int XOffset, float YScale, int YOffset);
 
-			/// @brief получить абсолютные значения(в пикселях)
+			/// @brief получить абсолютные значения(в пикселях) относительно окна
 			/// @return 
-			point GetAbsolute() const;
+			point GetAbsolute(const point &Parent = {Thread::GetThreadInfo().winx_size, Thread::GetThreadInfo().winy_size}) const;
+
 
             bool operator == (const UDim &obj) const;
             bool operator != (const UDim &obj) const;
@@ -137,6 +138,8 @@ namespace KolibriLib
             /// @brief Проверить лежит ли курсор мыши над элементом
             /// @return true если курсор мыши находится в этом элементе, иначе false
             virtual bool Hover() const;
+
+            virtual void Handler() const;
 
             /// @brief Получить абсолютный размер элемента
             /// @return размер

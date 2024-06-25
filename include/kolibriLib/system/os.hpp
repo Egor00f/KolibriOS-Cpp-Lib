@@ -18,6 +18,13 @@ namespace KolibriLib
 		/// @return Таблица системных цветов
 		Colors::ColorsTable GetSystemColors();
 
+		inline void SetSystemColors(Colors::ColorsTable *table)
+		{
+			asm_inline(
+				"int $0x40"
+				::"a"(48), "b"(2), "c"(table), "d"(sizeof(Colors::ColorsTable))
+			);
+		}
 		
 		/// @brief Перечисление всех ивнтов
 		enum Events

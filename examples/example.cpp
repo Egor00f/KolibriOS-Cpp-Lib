@@ -45,7 +45,7 @@ int main()
 	while (!exit)
 	{
 
-		//Вызов обработчика окна
+		// Вызов обработчика окна
 		Event event = window.Handler();
 		
 		switch (event)

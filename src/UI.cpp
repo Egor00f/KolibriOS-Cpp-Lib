@@ -31,11 +31,10 @@ bool UI::UDim::Axis::operator!=(const UDim::Axis &axis) const
 	return Scale != axis.Scale || Offset != axis.Offset;
 }
 
-point KolibriLib::UI::UDim::GetAbsolute() const
+point KolibriLib::UI::UDim::GetAbsolute(const point &Parent) const
 {
-	Thread::ThreadInfo Info = Thread::GetThreadInfo();
-	return { static_cast<int>(static_cast<float>(Info.winx_size) * X.Scale) + X.Offset, 
-	         static_cast<int>(static_cast<float>(Info.winy_size) * Y.Scale) + Y.Offset };
+	return { static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset, 
+	         static_cast<int>(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset };
 }
 
 bool KolibriLib::UI::UDim::operator==(const UDim &obj) const
@@ -108,6 +107,11 @@ bool KolibriLib::UI::UIElement::Hover() const
 			(Mouse.x < (coord.x + size.x))	&&
 			(Mouse.y < (coord.x + size.y)))	&&
 		   (ScreenPointAffiliation(Mouse) == Thread::GetThreadSlot(Thread::GetThreadInfo().pid));
+}
+
+void KolibriLib::UI::UIElement::Handler() const
+{
+	_ksys_debug_puts("call KolibriLib::UIElement \n");
 }
 
 UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
