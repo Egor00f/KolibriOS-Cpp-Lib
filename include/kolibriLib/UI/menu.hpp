@@ -1,6 +1,7 @@
 #ifndef __MENU_H__
 #define __MENU_H__
 
+/*
 #include <vector>
 #include <string>
 #include <memory>
@@ -78,5 +79,6 @@ namespace KolibriLib
     } // namespace UI
 
 } // namespace KolibriLib
+*/
 
 #endif // __MENU_H__

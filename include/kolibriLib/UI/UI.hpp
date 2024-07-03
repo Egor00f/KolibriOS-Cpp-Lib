@@ -59,7 +59,7 @@ namespace KolibriLib
 
         };
 
-
+        /// @brief Интерфейс для всех Объектов Gui
         class GuiObject
         {
             public:
@@ -160,6 +160,28 @@ namespace KolibriLib
             /// @param NewSize новый размер
             void SetSize(const UDim& NewSize) override;
 
+            /// @brief изменить координаты
+            /// @param NewCoord новые координаты
+            void SetCoord(const UDim &NewCoord) override;
+
+            /// @brief Изменить размер элемента
+            /// @param NewSize новый размер
+            void SetSize(const Size &NewSize) override;
+
+            void SetCoord(const Coord &NewCoord) override;
+
+            /// @brief Получить абсолютный размер элемента
+            /// @return размер
+            Size GetAbsoluteSize() const override;
+
+            /// @brief Получить абсолютные координаты элемента
+            /// @return
+            Coord GetAbsoluteCoord() const override;
+
+            /// @brief Получить координаты элемента
+            /// @return Функция возвращает _coord
+            UDim GetCoord() const override;
+
             /// @brief Получить отступы
             /// @return Функция возвращает _Margin
             unsigned GetMargin() const;
@@ -180,27 +202,11 @@ namespace KolibriLib
             /// @return Функция возвращает _angle
             unsigned GetRotate() const;
 
-            /// @brief изменить координаты
-            /// @param NewCoord новые координаты
-            void SetCoord(const UDim &NewCoord) override;
-
-            /// @brief Получить координаты элемента
-            /// @return Функция возвращает _coord
-            UDim GetCoord() const override;
-
             /// @brief Проверить лежит ли курсор мыши над элементом
             /// @return true если курсор мыши находится в этом элементе, иначе false
             bool Hover() const;
 
             int Handler();
-
-            /// @brief Получить абсолютный размер элемента
-            /// @return размер
-            Size GetAbsoluteSize() const override;
-
-            /// @brief Получить абсолютные координаты элемента
-            /// @return 
-            Coord GetAbsoluteCoord() const override;
 
             /// @brief отрисовать элемент
             void Render() const;

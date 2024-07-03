@@ -1,4 +1,4 @@
-#include <kolibri_libimg.h>
+#include <C_Layer/INCLUDE/kolibri_libimg.h>
 
 Image_t* LoadImageFromFile(const char* Path)
 {

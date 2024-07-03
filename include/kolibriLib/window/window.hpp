@@ -57,20 +57,31 @@ namespace KolibriLib
 
 			/// @brief Получить размер окна
 			/// @return _size
-			UI::UDim GetSize() const;
+			UI::UDim GetSize() const override;
 
 			/// @brief Получить координаты окна
 			/// @return
-			UI::UDim GetCoord() const;
+			UI::UDim GetCoord() const override;
 
+			void SetSize(const UDim &NewSize) override;
+
+			/// @brief 
+			/// @param NewCoord 
+			void SetCoord(const UDim &NewCoord) override;
+
+			void SetSize(const Size &NewSize) override;
+
+			/// @brief 
+			/// @param NewCoord 
+			void SetCoord(const Coord &NewCoord) override;
 
 			/// @brief 
 			/// @return 
-			Coord GetAbsoluteCoord() const;
+			Coord GetAbsoluteCoord() const override;
 
 			/// @brief 
 			/// @return 
-			Size GetAbsoluteSize() const;
+			Size GetAbsoluteSize() const override;
 
 			/// @brief Задать стандартные цвета окна
 			/// @param colorTable таблица цветов
@@ -179,7 +190,7 @@ namespace KolibriLib
 			{
 				if (_Elements.count(i) == 0)
 				{
-					auto a = new T(element);
+					T* a = new T(element);
 					a->SetParent(this);
 					_Elements.emplace(i, a);
 
@@ -194,7 +205,9 @@ namespace KolibriLib
 		{
 			if (_Elements.count(i))
 			{
-				_Elements[i] = new T(element);
+				UIElement* p = (UIElement*)malloc(sizeof(T));
+				*p = element;
+				_Elements[i] = p;
 				return;
 			}
 			_ksys_debug_puts("KolibriLib::window::Window::SetElement: not found element\n");
@@ -272,6 +285,26 @@ namespace KolibriLib
 		UI::UDim KolibriLib::window::Window::GetCoord() const
 		{
 			return window::GetWindowCoord();
+		}
+
+		inline void Window::SetCoord(const UDim &NewCoord)
+		{
+			ChangeWindow(NewCoord.GetAbsolute(GetScreenSize()), GetAbsoluteSize());
+		}
+
+		inline void Window::SetSize(const Size &NewSize)
+		{
+			ChangeWindow(GetAbsoluteCoord(), NewSize);
+		}
+
+		inline void Window::SetCoord(const Coord &NewCoord)
+		{
+			ChangeWindow(NewCoord, GetAbsoluteSize());
+		}
+
+		inline void Window::SetSize(const UDim &NewSize)
+		{
+			ChangeWindow(GetAbsoluteCoord(), NewSize.GetAbsolute(GetScreenSize()));
 		}
 
 		inline Coord Window::GetAbsoluteCoord() const
@@ -363,6 +396,11 @@ namespace KolibriLib
 			return _MARGIN;
 		}
 
+		inline UI::UDim Window::GetSize() const
+		{
+			Size p = GetAbsoluteSize();
+			return UI::UDim(0, p.x, 0, p.y);
+		}
 
 		void Window::DeleteElement(const ElementNumber &id)
 		{

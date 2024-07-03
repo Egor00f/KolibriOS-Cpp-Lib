@@ -1,5 +1,6 @@
 #include <kolibriLib/system/os.hpp>
 #include <stdlib.h>
+#include <string.h>
 
 using namespace KolibriLib;
 using namespace OS;
@@ -23,14 +24,14 @@ Colors::ColorsTable KolibriLib::OS::GetSystemColors()
 	_ksys_get_system_colors(&a);
 
 	return Colors::ColorsTable(a);
-}	
+}
 
-int KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, bool debug)
+Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, bool debug)
 
 {
     if (filesystem::Exist(AppName)) // Проверка на существование
     {
-        char *a;
+        char *a = "";
         strcat(a, args.c_str());
         return _ksys_exec(AppName, a, debug);
     }

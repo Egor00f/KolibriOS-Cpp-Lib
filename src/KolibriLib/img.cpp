@@ -1,7 +1,6 @@
 #include <kolibriLib/img.hpp>
 
-
-#include <kolibri_libimg.h>
+#include <C_Layer/INCLUDE/kolibri_libimg.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

@@ -36,7 +36,7 @@ int main()
 	window.SetElement(button, tmp);
 
 	// больше не пригодится
-	tmp.~Button();
+	//tmp.~Button();
 	
 	// Отрисовка окна
 	window.Render(window::DefaultWindowCoord);
@@ -56,7 +56,8 @@ int main()
 		case Event::Button:
 			if(window.GetPressedButton() == ((Button*)window.GetElement(button))->GetId())
 			{
-				childWindow::MessageBox("button pressed", "Message");
+				//OS::Notify("You Press Buttons", "just example");
+				_ksys_debug_puts("button pressed");
 			}
 		default:
 			break;

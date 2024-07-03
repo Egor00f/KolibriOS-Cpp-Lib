@@ -181,3 +181,13 @@ void KolibriLib::UI::UIElement::Render() const
 {
 	graphic::DrawRectangleFill(_coord.GetAbsolute(Parent.get()->GetAbsoluteCoord()), _size.GetAbsolute(Parent.get()->GetAbsoluteSize()), _MainColor);
 }
+
+void KolibriLib::UI::UIElement::SetSize(const Size &NewSize)
+{
+	_size = UDim(NewSize);
+}
+
+void KolibriLib::UI::UIElement::SetCoord(const Coord &NewCoord)
+{
+	_coord = UDim(NewCoord);
+}

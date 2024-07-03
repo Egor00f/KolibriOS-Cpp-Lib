@@ -16,9 +16,11 @@
 
 namespace KolibriLib
 {
+    /*
     /// @brief Дочерние окна
     namespace childWindow
     {
+        
         // Я вам запрещаю записывать значения в эту переменную
         std::string Message, Title;
         // Я вам запрещаю записывать значения в эту переменную
@@ -91,7 +93,7 @@ namespace KolibriLib
                 }
             }
         }
-    }
+    }*/
 }
 
 #endif // __CHILDWINDOW_H__

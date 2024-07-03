@@ -43,6 +43,7 @@ namespace KolibriLib
                 mutable bool _Aligned;
             public:
                 const std::string ClassName = "TextLabel";
+                bool RenderOnEverythingRedraw = false;
 
                 /// @brief Конструктор
                 /// @param coord координата

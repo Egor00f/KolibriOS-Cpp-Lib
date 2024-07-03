@@ -1,10 +1,10 @@
 #ifndef __OS_H__
 #define __OS_H__
 
-#include <string.h>
 
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
+#include "thread.hpp"
 
 #include <vector>
 
@@ -83,8 +83,9 @@ namespace KolibriLib
 		/// \param AppName Полное имя исполняемого файла
 		/// \param args аргументы. Максимум 256 символов
 		/// @param debug режим дебага
-		/// \return > 0 - программа загружена, eax содержит PID, < 0 если исполняемы файл не найден
-		int Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
+		/// \return PID запущенной программы
+		/// @return -1 если произошла ошибка
+		Thread::PID Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
 
 		/// @brief Время
 		typedef ksys_time_bcd_t Time;
