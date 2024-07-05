@@ -1,13 +1,15 @@
 #ifndef __WINDOW_H__
 #define __WINDOW_H__
 
+#include <sys/ksys.h>
+
 #include <stdlib.h>
 #include <string>
 #include <vector>
 #include <unordered_map>
 #include <type_traits>
+#include <utility>
 
-#include <sys/ksys.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
@@ -127,13 +129,13 @@ namespace KolibriLib
 			/// @brief Добавить UI элемент
 			/// @param element
 			/// @return std::pair<номер элемента в списке, указатель на элемент>
-			ElementNumber AddElement(const T &element);
+			ElementNumber AddElement(T element);
 
 			template <class T>
 			/// @brief Изменить элемент
 			/// @param i
 			/// @param element
-			void SetElement(const Window::ElementNumber &i, const T &element);
+			void SetElement(const Window::ElementNumber &i, T element);
 
 			/// @brief Получить Window::Element
 			/// @param i ключ
@@ -152,7 +154,7 @@ namespace KolibriLib
 			std::string _title;
 
 			/// @brief Список всех кнопок этого окна
-			std::unordered_map<Window::ElementNumber, UIElement*> _Elements;
+			std::unordered_map<Window::ElementNumber, std::shared_ptr<UIElement>> _Elements;
 
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
@@ -179,20 +181,18 @@ namespace KolibriLib
 		//=============================================================================================================================================================
 
 		template <class T>
-		Window::ElementNumber KolibriLib::window::Window::AddElement(const T &element)
+		Window::ElementNumber KolibriLib::window::Window::AddElement(T element)
 		{
 			#ifdef DEBUG
 			_ksys_debug_puts("Add element-\n");
 			#endif
 
-
 			for (int i = 0; i < _Elements.max_size(); i++)
 			{
 				if (_Elements.count(i) == 0)
 				{
-					T* a = new T(element);
-					a->SetParent(this);
-					_Elements.emplace(i, a);
+					element.SetParent(this);
+					_Elements.insert(std::make_pair(i, std::shared_ptr<UIElement>((UIElement*)new T(element))));
 
 					return i;
 				}
@@ -201,21 +201,22 @@ namespace KolibriLib
 		}
 
 		template <class T>
-		void KolibriLib::window::Window::SetElement(const ElementNumber &i, const T &element)
+		void KolibriLib::window::Window::SetElement(const ElementNumber &i, T element)
 		{
-			if (_Elements.count(i))
-			{
-				UIElement* p = (UIElement*)malloc(sizeof(T));
-				*p = element;
-				_Elements[i] = p;
-				return;
-			}
-			_ksys_debug_puts("KolibriLib::window::Window::SetElement: not found element\n");
-			return;
+			#ifdef DEBUG
+			_ksys_debug_puts("Set element-\n");
+			#endif
+
+			element.SetParent(this);
+			_Elements.insert(std::make_pair(i, std::shared_ptr<UIElement>((UIElement*) new T(element))));
 		}
 
 		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
-			: _title(Title), _colors(colors), _MARGIN(Margin), _Transparency(Transparency), _RealtimeRedraw(RealtimeRedraw)
+			:	_title	(Title), 
+				_colors	(colors),
+				_MARGIN	(Margin),
+				_Transparency	(Transparency),
+				_RealtimeRedraw	(RealtimeRedraw)
 		{
 			_style = WindowStyle::Relative | WindowStyle::WindowHaveTitle | WindowStyle::withSkin;
 
@@ -238,15 +239,22 @@ namespace KolibriLib
 				_style |= WindowStyle::NoDrawWorkspace;
 			} */
 
-			window::CreateWindow(DefaultWindowCoord, size, _title, _colors.win_body, _colors.win_title, _style);
+			window::CreateWindow(
+				DefaultWindowCoord, 
+				size, 
+				_title, 
+				_colors.win_body, 
+				_colors.win_title, 
+				_style
+			);
 		}
 
 		KolibriLib::window::Window::~Window()
 		{
-			for(auto n : _Elements)
-			{
-				delete n.second;
-			}
+			//for(auto n : _Elements)
+			//{
+			//	n.second.~__shared_ptr();
+			//}
 		}
 
 		void Window::RenderAllElements() const
@@ -259,7 +267,7 @@ namespace KolibriLib
 
 		UIElement *KolibriLib::window::Window::GetElement(int i)
 		{
-			return _Elements.at(i);
+			return _Elements.at(i).get();
 		}
 
 		void Window::SetWindowColors(const Colors::ColorsTable &colorTable)
@@ -410,7 +418,6 @@ namespace KolibriLib
 				{
 					activeForm = -1;
 				}
-				delete _Elements[id];
 				_Elements.erase(_Elements.find(id));
 				return;
 			}
@@ -439,11 +446,11 @@ namespace KolibriLib
 				{
 					const char *a = it.second->ClassName.c_str();
 					if (a == "Form")
-						((UI::Form *)it.second)->ButtonHandler();
+						((UI::Form *)it.second.get())->ButtonHandler();
 					else if (a == "CheckBox")
-						((UI::CheckBox *)it.second)->Handler();
+						((UI::CheckBox *)it.second.get())->Handler();
 					else if (a == "Button")
-						((UI::buttons::Button *)it.second)->Handler();
+						((UI::buttons::Button *)it.second.get())->Handler();
 				}
 
 				break;
@@ -451,7 +458,7 @@ namespace KolibriLib
 
 				if (activeForm != -1 && _Elements[activeForm]->ClassName == "Form")
 				{
-					((UI::Form *)_Elements[activeForm])->Handler(); // Обработчик активной на текущий момент формы
+					((UI::Form *)_Elements[activeForm].get())->Handler(); // Обработчик активной на текущий момент формы
 				}
 
 				break;
@@ -464,14 +471,6 @@ namespace KolibriLib
 					if(m.x < GetSize().GetAbsolute().x && m.y < window::GetSkinHeight())
 					{
 						
-					}
-				}
-
-				for(const auto n : _Elements)
-				{
-					if(n.second->ClassName == "Frame")
-					{
-						((UI::Frame*)n.second)->Handler();
 					}
 				}
 
@@ -499,9 +498,9 @@ namespace KolibriLib
 			{
 				if (n.second->ClassName == "Button")
 				{
-					if (((UI::buttons::Button *)n.second)->GetStatus())
+					if (((UI::buttons::Button *)n.second.get())->GetStatus())
 					{
-						return ((UI::buttons::Button *)n.second)->GetId();
+						return ((UI::buttons::Button *)n.second.get())->GetId();
 					}
 				}
 			}
@@ -511,7 +510,7 @@ namespace KolibriLib
 			auto it = _Elements.find(form);
 			if (it->second->ClassName == "Form")
 			{
-				return ((UI::Form *)it->second)->GetInput();
+				return ((UI::Form *)it->second.get())->GetInput();
 			}
 		}
 

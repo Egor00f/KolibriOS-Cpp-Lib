@@ -20,6 +20,7 @@ ButtonID buttons::GetFreeButtonId()
 			return ret;
 		}
 	}
+	return 0;
 }
 
 void buttons::FreeButtonId(const ButtonID &id)

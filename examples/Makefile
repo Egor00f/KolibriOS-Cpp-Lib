@@ -20,7 +20,7 @@ LIBPATH = -L $(SDK_DIR)/lib -L $(TOOLCHAIN_DIR)/lib -L $(TOOLCHAIN_DIR)/mingw32/
 
 #Flags
 CFLAGS = -c -fno-ident -fomit-frame-pointer -fno-ident -O2 -g -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32 -std=c++11 -Wpointer-arith -fpermissive -D DEBUG
-LDFLAGS = -static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds --start-group  -lgcc -lc.dll -lstdc++ -lsupc++ -lKolibriLib --end-group
+LDFLAGS = -static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.lds --start-group -lgcc -lc.dll -lstdc++ -lsupc++ -lKolibriLib --end-group
 
 
 
@@ -28,19 +28,8 @@ SOURCES = $(EXECUTABLE).cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
-#  Copy this  ||
-#            \||/
-#             \/
-################# KolibriLib ####################
-#                            || 
-#                Change it   || 
-#                           \||/
-#                            \/
-
-
 INCLUDES += -I ../include
 
-############### End of copy text #################################
 
 
 default: Exapmle
@@ -48,16 +37,13 @@ default: Exapmle
 
 
 Exapmle: $(OBJECTS) Makefile
-	@echo " "
-	@echo "| linking:" $(OBJECTS)
+	@echo linking: $(OBJECTS)
 	$(LD) -o $(EXECUTABLE) $(LIBPATH) --subsystem native $(OBJECTS) $(LDFLAGS)
 	kos32-strip -S $(EXECUTABLE)
 	kos32-objcopy $(EXECUTABLE) -O binary
-	@rm $(EXECUTABLE).o
 
 %.o : %.cpp Makefile $(SOURCES)
-	@echo " "
-	@echo "| compile:" $@
+	@echo compile: $@
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
 
 

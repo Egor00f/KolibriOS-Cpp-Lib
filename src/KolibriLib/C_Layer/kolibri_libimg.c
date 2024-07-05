@@ -7,8 +7,7 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (!f)
 	{
-		char *b;
-		strcat(b, "LoadImage: Can't open file: ");
+		char *b = "LoadImage: Can't open file: ";
 		strcat(b, Path);
 		strcat(b, " \n \0");
 		_ksys_debug_puts(b);
@@ -16,8 +15,7 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (fseek(f, 0, SEEK_END))
 	{
-		char *b;
-		strcat(b, "Can't SEEK_END file: ");
+		char *b = "Can't SEEK_END file: ";
 		strcat(b, Path);
 		strcat(b, " \n \0");
 		_ksys_debug_puts(b);
@@ -29,8 +27,7 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (!fdata)
 	{
-		char *b;
-		strcat(b, "No memory for file: ");
+		char *b = "No memory for file: ";
 		strcat(b, Path);
 		strcat(b, "\nmalloc not return ptr\n\0");
 		_ksys_debug_puts(b);
@@ -40,8 +37,7 @@ Image_t* LoadImageFromFile(const char* Path)
 
 	if (ferror(f))
 	{
-		char *b;
-		strcat(b, "Error reading file ");
+		char *b = "Error reading file ";
 		strcat(b, Path);
 		strcat(b, " \n \0");
 		_ksys_debug_puts(b);

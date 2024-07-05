@@ -21,7 +21,8 @@ int main()
 																  UDim(0.6, 0, 1, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
 																  "Hello World",
 																  {32, 36}           	// Размер символов 32x36
-																  ));
+																  )
+														);
 
 	// Добавление кнопки
 	Window::ElementNumber button = window.AddElement(Button(UDim(0.6, 0, 0.8, 0), UDim(0.2, 0, 0.1, 0)));
@@ -36,7 +37,7 @@ int main()
 	window.SetElement(button, tmp);
 
 	// больше не пригодится
-	//tmp.~Button();
+	tmp.~Button();
 	
 	// Отрисовка окна
 	window.Render(window::DefaultWindowCoord);

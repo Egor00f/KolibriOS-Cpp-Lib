@@ -6,12 +6,12 @@
 #include <kolibriLib/UI/button.hpp>
 #include <kolibriLib/UI/checkbox.hpp>
 #include <kolibriLib/UI/form.hpp>
-#include <kolibriLib/UI/frame.hpp>
 #include <kolibriLib/UI/image.hpp>
 #include <kolibriLib/UI/menu.hpp>
 #include <kolibriLib/UI/text/textlabel.hpp>
 //#include <kolibriLib/UI/text/font.hpp>
 //#include <kolibriLib/UI/text/fontslist.hpp>
+
 
 namespace KolibriLib
 {
@@ -26,6 +26,8 @@ namespace KolibriLib
 	using UI::Form;
 
 	using UI::text::DrawText;
+
+	
 } // namespace KolibriLib
 
 

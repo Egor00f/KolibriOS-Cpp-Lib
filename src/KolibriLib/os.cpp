@@ -31,9 +31,7 @@ Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::str
 {
     if (filesystem::Exist(AppName)) // Проверка на существование
     {
-        char *a = "";
-        strcat(a, args.c_str());
-        return _ksys_exec(AppName, a, debug);
+        return _ksys_exec(AppName, (char*)args.c_str(), debug);
     }
     return -1;
 }
@@ -41,7 +39,7 @@ Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::str
 void Notify(const std::string &Title, const std::string &Text, notifyIcon icon, const std::vector<notifyKey> &keys)
 {
 	std::string a = "\"'" + Title + "\n" + Text + "' " + (char)icon;
-	for(short i = 0; i < keys.size(); i++)
+	for(unsigned short i = 0; i < keys.size(); i++)
     {
 		a += (" -" + (char)keys[i]);
 	}

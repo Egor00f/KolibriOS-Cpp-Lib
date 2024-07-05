@@ -4,8 +4,10 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace text;
 
-TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, const Size &CharSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin) 
-	: UIElement(coord, size, TextColor, Margin), Txt(text), _TextScale(TextScale)
+TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, const Size &CharSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin)
+	: Txt(text), 
+		UIElement(coord, size, TextColor, Margin),
+		_TextScale(TextScale)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("TextLabel Constructor\n");
@@ -27,7 +29,8 @@ TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &tex
 
 
 KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, const Txt &text)
-	: UIElement(coord, size), Txt(text)
+	:	Txt(text), 
+		UIElement(coord, size)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("TextLabel Constructor\n");
@@ -35,7 +38,10 @@ KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, 
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
-	: UIElement(copy), Txt(copy), _TextScale(copy._TextScale), Align(copy.Align)
+	:	Txt(copy), 
+		UIElement(copy._coord, copy._size, copy._MainColor, copy._Margin), 
+		_TextScale(copy._TextScale), 
+		Align(copy.Align)
 {
 }
 
@@ -55,14 +61,10 @@ void text::TextLabel::Render() const
 		Size size = {0,0};
 		for(Char i :_data)
 		{
-			
 			if(i.GetFont()._size > size)
 			{
 				size > i.GetFont()._size;
 			}
-			
-
-
 		}
 
 		size  = _size.GetAbsolute() - Size(size.x * length(), size.y * length());

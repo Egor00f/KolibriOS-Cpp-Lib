@@ -10,10 +10,8 @@ project(
 ################### CONFIG ######################
 #################################################
 #
-set(DEBUG	ON)
 set(CUSTOM_TOOCLAIN_PATH	OFF)
 set(KOLIBRIOS_REPO	../kolibrios)
-set(BuildExamples	OFF)
 #
 #################################################
 
@@ -97,17 +95,10 @@ SET(SOURCES
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 
-target_compile_options(KolibriLib PUBLIC -c -fpermissive -Wpointer-arith -Wreturn-local-addr -fomit-frame-pointer -Wparentheses -Wreorder)
-if(DEBUG)
-	message("DEBUG ON")
-	target_compile_options(KolibriLib PUBLIC -DDEBUG -Wall)
-else()
-	message("DEBUG OFF")
-	target_compile_options(KolibriLib PUBLIC -O2)
-endif()
+target_compile_options(KolibriLib PUBLIC -c -fpermissive -Wpointer-arith -Wreturn-local-addr -fomit-frame-pointer -Wparentheses -Wreorder -DDEBUG -Wall)
+
 target_compile_options(KolibriLib PUBLIC -D__MakeStaticLib__)
 
-include_directories(KolibriLib PUBLIC "./include")
 
 target_include_directories(KolibriLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
@@ -127,14 +118,14 @@ if(NOT IS_SUBPROJECT)
 endif()
 
 
-if(BuildExamples)
-	message("Build Examples ON")
-	
-	
-	#Examples build with make, see to examples/Makefile
-	add_custom_command(TARGET KolibriLib POST_BUILD
-		COMMAND make
-		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/examples
-		COMMENT "Build Example"
-	)
-endif(BuildExamples)
+#Examples build with make, see to examples/Makefile
+set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
+
+add_custom_target(
+	Examples
+	COMMAND make
+	DEPENDS KolibriLib
+	WORKING_DIRECTORY ${ExamplesDir}
+	COMMENT "Build Example"
+	SOURCES ${ExamplesDir}/example.cpp ${ExamplesDir}/Makefile
+)

@@ -226,6 +226,8 @@ namespace KolibriLib
             /// @return 
             bool operator != (const UIElement &Element) const;
         };
+
+        
     }
 }
 
