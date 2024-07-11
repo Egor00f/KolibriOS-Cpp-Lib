@@ -7,13 +7,13 @@
 message("Toolchain dir: " ${TOOLCHAIN_DIR})
 
 # Compiler
-SET(CMAKE_C_COMPILER "${TOOLCHAIN_DIR}/bin/kos32-gcc${SUFFIX}")
-SET(CMAKE_CXX_COMPILER "${TOOLCHAIN_DIR}/bin/kos32-g++${SUFFIX}")
-SET(CMAKE_LINKER "${TOOLCHAIN_DIR}/bin/kos32-ld${SUFFIX}")
-SET(CMAKE_AR "${TOOLCHAIN_DIR}/bin/kos32-ar${SUFFIX}")
-set(CMAKE_C_COMPILER_AR "${TOOLCHAIN_DIR}/bin/kos32-gcc-ar${SUFFIX}")
-set(CMAKE_CXX_COMPILER_AR "${TOOLCHAIN_DIR}/bin/kos32-gcc-ar${SUFFIX}")
-set(CMAKE_STRIP "${TOOLCHAIN_DIR}/bin/kos32-strip${SUFFIX}")
+SET(CMAKE_C_COMPILER	"${TOOLCHAIN_DIR}/bin/kos32-gcc${SUFFIX}")
+SET(CMAKE_CXX_COMPILER	"${TOOLCHAIN_DIR}/bin/kos32-g++${SUFFIX}")
+SET(CMAKE_LINKER	"${TOOLCHAIN_DIR}/bin/kos32-ld${SUFFIX}")
+SET(CMAKE_AR	"${TOOLCHAIN_DIR}/bin/kos32-ar${SUFFIX}")
+set(CMAKE_C_COMPILER_AR	"${TOOLCHAIN_DIR}/bin/kos32-gcc-ar${SUFFIX}")
+set(CMAKE_CXX_COMPILER_AR	"${TOOLCHAIN_DIR}/bin/kos32-gcc-ar${SUFFIX}")
+set(CMAKE_STRIP	"${TOOLCHAIN_DIR}/bin/kos32-strip${SUFFIX}")
 #SET(CMAKE_C_LINK_EXECUTABLE ${CMAKE_LINKER})
 #SET(CMAKE_CXX_LINK_EXECUTABLE ${CMAKE_LINKER})
 
@@ -37,4 +37,4 @@ include_directories(${LIBS_DIR}/libstdc++-v3/include)
 include_directories(${LIBS_DIR}/newlib/libc/include)
 
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -S -nostdlib -T ${SDK_DIR}/sources/newlib/app.lds -L ${TOOLCHAIN_DIR}/lib -L ${LIB_DIR}/lib -lgcc -lc.dll  -lstdc++ -lsupc++")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -S -nostdlib -T ${SDK_DIR}/sources/newlib/app.lds -L ${TOOLCHAIN_DIR}/lib -L ${LIB_DIR}/lib -lgcc -lc.dll -lstdc++ -lsupc++")

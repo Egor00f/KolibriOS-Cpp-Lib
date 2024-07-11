@@ -5,7 +5,6 @@
 #include <sys/ksys.h>
 
 #include <string>
-#include <assert.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/UI/UI.hpp>
@@ -32,18 +31,18 @@ namespace KolibriLib
             /// @note Возможно важные сведения: текст всегда отрисовывается в середине 
             class TextLabel: public Txt, public UI::UIElement
             {
-            private:
-                /// @brief Выравнивание
-                unsigned Align;
-
-                /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
-                /// @warning пока что не работает
-                bool _TextScale;
-
-                mutable bool _Aligned;
             public:
                 const std::string ClassName = "TextLabel";
                 bool RenderOnEverythingRedraw = false;
+
+                enum Aling
+                {
+                    Right,
+                    Left,
+                    Center
+                };
+
+                typedef Aling Aling;
 
                 /// @brief Конструктор
                 /// @param coord координата
@@ -78,7 +77,7 @@ namespace KolibriLib
                 TextLabel(const TextLabel &copy);
 
                 /// @brief Отрисовать текстовую метку
-                virtual void Render() const;
+                void Render() const;
 
                 /// @brief Изменить значение переменной _TextScale
                 /// @param scale Новое значение
@@ -99,6 +98,18 @@ namespace KolibriLib
                 bool operator == (const TextLabel& a) const;
 
                 bool operator != (const TextLabel& a) const;
+
+                
+
+            private:
+                /// @brief Выравнивание
+                Aling _Align = Center;
+
+                /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
+                /// @warning пока что не работает
+                bool _TextScale;
+
+                mutable bool _Aligned;
             };
         }
     } // namespace UI

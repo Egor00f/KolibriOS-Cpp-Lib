@@ -52,14 +52,23 @@ bool KolibriLib::UI::UDim::operator!=(const UDim &obj) const
 }
 
 KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const Colors::Color &MainColor, const unsigned &Margin)
-	: GuiObject(), _coord(coord), _size(size), _MainColor(MainColor), _Margin(Margin)
+	:	GuiObject	(), 
+		_coord	(coord),
+		_size	(size), 
+		_MainColor	(MainColor), 
+		_Margin	(Margin)
 {
+
 }
 
 KolibriLib::UI::UIElement::UIElement(const UIElement &cp)
-	: GuiObject(), _coord(cp._coord), _size(cp._size), _MainColor(cp._MainColor), _Margin(cp._Margin)
+	:	GuiObject	(), 
+		_coord	(cp._coord), 
+		_size	(cp._size), 
+		_MainColor	(cp._MainColor), 
+		_Margin	(cp._Margin),
+		Parent	(cp.Parent)
 {
-	Parent = cp.Parent;
 }
 
 UDim KolibriLib::UI::UIElement::GetSize() const
@@ -139,13 +148,16 @@ bool KolibriLib::UI::UIElement::Hover() const
 
 int KolibriLib::UI::UIElement::Handler()
 {
-	_ksys_debug_puts("call KolibriLib::UIElement, this func do nothing...\n");
+	//_ksys_debug_puts("call KolibriLib::UIElement, this func do nothing...\n");
 	return 0;
 }
 
-void KolibriLib::UI::UIElement::SetParent(const GuiObject *Parent)
+void KolibriLib::UI::UIElement::SetParent(const GuiObject *NewParent)
 {
-	Parent = Parent;
+	#ifdef DEBUG
+	_ksys_debug_puts("SetParent");
+	#endif
+	Parent.reset(NewParent);
 }
 
 const GuiObject *KolibriLib::UI::UIElement::GetParent() const

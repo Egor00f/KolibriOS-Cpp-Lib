@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
-#include <unordered_map>
 #include <type_traits>
 #include <utility>
 
@@ -45,7 +44,7 @@ namespace KolibriLib
 			/// @param Margin Отступы
 			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 
-			~Window();
+			//~Window();
 
 			/// @brief Полная перересовка окна
 			void Redraw();
@@ -98,8 +97,6 @@ namespace KolibriLib
 			/// @note Обязательно после должна быть вызвана функция #StartRedraw()
 			void EndRedraw() const;
 
-			
-
 			/// @brief Изменить окно
 			/// @param coord позиция
 			/// @param size размер
@@ -129,13 +126,13 @@ namespace KolibriLib
 			/// @brief Добавить UI элемент
 			/// @param element
 			/// @return std::pair<номер элемента в списке, указатель на элемент>
-			ElementNumber AddElement(T element);
+			ElementNumber AddElement(const T &element);
 
 			template <class T>
 			/// @brief Изменить элемент
 			/// @param i
 			/// @param element
-			void SetElement(const Window::ElementNumber &i, T element);
+			void SetElement(const Window::ElementNumber &i, const T &element);
 
 			/// @brief Получить Window::Element
 			/// @param i ключ
@@ -154,7 +151,7 @@ namespace KolibriLib
 			std::string _title;
 
 			/// @brief Список всех кнопок этого окна
-			std::unordered_map<Window::ElementNumber, std::shared_ptr<UIElement>> _Elements;
+			std::vector<std::shared_ptr<UIElement>> _Elements;
 
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
@@ -181,34 +178,35 @@ namespace KolibriLib
 		//=============================================================================================================================================================
 
 		template <class T>
-		Window::ElementNumber KolibriLib::window::Window::AddElement(T element)
+		Window::ElementNumber KolibriLib::window::Window::AddElement(const T &element)
 		{
 			#ifdef DEBUG
 			_ksys_debug_puts("Add element-\n");
 			#endif
 
-			for (int i = 0; i < _Elements.max_size(); i++)
+			T* p = new T(element);
+			if(p->GetParent())
 			{
-				if (_Elements.count(i) == 0)
-				{
-					element.SetParent(this);
-					_Elements.insert(std::make_pair(i, std::shared_ptr<UIElement>((UIElement*)new T(element))));
-
-					return i;
-				}
+				p->SetParent(this);
 			}
-			return -1;
+			_Elements.push_back(std::shared_ptr<UIElement>((UIElement*)p));
+
+			return _Elements.size()-1;
 		}
 
 		template <class T>
-		void KolibriLib::window::Window::SetElement(const ElementNumber &i, T element)
+		void KolibriLib::window::Window::SetElement(const ElementNumber &i, const T &element)
 		{
 			#ifdef DEBUG
 			_ksys_debug_puts("Set element-\n");
 			#endif
 
-			element.SetParent(this);
-			_Elements.insert(std::make_pair(i, std::shared_ptr<UIElement>((UIElement*) new T(element))));
+			T* p = new T(element);
+			if (p->GetParent())
+			{
+				p->SetParent(this);
+			}
+			_Elements[i].reset(p);
 		}
 
 		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
@@ -249,19 +247,19 @@ namespace KolibriLib
 			);
 		}
 
-		KolibriLib::window::Window::~Window()
+		/*KolibriLib::window::Window::~Window()
 		{
 			//for(auto n : _Elements)
 			//{
 			//	n.second.~__shared_ptr();
 			//}
-		}
+		}*/
 
 		void Window::RenderAllElements() const
 		{
-			for (auto &it : _Elements)
+			for (auto it : _Elements)
 			{
-				it.second->Render();
+				it.get()->Render();
 			}
 		}
 
@@ -347,11 +345,11 @@ namespace KolibriLib
 			{
 				LastWindowSize = window::GetWindowSize();
 
-				for (const auto n : _Elements)
+				for (auto n : _Elements)
 				{
-					if (n.second->RenderOnEverythingRedraw)
+					if (n.get()->RenderOnEverythingRedraw)
 					{
-						n.second->Render();
+						n.get()->Render();
 					}
 				}
 			}
@@ -412,16 +410,11 @@ namespace KolibriLib
 
 		void Window::DeleteElement(const ElementNumber &id)
 		{
-			if (_Elements.count(id))
+			if (activeForm == id)
 			{
-				if (activeForm == id)
-				{
-					activeForm = -1;
-				}
-				_Elements.erase(_Elements.find(id));
-				return;
+				activeForm = -1;
 			}
-			_ksys_debug_puts("element with this id not found\n");
+			_Elements.erase(_Elements.begin() + id);
 		}
 
 		OS::Event Window::Handler()
@@ -444,21 +437,15 @@ namespace KolibriLib
 
 				for (const auto &it : _Elements) // Запуск обработчиков всех используемых элементов
 				{
-					const char *a = it.second->ClassName.c_str();
-					if (a == "Form")
-						((UI::Form *)it.second.get())->ButtonHandler();
-					else if (a == "CheckBox")
-						((UI::CheckBox *)it.second.get())->Handler();
-					else if (a == "Button")
-						((UI::buttons::Button *)it.second.get())->Handler();
+					it.get()->Handler();
 				}
 
 				break;
 			case OS::Events::Key:
 
-				if (activeForm != -1 && _Elements[activeForm]->ClassName == "Form")
+				if (activeForm != -1)
 				{
-					((UI::Form *)_Elements[activeForm].get())->Handler(); // Обработчик активной на текущий момент формы
+					_Elements[activeForm].get()->Handler(); // Обработчик активной на текущий момент формы
 				}
 
 				break;
@@ -494,23 +481,27 @@ namespace KolibriLib
 
 		UI::buttons::ButtonID Window::GetPressedButton()
 		{
-			for (const auto &n : _Elements)
+			for (auto &n : _Elements)
 			{
-				if (n.second->ClassName == "Button")
+				if (n->ClassName == "Button")
 				{
-					if (((UI::buttons::Button *)n.second.get())->GetStatus())
+					if (((UI::buttons::Button *)n.get())->GetStatus())
 					{
-						return ((UI::buttons::Button *)n.second.get())->GetId();
+						return ((UI::buttons::Button *)n.get())->GetId();
 					}
 				}
 			}
 		}
-		std::string Window::GetInputFromFrom(int form) const
+		std::string Window::GetInputFromFrom(Window::ElementNumber form) const
 		{
-			auto it = _Elements.find(form);
-			if (it->second->ClassName == "Form")
+			UIElement* pointer = _Elements[form].get();
+			if (pointer->ClassName == "Form")
 			{
-				return ((UI::Form *)it->second.get())->GetInput();
+				return ((UI::Form *)pointer)->GetInput();
+			}
+			else
+			{
+				_ksys_debug_puts("form not found\n");
 			}
 		}
 

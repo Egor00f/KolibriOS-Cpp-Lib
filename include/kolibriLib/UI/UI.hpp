@@ -104,7 +104,7 @@ namespace KolibriLib
 
         /// @brief Элемент интерфейса
         /// @note Используется как шаблон для других классов
-        class UIElement: virtual public GuiObject
+        class UIElement: public GuiObject
         {
         protected:
         
@@ -130,7 +130,8 @@ namespace KolibriLib
             std::string ClassName = "UIElement";
 
             /// @brief Флаг того нужно ли отрисовывать этот элемент при каждой перерисовке окна
-            bool RenderOnEverythingRedraw;
+            bool RenderOnEverythingRedraw = false;
+
 
             /// @brief Конструктор
             /// @param UDim координаты
@@ -146,7 +147,7 @@ namespace KolibriLib
 
             /// @brief 
             /// @param Parent 
-            void SetParent(const GuiObject* Parent);
+            void SetParent(const GuiObject* NewParent);
 
             /// @brief 
             /// @return 

@@ -16,7 +16,7 @@ namespace KolibriLib
 		namespace text
 		{
 
-			
+			const Size DefaultCharSize = {16, 9};
 
 			/// @brief Текст
 			/// @details Фактически std::vector Char ов
@@ -61,10 +61,14 @@ namespace KolibriLib
 				/// @brief Изменить цвет текста для всех символов
 				/// @param Color
 				void SetTextColor(const Colors::Color &Color);
+				
+				Colors::Color GetTextColor() const;
 
 				/// @brief Изменить цвет фона для всех символов
 				/// @param Color
 				void SetBackgroundColor(const Colors::Color &Color);
+
+				Colors::Color GetBackgroundColor() const;
 
 				/// @brief Получить текст
 				/// @return
@@ -89,7 +93,11 @@ namespace KolibriLib
 
 				void SetTextSize(const Size &NewTextCharSize);
 
+				/// @brief 
+				/// @return 
 				Size GetTextSize() const;
+
+
 
 				Txt &operator=(const Txt &txt);
 

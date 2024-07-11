@@ -90,6 +90,9 @@ namespace KolibriLib
                 /// @details Противоположна функции Deactivate, возвращает кнопку в рабочее состояние
                 void Activate();
 
+                void SetId(const ButtonID &NewID);
+                void SetId();
+
                 /// @brief Декструктор
                 ~Button();
 

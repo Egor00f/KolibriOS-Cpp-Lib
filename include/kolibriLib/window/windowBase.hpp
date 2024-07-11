@@ -66,11 +66,11 @@ namespace KolibriLib
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль
 		inline void CreateWindow(const Coord &coord,
-								 const Size &size,
-								 const std::string &title,
-								 const Colors::Color &WorkColor	= OS::GetSystemColors().win_body,
-								 Colors::Color TitleColor	= OS::GetSystemColors().win_title,
-								 uint8_t style	= WindowStyle::CanResize | WindowStyle::Relative)
+		                         const Size &size,
+		                         const std::string &title,
+		                         const Colors::Color &WorkColor	= OS::GetSystemColors().win_body,
+		                         Colors::Color TitleColor	= OS::GetSystemColors().win_title,
+		                         uint8_t style	= WindowStyle::CanResize | WindowStyle::Relative)
 		{
 			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
 		}
@@ -100,7 +100,8 @@ namespace KolibriLib
 		inline Thread::Slot GetActiveWindow()
 		{
 			Thread::Slot s;
-			asm_inline(
+
+			asm_inline (
 				"int $0x40"
 				: "=a"(s)
 				: "a"(18), "b"(7)
@@ -112,18 +113,18 @@ namespace KolibriLib
 		/// @brief Свернуть окно
 		inline void MinimizeWindow()
 		{
-			asm_inline(
+			asm_inline (
 				"int $0x40" 
-				::"a"(18), "b"(10)
+				:: "a"(18), "b"(10)
 			);
 		}
 
 		/// @brief Свернуть все окна
 		inline void MinimizeAllWindows()
 		{
-			asm_inline(
+			asm_inline (
 				"int $0x40" 
-				::"a"(18), "b"(23)
+				:: "a"(18), "b"(23)
 			);
 		}
 
@@ -156,7 +157,7 @@ namespace KolibriLib
 		inline Pos GetWindowPos()
 		{
 			Pos a;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(25), "c"(1));
@@ -171,7 +172,7 @@ namespace KolibriLib
 		inline bool SetWindowPos(Pos pos, Thread::PID pid = -1)
 		{
 			bool a;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(25), "c"(2), "d"(pid), "S"(pos));
@@ -189,7 +190,7 @@ namespace KolibriLib
 		inline Size GetWorkArea()
 		{
 			ksys_pos_t a, b;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(a), "=b"(b)
 				: "a"(48), "b"(5));

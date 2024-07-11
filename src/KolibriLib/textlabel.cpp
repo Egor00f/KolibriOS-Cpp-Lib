@@ -38,54 +38,47 @@ KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, 
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
-	:	Txt(copy), 
+	:	Txt(copy._data, copy.GetTextColor(), copy.GetBackgroundColor()), 
 		UIElement(copy._coord, copy._size, copy._MainColor, copy._Margin), 
 		_TextScale(copy._TextScale), 
-		Align(copy.Align)
+		_Align(copy._Align)
 {
+	#ifdef DEBUG
+	_ksys_debug_puts("TextLabel Constructor(copy)\n");
+	#endif
 }
 
 void text::TextLabel::Render() const
 {
 
-	Coord pos = _coord.GetAbsolute();
-	Size size = _size.GetAbsolute();
+	Coord pos = _coord.GetAbsolute(Parent.get()->GetAbsoluteCoord());
+	Size size = _size.GetAbsolute(Parent.get()->GetAbsoluteSize());
 
-	pos.x += (size.x - lenghtPX()) / 2;
-	pos.y += size.y / 2;
+	switch (_Align)
+	{
+		case TextLabel::Aling::Center:
+
+			pos.x += (size.x - lenghtPX()) / 2;
+			pos.y += size.y / 2;
+
+			break;
+		case TextLabel::Aling::Left:
+
+			pos.y += size.y / 2;
+
+			break;
+
+		case TextLabel::Aling::Right:
+
+			pos.x += (size.x - lenghtPX());
+			pos.y += size.y / 2;
+
+			break;
+		default:
+			_ksys_debug_puts("Unklown value of TextLabel::_Align");
+	}
 
 	Print(pos);
-
-	/*if(_TextScale)
-	{
-		Size size = {0,0};
-		for(Char i :_data)
-		{
-			if(i.GetFont()._size > size)
-			{
-				size > i.GetFont()._size;
-			}
-		}
-
-		size  = _size.GetAbsolute() - Size(size.x * length(), size.y * length());
-
-		Txt t(*this);
-
-		for(std::size_t i = 0; i < t.length(); i++)
-		{
-			Char q = t.GetChar(i);
-			//Fonts::Font p = q.GetFont();
-
-			//p._size = p._size + size;
-
-			//q.SetFont(p);
-		}
-
-	}
-	else
-	{
-		Print(_coord.GetAbsolute());
-	}*/
 }
 
 void text::TextLabel::SetScale(bool scale)
