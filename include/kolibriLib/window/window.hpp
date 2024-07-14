@@ -5,9 +5,8 @@
 
 #include <stdlib.h>
 #include <string>
-#include <vector>
-#include <type_traits>
 #include <utility>
+#include <algorithm>
 
 
 #include <kolibriLib/types.hpp>
@@ -32,9 +31,6 @@ namespace KolibriLib
 		class Window: public UI::GuiObject
 		{
 		public:
-			
-			/// @brief Номер элемента в Window::_Elements
-			typedef int ElementNumber;
 
 			/// @brief Конструктор
 			/// @param Title Заголовок окна
@@ -44,7 +40,7 @@ namespace KolibriLib
 			/// @param Margin Отступы
 			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = 0);
 
-			//~Window();
+			~Window();
 
 			/// @brief Полная перересовка окна
 			void Redraw();
@@ -106,10 +102,6 @@ namespace KolibriLib
 			/// @param newTitle новый заголовок
 			void ChangeTilte(const std::string &newTitle);
 
-			/// @brief Удалить элемент
-			/// @param id idшник того элемента, которой нужно удалить
-			void DeleteElement(const Window::ElementNumber &id);
-
 			/// @brief Обработчик окна
 			/// @return Ивент
 			OS::Event Handler();
@@ -117,27 +109,14 @@ namespace KolibriLib
 			/// @brief Проверить какая нажата
 			UI::buttons::ButtonID GetPressedButton();
 
-			/// @brief Получить текст введённый в форму
-			/// @param form номер формы в списке
-			/// @return Функция возвращает текст введённый в формы
-			std::string GetInputFromFrom(int form) const;
-
 			template <class T>
 			/// @brief Добавить UI элемент
 			/// @param element
 			/// @return std::pair<номер элемента в списке, указатель на элемент>
-			ElementNumber AddElement(const T &element);
+			T* AddElement(const T &element);
 
 			template <class T>
-			/// @brief Изменить элемент
-			/// @param i
-			/// @param element
-			void SetElement(const Window::ElementNumber &i, const T &element);
-
-			/// @brief Получить Window::Element
-			/// @param i ключ
-			/// @return
-			UIElement* GetElement(int i);
+			bool DeleteElement(T* element);
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus() const;
@@ -150,8 +129,9 @@ namespace KolibriLib
 			/// @brief Заголовок окна
 			std::string _title;
 
+
 			/// @brief Список всех кнопок этого окна
-			std::vector<std::shared_ptr<UIElement>> _Elements;
+			std::vector<UIElement*> _Elements;
 
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
@@ -178,35 +158,46 @@ namespace KolibriLib
 		//=============================================================================================================================================================
 
 		template <class T>
-		Window::ElementNumber KolibriLib::window::Window::AddElement(const T &element)
+		T* KolibriLib::window::Window::AddElement(const T &element)
 		{
 			#ifdef DEBUG
-			_ksys_debug_puts("Add element-\n");
+			_ksys_debug_puts("Add element:");
 			#endif
 
-			T* p = new T(element);
-			if(p->GetParent())
-			{
-				p->SetParent(this);
-			}
-			_Elements.push_back(std::shared_ptr<UIElement>((UIElement*)p));
-
-			return _Elements.size()-1;
-		}
-
-		template <class T>
-		void KolibriLib::window::Window::SetElement(const ElementNumber &i, const T &element)
-		{
-			#ifdef DEBUG
-			_ksys_debug_puts("Set element-\n");
-			#endif
-
-			T* p = new T(element);
+			T *p = new T(element);
 			if (p->GetParent())
 			{
-				p->SetParent(this);
+				p->SetParent(this);	// сдес ашибка, при вызове Render вызывается Parent.get()->GetAbsoluteCoord() и на нём падает приложение
 			}
-			_Elements[i].reset(p);
+
+
+			_Elements.push_back((UIElement*)p);
+
+			#ifdef DEBUG
+			_ksys_debug_puts("done\n");
+			#endif
+
+			return p;
+		}
+
+		template<class T>
+		bool Window::DeleteElement(T * element)
+		{
+			#ifdef DEBUG
+			_ksys_debug_puts("delete element:");
+			#endif
+			auto a = std::find(_Elements.begin(), _Elements.end(), element);
+			if(a == _Elements.end())
+			{
+				return false;
+			}
+			else
+			{
+				delete _Elements[_Elements.begin() - a];
+			}
+			#ifdef DEBUG
+			_ksys_debug_puts("done\n");
+			#endif
 		}
 
 		KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
@@ -247,25 +238,31 @@ namespace KolibriLib
 			);
 		}
 
-		/*KolibriLib::window::Window::~Window()
+		KolibriLib::window::Window::~Window()
 		{
-			//for(auto n : _Elements)
-			//{
-			//	n.second.~__shared_ptr();
-			//}
-		}*/
-
-		void Window::RenderAllElements() const
-		{
-			for (auto it : _Elements)
+			for(auto n : _Elements)
 			{
-				it.get()->Render();
+				if(!(n == nullptr))
+				{
+					delete n;
+				}
 			}
 		}
 
-		UIElement *KolibriLib::window::Window::GetElement(int i)
+		void Window::RenderAllElements() const
 		{
-			return _Elements.at(i).get();
+			#ifdef DEBUG
+			_ksys_debug_puts("RenderAllElements:");
+			#endif
+
+			for (auto i : _Elements)
+			{
+				i->Render();
+			}
+
+			#ifdef DEBUG
+			_ksys_debug_puts("done\n");
+			#endif
 		}
 
 		void Window::SetWindowColors(const Colors::ColorsTable &colorTable)
@@ -339,17 +336,20 @@ namespace KolibriLib
 			StartRedraw();
 			window::CreateWindow(GetAbsoluteCoord(), {0,0}, _title, _colors.win_body, _colors.win_title, _style);
 
-			static Size LastWindowSize;
-
-			if(window::GetWindowSize()  == LastWindowSize)
+			if(_style & window::WindowStyle::CanResize)
 			{
-				LastWindowSize = window::GetWindowSize();
+				static Size LastWindowSize;
 
-				for (auto n : _Elements)
+				if (window::GetWindowSize() == LastWindowSize)
 				{
-					if (n.get()->RenderOnEverythingRedraw)
+					LastWindowSize = window::GetWindowSize();
+
+					for (auto n : _Elements)
 					{
-						n.get()->Render();
+						if (n->RenderOnEverythingRedraw)
+						{
+							n->Render();
+						}
 					}
 				}
 			}
@@ -374,9 +374,12 @@ namespace KolibriLib
 
 		void Window::Render(const Coord &coord)
 		{
-
+			#ifdef DEBUG
+			_ksys_debug_puts("Render window:");
+			#endif
+			
 			StartRedraw();
-			window::CreateWindow(GetCoord().GetAbsolute(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
+			window::CreateWindow({0,0}, {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
 
 			KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.win_body);
 
@@ -395,6 +398,10 @@ namespace KolibriLib
 			} */
 
 			EndRedraw();
+
+			#ifdef DEBUG
+			_ksys_debug_puts("done\n");
+			#endif
 		}
 
 		unsigned Window::GetMargin() const
@@ -408,17 +415,11 @@ namespace KolibriLib
 			return UI::UDim(0, p.x, 0, p.y);
 		}
 
-		void Window::DeleteElement(const ElementNumber &id)
-		{
-			if (activeForm == id)
-			{
-				activeForm = -1;
-			}
-			_Elements.erase(_Elements.begin() + id);
-		}
-
 		OS::Event Window::Handler()
 		{
+			#ifdef DEBUG
+			_ksys_debug_puts("Handler\n");
+			#endif
 			OS::Event event = OS::WaitEvent();
 
 			switch (event)
@@ -435,17 +436,17 @@ namespace KolibriLib
 					return OS::Events::Exit;
 				}
 
-				for (const auto &it : _Elements) // Запуск обработчиков всех используемых элементов
+				for (auto it : _Elements) // Запуск обработчиков всех используемых элементов
 				{
-					it.get()->Handler();
+					it->Handler();
 				}
 
 				break;
 			case OS::Events::Key:
 
-				if (activeForm != -1)
+				for (auto it : _Elements)
 				{
-					_Elements[activeForm].get()->Handler(); // Обработчик активной на текущий момент формы
+					it->Handler();
 				}
 
 				break;
@@ -485,23 +486,11 @@ namespace KolibriLib
 			{
 				if (n->ClassName == "Button")
 				{
-					if (((UI::buttons::Button *)n.get())->GetStatus())
+					if (((UI::buttons::Button *)n)->GetStatus())
 					{
-						return ((UI::buttons::Button *)n.get())->GetId();
+						return ((UI::buttons::Button *)n)->GetId();
 					}
 				}
-			}
-		}
-		std::string Window::GetInputFromFrom(Window::ElementNumber form) const
-		{
-			UIElement* pointer = _Elements[form].get();
-			if (pointer->ClassName == "Form")
-			{
-				return ((UI::Form *)pointer)->GetInput();
-			}
-			else
-			{
-				_ksys_debug_puts("form not found\n");
 			}
 		}
 

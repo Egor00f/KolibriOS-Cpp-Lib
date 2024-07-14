@@ -194,6 +194,7 @@ namespace KolibriLib
 			/// @brief не закрывать автоматически
 			NoAutoClose = 'd',
 			
+			/// @brief не закрываеть по клику
 			NoClose = 'c',
 
 			/// @brief Есть заголовок
@@ -207,7 +208,7 @@ namespace KolibriLib
 		/// @param Text текст после заголовка
 		/// @param icon иконка
 		/// @param keys ключи
-		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const std::vector<notifyKey> &keys = {notifyKey::Title});
+		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, (notifyKey)0, (notifyKey)0, (notifyKey)0});
 		
 
 		/// @brief Уведомление об ошибке через увдомления системы

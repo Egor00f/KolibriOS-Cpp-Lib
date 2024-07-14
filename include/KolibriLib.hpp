@@ -10,7 +10,6 @@
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/network.hpp>
 #include <input.hpp>
-#include <kolibriLib/libini.hpp>
 #include <UI.hpp>
 
 namespace KolibriLib

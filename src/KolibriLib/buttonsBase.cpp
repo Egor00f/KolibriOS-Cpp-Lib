@@ -1,23 +1,22 @@
 #include <kolibriLib/UI/buttonsBase.hpp>
-#include <unordered_map>
+#include <algorithm>
 
 using namespace KolibriLib;
 using namespace UI;
 using namespace buttons;
 
-/// @brief Список idшников кнопок
-std::unordered_map<ButtonID, bool> ButtonsIdList;
+
+/// @brief Список использованных id кнопок
+std::vector<ButtonID> ButtonsIdList {/*CloseButton,*/ MinimizeButton};
 
 ButtonID buttons::GetFreeButtonId()
 {
-	for (unsigned i = 0; i < ButtonsIdList.size(); i++)
-	{
-		if (ButtonsIdList.count(i) == 0)
+	for(ButtonID i = 2; i < 0x8000; i++)	// в wiki сказанно что id в промежутке (0, 0x8000)
+	{                                   	// CloseButton = 1, поэтому пропускаем и начинаем сразу с 2
+		if(std::find(ButtonsIdList.begin(), ButtonsIdList.end(), i) == ButtonsIdList.end())
 		{
-			ButtonID ret = i + StartButtonId;
-			if (ret == MinimizeButton)
-				ret++;
-			return ret;
+			ButtonsIdList.push_back(i);
+			return i;
 		}
 	}
 	return 0;
@@ -25,7 +24,11 @@ ButtonID buttons::GetFreeButtonId()
 
 void buttons::FreeButtonId(const ButtonID &id)
 {
-	ButtonsIdList.erase(id);
+	auto a = std::find(ButtonsIdList.begin(), ButtonsIdList.end(), id);
+	if(!(a == ButtonsIdList.end()))
+	{
+		ButtonsIdList.erase(a);
+	}
 }
 
 ButtonID buttons::autoDefineButton(const Coord &coords, const Size &size, const Colors::Color &color)

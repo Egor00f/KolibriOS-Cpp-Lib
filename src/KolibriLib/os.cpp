@@ -36,12 +36,28 @@ Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::str
     return -1;
 }
 
-void Notify(const std::string &Title, const std::string &Text, notifyIcon icon, const std::vector<notifyKey> &keys)
+void KolibriLib::OS::Notify(const std::string &Title, const std::string &Text, notifyIcon icon, const notifyKey (&keys)[4])
 {
 	std::string a = "\"'" + Title + "\n" + Text + "' " + (char)icon;
-	for(unsigned short i = 0; i < keys.size(); i++)
-    {
-		a += (" -" + (char)keys[i]);
+	
+	if(!(keys[0] == (notifyKey)0))	// :)
+	{
+		a += keys[0];
+		if (!(keys[1] == (notifyKey)0))
+		{
+			a += keys[1];
+			if (!(keys[2] == (notifyKey)0))
+			{
+				a += keys[2];
+				if (!(keys[3] == (notifyKey)0))
+				{
+					a += keys[3];
+				}
+			}
+			
+		}
 	}
+	
+
 	_ksys_exec("/sys/@notify", (char *)a.c_str(), false);
 }
