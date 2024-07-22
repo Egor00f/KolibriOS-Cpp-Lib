@@ -1,5 +1,7 @@
 #include <kolibriLib/UI/UI.hpp>
 
+#include <algorithm>
+
 #include <input.hpp>
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
@@ -17,12 +19,13 @@ KolibriLib::UI::UDim::UDim(const point &p)
 KolibriLib::UI::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
 	: X(XScale, XOffset), Y(YScale, YOffset)
 {
-	
+
 }
 
 KolibriLib::UI::UDim::Axis::Axis(float scale, int offset)
 	: Scale(scale), Offset(offset)
 {
+
 }
 
 bool UI::UDim::Axis::operator==(const UDim::Axis &axis) const
@@ -37,7 +40,7 @@ bool UI::UDim::Axis::operator!=(const UDim::Axis &axis) const
 
 point KolibriLib::UI::UDim::GetAbsolute(const point &Parent) const
 {
-	return { static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset, 
+	return { static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset,
 	         static_cast<int>(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset };
 }
 
@@ -52,20 +55,20 @@ bool KolibriLib::UI::UDim::operator!=(const UDim &obj) const
 }
 
 KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const Colors::Color &MainColor, const unsigned &Margin)
-	:	GuiObject	(), 
+	:	GuiObject	(),
 		_coord	(coord),
-		_size	(size), 
-		_MainColor	(MainColor), 
+		_size	(size),
+		_MainColor	(MainColor),
 		_Margin	(Margin)
 {
 
 }
 
 KolibriLib::UI::UIElement::UIElement(const UIElement &cp)
-	:	GuiObject	(), 
-		_coord	(cp._coord), 
-		_size	(cp._size), 
-		_MainColor	(cp._MainColor), 
+	:	GuiObject	(),
+		_coord	(cp._coord),
+		_size	(cp._size),
+		_MainColor	(cp._MainColor),
 		_Margin	(cp._Margin),
 		Parent	(cp.Parent)
 {
@@ -127,23 +130,19 @@ unsigned KolibriLib::UI::UIElement::GetRotate() const
 
 bool KolibriLib::UI::UIElement::Hover() const
 {
-	Coord Mouse = mouse::GetMousePositionInWindow();
-
-	if(Parent == nullptr)
+	if(Parent != nullptr)
 	{
+		Coord Mouse = mouse::GetMousePositionInWindow();
 		point coord	= _coord.GetAbsolute(Parent->GetAbsoluteSize());
-		Size size = _size.GetAbsolute(Parent->GetAbsoluteSize());
-		return ((coord < Mouse) &&
-				(Mouse.x < (coord.x + size.x)) &&
-				(Mouse.y < (coord.x + size.y)) &&
-			    (ScreenPointAffiliation(Mouse) == Thread::GetThreadSlot()));
-	}
-	else
-	{
-		throw "Parent == nullptr";
+		Size size	= _size.GetAbsolute(Parent->GetAbsoluteSize());
+
+		return ( (coord < Mouse) &&
+		         (Mouse.x < (coord.x + size.x)) &&
+		         (Mouse.y < (coord.x + size.y)) &&
+		         (ScreenPointAffiliation(Mouse) == Thread::GetThreadSlot()) );
 	}
 
-	
+	return false;
 }
 
 int KolibriLib::UI::UIElement::Handler()
@@ -155,14 +154,25 @@ int KolibriLib::UI::UIElement::Handler()
 void KolibriLib::UI::UIElement::SetParent(const GuiObject *NewParent)
 {
 	#ifdef DEBUG
-	_ksys_debug_puts("SetParent");
+	_ksys_debug_puts("SetParent\n");
 	#endif
-	Parent.reset(NewParent);
+
+	bool a = false;
+	if(NewParent->ClassName.c_str() != "Window")
+	{
+		a = true;
+		((UIElement*)	Parent)->DeleteChildren(this);
+	}
+
+	Parent = NewParent;
+
+	if(a)
+		((UIElement*)	Parent)->AddChildren(this);
 }
 
 const GuiObject *KolibriLib::UI::UIElement::GetParent() const
 {
-	return Parent.get();
+	return Parent;
 }
 
 UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
@@ -177,21 +187,21 @@ UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
 
 bool KolibriLib::UI::UIElement::operator==(const UIElement &Element) const
 {
-	return (_coord     == Element._coord)	&& 
-	       (_size      == Element._size)	&& 
-		   (_MainColor == Element._MainColor);
+	return (_coord     == Element._coord)	&&
+	       (_size      == Element._size)	&&
+	       (_MainColor == Element._MainColor);
 }
 
 bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 {
-	return (_coord     != Element._coord)	|| 
-	       (_size      != Element._size)	|| 
-		   (_MainColor != Element._MainColor);
+	return (_coord     != Element._coord)	||
+	       (_size      != Element._size)	||
+	       (_MainColor != Element._MainColor);
 }
 
 void KolibriLib::UI::UIElement::Render() const
 {
-	graphic::DrawRectangleFill(_coord.GetAbsolute(Parent.get()->GetAbsoluteCoord()), _size.GetAbsolute(Parent.get()->GetAbsoluteSize()), _MainColor);
+	graphic::DrawRectangleFill(_coord.GetAbsolute(Parent->GetAbsoluteCoord()), _size.GetAbsolute(Parent->GetAbsoluteSize()), _MainColor);
 }
 
 void KolibriLib::UI::UIElement::SetSize(const Size &NewSize)
@@ -203,3 +213,24 @@ void KolibriLib::UI::UIElement::SetCoord(const Coord &NewCoord)
 {
 	_coord = UDim(NewCoord);
 }
+
+std::vector<UIElement*> KolibriLib::UI::UIElement::GetChildren() const
+{
+	return _childs;
+}
+
+void KolibriLib::UI::UIElement::AddChildren(const UIElement *child)
+{
+	_childs.push_back((UIElement*)child);
+}
+
+void KolibriLib::UI::UIElement::DeleteChildren(const UIElement *child)
+{
+	auto n = std::find(_childs.begin(), _childs.end(), child);
+
+	if(!(n == _childs.end()))
+	{
+		_childs.erase(n);
+	}
+}
+

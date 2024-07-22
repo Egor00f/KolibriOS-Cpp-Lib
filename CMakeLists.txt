@@ -46,68 +46,77 @@ include(CMakeKOS32gcc)
 
 
 
-
-
 set(CMAKE_CXX_STANDARD 11)
 
-#include_directories(${LIBS_DIR}/freetype/include)
 
-SET(SRC_PATH src/KolibriLib)
 
 
 # CONFIGURED C_Layer ASM
 set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
 set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
 
-set(C_Layer_ASM_Sources
+set(C_LAYER_LOADERS_SOURCES
 	${C_Layer_SRC_PATH}/loadlibimg.asm
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
 )
 
-set(C_Layer_C_Sources
+# PATH TO KOLIBRILIb SOURCES
+SET(SRC_PATH src/KolibriLib)
+
+set(C_LAYER_KOLIBRILIB_SOURCES
 	${SRC_PATH}/C_Layer/kolibri_buf2d.c
 	${SRC_PATH}/C_Layer/kolibri_libimg.c
 	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
 )
 
-SET(SOURCES 
-	${C_Layer_ASM_Sources}
-	${C_Layer_C_Sources}
-	${SRC_PATH}/filesystem.cpp 
-	${SRC_PATH}/color.cpp 
-	${SRC_PATH}/os.cpp 
-	${SRC_PATH}/graphic.cpp 
-	${SRC_PATH}/img.cpp 
-	${SRC_PATH}/thread.cpp 
-	${SRC_PATH}/types.cpp 
-	${SRC_PATH}/textBase.cpp 
-	${SRC_PATH}/UI.cpp 
-	${SRC_PATH}/image.cpp 
-	${SRC_PATH}/text.cpp 
-	${SRC_PATH}/textlabel.cpp 
+SET(SOURCES
+	${SRC_PATH}/filesystem.cpp
+	${SRC_PATH}/color.cpp
+	${SRC_PATH}/os.cpp
+	${SRC_PATH}/graphic.cpp
+	${SRC_PATH}/img.cpp
+	${SRC_PATH}/thread.cpp
+	${SRC_PATH}/types.cpp
+	${SRC_PATH}/textBase.cpp
+	${SRC_PATH}/UI.cpp
+	${SRC_PATH}/image.cpp
+	${SRC_PATH}/text.cpp
+	${SRC_PATH}/textlabel.cpp
 	${SRC_PATH}/buttonsBase.cpp
-	${SRC_PATH}/button.cpp 
+	${SRC_PATH}/button.cpp
 	${SRC_PATH}/checkbox.cpp
 	${SRC_PATH}/form.cpp
 	#${SRC_PATH}/menu.cpp
 )
 
+#LOADERS THAT LOAD SHARED C_LAYER LIBS
+ADD_LIBRARY(C_LAYER_LOADERS OBJECT ${C_LAYER_LOADERS_SOURCES})
+target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
+
+
+ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT ${C_LAYER_KOLIBRILIB_SOURCES})
+
+target_link_libraries(C_LAYER_KOLIBRILIB PUBLIC C_LAYER_LOADERS)
+
+target_include_directories(C_LAYER_KOLIBRILIB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 
-target_compile_options(KolibriLib PUBLIC -c -fpermissive -Wpointer-arith -Wreturn-local-addr -fomit-frame-pointer -Wparentheses -Wreorder -DDEBUG -Wall)
+target_link_libraries(KolibriLib PUBLIC C_LAYER_KOLIBRILIB)
+
+target_compile_options(KolibriLib PUBLIC -c -fpermissive -fomit-frame-pointer)
 
 target_compile_options(KolibriLib PUBLIC -D__MakeStaticLib__)
 
-
 target_include_directories(KolibriLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_include_directories(KolibriLib PRIVATE ${KOLIBRIOS_REPO}/programs)
 
-
-
+# INCLUDE MACROSS FOR GENERATE DOXYGEN
 include(Doxygen)
 
+#GENERATE DOXYGEN ONLY THIS PROJECT ISNT SUBPROECT
 if(NOT IS_SUBPROJECT)
 	SET(DOXY_OUTPUT_LANGUAGE "Russian")
 

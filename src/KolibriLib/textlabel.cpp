@@ -5,13 +5,14 @@ using namespace UI;
 using namespace text;
 
 TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, const Size &CharSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin)
-	: Txt(text), 
+	:	Txt(text),
 		UIElement(coord, size, TextColor, Margin),
 		_TextScale(TextScale)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("TextLabel Constructor\n");
 	#endif
+
 	SetTextSize(CharSize);
 	//SetFont(Fonts::Font(Fonts::DefaultFont.font_file, FontSize));
 }
@@ -23,13 +24,12 @@ TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &tex
 //	#ifdef DEBUG
 //	_ksys_debug_puts("TextLabel Constructor\n");
 //	#endif
-	
 	//SetFont(Font);
 //}
 
 
 KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, const Txt &text)
-	:	Txt(text), 
+	:	Txt(text),
 		UIElement(coord, size)
 {
 	#ifdef DEBUG
@@ -38,9 +38,9 @@ KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, 
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
-	:	Txt(copy._data, copy.GetTextColor(), copy.GetBackgroundColor()), 
-		UIElement(copy._coord, copy._size, copy._MainColor, copy._Margin), 
-		_TextScale(copy._TextScale), 
+	:	Txt(copy._data, copy.GetTextColor(), copy.GetBackgroundColor()),
+		UIElement(copy._coord, copy._size, copy._MainColor, copy._Margin),
+		_TextScale(copy._TextScale),
 		_Align(copy._Align)
 {
 	#ifdef DEBUG
@@ -51,8 +51,8 @@ TextLabel::TextLabel(const TextLabel &copy)
 void text::TextLabel::Render() const
 {
 
-	Coord pos = _coord.GetAbsolute(Parent.get()->GetAbsoluteCoord());
-	Size size = _size.GetAbsolute(Parent.get()->GetAbsoluteSize());
+	Coord pos = GetAbsoluteCoord();
+	Size size = GetAbsoluteSize();
 
 	switch (_Align)
 	{
@@ -103,11 +103,11 @@ text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const KolibriLib::UI
 
 bool KolibriLib::UI::text::TextLabel::operator==(const KolibriLib::UI::text::TextLabel &a) const
 {
-	return (_coord	==	a._coord)	&&
-		   (_size	==	a._size)	&&
-		   (_MainColor	==	a._MainColor)	&&
-		   (_Margin	==	a._Margin)	&&
-		   (_TextScale	==	a._TextScale);
+	return	(_coord	==	a._coord)	&&
+		(_size	==	a._size)	&&
+		(_MainColor	==	a._MainColor)	&&
+		(_Margin	==	a._Margin)	&&
+		(_TextScale	==	a._TextScale);
 }
 
 bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::TextLabel &a) const

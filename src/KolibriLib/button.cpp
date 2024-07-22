@@ -1,4 +1,4 @@
-#include <kolibriLib/UI/checkbox.hpp>
+#include <kolibriLib/UI/button.hpp>
 
 
 
@@ -7,7 +7,7 @@ using namespace UI;
 using namespace buttons;
 
 buttons::Button::Button(const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
-	:	TextLabel(coord, size, "Button", 16, true, ButtonColor, Margin), 
+	:	TextLabel(coord, size, "Button", 16, true, ButtonColor, Margin),
 		_id(GetFreeButtonId())
 {
 	#ifdef DEBUG
@@ -21,12 +21,13 @@ KolibriLib::UI::buttons::Button::Button(const Txt &text, const UDim &coord, cons
 	#ifdef DEBUG
 	_ksys_debug_puts("Button contructor\n");
 	#endif
+
 	_Margin	= Margin;
 	_MainColor	= ButtonColor;
 }
 
 Button::Button(const Button &copy)
-	:	TextLabel(copy), 
+	:	TextLabel(copy),
 		_id(copy._id)
 {
 	#ifdef DEBUG
@@ -94,13 +95,13 @@ void buttons::Button::Render() const
 {
 	if (_active)
 	{
-		buttons::DefineButton(_coord.GetAbsolute(), _size.GetAbsolute(), _id, _MainColor);
+		const Coord COORD = GetAbsoluteCoord();
+		const Size SIZE = GetAbsoluteSize();
 
-		const Coord COORD = Parent.get()->GetAbsoluteCoord();
-		const Size SIZE = Parent.get()->GetAbsoluteSize();
+		buttons::DefineButton(COORD, SIZE, _id, _MainColor);
 
-		Print(Coord(_coord.GetAbsolute(COORD).x + ((int)_size.GetAbsolute(SIZE).x / 2),
-		            _coord.GetAbsolute(COORD).y + ((int)_size.GetAbsolute(SIZE).y / 2)));
+		Print( Coord(COORD.x + ((int)SIZE.x / 2),
+		             COORD.y + ((int)SIZE.y / 2)) );
 	}
 }
 

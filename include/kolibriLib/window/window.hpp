@@ -32,6 +32,8 @@ namespace KolibriLib
 		{
 		public:
 
+			std::string ClassName = "Window";
+
 			/// @brief Конструктор
 			/// @param Title Заголовок окна
 			/// @param size Размер окна
@@ -120,9 +122,11 @@ namespace KolibriLib
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus() const;
+
 			/// @brief Поставить фокус на это окно
 			void Focus() const;
 
+			/// @brief Отрисовать все элементы
 			void RenderAllElements() const;
 
 		private:
@@ -186,7 +190,9 @@ namespace KolibriLib
 			#ifdef DEBUG
 			_ksys_debug_puts("delete element:");
 			#endif
+
 			auto a = std::find(_Elements.begin(), _Elements.end(), element);
+
 			if(a == _Elements.end())
 			{
 				return false;
@@ -194,7 +200,9 @@ namespace KolibriLib
 			else
 			{
 				delete _Elements[_Elements.begin() - a];
+				return true;
 			}
+
 			#ifdef DEBUG
 			_ksys_debug_puts("done\n");
 			#endif
