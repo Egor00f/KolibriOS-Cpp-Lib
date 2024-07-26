@@ -27,9 +27,6 @@ int main()
 	// Добавление кнопки
 	auto button = window.AddElement(Button(UDim(0.6, 0, 0.8, 0), UDim(0.2, 0, 0.1, 0)));
 
-	label->Render();
-	button->Render();
-	
 	// Отрисовка окна
 	window.Render();
 

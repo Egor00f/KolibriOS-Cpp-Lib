@@ -61,13 +61,17 @@ namespace KolibriLib
 				/// @brief Изменить цвет текста для всех символов
 				/// @param Color
 				void SetTextColor(const Colors::Color &Color);
-				
+
+				/// @brief Получить цвет текста
+				/// @return Цвет текста
 				Colors::Color GetTextColor() const;
 
 				/// @brief Изменить цвет фона для всех символов
 				/// @param Color
 				void SetBackgroundColor(const Colors::Color &Color);
 
+				/// @brief Получить цвет фона
+				/// @return Цвет фона
 				Colors::Color GetBackgroundColor() const;
 
 				/// @brief Получить текст
@@ -97,8 +101,6 @@ namespace KolibriLib
 				/// @return 
 				Size GetTextSize() const;
 
-
-
 				Txt &operator=(const Txt &txt);
 
 				/// @brief
@@ -110,21 +112,27 @@ namespace KolibriLib
 				std::string _data;
 
 			private:
-				
 				/// @brief Размер символа
 				Size _CharSize;
 
+				/// @brief Цвет Текста
 				Colors::Color _TextColor;
+
+				/// @brief Цвет фона
 				Colors::Color _BackgroundColor;
-				
+
+				/// @brief Цвет выделения текста
+				Colors::Color *SelectColor;
+
+				/// Можно ли выделять этот текст
+				bool Selecteable;
+
 
 				bool Italic;
 				bool Bold;
 				bool UnderLine;
 				bool StrikeThrough;
 			};
-
-			
 		} // namespace text
 	} // namespace UI
 } // namespace KolibriLib

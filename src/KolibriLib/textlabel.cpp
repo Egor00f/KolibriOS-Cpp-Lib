@@ -38,10 +38,10 @@ KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, 
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
-	:	Txt(copy._data, copy.GetTextColor(), copy.GetBackgroundColor()),
-		UIElement(copy._coord, copy._size, copy._MainColor, copy._Margin),
-		_TextScale(copy._TextScale),
-		_Align(copy._Align)
+	:	Txt	(copy._data, copy.GetTextColor(), copy.GetBackgroundColor()),
+		UIElement	(copy._coord, copy._size, copy._MainColor, copy._Margin),
+		_TextScale	(copy._TextScale),
+		_Align	(copy._Align)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("TextLabel Constructor(copy)\n");
@@ -50,6 +50,9 @@ TextLabel::TextLabel(const TextLabel &copy)
 
 void text::TextLabel::Render() const
 {
+	#ifdef DEBUG
+	_ksys_debug_puts("Render TextLabel");
+	#endif
 
 	Coord pos = GetAbsoluteCoord();
 	Size size = GetAbsoluteSize();

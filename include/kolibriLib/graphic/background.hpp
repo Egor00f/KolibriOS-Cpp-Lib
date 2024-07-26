@@ -14,14 +14,13 @@ namespace KolibriLib
 	/// @brief Работа с фоном
 	namespace Background
 	{
-		bool f = false;
 
 		/// @brief Получить размеры фонового изображения
 		/// @return
 		inline Size GetSize()
 		{
 			ksys_pos_t p;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(p)
 				: "a"(39), "b"(1));
@@ -65,37 +64,35 @@ namespace KolibriLib
 			_ksys_bg_redraw_bar(buff, p2);
 		}
 
+		/// @brief
+		/// @param
 		inline void SetSize(const Size &size)
 		{
-			f = true;
 			_ksys_bg_set_size(size.x, size.y);
 		}
 
+		/// @brief
+		/// @param coord
+		/// @param color
 		inline void DrawPoint(const Coord coord, const Colors::Color &color)
 		{
-			if(!f)
-			{
-				SetSize(GetSize());
-			}
 			_ksys_bg_put_pixel(coord.x, coord.y, GetSize().x, color.val);
 		}
 
 		template <std::size_t N>
+		/// @brief
+		/// @param coord
+		/// @param rgb
 		inline void DrawImage(const Coord coord, rgb_t (&rgb)[N])
-		{
-			if (!f)
-			{
-				SetSize(GetSize());
-			}
+		{	
 			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N,  coord.x, coord.y, GetSize().x);
 		}
 
+		/// @brief
+		/// @param coord
+		/// @param rgb
 		inline void DrawImage(const Coord &coord, rgb_t *rgb, std::size_t N)
 		{
-			if (!f)
-			{
-				SetSize(GetSize());
-			}
 			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N, coord.x, coord.y, GetSize().x);
 		}
 

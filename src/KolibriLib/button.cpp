@@ -93,6 +93,10 @@ bool buttons::Button::GetStatus() const
 
 void buttons::Button::Render() const
 {
+	#ifdef DEBUG
+	_ksys_debug_puts("Render Button");
+	#endif
+
 	if (_active)
 	{
 		const Coord COORD = GetAbsoluteCoord();
@@ -103,6 +107,10 @@ void buttons::Button::Render() const
 		Print( Coord(COORD.x + ((int)SIZE.x / 2),
 		             COORD.y + ((int)SIZE.y / 2)) );
 	}
+
+	#ifdef DEBUG
+	_ksys_debug_puts("done Render\n");
+	#endif
 }
 
 buttons::ButtonID buttons::Button::GetId() const

@@ -5,13 +5,13 @@ AR	= kos32-ar
 AS	= kos32-as
 CC	= kos32-gcc
 CXX	= kos32-g++
-LD	= kos32-ld 
+LD	= kos32-ld
 
 #DIRs
 KolibriOS_repo_dir = ../../kolibrios
 CONTRIB_DIR = $(KolibriOS_repo_dir)/contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
-TOOLCHAIN_DIR = C:/MinGW/msys/1.0/home/autobuild/tools/win32
+TOOLCHAIN_DIR = /home/autobuild/tools/win32
 C_LAYER_OBJ_DIR = $(CONTRIB_DIR)/C_Layer/OBJ
 
 
@@ -24,7 +24,7 @@ LDFLAGS = -static -S -nostdlib --image-base 0 -T $(SDK_DIR)/sources/newlib/app.l
 
 
 
-SOURCES = $(EXECUTABLE).cpp 
+SOURCES = $(EXECUTABLE).cpp
 OBJECTS =  $(patsubst %.cpp, %.o, $(SOURCES))
 
 
@@ -44,8 +44,4 @@ Exapmle: $(OBJECTS) Makefile
 
 %.o : %.cpp Makefile $(SOURCES)
 	@echo compile: $@
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< 
-
-
-
-	
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $<

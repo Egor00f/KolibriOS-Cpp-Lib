@@ -115,7 +115,7 @@ namespace KolibriLib
 		{
 			ksys_color_t c;
 
-			__asm__ __volatile__(
+			__asm__ __volatile__ (
 				"int $0x40"
 				: "=a"(c)
 				: "a"(35),
@@ -124,16 +124,21 @@ namespace KolibriLib
 			return (Colors::Color)c;
 		}
 
+		/// @brief Получить область
+		/// @param coord 
+		/// @param size
+		/// @return
+		/// @note Не забудьте delete[] 
 		inline rgb_t* ReadArea(const Coord &coord, const Size &size)
 		{
 			rgb_t* result = new rgb_t[size.x * size.y];
 
 			asm_inline (
 				"int $0x40"
-				::"a"(36), 
-				"b"(result), 
-				"c"(X_Y(size.x, size.y)), 
-				"d"(X_Y(coord.x, coord.y))
+				:: "a"(36), 
+				   "b"(result), 
+				   "c"(X_Y(size.x, size.y)), 
+				   "d"(X_Y(coord.x, coord.y))
 			);
 
 			return result;

@@ -105,12 +105,49 @@ void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 
 Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
-	return _size.GetAbsolute(Parent->GetAbsoluteSize());
+	#ifdef DEBUG
+	_ksys_debug_puts("GetAbsoluteSize");
+	#endif
+
+	if(Parent != nullptr)
+	{
+		#ifdef DEBUG
+		_ksys_debug_putc('\n');
+		#endif
+
+		return _size.GetAbsolute(Parent->GetAbsoluteSize());
+	}
+	else
+	{
+		#ifdef DEBUG
+		_ksys_debug_puts("Parent no set\n");
+		#endif
+
+		return _size.GetAbsolute(window::GetWindowSize());
+	}
 }
 
 Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 {
-	return _coord.GetAbsolute(Parent->GetAbsoluteCoord());
+	#ifdef DEBUG
+	_ksys_debug_puts("GetAbsoluteCoord");
+	#endif
+	if(Parent != nullptr)
+	{
+		#ifdef DEBUG
+		_ksys_debug_putc('\n');
+		#endif
+
+		return _coord.GetAbsolute(Parent->GetAbsoluteCoord());
+	}
+	else
+	{
+		#ifdef DEBUG
+		_ksys_debug_puts("Parent no set\n");
+		#endif
+
+		return _coord.GetAbsolute(window::GetWindowCoord());
+	}
 }
 
 UDim KolibriLib::UI::UIElement::GetCoord() const
@@ -133,10 +170,10 @@ bool KolibriLib::UI::UIElement::Hover() const
 	if(Parent != nullptr)
 	{
 		Coord Mouse = mouse::GetMousePositionInWindow();
-		point coord	= _coord.GetAbsolute(Parent->GetAbsoluteSize());
-		Size size	= _size.GetAbsolute(Parent->GetAbsoluteSize());
+		point coord	= GetAbsoluteSize();
+		Size size	= GetAbsoluteSize();
 
-		return ( (coord < Mouse) &&
+		return ( (coord < Mouse)	&&
 		         (Mouse.x < (coord.x + size.x)) &&
 		         (Mouse.y < (coord.x + size.y)) &&
 		         (ScreenPointAffiliation(Mouse) == Thread::GetThreadSlot()) );
@@ -158,13 +195,13 @@ void KolibriLib::UI::UIElement::SetParent(const GuiObject *NewParent)
 	#endif
 
 	bool a = false;
-	if(NewParent->ClassName.c_str() != "Window")
+	if(NewParent->ClassName != "Window")
 	{
 		a = true;
 		((UIElement*)	Parent)->DeleteChildren(this);
 	}
 
-	Parent = NewParent;
+	Parent =(GuiObject*) NewParent;
 
 	if(a)
 		((UIElement*)	Parent)->AddChildren(this);
@@ -201,7 +238,7 @@ bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 
 void KolibriLib::UI::UIElement::Render() const
 {
-	graphic::DrawRectangleFill(_coord.GetAbsolute(Parent->GetAbsoluteCoord()), _size.GetAbsolute(Parent->GetAbsoluteSize()), _MainColor);
+	graphic::DrawRectangleFill(GetAbsoluteCoord(), GetAbsoluteSize(), _MainColor);
 }
 
 void KolibriLib::UI::UIElement::SetSize(const Size &NewSize)

@@ -9,6 +9,7 @@
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/system/os.hpp>
+#include <kolibriLib/window/windowBase.hpp>
 
 namespace KolibriLib
 {

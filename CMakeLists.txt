@@ -20,10 +20,6 @@ set(KOLIBRIOS_REPO	../kolibrios)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-if(IS_SUBPROJECT)
-	set(BuildExamples OFF)
-endif()
-
 
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 
@@ -48,26 +44,38 @@ include(CMakeKOS32gcc)
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(CMAKE_C_FLAGS_DEBUG "-Wall -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
 
+set(CMAKE_C_FLAGS_RELEASE "-O2")
+set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
 
 
 # CONFIGURED C_Layer ASM
 set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
 set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
 
+# PATH TO KOLIBRILIB SOURCES
+SET(SRC_PATH src/KolibriLib)
+SET(HEADERS_PATH include/kolibriLib)
+SET(C_LAYER_HEADERS include/C_Layer/INCLUDE)
+
 set(C_LAYER_LOADERS_SOURCES
 	${C_Layer_SRC_PATH}/loadlibimg.asm
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
+	${C_LAYER_HEADERS}/kolibri_buf2d.h
+	${C_LAYER_HEADERS}/kolibri_libimg.h
+	${C_LAYER_HEADERS}/kolibri_rasterworks.h
 )
-
-# PATH TO KOLIBRILIb SOURCES
-SET(SRC_PATH src/KolibriLib)
 
 set(C_LAYER_KOLIBRILIB_SOURCES
 	${SRC_PATH}/C_Layer/kolibri_buf2d.c
 	${SRC_PATH}/C_Layer/kolibri_libimg.c
 	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
+	${C_LAYER_HEADERS}/kolibri_buf2d.h
+	${C_LAYER_HEADERS}/kolibri_libimg.h
+	${C_LAYER_HEADERS}/kolibri_rasterworks.h
 )
 
 SET(SOURCES
@@ -88,16 +96,23 @@ SET(SOURCES
 	${SRC_PATH}/checkbox.cpp
 	${SRC_PATH}/form.cpp
 	#${SRC_PATH}/menu.cpp
+	${SRC_PATH}/window.cpp
+	${HEADERS_PATH}/system/os.hpp
+	${HEADERS_PATH}/system/thread.hpp
+	${HEADERS_PATH}/system/filesystem.hpp
+	${HEADERS_PATH}/UI/UI.hpp
+	${HEADERS_PATH}/UI/checkbox.hpp
+	${HEADERS_PATH}/UI/button.hpp
+	${HEADERS_PATH}/UI/buttonsBase.hpp
 )
 
 #LOADERS THAT LOAD SHARED C_LAYER LIBS
 ADD_LIBRARY(C_LAYER_LOADERS OBJECT ${C_LAYER_LOADERS_SOURCES})
+
 target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
 
 
 ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT ${C_LAYER_KOLIBRILIB_SOURCES})
-
-target_link_libraries(C_LAYER_KOLIBRILIB PUBLIC C_LAYER_LOADERS)
 
 target_include_directories(C_LAYER_KOLIBRILIB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
@@ -105,10 +120,11 @@ target_include_directories(C_LAYER_KOLIBRILIB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 
 target_link_libraries(KolibriLib PUBLIC C_LAYER_KOLIBRILIB)
+target_link_libraries(KolibriLib PUBLIC C_LAYER_LOADERS)
 
-target_compile_options(KolibriLib PUBLIC -c -fpermissive -fomit-frame-pointer)
+target_compile_options(KolibriLib PUBLIC -c -fomit-frame-pointer)
 
-target_compile_options(KolibriLib PUBLIC -D__MakeStaticLib__)
+target_compile_options(KolibriLib PRIVATE -D__MakeStaticLib__)
 
 target_include_directories(KolibriLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
@@ -122,7 +138,7 @@ if(NOT IS_SUBPROJECT)
 
 	SET(DOXY_INPUT ${PROJECT_SOURCE_DIR})
 
-	ADD_DOCUMENTATION(doc "${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile")
+	ADD_DOCUMENTATION(doc ${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile)
 
 endif()
 

@@ -10,6 +10,7 @@ void graphic::DrawPoint(const Coord &position, const unsigned &size, const Color
 	{
 		fill = false;
 	}
+	
 	if (!fill)
 	{
 		graphic::DrawCircle(position, size, color);
