@@ -10,6 +10,7 @@ KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::S
 	  _Transparency(Transparency),
 	  _RealtimeRedraw(RealtimeRedraw)
 {
+	_style = 0;
 	_style = WindowStyle::Relative | WindowStyle::WindowHaveTitle | WindowStyle::withSkin;
 
 	if (Resize)
@@ -143,7 +144,7 @@ void KolibriLib::window::Window::Redraw()
 	StartRedraw();
 	window::CreateWindow(GetAbsoluteCoord(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
 
-	if (_style & window::WindowStyle::CanResize)
+	/*if (_style & window::WindowStyle::CanResize)
 	{
 		static Size LastWindowSize;
 
@@ -169,7 +170,9 @@ void KolibriLib::window::Window::Redraw()
 				n->Render();
 			}
 		}
-	}
+	}*/
+
+	RenderAllElements();
 
 	/*if (_Transparency != 0) // Прозрачность окна
 	{

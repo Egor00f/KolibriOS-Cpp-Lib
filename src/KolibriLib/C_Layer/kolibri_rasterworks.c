@@ -9,7 +9,14 @@ void *drawTextToBuff(const void *canvas, uint8_t width, uint8_t height, int x, i
 	*((int *)buff)	= width;
 	*((int *)buff + 1)	= height;
 
-	memcpy((char *)buff + 8, canvas, l);
+	if(canvas != NULL)
+	{
+		memcpy(((char *)buff) + 8, canvas, l);
+	}
+	else
+	{
+		memset(buff + 8, -1, l);
+	}
 
 	if(stringLenght < 1)
 	{
@@ -22,7 +29,7 @@ void *drawTextToBuff(const void *canvas, uint8_t width, uint8_t height, int x, i
 			 string,
 			 stringLenght,
 			 fontColor,
-			 (flags << 24) | (CharWidth << 16) | (CharHeight << 8) | encoding);
+			 (flags << 24) | (encoding << 16) | (CharWidth << 8) | (CharHeight));
 
 	return buff;
 }

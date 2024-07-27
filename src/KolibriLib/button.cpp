@@ -94,13 +94,13 @@ bool buttons::Button::GetStatus() const
 void buttons::Button::Render() const
 {
 	#ifdef DEBUG
-	_ksys_debug_puts("Render Button");
+	_ksys_debug_puts("Render Button:");
 	#endif
 
 	if (_active)
 	{
 		const Coord COORD = GetAbsoluteCoord();
-		const Size SIZE = GetAbsoluteSize();
+		const Size SIZE	= GetAbsoluteSize();
 
 		buttons::DefineButton(COORD, SIZE, _id, _MainColor);
 
@@ -109,7 +109,7 @@ void buttons::Button::Render() const
 	}
 
 	#ifdef DEBUG
-	_ksys_debug_puts("done Render\n");
+	_ksys_debug_puts("done\n");
 	#endif
 }
 

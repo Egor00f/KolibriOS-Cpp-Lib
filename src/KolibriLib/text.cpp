@@ -14,7 +14,11 @@ std::string KolibriLib::UI::text::Txt::GetText() const
 Txt::Txt()
 	:	_CharSize	(DefaultCharSize),
 		_TextColor	(OS::GetSystemColors().gui_text),
-		_BackgroundColor	(OS::GetSystemColors().win_body)
+		_BackgroundColor	(OS::GetSystemColors().win_body),
+		Italic	(false),
+		Bold	(false),
+		UnderLine	(false),
+		StrikeThrough	(false)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor\n");
@@ -25,10 +29,14 @@ Txt::Txt()
 }
 
 Txt::Txt(const std::string &text, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
-	:	_data	(text), 
+	:	_data	(text),
 		_TextColor	(TextColor),
 		_BackgroundColor	(BackgroundColor),
-		_CharSize	(DefaultCharSize)
+		_CharSize	(DefaultCharSize),
+		Italic	(false),
+		Bold	(false),
+		UnderLine	(false),
+		StrikeThrough	(false)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor\n");
@@ -38,7 +46,14 @@ Txt::Txt(const std::string &text, const Colors::Color &TextColor, const Colors::
 }
 
 KolibriLib::UI::text::Txt::Txt(const Txt &copy)
-	:_data(copy._data), _TextColor(copy._TextColor), _BackgroundColor(copy._BackgroundColor)
+	:	_data(copy._data),
+		_TextColor(copy._TextColor),
+		_BackgroundColor(copy._BackgroundColor),
+		_CharSize(copy._CharSize),
+		Italic(copy.Italic),
+		Bold(copy.Bold),
+		UnderLine(copy.UnderLine),
+		StrikeThrough(copy.StrikeThrough)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor(copy)\n");
@@ -68,7 +83,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 
 	if(_data.length() > 0)
 	{
-		/*uint8_t flags = 0;
+		uint8_t flags = 0;
 
 		if (Italic)
 			flags |= RasterworksParams::Italic;
@@ -82,9 +97,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 
 		Size buff = _CharSize;
 		buff.x *= _data.length();
-		drawtext(coord, buff, _data, _CharSize, _TextColor, _BackgroundColor, flags);*/
-
-		DrawText(_data, coord, _TextColor, TextEncoding::UTF8, _CharSize.x / 16);
+		drawtext(coord, buff, _data, _CharSize, _TextColor, _BackgroundColor, flags);
 	}
 
 	#ifdef DEBUG
@@ -156,4 +169,9 @@ Size KolibriLib::UI::text::Txt::GetTextSize() const
 void KolibriLib::UI::text::Txt::SetTextSize(const Size &NewTextCharSize)
 {
 	_CharSize = NewTextCharSize;
+}
+
+char KolibriLib::UI::text::Txt::GetChar(std::size_t i) const
+{
+	return _data.at(i);
 }

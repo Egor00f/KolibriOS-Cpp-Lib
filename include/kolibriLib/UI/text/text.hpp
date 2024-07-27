@@ -80,8 +80,9 @@ namespace KolibriLib
 
 				/// @brief Получить символ под номером i
 				/// @param i номер
-				/// @return _data[i]
-				char GetChar(int i) const;
+				/// @return _data.at(i)
+				/// @throw std::string::at(std::size_t) можеть сгенерировать исключение
+				char GetChar(std::size_t i) const;
 
 				/// @brief Получить длину текста
 				/// @return длина текста
@@ -127,14 +128,16 @@ namespace KolibriLib
 				/// Можно ли выделять этот текст
 				bool Selecteable;
 
-
 				bool Italic;
 				bool Bold;
 				bool UnderLine;
 				bool StrikeThrough;
 			};
+
 		} // namespace text
+
 	} // namespace UI
+
 } // namespace KolibriLib
 
 

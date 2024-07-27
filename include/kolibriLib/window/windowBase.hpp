@@ -34,16 +34,16 @@ namespace KolibriLib
 			FixSize = 0,
 			
 			/// @brief только определить область окна, ничего не рисовать
-			NoDraw = 1,
+			NoDraw = 0b00000001,
 
 			/// @brief окно изменяемых размеров
-			CanResize = 2,
+			CanResize = 0b00000010,
 
 			/// @brief окно со скином
-			withSkin = 3,
+			withSkin = 0b00000011,
 
 			/// @brief окно со скином фиксированных размеров
-			FixSizewithSkin = 4,
+			FixSizewithSkin = 0b00000100,
 
 			/// @brief у окна есть заголовок
 			WindowHaveTitle = 0b00010000,
@@ -57,6 +57,22 @@ namespace KolibriLib
 			/// @brief градиентная заливка рабочей области
 			GradientDraw = 0b10000000
 		};
+
+		/// @brief Список констант положения окна относительно других окон:
+		typedef enum Pos
+		{
+			/// @brief На фоне
+			BackGround = -2,
+
+			/// @brief всегда за другими окнами
+			AlwaysBack = -1,
+
+			/// @brief обчное
+			Normal = 0,
+
+			/// @brief Всегда поверх остальных окон
+			AlwaysTop = 1
+		} Pos;
 
 		/// @brief
 		/// @param coord Координаты окна(его левого верхнего угола) на экране
@@ -135,22 +151,6 @@ namespace KolibriLib
 			auto inf = Thread::GetThreadInfo();
 			return {inf.winx_start, inf.winy_start};
 		}
-
-		/// @brief Список констант положения окна относительно других окон:
-		typedef enum Pos
-		{
-			/// @brief На фоне
-			BackGround = -2,
-
-			/// @brief всегда за другими окнами
-			AlwaysBack = -1,
-
-			/// @brief обчное
-			Normal = 0,
-
-			/// @brief Всегда поверх остальных окон
-			AlwaysTop = 1
-		} Pos;
 
 		/// @brief Получить положение окна относительно других окон
 		/// @return одна из констант из списка Pos

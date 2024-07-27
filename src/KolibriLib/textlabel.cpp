@@ -107,10 +107,10 @@ text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const KolibriLib::UI
 bool KolibriLib::UI::text::TextLabel::operator==(const KolibriLib::UI::text::TextLabel &a) const
 {
 	return	(_coord	==	a._coord)	&&
-		(_size	==	a._size)	&&
-		(_MainColor	==	a._MainColor)	&&
-		(_Margin	==	a._Margin)	&&
-		(_TextScale	==	a._TextScale);
+	        (_size	==	a._size)	&&
+	        (_MainColor	==	a._MainColor)	&&
+	        (_Margin	==	a._Margin)	&&
+	        (_TextScale	==	a._TextScale);
 }
 
 bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::TextLabel &a) const

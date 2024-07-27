@@ -45,6 +45,7 @@ int main()
 		case Event::Button:
 			if(window.GetPressedButton() == button->GetId())
 			{
+				_ksys_debug_puts("You Press Button");
 				OS::Notify("You Press Buttons", "just example");
 			}
 		default:

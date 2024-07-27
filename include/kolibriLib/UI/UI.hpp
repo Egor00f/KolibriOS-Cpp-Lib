@@ -67,7 +67,7 @@ namespace KolibriLib
 			/// @brief Имя класса
 			std::string ClassName;
 
-        	        virtual ~GuiObject() = default;
+        	virtual ~GuiObject() = default;
 
 			/// @brief Получить размер элемента
 			/// @return Функция возвращает _size
@@ -96,7 +96,10 @@ namespace KolibriLib
 			/// @brief Получить размер объекта
 			/// @return Размер объекта в пикселях
 			virtual Size GetAbsoluteSize() const = 0;
-			virtual Size GetAbsoluteCoord() const = 0;
+
+			/// @brief Получить координаты объекта
+			/// @return Координаты в пикселях
+			virtual Coord GetAbsoluteCoord() const = 0;
 
 		};
 
