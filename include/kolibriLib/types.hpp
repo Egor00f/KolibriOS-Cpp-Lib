@@ -7,6 +7,7 @@
 #include <sys/ksys.h>
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
+#include <kolibriLib/system/thread.hpp>
 
 #define X_Y(x, y)(((x) << 16) | (y))
 
@@ -98,6 +99,48 @@ namespace KolibriLib
 		bool operator==(const point& p) const;
 		operator point() const;
 	};
+
+	/// @brief Координаты/Размеры для элементов UI
+		struct UDim
+		{
+			struct Axis
+			{
+				/// @brief Относительно размера окна
+				float Scale;
+				/// @brief В пикселях
+				int Offset;
+
+				/// @brief Конструктор
+				/// @param scale 
+				/// @param offset 
+				Axis(float scale = 0, int offset = 0);
+
+				bool operator == (const Axis& axis) const;
+				bool operator !=(const Axis &axis) const;
+			};
+
+			UDim::Axis X, Y;
+
+			/// @brief Конструктор
+			/// @param p
+			UDim(const point &p);
+
+			/// @brief 
+			/// @param XScale 
+			/// @param XOffset 
+			/// @param YScale 
+			/// @param YOffset 
+			UDim(float XScale, int XOffset, float YScale, int YOffset);
+
+			/// @brief получить абсолютные значения(в пикселях) относительно окна
+			/// @return 
+			point GetAbsolute(const point &Parent = {Thread::GetThreadInfo().winx_size, Thread::GetThreadInfo().winy_size}) const;
+
+
+			bool operator == (const UDim &obj) const;
+			bool operator != (const UDim &obj) const;
+
+		};
 
 	//==================================================================================================
 

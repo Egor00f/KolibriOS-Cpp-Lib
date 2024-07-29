@@ -28,17 +28,15 @@ namespace KolibriLib
 
 				/// @brief Конструктор
 				/// @param text
-				Txt(const std::string &text, const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().gui_face);
+				Txt(const std::string &text, const Colors::Color &TextColor = OS::GetSystemColors().work_text);
 
 				/// @brief Конструктор копирования
 				/// @param copy объект который будет копироваться
 				Txt(const Txt &copy);
 
-
 				/// @brief Добавить строку в конец
 				/// @param txt строка
 				void Add(const std::string &txt);
-
 
 				/// @brief Вставить строку
 				/// @param txt строка
@@ -51,7 +49,7 @@ namespace KolibriLib
 
 				/// @brief Вывести текст
 				/// @param coord Координаты(левый верхний угол) текста
-				void Print(const Coord &coord) const;
+				void Print(const Coord &coord, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area) const;
 
 				/*/// @brief Изменить шрифт символов
 				/// @param FontSize
@@ -65,14 +63,6 @@ namespace KolibriLib
 				/// @brief Получить цвет текста
 				/// @return Цвет текста
 				Colors::Color GetTextColor() const;
-
-				/// @brief Изменить цвет фона для всех символов
-				/// @param Color
-				void SetBackgroundColor(const Colors::Color &Color);
-
-				/// @brief Получить цвет фона
-				/// @return Цвет фона
-				Colors::Color GetBackgroundColor() const;
 
 				/// @brief Получить текст
 				/// @return
@@ -118,9 +108,6 @@ namespace KolibriLib
 
 				/// @brief Цвет Текста
 				Colors::Color _TextColor;
-
-				/// @brief Цвет фона
-				Colors::Color _BackgroundColor;
 
 				/// @brief Цвет выделения текста
 				Colors::Color *SelectColor;

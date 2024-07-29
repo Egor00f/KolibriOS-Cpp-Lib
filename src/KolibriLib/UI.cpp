@@ -10,58 +10,13 @@
 using namespace KolibriLib;
 using namespace UI;
 
-KolibriLib::UI::UDim::UDim(const point &p)
-{
-	X.Offset = p.x;
-	Y.Offset = p.y;
-}
-
-KolibriLib::UI::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
-	: X(XScale, XOffset), Y(YScale, YOffset)
-{
-
-}
-
-KolibriLib::UI::UDim::Axis::Axis(float scale, int offset)
-	: Scale(scale), Offset(offset)
-{
-
-}
-
-bool UI::UDim::Axis::operator==(const UDim::Axis &axis) const
-{
-	return Scale == axis.Scale && Offset == axis.Offset;
-}
-
-bool UI::UDim::Axis::operator!=(const UDim::Axis &axis) const
-{
-	return Scale != axis.Scale || Offset != axis.Offset;
-}
-
-point KolibriLib::UI::UDim::GetAbsolute(const point &Parent) const
-{
-	return { static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset,
-	         static_cast<int>(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset };
-}
-
-bool KolibriLib::UI::UDim::operator==(const UDim &obj) const
-{
-	return X == obj.X && Y == obj.Y;
-}
-
-bool KolibriLib::UI::UDim::operator!=(const UDim &obj) const
-{
-	return X != obj.X || Y != obj.Y;
-}
-
 KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const Colors::Color &MainColor, const unsigned &Margin)
 	:	GuiObject	(),
 		_coord	(coord),
 		_size	(size),
-		_MainColor	(MainColor),
-		_Margin	(Margin)
+		_MainColor	(MainColor)
 {
-
+	SetMargin(Margin);
 }
 
 KolibriLib::UI::UIElement::UIElement(const UIElement &cp)
@@ -69,9 +24,9 @@ KolibriLib::UI::UIElement::UIElement(const UIElement &cp)
 		_coord	(cp._coord),
 		_size	(cp._size),
 		_MainColor	(cp._MainColor),
-		_Margin	(cp._Margin),
 		Parent	(cp.Parent)
 {
+	SetMargin(cp.GetMargin());
 }
 
 UDim KolibriLib::UI::UIElement::GetSize() const
@@ -83,9 +38,14 @@ void KolibriLib::UI::UIElement::SetSize(const UDim &NewSize)
 {
 	_size = NewSize;
 }
-unsigned KolibriLib::UI::UIElement::GetMargin() const
+unsigned KolibriLib::UI::GuiObject::GetMargin() const
 {
 	return _Margin;
+}
+
+void KolibriLib::UI::GuiObject::SetMargin(unsigned NewMargin)
+{
+	_Margin = NewMargin;
 }
 
 Colors::Color KolibriLib::UI::UIElement::GetColor() const
@@ -217,8 +177,8 @@ UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
 	_coord	= Element._coord;
 	_size	= Element._size;
 	_MainColor	= Element._MainColor;
-	_Margin	= Element._Margin;
 	Parent	= Element.Parent;
+	SetMargin(Element.GetMargin());
 	return *this;
 }
 
@@ -271,3 +231,19 @@ void KolibriLib::UI::UIElement::DeleteChildren(const UIElement *child)
 	}
 }
 
+buttons::ButtonsIDController *KolibriLib::UI::UIElement::GetButtonIDController() const
+{
+	if(Parent != nullptr)
+	{
+		return Parent->GetButtonIDController();
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+void KolibriLib::UI::UIElement::SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) 
+{
+
+}

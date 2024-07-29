@@ -5,7 +5,7 @@ using namespace UI;
 using namespace Images;
 
 Image::Image(const UDim &coord, const UDim &size)
-	: UIElement(coord, size), img(OS::GetSystemColors().gui_frame, size.GetAbsolute())
+	: UIElement(coord, size), img(OS::GetSystemColors().work_graph, size.GetAbsolute({0,0}))
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor");
@@ -13,11 +13,12 @@ Image::Image(const UDim &coord, const UDim &size)
 }
 
 KolibriLib::UI::Images::Image::Image(const Image & copy)
-	:UIElement(copy._coord, copy._size, copy._MainColor, copy._Margin)
+	:UIElement(copy._coord, copy._size, copy._MainColor, copy.GetMargin())
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor(copy)");
 	#endif
+
 	SetImg(copy.GetBuff());
 }
 
@@ -30,7 +31,7 @@ void Images::Image::init(const Coord &coord, const Size &size, const filesystem:
 
 void KolibriLib::UI::Images::Image::Render() const
 {
-	Draw(_coord.GetAbsolute(), _size.GetAbsolute());
+	Draw(GetAbsoluteCoord(), GetAbsoluteSize());
 }
 
 Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image &a)
@@ -38,7 +39,7 @@ Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image 
 	_coord = a._coord;
 	_size = a._size;
 	_MainColor = a._MainColor;
-	_Margin = a._Margin;
+	SetMargin(a.GetMargin());
 	SetImg(a.GetBuff());
 
 	return *this;

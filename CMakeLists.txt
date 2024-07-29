@@ -44,7 +44,7 @@ include(CMakeKOS32gcc)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_C_FLAGS_DEBUG "-Wall -DDEBUG")
+set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -DDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
 
 set(CMAKE_C_FLAGS_RELEASE "-O2")
@@ -97,6 +97,7 @@ SET(SOURCES
 	${SRC_PATH}/form.cpp
 	#${SRC_PATH}/menu.cpp
 	${SRC_PATH}/window.cpp
+	${SRC_PATH}/debug.cpp
 	${HEADERS_PATH}/system/os.hpp
 	${HEADERS_PATH}/system/thread.hpp
 	${HEADERS_PATH}/system/filesystem.hpp

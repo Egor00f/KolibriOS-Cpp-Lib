@@ -84,8 +84,8 @@ namespace KolibriLib
 		inline void CreateWindow(const Coord &coord,
 		                         const Size &size,
 		                         const std::string &title,
-		                         const Colors::Color &WorkColor	= OS::GetSystemColors().win_body,
-		                         Colors::Color TitleColor	= OS::GetSystemColors().win_title,
+		                         const Colors::Color &WorkColor	= OS::GetSystemColors().work_area,
+		                         Colors::Color TitleColor	= OS::GetSystemColors().grab_text,
 		                         uint8_t style	= WindowStyle::CanResize | WindowStyle::Relative)
 		{
 			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
@@ -98,6 +98,7 @@ namespace KolibriLib
 			_ksys_unfocus_window(slot);
 		}
 
+		/// @brief Получить размер окна
 		inline Size GetWindowSize()
 		{
 			auto inf = Thread::GetThreadInfo();

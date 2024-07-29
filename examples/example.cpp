@@ -8,7 +8,7 @@ int main()
 	//Инициализация библиотеки
 	init(); 
 
-	Window window(
+	Window* wndw = new Window(
 		"Example Window",        	// Заголовок окна
 		window::DefaultWindowSize,	// Размер окна
 		GetSystemColors(),       	// Цвета окна
@@ -16,7 +16,7 @@ int main()
 	);
 
 	// Добавление текстовой метки
-	auto label = window.AddElement(TextLabel(
+	auto label = wndw->AddElement(TextLabel(
 		                            UDim(0, 0, 0, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
 									UDim(0.6, 0, 1, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
 									"Hello World",
@@ -25,17 +25,19 @@ int main()
 					);
 
 	// Добавление кнопки
-	auto button = window.AddElement(Button(UDim(0.6, 0, 0.8, 0), UDim(0.2, 0, 0.1, 0)));
+	Button* button = wndw->AddElement(Button(UDim(0.4, 0, 0.4, 0), UDim(0.2, 0, 0.2, 0)));
+
+	PrintDebug(button->GetId());
 
 	// Отрисовка окна
-	window.Render();
+	wndw->RenderAllElements();
 
 	bool exit = false;
 	while (!exit)
 	{
 
 		// Вызов обработчика окна
-		Event event = window.Handler();
+		Event event = wndw->Handler();
 		
 		switch (event)
 		{
@@ -43,7 +45,7 @@ int main()
 			exit = true;
 			break;
 		case Event::Button:
-			if(window.GetPressedButton() == button->GetId())
+			if(wndw->GetPressedButton() == button->GetId())
 			{
 				_ksys_debug_puts("You Press Button");
 				OS::Notify("You Press Buttons", "just example");

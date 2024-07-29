@@ -6,7 +6,6 @@ using namespace window;
 KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
 	: _title(Title),
 	  _colors(colors),
-	  _MARGIN(Margin),
 	  _Transparency(Transparency),
 	  _RealtimeRedraw(RealtimeRedraw)
 {
@@ -32,15 +31,22 @@ KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::S
 		_style |= WindowStyle::NoDrawWorkspace;
 	} */
 
+	SetMargin(Margin);
+
 	window::CreateWindow (
 		DefaultWindowCoord,
 		size,
 		_title,
-		_colors.win_body,
-		_colors.win_title,
+		_colors.work_area,
+		_colors.grab_text,
 		_style);
 
 	SetPosition(position);
+
+	if(Globals::DefaultButtonsIDController == nullptr)
+	{
+		Globals::DefaultButtonsIDController = &_buttonsController;
+	}
 }
 
 KolibriLib::window::Window::~Window()
@@ -90,7 +96,7 @@ void Window::EndRedraw() const
 	}
 }
 
-UI::UDim KolibriLib::window::Window::GetCoord() const
+UDim KolibriLib::window::Window::GetCoord() const
 {
 	return window::GetWindowCoord();
 }
@@ -142,7 +148,7 @@ void KolibriLib::window::Window::Redraw()
 	#endif
 
 	StartRedraw();
-	window::CreateWindow(GetAbsoluteCoord(), {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
+	window::CreateWindow(GetAbsoluteCoord(), {0, 0}, _title, _colors.work_area, _colors.grab_text, _style);
 
 	/*if (_style & window::WindowStyle::CanResize)
 	{
@@ -192,16 +198,14 @@ void KolibriLib::window::Window::Redraw()
 	#endif
 }
 
-void Window::Render(const Coord &coord)
+void Window::Render()
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Render window:");
-	#endif
+	PrintDebug("Render window:");
 
 	StartRedraw();
-	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.win_body, _colors.win_title, _style);
+	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style);
 
-	KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), _colors.win_body);
+	KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), Colors::UINT32toRGB(_colors.work_area));
 
 	RenderAllElements();
 
@@ -224,15 +228,10 @@ void Window::Render(const Coord &coord)
 	#endif
 }
 
-unsigned Window::GetMargin() const
-{
-	return _MARGIN;
-}
-
-inline UI::UDim Window::GetSize() const
+inline UDim Window::GetSize() const
 {
 	Size p = GetAbsoluteSize();
-	return UI::UDim(0, p.x, 0, p.y);
+	return UDim(0, p.x, 0, p.y);
 }
 
 OS::Event Window::Handler()
@@ -240,6 +239,7 @@ OS::Event Window::Handler()
 #ifdef DEBUG
 	_ksys_debug_puts("Handler\n");
 #endif
+
 	OS::Event event = OS::WaitEvent();
 
 	switch (event)
@@ -294,7 +294,6 @@ OS::Event Window::Handler()
 		{
 			while (mouse::GetMouseButtons() == mouse::LeftButton)
 			{
-				Render(mouse::GetMousePositionOnSreen() - Mouse);
 				_ksys_thread_yield();
 			}
 		}
@@ -315,6 +314,8 @@ UI::buttons::ButtonID Window::GetPressedButton()
 			}
 		}
 	}
+
+	return UI::buttons::ButtonIDNotSet;
 }
 
 void KolibriLib::window::Window::Unfocus() const
@@ -335,4 +336,14 @@ void KolibriLib::window::Window::SetPosition(const window::Pos &position)
 window::Pos KolibriLib::window::Window::GetPosition() const
 {
 	return window::GetWindowPos();
+}
+
+UI::buttons::ButtonsIDController *KolibriLib::window::Window::GetButtonIDController() const
+{
+	return (UI::buttons::ButtonsIDController *)&_buttonsController;
+}
+
+void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) 
+{
+	
 }

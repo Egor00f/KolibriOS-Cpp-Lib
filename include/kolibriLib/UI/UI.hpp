@@ -10,6 +10,7 @@
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/window/windowBase.hpp>
+#include <kolibriLib/UI/buttons/buttonsBase.hpp>
 
 namespace KolibriLib
 {
@@ -17,47 +18,14 @@ namespace KolibriLib
 	namespace UI
 	{
 
-		/// @brief Координаты/Размеры для элементов UI
-		struct UDim
-		{
-			struct Axis
-			{
-				/// @brief Относительно размера окна
-				float Scale;
-				/// @brief В пикселях
-				int Offset;
+		/// @brief Отступы поумолчанию
+		const unsigned DefaultMargin = 4;
 
-				/// @brief Конструктор
-				/// @param scale 
-				/// @param offset 
-				Axis(float scale = 0, int offset = 0);
-
-				bool operator == (const Axis& axis) const;
-				bool operator !=(const Axis &axis) const;
-			};
-
-			UDim::Axis X, Y;
-
-			/// @brief Конструктор
-			/// @param p
-			UDim(const point &p);
-
-			/// @brief 
-			/// @param XScale 
-			/// @param XOffset 
-			/// @param YScale 
-			/// @param YOffset 
-			UDim(float XScale, int XOffset, float YScale, int YOffset);
-
-			/// @brief получить абсолютные значения(в пикселях) относительно окна
-			/// @return 
-			point GetAbsolute(const point &Parent = {Thread::GetThreadInfo().winx_size, Thread::GetThreadInfo().winy_size}) const;
+		/// @brief Размеры по умолчанию
+		const Size DefaultSize = {200, 100};
 
 
-			bool operator == (const UDim &obj) const;
-			bool operator != (const UDim &obj) const;
-
-		};
+		
 
 		/// @brief Интерфейс для всех Объектов Gui
 		class GuiObject
@@ -101,14 +69,22 @@ namespace KolibriLib
 			/// @return Координаты в пикселях
 			virtual Coord GetAbsoluteCoord() const = 0;
 
+			virtual buttons::ButtonsIDController* GetButtonIDController() const = 0;
+
+			virtual void SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) = 0;
+
+			/// @brief Получить отступы
+			/// @return Функция возвращает _Margin
+			unsigned GetMargin() const;
+
+			/// @brief 
+			/// @param NewMargin 
+			void SetMargin(unsigned NewMargin);
+
+		private:
+			/// @brief Отступы
+			unsigned _Margin;
 		};
-
-
-		/// @brief Отступы поумолчанию
-		const unsigned DefaultMargin = 4;
-
-		/// @brief Размеры по умолчанию
-		const Size DefaultSize = {200, 100};
 
 		///@brief Элемент интерфейса
 		/// @note Используется как шаблон для других классов
@@ -129,7 +105,7 @@ namespace KolibriLib
 			/// @param MainColor основной цвет
 			/// @param Margin отступы
 			/// @param relative отностельность
-			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().gui_frame, const unsigned &Margin = DefaultMargin);
+			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().work_text, const unsigned &Margin = DefaultMargin);
 
 			/// @brief Конструктор копирования
 			/// @param cp То что юудет копирваться
@@ -175,9 +151,11 @@ namespace KolibriLib
 			/// @return Функция возвращает _coord
 			UDim GetCoord() const override;
 
-			/// @brief Получить отступы
-			/// @return Функция возвращает _Margin
-			unsigned GetMargin() const;
+			/// @brief
+			/// @return
+			buttons::ButtonsIDController* GetButtonIDController() const override;
+
+			void SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) override;
 
 			/// @brief Получить осносной цвет элемента
 			/// @return Функция возвращает _MainColor
@@ -239,9 +217,6 @@ namespace KolibriLib
 
 			/// @brief Основной цвет элемента
 			Colors::Color _MainColor;
-
-			/// @brief Отступы
-			unsigned _Margin;
 
 			int _rotation;
 

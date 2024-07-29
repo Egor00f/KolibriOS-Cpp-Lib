@@ -141,3 +141,47 @@ KolibriLib::CoordA::CoordA(const point &p)
 	: point(p), angle(0)
 {
 }
+
+KolibriLib::UDim::UDim(const point &p)
+{
+	X.Offset = p.x;
+	Y.Offset = p.y;
+}
+
+KolibriLib::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
+	: X(XScale, XOffset), Y(YScale, YOffset)
+{
+
+}
+
+KolibriLib::UDim::Axis::Axis(float scale, int offset)
+	: Scale(scale), Offset(offset)
+{
+
+}
+
+bool UDim::Axis::operator==(const UDim::Axis &axis) const
+{
+	return Scale == axis.Scale && Offset == axis.Offset;
+}
+
+bool UDim::Axis::operator!=(const UDim::Axis &axis) const
+{
+	return Scale != axis.Scale || Offset != axis.Offset;
+}
+
+point KolibriLib::UDim::GetAbsolute(const point &Parent) const
+{
+	return { static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset,
+	         static_cast<int>(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset };
+}
+
+bool KolibriLib::UDim::operator==(const UDim &obj) const
+{
+	return X == obj.X && Y == obj.Y;
+}
+
+bool KolibriLib::UDim::operator!=(const UDim &obj) const
+{
+	return X != obj.X || Y != obj.Y;
+}

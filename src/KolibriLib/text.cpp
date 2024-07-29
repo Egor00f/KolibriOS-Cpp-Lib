@@ -13,8 +13,7 @@ std::string KolibriLib::UI::text::Txt::GetText() const
 
 Txt::Txt()
 	:	_CharSize	(DefaultCharSize),
-		_TextColor	(OS::GetSystemColors().gui_text),
-		_BackgroundColor	(OS::GetSystemColors().win_body),
+		_TextColor	(OS::GetSystemColors().work_text),
 		Italic	(false),
 		Bold	(false),
 		UnderLine	(false),
@@ -28,10 +27,9 @@ Txt::Txt()
 
 }
 
-Txt::Txt(const std::string &text, const Colors::Color &TextColor, const Colors::Color &BackgroundColor)
+Txt::Txt(const std::string &text, const Colors::Color &TextColor)
 	:	_data	(text),
 		_TextColor	(TextColor),
-		_BackgroundColor	(BackgroundColor),
 		_CharSize	(DefaultCharSize),
 		Italic	(false),
 		Bold	(false),
@@ -48,7 +46,6 @@ Txt::Txt(const std::string &text, const Colors::Color &TextColor, const Colors::
 KolibriLib::UI::text::Txt::Txt(const Txt &copy)
 	:	_data(copy._data),
 		_TextColor(copy._TextColor),
-		_BackgroundColor(copy._BackgroundColor),
 		_CharSize(copy._CharSize),
 		Italic(copy.Italic),
 		Bold(copy.Bold),
@@ -75,13 +72,13 @@ void KolibriLib::UI::text::Txt::Delete(int i)
 	_data.erase(_data.begin() + i);
 }
 
-void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
+void KolibriLib::UI::text::Txt::Print(const Coord &coord, const Colors::Color &BackgroundColor) const
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Print Txt:");
 	#endif
 
-	if(_data.length() > 0)
+	if(_data.length() > 0)	// Если текста не то и выводить нечего
 	{
 		uint8_t flags = 0;
 
@@ -97,7 +94,8 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord) const
 
 		Size buff = _CharSize;
 		buff.x *= _data.length();
-		drawtext(coord, buff, _data, _CharSize, _TextColor, _BackgroundColor, flags);
+
+		drawtext(coord, buff, _data, _CharSize, _TextColor, BackgroundColor, flags);
 	}
 
 	#ifdef DEBUG
@@ -119,20 +117,13 @@ void KolibriLib::UI::text::Txt::SetTextColor(const Colors::Color &Color)
 	_TextColor = Color;
 }
 
-void KolibriLib::UI::text::Txt::SetBackgroundColor(const Colors::Color &Color)
-{
-	_BackgroundColor = Color;
-}
+
 
 Colors::Color KolibriLib::UI::text::Txt::GetTextColor() const
 {
 	return _TextColor;
 }
 
-Colors::Color KolibriLib::UI::text::Txt::GetBackgroundColor() const
-{
-	return _BackgroundColor;
-}
 
 bool KolibriLib::UI::text::Txt::operator==(const KolibriLib::UI::text::Txt &txt) const
 {

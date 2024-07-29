@@ -21,14 +21,14 @@ void graphic::DrawPoint(const Coord &position, const unsigned &size, const Color
 	}
 }
 
-void DrawCircle(const Coord &coord, unsigned Radius, const Colors::Color &color)
+void graphic::DrawCircle(const Coord &coord, unsigned Radius, const Colors::Color &color)
 {
 	UI::Images::img buff(Colors::Color(), {((int)Radius * 2), ((int)Radius * 2)}, UI::Images::img::RGBA);
 	buff.DrawCircle({(int)Radius, (int)Radius}, Radius, color);
 	buff.Draw(coord);
 }
 
-void DrawCircleFill(const Coord &coord, const unsigned &Radius, const Colors::Color &color)
+void graphic::DrawCircleFill(const Coord &coord, const unsigned &Radius, const Colors::Color &color)
 {
 	graphic::DrawCircle(coord, Radius, color);
 

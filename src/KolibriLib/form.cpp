@@ -9,7 +9,6 @@ Form::Form(const UDim &coord, const UDim &size, const std::string &BackgroundTex
 	_butt.get()->SetCoord(coord);
 	_butt.get()->SetSize(size);
 	_butt.get()->SetTextColor(ButtonTextColor);
-	_butt.get()->SetBackgroundColor(FormColor);
 	_butt.get()->Add(BackgroundText);
 
 }
@@ -31,8 +30,7 @@ void Form::SetBackgroundColor(const Colors::Color &NewColor)
 
 void Form::Render() const
 {
-	graphic::DrawRectangleLines(_coord.GetAbsolute(), {_coord.GetAbsolute().x + (int)_size.GetAbsolute().x, _coord.GetAbsolute().y + (int)_size.GetAbsolute().y}, _MainColor);
-
+	graphic::DrawRectangleLines(GetAbsoluteCoord(), GetAbsoluteCoord() + GetAbsoluteSize());
 	_butt.get()->Render();
 }
 

@@ -44,10 +44,10 @@ namespace KolibriLib
 			/// @brief Активность со стороны клавиатуры
 			Key     = KSYS_EVENT_KEY,
 
-			/// @brief 
+			/// @brief Ивент от экрана
 			Desktop = KSYS_EVENT_DESKTOP,
 			
-			/// @brief 
+			/// @brief Программу открыли в дебагере
 			Debug   = KSYS_EVENT_DEBUG,
 
 			/// @brief Выход
@@ -90,11 +90,92 @@ namespace KolibriLib
 		/// @brief Время
 		typedef ksys_time_bcd_t Time;
 
+		typedef ksys_date_bcd_t Date;
+
 		/// @brief Получить системное время
 		/// @return
 		inline Time GetTime()
 		{
 			return _ksys_get_time();
+		}
+
+		inline Date GetDate()
+		{
+			return _ksys_get_date();
+		}
+
+		typedef enum SetTimeOrDate
+		{
+			/// @brief успешно
+			DONE,
+
+			/// @brief параметр задан неверно
+			WrongArgs,
+
+			/// @brief CMOS-батарейки разрядились
+			CMOS
+		} SetTimeOrDate;
+
+		/// @brief Установить системную  время
+		/// @param NewTime Время что будет установленно
+		inline SetTimeOrDate SetTime(Time NewTime)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline (
+				"int $0x40" 
+				: "=a"(ret)
+				: "a"(22), "b"(0), "c"(NewTime)
+			);
+			return ret;
+		}
+
+		/// @brief Установитьсистемную  дату
+		/// @param NewData Дата что будет установленна
+		inline SetTimeOrDate SetDate(Date NewDate)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline (
+				"int $0x40"
+				: "=a"(ret)
+				: "a"(22), "b"(1), "c"(NewDate)
+			);
+
+			return ret;
+		}
+
+		/// @brief Установить день недели
+		/// @param NewDayOfWeek День недели от 1 до 7
+		/// @note Ценность установки дня недели представляется сомнительной, поскольку он мало где используется(день недели можно рассчитать по дате)
+		inline SetTimeOrDate SetDayOfWeek(uint8_t NewDayOfWeek)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline(
+				"int $0x40" 
+				: "=a"(ret)
+				: "a"(22), "b"(2), "c"(NewDayOfWeek)
+			);
+
+			return ret;
+		}
+
+		/// @brief Установить бедильник
+		/// @param AlarmTime Время будильника
+		/// @paragraph Будильник можно установить на срабатывание в заданное время каждые сутки. При этом отключить его существующими системными функциями нельзя.
+		/// @paragraph Срабатывание будильника заключается в генерации IRQ8.
+		/// @paragraph Будильник - глобальный системный ресурс; установка будильника автоматически отменяет предыдущую установку 
+		inline SetTimeOrDate SetAlarm(Time AlarmTime)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline(
+				"int $0x40" 
+				: "=a"(ret)
+				: "a"(22), "b"(3), "c"(AlarmTime)
+			);
+			return ret;
 		}
 
 		/// @brief Получить состояние спикера(Вкл/выкл)
@@ -224,11 +305,11 @@ namespace KolibriLib
 		/// @brief Версия ядра
 		struct CoreVersion
 		{
-			struct
+			union
 			{
 				/// @brief Версия
 				uint32_t version;
-				union
+				struct
 				{
 					uint8_t a;
 					uint8_t b;

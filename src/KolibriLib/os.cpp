@@ -7,23 +7,25 @@ using namespace OS;
 
 Colors::ColorsTable KolibriLib::OS::GetSystemColors()
 {
-	/*
+	
 	Colors::ColorsTable *buff = (Colors::ColorsTable*) malloc(sizeof(Colors::ColorsTable));
 
 	asm_inline(
 		"int $0x40"
-		::"a"(47), "b"(3), "c"(buff), "d"(sizeof(Colors::ColorsTable))
+		::"a"(48), "b"(3), "c"(buff), "d"(sizeof(Colors::ColorsTable))
 	);
 
 	Colors::ColorsTable ret(*buff);
     free(buff);
-	*/
-
+	return ret;
+	
+	/*
 	ksys_colors_table_t a;
 
 	_ksys_get_system_colors(&a);
 
 	return Colors::ColorsTable(a);
+	*/
 }
 
 Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, bool debug)

@@ -21,7 +21,7 @@ KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color &a)
 }
 
 KolibriLib::Colors::Color::Color(const rgb_t &color)
-	: _a(0xFF), red(color.red), green(color.green), blue(color.blue)
+	: _a(0), red(color.red), green(color.green), blue(color.blue)
 {
 
 }
@@ -70,6 +70,7 @@ bool KolibriLib::Colors::Color::operator!=(const Color &a) const
 	return val != a.val;
 }
 
+/*
 KolibriLib::Colors::ColorsTable::ColorsTable(const ksys_colors_table_t &table)
 {
 	menu_body	= table.frame_area;
@@ -121,10 +122,10 @@ KolibriLib::Colors::ColorsTable::ColorsTable(const ColorsTable &table)
 	gui_fctext	= table.gui_fctext;
 	gui_select	= table.gui_select;
 }
-
+*/
 ksys_color_t KolibriLib::Colors::RGBtoINT(const rgb_t &color)
 {
-	return (color.blue << 16) + (color.green << 8) + color.red;
+	return ((color.red << 16) + (color.green << 8) + color.blue) & 0x00FFFFFF;
 }
 
 KolibriLib::Colors::Color KolibriLib::Colors::BlendColors(const KolibriLib::Colors::Color &a, const KolibriLib::Colors::Color &b, float k)
@@ -162,4 +163,29 @@ KolibriLib::Colors::Color::operator rgb_t() const
 KolibriLib::Colors::Color::operator ksys_color_t() const
 {
 	return val;
+}
+
+void KolibriLib::PrintDebug(Colors::Color out)
+{
+    char buff[36];   // 23 символа в строке + 4 трехзначных числа(uint8_t)
+
+    sprintf(buff, "Color: A: %X R: %X G: %X B: %X ", out._a, out.red, out.green, out.blue);
+
+    DebugOut(buff);
+}
+
+
+void KolibriLib::PrintDebug(Colors::ColorsTable out)
+{
+
+    PrintDebug("ColorsTable:\n");
+
+	Colors::Color* pointer = (Colors::Color*)&out;
+
+    for (uint8_t i = 0; i < sizeof(Colors::ColorsTable) / sizeof(Colors::Color); i++)
+    {
+        PrintDebug((Colors::Color)pointer[i]);
+        PrintDebug('\n');
+    }
+
 }

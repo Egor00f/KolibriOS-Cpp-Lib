@@ -17,6 +17,7 @@
 #include <UI.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
+#include <kolibriLib/globals.hpp>
 
 namespace KolibriLib
 {
@@ -27,7 +28,6 @@ namespace KolibriLib
 
 		/// @brief Класс для работы с окном
 		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор
-		/// @paragraph Для тех кто знает:
 		class Window: public UI::GuiObject
 		{
 		public:
@@ -40,7 +40,7 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = 0);
+			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = UI::DefaultMargin);
 
 			~Window();
 
@@ -48,19 +48,15 @@ namespace KolibriLib
 			void Redraw();
 
 			/// @brief Отрисовать окно
-			void Render(const Coord &coord = DefaultWindowCoord);
-
-			/// @brief Получить рамер отступов в этом окне
-			/// @return @link _MARGIN
-			unsigned GetMargin() const;
+			void Render();
 
 			/// @brief Получить размер окна
 			/// @return _size
-			UI::UDim GetSize() const override;
+			UDim GetSize() const override;
 
 			/// @brief Получить координаты окна
 			/// @return
-			UI::UDim GetCoord() const override;
+			UDim GetCoord() const override;
 
 			void SetSize(const UDim &NewSize) override;
 
@@ -137,6 +133,10 @@ namespace KolibriLib
 			/// @return
 			Pos GetPosition() const;
 
+			UI::buttons::ButtonsIDController* GetButtonIDController() const override;
+
+			void SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) override;
+
 		private:
 			/// @brief Заголовок окна
 			std::string _title;
@@ -144,11 +144,10 @@ namespace KolibriLib
 			/// @brief Список всех кнопок этого окна
 			std::vector<UIElement*> _Elements;
 
+			UI::buttons::ButtonsIDController _buttonsController;
+
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
-
-			/// @brief отступы от края окна
-			uint8_t _MARGIN;
 
 			/// @brief Стиль окна
 			uint8_t _style;
@@ -158,11 +157,9 @@ namespace KolibriLib
 
 			/// @brief Активная форма
 			mutable int activeForm = -1;
-
 			
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			mutable bool _Redraw = false;
-
 
 			/// @brief Окно пересовывается при перетаскивании
 			bool _RealtimeRedraw;
@@ -184,7 +181,7 @@ namespace KolibriLib
 			{
 				p->SetParent(this);	// сдес ашибка, при вызове Render вызывается Parent.get()->GetAbsoluteCoord() и на нём падает приложение
 			}
-
+			p->SetButtonIDController(&_buttonsController);
 
 			_Elements.push_back((UIElement*)p);
 

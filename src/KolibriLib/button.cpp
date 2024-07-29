@@ -1,5 +1,5 @@
 #include <kolibriLib/UI/button.hpp>
-
+#include <kolibriLib/globals.hpp>
 
 
 using namespace KolibriLib;
@@ -7,23 +7,35 @@ using namespace UI;
 using namespace buttons;
 
 buttons::Button::Button(const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
-	:	TextLabel(coord, size, "Button", 16, true, ButtonColor, Margin),
-		_id(GetFreeButtonId())
+	:	TextLabel	(coord, size, "Button", 16, true, ButtonColor, Margin)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Button contructor\n");
 	#endif
+
+	if(KolibriLib::Globals::DefaultButtonsIDController != nullptr)
+	{
+		_ButtonsIDController = KolibriLib::Globals::DefaultButtonsIDController;
+		_id = KolibriLib::Globals::DefaultButtonsIDController->GetFreeButtonID();
+	}
 }
 
 KolibriLib::UI::buttons::Button::Button(const Txt &text, const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
-	:	TextLabel(coord, size, text)
+	:	TextLabel	(coord, size, text)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Button contructor\n");
 	#endif
 
-	_Margin	= Margin;
+	SetMargin(Margin);
+
 	_MainColor	= ButtonColor;
+
+	if (KolibriLib::Globals::DefaultButtonsIDController != nullptr)
+	{
+		_ButtonsIDController = KolibriLib::Globals::DefaultButtonsIDController;
+		_id = KolibriLib::Globals::DefaultButtonsIDController->GetFreeButtonID();
+	}
 }
 
 Button::Button(const Button &copy)
@@ -37,9 +49,16 @@ Button::Button(const Button &copy)
 
 void buttons::Button::Deactivate()
 {
-	if (_active)
+	if (_active && _id != buttons::ButtonIDNotSet)
 	{
+		if(_ButtonsIDController != nullptr)
+		{
+			_ButtonsIDController->FreeButtonID(_id);
+		}
 		DeleteButton(_id);
+
+		_id = buttons::ButtonIDNotSet;
+
 		_active = false;
 	}
 }
@@ -48,7 +67,7 @@ void buttons::Button::Activate()
 {
 	if (!_active)
 	{
-		_id	= GetFreeButtonId();
+		_id	= _ButtonsIDController->GetFreeButtonID();
 		_active = true;
 	}
 }
@@ -63,7 +82,7 @@ buttons::Button &KolibriLib::UI::buttons::Button::operator=(const buttons::Butto
 	_coord	= element._coord;
 	_size	= element._size;
 	_MainColor	= element._MainColor;
-	_Margin	= element._Margin;
+	SetMargin(element.GetMargin());
 	_id	= element._id;
 	_active	= element._active;
 	_data	= element._data;
@@ -73,7 +92,6 @@ buttons::Button &KolibriLib::UI::buttons::Button::operator=(const buttons::Butto
 
 bool KolibriLib::UI::buttons::Button::operator==(const Button &element) const
 {
-
 	return (_data	== element._data)	&&
 		   (_coord	== element._coord)	&&
 		   (_size	== element._size)	&&
@@ -99,13 +117,9 @@ void buttons::Button::Render() const
 
 	if (_active)
 	{
-		const Coord COORD = GetAbsoluteCoord();
-		const Size SIZE	= GetAbsoluteSize();
+		buttons::DefineButton(GetAbsoluteCoord(), GetAbsoluteSize(), _id, _MainColor);
 
-		buttons::DefineButton(COORD, SIZE, _id, _MainColor);
-
-		Print( Coord(COORD.x + ((int)SIZE.x / 2),
-		             COORD.y + ((int)SIZE.y / 2)) );
+		//TextLabel::Render();
 	}
 
 	#ifdef DEBUG
@@ -130,4 +144,26 @@ void KolibriLib::UI::buttons::Button::SetId()
 {
 	Deactivate();
 	Activate();
+}
+
+
+buttons::ButtonsIDController *KolibriLib::UI::buttons::Button::GetButtonIDController() const
+{
+	if (_ButtonsIDController != nullptr)
+	{
+		return _ButtonsIDController;
+	}
+	else if(Parent != nullptr)
+	{
+		return Parent->GetButtonIDController();
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+void KolibriLib::UI::buttons::Button::SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) 
+{
+	_ButtonsIDController = (buttons::ButtonsIDController*)buttonsIDController;
 }
