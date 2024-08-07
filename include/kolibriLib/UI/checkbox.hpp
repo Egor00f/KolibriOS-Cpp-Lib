@@ -43,12 +43,8 @@ namespace KolibriLib
             /// @param s 
             void SetStyle(style s);
 
-            /// @brief Обработчик
-            int Handler();
-
             private:
                 style _style;
-                bool _status;
         };
     } // namespace UI
     

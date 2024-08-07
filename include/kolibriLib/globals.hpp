@@ -3,16 +3,14 @@
 
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/os.hpp>
-#include <kolibriLib/UI/buttonsBase.hpp>
 
 namespace KolibriLib
 {
 	/// @brief Список глобальных переменных
 	namespace Globals
 	{
-		Colors::ColorsTable SystemColors = OS::GetSystemColors();
+		extern Colors::ColorsTable SystemColors;
 
-		UI::buttons::ButtonsIDController *DefaultButtonsIDController = nullptr;
 	} // namespace Globals
 	
 } // namespace KolibriLib

@@ -1,4 +1,4 @@
-#include <kolibriLib/UI/button.hpp>
+#include <kolibriLib/UI/buttons/button.hpp>
 #include <kolibriLib/globals.hpp>
 
 
@@ -9,9 +9,7 @@ using namespace buttons;
 buttons::Button::Button(const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
 	:	TextLabel	(coord, size, "Button", 16, true, ButtonColor, Margin)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Button contructor\n");
-	#endif
+	PrintDebug("Button contructor\n");
 
 	if(KolibriLib::Globals::DefaultButtonsIDController != nullptr)
 	{
@@ -23,9 +21,7 @@ buttons::Button::Button(const UDim &coord, const UDim &size, unsigned Margin, co
 KolibriLib::UI::buttons::Button::Button(const Txt &text, const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
 	:	TextLabel	(coord, size, text)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Button contructor\n");
-	#endif
+	PrintDebug("Button contructor\n");
 
 	SetMargin(Margin);
 
@@ -42,9 +38,7 @@ Button::Button(const Button &copy)
 	:	TextLabel(copy),
 		_id(copy._id)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Button contructor(copy)\n");
-	#endif
+	PrintDebug("Button contructor(copy)\n");
 }
 
 void buttons::Button::Deactivate()
@@ -74,7 +68,7 @@ void buttons::Button::Activate()
 
 buttons::Button::~Button()
 {
-	DeleteButton(_id);
+	Deactivate();
 }
 
 buttons::Button &KolibriLib::UI::buttons::Button::operator=(const buttons::Button &element)
@@ -98,10 +92,9 @@ bool KolibriLib::UI::buttons::Button::operator==(const Button &element) const
 		   (_data	== element._data);
 }
 
-int buttons::Button::Handler()
+void buttons::Button::OnButtonEvent(ButtonID PressedButtonID)
 {
-	_status = GetPressedButton() == _id; // Если id нажатой кнопки совпадает к id этой кнопки
-	return _status;
+	_status = PressedButtonID == _id; // Если id нажатой кнопки совпадает к id этой кнопки
 }
 
 bool buttons::Button::GetStatus() const
@@ -111,27 +104,26 @@ bool buttons::Button::GetStatus() const
 
 void buttons::Button::Render() const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Render Button:");
-	#endif
+	PrintDebug("Render button");
 
 	if (_active)
 	{
-		buttons::DefineButton(GetAbsoluteCoord(), GetAbsoluteSize(), _id, _MainColor);
+		//buttons::DefineButton(GetAbsoluteCoord(), GetAbsoluteSize(), _id, _MainColor);
 
 		//TextLabel::Render();
 	}
+	else
+	{
+		PrintDebug(": Button Is not Active");
+	}
 
-	#ifdef DEBUG
-	_ksys_debug_puts("done\n");
-	#endif
+	PrintDebug("\n");
 }
 
 buttons::ButtonID buttons::Button::GetId() const
 {
 	return _id;
 }
-
 
 void KolibriLib::UI::buttons::Button::SetId(const ButtonID &NewID)
 {
@@ -166,4 +158,11 @@ buttons::ButtonsIDController *KolibriLib::UI::buttons::Button::GetButtonIDContro
 void KolibriLib::UI::buttons::Button::SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) 
 {
 	_ButtonsIDController = (buttons::ButtonsIDController*)buttonsIDController;
+}
+
+void KolibriLib::PrintDebug(const UI::buttons::Button &out)
+{
+	PrintDebug((text::TextLabel)out);
+	DebugOut("ID: ");
+	PrintDebug(out.GetId());
 }

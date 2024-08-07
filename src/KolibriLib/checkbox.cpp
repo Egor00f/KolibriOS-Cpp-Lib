@@ -4,15 +4,16 @@ using namespace KolibriLib;
 using namespace UI;
 
 CheckBox::CheckBox(const UDim &coord, const UDim &size, const style &Style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin)
-	: Button(coord, size, Margin, BackgroundColor), _style(Style)
+	:	Button(coord, size, Margin, BackgroundColor), 
+		_style(Style)
 {
-	#if DEBUG
-	_ksys_debug_puts("CheckBox Constructor\n");
-	#endif
+	PrintDebug("CheckBox Constructor\n");
 }
 
 void CheckBox::Render()
 {
+	PrintDebug("Render Checkbox\n");
+
 	switch (_style)
 	{
 	case Default:
@@ -24,7 +25,7 @@ void CheckBox::Render()
 		break;
 	}
 
-	if (_status)
+	if (GetStatus())
 	{
 		switch (_style)
 		{
@@ -39,19 +40,12 @@ void CheckBox::Render()
 			//					_MainColor);
 			break;
 		case CheckBox::style::Smoth:
-			_ksys_debug_puts("KolibriLib::UI::Checkbox smath style now not support :(");
+			PrintDebug("KolibriLib::UI::Checkbox smath style now not support :(\n");
 			break;
 		default:
 			break;
 		}
 	}
-}
 
-int CheckBox::Handler()
-{
-	if (Button::Handler()) // Если кнопка была нажата
-	{
-		_status = !_status;
-	}
-	return _status;
+	Button::Render();
 }

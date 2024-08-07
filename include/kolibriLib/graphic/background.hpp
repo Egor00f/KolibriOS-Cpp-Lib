@@ -8,6 +8,7 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/img.hpp>
+#include <kolibriLib/globals.hpp>
 
 namespace KolibriLib
 {
@@ -46,7 +47,7 @@ namespace KolibriLib
 			return c;
 		}
 
-		/// @brief Перерисовать фон
+		/// @brief Перерисовать весь фон
 		inline void RedrawBackground()
 		{
 			_ksys_bg_redraw();
@@ -74,7 +75,7 @@ namespace KolibriLib
 		/// @brief
 		/// @param coord
 		/// @param color
-		inline void DrawPoint(const Coord coord, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawPoint(const Coord coord, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_bg_put_pixel(coord.x, coord.y, GetSize().x, color.val);
 		}
@@ -100,7 +101,7 @@ namespace KolibriLib
 		/// @param p1 точка перавая
 		/// @param p2 точка вторая
 		/// @param color цвет линии
-		inline void DrawLine(const Coord& p1, const Coord& p2, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawLine(const Coord& p1, const Coord& p2, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			for(int i = 0; i < abs(p1.x - p2.x); i++)
 			{

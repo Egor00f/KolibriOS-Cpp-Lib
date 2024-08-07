@@ -21,6 +21,8 @@ namespace KolibriLib
 	using KolibriLib::UI::Images::img;
 	using KolibriLib::UI::text::TextLabel;
 	using UI::buttons::Button;
+	using UI::buttons::TextButton;
+	using UI::buttons::ImageButton;
 	//using UI::text::Fonts::Font;
 	//using UI::Menu;
 	using UI::CheckBox;

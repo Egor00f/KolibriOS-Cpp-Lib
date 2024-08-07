@@ -4,34 +4,34 @@ using namespace KolibriLib;
 using namespace UI;
 
 Form::Form(const UDim &coord, const UDim &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin) 
-	: UIElement(coord, size, FormColor, Margin)
+	:	UIElement	(coord, size, FormColor, Margin)
 {
-	_butt.get()->SetCoord(coord);
-	_butt.get()->SetSize(size);
-	_butt.get()->SetTextColor(ButtonTextColor);
-	_butt.get()->Add(BackgroundText);
+	_butt.SetCoord	(coord);
+	_butt.SetSize	(size);
+	_butt.SetTextColor	(ButtonTextColor);
+	_butt.Add	(BackgroundText);
 
 }
 
 std::string Form::GetBackgroundText() const
 {
-	return _butt.get()->GetText();
+	return _butt.GetText();
 }
 
 Colors::Color Form::GetBackgroundColor() const
 {
-	return _butt.get()->GetColor();
+	return _butt.GetColor();
 }
 
 void Form::SetBackgroundColor(const Colors::Color &NewColor)
 {
-	_butt.get()->SetColor(NewColor);
+	_butt.SetColor(NewColor);
 }
 
 void Form::Render() const
 {
 	graphic::DrawRectangleLines(GetAbsoluteCoord(), GetAbsoluteCoord() + GetAbsoluteSize());
-	_butt.get()->Render();
+	_butt.Render();
 }
 
 std::string Form::GetInput() const
@@ -39,7 +39,7 @@ std::string Form::GetInput() const
 	return _inputText;
 }
 
-int Form::Handler()
+void Form::OnKeyEvent()
 {
 	char input = keyboard::CheckKeyboard();
 	if (input > 33 && input != 127) // Если введённый символ не является спецсимволом, и это не Delete
@@ -50,15 +50,14 @@ int Form::Handler()
 	{
 		_inputText.erase(_inputText.end() - 1);
 	}
-	return 0;
 }
 
-bool Form::ButtonHandler()
+void Form::OnButtonEvent(buttons::ButtonID PressedButtonID)
 {
-	return _butt.get()->Handler();
+	_butt.OnButtonEvent(PressedButtonID);
 }
 
 void KolibriLib::UI::Form::SetBackgroundText(const std::string &NewText)
 {
-	_butt.get()->SetText(NewText);
+	_butt.SetText(NewText);
 }

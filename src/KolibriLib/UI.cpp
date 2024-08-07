@@ -6,6 +6,7 @@
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/graphic/screen.hpp>
+#include <kolibriLib/window/window.hpp>
 
 using namespace KolibriLib;
 using namespace UI;
@@ -89,9 +90,8 @@ Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 
 Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("GetAbsoluteCoord:");
-	#endif
+	PrintDebug("GetAbsoluteCoord");
+
 	if(Parent != nullptr)
 	{
 		#ifdef DEBUG
@@ -142,29 +142,49 @@ bool KolibriLib::UI::UIElement::Hover() const
 	return false;
 }
 
-int KolibriLib::UI::UIElement::Handler()
+int KolibriLib::UI::UIElement::Handler(OS::Event)
 {
 	//_ksys_debug_puts("call KolibriLib::UIElement, this func do nothing...\n");
 	return 0;
 }
 
-void KolibriLib::UI::UIElement::SetParent(const GuiObject *NewParent)
+void KolibriLib::UI::UIElement::OnButtonEvent(buttons::ButtonID)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("SetParent\n");
-	#endif
+	
+}
 
-	bool a = false;
-	if(NewParent->ClassName != "Window")
+void KolibriLib::UI::UIElement::OnKeyEvent()
+{
+	
+}
+
+void KolibriLib::UI::UIElement::OnMouseEvent()
+{
+	
+}
+
+void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
+{
+	PrintDebug("SetParent\n");
+
+	if (Parent != nullptr && ParentIsWindow)
 	{
-		a = true;
-		((UIElement*)	Parent)->DeleteChildren(this);
+		((UIElement*) Parent)->DeleteChildren(this);
 	}
 
-	Parent =(GuiObject*) NewParent;
+	Parent = (GuiObject *) NewParent;
 
-	if(a)
-		((UIElement*)	Parent)->AddChildren(this);
+	((UIElement*) Parent)->AddChildren(this);
+}
+
+void KolibriLib::UI::UIElement::WindowAsParent(const GuiObject *window) const
+{
+	if(Parent != nullptr && !ParentIsWindow)
+	{
+		((UIElement*) Parent)->DeleteChildren(this);
+	}
+
+	Parent = (GuiObject *)window;
 }
 
 const GuiObject *KolibriLib::UI::UIElement::GetParent() const
@@ -179,6 +199,7 @@ UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
 	_MainColor	= Element._MainColor;
 	Parent	= Element.Parent;
 	SetMargin(Element.GetMargin());
+
 	return *this;
 }
 
@@ -216,12 +237,12 @@ std::vector<UIElement*> KolibriLib::UI::UIElement::GetChildren() const
 	return _childs;
 }
 
-void KolibriLib::UI::UIElement::AddChildren(const UIElement *child)
+void KolibriLib::UI::UIElement::AddChildren(const UIElement *child) const
 {
-	_childs.push_back((UIElement*)child);
+	_childs.push_back((UIElement*) child);
 }
 
-void KolibriLib::UI::UIElement::DeleteChildren(const UIElement *child)
+void KolibriLib::UI::UIElement::DeleteChildren(const UIElement *child) const
 {
 	auto n = std::find(_childs.begin(), _childs.end(), child);
 
@@ -243,7 +264,18 @@ buttons::ButtonsIDController *KolibriLib::UI::UIElement::GetButtonIDController()
 	}
 }
 
-void KolibriLib::UI::UIElement::SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) 
+void KolibriLib::UI::UIElement::SetButtonIDController(const buttons::ButtonsIDController*) 
 {
 
+}
+
+void KolibriLib::PrintDebug(const UI::UIElement &out)
+{
+	PrintDebug(out.ClassName);
+	DebugOut(":\n");
+	PrintDebug(out.GetColor());
+	DebugOut("\n Size:\n ");
+	PrintDebug(out.GetSize());
+	DebugOut("\n Coord:\n ");
+	PrintDebug(out.GetCoord());
 }

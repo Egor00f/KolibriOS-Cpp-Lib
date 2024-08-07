@@ -13,9 +13,13 @@ namespace KolibriLib
 	{
 		#ifdef DEBUG
 		_ksys_debug_puts(out);
+
+		// Тут ваш вывод, например запись в файл
+
 		#endif
 	}
 
+	void PrintDebug(bool out);
 
 	void PrintDebug(char out);
 

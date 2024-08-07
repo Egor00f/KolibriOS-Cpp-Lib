@@ -2,14 +2,14 @@
 #define __FORM_H__
 
 #include <string>
+#include <memory>
 
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/UI/text/textlabel.hpp>
-#include <kolibriLib/UI/button.hpp>
+#include <kolibriLib/UI/buttons/button.hpp>
 #include <input.hpp>
 #include <kolibriLib/color.hpp>
-#include <memory>
 
 namespace KolibriLib
 {
@@ -20,7 +20,7 @@ namespace KolibriLib
         {
         private:
             /// @brief Кнопка
-            std::unique_ptr<buttons::Button> _butt;
+            buttons::Button _butt;
 
             /// @brief Введённый пользователем текст
             std::string _inputText;
@@ -41,12 +41,11 @@ namespace KolibriLib
             /// \brief Отрисовать форму
             void Render() const;
 
-            /// \brief Обработчик
-            int Handler();
+            void OnMouseEvent();
 
-            /// @brief Обработчик кнопки
-            /// @return true если на форму нажали,
-            bool ButtonHandler();
+            void OnKeyEvent();
+
+            void OnButtonEvent(buttons::ButtonID PressedButtonID);
 
             /// \brief Получить введённый текст
             /// \return @link _inputText (текст который ввели в форму)

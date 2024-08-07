@@ -1,4 +1,4 @@
-#include <kolibriLib/UI/buttonsBase.hpp>
+#include <kolibriLib/UI/buttons/buttonsBase.hpp>
 #include <algorithm>
 
 using namespace KolibriLib;
@@ -18,7 +18,7 @@ ButtonID buttons::GetFreeButtonId(std::vector<ButtonID> *ButtonsIdList)
 		}
 	}
 	
-	return 0;
+	return ButtonIDNotSet;
 }
 
 void buttons::FreeButtonId(const ButtonID &id, std::vector<ButtonID> *ButtonsIdList)
@@ -57,3 +57,5 @@ const std::vector<ButtonID> * buttons::ButtonsIDController::GetButtonsIDList() c
 {
 	return &ButtonsIdList;
 }
+
+UI::buttons::ButtonsIDController *Globals::DefaultButtonsIDController;

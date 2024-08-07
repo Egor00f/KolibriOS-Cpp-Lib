@@ -98,13 +98,16 @@ SET(SOURCES
 	#${SRC_PATH}/menu.cpp
 	${SRC_PATH}/window.cpp
 	${SRC_PATH}/debug.cpp
+	${SRC_PATH}/globals.cpp
 	${HEADERS_PATH}/system/os.hpp
 	${HEADERS_PATH}/system/thread.hpp
 	${HEADERS_PATH}/system/filesystem.hpp
 	${HEADERS_PATH}/UI/UI.hpp
 	${HEADERS_PATH}/UI/checkbox.hpp
-	${HEADERS_PATH}/UI/button.hpp
-	${HEADERS_PATH}/UI/buttonsBase.hpp
+	${HEADERS_PATH}/UI/buttons/button.hpp
+	${HEADERS_PATH}/UI/buttons/buttonsBase.hpp
+	${HEADERS_PATH}/UI/buttons/TextButton.hpp
+	${HEADERS_PATH}/UI/buttons/ImageButton.hpp
 )
 
 #LOADERS THAT LOAD SHARED C_LAYER LIBS

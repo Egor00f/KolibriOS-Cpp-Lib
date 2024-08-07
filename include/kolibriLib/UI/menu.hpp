@@ -22,7 +22,7 @@ namespace KolibriLib
         class Menu : public UIElement
         {
         public:
-            std::string ClassName = "Menu";
+            const std::string ClassName = "Menu";
 
             struct Item: public buttons::Button
             {

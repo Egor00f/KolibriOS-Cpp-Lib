@@ -7,6 +7,7 @@
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/UI/text/textlabel.hpp>
 #include <kolibriLib/color.hpp>
+#include <kolibriLib/debug.hpp>
 
 #include "buttonsBase.hpp"
 
@@ -27,7 +28,7 @@ namespace KolibriLib
             {
             public:
 
-                std::string ClassName = "Button";
+                const std::string ClassName = "Button";
                 bool RenderOnEverythingRedraw = true;
 
                 /// \brief Это конструктор
@@ -59,7 +60,7 @@ namespace KolibriLib
                 /// @return Состояние кнопки(Нажата/Ненажата)
                 /// @details устанавливает переменную _status в true если эта кнопка нажата, иначе false
                 /// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
-                int Handler();
+                void OnButtonEvent(ButtonID PressedButtonID);
 
                 /// @brief Получить сосояние кнопки на момент последней обработки
                 /// @return _status
@@ -111,9 +112,8 @@ namespace KolibriLib
 
         } // namespace buttons
 
-        
     } // namespace UI
-    
+    void PrintDebug(const UI::buttons::Button &out);
 } // namespace KolibriLib
 
 

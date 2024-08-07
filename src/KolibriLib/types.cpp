@@ -185,3 +185,31 @@ bool KolibriLib::UDim::operator!=(const UDim &obj) const
 {
 	return X != obj.X || Y != obj.Y;
 }
+
+void KolibriLib::PrintDebug(const point &out)
+{
+	DebugOut("point: x:");
+	PrintDebug(out.x);
+	DebugOut(" y:");
+	PrintDebug(out.y);
+	DebugOut("\n");
+}
+
+void KolibriLib::PrintDebug(const UDim::Axis &out)
+{
+	DebugOut("Scale: ");
+	PrintDebug(out.Scale);
+	DebugOut(" Offset: ");
+	PrintDebug(out.Offset);
+	DebugOut("\n");
+}
+
+void KolibriLib::PrintDebug(const UDim &out)
+{
+	DebugOut("UDim: x:");
+	PrintDebug(out.X);
+	DebugOut(" y:");
+	PrintDebug(out.Y);
+	DebugOut("\n");
+	
+}

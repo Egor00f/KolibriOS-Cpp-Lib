@@ -13,6 +13,7 @@
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/img.hpp>
+#include <kolibriLib/globals.hpp>
 
 namespace KolibriLib
 {
@@ -23,7 +24,7 @@ namespace KolibriLib
 		/// @param a точка первая
 		/// @param b точка вторая
 		/// @param color Цвет линии
-		inline void DrawLine(const Coord &coord, const Coord &b, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawLine(const Coord &coord, const Coord &b, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_line(coord.x, coord.y, b.x, b.y, color.val);
 		}
@@ -33,7 +34,7 @@ namespace KolibriLib
 		/// @param lenght Длина линии
 		/// @param angle Угол
 		/// @param color Цвет линии
-		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_line(coord.x, coord.y, coord.x + (lenght * cos(angle)), coord.y + (lenght * sin(angle)), color.val);
 		}
@@ -41,7 +42,7 @@ namespace KolibriLib
 		/// @brief Закрасить пиксель точку
 		/// @param position координаты
 		/// @param color Цвет
-		inline void DrawPixel(const Coord &position, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawPixel(const Coord &position, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_pixel(position.x, position.y, color.val);
 		}
@@ -52,13 +53,13 @@ namespace KolibriLib
 		/// @param detalization Детализация прорисовки окружности (то на сколько круг круглый)
 		/// @param color Цвет
 		/// @paragraph Круг рисуется по detalization линий. Да-да если Детализация = 4, то круг это квадрат.
-		void DrawCircle(const Coord& coord, unsigned Radius, const Colors::Color& color = OS::GetSystemColors().work_graph);
+		void DrawCircle(const Coord& coord, unsigned Radius, const Colors::Color& color = Globals::SystemColors.work_graph);
 
 		/// @brief Нарисовать закрашенный прямоугольник
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
-		inline void DrawRectangleFill(Coord position, Size size, rgb_t color = (Colors::Color)OS::GetSystemColors().work_graph)
+		inline void DrawRectangleFill(Coord position, Size size, rgb_t color = (Colors::Color)Globals::SystemColors.work_graph)
 		{
 			asm_inline(
 				"int $0x40"
@@ -72,7 +73,7 @@ namespace KolibriLib
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
-		inline void DrawRectangleGradient(Coord position, Size size, rgb_t color = (Colors::Color)OS::GetSystemColors().work_graph)
+		inline void DrawRectangleGradient(Coord position, Size size, rgb_t color = (Colors::Color)Globals::SystemColors.work_graph)
 		{
 			Colors::Color ret = color;
 			ret._a = 0x80;
@@ -90,20 +91,20 @@ namespace KolibriLib
 		/// @param Radius Радиус круга
 		/// @param detalization Детализация круга(то на сколько круг круглый)
 		/// @param color Цвет
-		void DrawCircleFill(const Coord& coord, const unsigned& Radius, const Colors::Color& color = OS::GetSystemColors().work_graph);
+		void DrawCircleFill(const Coord& coord, const unsigned& Radius, const Colors::Color& color = Globals::SystemColors.work_graph);
 
 		/// @brief Нарисовать точку
 		/// @param position Координаты
 		/// @param size Радиус точки в рx
 		/// @param color Цвет
 		/// @param fill Закрашенная/Выколотая точка
-		void DrawPoint(const Coord& position, const unsigned& size, const Colors::Color& color = OS::GetSystemColors().work_graph, bool fill = false);
+		void DrawPoint(const Coord& position, const unsigned& size, const Colors::Color& color = Globals::SystemColors.work_graph, bool fill = false);
 
 
 		/// @brief Нарисовать прямоугольник
 		/// @param a Точка в левом верхнем углу
 		/// @param b Точка в правом нижнем углу
-		inline void DrawRectangleLines(const Coord &a, const Coord &b, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawRectangleLines(const Coord &a, const Coord &b, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			DrawLine(a, Coord(b.x, a.y), color);
 			DrawLine(a, Coord(a.x, b.y), color);
@@ -116,7 +117,7 @@ namespace KolibriLib
 		/// @param b вторая точка
 		/// @param c третья точка
 		/// @param color цвет линий
-		inline void DrawTriangle(const Coord &a, const Coord &b, const Coord &c, const Colors::Color &color = OS::GetSystemColors().work_graph)
+		inline void DrawTriangle(const Coord &a, const Coord &b, const Coord &c, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			DrawLine(a, b, color);
 			DrawLine(a, c, color);

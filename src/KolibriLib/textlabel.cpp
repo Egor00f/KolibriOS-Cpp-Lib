@@ -121,3 +121,9 @@ bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::Tex
 		   (GetMargin()	==	a.GetMargin())	||
 		   (_TextScale	==	a._TextScale));
 }
+
+void KolibriLib::PrintDebug(const UI::text::TextLabel &out)
+{
+	PrintDebug((UIElement)out);
+	PrintDebug((Txt)out);
+}

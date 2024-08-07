@@ -3,11 +3,11 @@
 using namespace KolibriLib;
 using namespace window;
 
-KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::Size &size, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
-	: _title(Title),
-	  _colors(colors),
-	  _Transparency(Transparency),
-	  _RealtimeRedraw(RealtimeRedraw)
+KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
+	:	_title(Title),
+		_colors(colors),
+		_Transparency(Transparency),
+		_RealtimeRedraw(RealtimeRedraw)
 {
 	_style = 0;
 	_style = WindowStyle::Relative | WindowStyle::WindowHaveTitle | WindowStyle::withSkin;
@@ -33,20 +33,31 @@ KolibriLib::window::Window::Window(const std::string &Title, const KolibriLib::S
 
 	SetMargin(Margin);
 
-	window::CreateWindow (
-		DefaultWindowCoord,
-		size,
-		_title,
-		_colors.work_area,
-		_colors.grab_text,
-		_style);
+}
 
+KolibriLib::window::Window::Window(const std::string &Title, const Size &size, const Coord &coord, const Colors::ColorsTable &colors, bool Resize, bool RealtimeReadraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
+	: Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, position, Margin)
+{
 	SetPosition(position);
 
-	if(Globals::DefaultButtonsIDController == nullptr)
+	if (Globals::DefaultButtonsIDController == nullptr)
 	{
 		Globals::DefaultButtonsIDController = &_buttonsController;
 	}
+
+	window::CreateWindow(
+		coord, 
+		size,
+		Title,
+		colors.work_area,
+		colors.grab_text,
+		_style
+	);
+}
+
+KolibriLib::window::Window::Window(const Window_t &wndw)
+{
+	
 }
 
 KolibriLib::window::Window::~Window()
@@ -62,18 +73,12 @@ KolibriLib::window::Window::~Window()
 
 void Window::RenderAllElements() const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("RenderAllElements:");
-	#endif
+	PrintDebug("RenderAllElements:\n");
 
 	for (auto i : _Elements)
 	{
 		i->Render();
 	}
-
-	#ifdef DEBUG
-	_ksys_debug_puts("done\n");
-	#endif
 }
 
 void Window::SetWindowColors(const Colors::ColorsTable &colorTable)
@@ -143,12 +148,9 @@ void Window::ChangeTilte(const std::string &newTitle)
 
 void KolibriLib::window::Window::Redraw()
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Redraw");
-	#endif
 
 	StartRedraw();
-	window::CreateWindow(GetAbsoluteCoord(), {0, 0}, _title, _colors.work_area, _colors.grab_text, _style);
+	window::CreateWindow(DefaultWindowCoord, DefaultWindowSize, _title, _colors.work_area, _colors.grab_text, _style);
 
 	/*if (_style & window::WindowStyle::CanResize)
 	{
@@ -192,15 +194,11 @@ void KolibriLib::window::Window::Redraw()
 	}*/
 
 	EndRedraw();
-
-	#ifdef DEBUG
-	_ksys_debug_puts("done\n");
-	#endif
 }
 
 void Window::Render()
 {
-	PrintDebug("Render window:");
+	PrintDebug("Render window:\n");
 
 	StartRedraw();
 	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style);
@@ -223,9 +221,6 @@ void Window::Render()
 
 	EndRedraw();
 
-	#ifdef DEBUG
-	_ksys_debug_puts("done\n");
-	#endif
 }
 
 inline UDim Window::GetSize() const
@@ -236,9 +231,9 @@ inline UDim Window::GetSize() const
 
 OS::Event Window::Handler()
 {
-#ifdef DEBUG
-	_ksys_debug_puts("Handler\n");
-#endif
+
+	PrintDebug("Handler\n");
+
 
 	OS::Event event = OS::WaitEvent();
 
@@ -249,39 +244,66 @@ OS::Event Window::Handler()
 		Redraw();
 
 		break;
+
 	case OS::Events::Button:
 
-		if (UI::buttons::GetPressedButton() == 1) // Если нажата кнопка X
-		{
-			return OS::Events::Exit;
-		}
+		_PressedButton = UI::buttons::GetPressedButton();
 
-		for (auto it : _Elements) // Запуск обработчиков всех используемых элементов
+		if (_PressedButton == UI::buttons::CloseButton) // Если нажата кнопка X
 		{
-			it->Handler();
+			event = OS::Events::Exit;
+
+		}
+		else
+		{
+
+			for (auto it : _Elements)
+			{
+				it->OnButtonEvent(_PressedButton);
+			}
 		}
 
 		break;
+
 	case OS::Events::Key:
+
 
 		for (auto it : _Elements)
 		{
-			it->Handler();
+			it->OnKeyEvent();
 		}
 
 		break;
+
 	case OS::Events::Mouse:
 
-		if (mouse::MouseButtons::RightButton && mouse::MouseButtons()) // Если нажата правая кнопка
+
+		if (mouse::MouseButtons::RightButton && mouse::GetMouseButtons()) // Если нажата правая кнопка
 		{
 			Coord m = mouse::GetMousePositionInWindow();
 
 			if (m.x < GetSize().GetAbsolute().x && m.y < window::GetSkinHeight())
 			{
+				
+			}
+		}
+		else
+		{
+			for (auto it : _Elements)
+			{
+				it->OnMouseEvent();
 			}
 		}
 
 		break;
+
+	default:
+		break;
+	}
+
+	for (auto it : _Elements) // Запуск обработчиков всех используемых элементов
+	{
+		it->Handler(event);
 	}
 
 	if (_RealtimeRedraw)
@@ -304,28 +326,17 @@ OS::Event Window::Handler()
 
 UI::buttons::ButtonID Window::GetPressedButton()
 {
-	for (auto &n : _Elements)
-	{
-		if (n->ClassName == "Button")
-		{
-			if (((UI::buttons::Button *)n)->GetStatus())
-			{
-				return ((UI::buttons::Button *)n)->GetId();
-			}
-		}
-	}
-
-	return UI::buttons::ButtonIDNotSet;
+	return _PressedButton;
 }
 
 void KolibriLib::window::Window::Unfocus() const
 {
-	_ksys_unfocus_window(Thread::GetThreadSlot(Thread::GetThreadInfo(-1).pid));
+	_ksys_unfocus_window(Thread::GetThreadSlot(Thread::GetThreadInfo().pid));
 }
 
 void KolibriLib::window::Window::Focus() const
 {
-	_ksys_focus_window(Thread::GetThreadSlot(Thread::GetThreadInfo(-1).pid));
+	_ksys_focus_window(Thread::GetThreadSlot(Thread::GetThreadInfo().pid));
 }
 
 void KolibriLib::window::Window::SetPosition(const window::Pos &position)

@@ -166,3 +166,12 @@ char KolibriLib::UI::text::Txt::GetChar(std::size_t i) const
 {
 	return _data.at(i);
 }
+
+void KolibriLib::PrintDebug(const UI::text::Txt &out)
+{
+	DebugOut("Txt:\n");
+	PrintDebug(out.GetText());
+	DebugOut("\n");
+	PrintDebug(out.GetTextColor());
+	DebugOut("\n");
+}

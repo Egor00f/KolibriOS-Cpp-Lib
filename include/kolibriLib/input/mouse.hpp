@@ -14,10 +14,19 @@ namespace KolibriLib
 		/// @brief Список кодов кнопок мыши
 		enum MouseButtons
 		{
+			/// @brief ЛКМ
             LeftButton	= 0b00001,
+
+            /// @brief ПКМ
             RightButton	= 0b00010,
-            CenterBtton	= 0b00100,
+
+            /// @brief Центральная кнопка (та что под колёсиком)
+            CenterButton	= 0b00100,
+
+			/// @brief Кнопка 4
             FourButton	= 0b01000,
+
+            /// @brief Кнопка 5
             FiveButton	= 0b10000
         };
 		
@@ -53,8 +62,6 @@ namespace KolibriLib
 			return _ksys_get_mouse_wheels();
 		}
 
-		
-
 		/// @brief Эмулировать нажатия кнопок мыши
 		/// @param m занчения из списка MouseButtons
 		inline void EmulateMouse(uint8_t m)
@@ -66,7 +73,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Центрировать курсор
-		/// @note Функция устанавливает курсор в середину экрана
+		/// @details Функция устанавливает курсор в середину экрана
 		inline void CenterCursor()
 		{
 			asm_inline(

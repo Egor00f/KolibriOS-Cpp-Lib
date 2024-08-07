@@ -2,6 +2,18 @@
 
 using namespace KolibriLib;
 
+void KolibriLib::PrintDebug(bool out)
+{
+	if(out)
+	{
+		DebugOut("true");
+	}
+	else
+	{
+		DebugOut("false");
+	}
+}
+
 void KolibriLib::PrintDebug(char out)
 {
 	#ifdef DEBUG

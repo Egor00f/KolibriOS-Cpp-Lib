@@ -20,6 +20,7 @@ namespace KolibriLib
 
 			const ButtonID ButtonIDNotSet = 0;
 
+			/// @brief Самый большой ID. Дальше низя
 			const ButtonID ButtonIDEnd = 0x8000;
 
 			/// @brief Id кнопки закрытия окна
@@ -87,8 +88,12 @@ namespace KolibriLib
 				return (ButtonID)_ksys_get_button();
 			}
 
-			typedef enum ButtonStyle{
+			typedef enum ButtonStyle
+			{
+				/// @brief Плоские кнопки
 				flat = 0,
+
+				/// @brief Объёмные кнокпи
  				volumetric = 1
 			} buttonStyle;
 
@@ -101,14 +106,15 @@ namespace KolibriLib
 			}
 
 			/// @brief Автоматическое присвоение ID для кнопок
+			/// @note Этот класс работает только с ID кнопок и ничего больше
 			class ButtonsIDController
 			{
 				public:
-					/// @brief  Получить свободный id кнопки из списка
-					/// @return
+					/// @brief Получить свободный ID кнопки из списка
+					/// @return ID
 					ButtonID GetFreeButtonID();
 
-					/// @brief 
+					/// @brief Освободить ID
 					/// @param id 
 					void FreeButtonID(const ButtonID &id);
 
@@ -122,10 +128,16 @@ namespace KolibriLib
 
 			};
 
+			
+			
+
 		} // namespace buttons
 		
 	} // namespace UI
-	
+	namespace Globals
+	{
+		extern UI::buttons::ButtonsIDController *DefaultButtonsIDController;
+	}
 } // namespace KolibriLib
 
 

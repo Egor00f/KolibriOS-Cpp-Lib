@@ -11,6 +11,7 @@
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/UI/buttons/buttonsBase.hpp>
+#include <kolibriLib/globals.hpp>
 
 namespace KolibriLib
 {
@@ -24,16 +25,13 @@ namespace KolibriLib
 		/// @brief Размеры по умолчанию
 		const Size DefaultSize = {200, 100};
 
-
-		
-
 		/// @brief Интерфейс для всех Объектов Gui
 		class GuiObject
 		{
 		public:
 
 			/// @brief Имя класса
-			std::string ClassName;
+			const std::string ClassName;
 
         	virtual ~GuiObject() = default;
 
@@ -93,11 +91,10 @@ namespace KolibriLib
 		public:
 
 			/// @brief Имя класса, (для наследуемых классов)
-			std::string ClassName = "UIElement";
+			const std::string ClassName = "UIElement";
 
 			/// @brief Флаг того нужно ли отрисовывать этот элемент при каждой перерисовке окна
 			bool RenderOnEverythingRedraw = false;
-
 
 			/// @brief Конструктор
 			/// @param UDim координат
@@ -105,7 +102,7 @@ namespace KolibriLib
 			/// @param MainColor основной цвет
 			/// @param Margin отступы
 			/// @param relative отностельность
-			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().work_text, const unsigned &Margin = DefaultMargin);
+			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = Globals::SystemColors.work_text, const unsigned &Margin = DefaultMargin);
 
 			/// @brief Конструктор копирования
 			/// @param cp То что юудет копирваться
@@ -113,7 +110,11 @@ namespace KolibriLib
 
 			/// @brief Изменить родительский элемент
 			/// @param Parent Указатель на родительский элемент
-			void SetParent(const GuiObject* NewParent);
+			void SetParent(const UIElement* NewParent) const;
+
+			/// @brief
+			/// @param
+			void WindowAsParent(const GuiObject * window) const;
 
 			/// @brief Получить указатель на родительский элемент
 			/// @return Указатель на родительский элемент
@@ -179,10 +180,16 @@ namespace KolibriLib
 
 			/// @brief Обработчик
 			/// @return 
-			int Handler();
+			virtual int Handler(OS::Event event);
+
+			virtual void OnButtonEvent(buttons::ButtonID PressedButtonID);
+
+			virtual void OnKeyEvent();
+
+			virtual void OnMouseEvent();
 
 			/// @brief отрисовать элемент
-			void Render() const;
+			virtual void Render() const;
 
 			/// @brief Получить список всех элементов, для которых этот является родительсим
 			/// @return указатель на вектор указателей
@@ -221,20 +228,24 @@ namespace KolibriLib
 			int _rotation;
 
 			/// @brief Элемент gui относительно которого просиходят расчёты относительного размера
-			GuiObject* Parent = nullptr;
+			mutable GuiObject* Parent = nullptr;
 
-			std::vector<UIElement*> _childs;
+			mutable std::vector<UIElement*> _childs;
 
 			bool Visible = true;
 
+			bool ParentIsWindow = false;
+
 		private:
 			/// @brief Добавить
-			void AddChildren(const UIElement *child);
+			void AddChildren(const UIElement *child) const;
 
 			/// @brief
-			void DeleteChildren(const UIElement *child);
+			void DeleteChildren(const UIElement *child) const;
 		};
 	}
+
+	void PrintDebug(const UI::UIElement &out);
 }
 
 #endif // __UI_H__

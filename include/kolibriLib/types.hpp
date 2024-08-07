@@ -8,6 +8,7 @@
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/thread.hpp>
+#include <kolibriLib/debug.hpp>
 
 #define X_Y(x, y)(((x) << 16) | (y))
 
@@ -107,6 +108,7 @@ namespace KolibriLib
 			{
 				/// @brief Относительно размера окна
 				float Scale;
+
 				/// @brief В пикселях
 				int Offset;
 
@@ -142,9 +144,12 @@ namespace KolibriLib
 
 		};
 
-	//==================================================================================================
+	void PrintDebug(const point &out);
 
-	
+	void PrintDebug(const UDim::Axis &out);
+
+	void PrintDebug(const UDim &out);
+
 //==================================================================================================
 
 } // namespace KolibriLib

@@ -112,6 +112,8 @@ namespace KolibriLib
         }
     } // namespace UI
     
+
+    void PrintDebug(const UI::text::TextLabel &out);
 } // namespace KolibriLib
 
 

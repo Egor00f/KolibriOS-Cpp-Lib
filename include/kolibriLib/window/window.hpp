@@ -7,6 +7,7 @@
 #include <string>
 #include <utility>
 #include <algorithm>
+#include <type_traits>
 
 
 #include <kolibriLib/types.hpp>
@@ -18,21 +19,51 @@
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/globals.hpp>
-
 namespace KolibriLib
 {
 
 	/// \brief Работа с окном
 	namespace window
 	{
+		class Window_t: public UI::GuiObject
+		{
+		public:
+			Window_t(const std::string &Title = "Window", const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = UI::DefaultMargin);
+
+		protected:
+			/// @brief Заголовок окна
+			std::string _title;
+
+			/// @brief Список всех кнопок этого окна
+			std::vector<UIElement*> _Elements;
+
+			UI::buttons::ButtonsIDController _buttonsController;
+
+			/// @brief Цвета окна
+			Colors::ColorsTable _colors;
+
+			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
+
+			/// @brief Стиль окна
+			uint8_t _style;
+
+			/// @brief Прозрачность окна
+			uint8_t _Transparency;
+			
+			/// @brief Окно перерисовывается сейчас (да/нет)
+			mutable bool _Redraw = false;
+
+			/// @brief Окно пересовывается при перетаскивании
+			bool _RealtimeRedraw;
+		};
 
 		/// @brief Класс для работы с окном
 		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор
-		class Window: public UI::GuiObject
+		class Window: public Window_t
 		{
 		public:
 
-			std::string ClassName = "Window";
+			const std::string ClassName = "Window";
 
 			/// @brief Конструктор
 			/// @param Title Заголовок окна
@@ -40,7 +71,9 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Colors::ColorsTable &colors = OS::GetSystemColors(), bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = UI::DefaultMargin);
+			Window(const std::string &Title = "Window", const Size &size, const Coord &coord, const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = UI::DefaultMargin);
+
+			Window(const Window_t &wndw);
 
 			~Window();
 
@@ -113,7 +146,7 @@ namespace KolibriLib
 			/// @return std::pair<номер элемента в списке, указатель на элемент>
 			T* AddElement(const T &element);
 
-			template <class T>
+			template <class T >
 			bool DeleteElement (T* element);
 
 			/// @brief Снять фокус с этого окна
@@ -136,33 +169,6 @@ namespace KolibriLib
 			UI::buttons::ButtonsIDController* GetButtonIDController() const override;
 
 			void SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) override;
-
-		private:
-			/// @brief Заголовок окна
-			std::string _title;
-
-			/// @brief Список всех кнопок этого окна
-			std::vector<UIElement*> _Elements;
-
-			UI::buttons::ButtonsIDController _buttonsController;
-
-			/// @brief Цвета окна
-			Colors::ColorsTable _colors;
-
-			/// @brief Стиль окна
-			uint8_t _style;
-
-			/// @brief Прозрачность окна
-			uint8_t _Transparency;
-
-			/// @brief Активная форма
-			mutable int activeForm = -1;
-			
-			/// @brief Окно перерисовывается сейчас (да/нет)
-			mutable bool _Redraw = false;
-
-			/// @brief Окно пересовывается при перетаскивании
-			bool _RealtimeRedraw;
 		};
 
 		//=============================================================================================================================================================
@@ -172,22 +178,19 @@ namespace KolibriLib
 		template <class T>
 		T* KolibriLib::window::Window::AddElement(const T &element)
 		{
-			#ifdef DEBUG
-			_ksys_debug_puts("Add element:");
-			#endif
+			PrintDebug("Add element\n");
 
 			T *p = new T(element);
-			if (p->GetParent())
+
+			if (p->GetParent() == nullptr)
 			{
-				p->SetParent(this);	// сдес ашибка, при вызове Render вызывается Parent.get()->GetAbsoluteCoord() и на нём падает приложение
+				p->WindowAsParent(this);
 			}
+
 			p->SetButtonIDController(&_buttonsController);
 
 			_Elements.push_back((UIElement*)p);
 
-			#ifdef DEBUG
-			_ksys_debug_puts("done\n");
-			#endif
 
 			return p;
 		}
@@ -195,9 +198,7 @@ namespace KolibriLib
 		template<class T>
 		bool Window::DeleteElement(T * element)
 		{
-			#ifdef DEBUG
-			_ksys_debug_puts("delete element:");
-			#endif
+			PrintDebug("Delete element\n");
 
 			auto a = std::find(_Elements.begin(), _Elements.end(), element);
 
@@ -210,10 +211,6 @@ namespace KolibriLib
 				delete _Elements[_Elements.begin() - a];
 				return true;
 			}
-
-			#ifdef DEBUG
-			_ksys_debug_puts("done\n");
-			#endif
 		}
 
 		#endif
