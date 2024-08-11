@@ -28,9 +28,16 @@ namespace KolibriLib
             /// @brief Конструктор
             /// @param a 
             Color(const ksys_color_t& a);
-            Color(const Color *a);
+            //Color(const Color *a);
             Color(const Color &a);
             Color(const rgb_t &color);
+
+            /// @brief 
+            /// @param R 
+            /// @param G 
+            /// @param B 
+            /// @param A 
+            Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A = 0xFF);
 
             operator rgb_t() const;
             operator ksys_color_t() const;

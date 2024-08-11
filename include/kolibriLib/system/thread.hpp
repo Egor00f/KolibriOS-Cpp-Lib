@@ -33,6 +33,8 @@ namespace KolibriLib
         /// @brief Информация о потоке
         typedef ksys_thread_t ThreadInfo;
 
+        const PID ThisThread = -1;
+
         /// \brief Создать поток
         /// \param ThreadEntry Имя функции которую нужно запустить в новом потоке
         /// @param ThreadStackSize Размер стека нового потока в байтах
@@ -58,16 +60,18 @@ namespace KolibriLib
         /// @param thread слот потока
         /// @return информация о потоке
         /// @details по умолчанию возвращается информация о текущем потоке
-        ThreadInfo GetThreadInfo(const Slot &thread = -1);
+        ThreadInfo GetThreadInfo(const Slot &thread = ThisThread);
 
         /// @brief Поличть указатель информацию о потоке
         /// @param thread слот потока
         /// @return указатель информация о потоке
         /// @details по умолчанию возвращается информация о текущем потоке
         /// @note Не забудьте освободить память!
-        ThreadInfo* GetPointerThreadInfo(const Slot &thread = -1);
+        ThreadInfo *GetPointerThreadInfo(const Slot &thread = ThisThread);
 
-        inline PID GetThisThreadPid()
+        /// @brief Получить PID текущего процесса(тот в котором была вызваенна эта функция)
+        /// @return PID текщего процесса
+        inline PID GetThisThreadPID()
         {
             return GetThreadInfo().pid;
         }
@@ -75,7 +79,7 @@ namespace KolibriLib
         /// @brief Получить слот потока
         /// @param pid поток, по умолчанию поток который вызывает эту функцию
         /// @return Слот потока pid
-        inline Slot GetThreadSlot(const PID& pid = GetThisThreadPid())
+        inline Slot GetThreadSlot(const PID& pid = GetThisThreadPID())
         {
             return _ksys_get_thread_slot(pid);
         }

@@ -18,6 +18,8 @@ namespace KolibriLib
 		/// @return Таблица системных цветов
 		Colors::ColorsTable GetSystemColors();
 
+		/// @brief Именить системыне цвета
+		/// @param Указатель на таблицу системных цветов
 		inline void SetSystemColors(Colors::ColorsTable *table)
 		{
 			asm_inline(

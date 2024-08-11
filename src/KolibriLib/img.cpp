@@ -43,7 +43,7 @@ KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
 {
 	Image_t *buff = LoadImageFromFile(ImageFile);
 
-	buf2d_create_f_img(this->_buff, buff->Data);
+	//buf2d_create_f_img(this->_buff, buff->Data);
 
 	img_destroy(buff);
 }

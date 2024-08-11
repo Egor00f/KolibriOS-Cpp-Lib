@@ -8,7 +8,7 @@ namespace KolibriLib
 	namespace UI
 	{
 		/// @brief Полоска загрузки
-		class Bar : public UIElement
+		class ProgressBar : public UIElement
 		{
 		public:
 
@@ -18,9 +18,12 @@ namespace KolibriLib
 			/// @param color 
 			/// @param MaxFill Максимальныое кол-во поинтов
 			/// @param DefaultFill кол-во поинтов по умолчанию
-			Bar(const UDim &coord, const UDim &size, const Colors::Color &color = Globals::SystemColors.work_graph, const unsigned &MaxFill = 100, const unsigned &DefaultFill = 0);
+			ProgressBar(const UDim &coord, const UDim &size, const Colors::Color &color = Globals::SystemColors.work_graph, const unsigned &MaxFill = 100, const unsigned &DefaultFill = 0);
 
+			/// @brief Отрисовать
 			void Render() const;
+
+			void SetFill(unsigned NewFill);
 
 		private:
 			unsigned _MaxFill;

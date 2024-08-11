@@ -96,9 +96,7 @@ namespace KolibriLib
                 bool operator == (const TextLabel& a) const;
 
                 bool operator != (const TextLabel& a) const;
-
                 
-
             private:
                 /// @brief Выравнивание
                 Aling _Align = Center;

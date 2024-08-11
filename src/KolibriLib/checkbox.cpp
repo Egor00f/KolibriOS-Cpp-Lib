@@ -4,7 +4,7 @@ using namespace KolibriLib;
 using namespace UI;
 
 CheckBox::CheckBox(const UDim &coord, const UDim &size, const style &Style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin)
-	:	Button(coord, size, Margin, BackgroundColor), 
+	:	TextButton(coord, size, Margin, BackgroundColor), 
 		_style(Style)
 {
 	PrintDebug("CheckBox Constructor\n");
@@ -47,5 +47,5 @@ void CheckBox::Render()
 		}
 	}
 
-	Button::Render();
+	TextButton::Render();
 }

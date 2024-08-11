@@ -25,10 +25,15 @@ WindowAttached::WindowAttached(const Window_t &window)
 	lockARG.lock();
 	arg = _wndw;
 
-	Thread::CreateThread(WindowFunc, 4096); // Прошу господи лиж бы хватило
+	_pid = Thread::CreateThread(WindowFunc, 4096); // Прошу господи лиж бы хватило
 }
 
 WindowAttached::~WindowAttached()
 {
 	delete _wndw;
+}
+
+Thread::PID WindowAttached::GetPID() const
+{
+	return _pid;
 }

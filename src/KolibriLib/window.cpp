@@ -3,7 +3,7 @@
 using namespace KolibriLib;
 using namespace window;
 
-KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
+KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
 	:	_title(Title),
 		_colors(colors),
 		_Transparency(Transparency),
@@ -36,7 +36,7 @@ KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLi
 }
 
 KolibriLib::window::Window::Window(const std::string &Title, const Size &size, const Coord &coord, const Colors::ColorsTable &colors, bool Resize, bool RealtimeReadraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
-	: Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, position, Margin)
+	: Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, Margin)
 {
 	SetPosition(position);
 
@@ -56,6 +56,7 @@ KolibriLib::window::Window::Window(const std::string &Title, const Size &size, c
 }
 
 KolibriLib::window::Window::Window(const Window_t &wndw)
+	: Window_t(wndw)
 {
 	
 }

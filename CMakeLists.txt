@@ -25,12 +25,14 @@ SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
+
 #enable FASM
 include(CMakeDetermineASM_FASMCompiler)
 include(CMakeASM_FASMInformation)
 include(CMakeTestASM_FASMCompiler)
 
 enable_language("ASM_FASM")
+
 
 #include toochain
 include(CMakeLoadToolchainPath)
@@ -44,11 +46,15 @@ include(CMakeKOS32gcc)
 
 set(CMAKE_CXX_STANDARD 11)
 
+
+
 set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -DDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
 
 set(CMAKE_C_FLAGS_RELEASE "-O2")
 set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
+
+
 
 
 # CONFIGURED C_Layer ASM
@@ -92,13 +98,21 @@ SET(SOURCES
 	${SRC_PATH}/text.cpp
 	${SRC_PATH}/textlabel.cpp
 	${SRC_PATH}/buttonsBase.cpp
-	${SRC_PATH}/button.cpp
+	${SRC_PATH}/BaseButton.cpp
+	${SRC_PATH}/Button.cpp
+	${SRC_PATH}/TextButton.cpp
+	${SRC_PATH}/ImageButton.cpp
 	${SRC_PATH}/checkbox.cpp
 	${SRC_PATH}/form.cpp
 	#${SRC_PATH}/menu.cpp
 	${SRC_PATH}/window.cpp
+	${SRC_PATH}/windowAttached.cpp
 	${SRC_PATH}/debug.cpp
 	${SRC_PATH}/globals.cpp
+	${SRC_PATH}/freetype.cpp
+	${HEADERS_PATH}/init.hpp
+	${HEADERS_PATH}/types.hpp
+	${HEADERS_PATH}/color.hpp
 	${HEADERS_PATH}/system/os.hpp
 	${HEADERS_PATH}/system/thread.hpp
 	${HEADERS_PATH}/system/filesystem.hpp
@@ -108,6 +122,9 @@ SET(SOURCES
 	${HEADERS_PATH}/UI/buttons/buttonsBase.hpp
 	${HEADERS_PATH}/UI/buttons/TextButton.hpp
 	${HEADERS_PATH}/UI/buttons/ImageButton.hpp
+	${HEADERS_PATH}/window/window.hpp
+	${HEADERS_PATH}/window/windowBase.hpp
+	${HEADERS_PATH}/window/windowAttached.hpp
 )
 
 #LOADERS THAT LOAD SHARED C_LAYER LIBS
@@ -119,18 +136,27 @@ target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
 ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT ${C_LAYER_KOLIBRILIB_SOURCES})
 
 target_include_directories(C_LAYER_KOLIBRILIB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
+target_compile_options(C_LAYER_KOLIBRILIB
+	PRIVATE -c -D__MakeStaticLib__
+)
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 
-target_link_libraries(KolibriLib PUBLIC C_LAYER_KOLIBRILIB)
-target_link_libraries(KolibriLib PUBLIC C_LAYER_LOADERS)
+target_link_libraries(KolibriLib 
+	PUBLIC C_LAYER_KOLIBRILIB
+	PUBLIC C_LAYER_LOADERS
+)
 
-target_compile_options(KolibriLib PUBLIC -c -fomit-frame-pointer)
 
-target_compile_options(KolibriLib PRIVATE -D__MakeStaticLib__)
+target_compile_options(KolibriLib 
+	PRIVATE -c -D__MakeStaticLib__
+	PUBLIC -fomit-frame-pointer
+)
 
-target_include_directories(KolibriLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(KolibriLib
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+	PUBLIC ${KOLIBRIOS_REPO}/contrib/sdk/sources/freetype/include
+)
 
 
 # INCLUDE MACROSS FOR GENERATE DOXYGEN
@@ -151,10 +177,13 @@ endif()
 set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
 
 add_custom_target(
-	Examples
+	Example
 	COMMAND make
 	DEPENDS KolibriLib
 	WORKING_DIRECTORY ${ExamplesDir}
 	COMMENT "Build Example"
 	SOURCES ${ExamplesDir}/example.cpp ${ExamplesDir}/Makefile
 )
+
+#add_executable(Example ${ExamplesDir}/example.cpp)
+#target_link_libraries(Example PUBLIC KolibriLib)

@@ -108,10 +108,30 @@ namespace KolibriLib
 
 				void SetButtonIDController(const UI::buttons::ButtonsIDController *buttonsIDController);
 
+				Thread::PID GetPID() const;
+
 			private:
 				Window *_wndw;
+
+				/// @brief PID процесса в котором окно
+				Thread::PID _pid;
 		};
 
+		#ifndef __MakeStaticLib__
+
+		template <class T>
+		void AddElement (const T &element)
+		{
+			_wndw->AddElement(element);
+		}
+
+		template <class T>
+		void DeleteElement(const T &element)
+		{
+			_wndw->DeleteElement(element);
+		}
+
+		#endif
 		
 	} // namespace window
 	

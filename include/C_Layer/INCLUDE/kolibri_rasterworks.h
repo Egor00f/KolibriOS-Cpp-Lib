@@ -107,6 +107,7 @@ extern "C" {
 }
 
 #include <kolibriLib/types.hpp>
+#include <kolibriLib/globals.hpp>
 #include <string>
 
 /// @brief 
@@ -124,17 +125,18 @@ inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, 
   return drawTextToBuff(canvas, size.x, size.y, coord.x, coord.y, text.c_str(), text.length(), CharSize.x, CharSize.y, FontColor, flags, encoding);
 }
 
-inline void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const KolibriLib::Colors::Color &BackgroundColor, const uint8_t &flags, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
+inline void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor = KolibriLib::Globals::SystemColors.work_text, const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::Globals::SystemColors.work_area, const uint8_t &flags = 0, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
 {
-  void *canvas = malloc(3 * size.x * size.y);
+  const std::size_t l = size.x * size.y;
+  rgb_t *canvas = new rgb_t[l];
 
-  for(std::size_t i = 0; i < size.x * size.y; i++)
+  for(std::size_t i = 0; i < l; i++)
   {
-    ((rgb_t *)canvas)[i] = BackgroundColor.GetRGB();
+    canvas[i] = BackgroundColor.GetRGB();
   }
 
   void *buff = drawTextToBuff(canvas, {0,0}, size, text, CharSize, FontColor, flags, encoding);
-  free(canvas);
+  delete canvas;
   _ksys_draw_bitmap(buff, coord.x, coord.y, size.x, size.y);
   free(buff);
 	

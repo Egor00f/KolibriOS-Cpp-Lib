@@ -6,7 +6,6 @@
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/graphic/screen.hpp>
-#include <kolibriLib/window/window.hpp>
 
 using namespace KolibriLib;
 using namespace UI;

@@ -19,6 +19,7 @@
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/globals.hpp>
+
 namespace KolibriLib
 {
 
@@ -28,7 +29,7 @@ namespace KolibriLib
 		class Window_t: public UI::GuiObject
 		{
 		public:
-			Window_t(const std::string &Title = "Window", const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = UI::DefaultMargin);
+			Window_t(const std::string &Title = "Window", const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = UI::DefaultMargin);
 
 		protected:
 			/// @brief Заголовок окна
@@ -71,8 +72,9 @@ namespace KolibriLib
 			/// @param style стиль окна
 			/// @param colors Цвет окна
 			/// @param Margin Отступы
-			Window(const std::string &Title = "Window", const Size &size, const Coord &coord, const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = UI::DefaultMargin);
+			Window(const std::string &Title = "Window", const Size &size = DefaultWindowSize, const Coord &coord = DefaultWindowCoord, const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, Pos position = Pos::Normal, const unsigned &Margin = UI::DefaultMargin);
 
+			/// @brief Конструктор, необходим только для windowAttached
 			Window(const Window_t &wndw);
 
 			~Window();

@@ -99,9 +99,11 @@ namespace KolibriLib
 		}
 
 		/// @brief Получить размер окна
-		inline Size GetWindowSize()
+		/// @param pid PID процесса кторый создал окно
+		/// @return Размер окна
+		inline Size GetWindowSize(Thread::PID pid = Thread::ThisThread)
 		{
-			auto inf = Thread::GetThreadInfo();
+			auto inf = Thread::GetThreadInfo(pid);
 			return {inf.winx_size, inf.winy_size};
 		}
 
@@ -146,10 +148,11 @@ namespace KolibriLib
 		}
 
 		/// @brief получить координаты окна
+		/// @param pid PID процесса, который создал окно
 		/// @return Координаты окна
-		inline Coord GetWindowCoord()
+		inline Coord GetWindowCoord(Thread::PID pid = Thread::ThisThread)
 		{
-			auto inf = Thread::GetThreadInfo();
+			auto inf = Thread::GetThreadInfo(pid);
 			return {inf.winx_start, inf.winy_start};
 		}
 
@@ -170,7 +173,7 @@ namespace KolibriLib
 		/// @param pid процесс окна, по умолчанию текущий
 		/// @return false если ошибка
 		//// @return true если успешно
-		inline bool SetWindowPos(Pos pos, Thread::PID pid = -1)
+		inline bool SetWindowPos(Pos pos, Thread::PID pid = Thread::ThisThread)
 		{
 			bool a;
 			asm_inline (

@@ -3,6 +3,7 @@
 
 
 #include <kolibriLib/UI/UI.hpp>
+#include <kolibriLib/UI/buttons/button.hpp>
 #include <kolibriLib/UI/buttons/TextButton.hpp>
 #include <kolibriLib/UI/buttons/ImageButton.hpp>
 #include <kolibriLib/UI/checkbox.hpp>
@@ -20,9 +21,13 @@ namespace KolibriLib
 	using UI::UIElement;
 	using KolibriLib::UI::Images::img;
 	using KolibriLib::UI::text::TextLabel;
+	
+	using UI::buttons::ButtonID;
+	using UI::buttons::BaseButton;
 	using UI::buttons::Button;
 	using UI::buttons::TextButton;
 	using UI::buttons::ImageButton;
+	
 	//using UI::text::Fonts::Font;
 	//using UI::Menu;
 	using UI::CheckBox;

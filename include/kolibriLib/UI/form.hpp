@@ -7,7 +7,7 @@
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/UI/text/textlabel.hpp>
-#include <kolibriLib/UI/buttons/button.hpp>
+#include <kolibriLib/UI/buttons/TextButton.hpp>
 #include <input.hpp>
 #include <kolibriLib/color.hpp>
 
@@ -20,13 +20,12 @@ namespace KolibriLib
         {
         private:
             /// @brief Кнопка
-            buttons::Button _butt;
+            buttons::TextButton _butt;
 
             /// @brief Введённый пользователем текст
             std::string _inputText;
 
         public:
-            std::string ClassName = "Form";
             bool RenderOnEverythingRedraw = true;
 
             /// \brief конструктор

@@ -16,7 +16,7 @@ namespace KolibriLib
 		namespace text
 		{
 
-			const Size DefaultCharSize = {16, 9};
+			const Size DefaultCharSize = {16, 16};
 
 			/// @brief Текст
 			/// @details Фактически std::vector Char ов
@@ -28,7 +28,7 @@ namespace KolibriLib
 
 				/// @brief Конструктор
 				/// @param text
-				Txt(const std::string &text, const Colors::Color &TextColor = OS::GetSystemColors().work_text);
+				Txt(const std::string &text, const Colors::Color &TextColor = Globals::SystemColors.work_text);
 
 				/// @brief Конструктор копирования
 				/// @param copy объект который будет копироваться
@@ -49,7 +49,7 @@ namespace KolibriLib
 
 				/// @brief Вывести текст
 				/// @param coord Координаты(левый верхний угол) текста
-				void Print(const Coord &coord, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area) const;
+				void Print(const Coord &coord, const Colors::Color &BackgroundColor = Globals::SystemColors.work_area) const;
 
 				/*/// @brief Изменить шрифт символов
 				/// @param FontSize

@@ -5,11 +5,11 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace buttons;
 
-
+UI::buttons::ButtonsIDController *Globals::DefaultButtonsIDController;
 
 ButtonID buttons::GetFreeButtonId(std::vector<ButtonID> *ButtonsIdList)
 {
-	for(ButtonID i = 2; i < buttons::ButtonIDEnd; i++)	// в wiki сказанно что id в промежутке (0, 0x8000)
+	for(ButtonID i = 2; i < buttons::ButtonIDEnd; i.value++)	// в wiki сказанно что id в промежутке (0, 0x8000)
 	{                                   	// CloseButton = 1, поэтому пропускаем и начинаем сразу с 2
 		if(std::find(ButtonsIdList->begin(), ButtonsIdList->end(), i) == ButtonsIdList->end())
 		{
@@ -58,4 +58,46 @@ const std::vector<ButtonID> * buttons::ButtonsIDController::GetButtonsIDList() c
 	return &ButtonsIdList;
 }
 
-UI::buttons::ButtonsIDController *Globals::DefaultButtonsIDController;
+void KolibriLib::PrintDebug(UI::buttons::ButtonID out)
+{
+	if(out.CheckIsValid())
+	{
+		if (out.value == ButtonIDNotSet)
+		{
+			DebugOut("Not set");
+		}
+		else if (out.value >= ButtonIDEnd)
+		{
+			DebugOut("Out of acceptable values");
+		}
+		else
+		{
+			DebugOut("WTF?");
+		}
+	}
+	else
+	{
+		PrintDebug((unsigned)out);
+	}
+}
+
+KolibriLib::UI::buttons::ButtonID::ButtonID(unsigned val)
+	:	value(val)
+{
+}
+
+bool KolibriLib::UI::buttons::ButtonID::CheckIsValid() const
+{
+	return value != ButtonIDNotSet.value && value < ButtonIDEnd.value;
+}
+
+ButtonID KolibriLib::UI::buttons::ButtonID::operator=(const unsigned &val)
+{
+	return ButtonID(val);
+}
+
+KolibriLib::UI::buttons::ButtonID::operator uint32_t() const
+{
+	return value;
+}
+

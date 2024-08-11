@@ -160,6 +160,14 @@ namespace KolibriLib
 			return result;
 		}
 
+		/// @brief Вывести изображение
+		/// @param bitmap изображение
+		/// @param coord координаты
+		/// @param size размер изображния
+		inline void DrawBitmap(rgb_t *bitmap, const Coord &coord, const Size &size)
+		{
+			_ksys_draw_bitmap(bitmap, coord.x, coord.y, size.x, size.y);
+		}
 	}
 
 } // namespace KolibriLib

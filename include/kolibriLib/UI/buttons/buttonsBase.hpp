@@ -6,6 +6,8 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/os.hpp>
+#include <kolibriLib/debug.hpp>
+#include <kolibriLib/globals.hpp>
 
 #include <vector>
 
@@ -15,8 +17,22 @@ namespace KolibriLib
 	{
 		namespace buttons
 		{
-			/// @brief Id кнопки
-			typedef uint32_t ButtonID;
+			/// @brief ID кнопки
+			struct ButtonID
+			{
+				uint32_t value;
+
+				ButtonID(unsigned val);
+
+				/// @brief является ли этот ID пригодным
+				/// @details ID кнопок могут быть только от 0 до 0x8000 (исключая сами числа)
+				bool CheckIsValid() const;
+
+				ButtonID operator = (const unsigned &val);
+
+				/// @brief 
+				operator uint32_t() const;
+			};
 
 			const ButtonID ButtonIDNotSet = 0;
 
@@ -43,14 +59,14 @@ namespace KolibriLib
 			/// \param size размер
 			/// \param color цвет
 			/// \return id созданной кнопки
-			ButtonID autoDefineButton(std::vector<ButtonID>*ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = OS::GetSystemColors().work_button);
+			ButtonID autoDefineButton(std::vector<ButtonID>*ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
 
 			/// \brief Создать кнопку, вручную
 			/// \param coords координаты
 			/// \param size размер
 			/// \param id idшник кнопки
 			/// \param color цвет
-			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().work_button)
+			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
 				_ksys_define_button(coord.x, coord.y, size.x, size.y, 0x00FFFFFF&id, color);
 			}
@@ -60,7 +76,7 @@ namespace KolibriLib
 			/// \param size размер
 			/// \param id idшник кнопки
 			/// \param color цвет
-			inline void DefineButton(std::vector<ButtonID>*ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = OS::GetSystemColors().work_button)
+			inline void DefineButton(std::vector<ButtonID>*ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
 				ButtonsIdList->push_back(id);
 				_ksys_define_button(coord.x, coord.y, size.x, size.y, 0x00FFFFFF&id, color);
@@ -134,6 +150,9 @@ namespace KolibriLib
 		} // namespace buttons
 		
 	} // namespace UI
+
+	void PrintDebug(UI::buttons::ButtonID out);
+
 	namespace Globals
 	{
 		extern UI::buttons::ButtonsIDController *DefaultButtonsIDController;
