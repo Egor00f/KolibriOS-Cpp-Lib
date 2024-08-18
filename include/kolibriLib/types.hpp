@@ -144,6 +144,9 @@ namespace KolibriLib
 
 		};
 
+
+	typedef unsigned long DWORD;
+
 	void PrintDebug(const point &out);
 
 	void PrintDebug(const UDim::Axis &out);

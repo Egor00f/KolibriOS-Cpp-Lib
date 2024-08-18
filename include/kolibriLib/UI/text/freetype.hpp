@@ -3,8 +3,10 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/graphic/screen.hpp>
+#include <kolibriLib/debug.hpp>
 #include <stdint.h>
 #include <vector>
+
 
 /// @brief Библиотека freetype и оболочки для связки с KolibriLib
 namespace FreeType

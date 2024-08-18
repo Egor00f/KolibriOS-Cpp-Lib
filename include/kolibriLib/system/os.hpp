@@ -254,6 +254,14 @@ namespace KolibriLib
 			return (lang)a;
 		}
 
+		inline void SetLang(lang l)
+		{
+			asm_inline(
+				"int $0x40"
+				:: "a"(21), "b"(5), "c"(l)
+			);
+		}
+
 		/// @brief Иконки в сообщениях
 		/// @image notify.orig.png
 		typedef enum 
@@ -345,6 +353,22 @@ namespace KolibriLib
 		inline uint32_t GetCPUClock()
 		{
 			return _ksys_get_cpu_clock();
+		}
+
+		/// @brief получить значение высокоточного счётчика времени
+		/// @note функция использует счётчик HPET, если HPET не доступен используется счётчик PIT. В этом случае точность будет уменьшена до 10 000 00 наносекунд.
+		/// @return число наносекунд с момента загрузки ядра
+		inline long long GetHighPrecisionTimerCount()
+		{
+			uint32_t a, b;
+
+			asm_inline(
+				"int $0x40"
+				: "=a"(a), "=d"(b)
+				: "a"(21), "b"(10)
+			);
+
+			return (long long)((b << 32) || a);
 		}
 
 	} // namespace OS

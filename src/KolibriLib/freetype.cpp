@@ -14,7 +14,10 @@ Library::Library()
 	FT_Error err = FT_Init_FreeType(&lib);
 	
 	if(err)
+	{
+		KolibriLib::PrintDebug("Error init FreeType lib");
 		throw err;
+	}
 }
 
 FreeType::Library::~Library()
@@ -22,7 +25,9 @@ FreeType::Library::~Library()
 	FT_Error err = FT_Done_FreeType(lib);
 
 	if(err)
+	{
 		throw err;
+	}
 }
 
 FreeType::Library::operator FT_Library() const
@@ -42,7 +47,10 @@ FreeType::Face::Face(const char *file)
 	);
 
 	if (err)
+	{
+		KolibriLib::PrintDebug("Error init FreeType face");
 		throw err;
+	}
 }
 
 FreeType::Face::operator FT_Face() const

@@ -11,20 +11,15 @@ project(
 #################################################
 #
 set(CUSTOM_TOOCLAIN_PATH	OFF)
-set(KOLIBRIOS_REPO	../kolibrios)
+set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
 #
 #################################################
-
-
 
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 
-SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
-
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
 
 #enable FASM
 include(CMakeDetermineASM_FASMCompiler)
@@ -33,15 +28,26 @@ include(CMakeTestASM_FASMCompiler)
 
 enable_language("ASM_FASM")
 
+SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
+
+
+get_filename_component(REPO ${KOLIBRIOS_REPO} REALPATH)
+set(KOLIBRIOS_REPO ${REPO})
+if(EXISTS "${REPO}")
+	message("KOLIBRIOS REPO Found: ${KOLIBRIOS_REPO}")
+else()
+	message(FATAL_ERROR "KOLIBRIOS Repo not found, try set KOLIBRIOS_REPO or download kolibros repo")
+endif()
+
+
+
+
 
 #include toochain
 include(CMakeLoadToolchainPath)
 if(CUSTOM_TOOCLAIN_PATH)
 	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
 endif()
-
-include(CMakeKOS32gcc)
-
 
 
 set(CMAKE_CXX_STANDARD 11)
@@ -53,9 +59,6 @@ set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
 
 set(CMAKE_C_FLAGS_RELEASE "-O2")
 set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
-
-
-
 
 # CONFIGURED C_Layer ASM
 set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
@@ -110,6 +113,7 @@ SET(SOURCES
 	${SRC_PATH}/debug.cpp
 	${SRC_PATH}/globals.cpp
 	${SRC_PATH}/freetype.cpp
+	${SRC_PATH}/keyboard.cpp
 	${HEADERS_PATH}/init.hpp
 	${HEADERS_PATH}/types.hpp
 	${HEADERS_PATH}/color.hpp
@@ -141,7 +145,6 @@ target_compile_options(C_LAYER_KOLIBRILIB
 )
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
-
 target_link_libraries(KolibriLib 
 	PUBLIC C_LAYER_KOLIBRILIB
 	PUBLIC C_LAYER_LOADERS
@@ -157,7 +160,6 @@ target_include_directories(KolibriLib
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 	PUBLIC ${KOLIBRIOS_REPO}/contrib/sdk/sources/freetype/include
 )
-
 
 # INCLUDE MACROSS FOR GENERATE DOXYGEN
 include(Doxygen)
