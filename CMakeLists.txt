@@ -16,6 +16,8 @@ set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозитор�
 #################################################
 
 
+set(CMAKE_CXX_STANDARD 11)
+
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 
@@ -49,8 +51,25 @@ if(CUSTOM_TOOCLAIN_PATH)
 	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
 endif()
 
+set(LIBS_DIR ${SDK_DIR}/sources)
 
-set(CMAKE_CXX_STANDARD 11)
+set(NEWLIB_DIR ${LIBS_DIR}/newlib)
+set(LIBC_DIR ${NEWLIB_DIR}/libc)
+set(LIBSTDCPP_DIR ${LIBS_DIR}/libstdc++-v3)
+
+#поключение newlib
+include_directories(
+	${LIBC_DIR}/include
+	${LIBSTDCPP_DIR}/include
+)
+
+link_directories(
+	${SDK_DIR}/lib
+	${TOOLCHAIN_DIR}/mingw32/lib
+	${TOOLCHAIN_DIR}/lib
+)
+
+
 
 
 

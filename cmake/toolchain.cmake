@@ -31,24 +31,7 @@ set(CMAKE_C_COMPILER_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
 set(CMAKE_CXX_COMPILER_FLAGS "${CMAKE_CXX_FLAGS} ${C_FLAGS}")
 
 set(KOLIBRIOS_REPO ${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)
-message("REPO:" ${KOLIBRIOS_REPO})
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
-set(LIBS_DIR ${SDK_DIR}/sources)
 
-set(NEWLIB_DIR ${LIBS_DIR}/newlib)
-set(LIBC_DIR ${NEWLIB_DIR}/libc)
-set(LIBSTDCPP_DIR ${LIBS_DIR}/libstdc++-v3)
-
-#поключение newlib
-include_directories(
-	${LIBC_DIR}/include
-	${LIBSTDCPP_DIR}/include
-)
-
-link_directories(
-	${SDK_DIR}/lib
-	${TOOLCHAIN_DIR}/mingw32/lib
-	${TOOLCHAIN_DIR}/lib
-)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -S -nostdlib  --image-base 0 -T ${NEWLIB_DIR}/app.lds -lgcc -lc.dll -lstdc++ -lsupc++")

@@ -12,17 +12,6 @@ namespace KolibriLib
         /// @brief Цвет
         union Color
         {
-            ksys_color_t val;
-            struct
-            {
-                uint8_t blue;
-                uint8_t green;
-                uint8_t red;
-                
-                /// @brief Альфа канал
-                uint8_t _a;
-            };
-
             Color():val(0xFFFFFFFF){};
 
             /// @brief Конструктор
@@ -58,6 +47,18 @@ namespace KolibriLib
             bool operator == (const Color& a) const;
 
             bool operator != (const Color& a) const;
+
+            ksys_color_t val;
+
+            struct
+            {
+                uint8_t blue;
+                uint8_t green;
+                uint8_t red;
+
+                /// @brief Альфа канал
+                uint8_t _a;
+            };
         };
 
         /// @brief Конвертирует rgb_t в ksys_color_t

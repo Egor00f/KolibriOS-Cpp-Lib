@@ -129,6 +129,7 @@ namespace KolibriLib
 				: "=a"(ret)
 				: "a"(22), "b"(0), "c"(NewTime)
 			);
+
 			return ret;
 		}
 
@@ -301,7 +302,6 @@ namespace KolibriLib
 		/// @param keys ключи
 		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, (notifyKey)0, (notifyKey)0, (notifyKey)0});
 		
-
 		/// @brief Уведомление об ошибке через увдомления системы
 		/// @param Title Заголовок уведомления об ошибке
 		/// @param Text текст
@@ -310,7 +310,6 @@ namespace KolibriLib
 			std::string a = "\"'" + Title + "\n" + Text + "' -E -t";
 			_ksys_exec("/sys/@notify", (char*)a.c_str(), false);
 		}
-
 
 		/// @brief Версия ядра
 		struct CoreVersion
@@ -368,7 +367,7 @@ namespace KolibriLib
 				: "a"(21), "b"(10)
 			);
 
-			return (long long)((b << 32) || a);
+			return (long long)((b << 31) || a);
 		}
 
 	} // namespace OS
