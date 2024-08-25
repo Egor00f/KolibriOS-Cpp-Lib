@@ -3,7 +3,7 @@
 using namespace KolibriLib;
 using namespace Thread;
 
-PID KolibriLib::Thread::CreateThread(void(* ThreadEntry)(), unsigned ThreadStackSize)
+PID KolibriLib::Thread::CreateThread_(void *ThreadEntry, unsigned ThreadStackSize)
 {
     void *th_stack = malloc(ThreadStackSize);
 
@@ -13,7 +13,7 @@ PID KolibriLib::Thread::CreateThread(void(* ThreadEntry)(), unsigned ThreadStack
         return -1;
     }
 
-    PID TID = _ksys_create_thread((void*) ThreadEntry, ((uint8_t*) th_stack) + ThreadStackSize);
+    PID TID = _ksys_create_thread(ThreadEntry, ((uint8_t*) th_stack) + ThreadStackSize);
 
     if (TID == -1) //   Если поток не был создан
     {
@@ -27,21 +27,7 @@ PID KolibriLib::Thread::CreateThread(void(* ThreadEntry)(), unsigned ThreadStack
 
 KolibriLib::Thread::ThreadInfo KolibriLib::Thread::GetThreadInfo(const Slot& thread)
 {
-    ThreadInfo *buff = new ThreadInfo;
-
-    _ksys_thread_info(buff, thread);
-
-    ThreadInfo r = *buff;
-
-    for (int i = 0; i < KSYS_THREAD_INFO_SIZE; i++)
-    {
-        r.__reserved3[i] = buff->__reserved3[i];
-    }
-
-    delete buff; // Возвращается копия так как указатель нужно будет удалять
-                 //  но в какой то момент точно об этом забудешь...
-
-    return r;
+    return *GetPointerThreadInfo(thread);
 }
 
 

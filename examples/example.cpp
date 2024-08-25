@@ -37,7 +37,7 @@ int main()
 
 	*/
 
-	FreeType::DrawText({20, 20}, "Amogus", FreeType::Face("/kolibrios/Fonts/Arial.ttf"));
+	FreeType::DrawText({20, 20}, "Amogus", FreeType::Face("/kolibrios/fonts/Arial.ttf"));
 
 	/*
 

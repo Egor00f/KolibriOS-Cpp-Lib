@@ -5,23 +5,86 @@
 
 using namespace FreeType;
 
-Library _lib;
+Library FreeType::_lib;
+
+
+Error::operator std::string() const
+{
+	std::string ret;
+	
+	switch(val)
+	{
+	case FT_Err_Ok:
+		ret = "Ok";
+		break;
+	case FT_Err_Cannot_Open_Resource:
+		ret = "Cannot Open Resource";
+		break;
+	case FT_Err_Unknown_File_Format:
+		ret = "unknown file format";
+		break;
+	case FT_Err_Invalid_File_Format:
+		ret = "broken file";
+		break;
+	case FT_Err_Invalid_Version:
+		ret = "invalid FreeType version";
+		break;
+	case FT_Err_Lower_Module_Version:
+		ret = "module version is too low";
+		break;
+	case FT_Err_Invalid_Argument:
+		ret = "invalid argument";
+		break;
+	case FT_Err_Unimplemented_Feature:
+		ret = "unimplemented feature";
+		break;
+	case FT_Err_Invalid_Table:
+		ret = "broken table";
+		break;
+	}
+
+	return ret;
+}
+
+Error::Error(FT_Error v)
+	:	val(v)
+{
+	
+}
+
+Error& Error::operator=(const  FT_Error& v)
+{
+	val = v;
+
+	return *this;
+}
+
+FreeType::Error::operator FT_Error() const
+{
+	return val;
+}
 
 Library::Library()
 {
+	KolibriLib::PrintDebug("Init FreeType Lib\n");
+
 	lib = 0;
 
-	FT_Error err = FT_Init_FreeType(&lib);
+	Error err = FT_Init_FreeType(&lib);
 	
 	if(err)
 	{
-		KolibriLib::PrintDebug("Error init FreeType lib");
+		KolibriLib::PrintDebug("Error init FreeType lib, Error: ");
+		KolibriLib::PrintDebug(err);
+		KolibriLib::PrintDebug("\n");
 		throw err;
 	}
 }
 
 FreeType::Library::~Library()
 {
+	KolibriLib::PrintDebug("done FreeType Lib\n");
+
 	FT_Error err = FT_Done_FreeType(lib);
 
 	if(err)
@@ -48,9 +111,24 @@ FreeType::Face::Face(const char *file)
 
 	if (err)
 	{
-		KolibriLib::PrintDebug("Error init FreeType face");
+		KolibriLib::PrintDebug("Error init FreeType face, Error: ");
+		KolibriLib::PrintDebug(err);
+		KolibriLib::PrintDebug("\n");
 		throw err;
 	}
+}
+
+Error FreeType::Face::OpenFile(const char *file)
+{
+	Error err;
+	if(face)
+	{
+		err = FT_Done_Face(face);
+	}
+
+	err = FT_New_Face(_lib, file, 0, &face);
+
+	return err;
 }
 
 FreeType::Face::operator FT_Face() const
@@ -136,7 +214,10 @@ FT_Glyph Face::GetGlyph()
 	FT_Error err = FT_Get_Glyph(face->glyph, &ret);
 
 	if(err)
+	{
+		KolibriLib::PrintDebug("Error Get GLyph\n");
 		throw err;
+	}
 
 	return ret;
 }
@@ -175,10 +256,7 @@ void FreeType::DrawText(KolibriLib::Coord coord, const std::string text, Face fa
 			//top = std::min(top, -bitmap->top);
 			//bottom = std::max(bottom, -bitmap->top + bitmap->bitmap.rows);
 			
-			
 			KolibriLib::UI::Images::img img(KolibriLib::Colors::Color(), {bitmap.width, bitmap.rows});
-
-
 	
 			for (int y = 0; y < bitmap.rows; y++)
 			{
@@ -196,4 +274,9 @@ void FreeType::DrawText(KolibriLib::Coord coord, const std::string text, Face fa
 			img.Draw(coord, {bitmap.width, bitmap.rows});
 		}
 	
+}
+
+void KolibriLib::PrintDebug(Error out)
+{
+	DebugOut(out.operator std::string().c_str());
 }

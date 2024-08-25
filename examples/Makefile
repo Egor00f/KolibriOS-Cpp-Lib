@@ -12,10 +12,10 @@ KolibriOS_repo_dir = ../../kolibrios
 CONTRIB_DIR = $(KolibriOS_repo_dir)/contrib
 SDK_DIR = $(CONTRIB_DIR)/sdk
 
-ifeq ($(UNAME), Linux)
-TOOLCHAIN_DIR = /home/autobuild/tools/win32
-else
+ifeq ($(OS), Windows_NT)
 TOOLCHAIN_DIR = C:/MinGW/msys/1.0/home/autobuild/tools/win32
+else
+TOOLCHAIN_DIR = /home/autobuild/tools/win32
 endif
 
 

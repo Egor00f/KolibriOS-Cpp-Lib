@@ -33,14 +33,28 @@ namespace KolibriLib
         /// @brief Информация о потоке
         typedef ksys_thread_t ThreadInfo;
 
+        /// @brief Значение PID текущего процесса.
+        ///@details Нужно для функций
         const PID ThisThread = -1;
 
         /// \brief Создать поток
-        /// \param ThreadEntry Имя функции которую нужно запустить в новом потоке
+        /// \param ThreadEntry указатель на функцию которую нужно запустить в новом потоке
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
         /// @note есть шанс проебаться с размером стека
-        PID CreateThread(void(*ThreadEntry)(), unsigned ThreadStackSize = 2048);
+        PID CreateThread_(void *ThreadEntry, unsigned ThreadStackSize = 2048);
+
+        template <class T>
+        /// \brief Создать поток
+        /// \param ThreadEntry указатель на функцию которую нужно запустить в новом потоке
+        /// @param ThreadStackSize Размер стека нового потока в байтах
+        /// \return ID потока
+        /// @note есть шанс проебаться с размером стека
+        /// @note Пихать сюда ТОЛЬКО указатели на функции, иначе ваще хз че поизойдёт
+        inline PID CreateThread(T ThreadEntry, unsigned ThreadStackSize = 2048)
+        {
+            return CreateThread_((void*)ThreadEntry, ThreadStackSize);
+        }
 
         /// @brief Завершить процесс/поток
         /// @param PID ID Процесса/потока

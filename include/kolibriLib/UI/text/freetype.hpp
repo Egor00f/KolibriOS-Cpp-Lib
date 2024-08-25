@@ -18,13 +18,27 @@ namespace FreeType
 
 	typedef FT_ULong CharCode;
 
+	struct Error
+	{
+		FT_Error val;
+
+		Error(FT_Error v = 0);
+
+		Error& operator=(const  FT_Error& v);
+
+		operator FT_Error() const;
+		operator std::string() const;
+	};
+
 	/// @brief Оболочка для FT_Libraty
 	class Library
 	{
 	public:
+		/// @brief Конструктор
 		/// @throw Если ошибка
 		Library();
 
+		/// @brief Деструктор
 		~Library();
 
 		operator FT_Library() const;
@@ -37,11 +51,18 @@ namespace FreeType
 	class Face
 	{
 	public:
+		/// @brief Конструктор
 		Face():face(0){}
 
+		/// @brief Конструктор
 		/// @param file путь до файла
 		/// @throw Если ошибка
 		Face(const char* file);
+
+		~Face();
+
+		/// @brief Отурыть файл
+		Error OpenFile(const char* filw);
 
 		/// @brief Оболочка для FT_Set_Char_Size
 		/// @param Новый размер сиволов
@@ -92,8 +113,15 @@ namespace FreeType
 		FT_Face face;
 	};
 
+	extern Library _lib;
+
+
 	void DrawText(KolibriLib::Coord coord, const std::string text, Face face);
 } // namespace FreeType
 
+namespace KolibriLib
+{
+	void PrintDebug(FreeType::Error out);
+}
 
 #endif // __FREETYPE_H__

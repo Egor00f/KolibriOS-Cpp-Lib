@@ -51,25 +51,8 @@ if(CUSTOM_TOOCLAIN_PATH)
 	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
 endif()
 
-set(LIBS_DIR ${SDK_DIR}/sources)
-
-set(NEWLIB_DIR ${LIBS_DIR}/newlib)
-set(LIBC_DIR ${NEWLIB_DIR}/libc)
-set(LIBSTDCPP_DIR ${LIBS_DIR}/libstdc++-v3)
-
-#поключение newlib
-include_directories(
-	${LIBC_DIR}/include
-	${LIBSTDCPP_DIR}/include
-)
-
-link_directories(
-	${SDK_DIR}/lib
-	${TOOLCHAIN_DIR}/mingw32/lib
-	${TOOLCHAIN_DIR}/lib
-)
-
-
+include(CMakeDetermineKOS32Compiler)
+include(CMakeTestKOS32Compiler)
 
 
 
