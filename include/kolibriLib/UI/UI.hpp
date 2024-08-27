@@ -6,168 +6,247 @@
 #include <vector>
 
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
-#include <input.hpp>
+#include <kolibriLib/system/thread.hpp>
+#include <kolibriLib/system/os.hpp>
 #include <kolibriLib/window/windowBase.hpp>
-#include <kolibriLib/graphic/graphic.hpp>
-#include <kolibriLib/graphic/screen.hpp>
+#include <kolibriLib/UI/buttons/buttonsBase.hpp>
+#include <kolibriLib/globals.hpp>
 
 namespace KolibriLib
 {
-    // Элементы UI
-    namespace UI
-    {
+	// Элементы UI
+	namespace UI
+	{
 
-        /// @brief Координаты/Размеры для элементов UI
-        struct UDim
-        {
-            struct Axis
-            {
-                /// @brief Относительно размера окна
-                float Scale;
-                /// @brief В пикселях
-                int Offset;
+		/// @brief Отступы поумолчанию
+		const unsigned DefaultMargin = 4;
 
-                Axis(float scale = 0, int offset = 0);
-                bool operator == (const Axis& axis) const;
-                bool operator !=(const Axis &axis) const;
-            };
+		/// @brief Размеры по умолчанию
+		const Size DefaultSize = {200, 100};
 
-            UDim::Axis X, Y;
+		/// @brief Интерфейс для всех Объектов Gui
+		class GuiObject
+		{
+		public:
 
-            /// @brief Конструктор
-            /// @param p
-            UDim(const point &p);
+			/// @brief Имя класса
+			const std::string ClassName;
 
-            /// @brief 
-            /// @param XScale 
-            /// @param XOffset 
-            /// @param YScale 
-            /// @param YOffset 
-            UDim(float XScale, int XOffset, float YScale, int YOffset);
+        	virtual ~GuiObject() = default;
 
-			/// @brief получить абсолютные значения(в пикселях) относительно окна
+			/// @brief Получить размер элемента
+			/// @return Функция возвращает _size
+			virtual UDim GetSize() const = 0;
+
+			/// @brief Изменить размер элемента
+			/// @param NewSize новый размер
+			virtual void SetSize(const UDim &NewSize) = 0;
+
+			/// @brief изменить координаты
+			/// @param NewCoord новые координаты
+			virtual void SetCoord(const UDim &NewCoord) = 0;
+
+			/// @brief Получить координаты элемента
+			/// @return Функция возвращает _coord
+			virtual UDim GetCoord() const = 0;
+
+			/// @brief Изменить размер элемента
+			/// @param NewSize новый размер
+			virtual void SetSize(const Size &NewSize) = 0;
+
+			/// @brief изменить координаты
+			/// @param NewCoord новые координаты
+			virtual void SetCoord(const Coord &NewCoord) = 0;
+
+			/// @brief Получить размер объекта
+			/// @return Размер объекта в пикселях
+			virtual Size GetAbsoluteSize() const = 0;
+
+			/// @brief Получить координаты объекта
+			/// @return Координаты в пикселях
+			virtual Coord GetAbsoluteCoord() const = 0;
+
+			virtual buttons::ButtonsIDController* GetButtonIDController() const = 0;
+
+			virtual void SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) = 0;
+
+			/// @brief Получить отступы
+			/// @return Функция возвращает _Margin
+			unsigned GetMargin() const;
+
+			/// @brief 
+			/// @param NewMargin 
+			void SetMargin(unsigned NewMargin);
+
+		private:
+			/// @brief Отступы
+			unsigned _Margin;
+		};
+
+		///@brief Элемент интерфейса
+		/// @note Используется как шаблон для других классов
+		class UIElement: public GuiObject
+		{
+		public:
+
+			/// @brief Имя класса, (для наследуемых классов)
+			const std::string ClassName = "UIElement";
+
+			/// @brief Флаг того нужно ли отрисовывать этот элемент при каждой перерисовке окна
+			bool RenderOnEverythingRedraw = false;
+
+			/// @brief Конструктор
+			/// @param UDim координат
+			/// @param size размер
+			/// @param MainColor основной цвет
+			/// @param Margin отступы
+			/// @param relative отностельность
+			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = Globals::SystemColors.work_text, const unsigned &Margin = DefaultMargin);
+
+			/// @brief Конструктор копирования
+			/// @param cp То что юудет копирваться
+			UIElement(const UIElement &cp);
+
+			/// @brief Изменить родительский элемент
+			/// @param Parent Указатель на родительский элемент
+			/// @details почему этот метод константный? Да потому что по сути не изменяет состояние класса, элементы не очень то и зависят от родительского элемента
+			void SetParent(const UIElement* NewParent) const;
+
+			/// @brief
+			/// @param
+			void WindowAsParent(const GuiObject * window) const;
+
+			/// @brief Получить указатель на родительский элемент
+			/// @return Указатель на родительский элемент
+			const GuiObject* GetParent() const;
+
+			/// @brief Получить размер элемента
+			/// @return Функция возвращает _size
+			UDim GetSize() const override;
+
+			/// @brief Изменить размер элемента
+			/// @param NewSize новый размер
+			void SetSize(const UDim& NewSize) override;
+
+			/// @brief изменить координаты
+			/// @param NewCoord новые координаты
+			void SetCoord(const UDim &NewCoord) override;
+
+			/// @brief Изменить размер элемента
+			/// @param NewSize новый размер
+			void SetSize(const Size &NewSize) override;
+
+			/// @brief
+			/// @param NewCoord
+			void SetCoord(const Coord &NewCoord) override;
+
+			/// @brief Получить абсолютный размер элемента
+			/// @return размер
+			Size GetAbsoluteSize() const override;
+
+			/// @brief Получить абсолютные координаты элемента
+			/// @return координаты левого верхнего угла этого элмента относительно левого верхнего угла родитесльского элемента
+			Coord GetAbsoluteCoord() const override;
+
+			/// @brief Получить координаты элемента
+			/// @return Функция возвращает _coord
+			UDim GetCoord() const override;
+
+			/// @brief
+			/// @return
+			buttons::ButtonsIDController* GetButtonIDController() const override;
+
+			void SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) override;
+
+			/// @brief Получить осносной цвет элемента
+			/// @return Функция возвращает _MainColor
+			Colors::Color GetColor() const;
+
+			/// @brief Изменить цвет
+			/// @param NewColor новый цвет
+			void SetColor(const Colors::Color& NewColor);
+
+			/// @brief Повернуть элемент
+			/// @param NewAngle Новый угол наклона
+			void Rotate(unsigned NewAngle);
+
+			/// @brief Получить угол наклона элемента
+			/// @return Функция возвращает _angle
+			unsigned GetRotate() const;
+
+			/// @brief Проверить лежит ли курсор мыши над элементом
+			/// @return true если курсор мыши находится в этом элементе, иначе false
+			bool Hover() const;
+
+			/// @brief Обработчик
 			/// @return 
-			point GetAbsolute(const point &Parent = {Thread::GetThreadInfo().winx_size, Thread::GetThreadInfo().winy_size}) const;
+			virtual int Handler(OS::Event event);
 
+			virtual void OnButtonEvent(buttons::ButtonID PressedButtonID);
 
-            bool operator == (const UDim &obj) const;
-            bool operator != (const UDim &obj) const;
+			virtual void OnKeyEvent();
 
-        };
+			virtual void OnMouseEvent();
 
-        /// @brief Отступы поумолчанию
-        const unsigned DefaultMargin = 4;
-        const Size DefaultSize = {200, 100};
+			/// @brief отрисовать элемент
+			virtual void Render() const;
 
-        /// @brief Элемент интерфейса
-        /// @note Используется как шаблон для других классов
-        class UIElement
-        {
-        protected:
-        
-            /// @brief Координаты
-            UDim _coord;
+			/// @brief Получить список всех элементов, для которых этот является родительсим
+			/// @return указатель на вектор указателей
+			std::vector<UIElement*>* GetChildren();
+
+			/// @brief Получить список всех элементов, для которых этот является родительсим
+			/// @return вектор указателей
+			std::vector<UIElement*> GetChildren() const;
+
+			/// @brief 
+			/// @param Element 
+			/// @return 
+			UIElement& operator = (const UIElement& Element);
+
+			/// @brief 
+			/// @param Element 
+			/// @return 
+			bool operator == (const UIElement& Element) const;
+
+			/// @brief 
+			/// @param Element 
+			/// @return 
+			bool operator != (const UIElement &Element) const;
+
+		protected:
+
+			/// @brief Координаты
+			UDim _coord;
+
+			/// @brief Размер
+			UDim _size;
+
+			/// @brief Основной цвет элемента
+			Colors::Color _MainColor;
 
 			int _rotation;
 
-            /// @brief Размер
-            UDim _size;
+			/// @brief Элемент gui относительно которого просиходят расчёты относительного размера
+			mutable GuiObject* Parent = nullptr;
 
-            Colors::Color _MainColor;
+			mutable std::vector<UIElement*> _childs;
 
-            /// @brief Отступы
-            unsigned _Margin;
+			bool Visible = true;
 
-            
-           
-        public:
-            /// @brief Имя класса, (для наследуемых классов)
-            std::string ClassName = "UIElement";
+			bool ParentIsWindow = false;
 
-            /// @brief Флаг того нужно ли отрисовывать этот элемент при каждой перерисовке окна
-            bool RenderOnEverythingRedraw;
+		private:
+			/// @brief Добавить
+			void AddChildren(const UIElement *child) const;
 
-            /// @brief Конструктор
-            /// @param UDim координаты
-            /// @param size размер
-            /// @param MainColor основной цвет
-            /// @param Margin отступы
-            /// @param relative отностельность
-			UIElement(const UDim &coord = point(0), const UDim &size = point(0), const Colors::Color &MainColor = OS::GetSystemColors().gui_frame, const unsigned &Margin = DefaultMargin);
+			/// @brief
+			void DeleteChildren(const UIElement *child) const;
+		};
+	}
 
-            virtual ~UIElement() = default;
-
-			/// @brief Получить размер элемента
-            /// @return Функция возвращает _size
-            virtual UDim GetSize() const;
-
-            /// @brief Изменить размер элемента
-            /// @param NewSize новый размер
-            virtual void SetSize(const UDim& NewSize);
-
-            /// @brief Получить отступы
-            /// @return Функция возвращает _Margin
-            virtual unsigned GetMargin() const;
-
-            /// @brief Получить осносной цвет элемента
-            /// @return Функция возвращает _MainColor
-            virtual Colors::Color GetColor() const;
-
-            /// @brief Изменить цвет
-            /// @param NewColor новый цвет
-            virtual void SetColor(const Colors::Color& NewColor);
-
-            /// @brief изменить координаты
-            /// @param NewCoord новые координаты
-            virtual void SetCoord(const UDim& NewCoord);
-
-            /// @brief Получить координаты элемента
-            /// @return Функция возвращает _coord
-            virtual UDim GetCoord() const;
-
-            /// @brief Повернуть элемент
-            /// @param NewAngle Новый угол наклона
-            virtual void Rotate(unsigned NewAngle);
-
-            /// @brief Получить угол наклона элемента
-            /// @return Функция возвращает _angle
-            virtual unsigned GetRotate() const;
-
-            /// @brief Проверить лежит ли курсор мыши над элементом
-            /// @return true если курсор мыши находится в этом элементе, иначе false
-            virtual bool Hover() const;
-
-            virtual void Handler() const;
-
-            /// @brief Получить абсолютный размер элемента
-            /// @return размер
-            virtual Size GetAbsoluteSize() const;
-
-            /// @brief Получить абсолютные координаты элемента
-            /// @return 
-            virtual Coord GetAbsolutePos() const;
-
-            /// @brief отрисовать элемент
-            virtual void Render() const;
-
-            /// @brief 
-            /// @param Element 
-            /// @return 
-            UIElement& operator = (const UIElement& Element);
-
-            /// @brief 
-            /// @param Element 
-            /// @return 
-            bool operator == (const UIElement& Element) const;
-
-            /// @brief 
-            /// @param Element 
-            /// @return 
-            bool operator != (const UIElement &Element) const;
-        };
-    }
+	void PrintDebug(const UI::UIElement &out);
 }
 
 #endif // __UI_H__

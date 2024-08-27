@@ -16,7 +16,7 @@ namespace KolibriLib
 		namespace text
 		{
 
-			
+			const Size DefaultCharSize = {16, 16};
 
 			/// @brief Текст
 			/// @details Фактически std::vector Char ов
@@ -28,17 +28,15 @@ namespace KolibriLib
 
 				/// @brief Конструктор
 				/// @param text
-				Txt(const std::string &text, const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().gui_face);
+				Txt(const std::string &text, const Colors::Color &TextColor = Globals::SystemColors.work_text);
 
 				/// @brief Конструктор копирования
 				/// @param copy объект который будет копироваться
 				Txt(const Txt &copy);
 
-
 				/// @brief Добавить строку в конец
 				/// @param txt строка
 				void Add(const std::string &txt);
-
 
 				/// @brief Вставить строку
 				/// @param txt строка
@@ -51,7 +49,7 @@ namespace KolibriLib
 
 				/// @brief Вывести текст
 				/// @param coord Координаты(левый верхний угол) текста
-				void Print(const Coord &coord) const;
+				void Print(const Coord &coord, const Colors::Color &BackgroundColor = Globals::SystemColors.work_area) const;
 
 				/*/// @brief Изменить шрифт символов
 				/// @param FontSize
@@ -62,9 +60,9 @@ namespace KolibriLib
 				/// @param Color
 				void SetTextColor(const Colors::Color &Color);
 
-				/// @brief Изменить цвет фона для всех символов
-				/// @param Color
-				void SetBackgroundColor(const Colors::Color &Color);
+				/// @brief Получить цвет текста
+				/// @return Цвет текста
+				Colors::Color GetTextColor() const;
 
 				/// @brief Получить текст
 				/// @return
@@ -72,8 +70,9 @@ namespace KolibriLib
 
 				/// @brief Получить символ под номером i
 				/// @param i номер
-				/// @return _data[i]
-				char GetChar(int i) const;
+				/// @return _data.at(i)
+				/// @throw std::string::at(std::size_t) можеть сгенерировать исключение
+				char GetChar(std::size_t i) const;
 
 				/// @brief Получить длину текста
 				/// @return длина текста
@@ -89,6 +88,8 @@ namespace KolibriLib
 
 				void SetTextSize(const Size &NewTextCharSize);
 
+				/// @brief 
+				/// @return 
 				Size GetTextSize() const;
 
 				Txt &operator=(const Txt &txt);
@@ -102,13 +103,17 @@ namespace KolibriLib
 				std::string _data;
 
 			private:
-				
 				/// @brief Размер символа
 				Size _CharSize;
 
+				/// @brief Цвет Текста
 				Colors::Color _TextColor;
-				Colors::Color _BackgroundColor;
-				
+
+				/// @brief Цвет выделения текста
+				Colors::Color *SelectColor;
+
+				/// Можно ли выделять этот текст
+				bool Selecteable;
 
 				bool Italic;
 				bool Bold;
@@ -116,9 +121,10 @@ namespace KolibriLib
 				bool StrikeThrough;
 			};
 
-			
 		} // namespace text
+
 	} // namespace UI
+	void PrintDebug(const UI::text::Txt &out);
 } // namespace KolibriLib
 
 

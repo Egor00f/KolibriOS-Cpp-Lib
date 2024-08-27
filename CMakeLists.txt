@@ -10,30 +10,24 @@ project(
 ################### CONFIG ######################
 #################################################
 #
-set(DEBUG	ON)
 set(CUSTOM_TOOCLAIN_PATH	OFF)
+<<<<<<< HEAD
+set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
+=======
 set(KOLIBRIOS_REPO	"../kolibrios")
 set(BuildExamples	ON)
 
+>>>>>>> dev-stable
 #
 #################################################
 
 
-
+set(CMAKE_CXX_STANDARD 11)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-if(IS_SUBPROJECT)
-	set(BuildExamples OFF)
-endif()
-
-
-
-SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
-
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
 
 #enable FASM
 include(CMakeDetermineASM_FASMCompiler)
@@ -42,8 +36,16 @@ include(CMakeTestASM_FASMCompiler)
 
 enable_language("ASM_FASM")
 
+SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 
 
+get_filename_component(REPO ${KOLIBRIOS_REPO} REALPATH)
+set(KOLIBRIOS_REPO ${REPO})
+if(EXISTS "${REPO}")
+	message("KOLIBRIOS REPO Found: ${KOLIBRIOS_REPO}")
+else()
+	message(FATAL_ERROR "KOLIBRIOS Repo not found, try set KOLIBRIOS_REPO or download kolibros repo")
+endif()
 
 
 
@@ -55,167 +57,152 @@ if(CUSTOM_TOOCLAIN_PATH)
 	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
 endif()
 
-include(CMakeKOS32gcc)
+include(CMakeDetermineKOS32Compiler)
+include(CMakeTestKOS32Compiler)
 
 
 
-#Flags
-SET(CMAKE_CXX_FLAGS  "-c -fpermissive -Wpointer-arith -Wreturn-local-addr -fomit-frame-pointer -Wparentheses")
-#SET(CMAKE_EXE_LINKER_FLAGS "-lfreetype")
+set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
 
-if(DEBUG)
-	message("DEBUG ON")
-	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUG")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
-else()
-	message("DEBUG OFF")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
-endif()
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__MakeStaticLib__")
-
-set(CMAKE_CXX_STANDARD 11)
-
-#include_directories(${LIBS_DIR}/freetype/include)
-
-include_directories(any)
-
-SET(SRC_PATH src)
-
+set(CMAKE_C_FLAGS_RELEASE "-O2")
+set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
 
 # CONFIGURED C_Layer ASM
 set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
 set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
 
-set(C_Layer_ASM_Sources
+# PATH TO KOLIBRILIB SOURCES
+set(KolibriLib_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
+SET(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/KolibriLib)
+SET(HEADERS_PATH ${KolibriLib_INCLUDE_PATH}/kolibriLib)
+SET(C_LAYER_HEADERS ${KolibriLib_INCLUDE_PATH}/C_Layer/INCLUDE)
+
+set(C_LAYER_LOADERS_SOURCES
 	${C_Layer_SRC_PATH}/loadlibimg.asm
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
+	${C_LAYER_HEADERS}/kolibri_buf2d.h
+	${C_LAYER_HEADERS}/kolibri_libimg.h
+	${C_LAYER_HEADERS}/kolibri_rasterworks.h
 )
-include_directories(${KOLIBRIOS_REPO}/programs)
 
-
-set(C_Layer_C_Sources
+set(C_LAYER_KOLIBRILIB_SOURCES
 	${SRC_PATH}/C_Layer/kolibri_buf2d.c
 	${SRC_PATH}/C_Layer/kolibri_libimg.c
 	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
+	${C_LAYER_HEADERS}/kolibri_buf2d.h
+	${C_LAYER_HEADERS}/kolibri_libimg.h
+	${C_LAYER_HEADERS}/kolibri_rasterworks.h
 )
-include_directories("./include/C_Layer/INCLUDE")
 
-
-include_directories("./include")
-
-SET(SOURCES 
-	${C_Layer_ASM_Sources}
-	${C_Layer_C_Sources}
-	${SRC_PATH}/filesystem.cpp 
-	${SRC_PATH}/color.cpp 
-	${SRC_PATH}/os.cpp 
-	${SRC_PATH}/graphic.cpp 
-	${SRC_PATH}/img.cpp 
-	${SRC_PATH}/thread.cpp 
-	${SRC_PATH}/types.cpp 
-	${SRC_PATH}/textBase.cpp 
-	${SRC_PATH}/UI.cpp 
-	${SRC_PATH}/image.cpp 
-	${SRC_PATH}/text.cpp 
-	${SRC_PATH}/textlabel.cpp 
+SET(SOURCES
+	${SRC_PATH}/filesystem.cpp
+	${SRC_PATH}/color.cpp
+	${SRC_PATH}/os.cpp
+	${SRC_PATH}/graphic.cpp
+	${SRC_PATH}/img.cpp
+	${SRC_PATH}/thread.cpp
+	${SRC_PATH}/types.cpp
+	${SRC_PATH}/textBase.cpp
+	${SRC_PATH}/UI.cpp
+	${SRC_PATH}/image.cpp
+	${SRC_PATH}/text.cpp
+	${SRC_PATH}/textlabel.cpp
 	${SRC_PATH}/buttonsBase.cpp
-	${SRC_PATH}/button.cpp 
+	${SRC_PATH}/BaseButton.cpp
+	${SRC_PATH}/Button.cpp
+	${SRC_PATH}/TextButton.cpp
+	${SRC_PATH}/ImageButton.cpp
 	${SRC_PATH}/checkbox.cpp
 	${SRC_PATH}/form.cpp
-	${SRC_PATH}/menu.cpp
+	#${SRC_PATH}/menu.cpp
+	${SRC_PATH}/window.cpp
+	${SRC_PATH}/windowAttached.cpp
+	${SRC_PATH}/debug.cpp
+	${SRC_PATH}/globals.cpp
+	${SRC_PATH}/freetype.cpp
+	${SRC_PATH}/keyboard.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
+	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
+	${KolibriLib_INCLUDE_PATH}/UI.hpp
+	${HEADERS_PATH}/init.hpp
+	${HEADERS_PATH}/types.hpp
+	${HEADERS_PATH}/debug.hpp
+	${HEADERS_PATH}/color.hpp
+	${HEADERS_PATH}/system/os.hpp
+	${HEADERS_PATH}/system/thread.hpp
+	${HEADERS_PATH}/system/filesystem.hpp
+	${HEADERS_PATH}/UI/UI.hpp
+	${HEADERS_PATH}/UI/checkbox.hpp
+	${HEADERS_PATH}/UI/buttons/button.hpp
+	${HEADERS_PATH}/UI/buttons/buttonsBase.hpp
+	${HEADERS_PATH}/UI/buttons/TextButton.hpp
+	${HEADERS_PATH}/UI/buttons/ImageButton.hpp
+	${HEADERS_PATH}/window/window.hpp
+	${HEADERS_PATH}/window/windowBase.hpp
+	${HEADERS_PATH}/window/windowAttached.hpp
+)
+
+#LOADERS THAT LOAD SHARED C_LAYER LIBS
+ADD_LIBRARY(C_LAYER_LOADERS OBJECT ${C_LAYER_LOADERS_SOURCES})
+
+target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
+
+
+ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT ${C_LAYER_KOLIBRILIB_SOURCES})
+
+target_include_directories(C_LAYER_KOLIBRILIB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_compile_options(C_LAYER_KOLIBRILIB
+	PRIVATE -c -D__MakeStaticLib__
 )
 
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
+target_link_libraries(KolibriLib 
+	PUBLIC C_LAYER_KOLIBRILIB
+	PUBLIC C_LAYER_LOADERS
+)
 
 
-target_include_directories(KolibriLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_compile_options(KolibriLib 
+	PRIVATE -c -D__MakeStaticLib__
+	PUBLIC -fomit-frame-pointer
+)
 
-################### Doxygen #####################################
+target_include_directories(KolibriLib
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+	PUBLIC ${KOLIBRIOS_REPO}/contrib/sdk/sources/freetype/include
+)
 
-MACRO(CONFIGURE_DOXYGEN_FILE DOXYGEN_CONFIG_FILE FILE_NAME_SUFFIX)
+# INCLUDE MACROSS FOR GENERATE DOXYGEN
+include(Doxygen)
 
- IF(EXISTS ${DOXYGEN_CONFIG_FILE})
-
-    FILE(REMOVE ${CMAKE_CURRENT_BINARY_DIR}/doxy-${FILE_NAME_SUFFIX}.conf)
-
-    FILE(READ ${DOXYGEN_CONFIG_FILE} DOXYFILE_CONTENTS)
-
-     STRING(REGEX REPLACE ";" "\\\\;" DOXYFILE_CONTENTS "${DOXYFILE_CONTENTS}")
-
-     STRING(REGEX REPLACE "\n" ";" DOXYFILE_LINES "${DOXYFILE_CONTENTS}")
-
-     LIST(LENGTH DOXYFILE_LINES ROW)
-
-     MATH(EXPR ROW "${ROW} - 1")
-
-     FOREACH(I RANGE ${ROW})
-
-        LIST(GET DOXYFILE_LINES ${I} LINE)
-
-        IF(LINE STRGREATER "")
-
-         STRING(REGEX MATCH "^[a-zA-Z]([^ ])+" DOXY_PARAM ${LINE})
-
-         IF(DEFINED DOXY_${DOXY_PARAM})
-
-            STRING(REGEX REPLACE "=([^\n])+" "= ${DOXY_${DOXY_PARAM}}" LINE ${LINE})
-
-         ENDIF(DEFINED DOXY_${DOXY_PARAM})
-
-        ENDIF()
-
-        FILE(APPEND ${CMAKE_CURRENT_BINARY_DIR}/doxy-${FILE_NAME_SUFFIX}.conf "${LINE}\n")
-
-     ENDFOREACH()
-
- ELSE()
-
-    MESSAGE(SEND_ERROR "Doxygen configuration file '${DOXYGEN_CONFIG_FILE}' not found. Documentation will not be generated")
-
- ENDIF()
-
-ENDMACRO(CONFIGURE_DOXYGEN_FILE)
-
-
-MACRO(ADD_DOCUMENTATION TARGET DOXYGEN_CONFIG_FILE)
-
-   FIND_PACKAGE(Doxygen)
-
-   IF(DOXYGEN_FOUND)
-      CONFIGURE_DOXYGEN_FILE(${DOXYGEN_CONFIG_FILE} ${TARGET})
-
-      ADD_CUSTOM_TARGET(${TARGET} COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/doxy-${TARGET}.conf)
-
-   ELSE(DOXYGEN_FOUND)
-      MESSAGE(STATUS "Doxygen not found. Documentation will not be generated")
-
-   ENDIF(DOXYGEN_FOUND)
-   
-ENDMACRO(ADD_DOCUMENTATION)
-
-
-
+#GENERATE DOXYGEN ONLY THIS PROJECT ISNT SUBPROECT
 if(NOT IS_SUBPROJECT)
 	SET(DOXY_OUTPUT_LANGUAGE "Russian")
 
 	SET(DOXY_INPUT ${PROJECT_SOURCE_DIR})
 
-	ADD_DOCUMENTATION(doc "${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile")
+	ADD_DOCUMENTATION(doc ${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile)
 
 endif()
 
 
+<<<<<<< HEAD
+#Examples build with make, see to examples/Makefile
+set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
+=======
 
+>>>>>>> dev-stable
 
-if(BuildExamples)
-	message("Build Examples ON")
-	
-	
-	#Examples build with make, see to examples/Makefile
-	add_custom_command(TARGET KolibriLib POST_BUILD
-		COMMAND make
-		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/examples
-		COMMENT "Build Example"
-	)
-endif(BuildExamples)
+add_custom_target(
+	Example
+	COMMAND make
+	DEPENDS KolibriLib
+	WORKING_DIRECTORY ${ExamplesDir}
+	COMMENT "Build Example"
+	SOURCES ${ExamplesDir}/example.cpp ${ExamplesDir}/Makefile
+)
+
+#add_executable(Example ${ExamplesDir}/example.cpp)
+#target_link_libraries(Example PUBLIC KolibriLib)

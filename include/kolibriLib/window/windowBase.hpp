@@ -34,16 +34,16 @@ namespace KolibriLib
 			FixSize = 0,
 			
 			/// @brief только определить область окна, ничего не рисовать
-			NoDraw = 1,
+			NoDraw = 0b00000001,
 
 			/// @brief окно изменяемых размеров
-			CanResize = 2,
+			CanResize = 0b00000010,
 
 			/// @brief окно со скином
-			withSkin = 3,
+			withSkin = 0b00000011,
 
 			/// @brief окно со скином фиксированных размеров
-			FixSizewithSkin = 4,
+			FixSizewithSkin = 0b00000100,
 
 			/// @brief у окна есть заголовок
 			WindowHaveTitle = 0b00010000,
@@ -57,83 +57,6 @@ namespace KolibriLib
 			/// @brief градиентная заливка рабочей области
 			GradientDraw = 0b10000000
 		};
-
-		/// @brief
-		/// @param coord Координаты окна(его левого верхнего угола) на экране
-		/// @param size Размеры окна
-		/// @param title Заголовок окна
-		/// @param WorkColor цвет рабочей области окна
-		/// @param TitleColor Цвет текста заголовка
-		/// @param style Стиль
-		inline void CreateWindow(const Coord &coord,
-								 const Size &size,
-								 const std::string &title,
-								 const Colors::Color &WorkColor	= OS::GetSystemColors().win_body,
-								 Colors::Color TitleColor	= OS::GetSystemColors().win_title,
-								 uint8_t style	= WindowStyle::CanResize | WindowStyle::Relative)
-		{
-			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
-		}
-
-		/// @brief Снять фокус с окна
-		/// @param slot слот окна
-		inline void UnfocusWindow(const Thread::Slot &slot)
-		{
-			_ksys_unfocus_window(slot);
-		}
-
-		inline Size GetWindowSize()
-		{
-			auto inf = Thread::GetThreadInfo();
-			return {inf.winx_size, inf.winy_size};
-		}
-
-		/// @brief Поставить фокус на окно
-		/// @param slot слот окна
-		inline void FocusWindow(const Thread::Slot &slot)
-		{
-			_ksys_focus_window(slot);
-		}
-
-		/// @brief Получить слот активного окна
-		/// @return Слот активного в данный момент окна
-		inline Thread::Slot GetActiveWindow()
-		{
-			Thread::Slot s;
-			asm_inline(
-				"int $0x40"
-				: "=a"(s)
-				: "a"(18), "b"(7)
-			);
-			
-			return s;
-		}
-
-		/// @brief Свернуть окно
-		inline void MinimizeWindow()
-		{
-			asm_inline(
-				"int $0x40" 
-				::"a"(18), "b"(10)
-			);
-		}
-
-		/// @brief Свернуть все окна
-		inline void MinimizeAllWindows()
-		{
-			asm_inline(
-				"int $0x40" 
-				::"a"(18), "b"(23)
-			);
-		}
-
-		/// @brief получить координаты окна
-		/// @return Координаты окна
-		inline Coord GetWindowCoord()
-		{
-			auto inf = Thread::GetThreadInfo();
-			return {inf.winx_start, inf.winy_start};
-		}
 
 		/// @brief Список констант положения окна относительно других окон:
 		typedef enum Pos
@@ -151,12 +74,94 @@ namespace KolibriLib
 			AlwaysTop = 1
 		} Pos;
 
+		/// @brief
+		/// @param coord Координаты окна(его левого верхнего угола) на экране
+		/// @param size Размеры окна
+		/// @param title Заголовок окна
+		/// @param WorkColor цвет рабочей области окна
+		/// @param TitleColor Цвет текста заголовка
+		/// @param style Стиль
+		inline void CreateWindow(const Coord &coord,
+		                         const Size &size,
+		                         const std::string &title,
+		                         const Colors::Color &WorkColor	= OS::GetSystemColors().work_area,
+		                         Colors::Color TitleColor	= OS::GetSystemColors().grab_text,
+		                         uint8_t style	= WindowStyle::CanResize | WindowStyle::Relative)
+		{
+			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
+		}
+
+		/// @brief Снять фокус с окна
+		/// @param slot слот окна
+		inline void UnfocusWindow(const Thread::Slot &slot)
+		{
+			_ksys_unfocus_window(slot);
+		}
+
+		/// @brief Получить размер окна
+		/// @param pid PID процесса кторый создал окно
+		/// @return Размер окна
+		inline Size GetWindowSize(Thread::PID pid = Thread::ThisThread)
+		{
+			auto inf = Thread::GetThreadInfo(pid);
+			return {inf.winx_size, inf.winy_size};
+		}
+
+		/// @brief Поставить фокус на окно
+		/// @param slot слот окна
+		inline void FocusWindow(const Thread::Slot &slot)
+		{
+			_ksys_focus_window(slot);
+		}
+
+		/// @brief Получить слот активного окна
+		/// @return Слот активного в данный момент окна
+		inline Thread::Slot GetActiveWindow()
+		{
+			Thread::Slot s;
+
+			asm_inline (
+				"int $0x40"
+				: "=a"(s)
+				: "a"(18), "b"(7)
+			);
+			
+			return s;
+		}
+
+		/// @brief Свернуть окно
+		inline void MinimizeWindow()
+		{
+			asm_inline (
+				"int $0x40" 
+				:: "a"(18), "b"(10)
+			);
+		}
+
+		/// @brief Свернуть все окна
+		inline void MinimizeAllWindows()
+		{
+			asm_inline (
+				"int $0x40" 
+				:: "a"(18), "b"(23)
+			);
+		}
+
+		/// @brief получить координаты окна
+		/// @param pid PID процесса, который создал окно
+		/// @return Координаты окна
+		inline Coord GetWindowCoord(Thread::PID pid = Thread::ThisThread)
+		{
+			auto inf = Thread::GetThreadInfo(pid);
+			return {inf.winx_start, inf.winy_start};
+		}
+
 		/// @brief Получить положение окна относительно других окон
 		/// @return одна из констант из списка Pos
 		inline Pos GetWindowPos()
 		{
 			Pos a;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(25), "c"(1));
@@ -168,10 +173,10 @@ namespace KolibriLib
 		/// @param pid процесс окна, по умолчанию текущий
 		/// @return false если ошибка
 		//// @return true если успешно
-		inline bool SetWindowPos(Pos pos, Thread::PID pid = -1)
+		inline bool SetWindowPos(Pos pos, Thread::PID pid = Thread::ThisThread)
 		{
 			bool a;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(25), "c"(2), "d"(pid), "S"(pos));
@@ -186,10 +191,11 @@ namespace KolibriLib
 		}
 
 		/// @brief Получить размер рабочей области окна
+		/// @return Размер рабочей области окна
 		inline Size GetWorkArea()
 		{
 			ksys_pos_t a, b;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(a), "=b"(b)
 				: "a"(48), "b"(5));

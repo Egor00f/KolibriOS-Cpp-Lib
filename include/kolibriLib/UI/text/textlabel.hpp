@@ -5,7 +5,6 @@
 #include <sys/ksys.h>
 
 #include <string>
-#include <assert.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/UI/UI.hpp>
@@ -32,17 +31,18 @@ namespace KolibriLib
             /// @note Возможно важные сведения: текст всегда отрисовывается в середине 
             class TextLabel: public Txt, public UI::UIElement
             {
-            private:
-                /// @brief Выравнивание
-                unsigned Align;
-
-                /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
-                /// @warning пока что не работает
-                bool _TextScale;
-
-                mutable bool _Aligned;
             public:
                 const std::string ClassName = "TextLabel";
+                bool RenderOnEverythingRedraw = false;
+
+                enum Aling
+                {
+                    Right,
+                    Left,
+                    Center
+                };
+
+                typedef Aling Aling;
 
                 /// @brief Конструктор
                 /// @param coord координата
@@ -51,9 +51,8 @@ namespace KolibriLib
                 /// @param FontSize Размер текста
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin Отступы от границ
-                TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const Size &CharSize = {8, 16}, bool TextScale = true, const Colors::Color& TextColor = OS::GetSystemColors().gui_text, const unsigned& Margin = 0);
+                TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const Size &CharSize = {8, 16}, bool TextScale = true, const Colors::Color& TextColor = OS::GetSystemColors().work_text, const unsigned& Margin = 0);
 
-                
                 /// @brief Коснтруктор
                 /// @param coord коорднаты
                 /// @param size размер
@@ -65,7 +64,6 @@ namespace KolibriLib
                 /// @param Margin
                 // TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const std::string &text = "TextLabel",/* const Fonts::Font &Font = Fonts::DefaultFont,*/ const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().gui_frame, bool TextScale = true, unsigned Margin = 0);
                 
-
                 /// @brief 
                 /// @param coord 
                 /// @param size
@@ -77,7 +75,7 @@ namespace KolibriLib
                 TextLabel(const TextLabel &copy);
 
                 /// @brief Отрисовать текстовую метку
-                virtual void Render() const;
+                void Render() const;
 
                 /// @brief Изменить значение переменной _TextScale
                 /// @param scale Новое значение
@@ -98,10 +96,22 @@ namespace KolibriLib
                 bool operator == (const TextLabel& a) const;
 
                 bool operator != (const TextLabel& a) const;
+                
+            private:
+                /// @brief Выравнивание
+                Aling _Align = Center;
+
+                /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
+                /// @warning пока что не работает
+                bool _TextScale;
+
+                mutable bool _Aligned;
             };
         }
     } // namespace UI
     
+
+    void PrintDebug(const UI::text::TextLabel &out);
 } // namespace KolibriLib
 
 

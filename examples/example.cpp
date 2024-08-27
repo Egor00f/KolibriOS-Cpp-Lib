@@ -8,45 +8,40 @@ int main()
 	//Инициализация библиотеки
 	init(); 
 
-	Window window(
-		"Example Window",        	// Заголовок окна
-		window::DefaultWindowSize,	// Размер окна
-		GetSystemColors(),       	// Цвета окна
-		true                     	// Можно ли изменять размер окна пользователю
+	Window* wndw = new Window (
+		"Example Window",           // Заголовок окна
+		window::DefaultWindowSize,  // Размер окна
+		window::DefaultWindowCoord, // Положение окна
+		Globals::SystemColors,      // Цвета окна
+		false                     	// Можно ли изменять размер окна пользователю
 	);
 
 	// Добавление текстовой метки
-	Window::ElementNumber textlabel = window.AddElement(TextLabel(
-		                                                          UDim(0, 0, 0, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
-																  UDim(0.6, 0, 1, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
-																  "Hello World",
-																  {32, 36}           	// Размер символов 32x36
-																  ));
+	auto label = wndw->AddElement(TextLabel(
+		                            UDim(0, 0, 0, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
+									UDim(0.6, 0, 1, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
+									"Hello World",
+									{32, 36}           	// Размер символов 32x36
+								)
+					);
 
 	// Добавление кнопки
-	Window::ElementNumber button = window.AddElement(Button(UDim(0.6, 0, 0.8, 0), UDim(0.2, 0, 0.1, 0)));
+	TextButton* button = wndw->AddElement(TextButton(UDim(0.4, 0, 0.4, 0), UDim(0.2, 0, 0.2, 0)));
 
-	// Получение кнопки обратно
-	Button tmp(*(Button*)window.GetElement(button));
+	PrintDebug(*button);
 
-	// изменение текста в полученной кнопке
-	tmp.SetText("Button");
-
-	// Замена кнопки в окне на изменнёную
-	window.SetElement(button, tmp);
-
-	// больше не пригодится
-	tmp.~Button();
-	
 	// Отрисовка окна
-	window.Render();
+	wndw->Render();
+
+	
+
 
 	bool exit = false;
 	while (!exit)
 	{
 
 		// Вызов обработчика окна
-		Event event = window.Handler();
+		Event event = wndw->Handler();
 		
 		switch (event)
 		{
@@ -54,14 +49,17 @@ int main()
 			exit = true;
 			break;
 		case Event::Button:
-			if(window.GetPressedButton() == ((Button*)window.GetElement(button))->GetId())
+			if(wndw->GetPressedButton() == button->GetId())
 			{
-				childWindow::MessageBox("button pressed", "Message");
+				_ksys_debug_puts("You Press Button");
+				OS::Notify("You Press Buttons", "just example");
 			}
 		default:
 			break;
 		}
 	}
+
+	delete wndw;
 
 	return 0;
 }

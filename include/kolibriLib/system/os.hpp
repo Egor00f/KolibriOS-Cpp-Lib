@@ -1,10 +1,10 @@
 #ifndef __OS_H__
 #define __OS_H__
 
-#include <string.h>
 
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/color.hpp>
+#include "thread.hpp"
 
 #include <vector>
 
@@ -18,6 +18,8 @@ namespace KolibriLib
 		/// @return Таблица системных цветов
 		Colors::ColorsTable GetSystemColors();
 
+		/// @brief Именить системыне цвета
+		/// @param Указатель на таблицу системных цветов
 		inline void SetSystemColors(Colors::ColorsTable *table)
 		{
 			asm_inline(
@@ -44,10 +46,10 @@ namespace KolibriLib
 			/// @brief Активность со стороны клавиатуры
 			Key     = KSYS_EVENT_KEY,
 
-			/// @brief 
+			/// @brief Ивент от экрана
 			Desktop = KSYS_EVENT_DESKTOP,
 			
-			/// @brief 
+			/// @brief Программу открыли в дебагере
 			Debug   = KSYS_EVENT_DEBUG,
 
 			/// @brief Выход
@@ -83,17 +85,100 @@ namespace KolibriLib
 		/// \param AppName Полное имя исполняемого файла
 		/// \param args аргументы. Максимум 256 символов
 		/// @param debug режим дебага
-		/// \return > 0 - программа загружена, eax содержит PID, < 0 если исполняемы файл не найден
-		int Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
+		/// \return PID запущенной программы
+		/// @return -1 если произошла ошибка
+		Thread::PID Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
 
 		/// @brief Время
 		typedef ksys_time_bcd_t Time;
+
+		typedef ksys_date_bcd_t Date;
 
 		/// @brief Получить системное время
 		/// @return
 		inline Time GetTime()
 		{
 			return _ksys_get_time();
+		}
+
+		inline Date GetDate()
+		{
+			return _ksys_get_date();
+		}
+
+		typedef enum SetTimeOrDate
+		{
+			/// @brief успешно
+			DONE,
+
+			/// @brief параметр задан неверно
+			WrongArgs,
+
+			/// @brief CMOS-батарейки разрядились
+			CMOS
+		} SetTimeOrDate;
+
+		/// @brief Установить системную  время
+		/// @param NewTime Время что будет установленно
+		inline SetTimeOrDate SetTime(Time NewTime)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline (
+				"int $0x40" 
+				: "=a"(ret)
+				: "a"(22), "b"(0), "c"(NewTime)
+			);
+
+			return ret;
+		}
+
+		/// @brief Установитьсистемную  дату
+		/// @param NewData Дата что будет установленна
+		inline SetTimeOrDate SetDate(Date NewDate)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline (
+				"int $0x40"
+				: "=a"(ret)
+				: "a"(22), "b"(1), "c"(NewDate)
+			);
+
+			return ret;
+		}
+
+		/// @brief Установить день недели
+		/// @param NewDayOfWeek День недели от 1 до 7
+		/// @note Ценность установки дня недели представляется сомнительной, поскольку он мало где используется(день недели можно рассчитать по дате)
+		inline SetTimeOrDate SetDayOfWeek(uint8_t NewDayOfWeek)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline(
+				"int $0x40" 
+				: "=a"(ret)
+				: "a"(22), "b"(2), "c"(NewDayOfWeek)
+			);
+
+			return ret;
+		}
+
+		/// @brief Установить бедильник
+		/// @param AlarmTime Время будильника
+		/// @paragraph Будильник можно установить на срабатывание в заданное время каждые сутки. При этом отключить его существующими системными функциями нельзя.
+		/// @paragraph Срабатывание будильника заключается в генерации IRQ8.
+		/// @paragraph Будильник - глобальный системный ресурс; установка будильника автоматически отменяет предыдущую установку 
+		inline SetTimeOrDate SetAlarm(Time AlarmTime)
+		{
+			SetTimeOrDate ret;
+
+			asm_inline(
+				"int $0x40" 
+				: "=a"(ret)
+				: "a"(22), "b"(3), "c"(AlarmTime)
+			);
+			return ret;
 		}
 
 		/// @brief Получить состояние спикера(Вкл/выкл)
@@ -170,6 +255,14 @@ namespace KolibriLib
 			return (lang)a;
 		}
 
+		inline void SetLang(lang l)
+		{
+			asm_inline(
+				"int $0x40"
+				:: "a"(21), "b"(5), "c"(l)
+			);
+		}
+
 		/// @brief Иконки в сообщениях
 		/// @image notify.orig.png
 		typedef enum 
@@ -193,6 +286,7 @@ namespace KolibriLib
 			/// @brief не закрывать автоматически
 			NoAutoClose = 'd',
 			
+			/// @brief не закрываеть по клику
 			NoClose = 'c',
 
 			/// @brief Есть заголовок
@@ -206,9 +300,8 @@ namespace KolibriLib
 		/// @param Text текст после заголовка
 		/// @param icon иконка
 		/// @param keys ключи
-		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const std::vector<notifyKey> &keys = {notifyKey::Title});
+		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, (notifyKey)0, (notifyKey)0, (notifyKey)0});
 		
-
 		/// @brief Уведомление об ошибке через увдомления системы
 		/// @param Title Заголовок уведомления об ошибке
 		/// @param Text текст
@@ -218,15 +311,14 @@ namespace KolibriLib
 			_ksys_exec("/sys/@notify", (char*)a.c_str(), false);
 		}
 
-
 		/// @brief Версия ядра
 		struct CoreVersion
 		{
-			struct
+			union
 			{
 				/// @brief Версия
 				uint32_t version;
-				union
+				struct
 				{
 					uint8_t a;
 					uint8_t b;
@@ -260,6 +352,22 @@ namespace KolibriLib
 		inline uint32_t GetCPUClock()
 		{
 			return _ksys_get_cpu_clock();
+		}
+
+		/// @brief получить значение высокоточного счётчика времени
+		/// @note функция использует счётчик HPET, если HPET не доступен используется счётчик PIT. В этом случае точность будет уменьшена до 10 000 00 наносекунд.
+		/// @return число наносекунд с момента загрузки ядра
+		inline long long GetHighPrecisionTimerCount()
+		{
+			uint32_t a, b;
+
+			asm_inline(
+				"int $0x40"
+				: "=a"(a), "=d"(b)
+				: "a"(21), "b"(10)
+			);
+
+			return (long long)((b << 31) || a);
 		}
 
 	} // namespace OS

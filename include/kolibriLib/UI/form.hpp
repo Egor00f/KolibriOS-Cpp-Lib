@@ -2,11 +2,12 @@
 #define __FORM_H__
 
 #include <string>
+#include <memory>
 
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/UI/text/textlabel.hpp>
-#include <kolibriLib/UI/button.hpp>
+#include <kolibriLib/UI/buttons/TextButton.hpp>
 #include <input.hpp>
 #include <kolibriLib/color.hpp>
 
@@ -19,13 +20,12 @@ namespace KolibriLib
         {
         private:
             /// @brief Кнопка
-            buttons::Button _butt;
+            buttons::TextButton _butt;
 
             /// @brief Введённый пользователем текст
             std::string _inputText;
 
         public:
-            std::string ClassName = "Form";
             bool RenderOnEverythingRedraw = true;
 
             /// \brief конструктор
@@ -35,17 +35,16 @@ namespace KolibriLib
             /// \param FormColor цвет рамки формы
             /// \param BackgroundTextColor цвет фонового текста
             /// \param Margin отступы рамки от текста
-            Form(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& BackgroundText = "Text...", const Colors::Color& FormColor = OS::GetSystemColors().gui_frame, const Colors::Color& ButtonTextColor = OS::GetSystemColors().gui_text, const unsigned& Margin = DefaultMargin);
+            Form(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& BackgroundText = "Text...", const Colors::Color& FormColor = OS::GetSystemColors().work_text, const Colors::Color& ButtonTextColor = OS::GetSystemColors().work_area, const unsigned& Margin = DefaultMargin);
 
             /// \brief Отрисовать форму
             void Render() const;
 
-            /// \brief Обработчик
-            void Handler();
+            void OnMouseEvent();
 
-            /// @brief Обработчик кнопки
-            /// @return true если на форму нажали,
-            bool ButtonHandler();
+            void OnKeyEvent();
+
+            void OnButtonEvent(buttons::ButtonID PressedButtonID);
 
             /// \brief Получить введённый текст
             /// \return @link _inputText (текст который ввели в форму)

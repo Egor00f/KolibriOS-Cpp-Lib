@@ -13,8 +13,7 @@ namespace KolibriLib
 	/// @return размер экрана
 	inline Size GetScreenSize()
 	{
-		ksys_pos_t a = _ksys_screen_size();
-		return Size(a.x, a.y);
+		return Size(_ksys_screen_size());
 	}
 
 	/// @brief Получить принадлежность точки
@@ -23,11 +22,11 @@ namespace KolibriLib
 	inline Thread::Slot ScreenPointAffiliation(Coord POINT)
 	{
 		Thread::Slot s;
-		__asm__ __volatile__(
+		asm_inline (
 			"int $0x40"
 			: "=a"(s)
 			: "a"(34), "b"(POINT.x), "c"(POINT.y)
-			);
+		);
 		return s;
 	}
 	

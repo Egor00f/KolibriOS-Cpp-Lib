@@ -7,7 +7,7 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/UI/UI.hpp>
-#include <kolibriLib/UI/button.hpp>
+#include <kolibriLib/UI/buttons/TextButton.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/color.hpp>
 
@@ -17,7 +17,7 @@ namespace KolibriLib
     {
         /// @brief Класс для работы с чекбоксами
         /// @note Это просто чекбокс, ему можно задать различные стили
-        class CheckBox : public buttons::Button
+        class CheckBox : public buttons::TextButton
         {
         public:
             const std::string ClassName = "CheckBox";
@@ -34,7 +34,7 @@ namespace KolibriLib
                 Smoth,
             } style;
 
-            CheckBox(const UDim &coord = point(0), const UDim &size = DefaultSize, const style &Style = style::Default, const Colors::Color &CheckBoxBorderColor = OS::GetSystemColors().gui_frame, const Colors::Color &BackgroundColor = OS::GetSystemColors().win_body, const unsigned &Margin = DefaultMargin);
+            CheckBox(const UDim &coord = point(0), const UDim &size = DefaultSize, const style &Style = style::Default, const Colors::Color &CheckBoxBorderColor = OS::GetSystemColors().work_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().work_area, const unsigned &Margin = DefaultMargin);
 
             /// @brief Отрисовать Checkbox
             void Render();
@@ -43,12 +43,8 @@ namespace KolibriLib
             /// @param s 
             void SetStyle(style s);
 
-            /// @brief Обработчик
-            bool Handler();
-
             private:
                 style _style;
-                bool _status;
         };
     } // namespace UI
     

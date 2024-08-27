@@ -38,7 +38,8 @@ typedef struct __attribute__ ((__packed__))
 	uint8_t color_bit;
 } buf2d_struct;
 
-enum BUF2D_ALGORITM_FILTR {
+enum BUF2D_ALGORITM_FILTR 
+{
 	SIERRA_LITE,
 	FLOYD_STEINBERG,
 	BURKERS,
@@ -46,7 +47,8 @@ enum BUF2D_ALGORITM_FILTR {
 	ATKINSON
 };
 
-enum BUF2D_OPT_CROP {
+enum BUF2D_OPT_CROP 
+{
 	BUF2D_OPT_CROP_TOP = 1,
 	BUF2D_OPT_CROP_LEFT = 2,
 	BUF2D_OPT_CROP_BOTTOM = 4,
@@ -74,10 +76,12 @@ extern void (*buf2d_create_asm)(buf2d_struct *buffer) __attribute__((__stdcall__
 /// @param color Color of curve
 extern void (*buf2d_curve_bezier_asm)(buf2d_struct *buffer, uint32_t p1, uint32_t p2, uint32_t p3, ksys_color_t color) __attribute__((__stdcall__));
 
+/*
 /// @brief
 /// @param buffer
 /// @param imgbuff Pointer to Image->Data buffer
 extern void (*buf2d_create_f_img)(buf2d_struct *buffer, void *imgbuff) __attribute__((__stdcall__));
+*/
 
 /// @brief Draws a buffer on the screen (works through system f. 7).
 /// @param buffer Poiter to buf2d_struct
@@ -234,14 +238,14 @@ extern void (*buf2d_flip_v)(buf2d_struct *buffer) __attribute__((__stdcall__));
 
 extern void (*buf2d_filter_dither)(buf2d_struct *, unsigned int) __attribute__((__stdcall__));
 
-/// @brief 
-/// @param tlx 
-/// @param tly 
-/// @param sizex 
-/// @param sizey 
-/// @param font_bgcolor 
-/// @param color_bit 
-/// @return 
+/// @brief создать buf2d_struct
+/// @param tlx
+/// @param tly
+/// @param sizex
+/// @param sizey
+/// @param font_bgcolor
+/// @param color_bit
+/// @return указатель на структуру
 buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, ksys_color_t font_bgcolor, uint8_t color_bit);
 
 /// @brief Copy buf2d_struct
@@ -261,6 +265,7 @@ inline void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, 
 }
 
 /// @brief Конвертирует 32 битный буфер в 24 битный, координаты не учитываются
+/// @details Просто убиарет прозрачность
 /// @param buffer32bit Буфер который будет конвертироваться
 /// @param buffer24bit Буфер в который будет конвертирован 32 битный буфер
 /// @return Функция возвращает buffer24bit

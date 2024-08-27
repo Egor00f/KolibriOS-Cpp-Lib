@@ -2,6 +2,7 @@
 #define __COLOR_H__
 
 #include <sys/ksys.h>
+#include <kolibriLib/debug.hpp>
 
 namespace KolibriLib
 {
@@ -11,24 +12,21 @@ namespace KolibriLib
         /// @brief Цвет
         union Color
         {
-            ksys_color_t val;
-            struct
-            {
-                /// @brief Альфа канал
-                uint8_t _a;
-                uint8_t blue;
-                uint8_t green;
-                uint8_t red;
-            };
-
             Color():val(0xFFFFFFFF){};
 
             /// @brief Конструктор
             /// @param a 
             Color(const ksys_color_t& a);
-            Color(const Color *a);
+            //Color(const Color *a);
             Color(const Color &a);
             Color(const rgb_t &color);
+
+            /// @brief 
+            /// @param R 
+            /// @param G 
+            /// @param B 
+            /// @param A 
+            Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A = 0xFF);
 
             operator rgb_t() const;
             operator ksys_color_t() const;
@@ -49,6 +47,18 @@ namespace KolibriLib
             bool operator == (const Color& a) const;
 
             bool operator != (const Color& a) const;
+
+            ksys_color_t val;
+
+            struct
+            {
+                uint8_t blue;
+                uint8_t green;
+                uint8_t red;
+
+                /// @brief Альфа канал
+                uint8_t _a;
+            };
         };
 
         /// @brief Конвертирует rgb_t в ksys_color_t
@@ -74,8 +84,9 @@ namespace KolibriLib
         const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         /// @brief Таблица системных цветов
-        struct ColorsTable
+        struct ColorsTable : ksys_colors_table_t
         {
+            /*
             /// @brief цвет фона системного меню
             Color menu_body;
 
@@ -108,20 +119,50 @@ namespace KolibriLib
 
             /// @brief цвет бордюра окна между внешней и внутренней рамкой
             Color win_face;
+
+            /// @brief цвет внешней рамки "неактивного" окна
             Color win_inface;
+
+            /// @brief цвет внешней рамки окна
             Color win_frame;
+
+            /// @brief цвет внешней рамки "неактивного" окна
             Color win_inframe;
+
+            /// @brief цвет внутренней рамки окна
             Color win_border;
+
+            /// @brief цвет внутренней рамки "неактивного" окна
             Color win_inborder;
+
+            /// @brief цвет в оттенках серого в рабочей области окна.
             Color win_graytext;
+
+            /// @brief цвет рамки системного меню
             Color menu_frame;
+
+            /// @brief цвет текста системного меню
             Color menu_text;
+
+            /// @brief цвет фона области панели
             Color panel_body;
+
+            /// @brief цвет текста области панели
             Color panel_text;
+
+            /// @brief цвет рамки всплывающей подсказки
             Color hint_frame;
+
+            /// @brief цвет фона всплывающей подсказки
             Color hint_body;
+
+            /// @brief цвет текста всплывающей подсказки
             Color hint_text;
+
+            /// @brief цвет фона "неактивной" кнопки
             Color btn_inface;
+
+            /// @brief цвет фона кнопки при наведении курсора (focus)
             Color btn_fcface;
             Color btn_frame;
             Color btn_inframe;
@@ -139,23 +180,28 @@ namespace KolibriLib
             Color gui_intex;
             Color gui_fctext;
             Color gui_select;
+            
+            unsigned int reserved_a;
+            unsigned int reserved_b;
+            unsigned int reserved_c;
+            unsigned int reserved_d;
+            unsigned int reserved_e;
+            unsigned int reserved_f;
 
-            // ksys_color_t frame_area;
-            // ksys_color_t grab_bar;
-            // ksys_color_t grab_bar_button;
-            // ksys_color_t grab_button_text;
-            // ksys_color_t grab_text;
-            // ksys_color_t work_area;
-            // ksys_color_t work_button;
-            // ksys_color_t work_button_text;
-            // ksys_color_t work_text;
-            // ksys_color_t work_graph;
-
+            
 
             ColorsTable(const ColorsTable &table);
             ColorsTable(const ksys_colors_table_t &table);
+
+            */
         };
     }
+
+    void PrintDebug(Colors::Color out);
+
+
+    void PrintDebug(Colors::ColorsTable out);
+    
 } // namespace KolibriLib
 
 

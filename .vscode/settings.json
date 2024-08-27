@@ -2,7 +2,7 @@
     "files.associations": {
         "thread": "cpp",
         "array": "cpp",
-        "*.tcc": "cpp",
+        "*.tcc": "c",
         "cctype": "cpp",
         "chrono": "cpp",
         "clocale": "cpp",
@@ -50,7 +50,7 @@
         "kolibri_gui_elements.h": "c",
         "kolibri_gui.h": "c",
         "kolibri_editbox.h": "c",
-        "types.hpp": "c",
+        "types.hpp": "cpp",
         "typeindex": "cpp",
         "cstddef": "cpp",
         "cstring": "cpp",
@@ -82,5 +82,44 @@
         "Git Bash": {
             "source": "Git Bash"
         }
-    }
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "markup.other.log.error",
+                "settings": {
+                    "foreground": "#FF0000"
+                }
+            },
+            {
+                "scope": "markup.other.log.warn",
+                "settings": {
+                    "foreground": "#c500f7cc"
+                }
+            },
+            {
+                "scope": "markup.other.log.info",
+                "settings": {
+                    "foreground": "#2cd3c5"
+                }
+            },
+            {
+                "scope": "markup.other.log.debug",
+                "settings": {
+                    "foreground": "#888585"
+                }
+            },
+            {
+                "scope": "markup.other.log.highlight",
+                "settings": {
+                    "foreground": "#19ff04"
+                }
+            }
+        ]
+    },
+    "makefile.makefilePath": "examples",
+
+    "cmake.configureSettings": {
+        "CMAKE_TOOLCHAIN_FILE": "${workspaceFolder}/cmake/toolchain.cmake"
+      }
 }
