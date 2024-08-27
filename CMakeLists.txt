@@ -11,7 +11,13 @@ project(
 #################################################
 #
 set(CUSTOM_TOOCLAIN_PATH	OFF)
+<<<<<<< HEAD
 set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
+=======
+set(KOLIBRIOS_REPO	"../kolibrios")
+set(BuildExamples	ON)
+
+>>>>>>> dev-stable
 #
 #################################################
 
@@ -182,8 +188,12 @@ if(NOT IS_SUBPROJECT)
 endif()
 
 
+<<<<<<< HEAD
 #Examples build with make, see to examples/Makefile
 set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
+=======
+
+>>>>>>> dev-stable
 
 add_custom_target(
 	Example
