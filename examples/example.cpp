@@ -16,8 +16,6 @@ int main()
 		false                     	// Можно ли изменять размер окна пользователю
 	);
 
-	/*
-
 	// Добавление текстовой метки
 	auto label = wndw->AddElement(TextLabel(
 		                            UDim(0, 0, 0, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
@@ -35,11 +33,8 @@ int main()
 	// Отрисовка окна
 	wndw->Render();
 
-	*/
+	
 
-	FreeType::DrawText({20, 20}, "Amogus", FreeType::Face("/kolibrios/fonts/Arial.ttf"));
-
-	/*
 
 	bool exit = false;
 	while (!exit)
@@ -63,8 +58,6 @@ int main()
 			break;
 		}
 	}
-
-	*/
 
 	delete wndw;
 

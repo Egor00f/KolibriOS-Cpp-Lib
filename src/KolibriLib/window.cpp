@@ -283,7 +283,7 @@ OS::Event Window::Handler()
 		{
 			Coord m = mouse::GetMousePositionInWindow();
 
-			if (m.x < GetSize().GetAbsolute().x && m.y < window::GetSkinHeight())
+			if (m.x < GetSize().GetAbsolute().x && m.y < (int)window::GetSkinHeight())
 			{
 				
 			}
@@ -312,7 +312,7 @@ OS::Event Window::Handler()
 		Coord Mouse = mouse::GetMousePositionInWindow();
 		if ( ((Mouse.x > 0 && Mouse.y > 0)	&& 
 		       Mouse.x < GetWindowSize().x	&& 
-			   Mouse.y < GetSkinHeight())	&& 
+			   Mouse.y < (int)GetSkinHeight())	&& 
 			   mouse::GetMouseButtons() == mouse::LeftButton)
 		{
 			while (mouse::GetMouseButtons() == mouse::LeftButton)
@@ -355,7 +355,21 @@ UI::buttons::ButtonsIDController *KolibriLib::window::Window::GetButtonIDControl
 	return (UI::buttons::ButtonsIDController *)&_buttonsController;
 }
 
-void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) 
+void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::ButtonsIDController*) 
 {
 	
+}
+
+void KolibriLib::window::Window::AddElement(UIElement* element)
+{
+	PrintDebug("Add element\n");
+
+	if (element->GetParent() == nullptr)
+	{
+		element->WindowAsParent(this);
+	}
+
+	element->SetButtonIDController(&_buttonsController);
+
+	_Elements.push_back(element);
 }

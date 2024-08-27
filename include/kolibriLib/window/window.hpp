@@ -142,10 +142,12 @@ namespace KolibriLib
 			/// @brief Проверить какая нажата
 			UI::buttons::ButtonID GetPressedButton();
 
+			void AddElement(UIElement *element);
+
 			template <class T>
 			/// @brief Добавить UI элемент
 			/// @param element
-			/// @return std::pair<номер элемента в списке, указатель на элемент>
+			/// @return указатель на элемент(новый)
 			T* AddElement(const T &element);
 
 			template <class T >

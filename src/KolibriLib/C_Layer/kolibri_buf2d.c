@@ -18,7 +18,8 @@ buf2d_struct *buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsig
 
 buf2d_struct *buf2d_copy(const buf2d_struct *buff)
 {
-	buf2d_struct *b = (buf2d_struct *)malloc(sizeof(buf2d_struct));
+	buf2d_struct *b = (buf2d_struct *) malloc(sizeof(buf2d_struct));
+	
 	memcpy(b, buff, sizeof(buf2d_struct));
 	
 	return b;
@@ -28,12 +29,16 @@ buf2d_struct *buf2d_conv_32_to_24(const buf2d_struct *buffer32bit, buf2d_struct 
 {
 	if(buffer24bit == NULL)	// Если 24 битный бувер не указан
 	{                      	// То нужно его создать
-		buffer24bit = buf2d_create(0,0, buffer32bit->width, buffer32bit->height, 0xFFFFFF, 24);
+		buffer24bit = buf2d_create(0, 0, buffer32bit->width, buffer32bit->height, 0xFFFFFF, 24);
 	}
 
 	for (unsigned i = 0; i < (buffer32bit->width * buffer32bit->height); i++)
 	{
-		((rgb_t *)buffer24bit->buf_pointer)[i] = (rgb_t){buffer32bit->buf_pointer[i] << 24, buffer32bit->buf_pointer[i] << 16, buffer32bit->buf_pointer[i] << 8};
+		((rgb_t *)buffer24bit->buf_pointer)[i] = (rgb_t) {
+			buffer32bit->buf_pointer[i] << 24, 
+			buffer32bit->buf_pointer[i] << 16, 
+			buffer32bit->buf_pointer[i] << 8
+		};
 	}
 	return buffer24bit;
 }

@@ -7,17 +7,19 @@
 #include <stdint.h>
 #include <vector>
 
-
 /// @brief Библиотека freetype и оболочки для связки с KolibriLib
+/// @details Зачем оболочки? Да чтоб просто не писать ручками FT_ТИП_New() и FT_ТИП_Done() и просто потому что могу
 namespace FreeType
 {
 	#include <ft2build.h>
 	#include FT_FREETYPE_H
 	#include FT_GLYPH_H
 	#include FT_TYPES_H
+	#include FT_STROKER_H
 
 	typedef FT_ULong CharCode;
 
+	/// @brief Оболочка для FT_Error
 	struct Error
 	{
 		FT_Error val;
@@ -28,6 +30,7 @@ namespace FreeType
 
 		operator FT_Error() const;
 		operator std::string() const;
+		operator bool() const;
 	};
 
 	/// @brief Оболочка для FT_Libraty
@@ -47,18 +50,79 @@ namespace FreeType
 		FT_Library lib;
 	};
 
+	/// @brief Оболочка для FT_Stroker
+	class Stroker
+	{
+	public:
+		Stroker();
+		~Stroker();
+
+		/// @brief 
+		/// @param radius 
+		/// @param cap 
+		/// @param join 
+		/// @param miterLimint 
+		void Set(FT_Fixed radius, FT_Stroker_LineCap cap, FT_Stroker_LineJoin join, FT_Fixed miterLimint);
+
+		void Rewind();
+
+		operator FT_Stroker() const;
+
+	private:
+		FT_Stroker stroker;
+	};
+
+
+
+	/// @brief Оболочка для FT_Glyph
+	class Glyph
+	{
+	public:
+
+		/// @brief Конструктор поумолчанию
+		Glyph():_glyph(0){}
+
+		/// @brief Конструктор
+		/// @param glyph глиф
+		Glyph(FT_Glyph glyph);
+
+		/// @brief Конструктор копирования
+		Glyph(const Glyph &glyph);
+
+		Error Stroke(Stroker stroker, FT_Bool destroy = false);
+
+		Error StrokeBorder(Stroker stroker, FT_Bool inside, FT_Bool destroy = false);
+
+		Error ToBitmap(FT_Render_Mode renderMode, FT_Vector *origin, FT_Bool destroy = false);
+
+		FT_BitmapGlyph GetBitmapGlyph(FT_Render_Mode renderMode, FT_Vector *origin, FT_Bool destroy = false);
+
+		Error Transform(FT_Matrix* matrix, FT_Vector* delta);
+
+		/// @brief Копировать этот глиф
+		Glyph Clone() const;
+
+		operator FT_Glyph() const;
+
+	private:
+		FT_Glyph _glyph;
+	};
+
 	/// @brief Оболочка для FT_Face
 	class Face
 	{
 	public:
 		/// @brief Конструктор
-		Face():face(0){}
+		Face();
 
 		/// @brief Конструктор
 		/// @param file путь до файла
 		/// @throw Если ошибка
 		Face(const char* file);
 
+		Face(const Face &c);
+
+		/// @brief Деструктор
 		~Face();
 
 		/// @brief Отурыть файл
@@ -113,10 +177,11 @@ namespace FreeType
 		FT_Face face;
 	};
 
+	
+
 	extern Library _lib;
 
-
-	void DrawText(KolibriLib::Coord coord, const std::string text, Face face);
+	void DrawText(const KolibriLib::Coord &coord, const std::string text, Face face);
 } // namespace FreeType
 
 namespace KolibriLib

@@ -124,15 +124,26 @@ namespace KolibriLib
 			UDim::Axis X, Y;
 
 			/// @brief Конструктор
-			/// @param p
-			UDim(const point &p);
-
-			/// @brief 
 			/// @param XScale 
 			/// @param XOffset 
 			/// @param YScale 
 			/// @param YOffset 
 			UDim(float XScale, int XOffset, float YScale, int YOffset);
+
+			/// @brief Конструктор
+			/// @param x 
+			/// @param y
+			UDim(int x, int y);
+
+			/// @brief Конструктор
+			/// @param x
+			/// @param y
+			UDim(float x, float y);
+
+			/// @brief Конструктор
+			/// @details делает тоже самое что и UDim(int, int), только x и y берутся из точки
+			/// @param p точка
+			UDim(const point &p);
 
 			/// @brief получить абсолютные значения(в пикселях) относительно окна
 			/// @return 

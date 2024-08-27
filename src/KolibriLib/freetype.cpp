@@ -46,8 +46,13 @@ Error::operator std::string() const
 	return ret;
 }
 
+Error::operator bool() const
+{
+	return val != FT_Err_Ok;
+}
+
 Error::Error(FT_Error v)
-	:	val(v)
+	: val(v)
 {
 	
 }
@@ -77,6 +82,7 @@ Library::Library()
 		KolibriLib::PrintDebug("Error init FreeType lib, Error: ");
 		KolibriLib::PrintDebug(err);
 		KolibriLib::PrintDebug("\n");
+
 		throw err;
 	}
 }
@@ -98,8 +104,22 @@ FreeType::Library::operator FT_Library() const
 	return lib;
 }
 
+FreeType::Face::Face()
+	:	face(0)
+{
+	KolibriLib::PrintDebug("Face constructor (face=0)\nFace constructor done\n");
+}
+
+FreeType::Face::Face(const Face &c)
+	: face(c.face)
+{
+	KolibriLib::PrintDebug("Face constructor(copy)\nFace constructor done\n");
+}
+
 FreeType::Face::Face(const char *file)
 {
+	KolibriLib::PrintDebug("Face constructor\n");
+
 	face = 0;
 
 	FT_Error err = FT_New_Face (
@@ -114,19 +134,44 @@ FreeType::Face::Face(const char *file)
 		KolibriLib::PrintDebug("Error init FreeType face, Error: ");
 		KolibriLib::PrintDebug(err);
 		KolibriLib::PrintDebug("\n");
+
 		throw err;
 	}
+
+	KolibriLib::PrintDebug("Face constructor done\n");	// Навсякий случай
+}
+
+FreeType::Face::~Face()
+{
+	KolibriLib::PrintDebug("Face destructor\n");
+
+	Error err = FT_Done_Face(face);
+
+	if(err)
+	{
+		KolibriLib::PrintDebug("Error done FreeType face, Error: ");
+		KolibriLib::PrintDebug(err);
+		KolibriLib::PrintDebug("\n");
+
+		throw err;
+	}
+	
+	KolibriLib::PrintDebug("Face destructor done\n");
 }
 
 Error FreeType::Face::OpenFile(const char *file)
 {
-	Error err;
-	if(face)
+	Error err = 0;
+
+	if(face && face != 0)
 	{
 		err = FT_Done_Face(face);
 	}
 
-	err = FT_New_Face(_lib, file, 0, &face);
+	if(err)
+	{
+		err = FT_New_Face(_lib, file, 0, &face);
+	}
 
 	return err;
 }
@@ -139,10 +184,11 @@ FreeType::Face::operator FT_Face() const
 FT_Error FreeType::Face::SetCharSize(const KolibriLib::Size &NewCharSize)
 {
 	const KolibriLib::Size ScreenSize = KolibriLib::GetScreenSize();
+
 	return FT_Set_Char_Size (
 		face,
-		NewCharSize.x*64,
-		NewCharSize.y*64,
+		NewCharSize.x * 64,
+		NewCharSize.y * 64,
 		ScreenSize.x,
 		ScreenSize.y
 	);
@@ -164,7 +210,7 @@ FT_UInt FreeType::Face::GetGlyphIndex(const CharCode &charcode)
 
 FT_Error FreeType::Face::LoadGlyph(FT_UInt GlyphIndex, FT_Int LoadFlags)
 {
-	return FT_Load_Glyph(
+	return FT_Load_Glyph (
 		face,
 		GlyphIndex,
 		LoadFlags
@@ -222,58 +268,123 @@ FT_Glyph Face::GetGlyph()
 	return ret;
 }
 
-void FreeType::DrawText(KolibriLib::Coord coord, const std::string text, Face face)
+Stroker::Stroker()
 {
-		int32_t left = std::numeric_limits<int>::max();
-		int32_t top = std::numeric_limits<int>::max();
-		int32_t bottom = std::numeric_limits<int>::min();
+	Error err = FT_Stroker_New(_lib, &stroker);
 
-		CharCode PrevCharcode = 0;
+	if(err)
+	{
+		KolibriLib::PrintDebug("Error init FreeType Stroker, Error: ");
+		KolibriLib::PrintDebug(err);
+		KolibriLib::PrintDebug("\n");
 
+		throw err;
+	}
+}
 
-		for(std::size_t i = 0; i < text.size(); i++)
+Stroker::~Stroker()
+{
+	FT_Stroker_Done(stroker);
+}
+
+void FreeType::Stroker::Set(FT_Fixed radius, FT_Stroker_LineCap cap, FT_Stroker_LineJoin join, FT_Fixed miterLimint)
+{
+	FT_Stroker_Set(stroker, radius, cap, join, miterLimint);
+}
+
+void FreeType::Stroker::Rewind()
+{
+	FT_Stroker_Rewind(stroker);
+}
+
+FreeType::Stroker::operator FT_Stroker() const
+{
+	return stroker;
+}
+
+Error FreeType::Glyph::StrokeBorder(Stroker stroker, FT_Bool inside, FT_Bool destroy)
+{
+	return FT_Glyph_StrokeBorder(&_glyph, stroker, inside, destroy);
+}
+
+Error FreeType::Glyph::ToBitmap(FT_Render_Mode renderMode, FT_Vector *origin, FT_Bool destroy)
+{
+	return FT_Glyph_To_Bitmap(&_glyph, renderMode, origin, destroy);
+}
+
+FT_BitmapGlyph FreeType::Glyph::GetBitmapGlyph(FT_Render_Mode renderMode, FT_Vector *origin, FT_Bool destroy)
+{
+	ToBitmap(renderMode, origin, destroy);
+	return reinterpret_cast<FT_BitmapGlyph>(_glyph);
+}
+
+FreeType::Glyph::Glyph(FT_Glyph glyph)
+	:	_glyph(glyph)
+{
+	
+}
+
+FreeType::Glyph::Glyph(const Glyph &glyph)
+{
+	_glyph = glyph.Clone().operator FreeType::FT_Glyph();
+}
+
+Glyph FreeType::Glyph::Clone() const
+{
+	Glyph ret;
+	Error err = FT_Glyph_Copy(_glyph, &ret._glyph);
+
+	if(err)
+	{
+		throw err;
+	}
+
+	return ret;
+}
+
+FreeType::Glyph::operator FT_Glyph() const
+{
+	return _glyph;
+}
+
+void FreeType::DrawText(const KolibriLib::Coord &coord, const std::string text, Face face)
+{
+	KolibriLib::PrintDebug("Draw Text\n");
+
+	for(std::size_t i = 0; i < text.size(); i++)
+	{
+		KolibriLib::PrintDebug("Render char:");
+		KolibriLib::PrintDebug(text[i]);
+		
+		face.LoadGlyph(face.GetGlyphIndex(text[i]), FT_RENDER_MODE_LCD);
+
+		FT_Bitmap bitmap = ((FT_Face)face)->glyph->bitmap;
+		FT_Glyph_Metrics metrics = ((FT_Face)face)->glyph->metrics;
+
+		uint32_t colStartPos = metrics.horiBearingX / 64;
+    	uint32_t rowStartPos = metrics.horiBearingY / 64;
+
+		
+		KolibriLib::UI::Images::img image(0xFFFFFF, {bitmap.width, bitmap.rows});
+
+		for (uint32_t y = 0; y < bitmap.rows; y++)
 		{
-			const CharCode charcode = text[i];
-
-			face.LoadChar(charcode);
-
-			FT_GlyphSlot glyph = ((FT_Face)face)->glyph;
-
-			if(!glyph)
-				continue;
-
-			if(PrevCharcode)		
+			uint32_t row = rowStartPos + y;
+			for (uint32_t x = 0; x < bitmap.width; x++)
 			{
-				coord.x += face.GetKerning(PrevCharcode, charcode).x;
-			}
-			PrevCharcode = charcode;
-
-			coord.x += glyph->advance.x >> 10;
-
-			auto bitmap = glyph->bitmap;
-
-			//left = std::min(left, ((coord.x >> 6) + bitmap->left));
-			//top = std::min(top, -bitmap->top);
-			//bottom = std::max(bottom, -bitmap->top + bitmap->bitmap.rows);
-			
-			KolibriLib::UI::Images::img img(KolibriLib::Colors::Color(), {bitmap.width, bitmap.rows});
-	
-			for (int y = 0; y < bitmap.rows; y++)
-			{
-				for (int x = 0; x < bitmap.width; x++)
-				{
-					uint8_t r = bitmap.buffer[y * bitmap.pitch + x * 3];
-					uint8_t g = bitmap.buffer[y * bitmap.pitch + x * 3 + 1];
-					uint8_t b = bitmap.buffer[y * bitmap.pitch + x * 3 + 2];
-
-					img.SetPixel(KolibriLib::Colors::Color(r, g, b), x, y);
-				//img(col, row) = pixel{r, g, b, 255};
+				uint32_t col = colStartPos + x;
+				uint8_t r = bitmap.buffer[y * bitmap.pitch + x * 3];
+				uint8_t g = bitmap.buffer[y * bitmap.pitch + x * 3 + 1];
+				uint8_t b = bitmap.buffer[y * bitmap.pitch + x * 3 + 2];
+				
+				image.SetPixel(KolibriLib::Colors::Color(r, g, b, 0), {x, y});
 				// img and pixel are placeholders to simplify the code
-				}
 			}
-			img.Draw(coord, {bitmap.width, bitmap.rows});
 		}
-	
+		
+		image.Draw(coord);
+	}
+
 }
 
 void KolibriLib::PrintDebug(Error out)

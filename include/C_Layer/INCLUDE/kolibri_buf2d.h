@@ -245,7 +245,7 @@ extern void (*buf2d_filter_dither)(buf2d_struct *, unsigned int) __attribute__((
 /// @param sizey
 /// @param font_bgcolor
 /// @param color_bit
-/// @return
+/// @return указатель на структуру
 buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsigned int sizey, ksys_color_t font_bgcolor, uint8_t color_bit);
 
 /// @brief Copy buf2d_struct
@@ -265,6 +265,7 @@ inline void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, 
 }
 
 /// @brief Конвертирует 32 битный буфер в 24 битный, координаты не учитываются
+/// @details Просто убиарет прозрачность
 /// @param buffer32bit Буфер который будет конвертироваться
 /// @param buffer24bit Буфер в который будет конвертирован 32 битный буфер
 /// @return Функция возвращает buffer24bit

@@ -6,7 +6,7 @@
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/globals.hpp>
 
-#include "font.hpp"
+//#include "font.hpp"
 
 namespace KolibriLib
 {

@@ -73,7 +73,7 @@ void text::TextLabel::Render() const
 
 		case TextLabel::Aling::Right:
 
-			pos.x += (size.x - lenghtPX());
+			pos.x += size.x - lenghtPX();
 			pos.y += size.y / 2;
 
 			break;

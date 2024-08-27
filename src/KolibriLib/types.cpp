@@ -3,27 +3,32 @@
 using namespace KolibriLib;
 
 KolibriLib::point::point()
-	: x(0), y(0)
+	:	x(0), 
+		y(0)
 {
 }
 
 KolibriLib::point::point(int X, int Y)
-	: x(X), y(Y)
+	:	x(X),
+		y(Y)
 {
 }
 
 KolibriLib::point::point(const point & p)
-	: x(p.x), y(p.y)
+	:	x(p.x),
+		y(p.y)
 {
 }
 
 KolibriLib::point::point(const ksys_pos_t & pos)
-	: x(pos.x), y(pos.y)
+	:	x(pos.x),
+		y(pos.y)
 {
 }
 
 KolibriLib::point::point(int Number)
-	:  x(Number), y(Number)
+	:	x(Number),
+		y(Number)
 {
 }
 
@@ -138,27 +143,44 @@ KolibriLib::CoordA::operator point() const
 }
 
 KolibriLib::CoordA::CoordA(const point &p)
-	: point(p), angle(0)
+	:	point(p),
+		angle(0)
+{
+}
+
+KolibriLib::UDim::Axis::Axis(float scale, int offset)
+	: Scale(scale),
+	  Offset(offset)
+{
+}
+
+KolibriLib::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
+	:	X(XScale, XOffset), 
+		Y(YScale, YOffset)
+{
+
+}
+
+KolibriLib::UDim::UDim(int x, int y)
+	: X(0, x),
+	  Y(0, y)
+
+{
+}
+
+KolibriLib::UDim::UDim(float x, float y)
+	: X(x, 0),
+	  Y(y, 0)
+
 {
 }
 
 KolibriLib::UDim::UDim(const point &p)
+	: X(0, p.x),
+	  Y(0, p.y)
 {
-	X.Offset = p.x;
-	Y.Offset = p.y;
 }
 
-KolibriLib::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
-	: X(XScale, XOffset), Y(YScale, YOffset)
-{
-
-}
-
-KolibriLib::UDim::Axis::Axis(float scale, int offset)
-	: Scale(scale), Offset(offset)
-{
-
-}
 
 bool UDim::Axis::operator==(const UDim::Axis &axis) const
 {
@@ -211,5 +233,4 @@ void KolibriLib::PrintDebug(const UDim &out)
 	DebugOut(" y:");
 	PrintDebug(out.Y);
 	DebugOut("\n");
-	
 }

@@ -78,7 +78,7 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord, const Colors::Color &B
 	_ksys_debug_puts("Print Txt:");
 	#endif
 
-	if(_data.length() > 0)	// Если текста не то и выводить нечего
+	/*if(_data.length() > 0)	// Если текста не то и выводить нечего
 	{
 		uint8_t flags = 0;
 
@@ -96,7 +96,9 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord, const Colors::Color &B
 		buff.x *= _data.length();
 
 		drawtext(coord, buff, _data, _CharSize, _TextColor, BackgroundColor, flags);
-	}
+	}*/
+
+	DrawText(_data, coord, _TextColor, TextEncoding::UTF8, _CharSize.x / 16);
 
 	#ifdef DEBUG
 	_ksys_debug_puts("done!\n");

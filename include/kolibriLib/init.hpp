@@ -14,6 +14,8 @@
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/globals.hpp>
 #include <kolibriLib/UI/buttons/buttonsBase.hpp>
+#include <kolibriLib/debug.hpp>
+
 //#include <kolibriLib/UI/text/freetypefuncs.hpp>
 
 /// \brief Основное пространство имён
@@ -24,7 +26,8 @@ namespace KolibriLib
 	/// @brief инициализация библиотеки
 	inline void init()
 	{
-		
+		PrintDebug("Init KolibriLib\n");
+
 		Globals::SystemColors = OS::GetSystemColors();
 		Globals::DefaultButtonsIDController = nullptr;
 
@@ -56,7 +59,7 @@ namespace KolibriLib
 		}
 
 		
-		
+		PrintDebug("Done init Kolibrilib\n");
 	}
 }
 

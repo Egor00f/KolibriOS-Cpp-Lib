@@ -57,6 +57,12 @@ namespace KolibriLib
 
                 /// @brief Состояние кнопки(Нажата/Ненажата)
                 mutable bool _status;
+
+            private:
+                /// @brief Тип кнопки
+                /// @details false - системная кнопка
+                /// true кастомная
+                bool _type;
             };
 
         } // namespace buttons

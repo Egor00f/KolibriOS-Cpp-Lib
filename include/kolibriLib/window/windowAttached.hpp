@@ -11,8 +11,11 @@ namespace KolibriLib
 		class WindowAttached
 		{
 			public:
+				/// @brief Конструктор
+				/// @param window 
 				WindowAttached(const Window_t &window);
 
+				/// @brief Деструктор
 				~WindowAttached();
 
 				/// @brief Полная перересовка окна
@@ -108,6 +111,8 @@ namespace KolibriLib
 
 				void SetButtonIDController(const UI::buttons::ButtonsIDController *buttonsIDController);
 
+				/// @brief Получить PID потока окна
+				/// @return PID 
 				Thread::PID GetPID() const;
 
 			private:

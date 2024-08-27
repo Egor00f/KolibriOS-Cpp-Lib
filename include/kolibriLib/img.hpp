@@ -20,8 +20,6 @@ namespace KolibriLib
 			/// @brief Изображение
 			class img
 			{
-			private:
-				buf2d_struct *_buff;
 			public:
 				/// @brief Глубина цвета
 				typedef enum
@@ -163,6 +161,9 @@ namespace KolibriLib
 				img& operator = (const img& im);
 				bool operator == (const img &im) const;
 				bool operator != (const img &im) const;
+
+			private:
+				buf2d_struct *_buff;
 			};
 
 

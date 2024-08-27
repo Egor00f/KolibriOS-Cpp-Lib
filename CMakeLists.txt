@@ -67,9 +67,10 @@ set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
 set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
 
 # PATH TO KOLIBRILIB SOURCES
-SET(SRC_PATH src/KolibriLib)
-SET(HEADERS_PATH include/kolibriLib)
-SET(C_LAYER_HEADERS include/C_Layer/INCLUDE)
+set(KolibriLib_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
+SET(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/KolibriLib)
+SET(HEADERS_PATH ${KolibriLib_INCLUDE_PATH}/kolibriLib)
+SET(C_LAYER_HEADERS ${KolibriLib_INCLUDE_PATH}/C_Layer/INCLUDE)
 
 set(C_LAYER_LOADERS_SOURCES
 	${C_Layer_SRC_PATH}/loadlibimg.asm
@@ -116,8 +117,12 @@ SET(SOURCES
 	${SRC_PATH}/globals.cpp
 	${SRC_PATH}/freetype.cpp
 	${SRC_PATH}/keyboard.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
+	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
+	${KolibriLib_INCLUDE_PATH}/UI.hpp
 	${HEADERS_PATH}/init.hpp
 	${HEADERS_PATH}/types.hpp
+	${HEADERS_PATH}/debug.hpp
 	${HEADERS_PATH}/color.hpp
 	${HEADERS_PATH}/system/os.hpp
 	${HEADERS_PATH}/system/thread.hpp

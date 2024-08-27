@@ -25,7 +25,7 @@ WindowAttached::WindowAttached(const Window_t &window)
 	lockARG.lock();
 	arg = _wndw;
 
-	_pid = Thread::CreateThread(WindowFunc, 4096); // Прошу господи лиж бы хватило
+	_pid = Thread::CreateThread(WindowFunc, 4096); // Прошу господи лижбы хватило
 }
 
 WindowAttached::~WindowAttached()
@@ -36,4 +36,29 @@ WindowAttached::~WindowAttached()
 Thread::PID WindowAttached::GetPID() const
 {
 	return _pid;
+}
+
+UDim KolibriLib::window::WindowAttached::GetSize() const
+{
+	return UDim(GetWindowSize(_pid));
+}
+
+UDim KolibriLib::window::WindowAttached::GetCoord() const
+{
+	return UDim(GetWindowCoord(_pid));
+}
+
+Coord KolibriLib::window::WindowAttached::GetAbsoluteCoord() const
+{
+	return GetWindowCoord(_pid);
+}
+
+Size KolibriLib::window::WindowAttached::GetAbsoluteSize() const
+{
+	return GetWindowSize(_pid);
+}
+
+void KolibriLib::window::WindowAttached::SetPosition(const Pos &position)
+{
+	SetWindowPos(position, _pid);
 }

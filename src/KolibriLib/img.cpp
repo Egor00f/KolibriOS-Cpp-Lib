@@ -12,7 +12,7 @@ using namespace Images;
 
 KolibriLib::UI::Images::img::img(imgBPP bpp)
 {
-	this->_buff = buf2d_create(0,0, 32, 32, 0xFFFFFF, bpp);
+	this->_buff = buf2d_create(0, 0, 32, 32, 0xFFFFFF, bpp);
 }
 
 KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size, imgBPP bpp)
@@ -39,6 +39,7 @@ KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size, imgBPP bp
 	SetRGBMap(color, size);
 }
 
+/* Пока что его нет
 KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
 {
 	Image_t *buff = LoadImageFromFile(ImageFile);
@@ -47,6 +48,7 @@ KolibriLib::UI::Images::img::img(const filesystem::Path &ImageFile)
 
 	img_destroy(buff);
 }
+*/
 
 UI::Images::img::~img()
 {
@@ -55,9 +57,7 @@ UI::Images::img::~img()
 
 void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("DrawIMG\n");
-	#endif
+	PrintDebug("DrawIMG");
 
 	buf2d_struct *buff;
 
@@ -135,7 +135,7 @@ Colors::Color KolibriLib::UI::Images::img::GetPixel(const Coord &coord) const
 
 rgb_t *KolibriLib::UI::Images::img::GetRGBMap() const
 {
-	rgb_t *map = (rgb_t *)malloc(_buff->width * _buff->height * sizeof(rgb_t));
+	rgb_t *map = (rgb_t *) malloc(_buff->width * _buff->height * sizeof(rgb_t));
 
 	switch(this->_buff->color_bit)
 	{

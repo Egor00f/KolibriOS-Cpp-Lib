@@ -191,6 +191,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Получить размер рабочей области окна
+		/// @return Размер рабочей области окна
 		inline Size GetWorkArea()
 		{
 			ksys_pos_t a, b;
