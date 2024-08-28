@@ -11,13 +11,7 @@ project(
 #################################################
 #
 set(CUSTOM_TOOCLAIN_PATH	OFF)
-<<<<<<< HEAD
 set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
-=======
-set(KOLIBRIOS_REPO	"../kolibrios")
-set(BuildExamples	ON)
-
->>>>>>> dev-stable
 #
 #################################################
 
@@ -123,6 +117,7 @@ SET(SOURCES
 	${SRC_PATH}/globals.cpp
 	${SRC_PATH}/freetype.cpp
 	${SRC_PATH}/keyboard.cpp
+	${SRC_PATH}/OpenDialog.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/UI.hpp
@@ -130,6 +125,7 @@ SET(SOURCES
 	${HEADERS_PATH}/types.hpp
 	${HEADERS_PATH}/debug.hpp
 	${HEADERS_PATH}/color.hpp
+	${HEADERS_PATH}/OpenDialog.hpp
 	${HEADERS_PATH}/system/os.hpp
 	${HEADERS_PATH}/system/thread.hpp
 	${HEADERS_PATH}/system/filesystem.hpp
@@ -188,12 +184,9 @@ if(NOT IS_SUBPROJECT)
 endif()
 
 
-<<<<<<< HEAD
 #Examples build with make, see to examples/Makefile
 set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
-=======
 
->>>>>>> dev-stable
 
 add_custom_target(
 	Example
