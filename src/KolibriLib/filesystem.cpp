@@ -56,6 +56,11 @@ bool KolibriLib::filesystem::Path::operator==(const KolibriLib::filesystem::Path
     return _string == a._string;
 }
 
+std::size_t KolibriLib::filesystem::Path::length() const
+{
+    return _string.length();
+}
+
 bool KolibriLib::filesystem::Path::operator!=(const KolibriLib::filesystem::Path &a) const
 {
     return _string != a._string;

@@ -25,6 +25,9 @@ namespace KolibriLib
                 /// @param path путь
                 Path(const std::string& path);
 
+                /// @brief Длинна строки
+                std::size_t length() const;
+
                 operator const char*() const;
                 operator std::string() const;
                 

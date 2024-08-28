@@ -6,6 +6,7 @@
 #include <C_Layer/INCLUDE/kolibri_libimg.h>
 #include <C_Layer/INCLUDE/kolibri_rasterworks.h>
 #include <C_Layer/INCLUDE/kolibri_buf2d.h>
+#include <C_Layer/INCLUDE/kolibri_opendialog.h>
 
 //#include <sound.h>
 
@@ -15,6 +16,7 @@
 #include <kolibriLib/globals.hpp>
 #include <kolibriLib/UI/buttons/buttonsBase.hpp>
 #include <kolibriLib/debug.hpp>
+
 
 //#include <kolibriLib/UI/text/freetypefuncs.hpp>
 
@@ -58,6 +60,7 @@ namespace KolibriLib
 			exit(0);
 		}
 
+		kolibri_proclib_init();
 		
 		PrintDebug("Done init Kolibrilib\n");
 	}

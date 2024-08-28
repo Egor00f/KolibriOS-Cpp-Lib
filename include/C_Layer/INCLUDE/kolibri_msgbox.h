@@ -1,7 +1,11 @@
 #ifndef KOLIBRI_MSGBOX_H
 #define KOLIBRI_MSGBOX_H
 
+
+#include <stdint.h>
+#include <string.h>
 #include <stdarg.h>
+#include <stdlib.h>
 
 typedef struct __attribute__ ((__packed__)) {
     uint8_t     retval;  // 0 - win closed, 1 to n - button num, also default button on start
@@ -28,7 +32,7 @@ static inline msgbox* kolibri_new_msgbox(char* title, char* text, int def_but, .
     va_list vl;
     va_start(vl, def_but);
 
-    msgbox* box = calloc(sizeof(msgbox), 1);
+    msgbox* box = (msgbox*) calloc(sizeof(msgbox), 1);
     box->retval = (uint8_t)def_but;
     char    *pc = box->texts;
     strcpy(pc, title);
