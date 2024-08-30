@@ -12,6 +12,7 @@
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/os.hpp>
+#include <kolibriLib/globals.hpp>
 #include <input.hpp>
 
 namespace KolibriLib
@@ -58,6 +59,7 @@ namespace KolibriLib
 			GradientDraw = 0b10000000
 		};
 
+
 		/// @brief Список констант положения окна относительно других окон:
 		typedef enum Pos
 		{
@@ -84,9 +86,9 @@ namespace KolibriLib
 		inline void CreateWindow(const Coord &coord,
 		                         const Size &size,
 		                         const std::string &title,
-		                         const Colors::Color &WorkColor	= OS::GetSystemColors().work_area,
-		                         Colors::Color TitleColor	= OS::GetSystemColors().grab_text,
-		                         uint8_t style	= WindowStyle::CanResize | WindowStyle::Relative)
+		                         const Colors::Color &WorkColor = Globals::SystemColors.work_area,
+		                         Colors::Color TitleColor = Globals::SystemColors.grab_text,
+		                         uint8_t style = WindowStyle::CanResize | WindowStyle::Relative)
 		{
 			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
 		}

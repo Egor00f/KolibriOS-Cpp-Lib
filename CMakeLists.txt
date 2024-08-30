@@ -103,7 +103,7 @@ SET(SOURCES
 	${SRC_PATH}/TextButton.cpp
 	${SRC_PATH}/ImageButton.cpp
 	${SRC_PATH}/checkbox.cpp
-	${SRC_PATH}/form.cpp
+	${SRC_PATH}/BaseEditor.cpp
 	#${SRC_PATH}/menu.cpp
 	${SRC_PATH}/window.cpp
 	${SRC_PATH}/windowAttached.cpp
@@ -176,16 +176,35 @@ if(NOT IS_SUBPROJECT)
 
 endif()
 
+if(NOT IS_SUBPROJECT)
 
-#Examples build with make, see to examples/Makefile
-set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
+	#Examples build with make, see to examples/Makefile
+	set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
 
 
-add_executable(Example ${ExamplesDir}/example.cpp)
-target_link_libraries(Example PUBLIC KolibriLib)
-add_custom_command(
-	TARGET Example POST_BUILD
-	COMMAND ${CMAKE_OBJCOPY} ARGS Example -O binary
-	COMMENT "objcpy"
-	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-)
+	add_executable(Example ${ExamplesDir}/example.cpp)
+	target_link_libraries(Example PUBLIC KolibriLib)
+
+	add_custom_command(
+		TARGET Example POST_BUILD
+		COMMAND ${CMAKE_OBJCOPY} ARGS Example -O binary
+		COMMENT "objcpy"
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	)
+
+	add_executable(ExampleTextEditor ${ExamplesDir}/ExampleTextEditor.cpp)
+	target_link_libraries(ExampleTextEditor PUBLIC KolibriLib)
+
+	add_custom_command(
+		TARGET ExampleTextEditor POST_BUILD
+		COMMAND ${CMAKE_OBJCOPY} ARGS ExampleTextEditor -O binary
+		COMMENT "objcpy"
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	)
+
+	add_custom_target(
+		AllExamples
+		DEPENDS Example ExampleTextEditor
+	)
+
+endif()

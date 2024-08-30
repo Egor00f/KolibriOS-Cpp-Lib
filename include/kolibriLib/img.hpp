@@ -34,6 +34,13 @@ namespace KolibriLib
 					RGBA = 32
 				} imgBPP;
 
+				typedef enum
+				{
+					rotate_90 = 90,
+					rotate_180 = 180,
+					rotate_270 = 1
+				} RotateEnum;
+
 				img(imgBPP bpp = imgBPP::RGB);
 
 				/// @brief Конструктор
@@ -84,8 +91,8 @@ namespace KolibriLib
 				bool SetPixel(const Colors::Color &color, const Coord &coord);
 
 				/// @brief Повернуть изображение на определённый угол
-				/// @param value значения 90, 180
-				void Rotate(int value);
+				/// @param value
+				void Rotate(RotateEnum value);
 
 				/// @brief Очистить изображение, 
 				/// @param backgroundColor 

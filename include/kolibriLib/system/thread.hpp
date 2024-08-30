@@ -34,14 +34,14 @@ namespace KolibriLib
         typedef ksys_thread_t ThreadInfo;
 
         /// @brief Значение PID текущего процесса.
-        ///@details Нужно для функций
+        /// @details Нужно для функций
         const PID ThisThread = -1;
 
         /// \brief Создать поток
         /// \param ThreadEntry указатель на функцию которую нужно запустить в новом потоке
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
-        /// @note есть шанс проебаться с размером стека
+        /// @note есть немалый шанс проебаться с размером стека
         PID CreateThread_(void *ThreadEntry, unsigned ThreadStackSize = 2048);
 
         template <class T>
@@ -70,11 +70,19 @@ namespace KolibriLib
             return !a;
         }
 
+        
         /// @brief Поличть информацию о потоке
         /// @param thread слот потока
         /// @return информация о потоке
         /// @details по умолчанию возвращается информация о текущем потоке
         ThreadInfo GetThreadInfo(const Slot &thread = ThisThread);
+
+        /// @brief Получить PID текущего процесса(тот в котором была вызваенна эта функция)
+        /// @return PID текщего процесса
+        inline PID GetThisThreadPID()
+        {
+            return GetThreadInfo().pid;
+        }
 
         /// @brief Поличть указатель информацию о потоке
         /// @param thread слот потока
@@ -83,12 +91,7 @@ namespace KolibriLib
         /// @note Не забудьте освободить память!
         ThreadInfo *GetPointerThreadInfo(const Slot &thread = ThisThread);
 
-        /// @brief Получить PID текущего процесса(тот в котором была вызваенна эта функция)
-        /// @return PID текщего процесса
-        inline PID GetThisThreadPID()
-        {
-            return GetThreadInfo().pid;
-        }
+        
 
         /// @brief Получить слот потока
         /// @param pid поток, по умолчанию поток который вызывает эту функцию
@@ -98,8 +101,8 @@ namespace KolibriLib
             return _ksys_get_thread_slot(pid);
         }
 
-        /// @brief Кривой косячный и тупящий мьютекс, который существует только потому что я не разобрался в фьютексах
-        /// @details Реально лучше не используйте это убожество.
+        /// @brief Кривой всратый и тупящий мьютекс, который существует только потому что я не разобрался в фьютексах
+        /// @details Реально лучше не используйте это убожество. оно сильно тормозит систему
         /// @details использует подфункцию 1 функции 68
         class Mutex
         {

@@ -1,11 +1,15 @@
 #ifndef KOLIBRI_OPENDIALOG_H
 #define KOLIBRI_OPENDIALOG_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdlib.h>
 
-char sz_com_area_name[]    = "FFFFFFFF_open_dialog";
-char sz_dir_default_path[] = "/sys";
-char sz_start_path[]       = "/sys/File managers/opendial";
+const char sz_com_area_name[]    = "FFFFFFFF_open_dialog";
+const char sz_dir_default_path[] = "/sys";
+const char sz_start_path[]       = "/sys/File managers/opendial";
 
 enum open_dialog_mode {
     OPEN = 0,
@@ -13,10 +17,16 @@ enum open_dialog_mode {
     SELECT = 2
 };
 
+/// @brief Структура для фильтра расширений
+/// @details имеет непостоянный размер
 typedef struct __attribute__ ((__packed__)) {
+	
+	/// @brief Размер структуры в байтах
 	unsigned int size;
+
 	unsigned char end;
 } od_filter;
+
 
 typedef struct __attribute__ ((__packed__)) {
     unsigned int mode;
@@ -41,9 +51,14 @@ typedef struct __attribute__ ((__packed__)) {
     unsigned short y_start;
 } open_dialog;
 
-void fake_on_redraw(void) {}
+void fake_on_redraw(void)
+#ifdef __MakeStaticLib__
+;
+#else
+{}
+#endif
 
-open_dialog* kolibri_new_open_dialog(unsigned int mode, unsigned short tlx, unsigned short tly, unsigned short x_size, unsigned short y_size)
+inline open_dialog* kolibri_new_open_dialog(unsigned int mode, unsigned short tlx, unsigned short tly, unsigned short x_size, unsigned short y_size)
 {
     open_dialog *new_opendialog	= (open_dialog *) malloc(sizeof(open_dialog));
     od_filter *new_od_filter	= (od_filter *) malloc(sizeof(od_filter));
@@ -57,11 +72,11 @@ open_dialog* kolibri_new_open_dialog(unsigned int mode, unsigned short tlx, unsi
 
 	new_opendialog -> mode = mode;
 	new_opendialog -> procinfo = proc_info;
-	new_opendialog -> com_area_name = sz_com_area_name;
+	new_opendialog -> com_area_name =(char*) sz_com_area_name;
 	new_opendialog -> com_area = 0;
 	new_opendialog -> opendir_path = plugin_path;
-	new_opendialog -> dir_default_path = sz_dir_default_path;
-	new_opendialog -> start_path = sz_start_path;
+	new_opendialog -> dir_default_path =(char*)  sz_dir_default_path;
+	new_opendialog -> start_path = (char *)sz_start_path;
 	new_opendialog -> draw_window = &fake_on_redraw;
 	new_opendialog -> status = 0;
 	new_opendialog -> openfile_path = openfile_path;
@@ -81,4 +96,9 @@ extern void kolibri_proclib_init();
 extern void (*OpenDialog_init)(open_dialog *) __attribute__((__stdcall__));
 
 extern void (*OpenDialog_start)(open_dialog *) __attribute__((__stdcall__));
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* KOLIBRI_OPENDIALOG_H */

@@ -40,18 +40,28 @@ ksys_pos_t KolibriLib::point::GetKsysPost() const
 	return buff;
 }
 
-point &KolibriLib::point::operator+(const point &a)
+point &KolibriLib::point::operator+=(const point &a)
 {
 	x += a.x;
 	y += a.y;
 	return *this;
 }
 
-point &KolibriLib::point::operator-(const point &a)
+point &KolibriLib::point::operator-=(const point &a)
 {
 	x -= a.x;
 	y -= a.y;
 	return *this;
+}
+
+point KolibriLib::point::operator+(const point &a) const
+{
+	return point(x + a.x, y + a.y);
+}
+
+point KolibriLib::point::operator-(const point &a) const
+{
+	return point(x - a.y, y - a.y);
 }
 
 point &KolibriLib::point::operator=(const point &p)

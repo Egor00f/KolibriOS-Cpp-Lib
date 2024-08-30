@@ -60,20 +60,23 @@ void buttons::TextButton::OnButtonEvent(ButtonID PressedButtonID)
 
 void buttons::TextButton::Render() const
 {
-	PrintDebug("Render TextButton");
-
-	if (IsActive())
+	if(Visible)
 	{
-		Define(GetAbsoluteCoord(), GetAbsoluteSize(), _MainColor);
+		PrintDebug("Render TextButton");
 
-		TextLabel::Render();
-	}
-	else
-	{
-		PrintDebug(": Button Is not Active");
-	}
+		if (IsActive())
+		{
+			Define(GetAbsoluteCoord(), GetAbsoluteSize(), _MainColor);
 
-	PrintDebug("\n");
+			TextLabel::Render();
+		}
+		else
+		{
+			PrintDebug(": Button Is not Active");
+		}
+
+		PrintDebug("\n");
+	}
 }
 
 buttons::ButtonsIDController *KolibriLib::UI::buttons::TextButton::GetButtonIDController() const

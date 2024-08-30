@@ -183,10 +183,14 @@ namespace KolibriLib
 			/// @return 
 			virtual int Handler(OS::Event event);
 
+			/// @brief Действие на ивент
+			/// @note Вызывается только если элемент был добавлен в окно (Вызывается в Window::Handler)
 			virtual void OnButtonEvent(buttons::ButtonID PressedButtonID);
 
+			/// @note Вызывается только если элемент был добавлен в окно (Вызывается в Window::Handler)
 			virtual void OnKeyEvent();
 
+			/// @note Вызывается только если элемент был добавлен в окно (Вызывается в Window::Handler)
 			virtual void OnMouseEvent();
 
 			/// @brief отрисовать элемент
@@ -197,6 +201,7 @@ namespace KolibriLib
 			std::vector<UIElement*>* GetChildren();
 
 			/// @brief Получить список всех элементов, для которых этот является родительсим
+			/// @details Более медленная версия(в сравнении с неконстантной), т.к. копирует вектор
 			/// @return вектор указателей
 			std::vector<UIElement*> GetChildren() const;
 
@@ -233,6 +238,7 @@ namespace KolibriLib
 
 			mutable std::vector<UIElement*> _childs;
 
+			/// @brief отображется ли элемент при отрисовке
 			bool Visible = true;
 
 			bool ParentIsWindow = false;

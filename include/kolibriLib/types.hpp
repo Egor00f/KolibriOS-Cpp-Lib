@@ -20,9 +20,12 @@ namespace KolibriLib
 	{
 		/// @brief координата по оси X, или ширина
 		int x;
+
 		/// @brief координата по оси Y, или высота
 		int y;
 
+		/// @brief Конструктор по умолчанию
+		/// @details координаты {0,0}
 		point();
 
 		/// @brief Конструктор
@@ -30,11 +33,11 @@ namespace KolibriLib
 		/// @param Y 
 		point(int X, int Y);
 
-		/// @brief конструктор
+		/// @brief Конструктор
 		/// @param Number 
 		point(int Number);
 
-		/// @brief 
+		/// @brief Конструктор
 		/// @param pos 
 		point(const ksys_pos_t &pos);
 
@@ -46,8 +49,14 @@ namespace KolibriLib
 
 		operator ksys_pos_t() const;
 
-		point& operator+(const point &a);
-		point &operator-(const point &a);
+		/// @details прибавляет к x и y значения из a (к x прибавляется a.x, к y прибавляется a.y)
+		point& operator+=(const point &a);
+
+		/// @details уменьшает x и y на значения из a (из x вычитается a.x, из y вычитается a.y)
+		point& operator-=(const point &a);
+
+		point operator+(const point &a) const;
+		point operator-(const point &a) const;
 
 		/// @brief 
 		/// @param p 
@@ -55,11 +64,13 @@ namespace KolibriLib
 		point &operator=(const point &p);
 
 		/// @brief Прибавить к обоим кординатам значение
-		/// @tparam B 
-		/// @param p 
+		/// @param p значение
 		/// @return 
 		point &operator+=(const int &p);
 
+		/// @brief Вычесть из обоих кординат значение
+		/// @param p значение
+		/// @return
 		point &operator-=(const int &p);
 
 		point &operator*=(const int &p);
@@ -102,61 +113,59 @@ namespace KolibriLib
 	};
 
 	/// @brief Координаты/Размеры для элементов UI
-		struct UDim
+	struct UDim
+	{
+		/// @brief Ось
+		struct Axis
 		{
-			struct Axis
-			{
-				/// @brief Относительно размера окна
-				float Scale;
+			/// @brief Относительно размера окна
+			float Scale;
 
-				/// @brief В пикселях
-				int Offset;
-
-				/// @brief Конструктор
-				/// @param scale 
-				/// @param offset 
-				Axis(float scale = 0, int offset = 0);
-
-				bool operator == (const Axis& axis) const;
-				bool operator !=(const Axis &axis) const;
-			};
-
-			UDim::Axis X, Y;
+			/// @brief В пикселях
+			int Offset;
 
 			/// @brief Конструктор
-			/// @param XScale 
-			/// @param XOffset 
-			/// @param YScale 
-			/// @param YOffset 
-			UDim(float XScale, int XOffset, float YScale, int YOffset);
+			/// @param scale
+			/// @param offset
+			Axis(float scale = 0, int offset = 0);
 
-			/// @brief Конструктор
-			/// @param x 
-			/// @param y
-			UDim(int x, int y);
-
-			/// @brief Конструктор
-			/// @param x
-			/// @param y
-			UDim(float x, float y);
-
-			/// @brief Конструктор
-			/// @details делает тоже самое что и UDim(int, int), только x и y берутся из точки
-			/// @param p точка
-			UDim(const point &p);
-
-			/// @brief получить абсолютные значения(в пикселях) относительно окна
-			/// @return 
-			point GetAbsolute(const point &Parent = {Thread::GetThreadInfo().winx_size, Thread::GetThreadInfo().winy_size}) const;
-
-
-			bool operator == (const UDim &obj) const;
-			bool operator != (const UDim &obj) const;
-
+			bool operator==(const Axis &axis) const;
+			bool operator!=(const Axis &axis) const;
 		};
 
+		/// @brief Оси X и Y
+		UDim::Axis X, Y;
 
-	typedef unsigned long DWORD;
+		/// @brief Конструктор
+		/// @param XScale
+		/// @param XOffset
+		/// @param YScale
+		/// @param YOffset
+		UDim(float XScale, int XOffset, float YScale, int YOffset);
+
+		/// @brief Конструктор
+		/// @param x смещение по x
+		/// @param y смещение по y
+		/// @details только смещение
+		UDim(int x = 0, int y = 0);
+
+		/// @brief Конструктор
+		/// @param x
+		/// @param y
+		UDim(float x, float y);
+
+		/// @brief Конструктор
+		/// @details делает тоже самое что и UDim(int, int), только x и y берутся из точки
+		/// @param p точка
+		UDim(const point &p);
+
+		/// @brief получить абсолютные значения(в пикселях) относительно окна
+		/// @return
+		point GetAbsolute(const point &Parent = {Thread::GetThreadInfo().winx_size, Thread::GetThreadInfo().winy_size}) const;
+
+		bool operator==(const UDim &obj) const;
+		bool operator!=(const UDim &obj) const;
+	};
 
 	void PrintDebug(const point &out);
 

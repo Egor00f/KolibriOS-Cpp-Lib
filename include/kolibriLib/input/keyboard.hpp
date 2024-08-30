@@ -22,6 +22,7 @@ namespace KolibriLib
         class Scancode
         {
         public:
+            /// @brief Список скапкодов
             enum ScanCodes
             {
                 /// @brief равен нулю
@@ -179,7 +180,7 @@ namespace KolibriLib
         /// @details При вызове этой функции приложением с неактивным окном считается, что буфер нажатых клавиш пуст
         inline void SetInputMode(InputMode mode)
         {
-            _ksys_set_key_input_mode((ksys_key_input_mode_t)mode);
+            _ksys_set_key_input_mode(static_cast<ksys_key_input_mode_t>(mode));
         }
 
         /// @brief Получить режим ввода

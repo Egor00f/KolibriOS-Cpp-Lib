@@ -17,6 +17,7 @@
 
 namespace KolibriLib
 {
+	// чтоб не ипаться с этими намспейсами
 
 	using UI::UIElement;
 	using KolibriLib::UI::Images::img;
@@ -31,9 +32,9 @@ namespace KolibriLib
 	//using UI::text::Fonts::Font;
 	//using UI::Menu;
 	using UI::CheckBox;
-	using UI::Form;
+//	using UI::Form;
 	using UI::text::DrawText;
-
+	using UI::BaseEditor;
 	
 } // namespace KolibriLib
 

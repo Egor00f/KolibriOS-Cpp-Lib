@@ -12,8 +12,7 @@ int main()
 		"Example Window",           // Заголовок окна
 		window::DefaultWindowSize,  // Размер окна
 		window::DefaultWindowCoord, // Положение окна
-		Globals::SystemColors,      // Цвета окна
-		false                     	// Можно ли изменять размер окна пользователю
+		Globals::SystemColors       // Цвета окна
 	);
 
 	// Добавление текстовой метки
@@ -28,10 +27,8 @@ int main()
 	// Добавление кнопки
 	TextButton* button = wndw->AddElement(TextButton(UDim(0.4f, 0, 0.4f, 0), UDim(0.2f, 0, 0.2f, 0)));
 
-	PrintDebug(*button);
-
-	// Отрисовка окна
-	wndw->Render();
+	// Отрисовка всех элементов, чтоб они были видны
+	wndw->RenderAllElements();
 
 	bool exit = false;
 	while (!exit)
@@ -42,8 +39,8 @@ int main()
 		
 		switch (event)
 		{
-		case Event::Exit:
-			exit = true;
+		case Event::Exit: // Если был нажат крестик
+			exit = true; 
 			break;
 		case Event::Button:
 			if(wndw->GetPressedButton() == button->GetId())

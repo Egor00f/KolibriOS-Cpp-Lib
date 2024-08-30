@@ -4,16 +4,17 @@
 #include <kolibriLib/system/filesystem.hpp>
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/window/windowBase.hpp>
+#include <C_Layer/INCLUDE/kolibri_opendialog.h>
 
 namespace KolibriLib
 {
 	
-	#include <C_Layer/INCLUDE/kolibri_opendialog.h>
 
 		
 	/// @brief Диалог выбора файлов
 	/// @details это отдельная программа (если что)
 	/// Памяти требует эта штука много (около 9500 байт)
+	/// @warning На данный момент не работает
 	class OpenDialog
 	{	
 	public:
@@ -23,7 +24,7 @@ namespace KolibriLib
 		{
 			/// @brief Открыть файл
 			/// @image OpenD1.png
-			Open = open_dialog_mode::OPEN,
+			OpenFile = open_dialog_mode::OPEN,
 
 			/// @brief Сохранить файл
 			/// @image OpenD2.png
@@ -66,34 +67,10 @@ namespace KolibriLib
 			FilterElement operator[](std::size_t n) const;
 		};
 
-		struct OpenDialogStruct
-		{
-			unsigned int mode;
-			char *procinfo;
-			char *com_area_name;
-			unsigned int com_area;
-			char *opendir_path;
-
-			/// @brief директория, которая открывается по умолчанию (если путь в .openfile_path пустой).
-			char *dir_default_path;
-
-			/// @brief путь к opendial (по-умолчанию это /sys/File managers/opendial).
-			char *start_path;
-			void (*draw_window)();
-			unsigned int status;
-			char *openfile_path;
-			char *filename_area;
-			FilterArea filter_area;
-			unsigned short x_size;
-			unsigned short x_start;
-			unsigned short y_size;
-			unsigned short y_start;
-		};
-		
 		/// @brief Указатель на то что путь не указан, нужен только для GetPath
 		const filesystem::Path PathNotSet = "/";
 
-		OpenDialog(Modes mode, Size winSize = window::DefaultWindowSize, Coord winCoord = window::DefaultWindowCoord, FilterArea filter = FilterArea(), const filesystem::Path &defaultPath = sz_dir_default_path);
+		OpenDialog(Modes mode, Size winSize = window::DefaultWindowSize, Coord winCoord = window::DefaultWindowCoord, const std::vector<FilterElement> &filter = {}, const filesystem::Path &defaultPath = sz_dir_default_path);
 
 		/// @brief Открыть OpenDialog
 		/// @return Путь который выбрал пользователь
@@ -104,10 +81,11 @@ namespace KolibriLib
 		/// @brief Добавить еще фильров
 		void SetFilter(const std::vector<FilterElement> &f);
 
+		/// @brief деструктор
 		~OpenDialog();
 
 	private:
-		OpenDialogStruct* _opendialog;
+		open_dialog* _opendialog;
 
 	};
 

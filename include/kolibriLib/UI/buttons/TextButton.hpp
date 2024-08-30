@@ -40,7 +40,7 @@ namespace KolibriLib
 			   TextButton(const TextButton &copy);
 
 			   /// @brief Отрисовать кнопку
-			   void Render() const override;
+			   void Render() const;
 
 			   /// @brief Обработчик кнопки
 			   /// @return Состояние кнопки(Нажата/Ненажата)

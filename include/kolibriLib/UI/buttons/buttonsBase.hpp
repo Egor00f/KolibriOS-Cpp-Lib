@@ -48,18 +48,18 @@ namespace KolibriLib
 			/// \brief Получить свободный номер id кнопки из списка
 			/// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
 			/// \return номер кнопки из списка ButtonsIdList
-			ButtonID GetFreeButtonId(std::vector<ButtonID>*ButtonsIdList);
+			ButtonID GetFreeButtonId(std::vector<ButtonID>* ButtonsIdList, uint32_t startID = 2);
 
 			/// \brief Освободить номер кнопки
 			/// \param id номер номер кнопки из списка ButtonsIdList
-			void FreeButtonId(const ButtonID &id, std::vector<ButtonID> *ButtonsIdList);
+			bool FreeButtonId(const ButtonID &id, std::vector<ButtonID>* ButtonsIdList);
 
 			/// \brief Создать кнопку, автоматически присвоить ей id
 			/// \param coords координаты
 			/// \param size размер
 			/// \param color цвет
 			/// \return id созданной кнопки
-			ButtonID autoDefineButton(std::vector<ButtonID>*ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
+			ButtonID autoDefineButton(std::vector<ButtonID>* ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
 
 			/// \brief Создать кнопку, вручную
 			/// \param coords координаты
@@ -68,7 +68,7 @@ namespace KolibriLib
 			/// \param color цвет
 			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
-				_ksys_define_button(coord.x, coord.y, size.x, size.y, 0x00FFFFFF&id, color);
+				_ksys_define_button(coord.x, coord.y, size.x, size.y, id.operator uint32_t(), color.operator ksys_color_t());
 			}
 
 			/// \brief Создать кнопку, вручную
@@ -79,7 +79,7 @@ namespace KolibriLib
 			inline void DefineButton(std::vector<ButtonID>*ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
 				ButtonsIdList->push_back(id);
-				_ksys_define_button(coord.x, coord.y, size.x, size.y, 0x00FFFFFF&id, color);
+				_ksys_define_button(coord.x, coord.y, size.x, size.y, id.operator uint32_t(), color.operator ksys_color_t());
 			}
 
 			/// \brief Удалить кнопу
@@ -101,7 +101,7 @@ namespace KolibriLib
 			/// @return id нажатой кнопки
 			inline ButtonID GetPressedButton()
 			{
-				return (ButtonID)_ksys_get_button();
+				return ButtonID(_ksys_get_button());
 			}
 
 			typedef enum ButtonStyle
@@ -141,7 +141,8 @@ namespace KolibriLib
 				private:
 					/// @brief Список использованных id кнопок
 					std::vector<ButtonID> ButtonsIdList {/*CloseButton,*/ MinimizeButton};
-
+					
+					uint32_t _top = 2;
 			};
 
 			

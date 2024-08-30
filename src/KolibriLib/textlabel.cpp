@@ -30,35 +30,32 @@ TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &tex
 
 KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, const Txt &text)
 	:	Txt(text),
-		UIElement(coord, size, OS::GetSystemColors().work_area)
+		UIElement(coord, size, Globals::SystemColors.work_area)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("TextLabel Constructor\n");
-	#endif
+	PrintDebug("TextLabel Constructor\n");
+
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
-	:	Txt	(copy._data, copy.GetTextColor()),
+	:	Txt	(copy),
 		UIElement	(copy._coord, copy._size, copy._MainColor, copy.GetMargin()),
 		_TextScale	(copy._TextScale),
 		_Align	(copy._Align)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("TextLabel Constructor(copy)\n");
-	#endif
+	PrintDebug("TextLabel Constructor(copy)\n");
 }
 
 void text::TextLabel::Render() const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Render TextLabel");
-	#endif
-
-	Coord pos = GetAbsoluteCoord();
-	Size size = GetAbsoluteSize();
-
-	switch (_Align)
+	if(Visible)
 	{
+		PrintDebug("Render TextLabel");
+
+		Coord pos = GetAbsoluteCoord();
+		Size size = GetAbsoluteSize();
+
+		switch (_Align)
+		{
 		case TextLabel::Aling::Center:
 
 			pos.x += (size.x - lenghtPX()) / 2;
@@ -79,9 +76,10 @@ void text::TextLabel::Render() const
 			break;
 		default:
 			_ksys_debug_puts("Unklown value of TextLabel::_Align");
-	}
+		}
 
-	Print(pos, _MainColor);
+		Print(pos, _MainColor);
+	}
 }
 
 void text::TextLabel::SetScale(bool scale)
@@ -124,6 +122,6 @@ bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::Tex
 
 void KolibriLib::PrintDebug(const UI::text::TextLabel &out)
 {
-	PrintDebug((UIElement)out);
-	PrintDebug((Txt)out);
+	PrintDebug(static_cast <UIElement>(out));
+	PrintDebug(static_cast<Txt>(out));
 }

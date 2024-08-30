@@ -65,24 +65,14 @@ void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 
 Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("GetAbsoluteSize");
-	#endif
+	PrintDebug("GetAbsoluteSize");
 
 	if(Parent != nullptr)
 	{
-		#ifdef DEBUG
-		_ksys_debug_putc('\n');
-		#endif
-
 		return _size.GetAbsolute(Parent->GetAbsoluteSize());
 	}
 	else
 	{
-		#ifdef DEBUG
-		_ksys_debug_puts("Parent no set\n");
-		#endif
-
 		return _size.GetAbsolute(window::GetWindowSize());
 	}
 }
@@ -93,18 +83,10 @@ Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 
 	if(Parent != nullptr)
 	{
-		#ifdef DEBUG
-		_ksys_debug_putc('\n');
-		#endif
-
 		return _coord.GetAbsolute(Parent->GetAbsoluteCoord());
 	}
 	else
 	{
-		#ifdef DEBUG
-		_ksys_debug_puts("Parent no set\n");
-		#endif
-
 		return _coord.GetAbsolute(window::GetWindowSize());
 	}
 }

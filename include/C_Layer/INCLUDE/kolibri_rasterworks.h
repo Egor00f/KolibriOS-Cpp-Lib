@@ -127,7 +127,7 @@ inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, 
 
 inline void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor = KolibriLib::Globals::SystemColors.work_text, const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::Globals::SystemColors.work_area, const uint8_t &flags = 0, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
 {
-  const std::size_t l = size.x * size.y;
+  const int l = size.x * size.y;
   rgb_t *canvas = new rgb_t[l];
 
   for(std::size_t i = 0; i < l; i++)
@@ -136,10 +136,12 @@ inline void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &siz
   }
 
   void *buff = drawTextToBuff(canvas, {0,0}, size, text, CharSize, FontColor, flags, encoding);
+  
   delete canvas;
+
   _ksys_draw_bitmap(buff, coord.x, coord.y, size.x, size.y);
+
   free(buff);
-	
 }
 
 

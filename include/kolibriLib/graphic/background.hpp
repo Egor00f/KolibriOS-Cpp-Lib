@@ -17,7 +17,7 @@ namespace KolibriLib
 	{
 
 		/// @brief Получить размеры фонового изображения
-		/// @return
+		/// @return 
 		inline Size GetSize()
 		{
 			ksys_pos_t p;
@@ -37,7 +37,7 @@ namespace KolibriLib
 			Colors::Color c;
 
 			// Смещение
-			unsigned s = GetSize().x * (Point.y - 1) + Point.x; // я думаю, что изображение это двумерный массив
+			int s = GetSize().x * (Point.y - 1) + Point.x; // я думаю, что изображение это двумерный массив
 
 			asm_inline(
 				"int $0x40"
@@ -58,11 +58,7 @@ namespace KolibriLib
 		/// @param size размеры 
 		inline void RedrawBackground(const Coord& coord, const Size& size)
 		{
-			ksys_pos_t buff = coord.GetKsysPost();
-			ksys_pos_t p2;
-			p2.x = (unsigned)buff.x + size.GetKsysPost().x;
-			p2.y = (unsigned)buff.y + size.GetKsysPost().y;
-			_ksys_bg_redraw_bar(buff, p2);
+			_ksys_bg_redraw_bar(coord.operator ksys_pos_t(), (coord + size).operator ksys_pos_t());
 		}
 
 		/// @brief
@@ -72,12 +68,12 @@ namespace KolibriLib
 			_ksys_bg_set_size(size.x, size.y);
 		}
 
-		/// @brief
-		/// @param coord
-		/// @param color
+		/// @brief Постовить точку на фоне
+		/// @param coord координаты точки
+		/// @param color цвет точки
 		inline void DrawPoint(const Coord coord, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
-			_ksys_bg_put_pixel(coord.x, coord.y, GetSize().x, color.val);
+			_ksys_bg_put_pixel(coord.x, coord.y, GetSize().x, color.operator ksys_color_t());
 		}
 
 		template <std::size_t N>

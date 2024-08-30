@@ -92,7 +92,7 @@ namespace KolibriLib
 		/// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя
 		inline CursorHandle LoadCursor(const filesystem::Path& path)
 		{
-			return _ksys_load_cursor((void*)((const char*)path), KSYS_CURSOR_FROM_FILE);
+			return _ksys_load_cursor((void*)(path.operator const char *()), KSYS_CURSOR_FROM_FILE);
 		}
 
 		/// @brief Загрузить курсор мыши
