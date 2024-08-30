@@ -18,23 +18,20 @@ int main()
 
 	// Добавление текстовой метки
 	auto label = wndw->AddElement(TextLabel(
-		                            UDim(0, 0, 0, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
-									UDim(0.6, 0, 1, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
+		                            UDim(0.0f, 0, 0.0f, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
+									UDim(0.6f, 0, 1.0f, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
 									"Hello World",
 									{32, 36}           	// Размер символов 32x36
 								)
 					);
 
 	// Добавление кнопки
-	TextButton* button = wndw->AddElement(TextButton(UDim(0.4, 0, 0.4, 0), UDim(0.2, 0, 0.2, 0)));
+	TextButton* button = wndw->AddElement(TextButton(UDim(0.4f, 0, 0.4f, 0), UDim(0.2f, 0, 0.2f, 0)));
 
 	PrintDebug(*button);
 
 	// Отрисовка окна
 	wndw->Render();
-
-	
-
 
 	bool exit = false;
 	while (!exit)

@@ -43,21 +43,13 @@ endif()
 
 
 
-
-
-#include toochain
-include(CMakeLoadToolchainPath)
-if(CUSTOM_TOOCLAIN_PATH)
-	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
-endif()
-
 include(CMakeDetermineKOS32Compiler)
 include(CMakeTestKOS32Compiler)
 
 
 
-set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -DDEBUG")
-set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
+set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -Wcast-align -Wcast-qual -Wconversion -Wenum-compare -Wfloat-equal -Wredundant-decls -Wsign-conversion -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wctor-dtor-privacy -Wnon-virtual-dtor -Wsign-promo -Wold-style-cast -Woverloaded-virtual")
 
 set(CMAKE_C_FLAGS_RELEASE "-O2")
 set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
@@ -76,9 +68,11 @@ set(C_LAYER_LOADERS_SOURCES
 	${C_Layer_SRC_PATH}/loadlibimg.asm
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
+	${C_Layer_SRC_PATH}/loadproclib.asm
 	${C_LAYER_HEADERS}/kolibri_buf2d.h
 	${C_LAYER_HEADERS}/kolibri_libimg.h
 	${C_LAYER_HEADERS}/kolibri_rasterworks.h
+	${C_LAYER_HEADERS}/kolibri_opendialog.h
 )
 
 set(C_LAYER_KOLIBRILIB_SOURCES
@@ -150,19 +144,18 @@ ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT ${C_LAYER_KOLIBRILIB_SOURCES})
 
 target_include_directories(C_LAYER_KOLIBRILIB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_options(C_LAYER_KOLIBRILIB
-	PRIVATE -c -D__MakeStaticLib__
+	PRIVATE -c -D__MakeStaticLib__	
 )
 
+# ТА САМАЯ ЛИБА ИЗ_ЗА КОТОРОЙ ВСЁ ЭТО
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 target_link_libraries(KolibriLib 
 	PUBLIC C_LAYER_KOLIBRILIB
 	PUBLIC C_LAYER_LOADERS
 )
 
-
 target_compile_options(KolibriLib 
 	PRIVATE -c -D__MakeStaticLib__
-	PUBLIC -fomit-frame-pointer
 )
 
 target_include_directories(KolibriLib
@@ -188,14 +181,11 @@ endif()
 set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
 
 
-add_custom_target(
-	Example
-	COMMAND make
-	DEPENDS KolibriLib
-	WORKING_DIRECTORY ${ExamplesDir}
-	COMMENT "Build Example"
-	SOURCES ${ExamplesDir}/example.cpp ${ExamplesDir}/Makefile
+add_executable(Example ${ExamplesDir}/example.cpp)
+target_link_libraries(Example PUBLIC KolibriLib)
+add_custom_command(
+	TARGET Example POST_BUILD
+	COMMAND ${CMAKE_OBJCOPY} ARGS Example -O binary
+	COMMENT "objcpy"
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
-
-#add_executable(Example ${ExamplesDir}/example.cpp)
-#target_link_libraries(Example PUBLIC KolibriLib)

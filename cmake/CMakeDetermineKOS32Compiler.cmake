@@ -1,3 +1,10 @@
+set(TOOLCHAIN_DIR "")
+#include toochain
+include(CMakeLoadToolchainPath)
+if(CUSTOM_TOOCLAIN_PATH)
+	SET(TOOLCHAIN_DIR CUSTOM_TOOCLAIN_PATH)
+endif()
+
 
 
 SET(SDK_DIR "${REPO}/contrib/sdk")
@@ -8,19 +15,18 @@ set(LIBC_DIR ${NEWLIB_DIR}/libc)
 set(LIBSTDCPP_DIR ${LIBS_DIR}/libstdc++-v3)
 
 
-set(C_FLAGS "-fno-ident -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32")
+set(C_FLAGS "-fno-ident -fomit-frame-pointer -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32")
 set(CMAKE_C_COMPILER_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
 set(CMAKE_CXX_COMPILER_FLAGS "${CMAKE_CXX_FLAGS} ${C_FLAGS}")
+
 
 include_directories(
 	${LIBC_DIR}/include
 	${LIBSTDCPP_DIR}/include
 )
 
-link_directories(
-	${SDK_DIR}/lib
-	${TOOLCHAIN_DIR}/mingw32/lib
-	${TOOLCHAIN_DIR}/lib
-)
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -S -nostdlib --image-base 0 -T${NEWLIB_DIR}/app.lds -lgcc -lc.dll -lstdc++ -lsupc++")
+set(CMAKE_C_LINK_EXECUTABLE   "<CMAKE_LINKER> -o <TARGET> -L${TOOLCHAIN_DIR}/lib -L${SDK_DIR}/lib --subsystem native <OBJECTS> --start-group -lgcc -lc.dll <LINK_LIBRARIES> --end-group <CMAKE_C_LINK_FLAGS> <LINK_FLAGS>")
+set(CMAKE_CXX_LINK_EXECUTABLE "<CMAKE_LINKER> -o <TARGET> -L${TOOLCHAIN_DIR}/lib -L${TOOLCHAIN_DIR}/mingw32/lib -L${SDK_DIR}/lib --subsystem native <OBJECTS> --start-group -lgcc -lc.dll -lstdc++ -lsupc++ <LINK_LIBRARIES> --end-group <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS>")
+
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -S --image-base 0 -nostdlib -T${NEWLIB_DIR}/app.lds")
