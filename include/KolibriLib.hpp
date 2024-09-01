@@ -10,6 +10,7 @@
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/network.hpp>
 #include <kolibriLib/OpenDialog.hpp>
+#include <kolibriLib/input/clipboard.hpp>
 #include <input.hpp>
 #include <UI.hpp>
 

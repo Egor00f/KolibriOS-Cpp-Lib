@@ -112,6 +112,7 @@ SET(SOURCES
 	${SRC_PATH}/freetype.cpp
 	${SRC_PATH}/keyboard.cpp
 	${SRC_PATH}/OpenDialog.cpp
+	${SRC_PATH}/clipboard.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/UI.hpp
@@ -142,7 +143,10 @@ target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
 
 ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT ${C_LAYER_KOLIBRILIB_SOURCES})
 
-target_include_directories(C_LAYER_KOLIBRILIB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(C_LAYER_KOLIBRILIB 
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+	PUBLIC ${LIBC_DIR}/include
+)
 target_compile_options(C_LAYER_KOLIBRILIB
 	PRIVATE -c -D__MakeStaticLib__	
 )
@@ -160,6 +164,7 @@ target_compile_options(KolibriLib
 
 target_include_directories(KolibriLib
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+	PUBLIC ${LIBSTDCPP_DIR}/include
 	PUBLIC ${KOLIBRIOS_REPO}/contrib/sdk/sources/freetype/include
 )
 
