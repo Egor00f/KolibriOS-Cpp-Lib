@@ -252,7 +252,7 @@ void KolibriLib::UI::UIElement::SetButtonIDController(const buttons::ButtonsIDCo
 
 void KolibriLib::PrintDebug(const UI::UIElement &out)
 {
-	PrintDebug(out.ClassName);
+	PrintDebug("UIElement:\n");
 	DebugOut(":\n");
 	PrintDebug(out.GetColor());
 	DebugOut("\n Size:\n ");

@@ -28,21 +28,26 @@ namespace KolibriLib
         {
             /// @brief Текстовая метка
             /// @note Простая текстовая метка, ничего особенного.
-            /// @note Возможно важные сведения: текст всегда отрисовывается в середине 
+            /// @note Возможно важные сведения: текст всегда отрисовывается в середине
+            /// @example example.cpp
             class TextLabel: public Txt, public UI::UIElement
             {
             public:
-                const std::string ClassName = "TextLabel";
-                bool RenderOnEverythingRedraw = false;
 
-                enum Aling
+                /// @brief Выравнивание текста в метке
+                enum Align
                 {
+                    /// @brief текст прижимается к правой стороне
                     Right,
+
+                    /// @brief Текст прижат к левой стороне
                     Left,
+                    
+                    /// @brief Текст по центру
                     Center
                 };
 
-                typedef Aling Aling;
+                typedef Align Align;
 
                 /// @brief Конструктор
                 /// @param coord координата
@@ -85,6 +90,14 @@ namespace KolibriLib
                 /// @ return значение переменной _TextScale
                 bool GetScale() const; 
 
+                /// @brief Изменить выравнивание
+                /// @param aling 
+                void SetAling(TextLabel::Align aling);
+
+                /// @brief получить выравнивание
+                /// @return 
+                Align GetAling() const;
+
                 /// @brief 
                 /// @param a 
                 /// @return 
@@ -99,7 +112,7 @@ namespace KolibriLib
                 
             private:
                 /// @brief Выравнивание
-                Aling _Align = Center;
+                Align _Align = Center;
 
                 /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
                 /// @warning пока что не работает

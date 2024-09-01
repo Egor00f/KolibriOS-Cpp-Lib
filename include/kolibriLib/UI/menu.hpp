@@ -22,11 +22,9 @@ namespace KolibriLib
         class Menu : public UIElement
         {
         public:
-            const std::string ClassName = "Menu";
 
             struct Item: public buttons::Button
             {
-                std::string ClassName = "MenuItem";
                 /// @brief Poiter to Menu
                 Menu* _undermenu = nullptr;
 

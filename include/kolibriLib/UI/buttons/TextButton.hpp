@@ -10,13 +10,11 @@ namespace KolibriLib
 	{
 		namespace buttons
 		{
-			 /// \brief Класс для работы с кнопками
-            class TextButton: public text::TextLabel, public BaseButton
+			/// \brief Класс для работы с кнопками
+			/// @example example.cpp
+			class TextButton: public text::TextLabel, public BaseButton
             {
             public:
-
-                bool RenderOnEverythingRedraw = true;
-
                 /// \brief Это конструктор
                 /// \param coord координата
                 /// \param size размер
@@ -48,7 +46,7 @@ namespace KolibriLib
 			   /// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
 			   void OnButtonEvent(ButtonID PressedButtonID);
 
-			   buttons::ButtonsIDController *GetButtonIDController() const;
+			   buttons::ButtonsIDController *GetButtonIDController();
 
 			   void SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController);
 

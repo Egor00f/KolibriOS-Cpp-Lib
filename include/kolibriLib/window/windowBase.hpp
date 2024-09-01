@@ -174,7 +174,7 @@ namespace KolibriLib
 		/// @param pos значение из списка Pos
 		/// @param pid процесс окна, по умолчанию текущий
 		/// @return false если ошибка
-		//// @return true если успешно
+		/// @return true если успешно
 		inline bool SetWindowPos(Pos pos, Thread::PID pid = Thread::ThisThread)
 		{
 			bool a;

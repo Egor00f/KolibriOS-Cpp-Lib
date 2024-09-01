@@ -26,6 +26,7 @@ namespace KolibriLib
 	/// \brief Работа с окном
 	namespace window
 	{
+		/// @brief просто класс полями для Window
 		class Window_t: public UI::GuiObject
 		{
 		public:
@@ -43,6 +44,7 @@ namespace KolibriLib
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
 
+			/// @brief Последняя нажатая кнопка
 			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
 
 			/// @brief Стиль окна
@@ -59,12 +61,11 @@ namespace KolibriLib
 		};
 
 		/// @brief Класс для работы с окном
-		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор
+		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор. Если вызывать методы из других потоков, то вести они себя будут неадекватно
+		/// @example example.cpp
 		class Window: public Window_t
 		{
 		public:
-
-			const std::string ClassName = "Window";
 
 			/// @brief Конструктор
 			/// @param Title Заголовок окна
@@ -105,12 +106,14 @@ namespace KolibriLib
 			/// @param NewCoord 
 			void SetCoord(const Coord &NewCoord) override;
 
-			/// @brief 
+			/// @brief Получить абсолютный размер окна
+			/// @details Нужно только для классов наследуемых из UIElement
 			/// @return 
 			Coord GetAbsoluteCoord() const override;
 
-			/// @brief 
-			/// @return 
+			/// @brief Получить абсолютный размер окна
+			/// @details Нужно только для классов наследуемых из UIElement
+			/// @return
 			Size GetAbsoluteSize() const override;
 
 			/// @brief Задать стандартные цвета окна
@@ -137,19 +140,29 @@ namespace KolibriLib
 
 			/// @brief Обработчик окна
 			/// @return Ивент
+			/// @example example.cpp
 			OS::Event Handler();
 
 			/// @brief Проверить какая нажата
+			/// @return ButtonID нажатой кнопки
+			/// @example example.cpp
 			UI::buttons::ButtonID GetPressedButton();
 
+			/// @brief Добавить UI элемент
+			/// @param element указатель на элемент
+			/// @details Зачем добавлять в окно элементы ui? Да чтоб при перерисовке окна не нужнобыло отрисовывать все ручками
+			/// @return указатель на элемент(новый)
 			void AddElement(UIElement *element);
 
 			template <class T>
 			/// @brief Добавить UI элемент
-			/// @param element
+			/// @param element сам элемент
+			/// @details Зачем добавлять в окно элементы ui? Да чтоб при перерисовке окна не нужнобыло отрисовывать все ручками
 			/// @return указатель на элемент(новый)
-			T* AddElement(const T &element);
+			/// @example example.cpp
+			T *AddElement(const T &element);
 
+			/// @brief Удалить элемент из окна
 			template <class T >
 			bool DeleteElement (T* element);
 
@@ -160,6 +173,7 @@ namespace KolibriLib
 			void Focus () const;
 
 			/// @brief Отрисовать все элементы
+			/// @example example.cpp
 			void RenderAllElements() const;
 
 			/// @brief Изменить позицию окна относительно одних

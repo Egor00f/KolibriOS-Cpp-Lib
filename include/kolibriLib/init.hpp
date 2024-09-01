@@ -20,7 +20,7 @@
 
 //#include <kolibriLib/UI/text/freetypefuncs.hpp>
 
-/// \brief Основное пространство имён
+/// \brief Основное пространство имён библиотеки KolibriLib
 /// \author Egor00f
 namespace KolibriLib
 {

@@ -56,19 +56,19 @@ void text::TextLabel::Render() const
 
 		switch (_Align)
 		{
-		case TextLabel::Aling::Center:
+		case TextLabel::Align::Center:
 
 			pos.x += (size.x - static_cast<int>(lenghtPX())) / 2;
 			pos.y += size.y / 2;
 
 			break;
-		case TextLabel::Aling::Left:
+		case TextLabel::Align::Left:
 
 			pos.y += size.y / 2;
 
 			break;
 
-		case TextLabel::Aling::Right:
+		case TextLabel::Align::Right:
 
 			pos.x += size.x - static_cast<int>(lenghtPX());
 			pos.y += size.y / 2;
@@ -90,6 +90,16 @@ void text::TextLabel::SetScale(bool scale)
 bool TextLabel::GetScale() const
 {
 	return _TextScale;
+}
+
+void KolibriLib::UI::text::TextLabel::SetAling(TextLabel::Align aling)
+{
+	_Align = aling;
+}
+
+TextLabel::Align KolibriLib::UI::text::TextLabel::GetAling() const
+{
+	return _Align;
 }
 
 text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const KolibriLib::UI::text::TextLabel &a)

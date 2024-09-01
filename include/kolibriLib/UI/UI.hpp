@@ -30,9 +30,6 @@ namespace KolibriLib
 		{
 		public:
 
-			/// @brief Имя класса
-			const std::string ClassName;
-
         	virtual ~GuiObject() = default;
 
 			/// @brief Получить размер элемента
@@ -89,13 +86,6 @@ namespace KolibriLib
 		class UIElement: public GuiObject
 		{
 		public:
-
-			/// @brief Имя класса, (для наследуемых классов)
-			const std::string ClassName = "UIElement";
-
-			/// @brief Флаг того нужно ли отрисовывать этот элемент при каждой перерисовке окна
-			bool RenderOnEverythingRedraw = false;
-
 			/// @brief Конструктор
 			/// @param UDim координат
 			/// @param size размер

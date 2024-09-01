@@ -44,7 +44,7 @@ void BaseButton::BaseButton::Deactivate()
 
 void BaseButton::BaseButton::Activate()
 {
-	if (IsActive())
+	if (!IsActive())
 	{
 		_id	= _ButtonsIDController->GetFreeButtonID();
 	}

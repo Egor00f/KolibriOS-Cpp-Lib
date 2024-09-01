@@ -129,7 +129,7 @@ inline void Window::SetSize(const UDim &NewSize)
 
 inline Coord Window::GetAbsoluteCoord() const
 {
-	return window::GetWindowCoord();
+	return window::GetWindowSize();
 }
 
 inline Size Window::GetAbsoluteSize() const
@@ -232,9 +232,7 @@ inline UDim Window::GetSize() const
 
 OS::Event Window::Handler()
 {
-
 	PrintDebug("Handler\n");
-
 
 	OS::Event event = OS::WaitEvent();
 

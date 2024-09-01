@@ -4,40 +4,66 @@ using namespace KolibriLib;
 using namespace UI;
 
 CheckBox::CheckBox(const UDim &coord, const UDim &size, const style &Style, const Colors::Color &CheckBoxBorderColor, const Colors::Color &BackgroundColor, const unsigned &Margin)
-	:	TextButton(coord, size, Margin, BackgroundColor), 
+	:	Button(coord, size, Margin, BackgroundColor), 
+		_BorderColor(CheckBoxBorderColor),
 		_style(Style)
 {
 	PrintDebug("CheckBox Constructor\n");
 }
 
-void CheckBox::Render()
+void KolibriLib::UI::CheckBox::DrawBorder() const
 {
-	PrintDebug("Render Checkbox\n");
+	const Coord absCoord = GetAbsoluteCoord();
+	const Coord absSize = GetAbsoluteSize();
 
 	switch (_style)
 	{
 	case Default:
-		//graphic::DrawRectangleLines(_coord, {_coord.x + (int)_size.x, _coord.y + (int)_size.y}, _MainColor);
+		graphic::DrawRectangleLines(absCoord, absCoord + absSize, _MainColor);
 		break;
 	case Circle:
-		//graphic::DrawCircle(_coord, _size.x / 2, _MainColor);
+		graphic::DrawCircle(absCoord + point(absSize.x / 2, absSize.y / 2), absSize.x / 2, _BorderColor);
 	default:
 		break;
 	}
+}
 
-	if (GetStatus())
+bool KolibriLib::UI::CheckBox::GetChecked() const
+{
+	return checked;
+}
+
+void KolibriLib::UI::CheckBox::OnButtonEvent(buttons::ButtonID PressedButtonID)
+{
+	Button::OnButtonEvent(PressedButtonID);
+	if(_status)
+	{
+		checked = !checked;
+	}
+}
+
+void CheckBox::Render() const
+{
+	PrintDebug("Render Checkbox\n");
+
+	DrawBorder();
+
+	const Coord absCoord = GetAbsoluteCoord();
+	const Coord absSize = GetAbsoluteSize();
+
+	if (checked)
 	{
 		switch (_style)
 		{
 		case CheckBox::style::Default:
-			//graphic::DrawRectangleFill(Coord(_coord.x + _Margin, _coord.y + _Margin),
-			//						   Size(_size.x - (2 * _Margin), _size.y + (2 * _Margin)),
-			//						   _MainColor);
+			graphic::DrawRectangleFill(absCoord,
+									   absSize,
+									   _BorderColor);
 			break;
 		case CheckBox::style::Circle:
-			//graphic::DrawCircle(Coord(_coord.x + _Margin, _coord.y + _Margin),
-			//					_size.x / 2 - _Margin,
-			//					_MainColor);
+			graphic::DrawCircle(absCoord + point(absSize.x / 2, absSize.y / 2),
+								absSize.x / 2 - GetMargin(),
+								_BorderColor);
 			break;
 		case CheckBox::style::Smoth:
 			PrintDebug("KolibriLib::UI::Checkbox smath style now not support :(\n");
@@ -47,5 +73,5 @@ void CheckBox::Render()
 		}
 	}
 
-	TextButton::Render();
+	Button::Render();
 }
