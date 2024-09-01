@@ -8,7 +8,9 @@ int main()
 
 	Window wnd("TextEdiatorExample");
 
-	auto editor = window.AddElement(BaseEditor(UDim(0.2f, 0.2f), UDim(0.2f, 0.6f)));
+	auto editor = wnd.AddElement(BaseEditor(UDim(0.2f, 0.2f), UDim(0.6f, 0.2f)));
+
+	wnd.RenderAllElements();
 
 	bool exit = false;
 	while(!exit)

@@ -255,6 +255,8 @@ namespace KolibriLib
 			return (lang)a;
 		}
 
+		/// @brief Изменить язык системы
+		/// @param l язык
 		inline void SetLang(lang l)
 		{
 			asm_inline(
@@ -281,6 +283,7 @@ namespace KolibriLib
 			Sound = 'S'
 		} notifyIcon;
 
+		/// @brief Ключи для уведомлений
 		typedef enum
 		{
 			/// @brief не закрывать автоматически
@@ -308,7 +311,7 @@ namespace KolibriLib
 		inline void ErrorNotify(const std::string &Title, const std::string &Text)
 		{
 			std::string a = "\"'" + Title + "\n" + Text + "' -E -t";
-			_ksys_exec("/sys/@notify", (char*)a.c_str(), false);
+			_ksys_exec("/sys/@notify", const_cast<char*>(a.c_str()), false);
 		}
 
 		/// @brief Версия ядра
@@ -367,7 +370,7 @@ namespace KolibriLib
 				: "a"(21), "b"(10)
 			);
 
-			return (long long)((b << 31) || a);
+			return static_cast<long long>((b << 31) || a);
 		}
 
 	} // namespace OS

@@ -6,7 +6,7 @@ if(CUSTOM_TOOCLAIN_PATH)
 endif()
 
 
-
+get_filename_component(REPO ${KOLIBRIOS_REPO} REALPATH)
 SET(SDK_DIR "${REPO}/contrib/sdk")
 
 set(LIBS_DIR ${SDK_DIR}/sources)

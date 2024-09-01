@@ -124,40 +124,6 @@ bool KolibriLib::point::operator>(const point &obj) const
 	return (x > obj.x) || (y > obj.y);
 }
 
-KolibriLib::CoordA::CoordA(int X, int Y) 
-	: point(X, Y), angle(0)
-{
-}
-
-KolibriLib::CoordA::CoordA(int X, int Y, uint32_t A)
-	: point(X, Y), angle(A)
-{
-}
-
-CoordA &KolibriLib::CoordA::operator=(const point &p)
-{
-	x = p.x;
-	y = p.y;
-	return *this;
-}
-
-bool KolibriLib::CoordA::operator==(const point &p) const
-{
-	return x == p.x &&
-           y == p.y;
-}
-
-KolibriLib::CoordA::operator point() const
-{
-	return {x, y};
-}
-
-KolibriLib::CoordA::CoordA(const point &p)
-	:	point(p),
-		angle(0)
-{
-}
-
 KolibriLib::UDim::Axis::Axis(float scale, int offset)
 	: Scale(scale),
 	  Offset(offset)

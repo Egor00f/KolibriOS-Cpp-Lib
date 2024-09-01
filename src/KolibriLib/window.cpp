@@ -204,7 +204,7 @@ void Window::Render()
 	StartRedraw();
 	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style);
 
-	KolibriLib::graphic::DrawRectangleFill({0, (int)window::GetSkinHeight()}, GetWindowSize(), Colors::UINT32toRGB(_colors.work_area));
+	KolibriLib::graphic::DrawRectangleFill({0, static_cast<int>(window::GetSkinHeight())}, GetWindowSize(), Colors::UINT32toRGB(_colors.work_area));
 
 	RenderAllElements();
 
@@ -283,7 +283,7 @@ OS::Event Window::Handler()
 		{
 			Coord m = mouse::GetMousePositionInWindow();
 
-			if (m.x < GetSize().GetAbsolute().x && m.y < (int)window::GetSkinHeight())
+			if (m.x < GetSize().GetAbsolute().x && m.y < static_cast<int>(window::GetSkinHeight()))
 			{
 				
 			}
@@ -312,7 +312,7 @@ OS::Event Window::Handler()
 		Coord Mouse = mouse::GetMousePositionInWindow();
 		if ( ((Mouse.x > 0 && Mouse.y > 0)	&& 
 		       Mouse.x < GetWindowSize().x	&& 
-			   Mouse.y < (int)GetSkinHeight())	&& 
+			   Mouse.y < static_cast<int>(GetSkinHeight()))	&& 
 			   mouse::GetMouseButtons() == mouse::LeftButton)
 		{
 			while (mouse::GetMouseButtons() == mouse::LeftButton)
@@ -352,7 +352,7 @@ window::Pos KolibriLib::window::Window::GetPosition() const
 
 UI::buttons::ButtonsIDController *KolibriLib::window::Window::GetButtonIDController() const
 {
-	return (UI::buttons::ButtonsIDController *)&_buttonsController;
+	return const_cast<UI::buttons::ButtonsIDController*>(&_buttonsController);
 }
 
 void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::ButtonsIDController*) 

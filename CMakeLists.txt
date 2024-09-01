@@ -188,7 +188,6 @@ if(NOT IS_SUBPROJECT)
 	add_custom_command(
 		TARGET Example POST_BUILD
 		COMMAND ${CMAKE_OBJCOPY} ARGS Example -O binary
-		COMMENT "objcpy"
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 	)
 
@@ -198,7 +197,6 @@ if(NOT IS_SUBPROJECT)
 	add_custom_command(
 		TARGET ExampleTextEditor POST_BUILD
 		COMMAND ${CMAKE_OBJCOPY} ARGS ExampleTextEditor -O binary
-		COMMENT "objcpy"
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 	)
 

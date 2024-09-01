@@ -116,7 +116,7 @@ namespace KolibriLib
 
             /// @brief конструктор
             /// @details он просто есть
-            Input(uint8_t i = 0): ASCII(i){}
+            Input(uint8_t i = 0): ASCII(static_cast<char>(i)){}
 
             operator char() const;
             operator Scancode() const;

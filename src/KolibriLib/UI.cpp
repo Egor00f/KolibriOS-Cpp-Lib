@@ -65,9 +65,9 @@ void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 
 Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
-	PrintDebug("GetAbsoluteSize");
+	PrintDebug("GetAbsoluteSize\n");
 
-	if(Parent != nullptr)
+	if (Parent != nullptr)
 	{
 		return _size.GetAbsolute(Parent->GetAbsoluteSize());
 	}
@@ -79,9 +79,9 @@ Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 
 Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 {
-	PrintDebug("GetAbsoluteCoord");
+	PrintDebug("GetAbsoluteCoord\n");
 
-	if(Parent != nullptr)
+	if (Parent != nullptr)
 	{
 		return _coord.GetAbsolute(Parent->GetAbsoluteCoord());
 	}
@@ -108,9 +108,9 @@ unsigned KolibriLib::UI::UIElement::GetRotate() const
 
 bool KolibriLib::UI::UIElement::Hover() const
 {
-	if(Parent != nullptr)
+	if (Parent != nullptr)
 	{
-		Coord Mouse = mouse::GetMousePositionInWindow();
+		Coord Mouse	= mouse::GetMousePositionInWindow();
 		point coord	= GetAbsoluteSize();
 		Size size	= GetAbsoluteSize();
 
@@ -153,19 +153,19 @@ void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
 		((UIElement*) Parent)->DeleteChildren(this);
 	}
 
-	Parent = (GuiObject *) NewParent;
+	Parent = const_cast<GuiObject*>(static_cast<const GuiObject*>(NewParent));
 
 	((UIElement*) Parent)->AddChildren(this);
 }
 
 void KolibriLib::UI::UIElement::WindowAsParent(const GuiObject *window) const
 {
-	if(Parent != nullptr && !ParentIsWindow)
+	if (Parent != nullptr && !ParentIsWindow)
 	{
 		((UIElement*) Parent)->DeleteChildren(this);
 	}
 
-	Parent = (GuiObject *)window;
+	Parent = const_cast<GuiObject*>(window);
 }
 
 const GuiObject *KolibriLib::UI::UIElement::GetParent() const
@@ -220,7 +220,7 @@ std::vector<UIElement*> KolibriLib::UI::UIElement::GetChildren() const
 
 void KolibriLib::UI::UIElement::AddChildren(const UIElement *child) const
 {
-	_childs.push_back((UIElement*) child);
+	_childs.push_back(const_cast<UIElement*>(child));
 }
 
 void KolibriLib::UI::UIElement::DeleteChildren(const UIElement *child) const
@@ -257,6 +257,6 @@ void KolibriLib::PrintDebug(const UI::UIElement &out)
 	PrintDebug(out.GetColor());
 	DebugOut("\n Size:\n ");
 	PrintDebug(out.GetSize());
-	DebugOut("\n Coord:\n ");
+	DebugOut("Coord:\n ");
 	PrintDebug(out.GetCoord());
 }

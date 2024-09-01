@@ -58,7 +58,7 @@ void text::TextLabel::Render() const
 		{
 		case TextLabel::Aling::Center:
 
-			pos.x += (size.x - lenghtPX()) / 2;
+			pos.x += (size.x - static_cast<int>(lenghtPX())) / 2;
 			pos.y += size.y / 2;
 
 			break;
@@ -70,7 +70,7 @@ void text::TextLabel::Render() const
 
 		case TextLabel::Aling::Right:
 
-			pos.x += size.x - lenghtPX();
+			pos.x += size.x - static_cast<int>(lenghtPX());
 			pos.y += size.y / 2;
 
 			break;

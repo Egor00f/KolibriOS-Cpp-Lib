@@ -98,19 +98,6 @@ namespace KolibriLib
 
 	/// @brief Координаты
 	typedef point Coord;
-		
-	/// @brief Координаты c углом
-	struct CoordA: public point
-	{
-		CoordA(int X = 0, int Y = 0);
-		CoordA(int X, int Y, uint32_t A);
-		CoordA(const point& p);
-		/// @brief Угол наклона
-		uint32_t angle;
-		CoordA& operator=(const point& p);
-		bool operator==(const point& p) const;
-		operator point() const;
-	};
 
 	/// @brief Координаты/Размеры для элементов UI
 	struct UDim

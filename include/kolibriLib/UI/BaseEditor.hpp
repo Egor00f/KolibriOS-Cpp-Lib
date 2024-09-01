@@ -28,8 +28,6 @@ namespace KolibriLib
             /// \param Margin отступы рамки от текста
             BaseEditor(const UDim &coord = point(0), const UDim &size = DefaultSize, const std::string &BackgroundText = "Text...", const Colors::Color &FormColor = Globals::SystemColors.work_text, const Colors::Color &ButtonTextColor = Globals::SystemColors.work_area, const unsigned &Margin = DefaultMargin);
 
-            void OnMouseEvent();
-
             void OnButtonEvent(buttons::ButtonID PressedButtonID);
 
             void OnKeyEvent();
