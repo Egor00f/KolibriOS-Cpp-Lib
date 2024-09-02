@@ -184,7 +184,7 @@ namespace KolibriLib
 
 			asm_inline (
 				"int $0x40"
-				: "=a"(a)
+				: "=a"(ret)
 				: "a"(18), "b"(25), "c"(2), "d"(pid), "S"(pos));
 
 			return ret;

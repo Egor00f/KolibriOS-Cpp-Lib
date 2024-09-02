@@ -43,13 +43,16 @@ void graphic::DrawCircle(const Coord &coord, unsigned Radius, const Colors::Colo
 
 void graphic::DrawCircleFill(const Coord &coord, const unsigned &Radius, const Colors::Color &color)
 {
+	// хаспде какой всратый алгоритм
+
+
 	graphic::DrawCircle(coord, Radius, color);
 
-	unsigned b = Radius * cos(90 + 45);
-	unsigned c = Radius * sin(90 + 45);
+	unsigned b = lround(Radius * cos(90 + 45));
+	unsigned c = lround(Radius * sin(90 + 45));
 	Coord n(coord.x + static_cast<int>(b), coord.y + static_cast<int>(c));
 
-	DrawRectangleFill(
+	DrawRectangleFill (
 		n, 
 		{
 			(coord.x - n.x) * 2, 
@@ -58,7 +61,7 @@ void graphic::DrawCircleFill(const Coord &coord, const unsigned &Radius, const C
 		color
 	);
 
-	for (unsigned i = Radius; i > (Radius - (coord.x - n.x)); i--) // Дозакрашивание пробелов между квадратом и границами груга
+	for (unsigned i = Radius; i > static_cast<unsigned>(Radius - (coord.x - n.x)); i--) // Дозакрашивание пробелов между квадратом и границами груга
 	{
 		graphic::DrawCircle(coord, i, color);
 	}

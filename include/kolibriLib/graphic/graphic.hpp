@@ -12,7 +12,6 @@
 #include <kolibriLib/globals.hpp>
 
 #include <cmath>
-//#include <std/cmath.hpp>
 
 namespace KolibriLib
 {
