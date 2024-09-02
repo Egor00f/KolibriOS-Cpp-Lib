@@ -15,10 +15,11 @@ set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозитор�
 #
 #################################################
 
+get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 set(CMAKE_CXX_STANDARD 11)
-
-get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -205,9 +206,18 @@ if(NOT IS_SUBPROJECT)
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 	)
 
+	add_executable(ExampleCheckbox ${ExamplesDir}/checkboxExample.cpp)
+	target_link_libraries(ExampleCheckbox PUBLIC KolibriLib)
+
+	add_custom_command(
+		TARGET ExampleCheckbox POST_BUILD
+		COMMAND ${CMAKE_OBJCOPY} ARGS ExampleCheckbox -O binary
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	)
+
 	add_custom_target(
 		AllExamples
-		DEPENDS Example ExampleTextEditor
+		DEPENDS Example ExampleTextEditor ExampleCheckbox
 	)
 
 endif()

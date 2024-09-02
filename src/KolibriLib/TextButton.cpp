@@ -35,27 +35,29 @@ TextButton::TextButton(const TextButton &copy)
 
 buttons::TextButton &KolibriLib::UI::buttons::TextButton::operator=(const buttons::TextButton &element)
 {
-	_coord = element._coord;
-	_size = element._size;
-	_MainColor = element._MainColor;
+	_coord	= element._coord;
+	_size	= element._size;
+	_data	= element._data;
+	_MainColor	= element._MainColor;
 	SetMargin(element.GetMargin());
-	_id = element._id;
-	_data = element._data;
-
+	_id	= element._id;
+	
 	return *this;
 }
 
 bool KolibriLib::UI::buttons::TextButton::operator==(const TextButton &element) const
 {
-	return (_data == element._data) &&
-		   (_coord == element._coord) &&
-		   (_size == element._size) &&
-		   (_data == element._data);
+	return (_data	== element._data)  &&
+		   (_coord	== element._coord) &&
+		   (_size	== element._size)  &&
+		   (_data	== element._data)  &&
+		   (_MainColor	== element._MainColor) &&
+		   (GetMargin() == element.GetMargin());
 }
 
 void buttons::TextButton::OnButtonEvent(ButtonID PressedButtonID)
 {
-	_status = PressedButtonID == _id; // Если id нажатой кнопки совпадает к id этой кнопки
+	_status = (PressedButtonID == _id); // Если id нажатой кнопки совпадает к id этой кнопки
 }
 
 void buttons::TextButton::Render() const
@@ -97,12 +99,12 @@ buttons::ButtonsIDController *KolibriLib::UI::buttons::TextButton::GetButtonIDCo
 
 void KolibriLib::UI::buttons::TextButton::SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController)
 {
-	_ButtonsIDController = (buttons::ButtonsIDController *)buttonsIDController;
+	_ButtonsIDController = const_cast<buttons::ButtonsIDController *>(buttonsIDController);
 }
 
 void KolibriLib::PrintDebug(const UI::buttons::TextButton &out)
 {
-	PrintDebug((text::TextLabel)out);
-	PrintDebug((buttons::BaseButton)out);
+	PrintDebug(static_cast<text::TextLabel>(out));
+	PrintDebug(static_cast<buttons::BaseButton>(out));
 }
 

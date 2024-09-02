@@ -42,7 +42,7 @@ namespace KolibriLib
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
         /// @note есть немалый шанс проебаться с размером стека
-        PID CreateThread_(void *ThreadEntry, unsigned ThreadStackSize = 2048);
+        PID CreateThread_(void *ThreadEntry, unsigned ThreadStackSize = 4096);
 
         template <class T>
         /// \brief Создать поток
@@ -51,14 +51,14 @@ namespace KolibriLib
         /// \return ID потока
         /// @note есть шанс проебаться с размером стека
         /// @note Пихать сюда ТОЛЬКО указатели на функции, иначе ваще хз че поизойдёт
-        inline PID CreateThread(T ThreadEntry, unsigned ThreadStackSize = 2048)
+        inline PID CreateThread(T ThreadEntry, unsigned ThreadStackSize = 4096)
         {
             return CreateThread_((void*)ThreadEntry, ThreadStackSize);
         }
 
         /// @brief Завершить процесс/поток
         /// @param PID ID Процесса/потока
-        /// @return true если успешно, иначе false
+        /// @return false если произошла ошибка
         /// @note Нельзя завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс
         inline bool TerminateThread(PID pid)
         {
@@ -67,7 +67,7 @@ namespace KolibriLib
                 "int $0x40"
                 : "=a"(a)
                 : "a"(18), "b"(18), "c"(pid));
-            return !a;
+            return a;
         }
 
         

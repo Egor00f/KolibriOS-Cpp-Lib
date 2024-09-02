@@ -63,6 +63,7 @@ namespace KolibriLib
 		/// @brief Класс для работы с окном
 		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор. Если вызывать методы из других потоков, то вести они себя будут неадекватно
 		/// @example example.cpp
+		/// @example checkboxExample.cpp
 		class Window: public Window_t
 		{
 		public:

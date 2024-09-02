@@ -63,7 +63,7 @@ namespace KolibriLib
 		/// \return Ивент
 		inline Event WaitEvent()
 		{
-			return (Event)_ksys_wait_event();
+			return static_cast<Event>(_ksys_wait_event());
 		}
 
 		/// \brief Ждать ивента
@@ -71,14 +71,14 @@ namespace KolibriLib
 		/// \return Ивент
 		inline Event WaitEvent(const uint32_t &TimeOut)
 		{
-			return (Event)_ksys_wait_event_timeout(TimeOut);
+			return static_cast<Event>(_ksys_wait_event_timeout(TimeOut));
 		}
 
 		/// \brief Проверить пришёл ли ли ивент
 		/// \return Ивент
 		inline Event CheckEvent()
 		{
-			return (Event)_ksys_check_event();
+			return static_cast<Event>(_ksys_check_event());
 		}
 
 		/// \brief Запустить программу
@@ -101,11 +101,14 @@ namespace KolibriLib
 			return _ksys_get_time();
 		}
 
+		/// @brief Получить дату(год,месяц,день)
+		/// @return дата
 		inline Date GetDate()
 		{
 			return _ksys_get_date();
 		}
 
+		/// @brief коды ошибок для функций SetTime, SetDayOfWeek, SetAlarm
 		typedef enum SetTimeOrDate
 		{
 			/// @brief успешно
@@ -155,7 +158,7 @@ namespace KolibriLib
 		{
 			SetTimeOrDate ret;
 
-			asm_inline(
+			asm_inline (
 				"int $0x40" 
 				: "=a"(ret)
 				: "a"(22), "b"(2), "c"(NewDayOfWeek)
@@ -173,46 +176,27 @@ namespace KolibriLib
 		{
 			SetTimeOrDate ret;
 
-			asm_inline(
+			asm_inline (
 				"int $0x40" 
 				: "=a"(ret)
 				: "a"(22), "b"(3), "c"(AlarmTime)
 			);
+
 			return ret;
-		}
-
-		/// @brief Получить состояние спикера(Вкл/выкл)
-		/// @return true если спикер разрешён, иначе false
-		inline bool SpeakerStatus()
-		{
-			bool a;
-			asm_inline(
-				"int $0x40"
-				: "=a"(a)
-				: "a"(18), "b"(8), "c"(1)
-			);
-			return !a;
-		}
-
-		/// @brief Переключить состояние спикера
-		inline void SpeakerSwitch()
-		{
-			asm_inline(
-				"int $0x40" 
-				::"a"(18), "b"(8), "c"(2)
-			);
 		}
 
 		/// @brief получить кол-во свободной памяти
 		/// @return размер свободной памяти в килобайтах
-		inline std::size_t FreeMem()
+		inline std::size_t GetFreeMem()
 		{
 			std::size_t a;
-			asm_inline(
+
+			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(16)
 			);
+
 			return a;
 		}
 
@@ -221,11 +205,13 @@ namespace KolibriLib
 		inline std::size_t AllMem()
 		{
 			std::size_t a;
-			asm_inline(
+
+			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(17)
 			);
+
 			return a;
 		}
 
@@ -234,10 +220,13 @@ namespace KolibriLib
 		{
 			/// @brief Английский 
 			Eng = 0,
+
 			/// @brief Финский
 			Fi = 1,
+
 			/// @brief Немецкий
 			Ger = 2,
+
 			/// @brief Русский
 			Rus = 3
 		} lang;
@@ -252,7 +241,7 @@ namespace KolibriLib
 				: "=a"(a)
 				: "a"(26), "b"(5)
 			);
-			return (lang)a;
+			return static_cast<lang>(a);
 		}
 
 		/// @brief Изменить язык системы
@@ -270,6 +259,7 @@ namespace KolibriLib
 		typedef enum 
 		{
 			/// @brief 
+			///
 			Application = 'A',
 			Error = 'E',
 			Warning = 'W',
@@ -303,7 +293,9 @@ namespace KolibriLib
 		/// @param Text текст после заголовка
 		/// @param icon иконка
 		/// @param keys ключи
-		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, (notifyKey)0, (notifyKey)0, (notifyKey)0});
+		/// @example example.cpp
+		/// @example checkboxExample.cpp
+		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, static_cast<notifyKey>(0), static_cast<notifyKey>(0), static_cast<notifyKey>(0)});
 		
 		/// @brief Уведомление об ошибке через увдомления системы
 		/// @param Title Заголовок уведомления об ошибке
@@ -342,11 +334,13 @@ namespace KolibriLib
 		inline CoreVersion* GetCoreVersion()
 		{
 			CoreVersion* p = new CoreVersion;
-			asm_inline(
+
+			asm_inline (
 				"int $0x40"
 				:"=a"(p)
 				:"a"(18), "b"(13)
 			);
+
 			return p;
 		}
 
@@ -360,17 +354,17 @@ namespace KolibriLib
 		/// @brief получить значение высокоточного счётчика времени
 		/// @note функция использует счётчик HPET, если HPET не доступен используется счётчик PIT. В этом случае точность будет уменьшена до 10 000 00 наносекунд.
 		/// @return число наносекунд с момента загрузки ядра
-		inline long long GetHighPrecisionTimerCount()
+		inline uint64_t GetHighPrecisionTimerCount()
 		{
 			uint32_t a, b;
 
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(a), "=d"(b)
-				: "a"(21), "b"(10)
+				: "a"(26), "b"(10)
 			);
 
-			return static_cast<long long>((b << 31) || a);
+			return static_cast<uint64_t>((b << 31) || a);
 		}
 
 	} // namespace OS

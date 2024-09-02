@@ -17,14 +17,15 @@ namespace KolibriLib
 	{
 
 		/// @brief Получить размеры фонового изображения
-		/// @return 
+		/// @return размер фонового изображения
 		inline Size GetSize()
 		{
 			ksys_pos_t p;
 			asm_inline (
 				"int $0x40"
 				: "=a"(p)
-				: "a"(39), "b"(1));
+				: "a"(39), "b"(1)
+			);
 
 			return Size(p.x, p.y);
 		}
@@ -39,10 +40,11 @@ namespace KolibriLib
 			// Смещение
 			int s = GetSize().x * (Point.y - 1) + Point.x; // я думаю, что изображение это двумерный массив
 
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(c.val)
-				: "a"(39), "b"(2), "c"(s));
+				: "a"(39), "b"(2), "c"(s)
+			);
 
 			return c;
 		}
@@ -65,7 +67,10 @@ namespace KolibriLib
 		/// @param
 		inline void SetSize(const Size &size)
 		{
-			_ksys_bg_set_size(size.x, size.y);
+			_ksys_bg_set_size (
+				static_cast<uint32_t>(size.x),
+				static_cast<uint32_t>(size.y)
+			);
 		}
 
 		/// @brief Постовить точку на фоне
@@ -73,7 +78,12 @@ namespace KolibriLib
 		/// @param color цвет точки
 		inline void DrawPoint(const Coord coord, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
-			_ksys_bg_put_pixel(coord.x, coord.y, GetSize().x, color.operator ksys_color_t());
+			_ksys_bg_put_pixel (
+				static_cast<uint32_t>(coord.x), 
+				static_cast<uint32_t>(coord.y), 
+				static_cast<uint32_t>(GetSize().x), 
+				color.operator ksys_color_t()
+			);
 		}
 
 		template <std::size_t N>
@@ -82,15 +92,28 @@ namespace KolibriLib
 		/// @param rgb
 		inline void DrawImage(const Coord coord, rgb_t (&rgb)[N])
 		{	
-			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N,  coord.x, coord.y, GetSize().x);
+			_ksys_bg_put_bitmap (
+				rgb, 
+				sizeof(rgb_t) * N,  
+				static_cast<uint32_t>(coord.x),
+				static_cast<uint32_t>(coord.y), 
+				static_cast<uint32_t>(GetSize().x)
+			);
 		}
 
-		/// @brief
-		/// @param coord
-		/// @param rgb
+		/// @brief Вывести изображение(rgb)
+		/// @param coord координаты
+		/// @param rgb массив
+		/// @param N длинна массива rgb
 		inline void DrawImage(const Coord &coord, rgb_t *rgb, std::size_t N)
 		{
-			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N, coord.x, coord.y, GetSize().x);
+			_ksys_bg_put_bitmap (
+				rgb, 
+				sizeof(rgb_t) * N, 
+				static_cast<uint32_t>(coord.x), 
+				static_cast<uint32_t>(coord.y), 
+				static_cast<uint32_t>(GetSize().x)
+			);
 		}
 
 		/// @brief Нарисовать линию на фоне

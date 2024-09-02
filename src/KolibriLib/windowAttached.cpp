@@ -19,7 +19,7 @@ void WindowFunc()
 
 WindowAttached::WindowAttached(const Window_t &window)
 {
-	_wndw = new Window((Window)window);
+	_wndw = new Window(window);
 
 	lockARG.waitPoint();
 	lockARG.lock();
@@ -30,6 +30,7 @@ WindowAttached::WindowAttached(const Window_t &window)
 
 WindowAttached::~WindowAttached()
 {
+	Thread::TerminateThread(_pid);
 	delete _wndw;
 }
 

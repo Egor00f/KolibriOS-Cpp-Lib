@@ -48,6 +48,10 @@ void BaseButton::BaseButton::Activate()
 	{
 		_id	= _ButtonsIDController->GetFreeButtonID();
 	}
+	else
+	{
+		PrintDebug("BaseButton already active\n");
+	}
 }
 
 bool KolibriLib::UI::buttons::BaseButton::IsActive() const

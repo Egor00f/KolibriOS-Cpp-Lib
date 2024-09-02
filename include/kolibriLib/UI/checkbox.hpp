@@ -17,6 +17,7 @@ namespace KolibriLib
     {
         /// @brief Класс для работы с чекбоксами
         /// @note Это просто чекбокс, ему можно задать различные стили
+        /// @example checkboxExample.cpp
         class CheckBox : public buttons::Button
         {
         public:

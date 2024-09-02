@@ -58,14 +58,27 @@ KolibriLib::window::Window::Window(const std::string &Title, const Size &size, c
 KolibriLib::window::Window::Window(const Window_t &wndw)
 	: Window_t(wndw)
 {
-	
+
+	if (Globals::DefaultButtonsIDController == nullptr)
+	{
+		Globals::DefaultButtonsIDController = &_buttonsController;
+	}
+
+	window::CreateWindow(
+		DefaultWindowCoord,
+		DefaultWindowSize,
+		_title,
+		_colors.work_area,
+		_colors.grab_text,
+		_style
+	);
 }
 
 KolibriLib::window::Window::~Window()
 {
 	for (auto n : _Elements)
 	{
-		if (!(n == nullptr))
+		if (n != nullptr)
 		{
 			delete n;
 		}

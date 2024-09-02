@@ -8,6 +8,63 @@ namespace KolibriLib
 {
     namespace Sound
     {
+        /// @brief Получить состояние спикера(Вкл/выкл)
+        /// @return true если спикер разрешён, иначе false
+        inline bool SpeakerStatus()
+        {
+            bool a;
+
+            asm_inline(
+                "int $0x40"
+                : "=a"(a)
+                : "a"(18), "b"(8), "c"(1));
+
+            return !a;
+        }
+
+        /// @brief Переключить состояние спикера
+        inline void SpeakerSwitch()
+        {
+            asm_inline (
+                "int $0x40" 
+                :: "a"(18), "b"(8), "c"(2)
+            );
+        }
+
+        /// @brief Включить спикер
+        /// @details если спикер уже включен, то функция ничего не сделает
+        inline void EnableSpeaker()
+        {
+            if (!SpeakerStatus())
+                SpeakerSwitch();
+        }
+
+        /// @brief Выключить спикер
+        /// @details если спикер уже выключен, то функция ничего не сделает
+        inline void DisableSpeaker()
+        {
+            if (SpeakerStatus())
+                SpeakerSwitch();
+        }
+
+        struct SpeakerSound
+        {
+            struct Data
+            {
+                uint8_t lenght;
+                uint8_t note;
+
+                uint8_t GetNote() const;
+            };
+
+            Data* data;
+
+            SpeakerSound(std::size_t size);
+            ~SpeakerSound();
+        };
+
+        bool PlayOnSpeaker(SpeakerSound data);
+
         typedef int Error;
 
         typedef enum

@@ -3,10 +3,6 @@
 
 
 #include <sys/ksys.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include <cmath>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/graphic/screen.hpp>
@@ -14,6 +10,9 @@
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/img.hpp>
 #include <kolibriLib/globals.hpp>
+
+#include <cmath>
+//#include <std/cmath.hpp>
 
 namespace KolibriLib
 {
@@ -36,7 +35,13 @@ namespace KolibriLib
 		/// @param color Цвет линии
 		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
-			_ksys_draw_line(coord.x, coord.y, coord.x + (lenght * std::cos(angle)), coord.y + (lenght * std::sin(angle)), color.operator ksys_color_t());
+			_ksys_draw_line (
+				coord.x, 
+				coord.y,
+				coord.x + static_cast<int>(lround(lenght * std::cos(angle))),
+				coord.y + static_cast<int>(lround(lenght * std::sin(angle))),
+				color.operator ksys_color_t()
+			);
 		}
 
 		/// @brief Закрасить пиксель точку
@@ -44,7 +49,11 @@ namespace KolibriLib
 		/// @param color Цвет
 		inline void DrawPixel(const Coord &position, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
-			_ksys_draw_pixel(static_cast<uint16_t>(position.x), static_cast<uint16_t>(position.y), color.operator ksys_color_t());
+			_ksys_draw_pixel (
+				static_cast<uint16_t>(position.x), 
+				static_cast<uint16_t>(position.y), 
+				color.operator ksys_color_t()
+			);
 		}
 
 		/// @brief Нарисовать окружность
@@ -61,12 +70,13 @@ namespace KolibriLib
 		/// @param color Цвет
 		inline void DrawRectangleFill(Coord position, Size size, rgb_t color = Colors::Color(Globals::SystemColors.work_graph).operator rgb_t())
 		{
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				:: "a"(13), 
 				   "b"( (position.x << 16) + size.x ), 
 				   "c"( (position.y << 16) + size.y ), 
-				   "d"(Colors::Color(color).val));
+				   "d"(Colors::Color(color).val)
+				);
 		}
 
 		/// @brief Нарисовать закрашенный прямоугольник
@@ -77,13 +87,15 @@ namespace KolibriLib
 		{
 			Colors::Color ret = color;
 			ret._a = 0x80;
-			asm_inline(
+
+			asm_inline (
 				"int $0x40"
 				:
 				: "a"(13),
 				  "b"((position.x << 16) + size.x),
 				  "c"((position.y << 16) + size.y),
-				  "d"(ret.val));
+				  "d"(ret.val)
+				);
 		}
 
 		/// @brief Нарисовать круг(закрашенный)
@@ -99,7 +111,6 @@ namespace KolibriLib
 		/// @param color Цвет
 		/// @param fill Закрашенная/Выколотая точка
 		void DrawPoint(const Coord& position, const unsigned& size, const Colors::Color& color = Globals::SystemColors.work_graph, bool fill = false);
-
 
 		/// @brief Нарисовать прямоугольник
 		/// @param a Точка в левом верхнем углу

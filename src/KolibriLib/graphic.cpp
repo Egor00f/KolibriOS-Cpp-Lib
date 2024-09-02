@@ -6,10 +6,8 @@ using namespace graphic;
 
 void graphic::DrawPoint(const Coord &position, const unsigned &size, const Colors::Color &color, bool fill)
 {
-	if(size < 4)
-	{
-		fill = false;
-	}
+
+	fill = !(size < 4);	// если круг такого размера то будет ли он закрашен не будет даже видно
 	
 	if (!fill)
 	{
@@ -23,8 +21,23 @@ void graphic::DrawPoint(const Coord &position, const unsigned &size, const Color
 
 void graphic::DrawCircle(const Coord &coord, unsigned Radius, const Colors::Color &color)
 {
-	UI::Images::img buff(Colors::Color(), {((int)Radius * 2), ((int)Radius * 2)}, UI::Images::img::RGBA);
-	buff.DrawCircle({(int)Radius, (int)Radius}, Radius, color);
+	UI::Images::img buff(
+		Colors::Color(),
+		{
+			(static_cast<int>(Radius) * 2), 
+			(static_cast<int>(Radius) * 2)
+		}, 
+		UI::Images::img::RGBA);
+
+	buff.DrawCircle(
+		{
+			static_cast<int>(Radius), 
+			static_cast<int>(Radius)
+		}, 
+		Radius,
+		color
+	);
+
 	buff.Draw(coord);
 }
 
@@ -34,9 +47,16 @@ void graphic::DrawCircleFill(const Coord &coord, const unsigned &Radius, const C
 
 	unsigned b = Radius * cos(90 + 45);
 	unsigned c = Radius * sin(90 + 45);
-	Coord n(coord.x + (int)b, coord.y + (int)c);
+	Coord n(coord.x + static_cast<int>(b), coord.y + static_cast<int>(c));
 
-	DrawRectangleFill(n, {(coord.x - n.x) * 2, (int)c * 2}, color);
+	DrawRectangleFill(
+		n, 
+		{
+			(coord.x - n.x) * 2, 
+			static_cast<int>(c * 2)
+		}, 
+		color
+	);
 
 	for (unsigned i = Radius; i > (Radius - (coord.x - n.x)); i--) // Дозакрашивание пробелов между квадратом и границами груга
 	{

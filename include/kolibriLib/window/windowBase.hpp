@@ -76,13 +76,13 @@ namespace KolibriLib
 			AlwaysTop = 1
 		} Pos;
 
-		/// @brief
+		/// @brief Объявить окно
 		/// @param coord Координаты окна(его левого верхнего угола) на экране
 		/// @param size Размеры окна
 		/// @param title Заголовок окна
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
-		/// @param style Стиль
+		/// @param style Стиль окна
 		inline void CreateWindow(const Coord &coord,
 		                         const Size &size,
 		                         const std::string &title,
@@ -90,7 +90,7 @@ namespace KolibriLib
 		                         Colors::Color TitleColor = Globals::SystemColors.grab_text,
 		                         uint8_t style = WindowStyle::CanResize | WindowStyle::Relative)
 		{
-			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, style);
+			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, static_cast<uint32_t>(style));
 		}
 
 		/// @brief Снять фокус с окна
@@ -131,7 +131,7 @@ namespace KolibriLib
 			return s;
 		}
 
-		/// @brief Свернуть окно
+		/// @brief Свернуть окно (окно текущего потока)
 		inline void MinimizeWindow()
 		{
 			asm_inline (
@@ -155,6 +155,7 @@ namespace KolibriLib
 		inline Coord GetWindowCoord(Thread::PID pid = Thread::ThisThread)
 		{
 			auto inf = Thread::GetThreadInfo(pid);
+
 			return {inf.winx_start, inf.winy_start};
 		}
 
@@ -163,10 +164,12 @@ namespace KolibriLib
 		inline Pos GetWindowPos()
 		{
 			Pos a;
+
 			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(25), "c"(1));
+
 			return a;
 		}
 
@@ -177,12 +180,14 @@ namespace KolibriLib
 		/// @return true если успешно
 		inline bool SetWindowPos(Pos pos, Thread::PID pid = Thread::ThisThread)
 		{
-			bool a;
+			bool ret;
+
 			asm_inline (
 				"int $0x40"
 				: "=a"(a)
 				: "a"(18), "b"(25), "c"(2), "d"(pid), "S"(pos));
-			return a;
+
+			return ret;
 		}
 
 		/// @brief Получить высоту скина(заголовка окна)
@@ -197,11 +202,14 @@ namespace KolibriLib
 		inline Size GetWorkArea()
 		{
 			ksys_pos_t a, b;
+
 			asm_inline (
 				"int $0x40"
 				: "=a"(a), "=b"(b)
-				: "a"(48), "b"(5));
-			return {a.y - a.x + 1, b.y - b.x + 1};
+				: "a"(48), "b"(5)
+			);
+
+			return Size(a.y - a.x + 1, b.y - b.x + 1);
 		}
 
 	} // namespace window

@@ -46,7 +46,7 @@ namespace KolibriLib
 			   /// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
 			   void OnButtonEvent(ButtonID PressedButtonID);
 
-			   buttons::ButtonsIDController *GetButtonIDController();
+			   buttons::ButtonsIDController *GetButtonIDController() const;
 
 			   void SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController);
 
