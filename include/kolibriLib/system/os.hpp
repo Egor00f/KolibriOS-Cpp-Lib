@@ -1,8 +1,8 @@
-#ifndef __OS_H__
-#define __OS_H__
+#ifndef __OS_HPP__
+#define __OS_HPP__
 
 
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include "thread.hpp"
 
