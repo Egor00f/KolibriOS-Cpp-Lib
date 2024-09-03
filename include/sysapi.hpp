@@ -9,7 +9,7 @@
 #include <kolibriLib/init.hpp>
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/window/windowBase.hpp>
-#include <kolibriLib/UI/buttonsBase.hpp>
+#include <kolibriLib/UI/buttons/buttonsBase.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/input/mouse.hpp>
 #include <kolibriLib/input/keyboard.hpp>

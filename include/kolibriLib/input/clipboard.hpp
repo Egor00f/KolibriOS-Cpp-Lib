@@ -99,6 +99,8 @@ namespace KolibriLib
 		{
 		public:
 
+			clipboard(){};
+
 			clipboard(const std::string& text, bool filepath = false);
 
 			clipboard(const UI::Images::img &image);
@@ -118,8 +120,8 @@ namespace KolibriLib
 
 			/// @details Просто возращает указатель
 			operator clipboard_struct*() const;
-		private:
-			clipboard_struct* _struct;
+
+			clipboard_struct* _struct = nullptr;
 		};
 		
 		/// @brief Список ошибок
@@ -138,21 +140,25 @@ namespace KolibriLib
 		/// @brief считать данные из буфера обмена
 		inline clipboard Get(Slot slot)
 		{
-			return (clipboard*) _ksys_clip_get(slot);
+			clipboard ret;
+
+			ret._struct = (clipboard_struct*)_ksys_clip_get(slot);
+
+			return ret;
 		}
 
 		/// @brief
 		/// @return Clipboard::Error
 		inline Error Put(clipboard c)
 		{
-			return (Error)_ksys_clip_set(c.operator KolibriLib::Clipboard::clipboard_struct *()->size, (char*)c.operator KolibriLib::Clipboard::clipboard_struct *());
+			return static_cast<Error>(_ksys_clip_set(c.operator KolibriLib::Clipboard::clipboard_struct *()->size, (char*)c.operator KolibriLib::Clipboard::clipboard_struct *()));
 		}
 
 		/// @brief удалить последний слот с данными в буфере обмена
 		/// @return Clipboard::Error
 		inline Error Pop()
 		{
-			return (Error)_ksys_clip_pop();
+			return static_cast<Error>(_ksys_clip_pop());
 		}
 
 		/// @brief аварийный сброс блокировки буфера

@@ -1,5 +1,5 @@
-#ifndef __WINDOWBASE_H__
-#define __WINDOWBASE_H__
+#ifndef __WINDOWBASE_HPP__
+#define __WINDOWBASE_HPP__
 
 /*
 	Тут тип базовый функционал работы с окном

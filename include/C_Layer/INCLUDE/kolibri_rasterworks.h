@@ -122,7 +122,20 @@ extern "C" {
 /// @return
 inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const uint8_t &flags, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
 {
-  return drawTextToBuff(canvas, static_cast<uint8_t>(size.x), static_cast<uint8_t>(size.y), coord.x, coord.y, text.c_str(), text.length(), CharSize.x, CharSize.y, FontColor.operator ksys_color_t(), static_cast<uint8_t>(flags), static_cast<uint8_t>(encoding));
+	return drawTextToBuff (
+		canvas, 
+		static_cast<uint8_t>(size.x), 
+		static_cast<uint8_t>(size.y), 
+		coord.x, 
+		coord.y, 
+		text.c_str(), 
+		text.length(), 
+		static_cast<uint8_t>(CharSize.x),
+		static_cast<uint8_t>(CharSize.y), 
+		FontColor.operator ksys_color_t(), 
+		static_cast<uint8_t>(flags), 
+		static_cast<uint8_t>(encoding)
+	);
 }
 
 inline void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor = KolibriLib::Globals::SystemColors.work_text, const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::Globals::SystemColors.work_area, const uint8_t &flags = 0, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)

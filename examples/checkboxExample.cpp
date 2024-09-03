@@ -23,6 +23,7 @@ int main()
 		UDim(0.7f, 1.0f),
 		"<- checkbox"
 	));
+	textlabel->SetParent(frame);
 
 	bool exit = false;
 	while (!exit)

@@ -1,5 +1,5 @@
-#ifndef __TEXTBASE_H__
-#define __TEXTBASE_H__
+#ifndef __TEXTBASE_HPP__
+#define __TEXTBASE_HPP__
 
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/graphic/graphic.hpp>

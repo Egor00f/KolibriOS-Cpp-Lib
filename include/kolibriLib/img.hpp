@@ -1,5 +1,5 @@
-#ifndef __IMG_H__
-#define __IMG_H__
+#ifndef __IMG_HPP__
+#define __IMG_HPP__
 
 #include <sys/ksys.h>
 

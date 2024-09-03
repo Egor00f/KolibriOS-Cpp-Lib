@@ -236,7 +236,7 @@ namespace KolibriLib
         /// @return Возвращает имя конгстрольной клавиши из списка ControlKeys
         inline ControlKey GetControlKey()
         {
-            return (ControlKey)_ksys_get_control_key_state();
+            return static_cast<ControlKey>(_ksys_get_control_key_state());
         }
 
         /// @brief Установить "горячую клавишу"
