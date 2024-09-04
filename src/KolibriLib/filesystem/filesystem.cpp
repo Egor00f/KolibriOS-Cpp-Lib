@@ -245,3 +245,44 @@ void filesystem::rename(const filesystem::path &old_p, const filesystem::path &n
 {
     ec = (FilesystemErrors)_ksys_file_rename(old_p, new_p);
 }
+
+bool filesystem::is_directory(filesystem::file_status s) noexcept
+{
+    return s.type() == filesystem::file_type::directory;
+}
+
+bool filesystem::is_directory(const filesystem::path &p)
+{
+    std::error_code ec;
+    bool ret = filesystem::is_directory(p, ec);
+    if(ec)
+        throw ec;
+    return ret;
+}
+
+bool filesystem::is_directory(const filesystem::path &p, std::error_code &ec) noexcept
+{
+    ksys_file_info_t ret;
+    ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &ret);
+
+    return ret.attr && filesystem::Dir;
+}
+
+filesystem::file_time_type KolibriLib::filesystem::last_write_time(const filesystem::path &p, std::error_code &ec) noexcept
+{
+    ksys_file_info_t ret;
+    ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &ret);
+
+    return file_time_type(FileTimeAndDate(FileTime(ret.mtime), FileDate(ret.mdate)));
+}
+
+filesystem::file_time_type KolibriLib::filesystem::last_write_time(const filesystem::path &p)
+{
+    std::error_code ec;
+    auto ret = last_write_time(p, ec);
+    
+    if(ec)
+        throw ec;
+
+    return ret;
+}

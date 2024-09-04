@@ -21,11 +21,11 @@ namespace KolibriLib
             Color(const Color &a);
             Color(const rgb_t &color);
 
-            /// @brief 
-            /// @param R 
-            /// @param G 
-            /// @param B 
-            /// @param A 
+            /// @brief Конструктор
+            /// @param R Красная состовляющаяя цвета
+            /// @param G Красная состовляющаяя цвета
+            /// @param B Красная состовляющаяя цвета
+            /// @param A Прозрачность
             Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A = 0xFF);
 
             operator rgb_t() const;

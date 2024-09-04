@@ -86,7 +86,7 @@ set(C_LAYER_KOLIBRILIB_SOURCES
 )
 
 SET(SOURCES
-	${SRC_PATH}/filesystem.cpp
+	
 	${SRC_PATH}/color.cpp
 	${SRC_PATH}/os.cpp
 	${SRC_PATH}/graphic.cpp
@@ -114,6 +114,8 @@ SET(SOURCES
 	${SRC_PATH}/keyboard.cpp
 	${SRC_PATH}/OpenDialog.cpp
 	${SRC_PATH}/clipboard.cpp
+	${SRC_PATH}/filesystem/filesystem.cpp
+	${SRC_PATH}/filesystem/filesystemTypes.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/UI.hpp
@@ -124,7 +126,7 @@ SET(SOURCES
 	${HEADERS_PATH}/OpenDialog.hpp
 	${HEADERS_PATH}/system/os.hpp
 	${HEADERS_PATH}/system/thread.hpp
-	${HEADERS_PATH}/system/filesystem.hpp
+	${HEADERS_PATH}/system/filesystem/filesystem.hpp
 	${HEADERS_PATH}/UI/UI.hpp
 	${HEADERS_PATH}/UI/checkbox.hpp
 	${HEADERS_PATH}/UI/buttons/button.hpp

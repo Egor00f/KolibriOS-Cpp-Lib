@@ -7,6 +7,7 @@
 #include "thread.hpp"
 
 #include <vector>
+#include <chrono>
 
 namespace KolibriLib
 {
@@ -89,10 +90,7 @@ namespace KolibriLib
 		/// @return -1 если произошла ошибка
 		Thread::PID Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
 
-		/// @brief Время
-		typedef ksys_time_bcd_t Time;
-
-		typedef ksys_date_bcd_t Date;
+		
 
 		/// @brief Получить системное время
 		/// @return

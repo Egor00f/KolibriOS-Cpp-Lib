@@ -6,7 +6,9 @@
 
 #include <string>
 #include <system_error>
+#include <chrono>
 
+#include "types.hpp"
 #include "config.hpp"
 #include "file_status.hpp"
 
@@ -82,6 +84,8 @@ namespace KolibriLib
             int _code;
         };
 
+        using file_time_type = std::chrono::time_point<FileTimeAndDate>;
+
         /// @brief Получить размер файла
         /// @param p путь до файла
         /// @return размер файла
@@ -121,6 +125,13 @@ namespace KolibriLib
         bool is_regular_file( filesystem::file_status s ) noexcept;
         bool is_regular_file( const filesystem::path& p );
         bool is_regular_file( const filesystem::path& p, std::error_code& ec ) noexcept;
+
+        bool is_directory( filesystem::file_status s ) noexcept;
+        bool is_directory(const filesystem::path &p);
+        bool is_directory( const filesystem::path& p, std::error_code& ec ) noexcept;
+
+        filesystem::file_time_type last_write_time( const filesystem::path& p );
+        filesystem::file_time_type last_write_time(const filesystem::path &p, std::error_code &ec) noexcept;
     } // namespace filesystem
 
     

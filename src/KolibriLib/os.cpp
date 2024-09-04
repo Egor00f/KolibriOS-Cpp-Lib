@@ -17,7 +17,7 @@ Colors::ColorsTable KolibriLib::OS::GetSystemColors()
 Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, bool debug)
 
 {
-    if (filesystem::Exist(AppName)) // Проверка на существование
+    if (filesystem::exists(AppName)) // Проверка на существование
     {
         return _ksys_exec(AppName, const_cast<char*>(args.c_str()), debug);
     }
@@ -50,3 +50,4 @@ void KolibriLib::OS::Notify(const std::string &Title, const std::string &Text, n
 
 	_ksys_exec("/sys/@notify", (char *)a.c_str(), false);
 }
+
