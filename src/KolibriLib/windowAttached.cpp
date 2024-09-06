@@ -14,7 +14,7 @@ void WindowFunc()
 	Window* wndw = arg;
 	lockARG.unlock();
 
-	while(wndw->Handler() != OS::Events::Exit) { }
+	while(wndw->Handler() != OS::Event::Exit) { }
 }
 
 WindowAttached::WindowAttached(const Window_t &window)

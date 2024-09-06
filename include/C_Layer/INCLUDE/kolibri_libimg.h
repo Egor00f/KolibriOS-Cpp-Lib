@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #ifdef __cplusplus
 extern "C" {

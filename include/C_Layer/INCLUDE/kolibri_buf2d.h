@@ -1,7 +1,7 @@
 #ifndef KOLIBRI_BUF2D_H
 #define KOLIBRI_BUF2D_H
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <stdlib.h>
 #include <string.h>
 

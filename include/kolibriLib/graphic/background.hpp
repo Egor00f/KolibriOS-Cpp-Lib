@@ -1,7 +1,7 @@
-#ifndef __BACKGROUND_H__
-#define __BACKGROUND_H__
+#ifndef __BACKGROUND_HPP__
+#define __BACKGROUND_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <stddef.h>
 

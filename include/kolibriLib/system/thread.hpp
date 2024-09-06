@@ -2,7 +2,7 @@
 #define __THREAD_H__
 
 #include <stdlib.h>
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
 
 namespace KolibriLib

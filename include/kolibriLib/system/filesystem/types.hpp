@@ -1,7 +1,10 @@
 #ifndef __FILESYSTEM_TYPES_HPP__
 #define __FILESYSTEM_TYPES_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
+
+#include <chrono>
+#include <ctime>
 
 namespace KolibriLib
 {
@@ -9,6 +12,8 @@ namespace KolibriLib
 	class Time
 	{
 	public:
+		typedef std::chrono::seconds duration;
+
 		virtual ~Time() = default;
 
 		virtual uint8_t sec() const;
@@ -19,6 +24,10 @@ namespace KolibriLib
 
 		virtual uint8_t hour() const;
 		virtual void hour(uint8_t NewHour);
+
+		operator std::tm() const;
+
+		operator std::time_t() const;
 	};
 
 
@@ -26,6 +35,14 @@ namespace KolibriLib
 	class Time_bcd : public Time
 	{
 	public:
+		Time_bcd() = default;
+		Time_bcd(ksys_time_bcd_t t);
+		Time_bcd(const Time_bcd& t) = default;
+		~Time_bcd() = default;
+
+		Time_bcd operator=(const Time_bcd& t);
+		bool operator==(const Time_bcd& t) const;
+
 		uint8_t sec() const override;
 		void sec(uint8_t NewSec) override;
 
@@ -40,9 +57,18 @@ namespace KolibriLib
 	};
 
 	/// @brief Дата
-	class Date
+	class Date_bcd
 	{
 	public:
+		Date_bcd() = default;
+		Date_bcd(ksys_date_bcd_t t);
+		Date_bcd(const Date_bcd &t) = default;
+		~Date_bcd() = default;
+
+		Date_bcd operator=(const Date_bcd &t);
+		bool operator==(const Date_bcd &t) const;
+
+		operator ksys_date_bcd_t() const;
 
 	private:
 		ksys_date_bcd_t date;
@@ -107,6 +133,7 @@ namespace KolibriLib
 		FileDate &operator-=(const FileDate &b);
 		FileDate operator+(const FileDate &b);
 		FileDate& operator-(const FileDate &b);
+		
 
 		void swap(FileTime &b);
 
@@ -122,6 +149,7 @@ namespace KolibriLib
 		FileTimeAndDate(const FileTime &time);
 		FileTimeAndDate(const FileDate &date);
 		FileTimeAndDate(const FileTime &time, const FileDate &date);
+		FileTimeAndDate(ksys_ftime_t time, ksys_fdate_t date);
 		~FileTimeAndDate() = default;
 
 		bool operator==(const FileTime &b) const;

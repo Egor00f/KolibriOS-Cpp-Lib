@@ -103,19 +103,53 @@ const int &KolibriLib::filesystem::filesystem_error::code() const
     return _code;
 }
 
+KolibriLib::filesystem::directory_entry::directory_entry(const filesystem::path &p, std::error_code &ec)
+    :   _path(p)
+{
+    refresh(ec);
+}
+
+void KolibriLib::filesystem::directory_entry::assign(const filesystem::path &p, std::error_code &ec)
+{
+    _path = p;
+    refresh(ec);
+}
+
+void KolibriLib::filesystem::directory_entry::refresh(std::error_code &ec) noexcept
+{
+    _last_mod_time = filesystem::last_write_time(_path, ec);
+    if(ec)
+        goto epic_fail;
+    file_size = filesystem::file_size(_path, ec);
+    if(ec)
+        goto epic_fail;
+
+epic_fail:
+    return;
+}
+
+
+
 std::uintmax_t KolibriLib::filesystem::file_size(const Path &p)
 {
     ksys_file_info_t ret;
-    if(_ksys_file_info(p, &ret))
-        throw static_cast<std::uintmax_t>(-1);
-    else
-        return ret.size;
+
+    std::error_code ec;
+
+    filesystem::file_size(p, ec);
+
+    if(ec)
+        throw ec;
+
+    return ret.size;
 }
 
-std::uintmax_t KolibriLib::filesystem::file_size(const Path &p, std::error_code &ec)
+std::uintmax_t KolibriLib::filesystem::file_size(const Path &p, std::error_code &ec) noexcept
 {
     ksys_file_info_t ret;
+
     ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &ret);
+
     if (ec)
     {
         return static_cast<std::uintmax_t>(-1);
@@ -142,7 +176,7 @@ bool KolibriLib::filesystem::exists(const Path &p)
 {
     std::error_code ec;
 
-    bool ret = exists(p, ec);
+    bool ret = KolibriLib::filesystem::exists(p, ec);
 
     if(ec)
         throw ec;
@@ -153,10 +187,14 @@ bool KolibriLib::filesystem::exists(const Path &p)
 bool KolibriLib::filesystem::exists(const filesystem::path &p, std::error_code &ec) noexcept
 {
     ksys_file_info_t *buff = new ksys_file_info_t;
+
     ec = static_cast<filesystem::FilesystemErrors>(_ksys_file_info(p, buff));
+
     delete buff;
-    return ec.operator bool();
+
+    return static_cast<bool>(ec);
 }
+
 
 bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const filesystem::path &to)
 {
@@ -231,12 +269,16 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
 
     fclose(fin);
     fclose(fout);
+
+epic_fail:
+    return 1;
 }
 
 void filesystem::rename(const filesystem::path &old_p, const filesystem::path &new_p)
 {
     std::error_code ec;
     filesystem::rename(old_p, new_p, ec);
+
     if(ec)
         throw ec;
 }
@@ -255,8 +297,10 @@ bool filesystem::is_directory(const filesystem::path &p)
 {
     std::error_code ec;
     bool ret = filesystem::is_directory(p, ec);
+
     if(ec)
         throw ec;
+    
     return ret;
 }
 
@@ -270,18 +314,72 @@ bool filesystem::is_directory(const filesystem::path &p, std::error_code &ec) no
 
 filesystem::file_time_type KolibriLib::filesystem::last_write_time(const filesystem::path &p, std::error_code &ec) noexcept
 {
-    ksys_file_info_t ret;
-    ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &ret);
+    ksys_file_info_t info;
+    ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &info);
 
-    return file_time_type(FileTimeAndDate(FileTime(ret.mtime), FileDate(ret.mdate)));
+    std::tm ret = FileTimeAndDate(info.mtime, info.mdate).operator std::tm();
+
+    return filesystem::file_time_type( 
+        static_cast<filesystem::file_time_type::duration>(
+           std::mktime(&ret)
+        ) 
+    );
 }
 
 filesystem::file_time_type KolibriLib::filesystem::last_write_time(const filesystem::path &p)
 {
     std::error_code ec;
-    auto ret = last_write_time(p, ec);
-    
+    KolibriLib::filesystem::file_time_type ret = last_write_time(p, ec);
+
     if(ec)
+        throw ec;
+
+    return ret;
+}
+
+filesystem::file_time_type KolibriLib::filesystem::create_time(const filesystem::path &p, std::error_code &ec) noexcept
+{
+    ksys_file_info_t info;
+    ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &info);
+
+    std::tm ret = FileTimeAndDate(info.ctime, info.cdate).operator std::tm();
+
+    return filesystem::file_time_type( 
+        static_cast<filesystem::file_time_type::duration>(
+           std::mktime(&ret)
+        ) 
+    );
+}
+
+filesystem::file_time_type KolibriLib::filesystem::create_time(const filesystem::path &p)
+{
+    std::error_code ec;
+    KolibriLib::filesystem::file_time_type ret = create_time(p, ec);
+
+    if(ec)
+        throw ec;
+
+    return ret;
+}
+
+filesystem::file_time_type KolibriLib::filesystem::last_acess_time(const filesystem::path &p, std::error_code &ec) noexcept
+{
+    ksys_file_info_t info;
+    ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &info);
+
+    std::tm ret = FileTimeAndDate(info.atime, info.adate).operator std::tm();
+
+    return filesystem::file_time_type(
+        static_cast<filesystem::file_time_type::duration>(
+            std::mktime(&ret)));
+}
+
+filesystem::file_time_type KolibriLib::filesystem::last_acess_time(const filesystem::path &p)
+{
+    std::error_code ec;
+    KolibriLib::filesystem::file_time_type ret = last_acess_time(p, ec);
+
+    if (ec)
         throw ec;
 
     return ret;

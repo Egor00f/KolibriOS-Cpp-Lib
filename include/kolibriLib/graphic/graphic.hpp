@@ -1,8 +1,8 @@
-#ifndef __GRAPHIC_H__
-#define __GRAPHIC_H__
+#ifndef __GRAPHIC_HPP__
+#define __GRAPHIC_HPP__
 
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/graphic/screen.hpp>

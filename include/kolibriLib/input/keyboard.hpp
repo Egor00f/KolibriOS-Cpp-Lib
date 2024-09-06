@@ -1,7 +1,7 @@
 #ifndef __KEYBOARD_H__
 #define __KEYBOARD_H__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
 
 namespace KolibriLib

@@ -1,8 +1,7 @@
-#ifndef __SCREEN_H__
-#define __SCREEN_H__
+#ifndef __SCREEN_HPP__
+#define __SCREEN_HPP__
 
-
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/system/thread.hpp>

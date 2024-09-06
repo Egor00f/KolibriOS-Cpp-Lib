@@ -2,11 +2,12 @@
 #define __FILESYSTEM_H__
 
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <string>
 #include <system_error>
 #include <chrono>
+#include <ctime>
 
 #include "types.hpp"
 #include "config.hpp"
@@ -16,7 +17,7 @@
 namespace KolibriLib
 {
     /// @brief Работа с файлами
-    /// @paragraph похоже на std::filesystem
+    /// @paragraph подражает std::filesystem из C++17
     namespace filesystem
     {
         
@@ -41,6 +42,8 @@ namespace KolibriLib
                 /// @brief Конструктор
                 /// @param path путь
                 Path(const std::string& path);
+
+                Path(const Path& p) = default;
 
                 /// @brief Длинна строки
                 std::size_t length() const;
@@ -86,10 +89,43 @@ namespace KolibriLib
 
         using file_time_type = std::chrono::time_point<FileTimeAndDate>;
 
+        class directory_entry
+        {
+        public:
+            directory_entry() noexcept = default;
+            directory_entry(const directory_entry &) = default;
+            directory_entry( directory_entry&& ) noexcept = default;
+            explicit directory_entry( const filesystem::path& p );
+            
+            /// @brief 
+            /// @param p 
+            /// @param ec 
+            directory_entry( const filesystem::path& p, std::error_code& ec );
+
+            ~directory_entry() = default;
+
+            void assign( const filesystem::path& p );
+            void assign( const filesystem::path& p, std::error_code& ec );
+
+            void replace_filename( const filesystem::path& p );
+            void replace_filename( const filesystem::path& p, std::error_code& ec );
+
+            void refresh();
+            void refresh( std::error_code& ec ) noexcept;
+
+            directory_entry &operator=(const directory_entry &other) = default;
+            directory_entry &operator=(directory_entry &&other) noexcept = default;
+
+        private:
+            filesystem::path _path;
+            std::uintmax_t file_size;
+            file_time_type _last_mod_time;
+        };
+
         /// @brief Получить размер файла
         /// @param p путь до файла
         /// @return размер файла
-        /// @throw static_cast<std::uintmax_t>(-1) в случае ошибки
+        /// @throw если ошибка кидаеется исключение с кодом ошибки
         std::uintmax_t file_size(const Path &p);
 
         /// @brief Получить размер файла
@@ -117,7 +153,7 @@ namespace KolibriLib
         /// @param путь до файла/папки
         /// @return true если файл или папка существует, иначе false
         bool exists(const Path &p);
-        bool exists(const filesystem::path &p, filesystem_error &ec) noexcept;
+        bool exists(const filesystem::path &p, std::error_code &ec) noexcept;
 
         void rename(const filesystem::path &old_p, const filesystem::path &new_p);
         void rename( const filesystem::path& old_p, const filesystem::path& new_p, std::error_code& ec ) noexcept;
@@ -132,6 +168,12 @@ namespace KolibriLib
 
         filesystem::file_time_type last_write_time( const filesystem::path& p );
         filesystem::file_time_type last_write_time(const filesystem::path &p, std::error_code &ec) noexcept;
+
+        filesystem::file_time_type create_time(const filesystem::path &p);
+        filesystem::file_time_type create_time(const filesystem::path &p, std::error_code &ec) noexcept;
+
+        filesystem::file_time_type last_acess_time(const filesystem::path &p);
+        filesystem::file_time_type create_acess_time(const filesystem::path &p, std::error_code &ec) noexcept;
     } // namespace filesystem
 
     

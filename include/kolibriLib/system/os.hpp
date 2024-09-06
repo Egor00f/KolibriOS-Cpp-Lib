@@ -8,6 +8,80 @@
 
 #include <vector>
 #include <chrono>
+#include <system_error>
+
+namespace KolibriLib
+{
+	namespace OS
+	{
+		/// @brief Перечисление всех ивнтов
+		enum class Event
+		{
+			/// @brief Ивента небыло
+			None = KSYS_EVENT_NONE,
+
+			/// @brief Перересовка окна
+			Redraw = KSYS_EVENT_REDRAW,
+
+			/// @brief Нажата кнопка
+			Button = KSYS_EVENT_BUTTON,
+
+			/// @brief Активность мыши
+			Mouse = KSYS_EVENT_MOUSE,
+
+			/// @brief Активность со стороны клавиатуры
+			Key = KSYS_EVENT_KEY,
+
+			/// @brief Ивент от экрана
+			Desktop = KSYS_EVENT_DESKTOP,
+
+			/// @brief Программу открыли в дебагере
+			Debug = KSYS_EVENT_DEBUG,
+
+			/// @brief Выход
+			Exit
+		};
+
+		/// @brief Список языков системы
+		enum class lang
+		{
+			/// @brief Английский
+			Eng = 0,
+
+			/// @brief Финский
+			Fi = 1,
+
+			/// @brief Немецкий
+			Ger = 2,
+
+			/// @brief Русский
+			Rus = 3
+		};
+
+		/// @brief коды ошибок для функций SetTime, SetDayOfWeek, SetAlarm
+		enum class SetTimeOrDate
+		{
+			/// @brief успешно
+			DONE,
+
+			/// @brief параметр задан неверно
+			WrongArgs,
+
+			/// @brief CMOS-батарейки разрядились
+			CMOS
+		};
+
+		std::error_code make_error_code(SetTimeOrDate);
+	}
+}
+
+namespace std
+{
+    template<>
+    struct is_error_code_enum<KolibriLib::OS::SetTimeOrDate>:
+        true_type
+    {};
+}
 
 namespace KolibriLib
 {
@@ -17,7 +91,14 @@ namespace KolibriLib
 
 		/// @brief Получить системные цвета
 		/// @return Таблица системных цветов
-		Colors::ColorsTable GetSystemColors();
+		inline Colors::ColorsTable GetSystemColors()
+		{
+			Colors::ColorsTable a;
+
+			_ksys_get_system_colors((ksys_colors_table_t *)&a);
+
+			return a;
+		}
 
 		/// @brief Именить системыне цвета
 		/// @param Указатель на таблицу системных цветов
@@ -28,37 +109,6 @@ namespace KolibriLib
 				::"a"(48), "b"(2), "c"(table), "d"(sizeof(Colors::ColorsTable))
 			);
 		}
-		
-		/// @brief Перечисление всех ивнтов
-		enum Events
-		{
-			/// @brief Ивента небыло
-			None    = KSYS_EVENT_NONE,
-
-			/// @brief Перересовка окна
-			Redraw  = KSYS_EVENT_REDRAW,
-
-			/// @brief Нажата кнопка
-			Button  = KSYS_EVENT_BUTTON,
-
-			/// @brief Активность мыши
-			Mouse   = KSYS_EVENT_MOUSE,
-
-			/// @brief Активность со стороны клавиатуры
-			Key     = KSYS_EVENT_KEY,
-
-			/// @brief Ивент от экрана
-			Desktop = KSYS_EVENT_DESKTOP,
-			
-			/// @brief Программу открыли в дебагере
-			Debug   = KSYS_EVENT_DEBUG,
-
-			/// @brief Выход
-			Exit
-		};
-
-		/// @brief Ивент
-		typedef Events Event;
 
 		/// \brief Ждать ивента
 		/// \return Ивент
@@ -88,73 +138,57 @@ namespace KolibriLib
 		/// @param debug режим дебага
 		/// \return PID запущенной программы
 		/// @return -1 если произошла ошибка
-		Thread::PID Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
-
-		
+		Thread::PID Exec(const filesystem::Path& AppName, const std::string& args, std::error_code& ec, bool debug = false);
 
 		/// @brief Получить системное время
 		/// @return
-		inline Time GetTime()
+		inline Time_bcd GetTime()
 		{
-			return _ksys_get_time();
+			return Time_bcd(_ksys_get_time());
 		}
 
 		/// @brief Получить дату(год,месяц,день)
 		/// @return дата
-		inline Date GetDate()
+		inline Date_bcd GetDate()
 		{
-			return _ksys_get_date();
+			return Date_bcd(_ksys_get_date());
 		}
 
-		/// @brief коды ошибок для функций SetTime, SetDayOfWeek, SetAlarm
-		typedef enum SetTimeOrDate
-		{
-			/// @brief успешно
-			DONE,
-
-			/// @brief параметр задан неверно
-			WrongArgs,
-
-			/// @brief CMOS-батарейки разрядились
-			CMOS
-		} SetTimeOrDate;
+		
 
 		/// @brief Установить системную  время
 		/// @param NewTime Время что будет установленно
-		inline SetTimeOrDate SetTime(Time NewTime)
+		inline std::error_code SetTime(Time_bcd NewTime)
 		{
-			SetTimeOrDate ret;
-
+			int ret;
 			asm_inline (
 				"int $0x40" 
 				: "=a"(ret)
 				: "a"(22), "b"(0), "c"(NewTime)
 			);
-
-			return ret;
+			return std::error_code((SetTimeOrDate)ret);
 		}
 
 		/// @brief Установитьсистемную  дату
 		/// @param NewData Дата что будет установленна
-		inline SetTimeOrDate SetDate(Date NewDate)
+		inline std::error_code SetDate(Date_bcd NewDate)
 		{
-			SetTimeOrDate ret;
-
+			int ret;
 			asm_inline (
 				"int $0x40"
 				: "=a"(ret)
 				: "a"(22), "b"(1), "c"(NewDate)
 			);
 
-			return ret;
+			return std::error_code((SetTimeOrDate)ret);
 		}
 
 		/// @brief Установить день недели
 		/// @param NewDayOfWeek День недели от 1 до 7
 		/// @note Ценность установки дня недели представляется сомнительной, поскольку он мало где используется(день недели можно рассчитать по дате)
-		inline SetTimeOrDate SetDayOfWeek(uint8_t NewDayOfWeek)
+		inline std::error_code SetDayOfWeek(uint8_t NewDayOfWeek)
 		{
-			SetTimeOrDate ret;
+			int ret;
 
 			asm_inline (
 				"int $0x40" 
@@ -162,7 +196,7 @@ namespace KolibriLib
 				: "a"(22), "b"(2), "c"(NewDayOfWeek)
 			);
 
-			return ret;
+			return std::error_code((SetTimeOrDate)ret);
 		}
 
 		/// @brief Установить бедильник
@@ -213,22 +247,6 @@ namespace KolibriLib
 			return a;
 		}
 
-		/// @brief Список языков системы
-		typedef enum lang
-		{
-			/// @brief Английский 
-			Eng = 0,
-
-			/// @brief Финский
-			Fi = 1,
-
-			/// @brief Немецкий
-			Ger = 2,
-
-			/// @brief Русский
-			Rus = 3
-		} lang;
-
 		/// @brief Получить язык системы
 		/// @return Занечение из списка lang
 		inline lang GetLang()
@@ -274,6 +292,9 @@ namespace KolibriLib
 		/// @brief Ключи для уведомлений
 		typedef enum
 		{
+			/// @brief Ключа нет
+			NotSet,
+
 			/// @brief не закрывать автоматически
 			NoAutoClose = 'd',
 			
@@ -293,8 +314,8 @@ namespace KolibriLib
 		/// @param keys ключи
 		/// @example example.cpp
 		/// @example checkboxExample.cpp
-		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, static_cast<notifyKey>(0), static_cast<notifyKey>(0), static_cast<notifyKey>(0)});
-		
+		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, notifyKey::NotSet, notifyKey::NotSet, notifyKey::NotSet});
+
 		/// @brief Уведомление об ошибке через увдомления системы
 		/// @param Title Заголовок уведомления об ошибке
 		/// @param Text текст

@@ -251,24 +251,22 @@ OS::Event Window::Handler()
 
 	switch (event)
 	{
-	case OS::Events::Redraw:
+	case OS::Event::Redraw:
 
 		Redraw();
 
 		break;
 
-	case OS::Events::Button:
+	case OS::Event::Button:
 
 		_PressedButton = UI::buttons::GetPressedButton();
 
 		if (_PressedButton == UI::buttons::CloseButton) // Если нажата кнопка X
 		{
-			event = OS::Events::Exit;
-
+			event = OS::Event::Exit;
 		}
 		else
 		{
-
 			for (auto it : _Elements)
 			{
 				it->OnButtonEvent(_PressedButton);
@@ -277,7 +275,7 @@ OS::Event Window::Handler()
 
 		break;
 
-	case OS::Events::Key:
+	case OS::Event::Key:
 
 
 		for (auto it : _Elements)
@@ -287,7 +285,7 @@ OS::Event Window::Handler()
 
 		break;
 
-	case OS::Events::Mouse:
+	case OS::Event::Mouse:
 
 
 		if (mouse::MouseButtons::RightButton && mouse::GetMouseButtons()) // Если нажата правая кнопка

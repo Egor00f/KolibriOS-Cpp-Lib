@@ -1,11 +1,11 @@
 /*
 всякие разные базовые типы
 */
-#ifndef __TYPES_H__
-#define __TYPES_H__
+#ifndef __TYPES_HPP__
+#define __TYPES_HPP__
 
-#include <sys/ksys.h>
-#include <kolibriLib/system/filesystem.hpp>
+#include <include_ksys.h>
+#include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/debug.hpp>

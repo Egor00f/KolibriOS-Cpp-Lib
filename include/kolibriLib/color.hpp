@@ -1,7 +1,7 @@
 #ifndef __COLOR_HPP__
 #define __COLOR_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
 
 namespace KolibriLib

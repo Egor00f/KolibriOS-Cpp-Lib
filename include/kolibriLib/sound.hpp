@@ -1,7 +1,7 @@
 #ifndef __SOUND_HPP__
 #define __SOUND_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <sound.h>
 
 namespace KolibriLib
