@@ -1,5 +1,6 @@
 #include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <stdio.h>
+#include <kolibriLib/time.hpp>
 
 using namespace KolibriLib;
 
@@ -103,25 +104,25 @@ const int &KolibriLib::filesystem::filesystem_error::code() const
     return _code;
 }
 
-KolibriLib::filesystem::directory_entry::directory_entry(const filesystem::path &p, std::error_code &ec)
+KolibriLib::filesystem::directory_entry::directory_entry(const filesystem::path &p, filesystem::FilesystemErrors &ec)
     :   _path(p)
 {
     refresh(ec);
 }
 
-void KolibriLib::filesystem::directory_entry::assign(const filesystem::path &p, std::error_code &ec)
+void KolibriLib::filesystem::directory_entry::assign(const filesystem::path &p, filesystem::FilesystemErrors &ec)
 {
     _path = p;
     refresh(ec);
 }
 
-void KolibriLib::filesystem::directory_entry::refresh(std::error_code &ec) noexcept
+void KolibriLib::filesystem::directory_entry::refresh(filesystem::FilesystemErrors &ec) noexcept
 {
     _last_mod_time = filesystem::last_write_time(_path, ec);
-    if(ec)
+    if(ec != FilesystemErrors::Successfully)
         goto epic_fail;
     file_size = filesystem::file_size(_path, ec);
-    if(ec)
+    if (ec != FilesystemErrors::Successfully)
         goto epic_fail;
 
 epic_fail:
@@ -134,23 +135,23 @@ std::uintmax_t KolibriLib::filesystem::file_size(const Path &p)
 {
     ksys_file_info_t ret;
 
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
 
     filesystem::file_size(p, ec);
 
-    if(ec)
+    if (ec != FilesystemErrors::Successfully)
         throw ec;
 
     return ret.size;
 }
 
-std::uintmax_t KolibriLib::filesystem::file_size(const Path &p, std::error_code &ec) noexcept
+std::uintmax_t KolibriLib::filesystem::file_size(const Path &p, filesystem::FilesystemErrors &ec) noexcept
 {
     ksys_file_info_t ret;
 
     ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &ret);
 
-    if (ec)
+    if (ec != FilesystemErrors::Successfully)
     {
         return static_cast<std::uintmax_t>(-1);
     }
@@ -167,24 +168,24 @@ void KolibriLib::filesystem::resize_file(const path &p, std::uintmax_t new_size)
         throw err;
 }
 
-void KolibriLib::filesystem::resize_file(const filesystem::path &p, std::uintmax_t new_size, std::error_code &ec) noexcept
+void KolibriLib::filesystem::resize_file(const filesystem::path &p, std::uintmax_t new_size, filesystem::FilesystemErrors &ec) noexcept
 {
     ec = (filesystem::FilesystemErrors)_ksys_file_set_size(p, new_size);
 }
 
 bool KolibriLib::filesystem::exists(const Path &p)
 {
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
 
     bool ret = KolibriLib::filesystem::exists(p, ec);
 
-    if(ec)
+    if (ec != filesystem::FilesystemErrors::Successfully)
         throw ec;
 
     return ret;
 }
 
-bool KolibriLib::filesystem::exists(const filesystem::path &p, std::error_code &ec) noexcept
+bool KolibriLib::filesystem::exists(const filesystem::path &p, filesystem::FilesystemErrors &ec) noexcept
 {
     ksys_file_info_t *buff = new ksys_file_info_t;
 
@@ -203,17 +204,17 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
 
 bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const filesystem::path &to, filesystem::copy_options options)
 {
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
 
     bool ret = filesystem::copy_file(from, to, options, ec);
 
-    if(ec)
+    if (ec != FilesystemErrors::Successfully)
         throw ec;
 
     return ret;
 }
 
-bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const filesystem::path &to, filesystem::copy_options options, std::error_code &ec)
+bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const filesystem::path &to, filesystem::copy_options options, filesystem::FilesystemErrors &ec)
 {
     if(from == to)
         return false;
@@ -276,14 +277,14 @@ epic_fail:
 
 void filesystem::rename(const filesystem::path &old_p, const filesystem::path &new_p)
 {
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
     filesystem::rename(old_p, new_p, ec);
 
-    if(ec)
+    if (ec != FilesystemErrors::Successfully)
         throw ec;
 }
 
-void filesystem::rename(const filesystem::path &old_p, const filesystem::path &new_p, std::error_code &ec) noexcept
+void filesystem::rename(const filesystem::path &old_p, const filesystem::path &new_p, filesystem::FilesystemErrors &ec) noexcept
 {
     ec = (FilesystemErrors)_ksys_file_rename(old_p, new_p);
 }
@@ -295,91 +296,75 @@ bool filesystem::is_directory(filesystem::file_status s) noexcept
 
 bool filesystem::is_directory(const filesystem::path &p)
 {
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
     bool ret = filesystem::is_directory(p, ec);
 
-    if(ec)
+    if (ec != FilesystemErrors::Successfully)
         throw ec;
     
     return ret;
 }
 
-bool filesystem::is_directory(const filesystem::path &p, std::error_code &ec) noexcept
+bool filesystem::is_directory(const filesystem::path &p, filesystem::FilesystemErrors &ec) noexcept
 {
     ksys_file_info_t ret;
     ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &ret);
 
-    return ret.attr && filesystem::Dir;
+    return ret.attr & (unsigned)filesystem::AttributeMasks::Dir;
 }
 
-filesystem::file_time_type KolibriLib::filesystem::last_write_time(const filesystem::path &p, std::error_code &ec) noexcept
+filesystem::file_time_type KolibriLib::filesystem::last_write_time(const filesystem::path &p, filesystem::FilesystemErrors &ec) noexcept
 {
     ksys_file_info_t info;
     ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &info);
 
-    std::tm ret = FileTimeAndDate(info.mtime, info.mdate).operator std::tm();
-
-    return filesystem::file_time_type( 
-        static_cast<filesystem::file_time_type::duration>(
-           std::mktime(&ret)
-        ) 
-    );
+    return to_tm(info.mtime, info.mdate);
 }
 
 filesystem::file_time_type KolibriLib::filesystem::last_write_time(const filesystem::path &p)
 {
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
     KolibriLib::filesystem::file_time_type ret = last_write_time(p, ec);
 
-    if(ec)
+    if (ec != FilesystemErrors::Successfully)
         throw ec;
 
     return ret;
 }
 
-filesystem::file_time_type KolibriLib::filesystem::create_time(const filesystem::path &p, std::error_code &ec) noexcept
+filesystem::file_time_type KolibriLib::filesystem::create_time(const filesystem::path &p, filesystem::FilesystemErrors &ec) noexcept
 {
     ksys_file_info_t info;
     ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &info);
 
-    std::tm ret = FileTimeAndDate(info.ctime, info.cdate).operator std::tm();
-
-    return filesystem::file_time_type( 
-        static_cast<filesystem::file_time_type::duration>(
-           std::mktime(&ret)
-        ) 
-    );
+    return to_tm(info.ctime, info.cdate);
 }
 
 filesystem::file_time_type KolibriLib::filesystem::create_time(const filesystem::path &p)
 {
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
     KolibriLib::filesystem::file_time_type ret = create_time(p, ec);
 
-    if(ec)
+    if (ec != FilesystemErrors::Successfully)
         throw ec;
 
     return ret;
 }
 
-filesystem::file_time_type KolibriLib::filesystem::last_acess_time(const filesystem::path &p, std::error_code &ec) noexcept
+filesystem::file_time_type KolibriLib::filesystem::last_acess_time(const filesystem::path &p, filesystem::FilesystemErrors &ec) noexcept
 {
     ksys_file_info_t info;
     ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &info);
 
-    std::tm ret = FileTimeAndDate(info.atime, info.adate).operator std::tm();
-
-    return filesystem::file_time_type(
-        static_cast<filesystem::file_time_type::duration>(
-            std::mktime(&ret)));
+    return to_tm(info.atime, info.adate);
 }
 
 filesystem::file_time_type KolibriLib::filesystem::last_acess_time(const filesystem::path &p)
 {
-    std::error_code ec;
+    filesystem::FilesystemErrors ec;
     KolibriLib::filesystem::file_time_type ret = last_acess_time(p, ec);
 
-    if (ec)
+    if (ec != FilesystemErrors::Successfully)
         throw ec;
 
     return ret;

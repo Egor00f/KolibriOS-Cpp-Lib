@@ -22,41 +22,41 @@ extern int kolibri_libimg_init(void);
 
 
 #pragma pack(push, 1)
-	/// @brief Image
-	typedef struct
-	{
-		/// @brief ((Width ROL 16) OR Height) XOR Data[0]
-		/// @note Ignored so far
-		uint32_t Checksum;
+/// @brief Image
+typedef struct
+{
+	/// @brief ((Width ROL 16) OR Height) XOR Data[0]
+	/// @note Ignored so far
+	uint32_t Checksum;
 
-		/// @brief Image width
-		uint32_t Width;
+	/// @brief Image width
+	uint32_t Width;
 
-		/// @brief Image height
-		uint32_t Height;
+	/// @brief Image height
+	uint32_t Height;
 
-		uint32_t Next;
+	uint32_t Next;
 
-		uint32_t Previous;
+	uint32_t Previous;
 
-		/// @brief One of Image bppN
-		uint32_t Type;
+	/// @brief One of Image bppN
+	uint32_t Type;
 
-		/// @brief Image, array of colors
-		uint32_t *Data;
+	/// @brief Image, array of colors
+	uint32_t *Data;
 
-		/// @brief Used if Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
-		uint32_t Palette;
+	/// @brief Used if Type eq Image.bpp1, Image.bpp2, Image.bpp4 or Image.bpp8i
+	uint32_t Palette;
 
-		uint32_t Extended;
+	uint32_t Extended;
 
-		/// @brief Bitfield
-		uint32_t Flags;
+	/// @brief Bitfield
+	uint32_t Flags;
 
-		/// @brief Used if Image is animated is set in Flags
-		uint32_t Delay;
+	/// @brief Used if Image is animated is set in Flags
+	uint32_t Delay;
 
-	} Image_t;
+} Image_t;
 #pragma pack(pop)
 
 /// @brief List of bppN
@@ -179,7 +179,6 @@ enum Rotate
 	ROTATE_270_CW = 0x03,
 	ROTATE_90_CCW = ROTATE_270_CW,
 	ROTATE_270_CCW = ROTATE_90_CW
-
 };
 
 extern Image_t*   (*img_decode)(void* file_data, uint32_t size, uint32_t b_color) _stdcall;

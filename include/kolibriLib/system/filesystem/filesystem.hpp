@@ -5,11 +5,8 @@
 #include <include_ksys.h>
 
 #include <string>
-#include <system_error>
-#include <chrono>
 #include <ctime>
 
-#include "types.hpp"
 #include "config.hpp"
 #include "file_status.hpp"
 
@@ -87,7 +84,7 @@ namespace KolibriLib
             int _code;
         };
 
-        using file_time_type = std::chrono::time_point<FileTimeAndDate>;
+        using file_time_type = std::tm;
 
         class directory_entry
         {
@@ -100,18 +97,18 @@ namespace KolibriLib
             /// @brief 
             /// @param p 
             /// @param ec 
-            directory_entry( const filesystem::path& p, std::error_code& ec );
+            directory_entry( const filesystem::path& p, FilesystemErrors& ec );
 
             ~directory_entry() = default;
 
             void assign( const filesystem::path& p );
-            void assign( const filesystem::path& p, std::error_code& ec );
+            void assign( const filesystem::path& p, FilesystemErrors& ec );
 
             void replace_filename( const filesystem::path& p );
-            void replace_filename( const filesystem::path& p, std::error_code& ec );
+            void replace_filename( const filesystem::path& p, FilesystemErrors& ec );
 
             void refresh();
-            void refresh( std::error_code& ec ) noexcept;
+            void refresh( FilesystemErrors& ec ) noexcept;
 
             directory_entry &operator=(const directory_entry &other) = default;
             directory_entry &operator=(directory_entry &&other) noexcept = default;
@@ -132,7 +129,7 @@ namespace KolibriLib
         /// @param p путь до файла
         /// @param ec ссылка на код ошибки
         /// @return размер файла
-        std::uintmax_t file_size(const Path &p, std::error_code& ec ) noexcept;
+        std::uintmax_t file_size(const Path &p, FilesystemErrors& ec ) noexcept;
 
         /// @brief 
         /// @param p 
@@ -143,37 +140,37 @@ namespace KolibriLib
         /// @param p 
         /// @param new_size 
         /// @param ec
-        void resize_file(const filesystem::path &p, std::uintmax_t new_size, std::error_code &ec) noexcept;
+        void resize_file(const filesystem::path &p, std::uintmax_t new_size, FilesystemErrors &ec) noexcept;
 
         bool copy_file(const filesystem::path &from, const filesystem::path &to);
         bool copy_file(const filesystem::path &from, const filesystem::path &to, filesystem::copy_options options);
-        bool copy_file(const filesystem::path &from, const filesystem::path &to, filesystem::copy_options options, std::error_code &ec);
+        bool copy_file(const filesystem::path &from, const filesystem::path &to, filesystem::copy_options options, FilesystemErrors &ec);
 
         /// @brief проверяет существует ли файл или папки
         /// @param путь до файла/папки
         /// @return true если файл или папка существует, иначе false
         bool exists(const Path &p);
-        bool exists(const filesystem::path &p, std::error_code &ec) noexcept;
+        bool exists(const filesystem::path &p, FilesystemErrors &ec) noexcept;
 
         void rename(const filesystem::path &old_p, const filesystem::path &new_p);
-        void rename( const filesystem::path& old_p, const filesystem::path& new_p, std::error_code& ec ) noexcept;
+        void rename( const filesystem::path& old_p, const filesystem::path& new_p, FilesystemErrors& ec ) noexcept;
 
         bool is_regular_file( filesystem::file_status s ) noexcept;
         bool is_regular_file( const filesystem::path& p );
-        bool is_regular_file( const filesystem::path& p, std::error_code& ec ) noexcept;
+        bool is_regular_file( const filesystem::path& p, FilesystemErrors& ec ) noexcept;
 
         bool is_directory( filesystem::file_status s ) noexcept;
         bool is_directory(const filesystem::path &p);
-        bool is_directory( const filesystem::path& p, std::error_code& ec ) noexcept;
+        bool is_directory( const filesystem::path& p, FilesystemErrors& ec ) noexcept;
 
         filesystem::file_time_type last_write_time( const filesystem::path& p );
-        filesystem::file_time_type last_write_time(const filesystem::path &p, std::error_code &ec) noexcept;
+        filesystem::file_time_type last_write_time(const filesystem::path &p, FilesystemErrors &ec) noexcept;
 
         filesystem::file_time_type create_time(const filesystem::path &p);
-        filesystem::file_time_type create_time(const filesystem::path &p, std::error_code &ec) noexcept;
+        filesystem::file_time_type create_time(const filesystem::path &p, FilesystemErrors &ec) noexcept;
 
         filesystem::file_time_type last_acess_time(const filesystem::path &p);
-        filesystem::file_time_type create_acess_time(const filesystem::path &p, std::error_code &ec) noexcept;
+        filesystem::file_time_type last_acess_time(const filesystem::path &p, FilesystemErrors &ec) noexcept;
     } // namespace filesystem
 
     

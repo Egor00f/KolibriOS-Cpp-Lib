@@ -5,20 +5,19 @@
 using namespace KolibriLib;
 using namespace OS;
 
-
-Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, std::error_code& ec, bool debug)
+Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug)
 
 {
     int ret = _ksys_exec(AppName, const_cast<char*>(args.c_str()), debug);
 	
 	if(ret < 0)
 	{
-		ec = std::error_code(filesystem::FilesystemErrors::Successfully);
+		ec = filesystem::FilesystemErrors::Successfully;
 		return ret;
 	}
 	else
 	{
-		ec = std::error_code((filesystem::FilesystemErrors)ret);
+		ec = (filesystem::FilesystemErrors)ret;
 		return -1;
 	}	
 
@@ -26,7 +25,7 @@ Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::str
 
 void KolibriLib::OS::Notify(const std::string &Title, const std::string &Text, notifyIcon icon, const notifyKey (&keys)[4])
 {
-	std::string a = "\"'" + Title + "\n" + Text + "' " + (char)icon;
+	std::string a = "\"'" + Title + "\n" + Text + "' " + static_cast<char>(icon);
 	
 	if(!(keys[0] == notifyKey::NotSet))	// :)
 	{

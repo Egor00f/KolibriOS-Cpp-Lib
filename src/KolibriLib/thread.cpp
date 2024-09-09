@@ -1,11 +1,12 @@
 #include <kolibriLib/system/thread.hpp>
+#include <cstdlib>
 
 using namespace KolibriLib;
 using namespace Thread;
 
 PID KolibriLib::Thread::CreateThread_(void *ThreadEntry, unsigned ThreadStackSize)
 {
-    void *th_stack = malloc(ThreadStackSize);
+    void *th_stack = std::malloc(ThreadStackSize);
 
     if (!th_stack) //    Если памяти не было выделенно
     {
@@ -23,13 +24,16 @@ PID KolibriLib::Thread::CreateThread_(void *ThreadEntry, unsigned ThreadStackSiz
     return TID;
 }
 
-
-
 KolibriLib::Thread::ThreadInfo KolibriLib::Thread::GetThreadInfo(const Slot& thread)
 {
-    return *GetPointerThreadInfo(thread);
-}
+    ThreadInfo *ptr = GetPointerThreadInfo(thread);
 
+    ThreadInfo ret(*ptr);
+
+    delete ptr;
+
+    return ret;
+}
 
 KolibriLib::Thread::ThreadInfo* KolibriLib::Thread::GetPointerThreadInfo(const Slot& thread)
 {

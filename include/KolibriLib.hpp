@@ -30,7 +30,6 @@ namespace KolibriLib
 
 	using KolibriLib::OS::Event;
 	using KolibriLib::OS::GetSystemColors;
-	using KolibriLib::OS::GetTime;
 	using KolibriLib::OS::Exec;
 	using KolibriLib::OS::GetFreeMem;
 	using KolibriLib::OS::AllMem;

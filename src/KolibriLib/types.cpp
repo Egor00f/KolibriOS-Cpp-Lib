@@ -124,6 +124,10 @@ bool KolibriLib::point::operator>(const point &obj) const
 	return (x > obj.x) || (y > obj.y);
 }
 
+/*
+	UDim
+*/
+
 KolibriLib::UDim::Axis::Axis(float scale, int offset)
 	: Scale(scale),
 	  Offset(offset)
@@ -183,6 +187,10 @@ bool KolibriLib::UDim::operator!=(const UDim &obj) const
 {
 	return X != obj.X || Y != obj.Y;
 }
+
+/*
+	PrintDebug
+*/
 
 void KolibriLib::PrintDebug(const point &out)
 {

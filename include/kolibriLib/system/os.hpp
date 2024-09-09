@@ -7,8 +7,6 @@
 #include "thread.hpp"
 
 #include <vector>
-#include <chrono>
-#include <system_error>
 
 namespace KolibriLib
 {
@@ -62,25 +60,15 @@ namespace KolibriLib
 		enum class SetTimeOrDate
 		{
 			/// @brief успешно
-			DONE,
+			Successfully = 0,
 
 			/// @brief параметр задан неверно
-			WrongArgs,
+			WrongArgs = 1,
 
 			/// @brief CMOS-батарейки разрядились
-			CMOS
+			CMOS = 2
 		};
-
-		std::error_code make_error_code(SetTimeOrDate);
 	}
-}
-
-namespace std
-{
-    template<>
-    struct is_error_code_enum<KolibriLib::OS::SetTimeOrDate>:
-        true_type
-    {};
 }
 
 namespace KolibriLib
@@ -104,7 +92,7 @@ namespace KolibriLib
 		/// @param Указатель на таблицу системных цветов
 		inline void SetSystemColors(Colors::ColorsTable *table)
 		{
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				::"a"(48), "b"(2), "c"(table), "d"(sizeof(Colors::ColorsTable))
 			);
@@ -138,55 +126,42 @@ namespace KolibriLib
 		/// @param debug режим дебага
 		/// \return PID запущенной программы
 		/// @return -1 если произошла ошибка
-		Thread::PID Exec(const filesystem::Path& AppName, const std::string& args, std::error_code& ec, bool debug = false);
-
-		/// @brief Получить системное время
-		/// @return
-		inline Time_bcd GetTime()
-		{
-			return Time_bcd(_ksys_get_time());
-		}
-
-		/// @brief Получить дату(год,месяц,день)
-		/// @return дата
-		inline Date_bcd GetDate()
-		{
-			return Date_bcd(_ksys_get_date());
-		}
-
-		
+		Thread::PID Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug = false);
 
 		/// @brief Установить системную  время
 		/// @param NewTime Время что будет установленно
-		inline std::error_code SetTime(Time_bcd NewTime)
+		inline SetTimeOrDate SetTime(ksys_time_bcd_t NewTime)
 		{
 			int ret;
+
 			asm_inline (
 				"int $0x40" 
 				: "=a"(ret)
 				: "a"(22), "b"(0), "c"(NewTime)
 			);
-			return std::error_code((SetTimeOrDate)ret);
+
+			return (SetTimeOrDate)ret;
 		}
 
 		/// @brief Установитьсистемную  дату
 		/// @param NewData Дата что будет установленна
-		inline std::error_code SetDate(Date_bcd NewDate)
+		inline SetTimeOrDate SetDate(ksys_date_bcd_t NewDate)
 		{
 			int ret;
+
 			asm_inline (
 				"int $0x40"
 				: "=a"(ret)
 				: "a"(22), "b"(1), "c"(NewDate)
 			);
 
-			return std::error_code((SetTimeOrDate)ret);
+			return (SetTimeOrDate)ret;
 		}
 
 		/// @brief Установить день недели
 		/// @param NewDayOfWeek День недели от 1 до 7
 		/// @note Ценность установки дня недели представляется сомнительной, поскольку он мало где используется(день недели можно рассчитать по дате)
-		inline std::error_code SetDayOfWeek(uint8_t NewDayOfWeek)
+		inline SetTimeOrDate SetDayOfWeek(uint8_t NewDayOfWeek)
 		{
 			int ret;
 
@@ -196,7 +171,7 @@ namespace KolibriLib
 				: "a"(22), "b"(2), "c"(NewDayOfWeek)
 			);
 
-			return std::error_code((SetTimeOrDate)ret);
+			return (SetTimeOrDate)ret;
 		}
 
 		/// @brief Установить бедильник
@@ -204,7 +179,7 @@ namespace KolibriLib
 		/// @paragraph Будильник можно установить на срабатывание в заданное время каждые сутки. При этом отключить его существующими системными функциями нельзя.
 		/// @paragraph Срабатывание будильника заключается в генерации IRQ8.
 		/// @paragraph Будильник - глобальный системный ресурс; установка будильника автоматически отменяет предыдущую установку 
-		inline SetTimeOrDate SetAlarm(Time AlarmTime)
+		inline SetTimeOrDate SetAlarm(ksys_time_bcd_t AlarmTime)
 		{
 			SetTimeOrDate ret;
 

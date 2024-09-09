@@ -1,13 +1,11 @@
 #ifndef __FILESYSTEM_CONFIG_HPP__
 #define __FILESYSTEM_CONFIG_HPP__
 
-#include <system_error>
-
 namespace KolibriLib
 {
 	namespace filesystem
 	{
-		enum AttributeMasks
+		enum class AttributeMasks
 		{
 			OnlyRead = 1,
 			Hide = 2,
@@ -53,17 +51,8 @@ namespace KolibriLib
 			/// @brief файловой системе недостаточно оперативной памяти
 			OsHaventRam = 12
 		};
-		std::error_code make_error_code(FilesystemErrors);
 	} // namespace filesystem
 	
 } // namespace KolibriLib
-
-namespace std
-{
-    template<>
-    struct is_error_code_enum<KolibriLib::filesystem::FilesystemErrors>:
-        true_type
-    {};
-}
 
 #endif

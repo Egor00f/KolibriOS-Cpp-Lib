@@ -72,8 +72,6 @@ namespace FreeType
 		FT_Stroker stroker;
 	};
 
-
-
 	/// @brief Оболочка для FT_Glyph
 	class Glyph
 	{
@@ -176,9 +174,7 @@ namespace FreeType
 	private:
 		FT_Face face;
 	};
-
 	
-
 	extern Library _lib;
 
 	void DrawText(const KolibriLib::Coord &coord, const std::string text, Face face);

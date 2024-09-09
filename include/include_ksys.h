@@ -3,13 +3,14 @@
 
 /*
 	Почему?
-	с включеным флагом -Wold-style-cast компилятор с++ выдаёт тонну предупреждений
+	С включеным флагами для с++ компилятор выдаёт тонну предупреждений
 */
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wold-style-cast"
 #pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wcast-qual"
+#pragma GCC diagnostic ignored "-Wsign-conversion"
 
 #include <sys/ksys.h>
 

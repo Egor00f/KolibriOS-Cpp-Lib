@@ -110,12 +110,13 @@ SET(SOURCES
 	${SRC_PATH}/windowAttached.cpp
 	${SRC_PATH}/debug.cpp
 	${SRC_PATH}/globals.cpp
-	${SRC_PATH}/freetype.cpp
+	#${SRC_PATH}/freetype.cpp
 	${SRC_PATH}/keyboard.cpp
 	${SRC_PATH}/OpenDialog.cpp
 	${SRC_PATH}/clipboard.cpp
 	${SRC_PATH}/filesystem/filesystem.cpp
-	${SRC_PATH}/filesystem/filesystemTypes.cpp
+	${SRC_PATH}/filesystem/file_type.cpp
+	${SRC_PATH}/time.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/UI.hpp
