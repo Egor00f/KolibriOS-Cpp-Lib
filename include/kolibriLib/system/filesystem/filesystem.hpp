@@ -14,7 +14,7 @@
 namespace KolibriLib
 {
     /// @brief Работа с файлами
-    /// @paragraph подражает std::filesystem из C++17
+    /// @paragraph подражает std::filesystem из C++17, но им не является
     namespace filesystem
     {
         
@@ -166,11 +166,33 @@ namespace KolibriLib
         filesystem::file_time_type last_write_time( const filesystem::path& p );
         filesystem::file_time_type last_write_time(const filesystem::path &p, FilesystemErrors &ec) noexcept;
 
+        /// @brief Получить время создания файла
+        /// @param p путь до файла
+        /// @return 
         filesystem::file_time_type create_time(const filesystem::path &p);
         filesystem::file_time_type create_time(const filesystem::path &p, FilesystemErrors &ec) noexcept;
 
+        /// @brief Получить время последнего 
+        /// @param p 
+        /// @return 
         filesystem::file_time_type last_acess_time(const filesystem::path &p);
         filesystem::file_time_type last_acess_time(const filesystem::path &p, FilesystemErrors &ec) noexcept;
+
+        /// @brief Получить атрибуты файла
+        /// @param p пуйть до файла
+        /// @return
+        AttributeMasks get_attr(const path &p);
+
+        /// @brief Получить атрибуты файла
+        /// @param p пуйть до файла
+        /// @param ec
+        /// @return
+        AttributeMasks get_attr(const path &p, FilesystemErrors &ec) noexcept;
+
+        /// @brief Удалить файл
+        /// @param p 
+        void delete_file(const path &p);
+        void delete_file(const path &p, FilesystemErrors &ec) noexcept;
     } // namespace filesystem
 
     

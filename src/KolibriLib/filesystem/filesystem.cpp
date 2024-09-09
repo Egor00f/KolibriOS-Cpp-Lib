@@ -133,23 +133,23 @@ epic_fail:
 
 std::uintmax_t KolibriLib::filesystem::file_size(const Path &p)
 {
-    ksys_file_info_t ret;
 
     filesystem::FilesystemErrors ec;
 
-    filesystem::file_size(p, ec);
+    std::uintmax_t ret = filesystem::file_size(p, ec);
 
     if (ec != FilesystemErrors::Successfully)
         throw ec;
 
-    return ret.size;
+    return ret;
 }
 
 std::uintmax_t KolibriLib::filesystem::file_size(const Path &p, filesystem::FilesystemErrors &ec) noexcept
 {
-    ksys_file_info_t ret;
+    int err;
+    std::uintmax_t size = _ksys_file_get_size(p, &err);
 
-    ec = (filesystem::FilesystemErrors)_ksys_file_info(p, &ret);
+    ec = (filesystem::FilesystemErrors)err;
 
     if (ec != FilesystemErrors::Successfully)
     {
@@ -157,15 +157,18 @@ std::uintmax_t KolibriLib::filesystem::file_size(const Path &p, filesystem::File
     }
     else
     {
-        return ret.size;
+        return size;
     }
 }
 
 void KolibriLib::filesystem::resize_file(const path &p, std::uintmax_t new_size)
 {
-    int err = _ksys_file_set_size(p, new_size);
-    if(err)
-        throw err;
+    filesystem::FilesystemErrors ec;
+
+    resize_file(p, new_size, ec);
+
+    if (ec != FilesystemErrors::Successfully)
+        throw ec;
 }
 
 void KolibriLib::filesystem::resize_file(const filesystem::path &p, std::uintmax_t new_size, filesystem::FilesystemErrors &ec) noexcept
@@ -368,4 +371,37 @@ filesystem::file_time_type KolibriLib::filesystem::last_acess_time(const filesys
         throw ec;
 
     return ret;
+}
+
+KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const KolibriLib::filesystem::path &p)
+{
+    filesystem::FilesystemErrors ec;
+    KolibriLib::filesystem::AttributeMasks ret = get_attr(p, ec);
+
+    if (ec != FilesystemErrors::Successfully)
+        throw ec;
+
+    return ret;
+}
+
+KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const KolibriLib::filesystem::path &p, KolibriLib::filesystem::FilesystemErrors &ec)
+{
+    ksys_file_info_t info;
+    ec = (filesystem::FilesystemErrors) _ksys_file_info(p, &info);
+
+    return (KolibriLib::filesystem::AttributeMasks)info.attr;
+}
+
+void KolibriLib::filesystem::delete_file(const path &p, FilesystemErrors &ec)
+{
+    ec = (KolibriLib::filesystem::FilesystemErrors)_ksys_file_delete(p);
+}
+
+void KolibriLib::filesystem::delete_file(const path &p)
+{
+    filesystem::FilesystemErrors ec;
+    delete_file(p, ec);
+
+    if (ec != FilesystemErrors::Successfully)
+        throw ec;
 }
