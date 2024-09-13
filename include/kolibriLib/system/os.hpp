@@ -1,12 +1,75 @@
-#ifndef __OS_H__
-#define __OS_H__
+#ifndef __OS_HPP__
+#define __OS_HPP__
 
 
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include "thread.hpp"
 
 #include <vector>
+
+namespace KolibriLib
+{
+	namespace OS
+	{
+		/// @brief Перечисление всех ивнтов
+		enum class Event
+		{
+			/// @brief Ивента небыло
+			None = KSYS_EVENT_NONE,
+
+			/// @brief Перересовка окна
+			Redraw = KSYS_EVENT_REDRAW,
+
+			/// @brief Нажата кнопка
+			Button = KSYS_EVENT_BUTTON,
+
+			/// @brief Активность мыши
+			Mouse = KSYS_EVENT_MOUSE,
+
+			/// @brief Активность со стороны клавиатуры
+			Key = KSYS_EVENT_KEY,
+
+			/// @brief Ивент от экрана
+			Desktop = KSYS_EVENT_DESKTOP,
+
+			/// @brief Программу открыли в дебагере
+			Debug = KSYS_EVENT_DEBUG,
+
+			/// @brief Выход
+			Exit
+		};
+
+		/// @brief Список языков системы
+		enum class lang
+		{
+			/// @brief Английский
+			Eng = 0,
+
+			/// @brief Финский
+			Fi = 1,
+
+			/// @brief Немецкий
+			Ger = 2,
+
+			/// @brief Русский
+			Rus = 3
+		};
+
+		/// @brief коды ошибок для функций SetTime, SetDayOfWeek, SetAlarm
+		enum class SetTimeOrDate
+		{
+			/// @brief успешно
+			Successfully = 0,
+
+			/// @brief параметр задан неверно
+			WrongArgs = 1,
+
+			/// @brief CMOS-батарейки разрядились
+			CMOS = 2
+		};
+	}
+}
 
 namespace KolibriLib
 {
@@ -16,48 +79,24 @@ namespace KolibriLib
 
 		/// @brief Получить системные цвета
 		/// @return Таблица системных цветов
-		Colors::ColorsTable GetSystemColors();
+		inline Colors::ColorsTable GetSystemColors()
+		{
+			Colors::ColorsTable a;
+
+			_ksys_get_system_colors((ksys_colors_table_t *)&a);
+
+			return a;
+		}
 
 		/// @brief Именить системыне цвета
 		/// @param Указатель на таблицу системных цветов
 		inline void SetSystemColors(Colors::ColorsTable *table)
 		{
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				::"a"(48), "b"(2), "c"(table), "d"(sizeof(Colors::ColorsTable))
 			);
 		}
-		
-		/// @brief Перечисление всех ивнтов
-		enum Events
-		{
-			/// @brief Ивента небыло
-			None    = KSYS_EVENT_NONE,
-
-			/// @brief Перересовка окна
-			Redraw  = KSYS_EVENT_REDRAW,
-
-			/// @brief Нажата кнопка
-			Button  = KSYS_EVENT_BUTTON,
-
-			/// @brief Активность мыши
-			Mouse   = KSYS_EVENT_MOUSE,
-
-			/// @brief Активность со стороны клавиатуры
-			Key     = KSYS_EVENT_KEY,
-
-			/// @brief Ивент от экрана
-			Desktop = KSYS_EVENT_DESKTOP,
-			
-			/// @brief Программу открыли в дебагере
-			Debug   = KSYS_EVENT_DEBUG,
-
-			/// @brief Выход
-			Exit
-		};
-
-		/// @brief Ивент
-		typedef Events Event;
 
 		/// \brief Ждать ивента
 		/// \return Ивент
@@ -87,45 +126,13 @@ namespace KolibriLib
 		/// @param debug режим дебага
 		/// \return PID запущенной программы
 		/// @return -1 если произошла ошибка
-		Thread::PID Exec(const filesystem::Path& AppName, const std::string& args, bool debug = false);
-
-		/// @brief Время
-		typedef ksys_time_bcd_t Time;
-
-		typedef ksys_date_bcd_t Date;
-
-		/// @brief Получить системное время
-		/// @return
-		inline Time GetTime()
-		{
-			return _ksys_get_time();
-		}
-
-		/// @brief Получить дату(год,месяц,день)
-		/// @return дата
-		inline Date GetDate()
-		{
-			return _ksys_get_date();
-		}
-
-		/// @brief коды ошибок для функций SetTime, SetDayOfWeek, SetAlarm
-		typedef enum SetTimeOrDate
-		{
-			/// @brief успешно
-			DONE,
-
-			/// @brief параметр задан неверно
-			WrongArgs,
-
-			/// @brief CMOS-батарейки разрядились
-			CMOS
-		} SetTimeOrDate;
+		Thread::PID Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug = false);
 
 		/// @brief Установить системную  время
 		/// @param NewTime Время что будет установленно
-		inline SetTimeOrDate SetTime(Time NewTime)
+		inline SetTimeOrDate SetTime(ksys_time_bcd_t NewTime)
 		{
-			SetTimeOrDate ret;
+			int ret;
 
 			asm_inline (
 				"int $0x40" 
@@ -133,14 +140,14 @@ namespace KolibriLib
 				: "a"(22), "b"(0), "c"(NewTime)
 			);
 
-			return ret;
+			return (SetTimeOrDate)ret;
 		}
 
 		/// @brief Установитьсистемную  дату
 		/// @param NewData Дата что будет установленна
-		inline SetTimeOrDate SetDate(Date NewDate)
+		inline SetTimeOrDate SetDate(ksys_date_bcd_t NewDate)
 		{
-			SetTimeOrDate ret;
+			int ret;
 
 			asm_inline (
 				"int $0x40"
@@ -148,7 +155,7 @@ namespace KolibriLib
 				: "a"(22), "b"(1), "c"(NewDate)
 			);
 
-			return ret;
+			return (SetTimeOrDate)ret;
 		}
 
 		/// @brief Установить день недели
@@ -156,7 +163,7 @@ namespace KolibriLib
 		/// @note Ценность установки дня недели представляется сомнительной, поскольку он мало где используется(день недели можно рассчитать по дате)
 		inline SetTimeOrDate SetDayOfWeek(uint8_t NewDayOfWeek)
 		{
-			SetTimeOrDate ret;
+			int ret;
 
 			asm_inline (
 				"int $0x40" 
@@ -164,7 +171,7 @@ namespace KolibriLib
 				: "a"(22), "b"(2), "c"(NewDayOfWeek)
 			);
 
-			return ret;
+			return (SetTimeOrDate)ret;
 		}
 
 		/// @brief Установить бедильник
@@ -172,7 +179,7 @@ namespace KolibriLib
 		/// @paragraph Будильник можно установить на срабатывание в заданное время каждые сутки. При этом отключить его существующими системными функциями нельзя.
 		/// @paragraph Срабатывание будильника заключается в генерации IRQ8.
 		/// @paragraph Будильник - глобальный системный ресурс; установка будильника автоматически отменяет предыдущую установку 
-		inline SetTimeOrDate SetAlarm(Time AlarmTime)
+		inline SetTimeOrDate SetAlarm(ksys_time_bcd_t AlarmTime)
 		{
 			SetTimeOrDate ret;
 
@@ -214,22 +221,6 @@ namespace KolibriLib
 
 			return a;
 		}
-
-		/// @brief Список языков системы
-		typedef enum lang
-		{
-			/// @brief Английский 
-			Eng = 0,
-
-			/// @brief Финский
-			Fi = 1,
-
-			/// @brief Немецкий
-			Ger = 2,
-
-			/// @brief Русский
-			Rus = 3
-		} lang;
 
 		/// @brief Получить язык системы
 		/// @return Занечение из списка lang
@@ -276,6 +267,9 @@ namespace KolibriLib
 		/// @brief Ключи для уведомлений
 		typedef enum
 		{
+			/// @brief Ключа нет
+			NotSet,
+
 			/// @brief не закрывать автоматически
 			NoAutoClose = 'd',
 			
@@ -295,8 +289,8 @@ namespace KolibriLib
 		/// @param keys ключи
 		/// @example example.cpp
 		/// @example checkboxExample.cpp
-		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, static_cast<notifyKey>(0), static_cast<notifyKey>(0), static_cast<notifyKey>(0)});
-		
+		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, notifyKey::NotSet, notifyKey::NotSet, notifyKey::NotSet});
+
 		/// @brief Уведомление об ошибке через увдомления системы
 		/// @param Title Заголовок уведомления об ошибке
 		/// @param Text текст

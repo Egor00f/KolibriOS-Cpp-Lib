@@ -4,7 +4,7 @@
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/constants.hpp>
 #include <kolibriLib/img.hpp>
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/os.hpp>
 

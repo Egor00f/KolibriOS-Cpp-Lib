@@ -1,7 +1,7 @@
 #ifndef __COLOR_HPP__
 #define __COLOR_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
 
 namespace KolibriLib
@@ -21,11 +21,11 @@ namespace KolibriLib
             Color(const Color &a);
             Color(const rgb_t &color);
 
-            /// @brief 
-            /// @param R 
-            /// @param G 
-            /// @param B 
-            /// @param A 
+            /// @brief Конструктор
+            /// @param R Красная состовляющаяя цвета
+            /// @param G Красная состовляющаяя цвета
+            /// @param B Красная состовляющаяя цвета
+            /// @param A Прозрачность
             Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A = 0xFF);
 
             operator rgb_t() const;
@@ -87,114 +87,7 @@ namespace KolibriLib
         /// @brief Таблица системных цветов
         struct ColorsTable : ksys_colors_table_t
         {
-            /*
-            /// @brief цвет фона системного меню
-            Color menu_body;
-
-            /// @brief цвет фона для придания 3D эффекта
-            Color face_3d;
-
-            /// @brief цвет темной обводки для придания 3D эффекта
-            Color dark_3d;
-
-            /// @brief цвет светлой обводки для придания 3D эффекта
-            Color light_3d;
-
-            /// @brief цвет текста в заголовке окна приложения
-            Color win_title;
-
-            /// @brief цвет фона окна
-            Color win_body;
-
-            /// @brief цвет активной кнопки
-            Color btn_face;
-
-            /// @brief цвет текста активной кнопки
-            Color btn_text;
-
-            /// @brief цвет текста в рабочей области окна
-            Color win_text;
-
-            /// @brief цвет рамки области панели
-            Color panel_frame;
-
-            /// @brief цвет бордюра окна между внешней и внутренней рамкой
-            Color win_face;
-
-            /// @brief цвет внешней рамки "неактивного" окна
-            Color win_inface;
-
-            /// @brief цвет внешней рамки окна
-            Color win_frame;
-
-            /// @brief цвет внешней рамки "неактивного" окна
-            Color win_inframe;
-
-            /// @brief цвет внутренней рамки окна
-            Color win_border;
-
-            /// @brief цвет внутренней рамки "неактивного" окна
-            Color win_inborder;
-
-            /// @brief цвет в оттенках серого в рабочей области окна.
-            Color win_graytext;
-
-            /// @brief цвет рамки системного меню
-            Color menu_frame;
-
-            /// @brief цвет текста системного меню
-            Color menu_text;
-
-            /// @brief цвет фона области панели
-            Color panel_body;
-
-            /// @brief цвет текста области панели
-            Color panel_text;
-
-            /// @brief цвет рамки всплывающей подсказки
-            Color hint_frame;
-
-            /// @brief цвет фона всплывающей подсказки
-            Color hint_body;
-
-            /// @brief цвет текста всплывающей подсказки
-            Color hint_text;
-
-            /// @brief цвет фона "неактивной" кнопки
-            Color btn_inface;
-
-            /// @brief цвет фона кнопки при наведении курсора (focus)
-            Color btn_fcface;
-            Color btn_frame;
-            Color btn_inframe;
-            Color btn_fcframe;
-            Color btn_intext;
-            Color btn_fctex;
-            Color gui_shadow;
-            Color gui_face;
-            Color gui_inface;
-            Color gui_fcface;
-            Color gui_frame;
-            Color gui_inframe;
-            Color gui_fcframe;
-            Color gui_text;
-            Color gui_intex;
-            Color gui_fctext;
-            Color gui_select;
             
-            unsigned int reserved_a;
-            unsigned int reserved_b;
-            unsigned int reserved_c;
-            unsigned int reserved_d;
-            unsigned int reserved_e;
-            unsigned int reserved_f;
-
-            
-
-            ColorsTable(const ColorsTable &table);
-            ColorsTable(const ksys_colors_table_t &table);
-
-            */
         };
     }
 

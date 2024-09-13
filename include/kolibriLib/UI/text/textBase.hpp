@@ -19,10 +19,12 @@ namespace KolibriLib
 			inline unsigned int GetTextSize()
 			{
 				unsigned Size;
+
 				asm_inline(
 					"int $0x40"
 					: "=c"(Size)
 					: "a"(48), "b"(11));
+				
 				return Size;
 			}
 
@@ -47,13 +49,13 @@ namespace KolibriLib
 				_ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
 			}
 
-			typedef enum TextEncoding
+			enum class TextEncoding
 			{
 				cp866_6x9 = 0,
 				cp866_8x16 = 1,
 				UTF16LE = 2,
 				UTF8 = 3
-			} TextEncoding;
+			};
 
 			/// @brief Вывести текст
 			/// @param text текст
@@ -63,16 +65,37 @@ namespace KolibriLib
 			/// @param scale множитель размера(по умолчанию 1x), максимум 8x (0 = 1x, 7 = 8x)
 			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, uint8_t scale = 0)
 			{
-				color._a = encoding << 4;
+				color._a = static_cast<uint8_t>(encoding) << 4;
 				color._a |= scale;
 				asm_inline(
 					"int $0x40"
 					::"a"(4),
-					"b"((ksys_pos_t)coord),
+					"b"(coord.operator ksys_pos_t()),
 					"c"(color.val),
 					"d"(text.c_str()),
 					"S"(text.length())
 				);
+			}
+
+			/// @brief Вывести текст
+			/// @param text текст
+			/// @param coord координаты
+			/// @param BackgroundColor Цвет фона
+			/// @param color цвет текста
+			/// @param encoding кодировка, см. TextEncoding
+			/// @param scale множитель размера(по умолчанию 1x), максимум 8x (0 = 1x, 7 = 8x)
+			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color BackgroundColor, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, uint8_t scale = 0)
+			{
+				color._a = static_cast<uint8_t>(encoding) << 3;
+				color._a |= scale;
+				color._a |= (true << 6);
+				asm_inline(
+					"int $0x40" ::"a"(4),
+					"b"(coord.operator ksys_pos_t()),
+					"c"(color.val),
+					"d"(text.c_str()),
+					"S"(text.length()),
+					"D"(BackgroundColor.val));
 			}
 		}
 	}

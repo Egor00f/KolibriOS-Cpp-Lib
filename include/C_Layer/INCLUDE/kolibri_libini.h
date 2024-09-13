@@ -1,11 +1,12 @@
 #ifndef KOLIBRI_LIBINI_H
 #define KOLIBRI_LIBINI_H
 
-#include <sys/ksys.h>
+#include <stdint.h>
 
+#ifdef __cplusplus
 extern "C"
 {
-
+#endif
 extern int kolibri_libini_init(void);
 
 extern uint32_t (*LIBINI_enum_sections)(const char*, void*) __attribute__((__stdcall__));
@@ -19,6 +20,8 @@ extern uint32_t (*LIBINI_get_color)(const char*, const char*, const char*, uint3
 extern uint32_t (*LIBINI_set_color)(const char*, const char*, const char*, uint32_t) __attribute__((__stdcall__));
 extern uint32_t (*LIBINI_get_shortcut)(const char*, const char*, const char*, uint32_t, const char*, uint32_t) __attribute__((__stdcall__));
 
+#ifdef __cplusplus
 }
+#endif
 
 #endif /* KOLIBRI_LIBINI_H */

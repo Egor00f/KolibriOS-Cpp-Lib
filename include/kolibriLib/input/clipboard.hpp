@@ -1,7 +1,7 @@
 #ifndef __CLIPBOARD_HPP__
 #define __CLIPBOARD_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/img.hpp>
 #include <string>
 #include <cstring>
@@ -125,7 +125,7 @@ namespace KolibriLib
 		};
 		
 		/// @brief Список ошибок
-		typedef enum Errors
+		enum class Error
 		{
 			/// @brief Всё ок
 			ok = 0,
@@ -135,7 +135,7 @@ namespace KolibriLib
 
 			/// @brief отсутствует область главного списка
 			NotareOfMainEnum = -1
-		} Error;
+		};
 
 		/// @brief считать данные из буфера обмена
 		inline clipboard Get(Slot slot)

@@ -1,9 +1,10 @@
-#ifndef __THREAD_H__
-#define __THREAD_H__
+#ifndef __THREAD_HPP__
+#define __THREAD_HPP__
 
-#include <stdlib.h>
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
+
+#include <type_traits>
 
 namespace KolibriLib
 {
@@ -42,7 +43,7 @@ namespace KolibriLib
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
         /// @note есть немалый шанс проебаться с размером стека
-        PID CreateThread_(void *ThreadEntry, unsigned ThreadStackSize = 4096);
+        PID CreateThread_(void *ThreadEntry, std::size_t ThreadStackSize = 4096);
 
         template <class T>
         /// \brief Создать поток
@@ -51,7 +52,7 @@ namespace KolibriLib
         /// \return ID потока
         /// @note есть шанс проебаться с размером стека
         /// @note Пихать сюда ТОЛЬКО указатели на функции, иначе ваще хз че поизойдёт
-        inline PID CreateThread(T ThreadEntry, unsigned ThreadStackSize = 4096)
+        inline PID CreateThread(T ThreadEntry, std::size_t ThreadStackSize = 4096)
         {
             return CreateThread_((void*)ThreadEntry, ThreadStackSize);
         }
@@ -62,12 +63,19 @@ namespace KolibriLib
         /// @note Нельзя завершить поток операционной системы OS/IDLE (номер слота 1), можно завершить любой обычный поток/процесс
         inline bool TerminateThread(PID pid)
         {
-            int a;
-            asm_inline(
+            int ret;
+
+            asm_inline (
                 "int $0x40"
-                : "=a"(a)
+                : "=a"(ret)
                 : "a"(18), "b"(18), "c"(pid));
-            return a;
+
+            return ret;
+        }
+
+        inline bool TerminateThread()
+        {
+            _ksys_exit();
         }
 
         

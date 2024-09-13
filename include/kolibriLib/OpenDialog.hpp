@@ -1,7 +1,7 @@
 #ifndef __OPENDIALOG_HPP__
 #define __OPENDIALOG_HPP__
 
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/window/windowBase.hpp>
 #include <C_Layer/INCLUDE/kolibri_opendialog.h>

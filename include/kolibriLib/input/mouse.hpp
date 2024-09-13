@@ -1,9 +1,9 @@
-#ifndef __MOUSE_H__
-#define __MOUSE_H__
+#ifndef __MOUSE_HPP__
+#define __MOUSE_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 
 namespace KolibriLib

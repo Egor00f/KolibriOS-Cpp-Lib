@@ -1,7 +1,7 @@
 #ifndef KOLIBRI_RASTERWORKS_H
 #define KOLIBRI_RASTERWORKS_H
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <stdlib.h>
 #include <string.h>
 

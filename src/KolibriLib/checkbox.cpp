@@ -22,7 +22,7 @@ void KolibriLib::UI::CheckBox::DrawBorder() const
 		graphic::DrawRectangleLines(absCoord, absCoord + absSize, _MainColor);
 		break;
 	case Circle:
-		graphic::DrawCircle(absCoord + point(absSize.x / 2, absSize.y / 2), absSize.x / 2, _BorderColor);
+		graphic::DrawCircle(absCoord + point(absSize.x / 2, absSize.y / 2), static_cast<unsigned int>(absSize.x) / 2, _BorderColor);
 	default:
 		break;
 	}
@@ -44,34 +44,37 @@ void KolibriLib::UI::CheckBox::OnButtonEvent(buttons::ButtonID PressedButtonID)
 
 void CheckBox::Render() const
 {
-	PrintDebug("Render Checkbox\n");
-
-	DrawBorder();
-
-	const Coord absCoord = GetAbsoluteCoord();
-	const Coord absSize = GetAbsoluteSize();
-
-	if (checked)
+	if(Visible)
 	{
-		switch (_style)
-		{
-		case CheckBox::style::Default:
-			graphic::DrawRectangleFill(absCoord,
-									   absSize,
-									   _BorderColor);
-			break;
-		case CheckBox::style::Circle:
-			graphic::DrawCircle(absCoord + point(absSize.x / 2, absSize.y / 2),
-								absSize.x / 2 - GetMargin(),
-								_BorderColor);
-			break;
-		case CheckBox::style::Smoth:
-			PrintDebug("KolibriLib::UI::Checkbox smath style now not support :(\n");
-			break;
-		default:
-			break;
-		}
-	}
+		PrintDebug("Render Checkbox\n");
 
-	Button::Render();
+		DrawBorder();
+
+		const Coord absoluteCoord = GetAbsoluteCoord();
+		const Size absoluteSize = GetAbsoluteSize();
+
+		if (checked)
+		{
+			switch (_style)
+			{
+			case CheckBox::style::Default:
+				graphic::DrawRectangleFill(absoluteCoord,
+										   absoluteSize,
+										   _BorderColor);
+				break;
+			case CheckBox::style::Circle:
+				graphic::DrawCircle(absoluteCoord + point(absoluteSize.x / 2, absoluteSize.y / 2),
+									(static_cast<unsigned int>(absoluteSize.x) / 2U) - GetMargin(),
+									_BorderColor);
+				break;
+			case CheckBox::style::Smoth:
+				PrintDebug("KolibriLib::UI::Checkbox smath style now not support :(\n");
+				break;
+			default:
+				break;
+			}
+		}
+
+		Button::Render();
+	}
 }

@@ -3,7 +3,7 @@
 #ifndef __DEBUG_HPP__
 #define __DEBUG_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <stdio.h>
 #include <string>
 
@@ -32,6 +32,8 @@ namespace KolibriLib
 	void PrintDebug(unsigned out);
 
 	void PrintDebug(float out);
+
+	
 
 } // namespace KolibriLib
 
