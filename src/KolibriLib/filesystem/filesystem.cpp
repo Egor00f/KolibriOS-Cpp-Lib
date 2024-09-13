@@ -1,5 +1,7 @@
 #include <kolibriLib/system/filesystem/filesystem.hpp>
-#include <stdio.h>
+#include <include_ksys.h>
+#include <cstdio>
+#include <dirent.h>
 #include <kolibriLib/time.hpp>
 
 using namespace KolibriLib;
@@ -16,6 +18,9 @@ KolibriLib::filesystem::Path::Path(const char *path)
 
 KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator/(const KolibriLib::filesystem::Path &a)
 {
+    if(_string.back() != '/' || a._string.front() != '/')
+        _string += '/';
+
     _string += a._string;
 
     return *this;
@@ -23,43 +28,32 @@ KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator/(const Koli
 
 filesystem::Path &KolibriLib::filesystem::Path::operator/(const std::string &a)
 {
+    if (_string.back() != '/' || a.front() != '/')
+        _string += '/';
+
     _string += a;
+
     return *this;
 }
 
 KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator+(const KolibriLib::filesystem::Path &a)
 {
-    _string += a._string;
-
-    return *this;
+    return *this / a;
 }
 
 KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator+(const std::string &a)
 {
-    _string += a;
-    return *this;
-}
-
-KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator=(const KolibriLib::filesystem::Path &a)
-{
-    _string = a._string;
-    return *this;
-}
-
-KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator=(const std::string &a)
-{
-    _string = a;
-    return *this;
-}
-
-bool KolibriLib::filesystem::Path::operator==(const KolibriLib::filesystem::Path &a) const
-{
-    return _string == a._string;
+    return *this / a;
 }
 
 std::size_t KolibriLib::filesystem::Path::length() const
 {
     return _string.length();
+}
+
+bool KolibriLib::filesystem::Path::operator==(const KolibriLib::filesystem::Path &a) const
+{
+    return _string == a._string;
 }
 
 bool KolibriLib::filesystem::Path::operator!=(const KolibriLib::filesystem::Path &a) const
@@ -87,23 +81,6 @@ KolibriLib::filesystem::Path::operator const char*() const
     return _string.c_str();
 }
 
-filesystem::filesystem_error &KolibriLib::filesystem::filesystem_error::operator=(const filesystem_error &other)
-{
-    _code = other._code;
-    return *this;
-}
-
-filesystem::filesystem_error &KolibriLib::filesystem::filesystem_error::operator=(const int &other)
-{
-    _code = other;
-    return *this;
-}
-
-const int &KolibriLib::filesystem::filesystem_error::code() const
-{
-    return _code;
-}
-
 KolibriLib::filesystem::directory_entry::directory_entry(const filesystem::path &p, filesystem::FilesystemErrors &ec)
     :   _path(p)
 {
@@ -119,17 +96,37 @@ void KolibriLib::filesystem::directory_entry::assign(const filesystem::path &p, 
 void KolibriLib::filesystem::directory_entry::refresh(filesystem::FilesystemErrors &ec) noexcept
 {
     _last_mod_time = filesystem::last_write_time(_path, ec);
-    if(ec != FilesystemErrors::Successfully)
-        goto epic_fail;
-    file_size = filesystem::file_size(_path, ec);
-    if (ec != FilesystemErrors::Successfully)
-        goto epic_fail;
-
-epic_fail:
-    return;
+    if(ec == FilesystemErrors::Successfully)
+    {
+        file_size = filesystem::file_size(_path, ec);
+        if (ec == FilesystemErrors::Successfully)
+        {
+            _last_mod_time = filesystem::last_write_time(_path, ec);
+        }
+    }
+    
 }
 
+void KolibriLib::filesystem::directory_entry::replace_filename(const filesystem::path &p)
+{
+    _path = p;
+}
 
+void KolibriLib::filesystem::directory_entry::refresh()
+{
+    FilesystemErrors ec;
+    refresh(ec);
+    if (ec != FilesystemErrors::Successfully)
+        throw ec;
+}
+
+void KolibriLib::filesystem::directory_entry::assign(const filesystem::path &p)
+{
+    FilesystemErrors ec;
+    assign(p, ec);
+    if(ec != FilesystemErrors::Successfully)
+        throw ec;
+}
 
 std::uintmax_t KolibriLib::filesystem::file_size(const Path &p)
 {
@@ -222,9 +219,9 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
     if(from == to)
         return false;
 
-    size_t file_size = 0;
+    long file_size = 0;
 
-    const size_t BLOCK_SIZE = 256;
+    const size_t BLOCK_SIZE = 512;
 
     unsigned char buffer[BLOCK_SIZE];
 
@@ -274,8 +271,6 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
     fclose(fin);
     fclose(fout);
 
-epic_fail:
-    return 1;
 }
 
 void filesystem::rename(const filesystem::path &old_p, const filesystem::path &new_p)
@@ -373,7 +368,7 @@ filesystem::file_time_type KolibriLib::filesystem::last_acess_time(const filesys
     return ret;
 }
 
-KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const KolibriLib::filesystem::path &p)
+KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const KolibriLib::filesystem::path &p) 
 {
     filesystem::FilesystemErrors ec;
     KolibriLib::filesystem::AttributeMasks ret = get_attr(p, ec);
@@ -384,7 +379,7 @@ KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const Ko
     return ret;
 }
 
-KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const KolibriLib::filesystem::path &p, KolibriLib::filesystem::FilesystemErrors &ec)
+KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const KolibriLib::filesystem::path &p, KolibriLib::filesystem::FilesystemErrors &ec) noexcept
 {
     ksys_file_info_t info;
     ec = (filesystem::FilesystemErrors) _ksys_file_info(p, &info);
@@ -392,16 +387,60 @@ KolibriLib::filesystem::AttributeMasks KolibriLib::filesystem::get_attr(const Ko
     return (KolibriLib::filesystem::AttributeMasks)info.attr;
 }
 
-void KolibriLib::filesystem::delete_file(const path &p, FilesystemErrors &ec)
+void KolibriLib::filesystem::remove(const path &p, FilesystemErrors &ec) noexcept
 {
     ec = (KolibriLib::filesystem::FilesystemErrors)_ksys_file_delete(p);
 }
 
-void KolibriLib::filesystem::delete_file(const path &p)
+void KolibriLib::filesystem::remove(const path &p)
 {
     filesystem::FilesystemErrors ec;
-    delete_file(p, ec);
+    remove(p, ec);
 
     if (ec != FilesystemErrors::Successfully)
         throw ec;
+}
+
+bool KolibriLib::filesystem::create_directory(const filesystem::path &p, FilesystemErrors &ec) noexcept
+{
+	ec = (FilesystemErrors)_ksys_file_create(p).status;
+
+    return ec == FilesystemErrors::Successfully;
+}
+
+std::uintmax_t KolibriLib::filesystem::remove_all(const path &p, FilesystemErrors &ec)
+{
+    DIR *dir;
+    struct dirent *ent;
+    std::uintmax_t i = 0;
+
+    dir = opendir(p);
+
+    while((ent=readdir(dir)) != false)
+    {
+        remove(ent->d_name, ec);
+        if(ec != FilesystemErrors::Successfully)
+            break;
+    }
+
+    closedir(dir);
+
+    return i;
+}
+
+std::uintmax_t KolibriLib::filesystem::remove_all(const path &p)
+{
+    FilesystemErrors ec;
+
+    auto ret = remove_all(p, ec);
+
+    if(ec != FilesystemErrors::Successfully)
+        throw ec;
+
+    return ret;
+}
+
+filesystem::path KolibriLib::filesystem::temp_directory_path()
+{
+    return path("/tmpfs");
 }

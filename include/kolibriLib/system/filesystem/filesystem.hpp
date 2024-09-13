@@ -1,9 +1,6 @@
 #ifndef __FILESYSTEM_H__
 #define __FILESYSTEM_H__
 
-
-#include <include_ksys.h>
-
 #include <string>
 #include <ctime>
 
@@ -15,6 +12,7 @@ namespace KolibriLib
 {
     /// @brief Работа с файлами
     /// @paragraph подражает std::filesystem из C++17, но им не является
+    /// @paragraph Херня какето
     namespace filesystem
     {
         
@@ -32,15 +30,21 @@ namespace KolibriLib
         class Path
         {
             public:
+                Path() = default;
+
                 /// @brief Конструктор
                 /// @param path Путь
-                Path(const char* path = "/");
+                Path(const char* path);
 
                 /// @brief Конструктор
                 /// @param path путь
                 Path(const std::string& path);
 
-                Path(const Path& p) = default;
+                Path(const Path&) = default;
+
+                Path(Path&&) = default;
+
+                ~Path() = default;
 
                 /// @brief Длинна строки
                 std::size_t length() const;
@@ -52,7 +56,7 @@ namespace KolibriLib
                 Path &operator / (const std::string &a);
                 Path &operator + (const Path &a);
                 Path &operator + (const std::string &a);
-                Path &operator = (const Path &a);
+                Path &operator = (const Path &a) = default;
                 Path &operator = (const std::string &a);
 
                 bool operator == (const Path &a) const;
@@ -65,24 +69,7 @@ namespace KolibriLib
         };
 
         /// @brief Штоб название было как в std::filesystem, а то менять в куче файлов название не очень
-        typedef Path path;
-
-        
-
-        /// @brief Список ошибок файловой системы
-        class filesystem_error
-        {
-        public:
-
-        filesystem_error& operator=( const filesystem_error& other );
-
-        filesystem_error& operator=( const int& other );
-
-        const int& code() const;
-
-        private:
-            int _code;
-        };
+        using path = Path;
 
         using file_time_type = std::tm;
 
@@ -155,10 +142,6 @@ namespace KolibriLib
         void rename(const filesystem::path &old_p, const filesystem::path &new_p);
         void rename( const filesystem::path& old_p, const filesystem::path& new_p, FilesystemErrors& ec ) noexcept;
 
-        bool is_regular_file( filesystem::file_status s ) noexcept;
-        bool is_regular_file( const filesystem::path& p );
-        bool is_regular_file( const filesystem::path& p, FilesystemErrors& ec ) noexcept;
-
         bool is_directory( filesystem::file_status s ) noexcept;
         bool is_directory(const filesystem::path &p);
         bool is_directory( const filesystem::path& p, FilesystemErrors& ec ) noexcept;
@@ -189,15 +172,28 @@ namespace KolibriLib
         /// @return
         AttributeMasks get_attr(const path &p, FilesystemErrors &ec) noexcept;
 
-        /// @brief Удалить файл
-        /// @param p 
-        void delete_file(const path &p);
-        void delete_file(const path &p, FilesystemErrors &ec) noexcept;
+        /// @brief Удалить файл или пустую папку
+        /// @param p путь
+        /// @throw код ошибки
+        void remove(const path &p);
+
+        /// @brief Удалить файл или пустую папку
+        /// @param p путь
+        void remove(const path &p, FilesystemErrors &ec) noexcept;
+
+        std::uintmax_t remove_all(const path &p);
+        std::uintmax_t remove_all(const path &p, FilesystemErrors &ec);
+
+        bool create_directory(const filesystem::path &p);
+        bool create_directory(const filesystem::path &p, FilesystemErrors &ec) noexcept;
+        bool create_directory( const filesystem::path& p, const filesystem::path& existing_p );
+        bool create_directories( const filesystem::path& p );
+        bool create_directories( const filesystem::path& p, FilesystemErrors& ec );
+
+        path temp_directory_path();
     } // namespace filesystem
 
     
 } // namespace KolibriLib
-
-
 
 #endif // __FILESYSTEM_H__

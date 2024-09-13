@@ -114,8 +114,6 @@ SET(SOURCES
 	${SRC_PATH}/keyboard.cpp
 	${SRC_PATH}/OpenDialog.cpp
 	${SRC_PATH}/clipboard.cpp
-	${SRC_PATH}/filesystem/filesystem.cpp
-	${SRC_PATH}/filesystem/file_type.cpp
 	${SRC_PATH}/time.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
@@ -155,11 +153,27 @@ target_compile_options(C_LAYER_KOLIBRILIB
 	PRIVATE -c -D__MakeStaticLib__	
 )
 
+
+ADD_LIBRARY(KOLIBRILIB_FILESYSTEM OBJECT 
+	${SRC_PATH}/filesystem/filesystem.cpp
+	${SRC_PATH}/filesystem/file_type.cpp
+)
+
+target_include_directories(KOLIBRILIB_FILESYSTEM 
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+	PUBLIC ${LIBC_DIR}/include
+)
+target_compile_options(KOLIBRILIB_FILESYSTEM
+	PRIVATE -c -D__MakeStaticLib__	
+)
+
+
 # ТА САМАЯ ЛИБА ИЗ_ЗА КОТОРОЙ ВСЁ ЭТО
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
 target_link_libraries(KolibriLib 
 	PUBLIC C_LAYER_KOLIBRILIB
 	PUBLIC C_LAYER_LOADERS
+	PUBLIC KOLIBRILIB_FILESYSTEM
 )
 
 target_compile_options(KolibriLib 
