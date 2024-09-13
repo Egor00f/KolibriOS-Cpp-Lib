@@ -1,42 +1,46 @@
 #ifndef __OS_HPP__
 #define __OS_HPP__
 
-
-#include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include "thread.hpp"
+#include <kolibriLib/system/filesystem/filesystem.hpp>
 
 #include <vector>
 
 namespace KolibriLib
 {
+	/// @brief Работа с системой
 	namespace OS
 	{
+
 		/// @brief Перечисление всех ивнтов
 		enum class Event
 		{
 			/// @brief Ивента небыло
+			/// @details Имеет смысол для функций Event WaitEvent(TimeOut) и CheckEvent()
 			None = KSYS_EVENT_NONE,
 
 			/// @brief Перересовка окна
 			Redraw = KSYS_EVENT_REDRAW,
 
-			/// @brief Нажата кнопка
-			Button = KSYS_EVENT_BUTTON,
-
-			/// @brief Активность мыши
-			Mouse = KSYS_EVENT_MOUSE,
-
 			/// @brief Активность со стороны клавиатуры
 			Key = KSYS_EVENT_KEY,
 
+			/// @brief Нажата кнопка
+			Button = KSYS_EVENT_BUTTON,
+
 			/// @brief Ивент от экрана
 			Desktop = KSYS_EVENT_DESKTOP,
+
+			/// @brief Активность мыши
+			Mouse = KSYS_EVENT_MOUSE,
 
 			/// @brief Программу открыли в дебагере
 			Debug = KSYS_EVENT_DEBUG,
 
 			/// @brief Выход
+			/// @details Можно получить только от window::Window::Handler().
+			/// означает что была нажата кнопка X (эта та что закрывает окно)
 			Exit
 		};
 
@@ -68,14 +72,6 @@ namespace KolibriLib
 			/// @brief CMOS-батарейки разрядились
 			CMOS = 2
 		};
-	}
-}
-
-namespace KolibriLib
-{
-	/// @brief Работа с системой
-	namespace OS
-	{
 
 		/// @brief Получить системные цвета
 		/// @return Таблица системных цветов
@@ -118,6 +114,44 @@ namespace KolibriLib
 		inline Event CheckEvent()
 		{
 			return static_cast<Event>(_ksys_check_event());
+		}
+
+		/// @brief Битовые флаги для маски ивентов
+		enum Mask
+		{
+			RedrawEvent = KSYS_EVM_REDRAW,
+			KeyEvent = KSYS_EVM_KEY,
+			ButtonEvent = KSYS_EVM_BUTTON,
+			MouseEvent = KSYS_EVM_MOUSE,
+			DescktopEvent = KSYS_EVM_BACKGROUND,
+
+			/// @brief неактивное окно получает события от мыши
+			MouseEventInInactiveWindow = KSYS_EVM_MOUSE_FILTER,
+
+			/// @brief если курсор за пределами окна
+			MouseCursorInWindow = KSYS_EVM_CURSOR_FILTER,
+
+			AllMouseEvents = (MouseEvent || MouseEventInInactiveWindow || MouseCursorInWindow),
+
+			/// @brief маска по умолчанию
+			DefaultEventMask = 0b111
+		};
+
+		/// @brief Изменить маску ивентов
+		/// @param mask маска
+		/// @return прошлая маска
+		inline uint32_t SetEventMask(uint32_t mask)
+		{
+			return _ksys_set_event_mask(mask);
+		}
+
+		/// @brief Получить маску ивентов
+		/// @return 
+		inline uint32_t GetEventMask()
+		{
+			uint32_t ret = SetEventMask(0);
+			SetEventMask(ret);
+			return ret;
 		}
 
 		/// \brief Запустить программу

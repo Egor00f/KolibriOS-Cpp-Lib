@@ -8,7 +8,7 @@
 
 #include <string>
 
-#include <C_Layer/INCLUDE/kolibri_buf2d.h>
+#include <C_Layer/buf2d.hpp>
 
 namespace KolibriLib
 {

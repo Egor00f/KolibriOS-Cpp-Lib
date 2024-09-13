@@ -5,7 +5,7 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace buttons;
 
-UI::buttons::ButtonsIDController *Globals::DefaultButtonsIDController;
+UI::buttons::ButtonsIDController *Globals::DefaultButtonsIDController = nullptr;
 
 ButtonID buttons::GetFreeButtonId(std::vector<ButtonID> *ButtonsIdList, uint32_t startID)
 {

@@ -2,4 +2,4 @@
 
 using namespace KolibriLib;
 
-Colors::ColorsTable Globals::SystemColors;
+Colors::ColorsTable Globals::SystemColors = OS::GetSystemColors();

@@ -79,16 +79,11 @@ namespace KolibriLib
         /// @return получившийся в итоге цвет
         Color BlendColors(const Color &a, const Color &b, float k = 0.5f);
 
-
-
         /// @brief Таблица цветов по умолчанию
         const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         /// @brief Таблица системных цветов
-        struct ColorsTable : ksys_colors_table_t
-        {
-            
-        };
+        using ColorsTable = ksys_colors_table_t;
     }
 
     void PrintDebug(Colors::Color out);

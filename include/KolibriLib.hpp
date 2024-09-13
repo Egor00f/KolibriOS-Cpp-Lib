@@ -1,7 +1,6 @@
-#ifndef __KOLIBRILIB_H__
-#define __KOLIBRILIB_H__
+#ifndef __KOLIBRILIB_HPP__
+#define __KOLIBRILIB_HPP__
 
-#include <kolibriLib/init.hpp>
 #include <kolibriLib/window/window.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/system/filesystem/filesystem.hpp>
@@ -12,10 +11,11 @@
 #include <kolibriLib/OpenDialog.hpp>
 #include <kolibriLib/input/clipboard.hpp>
 #include <input.hpp>
-#include <UI.hpp>
+#include <KolibriLibUI.hpp>
 
 
-
+/// @brief Прастранство имён библиотеки KolibriLib
+/// @author Egor00f
 namespace KolibriLib
 {
 
@@ -33,6 +33,8 @@ namespace KolibriLib
 	using KolibriLib::OS::Exec;
 	using KolibriLib::OS::GetFreeMem;
 	using KolibriLib::OS::AllMem;
+	using KolibriLib::OS::SetEventMask;
+	using KolibriLib::OS::GetEventMask;
 
 	using graphic::DrawCircle;
 	using graphic::DrawCircleFill;
@@ -49,7 +51,13 @@ namespace KolibriLib
 	using UI::buttons::autoDefineButton;
 	using UI::buttons::DeleteButton;
 
+	using mouse::GetMousePositionOnSreen;
+	using mouse::GetMousePositionInWindow;
+	using mouse::GetMouseEvents;
+	using mouse::GetMouseButtons;
+	using mouse::CenterCursor;
+
 } // namespace KolibriLib
 
 
-#endif // __KOLIBRILIB_H__
+#endif // __KOLIBRILIB_HPP__

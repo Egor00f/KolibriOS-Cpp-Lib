@@ -2,9 +2,9 @@
 
 void *drawTextToBuff(const void *canvas, uint8_t width, uint8_t height, int x, int y, const char *string, int stringLenght, uint8_t CharWidth, uint8_t CharHeight, ksys_color_t fontColor, uint8_t flags, uint8_t encoding)
 {
-	const int l = height * width * 3 * sizeof(char);
+	const size_t l = height * width * 3U * sizeof(char);
 
-	void *buff = malloc(l + 8);
+	void *buff = malloc(l + 8U);
 
 	*((int *)buff)	= width;
 	*((int *)buff + 1)	= height;
@@ -29,7 +29,7 @@ void *drawTextToBuff(const void *canvas, uint8_t width, uint8_t height, int x, i
 			 string,
 			 stringLenght,
 			 fontColor,
-			 (flags << 24) | (encoding << 16) | (CharWidth << 8) | (CharHeight));
+			 (uint32_t)(flags << 24) | (encoding << 16) | (CharWidth << 8) | (CharHeight));
 
 	return buff;
 }

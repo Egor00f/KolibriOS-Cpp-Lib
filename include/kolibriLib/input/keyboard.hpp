@@ -8,7 +8,7 @@ namespace KolibriLib
 {
     namespace keyboard
     {
-        enum InputModes
+        enum class InputMode
         {
             /// @brief используются ASCII символы
             ASCII = KSYS_KEY_INPUT_MODE_ASCII,
@@ -16,7 +16,39 @@ namespace KolibriLib
             /// @brief используются сканкоды
             SCANCODES = KSYS_KEY_INPUT_MODE_SCANC
         };
-        typedef InputModes InputMode;
+
+        // Хоспади автор ksys.h зачем такие страшные и длинные шифры, нипанятна же ничего, хотя там же C так что понятна, а у меня namespacы
+        /// @brief Список управляющих клавиш
+        enum class ControlKey
+        {
+            /// @brief Левый SHIFT
+            LeftShift = KSYS_CONTROL_LSHIFT,
+            RightShift = KSYS_CONTROL_RSHIFT,
+            LeftCtrl = KSYS_CONTROL_LCTRL,
+            RightCtrl = KSYS_CONTROL_RCTRL,
+            LeftAlt = KSYS_CONTROL_LALT,
+            RightAlt = KSYS_CONTROL_RALT,
+            CapsLock = KSYS_CONTROL_CAPS,
+            NumLock = KSYS_CONTROL_NUM_LOCK,
+            ScrollLock = KSYS_CONTROL_SCROLL_LOCK
+        };
+
+        /// @brief Режимы раскладки клавиатуры
+        /// @details Если нажат Alt, то используется раскладка с Alt;
+        /// если не нажат Alt, но нажат Shift, то используется раскладка с Shift;
+        /// если не нажаты Alt и Shift, но нажат Ctrl, то используется нормальная раскладка, после чего из кода вычитается 0x60;
+        /// если не нажата ни одна из управляющих клавиш, то используется нормальная раскладка.
+        enum KeyboardLayoutMode
+        {
+            /// @brief Нормальная раскладка
+            Normal = 0,
+
+            /// @brief Раскладка с нажатым Shftом
+            Shift = 1,
+
+            /// @brief Раскладка с зажатым Alt
+            Alt = 2
+        };
 
         /// @brief Сканкод
         class Scancode
@@ -31,7 +63,7 @@ namespace KolibriLib
                 NUMBER_0 = KSYS_SCANCODE_0,
                 NUMBER_1 = KSYS_SCANCODE_1,
                 NUMBER_2 = KSYS_SCANCODE_2,
-                NUMBER_3  = KSYS_SCANCODE_3,
+                NUMBER_3 = KSYS_SCANCODE_3,
                 NUMBER_4 = KSYS_SCANCODE_4,
                 NUMBER_5 = KSYS_SCANCODE_5,
                 NUMBER_6 = KSYS_SCANCODE_7,
@@ -74,7 +106,7 @@ namespace KolibriLib
                 F10 = KSYS_SCANCODE_F10,
                 SCRLOCK = KSYS_SCANCODE_SCRLOCK,
                 BACKSLASH = KSYS_SCANCODE_BACKSLASH,
-                
+
                 /// @brief Пробел
                 SPACE = KSYS_SCANCODE_SPACE,
                 NUMLOCK = KSYS_SCANCODE_NUMLOCK,
@@ -88,8 +120,15 @@ namespace KolibriLib
                 NUMPAD_7 = KSYS_SCANCODE_NUMPAD_7,
                 NUMPAD_8 = KSYS_SCANCODE_NUMPAD_8,
                 NUMPAD_9 = KSYS_SCANCODE_NUMPAD_9,
+
+                /// @brief знак "-" на нампаде
                 NUMPAD_MINUS = KSYS_SCANCODE_NUMPAD_MINUS,
+
+                /// @brief знак "+" на нампаде
                 NUMPAD_PLUS = KSYS_SCANCODE_NUMPAD_PLUS,
+
+                HOME = KSYS_SCANCODE_EXT_HOME,
+                END = KSYS_SCANCODE_EXT_END,
 
                 /// @brief Запятая
                 NUMPAD_COMMA = KSYS_SCANCODE_NUMPAD_COMMA
@@ -122,51 +161,25 @@ namespace KolibriLib
             operator Scancode() const;
         };
 
-        //Хоспади автор ksys.h зачем такие страшные и длинные шифры, нипанятна же ничего, хотя там же C так что понятна, а у меня namespacы
-        /// @brief Список управляющих клавиш
-        enum ControlKeys
-        {
-            /// @brief Левый SHIFT
-            LeftShift	= KSYS_CONTROL_LSHIFT, 
-            RightShift	= KSYS_CONTROL_RSHIFT,
-            LeftCtrl	= KSYS_CONTROL_LCTRL,
-            RightCtrl	= KSYS_CONTROL_RCTRL,
-            LeftAlt		= KSYS_CONTROL_LALT,
-            RightAlt	= KSYS_CONTROL_RALT,
-            CapsLock	= KSYS_CONTROL_CAPS,
-            NumLock 	= KSYS_CONTROL_NUM_LOCK,
-            ScrollLock	= KSYS_CONTROL_SCROLL_LOCK
-        };
-
-        /// @brief Состояние управляющих клавиш
-        /// @details Представляеют из себя битовую маску
-        typedef ControlKeys ControlKey;
-
         /// @brief Раскладка клавиатуры
         /// @details Представляет из себя массив ASCII символов, где номер элемента массива равен сканкоду
         /// @details Тоесть KeyboardLayout[3] это ASCII код сканкода 3
         class KeyboardLayout
         {
         public:
+            
+            KeyboardLayout& operator=(const KeyboardLayout&) = default;
+
             char & operator[](uint8_t i);
             char operator[](uint8_t i) const;
         private:
             char table[128];
         };
 
-        /// @brief
-        /// @details Если нажат Alt, то используется раскладка с Alt;
-        /// если не нажат Alt, но нажат Shift, то используется раскладка с Shift;
-        /// если не нажаты Alt и Shift, но нажат Ctrl, то используется нормальная раскладка, после чего из кода вычитается 0x60;
-        /// если не нажата ни одна из управляющих клавиш, то используется нормальная раскладка.
-        enum KeyboardLayoutModes
+        struct FullKeyboardLayout
         {
-            Normal = 0,
-            Shift = 1,
-            Alt = 2
+            KeyboardLayout normal, shift, alt;
         };
-
-        typedef KeyboardLayoutModes KeyboardLayoutMode;
 
         /// @brief Проверить какая клавиша клавиатуры нажата
         /// @return 
@@ -189,7 +202,7 @@ namespace KolibriLib
         {
             InputMode ret;
 
-            asm_inline(
+            asm_inline (
                 "int $0x40"
                 : "=a"(ret)
                 : "a"(66), "b"(2)
@@ -201,11 +214,11 @@ namespace KolibriLib
         /// @brief Получит раскладку клавиатуры
         /// @param Режим раскладки клавиатуры
         /// @return Раскладка клавиатуры
-        inline KeyboardLayout GetKeyboardLayout(KeyboardLayoutMode mode = KeyboardLayoutModes::Normal)
+        inline KeyboardLayout GetKeyboardLayout(KeyboardLayoutMode mode = KeyboardLayoutMode::Normal)
         {
             KeyboardLayout ret;
 
-            asm_inline(
+            asm_inline (
                 "int $0x40"
                 :: 
                 "a"(26),
@@ -224,11 +237,13 @@ namespace KolibriLib
         inline bool SetKeyboardLayout(KeyboardLayout layout, KeyboardLayoutMode mode)
         {
             bool ret;
-            asm_inline(
+
+            asm_inline (
                 "int $0x40"
                 : "=a"(ret)
                 : "a"(21), "b"(2), "c"(mode), "d"(layout)
             );
+
             return ret;
         }
 
@@ -268,6 +283,7 @@ namespace KolibriLib
         /// @return Сканкод
         /// @return Если символ не был найден в раскладке клавиатуры, возвращается Scancode::ANY
         Scancode GetScancodeByASCII(char ascii);
+
     } // namespace keyboard
 
     void PrintDebug(keyboard::Scancode out);

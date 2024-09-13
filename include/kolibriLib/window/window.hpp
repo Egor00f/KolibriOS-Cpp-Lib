@@ -15,7 +15,7 @@
 #include <input.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/window/windowBase.hpp>
-#include <UI.hpp>
+#include <kolibriLibUI.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/globals.hpp>

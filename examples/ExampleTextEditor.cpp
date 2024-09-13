@@ -4,7 +4,6 @@ using namespace KolibriLib;
 
 int main()
 {
-	init();
 
 	Window wnd("TextEdiatorExample");
 

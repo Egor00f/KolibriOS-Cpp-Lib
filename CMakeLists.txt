@@ -1,9 +1,11 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
 
 
 project(
 	KolibriLib
 	VERSION 0.0.3
+	DESCRIPTION "C++ Library for KolibriOS"
+	LANGUAGES CXX C
 )
 
 #################################################
@@ -12,6 +14,8 @@ project(
 #
 set(CUSTOM_TOOCLAIN_PATH	OFF)
 set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
+option(KolibriLib_BUILD_EXAMPLES "Build KolibriLib examples" ON)
+option(KolibriLib_BUILD_DOCS "Build KolibriLib documantation" OFF)
 #
 #################################################
 
@@ -65,28 +69,7 @@ SET(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/KolibriLib)
 SET(HEADERS_PATH ${KolibriLib_INCLUDE_PATH}/kolibriLib)
 SET(C_LAYER_HEADERS ${KolibriLib_INCLUDE_PATH}/C_Layer/INCLUDE)
 
-set(C_LAYER_LOADERS_SOURCES
-	${C_Layer_SRC_PATH}/loadlibimg.asm
-	${C_Layer_SRC_PATH}/loadrasterworks.asm
-	${C_Layer_SRC_PATH}/loadbuf2d.asm
-	${C_Layer_SRC_PATH}/loadproclib.asm
-	${C_LAYER_HEADERS}/kolibri_buf2d.h
-	${C_LAYER_HEADERS}/kolibri_libimg.h
-	${C_LAYER_HEADERS}/kolibri_rasterworks.h
-	${C_LAYER_HEADERS}/kolibri_opendialog.h
-)
-
-set(C_LAYER_KOLIBRILIB_SOURCES
-	${SRC_PATH}/C_Layer/kolibri_buf2d.c
-	${SRC_PATH}/C_Layer/kolibri_libimg.c
-	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
-	${C_LAYER_HEADERS}/kolibri_buf2d.h
-	${C_LAYER_HEADERS}/kolibri_libimg.h
-	${C_LAYER_HEADERS}/kolibri_rasterworks.h
-)
-
 SET(SOURCES
-	
 	${SRC_PATH}/color.cpp
 	${SRC_PATH}/os.cpp
 	${SRC_PATH}/graphic.cpp
@@ -115,9 +98,8 @@ SET(SOURCES
 	${SRC_PATH}/OpenDialog.cpp
 	${SRC_PATH}/clipboard.cpp
 	${SRC_PATH}/time.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/include/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
-	${KolibriLib_INCLUDE_PATH}/UI.hpp
+	${KolibriLib_INCLUDE_PATH}/KolibriLibUI.hpp
 	${HEADERS_PATH}/init.hpp
 	${HEADERS_PATH}/types.hpp
 	${HEADERS_PATH}/debug.hpp
@@ -138,12 +120,26 @@ SET(SOURCES
 )
 
 #LOADERS THAT LOAD SHARED C_LAYER LIBS
-ADD_LIBRARY(C_LAYER_LOADERS OBJECT ${C_LAYER_LOADERS_SOURCES})
+ADD_LIBRARY(C_LAYER_LOADERS OBJECT 
+	${C_Layer_SRC_PATH}/loadlibimg.asm
+	${C_Layer_SRC_PATH}/loadrasterworks.asm
+	${C_Layer_SRC_PATH}/loadbuf2d.asm
+	${C_Layer_SRC_PATH}/loadproclib.asm
+	${C_LAYER_HEADERS}/kolibri_buf2d.h
+	${C_LAYER_HEADERS}/kolibri_libimg.h
+	${C_LAYER_HEADERS}/kolibri_rasterworks.h
+	${C_LAYER_HEADERS}/kolibri_opendialog.h
+)
 
 target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
 
 
-ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT ${C_LAYER_KOLIBRILIB_SOURCES})
+ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT 
+	${SRC_PATH}/C_Layer/kolibri_buf2d.c
+	${SRC_PATH}/C_Layer/kolibri_libimg.c
+	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
+	${SRC_PATH}/C_Layer/rasterworks.cpp
+)
 
 target_include_directories(C_LAYER_KOLIBRILIB 
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -190,7 +186,9 @@ target_include_directories(KolibriLib
 include(Doxygen)
 
 #GENERATE DOXYGEN ONLY THIS PROJECT ISNT SUBPROECT
-if(NOT IS_SUBPROJECT)
+if(KolibriLib_BUILD_DOCS)
+	message("Build KolibriLib Docs")
+
 	SET(DOXY_OUTPUT_LANGUAGE "Russian")
 
 	SET(DOXY_INPUT ${PROJECT_SOURCE_DIR})
@@ -199,7 +197,9 @@ if(NOT IS_SUBPROJECT)
 
 endif()
 
-if(NOT IS_SUBPROJECT)
+if(KolibriLib_BUILD_EXAMPLES)
+
+	message("Build KolibriLib Examples")
 
 	#Examples build with make, see to examples/Makefile
 	set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
@@ -232,9 +232,18 @@ if(NOT IS_SUBPROJECT)
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 	)
 
+	add_executable(ExampleMousePos ${ExamplesDir}/mousePosition.cpp)
+	target_link_libraries(ExampleMousePos PUBLIC KolibriLib)
+
+	add_custom_command(
+		TARGET ExampleMousePos POST_BUILD
+		COMMAND ${CMAKE_OBJCOPY} ARGS ExampleMousePos -O binary
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	)
+
 	add_custom_target(
 		AllExamples
-		DEPENDS Example ExampleTextEditor ExampleCheckbox
+		DEPENDS Example ExampleTextEditor ExampleCheckbox ExampleMousePos
 	)
 
 endif()

@@ -145,7 +145,6 @@ unsigned KolibriLib::UI::text::Txt::lenghtPX() const
 void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 {	
 	_data = text;
-	
 }
 
 KolibriLib::UI::text::Txt &KolibriLib::UI::text::Txt::operator=(const Txt &txt)

@@ -3,25 +3,25 @@
 
 using namespace KolibriLib;
 
-KolibriLib::OpenDialog::OpenDialog(Modes mode, Size winSize, Coord winCoord, const std::vector<FilterElement> &filter, const filesystem::Path &defaultPath)
+KolibriLib::OpenDialog::OpenDialog(OpenDialog::Mode mode, Size winSize, Coord winCoord, const std::vector<FilterElement> &filter, const filesystem::Path &defaultPath)
 {
 	_opendialog = (open_dialog *)malloc(sizeof(open_dialog));
 
-	_opendialog	->	mode	= mode;
-	_opendialog	->	x_size	= winSize.x;
-	_opendialog	->	y_size	= winSize.x;
-	_opendialog	->	x_start	= winCoord.x;
-	_opendialog	->	y_start	= winCoord.y;
+	_opendialog	->	mode	= static_cast<int>(mode);
+	_opendialog	->	x_size	= static_cast<unsigned short>(winSize.x);
+	_opendialog	->	y_size	= static_cast<unsigned short>(winSize.x);
+	_opendialog	->	x_start	= static_cast<unsigned short>(winCoord.x);
+	_opendialog	->	y_start	= static_cast<unsigned short>(winCoord.y);
 	_opendialog	->	status	= 0;
 	_opendialog	->	com_area	= 0;
 	_opendialog	->	procinfo	= new char[1024];
-	_opendialog	->	start_path	= (char*)sz_start_path;
+	_opendialog	->	start_path	= const_cast<char*>(sz_start_path);
 	_opendialog	->	filter_area	= FilterArea::Create(filter);
 	_opendialog	->	draw_window	= &fake_on_redraw;
 	_opendialog	->	opendir_path	= new char[4096];
 	_opendialog	->	openfile_path	= new char[4096];
 	_opendialog	->	filename_area	= new char[256];
-	_opendialog	->	com_area_name	= (char*)sz_com_area_name;
+	_opendialog	->	com_area_name	= const_cast<char*>(sz_com_area_name);
 	_opendialog	->	dir_default_path	= new char[defaultPath.operator std::string().size()];
 	
 	for (std::size_t i = 0; i < defaultPath.length(); i++)
@@ -44,20 +44,20 @@ KolibriLib::OpenDialog::~OpenDialog()
 
 KolibriLib::OpenDialog::Status KolibriLib::OpenDialog::Open()
 {
-	OpenDialog_start((open_dialog*)_opendialog);
+	OpenDialog_start(_opendialog);
 
-	return (Status)_opendialog->status;
+	return static_cast<Status>(_opendialog->status);
 }
 
 filesystem::Path KolibriLib::OpenDialog::GetPath() const
 {
-	if( _opendialog->status == Status::Opened)
+	if( static_cast<OpenDialog::Status>(_opendialog->status) == Status::Opened)
 	{
-		if (_opendialog->mode == Mode::OpenFile || _opendialog->mode == Mode::Save)
+		if (static_cast<OpenDialog::Mode>(_opendialog->mode) == Mode::OpenFile || static_cast<OpenDialog::Mode>(_opendialog->mode) == Mode::Save)
 		{
 			return _opendialog->filename_area;
 		}
-		else if (_opendialog->mode == Mode::Select)
+		else if (static_cast<OpenDialog::Mode>(_opendialog->mode) == Mode::Select)
 		{
 			return _opendialog->opendir_path;
 		}

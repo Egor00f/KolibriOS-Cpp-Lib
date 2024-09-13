@@ -5,9 +5,6 @@ using namespace KolibriLib;
 
 int main()
 {
-	//Инициализация библиотеки
-	init(); 
-
 	Window* wndw = new Window (
 		"Example Window",           // Заголовок окна
 		window::DefaultWindowSize,  // Размер окна

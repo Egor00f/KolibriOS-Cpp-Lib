@@ -166,46 +166,7 @@ void KolibriLib::window::Window::Redraw()
 	StartRedraw();
 	window::CreateWindow(DefaultWindowCoord, DefaultWindowSize, _title, _colors.work_area, _colors.grab_text, _style);
 
-	/*if (_style & window::WindowStyle::CanResize)
-	{
-		static Size LastWindowSize;
-
-		if (window::GetWindowSize() == LastWindowSize)
-		{
-			LastWindowSize = window::GetWindowSize();
-
-			for (auto n : _Elements)
-			{
-				if (n->RenderOnEverythingRedraw)
-				{
-					n->Render();
-				}
-			}
-		}
-	}
-	else
-	{
-		for (auto n : _Elements)
-		{
-			if (n->RenderOnEverythingRedraw)
-			{
-				n->Render();
-			}
-		}
-	}*/
-
 	RenderAllElements();
-
-	/*if (_Transparency != 0) // Прозрачность окна
-	{
-		// for (int i = 0; i < _size.y; i++)
-		//{
-		//	for (int j = 0; j < _size.x; j++)
-		//	{
-		//		graphic::DrawPixel({j, i}, Colors::BlendColors(graphic::ReadPoint({j, i}), Background::ReadPoint({j, i}), 100 / _Transparency)); // Пока так, потом может быть станет лучше
-		//	}
-		// }
-	}*/
 
 	EndRedraw();
 }
@@ -217,7 +178,7 @@ void Window::Render()
 	StartRedraw();
 	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style);
 
-	KolibriLib::graphic::DrawRectangleFill({0, static_cast<int>(window::GetSkinHeight())}, GetWindowSize(), Colors::UINT32toRGB(_colors.work_area));
+	KolibriLib::graphic::DrawRectangleFill({0, static_cast<int>(window::GetSkinHeight())}, GetWindowSize() - GetMargin(), Colors::UINT32toRGB(_colors.work_area));
 
 	RenderAllElements();
 

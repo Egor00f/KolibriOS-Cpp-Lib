@@ -1,10 +1,10 @@
-#ifndef __OPENDIALOG_HPP__
-#define __OPENDIALOG_HPP__
+#ifndef __KOLIBRILIB_OPENDIALOG_HPP__
+#define __KOLIBRILIB_OPENDIALOG_HPP__
 
 #include <kolibriLib/system/filesystem/filesystem.hpp>
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/window/windowBase.hpp>
-#include <C_Layer/INCLUDE/kolibri_opendialog.h>
+#include <C_Layer/opendialog.hpp>
 
 namespace KolibriLib
 {
@@ -14,13 +14,13 @@ namespace KolibriLib
 	/// @brief Диалог выбора файлов
 	/// @details это отдельная программа (если что)
 	/// Памяти требует эта штука много (около 9500 байт)
-	/// @warning На данный момент не работает
+	/// @warning На данный момент не завршено
 	class OpenDialog
 	{	
 	public:
 
 		/// @brief Режим открытия OpenDialogа
-		typedef enum Modes
+		enum class Mode
 		{
 			/// @brief Открыть файл
 			/// @image OpenD1.png
@@ -33,9 +33,9 @@ namespace KolibriLib
 			/// @brief Выбрать папку
 			/// @image OpenD3.png
 			Select = open_dialog_mode::SELECT
-		} Mode;
+		};
 
-		typedef enum Status_
+		enum class Status
 		{
 			/// @brief Пользователь нажал Cancel
 			Cancel = 0,
@@ -45,7 +45,7 @@ namespace KolibriLib
 
 			/// @brief OpenDialog не смог отрыться
 			Error = 2
-		} Status;
+		};
 
 		/// @note должно обязательно заканчиавться на '\0'
 		typedef std::string FilterElement;
@@ -70,13 +70,16 @@ namespace KolibriLib
 		/// @brief Указатель на то что путь не указан, нужен только для GetPath
 		const filesystem::Path PathNotSet = "/";
 
-		OpenDialog(Modes mode, Size winSize = window::DefaultWindowSize, Coord winCoord = window::DefaultWindowCoord, const std::vector<FilterElement> &filter = {}, const filesystem::Path &defaultPath = sz_dir_default_path);
+		OpenDialog(OpenDialog::Mode mode, Size winSize = window::DefaultWindowSize, Coord winCoord = window::DefaultWindowCoord, const std::vector<FilterElement> &filter = {}, const filesystem::Path &defaultPath = sz_dir_default_path);
 
 		/// @brief Открыть OpenDialog
 		/// @return Путь который выбрал пользователь
 		Status Open();
 
-		filesystem::Path GetPath() const;
+
+		/// @brief Получить путь, выбранный пользователем
+		/// @return 
+		filesystem::path GetPath() const;
 
 		/// @brief Добавить еще фильров
 		void SetFilter(const std::vector<FilterElement> &f);
@@ -86,7 +89,6 @@ namespace KolibriLib
 
 	private:
 		open_dialog* _opendialog;
-
 	};
 
 	

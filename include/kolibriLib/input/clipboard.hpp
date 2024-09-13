@@ -99,7 +99,7 @@ namespace KolibriLib
 		{
 		public:
 
-			clipboard(){};
+			clipboard() = default;
 
 			clipboard(const std::string& text, bool filepath = false);
 

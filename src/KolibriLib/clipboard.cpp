@@ -1,6 +1,5 @@
 #include <kolibriLib/input/clipboard.hpp>
 
-
 using namespace KolibriLib;
 
 KolibriLib::Clipboard::clipboard::clipboard(const std::string &text, bool filepath)
@@ -51,8 +50,6 @@ KolibriLib::Clipboard::clipboard::clipboard(const UI::Images::img &image)
 	_struct->imageSize	= _struct->X * _struct->Y * _struct->depht;
 	_struct->palleteSize	= 0;
 }
-
-
 
 KolibriLib::Clipboard::clipboard::~clipboard()
 {

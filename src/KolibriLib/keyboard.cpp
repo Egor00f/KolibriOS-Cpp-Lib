@@ -21,15 +21,15 @@ Scancode keyboard::GetScancodeByASCII(char ascii, KeyboardLayoutMode mode)
 
 Scancode keyboard::GetScancodeByASCII(char ascii)
 {
-	uint8_t a = GetScancodeByASCII(ascii, KeyboardLayoutModes::Normal);
+	uint8_t a = GetScancodeByASCII(ascii, KeyboardLayoutMode::Normal);
 
 	if(a == Scancode::ANY)
 	{
-		a = GetScancodeByASCII(ascii, KeyboardLayoutModes::Shift);
+		a = GetScancodeByASCII(ascii, KeyboardLayoutMode::Shift);
 
 		if(a == Scancode::ANY) // Вероятность того что до этого дойдёт довольно низка
 		{
-			a = GetScancodeByASCII(ascii, KeyboardLayoutModes::Alt);
+			a = GetScancodeByASCII(ascii, KeyboardLayoutMode::Alt);
 		}
 	}
 
@@ -38,7 +38,6 @@ Scancode keyboard::GetScancodeByASCII(char ascii)
 
 Scancode::Scancode(char c)
 {
-	
 	val = GetScancodeByASCII(c);
 }
 
@@ -64,7 +63,7 @@ char KeyboardLayout::operator[](uint8_t i) const
 
 Input::operator char() const
 {
-	if(GetInputMode() == InputModes::ASCII)
+	if(GetInputMode() == InputMode::ASCII)
 	{
 		return this->ASCII;
 	}
@@ -76,7 +75,7 @@ Input::operator char() const
 
 Input::operator Scancode() const
 {
-	if(GetInputMode() == InputModes::ASCII)
+	if(GetInputMode() == InputMode::ASCII)
 	{
 		return GetScancodeByASCII(ASCII);
 	}
@@ -93,7 +92,7 @@ void KolibriLib::PrintDebug(Scancode out)
 
 void KolibriLib::PrintDebug(Input out)
 {
-	if(GetInputMode() == InputModes::ASCII)
+	if(GetInputMode() == InputMode::ASCII)
 	{
 		PrintDebug(out.ASCII);
 	}

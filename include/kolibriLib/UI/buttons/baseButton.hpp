@@ -39,6 +39,8 @@ namespace KolibriLib
                 /// @return @link _id
                 ButtonID GetId() const;
 
+                /// @brief Изменить ID кнопки вручную
+                /// @param NewID Новый ID кнопки
                 void SetId(const ButtonID &NewID);
                 void SetId();
 
