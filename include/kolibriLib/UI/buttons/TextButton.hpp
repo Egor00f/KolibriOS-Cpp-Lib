@@ -50,9 +50,11 @@ namespace KolibriLib
 
 			   void SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController);
 
-			   TextButton &operator=(const TextButton &element);
+			   TextButton &operator=(const TextButton &element) = default;
 
 			   bool operator==(const TextButton &element) const;
+
+			   void swap(TextLabel& a);
 
 		   private:
 

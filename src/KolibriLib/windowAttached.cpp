@@ -63,3 +63,13 @@ void KolibriLib::window::WindowAttached::SetPosition(const Pos &position)
 {
 	SetWindowPos(position, _pid);
 }
+
+void KolibriLib::window::WindowAttached::Focus() const
+{
+	window::FocusWindow(Thread::GetThreadSlot(_pid));
+}
+
+void KolibriLib::window::WindowAttached::Unfocus() const
+{
+	window::UnfocusWindow(Thread::GetThreadSlot(_pid));
+}

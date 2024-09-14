@@ -2,10 +2,8 @@
 
 using namespace KolibriLib;
 
-
 int main()
 {
-
 	Window wndw("Checbox example");
 
 	auto frame = wndw.AddElement(UIElement(
@@ -24,6 +22,8 @@ int main()
 		"<- checkbox"
 	));
 	textlabel->SetParent(frame);
+
+	wndw.RenderAllElements();
 
 	bool exit = false;
 	while (!exit)

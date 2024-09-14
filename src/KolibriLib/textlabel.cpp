@@ -6,12 +6,10 @@ using namespace text;
 
 TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, const Size &CharSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin)
 	:	Txt(text, TextColor),
-		UIElement(coord, size, OS::GetSystemColors().work_area, Margin),
+		UIElement(coord, size, Globals::SystemColors.work_area, Margin),
 		_TextScale(TextScale)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("TextLabel Constructor\n");
-	#endif
+	PrintDebug("TextLabel Constructor\n");
 
 	SetTextSize(CharSize);
 	//SetFont(Fonts::Font(Fonts::DefaultFont.font_file, FontSize));
@@ -38,7 +36,7 @@ KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, 
 
 TextLabel::TextLabel(const TextLabel &copy)
 	:	Txt	(copy),
-		UIElement	(copy._coord, copy._size, copy._MainColor, copy.GetMargin()),
+		UIElement	(copy),
 		_TextScale	(copy._TextScale),
 		_Align	(copy._Align)
 {
@@ -102,23 +100,13 @@ TextLabel::Align KolibriLib::UI::text::TextLabel::GetAling() const
 	return _Align;
 }
 
-text::TextLabel &KolibriLib::UI::text::TextLabel::operator=(const KolibriLib::UI::text::TextLabel &a)
-{
-	_coord	= a._coord;
-	_size	= a._size;
-	_MainColor	= a._MainColor;
-	SetMargin(a.GetMargin());
-	_TextScale	= a._TextScale;
-	return *this;
-}
-
 bool KolibriLib::UI::text::TextLabel::operator==(const KolibriLib::UI::text::TextLabel &a) const
 {
-	return	(_coord	==	a._coord)	&&
-	        (_size	==	a._size)	&&
-	        (_MainColor	==	a._MainColor)	&&
-	        (GetMargin()	==	a.GetMargin())	&&
-	        (_TextScale	==	a._TextScale);
+	return (_coord	==	a._coord)	&&
+	       (_size	==	a._size)	&&
+	       (_MainColor	==	a._MainColor)	&&
+	       (GetMargin()	==	a.GetMargin())	&&
+	       (_TextScale	==	a._TextScale);
 }
 
 bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::TextLabel &a) const
@@ -128,6 +116,14 @@ bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::Tex
 		   (_MainColor	==	a._MainColor)	||
 		   (GetMargin()	==	a.GetMargin())	||
 		   (_TextScale	==	a._TextScale));
+}
+
+void KolibriLib::UI::text::TextLabel::swap(TextLabel &a)
+{
+	TextLabel buff(*this);
+
+	*this = a;
+	a = buff;
 }
 
 void KolibriLib::PrintDebug(const UI::text::TextLabel &out)

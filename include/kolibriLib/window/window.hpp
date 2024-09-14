@@ -1,7 +1,7 @@
-#ifndef __WINDOW_H__
-#define __WINDOW_H__
+#ifndef __WINDOW_HPP__
+#define __WINDOW_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <stdlib.h>
 #include <string>

@@ -1,32 +1,23 @@
 #include <kolibriLib/UI/image.hpp>
 
+#include <kolibriLib/globals.hpp>
+
 using namespace KolibriLib;
 using namespace UI;
 using namespace Images;
 
 Image::Image(const UDim &coord, const UDim &size)
-	: UIElement(coord, size), img(OS::GetSystemColors().work_graph, size.GetAbsolute({0,0}))
+	:	UIElement(coord, size), 
+		img(Globals::SystemColors.work_graph, size.GetAbsolute({0,0}))
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor");
-	#endif
+	PrintDebug("KolibriLib::UI::Images::Image Constructor");
 }
 
 KolibriLib::UI::Images::Image::Image(const Image & copy)
-	:UIElement(copy._coord, copy._size, copy._MainColor, copy.GetMargin())
+	:	UIElement(copy),
+		img(copy)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("KolibriLib::UI::Images::Image Constructor(copy)");
-	#endif
-
-	SetImg(copy.GetBuff());
-}
-
-void Images::Image::init(const Coord &coord, const Size &size, const filesystem::Path &Path)
-{
-	_coord = coord;
-	_size = size;
-	LoadImage(Path);
+	PrintDebug("KolibriLib::UI::Images::Image Constructor(copy)");
 }
 
 void KolibriLib::UI::Images::Image::Render() const
@@ -34,13 +25,11 @@ void KolibriLib::UI::Images::Image::Render() const
 	Draw(GetAbsoluteCoord(), GetAbsoluteSize());
 }
 
-Images::Image &KolibriLib::UI::Images::Image::operator=(const UI::Images::Image &a)
+void KolibriLib::UI::Images::Image::swap(Image &e)
 {
-	_coord = a._coord;
-	_size = a._size;
-	_MainColor = a._MainColor;
-	SetMargin(a.GetMargin());
-	SetImg(a.GetBuff());
+	Image buff(*this);
 
-	return *this;
+	*this = e;
+	e = buff;
 }
+

@@ -18,7 +18,9 @@ namespace KolibriLib
 
                 BaseButton();
 
-                BaseButton(ButtonID id);                
+                BaseButton(ButtonID id);
+
+                BaseButton(const BaseButton &) = default;
 
                 ~BaseButton();
 

@@ -134,6 +134,7 @@ namespace KolibriLib
 			AllMouseEvents = (MouseEvent || MouseEventInInactiveWindow || MouseCursorInWindow),
 
 			/// @brief маска по умолчанию
+			/// @details разрешены ивенты перерисовки, клавиатуры и кнопок
 			DefaultEventMask = 0b111
 		};
 

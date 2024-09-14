@@ -250,6 +250,14 @@ void KolibriLib::UI::UIElement::SetButtonIDController(const buttons::ButtonsIDCo
 
 }
 
+void KolibriLib::UI::UIElement::swap(UIElement &e)
+{
+	UIElement buff(*this);
+
+	*this = e;
+	e = buff;
+}
+
 void KolibriLib::PrintDebug(const UI::UIElement &out)
 {
 	PrintDebug("UIElement:\n");

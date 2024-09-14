@@ -1,4 +1,5 @@
 #include <kolibriLib/UI/checkbox.hpp>
+#include <kolibriLib/graphic/graphic.hpp>
 
 using namespace KolibriLib;
 using namespace UI;
@@ -9,6 +10,15 @@ CheckBox::CheckBox(const UDim &coord, const UDim &size, const style &Style, cons
 		_style(Style)
 {
 	PrintDebug("CheckBox Constructor\n");
+}
+
+KolibriLib::UI::CheckBox::CheckBox(const CheckBox &a)
+	:	Button(a),
+		_BorderColor(a._BorderColor),
+		_style(a._style),
+		checked(a.checked)
+{
+	PrintDebug("CheckBox Constructor(copy)\n");
 }
 
 void KolibriLib::UI::CheckBox::DrawBorder() const
@@ -77,4 +87,12 @@ void CheckBox::Render() const
 
 		Button::Render();
 	}
+}
+
+void KolibriLib::UI::CheckBox::swap(CheckBox &a)
+{
+	CheckBox buff(*this);
+
+	*this = a;
+	a = buff;
 }

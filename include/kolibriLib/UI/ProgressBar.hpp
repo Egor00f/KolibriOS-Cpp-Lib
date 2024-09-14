@@ -18,14 +18,15 @@ namespace KolibriLib
 			/// @param color 
 			/// @param MaxFill Максимальныое кол-во поинтов
 			/// @param DefaultFill кол-во поинтов по умолчанию
-			ProgressBar(const UDim &coord, const UDim &size, const Colors::Color &color = Globals::SystemColors.work_graph, const unsigned &MaxFill = 100, const unsigned &DefaultFill = 0);
+			ProgressBar(const UDim &coord, const UDim &size, const Colors::Color &BorderColor = Globals::SystemColors.work_text, const Colors::Color& MainColor = Globals::SystemColors.work_graph, const unsigned &MaxFill = 100, const unsigned &DefaultFill = 0);
 
 			/// @brief Отрисовать
-			void Render() const;
+			void Render() const override;
 
 			void SetFill(unsigned NewFill);
 
 		private:
+			Colors::Color _BorderColor;
 			unsigned _MaxFill;
 			unsigned _Fill;
 		};

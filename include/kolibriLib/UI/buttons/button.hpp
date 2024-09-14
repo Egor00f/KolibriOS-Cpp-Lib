@@ -25,9 +25,14 @@ namespace KolibriLib
                 /// @param backgrouncolor цвет фона
                 Button(UDim coord, UDim size, unsigned Margin = DefaultMargin, Colors::Color backgrouncolor = Globals::SystemColors.work_button);
 
+                /// @brief отрисовать кнопку
                 void Render() const override;
 
                 void OnButtonEvent(ButtonID PressedButtonID);
+
+                void swap(Button& a);
+
+                Button& operator = (const Button&) = default;
 
             private:
 			};

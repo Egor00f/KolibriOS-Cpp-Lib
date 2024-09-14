@@ -1,7 +1,8 @@
-#ifndef __WINDOWATTACHED_H__
-#define __WINDOWATTACHED_H__
+#ifndef __WINDOWATTACHED_HPP__
+#define __WINDOWATTACHED_HPP__
 
 #include <kolibriLib/window/window.hpp>
+
 namespace KolibriLib
 {
 	namespace window

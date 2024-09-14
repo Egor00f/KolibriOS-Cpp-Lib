@@ -1,7 +1,7 @@
 #ifndef __UI_HPP__
 #define __UI_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <vector>
 
@@ -209,6 +209,10 @@ namespace KolibriLib
 			/// @param Element 
 			/// @return 
 			bool operator != (const UIElement &Element) const;
+
+			/// @brief Заменить 
+			/// @param e 
+			void swap(UIElement &e);
 
 		protected:
 

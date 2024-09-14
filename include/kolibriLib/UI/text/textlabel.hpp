@@ -56,7 +56,7 @@ namespace KolibriLib
                 /// @param FontSize Размер текста
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin Отступы от границ
-                TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const Size &CharSize = {8, 16}, bool TextScale = true, const Colors::Color& TextColor = OS::GetSystemColors().work_text, const unsigned& Margin = 0);
+                TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const Size &CharSize = {8, 16}, bool TextScale = true, const Colors::Color& TextColor = Globals::SystemColors.work_text, const unsigned& Margin = 0);
 
                 /// @brief Коснтруктор
                 /// @param coord коорднаты
@@ -69,10 +69,10 @@ namespace KolibriLib
                 /// @param Margin
                 // TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const std::string &text = "TextLabel",/* const Fonts::Font &Font = Fonts::DefaultFont,*/ const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().gui_frame, bool TextScale = true, unsigned Margin = 0);
                 
-                /// @brief 
-                /// @param coord 
-                /// @param size
-                /// @param text
+                /// @brief конструктор
+                /// @param coord коордирдинаты
+                /// @param size размер
+                /// @param text текст
                 TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const Txt &text = Txt());
 
                 /// @brief Конструктор копирования
@@ -101,7 +101,7 @@ namespace KolibriLib
                 /// @brief 
                 /// @param a 
                 /// @return 
-                TextLabel& operator = (const TextLabel& a);
+                TextLabel& operator = (const TextLabel& a) = default;
 
                 /// @brief 
                 /// @param a 
@@ -110,6 +110,9 @@ namespace KolibriLib
 
                 bool operator != (const TextLabel& a) const;
                 
+                /// @brief 
+                /// @param a 
+                void swap(TextLabel& a);
             private:
                 /// @brief Выравнивание
                 Align _Align = Center;

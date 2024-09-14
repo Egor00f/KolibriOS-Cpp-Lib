@@ -98,9 +98,9 @@ SET(SOURCES
 	${SRC_PATH}/OpenDialog.cpp
 	${SRC_PATH}/clipboard.cpp
 	${SRC_PATH}/time.cpp
+	${SRC_PATH}/ProgressBar.cpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
 	${KolibriLib_INCLUDE_PATH}/KolibriLibUI.hpp
-	${HEADERS_PATH}/init.hpp
 	${HEADERS_PATH}/types.hpp
 	${HEADERS_PATH}/debug.hpp
 	${HEADERS_PATH}/color.hpp

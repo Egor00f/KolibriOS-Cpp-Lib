@@ -9,8 +9,6 @@ buttons::TextButton::TextButton(const UDim &coord, const UDim &size, unsigned Ma
 		BaseButton	()
 {
 	PrintDebug("Button contructor\n");
-
-	
 }
 
 KolibriLib::UI::buttons::TextButton::TextButton(const Txt &text, const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
@@ -22,27 +20,13 @@ KolibriLib::UI::buttons::TextButton::TextButton(const Txt &text, const UDim &coo
 	SetMargin(Margin);
 
 	_MainColor	= ButtonColor;
-
-	
 }
 
 TextButton::TextButton(const TextButton &copy)
 	:	TextLabel(copy),
-		BaseButton(copy._id)
+		BaseButton(copy)
 {
 	PrintDebug("Button contructor(copy)\n");
-}
-
-buttons::TextButton &KolibriLib::UI::buttons::TextButton::operator=(const buttons::TextButton &element)
-{
-	_coord	= element._coord;
-	_size	= element._size;
-	_data	= element._data;
-	_MainColor	= element._MainColor;
-	SetMargin(element.GetMargin());
-	_id	= element._id;
-	
-	return *this;
 }
 
 bool KolibriLib::UI::buttons::TextButton::operator==(const TextButton &element) const
@@ -100,6 +84,14 @@ buttons::ButtonsIDController *KolibriLib::UI::buttons::TextButton::GetButtonIDCo
 void KolibriLib::UI::buttons::TextButton::SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController)
 {
 	_ButtonsIDController = const_cast<buttons::ButtonsIDController *>(buttonsIDController);
+}
+
+void KolibriLib::UI::buttons::TextButton::swap(TextLabel &a)
+{
+	TextButton buff(*this);
+
+	*this = a;
+	a = buff;
 }
 
 void KolibriLib::PrintDebug(const UI::buttons::TextButton &out)

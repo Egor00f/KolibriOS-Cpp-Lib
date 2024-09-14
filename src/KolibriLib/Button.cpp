@@ -28,6 +28,14 @@ void buttons::Button::OnButtonEvent(ButtonID PressedButtonID)
 	_status = PressedButtonID == _id; // Если id нажатой кнопки совпадает к id этой кнопки
 }
 
+void KolibriLib::UI::buttons::Button::swap(Button &a)
+{
+	Button buff(*this);
+
+	*this = a;
+	a = buff;
+}
+
 void KolibriLib::PrintDebug(const UI::buttons::Button &out)
 {
 	PrintDebug(static_cast<UIElement>(out));
