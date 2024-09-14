@@ -149,11 +149,12 @@ namespace KolibriLib
 			/// @example example.cpp
 			UI::buttons::ButtonID GetPressedButton();
 
-			/// @brief Добавить UI элемент
+			/// @brief Добавить UI элемент напрямую
 			/// @param element указатель на элемент
 			/// @details Зачем добавлять в окно элементы ui? Да чтоб при перерисовке окна не нужнобыло отрисовывать все ручками
+			/// Отличается от AddElement только тем что не создаёт указатель и копирует, а сразу использует указатель из аргумента
 			/// @return указатель на элемент(новый)
-			void AddElement(UIElement *element);
+			void AddElementNoCopy(UIElement *element);
 
 			template <class T>
 			/// @brief Добавить UI элемент

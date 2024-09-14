@@ -330,7 +330,7 @@ void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::Button
 	
 }
 
-void KolibriLib::window::Window::AddElement(UIElement* element)
+void KolibriLib::window::Window::AddElementNoCopy(UIElement* element)
 {
 	PrintDebug("Add element\n");
 
