@@ -6,7 +6,7 @@
 #include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/globals.hpp>
 
-//#include "font.hpp"
+// #include "font.hpp"
 
 namespace KolibriLib
 {
@@ -24,18 +24,16 @@ namespace KolibriLib
 					"int $0x40"
 					: "=c"(Size)
 					: "a"(48), "b"(11));
-				
+
 				return Size;
 			}
 
 			/// \brief Изменить размер текста
 			/// \param newSize высота текста в px
-			inline void SetTextSize(uint8_t newSize)
+			inline void SetTextSize(std::uint8_t newSize)
 			{
 				asm_inline(
-					"int $0x40" 
-					::"a"(48), "b"(12), "c"(newSize)
-				);
+					"int $0x40" ::"a"(48), "b"(12), "c"(newSize));
 			}
 
 			/// \brief Просто вывести текст
@@ -43,7 +41,7 @@ namespace KolibriLib
 			/// \param coord координаты
 			/// \param color цвет текста
 			/// @note Для изменения высоты шрифта используйте SetTextSize()
-			inline void DrawText(const std::string &text, const Coord &coord, unsigned size = 9, const Colors::Color &color = Globals::SystemColors.work_text)
+			inline void DrawText(const std::string &text, const Coord &coord, std::uint8_t size = 9, const Colors::Color &color = Globals::SystemColors.work_text)
 			{
 				SetTextSize(size);
 				_ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
@@ -63,18 +61,16 @@ namespace KolibriLib
 			/// @param color цвет текста
 			/// @param encoding кодировка, см. TextEncoding
 			/// @param scale множитель размера(по умолчанию 1x), максимум 8x (0 = 1x, 7 = 8x)
-			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, uint8_t scale = 0)
+			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, std::uint8_t scale = 0)
 			{
-				color._a = static_cast<uint8_t>(encoding) << 4;
+				color._a = static_cast<std::uint8_t>(static_cast<std::uint8_t>(encoding) << 3);
 				color._a |= scale;
 				asm_inline(
-					"int $0x40"
-					::"a"(4),
+					"int $0x40" ::"a"(4),
 					"b"(coord.operator ksys_pos_t()),
 					"c"(color.val),
 					"d"(text.c_str()),
-					"S"(text.length())
-				);
+					"S"(text.length()));
 			}
 
 			/// @brief Вывести текст
@@ -84,9 +80,9 @@ namespace KolibriLib
 			/// @param color цвет текста
 			/// @param encoding кодировка, см. TextEncoding
 			/// @param scale множитель размера(по умолчанию 1x), максимум 8x (0 = 1x, 7 = 8x)
-			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color BackgroundColor, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, uint8_t scale = 0)
+			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color BackgroundColor, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, std::uint8_t scale = 0)
 			{
-				color._a = static_cast<uint8_t>(encoding) << 3;
+				color._a = static_cast<std::uint8_t>(static_cast<std::uint8_t>(encoding) << 3);
 				color._a |= scale;
 				color._a |= (true << 6);
 				asm_inline(

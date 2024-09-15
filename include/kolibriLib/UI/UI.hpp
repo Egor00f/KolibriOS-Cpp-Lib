@@ -249,4 +249,4 @@ namespace KolibriLib
 	void PrintDebug(const UI::UIElement &out);
 }
 
-#endif // __UI_H__
+#endif // __UI_HPP__

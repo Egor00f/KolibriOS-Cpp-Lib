@@ -77,4 +77,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __CHECKBOX_H__
+#endif // __CHECKBOX_HPP__

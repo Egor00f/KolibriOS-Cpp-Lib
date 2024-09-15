@@ -1,5 +1,5 @@
-#ifndef __BAR_H__
-#define __BAR_H__
+#ifndef __PROGRESS_BAR_HPP__
+#define __PROGRESS_BAR_HPP__
 
 #include <kolibriLib/UI/UI.hpp>
 
@@ -34,5 +34,4 @@ namespace KolibriLib
 	
 } // namespace KolibriLib
 
-
-#endif // __BAR_H__
+#endif // __PROGRESS_BAR_HPP__
