@@ -16,11 +16,11 @@ namespace KolibriLib
 		{
 			/// \brief Получить размер текста
 			/// \return текущая высота текста
-			inline unsigned int GetTextSize()
+			inline std::uint32_t GetTextSize()
 			{
-				unsigned Size;
+				std::uint32_t Size;
 
-				asm_inline(
+				asm_inline (
 					"int $0x40"
 					: "=c"(Size)
 					: "a"(48), "b"(11));
@@ -32,8 +32,12 @@ namespace KolibriLib
 			/// \param newSize высота текста в px
 			inline void SetTextSize(std::uint8_t newSize)
 			{
-				asm_inline(
-					"int $0x40" ::"a"(48), "b"(12), "c"(newSize));
+				asm_inline (
+					"int $0x40" 
+					:: 
+					"a"(48), 
+					"b"(12), 
+					"c"(newSize));
 			}
 
 			/// \brief Просто вывести текст
@@ -63,7 +67,7 @@ namespace KolibriLib
 			/// @param scale множитель размера(по умолчанию 1x), максимум 8x (0 = 1x, 7 = 8x)
 			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, std::uint8_t scale = 0)
 			{
-				color._a = static_cast<std::uint8_t>(static_cast<std::uint8_t>(encoding) << 3);
+				color._a = static_cast<std::uint8_t>(static_cast<std::uint8_t>(encoding) << 4);
 				color._a |= scale;
 				asm_inline(
 					"int $0x40" ::"a"(4),
@@ -82,7 +86,7 @@ namespace KolibriLib
 			/// @param scale множитель размера(по умолчанию 1x), максимум 8x (0 = 1x, 7 = 8x)
 			inline void DrawText(const std::string &text, const Coord &coord, Colors::Color BackgroundColor, Colors::Color color = Globals::SystemColors.work_text, TextEncoding encoding = TextEncoding::UTF8, std::uint8_t scale = 0)
 			{
-				color._a = static_cast<std::uint8_t>(static_cast<std::uint8_t>(encoding) << 3);
+				color._a = static_cast<std::uint8_t>(static_cast<std::uint8_t>(encoding) << 4);
 				color._a |= scale;
 				color._a |= (true << 6);
 				asm_inline(

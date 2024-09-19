@@ -52,7 +52,7 @@ namespace KolibriLib
             void DrawBorder() const;
 
             /// @brief Отрисовать Checkbox
-            void Render() const;
+            void Render() const override;
 
             /// @brief Изменить стиль
             /// @param s 

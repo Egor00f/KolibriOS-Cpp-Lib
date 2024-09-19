@@ -3,6 +3,7 @@
 
 #include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
+#include <cstdint>
 
 namespace KolibriLib
 {
@@ -50,97 +51,106 @@ namespace KolibriLib
             Alt = 2
         };
 
+        /// @brief Список скапкодов
+        enum class Scancodes
+        {
+            /// @brief равен нулю
+            ANY = static_cast<std::uint8_t>(KSYS_SCANCODE_ANY),
+            ESC = KSYS_SCANCODE_ESC,
+            NUMBER_0 = KSYS_SCANCODE_0,
+            NUMBER_1 = KSYS_SCANCODE_1,
+            NUMBER_2 = KSYS_SCANCODE_2,
+            NUMBER_3 = KSYS_SCANCODE_3,
+            NUMBER_4 = KSYS_SCANCODE_4,
+            NUMBER_5 = KSYS_SCANCODE_5,
+            NUMBER_6 = KSYS_SCANCODE_7,
+            NUMBER_7 = KSYS_SCANCODE_7,
+            NUMBER_8 = KSYS_SCANCODE_8,
+            NUMBER_9 = KSYS_SCANCODE_9,
+            Key_A = KSYS_SCANCODE_A,
+            Key_B = KSYS_SCANCODE_B,
+            Key_C = KSYS_SCANCODE_C,
+            Key_D = KSYS_SCANCODE_D,
+            Key_E = KSYS_SCANCODE_E,
+            Key_F = KSYS_SCANCODE_F,
+            Key_G = KSYS_SCANCODE_G,
+            Key_H = KSYS_SCANCODE_H,
+            Key_J = KSYS_SCANCODE_J,
+            Key_K = KSYS_SCANCODE_K,
+            Key_L = KSYS_SCANCODE_L,
+            Key_M = KSYS_SCANCODE_M,
+            Key_N = KSYS_SCANCODE_N,
+            Key_O = KSYS_SCANCODE_O,
+            Key_P = KSYS_SCANCODE_P,
+            Key_R = KSYS_SCANCODE_R,
+            Key_S = KSYS_SCANCODE_S,
+            Key_T = KSYS_SCANCODE_T,
+            Key_I = KSYS_SCANCODE_I,
+            Key_U = KSYS_SCANCODE_U,
+            Key_W = KSYS_SCANCODE_W,
+            Key_X = KSYS_SCANCODE_X,
+            Key_Y = KSYS_SCANCODE_Y,
+            Key_Z = KSYS_SCANCODE_Z,
+            F1 = KSYS_SCANCODE_F1,
+            F2 = KSYS_SCANCODE_F2,
+            F3 = KSYS_SCANCODE_F3,
+            F4 = KSYS_SCANCODE_F4,
+            F5 = KSYS_SCANCODE_F5,
+            F6 = KSYS_SCANCODE_F6,
+            F7 = KSYS_SCANCODE_F7,
+            F8 = KSYS_SCANCODE_F8,
+            F9 = KSYS_SCANCODE_F9,
+            F10 = KSYS_SCANCODE_F10,
+            SCRLOCK = KSYS_SCANCODE_SCRLOCK,
+            BACKSLASH = KSYS_SCANCODE_BACKSLASH,
+
+            /// @brief Пробел
+            SPACE = KSYS_SCANCODE_SPACE,
+            NUMLOCK = KSYS_SCANCODE_NUMLOCK,
+            NUMPAD_0 = KSYS_SCANCODE_NUMPAD_0,
+            NUMPAD_1 = KSYS_SCANCODE_NUMPAD_1,
+            NUMPAD_2 = KSYS_SCANCODE_NUMPAD_2,
+            NUMPAD_3 = KSYS_SCANCODE_NUMPAD_3,
+            NUMPAD_4 = KSYS_SCANCODE_NUMPAD_4,
+            NUMPAD_5 = KSYS_SCANCODE_NUMPAD_5,
+            NUMPAD_6 = KSYS_SCANCODE_NUMPAD_6,
+            NUMPAD_7 = KSYS_SCANCODE_NUMPAD_7,
+            NUMPAD_8 = KSYS_SCANCODE_NUMPAD_8,
+            NUMPAD_9 = KSYS_SCANCODE_NUMPAD_9,
+
+            /// @brief знак "-" на нампаде
+            NUMPAD_MINUS = KSYS_SCANCODE_NUMPAD_MINUS,
+
+            /// @brief знак "+" на нампаде
+            NUMPAD_PLUS = KSYS_SCANCODE_NUMPAD_PLUS,
+
+            HOME = KSYS_SCANCODE_EXT_HOME,
+            END = KSYS_SCANCODE_EXT_END,
+
+            /// @brief Запятая
+            NUMPAD_COMMA = KSYS_SCANCODE_NUMPAD_COMMA,
+
+            BACKSPACE = static_cast<std::uint8_t>(KSYS_SCANCODE_BACKSPACE)
+        };
+
         /// @brief Сканкод
         class Scancode
         {
         public:
-            /// @brief Список скапкодов
-            enum ScanCodes
-            {
-                /// @brief равен нулю
-                ANY = KSYS_SCANCODE_ANY,
-                ESC = KSYS_SCANCODE_ESC,
-                NUMBER_0 = KSYS_SCANCODE_0,
-                NUMBER_1 = KSYS_SCANCODE_1,
-                NUMBER_2 = KSYS_SCANCODE_2,
-                NUMBER_3 = KSYS_SCANCODE_3,
-                NUMBER_4 = KSYS_SCANCODE_4,
-                NUMBER_5 = KSYS_SCANCODE_5,
-                NUMBER_6 = KSYS_SCANCODE_7,
-                NUMBER_7 = KSYS_SCANCODE_7,
-                NUMBER_8 = KSYS_SCANCODE_8,
-                NUMBER_9 = KSYS_SCANCODE_9,
-                Key_A = KSYS_SCANCODE_A,
-                Key_B = KSYS_SCANCODE_B,
-                Key_C = KSYS_SCANCODE_C,
-                Key_D = KSYS_SCANCODE_D,
-                Key_E = KSYS_SCANCODE_E,
-                Key_F = KSYS_SCANCODE_F,
-                Key_G = KSYS_SCANCODE_G,
-                Key_H = KSYS_SCANCODE_H,
-                Key_J = KSYS_SCANCODE_J,
-                Key_K = KSYS_SCANCODE_K,
-                Key_L = KSYS_SCANCODE_L,
-                Key_M = KSYS_SCANCODE_M,
-                Key_N = KSYS_SCANCODE_N,
-                Key_O = KSYS_SCANCODE_O,
-                Key_P = KSYS_SCANCODE_P,
-                Key_R = KSYS_SCANCODE_R,
-                Key_S = KSYS_SCANCODE_S,
-                Key_T = KSYS_SCANCODE_T,
-                Key_I = KSYS_SCANCODE_I,
-                Key_U = KSYS_SCANCODE_U,
-                Key_W = KSYS_SCANCODE_W,
-                Key_X = KSYS_SCANCODE_X,
-                Key_Y = KSYS_SCANCODE_Y,
-                Key_Z = KSYS_SCANCODE_Z,
-                F1 = KSYS_SCANCODE_F1,
-                F2 = KSYS_SCANCODE_F2,
-                F3 = KSYS_SCANCODE_F3,
-                F4 = KSYS_SCANCODE_F4,
-                F5 = KSYS_SCANCODE_F5,
-                F6 = KSYS_SCANCODE_F6,
-                F7 = KSYS_SCANCODE_F7,
-                F8 = KSYS_SCANCODE_F8,
-                F9 = KSYS_SCANCODE_F9,
-                F10 = KSYS_SCANCODE_F10,
-                SCRLOCK = KSYS_SCANCODE_SCRLOCK,
-                BACKSLASH = KSYS_SCANCODE_BACKSLASH,
-
-                /// @brief Пробел
-                SPACE = KSYS_SCANCODE_SPACE,
-                NUMLOCK = KSYS_SCANCODE_NUMLOCK,
-                NUMPAD_0 = KSYS_SCANCODE_NUMPAD_0,
-                NUMPAD_1 = KSYS_SCANCODE_NUMPAD_1,
-                NUMPAD_2 = KSYS_SCANCODE_NUMPAD_2,
-                NUMPAD_3 = KSYS_SCANCODE_NUMPAD_3,
-                NUMPAD_4 = KSYS_SCANCODE_NUMPAD_4,
-                NUMPAD_5 = KSYS_SCANCODE_NUMPAD_5,
-                NUMPAD_6 = KSYS_SCANCODE_NUMPAD_6,
-                NUMPAD_7 = KSYS_SCANCODE_NUMPAD_7,
-                NUMPAD_8 = KSYS_SCANCODE_NUMPAD_8,
-                NUMPAD_9 = KSYS_SCANCODE_NUMPAD_9,
-
-                /// @brief знак "-" на нампаде
-                NUMPAD_MINUS = KSYS_SCANCODE_NUMPAD_MINUS,
-
-                /// @brief знак "+" на нампаде
-                NUMPAD_PLUS = KSYS_SCANCODE_NUMPAD_PLUS,
-
-                HOME = KSYS_SCANCODE_EXT_HOME,
-                END = KSYS_SCANCODE_EXT_END,
-
-                /// @brief Запятая
-                NUMPAD_COMMA = KSYS_SCANCODE_NUMPAD_COMMA
-            };
-
+            Scancode() = default;
+            Scancode(const Scancode&) = default;
             Scancode(char c);
+            Scancode(Scancodes v);
 
             operator char() const;
-            operator uint8_t() const;
+            operator std::uint8_t() const;
+            operator Scancodes() const;
 
+            Scancode& operator=(const Scancode&) = default;
+            bool operator==(const Scancode& val);
+            bool operator!=(const Scancode& val);
         private:
-            uint8_t val;
+            Scancodes val;
         };
 
         /// @brief Ввод с клавиутры
@@ -155,7 +165,7 @@ namespace KolibriLib
 
             /// @brief конструктор
             /// @details он просто есть
-            Input(uint8_t i = 0): ASCII(static_cast<char>(i)){}
+            Input(uint8_t i = 0) : ASCII(static_cast<char>(i)) {}
 
             operator char() const;
             operator Scancode() const;
@@ -167,11 +177,11 @@ namespace KolibriLib
         class KeyboardLayout
         {
         public:
-            
-            KeyboardLayout& operator=(const KeyboardLayout&) = default;
+            KeyboardLayout &operator=(const KeyboardLayout &) = default;
 
-            char & operator[](uint8_t i);
-            char operator[](uint8_t i) const;
+            char &operator[](std::uint8_t i);
+            char operator[](std::uint8_t i) const;
+
         private:
             char table[128];
         };
@@ -182,7 +192,7 @@ namespace KolibriLib
         };
 
         /// @brief Проверить какая клавиша клавиатуры нажата
-        /// @return 
+        /// @return
         inline Input CheckKeyboard()
         {
             return Input(_ksys_get_key().code);
@@ -202,11 +212,10 @@ namespace KolibriLib
         {
             InputMode ret;
 
-            asm_inline (
+            asm_inline(
                 "int $0x40"
                 : "=a"(ret)
-                : "a"(66), "b"(2)
-            );
+                : "a"(66), "b"(2));
 
             return ret;
         }
@@ -218,14 +227,12 @@ namespace KolibriLib
         {
             KeyboardLayout ret;
 
-            asm_inline (
-                "int $0x40"
-                :: 
-                "a"(26),
+            asm_inline(
+                "int $0x40" ::
+                    "a"(26),
                 "b"(2),
                 "c"(mode),
-                "d"(&ret)
-            );
+                "d"(&ret));
 
             return ret;
         }
@@ -238,11 +245,10 @@ namespace KolibriLib
         {
             bool ret;
 
-            asm_inline (
+            asm_inline(
                 "int $0x40"
                 : "=a"(ret)
-                : "a"(21), "b"(2), "c"(mode), "d"(layout)
-            );
+                : "a"(21), "b"(2), "c"(mode), "d"(layout));
 
             return ret;
         }
@@ -255,8 +261,8 @@ namespace KolibriLib
         }
 
         /// @brief Установить "горячую клавишу"
-		/// @param controlkeys клавиши
-		/// @return true если успешно, иначе false
+        /// @param controlkeys клавиши
+        /// @return true если успешно, иначе false
         /// @warning not done!
         inline bool InstallHotKey(Scancode scancode, uint16_t controlkeys)
         {
@@ -290,6 +296,5 @@ namespace KolibriLib
 
     void PrintDebug(keyboard::Input out);
 } // namespace KolibriLib
-
 
 #endif // __KEYBOARD_H__

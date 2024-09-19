@@ -13,8 +13,8 @@ project(
 #################################################
 #
 set(CUSTOM_TOOCLAIN_PATH	OFF)
-set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
-option(KolibriLib_BUILD_EXAMPLES "Build KolibriLib examples" ON)
+set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
+option(KolibriLib_BUILD_EXAMPLES "Build KolibriLib examples" OFF)
 option(KolibriLib_BUILD_DOCS "Build KolibriLib documantation" OFF)
 #
 #################################################
@@ -35,7 +35,6 @@ include(CMakeTestASM_FASMCompiler)
 
 enable_language("ASM_FASM")
 
-SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 
 
 get_filename_component(REPO ${KOLIBRIOS_REPO} REALPATH)
@@ -46,6 +45,7 @@ else()
 	message(FATAL_ERROR "KOLIBRIOS Repo not found, try set KOLIBRIOS_REPO or download kolibros repo")
 endif()
 
+SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 
 
 include(CMakeDetermineKOS32Compiler)

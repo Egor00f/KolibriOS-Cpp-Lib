@@ -15,6 +15,9 @@ namespace KolibriLib
 			{
 			public:
 
+				/// @brief Отрисовать изображение
+				void Render() const override;
+
 			private:
 			
 			};

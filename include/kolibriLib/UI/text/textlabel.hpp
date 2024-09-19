@@ -35,19 +35,20 @@ namespace KolibriLib
             public:
 
                 /// @brief Выравнивание текста в метке
-                enum Align
+                enum class Align
                 {
-                    /// @brief текст прижимается к правой стороне
+                    /// @brief Выравнивание по правому ккраю
+                    /// @details текст прижимается к правой стороне
                     Right,
 
-                    /// @brief Текст прижат к левой стороне
+                    /// @brief Выравнивание по левому ккраю
+                    /// @details Текст прижат к левой стороне
                     Left,
-                    
-                    /// @brief Текст по центру
+
+                    /// @brief Выравнивание по центру
+                    /// @details Текст по центру
                     Center
                 };
-
-                typedef Align Align;
 
                 /// @brief Конструктор
                 /// @param coord координата
@@ -80,7 +81,7 @@ namespace KolibriLib
                 TextLabel(const TextLabel &copy);
 
                 /// @brief Отрисовать текстовую метку
-                void Render() const;
+                void Render() const override;
 
                 /// @brief Изменить значение переменной _TextScale
                 /// @param scale Новое значение
@@ -115,7 +116,7 @@ namespace KolibriLib
                 void swap(TextLabel& a);
             private:
                 /// @brief Выравнивание
-                Align _Align = Center;
+                Align _Align = Align::Center;
 
                 /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
                 /// @warning пока что не работает

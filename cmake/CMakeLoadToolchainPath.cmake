@@ -5,7 +5,7 @@ else()
 endif()
 
 get_filename_component(TOOLCHAIN_DIR_REAL ${TOOLCHAIN_DIR} REALPATH)
-if(EXISTS "${REPO}")
+if(EXISTS "${TOOLCHAIN_DIR_REAL}")
 	message("KOLIBRIOS toolchain Found: ${TOOLCHAIN_DIR_REAL}")
 else()
 	message(FATAL_ERROR "KOLIBRIOS toolchain not found, try set CUSTOM_TOOCLAIN_PATH or download toolchain repo" ${TOOLCHAIN_DIR_REAL})

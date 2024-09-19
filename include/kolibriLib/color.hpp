@@ -9,6 +9,27 @@ namespace KolibriLib
     /// @brief Набор функций для работы с цветом
     namespace Colors
     {        
+
+        struct rgb: public rgb_t
+        {
+            rgb(rgb_t val);
+
+            rgb(std::uint32_t val);
+
+            rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b);
+
+            rgb() = default;
+            rgb(const rgb&) = default;
+
+            rgb& operator=(const rgb&) = default;
+
+            operator ksys_color_t() const;
+
+            std::uint32_t BBGGRR() const;
+
+            std::uint32_t BBGGRR00() const;
+        };
+
         /// @brief Цвет
         union Color
         {
@@ -18,7 +39,7 @@ namespace KolibriLib
             /// @param a 
             Color(const ksys_color_t& a);
             //Color(const Color *a);
-            Color(const Color &a);
+            Color(const Color &a) = default;
             Color(const rgb_t &color);
 
             /// @brief Конструктор
@@ -28,14 +49,16 @@ namespace KolibriLib
             /// @param A Прозрачность
             Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A = 0xFF);
 
+
             operator rgb_t() const;
             operator ksys_color_t() const;
+            operator rgb() const;
 
             /// @brief Получить rgb_t
             /// @return 
             rgb_t GetRGB() const;
 
-            Color& operator = (const Color& a);
+            Color& operator = (const Color& a) = default;
 
             Color& operator = (const uint32_t& color);
 

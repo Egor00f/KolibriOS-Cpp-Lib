@@ -67,14 +67,14 @@ namespace KolibriLib
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
-		inline void DrawRectangleFill(Coord position, Size size, rgb_t color = Colors::Color(Globals::SystemColors.work_graph).operator rgb_t())
+		inline void DrawRectangleFill(Coord position, Size size, Colors::rgb color = Globals::SystemColors.work_graph)
 		{
 			asm_inline (
 				"int $0x40"
 				:: "a"(13), 
 				   "b"( (position.x << 16) + size.x ), 
 				   "c"( (position.y << 16) + size.y ), 
-				   "d"(Colors::Color(color).val)
+				   "d"(color.BBGGRR00())
 				);
 		}
 
@@ -82,7 +82,7 @@ namespace KolibriLib
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
-		inline void DrawRectangleGradient(Coord position, Size size, rgb_t color = Colors::Color(Globals::SystemColors.work_graph).operator rgb_t())
+		inline void DrawRectangleGradient(Coord position, Size size, Colors::rgb color = Globals::SystemColors.work_graph)
 		{
 			Colors::Color ret = color;
 			ret._a = 0x80;
@@ -141,7 +141,7 @@ namespace KolibriLib
 		{
 			ksys_color_t c;
 
-			__asm__ __volatile__ (
+			asm_inline (
 				"int $0x40"
 				: "=a"(c)
 				: "a"(35),
@@ -163,8 +163,8 @@ namespace KolibriLib
 				"int $0x40"
 				:: "a"(36), 
 				   "b"(result), 
-				   "c"(X_Y(size.x, size.y)), 
-				   "d"(X_Y(coord.x, coord.y))
+				   "c"(size.operator ksys_pos_t()), 
+				   "d"(coord.operator ksys_pos_t())
 			);
 
 			return result;
@@ -183,4 +183,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __GRAPHIC_H__
+#endif // __GRAPHIC_HPP__

@@ -74,9 +74,7 @@ void KolibriLib::UI::text::Txt::Delete(int i)
 
 void KolibriLib::UI::text::Txt::Print(const Coord &coord, const Colors::Color &BackgroundColor) const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Print Txt:");
-	#endif
+	PrintDebug("Print Txt\n");
 
 	/*if(_data.length() > 0)	// Если текста не то и выводить нечего
 	{
@@ -99,10 +97,6 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord, const Colors::Color &B
 	}*/
 
 	DrawText(_data, coord, _TextColor, TextEncoding::UTF8, _CharSize.x / 16);
-
-	#ifdef DEBUG
-	_ksys_debug_puts("done!\n");
-	#endif
 }
 
 /*void KolibriLib::UI::text::Txt::SetFont(const Fonts::Font &Font)

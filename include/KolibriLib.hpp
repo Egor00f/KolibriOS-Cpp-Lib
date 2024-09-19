@@ -57,6 +57,11 @@ namespace KolibriLib
 	using mouse::GetMouseButtons;
 	using mouse::CenterCursor;
 
+	using keyboard::Scancode;
+	using keyboard::KeyboardLayout;
+	using keyboard::CheckKeyboard;
+	using keyboard::SetKeyboardLayout;
+
 } // namespace KolibriLib
 
 

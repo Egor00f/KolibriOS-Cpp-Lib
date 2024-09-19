@@ -12,43 +12,66 @@ Scancode keyboard::GetScancodeByASCII(char ascii, KeyboardLayoutMode mode)
 	{
 		if(layout[i] == ascii)
 		{
-			return i;
+			return (Scancode){i};
 		}
 	}
 
-	return Scancode::ANY;
+	return Scancodes::ANY;
 }
 
 Scancode keyboard::GetScancodeByASCII(char ascii)
 {
-	uint8_t a = GetScancodeByASCII(ascii, KeyboardLayoutMode::Normal);
+	Scancode a = GetScancodeByASCII(ascii, KeyboardLayoutMode::Normal);
 
-	if(a == Scancode::ANY)
+	if(a == Scancode(Scancodes::ANY))
 	{
 		a = GetScancodeByASCII(ascii, KeyboardLayoutMode::Shift);
 
-		if(a == Scancode::ANY) // Вероятность того что до этого дойдёт довольно низка
+		if(a == Scancode(Scancodes::ANY)) // Вероятность того что до этого дойдёт довольно низка
 		{
 			a = GetScancodeByASCII(ascii, KeyboardLayoutMode::Alt);
 		}
 	}
 
-	return a;
+	return (Scancode){a};
 }
 
 Scancode::Scancode(char c)
 {
+	KolibriLib::PrintDebug("Scancode constructor (from char)\n");
 	val = GetScancodeByASCII(c);
+}
+
+KolibriLib::keyboard::Scancode::Scancode(Scancodes v)
+	: val(v)
+{
+
 }
 
 Scancode::operator char() const
 {
-	return GetKeyboardLayout()[val];
+	const auto ret = keyboard::GetKeyboardLayout();
+	return ret[static_cast<std::uint8_t>(val)];
 }
 
-Scancode::operator uint8_t() const
+Scancode::operator std::uint8_t() const
+{
+	return static_cast<std::uint8_t>(val);
+}
+
+KolibriLib::keyboard::Scancode::operator Scancodes() const
 {
 	return val;
+}
+
+bool KolibriLib::keyboard::Scancode::operator==(const Scancode &val)
+{
+	return val.val == val;
+}
+
+bool KolibriLib::keyboard::Scancode::operator!=(const Scancode &val)
+{
+	return val.val != val;
 }
 
 char & KeyboardLayout::operator[](uint8_t i)
@@ -69,7 +92,7 @@ Input::operator char() const
 	}
 	else
 	{
-		return (char)scancode;
+		return static_cast<char>(scancode);
 	}
 }
 
@@ -87,7 +110,7 @@ Input::operator Scancode() const
 
 void KolibriLib::PrintDebug(Scancode out)
 {
-	PrintDebug((unsigned)((char)out));
+	PrintDebug(static_cast<unsigned>((std::uint8_t)out));
 }
 
 void KolibriLib::PrintDebug(Input out)

@@ -3,15 +3,38 @@
 using namespace KolibriLib;
 using namespace Colors;
 
+KolibriLib::Colors::rgb::rgb(rgb_t val)
+{
+	red 	= val.red;
+	green	= val.green;
+	blue	= val.blue;
+}
+
+KolibriLib::Colors::rgb::rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b)
+{
+	red 	= r;
+	green	= g;
+	blue	= b;
+}
+
+KolibriLib::Colors::rgb::operator ksys_color_t() const
+{
+	return RGBtoINT(*this);
+}
+
+std::uint32_t KolibriLib::Colors::rgb::BBGGRR() const
+{
+	return RGBtoINT(*this);
+}
+
+std::uint32_t KolibriLib::Colors::rgb::BBGGRR00() const
+{
+	return ((blue << 24) + (green << 16) + (red << 8)) & 0xFFFFFF00;
+}
+
 KolibriLib::Colors::Color::Color(const ksys_color_t &a)
 	:	val(a)
 {
-}
-
-KolibriLib::Colors::Color::Color(const KolibriLib::Colors::Color &a)
-	:	val(a.val)
-{
-
 }
 
 KolibriLib::Colors::Color::Color(const rgb_t &color)
@@ -38,12 +61,6 @@ rgb_t KolibriLib::Colors::Color::GetRGB() const
 	ret.green = green;
 	ret.blue = blue;
 	return ret;
-}
-
-KolibriLib::Colors::Color &KolibriLib::Colors::Color::operator=(const KolibriLib::Colors::Color &a)
-{
-	val = a.val;
-	return *this;
 }
 
 Color &KolibriLib::Colors::Color::operator=(const uint32_t &color)
@@ -172,6 +189,11 @@ KolibriLib::Colors::Color::operator rgb_t() const
 KolibriLib::Colors::Color::operator ksys_color_t() const
 {
 	return val;
+}
+
+KolibriLib::Colors::Color::operator rgb() const
+{
+	return rgb(red, green, blue);
 }
 
 void KolibriLib::PrintDebug(Colors::Color out)
