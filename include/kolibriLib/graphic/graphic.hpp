@@ -49,8 +49,8 @@ namespace KolibriLib
 		inline void DrawPixel(const Coord &position, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_pixel (
-				static_cast<uint16_t>(position.x), 
-				static_cast<uint16_t>(position.y), 
+				static_cast<std::uint16_t>(position.x), 
+				static_cast<std::uint16_t>(position.y), 
 				color.operator ksys_color_t()
 			);
 		}

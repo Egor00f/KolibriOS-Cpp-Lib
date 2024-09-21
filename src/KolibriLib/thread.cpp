@@ -26,11 +26,9 @@ PID KolibriLib::Thread::CreateThread_(void *ThreadEntry, unsigned ThreadStackSiz
 
 KolibriLib::Thread::ThreadInfo KolibriLib::Thread::GetThreadInfo(const Slot& thread)
 {
-    ThreadInfo *ptr = GetPointerThreadInfo(thread);
+    ThreadInfo ret;
 
-    ThreadInfo ret(*ptr);
-
-    delete ptr;
+    _ksys_thread_info((ksys_thread_t*)&ret, thread);
 
     return ret;
 }
@@ -39,7 +37,15 @@ KolibriLib::Thread::ThreadInfo* KolibriLib::Thread::GetPointerThreadInfo(const S
 {
     ThreadInfo *buff = new ThreadInfo;
 
-    _ksys_thread_info(buff, thread);
+    _ksys_thread_info((ksys_thread_t*)buff, thread);
 
     return buff; 
+}
+
+
+
+
+KolibriLib::Thread::ThreadInfo::operator ksys_thread_t() const
+{
+    return *this;
 }

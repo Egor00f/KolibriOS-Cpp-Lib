@@ -5,7 +5,7 @@
 	Тут тип базовый функционал работы с окном
 */
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <string>
 
 #include <kolibriLib/types.hpp>
@@ -29,39 +29,44 @@ namespace KolibriLib
 		const Coord DefaultWindowCoord = {100, 100};
 
 		/// @brief Список стилей для окна
-		enum WindowStyle
+		enum class WindowStyle
 		{
-			/// @brief окно фиксированных размеров
-			FixSize = 0,
-			
 			/// @brief только определить область окна, ничего не рисовать
-			NoDraw = 0b00000001,
+			/// @details вид окна полность определяется приложением
+			NoDraw = 1,
 
-			/// @brief окно изменяемых размеров
-			CanResize = 0b00000010,
+			/// @brief Окно со скином
+			withSkin = 3,
 
-			/// @brief окно со скином
-			withSkin = 0b00000011,
-
-			/// @brief окно со скином фиксированных размеров
-			FixSizewithSkin = 0b00000100,
-
-			/// @brief у окна есть заголовок
-			WindowHaveTitle = 0b00010000,
-
-			/// @brief Координаты крафических приметивов относительно окна
-			Relative = 0b00100000,
-
-			/// @brief не закрашивать рабочую область при отрисовке окна
-			NoDrawWorkspace = 0b01000000,
-
-			/// @brief градиентная заливка рабочей области
-			GradientDraw = 0b10000000
+			/// @brief Окно со скином фиксированных размеров
+			FixSizewithSkin = 4,
 		};
 
+		/// @brief Настройки для окна. битовые флаги
+		enum WindowSettings
+		{
+			/// @brief у окна есть заголовок
+			WindowHaveTitle = 1,
+
+			/// @brief Координаты крафических приметивов относительно окна
+			RelativeCoord = 2,
+
+			/// @brief Не закрашивать рабочую область при отрисовке окна
+			NoDrawWorkspace = 4,
+
+			/// @brief Градиентная заливка рабочей области
+			/// @details по умолчанию нормальная заливка
+			GradientDraw = 8,
+
+			/// @brief неперемещаемое окно
+			/// @details работает для всех стилей окон
+			NotMoveable = (1 << 8),
+
+			TitleGradient = (8 << (8 + 4))
+		};
 
 		/// @brief Список констант положения окна относительно других окон:
-		typedef enum Pos
+		enum class Pos : std::int16_t
 		{
 			/// @brief На фоне
 			BackGround = -2,
@@ -74,7 +79,7 @@ namespace KolibriLib
 
 			/// @brief Всегда поверх остальных окон
 			AlwaysTop = 1
-		} Pos;
+		};
 
 		/// @brief Объявить окно
 		/// @param coord Координаты окна(его левого верхнего угола) на экране
@@ -83,14 +88,26 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль окна
+		/// @note Положение и размеры окна устанавливаются при первом вызове этой функции и игнорируются при последующих; для изменения положения и/или размеров уже созданного окна используйт ChangeWindow
+		/// @note Окно должно умещаться на экране. Если переданные координаты и размеры не удовлетворяют этому условию, то соответствующая координата (или, возможно, обе) считается нулем, а если и это не помогает, то соответствующий размер (или, возможно, оба) устанавливается в размер экрана
 		inline void CreateWindow(const Coord &coord,
-		                         const Size &size,
-		                         const std::string &title,
-		                         const Colors::Color &WorkColor = Globals::SystemColors.work_area,
-		                         Colors::Color TitleColor = Globals::SystemColors.grab_text,
-		                         uint8_t style = WindowStyle::CanResize | WindowStyle::Relative)
+								 const Size &size,
+								 const std::string &title,
+								 const Colors::Color &WorkColor = Globals::SystemColors.work_area,
+								 Colors::Color TitleColor = Globals::SystemColors.work_text,
+								 WindowStyle style = WindowStyle::withSkin,
+								 std::uint16_t settings = WindowSettings::WindowHaveTitle | WindowSettings::RelativeCoord)
 		{
-			_ksys_create_window(coord.x, coord.x, size.x, size.y, title.c_str(), WorkColor, static_cast<uint32_t>(style));
+			asm_inline(
+				"int $0x40" 
+				::
+				"a"(0),
+				"b"((coord.x << 16) | ((size.x - 1) & 0xFFFF)),
+				"c"((coord.y << 16) | ((size.y - 1) & 0xFFFF)),
+				"d"( ((settings << 28) | (static_cast<std::uint8_t>(style) << 24)) | (WorkColor.operator ksys_color_t() & 0xFFFFFF) ),
+				"S"(  (settings >> 8)  | (TitleColor.operator ksys_color_t() & 0xFFFFFF)),
+				"D"(title.c_str())
+				: "memory");
 		}
 
 		/// @brief Снять фокус с окна
@@ -118,6 +135,7 @@ namespace KolibriLib
 
 		/// @brief Получить слот активного окна
 		/// @return Слот активного в данный момент окна
+		/// @details Активное окно - окно, находящееся на вершине оконного стэка, оно получает сообщения о вводе с клавиатуры. Для него позиция в оконном стэке совпадает с возвращаемым значением.
 		inline Thread::Slot GetActiveWindow()
 		{
 			Thread::Slot s;
@@ -152,6 +170,7 @@ namespace KolibriLib
 		/// @brief получить координаты окна
 		/// @param pid PID процесса, который создал окно
 		/// @return Координаты окна
+		/// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
 		inline Coord GetWindowCoord(Thread::PID pid = Thread::ThisThread)
 		{
 			auto inf = Thread::GetThreadInfo(pid);
@@ -188,6 +207,15 @@ namespace KolibriLib
 				: "a"(18), "b"(25), "c"(2), "d"(pid), "S"(pos));
 
 			return ret;
+		}
+
+		/// @brief Изменить размер и координаты окна
+		/// @param coord новые координаты окна
+		/// @param size новый размер окна
+		/// @note работает для окна, которое было создано тем потоком, в котором эту функцию запускают
+		inline void ChangeWindow(const Coord& coord, const Size& size)
+		{
+			_ksys_change_window(coord.x, coord.y, size.x, size.y);
 		}
 
 		/// @brief Получить высоту скина(заголовка окна)

@@ -8,9 +8,6 @@
 
 namespace KolibriLib
 {
-	
-
-		
 	/// @brief Диалог выбора файлов
 	/// @details это отдельная программа (если что)
 	/// Памяти требует эта штука много (около 9500 байт)
@@ -35,6 +32,7 @@ namespace KolibriLib
 			Select = open_dialog_mode::SELECT
 		};
 
+		/// @brief Статус
 		enum class Status
 		{
 			/// @brief Пользователь нажал Cancel

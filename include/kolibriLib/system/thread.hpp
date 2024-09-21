@@ -3,7 +3,7 @@
 
 #include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
-
+#include <kolibriLib/input/keyboard.hpp>
 #include <type_traits>
 
 namespace KolibriLib
@@ -26,17 +26,127 @@ namespace KolibriLib
     namespace Thread
     {
         /// @brief Слот окна
-        typedef int Slot;
+        /// @details Слоты нумеруются с 1.
+        using Slot = std::uint16_t;
 
         /// @brief ID процесса
-        typedef int PID;
+        using PID = int;
 
         /// @brief Информация о потоке
-        typedef ksys_thread_t ThreadInfo;
+        union ThreadInfo
+        {
+            enum class SlotState : std::uint16_t
+            {
+                /// @brief поток выполняется
+                Running = 0,
+
+                /// @brief поток приостановлен
+                Suspended = 1,
+
+                /// @brief поток приостановлен в момент ожидания события
+                SuspendedWaitEvent = 2,
+
+                /// @brief поток завершается в результате вызова функции -1 или насильственно как следствие вызова подфункции 2 функции 18 или завершения работы системы
+                Term = 3,
+
+                /// @brief поток завершается в результате исключения
+                ExeptionTerm = 4,
+
+                /// @brief поток ожидает события
+                Waitevent = 5,
+
+                /// @brief запрошенный слот свободен, вся остальная информация о слоте не имеет смысла
+                Free = 9
+            };
+
+            /// @brief Состояние окна
+            /// @details Битовое поле
+            enum class WindowStatus : std::uint8_t
+            {
+                /// @brief Окно маскимизированно
+                Maximized = 1,
+
+                /// @brief Окно минимизировано в панель задач
+                Minimized = 2,
+
+                /// @brief Окно свёрнуто в заголовок
+                CollapsedToTitle = 4
+            };
+
+            struct
+            {
+                /// @brief Использование Процессора
+                uint32_t cpu_usage;
+
+                /// @brief Позиция окна в оконном стеке
+                uint16_t pos_in_window_stack;
+
+                /// @brief Слот окна
+                Slot slot_num_window_stack;
+
+                /// @brief Зарезервированно
+                uint16_t __reserved1;
+
+                /// @brief имя процесса
+                /// @details имя запущенного файла - исполняемый файл без расширения
+                char name[12];
+
+                /// @brief адрес процесса в памяти
+                uint32_t memstart;
+
+                /// @brief размер используемой памяти 
+                uint32_t memused;
+                
+                /// @brief идентификатор (PID/TID)
+                PID pid;
+
+                /// @brief Координата окна потока по оси x
+                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
+                int winx_start;
+
+                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
+                int winy_start;
+
+                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
+                int winx_size;
+
+                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
+                int winy_size;
+
+                SlotState slot_state;           // thread slot state
+                uint16_t __reserved2;           // reserved
+                
+                /// @brief координата начала клиентской областипо оси x 
+                int clientx;
+
+                /// @brief координата начала клиентской областипо оси y
+                int clienty;
+
+                /// @brief ширина клиентской области
+                int clientwidth;
+
+                /// @brief Длинна клиентской области
+                int clientheight;
+
+                /// @brief Состояние окна
+                WindowStatus window_state;
+                uint8_t event_mask;             // event mask
+
+                /// @brief Режим ввода клавиатуры
+                keyboard::InputMode key_input_mode;
+            };
+
+            uint8_t __reserved3[KSYS_THREAD_INFO_SIZE];
+
+            ThreadInfo& operator=(const ThreadInfo&) = default;
+
+            /// @brief 
+            operator ksys_thread_t() const;
+        };
 
         /// @brief Значение PID текущего процесса.
         /// @details Нужно для функций
-        const PID ThisThread = -1;
+        const PID ThisThread = KSYS_THIS_SLOT;
 
         /// \brief Создать поток
         /// \param ThreadEntry указатель на функцию которую нужно запустить в новом потоке
@@ -54,7 +164,8 @@ namespace KolibriLib
         /// @note Пихать сюда ТОЛЬКО указатели на функции, иначе ваще хз че поизойдёт
         inline PID CreateThread(T ThreadEntry, std::size_t ThreadStackSize = 4096)
         {
-            return CreateThread_((void*)ThreadEntry, ThreadStackSize);
+            static_assert(::std::is_pointer<T>::value, "Only pointers to function!");
+            return CreateThread_(reinterpret_cast<void*>(ThreadEntry), ThreadStackSize);
         }
 
         /// @brief Завершить процесс/поток
@@ -76,6 +187,7 @@ namespace KolibriLib
         inline bool TerminateThread()
         {
             _ksys_exit();
+            return false; // 'no return statement in function returning non-void [-Wreturn-type]' очень бесит
         }
 
         
@@ -99,14 +211,19 @@ namespace KolibriLib
         /// @note Не забудьте освободить память!
         ThreadInfo *GetPointerThreadInfo(const Slot &thread = ThisThread);
 
-        
-
         /// @brief Получить слот потока
         /// @param pid поток, по умолчанию поток который вызывает эту функцию
         /// @return Слот потока pid
-        inline Slot GetThreadSlot(const PID& pid = GetThisThreadPID())
+        inline Slot GetThreadSlot(const PID& pid)
         {
             return _ksys_get_thread_slot(pid);
+        }
+
+        /// @brief Получить слот потока
+        /// @return Слот потока pid
+        inline Slot GetThreadSlot()
+        {
+            return GetThreadInfo().slot_num_window_stack;
         }
 
         /// @brief Кривой всратый и тупящий мьютекс, который существует только потому что я не разобрался в фьютексах

@@ -1,10 +1,7 @@
-
-
 #ifndef __DEBUG_HPP__
 #define __DEBUG_HPP__
 
 #include <include_ksys.h>
-#include <stdio.h>
 #include <string>
 
 namespace KolibriLib
@@ -21,9 +18,7 @@ namespace KolibriLib
 
 	void PrintDebug(bool out);
 
-	void PrintDebug(char out);
-
-	void PrintDebug(std::string out);
+	void PrintDebug(const std::string &out);
 
 	void PrintDebug(const char* out);
 

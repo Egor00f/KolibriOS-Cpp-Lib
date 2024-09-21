@@ -13,9 +13,11 @@ project(
 #################################################
 #
 set(CUSTOM_TOOCLAIN_PATH	OFF)
-set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
-option(KolibriLib_BUILD_EXAMPLES "Build KolibriLib examples" OFF)
-option(KolibriLib_BUILD_DOCS "Build KolibriLib documantation" OFF)
+set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
+
+option(KolibriLib_BUILD_EXAMPLES "Build KolibriLib examples" ON)
+option(KolibriLib_BUILD_DOCS "Build KolibriLib documantation" ON)
+option(KolibriLib_BUILD_TESTS "Build KolibriLib test" ON)
 #
 #################################################
 
@@ -201,49 +203,12 @@ if(KolibriLib_BUILD_EXAMPLES)
 
 	message("Build KolibriLib Examples")
 
-	#Examples build with make, see to examples/Makefile
-	set(ExamplesDir ${CMAKE_CURRENT_SOURCE_DIR}/examples)
+	add_subdirectory(examples)
 
+endif()
 
-	add_executable(Example ${ExamplesDir}/example.cpp)
-	target_link_libraries(Example PUBLIC KolibriLib)
+if(KolibriLib_BUILD_TESTS)
+	message("Build KolibriLib tests")
 
-	add_custom_command(
-		TARGET Example POST_BUILD
-		COMMAND ${CMAKE_OBJCOPY} ARGS Example -O binary
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-	)
-
-	add_executable(ExampleTextEditor ${ExamplesDir}/ExampleTextEditor.cpp)
-	target_link_libraries(ExampleTextEditor PUBLIC KolibriLib)
-
-	add_custom_command(
-		TARGET ExampleTextEditor POST_BUILD
-		COMMAND ${CMAKE_OBJCOPY} ARGS ExampleTextEditor -O binary
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-	)
-
-	add_executable(ExampleCheckbox ${ExamplesDir}/checkboxExample.cpp)
-	target_link_libraries(ExampleCheckbox PUBLIC KolibriLib)
-
-	add_custom_command(
-		TARGET ExampleCheckbox POST_BUILD
-		COMMAND ${CMAKE_OBJCOPY} ARGS ExampleCheckbox -O binary
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-	)
-
-	add_executable(ExampleMousePos ${ExamplesDir}/mousePosition.cpp)
-	target_link_libraries(ExampleMousePos PUBLIC KolibriLib)
-
-	add_custom_command(
-		TARGET ExampleMousePos POST_BUILD
-		COMMAND ${CMAKE_OBJCOPY} ARGS ExampleMousePos -O binary
-		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-	)
-
-	add_custom_target(
-		AllExamples
-		DEPENDS Example ExampleTextEditor ExampleCheckbox ExampleMousePos
-	)
-
+	add_subdirectory(tests)
 endif()

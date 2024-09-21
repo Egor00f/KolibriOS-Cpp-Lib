@@ -79,7 +79,7 @@ namespace KolibriLib
 		{
 			Colors::ColorsTable a;
 
-			_ksys_get_system_colors((ksys_colors_table_t *)&a);
+			_ksys_get_system_colors(&a);
 
 			return a;
 		}
@@ -167,7 +167,7 @@ namespace KolibriLib
 		/// @param NewTime Время что будет установленно
 		inline SetTimeOrDate SetTime(ksys_time_bcd_t NewTime)
 		{
-			int ret;
+			SetTimeOrDate ret;
 
 			asm_inline (
 				"int $0x40" 
@@ -175,14 +175,14 @@ namespace KolibriLib
 				: "a"(22), "b"(0), "c"(NewTime)
 			);
 
-			return (SetTimeOrDate)ret;
+			return ret;
 		}
 
 		/// @brief Установитьсистемную  дату
 		/// @param NewData Дата что будет установленна
 		inline SetTimeOrDate SetDate(ksys_date_bcd_t NewDate)
 		{
-			int ret;
+			SetTimeOrDate ret;
 
 			asm_inline (
 				"int $0x40"
@@ -190,7 +190,7 @@ namespace KolibriLib
 				: "a"(22), "b"(1), "c"(NewDate)
 			);
 
-			return (SetTimeOrDate)ret;
+			return ret;
 		}
 
 		/// @brief Установить день недели
@@ -198,7 +198,7 @@ namespace KolibriLib
 		/// @note Ценность установки дня недели представляется сомнительной, поскольку он мало где используется(день недели можно рассчитать по дате)
 		inline SetTimeOrDate SetDayOfWeek(uint8_t NewDayOfWeek)
 		{
-			int ret;
+			SetTimeOrDate ret;
 
 			asm_inline (
 				"int $0x40" 
@@ -206,7 +206,7 @@ namespace KolibriLib
 				: "a"(22), "b"(2), "c"(NewDayOfWeek)
 			);
 
-			return (SetTimeOrDate)ret;
+			return ret;
 		}
 
 		/// @brief Установить бедильник

@@ -144,14 +144,12 @@ KolibriLib::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
 KolibriLib::UDim::UDim(int x, int y)
 	: X(0, x),
 	  Y(0, y)
-
 {
 }
 
 KolibriLib::UDim::UDim(float x, float y)
 	: X(x, 0),
 	  Y(y, 0)
-
 {
 }
 

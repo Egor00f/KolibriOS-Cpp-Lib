@@ -442,5 +442,5 @@ std::uintmax_t KolibriLib::filesystem::remove_all(const path &p)
 
 filesystem::path KolibriLib::filesystem::temp_directory_path()
 {
-    return path("/tmpfs");
+    return path("/tmp/0");
 }

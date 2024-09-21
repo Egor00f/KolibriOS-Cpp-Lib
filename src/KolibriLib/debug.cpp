@@ -1,4 +1,5 @@
 #include <kolibriLib/debug.hpp>
+#include <cstdio>
 
 using namespace KolibriLib;
 
@@ -14,14 +15,7 @@ void KolibriLib::PrintDebug(bool out)
 	}
 }
 
-void KolibriLib::PrintDebug(char out)
-{
-	#ifdef DEBUG
-	_ksys_debug_putc(out);
-	#endif
-}
-
-void KolibriLib::PrintDebug(std::string out)
+void KolibriLib::PrintDebug(const std::string &out)
 {
 	DebugOut(out.c_str());
 }
@@ -34,20 +28,20 @@ void KolibriLib::PrintDebug(const char* out)
 void KolibriLib::PrintDebug(int out)
 {
 	char buff[8];
-	sprintf(buff, "%i", out);
+	std::sprintf(buff, "%i", out);
 	DebugOut(buff);
 }
 
 void KolibriLib::PrintDebug(unsigned out)
 {
 	char buff[8];
-	sprintf(buff, "%u", out);
+	std::sprintf(buff, "%u", out);
 	DebugOut(buff);
 }
 
 void KolibriLib::PrintDebug(float out)
 {
 	char buff[10];
-	sprintf(buff, "%f", out);
+	std::sprintf(buff, "%f", out);
 	DebugOut(buff);
 }

@@ -1,5 +1,7 @@
 #include <kolibriLib/color.hpp>
 
+#include <cstdio>
+
 using namespace KolibriLib;
 using namespace Colors;
 
@@ -8,6 +10,11 @@ KolibriLib::Colors::rgb::rgb(rgb_t val)
 	red 	= val.red;
 	green	= val.green;
 	blue	= val.blue;
+}
+
+KolibriLib::Colors::rgb::rgb(ksys_color_t val)
+{
+	*this = rgb(UINT32toRGB(val));
 }
 
 KolibriLib::Colors::rgb::rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b)
@@ -174,9 +181,9 @@ rgb_t KolibriLib::Colors::UINT32toRGB(const uint32_t &color)
 {
 	rgb_t ret;
 	
-	ret.blue	= ((const Color&)color).blue;
-	ret.red 	= ((const Color&)color).red;
-	ret.green	= ((const Color&)color).green;
+	ret.blue	= ((Color)color).blue;
+	ret.red 	= ((Color)color).red;
+	ret.green	= ((Color)color).green;
 	
 	return ret;
 }
@@ -200,9 +207,9 @@ void KolibriLib::PrintDebug(Colors::Color out)
 {
     char buff[36];   // 23 символа в строке + 4 трехзначных числа(uint8_t)
 
-    sprintf(buff, "Color: A: %X R: %X G: %X B: %X ", out._a, out.red, out.green, out.blue);
+	std::sprintf(buff, "Color: A: %X R: %X G: %X B: %X ", out._a, out.red, out.green, out.blue);
 
-    DebugOut(buff);
+	DebugOut(buff);
 }
 
 

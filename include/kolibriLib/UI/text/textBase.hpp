@@ -20,7 +20,7 @@ namespace KolibriLib
 			{
 				std::uint32_t Size;
 
-				asm_inline (
+				asm_inline(
 					"int $0x40"
 					: "=c"(Size)
 					: "a"(48), "b"(11));
@@ -32,12 +32,9 @@ namespace KolibriLib
 			/// \param newSize высота текста в px
 			inline void SetTextSize(std::uint8_t newSize)
 			{
-				asm_inline (
+				asm_inline(
 					"int $0x40" 
-					:: 
-					"a"(48), 
-					"b"(12), 
-					"c"(newSize));
+					:: "a"(48), "b"(12), "c"(newSize));
 			}
 
 			/// \brief Просто вывести текст
@@ -48,7 +45,12 @@ namespace KolibriLib
 			inline void DrawText(const std::string &text, const Coord &coord, std::uint8_t size = 9, const Colors::Color &color = Globals::SystemColors.work_text)
 			{
 				SetTextSize(size);
-				_ksys_draw_text(text.c_str(), coord.x, coord.y, text.length(), color);
+				_ksys_draw_text(
+					text.c_str(),
+					static_cast<std::uint32_t>(coord.x),
+					static_cast<std::uint32_t>(coord.y),
+					text.length(),
+					color);
 			}
 
 			enum class TextEncoding
@@ -70,7 +72,9 @@ namespace KolibriLib
 				color._a = static_cast<std::uint8_t>(static_cast<std::uint8_t>(encoding) << 4);
 				color._a |= scale;
 				asm_inline(
-					"int $0x40" ::"a"(4),
+					"int $0x40" 
+					::
+					"a"(4),
 					"b"(coord.operator ksys_pos_t()),
 					"c"(color.val),
 					"d"(text.c_str()),

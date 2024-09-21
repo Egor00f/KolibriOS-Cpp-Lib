@@ -4,40 +4,56 @@ using namespace KolibriLib;
 using namespace window;
 
 KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
-	:	_title(Title),
-		_colors(colors),
-		_Transparency(Transparency),
-		_RealtimeRedraw(RealtimeRedraw)
+	: _title(Title),
+	  _colors(colors)
 {
-	_style = 0;
-	_style = WindowStyle::Relative | WindowStyle::WindowHaveTitle | WindowStyle::withSkin;
-
+	PrintDebug("Window:\n");
 	if (Resize)
 	{
-		_style |= WindowStyle::CanResize;
+		PrintDebug("- with skib\n");
+		_style = WindowStyle::withSkin;
 	}
 	else
 	{
-		_style |= WindowStyle::FixSize;
+		PrintDebug("- with skin and fixed size\n");
+		_style = WindowStyle::FixSizewithSkin;
+	}
+
+	if (Title != "")
+	{
+		PrintDebug("- Have title\n");
+		_settings |= WindowSettings::WindowHaveTitle;
 	}
 
 	if (Gradient)
 	{
-		_style |= WindowStyle::GradientDraw;
+		PrintDebug("- Gradient workspace\n");
+		_settings |= WindowSettings::GradientDraw;
 	}
 
-	/* if (_Transparency > 0)
-	{
-		_style |= WindowStyle::NoDrawWorkspace;
-	} */
-
 	SetMargin(Margin);
+}
 
+KolibriLib::window::Window_t::Window_t(const std::string &Title, const Colors::ColorsTable &colors, WindowStyle style, std::uint16_t WindowSettings)
+	:	_title(Title),
+		_colors(colors),
+		_style(style),
+		_settings(WindowSettings)
+{
+}
+
+void KolibriLib::window::Window_t::SetStyle(WindowStyle NewStyle)
+{
+	_style = NewStyle;
 }
 
 KolibriLib::window::Window::Window(const std::string &Title, const Size &size, const Coord &coord, const Colors::ColorsTable &colors, bool Resize, bool RealtimeReadraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
-	: Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, Margin)
+	:	Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, Margin)
+		
 {
+	_coord = coord;
+	_size = size;
+
 	SetPosition(position);
 
 	if (Globals::DefaultButtonsIDController == nullptr)
@@ -46,13 +62,12 @@ KolibriLib::window::Window::Window(const std::string &Title, const Size &size, c
 	}
 
 	window::CreateWindow(
-		coord, 
+		coord,
 		size,
 		Title,
 		colors.work_area,
 		colors.grab_text,
-		_style
-	);
+		_style);
 }
 
 KolibriLib::window::Window::Window(const Window_t &wndw)
@@ -70,8 +85,8 @@ KolibriLib::window::Window::Window(const Window_t &wndw)
 		_title,
 		_colors.work_area,
 		_colors.grab_text,
-		_style
-	);
+		_style,
+		_settings);
 }
 
 KolibriLib::window::Window::~Window()
@@ -122,37 +137,45 @@ UDim KolibriLib::window::Window::GetCoord() const
 
 inline void Window::SetCoord(const UDim &NewCoord)
 {
-	ChangeWindow(NewCoord.GetAbsolute(GetScreenSize()), GetAbsoluteSize());
+	window::ChangeWindow(NewCoord.GetAbsolute(GetScreenSize()), GetAbsoluteSize());
 }
 
 inline void Window::SetSize(const Size &NewSize)
 {
-	ChangeWindow(GetAbsoluteCoord(), NewSize);
+	window::ChangeWindow(GetAbsoluteCoord(), NewSize);
 }
 
 inline void Window::SetCoord(const Coord &NewCoord)
 {
-	ChangeWindow(NewCoord, GetAbsoluteSize());
+	window::ChangeWindow(NewCoord, GetAbsoluteSize());
 }
 
 inline void Window::SetSize(const UDim &NewSize)
 {
-	ChangeWindow(GetAbsoluteCoord(), NewSize.GetAbsolute(GetScreenSize()));
+	window::ChangeWindow(GetAbsoluteCoord(), NewSize.GetAbsolute(GetScreenSize()));
 }
 
 inline Coord Window::GetAbsoluteCoord() const
 {
-	return window::GetWindowSize();
+	if(_lastEvent != OS::Event::Redraw)
+		return _coord;
+	else
+		return window::GetWindowCoord();
 }
 
 inline Size Window::GetAbsoluteSize() const
 {
-	return window::GetWindowSize();
+	if(_lastEvent != OS::Event::Redraw)
+		return _size;
+	else
+		return window::GetWindowSize();
 }
 
 void Window::ChangeWindow(const Coord &coord, const Size &size)
 {
-	_ksys_change_window(coord.x, coord.y, size.x, size.y);
+	_coord = coord;
+	_size = size;
+	window::ChangeWindow(coord, size);
 }
 
 void Window::ChangeTilte(const std::string &newTitle)
@@ -162,7 +185,6 @@ void Window::ChangeTilte(const std::string &newTitle)
 
 void KolibriLib::window::Window::Redraw()
 {
-
 	StartRedraw();
 	window::CreateWindow(DefaultWindowCoord, DefaultWindowSize, _title, _colors.work_area, _colors.grab_text, _style);
 
@@ -176,9 +198,9 @@ void Window::Render()
 	PrintDebug("Render window:\n");
 
 	StartRedraw();
-	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style);
+	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style, _settings);
 
-	KolibriLib::graphic::DrawRectangleFill({0, static_cast<int>(window::GetSkinHeight())}, GetWindowSize() - GetMargin(), Colors::UINT32toRGB(_colors.work_area));
+	KolibriLib::graphic::DrawRectangleFill({0, static_cast<int>(window::GetSkinHeight())}, GetWindowSize() - GetMargin(), _colors.work_area);
 
 	RenderAllElements();
 
@@ -195,13 +217,11 @@ void Window::Render()
 	} */
 
 	EndRedraw();
-
 }
 
 inline UDim Window::GetSize() const
 {
-	Size p = GetAbsoluteSize();
-	return UDim(0, p.x, 0, p.y);
+	return UDim(0, _coord.x, 0, _coord.y);
 }
 
 OS::Event Window::Handler()
@@ -213,6 +233,8 @@ OS::Event Window::Handler()
 	switch (event)
 	{
 	case OS::Event::Redraw:
+
+		Update();
 
 		Redraw();
 
@@ -238,7 +260,6 @@ OS::Event Window::Handler()
 
 	case OS::Event::Key:
 
-
 		for (auto it : _Elements)
 		{
 			it->OnKeyEvent();
@@ -248,14 +269,12 @@ OS::Event Window::Handler()
 
 	case OS::Event::Mouse:
 
-
 		if (mouse::MouseButtons::RightButton && mouse::GetMouseButtons()) // Если нажата правая кнопка
 		{
 			Coord m = mouse::GetMousePositionInWindow();
 
 			if (m.x < GetSize().GetAbsolute().x && m.y < static_cast<int>(window::GetSkinHeight()))
 			{
-				
 			}
 		}
 		else
@@ -280,10 +299,10 @@ OS::Event Window::Handler()
 	if (_RealtimeRedraw)
 	{
 		Coord Mouse = mouse::GetMousePositionInWindow();
-		if ( ((Mouse.x > 0 && Mouse.y > 0)	&& 
-		       Mouse.x < GetWindowSize().x	&& 
-			   Mouse.y < static_cast<int>(GetSkinHeight()))	&& 
-			   mouse::GetMouseButtons() == mouse::LeftButton)
+		if (((Mouse.x > 0 && Mouse.y > 0) &&
+			 Mouse.x < GetWindowSize().x &&
+			 Mouse.y < static_cast<int>(GetSkinHeight())) &&
+			mouse::GetMouseButtons() == mouse::LeftButton)
 		{
 			while (mouse::GetMouseButtons() == mouse::LeftButton)
 			{
@@ -292,6 +311,8 @@ OS::Event Window::Handler()
 		}
 	}
 
+
+	_lastEvent = event;
 	return event;
 }
 
@@ -322,15 +343,14 @@ window::Pos KolibriLib::window::Window::GetPosition() const
 
 UI::buttons::ButtonsIDController *KolibriLib::window::Window::GetButtonIDController() const
 {
-	return const_cast<UI::buttons::ButtonsIDController*>(&_buttonsController);
+	return const_cast<UI::buttons::ButtonsIDController *>(&_buttonsController);
 }
 
-void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::ButtonsIDController*) 
+void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::ButtonsIDController *)
 {
-	
 }
 
-void KolibriLib::window::Window::AddElementNoCopy(UIElement* element)
+void KolibriLib::window::Window::AddElementNoCopy(UIElement *element)
 {
 	PrintDebug("Add element\n");
 
@@ -342,4 +362,12 @@ void KolibriLib::window::Window::AddElementNoCopy(UIElement* element)
 	element->SetButtonIDController(&_buttonsController);
 
 	_Elements.push_back(element);
+}
+
+void KolibriLib::window::Window::Update()
+{
+	Thread::ThreadInfo info = Thread::GetThreadInfo();
+
+	_size = Size(info.winx_size, info.winy_size);
+	_coord = Coord(info.winx_start, info.winy_start);
 }

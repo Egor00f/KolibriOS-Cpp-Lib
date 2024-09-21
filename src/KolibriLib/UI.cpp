@@ -65,8 +65,6 @@ void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 
 Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
-	PrintDebug("GetAbsoluteSize\n");
-
 	if (Parent != nullptr)
 	{
 		return _size.GetAbsolute(Parent->GetAbsoluteSize());
@@ -79,11 +77,16 @@ Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 
 Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 {
-	PrintDebug("GetAbsoluteCoord\n");
-
 	if (Parent != nullptr)
 	{
-		return _coord.GetAbsolute(Parent->GetAbsoluteCoord());
+		if(ParentIsWindow)
+		{
+			_coord.GetAbsolute(Parent->GetAbsoluteSize());
+		}
+		else
+		{
+			return (_coord.GetAbsolute(Parent->GetAbsoluteSize()) + Parent->GetAbsoluteCoord());
+		}
 	}
 	else
 	{
