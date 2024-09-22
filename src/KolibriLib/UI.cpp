@@ -81,10 +81,12 @@ Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 	{
 		if(ParentIsWindow)
 		{
+			PrintDebug("Parent Is Window\n");
 			_coord.GetAbsolute(Parent->GetAbsoluteSize());
 		}
 		else
 		{
+			PrintDebug("Parent Isn't Window\n");
 			return (_coord.GetAbsolute(Parent->GetAbsoluteSize()) + Parent->GetAbsoluteCoord());
 		}
 	}
@@ -169,6 +171,7 @@ void KolibriLib::UI::UIElement::WindowAsParent(const GuiObject *window) const
 	}
 
 	Parent = const_cast<GuiObject*>(window);
+	ParentIsWindow = true;
 }
 
 const GuiObject *KolibriLib::UI::UIElement::GetParent() const

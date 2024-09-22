@@ -235,7 +235,7 @@ namespace KolibriLib
 			/// @brief отображется ли элемент при отрисовке
 			bool Visible = true;
 
-			bool ParentIsWindow = false;
+			mutable bool ParentIsWindow = false;
 
 		private:
 			/// @brief Добавить

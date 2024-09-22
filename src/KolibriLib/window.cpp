@@ -51,6 +51,8 @@ KolibriLib::window::Window::Window(const std::string &Title, const Size &size, c
 	:	Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, Margin)
 		
 {
+	PrintDebug("Window constructor\n");
+
 	_coord = coord;
 	_size = size;
 
@@ -58,6 +60,7 @@ KolibriLib::window::Window::Window(const std::string &Title, const Size &size, c
 
 	if (Globals::DefaultButtonsIDController == nullptr)
 	{
+		PrintDebug("Set DefaultButtonsIDController\n");
 		Globals::DefaultButtonsIDController = &_buttonsController;
 	}
 

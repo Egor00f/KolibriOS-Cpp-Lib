@@ -1,8 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
 
-
-include(CMakeDetermineKOS32Compiler)
-include(CMakeTestKOS32Compiler)
 include(kolibriexe)
 
 add_kolibri_executable(KolibriLib-point-test point_test.cpp)

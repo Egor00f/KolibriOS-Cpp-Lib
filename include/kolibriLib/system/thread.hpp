@@ -27,7 +27,7 @@ namespace KolibriLib
     {
         /// @brief Слот окна
         /// @details Слоты нумеруются с 1.
-        using Slot = std::uint16_t;
+        using Slot = std::int16_t;
 
         /// @brief ID процесса
         using PID = int;
@@ -198,6 +198,7 @@ namespace KolibriLib
         ThreadInfo GetThreadInfo(const Slot &thread = ThisThread);
 
         /// @brief Получить PID текущего процесса(тот в котором была вызваенна эта функция)
+        /// @details Обычно бесполезно ведь вы можете использовать ThisThread
         /// @return PID текщего процесса
         inline PID GetThisThreadPID()
         {
@@ -208,13 +209,13 @@ namespace KolibriLib
         /// @param thread слот потока
         /// @return указатель информация о потоке
         /// @details по умолчанию возвращается информация о текущем потоке
-        /// @note Не забудьте освободить память!
+        /// @note Не забудьте delete!
         ThreadInfo *GetPointerThreadInfo(const Slot &thread = ThisThread);
 
         /// @brief Получить слот потока
         /// @param pid поток, по умолчанию поток который вызывает эту функцию
         /// @return Слот потока pid
-        inline Slot GetThreadSlot(const PID& pid)
+        inline Slot GetThreadSlot(PID pid)
         {
             return _ksys_get_thread_slot(pid);
         }

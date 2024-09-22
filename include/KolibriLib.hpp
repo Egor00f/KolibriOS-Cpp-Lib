@@ -26,8 +26,6 @@ namespace KolibriLib
 
 	using KolibriLib::window::Window;
 
-	using filesystem::Path;
-
 	using KolibriLib::OS::Event;
 	using KolibriLib::OS::GetSystemColors;
 	using KolibriLib::OS::Exec;

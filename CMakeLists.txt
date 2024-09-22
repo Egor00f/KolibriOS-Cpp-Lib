@@ -101,24 +101,6 @@ SET(SOURCES
 	${SRC_PATH}/clipboard.cpp
 	${SRC_PATH}/time.cpp
 	${SRC_PATH}/ProgressBar.cpp
-	${KolibriLib_INCLUDE_PATH}/KolibriLib.hpp
-	${KolibriLib_INCLUDE_PATH}/KolibriLibUI.hpp
-	${HEADERS_PATH}/types.hpp
-	${HEADERS_PATH}/debug.hpp
-	${HEADERS_PATH}/color.hpp
-	${HEADERS_PATH}/OpenDialog.hpp
-	${HEADERS_PATH}/system/os.hpp
-	${HEADERS_PATH}/system/thread.hpp
-	${HEADERS_PATH}/system/filesystem/filesystem.hpp
-	${HEADERS_PATH}/UI/UI.hpp
-	${HEADERS_PATH}/UI/checkbox.hpp
-	${HEADERS_PATH}/UI/buttons/button.hpp
-	${HEADERS_PATH}/UI/buttons/buttonsBase.hpp
-	${HEADERS_PATH}/UI/buttons/TextButton.hpp
-	${HEADERS_PATH}/UI/buttons/ImageButton.hpp
-	${HEADERS_PATH}/window/window.hpp
-	${HEADERS_PATH}/window/windowBase.hpp
-	${HEADERS_PATH}/window/windowAttached.hpp
 )
 
 #LOADERS THAT LOAD SHARED C_LAYER LIBS
@@ -127,10 +109,6 @@ ADD_LIBRARY(C_LAYER_LOADERS OBJECT
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
 	${C_Layer_SRC_PATH}/loadproclib.asm
-	${C_LAYER_HEADERS}/kolibri_buf2d.h
-	${C_LAYER_HEADERS}/kolibri_libimg.h
-	${C_LAYER_HEADERS}/kolibri_rasterworks.h
-	${C_LAYER_HEADERS}/kolibri_opendialog.h
 )
 
 target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
@@ -141,6 +119,9 @@ ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT
 	${SRC_PATH}/C_Layer/kolibri_libimg.c
 	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
 	${SRC_PATH}/C_Layer/rasterworks.cpp
+	${SRC_PATH}/C_Layer/buf2d.cpp
+	${SRC_PATH}/C_Layer/libimg.cpp
+	${SRC_PATH}/C_Layer/opendialog.cpp
 )
 
 target_include_directories(C_LAYER_KOLIBRILIB 
@@ -148,9 +129,9 @@ target_include_directories(C_LAYER_KOLIBRILIB
 	PUBLIC ${LIBC_DIR}/include
 )
 target_compile_options(C_LAYER_KOLIBRILIB
-	PRIVATE -c -D__MakeStaticLib__	
+	PRIVATE -D__MakeStaticLib__	
+	PUBLIC -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32
 )
-
 
 ADD_LIBRARY(KOLIBRILIB_FILESYSTEM OBJECT 
 	${SRC_PATH}/filesystem/filesystem.cpp
@@ -162,7 +143,7 @@ target_include_directories(KOLIBRILIB_FILESYSTEM
 	PUBLIC ${LIBC_DIR}/include
 )
 target_compile_options(KOLIBRILIB_FILESYSTEM
-	PRIVATE -c -D__MakeStaticLib__	
+	PRIVATE -D__MakeStaticLib__	
 )
 
 
@@ -175,7 +156,7 @@ target_link_libraries(KolibriLib
 )
 
 target_compile_options(KolibriLib 
-	PRIVATE -c -D__MakeStaticLib__
+	PRIVATE -D__MakeStaticLib__
 )
 
 target_include_directories(KolibriLib
@@ -183,6 +164,7 @@ target_include_directories(KolibriLib
 	PUBLIC ${LIBSTDCPP_DIR}/include
 	PUBLIC ${KOLIBRIOS_REPO}/contrib/sdk/sources/freetype/include
 )
+
 
 # INCLUDE MACROSS FOR GENERATE DOXYGEN
 include(Doxygen)

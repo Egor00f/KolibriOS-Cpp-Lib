@@ -94,13 +94,20 @@ namespace KolibriLib
 				color._a |= scale;
 				color._a |= (true << 6);
 				asm_inline(
-					"int $0x40" ::"a"(4),
+					"int $0x40" 
+					::
+					"a"(4),
 					"b"(coord.operator ksys_pos_t()),
 					"c"(color.val),
 					"d"(text.c_str()),
 					"S"(text.length()),
 					"D"(BackgroundColor.val));
 			}
+
+			/*inline void DrawText(const Coord& coord,)
+			{
+
+			}*/
 		}
 	}
 }

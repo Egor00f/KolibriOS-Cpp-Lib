@@ -7,6 +7,9 @@
 extern "C"
 {
 #endif
+/// @brief инициализировать libini
+/// @param  
+/// @return 
 extern int kolibri_libini_init(void);
 
 extern uint32_t (*LIBINI_enum_sections)(const char*, void*) __attribute__((__stdcall__));

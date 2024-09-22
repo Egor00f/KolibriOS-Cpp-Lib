@@ -88,7 +88,8 @@ namespace KolibriLib
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль окна
-		/// @note Положение и размеры окна устанавливаются при первом вызове этой функции и игнорируются при последующих; для изменения положения и/или размеров уже созданного окна используйт ChangeWindow
+		/// @details при size == {0,0} размер окна будет развен размеру экрана
+		/// @note Положение и размеры окна устанавливаются при первом вызове этой функции и игнорируются при последующих; для изменения положения и/или размеров уже созданного окна используйте ChangeWindow
 		/// @note Окно должно умещаться на экране. Если переданные координаты и размеры не удовлетворяют этому условию, то соответствующая координата (или, возможно, обе) считается нулем, а если и это не помогает, то соответствующий размер (или, возможно, оба) устанавливается в размер экрана
 		inline void CreateWindow(const Coord &coord,
 								 const Size &size,
@@ -98,6 +99,7 @@ namespace KolibriLib
 								 WindowStyle style = WindowStyle::withSkin,
 								 std::uint16_t settings = WindowSettings::WindowHaveTitle | WindowSettings::RelativeCoord)
 		{
+			PrintDebug("Define Window\n");
 			asm_inline(
 				"int $0x40" 
 				::
@@ -173,7 +175,7 @@ namespace KolibriLib
 		/// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
 		inline Coord GetWindowCoord(Thread::PID pid = Thread::ThisThread)
 		{
-			auto inf = Thread::GetThreadInfo(pid);
+			auto inf = Thread::GetThreadInfo(Thread::GetThreadSlot(pid));
 
 			return {inf.winx_start, inf.winy_start};
 		}
@@ -244,4 +246,4 @@ namespace KolibriLib
 
 } // namespace KolibriLib
 
-#endif // __WINDOWBASE_H__
+#endif // __WINDOWBASE_HPP__

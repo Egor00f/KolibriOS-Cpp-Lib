@@ -7,21 +7,14 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/globals.hpp>
 
-#ifndef __MakeStaticLib__
-
 class rasterwoksLib
 {
 public:
-	rasterwoksLib()
-	{
-		if (kolibri_rasterworks_init() == -1)
-			throw;
-	}
+	rasterwoksLib();
 };
 
-rasterwoksLib rasterworksLibv;
+extern rasterwoksLib rasterworksLibv;
 
-#endif
 
 /// @brief Оболочка для Сишной версии
 /// @param canvas буффер, на котром будем рисовать
@@ -61,4 +54,4 @@ inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, 
 /// @param encoding
 void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor = KolibriLib::Globals::SystemColors.work_text, const KolibriLib::Colors::Color &BackgroundColor = KolibriLib::Globals::SystemColors.work_area, const std::uint8_t &flags = 0, const std::uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8);
 
-#endif // __RASTERWORKS_H__
+#endif // __RASTERWORKS_HPP__

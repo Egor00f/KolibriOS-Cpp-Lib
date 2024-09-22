@@ -172,8 +172,8 @@ bool UDim::Axis::operator!=(const UDim::Axis &axis) const
 
 point KolibriLib::UDim::GetAbsolute(const point &Parent) const
 {
-	return { static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset,
-	         static_cast<int>(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset };
+	return point( static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset,
+	              static_cast<int>(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset );
 }
 
 bool KolibriLib::UDim::operator==(const UDim &obj) const
