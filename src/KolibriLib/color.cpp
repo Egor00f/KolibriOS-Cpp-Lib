@@ -212,6 +212,18 @@ void KolibriLib::PrintDebug(Colors::Color out)
 	DebugOut(buff);
 }
 
+KolibriLib::Colors::ColorsTable::ColorsTable(Color frameArea, Color grabBar, Color grabBarButton, Color grabText, Color workArea, Color workButton, Color workButtonText, Color workText, Color workGraph)
+{
+	frame_area = frameArea;
+	grab_bar = grabBar;
+	grab_bar_button = grabBarButton;
+	grab_text = grabText; 
+	work_area = workArea;
+	work_button = workButton;
+	work_button_text = workButtonText;
+	work_text = workText;
+	work_graph = workGraph;
+}
 
 void KolibriLib::PrintDebug(Colors::ColorsTable out)
 {
@@ -222,7 +234,7 @@ void KolibriLib::PrintDebug(Colors::ColorsTable out)
 
     for (uint8_t i = 0; i < sizeof(Colors::ColorsTable) / sizeof(Colors::Color); i++)
     {
-        PrintDebug((Colors::Color)pointer[i]);
+        PrintDebug(static_cast<Colors::Color>(pointer[i]));
         PrintDebug('\n');
     }
 

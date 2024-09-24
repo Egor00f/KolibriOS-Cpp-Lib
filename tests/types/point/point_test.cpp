@@ -26,5 +26,9 @@ int main()
 		assert(a == p);
 	}
 
+
+
+	KolibriLib::PrintDebug("test point_test is OK\n");
+
 	return 0;
 }

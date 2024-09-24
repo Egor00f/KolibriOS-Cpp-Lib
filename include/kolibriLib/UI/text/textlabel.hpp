@@ -1,5 +1,5 @@
-#ifndef __TEXT_LABEL_H__
-#define __TEXT_LABEL_H__
+#ifndef __TEXT_LABEL_HPP__
+#define __TEXT_LABEL_HPP__
 
 
 #include <sys/ksys.h>

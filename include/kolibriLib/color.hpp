@@ -101,11 +101,41 @@ namespace KolibriLib
         /// @return получившийся в итоге цвет
         Color BlendColors(const Color &a, const Color &b, float k = 0.5f);
 
-        /// @brief Таблица цветов по умолчанию
-        const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         /// @brief Таблица системных цветов
-        using ColorsTable = ksys_colors_table_t;
+        struct ColorsTable : public ksys_colors_table_t
+        {
+            ColorsTable() = default;
+            ColorsTable(const ColorsTable&) = default;
+            ColorsTable(ColorsTable&&) = default;
+
+            /// @brief Конструктор
+            /// @param frameArea 
+            /// @param grabBar 
+            /// @param grabBarButton 
+            /// @param grabText 
+            /// @param workArea 
+            /// @param workButton 
+            /// @param workButtonText 
+            /// @param workText 
+            /// @param workGraph 
+            ColorsTable (
+                Color frameArea,
+                Color grabBar,
+                Color grabBarButton,
+                Color grabText,
+                Color workArea,
+                Color workButton,
+                Color workButtonText,
+                Color workText,
+                Color workGraph
+            );
+
+            ColorsTable& operator=(const ColorsTable&) = default;
+        };
+
+        /// @brief Таблица цветов по умолчанию
+        const ColorsTable DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     }
 
     void PrintDebug(Colors::Color out);

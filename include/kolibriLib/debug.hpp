@@ -6,15 +6,7 @@
 
 namespace KolibriLib
 {
-	inline void DebugOut(const char* out)
-	{
-		#ifdef DEBUG
-		_ksys_debug_puts(out);
-
-		// Тут ваш вывод, например запись в файл
-
-		#endif
-	}
+	void DebugOut(const char* out);
 
 	void PrintDebug(bool out);
 
@@ -28,9 +20,7 @@ namespace KolibriLib
 
 	void PrintDebug(float out);
 
-	
-
 } // namespace KolibriLib
 
 
-#endif // __DEBUG_H__
+#endif // __DEBUG_HPP__

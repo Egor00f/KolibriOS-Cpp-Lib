@@ -6,7 +6,7 @@
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/constants.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/system/filesystem/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <string>
 
 #include <C_Layer/buf2d.hpp>

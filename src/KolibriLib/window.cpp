@@ -135,17 +135,19 @@ void Window::EndRedraw() const
 
 UDim KolibriLib::window::Window::GetCoord() const
 {
-	return window::GetWindowCoord();
+	return UDim(_coord);
 }
 
-inline void Window::SetCoord(const UDim &NewCoord)
+void Window::SetCoord(const UDim &NewCoord)
 {
-	window::ChangeWindow(NewCoord.GetAbsolute(GetScreenSize()), GetAbsoluteSize());
+	_coord = NewCoord.GetAbsolute(GetScreenSize());
+	window::ChangeWindow(_coord, GetAbsoluteSize());
 }
 
-inline void Window::SetSize(const Size &NewSize)
+void Window::SetSize(const Size &NewSize)
 {
 	window::ChangeWindow(GetAbsoluteCoord(), NewSize);
+	_size = NewSize;
 }
 
 inline void Window::SetCoord(const Coord &NewCoord)
@@ -160,18 +162,26 @@ inline void Window::SetSize(const UDim &NewSize)
 
 inline Coord Window::GetAbsoluteCoord() const
 {
-	if(_lastEvent != OS::Event::Redraw)
-		return _coord;
-	else
-		return window::GetWindowCoord();
+	if(_lastEvent == OS::Event::Redraw) // Если было событие перерисовки. значит возможно размер окна изменился
+		Update();
+	
+	PrintDebug("GetWindowAbsoluteCoord: ");
+	PrintDebug(_coord);
+	PrintDebug("\n");
+
+	return _coord;
 }
 
 inline Size Window::GetAbsoluteSize() const
 {
-	if(_lastEvent != OS::Event::Redraw)
-		return _size;
-	else
-		return window::GetWindowSize();
+	if (_lastEvent == OS::Event::Redraw) // Если было событие перерисовки. значит возможно размер окна изменился
+		Update();
+
+	PrintDebug("GetWindowAbsoluteSize: ");
+	PrintDebug(_size);
+	PrintDebug("\n");
+
+	return _size;
 }
 
 void Window::ChangeWindow(const Coord &coord, const Size &size)
@@ -276,7 +286,7 @@ OS::Event Window::Handler()
 		{
 			Coord m = mouse::GetMousePositionInWindow();
 
-			if (m.x < GetSize().GetAbsolute().x && m.y < static_cast<int>(window::GetSkinHeight()))
+			if (m.x < GetAbsoluteSize().x && m.y < static_cast<int>(window::GetSkinHeight()))
 			{
 			}
 		}
@@ -367,10 +377,15 @@ void KolibriLib::window::Window::AddElementNoCopy(UIElement *element)
 	_Elements.push_back(element);
 }
 
-void KolibriLib::window::Window::Update()
+void KolibriLib::window::Window::Update() const
 {
 	Thread::ThreadInfo info = Thread::GetThreadInfo();
 
-	_size = Size(info.winx_size, info.winy_size);
-	_coord = Coord(info.winx_start, info.winy_start);
+	_size = info.WindowSize;
+	_coord = info.WindowCoord;
+}
+
+OS::Event KolibriLib::window::Window_t::GetLastEvent() const
+{
+	return _lastEvent;
 }

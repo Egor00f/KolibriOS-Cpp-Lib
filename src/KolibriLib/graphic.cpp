@@ -1,4 +1,5 @@
 #include <kolibriLib/graphic/graphic.hpp>
+#include <kolibriLib/img.hpp>
 
 using namespace KolibriLib;
 using namespace graphic;

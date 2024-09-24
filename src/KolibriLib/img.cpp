@@ -249,7 +249,7 @@ Size img::GetSize() const
 
 void img::LoadImage(const filesystem::Path &Path)
 {
-	Image_t *buff = LoadImageFromFile(Path);
+	Image_t *buff = LoadImageFromFile(Path.c_str());
 
 	if (buff->Type != IMAGE_BPP24)
 	{

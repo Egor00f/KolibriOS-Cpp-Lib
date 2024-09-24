@@ -41,6 +41,8 @@ namespace KolibriLib
 
 			std::string GetTitle() const;
 
+			/// @brief Получить прошлый ивент
+			/// @return 
 			OS::Event GetLastEvent() const;
 
 		protected:
@@ -55,18 +57,21 @@ namespace KolibriLib
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
 
-			Coord _coord = DefaultWindowCoord;
+			/// @brief 
+			mutable Coord _coord = DefaultWindowCoord;
 
-			Size _size = DefaultWindowSize;
+			mutable Size _size = DefaultWindowSize;
 
 			/// @brief Последняя нажатая кнопка
 			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
 
+			/// @brief 
 			OS::Event _lastEvent;
 
 			/// @brief Стиль окна
 			WindowStyle _style = WindowStyle::withSkin;
 
+			/// @brief 
 			std::uint16_t _settings = WindowSettings::WindowHaveTitle;
 
 			/// @brief Прозрачность окна
@@ -208,7 +213,8 @@ namespace KolibriLib
 
 			void SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) override;
 
-			void Update();
+			/// @brief Обновить
+			void Update() const;
 		};
 
 		//=============================================================================================================================================================
@@ -229,7 +235,7 @@ namespace KolibriLib
 
 			p->SetButtonIDController(&_buttonsController);
 
-			_Elements.push_back((UIElement*)p);
+			_Elements.push_back(static_cast<UIElement*>(p));
 
 
 			return p;

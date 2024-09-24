@@ -4,7 +4,7 @@
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/constants.hpp>
 #include <kolibriLib/img.hpp>
-#include <kolibriLib/system/filesystem/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/os.hpp>
 
@@ -50,4 +50,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __IMAGE_H__
+#endif // __IMAGE_HPP__

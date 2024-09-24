@@ -3,7 +3,7 @@
 
 #include <kolibriLib/window/window.hpp>
 #include <kolibriLib/graphic/screen.hpp>
-#include <kolibriLib/system/filesystem/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/childWindow.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/graphic/background.hpp>

@@ -38,5 +38,4 @@ namespace KolibriLib
 	
 } // namespace KolibriLib
 
-
-#endif // __UI_H__
+#endif // __UI_H_INCLUDE__

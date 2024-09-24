@@ -1,5 +1,5 @@
-#ifndef __TEXTBUTTON_H__
-#define __TEXTBUTTON_H__
+#ifndef __TEXTBUTTON_HPP__
+#define __TEXTBUTTON_HPP__
 
 #include "baseButton.hpp"
 #include <kolibriLib/UI/text/textlabel.hpp>
@@ -65,4 +65,4 @@ namespace KolibriLib
 	void PrintDebug(const UI::buttons::TextButton &out);
 }
 
-#endif // __TEXTBUTTON_H__
+#endif // __TEXTBUTTON_HPP__

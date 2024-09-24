@@ -14,6 +14,7 @@
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/globals.hpp>
 #include <input.hpp>
+#include "enums.hpp"
 
 namespace KolibriLib
 {
@@ -28,58 +29,6 @@ namespace KolibriLib
 		/// @brief Соординаты окна по умолчанию
 		const Coord DefaultWindowCoord = {100, 100};
 
-		/// @brief Список стилей для окна
-		enum class WindowStyle
-		{
-			/// @brief только определить область окна, ничего не рисовать
-			/// @details вид окна полность определяется приложением
-			NoDraw = 1,
-
-			/// @brief Окно со скином
-			withSkin = 3,
-
-			/// @brief Окно со скином фиксированных размеров
-			FixSizewithSkin = 4,
-		};
-
-		/// @brief Настройки для окна. битовые флаги
-		enum WindowSettings
-		{
-			/// @brief у окна есть заголовок
-			WindowHaveTitle = 1,
-
-			/// @brief Координаты крафических приметивов относительно окна
-			RelativeCoord = 2,
-
-			/// @brief Не закрашивать рабочую область при отрисовке окна
-			NoDrawWorkspace = 4,
-
-			/// @brief Градиентная заливка рабочей области
-			/// @details по умолчанию нормальная заливка
-			GradientDraw = 8,
-
-			/// @brief неперемещаемое окно
-			/// @details работает для всех стилей окон
-			NotMoveable = (1 << 8),
-
-			TitleGradient = (8 << (8 + 4))
-		};
-
-		/// @brief Список констант положения окна относительно других окон:
-		enum class Pos : std::int16_t
-		{
-			/// @brief На фоне
-			BackGround = -2,
-
-			/// @brief всегда за другими окнами
-			AlwaysBack = -1,
-
-			/// @brief обчное
-			Normal = 0,
-
-			/// @brief Всегда поверх остальных окон
-			AlwaysTop = 1
-		};
 
 		/// @brief Объявить окно
 		/// @param coord Координаты окна(его левого верхнего угола) на экране
@@ -124,8 +73,7 @@ namespace KolibriLib
 		/// @return Размер окна
 		inline Size GetWindowSize(Thread::PID pid = Thread::ThisThread)
 		{
-			auto inf = Thread::GetThreadInfo(pid);
-			return {inf.winx_size, inf.winy_size};
+			return Thread::GetThreadInfo(pid).WindowSize;
 		}
 
 		/// @brief Поставить фокус на окно
@@ -175,9 +123,7 @@ namespace KolibriLib
 		/// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
 		inline Coord GetWindowCoord(Thread::PID pid = Thread::ThisThread)
 		{
-			auto inf = Thread::GetThreadInfo(Thread::GetThreadSlot(pid));
-
-			return {inf.winx_start, inf.winy_start};
+			return Thread::GetThreadInfo(Thread::GetThreadSlot(pid)).WindowSize;
 		}
 
 		/// @brief Получить положение окна относительно других окон

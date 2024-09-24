@@ -2,8 +2,9 @@
 #define __THREAD_HPP__
 
 #include <include_ksys.h>
-#include <kolibriLib/debug.hpp>
 #include <kolibriLib/input/keyboard.hpp>
+#include <kolibriLib/types.hpp>
+#include <kolibriLib/window/enums.hpp>
 #include <type_traits>
 
 namespace KolibriLib
@@ -33,7 +34,7 @@ namespace KolibriLib
         using PID = int;
 
         /// @brief Информация о потоке
-        union ThreadInfo
+        struct ThreadInfo
         {
             enum class SlotState : std::uint16_t
             {
@@ -73,75 +74,64 @@ namespace KolibriLib
                 CollapsedToTitle = 4
             };
 
-            struct
-            {
-                /// @brief Использование Процессора
-                uint32_t cpu_usage;
-
-                /// @brief Позиция окна в оконном стеке
-                uint16_t pos_in_window_stack;
-
-                /// @brief Слот окна
-                Slot slot_num_window_stack;
-
-                /// @brief Зарезервированно
-                uint16_t __reserved1;
-
-                /// @brief имя процесса
-                /// @details имя запущенного файла - исполняемый файл без расширения
-                char name[12];
-
-                /// @brief адрес процесса в памяти
-                uint32_t memstart;
-
-                /// @brief размер используемой памяти 
-                uint32_t memused;
-                
-                /// @brief идентификатор (PID/TID)
-                PID pid;
-
-                /// @brief Координата окна потока по оси x
-                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
-                int winx_start;
-
-                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
-                int winy_start;
-
-                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
-                int winx_size;
-
-                /// @note Если поток еще не определил свое окно вызовом функции 0, то положение и размеры этого окна полагаются нулями
-                int winy_size;
-
-                SlotState slot_state;           // thread slot state
-                uint16_t __reserved2;           // reserved
-                
-                /// @brief координата начала клиентской областипо оси x 
-                int clientx;
-
-                /// @brief координата начала клиентской областипо оси y
-                int clienty;
-
-                /// @brief ширина клиентской области
-                int clientwidth;
-
-                /// @brief Длинна клиентской области
-                int clientheight;
-
-                /// @brief Состояние окна
-                WindowStatus window_state;
-                uint8_t event_mask;             // event mask
-
-                /// @brief Режим ввода клавиатуры
-                keyboard::InputMode key_input_mode;
-            };
-
-            uint8_t __reserved3[KSYS_THREAD_INFO_SIZE];
+            /// @brief Конструктор
+            /// @param t 
+            ThreadInfo(const ksys_thread_t& t);
 
             ThreadInfo& operator=(const ThreadInfo&) = default;
 
             /// @brief 
+            /// @warning недоделан
             operator ksys_thread_t() const;
+
+            // поля
+
+            /// @brief имя процесса
+            /// @details имя запущенного файла - исполняемый файл без расширения
+            char name[12];
+
+            /// @brief Координаты окна
+            Coord WindowCoord;
+
+            /// @brief Размер окна
+            Size WindowSize;
+
+            /// @brief Размер
+            Coord ClientCoord;
+
+            Size ClientSize;
+
+            /// @brief Использование Процессора
+            /// @details тактов процессора
+            uint32_t cpu_usage;
+
+            /// @brief Слот окна
+            Slot num_window_stack;
+
+            /// @brief адрес процесса в памяти
+            uint32_t memstart;
+
+            /// @brief размер используемой памяти
+            uint32_t memused;
+
+            /// @brief идентификатор (PID/TID)
+            PID pid;
+
+            /// @brief 
+            SlotState slot_state;
+
+            /// @brief Позиция окна в оконном стеке
+            window::Pos pos_in_window_stack;
+
+            /// @brief Состояние окна
+            /// @note Битовое поле
+            std::uint8_t window_state;
+
+            /// @brief маска ивентов
+            uint8_t event_mask;
+
+            /// @brief Режим ввода клавиатуры
+            keyboard::InputMode key_input_mode;
         };
 
         /// @brief Значение PID текущего процесса.
@@ -153,7 +143,7 @@ namespace KolibriLib
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
         /// @note есть немалый шанс проебаться с размером стека
-        PID CreateThread_(void *ThreadEntry, std::size_t ThreadStackSize = 4096);
+        PID CreateThread_(void *ThreadEntry, std::size_t ThreadStackSize = 8192);
 
         template <class T>
         /// \brief Создать поток
@@ -161,10 +151,9 @@ namespace KolibriLib
         /// @param ThreadStackSize Размер стека нового потока в байтах
         /// \return ID потока
         /// @note есть шанс проебаться с размером стека
-        /// @note Пихать сюда ТОЛЬКО указатели на функции, иначе ваще хз че поизойдёт
-        inline PID CreateThread(T ThreadEntry, std::size_t ThreadStackSize = 4096)
+        inline PID CreateThread(T ThreadEntry, std::size_t ThreadStackSize = 8192)
         {
-            static_assert(::std::is_pointer<T>::value, "Only pointers to function!");
+            static_assert(::std::is_pointer<T>::value, "Only pointers!");
             return CreateThread_(reinterpret_cast<void*>(ThreadEntry), ThreadStackSize);
         }
 
@@ -197,6 +186,17 @@ namespace KolibriLib
         /// @details по умолчанию возвращается информация о текущем потоке
         ThreadInfo GetThreadInfo(const Slot &thread = ThisThread);
 
+        /// @brief Поличть информацию о потоке
+        /// @param thread слот потока
+        /// @return информация о потоке
+        /// @details по умолчанию возвращается информация о текущем потоке
+        ThreadInfo GetThreadInfo(const Slot &thread, int &ec);
+
+        /// @brief Поличть информацию о потоке
+        /// @param info Ссылка на структуру для данных
+        /// @param thread слот потока
+        void GetThreadInfo(ThreadInfo &info, Slot thread = ThisThread);
+
         /// @brief Получить PID текущего процесса(тот в котором была вызваенна эта функция)
         /// @details Обычно бесполезно ведь вы можете использовать ThisThread
         /// @return PID текщего процесса
@@ -204,13 +204,6 @@ namespace KolibriLib
         {
             return GetThreadInfo().pid;
         }
-
-        /// @brief Поличть указатель информацию о потоке
-        /// @param thread слот потока
-        /// @return указатель информация о потоке
-        /// @details по умолчанию возвращается информация о текущем потоке
-        /// @note Не забудьте delete!
-        ThreadInfo *GetPointerThreadInfo(const Slot &thread = ThisThread);
 
         /// @brief Получить слот потока
         /// @param pid поток, по умолчанию поток который вызывает эту функцию
@@ -224,7 +217,7 @@ namespace KolibriLib
         /// @return Слот потока pid
         inline Slot GetThreadSlot()
         {
-            return GetThreadInfo().slot_num_window_stack;
+            return GetThreadInfo().num_window_stack;
         }
 
         /// @brief Кривой всратый и тупящий мьютекс, который существует только потому что я не разобрался в фьютексах
@@ -257,4 +250,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __THREAD_H__
+#endif // __THREAD_HPP__

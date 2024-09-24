@@ -3,7 +3,7 @@
 
 #include <kolibriLib/color.hpp>
 #include "thread.hpp"
-#include <kolibriLib/system/filesystem/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 
 #include <vector>
 
@@ -73,6 +73,88 @@ namespace KolibriLib
 			CMOS = 2
 		};
 
+		/// @brief Битовые флаги для маски ивентов
+		enum Mask
+		{
+			RedrawEvent = KSYS_EVM_REDRAW,
+			KeyEvent = KSYS_EVM_KEY,
+			ButtonEvent = KSYS_EVM_BUTTON,
+			MouseEvent = KSYS_EVM_MOUSE,
+			DescktopEvent = KSYS_EVM_BACKGROUND,
+
+			/// @brief неактивное окно получает события от мыши
+			MouseEventInInactiveWindow = KSYS_EVM_MOUSE_FILTER,
+
+			/// @brief если курсор за пределами окна
+			MouseCursorInWindow = KSYS_EVM_CURSOR_FILTER,
+
+			AllMouseEvents = (MouseEvent || MouseEventInInactiveWindow || MouseCursorInWindow),
+
+			/// @brief маска по умолчанию
+			/// @details разрешены ивенты перерисовки, клавиатуры и кнопок
+			DefaultEventMask = 0b111
+		};
+
+		/// @brief Иконки в сообщениях
+		/// @image notify.orig.png
+		enum class notifyIcon : char
+		{
+			/// @brief
+			///
+			Application = 'A',
+			Error = 'E',
+			Warning = 'W',
+			Ok = 'O',
+			Network = 'N',
+			Info = 'I',
+			Folder = 'F',
+			Component = 'C',
+			Mail = 'M',
+			Download = 'D',
+			Sound = 'S'
+		};
+
+		/// @brief Ключи для уведомлений
+		enum class notifyKey : char
+		{
+			/// @brief Ключа нет
+			NotSet,
+
+			/// @brief не закрывать автоматически
+			NoAutoClose = 'd',
+
+			/// @brief не закрываеть по клику
+			NoClose = 'c',
+
+			/// @brief Есть заголовок
+			Title = 't',
+
+			ProgressBar = 'p'
+		};
+
+		/// @brief Версия ядра
+		struct CoreVersion
+		{
+			union
+			{
+				/// @brief Версия
+				std::uint32_t version;
+				struct
+				{
+					std::uint8_t a;
+					std::uint8_t b;
+					std::uint8_t c;
+					std::uint8_t d;
+				};
+			};
+
+			/// @brief Ревизия
+			std::uint16_t Rev;
+
+			CoreVersion& operator=(const CoreVersion&) = default;
+		};
+		
+
 		/// @brief Получить системные цвета
 		/// @return Таблица системных цветов
 		inline Colors::ColorsTable GetSystemColors()
@@ -116,28 +198,6 @@ namespace KolibriLib
 			return static_cast<Event>(_ksys_check_event());
 		}
 
-		/// @brief Битовые флаги для маски ивентов
-		enum Mask
-		{
-			RedrawEvent = KSYS_EVM_REDRAW,
-			KeyEvent = KSYS_EVM_KEY,
-			ButtonEvent = KSYS_EVM_BUTTON,
-			MouseEvent = KSYS_EVM_MOUSE,
-			DescktopEvent = KSYS_EVM_BACKGROUND,
-
-			/// @brief неактивное окно получает события от мыши
-			MouseEventInInactiveWindow = KSYS_EVM_MOUSE_FILTER,
-
-			/// @brief если курсор за пределами окна
-			MouseCursorInWindow = KSYS_EVM_CURSOR_FILTER,
-
-			AllMouseEvents = (MouseEvent || MouseEventInInactiveWindow || MouseCursorInWindow),
-
-			/// @brief маска по умолчанию
-			/// @details разрешены ивенты перерисовки, клавиатуры и кнопок
-			DefaultEventMask = 0b111
-		};
-
 		/// @brief Изменить маску ивентов
 		/// @param mask маска
 		/// @return прошлая маска
@@ -162,6 +222,8 @@ namespace KolibriLib
 		/// \return PID запущенной программы
 		/// @return -1 если произошла ошибка
 		Thread::PID Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug = false);
+
+		Thread::PID Exec(const filesystem::Path &AppName, const std::string &args, bool debug = false);
 
 		/// @brief Установить системную  время
 		/// @param NewTime Время что будет установленно
@@ -280,43 +342,6 @@ namespace KolibriLib
 			);
 		}
 
-		/// @brief Иконки в сообщениях
-		/// @image notify.orig.png
-		typedef enum 
-		{
-			/// @brief 
-			///
-			Application = 'A',
-			Error = 'E',
-			Warning = 'W',
-			Ok = 'O',
-			Network = 'N',
-			Info = 'I',
-			Folder = 'F',
-			Component = 'C',
-			Mail = 'M',
-			Download = 'D',
-			Sound = 'S'
-		} notifyIcon;
-
-		/// @brief Ключи для уведомлений
-		typedef enum
-		{
-			/// @brief Ключа нет
-			NotSet,
-
-			/// @brief не закрывать автоматически
-			NoAutoClose = 'd',
-			
-			/// @brief не закрываеть по клику
-			NoClose = 'c',
-
-			/// @brief Есть заголовок
-			Title = 't',
-
-			ProgressBar = 'p'
-		} notifyKey;
-
 		/// @brief Уведмление
 		/// @param Title Заголовок, может быть пустым если заголовок не нужен
 		/// @param Text текст после заголовка
@@ -335,43 +360,10 @@ namespace KolibriLib
 			_ksys_exec("/sys/@notify", const_cast<char*>(a.c_str()), false);
 		}
 
-		/// @brief Версия ядра
-		struct CoreVersion
-		{
-			union
-			{
-				/// @brief Версия
-				uint32_t version;
-				struct
-				{
-					uint8_t a;
-					uint8_t b;
-					uint8_t c;
-					uint8_t d;
-				};
-			};
-
-			/// @brief Зарезервированно
-			uint8_t reserved;
-
-			/// @brief Ревизия
-			uint16_t Rev;
-		};
 
 		/// @brief Получить версию ядра
 		/// @return Указатель на структуру версии ядра
-		inline CoreVersion* GetCoreVersion()
-		{
-			CoreVersion* p = new CoreVersion;
-
-			asm_inline (
-				"int $0x40"
-				:"=a"(p)
-				:"a"(18), "b"(13)
-			);
-
-			return p;
-		}
+		CoreVersion GetCoreVersion();
 
 		/// @brief Получить тактовую частоту процессора
 		/// @return тактовая частота (по модулю 2^32 тактов = 4ГГц)
