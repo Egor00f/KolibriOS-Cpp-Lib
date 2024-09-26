@@ -62,10 +62,9 @@ KolibriLib::Thread::ThreadInfo::ThreadInfo(const ksys_thread_t &t)
 		WindowCoord(t.winx_start, t.winy_start),
 		WindowSize(t.winx_size, t.winy_size),
 		ClientCoord(t.clientx, t.clienty),
-		ClientSize(t.clientwidth, t.clientheight)
+		ClientSize(t.clientwidth, t.clientheight),
+  name(t.name, 12)
 {
-	for(std::uint8_t i = 0; i < 12; i++)
-		name[i] = t.name[i];
 }
 
 KolibriLib::Thread::ThreadInfo::operator ksys_thread_t() const
