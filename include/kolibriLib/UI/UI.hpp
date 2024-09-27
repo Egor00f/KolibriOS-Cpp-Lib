@@ -188,7 +188,7 @@ namespace KolibriLib
 
 			/// @brief Получить список всех элементов, для которых этот является родительсим
 			/// @return указатель на вектор указателей
-			std::vector<UIElement*>* GetChildren();
+			std::vector<UIElement*>& GetChildren();
 
 			/// @brief Получить список всех элементов, для которых этот является родительсим
 			/// @details Более медленная версия(в сравнении с неконстантной), т.к. копирует вектор
@@ -230,12 +230,14 @@ namespace KolibriLib
 			/// @brief Элемент gui относительно которого просиходят расчёты относительного размера
 			mutable GuiObject* Parent = nullptr;
 
+			/// @brief Список элементов для которых этот элемент указан как Parent
 			mutable std::vector<UIElement*> _childs;
 
 			/// @brief отображется ли элемент при отрисовке
 			bool Visible = true;
 
-			bool ParentIsWindow = false;
+			/// @brief указатель на то что Parent указывает на окно
+			mutable bool ParentIsWindow = false;
 
 		private:
 			/// @brief Добавить

@@ -11,26 +11,37 @@ const char sz_com_area_name[]    = "FFFFFFFF_open_dialog";
 const char sz_dir_default_path[] = "/sys";
 const char sz_start_path[]       = "/sys/File managers/opendial";
 
-enum open_dialog_mode {
-    OPEN = 0,
-    SAVE = 1,
-    SELECT = 2
-};
+/// @brief режим окртытия диалога
+typedef enum open_dialog_mode
+{
+	/// @brief Открыть файл
+	OPEN = 0,
+
+	/// @brief Сохранить файл
+	SAVE = 1,
+
+	/// @brief Выбрать папку
+	SELECT = 2
+} open_dialog_mode;
 
 /// @brief Структура для фильтра расширений
 /// @details имеет непостоянный размер
 typedef struct __attribute__ ((__packed__)) {
 	
 	/// @brief Размер структуры в байтах
+
 	unsigned int size;
 
+	/// @brief конец фильра
+	/// @details должен быть 0
 	unsigned char end;
 } od_filter;
 
 
+/// @brief Структура
 typedef struct __attribute__ ((__packed__)) {
-    unsigned int mode;
-    char* procinfo;
+	open_dialog_mode mode;
+	char* procinfo;
     char* com_area_name;
     unsigned int com_area;
     char* opendir_path;
@@ -44,6 +55,8 @@ typedef struct __attribute__ ((__packed__)) {
     unsigned int status;
     char* openfile_path;
     char* filename_area;
+
+    /// @brief указатель на фильтр
     od_filter* filter_area;
     unsigned short x_size;
     unsigned short x_start;
@@ -58,39 +71,17 @@ void fake_on_redraw(void)
 {}
 #endif
 
-inline open_dialog* kolibri_new_open_dialog(unsigned int mode, unsigned short tlx, unsigned short tly, unsigned short x_size, unsigned short y_size)
-{
-    open_dialog *new_opendialog	= (open_dialog *) malloc(sizeof(open_dialog));
-    od_filter *new_od_filter	= (od_filter *) malloc(sizeof(od_filter));
-    char *plugin_path	= (char *) calloc(4096, sizeof(char));
-	char *openfile_path	= (char *) calloc(4096, sizeof(char));
-	char *proc_info	= (char *) calloc(1024, sizeof(char));
-	char *filename_area	= (char *) calloc(256, sizeof(char));
-
-	new_od_filter -> size = 0;
-	new_od_filter -> end = 0;
-
-	new_opendialog -> mode = mode;
-	new_opendialog -> procinfo = proc_info;
-	new_opendialog -> com_area_name =(char*) sz_com_area_name;
-	new_opendialog -> com_area = 0;
-	new_opendialog -> opendir_path = plugin_path;
-	new_opendialog -> dir_default_path =(char*)  sz_dir_default_path;
-	new_opendialog -> start_path = (char *)sz_start_path;
-	new_opendialog -> draw_window = &fake_on_redraw;
-	new_opendialog -> status = 0;
-	new_opendialog -> openfile_path = openfile_path;
-	new_opendialog -> filename_area = filename_area;
-	new_opendialog -> filter_area = new_od_filter;
-	new_opendialog -> x_size = x_size;
-	new_opendialog -> x_start = tlx;
-	new_opendialog -> y_size = y_size;
-	new_opendialog -> y_start = tly;
+/// @brief создать структуру
+/// @param mode режим
+/// @param tlx 
+/// @param tly 
+/// @param x_size 
+/// @param y_size 
+/// @return указатель на созданную структуру
+open_dialog* kolibri_new_open_dialog(unsigned int mode, unsigned short tlx, unsigned short tly, unsigned short x_size, unsigned short y_size);
 
 
-	return new_opendialog;
-}
-
+/// @brief инициализировать proclib
 extern void kolibri_proclib_init();
 
 extern void (*OpenDialog_init)(open_dialog *) __attribute__((__stdcall__));
@@ -101,4 +92,4 @@ extern void (*OpenDialog_start)(open_dialog *) __attribute__((__stdcall__));
 }
 #endif
 
-#endif /* KOLIBRI_OPENDIALOG_H */
+#endif // KOLIBRI_OPENDIALOG_H

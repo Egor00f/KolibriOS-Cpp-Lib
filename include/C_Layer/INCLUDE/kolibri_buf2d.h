@@ -259,10 +259,7 @@ buf2d_struct *buf2d_copy(const buf2d_struct* buff);
 /// @param p2 point 2
 /// @param p3 point 3
 /// @param color Color of curve
-inline void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, ksys_pos_t p3, ksys_color_t color)
-{
-	buf2d_curve_bezier_asm(buf, (p1.x << 16) + p1.y, (p2.x << 16) + p2.y, (p3.x << 16) + p3.y, color);
-}
+void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, ksys_pos_t p3, ksys_color_t color);
 
 /// @brief Конвертирует 32 битный буфер в 24 битный, координаты не учитываются
 /// @details Просто убиарет прозрачность

@@ -3,19 +3,12 @@
 
 #include <C_Layer/INCLUDE/kolibri_opendialog.h>
 
-#ifndef __MakeStaticLib__
-
 class proclibLib
 {
 public:
-	proclibLib()
-	{
-		kolibri_proclib_init();
-	}
+	proclibLib();
 };
 
-proclibLib proclibLibv;
-
-#endif
+extern proclibLib proclibLibv;
 
 #endif // __OPENDIALOG_HPP__

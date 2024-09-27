@@ -24,16 +24,18 @@
 #define AI_ADDRCONFIG  0x400
 
 #pragma pack(push, 1)
-struct ARP_entry{
-unsigned int IP;
-unsigned char MAC[6];
-unsigned short status;
-unsigned short TTL;
+struct ARP_entry
+{
+    unsigned int IP;
+    unsigned char MAC[6];
+    unsigned short status;
+    unsigned short TTL;
 };
 #pragma pack(pop)
 
 #pragma pack(push, 1)  
-struct addrinfo{
+struct addrinfo
+{
     int     ai_flags;
     int     ai_family;
     int     ai_socktype;

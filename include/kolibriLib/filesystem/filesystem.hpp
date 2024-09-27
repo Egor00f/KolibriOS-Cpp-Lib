@@ -49,11 +49,15 @@ namespace KolibriLib
                 /// @brief Длинна строки
                 std::size_t length() const;
 
-                operator const char*() const;
+                //operator const char*() const;
                 operator std::string() const;
+
+                const char* c_str() const noexcept;
+                const std::string& native() const noexcept;
                 
                 Path &operator / (const Path &a);
                 Path &operator / (const std::string &a);
+                Path& operator / (const char* a);
                 Path &operator + (const Path &a);
                 Path &operator + (const std::string &a);
                 Path &operator = (const Path &a) = default;

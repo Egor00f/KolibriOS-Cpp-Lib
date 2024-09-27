@@ -1,7 +1,7 @@
-#ifndef __BUTTONSBASE_H__
-#define __BUTTONSBASE_H__
+#ifndef __BUTTONSBASE_HPP__
+#define __BUTTONSBASE_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
@@ -28,9 +28,9 @@ namespace KolibriLib
 				/// @details ID кнопок могут быть только от 0 до 0x8000 (исключая сами числа)
 				bool CheckIsValid() const;
 
-				ButtonID operator = (const unsigned &val);
+				ButtonID operator=(const unsigned &val);
 
-				/// @brief 
+				/// @brief
 				operator uint32_t() const;
 			};
 
@@ -48,18 +48,18 @@ namespace KolibriLib
 			/// \brief Получить свободный номер id кнопки из списка
 			/// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
 			/// \return номер кнопки из списка ButtonsIdList
-			ButtonID GetFreeButtonId(std::vector<ButtonID>* ButtonsIdList, uint32_t startID = 2);
+			ButtonID GetFreeButtonId(std::vector<ButtonID> *ButtonsIdList, uint32_t startID = 2);
 
 			/// \brief Освободить номер кнопки
 			/// \param id номер номер кнопки из списка ButtonsIdList
-			bool FreeButtonId(const ButtonID &id, std::vector<ButtonID>* ButtonsIdList);
+			bool FreeButtonId(const ButtonID &id, std::vector<ButtonID> *ButtonsIdList);
 
 			/// \brief Создать кнопку, автоматически присвоить ей id
 			/// \param coords координаты
 			/// \param size размер
 			/// \param color цвет
 			/// \return id созданной кнопки
-			ButtonID autoDefineButton(std::vector<ButtonID>* ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
+			ButtonID autoDefineButton(std::vector<ButtonID> *ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
 
 			/// \brief Создать кнопку, вручную
 			/// \param coords координаты
@@ -68,7 +68,13 @@ namespace KolibriLib
 			/// \param color цвет
 			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
-				_ksys_define_button(coord.x, coord.y, size.x, size.y, id.operator uint32_t(), color.operator ksys_color_t());
+				_ksys_define_button(
+					static_cast<std::uint32_t>(coord.x),
+					static_cast<std::uint32_t>(coord.y),
+					static_cast<std::uint32_t>(size.x),
+					static_cast<std::uint32_t>(size.y),
+					static_cast<std::uint32_t>(id),
+					color.operator ksys_color_t());
 			}
 
 			/// \brief Создать кнопку, вручную
@@ -76,22 +82,22 @@ namespace KolibriLib
 			/// \param size размер
 			/// \param id idшник кнопки
 			/// \param color цвет
-			inline void DefineButton(std::vector<ButtonID>*ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
+			inline void DefineButton(std::vector<ButtonID> *ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
 				ButtonsIdList->push_back(id);
-				_ksys_define_button(coord.x, coord.y, size.x, size.y, id.operator uint32_t(), color.operator ksys_color_t());
+				DefineButton(coord, size, id, color);
 			}
 
 			/// \brief Удалить кнопу
 			/// \param id id удаляемой кнопки
-			inline void DeleteButton( unsigned id)
+			inline void DeleteButton(ButtonID id)
 			{
-				_ksys_delete_button(id);
+				_ksys_delete_button(static_cast<std::uint32_t>(id));
 			}
 
 			/// \brief Удалить кнопу
 			/// \param id id удаляемой кнопки
-			inline void DeleteButton(std::vector<ButtonID> *ButtonsIdList, unsigned id)
+			inline void DeleteButton(std::vector<ButtonID> *ButtonsIdList, ButtonID id)
 			{
 				_ksys_delete_button(id);
 				FreeButtonId(id, ButtonsIdList); // Кнопка удалена, теперь этот id не использется
@@ -110,46 +116,41 @@ namespace KolibriLib
 				flat = 0,
 
 				/// @brief Объёмные кнокпи
- 				volumetric = 1
+				volumetric = 1
 			} buttonStyle;
 
 			inline void SetButtonStyle(buttonStyle style)
 			{
 				asm_inline(
-					"int $0x40"
-					::"a"(48), "b"(1), "c"(style)
-				);
+					"int $0x40" ::"a"(48), "b"(1), "c"(style));
 			}
 
 			/// @brief Автоматическое присвоение ID для кнопок
 			/// @note Этот класс работает только с ID кнопок и ничего больше
 			class ButtonsIDController
 			{
-				public:
-					/// @brief Получить свободный ID кнопки из списка
-					/// @return ID
-					ButtonID GetFreeButtonID();
+			public:
+				/// @brief Получить свободный ID кнопки из списка
+				/// @return ID кнопки, который не занят
+				ButtonID GetFreeButtonID();
 
-					/// @brief Освободить ID
-					/// @param id 
-					void FreeButtonID(const ButtonID &id);
+				/// @brief Освободить ID
+				/// @param id ID который нужно освободить
+				void FreeButtonID(const ButtonID &id);
 
-					std::vector<ButtonID> *GetButtonsIDList();
+				std::vector<ButtonID> *GetButtonsIDList();
 
-					const std::vector<ButtonID> *GetButtonsIDList() const;
-					
-				private:
-					/// @brief Список использованных id кнопок
-					std::vector<ButtonID> ButtonsIdList {/*CloseButton,*/ MinimizeButton};
-					
-					uint32_t _top = 2;
+				const std::vector<ButtonID> *GetButtonsIDList() const;
+
+			private:
+				/// @brief Список использованных id кнопок
+				std::vector<ButtonID> ButtonsIdList{/*CloseButton,*/ MinimizeButton};
+
+				uint32_t _top = 2;
 			};
 
-			
-			
-
 		} // namespace buttons
-		
+
 	} // namespace UI
 
 	void PrintDebug(UI::buttons::ButtonID out);
@@ -160,5 +161,4 @@ namespace KolibriLib
 	}
 } // namespace KolibriLib
 
-
-#endif // __BUTTONSBASE_H__
+#endif // __BUTTONSBASE_HPP__

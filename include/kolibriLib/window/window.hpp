@@ -1,13 +1,10 @@
 #ifndef __WINDOW_HPP__
 #define __WINDOW_HPP__
 
-#include <include_ksys.h>
-
-#include <stdlib.h>
+#include <cstdlib>
 #include <string>
 #include <utility>
 #include <algorithm>
-#include <type_traits>
 
 
 #include <kolibriLib/types.hpp>
@@ -30,11 +27,27 @@ namespace KolibriLib
 		class Window_t: public UI::GuiObject
 		{
 		public:
-			Window_t(const std::string &Title = "Window", const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = UI::DefaultMargin);
+			Window_t(const std::string &Title, const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = UI::DefaultMargin);
+
+			Window_t(const std::string &Title, const Colors::ColorsTable &colors = Globals::SystemColors, WindowStyle style = WindowStyle::withSkin, WindowSettings WindowSettings = WindowSettings::RelativeCoord | WindowSettings::WindowHaveTitle);
+
+			void SetStyle(WindowStyle NewStyle);
+
+			WindowStyle GetStyle() const;
+
+			/// @brief 
+			/// @param NewSettgins 
+			void SetSettings(std::uint16_t NewSettgins);
+
+			std::string GetTitle() const;
+
+			/// @brief Получить прошлый ивент
+			/// @return 
+			OS::Event GetLastEvent() const;
 
 		protected:
 			/// @brief Заголовок окна
-			std::string _title;
+			std::string _title = "Default Window";
 
 			/// @brief Список всех кнопок этого окна
 			std::vector<UIElement*> _Elements;
@@ -44,20 +57,31 @@ namespace KolibriLib
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
 
+			/// @brief 
+			mutable Coord _coord = DefaultWindowCoord;
+
+			mutable Size _size = DefaultWindowSize;
+
 			/// @brief Последняя нажатая кнопка
 			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
 
+			/// @brief 
+			OS::Event _lastEvent;
+
 			/// @brief Стиль окна
-			uint8_t _style;
+			WindowStyle _style = WindowStyle::withSkin;
+
+			/// @brief 
+			WindowSettings _settings = WindowSettings::WindowHaveTitle;
 
 			/// @brief Прозрачность окна
-			uint8_t _Transparency;
+			uint8_t _Transparency = 0;
 			
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			mutable bool _Redraw = false;
 
 			/// @brief Окно пересовывается при перетаскивании
-			bool _RealtimeRedraw;
+			bool _RealtimeRedraw = false;
 		};
 
 		/// @brief Класс для работы с окном
@@ -175,7 +199,6 @@ namespace KolibriLib
 			void Focus () const;
 
 			/// @brief Отрисовать все элементы
-			/// @example example.cpp
 			void RenderAllElements() const;
 
 			/// @brief Изменить позицию окна относительно одних
@@ -189,6 +212,9 @@ namespace KolibriLib
 			UI::buttons::ButtonsIDController* GetButtonIDController() const override;
 
 			void SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) override;
+
+			/// @brief Обновить
+			void Update() const;
 		};
 
 		//=============================================================================================================================================================
@@ -209,7 +235,7 @@ namespace KolibriLib
 
 			p->SetButtonIDController(&_buttonsController);
 
-			_Elements.push_back((UIElement*)p);
+			_Elements.push_back(static_cast<UIElement*>(p));
 
 
 			return p;
@@ -236,6 +262,6 @@ namespace KolibriLib
 		#endif
 	} // namespace window
 
-}
+} // namespace KolibriLib
 
-#endif
+#endif // __WINDOW_HPP__

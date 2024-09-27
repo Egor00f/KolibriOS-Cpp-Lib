@@ -5,7 +5,6 @@
 
 #include <string>
 
-#include <kolibriLib/types.hpp>
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/UI/buttons/button.hpp>
 #include <kolibriLib/color.hpp>
@@ -22,7 +21,7 @@ namespace KolibriLib
         public:
 
             /// @brief Стиль Чекбокса
-            typedef enum
+            enum class style
             {
                 /// @brief По вид умолчанию, квадрат
                 Default,
@@ -33,7 +32,9 @@ namespace KolibriLib
                 /// @brief Квадрат с со сглаженными углами
                 /// @warning Не реализованно (пока что)
                 Smoth
-            } style;
+            };
+
+            CheckBox() = default;
 
             /// @brief Конструктор
             /// @param coord координаты вехнего левого угла
@@ -55,21 +56,27 @@ namespace KolibriLib
             void Render() const override;
 
             /// @brief Изменить стиль
-            /// @param s 
+            /// @param s Новый стиль
             void SetStyle(style s);
 
+            /// @brief Получить состояние чекбокса
+            /// @return 
             bool GetChecked() const;
 
             void OnButtonEvent(buttons::ButtonID PressedButtonID);
+
+            void SetBorderColor(const Colors::Color& NewBorderColor);
+            Colors::Color GetBorderColor() const;
 
             void swap(CheckBox& a);
 
             CheckBox& operator = (const CheckBox&) = default;
 
-            bool operator ==(const CheckBox&) const;
+            bool operator == (const CheckBox&) const;
+            bool operator != (const CheckBox&) const;
         private:
             Colors::Color _BorderColor;
-            style _style;
+            style _style = style::Default;
             mutable bool checked;
         };
     } // namespace UI

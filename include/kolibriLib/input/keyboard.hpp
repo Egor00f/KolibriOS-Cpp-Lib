@@ -1,5 +1,5 @@
-#ifndef __KEYBOARD_H__
-#define __KEYBOARD_H__
+#ifndef __KEYBOARD_HPP__
+#define __KEYBOARD_HPP__
 
 #include <include_ksys.h>
 #include <kolibriLib/debug.hpp>
@@ -9,7 +9,8 @@ namespace KolibriLib
 {
     namespace keyboard
     {
-        enum class InputMode
+        /// @brief Режим ввода
+        enum class InputMode : std::uint8_t
         {
             /// @brief используются ASCII символы
             ASCII = KSYS_KEY_INPUT_MODE_ASCII,
@@ -39,7 +40,7 @@ namespace KolibriLib
         /// если не нажат Alt, но нажат Shift, то используется раскладка с Shift;
         /// если не нажаты Alt и Shift, но нажат Ctrl, то используется нормальная раскладка, после чего из кода вычитается 0x60;
         /// если не нажата ни одна из управляющих клавиш, то используется нормальная раскладка.
-        enum KeyboardLayoutMode
+        enum KeyboardLayoutMode : std::uint8_t
         {
             /// @brief Нормальная раскладка
             Normal = 0,
@@ -52,7 +53,7 @@ namespace KolibriLib
         };
 
         /// @brief Список скапкодов
-        enum class Scancodes
+        enum class Scancodes : std::uint8_t
         {
             /// @brief равен нулю
             ANY = static_cast<std::uint8_t>(KSYS_SCANCODE_ANY),
@@ -297,4 +298,4 @@ namespace KolibriLib
     void PrintDebug(keyboard::Input out);
 } // namespace KolibriLib
 
-#endif // __KEYBOARD_H__
+#endif // __KEYBOARD_HPP__

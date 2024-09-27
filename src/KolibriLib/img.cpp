@@ -10,12 +10,12 @@ using namespace KolibriLib;
 using namespace UI;
 using namespace Images;
 
-KolibriLib::UI::Images::img::img(imgBPP bpp)
+KolibriLib::UI::Images::img::img(img::BPP bpp)
 {
-	this->_buff = buf2d_create(0, 0, 32, 32, 0xFFFFFF, bpp);
+	_buff = buf2d_create(0, 0, 32, 32, 0xFFFFFF, static_cast<std::uint8_t>(bpp));
 }
 
-KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size, imgBPP bpp)
+KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size, img::BPP bpp)
 {
 	_buff = buf2d_create(
 		0, 
@@ -23,7 +23,7 @@ KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size, i
 		static_cast<unsigned int>(size.x), 
 		static_cast<unsigned int>(size.y), 
 		color.operator ksys_color_t(), 
-		bpp
+		static_cast<std::uint8_t>(bpp)
 	);
 }
 
@@ -40,9 +40,15 @@ KolibriLib::UI::Images::img::img(const img & copy)
 	memcpy(&_buff->buf_pointer, &copy._buff->buf_pointer, copy._buff->width * copy._buff->height);
 }
 
-KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size, imgBPP bpp)
+KolibriLib::UI::Images::img::img(const rgb_t *color, const Size &size, img::BPP bpp)
 {
-	this->_buff = buf2d_create(0, 0, size.x, size.y, 0xFFFFFF, bpp);
+	this->_buff = buf2d_create(
+		0, 
+		0, 
+		size.x, 
+		size.y, 
+		0xFFFFFF, 
+		static_cast<std::uint8_t>(bpp));
 	SetRGBMap(color, size);
 }
 
@@ -68,8 +74,8 @@ void UI::Images::img::Draw(const Coord &coord, const Size &size) const
 
 	buf2d_struct *buff;
 
-	_buff->left = static_cast<uint16_t>(coord.x);
-	_buff->top = static_cast<uint16_t>(coord.y);
+	_buff->left	= static_cast<uint16_t>(coord.x);
+	_buff->top	= static_cast<uint16_t>(coord.y);
 
 	// флаг того что буфер уже создан
 	bool buffCreated = false;
@@ -243,7 +249,7 @@ Size img::GetSize() const
 
 void img::LoadImage(const filesystem::Path &Path)
 {
-	Image_t *buff = LoadImageFromFile(Path);
+	Image_t *buff = LoadImageFromFile(Path.c_str());
 
 	if (buff->Type != IMAGE_BPP24)
 	{
@@ -301,26 +307,26 @@ bool KolibriLib::UI::Images::img::operator==(const img &im) const
 	       _buff->height	== im._buff->height;
 }
 
-void KolibriLib::UI::Images::img::SetBPP(imgBPP bpp, void *data)
+void KolibriLib::UI::Images::img::SetBPP(img::BPP bpp, void *data)
 {
-	if (bpp == _buff->color_bit)
+	if (static_cast<std::uint8_t>(bpp) == _buff->color_bit)
 	{
 		return;
 	}
-	else if (bpp == img::imgBPP::RGB)
+	else if (bpp == img::BPP::RGB)
 	{
-		if(_buff->color_bit == img::imgBPP::RGBA)
+		if(_buff->color_bit == static_cast<std::uint8_t>(img::BPP::RGBA))
 		{
 			
 		}
-		else if(_buff->color_bit == imgBPP::bpp8)
+		else if(_buff->color_bit == static_cast<std::uint8_t>(img::BPP::bpp8))
 		{
 			buf2d_conv_24_to_8(_buff, *(unsigned int*)data);
 		}
 	}
-	else if (bpp == img::imgBPP::RGBA)
+	else if (bpp == img::BPP::RGBA)
 	{
-		if (_buff->color_bit == imgBPP::RGB)
+		if (_buff->color_bit == static_cast<std::uint8_t>(img::BPP::RGB))
 		{
 			buf2d_struct* buff = buf2d_create(_buff->left, 
 			                                 _buff->top, 
@@ -345,14 +351,14 @@ void KolibriLib::UI::Images::img::SetBPP(imgBPP bpp, void *data)
 
 void KolibriLib::UI::Images::img::Rotate(RotateEnum value)
 {
-	if(value == rotate_270)
+	if(value == img::RotateEnum::rotate_270)
 	{
 		buf2d_rotate(_buff, 180);	//180+90=270
 		buf2d_rotate(_buff, 90);
 	}
 	else
 	{
-		buf2d_rotate(_buff, value);
+		buf2d_rotate(_buff, static_cast<unsigned int>(value));
 	}
 }
 
@@ -361,7 +367,21 @@ void KolibriLib::UI::Images::img::Clear(const Colors::Color &backgroundColor)
 	buf2d_clear(_buff, backgroundColor.operator ksys_color_t());
 }
 
-void KolibriLib::UI::Images::img::DrawCircle(const Coord & coord, unsigned radius, const Colors::Color & color)
+void KolibriLib::UI::Images::img::DrawCircle(const Coord &coord, unsigned radius, const Colors::Color &color)
 {
-	buf2d_circle(_buff, coord.x, coord.y, radius, color.operator ksys_color_t());
+	buf2d_circle(
+		_buff, 
+		static_cast<unsigned int>(coord.x), 
+		static_cast<unsigned int>(coord.y), 
+		radius,
+		color.operator ksys_color_t());
+}
+
+void KolibriLib::UI::Images::img::Resize(const Size &NewSize)
+{
+	buf2d_resize(
+		_buff,
+		static_cast<unsigned int>(NewSize.x),
+		static_cast<unsigned int>(NewSize.y),
+		BUF2D_RESIZE_PARAMS::BUF2D_Resize_ChangeImage);
 }
