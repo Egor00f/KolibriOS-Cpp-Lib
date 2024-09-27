@@ -115,12 +115,23 @@ namespace KolibriLib
 
 			Axis& operator=(const Axis&) = default;
 
+			/// @brief оперватор сравнения
+			/// @param axis с чем сравнивать
+			/// @note сравнивает с точностью до тысячных ибо зачем очень большая точность для gui
+			/// @return 
 			bool operator==(const Axis &axis) const;
+
+			/// @brief 
+			/// @param axis с чем сравнивать
+			/// @return 
 			bool operator!=(const Axis &axis) const;
 		};
 
-		/// @brief Оси X и Y
-		UDim::Axis X, Y;
+		/// @brief Ось X
+		UDim::Axis X;
+
+		/// @brief Ось Y
+		UDim::Axis Y;
 
 		/// @brief Конструктор
 		/// @param XScale
@@ -135,9 +146,11 @@ namespace KolibriLib
 		/// @details только смещение
 		UDim(int x = 0, int y = 0);
 
+		UDim(const Axis& x, const Axis& y);
+
 		/// @brief Конструктор
-		/// @param x
-		/// @param y
+		/// @param x Относительный размер по x
+		/// @param y Относительный размер по y
 		UDim(float x, float y);
 
 		/// @brief Конструктор

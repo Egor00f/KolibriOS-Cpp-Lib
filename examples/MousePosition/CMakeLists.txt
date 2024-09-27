@@ -5,5 +5,5 @@ project(KolibriLib-MousePosition)
 
 include(kolibriexe)
 
-add_kolibri_executable(KolibriLib-MousePosition mousePosition.cpp)
-target_link_libraries(KolibriLib-MousePosition PRIVATE KolibriLib)
+add_kolibri_executable(MousePosition mousePosition.cpp)
+target_link_libraries(MousePosition PRIVATE KolibriLib)

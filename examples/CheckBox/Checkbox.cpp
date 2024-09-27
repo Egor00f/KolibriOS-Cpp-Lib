@@ -9,6 +9,7 @@ int main()
 	auto frame = wndw.AddElement(UIElement(
 		UDim(0.2f, 0.2f), 
 		UDim(0.6f, 0.4f)));
+	frame->SetColor(Globals::SystemColors.work_area);
 
 	auto checkbox = wndw.AddElement(CheckBox(
 		UDim(0.1f, 0.25f),		

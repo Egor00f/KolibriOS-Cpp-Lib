@@ -122,6 +122,7 @@ ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT
 	${SRC_PATH}/C_Layer/buf2d.cpp
 	${SRC_PATH}/C_Layer/libimg.cpp
 	${SRC_PATH}/C_Layer/opendialog.cpp
+	${SRC_PATH}/C_Layer/msgbox.cpp
 )
 
 target_include_directories(C_LAYER_KOLIBRILIB 

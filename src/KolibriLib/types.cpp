@@ -163,18 +163,18 @@ KolibriLib::UDim::UDim(const point &p)
 
 bool UDim::Axis::operator==(const UDim::Axis &axis) const
 {
-	return Scale == axis.Scale && Offset == axis.Offset;
+	return Offset == axis.Offset && std::fabs(Scale - axis.Scale) < 0.001f;
 }
 
 bool UDim::Axis::operator!=(const UDim::Axis &axis) const
 {
-	return Scale != axis.Scale || Offset != axis.Offset;
+	return Offset != axis.Offset || std::fabs(Scale - axis.Scale) < 0.001f;
 }
 
 point KolibriLib::UDim::GetAbsolute(const point &Parent) const
 {
-	return point( lround(static_cast<float>(Parent.x) * X.Scale) + X.Offset,
-	              lround(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset );
+	return point(lround(X.Scale * static_cast<float>(Parent.x)) + X.Offset,
+				 lround(Y.Scale * static_cast<float>(Parent.y)) + Y.Offset);
 }
 
 bool KolibriLib::UDim::operator==(const UDim &obj) const

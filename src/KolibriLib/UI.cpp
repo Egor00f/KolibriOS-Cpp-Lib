@@ -80,15 +80,9 @@ Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 	if (Parent != nullptr)
 	{
 		if(ParentIsWindow)
-		{
-			PrintDebug("Parent Is Window\n");
-			_coord.GetAbsolute(Parent->GetAbsoluteSize());
-		}
+			return (_coord.GetAbsolute(Parent->GetAbsoluteSize()));
 		else
-		{
-			PrintDebug("Parent Isn't Window\n");
 			return (_coord.GetAbsolute(Parent->GetAbsoluteSize()) + Parent->GetAbsoluteCoord());
-		}
 	}
 	else
 	{
@@ -161,6 +155,8 @@ void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
 	Parent = const_cast<GuiObject*>(static_cast<const GuiObject*>(NewParent));
 
 	((UIElement*) Parent)->AddChildren(this);
+
+	ParentIsWindow = false;
 }
 
 void KolibriLib::UI::UIElement::WindowAsParent(const GuiObject *window) const
@@ -185,6 +181,7 @@ UIElement &KolibriLib::UI::UIElement::operator=(const UIElement &Element)
 	_size	= Element._size;
 	_MainColor	= Element._MainColor;
 	Parent	= Element.Parent;
+	Visible	= Element.Visible;
 	SetMargin(Element.GetMargin());
 
 	return *this;
@@ -194,14 +191,16 @@ bool KolibriLib::UI::UIElement::operator==(const UIElement &Element) const
 {
 	return (_coord     == Element._coord)	&&
 	       (_size      == Element._size)	&&
-	       (_MainColor == Element._MainColor);
+	       (_MainColor == Element._MainColor)	&&
+	       (Visible    == Element.Visible);
 }
 
 bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 {
 	return (_coord     != Element._coord)	||
 	       (_size      != Element._size)	||
-	       (_MainColor != Element._MainColor);
+	       (_MainColor != Element._MainColor)	||
+	       (Visible    != Element.Visible);
 }
 
 void KolibriLib::UI::UIElement::Render() const
@@ -220,6 +219,11 @@ void KolibriLib::UI::UIElement::SetCoord(const Coord &NewCoord)
 }
 
 std::vector<UIElement*> KolibriLib::UI::UIElement::GetChildren() const
+{
+	return _childs;
+}
+
+std::vector<UIElement *>& KolibriLib::UI::UIElement::GetChildren()
 {
 	return _childs;
 }
