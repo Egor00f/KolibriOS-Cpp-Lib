@@ -1,18 +1,15 @@
-#ifndef __GRAPHIC_H__
-#define __GRAPHIC_H__
+#ifndef __GRAPHIC_HPP__
+#define __GRAPHIC_HPP__
 
 
-#include <sys/ksys.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include <cmath>
+#include <include_ksys.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/graphic/screen.hpp>
-#include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/img.hpp>
+#include <kolibriLib/globals.hpp>
+
+#include <cmath>
 
 namespace KolibriLib
 {
@@ -23,7 +20,7 @@ namespace KolibriLib
 		/// @param a точка первая
 		/// @param b точка вторая
 		/// @param color Цвет линии
-		inline void DrawLine(const Coord &coord, const Coord &b, const Colors::Color &color = OS::GetSystemColors().gui_frame)
+		inline void DrawLine(const Coord &coord, const Coord &b, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_line(coord.x, coord.y, b.x, b.y, color.val);
 		}
@@ -33,17 +30,27 @@ namespace KolibriLib
 		/// @param lenght Длина линии
 		/// @param angle Угол
 		/// @param color Цвет линии
-		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = OS::GetSystemColors().gui_frame)
+		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
-			_ksys_draw_line(coord.x, coord.y, coord.x + (lenght * cos(angle)), coord.y + (lenght * sin(angle)), color.val);
+			_ksys_draw_line (
+				coord.x, 
+				coord.y,
+				coord.x + lround(lenght * std::cos(angle)),
+				coord.y + lround(lenght * std::sin(angle)),
+				color.operator ksys_color_t()
+			);
 		}
 
 		/// @brief Закрасить пиксель точку
 		/// @param position координаты
 		/// @param color Цвет
-		inline void DrawPixel(const Coord &position, const Colors::Color &color = OS::GetSystemColors().gui_frame)
+		inline void DrawPixel(const Coord &position, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
-			_ksys_draw_pixel(position.x, position.y, color.val);
+			_ksys_draw_pixel (
+				static_cast<std::uint16_t>(position.x), 
+				static_cast<std::uint16_t>(position.y), 
+				color.operator ksys_color_t()
+			);
 		}
 
 		/// @brief Нарисовать окружность
@@ -52,21 +59,39 @@ namespace KolibriLib
 		/// @param detalization Детализация прорисовки окружности (то на сколько круг круглый)
 		/// @param color Цвет
 		/// @paragraph Круг рисуется по detalization линий. Да-да если Детализация = 4, то круг это квадрат.
-		void DrawCircle(const Coord& coord, unsigned Radius, const Colors::Color& color = OS::GetSystemColors().gui_frame);
+		void DrawCircle(const Coord& coord, unsigned Radius, const Colors::Color& color = Globals::SystemColors.work_graph);
 
 		/// @brief Нарисовать закрашенный прямоугольник
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
-		inline void DrawRectangleFill(Coord position, Size size, Colors::Color color = OS::GetSystemColors().gui_frame)
+		inline void DrawRectangleFill(Coord position, Size size, Colors::rgb color = Globals::SystemColors.work_graph)
 		{
-			__asm__ __volatile__(
+			asm_inline (
+				"int $0x40"
+				:: "a"(13), 
+				   "b"( (position.x << 16) + size.x ), 
+				   "c"( (position.y << 16) + size.y ), 
+				   "d"(color.BBGGRR00())
+				);
+		}
+
+		/// @brief Нарисовать закрашенный прямоугольник
+		/// @param position позиция левого верхнего угла
+		/// @param size Размеры
+		/// @param color Цвет
+		inline void DrawRectangleGradient(Coord position, Size size, Colors::rgb color = Globals::SystemColors.work_graph)
+		{
+			Colors::Color ret = color;
+			ret._a = 0x80;
+
+			asm_inline (
 				"int $0x40"
 				:
-				: "a"(13), 
-				  "b"( (position.x << 16) + size.x ), 
-				  "c"( (position.y << 16) + size.y ), 
-				  "d"(color.val)
+				: "a"(13),
+				  "b"((position.x << 16) + size.x),
+				  "c"((position.y << 16) + size.y),
+				  "d"(ret.val)
 				);
 		}
 
@@ -75,20 +100,19 @@ namespace KolibriLib
 		/// @param Radius Радиус круга
 		/// @param detalization Детализация круга(то на сколько круг круглый)
 		/// @param color Цвет
-		void DrawCircleFill(const Coord& coord, const unsigned& Radius, const Colors::Color& color = OS::GetSystemColors().gui_frame);
+		void DrawCircleFill(const Coord& coord, const unsigned& Radius, const Colors::Color& color = Globals::SystemColors.work_graph);
 
 		/// @brief Нарисовать точку
 		/// @param position Координаты
 		/// @param size Радиус точки в рx
 		/// @param color Цвет
 		/// @param fill Закрашенная/Выколотая точка
-		void DrawPoint(const Coord& position, const unsigned& size, const Colors::Color& color = OS::GetSystemColors().gui_frame, bool fill = false);
-
+		void DrawPoint(const Coord& position, const unsigned& size, const Colors::Color& color = Globals::SystemColors.work_graph, bool fill = false);
 
 		/// @brief Нарисовать прямоугольник
 		/// @param a Точка в левом верхнем углу
 		/// @param b Точка в правом нижнем углу
-		inline void DrawRectangleLines(const Coord &a, const Coord &b, const Colors::Color &color = OS::GetSystemColors().gui_frame)
+		inline void DrawRectangleLines(const Coord &a, const Coord &b, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			DrawLine(a, Coord(b.x, a.y), color);
 			DrawLine(a, Coord(a.x, b.y), color);
@@ -101,7 +125,7 @@ namespace KolibriLib
 		/// @param b вторая точка
 		/// @param c третья точка
 		/// @param color цвет линий
-		inline void DrawTriangle(const Coord &a, const Coord &b, const Coord &c, const Colors::Color &color = OS::GetSystemColors().gui_frame)
+		inline void DrawTriangle(const Coord &a, const Coord &b, const Coord &c, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			DrawLine(a, b, color);
 			DrawLine(a, c, color);
@@ -115,33 +139,47 @@ namespace KolibriLib
 		{
 			ksys_color_t c;
 
-			__asm__ __volatile__(
+			asm_inline (
 				"int $0x40"
 				: "=a"(c)
 				: "a"(35),
 				  "b"((Point.x * GetScreenSize().x + Point.y)));
 
-			return (Colors::Color)c;
+			return Colors::Color(c);
 		}
 
+		/// @brief Получить область
+		/// @param coord 
+		/// @param size
+		/// @return
+		/// @note Не забудьте delete[] 
 		inline rgb_t* ReadArea(const Coord &coord, const Size &size)
 		{
 			rgb_t* result = new rgb_t[size.x * size.y];
 
 			asm_inline (
 				"int $0x40"
-				::"a"(36), 
-				"b"(result), 
-				"c"(X_Y(size.x, size.y)), 
-				"d"(X_Y(coord.x, coord.y))
+				:: "a"(36), 
+				   "b"(result), 
+				   "c"(size.operator ksys_pos_t()), 
+				   "d"(coord.operator ksys_pos_t())
 			);
 
 			return result;
 		}
 
-	}
+		/// @brief Вывести изображение
+		/// @param bitmap изображение
+		/// @param coord координаты
+		/// @param size размер изображния
+		inline void DrawBitmap(rgb_t *bitmap, const Coord &coord, const Size &size)
+		{
+			_ksys_draw_bitmap(bitmap, coord.x, coord.y, size.x, size.y);
+		}
+
+	} // namespace graphic
 
 } // namespace KolibriLib
 
 
-#endif // __GRAPHIC_H__
+#endif // __GRAPHIC_HPP__

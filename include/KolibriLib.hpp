@@ -1,37 +1,65 @@
-#ifndef __KOLIBRILIB_H__
-#define __KOLIBRILIB_H__
+#ifndef __KOLIBRILIB_HPP__
+#define __KOLIBRILIB_HPP__
 
-#include <kolibriLib/init.hpp>
 #include <kolibriLib/window/window.hpp>
 #include <kolibriLib/graphic/screen.hpp>
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/childWindow.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/network.hpp>
+#include <kolibriLib/input/clipboard.hpp>
 #include <input.hpp>
-#include <kolibriLib/libini.hpp>
-#include <UI.hpp>
+#include <KolibriLibUI.hpp>
 
+
+/// @brief Прастранство имён библиотеки KolibriLib
+/// @author Egor00f
 namespace KolibriLib
 {
+
+	// Тут всё из этой либы используется как KolibriLib::
+
 	using KolibriLib::Colors::Color;
+	using KolibriLib::Colors::ColorsTable;
+
 	using KolibriLib::window::Window;
 
-	using filesystem::Path;
-	using filesystem::CreateFile;
-	using filesystem::MakeDirectory;
-	using filesystem::Delete;
-
 	using KolibriLib::OS::Event;
-	using KolibriLib::OS::Time;
 	using KolibriLib::OS::GetSystemColors;
-	using KolibriLib::OS::GetTime;
 	using KolibriLib::OS::Exec;
-	using KolibriLib::OS::FreeMem;
+	using KolibriLib::OS::GetFreeMem;
 	using KolibriLib::OS::AllMem;
+	using KolibriLib::OS::SetEventMask;
+	using KolibriLib::OS::GetEventMask;
+
+	using graphic::DrawCircle;
+	using graphic::DrawCircleFill;
+	using graphic::DrawLine;
+	using graphic::DrawPixel;
+	using graphic::DrawRectangleFill;
+	using graphic::DrawRectangleGradient;
+	using graphic::DrawRectangleLines;
+	using graphic::DrawTriangle;
+	using graphic::ReadArea;
+	using graphic::ReadPoint;
+
+	using UI::buttons::DefineButton;
+	using UI::buttons::autoDefineButton;
+	using UI::buttons::DeleteButton;
+
+	using mouse::GetMousePositionOnSreen;
+	using mouse::GetMousePositionInWindow;
+	using mouse::GetMouseEvents;
+	using mouse::GetMouseButtons;
+	using mouse::CenterCursor;
+
+	using keyboard::Scancode;
+	using keyboard::KeyboardLayout;
+	using keyboard::CheckKeyboard;
+	using keyboard::SetKeyboardLayout;
 
 } // namespace KolibriLib
 
 
-#endif // __KOLIBRILIB_H__
+#endif // __KOLIBRILIB_HPP__

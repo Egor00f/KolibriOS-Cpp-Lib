@@ -1,7 +1,7 @@
 #ifndef KOLIBRI_RASTERWORKS_H
 #define KOLIBRI_RASTERWORKS_H
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -9,11 +9,12 @@
 extern "C" {
 #endif
 
+
   enum RasterworksEncoding
   {
     Rasterworks_cp688 = 1,
-    Rasterworks_UTF8 = 2,
-    Rasterworks_UTF16LE = 3,
+    Rasterworks_UTF8 = 3,
+    Rasterworks_UTF16LE = 2,
   };
 
   /// @brief List of parameters
@@ -59,7 +60,7 @@ extern "C" {
   /// ff - Parameters from the RasterworksParams list
   /// @note All flags combinable, except align right + align center
   /// @note The text is drawn on the image, in order for changes to occur in the window, you need to draw the image after calling this function
-  extern void (*drawText)(void *canvas, int x, int y, const char *string, int charQuantity, uint32_t fontColor, uint32_t params) __attribute__((__stdcall__));
+  extern void (*drawText)(void* canvas, int x, int y, const char *string, int charQuantity, uint32_t fontColor, uint32_t params) __attribute__((__stdcall__));
 
   /// @brief Calculate amount of valid chars in UTF-8 string
   /// @note Supports zero terminated string (set byteQuantity = -1)
@@ -75,20 +76,20 @@ extern "C" {
   /// @param charHeight character height
   extern int (*strWidth)(int charQuantity, int charHeight) __attribute__((__stdcall__));
 
-  /// @brief 
-  /// @param canvas 
-  /// @param width 
-  /// @param height 
-  /// @param x 
-  /// @param y 
-  /// @param string 
-  /// @param stringLenght 
-  /// @param CharWidth 
-  /// @param CharHeight 
-  /// @param fontColor 
-  /// @param flags 
-  /// @param encoding 
-  /// @return 
+  /// @brief Нарисовать текст на буфере
+  /// @param canvas Фон на котором будет рисоваться текст
+  /// @param width ширина
+  /// @param height высота
+  /// @param x координаты текста по оси X
+  /// @param y координаты текста по оси Y
+  /// @param string текст
+  /// @param stringLenght длинна текста
+  /// @param CharWidth ширина символа
+  /// @param CharHeight высота символа
+  /// @param fontColor Цвет текста
+  /// @param flags флаги
+  /// @param encoding
+  /// @return буфер с текстом
   void *drawTextToBuff(const void *canvas,
                        uint8_t width, 
                        uint8_t height, 
@@ -104,42 +105,6 @@ extern "C" {
 
 #ifdef __cplusplus
 }
-
-#include <kolibriLib/types.hpp>
-#include <string>
-
-/// @brief 
-/// @param canvas буффер
-/// @param coord координаты текста в буфере
-/// @param size размеры буфера
-/// @param text текст
-/// @param CharSize Размеры символов
-/// @param FontColor цвет текста
-/// @param flags флаги
-/// @param encoding 
-/// @return
-inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const uint8_t &flags, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
-{
-  return drawTextToBuff(canvas, size.x, size.y, coord.x, coord.y, text.c_str(), text.length(), CharSize.x, CharSize.y, FontColor, flags, encoding);
-}
-
-inline void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const KolibriLib::Colors::Color &BackgroundColor, const uint8_t &flags, const uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
-{
-  void *canvas = malloc(3 * size.x * size.y);
-
-  for(std::size_t i = 0; i < size.x * size.y; i++)
-  {
-    ((rgb_t *)canvas)[i] = BackgroundColor.GetRGB();
-  }
-
-  void *buff = drawTextToBuff(canvas, {0,0}, size, text, CharSize, FontColor, flags, encoding);
-  free(canvas);
-  _ksys_draw_bitmap(buff, coord.x, coord.y, size.x, size.y);
-  free(buff);
-	
-}
-
-
 #endif
 
 #endif /* KOLIBRI_RASTERWORKS_H */

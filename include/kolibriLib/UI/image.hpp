@@ -1,17 +1,12 @@
-#ifndef __IMAGE_H__
-#define __IMAGE_H__
+#ifndef __IMAGE_HPP__
+#define __IMAGE_HPP__
 
 #include <kolibriLib/UI/UI.hpp>
 #include <kolibriLib/constants.hpp>
 #include <kolibriLib/img.hpp>
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/system/os.hpp>
-
-#include <string>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 namespace KolibriLib
 {
@@ -24,8 +19,6 @@ namespace KolibriLib
 			class Image : public UIElement, public img
 			{				
 			public:
-				std::string ClassName = "Image";
-
 				/// @brief Конструктор
 				/// @param coord Координаты
 				/// @param size Размер
@@ -38,15 +31,14 @@ namespace KolibriLib
 				Image(const Image &copy);
 
 				/// @brief Вывести изображение в окно
-				/// @param size Размер выводимого изображения
-				void Render() const;
+				void Render() const override;
 
 				/// @brief 
 				/// @param a 
-				/// @return 
-				Image& operator = (const Image& a);
+				/// @return
+				Image &operator=(const Image &a) = default;
 
-				void init(const Coord &coord = {0, 0}, const Size &size = {100, 100}, const filesystem::Path &Path = DefaultImage);
+				void swap(Image &e);
 			};
 
 		} // namespace Image
@@ -58,4 +50,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __IMAGE_H__
+#endif // __IMAGE_HPP__

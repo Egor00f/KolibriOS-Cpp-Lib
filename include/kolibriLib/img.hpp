@@ -1,14 +1,15 @@
-#ifndef __IMG_H__
-#define __IMG_H__
+#ifndef __IMG_HPP__
+#define __IMG_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/constants.hpp>
-
+#include <kolibriLib/color.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <string>
 
-#include <C_Layer/INCLUDE/kolibri_buf2d.h>
+#include <C_Layer/buf2d.hpp>
 
 namespace KolibriLib
 {
@@ -16,15 +17,12 @@ namespace KolibriLib
 	{
 		namespace Images
 		{
-
 			/// @brief Изображение
 			class img
 			{
-			private:
-				buf2d_struct *_buff;
 			public:
 				/// @brief Глубина цвета
-				typedef enum
+				enum class BPP
 				{
 					/// @brief  8 битный цвет
 					bpp8 = 8,
@@ -34,20 +32,32 @@ namespace KolibriLib
 
 					/// @brief 32 битный цвет
 					RGBA = 32
-				} imgBPP;
+				};
 
-				img(imgBPP bpp = imgBPP::RGB);
+				enum class RotateEnum
+				{
+					/// @brief повернуть на 90 градусов
+					rotate_90 = 90,
+
+					/// @brief Повернуть 180 градусов
+					rotate_180 = 180,
+
+					/// @brief повернуть на 270 градусов
+					rotate_270
+				};
+
+				img(BPP bpp = BPP::RGB);
 
 				/// @brief Конструктор
 				/// @param color Массив цветов
 				/// @param size размеры изображения
-				img(const rgb_t *color, const Size &size, imgBPP bpp = imgBPP::RGB);
+				img(const rgb_t *color, const Size &size, img::BPP bpp = img::BPP::RGB);
 
 				/// @brief Конструктор
 				/// @param color цвет
 				/// @param size размеры изображения
 				/// @note Закрашивает изображение в цвет
-				img(const Colors::Color &color, const Size &size, imgBPP bpp = imgBPP::RGB);
+				img(const Colors::Color &color, const Size &size, img::BPP bpp = img::BPP::RGB);
 
 				img(const filesystem::Path &ImageFile);
 
@@ -86,29 +96,29 @@ namespace KolibriLib
 				bool SetPixel(const Colors::Color &color, const Coord &coord);
 
 				/// @brief Повернуть изображение на определённый угол
-				/// @param value значения 90, 180
-				void Rotate(int value);
+				/// @param value
+				void Rotate(RotateEnum value);
 
 				/// @brief Очистить изображение, 
 				/// @param backgroundColor 
 				void Clear(const Colors::Color &backgroundColor);
 
-				/// @brief Нарисовать
-				/// @param coord 
-				/// @param radius 
-				/// @param color 
+				/// @brief Нарисовать круг
+				/// @param coord координаты круга
+				/// @param radius радиус круга
+				/// @param color цвет круга
 				void DrawCircle(const Coord &coord, unsigned radius, const Colors::Color &color);
 
-				/// @brief 
+				/// @brief нарисовать линию
 				/// @param point1 
 				/// @param point2 
-				/// @param color 
+				/// @param color цвет линии
 				void DrawLine(const Coord &point1, const Coord &point2, const Colors::Color &color);
 
-				/// @brief 
+				/// @brief Нарисовать прямоугольник
 				/// @param point1 
 				/// @param point2 
-				/// @param color 
+				/// @param color цвет прямоугольника
 				void DrawRectangle(const Coord &point1, const Coord &point2, const Colors::Color &color);
 
 				/// @brief Получить цвет пикселя
@@ -151,6 +161,10 @@ namespace KolibriLib
 				/// @return {img::_buff->width, img::_buff->height}
 				Size GetSize() const;
 
+				/// @brief Изменить размер изображения(растянуть/сжыть)
+				/// @param NewSize новый размер в пикселях
+				void Resize(const Size &NewSize);
+
 				/// @brief Заполнить изображение цветом
 				/// @param color цвет
 				void FillColor(const Colors::Color &color);
@@ -158,16 +172,16 @@ namespace KolibriLib
 				/// @brief Изменить кол-во бит на пиксель
 				/// @param bpp кол-во бит на пиксель
 				/// @param data дополнительные данные
-				void SetBPP(imgBPP bpp, void *data);
+				void SetBPP(BPP bpp, void *data);
 				
 				img& operator = (const img& im);
 				bool operator == (const img &im) const;
 				bool operator != (const img &im) const;
+
+			private:
+				buf2d_struct *_buff;
 			};
-
-
 		} // namespace Images
-
 	} // namespace UI
 } // namespace KolibriLib
 

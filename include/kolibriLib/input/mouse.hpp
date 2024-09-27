@@ -1,9 +1,9 @@
-#ifndef __MOUSE_H__
-#define __MOUSE_H__
+#ifndef __MOUSE_HPP__
+#define __MOUSE_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/system/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 
 namespace KolibriLib
@@ -12,38 +12,96 @@ namespace KolibriLib
     namespace mouse
     {
 		/// @brief Список кодов кнопок мыши
-		enum MouseButtons
+		typedef enum MouseButtons
 		{
-            LeftButton	= 0b1,
-            RightButton	= 0b10,
-            CenterBtton	= 0b100,
-            FourButton	= 0b1000,
-            FiveButton	= 0b10000
-        };
-		
-        /// @brief Получить позицияю курсора на экране
+			/// @brief ЛКМ
+			LeftButton = 0b00001,
+
+			/// @brief ПКМ
+			RightButton = 0b00010,
+
+			/// @brief Центральная кнопка (та что под колёсиком)
+			CenterButton = 0b00100,
+
+			/// @brief Кнопка 4
+			FourButton = 0b01000,
+
+			/// @brief Кнопка 5
+			FiveButton = 0b10000
+		} MouseButtons;
+
+		/// @brief Ивенты мыши
+		typedef enum MouseEvents
+		{
+			/// @brief удерживается ЛКМ
+			heldLeftButton = 0b00001,
+
+			/// @brief удерживается ПКМ
+			heldRightButton = 0b00010,
+
+			/// @brief удерживается Центральная кнопка (та что под колёсиком)
+			heldCenterButton = 0b00100,
+
+			/// @brief удерживается Кнопка 4
+			heldFourButton = 0b01000,
+
+			/// @brief удерживается Кнопка 5
+			heldFiveButton = 0b10000,
+
+			/// @brief удерживается ЛКМ
+			PressedLeftButton = 0b100000000,
+
+			/// @brief удерживается ПКМ
+			PressedRightButton = 0b1000000000,
+
+			/// @brief удерживается Центральная кнопка (та что под колёсиком)
+			PressedCenterButton = 0b10000000000,
+
+			/// @brief отпущенна ЛКМ
+			ReleasedLeftButton = 0b10000000000000000,
+
+			/// @brief отпущенна ПКМ
+			ReleasedRightButton = 0b100000000000000000,
+
+			/// @brief отпущенна Центральная кнопка (та что под колёсиком)
+			ReleasedCenterButton = 0b1000000000000000000,
+
+			/// @brief используется вертикальная прокрутка
+			Vertical = 0b1000000000000000,
+
+			/// @brief используется горизонтальная прокрутка
+			HorizonTal = 0b100000000000000000000000,
+
+			/// @brief двойной щелчок левой кнопкой мыши
+			DoubleClickLeftButton = 0b1000000000000000000000000
+		} MouseEvents;
+
+		/// @brief Получить позицияю курсора на экране
         /// @return (point) позиция курсора абсолютно
 		inline Coord GetMousePositionOnSreen()
 		{
-			ksys_pos_t a = _ksys_get_mouse_pos(KSYS_MOUSE_SCREEN_POS);
-
-			return Coord(a.x, a.y);
+			return Coord(_ksys_get_mouse_pos(KSYS_MOUSE_SCREEN_POS));
 		}
 
 		/// @brief Получить позицияю курсора внутри окна
         /// @return (point) позиция курсора относительно окна
 		inline Coord GetMousePositionInWindow()
 		{
-			ksys_pos_t a = _ksys_get_mouse_pos(KSYS_MOUSE_WINDOW_POS);
-
-			return Coord(a.x, a.y);
+			return Coord(_ksys_get_mouse_pos(KSYS_MOUSE_WINDOW_POS));
 		}
 
 		/// @brief Проверить какие кнопки мыши нажаты
-		/// @return значения из списка MouseButtons
-		inline uint32_t GetMouseButtons()
+		/// @return состояния кнопок мыши из MouseButtons
+		inline MouseButtons GetMouseButtons()
 		{
-			return _ksys_get_mouse_buttons();
+			return static_cast<MouseButtons>(_ksys_get_mouse_buttons());
+		}
+
+		/// @brief Получить состояния и события кнопок мыши
+		/// @return состояния кнопок мыши и ивенты из MouseEvents
+		inline MouseEvents GetMouseEvents()
+		{
+			return static_cast<MouseEvents>(_ksys_get_mouse_eventstate());
 		}
 
 		/// @brief колёсико мыши
@@ -53,20 +111,18 @@ namespace KolibriLib
 			return _ksys_get_mouse_wheels();
 		}
 
-		
-
 		/// @brief Эмулировать нажатия кнопок мыши
 		/// @param m занчения из списка MouseButtons
 		inline void EmulateMouse(uint8_t m)
 		{
-			asm_inline(
+			asm_inline (
 				"int $0x40" 
 				::"a"(18), "b"(19), "c"(5), "d"(m)
 			);
 		}
 
 		/// @brief Центрировать курсор
-		/// @note Функция устанавливает курсор в середину экрана
+		/// @details Функция устанавливает курсор в середину экрана
 		inline void CenterCursor()
 		{
 			asm_inline(
@@ -78,14 +134,29 @@ namespace KolibriLib
 		/// @brief Хендл курсора мыши
 		typedef void* CursorHandle;
 
-
 		/// @brief Загрузить курсор мыши
 		/// @param path путь до файла с курсором
 		/// @return Хендл загруженного курсора
 		/// @paragraph Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя
 		inline CursorHandle LoadCursor(const filesystem::Path& path)
 		{
-			return _ksys_load_cursor((void*)((const char*)path), KSYS_CURSOR_FROM_FILE);
+			return _ksys_load_cursor (
+				const_cast<void *>(static_cast<const void *>(path.c_str())), 
+				KSYS_CURSOR_FROM_FILE
+			);
+		}
+
+		/// @brief Загрузить курсор мыши
+		/// @param path путь до файла с курсором
+		/// @param hotPoint координаты "горячей точки" курсора
+		/// @return Хендл загруженного курсора
+		/// @note Файл курсора должен быть в формате .cur, стандартном для MS Windows, причём размером 32*32 пикселя
+		inline CursorHandle LoadCursor(const filesystem::Path& path, const Coord &hotPoint)
+		{
+			return _ksys_load_cursor (
+				const_cast<void *>(static_cast<const void *>(path.c_str())), 
+				KSYS_CURSOR_FROM_FILE || 2 || (hotPoint.x << 23) || (hotPoint.y << 16)
+			);
 		}
 
 		/// @brief Загрузить курсор мыши
@@ -95,6 +166,17 @@ namespace KolibriLib
 		inline CursorHandle LoadCursor(void *ptr)
 		{
 			return _ksys_load_cursor(ptr, KSYS_CURSOR_FROM_MEM);
+		}
+
+		/// @brief Загрузить курсор мыши
+		/// @param ptr Указатель на изображение
+		/// @param hotPoint координаты "горячей точки" курсора
+		/// @return Хендл загруженного курсора
+		inline CursorHandle LoadCursor(void* ptr, const Coord &hotPoint)
+		{
+			return _ksys_load_cursor (
+				ptr,
+				KSYS_CURSOR_FROM_MEM || 2 || (hotPoint.x << 23) || (hotPoint.y << 16));
 		}
 
 		// /// @brief Загрузить курсор мыши
@@ -121,4 +203,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __MOUSE_H__
+#endif // __MOUSE_HPP__

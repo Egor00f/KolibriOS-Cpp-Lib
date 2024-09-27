@@ -1,7 +1,14 @@
 #ifndef KOLIBRI_MSGBOX_H
 #define KOLIBRI_MSGBOX_H
 
-#include <stdarg.h>
+#include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 typedef struct __attribute__ ((__packed__)) {
     uint8_t     retval;  // 0 - win closed, 1 to n - button num, also default button on start
@@ -14,21 +21,24 @@ typedef struct __attribute__ ((__packed__)) {
 
 typedef void (*msgbox_callback)(void);
 
-static int msgbox_inited;
+
 extern void kolibri_msgbox_init();
 extern void (*msgbox_create)(msgbox *, void *thread) __attribute__((__stdcall__)); // clears callbacks, ! if fix lib, we can return eax as of Fn51
 extern void (*msgbox_setfunctions)(msgbox_callback*) __attribute__((__stdcall__)); // must be called immediately after create, zero-ended array
 extern void (*msgbox_reinit)(msgbox *) __attribute__((__stdcall__));  // recalc sizes when structure changes, called auto when MsgBoxCreate
 
-static inline msgbox* kolibri_new_msgbox(char* title, char* text, int def_but, ...)
+/// @brief 
+/// @param title 
+/// @param text 
+/// @param def_but количество кнопок
+/// @param buttons массив указателей на строки
+/// @return 
+static inline msgbox* kolibri_new_msgbox(const char* title, const char* text, int def_but, char ** buttons)
 /// text can be multilined by code 13 = "\r"
 /// def_but - highlighted and used on Enter (if zero - default is [X]), user may use Tabs or Arrows
 /// last params are buttons text, max 8. last must set as NULL
 {
-    va_list vl;
-    va_start(vl, def_but);
-
-    msgbox* box = calloc(sizeof(msgbox), 1);
+    msgbox* box = (msgbox*) calloc(sizeof(msgbox), 1);
     box->retval = (uint8_t)def_but;
     char    *pc = box->texts;
     strcpy(pc, title);
@@ -36,29 +46,23 @@ static inline msgbox* kolibri_new_msgbox(char* title, char* text, int def_but, .
     strcpy(pc, text);
     pc += strlen(text) + 1;
 
-    char  *but_text = va_arg(vl, char*);
-    while (but_text)
+    for(int i = 0; i < def_but; i++)
     {
-        strcpy(pc, but_text);
-        pc += strlen(but_text) + 1;
-        // assert(pc - box->texts < sizeof box->texts);
-        but_text = va_arg(vl, char*);
+        strcpy(pc, buttons[i]);
+        pc += strlen(buttons[i]) + 1;
     }
-
-    va_end(vl);
 
     return box;
 }
 
 static inline void kolibri_start_msgbox(msgbox* box, msgbox_callback cb[])
 {
-    if (!msgbox_inited)
-    {
-        kolibri_msgbox_init();
-        msgbox_inited++;
-    }
     (*msgbox_create)(box, &box->top_stack);
     if (cb) (*msgbox_setfunctions)(cb);
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

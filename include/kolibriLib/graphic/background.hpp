@@ -1,30 +1,31 @@
-#ifndef __BACKGROUND_H__
-#define __BACKGROUND_H__
+#ifndef __BACKGROUND_HPP__
+#define __BACKGROUND_HPP__
 
-#include <sys/ksys.h>
+#include <include_ksys.h>
 
 #include <stddef.h>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/img.hpp>
+#include <kolibriLib/globals.hpp>
 
 namespace KolibriLib
 {
 	/// @brief Работа с фоном
 	namespace Background
 	{
-		bool f = false;
 
 		/// @brief Получить размеры фонового изображения
-		/// @return
+		/// @return размер фонового изображения
 		inline Size GetSize()
 		{
 			ksys_pos_t p;
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(p)
-				: "a"(39), "b"(1));
+				: "a"(39), "b"(1)
+			);
 
 			return Size(p.x, p.y);
 		}
@@ -37,17 +38,18 @@ namespace KolibriLib
 			Colors::Color c;
 
 			// Смещение
-			unsigned s = GetSize().x * (Point.y - 1) + Point.x; // я думаю, что изображение это двумерный массив
+			int s = GetSize().x * (Point.y - 1) + Point.x; // я думаю, что изображение это двумерный массив
 
-			asm_inline(
+			asm_inline (
 				"int $0x40"
 				: "=a"(c.val)
-				: "a"(39), "b"(2), "c"(s));
+				: "a"(39), "b"(2), "c"(s)
+			);
 
 			return c;
 		}
 
-		/// @brief Перерисовать фон
+		/// @brief Перерисовать весь фон
 		inline void RedrawBackground()
 		{
 			_ksys_bg_redraw();
@@ -58,52 +60,65 @@ namespace KolibriLib
 		/// @param size размеры 
 		inline void RedrawBackground(const Coord& coord, const Size& size)
 		{
-			ksys_pos_t buff = coord.GetKsysPost();
-			ksys_pos_t p2;
-			p2.x = (unsigned)buff.x + size.GetKsysPost().x;
-			p2.y = (unsigned)buff.y + size.GetKsysPost().y;
-			_ksys_bg_redraw_bar(buff, p2);
+			_ksys_bg_redraw_bar(coord.operator ksys_pos_t(), (coord + size).operator ksys_pos_t());
 		}
 
+		/// @brief
+		/// @param
 		inline void SetSize(const Size &size)
 		{
-			f = true;
-			_ksys_bg_set_size(size.x, size.y);
+			_ksys_bg_set_size (
+				static_cast<std::uint32_t>(size.x),
+				static_cast<std::uint32_t>(size.y)
+			);
 		}
 
-		inline void DrawPoint(const Coord coord, const Colors::Color &color)
+		/// @brief Постовить точку на фоне
+		/// @param coord координаты точки
+		/// @param color цвет точки
+		inline void DrawPoint(const Coord coord, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
-			if(!f)
-			{
-				SetSize(GetSize());
-			}
-			_ksys_bg_put_pixel(coord.x, coord.y, GetSize().x, color.val);
+			_ksys_bg_put_pixel (
+				static_cast<std::uint32_t>(coord.x), 
+				static_cast<std::uint32_t>(coord.y), 
+				static_cast<std::uint32_t>(GetSize().x), 
+				color.operator ksys_color_t()
+			);
 		}
 
 		template <std::size_t N>
+		/// @brief
+		/// @param coord
+		/// @param rgb
 		inline void DrawImage(const Coord coord, rgb_t (&rgb)[N])
 		{
-			if (!f)
-			{
-				SetSize(GetSize());
-			}
-			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N,  coord.x, coord.y, GetSize().x);
+			_ksys_bg_put_bitmap(
+				rgb,
+				sizeof(rgb_t) * N,
+				static_cast<std::uint32_t>(coord.x),
+				static_cast<std::uint32_t>(coord.y),
+				static_cast<std::uint32_t>(GetSize().x));
 		}
 
+		/// @brief Вывести изображение(rgb)
+		/// @param coord координаты
+		/// @param rgb массив
+		/// @param N длинна массива rgb
 		inline void DrawImage(const Coord &coord, rgb_t *rgb, std::size_t N)
 		{
-			if (!f)
-			{
-				SetSize(GetSize());
-			}
-			_ksys_bg_put_bitmap(rgb, sizeof(rgb_t) * N, coord.x, coord.y, GetSize().x);
+			_ksys_bg_put_bitmap(
+				rgb,
+				sizeof(rgb_t) * N,
+				static_cast<std::uint32_t>(coord.x),
+				static_cast<std::uint32_t>(coord.y),
+				static_cast<std::uint32_t>(GetSize().x));
 		}
 
 		/// @brief Нарисовать линию на фоне
 		/// @param p1 точка перавая
 		/// @param p2 точка вторая
 		/// @param color цвет линии
-		inline void DrawLine(const Coord& p1, const Coord& p2, const Colors::Color &color = OS::GetSystemColors().gui_frame)
+		inline void DrawLine(const Coord& p1, const Coord& p2, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			for(int i = 0; i < abs(p1.x - p2.x); i++)
 			{
