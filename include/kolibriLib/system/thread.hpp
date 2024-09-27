@@ -88,7 +88,7 @@ namespace KolibriLib
 
             /// @brief имя процесса
             /// @details имя запущенного файла - исполняемый файл без расширения
-            char name[12];
+            std::string name;
 
             /// @brief Координаты окна
             Coord WindowCoord;
