@@ -29,7 +29,7 @@ namespace KolibriLib
 		public:
 			Window_t(const std::string &Title, const Colors::ColorsTable &colors = Globals::SystemColors, bool Resize = false, bool RealtimeReadraw = false, bool Gradient = false, unsigned Transparency = 0, const unsigned &Margin = UI::DefaultMargin);
 
-			Window_t(const std::string &Title, const Colors::ColorsTable &colors = Globals::SystemColors, WindowStyle style = WindowStyle::withSkin, std::uint16_t WindowSettings = WindowSettings::RelativeCoord | WindowSettings::WindowHaveTitle);
+			Window_t(const std::string &Title, const Colors::ColorsTable &colors = Globals::SystemColors, WindowStyle style = WindowStyle::withSkin, WindowSettings WindowSettings = WindowSettings::RelativeCoord | WindowSettings::WindowHaveTitle);
 
 			void SetStyle(WindowStyle NewStyle);
 
@@ -72,7 +72,7 @@ namespace KolibriLib
 			WindowStyle _style = WindowStyle::withSkin;
 
 			/// @brief 
-			std::uint16_t _settings = WindowSettings::WindowHaveTitle;
+			WindowSettings _settings = WindowSettings::WindowHaveTitle;
 
 			/// @brief Прозрачность окна
 			uint8_t _Transparency = 0;

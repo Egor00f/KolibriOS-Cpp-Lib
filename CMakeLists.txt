@@ -118,6 +118,7 @@ ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT
 	${SRC_PATH}/C_Layer/kolibri_buf2d.c
 	${SRC_PATH}/C_Layer/kolibri_libimg.c
 	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
+	${SRC_PATH}/C_Layer/kolibri_opendialog.c
 	${SRC_PATH}/C_Layer/rasterworks.cpp
 	${SRC_PATH}/C_Layer/buf2d.cpp
 	${SRC_PATH}/C_Layer/libimg.cpp

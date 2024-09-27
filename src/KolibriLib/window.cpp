@@ -34,7 +34,7 @@ KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLi
 	SetMargin(Margin);
 }
 
-KolibriLib::window::Window_t::Window_t(const std::string &Title, const Colors::ColorsTable &colors, WindowStyle style, std::uint16_t WindowSettings)
+KolibriLib::window::Window_t::Window_t(const std::string &Title, const Colors::ColorsTable &colors, WindowStyle style, WindowSettings WindowSettings)
 	:	_title(Title),
 		_colors(colors),
 		_style(style),

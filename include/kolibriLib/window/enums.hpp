@@ -2,6 +2,7 @@
 #define __WINDOW_ENUMS_HPP__
 
 #include <cstdint>
+#include <kolibriLib/enumBitfield.hpp>
 
 namespace KolibriLib
 {
@@ -22,7 +23,7 @@ namespace KolibriLib
 		};
 
 		/// @brief Настройки для окна. битовые флаги
-		enum WindowSettings
+		enum WindowSettings : std::uint16_t
 		{
 			/// @brief у окна есть заголовок
 			WindowHaveTitle = 1,
@@ -59,8 +60,9 @@ namespace KolibriLib
 			/// @brief Всегда поверх остальных окон
 			AlwaysTop = 1
 		};
-	} // namespace window
-	
-}
+	} // namespace window	
+} // namespace KolibriLib
+
+template<> struct is_flag<KolibriLib::window::WindowSettings> : std::true_type {};
 
 #endif // __WINDOW_ENUMS_HPP__

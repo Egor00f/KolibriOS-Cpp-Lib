@@ -1,5 +1,6 @@
 #include <kolibriLib/system/thread.hpp>
 #include <cstdlib>
+#include <cstring>
 
 using namespace KolibriLib;
 using namespace Thread;
@@ -56,14 +57,14 @@ KolibriLib::Thread::ThreadInfo::ThreadInfo(const ksys_thread_t &t)
 		memused(t.memused),
 		pid(t.pid),
 		slot_state(static_cast<SlotState>(t.slot_state)),
-		window_state(t.window_state),
+		window_state(static_cast<ThreadInfo::WindowStatus>(t.window_state)),
 		event_mask(t.event_mask),
 		key_input_mode(static_cast<keyboard::InputMode>(t.key_input_mode)),
 		WindowCoord(t.winx_start, t.winy_start),
 		WindowSize(t.winx_size, t.winy_size),
 		ClientCoord(t.clientx, t.clienty),
 		ClientSize(t.clientwidth, t.clientheight),
-  name(t.name, 12)
+		name(t.name)
 {
 }
 
@@ -73,12 +74,11 @@ KolibriLib::Thread::ThreadInfo::operator ksys_thread_t() const
 
 	ret.cpu_usage = cpu_usage;
 	ret.pid = pid;
-	ret.window_state = window_state;
+	ret.window_state = static_cast<std::uint8_t>(window_state);
 	ret.winx_size = WindowSize.x;
 	ret.winy_size = WindowSize.y;
 
-	for(std::uint8_t i =  0; i < 12; i++)
-		ret.name[i] = name[i];
+	std::strcpy(ret.name, name.c_str());
 
 	return ret;
 }

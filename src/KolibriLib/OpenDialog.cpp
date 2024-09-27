@@ -1,13 +1,14 @@
 #include <kolibriLib/OpenDialog.hpp>
+#include <cstdlib>
 #include <cstring>
 
 using namespace KolibriLib;
 
 KolibriLib::OpenDialog::OpenDialog(OpenDialog::Mode mode, Size winSize, Coord winCoord, const std::vector<FilterElement> &filter, const filesystem::Path &defaultPath)
 {
-	_opendialog = (open_dialog *)malloc(sizeof(open_dialog));
+	_opendialog = static_cast<open_dialog *>(malloc(sizeof(open_dialog)));
 
-	_opendialog	->	mode	= static_cast<int>(mode);
+	_opendialog	->	mode	= static_cast<open_dialog_mode>(mode);
 	_opendialog	->	x_size	= static_cast<unsigned short>(winSize.x);
 	_opendialog	->	y_size	= static_cast<unsigned short>(winSize.x);
 	_opendialog	->	x_start	= static_cast<unsigned short>(winCoord.x);
@@ -73,7 +74,7 @@ void KolibriLib::OpenDialog::SetFilter(const std::vector<FilterElement> &f)
 
 KolibriLib::OpenDialog::FilterArea::FilterArea()
 {
-	area = (od_filter *)malloc(sizeof(od_filter));
+	area = static_cast<od_filter *>(std::malloc(sizeof(od_filter)));
 
 	area->size = 0;
 	area->end = 0;
@@ -118,7 +119,7 @@ od_filter* KolibriLib::OpenDialog::FilterArea::Create(const std::vector<FilterEl
 
 	if (elements.size() > 0)
 	{
-		// Размер филт
+		// Размер филтра
 		std::size_t s = 0;
 
 		for (std::string i : elements)
@@ -126,7 +127,7 @@ od_filter* KolibriLib::OpenDialog::FilterArea::Create(const std::vector<FilterEl
 			s += i.length();
 		}
 
-		a = (od_filter *)malloc(4 + s + 1); // 4 на size, s на сами фильтры, 1 на 0 в конце
+		a = static_cast<od_filter *>(std::malloc(4 + s + 1)); // 4 на size, s на сами фильтры и 1байт на 0 в конце
 
 		a->size = s;
 
@@ -145,7 +146,7 @@ od_filter* KolibriLib::OpenDialog::FilterArea::Create(const std::vector<FilterEl
 	}
 	else
 	{
-		a = (od_filter *) malloc(sizeof(od_filter));
+		a = static_cast<od_filter *>(std::malloc(sizeof(od_filter)));
 		a->size = 0;
 		a->end = 0;
 	}

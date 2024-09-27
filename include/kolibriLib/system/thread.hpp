@@ -5,6 +5,7 @@
 #include <kolibriLib/input/keyboard.hpp>
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/window/enums.hpp>
+#include <kolibriLib/enumBitfield.hpp>
 #include <type_traits>
 
 namespace KolibriLib
@@ -36,6 +37,7 @@ namespace KolibriLib
         /// @brief Информация о потоке
         struct ThreadInfo
         {
+            /// @brief Состояние слота
             enum class SlotState : std::uint16_t
             {
                 /// @brief поток выполняется
@@ -96,9 +98,10 @@ namespace KolibriLib
             /// @brief Размер окна
             Size WindowSize;
 
-            /// @brief Размер
+            /// @brief Координаты клиенской области
             Coord ClientCoord;
 
+            /// @brief Размер клиенской области
             Size ClientSize;
 
             /// @brief Использование Процессора
@@ -125,7 +128,7 @@ namespace KolibriLib
 
             /// @brief Состояние окна
             /// @note Битовое поле
-            std::uint8_t window_state;
+            WindowStatus window_state;
 
             /// @brief маска ивентов
             uint8_t event_mask;
@@ -134,6 +137,7 @@ namespace KolibriLib
             keyboard::InputMode key_input_mode;
         };
 
+        
         /// @brief Значение PID текущего процесса.
         /// @details Нужно для функций
         const PID ThisThread = KSYS_THIS_SLOT;
@@ -173,6 +177,8 @@ namespace KolibriLib
             return ret;
         }
 
+        /// @brief Завершить процесс/поток
+        /// @return false если произошла ошибка
         inline bool TerminateThread()
         {
             _ksys_exit();
@@ -249,5 +255,6 @@ namespace KolibriLib
     
 } // namespace KolibriLib
 
+template<> struct is_flag<KolibriLib::Thread::ThreadInfo::WindowStatus> : std::true_type {};
 
 #endif // __THREAD_HPP__

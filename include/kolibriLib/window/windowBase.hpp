@@ -46,17 +46,17 @@ namespace KolibriLib
 								 const Colors::Color &WorkColor = Globals::SystemColors.work_area,
 								 Colors::Color TitleColor = Globals::SystemColors.work_text,
 								 WindowStyle style = WindowStyle::withSkin,
-								 std::uint16_t settings = WindowSettings::WindowHaveTitle | WindowSettings::RelativeCoord)
+								 WindowSettings settings = WindowSettings::WindowHaveTitle | WindowSettings::RelativeCoord)
 		{
 			PrintDebug("Define Window\n");
+
 			asm_inline(
-				"int $0x40" 
-				::
-				"a"(0),
+				"int $0x40" ::
+					"a"(0),
 				"b"((coord.x << 16) | ((size.x - 1) & 0xFFFF)),
 				"c"((coord.y << 16) | ((size.y - 1) & 0xFFFF)),
-				"d"( ((settings << 28) | (static_cast<std::uint8_t>(style) << 24)) | (WorkColor.operator ksys_color_t() & 0xFFFFFF) ),
-				"S"(  (settings >> 8)  | (TitleColor.operator ksys_color_t() & 0xFFFFFF)),
+				"d"( ((static_cast<std::uint16_t>(settings) << 28) | (static_cast<std::uint8_t>(style) << 24)) | (WorkColor.operator ksys_color_t() & 0xFFFFFF)),
+				"S"(  (static_cast<std::uint16_t>(settings) >> 8) | (TitleColor.operator ksys_color_t() & 0xFFFFFF)),
 				"D"(title.c_str())
 				: "memory");
 		}
@@ -71,7 +71,7 @@ namespace KolibriLib
 		/// @brief Получить размер окна
 		/// @param pid PID процесса кторый создал окно
 		/// @return Размер окна
-		inline Size GetWindowSize(Thread::PID pid = Thread::ThisThread)
+		inline Size GetWindowSize(Thread::Slot pid = Thread::ThisThread)
 		{
 			return Thread::GetThreadInfo(pid).WindowSize;
 		}
