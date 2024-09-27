@@ -44,6 +44,9 @@ namespace KolibriLib
                 /// @brief Изменить ID кнопки вручную
                 /// @param NewID Новый ID кнопки
                 void SetId(const ButtonID &NewID);
+
+                /// @brief Изменить ID кнопки на какой-нибудь другой
+                /// @details просто запрашивает новый ID у ButtonsIDController (старый конешноже освобождает)
                 void SetId();
 
                 /// @brief Проверить имеет ли кнопка ID

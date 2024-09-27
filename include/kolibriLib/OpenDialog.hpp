@@ -1,16 +1,13 @@
 #ifndef __KOLIBRILIB_OPENDIALOG_HPP__
 #define __KOLIBRILIB_OPENDIALOG_HPP__
 
-#include <kolibriLib/system/filesystem/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/window/windowBase.hpp>
 #include <C_Layer/opendialog.hpp>
 
 namespace KolibriLib
 {
-	
-
-		
 	/// @brief Диалог выбора файлов
 	/// @details это отдельная программа (если что)
 	/// Памяти требует эта штука много (около 9500 байт)
@@ -35,6 +32,7 @@ namespace KolibriLib
 			Select = open_dialog_mode::SELECT
 		};
 
+		/// @brief Статус
 		enum class Status
 		{
 			/// @brief Пользователь нажал Cancel
@@ -48,14 +46,18 @@ namespace KolibriLib
 		};
 
 		/// @note должно обязательно заканчиавться на '\0'
-		typedef std::string FilterElement;
+		using FilterElement = std::string;
 
-		/// @brief 
+		/// @brief Фильтр расширений фалов
 		struct FilterArea
 		{
 			od_filter* area;
 
+			/// @brief 
 			FilterArea();
+
+			/// @brief 
+			/// @param elements 
 			FilterArea(const std::vector<FilterElement> &elements);
 
 			/// @brief Деструктор
@@ -94,5 +96,4 @@ namespace KolibriLib
 	
 } // namespace KolibriLib
 
-
-#endif
+#endif // __KOLIBRILIB_OPENDIALOG_HPP__

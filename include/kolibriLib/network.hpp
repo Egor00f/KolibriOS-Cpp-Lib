@@ -1,7 +1,7 @@
-#ifndef __NETWORK_H__
-#define __NETWORK_H__
+#ifndef __NETWORK_HPP__
+#define __NETWORK_HPP__
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <string>
 
 /// \brief Основное пространство имён
@@ -84,4 +84,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __NETWORK_H__
+#endif // __NETWORK_HPP__

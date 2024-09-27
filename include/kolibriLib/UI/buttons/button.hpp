@@ -32,6 +32,9 @@ namespace KolibriLib
 
                 void swap(Button& a);
 
+                /// @brief оператор
+                /// @param  
+                /// @return 
                 Button& operator = (const Button&) = default;
 
             private:

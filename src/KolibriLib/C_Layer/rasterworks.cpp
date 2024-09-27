@@ -1,5 +1,24 @@
 #include <C_Layer/rasterworks.hpp>
 
+rasterwoksLib rasterworksLibv;
+
+rasterwoksLib::rasterwoksLib()
+{
+	KolibriLib::PrintDebug("Init RasterWorks: ");
+	int err = kolibri_rasterworks_init();
+
+	if (err == -1)
+	{
+		KolibriLib::PrintDebug("Error\n");
+
+		throw err;
+	}
+	else
+	{
+		KolibriLib::PrintDebug("OK\n");
+	}
+}
+
 void drawtext(const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const KolibriLib::Colors::Color &BackgroundColor, const uint8_t &flags, const uint8_t encoding)
 {
 	const int l = size.x * size.y;

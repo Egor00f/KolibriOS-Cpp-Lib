@@ -28,11 +28,12 @@ void KolibriLib::UI::CheckBox::DrawBorder() const
 
 	switch (_style)
 	{
-	case Default:
-		graphic::DrawRectangleLines(absCoord, absCoord + absSize, _MainColor);
+	case style::Default:
+		graphic::DrawRectangleLines(absCoord, absCoord + absSize, _BorderColor);
 		break;
-	case Circle:
+	case style::Circle:
 		graphic::DrawCircle(absCoord + point(absSize.x / 2, absSize.y / 2), static_cast<unsigned int>(absSize.x) / 2, _BorderColor);
+		break;
 	default:
 		break;
 	}
@@ -46,6 +47,7 @@ bool KolibriLib::UI::CheckBox::GetChecked() const
 void KolibriLib::UI::CheckBox::OnButtonEvent(buttons::ButtonID PressedButtonID)
 {
 	Button::OnButtonEvent(PressedButtonID);
+
 	if(_status)
 	{
 		checked = !checked;
@@ -89,10 +91,22 @@ void CheckBox::Render() const
 	}
 }
 
+void KolibriLib::UI::CheckBox::SetStyle(style s)
+{
+	_style = s;
+}
+
 void KolibriLib::UI::CheckBox::swap(CheckBox &a)
 {
 	CheckBox buff(*this);
 
 	*this = a;
 	a = buff;
+}
+
+bool KolibriLib::UI::CheckBox::operator==(const CheckBox &c) const
+{
+	return static_cast<buttons::Button>(*this) == static_cast<buttons::Button>(c) &&
+	       (_BorderColor == c._BorderColor) &&
+		   (_style == c._style);
 }

@@ -1,20 +1,15 @@
-#ifndef __LIBIMG_H__
-#define __LIBIMG_H__
+#ifndef __LIBIMG_HPP__
+#define __LIBIMG_HPP__
 
 #include <C_Layer/INCLUDE/kolibri_libimg.h>
 
-#ifndef __MakeStaticLib__
 class libimgLib
 {
 public:
-	libimgLib()
-	{
-		if(kolibri_libimg_init() == -1)
-			throw;
-	}
+	libimgLib();
 };
 
-libimgLib libimgLibv;
-#endif
+extern libimgLib libimgLibv;
 
-#endif // __LIBIMG_H__
+
+#endif // __LIBIMG_HPP__

@@ -3,4 +3,19 @@
 
 #include <kolibriLib/UI/BaseEditor.hpp>
 
-#endif
+namespace KolibriLib
+{
+	namespace UI
+	{
+		class Form : public BaseEditor
+		{
+		public:
+			Form() = default;
+
+		private:
+		
+		};
+	} // namespace UI
+} // namespace KolibriLib
+
+#endif // __FORM_HPP__

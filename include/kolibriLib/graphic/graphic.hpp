@@ -6,9 +6,7 @@
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/graphic/screen.hpp>
-#include <kolibriLib/system/os.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/img.hpp>
 #include <kolibriLib/globals.hpp>
 
 #include <cmath>
@@ -37,8 +35,8 @@ namespace KolibriLib
 			_ksys_draw_line (
 				coord.x, 
 				coord.y,
-				coord.x + static_cast<int>(lround(lenght * std::cos(angle))),
-				coord.y + static_cast<int>(lround(lenght * std::sin(angle))),
+				coord.x + lround(lenght * std::cos(angle)),
+				coord.y + lround(lenght * std::sin(angle)),
 				color.operator ksys_color_t()
 			);
 		}
@@ -49,8 +47,8 @@ namespace KolibriLib
 		inline void DrawPixel(const Coord &position, const Colors::Color &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_pixel (
-				static_cast<uint16_t>(position.x), 
-				static_cast<uint16_t>(position.y), 
+				static_cast<std::uint16_t>(position.x), 
+				static_cast<std::uint16_t>(position.y), 
 				color.operator ksys_color_t()
 			);
 		}
@@ -178,7 +176,8 @@ namespace KolibriLib
 		{
 			_ksys_draw_bitmap(bitmap, coord.x, coord.y, size.x, size.y);
 		}
-	}
+
+	} // namespace graphic
 
 } // namespace KolibriLib
 

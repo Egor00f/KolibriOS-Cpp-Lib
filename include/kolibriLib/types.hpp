@@ -5,9 +5,6 @@
 #define __TYPES_HPP__
 
 #include <include_ksys.h>
-#include <kolibriLib/system/filesystem/filesystem.hpp>
-#include <kolibriLib/color.hpp>
-#include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/debug.hpp>
 
 #define X_Y(x, y)(((x) << 16) | (y))
@@ -116,12 +113,25 @@ namespace KolibriLib
 			/// @param offset
 			Axis(float scale = 0, int offset = 0);
 
+			Axis& operator=(const Axis&) = default;
+
+			/// @brief оперватор сравнения
+			/// @param axis с чем сравнивать
+			/// @note сравнивает с точностью до тысячных ибо зачем очень большая точность для gui
+			/// @return 
 			bool operator==(const Axis &axis) const;
+
+			/// @brief 
+			/// @param axis с чем сравнивать
+			/// @return 
 			bool operator!=(const Axis &axis) const;
 		};
 
-		/// @brief Оси X и Y
-		UDim::Axis X, Y;
+		/// @brief Ось X
+		UDim::Axis X;
+
+		/// @brief Ось Y
+		UDim::Axis Y;
 
 		/// @brief Конструктор
 		/// @param XScale
@@ -136,9 +146,11 @@ namespace KolibriLib
 		/// @details только смещение
 		UDim(int x = 0, int y = 0);
 
+		UDim(const Axis& x, const Axis& y);
+
 		/// @brief Конструктор
-		/// @param x
-		/// @param y
+		/// @param x Относительный размер по x
+		/// @param y Относительный размер по y
 		UDim(float x, float y);
 
 		/// @brief Конструктор
@@ -147,8 +159,11 @@ namespace KolibriLib
 		UDim(const point &p);
 
 		/// @brief получить абсолютные значения(в пикселях) относительно окна
-		/// @return
-		point GetAbsolute(const point &Parent = {Thread::GetThreadInfo().winx_size, Thread::GetThreadInfo().winy_size}) const;
+		/// @param Parent координаты/размер того откносительно чего раситывается
+		/// @return абсолютные координаты/размер
+		point GetAbsolute(const point &Parent) const;
+
+		UDim& operator=(const UDim&) = default;
 
 		bool operator==(const UDim &obj) const;
 		bool operator!=(const UDim &obj) const;

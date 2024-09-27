@@ -14,7 +14,7 @@ namespace KolibriLib
         {
             rgb(rgb_t val);
 
-            rgb(std::uint32_t val);
+            rgb(ksys_color_t val);
 
             rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b);
 
@@ -47,8 +47,7 @@ namespace KolibriLib
             /// @param G Красная состовляющаяя цвета
             /// @param B Красная состовляющаяя цвета
             /// @param A Прозрачность
-            Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A = 0xFF);
-
+            Color(std::uint8_t R, std::uint8_t G, std::uint8_t B, std::uint8_t A = 0xFF);
 
             operator rgb_t() const;
             operator ksys_color_t() const;
@@ -60,7 +59,7 @@ namespace KolibriLib
 
             Color& operator = (const Color& a) = default;
 
-            Color& operator = (const uint32_t& color);
+            Color& operator = (const std::uint32_t& color);
 
             /// @brief Смешивает два цвета (среднее занчение)
             /// @param a второй цвет
@@ -76,12 +75,12 @@ namespace KolibriLib
 
             struct
             {
-                uint8_t blue;
-                uint8_t green;
-                uint8_t red;
+                std::uint8_t blue;
+                std::uint8_t green;
+                std::uint8_t red;
 
                 /// @brief Альфа канал
-                uint8_t _a;
+                std::uint8_t _a;
             };
         };
 
@@ -93,7 +92,7 @@ namespace KolibriLib
         /// @brief 
         /// @param color 
         /// @return 
-        rgb_t UINT32toRGB(const uint32_t &color);
+        rgb_t UINT32toRGB(const std::uint32_t &color);
 
         /// @brief Смешать два цвета
         /// @param a Первый цвет
@@ -102,11 +101,41 @@ namespace KolibriLib
         /// @return получившийся в итоге цвет
         Color BlendColors(const Color &a, const Color &b, float k = 0.5f);
 
-        /// @brief Таблица цветов по умолчанию
-        const ksys_colors_table_t DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         /// @brief Таблица системных цветов
-        using ColorsTable = ksys_colors_table_t;
+        struct ColorsTable : public ksys_colors_table_t
+        {
+            ColorsTable() = default;
+            ColorsTable(const ColorsTable&) = default;
+            ColorsTable(ColorsTable&&) = default;
+
+            /// @brief Конструктор
+            /// @param frameArea 
+            /// @param grabBar 
+            /// @param grabBarButton 
+            /// @param grabText 
+            /// @param workArea 
+            /// @param workButton 
+            /// @param workButtonText 
+            /// @param workText 
+            /// @param workGraph 
+            ColorsTable (
+                Color frameArea,
+                Color grabBar,
+                Color grabBarButton,
+                Color grabText,
+                Color workArea,
+                Color workButton,
+                Color workButtonText,
+                Color workText,
+                Color workGraph
+            );
+
+            ColorsTable& operator=(const ColorsTable&) = default;
+        };
+
+        /// @brief Таблица цветов по умолчанию
+        const ColorsTable DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     }
 
     void PrintDebug(Colors::Color out);

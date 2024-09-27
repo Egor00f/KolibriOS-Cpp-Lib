@@ -3,12 +3,11 @@
 
 #include <kolibriLib/window/window.hpp>
 #include <kolibriLib/graphic/screen.hpp>
-#include <kolibriLib/system/filesystem/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/childWindow.hpp>
 #include <kolibriLib/graphic/graphic.hpp>
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/network.hpp>
-#include <kolibriLib/OpenDialog.hpp>
 #include <kolibriLib/input/clipboard.hpp>
 #include <input.hpp>
 #include <KolibriLibUI.hpp>
@@ -25,8 +24,6 @@ namespace KolibriLib
 	using KolibriLib::Colors::ColorsTable;
 
 	using KolibriLib::window::Window;
-
-	using filesystem::Path;
 
 	using KolibriLib::OS::Event;
 	using KolibriLib::OS::GetSystemColors;

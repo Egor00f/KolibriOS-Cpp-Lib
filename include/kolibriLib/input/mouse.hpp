@@ -3,7 +3,7 @@
 
 #include <include_ksys.h>
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/system/filesystem/filesystem.hpp>
+#include <kolibriLib/filesystem/filesystem.hpp>
 #include <kolibriLib/color.hpp>
 
 namespace KolibriLib
@@ -141,7 +141,7 @@ namespace KolibriLib
 		inline CursorHandle LoadCursor(const filesystem::Path& path)
 		{
 			return _ksys_load_cursor (
-				const_cast<void *>(static_cast<const void *>(path.operator const char *())), 
+				const_cast<void *>(static_cast<const void *>(path.c_str())), 
 				KSYS_CURSOR_FROM_FILE
 			);
 		}
@@ -154,7 +154,7 @@ namespace KolibriLib
 		inline CursorHandle LoadCursor(const filesystem::Path& path, const Coord &hotPoint)
 		{
 			return _ksys_load_cursor (
-				const_cast<void *>(static_cast<const void *>(path.operator const char *())), 
+				const_cast<void *>(static_cast<const void *>(path.c_str())), 
 				KSYS_CURSOR_FROM_FILE || 2 || (hotPoint.x << 23) || (hotPoint.y << 16)
 			);
 		}
@@ -203,4 +203,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __MOUSE_H__
+#endif // __MOUSE_HPP__

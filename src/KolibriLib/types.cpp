@@ -1,4 +1,5 @@
 #include <kolibriLib/types.hpp>
+#include <cmath>
 
 using namespace KolibriLib;
 
@@ -144,14 +145,12 @@ KolibriLib::UDim::UDim(float XScale, int XOffset, float YScale, int YOffset)
 KolibriLib::UDim::UDim(int x, int y)
 	: X(0, x),
 	  Y(0, y)
-
 {
 }
 
 KolibriLib::UDim::UDim(float x, float y)
 	: X(x, 0),
 	  Y(y, 0)
-
 {
 }
 
@@ -164,18 +163,18 @@ KolibriLib::UDim::UDim(const point &p)
 
 bool UDim::Axis::operator==(const UDim::Axis &axis) const
 {
-	return Scale == axis.Scale && Offset == axis.Offset;
+	return Offset == axis.Offset && std::fabs(Scale - axis.Scale) < 0.001f;
 }
 
 bool UDim::Axis::operator!=(const UDim::Axis &axis) const
 {
-	return Scale != axis.Scale || Offset != axis.Offset;
+	return Offset != axis.Offset || std::fabs(Scale - axis.Scale) < 0.001f;
 }
 
 point KolibriLib::UDim::GetAbsolute(const point &Parent) const
 {
-	return { static_cast<int>(static_cast<float>(Parent.x) * X.Scale) + X.Offset,
-	         static_cast<int>(static_cast<float>(Parent.y) * Y.Scale) + Y.Offset };
+	return point(lround(X.Scale * static_cast<float>(Parent.x)) + X.Offset,
+				 lround(Y.Scale * static_cast<float>(Parent.y)) + Y.Offset);
 }
 
 bool KolibriLib::UDim::operator==(const UDim &obj) const

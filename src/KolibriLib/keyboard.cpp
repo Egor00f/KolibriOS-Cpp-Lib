@@ -12,7 +12,7 @@ Scancode keyboard::GetScancodeByASCII(char ascii, KeyboardLayoutMode mode)
 	{
 		if(layout[i] == ascii)
 		{
-			return (Scancode){i};
+			return Scancode(i);
 		}
 	}
 
