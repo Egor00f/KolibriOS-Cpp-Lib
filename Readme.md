@@ -26,7 +26,8 @@
 Сборка:
 ```
 mkdir build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain.cmake
+cd build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain.cmake
 make
 ```
 

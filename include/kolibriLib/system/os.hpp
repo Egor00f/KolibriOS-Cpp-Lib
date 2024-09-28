@@ -347,8 +347,6 @@ namespace KolibriLib
 		/// @param Text текст после заголовка
 		/// @param icon иконка
 		/// @param keys ключи
-		/// @example example.cpp
-		/// @example checkboxExample.cpp
 		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, notifyKey::NotSet, notifyKey::NotSet, notifyKey::NotSet});
 
 		/// @brief Уведомление об ошибке через увдомления системы

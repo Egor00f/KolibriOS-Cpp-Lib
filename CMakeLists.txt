@@ -168,16 +168,11 @@ target_include_directories(KolibriLib
 )
 
 
-# INCLUDE MACROSS FOR GENERATE DOXYGEN
-include(Doxygen)
-
 #GENERATE DOXYGEN ONLY THIS PROJECT ISNT SUBPROECT
 if(KolibriLib_BUILD_DOCS)
 	message("Build KolibriLib Docs")
 
-	SET(DOXY_OUTPUT_LANGUAGE "Russian")
-
-	SET(DOXY_INPUT ${PROJECT_SOURCE_DIR})
+	include(Doxygen)
 
 	ADD_DOCUMENTATION(doc ${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile)
 
