@@ -43,9 +43,12 @@ jobs:
 
       - name: Install fasm
         run: sudo apt install fasm
+
+      - name: KolibriOS repo
+        run: cd ${{github.workspace}}/../ && git clone https://git.kolibrios.org/KolibriOS/kolibrios.git
       
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build
+        run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --target doc
