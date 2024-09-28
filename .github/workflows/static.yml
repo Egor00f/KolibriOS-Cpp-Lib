@@ -42,7 +42,7 @@ jobs:
         run: sudo apt install cmake && cmake --version
 
       - name: Install fasm
-        run: sudo apt install fasm && fasm --version
+        run: sudo apt install fasm
       
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build
