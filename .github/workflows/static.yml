@@ -39,8 +39,11 @@ jobs:
         run: sudo apt install doxygen && doxygen --version
 
       - name: Install cmake
-        run: sudo apt install cmake
-        
+        run: sudo apt install cmake && cmake --version
+
+      - name: Install fasm
+        run: apt install fasm && fasm --version
+      
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build
 
