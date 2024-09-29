@@ -1,6 +1,7 @@
 # KolibriOS C++ Lib
 
 
+
 библиотека для (чуть более) удобной работы с KolibriOS, с похренитетом к оптимизации. Для всего и сразу.
 
 Сия библиотека представляет из себя прослойку абстракций, переименованных функций и прочей фигни, что упростит разработку приложений
@@ -11,7 +12,7 @@
 ## Зачем оно надо
 
 + Эта библиотека даёт упращенный доступ к системным функциям
-+ чуть более удобно делать UI, чем просто системными API и/или C_Layer(кому как)
++ чуть более удобно делать UI, чем просто системными API и/или C_Layer(но кому как)
 
 ## Сборка
 
@@ -27,25 +28,24 @@
 ```
 mkdir build
 cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain.cmake
-make
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+cmake --build .
 ```
-
-Но я использую собираю в vscode с помощью CMake Tools
-
-Под виндой всё работает отлично, для линукса же при линковке собранной библиотеки ошибка Archive index чото там
-
 
 ## Как использовать это
 
+1. Добавте эту библиотеку как субмодуль в ваш проект
+2. включите в проект с помощью cmake
+   ```
+   add_subdirectory(KolibriOS-Cpp-Lib)
 
-1. Скомпилируйте библиотеку
-2. (необязятельно)Переместите build/libKolibriLib.a в ваш проект
-3. Подключите заголовочный файл(нужно указать папку include в ${includePath}):
-```
-#include <KolibriLib.hpp>
-```
-4. Прочитайте doxygen(с тем как сгенерить его сами думаю справитесь(в cmake есть цель "doc"))
+   tareget_link_libraries(yourexeTarget PRIVATE KolibriLib)
+   ```
+4. Подключите заголовочный файл:
+   ```
+   #include <KolibriLib.hpp>
+   ```
+4. Прочитайте doxygen (https://egor00f.github.io/KolibriOS-Cpp-Lib)
 
 Примеры использования лежат в папке `examples`
 
