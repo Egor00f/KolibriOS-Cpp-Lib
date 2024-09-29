@@ -40,6 +40,9 @@ jobs:
         
       - name: Install wget
         run: sudo apt install wget
+        
+      - name: Istall 7z
+        run: sudo apt install p7zip-full
 
       - name: Install cmake
         run: sudo apt install cmake && cmake --version
@@ -51,7 +54,7 @@ jobs:
         run: cd ${{github.workspace}}/../ && git clone https://git.kolibrios.org/KolibriOS/kolibrios.git
       
       - name: Install kos32-gcc toolchain
-        run: wget http://board.kolibrios.org/download/file.php?id=9919 -O install && ./install
+        run: wget http://board.kolibrios.org/download/file.php?id=9919 -O install && chmod u+x install && ./install
       
       - name: Configure CMake
         run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
