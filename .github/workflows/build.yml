@@ -1,0 +1,47 @@
+name: Test build
+
+on:
+  push:
+    branches: [ "stable" ]
+  pull_request:
+    branches: [ "stable" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Install Doxygen
+        run: sudo apt install doxygen && doxygen --version
+        
+      - name: Install wget
+        run: sudo apt install wget
+        
+      - name: Istall 7z
+        run: sudo apt install p7zip-full
+
+      - name: Install cmake
+        run: sudo apt install cmake && cmake --version
+
+      - name: Install fasm
+        run: sudo apt install fasm
+
+      - name: KolibriOS repo
+        run: cd ${{github.workspace}}/../ && git clone https://git.kolibrios.org/KolibriOS/kolibrios.git
+      
+      - name: Install kos32-gcc toolchain
+        run: git clone https://github.com/Egor00f/kolibrios-gcc-toolchain.git && cd kolibrios-gcc-toolchain && chmod u+x install && ./install
+      
+      - name: Configure CMake
+        run: cd ${{github.workspace}} && cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/cmake/toolchain.cmake
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --target all --config ${{env.BUILD_TYPE}}
