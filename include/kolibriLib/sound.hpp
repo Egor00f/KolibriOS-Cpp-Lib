@@ -9,6 +9,7 @@
 
 namespace KolibriLib
 {
+    /// @brief Звук
     namespace Sound
     {
         /// @brief Получить состояние спикера(Вкл/выкл)

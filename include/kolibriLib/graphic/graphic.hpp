@@ -20,9 +20,16 @@ namespace KolibriLib
 		/// @param a точка первая
 		/// @param b точка вторая
 		/// @param color Цвет линии
-		inline void DrawLine(const Coord &coord, const Coord &b, const Colors::Color &color = Globals::SystemColors.work_graph)
+		/// @note Конечная точка также рисуется.
+		inline void DrawLine(const Coord &coord, const Coord &b, const Colors::rgb &color = Globals::SystemColors.work_graph)
 		{
-			_ksys_draw_line(coord.x, coord.y, b.x, b.y, color.val);
+			_ksys_draw_line (
+				coord.x, 
+				coord.y, 
+				b.x, 
+				b.y, 
+				color.ZeroRRGGBB()
+			);
 		}
 
 		/// @brief Нарисовать линию
@@ -30,26 +37,27 @@ namespace KolibriLib
 		/// @param lenght Длина линии
 		/// @param angle Угол
 		/// @param color Цвет линии
-		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::Color &color = Globals::SystemColors.work_graph)
+		/// @note Конечная точка также рисуется.
+		inline void DrawLine(const Coord &coord, unsigned lenght, unsigned short angle, const Colors::rgb &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_line (
 				coord.x, 
 				coord.y,
 				coord.x + lround(lenght * std::cos(angle)),
 				coord.y + lround(lenght * std::sin(angle)),
-				color.operator ksys_color_t()
+				color.ZeroRRGGBB()
 			);
 		}
 
 		/// @brief Закрасить пиксель точку
 		/// @param position координаты
 		/// @param color Цвет
-		inline void DrawPixel(const Coord &position, const Colors::Color &color = Globals::SystemColors.work_graph)
+		inline void DrawPixel(const Coord &position, const Colors::rgb &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_draw_pixel (
 				static_cast<std::uint16_t>(position.x), 
 				static_cast<std::uint16_t>(position.y), 
-				color.operator ksys_color_t()
+				color.ZeroRRGGBB()
 			);
 		}
 
@@ -69,29 +77,28 @@ namespace KolibriLib
 		{
 			asm_inline (
 				"int $0x40"
-				:: "a"(13), 
-				   "b"( (position.x << 16) + size.x ), 
-				   "c"( (position.y << 16) + size.y ), 
-				   "d"(color.BBGGRR00())
+				::	"a"(13), 
+					"b"( X_Y(position.x, size.x) ),
+					"c"( X_Y(position.y, size.y) ),
+					"d"(color.RRGGBB())
 				);
 		}
 
-		/// @brief Нарисовать закрашенный прямоугольник
+		/// @brief Нарисовать закрашенный прямоугольник градиентной заливки
 		/// @param position позиция левого верхнего угла
 		/// @param size Размеры
 		/// @param color Цвет
 		inline void DrawRectangleGradient(Coord position, Size size, Colors::rgb color = Globals::SystemColors.work_graph)
 		{
-			Colors::Color ret = color;
-			ret._a = 0x80;
+			std::uint32_t val = color.ZeroRRGGBB();
+			val |= 0x80000000;
 
 			asm_inline (
 				"int $0x40"
-				:
-				: "a"(13),
-				  "b"((position.x << 16) + size.x),
-				  "c"((position.y << 16) + size.y),
-				  "d"(ret.val)
+				::	"a"(13),
+					"b"( X_Y(position.x, size.x) ),
+					"c"( X_Y(position.y, size.y) ),
+					"d"(val)
 				);
 		}
 
@@ -133,8 +140,8 @@ namespace KolibriLib
 		}
 
 		/// @brief прочитать цвет точки
-		/// @param Point 
-		/// @return
+		/// @param Point координаты точки
+		/// @return Цвет точки на экране
 		inline Colors::Color ReadPoint(const Coord Point)
 		{
 			ksys_color_t c;
@@ -143,7 +150,7 @@ namespace KolibriLib
 				"int $0x40"
 				: "=a"(c)
 				: "a"(35),
-				  "b"((Point.x * GetScreenSize().x + Point.y)));
+				  "b"(Point.x * GetScreenSize().x + Point.y));
 
 			return Colors::Color(c);
 		}
@@ -151,7 +158,7 @@ namespace KolibriLib
 		/// @brief Получить область
 		/// @param coord 
 		/// @param size
-		/// @return
+		/// @return указатель на массив
 		/// @note Не забудьте delete[] 
 		inline rgb_t* ReadArea(const Coord &coord, const Size &size)
 		{
@@ -169,7 +176,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Вывести изображение
-		/// @param bitmap изображение
+		/// @param bitmap изображение в формате BBGGRR
 		/// @param coord координаты
 		/// @param size размер изображния
 		inline void DrawBitmap(rgb_t *bitmap, const Coord &coord, const Size &size)
@@ -178,7 +185,6 @@ namespace KolibriLib
 		}
 
 	} // namespace graphic
-
 } // namespace KolibriLib
 
 

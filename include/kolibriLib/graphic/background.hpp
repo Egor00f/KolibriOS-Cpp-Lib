@@ -63,8 +63,8 @@ namespace KolibriLib
 			_ksys_bg_redraw_bar(coord.operator ksys_pos_t(), (coord + size).operator ksys_pos_t());
 		}
 
-		/// @brief
-		/// @param
+		/// @brief установить размер фонового изображения.
+		/// @param size размеры фоного изображения
 		inline void SetSize(const Size &size)
 		{
 			_ksys_bg_set_size (
@@ -76,13 +76,13 @@ namespace KolibriLib
 		/// @brief Постовить точку на фоне
 		/// @param coord координаты точки
 		/// @param color цвет точки
-		inline void DrawPoint(const Coord coord, const Colors::Color &color = Globals::SystemColors.work_graph)
+		inline void DrawPoint(const Coord &coord, const Colors::rgb &color = Globals::SystemColors.work_graph)
 		{
 			_ksys_bg_put_pixel (
 				static_cast<std::uint32_t>(coord.x), 
 				static_cast<std::uint32_t>(coord.y), 
 				static_cast<std::uint32_t>(GetSize().x), 
-				color.operator ksys_color_t()
+				color.RRGGBB()
 			);
 		}
 
@@ -92,12 +92,13 @@ namespace KolibriLib
 		/// @param rgb
 		inline void DrawImage(const Coord coord, rgb_t (&rgb)[N])
 		{
-			_ksys_bg_put_bitmap(
+			_ksys_bg_put_bitmap (
 				rgb,
 				sizeof(rgb_t) * N,
 				static_cast<std::uint32_t>(coord.x),
 				static_cast<std::uint32_t>(coord.y),
-				static_cast<std::uint32_t>(GetSize().x));
+				static_cast<std::uint32_t>(GetSize().x)
+			);
 		}
 
 		/// @brief Вывести изображение(rgb)
@@ -106,12 +107,13 @@ namespace KolibriLib
 		/// @param N длинна массива rgb
 		inline void DrawImage(const Coord &coord, rgb_t *rgb, std::size_t N)
 		{
-			_ksys_bg_put_bitmap(
+			_ksys_bg_put_bitmap (
 				rgb,
 				sizeof(rgb_t) * N,
 				static_cast<std::uint32_t>(coord.x),
 				static_cast<std::uint32_t>(coord.y),
-				static_cast<std::uint32_t>(GetSize().x));
+				static_cast<std::uint32_t>(GetSize().x)
+			);
 		}
 
 		/// @brief Нарисовать линию на фоне

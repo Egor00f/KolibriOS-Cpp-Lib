@@ -96,6 +96,11 @@ Input::operator char() const
 	}
 }
 
+Input::operator std::uint8_t() const
+{
+	return ASCII;
+}
+
 Input::operator Scancode() const
 {
 	if(GetInputMode() == InputMode::ASCII)

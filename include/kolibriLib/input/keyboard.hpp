@@ -131,7 +131,7 @@ namespace KolibriLib
             /// @brief Запятая
             NUMPAD_COMMA = KSYS_SCANCODE_NUMPAD_COMMA,
 
-            BACKSPACE = static_cast<std::uint8_t>(KSYS_SCANCODE_BACKSPACE)
+            BACKSPACE = KSYS_SCANCODE_BACKSPACE
         };
 
         /// @brief Сканкод
@@ -155,7 +155,7 @@ namespace KolibriLib
         };
 
         /// @brief Ввод с клавиутры
-        /// @details В зависимости от режима возваржаются ASCII или Сканкоды
+        /// @details В зависимости от режима возваржаются ASCII или Сканкоды. 
         /// По умолчанию ASCII
         /// Сканкоды возвращаются непосредственно клавиатурой и фиксированы.
         /// ASCII-коды получаются с использованием таблиц преобразования, которые можно установить
@@ -168,6 +168,10 @@ namespace KolibriLib
             /// @details он просто есть
             Input(uint8_t i = 0) : ASCII(static_cast<char>(i)) {}
 
+			Input& operator=(const Input&) = default;
+
+			/// @brief Получить значение 
+			operator std::uint8_t() const;
             operator char() const;
             operator Scancode() const;
         };

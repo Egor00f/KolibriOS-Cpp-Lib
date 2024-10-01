@@ -26,7 +26,7 @@ include_directories(
 )
 
 
-set(CMAKE_C_LINK_EXECUTABLE   "<CMAKE_LINKER> -o <TARGET> -L${TOOLCHAIN_DIR}/lib -L${SDK_DIR}/lib --subsystem native <OBJECTS> --start-group -lgcc -lc.dll <LINK_LIBRARIES> --end-group <CMAKE_C_LINK_FLAGS> <LINK_FLAGS>")
-set(CMAKE_CXX_LINK_EXECUTABLE "<CMAKE_LINKER> -o <TARGET> -L${TOOLCHAIN_DIR}/lib -L${TOOLCHAIN_DIR}/mingw32/lib -L${SDK_DIR}/lib --subsystem native <OBJECTS> --start-group -lgcc -lc.dll -lstdc++ -lsupc++ <LINK_LIBRARIES> --end-group <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS>")
+set(CMAKE_C_LINK_EXECUTABLE   "<CMAKE_LINKER> <LINK_FLAGS> -o <TARGET> <OBJECTS> --start-group -lgcc -lc.dll <LINK_LIBRARIES> --end-group <CMAKE_C_LINK_FLAGS>")
+set(CMAKE_CXX_LINK_EXECUTABLE "<CMAKE_LINKER> <LINK_FLAGS> -o <TARGET> <OBJECTS> --start-group -lgcc -lc.dll -lstdc++ -lsupc++ <LINK_LIBRARIES> --end-group <CMAKE_CXX_LINK_FLAGS>")
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -S --image-base 0 -nostdlib -T${NEWLIB_DIR}/app.lds")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -S --image-base 0 -nostdlib -T${NEWLIB_DIR}/app.lds -L${TOOLCHAIN_DIR}/lib -L${TOOLCHAIN_DIR}/mingw32/lib -L${SDK_DIR}/lib --subsystem native")

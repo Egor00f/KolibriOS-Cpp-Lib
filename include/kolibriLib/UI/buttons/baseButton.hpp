@@ -18,10 +18,13 @@ namespace KolibriLib
 
                 BaseButton();
 
+				/// @brief Конструтор
+				/// @param id ID кнопки
                 BaseButton(ButtonID id);
 
                 BaseButton(const BaseButton &) = default;
 
+				/// @brief Деструктор
                 ~BaseButton();
 
                 /// @brief Получить сосояние кнопки на момент последней обработки
@@ -53,6 +56,10 @@ namespace KolibriLib
                 /// @return true если у кнопки есть ID
                 bool IsActive() const;
 
+				/// @brief Объявить кнопку
+				/// @param coord Координаты кнопки
+				/// @param size размер кнопки
+				/// @param color цвет кнокпи
                 void Define(const Coord &coord, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button) const;
 
             protected:

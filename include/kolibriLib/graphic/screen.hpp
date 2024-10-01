@@ -21,15 +21,16 @@ namespace KolibriLib
 	inline Thread::Slot ScreenPointAffiliation(Coord POINT)
 	{
 		Thread::Slot s;
+		
 		asm_inline (
 			"int $0x40"
 			: "=a"(s)
 			: "a"(34), "b"(POINT.x), "c"(POINT.y)
 		);
+		
 		return s;
-	}
-	
-}
+	} 
+} // namespace KolibriLib
 
 
-#endif // __SCREEN_H__
+#endif // __SCREEN_HPP__

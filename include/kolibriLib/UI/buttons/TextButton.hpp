@@ -11,7 +11,6 @@ namespace KolibriLib
 		namespace buttons
 		{
 			/// \brief Класс для работы с кнопками
-			/// @example example.cpp
 			class TextButton: public text::TextLabel, public BaseButton
             {
             public:

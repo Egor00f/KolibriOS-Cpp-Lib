@@ -172,7 +172,7 @@ if(KolibriLib_BUILD_DOCS)
 
 	include(Doxygen)
 
-	ADD_DOCUMENTATION(doc ${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile)
+	ADD_DOCUMENTATION(doc)
 
 endif()
 

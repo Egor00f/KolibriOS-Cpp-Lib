@@ -19,8 +19,6 @@
 
 namespace KolibriLib
 {
-
-	/// \brief Работа с окном
 	namespace window
 	{
 		/// @brief просто класс полями для Window
@@ -31,14 +29,19 @@ namespace KolibriLib
 
 			Window_t(const std::string &Title, const Colors::ColorsTable &colors = Globals::SystemColors, WindowStyle style = WindowStyle::withSkin, WindowSettings WindowSettings = WindowSettings::RelativeCoord | WindowSettings::WindowHaveTitle);
 
+			/// @brief Изменить стиль окна
+			/// @param NewStyle новый стиль окна
 			void SetStyle(WindowStyle NewStyle);
 
+			/// @brief Получить текущий стиль окна
+			/// @return Текущий стиль окна
 			WindowStyle GetStyle() const;
 
 			/// @brief 
 			/// @param NewSettgins 
 			void SetSettings(std::uint16_t NewSettgins);
 
+			
 			std::string GetTitle() const;
 
 			/// @brief Получить прошлый ивент
@@ -57,15 +60,18 @@ namespace KolibriLib
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
 
-			/// @brief 
+			/// @brief Закешированные координаты окна
+			/// @details Зачем? а потому что для получения размера окна нужно вызывать Thread::GetThreadInfo() который вызывает -ое системное прерывание, что уже не очень(каждый раз теребонькать прерывания), кароч GetAbsoluteCoord и GetAbsoluteSize исползуются при рендере, элементов gui многа, и получается каждый раз теребонькать прерывания для рендера окна будет капец долгим
 			mutable Coord _coord = DefaultWindowCoord;
 
+			/// @brief Закешированный размер окна
+			/// @details с.м. Window_t::_coord
 			mutable Size _size = DefaultWindowSize;
 
 			/// @brief Последняя нажатая кнопка
 			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
 
-			/// @brief 
+			/// @brief прошлый ивент
 			OS::Event _lastEvent;
 
 			/// @brief Стиль окна
@@ -75,6 +81,7 @@ namespace KolibriLib
 			WindowSettings _settings = WindowSettings::WindowHaveTitle;
 
 			/// @brief Прозрачность окна
+			/// @warning Будет реализованно в будующем
 			uint8_t _Transparency = 0;
 			
 			/// @brief Окно перерисовывается сейчас (да/нет)
@@ -86,8 +93,6 @@ namespace KolibriLib
 
 		/// @brief Класс для работы с окном
 		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор. Если вызывать методы из других потоков, то вести они себя будут неадекватно
-		/// @example example.cpp
-		/// @example checkboxExample.cpp
 		class Window: public Window_t
 		{
 		public:
@@ -125,6 +130,8 @@ namespace KolibriLib
 			/// @param NewCoord 
 			void SetCoord(const UDim &NewCoord) override;
 
+			/// @brief 
+			/// @param NewSize 
 			void SetSize(const Size &NewSize) override;
 
 			/// @brief 

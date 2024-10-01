@@ -27,9 +27,7 @@ namespace KolibriLib
         namespace text
         {
             /// @brief Текстовая метка
-            /// @note Простая текстовая метка, ничего особенного.
-            /// @note Возможно важные сведения: текст всегда отрисовывается в середине
-            /// @example example.cpp
+            /// @details Простая текстовая метка, ничего особенного.
             class TextLabel: public Txt, public UI::UIElement
             {
             public:

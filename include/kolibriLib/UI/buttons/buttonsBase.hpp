@@ -20,18 +20,21 @@ namespace KolibriLib
 			/// @brief ID кнопки
 			struct ButtonID
 			{
-				uint32_t value;
+				/// @brief Значение
+				std::uint32_t value;
 
 				ButtonID(unsigned val);
 
 				/// @brief является ли этот ID пригодным
 				/// @details ID кнопок могут быть только от 0 до 0x8000 (исключая сами числа)
 				bool CheckIsValid() const;
+				
+				ButtonID &operator = (const ButtonID&) = default;
 
 				ButtonID operator=(const unsigned &val);
 
 				/// @brief
-				operator uint32_t() const;
+				operator std::uint32_t() const;
 			};
 
 			const ButtonID ButtonIDNotSet = 0;
@@ -48,7 +51,7 @@ namespace KolibriLib
 			/// \brief Получить свободный номер id кнопки из списка
 			/// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
 			/// \return номер кнопки из списка ButtonsIdList
-			ButtonID GetFreeButtonId(std::vector<ButtonID> *ButtonsIdList, uint32_t startID = 2);
+			ButtonID GetFreeButtonId(std::vector<ButtonID> *ButtonsIdList, std::uint32_t startID = 2);
 
 			/// \brief Освободить номер кнопки
 			/// \param id номер номер кнопки из списка ButtonsIdList
@@ -110,16 +113,19 @@ namespace KolibriLib
 				return ButtonID(_ksys_get_button());
 			}
 
-			typedef enum ButtonStyle
+			/// @brief Стиль кнопок
+			enum class ButtonStyle
 			{
 				/// @brief Плоские кнопки
 				flat = 0,
 
 				/// @brief Объёмные кнокпи
 				volumetric = 1
-			} buttonStyle;
+			};
 
-			inline void SetButtonStyle(buttonStyle style)
+			/// @brief Измнить стиль кнопок
+			/// @param новый стиль кнопок
+			inline void SetButtonStyle(ButtonStyle style)
 			{
 				asm_inline(
 					"int $0x40" ::"a"(48), "b"(1), "c"(style));
@@ -146,7 +152,7 @@ namespace KolibriLib
 				/// @brief Список использованных id кнопок
 				std::vector<ButtonID> ButtonsIdList{/*CloseButton,*/ MinimizeButton};
 
-				uint32_t _top = 2;
+				unsigned _top = 2;
 			};
 
 		} // namespace buttons

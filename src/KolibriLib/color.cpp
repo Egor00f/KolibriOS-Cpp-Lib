@@ -31,12 +31,27 @@ KolibriLib::Colors::rgb::operator ksys_color_t() const
 
 std::uint32_t KolibriLib::Colors::rgb::BBGGRR() const
 {
-	return RGBtoINT(*this);
+	return ((blue << 16) | (green << 8) | red );
 }
 
 std::uint32_t KolibriLib::Colors::rgb::BBGGRR00() const
 {
-	return ((blue << 24) + (green << 16) + (red << 8)) & 0xFFFFFF00;
+	return ((blue << 24) | (green << 16) | (red << 8)) & 0xFFFFFF00;
+}
+
+std::uint32_t KolibriLib::Colors::rgb::RRGGBB() const
+{
+	return ((red << 16) | (green << 8) | blue );
+}
+
+std::uint32_t KolibriLib::Colors::rgb::RRGGBB00() const
+{
+	return ((red << 24) | (green << 16) | (blue << 8)) & 0xFFFFFF00;
+}
+
+std::uint32_t KolibriLib::Colors::rgb::ZeroRRGGBB() const
+{
+	return ((red << 16) | (green << 8) | blue ) | 0;
 }
 
 KolibriLib::Colors::Color::Color(const ksys_color_t &a)

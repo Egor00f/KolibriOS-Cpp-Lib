@@ -70,13 +70,13 @@ void CheckBox::Render() const
 			switch (_style)
 			{
 			case CheckBox::style::Default:
-				graphic::DrawRectangleFill(absoluteCoord,
-										   absoluteSize,
+				graphic::DrawRectangleFill(absoluteCoord + GetMargin(),
+										   absoluteSize - (GetMargin() * 2),
 										   _BorderColor);
 				break;
 			case CheckBox::style::Circle:
 				graphic::DrawCircle(absoluteCoord + point(absoluteSize.x / 2, absoluteSize.y / 2),
-									(static_cast<unsigned int>(absoluteSize.x) / 2U) - GetMargin(),
+									static_cast<unsigned int>(absoluteSize.x / 2) - GetMargin(),
 									_BorderColor);
 				break;
 			case CheckBox::style::Smoth:
