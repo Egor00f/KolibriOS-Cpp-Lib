@@ -1,5 +1,5 @@
-#ifndef __INCLUDE_KSYS_H_HPP__
-#define __INCLUDE_KSYS_H_HPP__
+#ifndef __INCLUDE_KSYS_H_H__
+#define __INCLUDE_KSYS_H_H__
 
 /*
 	Почему?
@@ -16,4 +16,4 @@
 
 #pragma GCC diagnostic pop
 
-#endif // __INCLUDE_KSYS_H_HPP__
+#endif // __INCLUDE_KSYS_H_H__

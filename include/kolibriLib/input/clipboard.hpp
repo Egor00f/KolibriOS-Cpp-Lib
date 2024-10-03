@@ -19,7 +19,7 @@ namespace KolibriLib
 			return _ksys_clip_num();
 		}
 
-		typedef int Slot;
+		using Slot = int;
 
 		
 		/// @brief структура буфера обмена
@@ -90,7 +90,10 @@ namespace KolibriLib
 
 				struct
 				{
+					/// @brief Зарезервированно
 					std::uint16_t res;
+
+					/// @brief Файловый путь
 					char filepath[0];
 				};
 			};
@@ -184,7 +187,7 @@ namespace KolibriLib
 template <class T>
 inline KolibriLib::Clipboard::clipboard::clipboard(T data)
 {
-	_struct = (KolibriLib::Clipboard::clipboard_struct *)malloc(4 + 4 + sizeof(T));
+	_struct = static_cast<KolibriLib::Clipboard::clipboard_struct *>(malloc(4 + 4 + sizeof(T)));
 	_struct->size = 4 + 4 + sizeof(T);
 	_struct->type = KolibriLib::Clipboard::clipboard_struct::Type::Raw;
 	

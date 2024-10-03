@@ -12,7 +12,7 @@
 #include <input.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/window/windowBase.hpp>
-#include <kolibriLibUI.hpp>
+#include <KolibriLibUI.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/globals.hpp>
@@ -44,10 +44,6 @@ namespace KolibriLib
 			
 			std::string GetTitle() const;
 
-			/// @brief Получить прошлый ивент
-			/// @return 
-			OS::Event GetLastEvent() const;
-
 		protected:
 			/// @brief Заголовок окна
 			std::string _title = "Default Window";
@@ -55,6 +51,8 @@ namespace KolibriLib
 			/// @brief Список всех кнопок этого окна
 			std::vector<UIElement*> _Elements;
 
+			/// @brief Контроллер ID кнопок
+			/// @details при создании первого окна(window::Window), Globals::defaultButtonsController = _buttonsController
 			UI::buttons::ButtonsIDController _buttonsController;
 
 			/// @brief Цвета окна
@@ -71,9 +69,6 @@ namespace KolibriLib
 			/// @brief Последняя нажатая кнопка
 			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
 
-			/// @brief прошлый ивент
-			OS::Event _lastEvent;
-
 			/// @brief Стиль окна
 			WindowStyle _style = WindowStyle::withSkin;
 
@@ -83,9 +78,6 @@ namespace KolibriLib
 			/// @brief Прозрачность окна
 			/// @warning Будет реализованно в будующем
 			uint8_t _Transparency = 0;
-			
-			/// @brief Окно перерисовывается сейчас (да/нет)
-			mutable bool _Redraw = false;
 
 			/// @brief Окно пересовывается при перетаскивании
 			bool _RealtimeRedraw = false;
@@ -108,6 +100,8 @@ namespace KolibriLib
 			/// @brief Конструктор, необходим только для windowAttached
 			Window(const Window_t &wndw);
 
+			/// @brief Деструктор
+			/// @details Удаляет все элементы, что были добавлены в окно
 			~Window();
 
 			/// @brief Полная перересовка окна
@@ -220,8 +214,19 @@ namespace KolibriLib
 
 			void SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) override;
 
-			/// @brief Обновить
+			/// @brief Обновить кешированные значения
 			void Update() const;
+
+			/// @brief Получить прошлый ивент
+			/// @return 
+			OS::Event GetLastEvent() const;
+
+		private:
+			/// @brief прошлый ивент
+			OS::Event _lastEvent;
+
+			/// @brief Окно перерисовывается сейчас (да/нет)
+			mutable bool _Redraw = false;
 		};
 
 		//=============================================================================================================================================================
