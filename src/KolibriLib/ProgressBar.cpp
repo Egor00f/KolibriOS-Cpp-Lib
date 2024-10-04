@@ -14,14 +14,27 @@ KolibriLib::UI::ProgressBar::ProgressBar(const UDim &coord, const UDim &size, co
 void KolibriLib::UI::ProgressBar::Render() const
 {
 	const Coord absCoord = GetAbsoluteCoord();
-	const Size p2 = GetAbsoluteSize() + absCoord;
+	const Size absSize = GetAbsoluteSize() + absCoord;
 
-	graphic::DrawRectangleLines(absCoord, p2, _BorderColor);
+	graphic::DrawRectangleLines(absCoord, absSize, _BorderColor);
 
-	graphic::DrawRectangleFill(absCoord, {static_cast<int>(p2.x * _Fill / _MaxFill), p2.y}, _MainColor);
+	graphic::DrawRectangleFill(absCoord, {static_cast<int>(absSize.x * _Fill / _MaxFill), absSize.y}, _MainColor);
 }
 
 void KolibriLib::UI::ProgressBar::SetFill(unsigned NewFill)
 {
 	_Fill = NewFill;
+}
+
+unsigned KolibriLib::UI::ProgressBar::GetFill() const
+{
+	return _Fill;
+}
+
+void KolibriLib::UI::ProgressBar::AddFill(unsigned val)
+{
+	_Fill += val;
+
+	if(_Fill > _MaxFill)
+		_Fill = _MaxFill;
 }

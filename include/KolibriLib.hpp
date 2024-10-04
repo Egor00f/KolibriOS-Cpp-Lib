@@ -13,8 +13,12 @@
 #include <KolibriLibUI.hpp>
 
 
-/// @brief Прастранство имён библиотеки KolibriLib
-/// @author Egor00f
+
+/**
+ * @brief Прастранство имён библиотеки KolibriLib
+ * @author Egor00f
+ * @example
+ */
 namespace KolibriLib
 {
 

@@ -14,8 +14,13 @@ namespace KolibriLib
     namespace UI
     {
         /// @brief Класс для работы с чекбоксами
-        /// @paragraph Это просто чекбокс, ему можно задать различные стили
-        /// @example checkboxExample.cpp
+        /// @paragraph 
+
+
+        /**
+         * @brief 
+         * @details Это просто чекбокс, ему можно задать различные стили
+         */
         class CheckBox : public buttons::Button
         {
         public:
@@ -65,20 +70,52 @@ namespace KolibriLib
 
             void OnButtonEvent(buttons::ButtonID PressedButtonID);
 
+            /**
+             * @brief Изменить цвет рамки
+             * @param NewBorderColor 
+             */
             void SetBorderColor(const Colors::Color& NewBorderColor);
+
+
+            /**
+             * @brief Получить цвет рамки
+             * @return 
+             */
             Colors::Color GetBorderColor() const;
 
             void swap(CheckBox& a);
 
             CheckBox& operator = (const CheckBox&) = default;
 
+            /**
+             * @brief 
+             * @param  
+             * @return 
+             */
             bool operator == (const CheckBox&) const;
+
+            /**
+             * @brief 
+             * @param  
+             * @return 
+             */
             bool operator != (const CheckBox&) const;
         private:
+            /**
+             * @brief Цвет рамки
+             */
             Colors::Color _BorderColor;
+
+            /**
+             * @brief Стиль чекбокса
+             */
             style _style = style::Default;
+
             mutable bool checked;
         };
+        /** @example Checkbox.cpp
+         * пример использования CheckBox
+         */
     } // namespace UI
     
 } // namespace KolibriLib

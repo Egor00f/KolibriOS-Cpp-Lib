@@ -8,7 +8,6 @@ namespace KolibriLib
 {
     namespace UI
     {
-        /// @brief Работа с кнопками
         namespace buttons
         {
             /// @brief Базовая кнопка
@@ -22,6 +21,10 @@ namespace KolibriLib
 				/// @param id ID кнопки
                 BaseButton(ButtonID id);
 
+                /**
+                 * @brief Конструктор копирования
+                 * @param  
+                 */
                 BaseButton(const BaseButton &) = default;
 
 				/// @brief Деструктор
@@ -64,9 +67,12 @@ namespace KolibriLib
 
             protected:
             
-                /// @brief Id кнопки
+                /// @brief ID кнопки
                 ButtonID _id = buttons::ButtonIDNotSet;
 
+			    /**
+			     * @brief Указатель на контроллер ID кнопок
+			     */
 			    ButtonsIDController *_ButtonsIDController = nullptr;
 
                 /// @brief Состояние кнопки(Нажата/Ненажата)

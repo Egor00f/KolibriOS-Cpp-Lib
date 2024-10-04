@@ -8,14 +8,18 @@ buttons::TextButton::TextButton(const UDim &coord, const UDim &size, unsigned Ma
 	:	TextLabel	(coord, size, "Button", 16, true, ButtonColor, Margin),
 		BaseButton	()
 {
+	#ifdef VERBOSE_DEBUG
 	PrintDebug("Button contructor\n");
+	#endif
 }
 
 KolibriLib::UI::buttons::TextButton::TextButton(const Txt &text, const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
 	:	TextLabel	(coord, size, text),
 		BaseButton	()
 {
+	#ifdef VERBOSE_DEBUG
 	PrintDebug("Button contructor\n");
+	#endif
 
 	SetMargin(Margin);
 
@@ -29,14 +33,21 @@ TextButton::TextButton(const TextButton &copy)
 	PrintDebug("Button contructor(copy)\n");
 }
 
+KolibriLib::UI::buttons::TextButton::TextButton(const UDim &coord, const UDim &size, const std::string &text)
+	:	TextLabel(coord, size, text),
+		BaseButton()
+{
+
+}
+
 bool KolibriLib::UI::buttons::TextButton::operator==(const TextButton &element) const
 {
-	return (_data	== element._data)  &&
-		   (_coord	== element._coord) &&
-		   (_size	== element._size)  &&
-		   (_data	== element._data)  &&
-		   (_MainColor	== element._MainColor) &&
-		   (GetMargin() == element.GetMargin());
+	return static_cast<TextLabel>(*this) == static_cast<TextLabel>(element);
+}
+
+bool KolibriLib::UI::buttons::TextButton::operator!=(const TextButton &element) const
+{
+	return static_cast<TextLabel>(*this) != static_cast<TextLabel>(element);
 }
 
 void buttons::TextButton::OnButtonEvent(ButtonID PressedButtonID)

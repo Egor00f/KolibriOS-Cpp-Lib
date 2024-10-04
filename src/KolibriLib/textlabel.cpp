@@ -15,17 +15,6 @@ TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &tex
 	//SetFont(Fonts::Font(Fonts::DefaultFont.font_file, FontSize));
 }
 
-
-//TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, /*const UI::text::Fonts::Font &Font,*/ const Colors::Color &TextColor, const Colors::Color &BackgroundColor, bool TextScale, unsigned Margin)
-//	: UIElement(coord, size, TextColor, Margin), Txt(text), _TextScale(TextScale)
-//{
-//	#ifdef DEBUG
-//	_ksys_debug_puts("TextLabel Constructor\n");
-//	#endif
-	//SetFont(Font);
-//}
-
-
 KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, const Txt &text)
 	:	Txt(text),
 		UIElement(coord, size, Globals::SystemColors.work_area)
@@ -102,20 +91,18 @@ TextLabel::Align KolibriLib::UI::text::TextLabel::GetAling() const
 
 bool KolibriLib::UI::text::TextLabel::operator==(const KolibriLib::UI::text::TextLabel &a) const
 {
-	return (_coord	==	a._coord)	&&
-	       (_size	==	a._size)	&&
-	       (_MainColor	==	a._MainColor)	&&
-	       (GetMargin()	==	a.GetMargin())	&&
-	       (_TextScale	==	a._TextScale);
+	return static_cast<UIElement>(*this) == static_cast<UIElement>(a) &&
+	       static_cast<Txt>(*this) == static_cast<Txt>(a) &&
+		   _Align == _Align &&
+		   _TextScale == _TextScale;
 }
 
 bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::TextLabel &a) const
 {
-	return !((_coord	==	a._coord)	||
-		   (_size	==	a._size)	||
-		   (_MainColor	==	a._MainColor)	||
-		   (GetMargin()	==	a.GetMargin())	||
-		   (_TextScale	==	a._TextScale));
+	return static_cast<UIElement>(*this) != static_cast<UIElement>(a) ||
+	       static_cast<Txt>(*this) != static_cast<Txt>(a) ||
+		   _Align != _Align ||
+		   _TextScale != _TextScale;
 }
 
 void KolibriLib::UI::text::TextLabel::swap(TextLabel &a)

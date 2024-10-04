@@ -1,11 +1,11 @@
-#ifndef __TEXT_H__
-#define __TEXT_H__
+#ifndef __TEXT_HPP__
+#define __TEXT_HPP__
 
 #include <vector>
 #include <string>
 
 #include <kolibriLib/types.hpp>
-#include <kolibriLib/system/os.hpp>
+#include <kolibriLib/globals.hpp>
 
 #include "textBase.hpp"
 
@@ -16,15 +16,18 @@ namespace KolibriLib
 		namespace text
 		{
 
+			/**
+			 * @brief Размер символа по умолчанию
+			 */
 			const Size DefaultCharSize = {16, 16};
 
 			/// @brief Текст
-			/// @details Фактически std::vector Char ов
+			/// @details Просто текст с аттрибутами
 			class Txt
 			{
 			public:
 				/// @brief Конструктор
-				Txt();
+				Txt() = default;
 
 				/// @brief Конструктор
 				/// @param text
@@ -50,11 +53,6 @@ namespace KolibriLib
 				/// @brief Вывести текст
 				/// @param coord Координаты(левый верхний угол) текста
 				void Print(const Coord &coord, const Colors::Color &BackgroundColor = Globals::SystemColors.work_area) const;
-
-				/*/// @brief Изменить шрифт символов
-				/// @param FontSize
-				/// @details Изменяет размер символов для всех символов
-				void SetFont(const Fonts::Font &Font);*/
 
 				/// @brief Изменить цвет текста для всех символов
 				/// @param Color
@@ -86,46 +84,70 @@ namespace KolibriLib
 				/// @param text
 				void SetText(const std::string &text);
 
+				/**
+				 * @brief 
+				 * @param NewTextCharSize 
+				 */
 				void SetTextSize(const Size &NewTextCharSize);
 
 				/// @brief 
 				/// @return 
 				Size GetTextSize() const;
 
-				Txt &operator=(const Txt &txt);
+				Txt &operator=(const Txt &) = default;
 
 				/// @brief
 				/// @param txt
 				/// @return
 				bool operator==(const Txt &txt) const;
 
+				/**
+				 * @brief Оператор неравенства
+				 * @param txt с чем сравнивать
+				 * @return 
+				 */
+				bool operator != (const Txt& txt) const;
+
 			protected:
+
+				
+				/**
+				 * @brief Текст
+				 */
 				std::string _data;
 
 			private:
 				/// @brief Размер символа
-				Size _CharSize;
+				Size _CharSize = DefaultCharSize;
 
 				/// @brief Цвет Текста
-				Colors::Color _TextColor;
+				Colors::Color _TextColor = Globals::SystemColors.work_text;
 
-				/// @brief Цвет выделения текста
+				/**
+				 * @brief Цвет выделения текста
+				 * @warning не реализованно
+				 */
 				Colors::Color *SelectColor;
 
-				/// Можно ли выделять этот текст
+				
+				/**
+				 * @brief Можно ли выделять этот текст
+				 * @warning не реализованно
+				 */
 				bool Selecteable;
 
-				bool Italic;
-				bool Bold;
-				bool UnderLine;
-				bool StrikeThrough;
+				bool Italic = false;
+				bool Bold = false;
+				bool UnderLine = false;
+				bool StrikeThrough = false;
 			};
 
 		} // namespace text
 
 	} // namespace UI
+
 	void PrintDebug(const UI::text::Txt &out);
 } // namespace KolibriLib
 
 
-#endif // __TEXT_H__
+#endif // __TEXT_HPP__

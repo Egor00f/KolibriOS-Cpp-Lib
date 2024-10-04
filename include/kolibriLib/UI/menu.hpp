@@ -1,5 +1,5 @@
-#ifndef __MENU_H__
-#define __MENU_H__
+#ifndef __MENU_HPP__
+#define __MENU_HPP__
 
 /*
 #include <vector>
@@ -79,4 +79,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 */
 
-#endif // __MENU_H__
+#endif // __MENU_HPP__

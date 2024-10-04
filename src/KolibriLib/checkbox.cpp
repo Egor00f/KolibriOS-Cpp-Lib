@@ -67,6 +67,8 @@ void CheckBox::Render() const
 
 		if (checked)
 		{
+			PrintDebug("CHECKOBOS IS CHECKED\n");
+			
 			switch (_style)
 			{
 			case CheckBox::style::Default:
@@ -96,6 +98,16 @@ void KolibriLib::UI::CheckBox::SetStyle(style s)
 	_style = s;
 }
 
+void KolibriLib::UI::CheckBox::SetBorderColor(const Colors::Color &NewBorderColor)
+{
+	_BorderColor = NewBorderColor;
+}
+
+Colors::Color KolibriLib::UI::CheckBox::GetBorderColor() const
+{
+	return _BorderColor;
+}
+
 void KolibriLib::UI::CheckBox::swap(CheckBox &a)
 {
 	CheckBox buff(*this);
@@ -109,4 +121,11 @@ bool KolibriLib::UI::CheckBox::operator==(const CheckBox &c) const
 	return static_cast<buttons::Button>(*this) == static_cast<buttons::Button>(c) &&
 	       (_BorderColor == c._BorderColor) &&
 		   (_style == c._style);
+}
+
+bool KolibriLib::UI::CheckBox::operator!=(const CheckBox &c) const
+{
+	return static_cast<buttons::Button>(*this) != static_cast<buttons::Button>(c) ||
+	       (_BorderColor != c._BorderColor) ||
+		   (_style != c._style);
 }

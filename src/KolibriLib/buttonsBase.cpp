@@ -46,11 +46,11 @@ ButtonID buttons::ButtonsIDController::GetFreeButtonID()
 {
 	ButtonID ret = GetFreeButtonId(&ButtonsIdList, _top);
 
-	if(ret == ButtonIDNotSet)
-	{
-		_top = 2;
-		ret = GetFreeButtonId(&ButtonsIdList, _top);
-	}
+	if(ret == ButtonIDNotSet)	// Если неудалось найти свободный ID 
+	{                        	// то начиаем с начала
+		_top = StartTop;
+		ret = GetFreeButtonId(&ButtonsIdList, _top);	// попытка вторая
+	}                                               	// Если и во второй раз неудалось найти, значит это судьба
 	else
 	{
 		_top = ret.value + 1;
@@ -62,20 +62,58 @@ ButtonID buttons::ButtonsIDController::GetFreeButtonID()
 
 void buttons::ButtonsIDController::FreeButtonID(const ButtonID &id)
 {
-	if(id.value == _top-1 && FreeButtonId(id, &ButtonsIdList))
+	if(FreeButtonId(id, &ButtonsIdList) && id.value == _top-1)
 	{
 		_top--;
 	}
 }
 
-std::vector<ButtonID>* buttons::ButtonsIDController::GetButtonsIDList()
+std::vector<ButtonID>& buttons::ButtonsIDController::GetButtonsIDList()
 {
-	return &ButtonsIdList;
+	return ButtonsIdList;
 }
 
-const std::vector<ButtonID>* buttons::ButtonsIDController::GetButtonsIDList() const
+const std::vector<ButtonID>& buttons::ButtonsIDController::GetButtonsIDList() const
 {
-	return &ButtonsIdList;
+	return ButtonsIdList;
+}
+
+KolibriLib::UI::buttons::ButtonID::ButtonID(unsigned val)
+	:	value(val)
+{
+}
+
+bool KolibriLib::UI::buttons::ButtonID::CheckIsValid() const
+{
+	return value != ButtonIDNotSet.value && value < ButtonIDEnd.value;
+}
+
+ButtonID KolibriLib::UI::buttons::ButtonID::operator=(const unsigned &val)
+{
+	return ButtonID(val);
+}
+
+KolibriLib::UI::buttons::ButtonID::operator std::uint32_t() const
+{
+	return value;
+}
+
+bool KolibriLib::UI::buttons::ButtonID::operator==(const ButtonID &val) const
+{
+	return value == val.value;
+}
+
+bool KolibriLib::UI::buttons::ButtonID::operator!=(const ButtonID &val) const
+{
+	return value != val.value;
+}
+
+void KolibriLib::UI::buttons::ButtonID::swap(ButtonID &val)
+{
+	std::uint32_t buff = value;
+
+	value = val.value;
+	val.value = buff;
 }
 
 void KolibriLib::PrintDebug(UI::buttons::ButtonID out)
@@ -100,24 +138,3 @@ void KolibriLib::PrintDebug(UI::buttons::ButtonID out)
 		}
 	}
 }
-
-KolibriLib::UI::buttons::ButtonID::ButtonID(unsigned val)
-	:	value(val)
-{
-}
-
-bool KolibriLib::UI::buttons::ButtonID::CheckIsValid() const
-{
-	return value != ButtonIDNotSet.value && value < ButtonIDEnd.value;
-}
-
-ButtonID KolibriLib::UI::buttons::ButtonID::operator=(const unsigned &val)
-{
-	return ButtonID(val);
-}
-
-KolibriLib::UI::buttons::ButtonID::operator uint32_t() const
-{
-	return value;
-}
-

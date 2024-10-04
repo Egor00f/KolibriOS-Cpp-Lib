@@ -1,5 +1,5 @@
-#ifndef __BUTTON_H__
-#define __BUTTON_H__
+#ifndef __BUTTON_HPP__
+#define __BUTTON_HPP__
 
 #include "baseButton.hpp"
 #include <kolibriLib/UI/UI.hpp>
@@ -8,7 +8,6 @@ namespace KolibriLib
 {
     namespace UI
     {
-        /// @brief Работа с кнопками
         namespace buttons
         {
 			/// @brief просто кнопка
@@ -37,6 +36,20 @@ namespace KolibriLib
                 /// @return 
                 Button& operator = (const Button&) = default;
 
+                /**
+                 * @brief 
+                 * @param val то с чем сравнивать
+                 * @return 
+                 */
+                bool operator == (const Button& val) const;
+
+                /**
+                 * @brief 
+                 * @param val 
+                 * @return 
+                 */
+                bool operator != (const Button& val) const;
+
             private:
 			};
         } // namespace buttons
@@ -47,4 +60,4 @@ namespace KolibriLib
 
 } // namespace KolibriLib
 
-#endif // __BUTTON_H__
+#endif // __BUTTON_HPP__

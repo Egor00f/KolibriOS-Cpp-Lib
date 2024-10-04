@@ -15,6 +15,9 @@ namespace KolibriLib
 {
 	namespace UI
 	{
+		/**
+		 * @brief Работа с кнопками
+		 */
 		namespace buttons
 		{
 			/// @brief ID кнопки
@@ -23,6 +26,10 @@ namespace KolibriLib
 				/// @brief Значение
 				std::uint32_t value;
 
+				/**
+				 * @brief Конструктор
+				 * @param val значение
+				 */
 				ButtonID(unsigned val);
 
 				/// @brief является ли этот ID пригодным
@@ -31,12 +38,37 @@ namespace KolibriLib
 				
 				ButtonID &operator = (const ButtonID&) = default;
 
+				/**
+				 * @brief Оператор присваинвания
+				 * @param val значение
+				 * @return 
+				 * @details Просто берёт значение val и запихивает в ButtonID::value
+				 */
 				ButtonID operator=(const unsigned &val);
+
+				/**
+				 * @brief 
+				 * @param val 
+				 * @return 
+				 */
+				bool operator == (const ButtonID& val) const;
+
+				/**
+				 * @brief 
+				 * @param val 
+				 * @return 
+				 */
+				bool operator != (const ButtonID& val) const;
 
 				/// @brief
 				operator std::uint32_t() const;
+
+				void swap(ButtonID& val);
 			};
 
+			/**
+			 * @brief ID кнопки не установлен
+			 */
 			const ButtonID ButtonIDNotSet = 0;
 
 			/// @brief Самый большой ID. Дальше низя
@@ -144,15 +176,38 @@ namespace KolibriLib
 				/// @param id ID который нужно освободить
 				void FreeButtonID(const ButtonID &id);
 
-				std::vector<ButtonID> *GetButtonsIDList();
+				/**
+				 * @brief Получить список всех занятых ID кнопок
+				 * @return указатель на вектор
+				 * @details Зачем указатель? копировать долго
+				 */
+				std::vector<ButtonID> &GetButtonsIDList();
 
-				const std::vector<ButtonID> *GetButtonsIDList() const;
+				/**
+				 * @brief Получить список всех занятых ID кнопок
+				 * @return указатель на вектор
+				 * @details константная версия
+				 */
+				const std::vector<ButtonID> &GetButtonsIDList() const;
 
 			private:
-				/// @brief Список использованных id кнопок
+				
+				/**
+				 * @brief Список использованных id кнопок
+				 * @details По идее CloseButton тоже входить дожна в этот список, но не входит так как сразу начинаем со второго ID. Чисто немного оптимизация
+				 */
 				std::vector<ButtonID> ButtonsIdList{/*CloseButton,*/ MinimizeButton};
 
-				unsigned _top = 2;
+				/**
+				 * @brief Стартовое значение ButtonsIDController::_top
+				 */
+				const unsigned StartTop = 2;
+
+				/**
+				 * @brief типо вершина
+				 * @details чтобы по всему вектору не проходиться, отсчёт начинаем с top
+				 */
+				unsigned _top = StartTop;
 			};
 
 		} // namespace buttons
@@ -163,6 +218,12 @@ namespace KolibriLib
 
 	namespace Globals
 	{
+		/**
+		 * @brief Контроллер кнопок ID по умолчанию
+		 * @details Используется по умолчанию кнопками.
+		 * По умолчанию равен nullptr.
+		 * Устонавливается классом window::Window
+		 */
 		extern UI::buttons::ButtonsIDController *DefaultButtonsIDController;
 	}
 } // namespace KolibriLib

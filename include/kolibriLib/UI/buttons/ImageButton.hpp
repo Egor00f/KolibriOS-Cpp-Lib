@@ -1,5 +1,5 @@
-#ifndef __IMAGEBUTTON_H__
-#define __IMAGEBUTTON_H__
+#ifndef __IMAGEBUTTON_HPP__
+#define __IMAGEBUTTON_HPP__
 
 #include "button.hpp"
 #include <kolibriLib/UI/image.hpp>
@@ -11,12 +11,31 @@ namespace KolibriLib
 	{
 		namespace buttons
 		{
+			/**
+			 * @brief Кнопка-изображение
+			 */
 			class ImageButton: public Images::Image, public BaseButton
 			{
 			public:
 
 				/// @brief Отрисовать изображение
 				void Render() const override;
+
+				ImageButton& operator=(const ImageButton&) = default;
+
+				/**
+				 * @brief 
+				 * @param val 
+				 * @return 
+				 */
+				bool operator == (const ImageButton& val) const;
+
+				/**
+				 * @brief 
+				 * @param val 
+				 * @return 
+				 */
+				bool operator != (const ImageButton& val) const;
 
 			private:
 			
@@ -25,4 +44,4 @@ namespace KolibriLib
 	}
 }
 
-#endif // __IMAGEBUTTON_H__
+#endif // __IMAGEBUTTON_HPP__

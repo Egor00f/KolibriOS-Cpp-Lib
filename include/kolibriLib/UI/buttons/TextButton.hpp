@@ -12,52 +12,72 @@ namespace KolibriLib
 		{
 			/// \brief Класс для работы с кнопками
 			class TextButton: public text::TextLabel, public BaseButton
-            {
-            public:
-                /// \brief Это конструктор
-                /// \param coord координата
-                /// \param size размер
-                /// \param text текст
-                /// \param Margin отступы текста от границ
-                /// \param ButtonColor цвет кнопки
-                /// \param TextColor цвет текста
+			{
+			public:
+				/// \brief Это конструктор
+				/// \param coord координата
+				/// \param size размер
+				/// \param text текст
+				/// \param Margin отступы текста от границ
+				/// \param ButtonColor цвет кнопки
+				/// \param TextColor цвет текста
 				TextButton(const UDim &coord = point(0), const UDim &size = DefaultSize, unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = Globals::SystemColors.work_button);
 
 				/// \brief Это конструктор
-                /// \param coord координата
-                /// \param size размер
-                /// \param text текст
-                /// \param Margin отступы текста от границ
-                /// \param ButtonColor цвет кнопки
-                /// \param TextColor цвет текста
-               TextButton(const Txt &text, const UDim &coord = point(0), const UDim &size = DefaultSize, unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = Globals::SystemColors.work_button);
+				/// \param coord координата
+				/// \param size размер
+				/// \param text текст
+				/// \param Margin отступы текста от границ
+				/// \param ButtonColor цвет кнопки
+				/// \param TextColor цвет текста
+				TextButton(const Txt &text, const UDim &coord = point(0), const UDim &size = DefaultSize, unsigned Margin = UI::DefaultMargin, const Colors::Color &ButtonColor = Globals::SystemColors.work_button);
 
-                /// @brief Конструктор копирования
-                /// @param copy Кнопка которую будут копировать
-			   TextButton(const TextButton &copy);
+				/**
+				 * @brief Конструктор
+				 * @param coord координаты
+				 * @param size размер
+				 * @param text текст
+				 */
+				TextButton(const UDim& coord, const UDim& size, const std::string& text);
 
-			   /// @brief Отрисовать кнопку
-			   void Render() const override;
+				/// @brief Конструктор копирования
+				/// @param copy Кнопка которую будут копировать
+				TextButton(const TextButton &copy);
 
-			   /// @brief Обработчик кнопки
-			   /// @return Состояние кнопки(Нажата/Ненажата)
-			   /// @details устанавливает переменную _status в true если эта кнопка нажата, иначе false
-			   /// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
-			   void OnButtonEvent(ButtonID PressedButtonID);
+				/// @brief Отрисовать кнопку
+				void Render() const override;
 
-			   buttons::ButtonsIDController *GetButtonIDController() const;
+				/// @brief Обработчик кнопки
+				/// @return Состояние кнопки(Нажата/Ненажата)
+				/// @details устанавливает переменную _status в true если эта кнопка нажата, иначе false
+				/// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
+				void OnButtonEvent(ButtonID PressedButtonID);
 
-			   void SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController);
+				buttons::ButtonsIDController *GetButtonIDController() const;
 
-			   TextButton &operator=(const TextButton &element) = default;
+				void SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController);
 
-			   bool operator==(const TextButton &element) const;
+				TextButton &operator=(const TextButton &element) = default;
 
-			   void swap(TextLabel& a);
+				/**
+				 * @brief Оператор сравнения
+				 * @param element с чем сравнивать
+				 * @return true или false
+				 */
+				bool operator==(const TextButton &element) const;
 
-		   private:
+				/**
+				 * @brief Оператор сравнения
+				 * @param element с чем сравнивать
+				 * @return true или false
+				 */
+				bool operator != (const TextButton& element) const;
 
-            };
+				void swap(TextLabel& a);
+
+			private:
+
+			};
 		}
 	}
 

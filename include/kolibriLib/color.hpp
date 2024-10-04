@@ -169,10 +169,9 @@ namespace KolibriLib
 
     void PrintDebug(Colors::Color out);
 
-
     void PrintDebug(Colors::ColorsTable out);
     
 } // namespace KolibriLib
 
 
-#endif // __COLOR_H__
+#endif // __COLOR_HPP__

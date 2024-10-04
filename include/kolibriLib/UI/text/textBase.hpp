@@ -12,6 +12,9 @@ namespace KolibriLib
 {
 	namespace UI
 	{
+		/**
+		 * @brief Работа с текстов
+		 */
 		namespace text
 		{
 			/// \brief Получить размер текста

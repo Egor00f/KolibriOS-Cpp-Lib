@@ -56,23 +56,12 @@ namespace KolibriLib
                 /// @param TextScale Маштабировать текст, чтобы он не выходил за границы элемента
                 /// @param Margin Отступы от границ
                 TextLabel(const UDim& coord = point(0), const UDim& size = DefaultSize, const std::string& text = "TextLabel", const Size &CharSize = {8, 16}, bool TextScale = true, const Colors::Color& TextColor = Globals::SystemColors.work_text, const unsigned& Margin = 0);
-
-                /// @brief Коснтруктор
-                /// @param coord коорднаты
-                /// @param size размер
-                /// @param text текст
-                /// @param Font шрифт
-                /// @param TextColor цвет текста
-                /// @param BackgroundColor цвет фона
-                /// @param TextScale 
-                /// @param Margin
-                // TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const std::string &text = "TextLabel",/* const Fonts::Font &Font = Fonts::DefaultFont,*/ const Colors::Color &TextColor = OS::GetSystemColors().gui_text, const Colors::Color &BackgroundColor = OS::GetSystemColors().gui_frame, bool TextScale = true, unsigned Margin = 0);
-                
+             
                 /// @brief конструктор
                 /// @param coord коордирдинаты
                 /// @param size размер
                 /// @param text текст
-                TextLabel(const UDim &coord = point(0), const UDim &size = DefaultSize, const Txt &text = Txt());
+                TextLabel(const UDim &coord, const UDim &size = DefaultSize, const Txt &text = Txt());
 
                 /// @brief Конструктор копирования
                 /// @param copy объекто который будет копироваться
@@ -107,6 +96,11 @@ namespace KolibriLib
                 /// @return 
                 bool operator == (const TextLabel& a) const;
 
+                /**
+                 * @brief Оператор сравнения
+                 * @param a с чем сравнивать
+                 * @return 
+                 */
                 bool operator != (const TextLabel& a) const;
                 
                 /// @brief 
@@ -120,6 +114,10 @@ namespace KolibriLib
                 /// @warning пока что не работает
                 bool _TextScale;
 
+                /**
+                 * @brief выровнено ли
+                 * @details Внутряння переменная для использования класса не нужно о ней фообще знать
+                 */
                 mutable bool _Aligned;
             };
         }

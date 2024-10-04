@@ -11,30 +11,9 @@ std::string KolibriLib::UI::text::Txt::GetText() const
 	return _data;
 }
 
-Txt::Txt()
-	:	_CharSize	(DefaultCharSize),
-		_TextColor	(OS::GetSystemColors().work_text),
-		Italic	(false),
-		Bold	(false),
-		UnderLine	(false),
-		StrikeThrough	(false)
-{
-	#ifdef DEBUG
-	_ksys_debug_puts("Text constructor\n");
-	#endif
-	//_font = new Fonts::Font(Fonts::DefaultFont);
-	
-
-}
-
 Txt::Txt(const std::string &text, const Colors::Color &TextColor)
 	:	_data	(text),
-		_TextColor	(TextColor),
-		_CharSize	(DefaultCharSize),
-		Italic	(false),
-		Bold	(false),
-		UnderLine	(false),
-		StrikeThrough	(false)
+		_TextColor	(TextColor)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts("Text constructor\n");
@@ -113,17 +92,21 @@ void KolibriLib::UI::text::Txt::SetTextColor(const Colors::Color &Color)
 	_TextColor = Color;
 }
 
-
-
 Colors::Color KolibriLib::UI::text::Txt::GetTextColor() const
 {
 	return _TextColor;
 }
 
-
 bool KolibriLib::UI::text::Txt::operator==(const KolibriLib::UI::text::Txt &txt) const
 {
-	return _data == txt._data;
+	return _data == txt._data &&
+	       _TextColor == txt._TextColor;
+}
+
+bool KolibriLib::UI::text::Txt::operator!=(const Txt &txt) const
+{
+	return _data != txt._data ||
+	       _TextColor != txt._TextColor;
 }
 
 std::size_t KolibriLib::UI::text::Txt::length() const
@@ -139,12 +122,6 @@ unsigned KolibriLib::UI::text::Txt::lenghtPX() const
 void KolibriLib::UI::text::Txt::SetText(const std::string& text)
 {	
 	_data = text;
-}
-
-KolibriLib::UI::text::Txt &KolibriLib::UI::text::Txt::operator=(const Txt &txt)
-{
-	_data = txt._data;
-	return *this;
 }
 
 Size KolibriLib::UI::text::Txt::GetTextSize() const

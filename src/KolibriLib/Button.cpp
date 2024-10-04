@@ -36,6 +36,18 @@ void KolibriLib::UI::buttons::Button::swap(Button &a)
 	a = buff;
 }
 
+bool KolibriLib::UI::buttons::Button::operator==(const Button &val) const
+{
+	return static_cast<UIElement>(*this) == static_cast<UIElement>(val) &&
+	       static_cast<Button>(*this) == static_cast<Button>(val);
+}
+
+bool KolibriLib::UI::buttons::Button::operator!=(const Button &val) const
+{
+	return static_cast<UIElement>(*this) != static_cast<UIElement>(val) &&
+	       static_cast<Button>(*this) != static_cast<Button>(val);
+}
+
 void KolibriLib::PrintDebug(const UI::buttons::Button &out)
 {
 	PrintDebug(static_cast<UIElement>(out));

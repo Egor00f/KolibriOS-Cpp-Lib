@@ -15,8 +15,10 @@
 
 namespace KolibriLib
 {
-	/// @brief UI
-	/// @details Пространство имён в котором только UI
+	/**
+	 * @brief UI
+	 * @details Пространство имён в котором только UI
+	 */
 	namespace UI
 	{
 
@@ -65,8 +67,16 @@ namespace KolibriLib
 			/// @return Координаты в пикселях
 			virtual Coord GetAbsoluteCoord() const = 0;
 
+			/**
+			 * @brief 
+			 * @return 
+			 */
 			virtual buttons::ButtonsIDController* GetButtonIDController() const = 0;
 
+			/**
+			 * @brief 
+			 * @param buttonsIDController 
+			 */
 			virtual void SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) = 0;
 
 			/// @brief Получить отступы
