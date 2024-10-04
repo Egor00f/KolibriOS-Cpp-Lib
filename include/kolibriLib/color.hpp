@@ -9,37 +9,65 @@ namespace KolibriLib
     /// @brief Набор функций для работы с цветом
     namespace Colors
     {        
-
+		/// @brief rgb цвет
+		/// @details крутая оболочка для rgb_t из sys/ksys.h
         struct rgb: public rgb_t
         {
             rgb(rgb_t val);
 
             rgb(ksys_color_t val);
 
+			/// @brief Конструктор
+			/// @param r красная состовляющаяя
+			/// @param g зелёная
             rgb(std::uint8_t r, std::uint8_t g, std::uint8_t b);
 
+			/// @brief конструктор по умолчанию
             rgb() = default;
             rgb(const rgb&) = default;
 
-            rgb& operator=(const rgb&) = default;
+            rgb& operator = (const rgb&) = default;
+
+			bool operator == (const rgb& color) const;
+			bool operator != (const rgb& color) const;
 
             operator ksys_color_t() const;
 
+			/// @brief Получить цвет в формате BBGGRR
+			/// @return цвет в формате BBGGRR
             std::uint32_t BBGGRR() const;
+			
+			/// @brief Получить цвет в формате BBGGRR
+			/// @return цвет в формате BBGGRR
+			std::uint32_t RRGGBB() const;
 
+			/// @brief Получить цвет в формате BBGGRR00
+			/// @return BBGGRR00
             std::uint32_t BBGGRR00() const;
+			
+			/// @brief Получить цвет в формате RRGGBB00
+			/// @return цвет в формате RRGGBB00
+			std::uint32_t RRGGBB00() const;
+			
+			/// @brief Получить цвет в формате 00RRGGBB
+			/// @return цвет в формате RRGGBB00
+			std::uint32_t ZeroRRGGBB() const;
         };
 
         /// @brief Цвет
         union Color
         {
-            Color():val(0xFFFFFFFF){};
+			/// @brief Конструктор по умолчанию
+            Color() = default;
+			
+			///Color(const Color *a);
+            Color(const Color &a) = default;
 
             /// @brief Конструктор
             /// @param a 
             Color(const ksys_color_t& a);
-            //Color(const Color *a);
-            Color(const Color &a) = default;
+			
+			/// @brief Конструктор
             Color(const rgb_t &color);
 
             /// @brief Конструктор
@@ -70,6 +98,7 @@ namespace KolibriLib
 
             bool operator != (const Color& a) const;
 
+			// Поля
 
             ksys_color_t val;
 
@@ -114,10 +143,10 @@ namespace KolibriLib
             /// @param grabBar 
             /// @param grabBarButton 
             /// @param grabText 
-            /// @param workArea 
+            /// @param workArea цвет рабочей области окна
             /// @param workButton 
             /// @param workButtonText 
-            /// @param workText 
+            /// @param workText цвет текста
             /// @param workGraph 
             ColorsTable (
                 Color frameArea,
@@ -131,7 +160,7 @@ namespace KolibriLib
                 Color workGraph
             );
 
-            ColorsTable& operator=(const ColorsTable&) = default;
+            ColorsTable& operator = (const ColorsTable&) = default;
         };
 
         /// @brief Таблица цветов по умолчанию

@@ -14,7 +14,8 @@ namespace KolibriLib
 {
     namespace UI
     {
-        /// \brief Форма для ввода текста
+        /// @brief Форма для ввода текста
+		/// @warning не завершено
         class BaseEditor : public buttons::TextButton
         {
         public:

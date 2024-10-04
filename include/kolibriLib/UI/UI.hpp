@@ -15,7 +15,8 @@
 
 namespace KolibriLib
 {
-	// Элементы UI
+	/// @brief UI
+	/// @details Пространство имён в котором только UI
 	namespace UI
 	{
 

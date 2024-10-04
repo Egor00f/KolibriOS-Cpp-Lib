@@ -385,7 +385,7 @@ void KolibriLib::window::Window::Update() const
 	_coord = info.WindowCoord;
 }
 
-OS::Event KolibriLib::window::Window_t::GetLastEvent() const
+OS::Event KolibriLib::window::Window::GetLastEvent() const
 {
 	return _lastEvent;
 }

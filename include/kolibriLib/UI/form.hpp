@@ -7,6 +7,7 @@ namespace KolibriLib
 {
 	namespace UI
 	{
+		/// @brief Форма для ввода текста
 		class Form : public BaseEditor
 		{
 		public:

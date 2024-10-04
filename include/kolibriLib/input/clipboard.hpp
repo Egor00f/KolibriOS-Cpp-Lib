@@ -19,21 +19,21 @@ namespace KolibriLib
 			return _ksys_clip_num();
 		}
 
-		typedef int Slot;
+		using Slot = int;
 
 		
 		/// @brief структура буфера обмена
 		struct clipboard_struct
 		{
 
-			typedef enum Encodings
+			enum class Encoding
 			{
 				UTF8 = 0,
 				CP866 = 1,
 				CP1251 = 2
-			} Encoding;
+			};
 
-			typedef enum Types
+			enum class Type : std::uint32_t
 			{
 				/// @brief Текст
 				Text = 0,
@@ -46,31 +46,32 @@ namespace KolibriLib
 
 				/// @brief Путь
 				Filepath = 3
-			} Type;
+			};
+
+			// Поля
 
 			/// @brief Размер структуры
-			uint32_t size;
+			std::uint32_t size;
 
 			/// @brief Тип структуры
-			uint32_t type;
-
+			Type type;
 
 			union 
 			{
 				/// @brief Кодировка (если текст)
-				uint32_t encoding;
+				std::uint32_t encoding;
 
 				/// @brief изображение
 				struct
 				{
 					/// @brief Ширина изображения
-					uint32_t X;
+					std::uint32_t X;
 
 					/// @brief Высота изображения
-					uint32_t Y;
+					std::uint32_t Y;
 
 					/// @brief Глубина цвета (8, 16, 24, 32, 48, 64)
-					uint32_t depht;
+					std::uint32_t depht;
 
 					/// @brief Указатель на палитру (смещение от начала файла)
 					/// @details Если палитры нет то значение 0
@@ -78,29 +79,36 @@ namespace KolibriLib
 
 					/// @brief Размер области палитры, максимальное значение 256*4=1024байт.
 					/// @details Если палитры нет то значение 0
-					uint32_t palleteSize;
+					std::uint32_t palleteSize;
 
 					/// @brief Указатель на данные пикселей для R, G, B.
 					rgb_t* image;
 
 					/// @brief Размер области данных для пикселей
-					uint32_t imageSize;
+					std::uint32_t imageSize;
 				};
 
 				struct
 				{
-					uint16_t res;
+					/// @brief Зарезервированно
+					std::uint16_t res;
+
+					/// @brief Файловый путь
 					char filepath[0];
 				};
 			};
 		};
 
+		/// @brief Буффер обмена
 		class clipboard
 		{
 		public:
 
 			clipboard() = default;
 
+			/// @brief Конструктор
+			/// @param text текст
+			/// @param filepath текст это файловый путь?
 			clipboard(const std::string& text, bool filepath = false);
 
 			clipboard(const UI::Images::img &image);
@@ -108,7 +116,7 @@ namespace KolibriLib
 			/// @brief Конструктор, для любых данных
 			/// @tparam T тип данных которй будет скопирован
 			/// @param data перемнная что будет скопированна
-			/// @note Не пихайте лучше сюда типы имеющи указатели, потому что будт скопирован только указатель
+			/// @note Не пихайте лучше сюда типы имеющи указатели, пsотому что будт скопирован только указатель
 			template <class T>
 			clipboard(T data);
 
@@ -120,6 +128,8 @@ namespace KolibriLib
 
 			/// @details Просто возращает указатель
 			operator clipboard_struct*() const;
+
+			// Поля
 
 			clipboard_struct* _struct = nullptr;
 		};
@@ -177,7 +187,7 @@ namespace KolibriLib
 template <class T>
 inline KolibriLib::Clipboard::clipboard::clipboard(T data)
 {
-	_struct = (KolibriLib::Clipboard::clipboard_struct *)malloc(4 + 4 + sizeof(T));
+	_struct = static_cast<KolibriLib::Clipboard::clipboard_struct *>(malloc(4 + 4 + sizeof(T)));
 	_struct->size = 4 + 4 + sizeof(T);
 	_struct->type = KolibriLib::Clipboard::clipboard_struct::Type::Raw;
 	

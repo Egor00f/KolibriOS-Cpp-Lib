@@ -12,15 +12,13 @@
 #include <input.hpp>
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/window/windowBase.hpp>
-#include <kolibriLibUI.hpp>
+#include <KolibriLibUI.hpp>
 #include <kolibriLib/graphic/screen.hpp>
 #include <kolibriLib/graphic/background.hpp>
 #include <kolibriLib/globals.hpp>
 
 namespace KolibriLib
 {
-
-	/// \brief Работа с окном
 	namespace window
 	{
 		/// @brief просто класс полями для Window
@@ -31,19 +29,20 @@ namespace KolibriLib
 
 			Window_t(const std::string &Title, const Colors::ColorsTable &colors = Globals::SystemColors, WindowStyle style = WindowStyle::withSkin, WindowSettings WindowSettings = WindowSettings::RelativeCoord | WindowSettings::WindowHaveTitle);
 
+			/// @brief Изменить стиль окна
+			/// @param NewStyle новый стиль окна
 			void SetStyle(WindowStyle NewStyle);
 
+			/// @brief Получить текущий стиль окна
+			/// @return Текущий стиль окна
 			WindowStyle GetStyle() const;
 
 			/// @brief 
 			/// @param NewSettgins 
 			void SetSettings(std::uint16_t NewSettgins);
 
+			
 			std::string GetTitle() const;
-
-			/// @brief Получить прошлый ивент
-			/// @return 
-			OS::Event GetLastEvent() const;
 
 		protected:
 			/// @brief Заголовок окна
@@ -52,21 +51,23 @@ namespace KolibriLib
 			/// @brief Список всех кнопок этого окна
 			std::vector<UIElement*> _Elements;
 
+			/// @brief Контроллер ID кнопок
+			/// @details при создании первого окна(window::Window), Globals::defaultButtonsController = _buttonsController
 			UI::buttons::ButtonsIDController _buttonsController;
 
 			/// @brief Цвета окна
 			Colors::ColorsTable _colors;
 
-			/// @brief 
+			/// @brief Закешированные координаты окна
+			/// @details Зачем? а потому что для получения размера окна нужно вызывать Thread::GetThreadInfo() который вызывает -ое системное прерывание, что уже не очень(каждый раз теребонькать прерывания), кароч GetAbsoluteCoord и GetAbsoluteSize исползуются при рендере, элементов gui многа, и получается каждый раз теребонькать прерывания для рендера окна будет капец долгим
 			mutable Coord _coord = DefaultWindowCoord;
 
+			/// @brief Закешированный размер окна
+			/// @details с.м. Window_t::_coord
 			mutable Size _size = DefaultWindowSize;
 
 			/// @brief Последняя нажатая кнопка
 			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
-
-			/// @brief 
-			OS::Event _lastEvent;
 
 			/// @brief Стиль окна
 			WindowStyle _style = WindowStyle::withSkin;
@@ -75,10 +76,8 @@ namespace KolibriLib
 			WindowSettings _settings = WindowSettings::WindowHaveTitle;
 
 			/// @brief Прозрачность окна
+			/// @warning Будет реализованно в будующем
 			uint8_t _Transparency = 0;
-			
-			/// @brief Окно перерисовывается сейчас (да/нет)
-			mutable bool _Redraw = false;
 
 			/// @brief Окно пересовывается при перетаскивании
 			bool _RealtimeRedraw = false;
@@ -86,8 +85,6 @@ namespace KolibriLib
 
 		/// @brief Класс для работы с окном
 		/// @paragraph По простому: Окно остаётся привязаным к потоку, в которм бы вызван конструктор. Если вызывать методы из других потоков, то вести они себя будут неадекватно
-		/// @example example.cpp
-		/// @example checkboxExample.cpp
 		class Window: public Window_t
 		{
 		public:
@@ -103,6 +100,8 @@ namespace KolibriLib
 			/// @brief Конструктор, необходим только для windowAttached
 			Window(const Window_t &wndw);
 
+			/// @brief Деструктор
+			/// @details Удаляет все элементы, что были добавлены в окно
 			~Window();
 
 			/// @brief Полная перересовка окна
@@ -125,6 +124,8 @@ namespace KolibriLib
 			/// @param NewCoord 
 			void SetCoord(const UDim &NewCoord) override;
 
+			/// @brief 
+			/// @param NewSize 
 			void SetSize(const Size &NewSize) override;
 
 			/// @brief 
@@ -213,8 +214,19 @@ namespace KolibriLib
 
 			void SetButtonIDController(const UI::buttons::ButtonsIDController* buttonsIDController) override;
 
-			/// @brief Обновить
+			/// @brief Обновить кешированные значения
 			void Update() const;
+
+			/// @brief Получить прошлый ивент
+			/// @return 
+			OS::Event GetLastEvent() const;
+
+		private:
+			/// @brief прошлый ивент
+			OS::Event _lastEvent;
+
+			/// @brief Окно перерисовывается сейчас (да/нет)
+			mutable bool _Redraw = false;
 		};
 
 		//=============================================================================================================================================================

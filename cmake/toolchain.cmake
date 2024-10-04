@@ -3,13 +3,55 @@ SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_PROCESSOR x86)
 SET(CMAKE_CROSSCOMPILING 1)
 
+if(CMAKE_HOST_WIN32)
+    SET(TOOLCHAIN_PATHS 
+		"C:/MinGW/msys/1.0/home/autobuild/tools/win32"
+	)
+else()
+	set(TOOLCHAIN_PATHS 
+		"/home/autobuild/tools/win32"
+		"~/autobuild/tools/win32"
+	)
+endif()
+
+
+
 # Compiler
-SET(CMAKE_C_COMPILER	kos32-gcc)
-SET(CMAKE_CXX_COMPILER	kos32-g++)
-SET(CMAKE_LINKER	kos32-ld)
-SET(CMAKE_AR	kos32-ar)
-set(CMAKE_STRIP	kos32-strip)
-set(CMAKE_OBJCOPY	kos32-objcopy)
+find_program (CMAKE_C_COMPILER	
+	kos32-gcc
+	PATHS ${TOOLCHAIN_PATHS}/bin
+	REQUIRED 
+)
+
+find_program (CMAKE_CXX_COMPILER	
+	kos32-g++
+	PATHS ${TOOLCHAIN_PATHS}/bin
+	REQUIRED 
+)
+
+find_program (CMAKE_C_LINKER
+	kos32-ld
+	PATHS ${TOOLCHAIN_PATHS}/bin
+	REQUIRED
+)
+
+find_program (CMAKE_AR
+	kos32-ar
+	PATHS ${TOOLCHAIN_PATHS}/bin
+	REQUIRED
+)
+
+find_program (CMAKE_STRIP
+	kos32-strip
+	PATHS ${TOOLCHAIN_PATHS}/bin
+	REQUIRED
+)
+
+find_program (CMAKE_OBJCOPY	
+	kos32-objcopy
+	PATHS ${TOOLCHAIN_PATHS}/bin
+	REQUIRED
+)
 
 SET(CMAKE_C_ARCHIVE_FINISH   "<CMAKE_AR> -s -c <TARGET>")
 SET(CMAKE_CXX_ARCHIVE_FINISH "<CMAKE_AR> -s -c <TARGET>")
@@ -23,3 +65,8 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+if(CMAKE_HOST_UNIX)
+	set(CMAKE_C_COMPILER_FORCED TRUE)
+	set(CMAKE_CXX_COMPILER_FORCED TRUE)
+endif()

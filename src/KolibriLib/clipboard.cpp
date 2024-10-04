@@ -40,8 +40,8 @@ KolibriLib::Clipboard::clipboard::clipboard(const UI::Images::img &image)
 	const std::size_t size = 4 + 4 + (4 * 4) + sizeof(void*) + sizeof(rgb_t*);
 	_struct = (clipboard_struct *)malloc(size);
 	
-	_struct->X	= static_cast<uint32_t>(image.GetSize().x);
-	_struct->Y	= static_cast<uint32_t>(image.GetSize().y);
+	_struct->X	= static_cast<std::uint32_t>(image.GetSize().x);
+	_struct->Y = static_cast<std::uint32_t>(image.GetSize().y);
 	_struct->size	= size;
 	_struct->type	= clipboard_struct::Type::Image;
 	_struct->depht	= image.GetBuff()->color_bit;

@@ -38,7 +38,6 @@ include(CMakeTestASM_FASMCompiler)
 enable_language("ASM_FASM")
 
 
-
 get_filename_component(REPO ${KOLIBRIOS_REPO} REALPATH)
 set(KOLIBRIOS_REPO ${REPO})
 if(EXISTS "${REPO}")
@@ -52,7 +51,6 @@ SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
 
 include(CMakeDetermineKOS32Compiler)
 include(CMakeTestKOS32Compiler)
-
 
 
 set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -Wcast-align -Wcast-qual -Wconversion -Wenum-compare -Wfloat-equal -Wredundant-decls -Wsign-conversion -DDEBUG")
@@ -170,24 +168,24 @@ target_include_directories(KolibriLib
 
 #GENERATE DOXYGEN ONLY THIS PROJECT ISNT SUBPROECT
 if(KolibriLib_BUILD_DOCS)
-	message("Build KolibriLib Docs")
+	message("-- Build KolibriLib Docs")
 
 	include(Doxygen)
 
-	ADD_DOCUMENTATION(doc ${CMAKE_CURRENT_SOURCE_DIR}/Docs/Doxyfile)
+	ADD_DOCUMENTATION(doc)
 
 endif()
 
 if(KolibriLib_BUILD_EXAMPLES)
 
-	message("Build KolibriLib Examples")
+	message("-- Build KolibriLib Examples")
 
 	add_subdirectory(examples)
 
 endif()
 
 if(KolibriLib_BUILD_TESTS)
-	message("Build KolibriLib tests")
+	message("-- Build KolibriLib tests")
 
 	add_subdirectory(tests)
 endif()
