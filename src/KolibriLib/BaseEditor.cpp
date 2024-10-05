@@ -9,40 +9,25 @@ BaseEditor::BaseEditor(const UDim &coord, const UDim &size, const std::string &B
 	PrintDebug("BaseEditor constructor\n");
 
 	SetText(BackgroundText);
-	textBuffStatus = false;
 }
 
 void KolibriLib::UI::BaseEditor::OnKeyEvent()
 {
 	PrintDebug("Redner BaseEditor\n");
 
-	buttons::TextButton::Render();
-
 	if(Active && Visible)
 	{
 		char input = keyboard::CheckKeyboard();
 
-		if(textBuffStatus)
-		{
-			SetText(GetText() + input);
-		}
-		else
-		{
-			textBuff += input;
-		}
+		SetText(GetText() + input);
 	}
+
+	buttons::TextButton::Render();
 }
 
 std::string KolibriLib::UI::BaseEditor::GetInput() const
 {
-	if(textBuffStatus)
-	{
-		return GetText();
-	}
-	else
-	{
-		return textBuff;
-	}
+	return GetText();
 }
 
 void KolibriLib::UI::BaseEditor::OnButtonEvent(buttons::ButtonID PressedButtonID)

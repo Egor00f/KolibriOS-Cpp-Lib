@@ -47,6 +47,20 @@ void KolibriLib::window::Window_t::SetStyle(WindowStyle NewStyle)
 	_style = NewStyle;
 }
 
+std::string KolibriLib::window::Window_t::GetTitle() const
+{
+	return _title;
+}
+
+void KolibriLib::window::Window_t::SetTitle(const std::string &NewTitle)
+{
+	_title = NewTitle;
+}
+
+/*
+	Window
+*/
+
 KolibriLib::window::Window::Window(const std::string &Title, const Size &size, const Coord &coord, const Colors::ColorsTable &colors, bool Resize, bool RealtimeReadraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
 	:	Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, Margin)
 		
@@ -90,17 +104,6 @@ KolibriLib::window::Window::Window(const Window_t &wndw)
 		_colors.grab_text,
 		_style,
 		_settings);
-}
-
-KolibriLib::window::Window::~Window()
-{
-	for (auto n : _Elements)
-	{
-		if (n != nullptr)
-		{
-			delete n;
-		}
-	}
 }
 
 void Window::RenderAllElements() const
@@ -152,29 +155,25 @@ void Window::SetSize(const Size &NewSize)
 
 inline void Window::SetCoord(const Coord &NewCoord)
 {
-	window::ChangeWindow(NewCoord, GetAbsoluteSize());
+	window::ChangeWindow(NewCoord, _size);
 }
 
 inline void Window::SetSize(const UDim &NewSize)
 {
-	window::ChangeWindow(GetAbsoluteCoord(), NewSize.GetAbsolute(GetScreenSize()));
+	window::ChangeWindow(_coord, NewSize.GetAbsolute(GetScreenSize()));
 }
 
 inline Coord Window::GetAbsoluteCoord() const
 {
-	if(_lastEvent == OS::Event::Redraw) // Если было событие перерисовки. значит возможно размер окна изменился
+	if(_updated) // Если было событие перерисовки. значит возможно размер окна изменился
 		Update();
 	
-	PrintDebug("GetWindowAbsoluteCoord: ");
-	PrintDebug(_coord);
-	PrintDebug("\n");
-
 	return _coord;
 }
 
 inline Size Window::GetAbsoluteSize() const
 {
-	if (_lastEvent == OS::Event::Redraw) // Если было событие перерисовки. значит возможно размер окна изменился
+	if (_updated) // Если было событие перерисовки. значит возможно размер окна изменился
 		Update();
 
 	PrintDebug("GetWindowAbsoluteSize: ");
@@ -191,9 +190,10 @@ void Window::ChangeWindow(const Coord &coord, const Size &size)
 	window::ChangeWindow(coord, size);
 }
 
-void Window::ChangeTilte(const std::string &newTitle)
+void Window::SetTilte(const std::string &newTitle)
 {
-	_ksys_set_window_title(newTitle.c_str());
+	Window_t::SetTitle(newTitle);
+	_ksys_set_window_title(_title.c_str());
 }
 
 void KolibriLib::window::Window::Redraw()
@@ -246,6 +246,8 @@ OS::Event Window::Handler()
 	switch (event)
 	{
 	case OS::Event::Redraw:
+
+		_updated = false;
 
 		Update();
 
@@ -374,15 +376,20 @@ void KolibriLib::window::Window::AddElementNoCopy(UIElement *element)
 
 	element->SetButtonIDController(&_buttonsController);
 
-	_Elements.push_back(element);
+	_Elements.push_back(std::shared_ptr<UIElement>(element));
 }
 
 void KolibriLib::window::Window::Update() const
 {
-	Thread::ThreadInfo info = Thread::GetThreadInfo();
+	if(!_updated)
+	{
+		const Thread::ThreadInfo info = Thread::GetThreadInfo();
 
-	_size = info.WindowSize;
-	_coord = info.WindowCoord;
+		_size = info.WindowSize;
+		_coord = info.WindowCoord;
+
+		_updated = true;
+	}
 }
 
 OS::Event KolibriLib::window::Window::GetLastEvent() const

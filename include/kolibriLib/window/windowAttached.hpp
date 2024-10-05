@@ -7,8 +7,11 @@ namespace KolibriLib
 {
 	namespace window
 	{
-		/// @brief Окно что запускается в отдельном потоке
-		/// @details А нафига оно нужно? Знаете, меня всегда бесило когда приложения зависают, а окошко нельзя потербонькать
+		/**
+		 * @brief @brief Окно что запускается в отдельном потоке
+		 * @details А нафига оно нужно? Знаете, меня всегда бесило когда приложения зависают, а окошко нельзя потербонькать
+		 * @warning Не завершенно
+		 */
 		class WindowAttached
 		{
 			public:
@@ -86,10 +89,16 @@ namespace KolibriLib
 				/// @brief Добавить UI элемент
 				/// @param element
 				/// @return std::pair<номер элемента в списке, указатель на элемент>
-				T *AddElement(const T &element);
+				T* AddElement(const T &element)
+				{
+					return _wndw->AddElement(element);
+				}
 
 				template <class T>
-				bool DeleteElement(T *element);
+				bool DeleteElement(T *element)
+				{
+					return _wndw->DeleteElement(element);
+				}
 
 				/// @brief Снять фокус с этого окна
 				void Unfocus() const;
@@ -117,33 +126,18 @@ namespace KolibriLib
 				Thread::PID GetPID() const;
 
 			private:
+				/**
+				 * @brief 
+				 */
 				Window *_wndw;
 
 				/// @brief PID процесса в котором окно
 				Thread::PID _pid;
 		};
-
-		#ifndef __MakeStaticLib__
-
-		template <class T>
-		void AddElement (const T &element)
-		{
-			_wndw->AddElement(element);
-		}
-
-		template <class T>
-		void DeleteElement(const T &element)
-		{
-			_wndw->DeleteElement(element);
-		}
-
-		#endif
 		
 	} // namespace window
 	
 } // namespace KolibriLib
-
-
 
 
 #endif // __WINDOWATTACHED_H__

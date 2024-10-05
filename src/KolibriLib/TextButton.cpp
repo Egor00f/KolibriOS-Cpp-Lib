@@ -82,9 +82,9 @@ buttons::ButtonsIDController *KolibriLib::UI::buttons::TextButton::GetButtonIDCo
 	{
 		return _ButtonsIDController;
 	}
-	else if (Parent != nullptr)
+	else if (Parent.lock())
 	{
-		return Parent->GetButtonIDController();
+		return Parent.lock().get()->GetButtonIDController();
 	}
 	else
 	{

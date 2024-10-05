@@ -4,12 +4,11 @@
 #include <include_ksys.h>
 
 #include <vector>
+#include <memory>
 
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
-#include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/system/os.hpp>
-#include <kolibriLib/window/windowBase.hpp>
 #include <kolibriLib/UI/buttons/buttonsBase.hpp>
 #include <kolibriLib/globals.hpp>
 
@@ -87,7 +86,7 @@ namespace KolibriLib
 			/// @param NewMargin 
 			void SetMargin(unsigned NewMargin);
 
-		private:
+		protected:
 			/// @brief Отступы
 			unsigned _Margin;
 		};
@@ -113,6 +112,12 @@ namespace KolibriLib
 			/// @param Parent Указатель на родительский элемент
 			/// @details почему этот метод константный? Да потому что по сути не изменяет состояние класса, элементы не очень то и зависят от родительского элемента
 			void SetParent(const UIElement* NewParent) const;
+
+			/**
+			 * @brief 
+			 * @param ptr Указатель на родительский элемент
+			 */
+			void SetParent(std::weak_ptr<UIElement> ptr) const;
 
 			/// @brief
 			/// @param
@@ -199,12 +204,12 @@ namespace KolibriLib
 
 			/// @brief Получить список всех элементов, для которых этот является родительсим
 			/// @return указатель на вектор указателей
-			std::vector<UIElement*>& GetChildren();
+			std::vector<std::weak_ptr<UIElement>>& GetChildren();
 
 			/// @brief Получить список всех элементов, для которых этот является родительсим
 			/// @details Более медленная версия(в сравнении с неконстантной), т.к. копирует вектор
 			/// @return вектор указателей
-			std::vector<UIElement*> GetChildren() const;
+			std::vector<std::weak_ptr<UIElement>> GetChildren() const;
 
 			/// @brief 
 			/// @param Element 
@@ -239,10 +244,10 @@ namespace KolibriLib
 			int _rotation;
 
 			/// @brief Элемент gui относительно которого просиходят расчёты относительного размера
-			mutable GuiObject* Parent = nullptr;
+			mutable std::weak_ptr<GuiObject> Parent;
 
 			/// @brief Список элементов для которых этот элемент указан как Parent
-			mutable std::vector<UIElement*> _childs;
+			mutable std::vector<std::weak_ptr<UIElement>> _childs;
 
 			/// @brief отображется ли элемент при отрисовке
 			bool Visible = true;
@@ -255,7 +260,7 @@ namespace KolibriLib
 			void AddChildren(const UIElement *child) const;
 
 			/// @brief
-			void DeleteChildren(const UIElement *child) const;
+			void DeleteChildren(const UIElement* child) const;
 		};
 	}
 

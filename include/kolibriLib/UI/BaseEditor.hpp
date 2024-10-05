@@ -20,7 +20,7 @@ namespace KolibriLib
         {
         public:
 
-            /// \brief конструктор
+            /// \brief Конструктор
             /// \param coord позиция в коне
             /// \param size размеры
             /// \param BackgroundText фоновый текст(проподает когда вводится текст)
@@ -37,13 +37,16 @@ namespace KolibriLib
             /// \return _inputText (текст который ввели в форму)
             std::string GetInput() const;
 
+            BaseEditor& operator=(const BaseEditor&) = default;
+
+            void swap(BaseEditor&);
+
         private:
 
-            std::string textBuff;
-
+            /**
+             * @brief Активено ли окошко для ввода текста
+             */
             bool Active = false;
-
-            mutable bool textBuffStatus;
         };
 
         

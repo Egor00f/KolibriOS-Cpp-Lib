@@ -5,13 +5,15 @@
 using namespace KolibriLib;
 using namespace window;
 
-Window* arg;
+void* arg;
 
 Thread::Mutex lockARG;
 
 void WindowFunc()
 {
-	Window* wndw = arg;
+	Window* wndw = new Window(*(Window_t*)arg);
+	arg = wndw;
+
 	lockARG.unlock();
 
 	while(wndw->Handler() != OS::Event::Exit) { }
@@ -19,13 +21,14 @@ void WindowFunc()
 
 WindowAttached::WindowAttached(const Window_t &window)
 {
-	_wndw = new Window(window);
-
 	lockARG.waitPoint();
 	lockARG.lock();
-	arg = _wndw;
-
+	arg = ((void*)&window);	
 	_pid = Thread::CreateThread(WindowFunc, 4096); // Прошу господи лижбы хватило
+	
+	lockARG.waitPoint();
+
+	_wndw = (Window*)arg;
 }
 
 WindowAttached::~WindowAttached()
@@ -72,4 +75,9 @@ void KolibriLib::window::WindowAttached::Focus() const
 void KolibriLib::window::WindowAttached::Unfocus() const
 {
 	window::UnfocusWindow(Thread::GetThreadSlot(_pid));
+}
+
+UI::buttons::ButtonsIDController *KolibriLib::window::WindowAttached::GetButtonIDController() const
+{
+	return _wndw->GetButtonIDController();
 }

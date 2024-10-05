@@ -39,17 +39,24 @@ namespace KolibriLib
 
 			/// @brief 
 			/// @param NewSettgins 
-			void SetSettings(std::uint16_t NewSettgins);
+			void SetSettings(WindowSettings NewSettgins);
 
 			
+			/**
+			 * @brief 
+			 * @return 
+			 */
 			std::string GetTitle() const;
+
+			/**
+			 * @brief 
+			 * @param NewTitle 
+			 */
+			void SetTitle(const std::string &NewTitle);
 
 		protected:
 			/// @brief Заголовок окна
 			std::string _title = "Default Window";
-
-			/// @brief Список всех кнопок этого окна
-			std::vector<UIElement*> _Elements;
 
 			/// @brief Контроллер ID кнопок
 			/// @details при создании первого окна(window::Window), Globals::defaultButtonsController = _buttonsController
@@ -99,10 +106,6 @@ namespace KolibriLib
 
 			/// @brief Конструктор, необходим только для windowAttached
 			Window(const Window_t &wndw);
-
-			/// @brief Деструктор
-			/// @details Удаляет все элементы, что были добавлены в окно
-			~Window();
 
 			/// @brief Полная перересовка окна
 			void Redraw();
@@ -162,7 +165,7 @@ namespace KolibriLib
 
 			/// @brief Изменить заголовок окна
 			/// @param newTitle новый заголовок
-			void ChangeTilte(const std::string &newTitle);
+			void SetTilte(const std::string &newTitle);
 
 			/// @brief Обработчик окна
 			/// @return Ивент
@@ -187,11 +190,11 @@ namespace KolibriLib
 			/// @details Зачем добавлять в окно элементы ui? Да чтоб при перерисовке окна не нужнобыло отрисовывать все ручками
 			/// @return указатель на элемент(новый)
 			/// @example example.cpp
-			T *AddElement(const T &element);
+			T* AddElement(const T &element);
 
 			/// @brief Удалить элемент из окна
 			template <class T >
-			bool DeleteElement (T* element);
+			bool DeleteElement (std::shared_ptr<UIElement> element);
 
 			/// @brief Снять фокус с этого окна
 			void Unfocus () const;
@@ -222,11 +225,20 @@ namespace KolibriLib
 			OS::Event GetLastEvent() const;
 
 		private:
+
+			/// @brief Список всех кнопок этого окна
+			std::vector<std::shared_ptr<UIElement>> _Elements;
+
 			/// @brief прошлый ивент
 			OS::Event _lastEvent;
 
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			mutable bool _Redraw = false;
+
+			/**
+			 * @brief Обновленно ли окно
+			 */
+			mutable bool _updated = false;
 		};
 
 		//=============================================================================================================================================================
@@ -236,38 +248,39 @@ namespace KolibriLib
 		template <class T>
 		T* KolibriLib::window::Window::AddElement(const T &element)
 		{
+			static_assert(std::is_base_of<UIElement, T>::value, "Ты че сюда пихаещь!?! думаешь раз шаблон то можно любой тип сюда запихнуть, а вот и нет! Иди кури документацию");
+
 			PrintDebug("Add element\n");
 
 			T *p = new T(element);
 
-			if (p->GetParent() == nullptr)
+			if (p->GetParent())
 			{
 				p->WindowAsParent(this);
 			}
 
 			p->SetButtonIDController(&_buttonsController);
 
-			_Elements.push_back(static_cast<UIElement*>(p));
+			_Elements.push_back(std::shared_ptr<UIElement>(static_cast<UIElement*>(p)));
 
 
-			return p;
+			return static_cast<T*>(_Elements.back().get());
 		}
 
-		template<class T>
-		bool Window::DeleteElement(T * element)
+		template <class T>
+		bool KolibriLib::window::Window::DeleteElement(std::shared_ptr<UIElement> element)
 		{
-			PrintDebug("Delete element\n");
+			auto i = std::find(_Elements.begin(), _Elements.end(), element);
 
-			auto a = std::find(_Elements.begin(), _Elements.end(), element);
-
-			if(a == _Elements.end())
+			if(i != _Elements.end())
 			{
-				return false;
+				_Elements.erase(i);
+
+				return true;
 			}
 			else
 			{
-				delete _Elements[_Elements.begin() - a];
-				return true;
+				return false;
 			}
 		}
 

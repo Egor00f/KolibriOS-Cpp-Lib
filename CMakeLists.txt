@@ -53,7 +53,7 @@ include(CMakeDetermineKOS32Compiler)
 include(CMakeTestKOS32Compiler)
 
 
-set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -Wcast-align -Wcast-qual -Wconversion -Wenum-compare -Wfloat-equal -Wredundant-decls -Wsign-conversion -DDEBUG")
+set(CMAKE_C_FLAGS_DEBUG "-Wall -Wextra -Wcast-align -Wcast-qual -Wconversion -Wenum-compare -Wfloat-equal -Wredundant-decls -Wsign-conversion -DDEBUG -Og")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wctor-dtor-privacy -Wnon-virtual-dtor -Wsign-promo -Wold-style-cast -Woverloaded-virtual")
 
 set(CMAKE_C_FLAGS_RELEASE "-O2")
