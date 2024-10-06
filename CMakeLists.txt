@@ -13,8 +13,9 @@ project(
 #################################################
 #
 set(CUSTOM_TOOCLAIN_PATH	OFF)
-set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
-
+if(NOT DEFINED KOLIBRIOS_REPO)
+	set(KOLIBRIOS_REPO	${CMAKE_CURRENT_SOURCE_DIR}/../kolibrios)#Репозиторий нужен только для libc, libstdc++-v3 и C_Layer, можете указать свой если очень хочется
+endif()
 option(KolibriLib_BUILD_EXAMPLES "Build KolibriLib examples" ON)
 option(KolibriLib_BUILD_DOCS "Build KolibriLib documantation" ON)
 option(KolibriLib_BUILD_TESTS "Build KolibriLib test" ON)
