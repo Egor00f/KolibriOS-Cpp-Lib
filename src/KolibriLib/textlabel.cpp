@@ -6,10 +6,11 @@ using namespace text;
 
 TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &text, const Size &CharSize, bool TextScale, const Colors::Color &TextColor, const unsigned &Margin)
 	:	Txt(text, TextColor),
-		UIElement(coord, size, Globals::SystemColors.work_area, Margin),
-		_TextScale(TextScale)
+		UIElement(coord, size, Globals::SystemColors.work_area, Margin)
 {
 	PrintDebug("TextLabel Constructor\n");
+
+	_TextScale = TextScale;
 
 	SetTextSize(CharSize);
 	//SetFont(Fonts::Font(Fonts::DefaultFont.font_file, FontSize));
@@ -20,23 +21,20 @@ KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, 
 		UIElement(coord, size, Globals::SystemColors.work_area)
 {
 	PrintDebug("TextLabel Constructor\n");
-
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
 	:	Txt	(copy),
-		UIElement	(copy),
-		_TextScale	(copy._TextScale),
-		_Align	(copy._Align)
+		UIElement	(copy)
 {
-	PrintDebug("TextLabel Constructor(copy)\n");
+	_Align = copy._Align;
+	_TextScale = copy._TextScale;
 }
 
 void text::TextLabel::Render() const
 {
 	if(Visible)
 	{
-		PrintDebug("Render TextLabel");
 
 		Coord pos = GetAbsoluteCoord();
 		Size size = GetAbsoluteSize();

@@ -62,8 +62,6 @@ int main()
 			update();
 			wnd.Redraw();
 			break;
-		default:
-			break;
 		}
 	}
 	

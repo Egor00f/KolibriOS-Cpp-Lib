@@ -176,10 +176,6 @@ inline Size Window::GetAbsoluteSize() const
 	if (_updated) // Если было событие перерисовки. значит возможно размер окна изменился
 		Update();
 
-	PrintDebug("GetWindowAbsoluteSize: ");
-	PrintDebug(_size);
-	PrintDebug("\n");
-
 	return _size;
 }
 
@@ -234,7 +230,7 @@ void Window::Render()
 
 inline UDim Window::GetSize() const
 {
-	return UDim(0, _coord.x, 0, _coord.y);
+	return UDim(_coord.x, _coord.y);
 }
 
 OS::Event Window::Handler()
@@ -257,17 +253,22 @@ OS::Event Window::Handler()
 
 	case OS::Event::Button:
 
-		_PressedButton = UI::buttons::GetPressedButton();
+		{
+			UI::buttons::ButtonID PressedButton = UI::buttons::GetPressedButton();
 
-		if (_PressedButton == UI::buttons::CloseButton) // Если нажата кнопка X
-		{
-			event = OS::Event::Exit;
-		}
-		else
-		{
-			for (auto it : _Elements)
+			if (PressedButton == UI::buttons::CloseButton) // Если нажата кнопка X
 			{
-				it->OnButtonEvent(_PressedButton);
+				event = OS::Event::Exit;
+			}
+			else
+			{
+				for (auto it : _Elements)
+				{
+					it->OnButtonEvent(PressedButton);
+				}
+
+				_PressedButton.reset(_buttonsController.GetPoinerToButton(PressedButton).get());
+
 			}
 		}
 
@@ -301,9 +302,6 @@ OS::Event Window::Handler()
 		}
 
 		break;
-
-	default:
-		break;
 	}
 
 	for (auto it : _Elements) // Запуск обработчиков всех используемых элементов
@@ -331,19 +329,24 @@ OS::Event Window::Handler()
 	return event;
 }
 
-UI::buttons::ButtonID Window::GetPressedButton()
+UI::buttons::ButtonID Window::GetPressedButtonID() const
 {
-	return _PressedButton;
+	return _PressedButton.get()->GetId();
+}
+
+UI::buttons::BaseButton *KolibriLib::window::Window::GetPressedButton() const
+{
+	return _PressedButton.get();
 }
 
 void KolibriLib::window::Window::Unfocus() const
 {
-	_ksys_unfocus_window(Thread::GetThreadSlot(Thread::GetThreadInfo().pid));
+	window::UnfocusWindow();
 }
 
 void KolibriLib::window::Window::Focus() const
 {
-	_ksys_focus_window(Thread::GetThreadSlot(Thread::GetThreadInfo().pid));
+	window::FocusWindow();
 }
 
 void KolibriLib::window::Window::SetPosition(const window::Pos &position)

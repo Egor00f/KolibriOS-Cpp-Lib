@@ -10,6 +10,7 @@
 #include <kolibriLib/globals.hpp>
 
 #include <vector>
+#include <memory>
 
 namespace KolibriLib
 {
@@ -80,21 +81,119 @@ namespace KolibriLib
 			/// @brief Id кнопки минимизации окна
 			const ButtonID MinimizeButton = 0xffff;
 
+			/**
+			 * @brief Список ID кнопок
+			 */
+			using ButtonIDList = std::vector<ButtonID>;
+
+			class BaseButton;
+
+			/**
+			 * @brief Автоматическое присвоение ID для кнопок
+			 * @details Также сохраняет указатель на кнопку, которая запросила ID
+			 * @note Этот класс работает только с ID кнопок и ничего больше
+			 */
+			class ButtonsIDController
+			{
+			private:
+
+				/**
+				 * @brief Нода
+				 */
+				struct node
+				{
+					ButtonID id;
+					std::shared_ptr<BaseButton> pointer;
+
+					node(ButtonID Id) : id(Id){};
+					node(ButtonID Id, std::shared_ptr<BaseButton> p) : id(Id), pointer(p) {};
+
+					node& operator = (const node&) = default;
+
+					bool operator == (const node& val) const;
+					bool operator != (const node& val) const;
+				};
+			public:
+
+				/**
+				 * @brief Алиас для вектора с нодами
+				 */
+				using List = std::vector<node>;
+
+				/// @brief Получить свободный ID кнопки из списка
+				/// @return ID кнопки, который не занят
+				ButtonID GetFreeButtonID(std::shared_ptr<BaseButton> ptr);
+
+				/// @brief Освободить ID
+				/// @param id ID который нужно освободить
+				void FreeButtonID(const ButtonID &id);
+
+				/**
+				 * @brief Получить список всех занятых ID кнопок
+				 * @return указатель на вектор
+				 * @details Зачем указатель? копировать долго
+				 */
+				ButtonsIDController::List &GetButtonsIDList();
+
+				/**
+				 * @brief Получить список всех занятых ID кнопок
+				 * @return указатель на вектор
+				 * @details константная версия
+				 */
+				const ButtonsIDController::List &GetButtonsIDList() const;
+
+				/**
+				 * @brief Получить указатель на кнопку, которая запросила ID
+				 * @param ID ID кнопки
+				 * @return указатель на ту самую кнопку
+				 */
+				std::shared_ptr<BaseButton> GetPoinerToButton(const ButtonID& ID) const;
+
+			private:
+
+				/**
+				 * @brief Список использованных id кнопок
+				 * @details По идее CloseButton тоже входить дожна в этот список, но не входит так как сразу начинаем со второго ID. Чисто немного оптимизация
+				 */
+				ButtonsIDController::List ButtonsIdList{/*CloseButton,*/ node(MinimizeButton)};
+
+				/**
+				 * @brief Стартовое значение ButtonsIDController::_top
+				 */
+				const unsigned StartTop = 2;
+
+				/**
+				 * @brief типо вершина
+				 * @details чтобы по всему вектору не проходиться, отсчёт начинаем с top
+				 */
+				unsigned _top = StartTop;
+			};
+
+			/// @brief Стиль кнопок
+			enum class ButtonStyle
+			{
+				/// @brief Плоские кнопки
+				flat = 0,
+
+				/// @brief Объёмные кнокпи
+				volumetric = 1
+			};
+
 			/// \brief Получить свободный номер id кнопки из списка
 			/// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
 			/// \return номер кнопки из списка ButtonsIdList
-			ButtonID GetFreeButtonId(std::vector<ButtonID> *ButtonsIdList, std::uint32_t startID = 2);
+			ButtonID GetFreeButtonId(ButtonIDList *ButtonsIdList, std::uint32_t startID = 2);
 
 			/// \brief Освободить номер кнопки
 			/// \param id номер номер кнопки из списка ButtonsIdList
-			bool FreeButtonId(const ButtonID &id, std::vector<ButtonID> *ButtonsIdList);
+			bool FreeButtonId(const ButtonID &id, ButtonIDList *ButtonsIdList);
 
 			/// \brief Создать кнопку, автоматически присвоить ей id
 			/// \param coords координаты
 			/// \param size размер
 			/// \param color цвет
 			/// \return id созданной кнопки
-			ButtonID autoDefineButton(std::vector<ButtonID> *ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
+			ButtonID autoDefineButton(ButtonIDList *ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
 
 			/// \brief Создать кнопку, вручную
 			/// \param coords координаты
@@ -117,7 +216,7 @@ namespace KolibriLib
 			/// \param size размер
 			/// \param id idшник кнопки
 			/// \param color цвет
-			inline void DefineButton(std::vector<ButtonID> *ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
+			inline void DefineButton(ButtonIDList *ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
 				ButtonsIdList->push_back(id);
 				DefineButton(coord, size, id, color);
@@ -132,7 +231,7 @@ namespace KolibriLib
 
 			/// \brief Удалить кнопу
 			/// \param id id удаляемой кнопки
-			inline void DeleteButton(std::vector<ButtonID> *ButtonsIdList, ButtonID id)
+			inline void DeleteButton(ButtonIDList *ButtonsIdList, ButtonID id)
 			{
 				_ksys_delete_button(id);
 				FreeButtonId(id, ButtonsIdList); // Кнопка удалена, теперь этот id не использется
@@ -145,16 +244,6 @@ namespace KolibriLib
 				return ButtonID(_ksys_get_button());
 			}
 
-			/// @brief Стиль кнопок
-			enum class ButtonStyle
-			{
-				/// @brief Плоские кнопки
-				flat = 0,
-
-				/// @brief Объёмные кнокпи
-				volumetric = 1
-			};
-
 			/// @brief Измнить стиль кнопок
 			/// @param новый стиль кнопок
 			inline void SetButtonStyle(ButtonStyle style)
@@ -162,53 +251,6 @@ namespace KolibriLib
 				asm_inline(
 					"int $0x40" ::"a"(48), "b"(1), "c"(style));
 			}
-
-			/// @brief Автоматическое присвоение ID для кнопок
-			/// @note Этот класс работает только с ID кнопок и ничего больше
-			class ButtonsIDController
-			{
-			public:
-				/// @brief Получить свободный ID кнопки из списка
-				/// @return ID кнопки, который не занят
-				ButtonID GetFreeButtonID();
-
-				/// @brief Освободить ID
-				/// @param id ID который нужно освободить
-				void FreeButtonID(const ButtonID &id);
-
-				/**
-				 * @brief Получить список всех занятых ID кнопок
-				 * @return указатель на вектор
-				 * @details Зачем указатель? копировать долго
-				 */
-				std::vector<ButtonID> &GetButtonsIDList();
-
-				/**
-				 * @brief Получить список всех занятых ID кнопок
-				 * @return указатель на вектор
-				 * @details константная версия
-				 */
-				const std::vector<ButtonID> &GetButtonsIDList() const;
-
-			private:
-				
-				/**
-				 * @brief Список использованных id кнопок
-				 * @details По идее CloseButton тоже входить дожна в этот список, но не входит так как сразу начинаем со второго ID. Чисто немного оптимизация
-				 */
-				std::vector<ButtonID> ButtonsIdList{/*CloseButton,*/ MinimizeButton};
-
-				/**
-				 * @brief Стартовое значение ButtonsIDController::_top
-				 */
-				const unsigned StartTop = 2;
-
-				/**
-				 * @brief типо вершина
-				 * @details чтобы по всему вектору не проходиться, отсчёт начинаем с top
-				 */
-				unsigned _top = StartTop;
-			};
 
 		} // namespace buttons
 

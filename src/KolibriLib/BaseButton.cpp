@@ -11,7 +11,7 @@ BaseButton::BaseButton()
 	if (KolibriLib::Globals::DefaultButtonsIDController != nullptr)
 	{
 		_ButtonsIDController = KolibriLib::Globals::DefaultButtonsIDController;
-		_id = KolibriLib::Globals::DefaultButtonsIDController->GetFreeButtonID();
+		_id = KolibriLib::Globals::DefaultButtonsIDController->GetFreeButtonID(std::shared_ptr<BaseButton>(this));
 	}
 }
 
@@ -46,7 +46,7 @@ void BaseButton::BaseButton::Activate()
 {
 	if (!IsActive())
 	{
-		_id	= _ButtonsIDController->GetFreeButtonID();
+		_id	= _ButtonsIDController->GetFreeButtonID(std::shared_ptr<BaseButton>(this));
 	}
 	else
 	{
@@ -58,7 +58,6 @@ bool KolibriLib::UI::buttons::BaseButton::IsActive() const
 {
 	return _id != ButtonIDNotSet;
 }
-
 
 bool buttons::BaseButton::GetStatus() const
 {

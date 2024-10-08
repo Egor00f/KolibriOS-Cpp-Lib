@@ -62,7 +62,7 @@ namespace KolibriLib
 
 		/// @brief Снять фокус с окна
 		/// @param slot слот окна
-		inline void UnfocusWindow(const Thread::Slot &slot)
+		inline void UnfocusWindow(const Thread::Slot &slot = Thread::GetThreadSlot())
 		{
 			_ksys_unfocus_window(slot);
 		}
@@ -77,7 +77,7 @@ namespace KolibriLib
 
 		/// @brief Поставить фокус на окно
 		/// @param slot слот окна
-		inline void FocusWindow(const Thread::Slot &slot)
+		inline void FocusWindow(const Thread::Slot &slot = Thread::GetThreadSlot())
 		{
 			_ksys_focus_window(slot);
 		}

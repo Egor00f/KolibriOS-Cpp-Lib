@@ -41,7 +41,7 @@ int main()
 			break;
 		case Event::Button:
 
-			if(wndw->GetPressedButton() == button->GetId())
+			if(wndw->GetPressedButton() == button)
 			{
 				_ksys_debug_puts("You Press Button");
 				OS::Notify("You Press Buttons", "just example");

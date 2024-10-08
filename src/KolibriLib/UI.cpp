@@ -149,16 +149,18 @@ void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
 {
 	PrintDebug("SetParent\n");
 
-	if (!ParentIsWindow && Parent.lock())
+	auto s_ptr = Parent.lock();
+
+	if (!ParentIsWindow && s_ptr)
 	{
-		((UIElement*) Parent.lock().get())->DeleteChildren(this);
+		((UIElement*) s_ptr.get())->DeleteChildren(this);
 	}
 
 	std::shared_ptr<GuiObject> ptr(const_cast<GuiObject*>(static_cast<const GuiObject*>(NewParent)));
 
-	Parent.lock().swap(ptr);
+	s_ptr.swap(ptr);
 
-	((UIElement*) Parent.lock().get())->AddChildren(this);
+	((UIElement*) s_ptr.get())->AddChildren(this);
 
 	ParentIsWindow = false;
 }
@@ -170,12 +172,14 @@ void KolibriLib::UI::UIElement::SetParent(std::weak_ptr<UIElement> ptr) const
 
 void KolibriLib::UI::UIElement::WindowAsParent(const GuiObject *window) const
 {
-	if (!ParentIsWindow && Parent.lock())
+	auto s_ptr = Parent.lock();
+
+	if (!ParentIsWindow && s_ptr)
 	{
-		((UIElement*) Parent.lock().get())->DeleteChildren(this);
+		((UIElement*) s_ptr.get())->DeleteChildren(this);
 	}
 
-	Parent.lock().reset(const_cast<GuiObject*>(window));
+	s_ptr.reset(const_cast<GuiObject*>(window));
 	ParentIsWindow = true;
 }
 
@@ -216,7 +220,7 @@ bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 
 void KolibriLib::UI::UIElement::Render() const
 {
-	if(_MainColor)
+	if(_MainColor._a != 0xFF)
 	{
 		Images::img img(_MainColor, GetAbsoluteSize(), Images::img::BPP::RGBA);
 		
@@ -274,9 +278,11 @@ void KolibriLib::UI::UIElement::DeleteChildren(const UIElement* child) const
 
 buttons::ButtonsIDController *KolibriLib::UI::UIElement::GetButtonIDController() const
 {
-	if(Parent.lock())
+	auto s_ptr = Parent.lock();
+
+	if(s_ptr)
 	{
-		return Parent.lock().get()->GetButtonIDController();
+		return s_ptr.get()->GetButtonIDController();
 	}
 	else
 	{

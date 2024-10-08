@@ -73,9 +73,6 @@ namespace KolibriLib
 			/// @details с.м. Window_t::_coord
 			mutable Size _size = DefaultWindowSize;
 
-			/// @brief Последняя нажатая кнопка
-			UI::buttons::ButtonID _PressedButton = UI::buttons::ButtonIDNotSet;
-
 			/// @brief Стиль окна
 			WindowStyle _style = WindowStyle::withSkin;
 
@@ -169,13 +166,20 @@ namespace KolibriLib
 
 			/// @brief Обработчик окна
 			/// @return Ивент
-			/// @example example.cpp
 			OS::Event Handler();
 
-			/// @brief Проверить какая нажата
-			/// @return ButtonID нажатой кнопки
-			/// @example example.cpp
-			UI::buttons::ButtonID GetPressedButton();
+
+			/**
+			 * @brief Получить ID последней нажатой кнопки
+			 * @return ID Послдней нажатой кнопки
+			 */
+			UI::buttons::ButtonID GetPressedButtonID() const;
+
+			/**
+			 * @brief Получить последнюю нажатую кнопку
+			 * @return Указатель на последнюю нажатую кнопку
+			 */
+			UI::buttons::BaseButton* GetPressedButton() const;
 
 			/// @brief Добавить UI элемент напрямую
 			/// @param element указатель на элемент
@@ -189,7 +193,6 @@ namespace KolibriLib
 			/// @param element сам элемент
 			/// @details Зачем добавлять в окно элементы ui? Да чтоб при перерисовке окна не нужнобыло отрисовывать все ручками
 			/// @return указатель на элемент(новый)
-			/// @example example.cpp
 			T* AddElement(const T &element);
 
 			/// @brief Удалить элемент из окна
@@ -229,8 +232,10 @@ namespace KolibriLib
 			/// @brief Список всех кнопок этого окна
 			std::vector<std::shared_ptr<UIElement>> _Elements;
 
+			mutable std::shared_ptr<UI::buttons::BaseButton> _PressedButton;
+
 			/// @brief прошлый ивент
-			OS::Event _lastEvent;
+			mutable OS::Event _lastEvent;
 
 			/// @brief Окно перерисовывается сейчас (да/нет)
 			mutable bool _Redraw = false;
