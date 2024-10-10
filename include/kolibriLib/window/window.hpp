@@ -118,6 +118,10 @@ namespace KolibriLib
 			/// @return
 			UDim GetCoord() const override;
 
+			/**
+			 * @brief 
+			 * @param NewSize 
+			 */
 			void SetSize(const UDim &NewSize) override;
 
 			/// @brief 
@@ -232,6 +236,9 @@ namespace KolibriLib
 			/// @brief Список всех кнопок этого окна
 			std::vector<std::shared_ptr<UIElement>> _Elements;
 
+			/**
+			 * @brief 
+			 */
 			mutable std::shared_ptr<UI::buttons::BaseButton> _PressedButton;
 
 			/// @brief прошлый ивент
@@ -260,14 +267,11 @@ namespace KolibriLib
 			T *p = new T(element);
 
 			if (p->GetParent())
-			{
 				p->WindowAsParent(this);
-			}
 
 			p->SetButtonIDController(&_buttonsController);
 
 			_Elements.push_back(std::shared_ptr<UIElement>(static_cast<UIElement*>(p)));
-
 
 			return static_cast<T*>(_Elements.back().get());
 		}

@@ -5,6 +5,10 @@
 using namespace KolibriLib;
 using namespace Colors;
 
+/*
+	rgb
+*/
+
 KolibriLib::Colors::rgb::rgb(rgb_t val)
 {
 	red 	= val.red;
@@ -53,6 +57,10 @@ std::uint32_t KolibriLib::Colors::rgb::ZeroRRGGBB() const
 {
 	return ((red << 16) | (green << 8) | blue ) | 0;
 }
+
+/*
+	Color
+*/
 
 KolibriLib::Colors::Color::Color(const ksys_color_t &a)
 	:	val(a)

@@ -7,9 +7,10 @@
 #include <kolibriLib/constants.hpp>
 #include <kolibriLib/color.hpp>
 #include <kolibriLib/filesystem/filesystem.hpp>
-#include <string>
-
 #include <C_Layer/buf2d.hpp>
+
+#include <string>
+#include <memory>
 
 namespace KolibriLib
 {
@@ -21,169 +22,171 @@ namespace KolibriLib
 			class img
 			{
 			public:
-				/// @brief Глубина цвета
-				enum class BPP
-				{
-					/// @brief  8 битный цвет
-					bpp8 = 8,
+				
+				using BPP = buf2d::BPP;
 
-					/// @brief 24 битный цвет
-					RGB = 24,
+				using RotateEnum = buf2d::RotateEnum;
 
-					/// @brief 32 битный цвет
-					RGBA = 32
-				};
-
-				enum class RotateEnum
-				{
-					/// @brief повернуть на 90 градусов
-					rotate_90 = 90,
-
-					/// @brief Повернуть 180 градусов
-					rotate_180 = 180,
-
-					/// @brief повернуть на 270 градусов
-					rotate_270
-				};
-
+				/**
+				 * @brief Конструктор
+				 * @param bpp Глубина цвета
+				 */
 				img(BPP bpp = BPP::RGB);
 
-				/// @brief Конструктор
-				/// @param color Массив цветов
-				/// @param size размеры изображения
-				img(const rgb_t *color, const Size &size, img::BPP bpp = img::BPP::RGB);
+				/**
+				 * @brief 
+				 * @param size 
+				 * @param bpp 
+				 */
+				img(const Size& size, BPP bpp = BPP::RGB);
 
-				/// @brief Конструктор
-				/// @param color цвет
-				/// @param size размеры изображения
-				/// @note Закрашивает изображение в цвет
-				img(const Colors::Color &color, const Size &size, img::BPP bpp = img::BPP::RGB);
+				/**
+				 * @brief 
+				 * @param array 
+				 * @param size 
+				 */
+				img(Colors::rgb* array, const Size& size);
 
-				img(const filesystem::Path &ImageFile);
+				img(Colors::Color* array, const Size& size);
 
-				/// @brief Коструктор копирования
-				/// @param copy то что будет копироваться
-				img(const img &copy);
+				/**
+				 * @brief Конструктор 24-бит изображения
+				 * @param color цвет
+				 * @param size 
+				 */
+				img(const Colors::rgb& color, const Size& size);
 
-				/// @brief Деструктор
-				~img();
+				/**
+				 * @brief Конструктор 32-бит
+				 * @param color 
+				 * @param size 
+				 */
+				img(const Colors::Color& color, const Size& size);
 
-				/// @brief Отрисовать изображение
-				/// @param coord координаты
-				/// @param size кастомный размер
-				void Draw(const Coord &coord, const Size &size = {-1, -1}) const;
+				/**
+				 * @brief Констуктор копирования
+				 * @param val 
+				 * @details Полность копирует изображение
+				 */
+				img(const img& val);
 
-				/// @brief Загрузить изображение
-				/// @param Path путь до файла
-				void LoadImage(const filesystem::Path &Path = DefaultImage);
+				/**
+				 * @brief 
+				 */
+				void Draw() const;
 
-				/// @brief Изменить изображение
-				/// @param img Указатель на струтуру
-				void SetImg(const buf2d_struct *img);
+				/**
+				 * @brief 
+				 * @param coord 
+				 */
+				void Draw(const Coord& coord) const;
 
-				/// @brief Изменить цвет пикселя
-				/// @param color
-				/// @param x
-				/// @param y
-				/// @return true если всё ок
-				/// @return false если указаного пикселя не должно существовать
-				bool SetPixel(const Colors::Color &color, unsigned x, unsigned y);
+				/**
+				 * @brief 
+				 * @param coord 
+				 * @param size 
+				 */
+				void Draw(const Coord& coord, const Size& size) const;
 
-				/// @brief Изменить цвет пикселя
-				/// @param color новый цвет
-				/// @return true если всё ок
-				/// @return false если указаного пикселя не должно существовать
-				bool SetPixel(const Colors::Color &color, const Coord &coord);
+				/**
+				 * @brief Изменить пиксель
+				 * @param coord координаты пикселя
+				 * @param color цвет
+				 */
+				void SetPixel(const Coord& coord,const Colors::Color& color);
 
-				/// @brief Повернуть изображение на определённый угол
-				/// @param value
-				void Rotate(RotateEnum value);
+				/**
+				 * @brief Получить цвет пикселя
+				 * @param coord координаты пикселя
+				 * @return цвет пикселя
+				 */
+				Colors::Color GetPixel(const Coord& coord) const;
 
-				/// @brief Очистить изображение, 
-				/// @param backgroundColor 
-				void Clear(const Colors::Color &backgroundColor);
+				/**
+				 * @brief Получить глубину цвета
+				 * @return 
+				 */
+				BPP GetBPP() const;
 
-				/// @brief Нарисовать круг
-				/// @param coord координаты круга
-				/// @param radius радиус круга
-				/// @param color цвет круга
-				void DrawCircle(const Coord &coord, unsigned radius, const Colors::Color &color);
+				/**
+				 * @brief Повернуть изображение
+				 * @param val 
+				 */
+				void Rotate(RotateEnum val);
 
-				/// @brief нарисовать линию
-				/// @param point1 
-				/// @param point2 
-				/// @param color цвет линии
-				void DrawLine(const Coord &point1, const Coord &point2, const Colors::Color &color);
+				/**
+				 * @brief 
+				 * @param NewSize 
+				 * @param resize 
+				 */
+				void Resize(const Size& NewSize, bool resize = true);
 
-				/// @brief Нарисовать прямоугольник
-				/// @param point1 
-				/// @param point2 
-				/// @param color цвет прямоугольника
-				void DrawRectangle(const Coord &point1, const Coord &point2, const Colors::Color &color);
-
-				/// @brief Получить цвет пикселя
-				/// @param x координата пикселя по оси X
-				/// @param y координата пикселя по оси Y
-				/// @return Цвет
-				Colors::Color GetPixel(unsigned x, unsigned y) const;
-				
-				/// @brief Получить цвет пикселя
-				/// @param coord координаты пикселя
-				/// @return Цвет
-				Colors::Color GetPixel(const Coord &coord) const;
-
-				/// @brief Получить изображение как массив цветов (Colors::Color)
-				/// @return копия
-				Colors::Color *GetColorsMap() const;
-
-				/// @brief получить массив rgb_t
-				/// @return возврацается копия
-				/// @note не забудьте удалить копию после использования!
-				rgb_t *GetRGBMap() const;
-
-				/// @brief Изменить изображение по изображению из rgb_t
-				/// @param rgbmap указатель на массив rgb_t
-				/// @param size размер rgbmap, можно не указывать, но тогда размер буфера rgbmap должен соответсвовать размерам изображения
-				/// @note Теряется Alpha
-				void SetRGBMap(const rgb_t* rgbmap, const Size &size = {-1, -1});
-
-				/// @brief Изменить изображение по изображению из цветов
-				/// @param rgbmap указатель на массив Colors::Color
-				/// @param size размер rgbmap, можно не указывать, но тогда размер буфера rgbmap должен соответсвовать размерам изображения
-				/// @note Теряется Alpha
-				void SetColorMap(const Colors::Color* rgbmap, const Size &size = {-1, -1});
-
-				/// @brief Получить укзатель на img::_buff
-				/// @return 
-				buf2d_struct *GetBuff() const;
-
-				/// @brief Получить разрешение изображения
-				/// @return {img::_buff->width, img::_buff->height}
+				/**
+				 * @brief Получить размер изображения
+				 * @return 
+				 */
 				Size GetSize() const;
 
-				/// @brief Изменить размер изображения(растянуть/сжыть)
-				/// @param NewSize новый размер в пикселях
-				void Resize(const Size &NewSize);
+				/**
+				 * @brief Нарисовать круг
+				 * @param coord координаты центра
+				 * @param Radius радиус
+				 * @param color цвет
+				 */
+				void DrawCircle(const Coord& coord, unsigned Radius, Colors::rgb color);
 
-				/// @brief Заполнить изображение цветом
-				/// @param color цвет
-				void FillColor(const Colors::Color &color);
+				/**
+				 * @brief Нарисовать прямоугольник
+				 * @param coord 
+				 * @param size 
+				 * @param color 
+				 */
+				void DrawRectangle(const Coord& coord, const Size& size, Colors::rgb color);
 
-				/// @brief Изменить кол-во бит на пиксель
-				/// @param bpp кол-во бит на пиксель
-				/// @param data дополнительные данные
-				void SetBPP(BPP bpp, void *data);
-				
-				img& operator = (const img& im);
-				bool operator == (const img &im) const;
-				bool operator != (const img &im) const;
+				/**
+				 * @brief 
+				 * @param coord 
+				 * @param size 
+				 * @param color 
+				 */
+				void DrawFilledRectangle(const Coord& coord, const Size& size, Colors::rgb color);
+
+				/**
+				 * @brief 
+				 */
+				void ResizeImgByX();
+
+				/**
+				 * @brief 
+				 */
+				void ResizeImgByY();
+
+				/**
+				 * @brief Прямая Безье
+				 * @param points точки
+				 * @param color цвет линии
+				 */
+				void CurveBezier(Coord points[3], Colors::Color color);
+
+				/**
+				 * @brief Оператор присваивания
+				 * @param i 
+				 * @return 
+				 * @details Просто меняет указатель, если нужно скопировать изображение используйте конструктор копирования (img(const img&))
+				 */
+				img& operator=(const img& i);
+
+				operator std::shared_ptr<buf2d_struct>() const;
 
 			private:
-				buf2d_struct *_buff;
+				/**
+				 * @brief Указатель на структуру для библиотеки buf2d
+				 */
+				std::shared_ptr<buf2d::buffer> _buff;
 			};
 		} // namespace Images
 	} // namespace UI
 } // namespace KolibriLib
 
 
-#endif // __IMG_H__
+#endif // __IMG_HPP__

@@ -110,9 +110,9 @@ void Window::RenderAllElements() const
 {
 	PrintDebug("RenderAllElements:\n");
 
-	for (auto i : _Elements)
+	for (std::size_t i = 0; i < _Elements.size(); i++)
 	{
-		i->Render();
+		_Elements[i].get()->Render();
 	}
 }
 

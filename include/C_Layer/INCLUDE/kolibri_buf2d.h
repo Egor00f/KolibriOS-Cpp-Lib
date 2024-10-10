@@ -250,8 +250,9 @@ buf2d_struct* buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsig
 
 /// @brief Copy buf2d_struct
 /// @param buff struct to be copy
+/// @param copy Pointer to copy
 /// @return Pointer to copy
-buf2d_struct *buf2d_copy(const buf2d_struct* buff);
+buf2d_struct *buf2d_copy(const buf2d_struct* buff, buf2d_struct* copy);
 
 /// @brief Draws a segment of a bezier curve using three points.
 /// @param buffer Poiter to buf2d_struct

@@ -67,7 +67,7 @@ void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 
 Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
-	if (Parent.lock())
+	if (Parent.expired())
 	{
 		return _size.GetAbsolute(Parent.lock().get()->GetAbsoluteSize());
 	}
@@ -79,7 +79,7 @@ Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 
 Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 {
-	if (Parent.lock())
+	if (Parent.expired())
 	{
 		if(ParentIsWindow)
 			return (_coord.GetAbsolute(Parent.lock()->GetAbsoluteSize()));
@@ -149,18 +149,17 @@ void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
 {
 	PrintDebug("SetParent\n");
 
-	auto s_ptr = Parent.lock();
 
-	if (!ParentIsWindow && s_ptr)
+	if (!(ParentIsWindow && Parent.expired()))
 	{
-		((UIElement*) s_ptr.get())->DeleteChildren(this);
+		((UIElement*) Parent.lock().get())->DeleteChildren(this);
 	}
 
 	std::shared_ptr<GuiObject> ptr(const_cast<GuiObject*>(static_cast<const GuiObject*>(NewParent)));
 
-	s_ptr.swap(ptr);
+	Parent.lock().swap(ptr);
 
-	((UIElement*) s_ptr.get())->AddChildren(this);
+	((UIElement*) Parent.lock().get())->AddChildren(this);
 
 	ParentIsWindow = false;
 }
@@ -172,14 +171,13 @@ void KolibriLib::UI::UIElement::SetParent(std::weak_ptr<UIElement> ptr) const
 
 void KolibriLib::UI::UIElement::WindowAsParent(const GuiObject *window) const
 {
-	auto s_ptr = Parent.lock();
 
-	if (!ParentIsWindow && s_ptr)
+	if (!(ParentIsWindow && Parent.expired()))
 	{
-		((UIElement*) s_ptr.get())->DeleteChildren(this);
+		((UIElement*) Parent.lock().get())->DeleteChildren(this);
 	}
 
-	s_ptr.reset(const_cast<GuiObject*>(window));
+	Parent.lock().reset(const_cast<GuiObject*>(window));
 	ParentIsWindow = true;
 }
 
@@ -220,11 +218,16 @@ bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 
 void KolibriLib::UI::UIElement::Render() const
 {
+	PrintDebug("Render UIElement\n");
+
 	if(_MainColor._a != 0xFF)
 	{
-		Images::img img(_MainColor, GetAbsoluteSize(), Images::img::BPP::RGBA);
+		if(_MainColor._a != 0)
+		{
+			Images::img img(_MainColor, GetAbsoluteSize());
 		
-		img.Draw(GetAbsoluteCoord());
+			img.Draw(GetAbsoluteCoord());
+		}
 	}
 	else
 	{
@@ -261,6 +264,7 @@ void KolibriLib::UI::UIElement::DeleteChildren(const UIElement* child) const
 {
 	std::shared_ptr<UIElement> ptr(const_cast<UIElement*>(child));
 	std::weak_ptr<UIElement> v = ptr;
+	
 	auto n = std::find_if
         (
             _childs.begin(), _childs.end(),

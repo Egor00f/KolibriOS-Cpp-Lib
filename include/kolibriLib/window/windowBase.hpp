@@ -28,7 +28,6 @@ namespace KolibriLib
 		/// @brief Соординаты окна по умолчанию
 		const Coord DefaultWindowCoord = {100, 100};
 
-
 		/// @brief Объявить окно
 		/// @param coord Координаты окна(его левого верхнего угола) на экране
 		/// @param size Размеры окна

@@ -64,7 +64,7 @@ KolibriLib::Thread::ThreadInfo::ThreadInfo(const ksys_thread_t &t)
 		WindowSize(t.winx_size, t.winy_size),
 		ClientCoord(t.clientx, t.clienty),
 		ClientSize(t.clientwidth, t.clientheight),
-		name(t.name, 11)
+		name(t.name, 12)
 {
 }
 

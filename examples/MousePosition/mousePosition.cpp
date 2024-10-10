@@ -4,6 +4,7 @@ using namespace KolibriLib;
 
 const char textRelative[] = "Relative mouse Pos: y: %i, x: %i";
 const char textAbs[] = "Absolute mouse Pos: y: %i, x: %i";
+
 TextLabel* MousePosAbs;
 TextLabel* MousePosRelative;
 

@@ -20,19 +20,17 @@ void graphic::DrawPoint(const Coord &position, const unsigned &size, const Color
 
 void graphic::DrawCircle(const Coord &coord, unsigned Radius, const Colors::Color &color)
 {
-	UI::Images::img buff(
-		Colors::Color(),
-		{(static_cast<int>(Radius) * 2),
-		 (static_cast<int>(Radius) * 2)},
-		UI::Images::img::BPP::RGBA);
+	buf2d::buffer src({Radius * 2U, Radius * 2U}, buf2d::BPP::RGBA);
+	buf2d::buffer dst({Radius * 2U, Radius * 2U}, buf2d::BPP::RGB);
 
-	buff.DrawCircle(
-		{static_cast<int>(Radius),
-		 static_cast<int>(Radius)},
-		Radius,
-		color);
+	buf2d::ApplyTrasparency(&dst, &src);
 
-	buff.Draw(coord);
+	src.top = coord.y;
+	src.left = coord.x;
+	dst.top = coord.y;
+	dst.left = coord.x;
+
+	buf2d::Draw(&dst);
 }
 
 void graphic::DrawCircleFill(const Coord &coord, const unsigned &Radius, const Colors::Color &color)

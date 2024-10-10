@@ -119,8 +119,8 @@ namespace KolibriLib
 			 */
 			void SetParent(std::weak_ptr<UIElement> ptr) const;
 
-			/// @brief
-			/// @param
+			/// @brief Сделать окно родительским элементом
+			/// @param Указатель на окно
 			void WindowAsParent(const GuiObject * window) const;
 
 			/// @brief Получить указатель на родительский элемент
@@ -163,6 +163,10 @@ namespace KolibriLib
 			/// @return
 			buttons::ButtonsIDController* GetButtonIDController() const override;
 
+			/**
+			 * @brief 
+			 * @param buttonsIDController 
+			 */
 			void SetButtonIDController(const buttons::ButtonsIDController* buttonsIDController) override;
 
 			/// @brief Получить осносной цвет элемента
@@ -259,7 +263,7 @@ namespace KolibriLib
 			/// @brief Добавить
 			void AddChildren(const UIElement *child) const;
 
-			/// @brief
+			/// @brief Удалить
 			void DeleteChildren(const UIElement* child) const;
 		};
 	}

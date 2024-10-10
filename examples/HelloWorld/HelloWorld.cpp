@@ -5,7 +5,8 @@ using namespace KolibriLib;
 
 int main()
 {
-	Window* wndw = new Window (     // указатель не обязятельно, но можно
+	// окно
+	Window* wndw = new Window ( 
 		"Example Window",           // Заголовок окна
 		window::DefaultWindowSize,  // Размер окна
 		window::DefaultWindowCoord, // Координаты окна
@@ -30,10 +31,7 @@ int main()
 	bool exit = false;
 	while (!exit)
 	{
-		// Вызов обработчика окна
-		Event event = wndw->Handler();
-		
-		switch (event)
+		switch (wndw->Handler())
 		{
 		case Event::Exit: // Если был нажата кнопка закрытия окна
 
@@ -48,17 +46,6 @@ int main()
 
 				label->SetTextColor(Color(rand()));
 			}
-		case Event::Redraw:
-
-			PrintDebug("\n Coord:");
-			PrintDebug(button->GetAbsoluteCoord());
-			PrintDebug("\n");
-			PrintDebug("\n Size:");
-			PrintDebug(button->GetAbsoluteSize());
-			PrintDebug("\n");
-			break;
-		default:
-			break;
 		}		
 	}
 

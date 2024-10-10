@@ -21,13 +21,13 @@ void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, ksys_po
 	buf2d_curve_bezier_asm(buf, (p1.x << 16) + p1.y, (p2.x << 16) + p2.y, (p3.x << 16) + p3.y, color);
 }
 
-buf2d_struct *buf2d_copy(const buf2d_struct *buff)
+buf2d_struct *buf2d_copy(const buf2d_struct *buff, buf2d_struct* copy)
 {
-	buf2d_struct *b = (buf2d_struct *) malloc(sizeof(buf2d_struct));
+	copy = (buf2d_struct *) malloc(sizeof(buf2d_struct));
 	
-	memcpy(b, buff, sizeof(buf2d_struct));
+	memcpy(copy, buff, sizeof(buf2d_struct));
 	
-	return b;
+	return copy;
 }
 
 buf2d_struct *buf2d_conv_32_to_24(const buf2d_struct *buffer32bit, buf2d_struct *buffer24bit)

@@ -8,7 +8,7 @@ using namespace Images;
 
 Image::Image(const UDim &coord, const UDim &size)
 	:	UIElement(coord, size), 
-		img(Globals::SystemColors.work_graph, size.GetAbsolute({0,0}))
+		img(Colors::Color(Globals::SystemColors.work_graph), size.GetAbsolute({0,0}))
 {
 	PrintDebug("KolibriLib::UI::Images::Image Constructor");
 }

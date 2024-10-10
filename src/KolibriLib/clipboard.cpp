@@ -1,4 +1,5 @@
 #include <kolibriLib/input/clipboard.hpp>
+#include <cstdlib>
 
 using namespace KolibriLib;
 
@@ -14,7 +15,7 @@ KolibriLib::Clipboard::clipboard::clipboard(const std::string &text, bool filepa
 		s += 4;
 	}
 	
-	_struct = (clipboard_struct *)malloc(s);
+	_struct = (clipboard_struct *)std::malloc(s);
 	
 	_struct->size = s;
 	
@@ -38,14 +39,14 @@ KolibriLib::Clipboard::clipboard::clipboard(const std::string &text, bool filepa
 KolibriLib::Clipboard::clipboard::clipboard(const UI::Images::img &image)
 {
 	const std::size_t size = 4 + 4 + (4 * 4) + sizeof(void*) + sizeof(rgb_t*);
-	_struct = (clipboard_struct *)malloc(size);
+	_struct = static_cast<clipboard_struct *>(std::malloc(size));
 	
 	_struct->X	= static_cast<std::uint32_t>(image.GetSize().x);
 	_struct->Y = static_cast<std::uint32_t>(image.GetSize().y);
 	_struct->size	= size;
 	_struct->type	= clipboard_struct::Type::Image;
-	_struct->depht	= image.GetBuff()->color_bit;
-	_struct->image	= (rgb_t*)image.GetBuff()->buf_pointer;
+	_struct->depht	= static_cast<uint32_t>(image.GetBPP());
+	_struct->image	= (rgb_t*)((std::shared_ptr<buf2d_struct>)image).get()->buf_pointer;
 	_struct->pallete	= 0;
 	_struct->imageSize	= _struct->X * _struct->Y * _struct->depht;
 	_struct->palleteSize	= 0;
