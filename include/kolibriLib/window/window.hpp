@@ -6,7 +6,6 @@
 #include <utility>
 #include <algorithm>
 
-
 #include <kolibriLib/types.hpp>
 #include <kolibriLib/color.hpp>
 #include <input.hpp>
@@ -183,7 +182,7 @@ namespace KolibriLib
 			 * @brief Получить последнюю нажатую кнопку
 			 * @return Указатель на последнюю нажатую кнопку
 			 */
-			UI::buttons::BaseButton* GetPressedButton() const;
+			std::shared_ptr<UI::buttons::BaseButton> GetPressedButton() const;
 
 			/// @brief Добавить UI элемент напрямую
 			/// @param element указатель на элемент
@@ -271,7 +270,9 @@ namespace KolibriLib
 
 			p->SetButtonIDController(&_buttonsController);
 
-			_Elements.push_back(std::shared_ptr<UIElement>(static_cast<UIElement*>(p)));
+			std::shared_ptr<UIElement> s_ptr(static_cast<UIElement*>(p));
+
+			_Elements.push_back(s_ptr);
 
 			return static_cast<T*>(_Elements.back().get());
 		}

@@ -4,8 +4,15 @@
 #include <include_ksys.h>
 #include <string>
 
+#ifdef DEBUG
+
+#include <fstream>
+
+#endif
+
 namespace KolibriLib
 {
+
 	void DebugOut(const char* out);
 
 	void PrintDebug(bool out);

@@ -5,9 +5,9 @@ using namespace KolibriLib;
 using namespace UI;
 
 KolibriLib::UI::ProgressBar::ProgressBar(const UDim &coord, const UDim &size, const Colors::Color &BorderColor, const Colors::Color &MainColor, const unsigned &MaxFill, const unsigned &DefaultFill)
-	: UIElement(coord, size, MainColor, DefaultMargin),
-	  _MaxFill(MaxFill),
-	  _Fill(DefaultFill)
+	:	UIElement(coord, size, MainColor, DefaultMargin),
+		_MaxFill(MaxFill),
+		_Fill(DefaultFill)
 {
 }
 

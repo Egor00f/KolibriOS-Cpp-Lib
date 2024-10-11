@@ -25,16 +25,11 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
+  installPrograms:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-        # Install Doxygen
+      # Install Doxygen
       - name: Install Doxygen
         run: sudo apt install doxygen && doxygen --version
         
@@ -43,19 +38,28 @@ jobs:
         
       - name: Istall 7z
         run: sudo apt install p7zip-full
-
       - name: Install cmake
         run: sudo apt install cmake && cmake --version
 
       - name: Install fasm
         run: sudo apt install fasm
+        
+      - name: Install kos32-gcc toolchain
+        working-directory: ~/
+        run: git clone https://github.com/Egor00f/kolibrios-gcc-toolchain.git && cd kolibrios-gcc-toolchain && chmod u+x install && ./install
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: KolibriOS repo
         run: cd ${{github.workspace}}/../ && git clone https://git.kolibrios.org/KolibriOS/kolibrios.git
-      
-      - name: Install kos32-gcc toolchain
-        run: git clone https://github.com/Egor00f/kolibrios-gcc-toolchain.git && cd kolibrios-gcc-toolchain && chmod u+x install && ./install
-      
+    
       - name: Configure CMake
         run: cd ${{github.workspace}} && cmake -B ${{github.workspace}}/build
 

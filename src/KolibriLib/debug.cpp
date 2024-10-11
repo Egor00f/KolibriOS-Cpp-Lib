@@ -5,29 +5,32 @@
 
 #include <kolibriLib/system/thread.hpp>
 #include <kolibriLib/filesystem/filesystem.hpp>
-#include <fstream>
 
 #endif
 
+
+
 using namespace KolibriLib;
+
+
 
 void KolibriLib::DebugOut(const char* out)
 {
 	#ifdef DEBUG
 	_ksys_debug_puts(out);
 
-	std::ofstream file(filesystem::temp_directory_path() / (Thread::GetThreadInfo().name + "-debug.log"), std::ios::app);
+	std::ofstream debugOut(filesystem::temp_directory_path() / std::string(Thread::GetThreadInfo().name + "-debug.log"), std::ios::app);
 
-	if(file.is_open())
+	if(debugOut.is_open())
 	{
-		file << out;
+		debugOut << out;
 	}
 	else
 	{
 		_ksys_debug_puts("\ncan't open log file\n");
 	}
 
-	file.close();
+	debugOut.close();
 
 	#endif
 }

@@ -11,6 +11,10 @@
 using namespace KolibriLib;
 using namespace UI;
 
+/*
+	GuiObject
+*/
+
 unsigned KolibriLib::UI::GuiObject::GetMargin() const
 {
 	return _Margin;
@@ -20,6 +24,10 @@ void KolibriLib::UI::GuiObject::SetMargin(unsigned NewMargin)
 {
 	_Margin = NewMargin;
 }
+
+/*
+	UIElement
+*/
 
 KolibriLib::UI::UIElement::UIElement(const UDim &coord, const UDim &size, const Colors::Color &MainColor, const unsigned &Margin)
 	:	GuiObject	(),
@@ -67,9 +75,11 @@ void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 
 Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
-	if (Parent.expired())
+	PrintDebug("Get Absolute Size\n");
+
+	if (std::shared_ptr<GuiObject>s_ptr = Parent.lock())
 	{
-		return _size.GetAbsolute(Parent.lock().get()->GetAbsoluteSize());
+		return _size.GetAbsolute(s_ptr.get()->GetAbsoluteSize());
 	}
 	else
 	{
@@ -79,12 +89,12 @@ Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 
 Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 {
-	if (Parent.expired())
+	if (std::shared_ptr<GuiObject>s_ptr = Parent.lock())
 	{
 		if(ParentIsWindow)
-			return (_coord.GetAbsolute(Parent.lock()->GetAbsoluteSize()));
+			return (_coord.GetAbsolute(s_ptr->GetAbsoluteSize()));
 		else
-			return (_coord.GetAbsolute(Parent.lock()->GetAbsoluteSize()) + Parent.lock()->GetAbsoluteCoord());
+			return (_coord.GetAbsolute(s_ptr->GetAbsoluteSize()) + s_ptr->GetAbsoluteCoord());
 	}
 	else
 	{
@@ -149,17 +159,18 @@ void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
 {
 	PrintDebug("SetParent\n");
 
+	std::shared_ptr<GuiObject> s_ptr = Parent.lock();
 
-	if (!(ParentIsWindow && Parent.expired()))
+	if (!ParentIsWindow && s_ptr)
 	{
-		((UIElement*) Parent.lock().get())->DeleteChildren(this);
+		((UIElement*) s_ptr.get())->DeleteChildren(this);
 	}
 
 	std::shared_ptr<GuiObject> ptr(const_cast<GuiObject*>(static_cast<const GuiObject*>(NewParent)));
 
-	Parent.lock().swap(ptr);
+	s_ptr.swap(ptr);
 
-	((UIElement*) Parent.lock().get())->AddChildren(this);
+	((UIElement*) s_ptr.get())->AddChildren(this);
 
 	ParentIsWindow = false;
 }
@@ -171,13 +182,15 @@ void KolibriLib::UI::UIElement::SetParent(std::weak_ptr<UIElement> ptr) const
 
 void KolibriLib::UI::UIElement::WindowAsParent(const GuiObject *window) const
 {
+	std::shared_ptr<GuiObject> s_ptr = Parent.lock();
 
-	if (!(ParentIsWindow && Parent.expired()))
+	if (!ParentIsWindow && s_ptr)
 	{
-		((UIElement*) Parent.lock().get())->DeleteChildren(this);
+		((UIElement*) s_ptr.get())->DeleteChildren(this);
 	}
 
-	Parent.lock().reset(const_cast<GuiObject*>(window));
+	s_ptr = std::shared_ptr<GuiObject>(const_cast<GuiObject*>(window));
+
 	ParentIsWindow = true;
 }
 
@@ -257,11 +270,15 @@ std::vector<std::weak_ptr<UIElement>>& KolibriLib::UI::UIElement::GetChildren()
 
 void KolibriLib::UI::UIElement::AddChildren(const UIElement *child) const
 {
+	PrintDebug("Add Children\n");
+
 	_childs.push_back(std::shared_ptr<UIElement>(const_cast<UIElement*>(child)));
 }
 
 void KolibriLib::UI::UIElement::DeleteChildren(const UIElement* child) const
 {
+	PrintDebug("Delete Children\n");
+
 	std::shared_ptr<UIElement> ptr(const_cast<UIElement*>(child));
 	std::weak_ptr<UIElement> v = ptr;
 	

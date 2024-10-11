@@ -1,9 +1,5 @@
 #include <kolibriLib/img.hpp>
 
-#include <C_Layer/INCLUDE/kolibri_libimg.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include <assert.h>
 
 using namespace KolibriLib;
@@ -40,8 +36,6 @@ KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
 {
 }
 
-
-
 /* 
 	Functions 
 */
@@ -53,7 +47,7 @@ void KolibriLib::UI::Images::img::Draw() const
 	if(static_cast<BPP>(_buff->color_bit) == BPP::RGBA)
 	{
 		buf2d::buffer image(GetSize(), BPP::RGB);
-		buf2d_bit_blt_transp(_buff.get(), 0,0, static_cast<buf2d_struct*>(&image));
+		buf2d::ApplyTrasparency(_buff.get(), image);
 		buf2d::Draw(&image);
 	}
 	else
@@ -64,8 +58,8 @@ void KolibriLib::UI::Images::img::Draw() const
 
 void KolibriLib::UI::Images::img::Draw(const Coord &coord) const
 {
-	_buff->left = coord.x;
-	_buff->top = coord.y;
+	_buff.get()->left	= coord.x;
+	_buff.get()->top	= coord.y;
 
 	Draw();
 }
@@ -132,7 +126,7 @@ void KolibriLib::UI::Images::img::DrawFilledRectangle(const Coord &coord, const 
 
 void KolibriLib::UI::Images::img::CurveBezier(Coord points[3], Colors::Color color)
 {
-	buf2d_curve_bezier(_buff.get(), points[0], points[1], points[2], color);
+	buf2d::DrawBezierCurver(_buff.get(), points, color);
 }
 
 /* 

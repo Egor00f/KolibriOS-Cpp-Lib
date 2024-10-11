@@ -59,9 +59,12 @@ int main()
 		case Event::Exit:
 			exit = true;
 			break;
+
 		case Event::Mouse:
+		
 			update();
 			wnd.Redraw();
+
 			break;
 		}
 	}

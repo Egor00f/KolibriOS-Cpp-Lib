@@ -8,15 +8,27 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief Оболока для Libini
+ */
 namespace libini
 {
-	class libiniLib
+	/**
+	 * @brief Загрузщик библиотеки Libini
+	 */
+	class Loader final
 	{
 	public:
-		libiniLib();
+		/**
+		 * @brief Конструктор
+		 */
+		Loader();
 	};
 
-	extern libiniLib _libiniLib;
+	/**
+	 * @brief Экхемпляр загрузщика
+	 */
+	extern libini::Loader _libiniLoader;
 
 	/// @brief 
 	class iniFile

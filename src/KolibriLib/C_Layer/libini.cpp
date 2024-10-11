@@ -1,9 +1,9 @@
 #include <C_Layer/libini.hpp>
 #include <kolibriLib/debug.hpp>
 
-libini::libiniLib _libiniLib;
+libini::Loader _libiniLib;
 
-libini::libiniLib::libiniLib()
+libini::Loader::Loader()
 {
 	KolibriLib::PrintDebug("Init libini: ");
 

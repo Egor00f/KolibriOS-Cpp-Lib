@@ -14,16 +14,16 @@ int main()
 	);
 
 	// Добавление текстовой метки
-	auto label = wndw->AddElement(TextLabel(
+	std::shared_ptr<TextLabel> label(wndw->AddElement(TextLabel(
 		                            UDim(0.0f, 0, 0.0f, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
 									UDim(0.6f, 0, 1.0f, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
 									"Hello World",
 									{32, 36}           	// Размер символов 32x36
 								)
-					);
+					));
 
 	// Добавление кнопки
-	TextButton* button = wndw->AddElement(TextButton(UDim(0.6f, 0, 0.4f, 0), UDim(0.2f, 0, 0.2f, 0)));
+	std::shared_ptr<TextButton> button(wndw->AddElement(TextButton(UDim(0.6f, 0, 0.4f, 0), UDim(0.2f, 0, 0.2f, 0))));
 
 	// Отрисовка всех элементов, чтоб они были видны
 	wndw->RenderAllElements();

@@ -110,9 +110,12 @@ void Window::RenderAllElements() const
 {
 	PrintDebug("RenderAllElements:\n");
 
-	for (std::size_t i = 0; i < _Elements.size(); i++)
+	for (auto i : _Elements)
 	{
-		_Elements[i].get()->Render();
+		if(i.use_count() > 0)
+			i->Render();
+		else
+			PrintDebug("use_cout = 0\n");
 	}
 }
 
@@ -237,9 +240,9 @@ OS::Event Window::Handler()
 {
 	PrintDebug("Handler\n");
 
-	OS::Event event = OS::WaitEvent();
+	_lastEvent = OS::WaitEvent();
 
-	switch (event)
+	switch (_lastEvent)
 	{
 	case OS::Event::Redraw:
 
@@ -258,7 +261,7 @@ OS::Event Window::Handler()
 
 			if (PressedButton == UI::buttons::CloseButton) // Если нажата кнопка X
 			{
-				event = OS::Event::Exit;
+				_lastEvent = OS::Event::Exit;
 			}
 			else
 			{
@@ -302,11 +305,17 @@ OS::Event Window::Handler()
 		}
 
 		break;
+
+	case OS::Event::Desktop:
+		break;
+
+	case OS::Event::None:
+		break;
 	}
 
 	for (auto it : _Elements) // Запуск обработчиков всех используемых элементов
 	{
-		it->Handler(event);
+		it->Handler(_lastEvent);
 	}
 
 	if (_RealtimeRedraw)
@@ -325,8 +334,7 @@ OS::Event Window::Handler()
 	}
 
 
-	_lastEvent = event;
-	return event;
+	return _lastEvent;
 }
 
 UI::buttons::ButtonID Window::GetPressedButtonID() const
@@ -334,9 +342,9 @@ UI::buttons::ButtonID Window::GetPressedButtonID() const
 	return _PressedButton.get()->GetId();
 }
 
-UI::buttons::BaseButton *KolibriLib::window::Window::GetPressedButton() const
+std::shared_ptr<UI::buttons::BaseButton> KolibriLib::window::Window::GetPressedButton() const
 {
-	return _PressedButton.get();
+	return _PressedButton;
 }
 
 void KolibriLib::window::Window::Unfocus() const

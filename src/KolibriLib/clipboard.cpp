@@ -6,16 +6,13 @@ using namespace KolibriLib;
 KolibriLib::Clipboard::clipboard::clipboard(const std::string &text, bool filepath)
 {
 	std::size_t s = 4;
+
 	if(filepath)
-	{
 		s += (2 + text.length());
-	}
 	else
-	{
 		s += 4;
-	}
 	
-	_struct = (clipboard_struct *)std::malloc(s);
+	_struct = static_cast<clipboard_struct *>(std::malloc(s));
 	
 	_struct->size = s;
 	
@@ -26,9 +23,7 @@ KolibriLib::Clipboard::clipboard::clipboard(const std::string &text, bool filepa
 		_struct->res = 0x0001;
 
 		for(std::size_t i = 0; i < text.length(); i++)
-		{
 			_struct->filepath[i] = text[i];
-		}
 	}
 	else
 	{
@@ -42,7 +37,7 @@ KolibriLib::Clipboard::clipboard::clipboard(const UI::Images::img &image)
 	_struct = static_cast<clipboard_struct *>(std::malloc(size));
 	
 	_struct->X	= static_cast<std::uint32_t>(image.GetSize().x);
-	_struct->Y = static_cast<std::uint32_t>(image.GetSize().y);
+	_struct->Y	= static_cast<std::uint32_t>(image.GetSize().y);
 	_struct->size	= size;
 	_struct->type	= clipboard_struct::Type::Image;
 	_struct->depht	= static_cast<uint32_t>(image.GetBPP());
@@ -55,9 +50,7 @@ KolibriLib::Clipboard::clipboard::clipboard(const UI::Images::img &image)
 KolibriLib::Clipboard::clipboard::~clipboard()
 {
 	if(_struct != nullptr)
-	{
 		free(_struct);
-	}
 }
 
 KolibriLib::Clipboard::clipboard::operator clipboard_struct *() const
