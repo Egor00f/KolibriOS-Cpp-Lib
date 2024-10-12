@@ -42,7 +42,7 @@ int main()
 			{
 				lastState = checkbox->GetChecked();
 
-				OS::Notify("You change checkbox state", "just for you know");
+				OS::Notify("You change checkbox state");
 			}
 
 			break;

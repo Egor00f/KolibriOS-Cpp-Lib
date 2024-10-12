@@ -8,5 +8,5 @@ using namespace buttons;
 void KolibriLib::UI::buttons::ImageButton::Render() const
 {
     Define(GetAbsoluteCoord(), GetAbsoluteCoord());
-    Images::Image::Render();
+    Draw(GetAbsoluteCoord());
 }

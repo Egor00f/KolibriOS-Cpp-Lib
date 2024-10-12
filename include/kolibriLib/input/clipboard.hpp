@@ -26,6 +26,9 @@ namespace KolibriLib
 		struct clipboard_struct
 		{
 
+			/**
+			 * @brief Кодировака для текста
+			 */
 			enum class Encoding
 			{
 				UTF8 = 0,
@@ -33,6 +36,9 @@ namespace KolibriLib
 				CP1251 = 2
 			};
 
+			/**
+			 * @brief Тип буфера обмена
+			 */
 			enum class Type : std::uint32_t
 			{
 				/// @brief Текст
@@ -104,6 +110,9 @@ namespace KolibriLib
 		{
 		public:
 
+			/**
+			 * @brief Конструктор по умолчанию
+			 */
 			clipboard() = default;
 
 			/// @brief Конструктор
@@ -111,6 +120,10 @@ namespace KolibriLib
 			/// @param filepath текст это файловый путь?
 			clipboard(const std::string& text, bool filepath = false);
 
+			/**
+			 * @brief Конструктор
+			 * @param image картинка
+			 */
 			clipboard(const UI::Images::img &image);
 
 			/// @brief Конструктор, для любых данных
@@ -123,6 +136,10 @@ namespace KolibriLib
 			/// @brief деструктор
 			~clipboard();
 
+			/**
+			 * @brief Получить тип буфера обмена
+			 * @return тип буфера обмена
+			 */
 			clipboard_struct::Type GetType();
 			
 
@@ -131,6 +148,9 @@ namespace KolibriLib
 
 			// Поля
 
+			/**
+			 * @brief Указатель на структуру
+			 */
 			clipboard_struct* _struct = nullptr;
 		};
 		
@@ -152,7 +172,7 @@ namespace KolibriLib
 		{
 			clipboard ret;
 
-			ret._struct = (clipboard_struct*)_ksys_clip_get(slot);
+			ret._struct = reinterpret_cast<clipboard_struct*>(_ksys_clip_get(slot));
 
 			return ret;
 		}

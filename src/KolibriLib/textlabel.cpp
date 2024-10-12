@@ -10,7 +10,6 @@ TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &tex
 {
 	PrintDebug("TextLabel Constructor\n");
 
-	_TextScale = TextScale;
 
 	SetTextSize(CharSize);
 	//SetFont(Fonts::Font(Fonts::DefaultFont.font_file, FontSize));
@@ -27,80 +26,26 @@ TextLabel::TextLabel(const TextLabel &copy)
 	:	Txt	(copy),
 		UIElement	(copy)
 {
-	_Align = copy._Align;
-	_TextScale = copy._TextScale;
 }
 
 void text::TextLabel::Render() const
 {
 	if(Visible)
-	{
-
-		Coord pos = GetAbsoluteCoord();
-		Size size = GetAbsoluteSize();
-
-		switch (_Align)
-		{
-		case TextLabel::Align::Center:
-
-			pos.x += (size.x - static_cast<int>(lenghtPX())) / 2;
-			pos.y += size.y / 2;
-
-			break;
-		case TextLabel::Align::Left:
-
-			pos.y += size.y / 2;
-
-			break;
-
-		case TextLabel::Align::Right:
-
-			pos.x += size.x - static_cast<int>(lenghtPX());
-			pos.y += size.y / 2;
-
-			break;
-		default:
-			_ksys_debug_puts("Unklown value of TextLabel::_Align");
-		}
-
-		Print(pos, _MainColor);
-	}
+		Print(GetAbsoluteCoord(), GetAbsoluteSize(), _MainColor);
 }
 
-void text::TextLabel::SetScale(bool scale)
-{
-	_TextScale = scale;
-}
 
-bool TextLabel::GetScale() const
-{
-	return _TextScale;
-}
-
-void KolibriLib::UI::text::TextLabel::SetAling(TextLabel::Align aling)
-{
-	_Align = aling;
-}
-
-TextLabel::Align KolibriLib::UI::text::TextLabel::GetAling() const
-{
-	return _Align;
-}
 
 bool KolibriLib::UI::text::TextLabel::operator==(const KolibriLib::UI::text::TextLabel &a) const
 {
 	return static_cast<UIElement>(*this) == static_cast<UIElement>(a) &&
-	       static_cast<Txt>(*this) == static_cast<Txt>(a) &&
-		   _Align == _Align &&
-		   _TextScale == _TextScale;
+	       static_cast<Txt>(*this) == static_cast<Txt>(a);
 }
 
 bool KolibriLib::UI::text::TextLabel::operator!=(const KolibriLib::UI::text::TextLabel &a) const
 {
 	return static_cast<UIElement>(*this) != static_cast<UIElement>(a) ||
-	       static_cast<Txt>(*this) != static_cast<Txt>(a) ||
-		   _Align != _Align ||
-		   _TextScale != _TextScale;
+	       static_cast<Txt>(*this) != static_cast<Txt>(a);
 }
 
 void KolibriLib::UI::text::TextLabel::swap(TextLabel &a)

@@ -1,8 +1,8 @@
 #ifndef __TEXTBUTTON_HPP__
 #define __TEXTBUTTON_HPP__
 
-#include "baseButton.hpp"
-#include <kolibriLib/UI/text/textlabel.hpp>
+#include "button.hpp"
+#include <kolibriLib/UI/text/text.hpp>
 
 namespace KolibriLib
 {
@@ -11,7 +11,7 @@ namespace KolibriLib
 		namespace buttons
 		{
 			/// \brief Класс для работы с кнопками
-			class TextButton: public text::TextLabel, public BaseButton
+			class TextButton: public Button, public text::Txt
 			{
 			public:
 				/// \brief Это конструктор
@@ -42,7 +42,7 @@ namespace KolibriLib
 
 				/// @brief Конструктор копирования
 				/// @param copy Кнопка которую будут копировать
-				TextButton(const TextButton &copy);
+				TextButton(const TextButton &) = default;
 
 				/// @brief Отрисовать кнопку
 				void Render() const override;
@@ -51,7 +51,7 @@ namespace KolibriLib
 				/// @return Состояние кнопки(Нажата/Ненажата)
 				/// @details устанавливает переменную _status в true если эта кнопка нажата, иначе false
 				/// @note Эту функцию нужно вызывать в цикле, чтобы кнопка работала
-				void OnButtonEvent(ButtonID PressedButtonID);
+				bool OnButtonEvent(ButtonID PressedButtonID);
 
 				buttons::ButtonsIDController *GetButtonIDController() const;
 
@@ -73,7 +73,8 @@ namespace KolibriLib
 				 */
 				bool operator != (const TextButton& element) const;
 
-				void swap(TextLabel& a);
+
+				void swap(TextButton& a);
 
 			private:
 

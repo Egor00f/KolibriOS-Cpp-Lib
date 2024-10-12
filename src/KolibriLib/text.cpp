@@ -6,10 +6,9 @@ using namespace UI;
 using namespace text;
 
 
-std::string KolibriLib::UI::text::Txt::GetText() const
-{
-	return _data;
-}
+/*
+	Contructors
+*/
 
 Txt::Txt(const std::string &text, const Colors::Color &TextColor)
 	:	_data	(text),
@@ -22,18 +21,13 @@ Txt::Txt(const std::string &text, const Colors::Color &TextColor)
 	//_font = new Fonts::Font(Fonts::DefaultFont);
 }
 
-KolibriLib::UI::text::Txt::Txt(const Txt &copy)
-	:	_data(copy._data),
-		_TextColor(copy._TextColor),
-		_CharSize(copy._CharSize),
-		Italic(copy.Italic),
-		Bold(copy.Bold),
-		UnderLine(copy.UnderLine),
-		StrikeThrough(copy.StrikeThrough)
+/*
+	Funcs
+*/
+
+std::string KolibriLib::UI::text::Txt::GetText() const
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Text constructor(copy)\n");
-	#endif
+	return _data;
 }
 
 void KolibriLib::UI::text::Txt::Add(const std::string &txt)
@@ -51,7 +45,7 @@ void KolibriLib::UI::text::Txt::Delete(int i)
 	_data.erase(_data.begin() + i);
 }
 
-void KolibriLib::UI::text::Txt::Print(const Coord &coord, const Colors::Color &BackgroundColor) const
+void KolibriLib::UI::text::Txt::Print(Coord pos, Size size, const Colors::Color &BackgroundColor) const
 {
 	PrintDebug("Print Txt\n");
 
@@ -68,14 +62,34 @@ void KolibriLib::UI::text::Txt::Print(const Coord &coord, const Colors::Color &B
 		if (StrikeThrough)
 			flags |= RasterworksParams::StrikeThrough;
 
-
-		Size buff = _CharSize;
-		buff.x *= _data.length();
-
 		drawtext(coord, buff, _data, _CharSize, _TextColor, BackgroundColor, flags);
 	}*/
 
-	DrawText(_data, coord, _TextColor, TextEncoding::UTF8, _CharSize.x / 16);
+	switch (_Align)
+	{
+	case Txt::Align::Center:
+
+		pos.x += (size.x - static_cast<int>(lenghtPX())) / 2;
+		pos.y += size.y / 2;
+
+		break;
+	case Txt::Align::Left:
+
+		pos.y += size.y / 2;
+
+		break;
+
+	case Txt::Align::Right:
+
+		pos.x += size.x - static_cast<int>(lenghtPX());
+		pos.y += size.y / 2;
+
+		break;
+	default:
+		_ksys_debug_puts("Unklown value of Txt::_Align");
+	}
+
+	DrawText(_data, pos, _TextColor, TextEncoding::UTF8, _CharSize.x / 16);
 }
 
 /*void KolibriLib::UI::text::Txt::SetFont(const Fonts::Font &Font)
@@ -95,18 +109,6 @@ void KolibriLib::UI::text::Txt::SetTextColor(const Colors::Color &Color)
 Colors::Color KolibriLib::UI::text::Txt::GetTextColor() const
 {
 	return _TextColor;
-}
-
-bool KolibriLib::UI::text::Txt::operator==(const KolibriLib::UI::text::Txt &txt) const
-{
-	return _data == txt._data &&
-	       _TextColor == txt._TextColor;
-}
-
-bool KolibriLib::UI::text::Txt::operator!=(const Txt &txt) const
-{
-	return _data != txt._data ||
-	       _TextColor != txt._TextColor;
 }
 
 std::size_t KolibriLib::UI::text::Txt::length() const
@@ -138,6 +140,43 @@ char KolibriLib::UI::text::Txt::GetChar(std::size_t i) const
 {
 	return _data.at(i);
 }
+
+void text::Txt::SetScale(bool scale)
+{
+	_TextScale = scale;
+}
+
+bool Txt::GetScale() const
+{
+	return _TextScale;
+}
+
+void KolibriLib::UI::text::Txt::SetAling(Txt::Align aling)
+{
+	_Align = aling;
+}
+
+Txt::Align KolibriLib::UI::text::Txt::GetAling() const
+{
+	return _Align;
+}
+
+/*
+	Operators
+*/
+
+bool KolibriLib::UI::text::Txt::operator==(const KolibriLib::UI::text::Txt &txt) const
+{
+	return _data == txt._data &&
+	       _TextColor == txt._TextColor;
+}
+
+bool KolibriLib::UI::text::Txt::operator!=(const Txt &txt) const
+{
+	return _data != txt._data ||
+	       _TextColor != txt._TextColor;
+}
+
 
 void KolibriLib::PrintDebug(const UI::text::Txt &out)
 {

@@ -31,8 +31,7 @@ jobs:
         run: sudo apt install fasm
         
       - name: Install kos32-gcc toolchain
-        working-directory: ~/
-        run: git clone https://github.com/Egor00f/kolibrios-gcc-toolchain.git && cd kolibrios-gcc-toolchain && chmod u+x install && ./install
+        uses: egor00f/install-kolibrios-toolchain-action@v1
 
   build:
     runs-on: ubuntu-latest

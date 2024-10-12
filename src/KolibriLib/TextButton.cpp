@@ -5,8 +5,8 @@ using namespace UI;
 using namespace buttons;
 
 buttons::TextButton::TextButton(const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
-	:	TextLabel	(coord, size, "Button", 16, true, ButtonColor, Margin),
-		BaseButton	()
+	:	Button	(coord, size, Margin, ButtonColor),
+		Txt("Button")
 {
 	#ifdef VERBOSE_DEBUG
 	PrintDebug("Button contructor\n");
@@ -14,8 +14,8 @@ buttons::TextButton::TextButton(const UDim &coord, const UDim &size, unsigned Ma
 }
 
 KolibriLib::UI::buttons::TextButton::TextButton(const Txt &text, const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
-	:	TextLabel	(coord, size, text),
-		BaseButton	()
+	:	Button	(coord, size, Margin, ButtonColor),
+		Txt(text)
 {
 	#ifdef VERBOSE_DEBUG
 	PrintDebug("Button contructor\n");
@@ -26,33 +26,28 @@ KolibriLib::UI::buttons::TextButton::TextButton(const Txt &text, const UDim &coo
 	_MainColor	= ButtonColor;
 }
 
-TextButton::TextButton(const TextButton &copy)
-	:	TextLabel(copy),
-		BaseButton(copy)
-{
-	PrintDebug("Button contructor(copy)\n");
-}
-
 KolibriLib::UI::buttons::TextButton::TextButton(const UDim &coord, const UDim &size, const std::string &text)
-	:	TextLabel(coord, size, text),
-		BaseButton()
+	:	Button(coord, size),
+		Txt(text)
 {
-
 }
 
 bool KolibriLib::UI::buttons::TextButton::operator==(const TextButton &element) const
 {
-	return static_cast<TextLabel>(*this) == static_cast<TextLabel>(element);
+	return static_cast<Button>(*this) == static_cast<Button>(element)	&&
+	       static_cast<Txt>(*this) == static_cast<Txt>(element);
 }
 
 bool KolibriLib::UI::buttons::TextButton::operator!=(const TextButton &element) const
 {
-	return static_cast<TextLabel>(*this) != static_cast<TextLabel>(element);
+	return static_cast<Button>(*this) != static_cast<Button>(element)	||
+	       static_cast<Txt>(*this) != static_cast<Txt>(element);
 }
 
-void buttons::TextButton::OnButtonEvent(ButtonID PressedButtonID)
+bool buttons::TextButton::OnButtonEvent(ButtonID PressedButtonID)
 {
 	_status = (PressedButtonID == _id); // Если id нажатой кнопки совпадает к id этой кнопки
+	return _status;
 }
 
 void buttons::TextButton::Render() const
@@ -63,9 +58,8 @@ void buttons::TextButton::Render() const
 
 		if (IsActive())
 		{
-			Define(GetAbsoluteCoord(), GetAbsoluteSize(), _MainColor);
-
-			TextLabel::Render();
+			Button::Render();
+			Txt::Print(GetAbsoluteCoord(), GetAbsoluteSize(), _MainColor);
 		}
 		else
 		{
@@ -79,17 +73,11 @@ void buttons::TextButton::Render() const
 buttons::ButtonsIDController *KolibriLib::UI::buttons::TextButton::GetButtonIDController() const
 {
 	if (_ButtonsIDController != nullptr)
-	{
 		return _ButtonsIDController;
-	}
-	else if (Parent.lock())
-	{
-		return Parent.lock().get()->GetButtonIDController();
-	}
+	else if (std::shared_ptr<GuiObject> s_ptr = Parent.lock())
+		return s_ptr->GetButtonIDController();
 	else
-	{
 		return nullptr;
-	}
 }
 
 void KolibriLib::UI::buttons::TextButton::SetButtonIDController(const buttons::ButtonsIDController *buttonsIDController)
@@ -97,7 +85,7 @@ void KolibriLib::UI::buttons::TextButton::SetButtonIDController(const buttons::B
 	_ButtonsIDController = const_cast<buttons::ButtonsIDController *>(buttonsIDController);
 }
 
-void KolibriLib::UI::buttons::TextButton::swap(TextLabel &a)
+void KolibriLib::UI::buttons::TextButton::swap(TextButton &a)
 {
 	TextButton buff(*this);
 
@@ -107,7 +95,7 @@ void KolibriLib::UI::buttons::TextButton::swap(TextLabel &a)
 
 void KolibriLib::PrintDebug(const UI::buttons::TextButton &out)
 {
-	PrintDebug(static_cast<text::TextLabel>(out));
-	PrintDebug(static_cast<buttons::BaseButton>(out));
+	PrintDebug(static_cast<text::Txt>(out));
+	PrintDebug(static_cast<buttons::Button>(out));
 }
 

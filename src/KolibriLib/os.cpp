@@ -28,30 +28,6 @@ Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::str
 	return Exec(AppName, args, ec, debug);
 }
 
-void KolibriLib::OS::Notify(const std::string &Title, const std::string &Text, notifyIcon icon, const notifyKey (&keys)[4])
-{
-	std::string a = "\"'" + Title + "\n" + Text + "' " + static_cast<char>(icon);
-
-	if (!(keys[0] == notifyKey::NotSet)) // :)
-	{
-		a += static_cast<char>(keys[0]);
-		if (keys[1] != notifyKey::NotSet)
-		{
-			a += static_cast<char>(keys[1]);
-			if (keys[2] != notifyKey::NotSet)
-			{
-				a += static_cast<char>(keys[2]);
-				if (keys[3] != notifyKey::NotSet)
-				{
-					a += static_cast<char>(keys[3]);
-				}
-			}
-		}
-	}
-
-	Exec("/sys/@notify", a, false);
-}
-
 CoreVersion KolibriLib::OS::GetCoreVersion()
 {
 	// Реальнаяч структура

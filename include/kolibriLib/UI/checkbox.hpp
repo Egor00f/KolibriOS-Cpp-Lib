@@ -68,7 +68,7 @@ namespace KolibriLib
             /// @return 
             bool GetChecked() const;
 
-            void OnButtonEvent(buttons::ButtonID PressedButtonID);
+            bool OnButtonEvent(buttons::ButtonID PressedButtonID);
 
             /**
              * @brief Изменить цвет рамки

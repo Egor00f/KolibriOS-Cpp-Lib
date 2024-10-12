@@ -27,7 +27,7 @@ namespace KolibriLib
                 /// @brief отрисовать кнопку
                 void Render() const override;
 
-                void OnButtonEvent(ButtonID PressedButtonID);
+                bool OnButtonEvent(ButtonID PressedButtonID) override;
 
                 void swap(Button& a);
 

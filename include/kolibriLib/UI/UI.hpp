@@ -193,15 +193,19 @@ namespace KolibriLib
 			/// @return 
 			virtual int Handler(OS::Event event);
 
-			/// @brief Действие на ивент
-			/// @note Вызывается только если элемент был добавлен в окно (Вызывается в Window::Handler)
-			virtual void OnButtonEvent(buttons::ButtonID PressedButtonID);
+			/**
+			 * @brief Действие на ивент
+			 * @param ID нажатой кнопки
+			 * @return true если объект кнопка, и она нажата
+			 * @note Вызывается только если элемент был добавлен в окно (Вызывается в Window::Handler)
+			 */
+			virtual bool OnButtonEvent(buttons::ButtonID PressedButtonID);
 
 			/// @note Вызывается только если элемент был добавлен в окно (Вызывается в Window::Handler)
-			virtual void OnKeyEvent();
+			virtual bool OnKeyEvent();
 
 			/// @note Вызывается только если элемент был добавлен в окно (Вызывается в Window::Handler)
-			virtual void OnMouseEvent();
+			virtual bool OnMouseEvent();
 
 			/// @brief отрисовать элемент
 			virtual void Render() const;

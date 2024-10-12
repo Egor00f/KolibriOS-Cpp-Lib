@@ -44,14 +44,14 @@ bool KolibriLib::UI::CheckBox::GetChecked() const
 	return checked;
 }
 
-void KolibriLib::UI::CheckBox::OnButtonEvent(buttons::ButtonID PressedButtonID)
+bool KolibriLib::UI::CheckBox::OnButtonEvent(buttons::ButtonID PressedButtonID)
 {
-	Button::OnButtonEvent(PressedButtonID);
+	bool ret = Button::OnButtonEvent(PressedButtonID);
 
 	if(_status)
-	{
 		checked = !checked;
-	}
+
+	return ret;
 }
 
 void CheckBox::Render() const

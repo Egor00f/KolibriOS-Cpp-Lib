@@ -32,22 +32,6 @@ namespace KolibriLib
             {
             public:
 
-                /// @brief Выравнивание текста в метке
-                enum class Align
-                {
-                    /// @brief Выравнивание по правому ккраю
-                    /// @details текст прижимается к правой стороне
-                    Right,
-
-                    /// @brief Выравнивание по левому ккраю
-                    /// @details Текст прижат к левой стороне
-                    Left,
-
-                    /// @brief Выравнивание по центру
-                    /// @details Текст по центру
-                    Center
-                };
-
                 /// @brief Конструктор
                 /// @param coord координата
                 /// @param size Рамер элемента, игнорируется если TextScale = false
@@ -70,22 +54,6 @@ namespace KolibriLib
                 /// @brief Отрисовать текстовую метку
                 void Render() const override;
 
-                /// @brief Изменить значение переменной _TextScale
-                /// @param scale Новое значение
-                void SetScale(bool scale);
-                
-                /// @brief Получить состояние переменной _TextScale
-                /// @ return значение переменной _TextScale
-                bool GetScale() const; 
-
-                /// @brief Изменить выравнивание
-                /// @param aling 
-                void SetAling(TextLabel::Align aling);
-
-                /// @brief получить выравнивание
-                /// @return 
-                Align GetAling() const;
-
                 /// @brief 
                 /// @param a 
                 /// @return 
@@ -106,19 +74,6 @@ namespace KolibriLib
                 /// @brief 
                 /// @param a 
                 void swap(TextLabel& a);
-            private:
-                /// @brief Выравнивание
-                Align _Align = Align::Center;
-
-                /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
-                /// @warning пока что не работает
-                bool _TextScale;
-
-                /**
-                 * @brief выровнено ли
-                 * @details Внутряння переменная для использования класса не нужно о ней фообще знать
-                 */
-                mutable bool _Aligned;
             };
         }
     } // namespace UI

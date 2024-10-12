@@ -320,7 +320,7 @@ namespace buf2d
 
 		/**
 		 * @brief Конструктор
-		 * @param bpp 
+		 * @param bpp глубина увета
 		 */
 		buffer(BPP bpp);
 
@@ -349,7 +349,7 @@ namespace buf2d
 
 		/**
 		 * @brief Конструктор копирования
-		 * @param buff 
+		 * @param buff указатель на буффер
 		 */
 		buffer(const buf2d_struct* buff);
 
@@ -358,6 +358,10 @@ namespace buf2d
 		 */
 		~buffer();
 
+		/**
+		 * @brief Оператор
+		 * @details по сути эта структура таже что и buf2d_struct, только с конструкторм и деструктором
+		 */
 		operator buf2d_struct* ();
 
 		/**

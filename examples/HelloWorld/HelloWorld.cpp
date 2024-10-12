@@ -14,16 +14,16 @@ int main()
 	);
 
 	// Добавление текстовой метки
-	std::shared_ptr<TextLabel> label(wndw->AddElement(TextLabel(
+	TextLabel* label = wndw->AddElement(TextLabel(
 		                            UDim(0.0f, 0, 0.0f, 0), 	// Координаты текстовой метки (самый левый верхний угол окна)
 									UDim(0.6f, 0, 1.0f, 0), 	// Рамер текстовой метки (3/5 ширины окна и в полную высоту окна)
 									"Hello World",
 									{32, 36}           	// Размер символов 32x36
 								)
-					));
+					);
 
 	// Добавление кнопки
-	std::shared_ptr<TextButton> button(wndw->AddElement(TextButton(UDim(0.6f, 0, 0.4f, 0), UDim(0.2f, 0, 0.2f, 0))));
+	TextButton* button = wndw->AddElement(TextButton(UDim(0.6f, 0, 0.4f, 0), UDim(0.2f, 0, 0.2f, 0)));
 
 	// Отрисовка всех элементов, чтоб они были видны
 	wndw->RenderAllElements();
@@ -39,10 +39,10 @@ int main()
 			break;
 		case Event::Button:
 
-			if(wndw->GetPressedButton() == button)
+			if(wndw->GetPressedButton().get() == button)
 			{
 				_ksys_debug_puts("You Press Button");
-				OS::Notify("You Press Buttons", "just example");
+				OS::Notify("You Press Buttons");
 
 				label->SetTextColor(Color(rand()));
 			}

@@ -11,7 +11,7 @@ BaseEditor::BaseEditor(const UDim &coord, const UDim &size, const std::string &B
 	SetText(BackgroundText);
 }
 
-void KolibriLib::UI::BaseEditor::OnKeyEvent()
+bool KolibriLib::UI::BaseEditor::OnKeyEvent()
 {
 	PrintDebug("Redner BaseEditor\n");
 
@@ -30,11 +30,13 @@ std::string KolibriLib::UI::BaseEditor::GetInput() const
 	return GetText();
 }
 
-void KolibriLib::UI::BaseEditor::OnButtonEvent(buttons::ButtonID PressedButtonID)
+bool KolibriLib::UI::BaseEditor::OnButtonEvent(buttons::ButtonID PressedButtonID)
 {
 	PrintDebug("BaseEditor ButtonEvent\n");
 
-	buttons::TextButton::OnButtonEvent(PressedButtonID);
+	bool ret = buttons::TextButton::OnButtonEvent(PressedButtonID);
 
 	Active = GetStatus();
+
+	return ret;
 }

@@ -23,9 +23,10 @@ void KolibriLib::UI::buttons::Button::Render() const
 	BaseButton::Define(GetAbsoluteCoord(), GetAbsoluteSize(), _MainColor);
 }
 
-void buttons::Button::OnButtonEvent(ButtonID PressedButtonID) 
+bool buttons::Button::OnButtonEvent(ButtonID PressedButtonID) 
 {
 	_status = PressedButtonID == _id; // Если id нажатой кнопки совпадает к id этой кнопки
+	return _status;
 }
 
 void KolibriLib::UI::buttons::Button::swap(Button &a)

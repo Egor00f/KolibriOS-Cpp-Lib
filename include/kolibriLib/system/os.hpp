@@ -95,42 +95,7 @@ namespace KolibriLib
 			DefaultEventMask = 0b111
 		};
 
-		/// @brief Иконки в сообщениях
-		/// @image notify.orig.png
-		enum class notifyIcon : char
-		{
-			/// @brief
-			///
-			Application = 'A',
-			Error = 'E',
-			Warning = 'W',
-			Ok = 'O',
-			Network = 'N',
-			Info = 'I',
-			Folder = 'F',
-			Component = 'C',
-			Mail = 'M',
-			Download = 'D',
-			Sound = 'S'
-		};
-
-		/// @brief Ключи для уведомлений
-		enum class notifyKey : char
-		{
-			/// @brief Ключа нет
-			NotSet,
-
-			/// @brief не закрывать автоматически
-			NoAutoClose = 'd',
-
-			/// @brief не закрываеть по клику
-			NoClose = 'c',
-
-			/// @brief Есть заголовок
-			Title = 't',
-
-			ProgressBar = 'p'
-		};
+		
 
 		/// @brief Версия ядра
 		struct CoreVersion
@@ -340,22 +305,6 @@ namespace KolibriLib
 				"int $0x40"
 				:: "a"(21), "b"(5), "c"(l)
 			);
-		}
-
-		/// @brief Уведмление
-		/// @param Title Заголовок, может быть пустым если заголовок не нужен
-		/// @param Text текст после заголовка
-		/// @param icon иконка
-		/// @param keys ключи
-		void Notify(const std::string &Title, const std::string &Text, notifyIcon icon = notifyIcon::Info, const notifyKey (&keys)[4] = {notifyKey::Title, notifyKey::NotSet, notifyKey::NotSet, notifyKey::NotSet});
-
-		/// @brief Уведомление об ошибке через увдомления системы
-		/// @param Title Заголовок уведомления об ошибке
-		/// @param Text текст
-		inline void ErrorNotify(const std::string &Title, const std::string &Text)
-		{
-			std::string a = "\"'" + Title + "\n" + Text + "' -E -t";
-			_ksys_exec("/sys/@notify", const_cast<char*>(a.c_str()), false);
 		}
 
 

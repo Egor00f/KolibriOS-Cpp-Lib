@@ -77,29 +77,37 @@ Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
 	PrintDebug("Get Absolute Size\n");
 
+	Size ret;
+
 	if (std::shared_ptr<GuiObject>s_ptr = Parent.lock())
-	{
-		return _size.GetAbsolute(s_ptr.get()->GetAbsoluteSize());
-	}
+		ret =  _size.GetAbsolute(s_ptr.get()->GetAbsoluteSize());
 	else
-	{
-		return _size.GetAbsolute(window::GetWindowSize());
-	}
+		ret = _size.GetAbsolute(window::GetWindowSize());
+
+	ret -= _Margin;
+
+	return ret;
 }
 
 Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 {
+	Coord ret;
+
 	if (std::shared_ptr<GuiObject>s_ptr = Parent.lock())
 	{
 		if(ParentIsWindow)
-			return (_coord.GetAbsolute(s_ptr->GetAbsoluteSize()));
+			ret = _coord.GetAbsolute(s_ptr->GetAbsoluteSize());
 		else
-			return (_coord.GetAbsolute(s_ptr->GetAbsoluteSize()) + s_ptr->GetAbsoluteCoord());
+			ret = (_coord.GetAbsolute(s_ptr->GetAbsoluteSize()) + s_ptr->GetAbsoluteCoord());
 	}
 	else
 	{
-		return _coord.GetAbsolute(window::GetWindowSize());
+		ret = _coord.GetAbsolute(window::GetWindowSize());
 	}
+
+	ret += _Margin;
+
+	return ret;
 }
 
 UDim KolibriLib::UI::UIElement::GetCoord() const
@@ -140,19 +148,19 @@ int KolibriLib::UI::UIElement::Handler(OS::Event)
 	return 0;
 }
 
-void KolibriLib::UI::UIElement::OnButtonEvent(buttons::ButtonID)
+bool KolibriLib::UI::UIElement::OnButtonEvent(buttons::ButtonID)
 {
-	
+	return false;
 }
 
-void KolibriLib::UI::UIElement::OnKeyEvent()
+bool KolibriLib::UI::UIElement::OnKeyEvent()
 {
-	
+	return false;
 }
 
-void KolibriLib::UI::UIElement::OnMouseEvent()
+bool KolibriLib::UI::UIElement::OnMouseEvent()
 {
-	
+	return false;
 }
 
 void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
@@ -272,7 +280,9 @@ void KolibriLib::UI::UIElement::AddChildren(const UIElement *child) const
 {
 	PrintDebug("Add Children\n");
 
-	_childs.push_back(std::shared_ptr<UIElement>(const_cast<UIElement*>(child)));
+	std::shared_ptr<UIElement> s_ptr(const_cast<UIElement*>(child));
+
+	_childs.push_back(s_ptr);
 }
 
 void KolibriLib::UI::UIElement::DeleteChildren(const UIElement* child) const

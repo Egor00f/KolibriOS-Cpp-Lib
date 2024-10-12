@@ -33,9 +33,10 @@ int main()
 
 			exit = true; 
 			break;
+			
 		case Event::Button:
 
-			if(wndw.GetPressedButton() == button)
+			if(wndw.GetPressedButton().get() == button)
 			{
 				bar->AddFill(1);
 			}

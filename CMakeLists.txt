@@ -72,6 +72,7 @@ SET(C_LAYER_HEADERS ${KolibriLib_INCLUDE_PATH}/C_Layer/INCLUDE)
 SET(SOURCES
 	${SRC_PATH}/color.cpp
 	${SRC_PATH}/os.cpp
+	${SRC_PATH}/system/notify.cpp
 	${SRC_PATH}/graphic.cpp
 	${SRC_PATH}/img.cpp
 	${SRC_PATH}/thread.cpp

@@ -2,7 +2,7 @@
 #define __IMAGEBUTTON_HPP__
 
 #include "button.hpp"
-#include <kolibriLib/UI/image.hpp>
+#include <kolibriLib/img.hpp>
 #include "baseButton.hpp"
 
 namespace KolibriLib
@@ -14,7 +14,7 @@ namespace KolibriLib
 			/**
 			 * @brief Кнопка-изображение
 			 */
-			class ImageButton: public Images::Image, public BaseButton
+			class ImageButton: public Button, public Images::img
 			{
 			public:
 

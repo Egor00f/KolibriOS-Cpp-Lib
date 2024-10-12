@@ -19,7 +19,9 @@ void KolibriLib::DebugOut(const char* out)
 	#ifdef DEBUG
 	_ksys_debug_puts(out);
 
-	std::ofstream debugOut(filesystem::temp_directory_path() / std::string(Thread::GetThreadInfo().name + "-debug.log"), std::ios::app);
+	const static std::string FileName = Thread::GetThreadInfo().name + "-debug.log";
+
+	std::ofstream debugOut(filesystem::temp_directory_path() / FileName, std::ios::app);
 
 	if(debugOut.is_open())
 	{

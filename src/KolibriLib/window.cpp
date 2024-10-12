@@ -270,8 +270,6 @@ OS::Event Window::Handler()
 					it->OnButtonEvent(PressedButton);
 				}
 
-				_PressedButton.reset(_buttonsController.GetPoinerToButton(PressedButton).get());
-
 			}
 		}
 
@@ -342,7 +340,7 @@ UI::buttons::ButtonID Window::GetPressedButtonID() const
 	return _PressedButton.get()->GetId();
 }
 
-std::shared_ptr<UI::buttons::BaseButton> KolibriLib::window::Window::GetPressedButton() const
+std::shared_ptr<UI::buttons::Button> KolibriLib::window::Window::GetPressedButton() const
 {
 	return _PressedButton;
 }

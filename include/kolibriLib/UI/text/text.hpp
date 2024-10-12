@@ -26,6 +26,22 @@ namespace KolibriLib
 			class Txt
 			{
 			public:
+				/// @brief Выравнивание текста в метке
+                enum class Align
+                {
+                    /// @brief Выравнивание по правому ккраю
+                    /// @details текст прижимается к правой стороне
+                    Right,
+
+                    /// @brief Выравнивание по левому ккраю
+                    /// @details Текст прижат к левой стороне
+                    Left,
+
+                    /// @brief Выравнивание по центру
+                    /// @details Текст по центру
+                    Center
+                };
+
 				/// @brief Конструктор
 				Txt() = default;
 
@@ -35,7 +51,7 @@ namespace KolibriLib
 
 				/// @brief Конструктор копирования
 				/// @param copy объект который будет копироваться
-				Txt(const Txt &copy);
+				Txt(const Txt &) = default;
 
 				/// @brief Добавить строку в конец
 				/// @param txt строка
@@ -50,9 +66,13 @@ namespace KolibriLib
 				/// @param i Номер удаляемого Charа
 				void Delete(int i);
 
-				/// @brief Вывести текст
-				/// @param coord Координаты(левый верхний угол) текста
-				void Print(const Coord &coord, const Colors::Color &BackgroundColor = Globals::SystemColors.work_area) const;
+				/**
+				 * @brief Вывести текст
+				 * @param coord Координаты(левый верхний угол) текста
+				 * @param size Зона в котору вписывается текст
+				 * @param BackgroundColor Цвет фона
+				 */
+				void Print(Coord coord, Size size, const Colors::Color &BackgroundColor = Globals::SystemColors.work_area) const;
 
 				/// @brief Изменить цвет текста для всех символов
 				/// @param Color
@@ -90,6 +110,22 @@ namespace KolibriLib
 				 */
 				void SetTextSize(const Size &NewTextCharSize);
 
+				/// @brief Изменить значение переменной _TextScale
+                /// @param scale Новое значение
+                void SetScale(bool scale);
+                
+                /// @brief Получить состояние переменной _TextScale
+                /// @ return значение переменной _TextScale
+                bool GetScale() const; 
+
+                /// @brief Изменить выравнивание
+                /// @param aling 
+                void SetAling(Align aling);
+
+                /// @brief получить выравнивание
+                /// @return 
+                Align GetAling() const;
+
 				/// @brief 
 				/// @return 
 				Size GetTextSize() const;
@@ -110,7 +146,6 @@ namespace KolibriLib
 
 			protected:
 
-				
 				/**
 				 * @brief Текст
 				 */
@@ -119,6 +154,13 @@ namespace KolibriLib
 			private:
 				/// @brief Размер символа
 				Size _CharSize = DefaultCharSize;
+
+				/// @brief Выравнивание
+                Align _Align = Align::Center;
+
+                /// @brief (Да/Нет)Подстраивать _FontSize, чтобы размер текст соответствовал размеру элемента(_size)
+                /// @warning пока что не работает
+                bool _TextScale;
 
 				/// @brief Цвет Текста
 				Colors::Color _TextColor = Globals::SystemColors.work_text;
@@ -129,7 +171,12 @@ namespace KolibriLib
 				 */
 				Colors::Color *SelectColor;
 
-				
+				/**
+                 * @brief выровнено ли
+                 * @details Внутряння переменная для использования класса не нужно о ней фообще знать
+                 */
+                mutable bool _Aligned;
+
 				/**
 				 * @brief Можно ли выделять этот текст
 				 * @warning не реализованно
