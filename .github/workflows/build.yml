@@ -2,7 +2,7 @@ name: Test build
 
 on:
   push:
-    branches: [ 
+    branches: [
       "stable",
       "dev-stable"
     ]
@@ -31,7 +31,7 @@ jobs:
         run: sudo apt install fasm
         
       - name: Install kos32-gcc toolchain
-        uses: egor00f/install-kolibrios-toolchain-action@v1
+        uses: egor00f/install-kolibrios-toolchain-action@v1.0.1
 
   build:
     runs-on: ubuntu-latest
