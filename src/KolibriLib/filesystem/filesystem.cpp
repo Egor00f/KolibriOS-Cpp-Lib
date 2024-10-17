@@ -241,10 +241,13 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
     if ((fin = fopen(from.c_str(), "rb")) == NULL )
     {
         ec = filesystem::FilesystemErrors::NotFound;
+        throw;
     }
 
     if ((fout = fopen(to.c_str(), "wb")) == NULL)
     {
+        fclose(fin);
+        ec = filesystem::FilesystemErrors::NotFound;
         throw;
     }
 

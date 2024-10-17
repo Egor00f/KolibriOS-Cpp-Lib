@@ -57,6 +57,7 @@ int main()
 		switch (wnd.Handler())
 		{
 		case Event::Exit:
+		
 			exit = true;
 			break;
 

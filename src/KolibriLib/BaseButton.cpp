@@ -11,17 +11,28 @@ BaseButton::BaseButton()
 	if (KolibriLib::Globals::DefaultButtonsIDController != nullptr)
 	{
 		_ButtonsIDController = KolibriLib::Globals::DefaultButtonsIDController;
-		_id = KolibriLib::Globals::DefaultButtonsIDController->GetFreeButtonID(std::shared_ptr<BaseButton>(this));
+
+		std::shared_ptr<BaseButton> s_ptr(this);
+
+		_id = KolibriLib::Globals::DefaultButtonsIDController->GetFreeButtonID(s_ptr);
 	}
 }
 
 BaseButton::BaseButton(ButtonID id)
-	:	_id(id)
 {
 	if (KolibriLib::Globals::DefaultButtonsIDController != nullptr)
 	{
 		_ButtonsIDController = KolibriLib::Globals::DefaultButtonsIDController;
 	}
+
+	SetId(id);
+}
+
+KolibriLib::UI::buttons::BaseButton::BaseButton(const BaseButton &button)
+	:	_ButtonsIDController(button._ButtonsIDController),
+		_type(button._type)
+{
+	SetId(button._id);
 }
 
 buttons::BaseButton::~BaseButton()
@@ -40,13 +51,17 @@ void BaseButton::BaseButton::Deactivate()
 
 		_id = buttons::ButtonIDNotSet;
 	}
+	else
+	{
+		PrintDebug("BaseButton already not active\n");
+	}
 }
 
 void BaseButton::BaseButton::Activate()
 {
 	if (!IsActive())
 	{
-		_id	= _ButtonsIDController->GetFreeButtonID(std::shared_ptr<BaseButton>(this));
+		SetId();
 	}
 	else
 	{
@@ -71,13 +86,29 @@ buttons::ButtonID buttons::BaseButton::GetId() const
 
 void KolibriLib::UI::buttons::BaseButton::SetId(const ButtonID &NewID)
 {
-	_id	= NewID;
+	PrintDebug("SetId(ButtonID)\n");
+	
+	_id = NewID;
+
+	if(_ButtonsIDController != nullptr)
+	{
+		std::shared_ptr<BaseButton> s_ptr(this);
+		_ButtonsIDController->TakeupButtonID(NewID, s_ptr);
+	}
 }
 
 void KolibriLib::UI::buttons::BaseButton::SetId()
 {
-	Deactivate();
-	Activate();
+	PrintDebug("SetId()\n");
+
+	if(_ButtonsIDController != nullptr)
+	{
+		if(IsActive())
+			_ButtonsIDController->FreeButtonID(_id);
+
+		std::shared_ptr<BaseButton> s_ptr(this);
+		_id = _ButtonsIDController->GetFreeButtonID(s_ptr);
+	}
 }
 
 void BaseButton::Define(const Coord &coord, const Size &size, const Colors::Color &color) const

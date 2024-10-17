@@ -5,7 +5,8 @@ using namespace window;
 
 KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLib::Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, const unsigned &Margin)
 	: _title(Title),
-	  _colors(colors)
+	  _colors(colors),
+	  _Transparency(Transparency)
 {
 	PrintDebug("Window:\n");
 	if (Resize)
@@ -212,7 +213,10 @@ void Window::Render()
 	StartRedraw();
 	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style, _settings);
 
-	KolibriLib::graphic::DrawRectangleFill({0, static_cast<int>(window::GetSkinHeight())}, GetWindowSize() - GetMargin(), _colors.work_area);
+	KolibriLib::graphic::DrawRectangleFill (
+		{0, static_cast<int>(window::GetSkinHeight())}, 
+		GetAbsoluteSize() - static_cast<int>(GetMargin()), 
+		_colors.work_area);
 
 	RenderAllElements();
 
@@ -271,6 +275,21 @@ OS::Event Window::Handler()
 				}
 
 			}
+
+			std::shared_ptr<UI::buttons::BaseButton> s_ptr;
+
+			try
+			{
+				s_ptr = _buttonsController.GetPoinerToButton(PressedButton).at(0).lock();
+			}
+			catch(...)
+			{
+				PrintDebug("Error Get s_ptr");
+			}
+
+			_PressedButton = s_ptr;
+
+
 		}
 
 		break;
@@ -306,8 +325,13 @@ OS::Event Window::Handler()
 
 	case OS::Event::Desktop:
 		break;
-
 	case OS::Event::None:
+		break;
+	case OS::Event::Exit:
+		break;
+	case OS::Event::Debug:
+		break;
+	default:
 		break;
 	}
 
@@ -337,10 +361,13 @@ OS::Event Window::Handler()
 
 UI::buttons::ButtonID Window::GetPressedButtonID() const
 {
-	return _PressedButton.get()->GetId();
+	if(_PressedButton)
+		return _PressedButton.get()->GetId();
+	else
+		return UI::buttons::ButtonIDNotSet;
 }
 
-std::shared_ptr<UI::buttons::Button> KolibriLib::window::Window::GetPressedButton() const
+std::shared_ptr<UI::buttons::BaseButton> KolibriLib::window::Window::GetPressedButton() const
 {
 	return _PressedButton;
 }

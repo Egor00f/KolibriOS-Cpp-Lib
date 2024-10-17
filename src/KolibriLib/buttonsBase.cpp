@@ -7,13 +7,15 @@ using namespace buttons;
 
 UI::buttons::ButtonsIDController *Globals::DefaultButtonsIDController = nullptr;
 
-ButtonID buttons::GetFreeButtonId(ButtonIDList *ButtonsIdList, uint32_t startID)
+ButtonID buttons::GetFreeButtonId(ButtonIDList &ButtonsIdList, std::uint32_t startID)
 {
+	PrintDebug("GetFreeButtonID\n");
+
 	for(ButtonID i = startID; i < buttons::ButtonIDEnd; i.value++)	// в wiki сказанно что id в промежутке (0, 0x8000)
 	{                                   	// CloseButton = 1, поэтому пропускаем и начинаем сразу с 2
-		if(std::find(ButtonsIdList->begin(), ButtonsIdList->end(), i) == ButtonsIdList->end())
+		if(std::find(ButtonsIdList.begin(), ButtonsIdList.end(), i) == ButtonsIdList.end())
 		{
-			ButtonsIdList->push_back(i);
+			ButtonsIdList.push_back(i);
 			return i;
 		}
 	}
@@ -21,12 +23,14 @@ ButtonID buttons::GetFreeButtonId(ButtonIDList *ButtonsIdList, uint32_t startID)
 	return ButtonIDNotSet;
 }
 
-bool buttons::FreeButtonId(const ButtonID &id, ButtonIDList *ButtonsIdList)
+
+bool KolibriLib::UI::buttons::FreeButtonId(const ButtonID &id, ButtonIDList &ButtonsIdList)
 {
-	auto a = std::find(ButtonsIdList->begin(), ButtonsIdList->end(), id);
-	if(!(a == ButtonsIdList->end()))
+	auto iter = std::find(ButtonsIdList.begin(), ButtonsIdList.end(), id);
+	
+	if(!(iter == ButtonsIdList.end()))
 	{
-		ButtonsIdList->erase(a);
+		ButtonsIdList.erase(iter);
 		return true;
 	}
 	else
@@ -35,10 +39,12 @@ bool buttons::FreeButtonId(const ButtonID &id, ButtonIDList *ButtonsIdList)
 	}
 }
 
-ButtonID buttons::autoDefineButton(ButtonIDList *ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color)
+ButtonID buttons::autoDefineButton(ButtonIDList &ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color)
 {
 	ButtonID id = GetFreeButtonId(ButtonsIdList); // Автоматически получаем id для кнопки
+
 	DefineButton(coords, size, id, color);
+
 	return id;
 }
 
@@ -46,33 +52,34 @@ ButtonID buttons::autoDefineButton(ButtonIDList *ButtonsIdList, const Coord &coo
 	ButtonsIDController
 */
 
-ButtonID buttons::ButtonsIDController::GetFreeButtonID(std::shared_ptr<BaseButton> ptr)
+ButtonID buttons::ButtonsIDController::GetFreeButtonID(std::weak_ptr<BaseButton> ptr)
 {
-	ButtonIDList buttonslist;
-	buttonslist.reserve(ButtonsIdList.size());
+	ButtonIDList buttonslist = ListoButtonIDList(ButtonsIdList);
 
-	for(ButtonsIDController::node i : ButtonsIdList)
+	ButtonID ret;
+
+	for(std::int8_t i = 0; i < 2; i++)
 	{
-		buttonslist.push_back(i.id);
-	}
+		ret = GetFreeButtonId(buttonslist, _top);
 
-	ButtonID ret = GetFreeButtonId(&buttonslist, _top);
+		if(ret.CheckIsValid())
+		{
+			_top = ret.value + 1;	
 
-	if(ret == ButtonIDNotSet)	// Если неудалось найти свободный ID 
-	{                        	// то начиаем с начала
-		_top = StartTop;
-		ret = GetFreeButtonId(&buttonslist, _top);	// попытка вторая
-	}
-		
-	_top = ret.value + 1;
+			ButtonsIDController::node n(buttonslist.back());
 
+			if(!ptr.expired())
+				n.pointers.push_back(ptr);
 
-	ButtonsIDController::node n(buttonslist.back());
+			ButtonsIdList.push_back(n);
 
-	if(ptr)
-		n.pointer = ptr;
-
-	ButtonsIdList.push_back(n);
+			break;
+		}
+		else // Если неудалось найти свободный ID 
+		{    // то начиаем с начала
+			_top = StartTop;
+		}
+	};
 
 	return ret;
 }
@@ -80,23 +87,22 @@ ButtonID buttons::ButtonsIDController::GetFreeButtonID(std::shared_ptr<BaseButto
 
 void buttons::ButtonsIDController::FreeButtonID(const ButtonID &id)
 {
-	ButtonIDList buttonslist;
-	buttonslist.reserve(ButtonsIdList.size());
+	ButtonIDList buttonslist = ListoButtonIDList(ButtonsIdList);
 
-	for(ButtonsIDController::node i : ButtonsIdList)
+	auto iter = std::find(buttonslist.begin(), buttonslist.end(), id);
+
+	if(iter != buttonslist.end())
 	{
-		buttonslist.push_back(i.id);
+		if(id.value == _top-1)
+			_top--;
+
+		ButtonsIdList.erase(ButtonsIdList.begin() + (iter - buttonslist.begin()));
+	}
+	else
+	{
+		PrintDebug("ButtonID not found\n");
 	}
 
-	if(FreeButtonId(id, &buttonslist) && id.value == _top-1)
-	{
-		_top--;
-	}
-
-	for(std::size_t i = 0; i < buttonslist.size(); i++)
-	{
-		ButtonsIdList[i] = ButtonsIDController::node(buttonslist[i], ButtonsIdList[i].pointer);
-	}
 }
 
 ButtonsIDController::List& buttons::ButtonsIDController::GetButtonsIDList()
@@ -109,15 +115,15 @@ const ButtonsIDController::List& buttons::ButtonsIDController::GetButtonsIDList(
 	return ButtonsIdList;
 }
 
-std::shared_ptr<BaseButton> KolibriLib::UI::buttons::ButtonsIDController::GetPoinerToButton(const ButtonID &ID) const
+std::vector<std::weak_ptr<BaseButton>> KolibriLib::UI::buttons::ButtonsIDController::GetPoinerToButton(const ButtonID &ID) const
 {
-	std::shared_ptr<BaseButton> ret;
+	std::vector<std::weak_ptr<BaseButton>> ret;
 
 	std::find_if(ButtonsIdList.begin(), ButtonsIdList.end(),
 		[&ID, &ret](const ButtonsIDController::node& n){
 			if(n.id == ID)
 			{
-				ret = n.pointer;
+				ret = n.pointers;
 				return true;
 			}
 			return false;
@@ -125,6 +131,86 @@ std::shared_ptr<BaseButton> KolibriLib::UI::buttons::ButtonsIDController::GetPoi
 	);
 
 	return ret;
+}
+
+ButtonIDList KolibriLib::UI::buttons::ButtonsIDController::ListoButtonIDList(const List& list)
+{
+	ButtonIDList ret;
+	ret.reserve(list.size());
+
+	for(ButtonsIDController::node i : list)
+	{
+		ret.push_back(i.id);
+	}
+
+	return ret;
+}
+
+void KolibriLib::UI::buttons::ButtonsIDController::TakeupButtonID(const ButtonID &id, std::weak_ptr<BaseButton> ptr)
+{
+	ButtonIDList buttonslist = ListoButtonIDList(ButtonsIdList);
+
+	auto it = std::find(buttonslist.begin(), buttonslist.end(), id);
+
+	if(it == buttonslist.end())
+	{
+		ButtonsIdList.push_back(node(id, ptr));
+	}
+	else
+	{
+		const std::size_t i = it - buttonslist.begin();
+		ButtonsIdList[i].pointers.push_back(ptr);
+	}
+}
+
+void KolibriLib::UI::buttons::ButtonsIDController::Sort()
+{
+	std::vector<ButtonID> IDList;
+
+	IDList.reserve(ButtonsIdList.size());
+
+	for(auto i : ButtonsIdList)
+	{
+		std::size_t expired = 0;
+		for(auto j : i.pointers)
+		{
+			if(j.expired())
+			{
+				expired++;
+				break;
+			}
+		}
+
+		if(expired == i.pointers.size())
+		{
+
+		}
+	}
+}
+
+/*
+	ButtonsIDController::node
+*/
+
+KolibriLib::UI::buttons::ButtonsIDController::node::node(ButtonID Id)
+	:	id(Id)
+{
+}
+
+KolibriLib::UI::buttons::ButtonsIDController::node::node(ButtonID Id, std::weak_ptr<BaseButton> p)
+	:	id(Id),
+		pointers({p})
+{
+}
+
+bool KolibriLib::UI::buttons::ButtonsIDController::node::operator==(const node &val) const
+{
+	return id == val.id;
+}
+
+bool KolibriLib::UI::buttons::ButtonsIDController::node::operator!=(const node &val) const
+{
+	return id != val.id;
 }
 
 /* 

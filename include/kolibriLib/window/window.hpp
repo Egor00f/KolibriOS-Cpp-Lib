@@ -182,7 +182,7 @@ namespace KolibriLib
 			 * @return Указатель на последнюю нажатую кнопку
 			 * @details Да, возрващает эта функция указатель на UIElement, но это вполне себе указатель на кнопку
 			 */
-			std::shared_ptr<UI::buttons::Button> GetPressedButton() const;
+			std::shared_ptr<UI::buttons::BaseButton> GetPressedButton() const;
 
 			/// @brief Добавить UI элемент напрямую
 			/// @param element указатель на элемент
@@ -238,7 +238,7 @@ namespace KolibriLib
 			/**
 			 * @brief 
 			 */
-			mutable std::shared_ptr<UI::buttons::Button> _PressedButton;
+			mutable std::shared_ptr<UI::buttons::BaseButton> _PressedButton;
 
 			/// @brief прошлый ивент
 			mutable OS::Event _lastEvent;

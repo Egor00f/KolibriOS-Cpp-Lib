@@ -53,8 +53,8 @@ namespace KolibriLib
 				"a"(0),
 				"b"((coord.x << 16) | ((size.x - 1) & 0xFFFF)),
 				"c"((coord.y << 16) | ((size.y - 1) & 0xFFFF)),
-				"d"( ((static_cast<std::uint16_t>(settings) << 28)	| (static_cast<std::uint8_t>(style) << 24)) | (WorkColor.operator ksys_color_t() & 0xFFFFFF)),
-				"S"(  (static_cast<std::uint16_t>(settings) >> 8)	| (TitleColor.operator ksys_color_t() & 0xFFFFFF)),
+				"d"( ((static_cast<std::uint16_t>(settings) << 28)	| (static_cast<std::uint8_t>(style) << 24)) | (static_cast<ksys_color_t>(WorkColor) & 0xFFFFFF)),
+				"S"(  (static_cast<std::uint16_t>(settings) >> 8)	| (static_cast<ksys_color_t>(TitleColor) & 0xFFFFFF)),
 				"D"(title.c_str())
 				: "memory");
 		}

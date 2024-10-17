@@ -163,7 +163,7 @@ Error FreeType::Face::OpenFile(const char *file)
 {
 	Error err = 0;
 
-	if(face && face != 0)
+	if(face)
 	{
 		err = FT_Done_Face(face);
 	}
@@ -365,7 +365,7 @@ void FreeType::DrawText(const KolibriLib::Coord &coord, const std::string text, 
     	uint32_t rowStartPos = metrics.horiBearingY / 64;
 
 		
-		KolibriLib::UI::Images::img image(0xFFFFFF, {bitmap.width, bitmap.rows});
+		KolibriLib::UI::Images::img image(KolibriLib::Colors::Color(0xFFFFFF), {bitmap.width, bitmap.rows});
 
 		for (uint32_t y = 0; y < bitmap.rows; y++)
 		{
@@ -377,8 +377,7 @@ void FreeType::DrawText(const KolibriLib::Coord &coord, const std::string text, 
 				uint8_t g = bitmap.buffer[y * bitmap.pitch + x * 3 + 1];
 				uint8_t b = bitmap.buffer[y * bitmap.pitch + x * 3 + 2];
 				
-				image.SetPixel(KolibriLib::Colors::Color(r, g, b, 0), {x, y});
-				// img and pixel are placeholders to simplify the code
+				image.SetPixel({x, y}, KolibriLib::Colors::Color(r, g, b, 0));
 			}
 		}
 		

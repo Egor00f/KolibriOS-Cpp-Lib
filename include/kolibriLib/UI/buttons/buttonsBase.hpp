@@ -27,6 +27,9 @@ namespace KolibriLib
 				/// @brief Значение
 				std::uint32_t value;
 
+				ButtonID() = default;
+				ButtonID(const ButtonID&) = default;
+
 				/**
 				 * @brief Конструктор
 				 * @param val значение
@@ -83,6 +86,7 @@ namespace KolibriLib
 
 			/**
 			 * @brief Список ID кнопок
+			 * @details алиас чтобы не писать ручками многа букав
 			 */
 			using ButtonIDList = std::vector<ButtonID>;
 
@@ -95,34 +99,75 @@ namespace KolibriLib
 			 */
 			class ButtonsIDController
 			{
-			private:
+			public:
 
 				/**
 				 * @brief Нода
 				 */
 				struct node
 				{
+					/**
+					 * @brief ID кнопок
+					 */
 					ButtonID id;
-					std::shared_ptr<BaseButton> pointer;
 
-					node(ButtonID Id) : id(Id){};
-					node(ButtonID Id, std::shared_ptr<BaseButton> p) : id(Id), pointer(p) {};
+					/**
+					 * @brief Указатели на кнопки, исползующие этот ID
+					 */
+					std::vector<std::weak_ptr<BaseButton>> pointers;
+
+					/**
+					 * @brief Конструктор
+					 * @param Id 
+					 */
+					node(ButtonID Id);
+
+					/**
+					 * @brief Конструктор
+					 * @param Id 
+					 * @param p 
+					 */
+					node(ButtonID Id, std::weak_ptr<BaseButton> p);
 
 					node& operator = (const node&) = default;
 
+					/**
+					 * @brief оператор равенства
+					 * @param val с чем сравнивать
+					 * @return 
+					 */
 					bool operator == (const node& val) const;
+
+					/**
+					 * @brief Оператор неравентсва
+					 * @param val 
+					 * @return 
+					 */
 					bool operator != (const node& val) const;
 				};
-			public:
 
 				/**
 				 * @brief Алиас для вектора с нодами
 				 */
 				using List = std::vector<node>;
+				
+				/**
+				 * @brief Конвертировать List в список кнопок
+				 * @param list 
+				 * @return 
+				 */
+				static ButtonIDList ListoButtonIDList(const List& list);
 
 				/// @brief Получить свободный ID кнопки из списка
 				/// @return ID кнопки, который не занят
-				ButtonID GetFreeButtonID(std::shared_ptr<BaseButton> ptr);
+				ButtonID GetFreeButtonID(std::weak_ptr<BaseButton> ptr);
+
+				/**
+				 * @brief Занять ID кнопки
+				 * @param id ID кнопки
+				 * @param ptr указатель на кнопку
+				 */
+				void TakeupButtonID(const ButtonID& id, std::weak_ptr<BaseButton> ptr);
 
 				/// @brief Освободить ID
 				/// @param id ID который нужно освободить
@@ -147,7 +192,13 @@ namespace KolibriLib
 				 * @param ID ID кнопки
 				 * @return указатель на ту самую кнопку
 				 */
-				std::shared_ptr<BaseButton> GetPoinerToButton(const ButtonID& ID) const;
+				std::vector<std::weak_ptr<BaseButton>> GetPoinerToButton(const ButtonID& ID) const;
+
+				/**
+				 * @brief Убрать лишнее
+				 * @details Убирает лишние ID если они повторяются, и если нет ни одного дейсвующего указателя
+				 */
+				void Sort();
 
 			private:
 
@@ -182,18 +233,22 @@ namespace KolibriLib
 			/// \brief Получить свободный номер id кнопки из списка
 			/// \paragraph Эта функция может выполнятся очень долго, если вы уже создали довольно много кнопок. Это становится действительно важно когда у вас объявленно более 2000 кнопок
 			/// \return номер кнопки из списка ButtonsIdList
-			ButtonID GetFreeButtonId(ButtonIDList *ButtonsIdList, std::uint32_t startID = 2);
+			ButtonID GetFreeButtonId(ButtonIDList &ButtonsIdList, std::uint32_t startID = 2);
 
-			/// \brief Освободить номер кнопки
-			/// \param id номер номер кнопки из списка ButtonsIdList
-			bool FreeButtonId(const ButtonID &id, ButtonIDList *ButtonsIdList);
+			/**
+			 * @brief Освободить номер кнопки
+			 * @param id номер номер кнопки из списка ButtonsIdList
+			 * @param ButtonsIdList Указатель на список ID кнопок
+			 * @return true если всё ок, иначе false
+			 */
+			bool FreeButtonId(const ButtonID &id, ButtonIDList &ButtonsIdList);
 
 			/// \brief Создать кнопку, автоматически присвоить ей id
 			/// \param coords координаты
 			/// \param size размер
 			/// \param color цвет
 			/// \return id созданной кнопки
-			ButtonID autoDefineButton(ButtonIDList *ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
+			ButtonID autoDefineButton(ButtonIDList &ButtonsIdList, const Coord &coords, const Size &size, const Colors::Color &color = Globals::SystemColors.work_button);
 
 			/// \brief Создать кнопку, вручную
 			/// \param coords координаты
@@ -203,22 +258,25 @@ namespace KolibriLib
 			inline void DefineButton(const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
 				_ksys_define_button(
-					static_cast<std::uint32_t>(coord.x),
-					static_cast<std::uint32_t>(coord.y),
-					static_cast<std::uint32_t>(size.x),
-					static_cast<std::uint32_t>(size.y),
-					static_cast<std::uint32_t>(id),
-					color.operator ksys_color_t());
+					static_cast<std::uint32_t>	(coord.x),
+					static_cast<std::uint32_t>	(coord.y),
+					static_cast<std::uint32_t>	(size.x),
+					static_cast<std::uint32_t>	(size.y),
+					static_cast<std::uint32_t>	(id),
+					static_cast<ksys_color_t>	(color));
 			}
 
-			/// \brief Создать кнопку, вручную
-			/// \param coords координаты
-			/// \param size размер
-			/// \param id idшник кнопки
-			/// \param color цвет
-			inline void DefineButton(ButtonIDList *ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
+			/**
+			 * \brief Создать кнопку, вручную
+			 * @param ButtonsIdList Указатель на список ID кнопок
+			 * \param coords координаты
+			 * \param size размер
+			 * \param id idшник кнопки
+			 * \param color цвет
+			 */
+			inline void DefineButton(ButtonIDList &ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
 			{
-				ButtonsIdList->push_back(id);
+				ButtonsIdList.push_back(id);
 				DefineButton(coord, size, id, color);
 			}
 
@@ -231,7 +289,7 @@ namespace KolibriLib
 
 			/// \brief Удалить кнопу
 			/// \param id id удаляемой кнопки
-			inline void DeleteButton(ButtonIDList *ButtonsIdList, ButtonID id)
+			inline void DeleteButton(ButtonIDList &ButtonsIdList, ButtonID id)
 			{
 				_ksys_delete_button(id);
 				FreeButtonId(id, ButtonsIdList); // Кнопка удалена, теперь этот id не использется

@@ -18,7 +18,12 @@ buf2d_struct *buf2d_create(uint16_t tlx, uint16_t tly, unsigned int sizex, unsig
 
 void buf2d_curve_bezier(buf2d_struct *buf, ksys_pos_t p1, ksys_pos_t p2, ksys_pos_t p3, ksys_color_t color)
 {
-	buf2d_curve_bezier_asm(buf, (p1.x << 16) + p1.y, (p2.x << 16) + p2.y, (p3.x << 16) + p3.y, color);
+	buf2d_curve_bezier_asm(
+		buf, 
+		(uint32_t)((p1.x << 16) + p1.y),
+		(uint32_t)((p2.x << 16) + p2.y), 
+		(uint32_t)((p3.x << 16) + p3.y), 
+		color);
 }
 
 buf2d_struct *buf2d_copy(const buf2d_struct *buff, buf2d_struct* copy)

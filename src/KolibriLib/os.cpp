@@ -1,12 +1,12 @@
 #include <kolibriLib/system/os.hpp>
 #include <cstdlib>
 #include <cstring>
+#include <stdexcept>
 
 using namespace KolibriLib;
 using namespace OS;
 
-Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug)
-
+Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug) noexcept
 {
 	int ret = _ksys_exec(AppName.c_str(), const_cast<char *>(args.c_str()), debug);
 
@@ -17,7 +17,7 @@ Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::str
 	}
 	else
 	{
-		ec = (filesystem::FilesystemErrors)ret;
+		ec = static_cast<filesystem::FilesystemErrors>(ret);
 		return -1;
 	}
 }
@@ -25,12 +25,18 @@ Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::str
 Thread::PID KolibriLib::OS::Exec(const filesystem::Path &AppName, const std::string &args, bool debug)
 {
 	filesystem::FilesystemErrors ec;
-	return Exec(AppName, args, ec, debug);
+
+	Thread::PID ret = Exec(AppName, args, ec, debug);
+
+	if(ret == -1)
+		throw ec;
+
+	return ret;
 }
 
 CoreVersion KolibriLib::OS::GetCoreVersion()
 {
-	// Реальнаяч структура
+	// Реальная структура
 	struct RealCoreVersion
 	{
 		union
@@ -49,11 +55,11 @@ CoreVersion KolibriLib::OS::GetCoreVersion()
 		// Зарезервированно
 		std::uint8_t reserved;
 
-		/// @brief Ревизия
+		// Ревизия
 		std::uint16_t Rev;
 	};
 
-	RealCoreVersion *data = (RealCoreVersion*)std::malloc(16);
+	RealCoreVersion *data = static_cast<RealCoreVersion*>(std::malloc(16));
 
 	asm_inline(
 		"int $0x40" ::"a"(18), "b"(13), "c"(data));
@@ -67,3 +73,19 @@ CoreVersion KolibriLib::OS::GetCoreVersion()
 
 	return p;
 }
+
+/*
+	=== CoreVersion ===
+	Opearators
+*/
+
+bool KolibriLib::OS::CoreVersion::operator==(const CoreVersion &ver) const
+{
+	return version == ver.version && Rev == ver.Rev;
+}
+
+bool KolibriLib::OS::CoreVersion::operator!=(const CoreVersion &ver) const
+{
+	return version != ver.version && Rev != ver.Rev;
+}
+

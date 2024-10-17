@@ -15,6 +15,9 @@ namespace KolibriLib
             {
             public:
 
+                /**
+                 * @brief Конструктор по умолчанию
+                 */
                 BaseButton();
 
 				/// @brief Конструтор
@@ -23,9 +26,9 @@ namespace KolibriLib
 
                 /**
                  * @brief Конструктор копирования
-                 * @param  
+                 * @param button что копировать
                  */
-                BaseButton(const BaseButton &) = default;
+                BaseButton(const BaseButton &button);
 
 				/// @brief Деструктор
                 ~BaseButton();
@@ -94,4 +97,4 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
-#endif // __BUTTON_H__
+#endif // __BUTTON_HPP__

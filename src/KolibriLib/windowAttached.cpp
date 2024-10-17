@@ -23,7 +23,7 @@ WindowAttached::WindowAttached(const Window_t &window)
 {
 	lockARG.waitPoint();
 	lockARG.lock();
-	arg = ((void*)&window);	
+	arg = (void*)&window;	
 	_pid = Thread::CreateThread(WindowFunc, 4096); // Прошу господи лижбы хватило
 	
 	lockARG.waitPoint();

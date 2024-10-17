@@ -7,7 +7,8 @@ using namespace UI;
 KolibriLib::UI::ProgressBar::ProgressBar(const UDim &coord, const UDim &size, const Colors::Color &BorderColor, const Colors::Color &MainColor, const unsigned &MaxFill, const unsigned &DefaultFill)
 	:	UIElement(coord, size, MainColor, DefaultMargin),
 		_MaxFill(MaxFill),
-		_Fill(DefaultFill)
+		_Fill(DefaultFill),
+		_BorderColor(BorderColor)
 {
 }
 
@@ -18,7 +19,7 @@ void KolibriLib::UI::ProgressBar::Render() const
 
 	graphic::DrawRectangleLines(absCoord, absSize, _BorderColor);
 
-	graphic::DrawRectangleFill(absCoord, {static_cast<int>(absSize.x * _Fill / _MaxFill), absSize.y}, _MainColor);
+	graphic::DrawRectangleFill(absCoord, {static_cast<int>(absSize.x * static_cast<int>(_Fill / _MaxFill)), absSize.y}, _MainColor);
 }
 
 void KolibriLib::UI::ProgressBar::SetFill(unsigned NewFill)
@@ -33,8 +34,8 @@ unsigned KolibriLib::UI::ProgressBar::GetFill() const
 
 void KolibriLib::UI::ProgressBar::AddFill(unsigned val)
 {
-	_Fill += val;
-
 	if(_Fill > _MaxFill)
 		_Fill = _MaxFill;
+	else
+		_Fill += val;
 }

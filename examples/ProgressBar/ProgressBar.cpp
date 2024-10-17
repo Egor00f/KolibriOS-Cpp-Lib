@@ -36,13 +36,11 @@ int main()
 			
 		case Event::Button:
 
-			if(wndw.GetPressedButton().get() == button)
+			if(static_cast<BaseButton*>(wndw.GetPressedButton().get()) == static_cast<BaseButton*>(button))
 			{
 				bar->AddFill(1);
 			}
 
-			break;
-		default:
 			break;
 		}		
 	}

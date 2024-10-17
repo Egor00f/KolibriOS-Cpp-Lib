@@ -83,7 +83,7 @@ extern "C" {
   /// @param x координаты текста по оси X
   /// @param y координаты текста по оси Y
   /// @param string текст
-  /// @param stringLenght длинна текста
+  /// @param stringLenght длинна текста. значения меньше 1 значат что хз какая длинна
   /// @param CharWidth ширина символа
   /// @param CharHeight высота символа
   /// @param fontColor Цвет текста

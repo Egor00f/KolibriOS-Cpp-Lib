@@ -23,6 +23,7 @@ bool KolibriLib::UI::BaseEditor::OnKeyEvent()
 	}
 
 	buttons::TextButton::Render();
+	
 }
 
 std::string KolibriLib::UI::BaseEditor::GetInput() const

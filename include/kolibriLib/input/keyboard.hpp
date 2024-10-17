@@ -233,11 +233,8 @@ namespace KolibriLib
             KeyboardLayout ret;
 
             asm_inline(
-                "int $0x40" ::
-                    "a"(26),
-                "b"(2),
-                "c"(mode),
-                "d"(&ret));
+                "int $0x40" 
+                :: "a"(26), "b"(2), "c"(mode), "d"(&ret));
 
             return ret;
         }

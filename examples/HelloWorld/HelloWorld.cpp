@@ -37,16 +37,19 @@ int main()
 
 			exit = true; 
 			break;
+
 		case Event::Button:
 
-			if(wndw->GetPressedButton().get() == button)
+			if(static_cast<BaseButton*>(wndw->GetPressedButton().get()) == static_cast<BaseButton*>(button))
 			{
 				_ksys_debug_puts("You Press Button");
 				OS::Notify("You Press Buttons");
 
 				label->SetTextColor(Color(rand()));
 			}
-		}		
+			
+			break;
+		}
 	}
 
 	delete wndw;

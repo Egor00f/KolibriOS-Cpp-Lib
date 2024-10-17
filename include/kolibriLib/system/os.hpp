@@ -76,10 +76,29 @@ namespace KolibriLib
 		/// @brief Битовые флаги для маски ивентов
 		enum Mask
 		{
+			/**
+			 * @brief 
+			 */
 			RedrawEvent = KSYS_EVM_REDRAW,
+
+			/**
+			 * @brief 
+			 */
 			KeyEvent = KSYS_EVM_KEY,
+
+			/**
+			 * @brief 
+			 */
 			ButtonEvent = KSYS_EVM_BUTTON,
+
+			/**
+			 * @brief 
+			 */
 			MouseEvent = KSYS_EVM_MOUSE,
+
+			/**
+			 * @brief 
+			 */
 			DescktopEvent = KSYS_EVM_BACKGROUND,
 
 			/// @brief неактивное окно получает события от мыши
@@ -88,7 +107,10 @@ namespace KolibriLib
 			/// @brief если курсор за пределами окна
 			MouseCursorInWindow = KSYS_EVM_CURSOR_FILTER,
 
-			AllMouseEvents = (MouseEvent || MouseEventInInactiveWindow || MouseCursorInWindow),
+			/**
+			 * @brief 
+			 */
+			AllMouseEvents = (MouseEvent | MouseEventInInactiveWindow | MouseCursorInWindow),
 
 			/// @brief маска по умолчанию
 			/// @details разрешены ивенты перерисовки, клавиатуры и кнопок
@@ -117,6 +139,20 @@ namespace KolibriLib
 			std::uint16_t Rev;
 
 			CoreVersion& operator=(const CoreVersion&) = default;
+
+			/**
+			 * @brief оператор сравнения
+			 * @param ver с чем сравнивать
+			 * @return true если равны, иначе false
+			 */
+			bool operator == (const CoreVersion& ver) const;
+
+			/**
+			 * @brief оператор сравнения
+			 * @param ver с чем сравнивать
+			 * @return false если равны, иначе true
+			 */
+			bool operator != (const CoreVersion& ver) const;
 		};
 		
 
@@ -180,18 +216,33 @@ namespace KolibriLib
 			return ret;
 		}
 
-		/// \brief Запустить программу
-		/// \param AppName Полное имя исполняемого файла
-		/// \param args аргументы. Максимум 256 символов
-		/// @param debug режим дебага
-		/// \return PID запущенной программы
-		/// @return -1 если произошла ошибка
-		Thread::PID Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug = false);
+		/**
+		 * \brief Запустить программу
+		 * \param AppName Полное имя исполняемого файла
+		 * \param args аргументы. Максимум 256 символов
+		 * @param ec ошибка файловой систмеы
+		 * @param debug режим дебага
+		 * \return PID запущенной программы
+		 * @return -1 если произошла ошибка
+		 */
+		Thread::PID Exec(const filesystem::Path &AppName, const std::string &args, filesystem::FilesystemErrors &ec, bool debug = false) noexcept;
 
+		/**
+		 * @brief Запустить программу
+		 * @param AppName Полное имя исполняемого файла
+		 * @param args аргументы. Максимум 256 символов
+		 * @param debug режим дебага
+		 * \return PID запущенной программы
+		 * @return -1 если произошла ошибка
+		 * @throw Код ошибки файловой системы
+		 */
 		Thread::PID Exec(const filesystem::Path &AppName, const std::string &args, bool debug = false);
 
-		/// @brief Установить системную  время
-		/// @param NewTime Время что будет установленно
+		/**
+		 * @brief Установить системную  время
+		 * @param NewTime Время что будет установленно
+		 * @return Код ошибки
+		 */
 		inline SetTimeOrDate SetTime(ksys_time_bcd_t NewTime)
 		{
 			SetTimeOrDate ret;
@@ -289,11 +340,13 @@ namespace KolibriLib
 		inline lang GetLang()
 		{
 			int a;
+
 			asm_inline(
 				"int $0x40"
 				: "=a"(a)
 				: "a"(26), "b"(5)
 			);
+
 			return static_cast<lang>(a);
 		}
 
@@ -318,10 +371,13 @@ namespace KolibriLib
 		{
 			return _ksys_get_cpu_clock();
 		}
-
-		/// @brief получить значение высокоточного счётчика времени
-		/// @note функция использует счётчик HPET, если HPET не доступен используется счётчик PIT. В этом случае точность будет уменьшена до 10 000 00 наносекунд.
-		/// @return число наносекунд с момента загрузки ядра
+		
+		/**
+		 * @brief получить значение высокоточного счётчика времени
+		 * @note функция использует счётчик HPET, если HPET не доступен используется счётчик PIT. В этом случае точность будет уменьшена до 10 000 00 наносекунд.
+		 * @return число наносекунд с момента загрузки ядра 
+		 * @details Сомнительно использовать это. Используйте лучше функции из станартной библиотеки Си
+		 */
 		inline uint64_t GetHighPrecisionTimerCount()
 		{
 			uint32_t a, b;

@@ -57,7 +57,7 @@ namespace KolibriLib
 			// Поля
 
 			/// @brief Размер структуры
-			std::uint32_t size;
+			std::int32_t size;
 
 			/// @brief Тип структуры
 			Type type;
@@ -181,7 +181,7 @@ namespace KolibriLib
 		/// @return Clipboard::Error
 		inline Error Put(clipboard c)
 		{
-			return static_cast<Error>(_ksys_clip_set(c.operator KolibriLib::Clipboard::clipboard_struct *()->size, (char*)c.operator KolibriLib::Clipboard::clipboard_struct *()));
+			return static_cast<Error>(_ksys_clip_set(static_cast<clipboard_struct*>(c)->size, (char*)c.operator KolibriLib::Clipboard::clipboard_struct *()));
 		}
 
 		/// @brief удалить последний слот с данными в буфере обмена

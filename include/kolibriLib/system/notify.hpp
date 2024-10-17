@@ -42,8 +42,14 @@ namespace KolibriLib
 			 */
 			Info = 'I',
 
+			/**
+			 * @brief Значок папки
+			 */
 			Folder = 'F',
 
+			/**
+			 * @brief 
+			 */
 			Component = 'C',
 
 			/**

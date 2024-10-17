@@ -16,14 +16,14 @@ namespace KolibriLib
         /// @return true если спикер разрешён, иначе false
         inline bool SpeakerStatus()
         {
-            bool a;
+            bool status;
 
             asm_inline(
                 "int $0x40"
-                : "=a"(a)
+                : "=a"(status)
                 : "a"(18), "b"(8), "c"(1));
 
-            return !a;
+            return !status;
         }
 
         /// @brief Переключить состояние спикера
@@ -95,6 +95,9 @@ namespace KolibriLib
 
         Error PlaySound(void *buffer, int buffer_size, SoundFormat snd_format);
 
+        /**
+         * @brief Буффер
+         */
         class Buffer
         {
         public:
@@ -110,6 +113,9 @@ namespace KolibriLib
             /// @param ec ошибка
             Buffer(BufferType type, SoundFormat format, Error& ec) noexcept;
 
+            /**
+             * @brief Деструктор
+             */
             ~Buffer();
 
             /// @brief проиграть буффер 
@@ -120,6 +126,10 @@ namespace KolibriLib
             /// @return 
             Error PlaySync();
 
+            /**
+             * @brief 
+             * @return 
+             */
             Error Reset();
 
             Error Play(bool async);
@@ -159,12 +169,32 @@ namespace KolibriLib
             /// @return
             int GetPan(Error &ec) const;
 
+            /**
+             * @brief 
+             * @param ec 
+             * @return 
+             */
             int GetSize(Error &ec);
 
+            /**
+             * @brief 
+             * @param ec 
+             * @return 
+             */
             int GetFree(Error &ec);
 
+            /**
+             * @brief 
+             * @param ec 
+             * @return 
+             */
             int GetPos(Error &ec);
 
+            /**
+             * @brief 
+             * @param pos 
+             * @return 
+             */
             Error SetPos(int pos);
 
             /// @brief 
@@ -174,9 +204,16 @@ namespace KolibriLib
             /// @return 
             Error Set(void* buff, int buff_size, int offset = 0);
 
+            /**
+             * @brief 
+             * @return 
+             */
             Error Stop();
 
         private:
+            /**
+             * @brief 
+             */
             SNDBUF _hBuff;
         };
 

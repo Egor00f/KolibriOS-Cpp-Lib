@@ -148,7 +148,7 @@ namespace buf2d
 	 */
 	inline void Resize(buf2d_struct* buff, const KolibriLib::Size& NewSize, bool scale = true)
 	{
-		buf2d_resize(buff, static_cast<unsigned>(NewSize.y), static_cast<unsigned>(NewSize.x), 1 + scale);
+		buf2d_resize(buff, static_cast<unsigned>(NewSize.y), static_cast<unsigned>(NewSize.x), 1U + scale);
 	}
 
 	/**
@@ -199,7 +199,11 @@ namespace buf2d
 	{
 		assert(src->color_bit == static_cast<uint8_t>(BPP::RGBA) && dst->color_bit == static_cast<uint8_t>(BPP::RGB));
 
-		buf2d_bit_blt_transp(dst, coord.x, coord.y, const_cast<buf2d_struct*>(src));
+		buf2d_bit_blt_transp(
+			dst, 
+			static_cast<unsigned int>(coord.x),
+			static_cast<unsigned>(coord.y), 
+			const_cast<buf2d_struct*>(src));
 	}
 
 	/**

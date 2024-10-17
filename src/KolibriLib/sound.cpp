@@ -1,5 +1,5 @@
 #include <kolibriLib/sound.hpp>
-#include <stdlib.h>
+#include <cstdlib>
 
 KolibriLib::Sound::SoundLib KolibriLib::Sound::lib;
 
@@ -9,7 +9,7 @@ KolibriLib::Sound::SoundLib KolibriLib::Sound::lib;
 
 KolibriLib::Sound::SpeakerSound::SpeakerSound(std::size_t size)
 {
-	data = (Data *)malloc(size * 1);
+	data = static_cast<Data *>(std::malloc(size * 1));
 }
 
 uint8_t KolibriLib::Sound::SpeakerSound::Data::GetNote() const
@@ -33,15 +33,15 @@ KolibriLib::Sound::Error KolibriLib::Sound::initSound()
 
 	err = InitSound(&version);
 
-	if (err != 0 ||
-		(SOUND_VERSION > (version & 0xFFFF)) ||
-		(SOUND_VERSION < (version >> 16)))
-		throw err;
+	return err;
 }
 
 KolibriLib::Sound::SoundLib::SoundLib()
 {
-	initSound();
+	if(int err = initSound() != 0 ||
+		(SOUND_VERSION > (-1 & 0xFFFF)) ||
+		(SOUND_VERSION < (-1 >> 16)))
+		throw err;
 }
 
 KolibriLib::Sound::Error KolibriLib::Sound::PlaySound(void *buffer, int buffer_size, SoundFormat snd_format)

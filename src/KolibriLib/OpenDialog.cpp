@@ -23,7 +23,7 @@ KolibriLib::OpenDialog::OpenDialog(OpenDialog::Mode mode, Size winSize, Coord wi
 	_opendialog	->	openfile_path	= new char[4096];
 	_opendialog	->	filename_area	= new char[256];
 	_opendialog	->	com_area_name	= const_cast<char*>(sz_com_area_name);
-	_opendialog	->	dir_default_path	= new char[defaultPath.operator std::string().size()];
+	_opendialog	->	dir_default_path	= new char[static_cast<std::string>(defaultPath).size()];
 	
 	for (std::size_t i = 0; i < defaultPath.length(); i++)
 	{

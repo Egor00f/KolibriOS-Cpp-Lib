@@ -84,7 +84,7 @@ Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 	else
 		ret = _size.GetAbsolute(window::GetWindowSize());
 
-	ret -= _Margin;
+	ret -= static_cast<int>(_Margin);
 
 	return ret;
 }
@@ -105,7 +105,7 @@ Coord KolibriLib::UI::UIElement::GetAbsoluteCoord() const
 		ret = _coord.GetAbsolute(window::GetWindowSize());
 	}
 
-	ret += _Margin;
+	ret += static_cast<int>(_Margin);
 
 	return ret;
 }
@@ -312,13 +312,9 @@ buttons::ButtonsIDController *KolibriLib::UI::UIElement::GetButtonIDController()
 	auto s_ptr = Parent.lock();
 
 	if(s_ptr)
-	{
 		return s_ptr.get()->GetButtonIDController();
-	}
 	else
-	{
 		return nullptr;
-	}
 }
 
 void KolibriLib::UI::UIElement::SetButtonIDController(const buttons::ButtonsIDController*) 
