@@ -1,5 +1,5 @@
 #include <kolibriLib/types.hpp>
-
+#include <kolibriLib/debug.hpp>
 #include <assert.h>
 
 
@@ -28,7 +28,7 @@ int main()
 
 
 
-	KolibriLib::PrintDebug("test point_test is OK\n");
+	KolibriLib::logger << microlog::LogLevel::Info << "test point_test is OK" << std::endl;
 
 	return 0;
 }

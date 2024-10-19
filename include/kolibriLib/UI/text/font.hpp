@@ -23,4 +23,4 @@ namespace KolibriLib
 	
 }
 
-#endif // __FONT_H__
+#endif // __FONT_HPP__

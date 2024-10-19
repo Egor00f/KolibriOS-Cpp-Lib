@@ -9,7 +9,7 @@ CheckBox::CheckBox(const UDim &coord, const UDim &size, const style &Style, cons
 		_BorderColor(CheckBoxBorderColor),
 		_style(Style)
 {
-	PrintDebug("CheckBox Constructor\n");
+	logger << microlog::LogLevel::Debug << "CheckBox Constructor" << std::endl;
 }
 
 KolibriLib::UI::CheckBox::CheckBox(const CheckBox &a)
@@ -18,7 +18,7 @@ KolibriLib::UI::CheckBox::CheckBox(const CheckBox &a)
 		_style(a._style),
 		checked(a.checked)
 {
-	PrintDebug("CheckBox Constructor(copy)\n");
+	logger << microlog::LogLevel::Debug << "CheckBox constructor(copy)" << std::endl;
 }
 
 void KolibriLib::UI::CheckBox::DrawBorder() const
@@ -29,11 +29,15 @@ void KolibriLib::UI::CheckBox::DrawBorder() const
 	switch (_style)
 	{
 	case style::Default:
+
 		graphic::DrawRectangleLines(absCoord, absCoord + absSize, _BorderColor);
 		break;
+
 	case style::Circle:
+
 		graphic::DrawCircle(absCoord + point(absSize.x / 2, absSize.y / 2), static_cast<unsigned int>(absSize.x) / 2, _BorderColor);
 		break;
+
 	default:
 		break;
 	}
@@ -58,7 +62,7 @@ void CheckBox::Render() const
 {
 	if(Visible)
 	{
-		PrintDebug("Render Checkbox\n");
+		logger << microlog::LogLevel::Debug << "Render Checkbox" << std::endl;
 
 		DrawBorder();
 
@@ -67,7 +71,7 @@ void CheckBox::Render() const
 
 		if (checked)
 		{
-			PrintDebug("CHECKOBOS IS CHECKED\n");
+			logger << microlog::LogLevel::Debug << "CHECKOBOS IS CHECKED" << std::endl;
 			
 			switch (_style)
 			{
@@ -82,7 +86,7 @@ void CheckBox::Render() const
 									_BorderColor);
 				break;
 			case CheckBox::style::Smoth:
-				PrintDebug("KolibriLib::UI::Checkbox smath style now not support :(\n");
+				logger << microlog::LogLevel::Warning << "KolibriLib::UI::Checkbox smath style now not support :(" << std::endl;
 				break;
 			default:
 				break;

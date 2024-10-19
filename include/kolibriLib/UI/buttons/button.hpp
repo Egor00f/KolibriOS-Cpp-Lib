@@ -56,8 +56,6 @@ namespace KolibriLib
 
     } // namespace UI
 
-    void PrintDebug(const UI::buttons::Button &out);
-
 } // namespace KolibriLib
 
 #endif // __BUTTON_HPP__

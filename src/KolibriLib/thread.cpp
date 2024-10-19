@@ -1,6 +1,7 @@
 #include <kolibriLib/system/thread.hpp>
 #include <cstdlib>
 #include <cstring>
+#include <kolibriLib/debug.hpp>
 
 using namespace KolibriLib;
 using namespace Thread;
@@ -9,17 +10,17 @@ PID KolibriLib::Thread::CreateThread_(void *ThreadEntry, unsigned ThreadStackSiz
 {
 	void *th_stack = std::malloc(ThreadStackSize);
 
-	if (!th_stack) //	Если памяти не было выделенно
+	if (!th_stack) // Если памяти не удалось получить
 	{
-		PrintDebug("Memory allocation error for thread!\n");
+		logger << microlog::LogLevel::Error << "Memory allocation error for thread!" << std::endl;
 		return -1;
 	}
 
 	PID TID = _ksys_create_thread(ThreadEntry, ((uint8_t*) th_stack) + ThreadStackSize);
 
-	if (TID == -1) //   Если поток не был создан
+	if (TID == -1) // Если поток не был создан
 	{
-		PrintDebug("Unable to create a new thread!\n");
+		logger << microlog::LogLevel::Error << "Unable to create a new thread!" << std::endl;
 	}
 
 	return TID;
@@ -50,7 +51,7 @@ ThreadInfo KolibriLib::Thread::GetThreadInfo(const Slot &thread, int &ec)
 }
 
 KolibriLib::Thread::ThreadInfo::ThreadInfo(const ksys_thread_t &t)
-	:   cpu_usage(t.cpu_usage),
+	:	cpu_usage(t.cpu_usage),
 		pos_in_window_stack(static_cast<window::Pos>(t.pos_in_window_stack)),
 		num_window_stack(t.slot_num_window_stack),
 		memstart(t.memstart),

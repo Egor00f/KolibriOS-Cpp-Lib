@@ -2,7 +2,6 @@
 #define __KEYBOARD_HPP__
 
 #include <include_ksys.h>
-#include <kolibriLib/debug.hpp>
 #include <cstdint>
 
 namespace KolibriLib

@@ -7,6 +7,7 @@
 #include <kolibriLib/window/enums.hpp>
 #include <kolibriLib/enumBitfield.hpp>
 #include <type_traits>
+#include <string>
 
 namespace KolibriLib
 {

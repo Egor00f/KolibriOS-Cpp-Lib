@@ -5,7 +5,7 @@ proclibLib proclibLibv;
 
 proclibLib::proclibLib()
 {
-	KolibriLib::PrintDebug("Init proclib: ");
+	KolibriLib::logger << microlog::LogLevel::Info << "Init proclib: ";
 	kolibri_proclib_init();
-	KolibriLib::PrintDebug("OK\n");
+	KolibriLib::logger << "OK" << std::endl;
 }

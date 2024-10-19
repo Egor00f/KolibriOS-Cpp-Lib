@@ -28,6 +28,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 
+
+
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 #enable FASM
@@ -47,6 +49,7 @@ else()
 endif()
 
 SET(SDK_DIR "${KOLIBRIOS_REPO}/contrib/sdk")
+
 
 
 include(CMakeDetermineKOS32Compiler)
@@ -100,6 +103,17 @@ SET(SOURCES
 	${SRC_PATH}/clipboard.cpp
 	${SRC_PATH}/time.cpp
 	${SRC_PATH}/ProgressBar.cpp
+	${SRC_PATH}/filesystem/filesystem.cpp
+	${SRC_PATH}/filesystem/file_type.cpp
+	${SRC_PATH}/C_Layer/kolibri_buf2d.c
+	${SRC_PATH}/C_Layer/kolibri_libimg.c
+	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
+	${SRC_PATH}/C_Layer/kolibri_opendialog.c
+	${SRC_PATH}/C_Layer/rasterworks.cpp
+	${SRC_PATH}/C_Layer/buf2d.cpp
+	${SRC_PATH}/C_Layer/libimg.cpp
+	${SRC_PATH}/C_Layer/opendialog.cpp
+	${SRC_PATH}/C_Layer/msgbox.cpp
 )
 
 #LOADERS THAT LOAD SHARED C_LAYER LIBS
@@ -113,56 +127,24 @@ ADD_LIBRARY(C_LAYER_LOADERS OBJECT
 target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
 
 
-ADD_LIBRARY(C_LAYER_KOLIBRILIB OBJECT 
-	${SRC_PATH}/C_Layer/kolibri_buf2d.c
-	${SRC_PATH}/C_Layer/kolibri_libimg.c
-	${SRC_PATH}/C_Layer/kolibri_rasterworks.c
-	${SRC_PATH}/C_Layer/kolibri_opendialog.c
-	${SRC_PATH}/C_Layer/rasterworks.cpp
-	${SRC_PATH}/C_Layer/buf2d.cpp
-	${SRC_PATH}/C_Layer/libimg.cpp
-	${SRC_PATH}/C_Layer/opendialog.cpp
-	${SRC_PATH}/C_Layer/msgbox.cpp
-)
-
-target_include_directories(C_LAYER_KOLIBRILIB 
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
-	PUBLIC ${LIBC_DIR}/include
-)
-target_compile_options(C_LAYER_KOLIBRILIB
-	PRIVATE -D__MakeStaticLib__	
-	PUBLIC -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32
-)
-
-ADD_LIBRARY(KOLIBRILIB_FILESYSTEM OBJECT 
-	${SRC_PATH}/filesystem/filesystem.cpp
-	${SRC_PATH}/filesystem/file_type.cpp
-)
-
-target_include_directories(KOLIBRILIB_FILESYSTEM 
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
-	PUBLIC ${LIBC_DIR}/include
-)
-target_compile_options(KOLIBRILIB_FILESYSTEM
-	PRIVATE -D__MakeStaticLib__	
-)
-
 
 # ТА САМАЯ ЛИБА ИЗ_ЗА КОТОРОЙ ВСЁ ЭТО
 ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
-target_link_libraries(KolibriLib 
-	PUBLIC C_LAYER_KOLIBRILIB
+target_link_libraries(
+	KolibriLib 
 	PUBLIC C_LAYER_LOADERS
-	PUBLIC KOLIBRILIB_FILESYSTEM
+	PUBLIC microlog
 )
 
 target_compile_options(KolibriLib 
 	PRIVATE -D__MakeStaticLib__
+	PUBLIC -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32
 )
 
 target_include_directories(KolibriLib
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 	PUBLIC ${LIBSTDCPP_DIR}/include
+	PUBLIC ${LIBC_DIR}/include
 	PUBLIC ${KOLIBRIOS_REPO}/contrib/sdk/sources/freetype/include
 )
 

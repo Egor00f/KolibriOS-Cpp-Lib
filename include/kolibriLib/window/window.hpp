@@ -259,9 +259,9 @@ namespace KolibriLib
 		template <class T>
 		T* KolibriLib::window::Window::AddElement(const T &element)
 		{
-			static_assert(std::is_base_of<UIElement, T>::value, "Ты че сюда пихаещь!?! думаешь раз шаблон то можно любой тип сюда запихнуть, а вот и нет! Иди кури документацию");
+			static_assert(std::is_base_of<UIElement, T>::value, "Ты че сюда пихаешь!?! думаешь раз шаблон то можно любой тип сюда запихнуть, а вот и нет! Иди кури документацию");
 
-			PrintDebug("Add element\n");
+			logger << microlog::LogLevel::Debug << "Add element" << std::endl;
 
 			T *p = new T(element);
 

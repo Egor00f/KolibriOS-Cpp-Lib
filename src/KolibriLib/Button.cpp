@@ -8,14 +8,14 @@ Button::Button()
 	:	UIElement(), 
 		BaseButton()
 {
-	PrintDebug("Button constructor\n");
+	logger << microlog::LogLevel::Debug << "Button constructor" << std::endl;
 }
 
 Button::Button(UDim coord, UDim size, unsigned Margin, Colors::Color backgrouncolor)
 	:	UIElement(coord, size, backgrouncolor, Margin),
 		BaseButton()
 {
-	PrintDebug("Button constructor\n");
+	logger << microlog::LogLevel::Debug << "Button constructor" << std::endl;
 }
 
 void KolibriLib::UI::buttons::Button::Render() const
@@ -47,10 +47,4 @@ bool KolibriLib::UI::buttons::Button::operator!=(const Button &val) const
 {
 	return static_cast<UIElement>(*this) != static_cast<UIElement>(val) &&
 	       static_cast<Button>(*this) != static_cast<Button>(val);
-}
-
-void KolibriLib::PrintDebug(const UI::buttons::Button &out)
-{
-	PrintDebug(static_cast<UIElement>(out));
-	PrintDebug(static_cast<BaseButton>(out));
 }

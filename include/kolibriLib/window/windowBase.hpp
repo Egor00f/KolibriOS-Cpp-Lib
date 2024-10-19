@@ -22,20 +22,20 @@ namespace KolibriLib
 	/// @brief Работа с окном
 	namespace window
 	{
-		/// @brief Размер окна поумолчанию
+		/// @brief Размер окна по умолчанию
 		const Size DefaultWindowSize = {600, 400};
 
-		/// @brief Соординаты окна по умолчанию
+		/// @brief Координаты окна по умолчанию
 		const Coord DefaultWindowCoord = {100, 100};
 
 		/// @brief Объявить окно
-		/// @param coord Координаты окна(его левого верхнего угола) на экране
+		/// @param coord Координаты окна(его левого верхнего угла) на экране
 		/// @param size Размеры окна
 		/// @param title Заголовок окна
 		/// @param WorkColor цвет рабочей области окна
 		/// @param TitleColor Цвет текста заголовка
 		/// @param style Стиль окна
-		/// @details при size == {0,0} размер окна будет развен размеру экрана
+		/// @details при size == {0,0} размер окна будет равен размеру экрана
 		/// @note Положение и размеры окна устанавливаются при первом вызове этой функции и игнорируются при последующих; для изменения положения и/или размеров уже созданного окна используйте ChangeWindow
 		/// @note Окно должно умещаться на экране. Если переданные координаты и размеры не удовлетворяют этому условию, то соответствующая координата (или, возможно, обе) считается нулем, а если и это не помогает, то соответствующий размер (или, возможно, оба) устанавливается в размер экрана
 		inline void CreateWindow(const Coord &coord,
@@ -46,7 +46,6 @@ namespace KolibriLib
 								 WindowStyle style = WindowStyle::withSkin,
 								 WindowSettings settings = WindowSettings::WindowHaveTitle | WindowSettings::RelativeCoord)
 		{
-			PrintDebug("Define Window\n");
 
 			asm_inline(
 				"int $0x40" ::
@@ -67,7 +66,7 @@ namespace KolibriLib
 		}
 
 		/// @brief Получить размер окна
-		/// @param pid PID процесса кторый создал окно
+		/// @param pid PID процесса который создал окно
 		/// @return Размер окна
 		inline Size GetWindowSize(Thread::Slot pid = Thread::ThisThread)
 		{
@@ -83,7 +82,7 @@ namespace KolibriLib
 
 		/// @brief Получить слот активного окна
 		/// @return Слот активного в данный момент окна
-		/// @details Активное окно - окно, находящееся на вершине оконного стэка, оно получает сообщения о вводе с клавиатуры. Для него позиция в оконном стэке совпадает с возвращаемым значением.
+		/// @details Активное окно - окно, находящееся на вершине оконного стека, оно получает сообщения о вводе с клавиатуры. Для него позиция в оконном стэке совпадает с возвращаемым значением.
 		inline Thread::Slot GetActiveWindow()
 		{
 			Thread::Slot s;
@@ -138,7 +137,7 @@ namespace KolibriLib
 			return a;
 		}
 
-		/// @brief Изменить положение окна относительно дроугих окон
+		/// @brief Изменить положение окна относительно других окон
 		/// @param pos значение из списка Pos
 		/// @param pid процесс окна, по умолчанию текущий
 		/// @return false если ошибка

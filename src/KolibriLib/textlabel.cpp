@@ -8,7 +8,7 @@ TextLabel::TextLabel(const UDim &coord, const UDim &size, const std::string &tex
 	:	Txt(text, TextColor),
 		UIElement(coord, size, Globals::SystemColors.work_area, Margin)
 {
-	PrintDebug("TextLabel Constructor\n");
+	logger << microlog::LogLevel::Debug << "TextLabel Constructor" << std::endl;
 
 
 	SetTextSize(CharSize);
@@ -19,13 +19,14 @@ KolibriLib::UI::text::TextLabel::TextLabel(const UDim &coord, const UDim &size, 
 	:	Txt(text),
 		UIElement(coord, size, Globals::SystemColors.work_area)
 {
-	PrintDebug("TextLabel Constructor\n");
+	logger << microlog::LogLevel::Debug << "TextLabel Constructor" << std::endl;
 }
 
 TextLabel::TextLabel(const TextLabel &copy)
 	:	Txt	(copy),
 		UIElement	(copy)
 {
+	logger << microlog::LogLevel::Debug << "TextLabel constructor(copy)" << std::endl;
 }
 
 void text::TextLabel::Render() const
@@ -54,10 +55,4 @@ void KolibriLib::UI::text::TextLabel::swap(TextLabel &a)
 
 	*this = a;
 	a = buff;
-}
-
-void KolibriLib::PrintDebug(const UI::text::TextLabel &out)
-{
-	PrintDebug(static_cast <UIElement>(out));
-	PrintDebug(static_cast<Txt>(out));
 }

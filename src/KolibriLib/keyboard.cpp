@@ -1,5 +1,6 @@
 #include <kolibriLib/input/keyboard.hpp>
 #include <algorithm>
+#include <kolibriLib/debug.hpp>
 
 using namespace KolibriLib;
 using namespace keyboard;
@@ -38,7 +39,7 @@ Scancode keyboard::GetScancodeByASCII(char ascii)
 
 Scancode::Scancode(char c)
 {
-	KolibriLib::PrintDebug("Scancode constructor (from char)\n");
+	logger << microlog::LogLevel::Debug << "Scancode constructor (from char)" << std::endl;
 	val = GetScancodeByASCII(c);
 }
 
@@ -110,22 +111,5 @@ Input::operator Scancode() const
 	else
 	{
 		return scancode;
-	}
-}
-
-void KolibriLib::PrintDebug(Scancode out)
-{
-	PrintDebug(static_cast<unsigned>((std::uint8_t)out));
-}
-
-void KolibriLib::PrintDebug(Input out)
-{
-	if(GetInputMode() == InputMode::ASCII)
-	{
-		PrintDebug(out.ASCII);
-	}
-	else
-	{
-		PrintDebug(out.scancode);
 	}
 }

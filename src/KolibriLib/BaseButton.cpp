@@ -53,7 +53,7 @@ void BaseButton::BaseButton::Deactivate()
 	}
 	else
 	{
-		PrintDebug("BaseButton already not active\n");
+		logger << microlog::LogLevel::Warning << "BaseButton already not active" << std::endl;
 	}
 }
 
@@ -65,7 +65,7 @@ void BaseButton::BaseButton::Activate()
 	}
 	else
 	{
-		PrintDebug("BaseButton already active\n");
+		logger << microlog::LogLevel::Warning << "BaseButton already active" << std::endl;
 	}
 }
 
@@ -86,7 +86,7 @@ buttons::ButtonID buttons::BaseButton::GetId() const
 
 void KolibriLib::UI::buttons::BaseButton::SetId(const ButtonID &NewID)
 {
-	PrintDebug("SetId(ButtonID)\n");
+	logger << microlog::LogLevel::Debug << "SetId(ButtonID)" << std::endl;
 	
 	_id = NewID;
 
@@ -99,7 +99,7 @@ void KolibriLib::UI::buttons::BaseButton::SetId(const ButtonID &NewID)
 
 void KolibriLib::UI::buttons::BaseButton::SetId()
 {
-	PrintDebug("SetId()\n");
+	logger << microlog::LogLevel::Debug << "SetId()" << std::endl;
 
 	if(_ButtonsIDController != nullptr)
 	{
@@ -114,11 +114,4 @@ void KolibriLib::UI::buttons::BaseButton::SetId()
 void BaseButton::Define(const Coord &coord, const Size &size, const Colors::Color &color) const
 {
 	DefineButton(coord, size, _id, color);
-}
-
-void KolibriLib::PrintDebug(const UI::buttons::BaseButton &out)
-{
-	DebugOut("BaseButton: ID: ");
-	PrintDebug(out.GetId());
-	DebugOut("\n");
 }

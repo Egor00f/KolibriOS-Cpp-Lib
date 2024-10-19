@@ -1,4 +1,5 @@
 #include <kolibriLib/UI/buttons/buttonsBase.hpp>
+#include <kolibriLib/debug.hpp>
 #include <algorithm>
 
 using namespace KolibriLib;
@@ -9,7 +10,7 @@ UI::buttons::ButtonsIDController *Globals::DefaultButtonsIDController = nullptr;
 
 ButtonID buttons::GetFreeButtonId(ButtonIDList &ButtonsIdList, std::uint32_t startID)
 {
-	PrintDebug("GetFreeButtonID\n");
+	logger << microlog::LogLevel::Debug << "GetFreeButtonID" << std::endl;
 
 	for(ButtonID i = startID; i < buttons::ButtonIDEnd; i.value++)	// в wiki сказанно что id в промежутке (0, 0x8000)
 	{                                   	// CloseButton = 1, поэтому пропускаем и начинаем сразу с 2
@@ -54,19 +55,19 @@ ButtonID buttons::autoDefineButton(ButtonIDList &ButtonsIdList, const Coord &coo
 
 ButtonID buttons::ButtonsIDController::GetFreeButtonID(std::weak_ptr<BaseButton> ptr)
 {
-	ButtonIDList buttonslist = ListoButtonIDList(ButtonsIdList);
+	ButtonIDList buttonsList = ListoButtonIDList(ButtonsIdList);
 
 	ButtonID ret;
 
-	for(std::int8_t i = 0; i < 2; i++)
-	{
-		ret = GetFreeButtonId(buttonslist, _top);
+	for(std::int8_t i = 0; i < 2; i++) // пробуем 2 раза
+	{                                  // 3 раза уже нету смысла
+		ret = GetFreeButtonId(buttonsList, _top);
 
 		if(ret.CheckIsValid())
 		{
 			_top = ret.value + 1;	
 
-			ButtonsIDController::node n(buttonslist.back());
+			ButtonsIDController::node n(buttonsList.back());
 
 			if(!ptr.expired())
 				n.pointers.push_back(ptr);
@@ -75,8 +76,8 @@ ButtonID buttons::ButtonsIDController::GetFreeButtonID(std::weak_ptr<BaseButton>
 
 			break;
 		}
-		else // Если неудалось найти свободный ID 
-		{    // то начиаем с начала
+		else // Если не удалось найти свободный ID 
+		{    // то начинаем с начала
 			_top = StartTop;
 		}
 	};
@@ -87,6 +88,8 @@ ButtonID buttons::ButtonsIDController::GetFreeButtonID(std::weak_ptr<BaseButton>
 
 void buttons::ButtonsIDController::FreeButtonID(const ButtonID &id)
 {
+	logger << microlog::LogLevel::Debug << "ButtonsController::FreeButtonID" << std::endl;
+
 	ButtonIDList buttonslist = ListoButtonIDList(ButtonsIdList);
 
 	auto iter = std::find(buttonslist.begin(), buttonslist.end(), id);
@@ -96,11 +99,13 @@ void buttons::ButtonsIDController::FreeButtonID(const ButtonID &id)
 		if(id.value == _top-1)
 			_top--;
 
-		ButtonsIdList.erase(ButtonsIdList.begin() + (iter - buttonslist.begin()));
+		const std::size_t index =  std::distance(buttonslist.begin(), iter);
+
+		ButtonsIdList.erase(ButtonsIdList.begin() + index);
 	}
 	else
 	{
-		PrintDebug("ButtonID not found\n");
+		logger << microlog::LogLevel::Warning << "ButtonID not found" << std::endl;
 	}
 
 }
@@ -148,6 +153,8 @@ ButtonIDList KolibriLib::UI::buttons::ButtonsIDController::ListoButtonIDList(con
 
 void KolibriLib::UI::buttons::ButtonsIDController::TakeupButtonID(const ButtonID &id, std::weak_ptr<BaseButton> ptr)
 {
+	logger << microlog::LogLevel::Debug << "TakeupButtonID" << std::endl;
+
 	ButtonIDList buttonslist = ListoButtonIDList(ButtonsIdList);
 
 	auto it = std::find(buttonslist.begin(), buttonslist.end(), id);
@@ -253,27 +260,4 @@ void KolibriLib::UI::buttons::ButtonID::swap(ButtonID &val)
 
 	value = val.value;
 	val.value = buff;
-}
-
-void KolibriLib::PrintDebug(UI::buttons::ButtonID out)
-{
-	if(out.CheckIsValid())
-	{
-		PrintDebug(static_cast<unsigned>(out));
-	}
-	else
-	{
-		if (out.value == ButtonIDNotSet)
-		{
-			DebugOut("Not set");
-		}
-		else if (out.value >= ButtonIDEnd)
-		{
-			DebugOut("Out of acceptable values");
-		}
-		else
-		{
-			DebugOut("ID not valid, but != 0 and < 0x8000, WTF?");
-		}
-	}
 }

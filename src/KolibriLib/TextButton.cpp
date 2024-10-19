@@ -8,18 +8,14 @@ buttons::TextButton::TextButton(const UDim &coord, const UDim &size, unsigned Ma
 	:	Button	(coord, size, Margin, ButtonColor),
 		Txt("Button")
 {
-	#ifdef VERBOSE_DEBUG
-	PrintDebug("Button contructor\n");
-	#endif
+	logger << microlog::LogLevel::Debug << "TextButton constructor" << std::endl;
 }
 
 KolibriLib::UI::buttons::TextButton::TextButton(const Txt &text, const UDim &coord, const UDim &size, unsigned Margin, const Colors::Color &ButtonColor)
 	:	Button	(coord, size, Margin, ButtonColor),
 		Txt(text)
 {
-	#ifdef VERBOSE_DEBUG
-	PrintDebug("Button contructor\n");
-	#endif
+	logger << microlog::LogLevel::Debug << "TextButton constructor" << std::endl;
 
 	SetMargin(Margin);
 
@@ -30,6 +26,7 @@ KolibriLib::UI::buttons::TextButton::TextButton(const UDim &coord, const UDim &s
 	:	Button(coord, size),
 		Txt(text)
 {
+	logger << microlog::LogLevel::Debug << "TextButton constructor(copy)" << std::endl;
 }
 
 bool KolibriLib::UI::buttons::TextButton::operator==(const TextButton &element) const
@@ -54,7 +51,7 @@ void buttons::TextButton::Render() const
 {
 	if(Visible)
 	{
-		PrintDebug("Render TextButton");
+		logger << microlog::LogLevel::Debug << "Render TextButton" << std::endl;
 
 		if (IsActive())
 		{
@@ -63,10 +60,8 @@ void buttons::TextButton::Render() const
 		}
 		else
 		{
-			PrintDebug(": Button Is not Active");
+			logger << microlog::LogLevel::Warning << ": Button Is not Active";
 		}
-
-		PrintDebug("\n");
 	}
 }
 
@@ -92,10 +87,3 @@ void KolibriLib::UI::buttons::TextButton::swap(TextButton &a)
 	*this = a;
 	a = buff;
 }
-
-void KolibriLib::PrintDebug(const UI::buttons::TextButton &out)
-{
-	PrintDebug(static_cast<text::Txt>(out));
-	PrintDebug(static_cast<buttons::Button>(out));
-}
-

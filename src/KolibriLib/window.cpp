@@ -8,27 +8,27 @@ KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLi
 	  _colors(colors),
 	  _Transparency(Transparency)
 {
-	PrintDebug("Window:\n");
+	logger << microlog::LogLevel::Debug << "Window:" << std::endl;
 	if (Resize)
 	{
-		PrintDebug("- with skib\n");
+		logger << microlog::LogLevel::Debug << "- with skin" << std::endl;
 		_style = WindowStyle::withSkin;
 	}
 	else
 	{
-		PrintDebug("- with skin and fixed size\n");
+		logger << microlog::LogLevel::Debug << "- with skin and fixed size" << std::endl;
 		_style = WindowStyle::FixSizewithSkin;
 	}
 
 	if (Title != "")
 	{
-		PrintDebug("- Have title\n");
+		logger << microlog::LogLevel::Debug << "- Have title" << std::endl;
 		_settings |= WindowSettings::WindowHaveTitle;
 	}
 
 	if (Gradient)
 	{
-		PrintDebug("- Gradient workspace\n");
+		logger << microlog::LogLevel::Debug << "- Gradient workspace" << std::endl;
 		_settings |= WindowSettings::GradientDraw;
 	}
 
@@ -66,7 +66,7 @@ KolibriLib::window::Window::Window(const std::string &Title, const Size &size, c
 	:	Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, Margin)
 		
 {
-	PrintDebug("Window constructor\n");
+	logger << microlog::LogLevel::Debug << "Window constructor" << std::endl;
 
 	_coord = coord;
 	_size = size;
@@ -75,7 +75,7 @@ KolibriLib::window::Window::Window(const std::string &Title, const Size &size, c
 
 	if (Globals::DefaultButtonsIDController == nullptr)
 	{
-		PrintDebug("Set DefaultButtonsIDController\n");
+		logger << microlog::LogLevel::Debug << "Set DefaultButtonsIDController" << std::endl;
 		Globals::DefaultButtonsIDController = &_buttonsController;
 	}
 
@@ -109,14 +109,11 @@ KolibriLib::window::Window::Window(const Window_t &wndw)
 
 void Window::RenderAllElements() const
 {
-	PrintDebug("RenderAllElements:\n");
+	logger << microlog::LogLevel::Debug << "RenderAllElements:" << std::endl;
 
 	for (auto i : _Elements)
 	{
-		if(i.use_count() > 0)
-			i->Render();
-		else
-			PrintDebug("use_cout = 0\n");
+		i->Render();
 	}
 }
 
@@ -208,7 +205,6 @@ void KolibriLib::window::Window::Redraw()
 
 void Window::Render()
 {
-	PrintDebug("Render window:\n");
 
 	StartRedraw();
 	window::CreateWindow({0, 0}, {0, 0}, _title, _colors.work_area, _colors.grab_text, _style, _settings);
@@ -242,8 +238,6 @@ inline UDim Window::GetSize() const
 
 OS::Event Window::Handler()
 {
-	PrintDebug("Handler\n");
-
 	_lastEvent = OS::WaitEvent();
 
 	switch (_lastEvent)
@@ -284,7 +278,7 @@ OS::Event Window::Handler()
 			}
 			catch(...)
 			{
-				PrintDebug("Error Get s_ptr");
+				logger << microlog::LogLevel::Error << "Error Get s_ptr" << std::endl;
 			}
 
 			_PressedButton = s_ptr;
@@ -403,7 +397,7 @@ void KolibriLib::window::Window::SetButtonIDController(const UI::buttons::Button
 
 void KolibriLib::window::Window::AddElementNoCopy(UIElement *element)
 {
-	PrintDebug("Add element\n");
+	logger << microlog::LogLevel::Debug << "Add element" << std::endl;
 
 	if (element->GetParent() == nullptr)
 	{

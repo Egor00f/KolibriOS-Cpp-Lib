@@ -6,14 +6,14 @@ using namespace UI;
 BaseEditor::BaseEditor(const UDim &coord, const UDim &size, const std::string &BackgroundText, const Colors::Color &FormColor, const Colors::Color &ButtonTextColor, const unsigned &Margin)
 	: buttons::TextButton(coord, size, Margin, FormColor)
 {
-	PrintDebug("BaseEditor constructor\n");
+	logger << microlog::LogLevel::Debug << "BaseEditor constructor" << std::endl;
 
 	SetText(BackgroundText);
 }
 
 bool KolibriLib::UI::BaseEditor::OnKeyEvent()
 {
-	PrintDebug("Redner BaseEditor\n");
+	logger << microlog::LogLevel::Debug <<"Redner BaseEditor" << std::endl;
 
 	if(Active && Visible)
 	{
@@ -33,7 +33,7 @@ std::string KolibriLib::UI::BaseEditor::GetInput() const
 
 bool KolibriLib::UI::BaseEditor::OnButtonEvent(buttons::ButtonID PressedButtonID)
 {
-	PrintDebug("BaseEditor ButtonEvent\n");
+	logger << microlog::LogLevel::Debug <<"BaseEditor ButtonEvent" << std::endl;
 
 	bool ret = buttons::TextButton::OnButtonEvent(PressedButtonID);
 

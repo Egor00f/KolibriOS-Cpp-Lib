@@ -71,7 +71,7 @@ FreeType::Error::operator FT_Error() const
 
 Library::Library()
 {
-	KolibriLib::PrintDebug("Init FreeType Lib\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "Init FreeType Lib" << std::endl;
 
 	lib = 0;
 
@@ -79,9 +79,7 @@ Library::Library()
 	
 	if(err)
 	{
-		KolibriLib::PrintDebug("Error init FreeType lib, Error: ");
-		KolibriLib::PrintDebug(err);
-		KolibriLib::PrintDebug("\n");
+		KolibriLib::logger << microlog::LogLevel::Error << "Error init FreeType lib, Error: " << err << std::endl;
 
 		throw err;
 	}
@@ -89,12 +87,14 @@ Library::Library()
 
 FreeType::Library::~Library()
 {
-	KolibriLib::PrintDebug("done FreeType Lib\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "done FreeType Lib" << std::endl;
 
 	FT_Error err = FT_Done_FreeType(lib);
 
 	if(err)
 	{
+		KolibriLib::logger << microlog::LogLevel::Error << "Error done FreeType Lib, Error: " << err << std::endl;
+
 		throw err;
 	}
 }
@@ -107,18 +107,18 @@ FreeType::Library::operator FT_Library() const
 FreeType::Face::Face()
 	:	face(0)
 {
-	KolibriLib::PrintDebug("Face constructor (face=0)\nFace constructor done\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "Face constructor (face=0)\nFace constructor done" << std::endl;
 }
 
 FreeType::Face::Face(const Face &c)
 	: face(c.face)
 {
-	KolibriLib::PrintDebug("Face constructor(copy)\nFace constructor done\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "Face constructor(copy)\nFace constructor done" << std::endl;
 }
 
 FreeType::Face::Face(const char *file)
 {
-	KolibriLib::PrintDebug("Face constructor\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "Face constructor" << std::endl;
 
 	face = 0;
 
@@ -131,32 +131,28 @@ FreeType::Face::Face(const char *file)
 
 	if (err)
 	{
-		KolibriLib::PrintDebug("Error init FreeType face, Error: ");
-		KolibriLib::PrintDebug(err);
-		KolibriLib::PrintDebug("\n");
+		KolibriLib::logger << microlog::LogLevel::Error << "Error init FreeType face, Error: " << err << std::endl;
 
 		throw err;
 	}
 
-	KolibriLib::PrintDebug("Face constructor done\n");	// Навсякий случай
+	KolibriLib::logger << microlog::LogLevel::Debug << "Face constructor done" << std::endl;	// На всякий случай
 }
 
 FreeType::Face::~Face()
 {
-	KolibriLib::PrintDebug("Face destructor\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "Face destructor" << std::endl;
 
 	Error err = FT_Done_Face(face);
 
 	if(err)
 	{
-		KolibriLib::PrintDebug("Error done FreeType face, Error: ");
-		KolibriLib::PrintDebug(err);
-		KolibriLib::PrintDebug("\n");
+		KolibriLib::logger << microlog::LogLevel::Error << "Error done FreeType face, Error: " << err << std::endl;
 
 		throw err;
 	}
 	
-	KolibriLib::PrintDebug("Face destructor done\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "Face destructor done" << std::endl;
 }
 
 Error FreeType::Face::OpenFile(const char *file)
@@ -203,9 +199,9 @@ FT_Error FreeType::Face::SetCharSizePixels(const KolibriLib::Size &NewCharSize)
 	);
 }
 
-FT_UInt FreeType::Face::GetGlyphIndex(const CharCode &charcode)
+FT_UInt FreeType::Face::GetGlyphIndex(const CharCode &charCode)
 {
-	return FT_Get_Char_Index(face, charcode);
+	return FT_Get_Char_Index(face, charCode);
 }
 
 FT_Error FreeType::Face::LoadGlyph(FT_UInt GlyphIndex, FT_Int LoadFlags)
@@ -217,9 +213,9 @@ FT_Error FreeType::Face::LoadGlyph(FT_UInt GlyphIndex, FT_Int LoadFlags)
 	);
 }
 
-FT_Error FreeType::Face::LoadChar(const CharCode &charcode, FT_Int LoadFlags)
+FT_Error FreeType::Face::LoadChar(const CharCode &charCode, FT_Int LoadFlags)
 {
-	return FT_Load_Char(face, charcode, LoadFlags);
+	return FT_Load_Char(face, charCode, LoadFlags);
 }
 
 FT_Error FreeType::Face::RenderGlyph(FT_Render_Mode RenderMode)
@@ -241,11 +237,11 @@ void FreeType::Face::SetTransform(FT_Matrix *matrix, FT_Vector *delta)
 	);
 }
 
-FT_Vector Face::GetKerning(CharCode leftCharcode, CharCode rightCharcode, FT_Kerning_Mode KerningMode)
+FT_Vector Face::GetKerning(CharCode leftCharCode, CharCode rightCharCode, FT_Kerning_Mode KerningMode)
 {
 	FT_Vector delta;
 
-	FT_Error err = FT_Get_Kerning(face, GetGlyphIndex(leftCharcode), GetGlyphIndex(rightCharcode), KerningMode, &delta);
+	FT_Error err = FT_Get_Kerning(face, GetGlyphIndex(leftCharCode), GetGlyphIndex(rightCharCode), KerningMode, &delta);
 
 	if(err)
 		throw err;
@@ -261,7 +257,8 @@ FT_Glyph Face::GetGlyph()
 
 	if(err)
 	{
-		KolibriLib::PrintDebug("Error Get GLyph\n");
+		KolibriLib::logger << microlog::LogLevel::Error << "Error Get GLyph, Error: " << err << std::endl;
+		
 		throw err;
 	}
 
@@ -274,9 +271,7 @@ Stroker::Stroker()
 
 	if(err)
 	{
-		KolibriLib::PrintDebug("Error init FreeType Stroker, Error: ");
-		KolibriLib::PrintDebug(err);
-		KolibriLib::PrintDebug("\n");
+		KolibriLib::logger << "Error init FreeType Stroker, Error: " << err << std::endl;
 
 		throw err;
 	}
@@ -287,9 +282,9 @@ Stroker::~Stroker()
 	FT_Stroker_Done(stroker);
 }
 
-void FreeType::Stroker::Set(FT_Fixed radius, FT_Stroker_LineCap cap, FT_Stroker_LineJoin join, FT_Fixed miterLimint)
+void FreeType::Stroker::Set(FT_Fixed radius, FT_Stroker_LineCap cap, FT_Stroker_LineJoin join, FT_Fixed miterLimit)
 {
-	FT_Stroker_Set(stroker, radius, cap, join, miterLimint);
+	FT_Stroker_Set(stroker, radius, cap, join, miterLimit);
 }
 
 void FreeType::Stroker::Rewind()
@@ -349,12 +344,11 @@ FreeType::Glyph::operator FT_Glyph() const
 
 void FreeType::DrawText(const KolibriLib::Coord &coord, const std::string text, Face face)
 {
-	KolibriLib::PrintDebug("Draw Text\n");
+	KolibriLib::logger << microlog::LogLevel::Debug << "Draw Text" << std::endl;
 
 	for(std::size_t i = 0; i < text.size(); i++)
 	{
-		KolibriLib::PrintDebug("Render char:");
-		KolibriLib::PrintDebug(text[i]);
+		KolibriLib::logger << microlog::LogLevel::Debug << "Render char:" << text[i] << std::endl;
 		
 		face.LoadGlyph(face.GetGlyphIndex(text[i]), FT_RENDER_MODE_LCD);
 
@@ -384,9 +378,4 @@ void FreeType::DrawText(const KolibriLib::Coord &coord, const std::string text, 
 		image.Draw(coord);
 	}
 
-}
-
-void KolibriLib::PrintDebug(Error out)
-{
-	DebugOut(out.operator std::string().c_str());
 }

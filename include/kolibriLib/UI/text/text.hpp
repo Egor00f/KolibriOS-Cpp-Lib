@@ -192,8 +192,6 @@ namespace KolibriLib
 		} // namespace text
 
 	} // namespace UI
-
-	void PrintDebug(const UI::text::Txt &out);
 } // namespace KolibriLib
 
 

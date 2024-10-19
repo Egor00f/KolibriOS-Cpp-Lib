@@ -5,19 +5,21 @@ buf2d::Loader buf2dLoader;
 
 buf2d::Loader::Loader()
 {
-	KolibriLib::PrintDebug("Init Buf2d: ");
+	KolibriLib::logger << microlog::LogLevel::Info << "Init Buf2d:";
 
 	int err = kolibri_buf2d_init();
 
 	if (err == -1)
 	{
-		KolibriLib::PrintDebug("Error\n");
+		KolibriLib::logger<< microlog::LogLevel::Fatal << "Error";
 		throw err;
 	}
 	else
 	{
-		KolibriLib::PrintDebug("OK\n");
+		KolibriLib::logger << "OK";
 	}
+
+	KolibriLib::logger << std::endl;
 }
 
 /*

@@ -5,15 +5,18 @@ libimgLib libimgLibv;
 
 libimgLib::libimgLib()
 {
-	KolibriLib::PrintDebug("Init libimg: ");
+	KolibriLib::logger << microlog::LogLevel::Info << "Init libimg: ";
+
 	int err = kolibri_libimg_init();
 	if (err == -1)
 	{
-		KolibriLib::PrintDebug("Error\n");
+		KolibriLib::logger << microlog::LogLevel::Fatal << "Error";
 		throw err;
 	}
 	else
 	{
-		KolibriLib::PrintDebug("OK\n");
+		KolibriLib::logger << "OK";
 	}
+
+	KolibriLib::logger << std::endl;
 }

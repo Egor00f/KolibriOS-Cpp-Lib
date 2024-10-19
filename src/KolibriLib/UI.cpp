@@ -75,7 +75,7 @@ void KolibriLib::UI::UIElement::SetCoord(const UDim &NewCoord)
 
 Size KolibriLib::UI::UIElement::GetAbsoluteSize() const
 {
-	PrintDebug("Get Absolute Size\n");
+	logger << microlog::LogLevel::Debug << "Get Absolute Size" << std::endl;
 
 	Size ret;
 
@@ -165,7 +165,7 @@ bool KolibriLib::UI::UIElement::OnMouseEvent()
 
 void KolibriLib::UI::UIElement::SetParent(const UIElement *NewParent) const
 {
-	PrintDebug("SetParent\n");
+	logger << microlog::LogLevel::Debug << "SetParent" << std::endl;
 
 	std::shared_ptr<GuiObject> s_ptr = Parent.lock();
 
@@ -239,7 +239,7 @@ bool KolibriLib::UI::UIElement::operator!=(const UIElement &Element) const
 
 void KolibriLib::UI::UIElement::Render() const
 {
-	PrintDebug("Render UIElement\n");
+	logger << microlog::LogLevel::Debug << "Render UIElement" << std::endl;
 
 	if(_MainColor._a != 0xFF)
 	{
@@ -278,7 +278,7 @@ std::vector<std::weak_ptr<UIElement>>& KolibriLib::UI::UIElement::GetChildren()
 
 void KolibriLib::UI::UIElement::AddChildren(const UIElement *child) const
 {
-	PrintDebug("Add Children\n");
+	logger << microlog::LogLevel::Debug << "Add Children" << std::endl;
 
 	std::shared_ptr<UIElement> s_ptr(const_cast<UIElement*>(child));
 
@@ -287,7 +287,7 @@ void KolibriLib::UI::UIElement::AddChildren(const UIElement *child) const
 
 void KolibriLib::UI::UIElement::DeleteChildren(const UIElement* child) const
 {
-	PrintDebug("Delete Children\n");
+	logger << microlog::LogLevel::Debug << "Delete Children" << std::endl;
 
 	std::shared_ptr<UIElement> ptr(const_cast<UIElement*>(child));
 	std::weak_ptr<UIElement> v = ptr;
@@ -328,15 +328,4 @@ void KolibriLib::UI::UIElement::swap(UIElement &e)
 
 	*this = e;
 	e = buff;
-}
-
-void KolibriLib::PrintDebug(const UI::UIElement &out)
-{
-	PrintDebug("UIElement:\n");
-	DebugOut(":\n");
-	PrintDebug(out.GetColor());
-	DebugOut("\n Size:\n ");
-	PrintDebug(out.GetSize());
-	DebugOut("Coord:\n ");
-	PrintDebug(out.GetCoord());
 }

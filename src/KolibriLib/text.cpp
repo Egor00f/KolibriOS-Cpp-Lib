@@ -1,5 +1,6 @@
 #include <kolibriLib/UI/text/text.hpp>
 #include <C_Layer/INCLUDE/kolibri_rasterworks.h>
+#include <kolibriLib/debug.hpp>
 
 using namespace KolibriLib;
 using namespace UI;
@@ -14,9 +15,7 @@ Txt::Txt(const std::string &text, const Colors::Color &TextColor)
 	:	_data	(text),
 		_TextColor	(TextColor)
 {
-	#ifdef DEBUG
-	_ksys_debug_puts("Text constructor\n");
-	#endif
+	logger << microlog::LogLevel::Debug << "Txt constructor" << std::endl;
 
 	//_font = new Fonts::Font(Fonts::DefaultFont);
 }
@@ -47,7 +46,7 @@ void KolibriLib::UI::text::Txt::Delete(int i)
 
 void KolibriLib::UI::text::Txt::Print(Coord pos, Size size, const Colors::Color &BackgroundColor) const
 {
-	PrintDebug("Print Txt\n");
+	logger << microlog::LogLevel::Debug << "Print Txt" << std::endl;
 
 	/*if(_data.length() > 0)	// Если текста не то и выводить нечего
 	{
@@ -151,9 +150,9 @@ bool Txt::GetScale() const
 	return _TextScale;
 }
 
-void KolibriLib::UI::text::Txt::SetAling(Txt::Align aling)
+void KolibriLib::UI::text::Txt::SetAling(Txt::Align NewAlignment)
 {
-	_Align = aling;
+	_Align = NewAlignment;
 }
 
 Txt::Align KolibriLib::UI::text::Txt::GetAling() const
@@ -175,14 +174,4 @@ bool KolibriLib::UI::text::Txt::operator!=(const Txt &txt) const
 {
 	return _data != txt._data ||
 	       _TextColor != txt._TextColor;
-}
-
-
-void KolibriLib::PrintDebug(const UI::text::Txt &out)
-{
-	DebugOut("Txt:\n");
-	PrintDebug(out.GetText());
-	DebugOut("\n");
-	PrintDebug(out.GetTextColor());
-	DebugOut("\n");
 }

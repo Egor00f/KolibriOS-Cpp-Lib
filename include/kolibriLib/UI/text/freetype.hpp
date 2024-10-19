@@ -33,7 +33,9 @@ namespace FreeType
 		operator bool() const;
 	};
 
-	/// @brief Оболочка для FT_Libraty
+	/**
+	 * @brief Оболочка для FT_Libraty
+	 */
 	class Library
 	{
 	public:
@@ -169,20 +171,27 @@ namespace FreeType
 		/// @return Глиф
 		FT_Glyph GetGlyph();
 
+		/**
+		 * @brief 
+		 */
 		operator FT_Face() const;
 
 	private:
+		/**
+		 * @brief 
+		 */
 		FT_Face face;
 	};
 	
 	extern Library _lib;
 
+	/**
+	 * @brief 
+	 * @param coord 
+	 * @param text 
+	 * @param face 
+	 */
 	void DrawText(const KolibriLib::Coord &coord, const std::string text, Face face);
 } // namespace FreeType
 
-namespace KolibriLib
-{
-	void PrintDebug(FreeType::Error out);
-}
-
-#endif // __FREETYPE_H__
+#endif // __FREETYPE_HPP__

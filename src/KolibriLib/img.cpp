@@ -1,5 +1,5 @@
 #include <kolibriLib/img.hpp>
-
+#include <kolibriLib/debug.hpp>
 #include <assert.h>
 
 using namespace KolibriLib;
@@ -42,7 +42,7 @@ KolibriLib::UI::Images::img::img(const Colors::Color &color, const Size &size)
 
 void KolibriLib::UI::Images::img::Draw() const
 {
-	PrintDebug("Draw img\n");
+	logger << microlog::LogLevel::Debug << "Draw img" << std::endl;
 
 	if(static_cast<BPP>(_buff->color_bit) == BPP::RGBA)
 	{

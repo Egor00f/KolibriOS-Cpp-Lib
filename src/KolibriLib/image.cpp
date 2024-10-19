@@ -10,14 +10,14 @@ Image::Image(const UDim &coord, const UDim &size)
 	:	UIElement(coord, size), 
 		img(Colors::Color(Globals::SystemColors.work_graph), size.GetAbsolute({0,0}))
 {
-	PrintDebug("KolibriLib::UI::Images::Image Constructor");
+	logger << microlog::LogLevel::Debug << "KolibriLib::UI::Images::Image Constructor" << std::endl;
 }
 
 KolibriLib::UI::Images::Image::Image(const Image & copy)
 	:	UIElement(copy),
 		img(copy)
 {
-	PrintDebug("KolibriLib::UI::Images::Image Constructor(copy)");
+	logger << microlog::LogLevel::Debug << "KolibriLib::UI::Images::Image Constructor(copy)" << std::endl;
 }
 
 void KolibriLib::UI::Images::Image::Render() const

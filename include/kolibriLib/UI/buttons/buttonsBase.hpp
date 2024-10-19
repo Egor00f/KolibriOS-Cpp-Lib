@@ -313,9 +313,7 @@ namespace KolibriLib
 		} // namespace buttons
 
 	} // namespace UI
-
-	void PrintDebug(UI::buttons::ButtonID out);
-
+	
 	namespace Globals
 	{
 		/**

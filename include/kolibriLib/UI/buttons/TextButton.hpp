@@ -81,8 +81,6 @@ namespace KolibriLib
 			};
 		}
 	}
-
-	void PrintDebug(const UI::buttons::TextButton &out);
 }
 
 #endif // __TEXTBUTTON_HPP__

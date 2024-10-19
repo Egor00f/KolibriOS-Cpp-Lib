@@ -5,19 +5,21 @@ libini::Loader _libiniLib;
 
 libini::Loader::Loader()
 {
-	KolibriLib::PrintDebug("Init libini: ");
+	KolibriLib::logger << microlog::LogLevel::Info << "Init libini: ";
 
 	int err = kolibri_libini_init();
 
 	if (err == -1)
 	{
-		KolibriLib::PrintDebug("Error\n");
+		KolibriLib::logger << microlog::LogLevel::Fatal << "Error";
 		throw err;
 	}
 	else
 	{
-		KolibriLib::PrintDebug("OK\n");
+		KolibriLib::logger << "OK";
 	}
+
+	KolibriLib::logger << std::endl;
 }
 
 libini::iniFile::iniFile(const KolibriLib::filesystem::path &file)

@@ -92,8 +92,6 @@ namespace KolibriLib
 
     } // namespace UI
 
-    void PrintDebug(const UI::buttons::BaseButton &out);
-
 } // namespace KolibriLib
 
 

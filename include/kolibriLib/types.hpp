@@ -5,7 +5,6 @@
 #define __TYPES_HPP__
 
 #include <include_ksys.h>
-#include <kolibriLib/debug.hpp>
 
 #define X_Y(x, y)(((x) << 16) | (y))
 
@@ -168,12 +167,6 @@ namespace KolibriLib
 		bool operator==(const UDim &obj) const;
 		bool operator!=(const UDim &obj) const;
 	};
-
-	void PrintDebug(const point &out);
-
-	void PrintDebug(const UDim::Axis &out);
-
-	void PrintDebug(const UDim &out);
 
 //==================================================================================================
 

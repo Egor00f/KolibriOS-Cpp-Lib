@@ -2,7 +2,7 @@
 #define __COLOR_HPP__
 
 #include <include_ksys.h>
-#include <kolibriLib/debug.hpp>
+#include <cstdint>
 
 namespace KolibriLib
 {
@@ -71,9 +71,9 @@ namespace KolibriLib
             Color(const rgb_t &color);
 
             /// @brief Конструктор
-            /// @param R Красная состовляющаяя цвета
-            /// @param G Красная состовляющаяя цвета
-            /// @param B Красная состовляющаяя цвета
+            /// @param R Красная составляющяя цвета
+            /// @param G Красная составляющяя цвета
+            /// @param B Красная состовляющяя цвета
             /// @param A Прозрачность
             Color(std::uint8_t R, std::uint8_t G, std::uint8_t B, std::uint8_t A = 0xFF);
 
@@ -166,10 +166,6 @@ namespace KolibriLib
         /// @brief Таблица цветов по умолчанию
         const ColorsTable DefaultColorTable = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     }
-
-    void PrintDebug(Colors::Color out);
-
-    void PrintDebug(Colors::ColorsTable out);
     
 } // namespace KolibriLib
 

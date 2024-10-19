@@ -8,9 +8,9 @@ msgBoxLib _msgBoxLib;
 
 msgBoxLib::msgBoxLib()
 {
-	KolibriLib::PrintDebug("Init msgbox lib: ");
+	KolibriLib::logger << microlog::LogLevel::Info << "Init msgbox lib: ";
 	kolibri_msgbox_init();
-	KolibriLib::PrintDebug("OK\n");
+	KolibriLib::logger << "OK" << std::endl;
 }
 
 msgBox::msgBox(const std::string &title, const std::string& text, const std::vector<std::string> &ButtonsTexts)

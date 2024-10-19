@@ -25,15 +25,11 @@ void update()
 	sprintf(buff, textAbs, mouseCoord.y, mouseCoord.x);
 
 	MousePosRelative->SetText(buff);
-
-	PrintDebug("\nText: \n");
-	PrintDebug(MousePosRelative->GetText());
-	PrintDebug("\n\n");
 }
 
 int main()
 {
-	SetEventMask(OS::Mask::DefaultEventMask || OS::Mask::AllMouseEvents);
+	SetEventMask(OS::Mask::DefaultEventMask | OS::Mask::AllMouseEvents);
 
 	Window wnd("Mouse Pos");
 
@@ -67,7 +63,10 @@ int main()
 			wnd.Redraw();
 
 			break;
+		default:
+			break;
 		}
+		
 	}
 	
 	return 0;
