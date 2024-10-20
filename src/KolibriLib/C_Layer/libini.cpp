@@ -5,7 +5,7 @@ libini::Loader _libiniLib;
 
 libini::Loader::Loader()
 {
-	KolibriLib::logger << microlog::LogLevel::Info << "Init libini: ";
+	KolibriLib::logger << microlog::LogLevel::Debug << "Init libini: ";
 
 	int err = kolibri_libini_init();
 

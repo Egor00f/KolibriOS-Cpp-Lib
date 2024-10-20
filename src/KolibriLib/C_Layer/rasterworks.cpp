@@ -5,7 +5,7 @@ rasterwoksLib rasterworksLibv;
 
 rasterwoksLib::rasterwoksLib()
 {
-	KolibriLib::logger << microlog::LogLevel::Info <<"Init RasterWorks: ";
+	KolibriLib::logger << microlog::LogLevel::Debug <<"Init RasterWorks: ";
 	int err = kolibri_rasterworks_init();
 
 	if (err == -1)

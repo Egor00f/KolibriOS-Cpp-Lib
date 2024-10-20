@@ -53,9 +53,12 @@ namespace KolibriLib
             private:
 			};
         } // namespace buttons
-
     } // namespace UI
-
 } // namespace KolibriLib
+
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::UI::buttons::Button& element)
+{
+	return os << static_cast<KolibriLib::UI::buttons::BaseButton>(element) << std::endl << static_cast<KolibriLib::UI::UIElement>(element);
+}
 
 #endif // __BUTTON_HPP__

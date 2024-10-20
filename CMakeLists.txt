@@ -27,7 +27,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-
+add_subdirectory(microlog)
 
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -61,10 +61,6 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wctor-dtor-privacy -Wnon-virt
 
 set(CMAKE_C_FLAGS_RELEASE "-O2")
 set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
-
-# CONFIGURED C_Layer ASM
-set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
-set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
 
 # PATH TO KOLIBRILIB SOURCES
 set(KolibriLib_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -116,37 +112,48 @@ SET(SOURCES
 	${SRC_PATH}/C_Layer/msgbox.cpp
 )
 
-#LOADERS THAT LOAD SHARED C_LAYER LIBS
-ADD_LIBRARY(C_LAYER_LOADERS OBJECT 
+# CONFIGURED C_Layer ASM
+set(C_Layer_Path ${KOLIBRIOS_REPO}/contrib/C_Layer)
+set(C_Layer_SRC_PATH ${C_Layer_Path}/ASM)
+
+#LOADERS THAT LOAD SHARED LIBS
+ADD_LIBRARY(
+	C_LAYER_LOADERS STATIC 
 	${C_Layer_SRC_PATH}/loadlibimg.asm
 	${C_Layer_SRC_PATH}/loadrasterworks.asm
 	${C_Layer_SRC_PATH}/loadbuf2d.asm
 	${C_Layer_SRC_PATH}/loadproclib.asm
 )
 
-target_include_directories(C_LAYER_LOADERS PRIVATE ${KOLIBRIOS_REPO}/programs)
+target_include_directories(
+	C_LAYER_LOADERS
+	PRIVATE ${KOLIBRIOS_REPO}/programs
+)
 
 
 
 # ТА САМАЯ ЛИБА ИЗ_ЗА КОТОРОЙ ВСЁ ЭТО
-ADD_LIBRARY(KolibriLib STATIC ${SOURCES})
-target_link_libraries(
-	KolibriLib 
-	PUBLIC C_LAYER_LOADERS
-	PUBLIC microlog
+ADD_LIBRARY(KolibriLib STATIC 
+	${SOURCES}
+	$<TARGET_OBJECTS:C_LAYER_LOADERS>
+	$<TARGET_OBJECTS:microlog>
 )
 
-target_compile_options(KolibriLib 
+target_compile_options(
+	KolibriLib
 	PRIVATE -D__MakeStaticLib__
 	PUBLIC -U__WIN32__ -U_Win32 -U_WIN32 -U__MINGW32__ -UWIN32
 )
 
-target_include_directories(KolibriLib
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+target_include_directories(
+	KolibriLib
 	PUBLIC ${LIBSTDCPP_DIR}/include
 	PUBLIC ${LIBC_DIR}/include
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 	PUBLIC ${KOLIBRIOS_REPO}/contrib/sdk/sources/freetype/include
+	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/microlog/include
 )
+
 
 
 #GENERATE DOXYGEN ONLY THIS PROJECT ISNT SUBPROECT

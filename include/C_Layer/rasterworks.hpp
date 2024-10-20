@@ -25,7 +25,7 @@ extern rasterwoksLib rasterworksLibv;
 /// @param FontColor цвет текста
 /// @param flags флаги
 /// @param encoding кодировка тектса
-/// @return буффер
+/// @return буфер
 inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, const KolibriLib::Size &size, const std::string &text, const KolibriLib::Size &CharSize, const KolibriLib::Colors::Color &FontColor, const std::uint8_t &flags, const std::uint8_t encoding = RasterworksEncoding::Rasterworks_UTF8)
 {
 	return drawTextToBuff(
@@ -45,7 +45,7 @@ inline void *drawTextToBuff(const void *canvas, const KolibriLib::Coord &coord, 
 
 /// @brief тоже что и drawTextToBuff, но сразу выводится текст
 /// @param coord Координаты
-/// @param size размеры буффера
+/// @param size размеры буфера
 /// @param text текст
 /// @param CharSize
 /// @param FontColor

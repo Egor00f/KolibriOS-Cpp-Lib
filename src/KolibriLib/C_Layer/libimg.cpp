@@ -5,7 +5,7 @@ libimgLib libimgLibv;
 
 libimgLib::libimgLib()
 {
-	KolibriLib::logger << microlog::LogLevel::Info << "Init libimg: ";
+	KolibriLib::logger << microlog::LogLevel::Debug << "Init libimg: ";
 
 	int err = kolibri_libimg_init();
 	if (err == -1)

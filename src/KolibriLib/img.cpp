@@ -7,7 +7,7 @@ using namespace UI;
 using namespace Images;
 
 /* 
-	Contructors
+	Constructors
 */
 
 KolibriLib::UI::Images::img::img(img::BPP bpp)
@@ -47,7 +47,7 @@ void KolibriLib::UI::Images::img::Draw() const
 	if(static_cast<BPP>(_buff->color_bit) == BPP::RGBA)
 	{
 		buf2d::buffer image(GetSize(), BPP::RGB);
-		buf2d::ApplyTrasparency(_buff.get(), image);
+		buf2d::ApplyTransparency(_buff.get(), image);
 		buf2d::Draw(&image);
 	}
 	else

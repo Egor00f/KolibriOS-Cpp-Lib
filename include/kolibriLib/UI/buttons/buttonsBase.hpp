@@ -8,6 +8,7 @@
 #include <kolibriLib/system/os.hpp>
 #include <kolibriLib/debug.hpp>
 #include <kolibriLib/globals.hpp>
+#include <ostream>
 
 #include <vector>
 #include <memory>
@@ -271,7 +272,7 @@ namespace KolibriLib
 			 * @param ButtonsIdList Указатель на список ID кнопок
 			 * \param coords координаты
 			 * \param size размер
-			 * \param id idшник кнопки
+			 * \param id ID кнопки
 			 * \param color цвет
 			 */
 			inline void DefineButton(ButtonIDList &ButtonsIdList, const Coord &coord, const Size &size, const ButtonID &id, Colors::Color color = Globals::SystemColors.work_button)
@@ -292,7 +293,7 @@ namespace KolibriLib
 			inline void DeleteButton(ButtonIDList &ButtonsIdList, ButtonID id)
 			{
 				_ksys_delete_button(id);
-				FreeButtonId(id, ButtonsIdList); // Кнопка удалена, теперь этот id не использется
+				FreeButtonId(id, ButtonsIdList); // Кнопка удалена, теперь этот id не используется
 			}
 
 			/// @brief проверить какая кнопка нажата
@@ -302,7 +303,7 @@ namespace KolibriLib
 				return ButtonID(_ksys_get_button());
 			}
 
-			/// @brief Измнить стиль кнопок
+			/// @brief Изменить стиль кнопок
 			/// @param новый стиль кнопок
 			inline void SetButtonStyle(ButtonStyle style)
 			{
@@ -320,10 +321,15 @@ namespace KolibriLib
 		 * @brief Контроллер кнопок ID по умолчанию
 		 * @details Используется по умолчанию кнопками.
 		 * По умолчанию равен nullptr.
-		 * Устонавливается классом window::Window
+		 * Устанавливается классом window::Window
 		 */
 		extern UI::buttons::ButtonsIDController *DefaultButtonsIDController;
 	}
 } // namespace KolibriLib
+
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::UI::buttons::ButtonID& id)
+{
+	return os << id.value;
+}
 
 #endif // __BUTTONSBASE_HPP__

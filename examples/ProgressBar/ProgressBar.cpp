@@ -42,9 +42,10 @@ int main()
 			}
 
 			break;
-		}
 		default:
 			break;
+		}
+		
 	}
 
 	return 0;

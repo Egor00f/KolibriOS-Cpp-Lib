@@ -245,7 +245,7 @@ namespace KolibriLib
 		 */
 		inline SetTimeOrDate SetTime(ksys_time_bcd_t NewTime)
 		{
-			SetTimeOrDate ret;
+			SetTimeOrDate ret = SetTimeOrDate::Successfully;
 
 			asm_inline (
 				"int $0x40" 
@@ -260,7 +260,7 @@ namespace KolibriLib
 		/// @param NewData Дата что будет установленна
 		inline SetTimeOrDate SetDate(ksys_date_bcd_t NewDate)
 		{
-			SetTimeOrDate ret;
+			SetTimeOrDate ret = SetTimeOrDate::Successfully;
 
 			asm_inline (
 				"int $0x40"
@@ -276,7 +276,7 @@ namespace KolibriLib
 		/// @note Ценность установки дня недели представляется сомнительной, поскольку он мало где используется(день недели можно рассчитать по дате)
 		inline SetTimeOrDate SetDayOfWeek(uint8_t NewDayOfWeek)
 		{
-			SetTimeOrDate ret;
+			SetTimeOrDate ret = SetTimeOrDate::Successfully;
 
 			asm_inline (
 				"int $0x40" 
@@ -287,14 +287,14 @@ namespace KolibriLib
 			return ret;
 		}
 
-		/// @brief Установить бедильник
+		/// @brief Установить будильник
 		/// @param AlarmTime Время будильника
 		/// @paragraph Будильник можно установить на срабатывание в заданное время каждые сутки. При этом отключить его существующими системными функциями нельзя.
 		/// @paragraph Срабатывание будильника заключается в генерации IRQ8.
 		/// @paragraph Будильник - глобальный системный ресурс; установка будильника автоматически отменяет предыдущую установку 
 		inline SetTimeOrDate SetAlarm(ksys_time_bcd_t AlarmTime)
 		{
-			SetTimeOrDate ret;
+			SetTimeOrDate ret = SetTimeOrDate::Successfully;
 
 			asm_inline (
 				"int $0x40" 

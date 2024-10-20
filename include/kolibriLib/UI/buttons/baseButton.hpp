@@ -95,4 +95,9 @@ namespace KolibriLib
 } // namespace KolibriLib
 
 
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::UI::buttons::BaseButton& element)
+{
+	return os << "BaseButton" << std::endl << "ID: " << element.GetId();
+}
+
 #endif // __BUTTON_HPP__

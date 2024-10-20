@@ -22,7 +22,7 @@ public:
 
 	using Callback = msgbox_callback;
 
-	/// @brief Констуктор
+	/// @brief Конструктор
 	/// @param title заголовок
 	/// @param text текст
 	/// @param ButtonsText текст для кнопок

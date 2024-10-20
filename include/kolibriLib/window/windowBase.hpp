@@ -1,5 +1,5 @@
-#ifndef __WINDOWBASE_HPP__
-#define __WINDOWBASE_HPP__
+#ifndef __WINDOW_BASE_HPP__
+#define __WINDOW_BASE_HPP__
 
 /*
 	Тут тип базовый функционал работы с окном
@@ -38,9 +38,9 @@ namespace KolibriLib
 		/// @details при size == {0,0} размер окна будет равен размеру экрана
 		/// @note Положение и размеры окна устанавливаются при первом вызове этой функции и игнорируются при последующих; для изменения положения и/или размеров уже созданного окна используйте ChangeWindow
 		/// @note Окно должно умещаться на экране. Если переданные координаты и размеры не удовлетворяют этому условию, то соответствующая координата (или, возможно, обе) считается нулем, а если и это не помогает, то соответствующий размер (или, возможно, оба) устанавливается в размер экрана
-		inline void CreateWindow(const Coord &coord,
-								 const Size &size,
-								 const std::string &title,
+		inline void CreateWindow(const Coord &coord = DefaultWindowCoord,
+								 const Size &size = DefaultWindowSize,
+								 const std::string &title = "Window",
 								 const Colors::Color &WorkColor = Globals::SystemColors.work_area,
 								 Colors::Color TitleColor = Globals::SystemColors.work_text,
 								 WindowStyle style = WindowStyle::withSkin,
@@ -82,7 +82,7 @@ namespace KolibriLib
 
 		/// @brief Получить слот активного окна
 		/// @return Слот активного в данный момент окна
-		/// @details Активное окно - окно, находящееся на вершине оконного стека, оно получает сообщения о вводе с клавиатуры. Для него позиция в оконном стэке совпадает с возвращаемым значением.
+		/// @details Активное окно - окно, находящееся на вершине оконного стека, оно получает сообщения о вводе с клавиатуры. Для него позиция в оконном стеке совпадает с возвращаемым значением.
 		inline Thread::Slot GetActiveWindow()
 		{
 			Thread::Slot s;
@@ -189,4 +189,4 @@ namespace KolibriLib
 
 } // namespace KolibriLib
 
-#endif // __WINDOWBASE_HPP__
+#endif // __WINDOW_BASE_HPP__

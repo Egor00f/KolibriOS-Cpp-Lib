@@ -2,6 +2,7 @@
 #define __COLOR_HPP__
 
 #include <include_ksys.h>
+#include <ostream>
 #include <cstdint>
 
 namespace KolibriLib
@@ -168,6 +169,22 @@ namespace KolibriLib
     }
     
 } // namespace KolibriLib
+
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::Colors::Color& color)
+{
+	return os << "Color:"\
+		<< "Red: " << color.red \
+		<< " Green: " << color.green \
+		<< " Blue: " << color.blue;
+}
+
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::Colors::ColorsTable& colorTable)
+{
+	for(std::size_t i = 0; i < sizeof(KolibriLib::Colors::ColorsTable)/sizeof(ksys_color_t); i++)
+    {
+        os << ((KolibriLib::Colors::Color*)&colorTable)[i] << std::endl;
+    }
+}
 
 
 #endif // __COLOR_HPP__

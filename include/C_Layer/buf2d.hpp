@@ -14,7 +14,7 @@
 namespace buf2d
 {
 	/**
-	 * @brief Загрузщик либы
+	 * @brief Загрузчик либы
 	 * @details Автоматически загружет билиотеку
 	 */
 	class Loader final
@@ -60,11 +60,11 @@ namespace buf2d
 	};
 
 	/**
-	 * @brief Создать буффер
+	 * @brief Создать буфер
 	 * @param size размеры буфера
 	 * @param color цвет
 	 * @param bpp бит на пиксель
-	 * @return указатель на созданный буффер
+	 * @return указатель на созданный буфер
 	 */
 	inline buf2d_struct* Create(const KolibriLib::Size& size, KolibriLib::Colors::Color color, BPP bpp)
 	{
@@ -76,11 +76,11 @@ namespace buf2d
 	}
 
 	/**
-	 * @brief Создать буффер
+	 * @brief Создать буфер
 	 * @param size размеры буфера
 	 * @param color цвет
 	 * @param bpp бит на пиксель
-	 * @return указатель на созданный буффер
+	 * @return указатель на созданный буфер
 	 */
 	inline void Create(buf2d_struct* buff, const KolibriLib::Size& size, KolibriLib::Colors::Color color, BPP bpp)
 	{
@@ -88,7 +88,7 @@ namespace buf2d
 	}
 
 	/**
-	 * @brief Удалить буффер
+	 * @brief Удалить буфер
 	 * @param buff 
 	 */
 	inline void Delete(buf2d_struct* buff)
@@ -97,8 +97,8 @@ namespace buf2d
 	}
 
 	/**
-	 * @brief Очистить буффер цветом
-	 * @param buff буффер
+	 * @brief Очистить буфер цветом
+	 * @param buff буфер
 	 * @param color цвет
 	 */
 	inline void Clear(buf2d_struct* buff, KolibriLib::Colors::Color color)
@@ -131,7 +131,7 @@ namespace buf2d
 
 	/**
 	 * @brief Получить пиксель
-	 * @param buff буффер
+	 * @param buff буфер
 	 * @param coord координаты пикселя
 	 * @return цвет пикселя
 	 */
@@ -141,7 +141,7 @@ namespace buf2d
 	}
 
 	/**
-	 * @brief Изменить размер буффера
+	 * @brief Изменить размер буфера
 	 * @param buff буфер
 	 * @param NewSize новый размер
 	 * @param scale растягивать ли изображение
@@ -153,7 +153,7 @@ namespace buf2d
 
 	/**
 	 * @brief Нарисовать прямоугольник (линии)
-	 * @param buff буффер в котором рисуктся прямоугольник
+	 * @param buff буфер в котором рисуются прямоугольник
 	 * @param coord Координаты левого верхнего угла прямоугольника
 	 * @param size размер прямоугольника
 	 * @param color цвет
@@ -171,7 +171,7 @@ namespace buf2d
 
 	/**
 	 * @brief Нарисовать прямоугольник (закрашенный)
-	 * @param buff буффер в котором рисуктся прямоугольник
+	 * @param buff буфер в котором рисуются прямоугольник
 	 * @param coord Координаты левого верхнего угла прямоугольника
 	 * @param size размер прямоугольника
 	 * @param color цвет
@@ -192,10 +192,10 @@ namespace buf2d
 	 * @param dst Буфер на котором рисуется (RGB)
 	 * @param src буфер с прозрачностью
 	 * @param coord Координаты src на dst. Координаты для вывода изображения, определяют положение рисуемой картинки в buf_0
-	 * @details рабоает так же как и BitBlt, но эта применяет прозрачность.
+	 * @details работает так же как и BitBlt, но эта применяет прозрачность.
 	 * Для расчета прозрачности используются координаты src
 	 */
-	inline void ApplyTrasparency(buf2d_struct* dst, const buf2d_struct* src, const KolibriLib::Coord& coord = {0,0})
+	inline void ApplyTransparency(buf2d_struct* dst, const buf2d_struct* src, const KolibriLib::Coord& coord = {0,0})
 	{
 		assert(src->color_bit == static_cast<uint8_t>(BPP::RGBA) && dst->color_bit == static_cast<uint8_t>(BPP::RGB));
 

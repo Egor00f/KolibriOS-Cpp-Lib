@@ -48,12 +48,14 @@ filesystem::Path &KolibriLib::filesystem::Path::operator/(const std::string &a)
 
 KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator+(const KolibriLib::filesystem::Path &a)
 {
-    return *this / a;
+    _string += a._string;
+    return *this;
 }
 
 KolibriLib::filesystem::Path &KolibriLib::filesystem::Path::operator+(const std::string &a)
 {
-    return *this / a;
+    _string += a;
+    return *this;
 }
 
 std::size_t KolibriLib::filesystem::Path::length() const
@@ -156,7 +158,7 @@ std::uintmax_t KolibriLib::filesystem::file_size(const Path &p, filesystem::File
     int err;
     std::uintmax_t size = _ksys_file_get_size(p.c_str(), &err);
 
-    ec = (filesystem::FilesystemErrors)err;
+    ec = static_cast<filesystem::FilesystemErrors>(err);
 
     if (ec != FilesystemErrors::Successfully)
     {
@@ -236,7 +238,7 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
     unsigned char buffer[BLOCK_SIZE];
 
     FILE *fin = NULL;
-    FILE *fout = NULL;
+    FILE *fOut = NULL;
 
     if ((fin = fopen(from.c_str(), "rb")) == NULL )
     {
@@ -244,7 +246,7 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
         throw;
     }
 
-    if ((fout = fopen(to.c_str(), "wb")) == NULL)
+    if ((fOut = fopen(to.c_str(), "wb")) == NULL)
     {
         fclose(fin);
         ec = filesystem::FilesystemErrors::NotFound;
@@ -263,7 +265,7 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
         {
             throw;
         }
-        if (fwrite(buffer, sizeof(unsigned char), BLOCK_SIZE, fout) != BLOCK_SIZE)
+        if (fwrite(buffer, sizeof(unsigned char), BLOCK_SIZE, fOut) != BLOCK_SIZE)
         {
             throw;
         }
@@ -275,14 +277,14 @@ bool KolibriLib::filesystem::copy_file(const filesystem::path &from, const files
         {
             throw;
         }
-        if (fwrite(buffer, sizeof(unsigned char), file_size, fout) != file_size)
+        if (fwrite(buffer, sizeof(unsigned char), file_size, fOut) != file_size)
         {
             throw;
         }
     }
 
     fclose(fin);
-    fclose(fout);
+    fclose(fOut);
 
 }
 
@@ -297,7 +299,7 @@ void filesystem::rename(const filesystem::path &old_p, const filesystem::path &n
 
 void filesystem::rename(const filesystem::path &old_p, const filesystem::path &new_p, filesystem::FilesystemErrors &ec) noexcept
 {
-    ec = (FilesystemErrors)_ksys_file_rename(old_p.c_str(), new_p.c_str());
+    ec = static_cast<FilesystemErrors>(_ksys_file_rename(old_p.c_str(), new_p.c_str()));
 }
 
 bool filesystem::is_directory(filesystem::file_status s) noexcept

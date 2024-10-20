@@ -6,6 +6,8 @@
 
 #include <include_ksys.h>
 
+#include <ostream>
+
 #define X_Y(x, y)(((x) << 16) | (y))
 
 namespace KolibriLib
@@ -172,6 +174,20 @@ namespace KolibriLib
 
 } // namespace KolibriLib
 
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::point& p)
+{
+	return os << "X: " << p.x << " Y: " << p.y;
+}
+
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::UDim::Axis& p)
+{
+	return os << "Scale: " << p.Scale << " Offset: " << p.Offset;
+}
+
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::UDim& p)
+{
+	return os << "X: " << p.X << " Y: " << p.Y;
+}
 
 
-#endif // __TYPES_H__
+#endif // __TYPES_HPP__

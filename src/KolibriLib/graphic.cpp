@@ -23,7 +23,7 @@ void graphic::DrawCircle(const Coord &coord, unsigned Radius, const Colors::Colo
 	buf2d::buffer src({static_cast<int>(Radius * 2U), static_cast<int>(Radius * 2U)}, buf2d::BPP::RGBA);
 	buf2d::buffer dst({static_cast<int>(Radius * 2U), static_cast<int>(Radius * 2U)}, buf2d::BPP::RGB);
 
-	buf2d::ApplyTrasparency(&dst, &src);
+	buf2d::ApplyTransparency(&dst, &src);
 
 	src.top = coord.y;
 	src.left = coord.x;

@@ -1,4 +1,8 @@
 #ifndef __WINDOW_ENUMS_HPP__
+
+/*
+	Файл с перечислениями в пространстве имен window
+*/
 #define __WINDOW_ENUMS_HPP__
 
 #include <cstdint>
@@ -12,14 +16,14 @@ namespace KolibriLib
 		enum class WindowStyle
 		{
 			/// @brief только определить область окна, ничего не рисовать
-			/// @details вид окна полность определяется приложением
+			/// @details вид окна полностью определяется приложением
 			NoDraw = 1,
 
 			/// @brief Окно со скином
 			withSkin = 3,
 
 			/// @brief Окно со скином фиксированных размеров
-			FixSizewithSkin = 4,
+			FixSizeWithSkin = 4,
 		};
 
 		/// @brief Настройки для окна. битовые флаги
@@ -28,7 +32,7 @@ namespace KolibriLib
 			/// @brief у окна есть заголовок
 			WindowHaveTitle = 1,
 
-			/// @brief Координаты крафических приметивов относительно окна
+			/// @brief Координаты графических примитивов относительно окна
 			RelativeCoord = 2,
 
 			/// @brief Не закрашивать рабочую область при отрисовке окна
@@ -38,7 +42,7 @@ namespace KolibriLib
 			/// @details по умолчанию нормальная заливка
 			GradientDraw = 8,
 
-			/// @brief неперемещаемое окно
+			/// @brief Не перемещаемое окно
 			/// @details работает для всех стилей окон
 			NotMoveable = (1 << 8),
 
@@ -54,7 +58,7 @@ namespace KolibriLib
 			/// @brief всегда за другими окнами
 			AlwaysBack = -1,
 
-			/// @brief обчное
+			/// @brief обычное
 			Normal = 0,
 
 			/// @brief Всегда поверх остальных окон

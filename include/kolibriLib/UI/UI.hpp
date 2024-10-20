@@ -271,8 +271,14 @@ namespace KolibriLib
 			void DeleteChildren(const UIElement* child) const;
 		};
 	}
+}
 
-	void PrintDebug(const UI::UIElement &out);
+inline std::ostream &operator<<(std::ostream &os, const KolibriLib::UI::UIElement& element)
+{
+	return os << "UIElement" << std::endl \
+		<< "Coord: " << element.GetCoord() << std::endl \
+		<< "Size: " << element.GetSize() << std::endl \
+		<< "MainColor" << element.GetColor() << std::endl;
 }
 
 #endif // __UI_HPP__

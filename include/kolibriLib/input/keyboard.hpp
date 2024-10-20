@@ -224,16 +224,29 @@ namespace KolibriLib
             return ret;
         }
 
+        /**
+         * @brief Получить раскладку клавиатуры
+         * @param ret Указатель на раскладку клавиатуры
+         * @param mode Режим раскладки клавиатуры
+         * @return Указатель на раскладку клавиатуры
+         */
+        inline KeyboardLayout* GetKeyboardLayoutPointer(KeyboardLayout* ret, KeyboardLayoutMode mode = KeyboardLayoutMode::Normal)
+        {
+            asm_inline(
+                "int $0x40" 
+                :: "a"(26), "b"(2), "c"(mode), "d"(ret));
+
+            return ret;
+        }
+
         /// @brief Получит раскладку клавиатуры
-        /// @param Режим раскладки клавиатуры
+        /// @param mode Режим раскладки клавиатуры
         /// @return Раскладка клавиатуры
         inline KeyboardLayout GetKeyboardLayout(KeyboardLayoutMode mode = KeyboardLayoutMode::Normal)
         {
             KeyboardLayout ret;
 
-            asm_inline(
-                "int $0x40" 
-                :: "a"(26), "b"(2), "c"(mode), "d"(&ret));
+            GetKeyboardLayoutPointer(&ret, mode);
 
             return ret;
         }
@@ -255,19 +268,19 @@ namespace KolibriLib
         }
 
         /// @brief Получить состояние управляющих клавиш
-        /// @return Возвращает имя конгстрольной клавиши из списка ControlKeys
+        /// @return Возвращает имя контрольной клавиши из списка ControlKeys
         inline ControlKey GetControlKey()
         {
             return static_cast<ControlKey>(_ksys_get_control_key_state());
         }
 
         /// @brief Установить "горячую клавишу"
-        /// @param controlkeys клавиши
+        /// @param controlKeys клавиши
         /// @return true если успешно, иначе false
         /// @warning not done!
-        inline bool InstallHotKey(Scancode scancode, uint16_t controlkeys)
+        inline bool InstallHotKey(Scancode scancode, uint16_t controlKeys)
         {
-            return !_ksys_set_sys_hotkey(scancode, controlkeys);
+            return !_ksys_set_sys_hotkey(scancode, controlKeys);
         }
 
         /// @brief Удалить "горячую клавишу"
@@ -293,9 +306,6 @@ namespace KolibriLib
 
     } // namespace keyboard
 
-    void PrintDebug(keyboard::Scancode out);
-
-    void PrintDebug(keyboard::Input out);
 } // namespace KolibriLib
 
 #endif // __KEYBOARD_HPP__

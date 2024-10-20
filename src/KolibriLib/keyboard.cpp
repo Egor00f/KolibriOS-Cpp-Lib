@@ -84,32 +84,3 @@ char KeyboardLayout::operator[](uint8_t i) const
 {
 	return table[i];
 }
-
-Input::operator char() const
-{
-	if(GetInputMode() == InputMode::ASCII)
-	{
-		return this->ASCII;
-	}
-	else
-	{
-		return static_cast<char>(scancode);
-	}
-}
-
-Input::operator std::uint8_t() const
-{
-	return ASCII;
-}
-
-Input::operator Scancode() const
-{
-	if(GetInputMode() == InputMode::ASCII)
-	{
-		return GetScancodeByASCII(ASCII);
-	}
-	else
-	{
-		return scancode;
-	}
-}

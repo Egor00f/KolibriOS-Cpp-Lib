@@ -64,14 +64,14 @@ namespace KolibriLib
 				img(const Colors::Color& color, const Size& size);
 
 				/**
-				 * @brief Констуктор копирования
+				 * @brief Конструктор копирования
 				 * @param val 
-				 * @details Полность копирует изображение
+				 * @details Полностью копирует изображение
 				 */
 				img(const img& val);
 
 				/**
-				 * @brief 
+				 * @brief Отрисовать изображение
 				 */
 				void Draw() const;
 

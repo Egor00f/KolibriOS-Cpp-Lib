@@ -9,6 +9,7 @@ KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLi
 	  _Transparency(Transparency)
 {
 	logger << microlog::LogLevel::Debug << "Window:" << std::endl;
+	
 	if (Resize)
 	{
 		logger << microlog::LogLevel::Debug << "- with skin" << std::endl;
@@ -17,7 +18,7 @@ KolibriLib::window::Window_t::Window_t(const std::string &Title, const KolibriLi
 	else
 	{
 		logger << microlog::LogLevel::Debug << "- with skin and fixed size" << std::endl;
-		_style = WindowStyle::FixSizewithSkin;
+		_style = WindowStyle::FixSizeWithSkin;
 	}
 
 	if (Title != "")
@@ -62,8 +63,8 @@ void KolibriLib::window::Window_t::SetTitle(const std::string &NewTitle)
 	Window
 */
 
-KolibriLib::window::Window::Window(const std::string &Title, const Size &size, const Coord &coord, const Colors::ColorsTable &colors, bool Resize, bool RealtimeReadraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
-	:	Window_t(Title, colors, Resize, RealtimeReadraw, Gradient, Transparency, Margin)
+KolibriLib::window::Window::Window(const std::string &Title, const Size &size, const Coord &coord, const Colors::ColorsTable &colors, bool Resize, bool RealtimeRedraw, bool Gradient, unsigned Transparency, Pos position, const unsigned &Margin)
+	:	Window_t(Title, colors, Resize, RealtimeRedraw, Gradient, Transparency, Margin)
 		
 {
 	logger << microlog::LogLevel::Debug << "Window constructor" << std::endl;

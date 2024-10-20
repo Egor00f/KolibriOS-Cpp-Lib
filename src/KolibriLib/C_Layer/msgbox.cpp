@@ -8,7 +8,7 @@ msgBoxLib _msgBoxLib;
 
 msgBoxLib::msgBoxLib()
 {
-	KolibriLib::logger << microlog::LogLevel::Info << "Init msgbox lib: ";
+	KolibriLib::logger << microlog::LogLevel::Debug << "Init msgbox lib: ";
 	kolibri_msgbox_init();
 	KolibriLib::logger << "OK" << std::endl;
 }

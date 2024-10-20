@@ -5,7 +5,7 @@ buf2d::Loader buf2dLoader;
 
 buf2d::Loader::Loader()
 {
-	KolibriLib::logger << microlog::LogLevel::Info << "Init Buf2d:";
+	KolibriLib::logger << microlog::LogLevel::Debug << "Init Buf2d:";
 
 	int err = kolibri_buf2d_init();
 
