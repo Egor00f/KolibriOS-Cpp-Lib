@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v4
 
       - name: Install Toolchain
         uses: Egor00f/install-kolibrios-toolchain-action@main
@@ -30,13 +30,13 @@ jobs:
 
       - name: KolibriOS repo
         run: |
-          ${{github.workspace}}/../
+          cd ${{ github.workspace }}/../
           git clone https://git.kolibrios.org/KolibriOS/kolibrios.git
       
       - name: Configure CMake
         run: |
-          cd ${{github.workspace}}
+          cd ${{ github.workspace }}
           cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/cmake/toolchain.cmake
 
       - name: Build
-        run: cmake --build ${{github.workspace}}/build --target all --config ${{env.BUILD_TYPE}}
+        run: cmake --build ${{ github.workspace }}/build --target all --config ${{env.BUILD_TYPE}}
