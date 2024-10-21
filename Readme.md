@@ -16,7 +16,19 @@
 
 ## Сборка
 
-По умолчанию предпологается что репозитрий kolibrios лежит в той же папке что и папка этого проекта, но вы можете отредактировать CMakeLists.txt, чтобы изменить путь до репозитория. Если у вас нет репозитория, то вот ссылка [https://github.com/KolibriOS/kolibrios](https://git.kolibrios.org/KolibriOS/kolibrios.git)
+Клонирует репозиторий
+```
+git clone https://github.com/Egor00f/KooibriOS-Cpp-Lib.git
+```
+
+По умолчанию предпологается что репозитрий kolibrios лежит в той же папке что и папка этого проекта, но вы можете отредактировать CMakeLists.txt, чтобы изменить путь до репозитория. Если у вас нет репозитория, то вот ссылка [https://github.com/KolibriOS/kolibrios](https://git.kolibrios.org/KolibriOS/kolibrios.git). 
+Кароч просто запускаете в той же папке что и этот проект:
+```
+git clone https://git.kolibrios.org/KolibriOS/kolibrios.git
+```
+
+
+### Windows
 
 Для сборки требуются:
 + `cmake` https://cmake.org/
@@ -24,8 +36,25 @@
 + `kos32-gcc` http://wiki.kolibrios.org/wiki/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%BD%D0%B0_%D0%A1/C%2B%2B#GCC.2FG.2B.2B
 + `fasm` https://flatassembler.net/download.php
 
+### Linux
+
+Устанавливаем тулчейн
+```
+git clone https://github.com/Egor00f/kolibrios-gcc-toolchain.git
+kolibrios-gcc-toolchain/./install
+```
+
+Остальные зависимости:
+```
+apt update
+apt install fasm cmake make
+```
+
+### Сбстна сама сборка
+
 Сборка:
 ```
+
 mkdir build
 cd build
 cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain.cmake -DCMAKE_BUILD_TYPE=Release
@@ -38,6 +67,8 @@ cmake --build .
 2. включите в проект с помощью cmake
    ```
    add_subdirectory(KolibriOS-Cpp-Lib)
+
+   add_kolibri_executable(yourexeTarget)
 
    tareget_link_libraries(yourexeTarget PRIVATE KolibriLib)
    ```
